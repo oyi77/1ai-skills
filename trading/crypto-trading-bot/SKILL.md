@@ -1,8 +1,15 @@
 ---
 name: crypto-trading-bot
-description: 加密貨幣交易機器人開發 - 幫你整自動交易Bot，支持Pine Script、Python、CCXT API對接。適用於：(1)整TradingView信號Bot
-  (2)CEX/DEX API自動化 (3)套利機器人 (4)止盈止損策略
+description: 加密貨幣交易機器人開發 - 幫你整自動交易Bot，支持Pine Script、Python、CCXT API對接。適用於：(1)整TradingView信號Bot (2)CEX/DEX API自動化 (3)套利機器人
+  (4)止盈止損策略
 domain: trading
+tags:
+- algorithms
+- api
+- bot
+- crypto
+- markets
+- trading
 ---
 persona:
   name: "Domain Expert"
@@ -17,6 +24,18 @@ persona:
 > [![Tip Me](https://www.tip.md/badge.svg)](https://www.tip.md/oyi77) — If this skill saves you time, tip: **https://www.tip.md/oyi77**
 
 # Crypto Trading Bot Developer
+## When to Use
+
+**Trigger phrases:**
+- "crypto trading bot"
+- "Help me with crypto trading bot"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 幫你整加密貨幣自動交易機器人
 
@@ -104,3 +123,7 @@ After completing this skill, confirm:
 
 
 Load `references/trading-checklist.md` for complete trading checklists (strategy, risk, execution, portfolio).
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

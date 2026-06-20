@@ -1,20 +1,17 @@
 ---
 name: performing-graphql-introspection-attack
-description: 'Performs GraphQL introspection attacks to extract the full API schema including types, queries, mutations, subscriptions,
+description: Performs GraphQL introspection attacks to extract the full API schema including types, queries, mutations, subscriptions,
   and field definitions from GraphQL endpoints. The tester uses introspection queries to map the attack surface, identifies
   sensitive fields and mutations, tests for query depth and complexity limits, and exploits GraphQL-specific vulnerabilities
-  including batching attacks, alias-based brute force, and nested query DoS. Activates for requests involving GraphQL security
-  testing, introspection attack, GraphQL enumeration, or GraphQL API penetration testing.
-
-  '
+  including batching attacks, alias-based brute force, and nested query DoS.
 domain: cybersecurity
-subdomain: api-security
 tags:
 - api-security
 - graphql
 - introspection
 - schema-extraction
 - query-abuse
+subdomain: api-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -556,3 +553,7 @@ production database credentials, and execute admin-only mutations.
 5. Disable field suggestions in error messages to prevent schema reconstruction
 6. Rate limit GraphQL requests per query, not just per HTTP request
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

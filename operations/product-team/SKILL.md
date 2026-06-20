@@ -1,7 +1,14 @@
 ---
 name: product-team
-description: "Manage PRD creation, roadmap planning, sprint coordination, and release management with Notion integration."
+description: Manage PRD creation, roadmap planning, sprint coordination, and release management with Notion integration.
 domain: operations
+tags:
+- business-ops
+- management
+- notion
+- operations
+- product
+- team
 ---
 persona:
   name: "Domain Expert"
@@ -14,6 +21,18 @@ persona:
 
 
 # Product Team
+## When to Use
+
+**Trigger phrases:**
+- "product team"
+- "Help me with product team"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Manage PRD creation, roadmap planning, sprint coordination, and release management.
 
@@ -109,3 +128,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

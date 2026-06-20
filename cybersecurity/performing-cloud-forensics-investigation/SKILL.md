@@ -3,7 +3,6 @@ name: performing-cloud-forensics-investigation
 description: Conduct forensic investigations in cloud environments by collecting and analyzing logs, snapshots, and metadata
   from AWS, Azure, and GCP services.
 domain: cybersecurity
-subdomain: digital-forensics
 tags:
 - forensics
 - cloud-forensics
@@ -12,6 +11,7 @@ tags:
 - gcp
 - incident-response
 - log-analysis
+subdomain: digital-forensics
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -371,3 +371,7 @@ Cloud Forensics Summary:
     Resources Created: 3 EC2 instances (crypto mining)
     Estimated Cost: $4,500 in unauthorized compute
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

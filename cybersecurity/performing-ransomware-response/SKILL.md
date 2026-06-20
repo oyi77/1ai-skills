@@ -7,13 +7,13 @@ description: 'Executes a structured ransomware incident response from initial de
 
   '
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - ransomware
 - encryption-recovery
 - backup-restoration
 - ransom-negotiation
 - CISA-guidance
+subdomain: incident-response
 mitre_attack:
 - T1486
 - T1490
@@ -267,3 +267,7 @@ POST-INCIDENT ACTIONS
 4. LAPS deployed for local administrator passwords
 5. Regulatory notifications filed (GDPR 72-hour, state AG)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

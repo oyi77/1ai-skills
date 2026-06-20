@@ -5,13 +5,13 @@ description: 'Deploys and configures Zeek (formerly Bro) network security monito
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - zeek
 - network-monitoring
 - anomaly-detection
 - threat-hunting
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -438,3 +438,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 3. Investigate self-signed TLS certificate on 198.51.100.33
 4. Block 45.33.32.156 and enforce SSH key-only authentication
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

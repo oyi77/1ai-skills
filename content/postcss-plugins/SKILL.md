@@ -1,8 +1,13 @@
 ---
 name: postcss-plugins
-description: PostCSS plugin ecosystem — Autoprefixer, cssnano, nesting, custom plugins,
-  preset configuration
+description: PostCSS plugin ecosystem — Autoprefixer, cssnano, nesting, custom plugins, preset configuration
 domain: content
+tags:
+- content-creation
+- digital-content
+- media
+- plugins
+- postcss
 ---
 
 
@@ -181,3 +186,7 @@ module.exports.postcss = true
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

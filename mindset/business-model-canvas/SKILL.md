@@ -1,7 +1,15 @@
 ---
 name: business-model-canvas
-description: Design and analyze business models using the 9 building blocks of the Business Model Canvas. Use when launching, pivoting, or evaluating a business.
+description: Design and analyze business models using the 9 building blocks of the Business Model Canvas. Use when launching,
+  pivoting, or evaluating a business.
 domain: mindset
+tags:
+- business
+- canvas
+- mindset
+- model
+- personal-development
+- soft-skills
 ---
 
 # Business Model Canvas
@@ -250,3 +258,7 @@ Framework by Alexander Osterwalder for designing, analyzing, and iterating on bu
 - [ ] Cost structure estimated (break-even and burn rate)
 - [ ] Key partnerships identified for critical gaps
 - [ ] Assumptions prioritized and validated (highest risk first)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

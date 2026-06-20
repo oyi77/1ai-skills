@@ -6,7 +6,6 @@ description: 'Perform security assessments of SCADA Human-Machine Interface (HMI
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - vulnerability
 - iec62443
 - nist-800-82
+subdomain: ot-ics-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -344,3 +344,7 @@ COMPLIANCE STATUS:
   IEC 62443 SL-T: [target level]
   IEC 62443 SL-A: [achieved level]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

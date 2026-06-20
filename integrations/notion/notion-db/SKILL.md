@@ -1,8 +1,25 @@
 ---
 name: notion-db
-description: Manage Notion databases
+description: Notion Db. Use when working with notion db in integrations domain.
 domain: integrations
+tags:
+- api
+- integrations
+- notion
+- third-party
 ---
+## When to Use
+
+**Trigger phrases:**
+- "notion db"
+- "Help me with notion db"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Notion Db
 
 Manage Notion databases
@@ -85,3 +102,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

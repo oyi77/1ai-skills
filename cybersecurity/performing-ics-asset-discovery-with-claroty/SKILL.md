@@ -6,7 +6,6 @@ description: 'Perform comprehensive ICS/OT asset discovery using Claroty xDome p
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - scada
 - network-visibility
 - iec62443
+subdomain: ot-ics-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -549,3 +549,7 @@ CRITICAL FINDINGS:
   - [End-of-life firmware finding]
   - [Unencrypted protocol concern]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

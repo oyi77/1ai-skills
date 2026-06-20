@@ -4,12 +4,12 @@ description: Parse NetFlow v9 and IPFIX records to detect volumetric anomalies, 
   patterns. Uses the Python netflow library to decode flow records, builds traffic baselines, and applies statistical analysis
   to identify flows with abnormal byte counts, connection durations, and periodic timing patterns.
 domain: cybersecurity
-subdomain: network-security
 tags:
 - analyzing
 - network
 - flow
 - data
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -91,3 +91,7 @@ for flow in data.flows:
 - Captures verified as complete with no dropped packets
 - Detection rules tested against known-benign traffic for false positive rate
 - Alert thresholds validated and tuned to reduce noise
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

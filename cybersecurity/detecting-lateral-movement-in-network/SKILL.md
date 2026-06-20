@@ -5,13 +5,13 @@ description: 'Identifies lateral movement techniques in enterprise networks by a
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - lateral-movement
 - threat-detection
 - siem
 - pass-the-hash
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -479,3 +479,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 2. Credential dumping not detected (no LSASS monitoring)
 3. 30-minute gap between first lateral movement and alert
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

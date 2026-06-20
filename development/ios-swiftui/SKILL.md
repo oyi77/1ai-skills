@@ -1,8 +1,13 @@
 ---
 name: ios-swiftui
-description: SwiftUI development — declarative UI, state management, navigation, and
-  Apple ecosystem integration
+description: SwiftUI development — declarative UI, state management, navigation, and Apple ecosystem integration
 domain: development
+tags:
+- coding
+- ios
+- software-engineering
+- swiftui
+- testing
 ---
 
 
@@ -115,3 +120,7 @@ class ItemStore {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

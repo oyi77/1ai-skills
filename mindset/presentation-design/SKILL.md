@@ -1,7 +1,14 @@
 ---
 name: presentation-design
-description: Design persuasive presentations using the 10/20/30 rule, slide anatomy principles, and storytelling arcs. Use when creating decks or keynotes.
+description: Design persuasive presentations using the 10/20/30 rule, slide anatomy principles, and storytelling arcs. Use
+  when creating decks or keynotes.
 domain: mindset
+tags:
+- design
+- mindset
+- personal-development
+- presentation
+- soft-skills
 ---
 
 # Presentation Design
@@ -158,3 +165,7 @@ Structure your deck like a story:
 - [ ] Narrative arc: hook → tension → climax → resolution → CTA
 - [ ] Rehearsed at least twice (under 20 min)
 - [ ] Q&A prep: anticipated objections documented
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

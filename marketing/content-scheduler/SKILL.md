@@ -1,8 +1,15 @@
 ---
 name: content-scheduler
 description: Schedule and manage content publishing across platforms with Notion calendar
-allowed-tools: "|\n  - MCP(notion:*)\n    - MCP(slack:*)\n"
 domain: marketing
+tags:
+- content
+- growth
+- marketing
+- notion
+- scheduler
+- seo
+allowed-tools: "|\n  - MCP(notion:*)\n    - MCP(slack:*)\n"
 ---
 
 
@@ -17,6 +24,18 @@ persona:
 
 
 # Content Scheduler
+## When to Use
+
+**Trigger phrases:**
+- "content scheduler"
+- "Help me with content scheduler"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Expert Persona
 
@@ -247,3 +266,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

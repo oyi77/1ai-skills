@@ -6,13 +6,13 @@ description: 'Configures Fail2ban with custom filters and actions to detect port
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - fail2ban
 - port-scanning
 - intrusion-prevention
 - automated-defense
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -403,3 +403,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 | 198.51.100.23 | http-scan | 8 | 02:30 | 18:22 |
 | 203.0.113.100 | sshd | 6 | 05:12 | 21:33 |
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

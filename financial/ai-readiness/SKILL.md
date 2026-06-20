@@ -1,8 +1,13 @@
 ---
 name: ai-readiness
-description: Assess portfolio company AI readiness, AI adoption maturity. Use when
-  user says "AI readiness", "AI maturity", "assess AI adoption".
+description: Assess portfolio company AI readiness, AI adoption maturity. Use when user says "AI readiness", "AI maturity",
+  "assess AI adoption".
 domain: financial
+tags:
+- analysis
+- finance
+- investment
+- readiness
 ---
 
 # AI Readiness!

@@ -1,7 +1,15 @@
 ---
 name: daily-dev-agentic
-description: 'Skill: daily-dev-agentic. See SKILL.md body for details. Use when this
-  domain is relevant.'
+description: 'Skill: daily-dev-agentic. See SKILL.md body for details. Use when this domain is relevant.'
+domain: development
+tags:
+- agentic
+- ai-agent
+- coding
+- daily
+- dev
+- software-engineering
+- testing
 persona:
   name: Kent Beck
   title: The Agile Pioneer - Master of Incremental Development
@@ -20,8 +28,19 @@ persona:
   - Continuous integration
   - Test first
   - Refactor mercilessly
-domain: development
 ---
+## When to Use
+
+**Trigger phrases:**
+- "daily dev agentic"
+- "Help me with daily dev agentic"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 name
  description
  metadata
@@ -202,3 +221,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

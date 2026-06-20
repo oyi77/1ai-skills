@@ -6,7 +6,6 @@ description: 'Auditing Terraform infrastructure-as-code for security misconfigur
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - terraform
@@ -14,6 +13,7 @@ tags:
 - checkov
 - tfsec
 - policy-as-code
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -384,3 +384,7 @@ SUMMARY BY SEVERITY:
   Low:      18 findings
   Info:     12 findings
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

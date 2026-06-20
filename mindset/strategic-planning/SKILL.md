@@ -1,7 +1,14 @@
 ---
 name: strategic-planning
-description: Set strategy using OKRs, roadmaps, quarterly planning, and review cadences. Use when defining direction or aligning teams on goals.
+description: Set strategy using OKRs, roadmaps, quarterly planning, and review cadences. Use when defining direction or aligning
+  teams on goals.
 domain: mindset
+tags:
+- mindset
+- personal-development
+- planning
+- soft-skills
+- strategic
 ---
 
 # Strategic Planning
@@ -176,3 +183,7 @@ Framework for setting and executing strategy: OKRs, roadmaps, quarterly planning
 - [ ] Review cadence established (weekly team sync, monthly business review, quarterly planning)
 - [ ] Metrics dashboard live (OKR progress tracked weekly, status: green/yellow/red)
 - [ ] Last quarter retrospective completed (what worked, what didn't)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

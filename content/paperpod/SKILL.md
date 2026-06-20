@@ -1,10 +1,16 @@
 ---
 name: paperpod
-description: Isolated agent runtime for code execution, live preview URLs, browser
-  automation, 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), LLM inference, and
-  persistent memory — all via CLI or HTTP, no SDK or API keys required.
-metadata: "|\n  author: PaperPod\n    version: \"2.0.3\"\n    homepage: https://paperpod.dev\n"
+description: Isolated agent runtime for code execution, live preview URLs, browser automation, 50+ tools (ffmpeg, sqlite,
+  pandoc, imagemagick), LLM inference, and persistent memory — all via CLI or HTTP, no SDK or API keys required.
 domain: content
+tags:
+- ai-agent
+- api
+- content-creation
+- digital-content
+- media
+- paperpod
+metadata: "|\n  author: PaperPod\n    version: \"2.0.3\"\n    homepage: https://paperpod.dev\n"
 ---
 
 
@@ -19,6 +25,18 @@ persona:
 
 
 # PaperPod
+## When to Use
+
+**Trigger phrases:**
+- "paperpod"
+- "Help me with paperpod"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Isolated, agent-native sandboxes for code execution, live preview URLs, browser automation, 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), LLM inference, and persistent memory — all via CLI or HTTP, no SDK or API keys required. Billed per second of compute usage and topup via stripe or x402.
 
@@ -248,3 +266,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

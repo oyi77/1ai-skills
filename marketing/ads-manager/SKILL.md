@@ -1,8 +1,7 @@
 ---
 name: ads-manager
-description: Research trending ads, analyze competitor strategies, and clone successful
-  ad patterns using integrated MCP servers
-category: marketing
+description: Research trending ads, analyze competitor strategies, and clone successful ad patterns using integrated MCP servers
+domain: marketing
 tags:
 - advertising
 - competitive-analysis
@@ -12,7 +11,7 @@ tags:
 - meta-ads
 - tiktok
 - linkedin
-domain: marketing
+category: marketing
 ---
 
 
@@ -27,6 +26,18 @@ persona:
 
 
 # Ads Manager
+## When to Use
+
+**Trigger phrases:**
+- "ads manager"
+- "Help me with ads manager"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Comprehensive advertising research and campaign management using integrated MCP servers for competitive intelligence and cross-platform ad creation.
 

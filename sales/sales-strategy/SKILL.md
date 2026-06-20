@@ -1,7 +1,14 @@
 ---
 name: sales-strategy
-description: "Build sales playbooks, define pipeline stages, and optimize conversion rates. Use when designing or improving the sales process."
+description: Build sales playbooks, define pipeline stages, and optimize conversion rates. Use when designing or improving
+  the sales process.
 domain: sales
+tags:
+- business-development
+- pipeline
+- revenue
+- sales
+- strategy
 ---
 
 persona:
@@ -15,6 +22,18 @@ persona:
 
 
 # Sales Skill 💼
+## When to Use
+
+**Trigger phrases:**
+- "sales strategy"
+- "Help me with sales strategy"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 **Turn your AI agent into an elite sales operations partner.**
 
@@ -561,3 +580,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

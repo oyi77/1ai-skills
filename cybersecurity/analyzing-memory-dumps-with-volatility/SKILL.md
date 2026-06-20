@@ -7,13 +7,13 @@ description: 'Analyzes RAM memory dumps from compromised systems using the Volat
 
   '
 domain: cybersecurity
-subdomain: malware-analysis
 tags:
 - malware
 - memory-forensics
 - Volatility
 - RAM-analysis
 - incident-response
+subdomain: malware-analysis
 mitre_attack:
 - T1055
 - T1003
@@ -347,3 +347,7 @@ TIMELINE
 14:15:00  Code injection into explorer.exe (PID 852) detected
 14:20:00  Credential dump from LSASS process
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

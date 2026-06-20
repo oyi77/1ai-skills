@@ -7,7 +7,6 @@ description: 'Implements passwordless authentication using Microsoft Entra ID wi
 
   '
 domain: cybersecurity
-subdomain: identity-access-management
 tags:
 - passwordless
 - FIDO2
@@ -15,6 +14,7 @@ tags:
 - Microsoft-Entra
 - Windows-Hello
 - phishing-resistant-MFA
+subdomain: identity-access-management
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -576,3 +576,7 @@ Phishing Incidents:      0 (down from 47 pre-deployment)
 Password Reset Tickets:  -82% reduction
 Avg Sign-In Time:        8.2s (passwordless) vs 24.1s (password)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

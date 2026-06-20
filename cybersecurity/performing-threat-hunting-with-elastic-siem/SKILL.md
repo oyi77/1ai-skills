@@ -6,7 +6,6 @@ description: 'Performs proactive threat hunting in Elastic Security SIEM using K
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - elastic
@@ -16,6 +15,7 @@ tags:
 - eql
 - mitre-attack
 - kibana
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -314,3 +314,7 @@ Actions Taken:
 
 Verdict:      HYPOTHESIS CONFIRMED — 3 true positive findings escalated to IR
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

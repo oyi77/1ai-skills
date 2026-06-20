@@ -1,9 +1,29 @@
 ---
 name: rockefeller-wealth
-description: "Apply Rockefeller's systematic wealth-building strategies: vertical integration, capital allocation, and monopoly thinking."
+description: 'Apply Rockefeller''s systematic wealth-building strategies: vertical integration, capital allocation, and monopoly
+  thinking.'
 domain: research
+tags:
+- analysis
+- api
+- investigation
+- research
+- rockefeller
+- wealth
 ---
 # Rockefeller Wealth System
+## When to Use
+
+**Trigger phrases:**
+- "rockefeller wealth"
+- "Help me with rockefeller wealth"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 > *"The way to make money is to make money."* — **John D. Rockefeller**
 
@@ -186,3 +206,7 @@ After completing this skill, confirm:
 - `maybe-hft` - Trading system
 - `business-development` - Deal making
 - `mckinsey-research` - Strategic analysis
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

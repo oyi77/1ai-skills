@@ -1,7 +1,14 @@
 ---
 name: moltbook-interact
-description: "Automate Moltbook engagement — content posting, community management, sentiment-aware replies, and account growth at scale."
+description: Automate Moltbook engagement — content posting, community management, sentiment-aware replies, and account growth
+  at scale.
 domain: automation
+tags:
+- automation
+- interact
+- moltbook
+- productivity
+- workflow
 ---
 persona:
   name: "Domain Expert"
@@ -14,6 +21,18 @@ persona:
 
 
 # Moltbook Interaction Agent
+## When to Use
+
+**Trigger phrases:**
+- "moltbook interact"
+- "Help me with moltbook interact"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Automate interactions on Moltbook for engagement, content posting, and account management.
 
@@ -208,3 +227,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

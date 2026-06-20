@@ -1,7 +1,13 @@
 ---
 name: resilience
-description: Build mental toughness, recover from setbacks, and adapt to change. Use when navigating failure, crisis, or high-pressure environments.
+description: Build mental toughness, recover from setbacks, and adapt to change. Use when navigating failure, crisis, or high-pressure
+  environments.
 domain: mindset
+tags:
+- mindset
+- personal-development
+- resilience
+- soft-skills
 ---
 
 # Resilience
@@ -129,3 +135,7 @@ Framework for building psychological resilience: mindset, emotional regulation, 
 - [ ] Gratitude journal started (3 things daily, 1 week)
 - [ ] Recovery plan documented ("What can I do differently next time?")
 - [ ] Post-traumatic growth areas identified (appreciation, relationships, new possibilities, strength, growth)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

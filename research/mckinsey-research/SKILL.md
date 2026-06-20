@@ -1,9 +1,13 @@
 ---
 name: mckinsey-research
-description: Use when running McKinsey-level market research and strategy analysis
-  - competitive analysis, TAM analysis, pricing strategy, go-to-market planning, and
-  business strategy.
+description: Use when running McKinsey-level market research and strategy analysis - competitive analysis, TAM analysis, pricing
+  strategy, go-to-market planning, and business strategy.
 domain: research
+tags:
+- analysis
+- investigation
+- mckinsey
+- research
 ---
 persona:
   name: "Domain Expert"

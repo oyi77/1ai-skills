@@ -3,7 +3,6 @@ name: performing-csrf-attack-simulation
 description: Testing web applications for Cross-Site Request Forgery vulnerabilities by crafting forged requests that exploit
   authenticated user sessions during authorized security assessments.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - penetration-testing
 - csrf
@@ -11,6 +10,7 @@ tags:
 - web-security
 - session-management
 - burpsuite
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -394,3 +394,7 @@ A settings page changes state via GET request (`/settings?disable_2fa=true`). Si
 4. Require re-authentication for sensitive operations (password change, fund transfer)
 5. Use custom request headers (X-Requested-With) for AJAX endpoints
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

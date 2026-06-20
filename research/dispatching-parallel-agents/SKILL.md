@@ -1,8 +1,14 @@
 ---
 name: dispatching-parallel-agents
-description: Use when facing 2+ independent tasks that can be worked on without shared
-  state or sequential dependencies
+description: Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies
 domain: research
+tags:
+- agents
+- analysis
+- dispatching
+- investigation
+- parallel
+- research
 ---
 persona:
   name: "Domain Expert"

@@ -1,7 +1,15 @@
 ---
 name: maybe-hft
-description: Hedging EA dengan sistem trailing stop dan pending order otomatis. Converted
-  dari MQL5, cross-platform (Windows/Linux/Mac). Compatible dengan mt5linux Docker.
+description: Hedging EA dengan sistem trailing stop dan pending order otomatis. Converted dari MQL5, cross-platform (Windows/Linux/Mac).
+  Compatible dengan mt5linux Docker.
+domain: research
+tags:
+- analysis
+- docker
+- hft
+- investigation
+- maybe
+- research
 metadata:
   openclaw:
     emoji: 🛡️
@@ -55,10 +63,21 @@ metadata:
       type: bool
       default: false
       desc: Jalan sekali aja, tidak loop
-domain: research
 ---
 
 # Maybe HFT Hedging EA
+## When to Use
+
+**Trigger phrases:**
+- "maybe hft"
+- "Help me with maybe hft"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 > *"The way to build long-term returns is through preservation of capital and home runs."* — **Paul Tudor Jones**
 
@@ -288,3 +307,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

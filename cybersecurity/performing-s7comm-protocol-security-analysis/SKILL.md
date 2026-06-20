@@ -6,7 +6,6 @@ description: 'Perform security analysis of Siemens S7comm and S7CommPlus protoco
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - protocol-analysis
 - scada
 - vulnerability-assessment
+subdomain: ot-ics-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -465,3 +465,7 @@ RECOMMENDATIONS:
   2. [Network segmentation improvement]
   3. [Monitoring enhancement]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

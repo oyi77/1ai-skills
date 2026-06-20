@@ -3,7 +3,6 @@ name: testing-for-host-header-injection
 description: Test web applications for HTTP Host header injection vulnerabilities to identify password reset poisoning, web
   cache poisoning, SSRF, and virtual host routing manipulation risks.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - host-header-injection
 - password-reset-poisoning
@@ -12,6 +11,7 @@ tags:
 - web-security
 - header-manipulation
 - ssrf
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -258,3 +258,7 @@ curl -H "Host: management.internal" http://target.com/
 - Configure web server to reject requests with unrecognized Host values
 - Set absolute URLs in application configuration instead of deriving from Host
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

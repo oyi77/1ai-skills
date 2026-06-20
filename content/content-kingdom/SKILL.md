@@ -1,14 +1,11 @@
 ---
 name: content-kingdom
-description: ">\n  Content Kingdom Orchestrator — the BRAIN that coordinates all 12\
-  \ content phases\n  for BerkahKarya / JENDRALBOT. Sequences research → plan → script\
-  \ → create →\n  review → schedule → post → engage → analyze → optimize → repurpose\
-  \ → scale.\n  Thin coordinator: imports existing autopilot_affiliate_engine and\
-  \ content-generator\n  scripts; only builds truly new modules (comment_manager,\
-  \ engagement_engine).\n  v2.0: GeminiGen API as primary media provider + Veris Design\
+description: ">\n  Content Kingdom Orchestrator — the BRAIN that coordinates all 12 content phases\n  for BerkahKarya / JENDRALBOT.\
+  \ Sequences research → plan → script → create →\n  review → schedule → post → engage → analyze → optimize → repurpose →\
+  \ scale.\n  Thin coordinator: imports existing autopilot_affiliate_engine and content-generator\n  scripts; only builds\
+  \ truly new modules (comment_manager, engagement_engine).\n  v2.0: GeminiGen API as primary media provider + Veris Design\
   \ System enforced.\n"
-version: 2.0.0
-author: Vilona / BerkahKarya AI
+domain: content
 tags:
 - content
 - automation
@@ -19,9 +16,10 @@ tags:
 - berkahkarya
 - geminigen
 - veris
+version: 2.0.0
+author: Vilona / BerkahKarya AI
 skill_dir: skills/1ai-skills/content/content-kingdom
 symlink: skills/content-kingdom
-domain: content
 ---
 
 
@@ -400,3 +398,7 @@ pip install requests
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

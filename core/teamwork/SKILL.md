@@ -1,9 +1,15 @@
 ---
 name: teamwork
-description: Dynamically creates and manages AI agent teams for complex tasks. Invoke
-  when user requests multi-agent collaboration, complex project execution, or when
-  tasks require specialized roles and coordinated workflow.
+description: Dynamically creates and manages AI agent teams for complex tasks. Invoke when user requests multi-agent collaboration,
+  complex project execution, or when tasks require specialized roles and coordinated workflow.
 domain: core
+tags:
+- ai-agent
+- infrastructure
+- memory
+- self-improvement
+- teamwork
+- workflow
 ---
 persona:
   name: "Patrick Lencioni"
@@ -16,6 +22,18 @@ persona:
 
 
 # Teamwork Skill
+## When to Use
+
+**Trigger phrases:**
+- "teamwork"
+- "Help me with teamwork"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 This skill enables dynamic team creation and management for executing complex engineering tasks through coordinated AI agents with intelligent model selection, cost optimization, and continuous performance evaluation.
 
@@ -682,3 +700,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

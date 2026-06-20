@@ -1,8 +1,15 @@
 ---
 name: legal-compliance
-description: Contract generation, terms of service, privacy policies, GDPR/CCPA compliance
-  checks, regulatory monitoring, entity management
+description: Contract generation, terms of service, privacy policies, GDPR/CCPA compliance checks, regulatory monitoring,
+  entity management
 domain: operations
+tags:
+- business-ops
+- compliance
+- legal
+- management
+- monitoring
+- operations
 ---
 
 ## Overview

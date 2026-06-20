@@ -1,8 +1,13 @@
 ---
 name: brainstorming
-description: Effective brainstorming skill for features and projects. Clarify intent,
-  explore options, and guide design decisions to align with user goals.
+description: Effective brainstorming skill for features and projects. Clarify intent, explore options, and guide design decisions
+  to align with user goals.
 domain: development
+tags:
+- brainstorming
+- coding
+- software-engineering
+- testing
 ---
 
 persona:

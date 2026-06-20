@@ -1,20 +1,17 @@
 ---
 name: performing-api-security-testing-with-postman
-description: 'Uses Postman to perform structured API security testing by building collections that test for OWASP API Security
+description: Uses Postman to perform structured API security testing by building collections that test for OWASP API Security
   Top 10 vulnerabilities including authentication bypass, authorization flaws, injection, and data exposure. The tester creates
   environments with multiple user roles, writes test scripts for automated security validation, and integrates Postman with
-  OWASP ZAP and Newman for CI/CD security testing. Activates for requests involving Postman security testing, API security
-  collection, automated API testing, or OWASP API testing with Postman.
-
-  '
+  OWASP ZAP and Newman for CI/CD security testing.
 domain: cybersecurity
-subdomain: api-security
 tags:
 - api-security
 - postman
 - owasp
 - automated-testing
 - security-validation
+subdomain: api-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -429,3 +426,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 4. Remove password_hash and mfa_secret from user serialization
 5. Standardize login error messages to prevent account enumeration
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

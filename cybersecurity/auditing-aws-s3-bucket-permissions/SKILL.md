@@ -6,7 +6,6 @@ description: 'Systematically audit AWS S3 bucket permissions to identify publicl
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - aws
@@ -14,6 +13,7 @@ tags:
 - bucket-permissions
 - data-protection
 - access-control
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -301,3 +301,7 @@ SUMMARY:
   Buckets without access logging:      18 / 47
   Buckets with overly broad policies:   7 / 47
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

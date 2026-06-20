@@ -7,7 +7,6 @@ description: 'This skill covers implementing Software Composition Analysis (SCA)
 
   '
 domain: cybersecurity
-subdomain: devsecops
 tags:
 - devsecops
 - cicd
@@ -15,6 +14,7 @@ tags:
 - snyk
 - dependency-scanning
 - secure-sdlc
+subdomain: devsecops
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -294,3 +294,7 @@ LICENSE ISSUES:
 
 QUALITY GATE: FAILED (1 Critical with fix available)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

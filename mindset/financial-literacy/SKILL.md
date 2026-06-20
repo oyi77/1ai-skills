@@ -2,6 +2,12 @@
 name: financial-literacy
 description: Manage personal and business finances including budgeting, cash flow, financial statements, and basic FP&A.
 domain: mindset
+tags:
+- financial
+- literacy
+- mindset
+- personal-development
+- soft-skills
 ---
 
 # Financial Literacy
@@ -138,3 +144,7 @@ Framework for personal and business financial management: budgeting, cash flow, 
 - [ ] Key ratios calculated (gross margin, net margin, current ratio, CAC payback)
 - [ ] Cash reserves checked (3-6 months of expenses)
 - [ ] Financial statement review scheduled (monthly cadence)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,14 +1,10 @@
 ---
 name: performing-api-fuzzing-with-restler
-description: 'Uses Microsoft RESTler to perform stateful REST API fuzzing by automatically generating and executing test sequences
+description: Uses Microsoft RESTler to perform stateful REST API fuzzing by automatically generating and executing test sequences
   that exercise API endpoints, discover producer-consumer dependencies between requests, and find security and reliability
   bugs. The tester compiles an OpenAPI specification into a RESTler fuzzing grammar, configures authentication, runs test/fuzz-lean/fuzz
   modes, and analyzes results for 500 errors, authentication bypasses, resource leaks, and payload injection vulnerabilities.
-  Activates for requests involving API fuzzing, RESTler testing, stateful API testing, or automated API security scanning.
-
-  '
 domain: cybersecurity
-subdomain: api-security
 tags:
 - api-security
 - fuzzing
@@ -16,6 +12,7 @@ tags:
 - automated-testing
 - openapi
 - stateful-testing
+subdomain: api-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -408,3 +405,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Uncovered: POST /admin/migrate, DELETE /admin/cache,
   PUT /config/advanced, POST /webhooks/test
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

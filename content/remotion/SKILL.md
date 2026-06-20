@@ -1,10 +1,30 @@
 ---
 name: remotion
-description: "Create programmatic MP4 videos using React components rendered per-frame with Remotion. Supports narrated videos, TikTok/Shorts, music videos, captions, and template-based workflows."
+description: Create programmatic MP4 videos using React components rendered per-frame with Remotion. Supports narrated videos,
+  TikTok/Shorts, music videos, captions, and template-based workflows.
 domain: content
+tags:
+- content-creation
+- digital-content
+- media
+- remotion
+- video
+- workflow
 ---
 
 # Remotion Video Skill
+## When to Use
+
+**Trigger phrases:**
+- "remotion"
+- "Help me with remotion"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Remotion is a React-based framework for creating real MP4 videos programmatically. It gives you a frame number and a canvas — you render React components that change per frame to produce animations and videos.
 
@@ -432,3 +452,7 @@ Remotion is free for individuals and teams up to 3 people. Companies with 4+ peo
 - Confirm links work and point to correct destinations
 - Test video/audio quality before publishing
 - Validate content renders correctly on mobile devices
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

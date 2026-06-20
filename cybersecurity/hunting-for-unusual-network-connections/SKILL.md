@@ -3,7 +3,6 @@ name: hunting-for-unusual-network-connections
 description: Hunt for unusual network connections by analyzing outbound traffic patterns, rare destinations, non-standard
   ports, and anomalous connection frequencies from endpoints.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - mitre-attack
@@ -11,6 +10,7 @@ tags:
 - c2
 - anomaly-detection
 - proactive-detection
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -120,3 +120,7 @@ Risk Level: [Critical/High/Medium/Low]
 Confidence: [High/Medium/Low]
 Recommended Action: [Containment, investigation, monitoring]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

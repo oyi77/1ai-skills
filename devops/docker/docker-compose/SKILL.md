@@ -1,8 +1,26 @@
 ---
 name: docker-compose
-description: Generate docker-compose files
+description: Docker Compose. Use when working with docker compose in devops domain.
 domain: devops
+tags:
+- ci-cd
+- compose
+- devops
+- docker
+- infrastructure
 ---
+## When to Use
+
+**Trigger phrases:**
+- "docker compose"
+- "Help me with docker compose"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 
 ## Docker Compose
@@ -69,3 +87,7 @@ After completing this skill, confirm:
 - Monitor output quality and iterate on configuration based on results
 - Keep dependencies up to date for security and performance
 - Document custom workflows and configurations for team knowledge sharing
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

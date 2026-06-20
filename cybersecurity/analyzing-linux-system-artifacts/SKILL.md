@@ -3,7 +3,6 @@ name: analyzing-linux-system-artifacts
 description: Examine Linux system artifacts including auth logs, cron jobs, shell history, and system configuration to uncover
   evidence of compromise or unauthorized activity.
 domain: cybersecurity
-subdomain: digital-forensics
 tags:
 - forensics
 - linux-forensics
@@ -11,6 +10,7 @@ tags:
 - log-analysis
 - persistence-detection
 - incident-investigation
+subdomain: digital-forensics
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -360,3 +360,7 @@ Linux Forensics Summary:
 
   Report: /cases/case-2024-001/linux/analysis/
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

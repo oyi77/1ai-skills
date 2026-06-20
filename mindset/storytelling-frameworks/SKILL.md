@@ -1,7 +1,14 @@
 ---
 name: storytelling-frameworks
-description: Structure narratives for pitches, content, and communication using Hero's Journey, Before-After-Bridge, and Pixar pitch templates.
+description: Structure narratives for pitches, content, and communication using Hero's Journey, Before-After-Bridge, and Pixar
+  pitch templates.
 domain: mindset
+tags:
+- frameworks
+- mindset
+- personal-development
+- soft-skills
+- storytelling
 ---
 
 # Storytelling Frameworks
@@ -128,3 +135,7 @@ Proven narrative structures for business communication: pitches, presentations, 
 - [ ] Conflict and stakes are clear
 - [ ] Transformation or outcome is quantified
 - [ ] Story is true and ethical (not fabricated or exaggerated)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

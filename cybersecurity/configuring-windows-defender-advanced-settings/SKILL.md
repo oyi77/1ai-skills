@@ -8,7 +8,6 @@ description: 'Configures Microsoft Defender for Endpoint (MDE) advanced protecti
 
   '
 domain: cybersecurity
-subdomain: endpoint-security
 tags:
 - endpoint
 - windows-security
@@ -16,6 +15,7 @@ tags:
 - ASR
 - exploit-protection
 - MDE
+subdomain: endpoint-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -314,3 +314,7 @@ Dashboard monitoring:
 - **Ignoring tamper protection**: Without tamper protection, malware or insiders can disable Defender via PowerShell or registry edits. Enable tamper protection through the M365 Defender portal.
 - **Running Defender alongside third-party AV**: Defender enters passive mode when third-party AV is present. Ensure you are using the intended AV solution and configure Defender appropriately (EDR-only mode if keeping third-party AV).
 - **Forgetting cloud connectivity requirements**: Cloud-delivered protection and BAFS require endpoints to reach Microsoft cloud services. Verify proxy/firewall rules allow Defender cloud traffic.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,8 +1,13 @@
 ---
 name: pipedream-workflows
-description: Pipedream serverless workflows — triggers, code steps, pre-built actions,
-  data stores, HTTP
+description: Pipedream serverless workflows — triggers, code steps, pre-built actions, data stores, HTTP
 domain: automation
+tags:
+- automation
+- pipedream
+- productivity
+- workflow
+- workflows
 ---
 
 ## Overview

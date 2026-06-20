@@ -1,7 +1,14 @@
 ---
 name: systems-thinking
-description: Understand feedback loops, leverage points, and system archetypes to solve complex problems. Use when addressing recurring issues or unintended consequences.
+description: Understand feedback loops, leverage points, and system archetypes to solve complex problems. Use when addressing
+  recurring issues or unintended consequences.
 domain: mindset
+tags:
+- mindset
+- personal-development
+- soft-skills
+- systems
+- thinking
 ---
 
 # Systems Thinking
@@ -159,3 +166,7 @@ PMF ──────> Retention ──────> Word of mouth
 - [ ] Leverage points evaluated (intervening at high-leverage points)
 - [ ] Delays accounted for (how long until feedback manifests?)
 - [ ] Unintended consequences anticipated (second-order effects)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

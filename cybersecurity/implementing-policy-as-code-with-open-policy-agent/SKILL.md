@@ -6,7 +6,6 @@ description: 'This skill covers implementing Open Policy Agent (OPA) and Gatekee
 
   '
 domain: cybersecurity
-subdomain: devsecops
 tags:
 - devsecops
 - cicd
@@ -15,6 +14,7 @@ tags:
 - policy-as-code
 - kubernetes
 - secure-sdlc
+subdomain: devsecops
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -357,3 +357,7 @@ AUDIT VIOLATIONS (warn):
   [K8sRequiredLabels] namespace/staging
     - Missing labels: {cost-center}
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

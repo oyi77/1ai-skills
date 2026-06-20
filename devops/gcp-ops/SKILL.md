@@ -1,8 +1,13 @@
 ---
 name: gcp-ops
-description: Google Cloud operations — Compute Engine, Cloud Run, BigQuery, Cloud
-  Functions, GKE, IAM
+description: Google Cloud operations — Compute Engine, Cloud Run, BigQuery, Cloud Functions, GKE, IAM
 domain: devops
+tags:
+- ci-cd
+- devops
+- gcp
+- infrastructure
+- ops
 ---
 
 
@@ -87,3 +92,7 @@ gcloud run deploy my-service   --image gcr.io/project/image   --region us-centra
 - **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
 - **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
 - **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures
+
+## Verification
+
+- [ ] Skill output matches expected behavior

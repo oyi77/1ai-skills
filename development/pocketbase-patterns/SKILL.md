@@ -1,8 +1,13 @@
 ---
 name: pocketbase-patterns
-description: PocketBase — single-file backend with SQLite, realtime subscriptions,
-  auth, file storage, custom JS extensions
+description: PocketBase — single-file backend with SQLite, realtime subscriptions, auth, file storage, custom JS extensions
 domain: development
+tags:
+- coding
+- patterns
+- pocketbase
+- software-engineering
+- testing
 ---
 
 
@@ -159,3 +164,7 @@ routerAdd('GET', '/api/stats', (c) => {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

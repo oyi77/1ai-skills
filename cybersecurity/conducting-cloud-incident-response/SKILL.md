@@ -7,13 +7,13 @@ description: 'Responds to security incidents in cloud environments (AWS, Azure, 
 
   '
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - cloud-IR
 - AWS-forensics
 - Azure-incident-response
 - GCP-security
 - identity-containment
+subdomain: incident-response
 mitre_attack:
 - T1078
 - T1537
@@ -328,3 +328,7 @@ POST-INCIDENT HARDENING
 3. SCP preventing CloudTrail disablement deployed
 4. GuardDuty auto-remediation Lambda configured
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

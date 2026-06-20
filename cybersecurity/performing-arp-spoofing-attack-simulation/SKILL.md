@@ -5,13 +5,13 @@ description: 'Simulates ARP spoofing attacks in authorized lab or pentest enviro
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - arp-spoofing
 - mitm
 - ettercap
 - layer2-attack
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -308,3 +308,7 @@ Map the application, test authentication and authorization, check for injection 
 2. Enable DHCP snooping rate limiting to prevent DHCP starvation attacks
 3. Deploy 802.1X port authentication to complement ARP inspection
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

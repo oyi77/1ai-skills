@@ -1,10 +1,30 @@
 ---
 name: comment-reply-manager
-description: "Monitor TikTok/Instagram comments, classify sentiment, auto-reply with FAQ answers, and DM high-intent commenters with LYNK affiliate links to convert engagement into sales."
+description: Monitor TikTok/Instagram comments, classify sentiment, auto-reply with FAQ answers, and DM high-intent commenters
+  with LYNK affiliate links to convert engagement into sales.
 domain: content
+tags:
+- comment
+- content-creation
+- digital-content
+- manager
+- media
+- reply
 ---
 
 # comment-reply-manager
+## When to Use
+
+**Trigger phrases:**
+- "comment reply manager"
+- "Help me with comment reply manager"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 **Purpose:** Convert comment engagement into LYNK affiliate sales. Detect, analyze, and reply to comments on TikTok/Instagram posts. Auto-DM high-intent commenters with LYNK product links.
 
@@ -249,3 +269,7 @@ At 100 DMs/day: 5 sales/day = IDR 375,000/day
 - Confirm links work and point to correct destinations
 - Test video/audio quality before publishing
 - Validate content renders correctly on mobile devices
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

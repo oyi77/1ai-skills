@@ -7,7 +7,6 @@ description: 'Configures Windows Group Policy Objects (GPO) to prevent ransomwar
 
   '
 domain: cybersecurity
-subdomain: ransomware-defense
 tags:
 - ransomware
 - group-policy
@@ -15,6 +14,7 @@ tags:
 - AppLocker
 - hardening
 - prevention
+subdomain: ransomware-defense
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -236,3 +236,7 @@ Get-MpPreference | Select-Object -ExpandProperty AttackSurfaceReductionRules_Act
 - **Microsoft Defender Exploit Guard**: Suite including CFA, ASR rules, and Network Protection
 - **GPResult**: Command-line tool for verifying GPO application status on endpoints
 - **PowerShell Get-MpPreference**: Cmdlet for querying Microsoft Defender configuration including ASR and CFA status
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

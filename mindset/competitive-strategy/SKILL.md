@@ -1,7 +1,14 @@
 ---
 name: competitive-strategy
-description: Analyze competitors using Porter's Five Forces, positioning maps, and competitive response frameworks. Use when assessing market position or strategic threats.
+description: Analyze competitors using Porter's Five Forces, positioning maps, and competitive response frameworks. Use when
+  assessing market position or strategic threats.
 domain: mindset
+tags:
+- competitive
+- mindset
+- personal-development
+- soft-skills
+- strategy
 ---
 
 # Competitive Strategy
@@ -184,3 +191,7 @@ Framework for analyzing competition and defining positioning. Covers Porter's Fi
 - [ ] Top 3 competitors profiled (strengths, weaknesses, strategy, market share)
 - [ ] Response framework defined (when to respond, how)
 - [ ] Substitutes identified (not just direct competitors)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

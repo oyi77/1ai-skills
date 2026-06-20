@@ -3,7 +3,6 @@ name: testing-for-broken-access-control
 description: Systematically testing web applications for broken access control vulnerabilities including privilege escalation,
   missing function-level checks, and insecure direct object references.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - penetration-testing
 - access-control
@@ -11,6 +10,7 @@ tags:
 - owasp
 - privilege-escalation
 - web-security
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -394,3 +394,7 @@ The user profile update endpoint at `PUT /api/users/{id}` accepts a `role` field
 5. Use allowlists for mass assignment (only permit expected fields)
 6. Implement audit logging for all access control decisions
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

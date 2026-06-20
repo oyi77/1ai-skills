@@ -7,7 +7,6 @@ description: 'Performs tabletop exercises for SOC teams simulating security inci
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - tabletop
@@ -16,6 +15,7 @@ tags:
 - training
 - nist
 - playbook-validation
+subdomain: soc-operations
 mitre_attack:
 - T1566
 - T1486
@@ -436,3 +436,7 @@ KEY FINDINGS:
 ACTION ITEMS: 5 (Critical: 2, High: 2, Medium: 1)
 NEXT EXERCISE: TTX-2024-Q2 (June 2024) — Insider Threat Scenario
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

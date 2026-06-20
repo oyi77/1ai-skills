@@ -1,21 +1,17 @@
 ---
 name: executing-red-team-exercise
-description: 'Executes comprehensive red team exercises that simulate real-world adversary operations against an organization''s
+description: Executes comprehensive red team exercises that simulate real-world adversary operations against an organization's
   people, processes, and technology. The red team operates with stealth as a primary objective, employing the full attack
-  lifecycle from initial reconnaissance through objective completion while testing the organization''s detection and response
+  lifecycle from initial reconnaissance through objective completion while testing the organization's detection and response
   capabilities. This differs from penetration testing by focusing on adversary emulation rather than vulnerability identification.
-  Activates for requests involving red team exercise, adversary simulation, adversary emulation, or full-scope offensive security
-  assessment.
-
-  '
 domain: cybersecurity
-subdomain: penetration-testing
 tags:
 - red-team
 - adversary-emulation
 - MITRE-ATT&CK
 - Cobalt-Strike
 - detection-assessment
+subdomain: penetration-testing
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -233,3 +229,7 @@ This section covers red team exercise report - fin7 adversary emulation for exec
 3. Enhance PowerShell logging (Script Block Logging, Module Logging)
 4. Deploy memory-scanning EDR capability to detect process injection
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

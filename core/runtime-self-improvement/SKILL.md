@@ -1,8 +1,15 @@
 ---
 name: runtime-self-improvement
-description: Automatically improve OpenClaw and 1ai-skills at runtime. Analyze performance,
-  detect gaps, enhance skills, and self-optimize during operation.
+description: Automatically improve OpenClaw and 1ai-skills at runtime. Analyze performance, detect gaps, enhance skills, and
+  self-optimize during operation.
 domain: core
+tags:
+- improvement
+- infrastructure
+- memory
+- runtime
+- self
+- self-improvement
 ---
 persona:
   name: "Domain Expert"
@@ -15,6 +22,18 @@ persona:
 
 
 # Runtime Self-Improvement Skill
+## When to Use
+
+**Trigger phrases:**
+- "runtime self improvement"
+- "Help me with runtime self improvement"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Overview
 

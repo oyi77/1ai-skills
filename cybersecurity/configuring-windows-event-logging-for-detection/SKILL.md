@@ -7,13 +7,13 @@ description: 'Configures Windows Event Logging with advanced audit policies to g
 
   '
 domain: cybersecurity
-subdomain: endpoint-security
 tags:
 - endpoint
 - windows-security
 - event-logging
 - audit-policy
 - detection-engineering
+subdomain: endpoint-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -214,3 +214,7 @@ Lateral Movement Indicators:
 - **Default log size too small**: 20 MB Security log fills in minutes on busy servers. Set minimum 1 GB.
 - **Missing command line logging**: Event 4688 without command line content has minimal detection value. Always enable ProcessCreationIncludeCmdLine_Enabled.
 - **Not forwarding logs**: Local event logs are lost when endpoints are wiped by ransomware. Forward to centralized SIEM immediately.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

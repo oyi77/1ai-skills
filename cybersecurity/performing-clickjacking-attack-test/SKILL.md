@@ -3,7 +3,6 @@ name: performing-clickjacking-attack-test
 description: Testing web applications for clickjacking vulnerabilities by assessing frame embedding controls and crafting
   proof-of-concept overlay attacks during authorized security assessments.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - penetration-testing
 - clickjacking
@@ -11,6 +10,7 @@ tags:
 - web-security
 - owasp
 - x-frame-options
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -470,3 +470,7 @@ An OAuth consent screen allows framing. The attacker embeds the consent page and
 4. Add confirmation dialogs that cannot be pre-filled or auto-submitted
 5. Implement SameSite=Strict cookies to reduce session availability in frames
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

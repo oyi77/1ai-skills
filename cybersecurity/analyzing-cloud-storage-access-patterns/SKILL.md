@@ -4,12 +4,12 @@ description: Detect abnormal access patterns in AWS S3, GCS, and Azure Blob Stor
   audit logs, and Azure Storage Analytics. Identifies after-hours bulk downloads, access from new IP addresses, unusual API
   calls (GetObject spikes), and potential data exfiltration using statistical baselines and time-series anomaly detection.
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - analyzing
 - cloud
 - storage
 - access
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -96,3 +96,7 @@ python scripts/agent.py --bucket my-sensitive-data --hours-back 24 --output s3_a
 - Cloud resource changes reverted or documented as intentional
 - IAM policies reviewed for least-privilege compliance after testing
 - No residual test resources left running (cost and security check)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

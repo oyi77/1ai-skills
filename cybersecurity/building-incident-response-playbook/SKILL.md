@@ -7,13 +7,13 @@ description: 'Designs and documents structured incident response playbooks that 
 
   '
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - IR-playbook
 - runbook
 - NIST-800-61
 - SOAR-integration
 - response-procedures
+subdomain: incident-response
 mitre_attack:
 - T1190
 - T1566
@@ -300,3 +300,7 @@ Target MTTA: 15 minutes
 Target MTTC: 1 hour
 Target MTTR: 4 hours
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -7,7 +7,6 @@ description: 'Processes STIX 2.1 threat intelligence bundles delivered via TAXII
 
   '
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - STIX-2.1
 - TAXII-2.1
@@ -17,6 +16,7 @@ tags:
 - IOC
 - threat-intelligence
 - NIST-SP-800-150
+subdomain: threat-intelligence
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -189,3 +189,7 @@ collection.add_objects(stix2.Bundle(new_indicator))
 - **Clock skew on `added_after`**: Server and client time misalignment causes missed objects at interval boundaries. Use UTC exclusively and add 5-minute overlap windows.
 - **Storing raw STIX blobs without indexing**: Storing bundles as opaque JSON prevents querying by indicator type or campaign. Parse into relational or graph database.
 - **Sharing TLP:RED content inadvertently**: Automated pipelines must filter marking definitions before routing to any shared platform or SIEM with broad analyst access.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

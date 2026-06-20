@@ -1,9 +1,27 @@
 ---
 name: best-hacker
-description: "Apply hacker mindset to find vulnerabilities, break assumptions, and stress-test systems before attackers do."
+description: Apply hacker mindset to find vulnerabilities, break assumptions, and stress-test systems before attackers do.
 domain: research
+tags:
+- analysis
+- best
+- hacker
+- investigation
+- research
 ---
 # The Hacker Mindset
+## When to Use
+
+**Trigger phrases:**
+- "best hacker"
+- "Help me with best hacker"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Core Philosophy
 
@@ -166,3 +184,7 @@ After completing this skill, confirm:
 - `security-reviewer` - Security analysis
 - `code-reviewer` - Finding code vulnerabilities
 - `verification-before-completion` - Testing
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

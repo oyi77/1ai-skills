@@ -1,8 +1,26 @@
 ---
 name: email-writer
-description: Write high-converting emails
+description: Email Writer. Use when working with email writer in content domain.
 domain: content
+tags:
+- content-creation
+- digital-content
+- email
+- media
+- writer
 ---
+## When to Use
+
+**Trigger phrases:**
+- "email writer"
+- "Help me with email writer"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 
 ## Email Writer
@@ -69,3 +87,7 @@ After completing this skill, confirm:
 - Check the references/ directory for checklists and templates
 - Join the community for best practices and support
 - Contribute improvements via pull requests
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

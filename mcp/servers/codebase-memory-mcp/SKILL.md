@@ -1,7 +1,15 @@
 ---
 name: codebase-memory-mcp
-description: Index codebases into a persistent knowledge graph for structural code queries, call-chain tracing, and semantic search. Use when navigating unfamiliar repos, understanding architecture, or exploring large codebases.
+description: Index codebases into a persistent knowledge graph for structural code queries, call-chain tracing, and semantic
+  search. Use when navigating unfamiliar repos, understanding architecture, or exploring large codebases.
 domain: mcp
+tags:
+- codebase
+- mcp
+- mcp-server
+- memory
+- model-context-protocol
+- tool-integration
 ---
 
 # Codebase Memory MCP
@@ -206,3 +214,7 @@ RETURN a.name, b.name
 - [ ] `get_architecture` returns module boundaries
 - [ ] `search_graph` finds code by natural language query
 - [ ] `trace_path` traces a call chain correctly
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

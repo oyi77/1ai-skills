@@ -1,9 +1,14 @@
 ---
 name: kernel-killer
-description: Linux and Windows kernel exploitation for privilege escalation. Use when
-  finding kernel vulnerabilities, exploiting kernel drivers, or escalating privileges
-  from user to root/system.
+description: Linux and Windows kernel exploitation for privilege escalation. Use when finding kernel vulnerabilities, exploiting
+  kernel drivers, or escalating privileges from user to root/system.
 domain: cybersecurity
+tags:
+- cybersecurity
+- kernel
+- killer
+- security
+- threat-defense
 ---
 
 # Kernel Killer
@@ -273,3 +278,7 @@ capsh --print  # Check capabilities
 - HackTheBox (Kernel challenges)
 - Exploit Education
 - CVE reproduction (Linux, Android)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

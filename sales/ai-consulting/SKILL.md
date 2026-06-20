@@ -1,8 +1,13 @@
 ---
 name: ai-consulting
-description: Offer fractional AI engineering and consulting services. Act as a part-time
-  AI executive for companies that can't afford full-time AI staff. Generate $3K-10K/month.
+description: Offer fractional AI engineering and consulting services. Act as a part-time AI executive for companies that can't
+  afford full-time AI staff. Generate $3K-10K/month.
 domain: sales
+tags:
+- business-development
+- consulting
+- revenue
+- sales
 ---
 
 
@@ -398,3 +403,7 @@ Say: "$3,000 project that typically saves $50K/year"
 - **Low email reply rates (<3%)**: Messaging is too generic. Personalize with research.
 - **High churn in first 90 days**: Onboarding gap. Fix handoff from sales to success.
 - **Discounting above 20%**: Value perception problem. Reframe ROI, don't cut price.
+
+## Verification
+
+- [ ] Skill output matches expected behavior

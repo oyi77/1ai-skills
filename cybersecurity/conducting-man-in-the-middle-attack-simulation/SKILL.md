@@ -5,13 +5,13 @@ description: 'Simulates man-in-the-middle attacks using Ettercap, mitmproxy, and
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - mitm
 - bettercap
 - ettercap
 - mitmproxy
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -324,3 +324,7 @@ Map the application, test authentication and authorization, check for injection 
 3. Enable DAI on access-layer switches for Layer 2 protection
 4. Configure application to reject connections from non-pinned certificates
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

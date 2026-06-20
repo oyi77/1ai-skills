@@ -1,14 +1,10 @@
 ---
 name: implementing-api-rate-limiting-and-throttling
-description: 'Implements API rate limiting and throttling controls using token bucket, sliding window, and fixed window algorithms
+description: Implements API rate limiting and throttling controls using token bucket, sliding window, and fixed window algorithms
   to protect against brute force attacks, credential stuffing, resource exhaustion, and API abuse. The engineer configures
   per-user, per-IP, and per-endpoint rate limits using Redis-backed counters, API gateway plugins, or application middleware,
-  and implements proper HTTP 429 responses with Retry-After headers. Activates for requests involving rate limiting implementation,
-  API throttling setup, request quota management, or API abuse prevention.
-
-  '
+  and implements proper HTTP 429 responses with Retry-After headers.
 domain: cybersecurity
-subdomain: api-security
 tags:
 - api-security
 - rate-limiting
@@ -16,6 +12,7 @@ tags:
 - redis
 - token-bucket
 - abuse-prevention
+subdomain: api-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -510,3 +507,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Retry-After header: Accurate within 1 second of actual reset time
 - Response overhead: < 2ms added latency per request for rate limit check
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

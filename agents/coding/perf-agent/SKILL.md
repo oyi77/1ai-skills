@@ -1,7 +1,14 @@
 ---
 name: perf-agent
-description: "Measure before optimizing, target actual bottlenecks proven by profiling, and verify improvements with benchmarks. Use when the app is slow, memory is leaking, queries lag, or costs need reducing."
+description: Measure before optimizing, target actual bottlenecks proven by profiling, and verify improvements with benchmarks.
+  Use when the app is slow, memory is leaking, queries lag, or costs need reducing.
 domain: agents
+tags:
+- agent
+- ai-agent
+- automation
+- orchestration
+- perf
 ---
 # Perf Agent
 
@@ -301,3 +308,7 @@ After optimization, confirm:
 - [ ] Caching has proper invalidation (TTL, event-driven, or manual)
 - [ ] Performance budget defined and met (or explicitly acknowledged if not)
 - [ ] Load tested under expected traffic (not just single-request benchmark)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

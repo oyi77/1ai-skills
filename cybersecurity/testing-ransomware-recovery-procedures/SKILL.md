@@ -3,7 +3,6 @@ name: testing-ransomware-recovery-procedures
 description: Test and validate ransomware recovery procedures including backup restore operations, RTO/RPO target verification,
   recovery sequencing, and clean restore validation to ensure organizational resilience against destructive ransomware attacks.
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - incident-response
 - ransomware
@@ -12,6 +11,7 @@ tags:
 - rto
 - rpo
 - resilience
+subdomain: incident-response
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -201,3 +201,7 @@ Recovery Test Report:
 - CISA Ransomware Guide: https://www.cisa.gov/stopransomware
 - Veeam RTO/RPO Best Practices: https://www.veeam.com/blog/recovery-time-recovery-point-objectives.html
 - NIST CSF 2.0 RC.RP (Recovery Planning)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

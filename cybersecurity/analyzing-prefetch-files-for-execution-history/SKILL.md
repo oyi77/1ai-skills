@@ -3,7 +3,6 @@ name: analyzing-prefetch-files-for-execution-history
 description: Parse Windows Prefetch files to determine program execution history including run counts, timestamps, and referenced
   files for forensic investigation.
 domain: cybersecurity
-subdomain: digital-forensics
 tags:
 - forensics
 - prefetch
@@ -11,6 +10,7 @@ tags:
 - execution-history
 - timeline-analysis
 - evidence-collection
+subdomain: digital-forensics
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -350,3 +350,7 @@ Prefetch Analysis Summary:
 
   Report: /cases/case-2024-001/analysis/execution_timeline.csv
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

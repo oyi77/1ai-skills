@@ -7,7 +7,6 @@ description: 'Builds automated threat intelligence feed integration pipelines co
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - threat-intelligence
@@ -17,6 +16,7 @@ tags:
 - feeds
 - ioc
 - siem-integration
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -365,3 +365,7 @@ Actions Today:
   SIEM matches:         121 notable events generated
   False positives:      3 (CDN IPs removed from feed)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

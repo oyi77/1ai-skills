@@ -1,8 +1,15 @@
 ---
 name: react-native-expo
-description: React Native with Expo — managed workflow, native modules, navigation,
-  and app store deployment
+description: React Native with Expo — managed workflow, native modules, navigation, and app store deployment
 domain: development
+tags:
+- coding
+- expo
+- native
+- react
+- software-engineering
+- testing
+- workflow
 ---
 
 
@@ -114,3 +121,7 @@ eas update --channel production
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

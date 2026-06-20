@@ -3,7 +3,6 @@ name: testing-for-xml-injection-vulnerabilities
 description: Test web applications for XML injection vulnerabilities including XXE, XPath injection, and XML entity attacks
   to identify data exposure and server-side request forgery risks.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - xml-injection
 - xxe
@@ -12,6 +11,7 @@ tags:
 - web-security
 - entity-injection
 - dtd-attack
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -249,3 +249,7 @@ curl "http://target.com/search?query=' or substring(//user[1]/password,1,1)='a' 
 - Implement XML schema validation with strict DTD restrictions
 - Block outbound connections from XML processing services
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,14 +1,10 @@
 ---
 name: testing-api-authentication-weaknesses
-description: 'Tests API authentication mechanisms for weaknesses including broken token validation, missing authentication
+description: Tests API authentication mechanisms for weaknesses including broken token validation, missing authentication
   on endpoints, weak password policies, credential stuffing susceptibility, token leakage in URLs or logs, and session management
   flaws. The tester evaluates JWT implementation, API key handling, OAuth flows, and session token entropy to identify authentication
-  bypasses. Maps to OWASP API2:2023 Broken Authentication. Activates for requests involving API authentication testing, token
-  validation assessment, credential security testing, or API auth bypass.
-
-  '
+  bypasses. Maps to OWASP API2:2023 Broken Authentication.
 domain: cybersecurity
-subdomain: api-security
 tags:
 - api-security
 - owasp
@@ -16,6 +12,7 @@ tags:
 - jwt
 - session-management
 - credential-security
+subdomain: api-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -482,3 +479,7 @@ and the 7-day expiration means stolen tokens remain valid for extended periods.
 4. Reduce token TTL to 15 minutes with refresh token rotation
 5. Add `iss` and `aud` claims validation to prevent token misuse across services
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

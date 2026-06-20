@@ -1,7 +1,14 @@
 ---
 name: polymarket-analyst
-description: "Analyze Polymarket prediction markets for expected value, market inefficiencies, and trading opportunities."
+description: Analyze Polymarket prediction markets for expected value, market inefficiencies, and trading opportunities.
 domain: research
+tags:
+- analysis
+- analyst
+- investigation
+- polymarket
+- research
+- trading
 ---
 persona:
   name: "Domain Expert"
@@ -14,6 +21,18 @@ persona:
 
 
 # Polymarket Analyst
+## When to Use
+
+**Trigger phrases:**
+- "polymarket analyst"
+- "Help me with polymarket analyst"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Analyze Polymarket predictions, calculate expected value, and identify trading opportunities.
 
@@ -218,3 +237,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

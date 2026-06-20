@@ -7,7 +7,6 @@ description: 'This skill covers analyzing Programmable Logic Controller (PLC) fi
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - iec62443
 - firmware-analysis
 - plc-security
+subdomain: ot-ics-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -525,3 +525,7 @@ VULNERABILITIES FOUND:
     Impact: [Operational impact]
     Remediation: [Fix or mitigation]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

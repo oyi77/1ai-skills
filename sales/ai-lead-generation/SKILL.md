@@ -1,8 +1,14 @@
 ---
 name: ai-lead-generation
-description: Automated AI-powered lead generation and prospecting. Find ideal customers,
-  enrich data, personalize outreach, and book meetings without manual effort.
+description: Automated AI-powered lead generation and prospecting. Find ideal customers, enrich data, personalize outreach,
+  and book meetings without manual effort.
 domain: sales
+tags:
+- business-development
+- generation
+- lead
+- revenue
+- sales
 ---
 
 

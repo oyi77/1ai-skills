@@ -3,7 +3,6 @@ name: analyzing-disk-image-with-autopsy
 description: Perform comprehensive forensic analysis of disk images using Autopsy to recover files, examine artifacts, and
   build investigation timelines.
 domain: cybersecurity
-subdomain: digital-forensics
 tags:
 - forensics
 - autopsy
@@ -11,6 +10,7 @@ tags:
 - sleuth-kit
 - file-recovery
 - artifact-analysis
+subdomain: digital-forensics
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -293,3 +293,7 @@ Autopsy Case Analysis Summary:
   Timeline Events:  1,234,567 entries (filtered to incident window: 892)
   Report:          /cases/case-2024-001/reports/autopsy_report.html
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

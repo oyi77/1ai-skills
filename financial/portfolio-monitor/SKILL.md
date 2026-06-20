@@ -1,8 +1,14 @@
 ---
 name: portfolio-monitor
-description: Track portfolio company KPIs, variances, returns analysis. Use when user
-  says "monitor portfolio", "track KPIs", "portfolio returns".
+description: Track portfolio company KPIs, variances, returns analysis. Use when user says "monitor portfolio", "track KPIs",
+  "portfolio returns".
 domain: financial
+tags:
+- analysis
+- finance
+- investment
+- monitor
+- portfolio
 ---
 
 # Portfolio Monitor!

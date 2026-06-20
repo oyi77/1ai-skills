@@ -1,9 +1,17 @@
 ---
 name: supply-chain-attacker
-description: Software supply chain attack testing — dependency confusion, typosquatting,
-  malicious packages, CI/CD pipeline exploitation. Use when assessing supply chain
-  security, testing package managers, or finding supply chain vulnerabilities.
+description: Software supply chain attack testing — dependency confusion, typosquatting, malicious packages, CI/CD pipeline
+  exploitation. Use when assessing supply chain security, testing package managers, or finding supply chain vulnerabilities.
 domain: cybersecurity
+tags:
+- attacker
+- chain
+- cybersecurity
+- pipeline
+- security
+- supply
+- testing
+- threat-defense
 ---
 
 # Supply Chain Attacker
@@ -255,3 +263,7 @@ Supply chain vulnerabilities pay extremely well:
 - npm Security Best Practices
 - OWASP Software Component Verification
 - SolarWinds Attack Analysis
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

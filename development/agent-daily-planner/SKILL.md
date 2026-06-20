@@ -1,6 +1,15 @@
 ---
 name: agent-daily-planner
-description: "Generate daily plans with task priorities, track shipped work, and maintain cross-session accountability using deep work principles."
+description: Generate daily plans with task priorities, track shipped work, and maintain cross-session accountability using
+  deep work principles.
+domain: development
+tags:
+- agent
+- coding
+- daily
+- planner
+- software-engineering
+- testing
 persona:
   name: Cal Newport
   title: The Deep Work Expert - Master of Time Blocking
@@ -19,7 +28,6 @@ persona:
   - Batch shallow work
   - Protect deep work blocks
   - Weekly planning ritual
-domain: development
 ---
 A structured daily planning and execution tracking system for AI agents. Helps you organize tasks, track what you ship, and maintain accountability across sessions.
 
@@ -36,6 +44,18 @@ Generate today's plan based on:
 Creates/updates memory/YYYY-MM-DD.md with a structured template:
 
 # YYYY-MM-DD - Daily Plan
+## When to Use
+
+**Trigger phrases:**
+- "agent daily planner"
+- "Help me with agent daily planner"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Priority Tasks (Must Do)
 - [ ] Task 1 — [project] — deadline/context
@@ -156,3 +176,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

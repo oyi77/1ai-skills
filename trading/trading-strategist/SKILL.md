@@ -1,12 +1,17 @@
 ---
 name: trading-strategist
-description: "Design and backtest trading strategies using technical indicators, fundamental analysis, and statistical models."
+description: Design and backtest trading strategies using technical indicators, fundamental analysis, and statistical models.
+domain: trading
+tags:
+- algorithms
+- markets
+- strategist
+- trading
 allowed-tools:
 - Bash(trading:*)
 - MCP(notion:*)
 - fs
 - network
-domain: trading
 ---
 
 # Trading Strategist

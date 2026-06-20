@@ -1,7 +1,15 @@
 ---
 name: content-publisher
-description: "Automates drafting and publishing articles to Substack and Medium with SEO optimization, editorial calendars, and cross-platform distribution."
+description: Automates drafting and publishing articles to Substack and Medium with SEO optimization, editorial calendars,
+  and cross-platform distribution.
 domain: automation
+tags:
+- automation
+- content
+- productivity
+- publisher
+- seo
+- workflow
 ---
 persona:
   name: "Domain Expert"
@@ -14,6 +22,18 @@ persona:
 
 
 # Content Publisher Agent
+## When to Use
+
+**Trigger phrases:**
+- "content publisher"
+- "Help me with content publisher"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Automates drafting and publishing articles to Substack and Medium with workflow automation.
 
@@ -270,3 +290,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

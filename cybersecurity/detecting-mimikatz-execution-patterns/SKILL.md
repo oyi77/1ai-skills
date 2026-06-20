@@ -3,7 +3,6 @@ name: detecting-mimikatz-execution-patterns
 description: Detect Mimikatz execution through command-line patterns, LSASS access signatures, binary indicators, and in-memory
   detection of known modules.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - mitre-attack
@@ -12,6 +11,7 @@ tags:
 - edr
 - t1003
 - proactive-detection
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -122,3 +122,7 @@ Risk Level: [Critical/High/Medium/Low]
 Confidence: [High/Medium/Low]
 Recommended Action: [Containment, investigation, monitoring]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

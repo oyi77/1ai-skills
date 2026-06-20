@@ -7,7 +7,6 @@ description: 'Implements immutable backup strategy using restic with S3-compatib
 
   '
 domain: cybersecurity
-subdomain: ransomware-defense
 tags:
 - restic
 - backup
@@ -17,6 +16,7 @@ tags:
 - object-lock
 - worm
 - recovery
+subdomain: ransomware-defense
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -130,3 +130,7 @@ Integrity Check: PASSED (all packs verified)
 Object Lock: Compliance mode, 90-day retention
 Restore Test: PASSED (15 files verified)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,8 +1,13 @@
 ---
 name: nodejs-patterns
-description: Node.js patterns — Express, Fastify, streams, worker threads, clustering,
-  performance optimization
+description: Node.js patterns — Express, Fastify, streams, worker threads, clustering, performance optimization
 domain: development
+tags:
+- coding
+- nodejs
+- patterns
+- software-engineering
+- testing
 ---
 
 
@@ -187,3 +192,7 @@ process.on('SIGTERM', async () => {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

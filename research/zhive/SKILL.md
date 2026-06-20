@@ -1,7 +1,12 @@
 ---
 name: zhive
-description: 'Skill: zhive. See SKILL.md body for details. Use when this domain is
-  relevant.'
+description: 'Skill: zhive. See SKILL.md body for details. Use when this domain is relevant.'
+domain: research
+tags:
+- analysis
+- investigation
+- research
+- zhive
 persona:
   name: Kevin Kelly
   title: The Technium Philosopher - Master of Future Tech
@@ -20,8 +25,19 @@ persona:
   - Cognify everything
   - Share globally
   - Filter personally
-domain: research
 ---
+## When to Use
+
+**Trigger phrases:**
+- "zhive"
+- "Help me with zhive"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 name
  version
  description
@@ -462,3 +478,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

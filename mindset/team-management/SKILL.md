@@ -1,7 +1,14 @@
 ---
 name: team-management
-description: Manage teams through 1:1s, feedback (SBI model), delegation (70% rule), and performance reviews. Use when leading individual contributors or managers.
+description: Manage teams through 1:1s, feedback (SBI model), delegation (70% rule), and performance reviews. Use when leading
+  individual contributors or managers.
 domain: mindset
+tags:
+- management
+- mindset
+- personal-development
+- soft-skills
+- team
 ---
 
 # Team Management
@@ -184,3 +191,7 @@ Framework for managing teams: 1:1 structure, feedback delivery (SBI model), dele
 - [ ] Performance reviews completed on time (quarterly or biannual)
 - [ ] Team health metrics tracked (engagement, retention, velocity)
 - [ ] Career development discussed in 1:1s (not just project updates)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

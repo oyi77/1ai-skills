@@ -3,7 +3,6 @@ name: hunting-for-persistence-mechanisms-in-windows
 description: Systematically hunt for adversary persistence mechanisms across Windows endpoints including registry, services,
   startup folders, and WMI subscriptions.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - mitre-attack
@@ -12,6 +11,7 @@ tags:
 - registry
 - siem
 - proactive-detection
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -133,3 +133,7 @@ Creation Time: [Timestamp]
 Risk Level: [Critical/High/Medium/Low]
 Verdict: [Malicious/Suspicious/Benign]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

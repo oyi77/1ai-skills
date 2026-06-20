@@ -1,8 +1,14 @@
 ---
 name: temporal-workflows
-description: Temporal durable workflows — workflow/activity definitions, retries,
-  signals, queries, versioning
+description: Temporal durable workflows — workflow/activity definitions, retries, signals, queries, versioning
 domain: data
+tags:
+- analytics
+- data-analysis
+- temporal
+- visualization
+- workflow
+- workflows
 ---
 
 
@@ -249,3 +255,7 @@ async def main():
 - **Missing monitoring for data freshness**: Stale data causes wrong business decisions
 - **No rollback on failed transforms**: Failed transforms without rollback require manual recovery
 - **Hardcoded connection strings**: Credentials in code get committed to version control
+
+## Verification
+
+- [ ] Skill output matches expected behavior

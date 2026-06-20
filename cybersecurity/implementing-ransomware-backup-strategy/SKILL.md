@@ -1,14 +1,10 @@
 ---
 name: implementing-ransomware-backup-strategy
-description: 'Designs and implements a ransomware-resilient backup strategy following the 3-2-1-1-0 methodology (3 copies,
+description: Designs and implements a ransomware-resilient backup strategy following the 3-2-1-1-0 methodology (3 copies,
   2 media types, 1 offsite, 1 immutable/air-gapped, 0 errors on restore verification). Configures backup schedules aligned
   to RPO/RTO requirements, implements backup credential isolation to prevent ransomware from compromising backup infrastructure,
-  and establishes automated restore testing. Activates for requests involving ransomware backup planning, backup resilience,
-  air-gapped backup design, or backup recovery point objective configuration.
-
-  '
+  and establishes automated restore testing.
 domain: cybersecurity
-subdomain: ransomware-defense
 tags:
 - ransomware
 - backup
@@ -16,6 +12,7 @@ tags:
 - defense
 - recovery
 - immutable-storage
+subdomain: ransomware-defense
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -323,3 +320,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 | 2 | 200 | 4hr | 12hr | 4hr inc/Daily full | Monthly |
 | 3 | 250 | 24hr | 48hr | Daily inc/Weekly full | Quarterly |
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

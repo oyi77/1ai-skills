@@ -1,8 +1,13 @@
 ---
 name: vault-pki
-description: Vault PKI secrets engine — certificate authority, dynamic certificates,
-  certificate rotation
+description: Vault PKI secrets engine — certificate authority, dynamic certificates, certificate rotation
 domain: devops
+tags:
+- ci-cd
+- devops
+- infrastructure
+- pki
+- vault
 ---
 
 
@@ -128,3 +133,7 @@ systemctl reload nginx
 - **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
 - **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
 - **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures
+
+## Verification
+
+- [ ] Skill output matches expected behavior

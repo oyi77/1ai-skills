@@ -1,7 +1,14 @@
 ---
 name: revenue-engine
-description: "Manage revenue pipelines, track Stripe/analytics metrics, and automate financial reporting for SaaS businesses."
+description: Manage revenue pipelines, track Stripe/analytics metrics, and automate financial reporting for SaaS businesses.
 domain: core
+tags:
+- engine
+- infrastructure
+- memory
+- pipeline
+- revenue
+- self-improvement
 ---
 # Revenue Engine
 
@@ -289,3 +296,7 @@ After completing this skill, confirm:
 - [ ] All prerequisites are verified and documented
 - [ ] Error handling covers edge cases
 - [ ] Results are accurate and actionable
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

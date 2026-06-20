@@ -6,12 +6,12 @@ description: 'Detects container escape attempts by analyzing namespace configura
 
   '
 domain: cybersecurity
-subdomain: container-security
 tags:
 - performing
 - container
 - escape
 - detection
+subdomain: container-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -97,3 +97,7 @@ for vol in pod.spec.volumes or []:
 - Cloud resource changes reverted or documented as intentional
 - IAM policies reviewed for least-privilege compliance after testing
 - No residual test resources left running (cost and security check)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

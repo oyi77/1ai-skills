@@ -5,12 +5,12 @@ description: Analyze the threat landscape using MISP (Malware Information Sharin
   IOC type breakdowns, identify top threat actors and malware families, and generate threat landscape reports with temporal
   trends.
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - analyzing
 - threat
 - landscape
 - with
+subdomain: threat-intelligence
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -99,3 +99,7 @@ Top threat actor: APT28 (34 events)
 - Sample hash recorded and verified (MD5, SHA-1, SHA-256)
 - Analysis environment confirmed isolated from production network
 - Indicators of compromise (IOCs) extracted and documented
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,8 +1,16 @@
 ---
 name: digital-real-estate
-description: Build and manage a portfolio of niche content sites generating affiliate
-  and AdSense revenue with AI handling research, writing, SEO, and updates
+description: Build and manage a portfolio of niche content sites generating affiliate and AdSense revenue with AI handling
+  research, writing, SEO, and updates
 domain: content
+tags:
+- content-creation
+- digital
+- digital-content
+- estate
+- media
+- real
+- seo
 ---
 
 
@@ -341,3 +349,7 @@ done
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

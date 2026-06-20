@@ -1,14 +1,10 @@
 ---
 name: generating-threat-intelligence-reports
-description: 'Generates structured cyber threat intelligence reports at strategic, operational, and tactical levels tailored
+description: Generates structured cyber threat intelligence reports at strategic, operational, and tactical levels tailored
   to specific audiences including executives, security operations teams, and technical analysts. Use when producing finished
   intelligence products from raw collection data, creating sector threat briefings, or delivering post-incident intelligence
-  assessments. Activates for requests involving CTI report writing, threat briefings, intelligence products, finished intelligence,
-  or executive security reporting.
-
-  '
+  assessments.
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - CTI
 - threat-intelligence
@@ -17,6 +13,7 @@ tags:
 - PIR
 - report-writing
 - NIST-CSF
+subdomain: threat-intelligence
 version: 1.0.0
 author: team-cybersecurity
 license: Apache-2.0
@@ -176,3 +173,7 @@ Before dissemination, apply these checks:
 - **Intelligence without recommendations**: Reports that describe threats without prescribing actions leave stakeholders without direction.
 - **Stale intelligence**: Publishing a report on a threat campaign that was resolved 2 weeks ago creates alarm without utility. Include freshness dating on all claims.
 - **Over-classification**: Applying TLP:RED to information that could be TLP:GREEN impedes community sharing and limits defensive value across the sector.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,9 +1,15 @@
 ---
 name: analytics-dashboard
-description: Track performance across all platforms. Monitor social media metrics,
-  ad performance, website analytics, and revenue. Generate automated reports and identify
-  trends for data-driven decisions.
+description: Track performance across all platforms. Monitor social media metrics, ad performance, website analytics, and
+  revenue. Generate automated reports and identify trends for data-driven decisions.
 domain: marketing
+tags:
+- analytics
+- dashboard
+- growth
+- marketing
+- seo
+- social-media
 ---
 
 persona:
@@ -17,6 +23,18 @@ persona:
 
 
 # Analytics Dashboard Skill
+## When to Use
+
+**Trigger phrases:**
+- "analytics dashboard"
+- "Help me with analytics dashboard"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Expert Persona
 

@@ -1,7 +1,14 @@
 ---
 name: trade-off-analysis
-description: Evaluate opportunity costs and prioritize using Eisenhower Matrix, MoSCoW, and cost of delay. Use when prioritizing with constrained resources.
+description: Evaluate opportunity costs and prioritize using Eisenhower Matrix, MoSCoW, and cost of delay. Use when prioritizing
+  with constrained resources.
 domain: mindset
+tags:
+- mindset
+- 'off'
+- personal-development
+- soft-skills
+- trade
 ---
 
 # Trade-Off Analysis
@@ -137,3 +144,7 @@ Framework for explicit trade-off evaluation and prioritization under constraints
 - [ ] Resources mapped to priorities (funding decisions aligned)
 - [ ] Trade-off dimensions identified (speed vs quality, cost vs performance, etc.)
 - [ ] Stakeholders aligned on priorities and what's deferred
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

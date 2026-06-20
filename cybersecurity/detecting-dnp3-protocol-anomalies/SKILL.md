@@ -6,7 +6,6 @@ description: 'Detect anomalies in DNP3 (Distributed Network Protocol 3) communic
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - protocol-analysis
 - energy-sector
 - ids
+subdomain: ot-ics-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -392,3 +392,7 @@ RECOMMENDATIONS:
   2. Block unauthorized sources at firewall
   3. Enable DNP3 DPI on industrial firewall
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

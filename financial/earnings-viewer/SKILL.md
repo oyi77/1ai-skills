@@ -1,9 +1,14 @@
 ---
 name: earnings-viewer
-description: Analyzes earnings calls + SEC filings, updates financial models, and
-  drafts earnings notes. Use when user says "analyze earnings", "earnings call", "update
-  model after earnings".
+description: Analyzes earnings calls + SEC filings, updates financial models, and drafts earnings notes. Use when user says
+  "analyze earnings", "earnings call", "update model after earnings".
 domain: financial
+tags:
+- analysis
+- earnings
+- finance
+- investment
+- viewer
 ---
 
 # Earnings Viewer

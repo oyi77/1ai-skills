@@ -1,14 +1,9 @@
 ---
 name: analyzing-sbom-for-supply-chain-vulnerabilities
-description: 'Parses Software Bill of Materials (SBOM) in CycloneDX and SPDX JSON formats to identify supply chain vulnerabilities
+description: Parses Software Bill of Materials (SBOM) in CycloneDX and SPDX JSON formats to identify supply chain vulnerabilities
   by correlating components against the NVD CVE database via the NVD 2.0 API. Builds dependency graphs, calculates risk scores,
-  identifies transitive vulnerability paths, and generates compliance reports. Activates for requests involving SBOM analysis,
-  software composition analysis, supply chain security assessment, dependency vulnerability scanning, CycloneDX/SPDX parsing,
-  or CVE correlation.
-
-  '
+  identifies transitive vulnerability paths, and generates compliance reports.
 domain: cybersecurity
-subdomain: supply-chain-security
 tags:
 - SBOM
 - CycloneDX
@@ -19,6 +14,7 @@ tags:
 - dependency-analysis
 - syft
 - grype
+subdomain: supply-chain-security
 version: 1.0.0
 author: mukul975
 license: Apache-2.0
@@ -335,3 +331,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - NVD API rate limits can slow analysis when scanning hundreds of components without an API key
 - CPE names in SBOMs may not exactly match NVD entries, requiring fuzzy matching
 - Transitive dependencies may include log4j even when it is not a direct dependency
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

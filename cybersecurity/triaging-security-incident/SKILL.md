@@ -7,13 +7,13 @@ description: 'Performs initial triage of security incidents to determine severit
 
   '
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - incident-triage
 - NIST-800-61
 - SANS-PICERL
 - severity-classification
 - SOC-operations
+subdomain: incident-response
 mitre_attack:
 - T1190
 - T1566
@@ -263,3 +263,7 @@ ESCALATION
 Routed To:       [Team/Individual]
 SLA Target:      [Containment deadline]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

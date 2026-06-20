@@ -1,12 +1,17 @@
 ---
 name: calendar-management
-description: Advanced calendar management, scheduling, and meeting automation with
-  Google Calendar MCP
+description: Advanced calendar management, scheduling, and meeting automation with Google Calendar MCP
+domain: productivity
+tags:
+- calendar
+- management
+- productivity
+- time-management
+- tools
 allowed-tools:
 - Bash(calendar:*)
 - MCP(google-calendar:*)
 - MCP(tldv:*)
-domain: productivity
 ---
 persona:
   name: "Domain Expert"
@@ -19,6 +24,18 @@ persona:
 
 
 # Calendar Management
+## When to Use
+
+**Trigger phrases:**
+- "calendar management"
+- "Help me with calendar management"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Advanced calendar management with intelligent scheduling, meeting automation, and cross-platform synchronization.
 
@@ -381,3 +398,7 @@ After completing this skill, confirm:
 
 ---
 *Skill v2.0 - Calendar Management with MCP*
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

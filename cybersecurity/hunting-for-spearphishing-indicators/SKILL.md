@@ -3,7 +3,6 @@ name: hunting-for-spearphishing-indicators
 description: Hunt for spearphishing campaign indicators across email logs, endpoint telemetry, and network data to detect
   targeted email attacks.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - mitre-attack
@@ -12,6 +11,7 @@ tags:
 - email-security
 - t1566
 - proactive-detection
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -121,3 +121,7 @@ Risk Level: [Critical/High/Medium/Low]
 Confidence: [High/Medium/Low]
 Recommended Action: [Containment, investigation, monitoring]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

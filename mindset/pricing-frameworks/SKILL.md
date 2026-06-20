@@ -1,7 +1,14 @@
 ---
 name: pricing-frameworks
-description: Set prices using value-based, cost-plus, competitive, and subscription models. Includes tiering, anchoring, discounts, and pricing experiments.
+description: Set prices using value-based, cost-plus, competitive, and subscription models. Includes tiering, anchoring, discounts,
+  and pricing experiments.
 domain: mindset
+tags:
+- frameworks
+- mindset
+- personal-development
+- pricing
+- soft-skills
 ---
 
 # Pricing Frameworks
@@ -178,3 +185,7 @@ Framework for setting and optimizing prices: value-based, cost-plus, competitive
 - [ ] Anchoring used (reference price set for context)
 - [ ] Discount policy defined (annual discount %, when to offer)
 - [ ] Price increase plan ready (grandfathering, justification, timing)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

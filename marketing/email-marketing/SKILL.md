@@ -1,9 +1,13 @@
 ---
 name: email-marketing
-description: Create and send email campaigns, newsletters, and drip sequences. Build
-  email lists, design templates, automate follow-ups, and track email performance
-  for customer nurturing.
+description: Create and send email campaigns, newsletters, and drip sequences. Build email lists, design templates, automate
+  follow-ups, and track email performance for customer nurturing.
 domain: marketing
+tags:
+- email
+- growth
+- marketing
+- seo
 ---
 
 

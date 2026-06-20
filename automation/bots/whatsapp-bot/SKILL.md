@@ -2,7 +2,26 @@
 name: whatsapp-bot
 description: WhatsApp bot patterns for message automation and business API integration
 domain: automation
+tags:
+- api
+- automation
+- bot
+- productivity
+- whatsapp
+- workflow
 ---
+## When to Use
+
+**Trigger phrases:**
+- "whatsapp bot"
+- "Help me with whatsapp bot"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Whatsapp Bot
 
 Build WhatsApp bots
@@ -75,3 +94,7 @@ Additional context and best practices for this skill.
 - If output quality is low, provide more context in your input
 - If the skill does not cover your use case, check related skills
 - For integration issues, verify prerequisites and dependencies are met
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

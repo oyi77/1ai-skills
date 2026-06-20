@@ -1,7 +1,15 @@
 ---
 name: market-research-agent
-description: "Analyze markets, competitors, user segments, and trends to produce evidence-based business intelligence. Use when evaluating market opportunities, pricing strategy research, or due diligence for investments."
+description: Analyze markets, competitors, user segments, and trends to produce evidence-based business intelligence. Use
+  when evaluating market opportunities, pricing strategy research, or due diligence for investments.
 domain: agents
+tags:
+- agent
+- ai-agent
+- automation
+- market
+- orchestration
+- research
 ---
 # Market Research Agent
 
@@ -287,3 +295,7 @@ After market research, confirm:
 - [ ] Risks identified with mitigations (not just "competition is a risk")
 - [ ] All data points sourced (no unsourced claims)
 - [ ] No [TODO] or placeholder content in the report
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

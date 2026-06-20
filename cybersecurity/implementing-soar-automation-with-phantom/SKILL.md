@@ -6,7 +6,6 @@ description: 'Implements Security Orchestration, Automation, and Response (SOAR)
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - soar
@@ -16,6 +15,7 @@ tags:
 - playbook
 - orchestration
 - incident-response
+subdomain: soc-operations
 mitre_attack:
 - T1566
 - T1059
@@ -446,3 +446,7 @@ Total Duration:    4m 22s (vs 35min avg manual triage)
 Time Saved:        ~31 minutes
 Disposition:       True Positive — Escalated to IR
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

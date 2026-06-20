@@ -1,12 +1,17 @@
 ---
 name: data
-description: Centralized database for meta-skill operations. Stores performance metrics,
-  feedback, patterns, and skill evolution history.
+description: Centralized database for meta-skill operations. Stores performance metrics, feedback, patterns, and skill evolution
+  history.
+domain: meta
+tags:
+- data
+- meta-learning
+- self-improvement
+- skill-evolution
 persona:
   name: Database Architect
   expertise: SQLite, data modeling, query optimization
   philosophy: Data is the foundation of intelligence
-domain: meta
 ---
 ## Meta Skill Datastore
 
@@ -95,6 +100,18 @@ CREATE TABLE learning_cycles (
 
 ```python
 # Record execution
+## When to Use
+
+**Trigger phrases:**
+- "data"
+- "Help me with data"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 /meta-datastore record-execution --skill seo-optimizer --success true --latency 245
 
 # Query performance
@@ -141,3 +158,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

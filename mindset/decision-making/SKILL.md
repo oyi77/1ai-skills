@@ -2,6 +2,12 @@
 name: decision-making
 description: Make sound decisions under uncertainty using frameworks like RICE, weighted matrix, decision trees, and pre-mortems.
 domain: mindset
+tags:
+- decision
+- making
+- mindset
+- personal-development
+- soft-skills
 ---
 
 # Decision Making
@@ -153,3 +159,7 @@ Launch? ─── Yes ───┼─ Medium market (30%) → $2M profit
 - [ ] Biases considered (optimism, status quo, sunk cost, overconfidence)
 - [ ] Options pruned (not comparing >5 options without filtering)
 - [ ] Decision delegated if low-stakes or reversible
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

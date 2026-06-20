@@ -1,9 +1,14 @@
 ---
 name: pricing-strategy
-description: Pricing page design, tier structuring, anchoring psychology, conversion
-  optimization. Use when designing pricing pages, setting up tier structures, or optimizing
-  pricing conversion rates.
+description: Pricing page design, tier structuring, anchoring psychology, conversion optimization. Use when designing pricing
+  pages, setting up tier structures, or optimizing pricing conversion rates.
 domain: marketing
+tags:
+- growth
+- marketing
+- pricing
+- seo
+- strategy
 ---
 
 
@@ -143,3 +148,11 @@ experiments = [
 - **Email open rates below 15%**: Subject lines or sender reputation issue
 - **Bounce rate above 70%**: Landing page mismatch or slow load times
 - **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Overview
+
+> Section content — see SKILL.md body for full details.
+
+## Verification
+
+- [ ] Skill output matches expected behavior

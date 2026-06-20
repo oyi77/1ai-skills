@@ -1,8 +1,14 @@
 ---
 name: consul-service-mesh
-description: HashiCorp Consul — service discovery, health checking, KV store, service
-  mesh, intentions
+description: HashiCorp Consul — service discovery, health checking, KV store, service mesh, intentions
 domain: devops
+tags:
+- ci-cd
+- consul
+- devops
+- infrastructure
+- mesh
+- service
 ---
 
 
@@ -147,3 +153,7 @@ consul intention list
 - **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
 - **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
 - **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures
+
+## Verification
+
+- [ ] Skill output matches expected behavior

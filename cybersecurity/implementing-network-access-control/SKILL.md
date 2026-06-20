@@ -6,13 +6,13 @@ description: 'Implements 802.1X port-based network access control using RADIUS a
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - nac
 - 802.1x
 - radius
 - packetfence
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -470,3 +470,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Posture pass rate: 95.8% (15 devices quarantined for missing patches)
 - RADIUS failover tested: Successful (critical VLAN activated in 3 seconds)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

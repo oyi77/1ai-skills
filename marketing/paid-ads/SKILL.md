@@ -1,9 +1,14 @@
 ---
 name: paid-ads
-description: Paid advertising for Google, Meta, LinkedIn — ad copy, audience targeting,
-  budget optimization, conversion tracking. Use when setting up ad campaigns, optimizing
-  ad spend, or designing ad creative.
+description: Paid advertising for Google, Meta, LinkedIn — ad copy, audience targeting, budget optimization, conversion tracking.
+  Use when setting up ad campaigns, optimizing ad spend, or designing ad creative.
 domain: marketing
+tags:
+- ads
+- growth
+- marketing
+- paid
+- seo
 ---
 
 
@@ -151,3 +156,11 @@ def allocate_budget(total_budget, campaigns):
 - **Email open rates below 15%**: Subject lines or sender reputation issue
 - **Bounce rate above 70%**: Landing page mismatch or slow load times
 - **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Overview
+
+> Section content — see SKILL.md body for full details.
+
+## Verification
+
+- [ ] Skill output matches expected behavior

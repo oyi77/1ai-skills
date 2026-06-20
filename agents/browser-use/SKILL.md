@@ -1,8 +1,14 @@
 ---
 name: browser-use
-description: Browser automation with AI — Playwright, Puppeteer, browser-use library.
-  Navigate, extract, interact with web pages autonomously
+description: Browser automation with AI — Playwright, Puppeteer, browser-use library. Navigate, extract, interact with web
+  pages autonomously
 domain: agents
+tags:
+- ai-agent
+- automation
+- browser
+- orchestration
+- use
 ---
 
 ## Overview

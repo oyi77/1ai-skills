@@ -6,7 +6,6 @@ description: 'Implementing zero trust access controls for SaaS applications usin
 
   '
 domain: cybersecurity
-subdomain: zero-trust-architecture
 tags:
 - zero-trust
 - saas-security
@@ -15,6 +14,7 @@ tags:
 - conditional-access
 - oauth-governance
 - session-controls
+subdomain: zero-trust-architecture
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -352,3 +352,7 @@ SSPM FINDINGS:
   Medium: 15
   Remediated this month: 18
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

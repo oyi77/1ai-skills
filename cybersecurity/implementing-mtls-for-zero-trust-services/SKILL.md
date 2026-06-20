@@ -6,12 +6,12 @@ description: 'Configures mutual TLS (mTLS) authentication between microservices 
 
   '
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - implementing
 - mtls
 - for
 - zero
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -95,3 +95,7 @@ context.verify_mode = ssl.CERT_REQUIRED
 - Output documented with screenshots or logs demonstrating expected behavior
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

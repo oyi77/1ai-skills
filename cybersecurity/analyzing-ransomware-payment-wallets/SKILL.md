@@ -7,7 +7,6 @@ description: 'Traces ransomware cryptocurrency payment flows using blockchain an
 
   '
 domain: cybersecurity
-subdomain: ransomware-defense
 tags:
 - ransomware
 - blockchain
@@ -15,6 +14,7 @@ tags:
 - forensics
 - threat-intelligence
 - bitcoin
+subdomain: ransomware-defense
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -193,3 +193,7 @@ CLUSTER ANALYSIS:
 - **Blockstream.info**: Open-source Bitcoin block explorer with full API access
 - **blockchain.com API**: Free API for querying Bitcoin address balances and transaction histories
 - **OFAC SDN List**: U.S. Treasury sanctioned address list for compliance checking
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

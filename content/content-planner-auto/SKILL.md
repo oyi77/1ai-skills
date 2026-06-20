@@ -1,10 +1,30 @@
 ---
 name: content-planner-auto
-description: "Auto-generate 30-day content calendars with pillar rotation, platform-optimized timing, multi-account rotation, seasonal Indonesian events, and PostBridge batch scheduling."
+description: Auto-generate 30-day content calendars with pillar rotation, platform-optimized timing, multi-account rotation,
+  seasonal Indonesian events, and PostBridge batch scheduling.
 domain: content
+tags:
+- auto
+- content
+- content-creation
+- digital-content
+- media
+- planner
 ---
 
 # content-planner-auto
+## When to Use
+
+**Trigger phrases:**
+- "content planner auto"
+- "Help me with content planner auto"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 **Auto-generate 30-day content calendars for BerkahKarya. Revenue survival tool.**
 
@@ -212,3 +232,7 @@ No other external dependencies. All scheduling logic is pure Python.
 - Confirm links work and point to correct destinations
 - Test video/audio quality before publishing
 - Validate content renders correctly on mobile devices
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

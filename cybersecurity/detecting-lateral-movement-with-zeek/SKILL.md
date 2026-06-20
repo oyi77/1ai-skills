@@ -6,7 +6,6 @@ description: 'Detect lateral movement in network traffic using Zeek (formerly Br
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - zeek
 - lateral-movement
@@ -14,6 +13,7 @@ tags:
 - dce-rpc
 - ntlm-spray
 - network-forensics
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -227,3 +227,7 @@ python3 agent.py /opt/zeek/logs/2026-03-18/  # Analyze a specific date
 - Capturing traffic on networks without authorization or privacy considerations
 - Leaving packet captures containing sensitive data unencrypted on disk
 - Deploying inline blocking rules without testing for false positives first
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

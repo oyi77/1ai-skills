@@ -2,6 +2,12 @@
 name: time-management
 description: Prioritize tasks, manage schedules, and avoid burnout using Eisenhower Matrix, time blocking, and Pomodoro technique.
 domain: mindset
+tags:
+- management
+- mindset
+- personal-development
+- soft-skills
+- time
 ---
 
 # Time Management
@@ -125,3 +131,7 @@ Framework for managing your time effectively: prioritization, scheduling, focus 
 - [ ] Distractions minimized (phone, email, Slack during focus)
 - [ ] Pomodoro or Ivy Lee method used for focused work
 - [ ] "Eat the frog" practiced (hardest task first)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

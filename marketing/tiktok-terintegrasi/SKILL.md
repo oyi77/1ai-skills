@@ -1,7 +1,17 @@
 ---
 name: tiktok-terintegrasi
-description: "Integrated TikTok content suite with 9 specialized workflows — generates 9:16 videos and images using NVIDIA NIM, BytePlus Seedance, Kling AI, and ElevenLabs TTS."
+description: Integrated TikTok content suite with 9 specialized workflows — generates 9:16 videos and images using NVIDIA
+  NIM, BytePlus Seedance, Kling AI, and ElevenLabs TTS.
 domain: marketing
+tags:
+- growth
+- marketing
+- seo
+- terintegrasi
+- text-to-speech
+- tiktok
+- video
+- workflow
 ---
 
 TikTok Content Suite skill suite with 9 specialized workflows integrated.
@@ -140,6 +150,18 @@ Test with sample input and generate 3 gambar TikTok videos!
 
 ```python
 # 1. Upload media
+## When to Use
+
+**Trigger phrases:**
+- "tiktok terintegrasi"
+- "Help me with tiktok terintegrasi"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 r = requests.post(f"{BASE_URL}/media/create-upload-url", headers=HEADERS,
     json={"name": "video.mp4", "mime_type": "video/mp4", "size_bytes": size})
 media_id, upload_url = r.json()["media_id"], r.json()["upload_url"]
@@ -191,3 +213,7 @@ results = requests.get(f"{BASE_URL}/post-results", headers=HEADERS).json()
 - Check UTM parameters parse correctly in analytics dashboard
 - Confirm email deliverability via seed list test
 - Validate landing page speed (target < 3s load time)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

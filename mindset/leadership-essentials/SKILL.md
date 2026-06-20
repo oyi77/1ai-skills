@@ -1,7 +1,14 @@
 ---
 name: leadership-essentials
-description: Lead teams through vision-setting, decision-making, delegation, and accountability. Use when stepping into a leadership role or improving team performance.
+description: Lead teams through vision-setting, decision-making, delegation, and accountability. Use when stepping into a
+  leadership role or improving team performance.
 domain: mindset
+tags:
+- essentials
+- leadership
+- mindset
+- personal-development
+- soft-skills
 ---
 
 # Leadership Essentials
@@ -150,3 +157,7 @@ Core leadership models: vision-setting, situational leadership, decision-making,
 - [ ] Accountability process in place (expectations set, tracked, followed up)
 - [ ] Team culture defined (values, norms, rituals, language)
 - [ ] Delegation boundaries set (what you decide, what team decides)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

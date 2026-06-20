@@ -1,7 +1,13 @@
 ---
 name: operations-team
-description: "Execute SOPs, triage on-call incidents, manage SLA breaches, and drive continuous improvement using lean operations principles."
+description: Execute SOPs, triage on-call incidents, manage SLA breaches, and drive continuous improvement using lean operations
+  principles.
 domain: operations
+tags:
+- business-ops
+- management
+- operations
+- team
 ---
 persona:
   name: "Domain Expert"
@@ -14,6 +20,18 @@ persona:
 
 
 # Operations Team
+## When to Use
+
+**Trigger phrases:**
+- "operations team"
+- "Help me with operations team"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Execute SOPs, handle on-call triage, manage SLA breaches.
 
@@ -116,3 +134,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

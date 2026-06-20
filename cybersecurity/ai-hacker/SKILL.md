@@ -1,9 +1,14 @@
 ---
 name: ai-hacker
-description: AI and LLM security testing — prompt injection, model manipulation, data
-  exfiltration via AI. Use when testing AI-powered applications, finding prompt injection
-  vulnerabilities, or assessing LLM-integrated systems.
+description: AI and LLM security testing — prompt injection, model manipulation, data exfiltration via AI. Use when testing
+  AI-powered applications, finding prompt injection vulnerabilities, or assessing LLM-integrated systems.
 domain: cybersecurity
+tags:
+- cybersecurity
+- hacker
+- security
+- testing
+- threat-defense
 ---
 
 # AI Hacker
@@ -262,3 +267,7 @@ AI security is new and under-tested:
 - NIST AI Risk Management Framework
 - Prompt Injection Against GPT-3
 - Simon Willison's AI Security Research
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

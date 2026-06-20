@@ -4,12 +4,12 @@ description: Configure rsyslog for centralized log collection with TLS encryptio
   server and client configuration files with GnuTLS stream drivers, x509 certificate authentication, per-host log segregation,
   and reliable queue settings for high-availability syslog infrastructure.
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - implementing
 - syslog
 - centralization
 - with
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -98,3 +98,7 @@ action(type="omfwd" target="10.0.0.1" port="6514" protocol="tcp"
 - Output documented with screenshots or logs demonstrating expected behavior
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

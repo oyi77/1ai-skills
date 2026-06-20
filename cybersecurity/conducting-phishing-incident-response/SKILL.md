@@ -7,13 +7,13 @@ description: 'Responds to phishing incidents by analyzing reported emails, extra
 
   '
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - phishing-response
 - email-security
 - credential-compromise
 - email-header-analysis
 - mailbox-remediation
+subdomain: incident-response
 mitre_attack:
 - T1566
 - T1204
@@ -287,3 +287,7 @@ RECOMMENDATIONS
 3. Send targeted awareness notification to all 47 recipients
 4. Request domain takedown via registrar abuse contact
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -5,7 +5,6 @@ description: 'Detecting exposed AWS credentials in source code repositories, CI/
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - aws
@@ -13,6 +12,7 @@ tags:
 - trufflehog
 - secrets-detection
 - devsecops
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -310,3 +310,7 @@ SUMMARY:
   Unverified credential patterns: 15
   Repositories with pre-commit hooks: 8 / 42
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

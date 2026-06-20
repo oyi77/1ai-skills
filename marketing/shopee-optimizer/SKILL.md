@@ -1,11 +1,15 @@
 ---
 name: shopee-optimizer
-description: Shopee product management automation - listings, pricing, inventory,
-  and order processing. Use when managing Shopee product listings, automating price
-  adjustments based on competitors, syncing inventory across variants, processing
-  orders with templates, tracking analytics, generating SEO-optimized content, or
-  bulk uploading products from CSV files.
+description: Shopee product management automation - listings, pricing, inventory, and order processing. Use when managing
+  Shopee product listings, automating price adjustments based on competitors, syncing inventory across variants, processing
+  orders with templates, tracking analytics, generating SEO-optimized content, or bulk uploading products from CSV files.
 domain: marketing
+tags:
+- growth
+- marketing
+- optimizer
+- seo
+- shopee
 ---
 
 

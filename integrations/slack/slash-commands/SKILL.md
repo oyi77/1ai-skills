@@ -1,8 +1,26 @@
 ---
 name: slash-commands
-description: Create Slack slash commands
+description: Slash Commands. Use when working with slash commands in integrations domain.
 domain: integrations
+tags:
+- api
+- commands
+- integrations
+- slash
+- third-party
 ---
+## When to Use
+
+**Trigger phrases:**
+- "slash commands"
+- "Help me with slash commands"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Slash Commands
 
 Create Slack slash commands
@@ -85,3 +103,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

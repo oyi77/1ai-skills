@@ -1,8 +1,26 @@
 ---
 name: long-form
-description: Write 2000+ word articles
+description: Long Form. Use when working with long form in content domain.
 domain: content
+tags:
+- content-creation
+- digital-content
+- form
+- long
+- media
 ---
+## When to Use
+
+**Trigger phrases:**
+- "long form"
+- "Help me with long form"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 
 ## Long Form
@@ -69,3 +87,7 @@ After completing this skill, confirm:
 - Check the references/ directory for checklists and templates
 - Join the community for best practices and support
 - Contribute improvements via pull requests
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

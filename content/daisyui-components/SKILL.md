@@ -1,8 +1,13 @@
 ---
 name: daisyui-components
-description: daisyUI component library for Tailwind — themed components, colors, responsive,
-  dark mode
+description: daisyUI component library for Tailwind — themed components, colors, responsive, dark mode
 domain: content
+tags:
+- components
+- content-creation
+- daisyui
+- digital-content
+- media
 ---
 
 
@@ -157,3 +162,7 @@ module.exports = {
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

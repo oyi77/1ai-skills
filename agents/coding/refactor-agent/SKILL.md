@@ -1,7 +1,15 @@
 ---
 name: refactor-agent
-description: "Restructure code to improve readability, maintainability, and extensibility without changing external behavior. Use when reducing complexity, extracting reusable components, splitting monoliths, or modernizing legacy code."
+description: Restructure code to improve readability, maintainability, and extensibility without changing external behavior.
+  Use when reducing complexity, extracting reusable components, splitting monoliths, or modernizing legacy code.
 domain: agents
+tags:
+- agent
+- ai-agent
+- automation
+- orchestration
+- refactor
+- rest-api
 ---
 # Refactor Agent
 
@@ -266,3 +274,7 @@ After refactoring, confirm:
 - [ ] No speculative abstractions (every abstraction has 2+ real callers)
 - [ ] Refactoring commits are small and reviewable (one technique per commit)
 - [ ] No [TODO] or placeholder code left in refactored files
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

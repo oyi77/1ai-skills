@@ -5,7 +5,6 @@ description: 'Deploying Palo Alto Networks Prisma Access for SASE-based zero tru
 
   '
 domain: cybersecurity
-subdomain: zero-trust-architecture
 tags:
 - prisma-access
 - palo-alto
@@ -14,6 +13,7 @@ tags:
 - globalprotect
 - strata-cloud-manager
 - zero-trust
+subdomain: zero-trust-architecture
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -337,3 +337,7 @@ SECURITY (last 30 days):
   URL Blocked: 45,678
   WildFire Submissions: 2,345
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

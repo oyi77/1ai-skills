@@ -6,7 +6,6 @@ description: 'Detects lateral movement techniques including Pass-the-Hash, PsExe
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - lateral-movement
@@ -17,6 +16,7 @@ tags:
 - rdp
 - smb
 - detection
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -338,3 +338,7 @@ Affected Systems: 5 hosts across 2 network segments
 User Account:     admin_compromised (Domain Admin)
 Containment:      All 5 hosts isolated at 14:45 UTC
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

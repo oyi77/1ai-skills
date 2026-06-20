@@ -2,7 +2,25 @@
 name: github-mcp
 description: MCP server for GitHub automation
 domain: mcp
+tags:
+- github
+- mcp
+- mcp-server
+- model-context-protocol
+- tool-integration
 ---
+## When to Use
+
+**Trigger phrases:**
+- "github mcp"
+- "Help me with github mcp"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Github Mcp
 
 MCP server for GitHub automation
@@ -71,3 +89,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

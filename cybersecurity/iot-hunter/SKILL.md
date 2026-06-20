@@ -1,9 +1,15 @@
 ---
 name: iot-hunter
-description: IoT and embedded device security testing — firmware analysis, hardware
-  interfaces, protocol exploitation. Use when testing IoT devices, extracting firmware,
-  analyzing embedded systems, or finding hardware vulnerabilities.
+description: IoT and embedded device security testing — firmware analysis, hardware interfaces, protocol exploitation. Use
+  when testing IoT devices, extracting firmware, analyzing embedded systems, or finding hardware vulnerabilities.
 domain: cybersecurity
+tags:
+- cybersecurity
+- hunter
+- iot
+- security
+- testing
+- threat-defense
 ---
 
 # IoT Hunter
@@ -278,3 +284,7 @@ $(cat /etc/passwd)
 - IoT Village (DEF CON)
 - HackTheBox IoT challenges
 - Firmwaresecurity.com
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,7 +1,16 @@
 ---
 name: content-factory
-description: "All-in-one YouTube content generator: create full videos from prompts, generate vertical Shorts from text, or clip long videos into Shorts using free tools (ffmpeg, edge-tts, Pexels)."
+description: 'All-in-one YouTube content generator: create full videos from prompts, generate vertical Shorts from text, or
+  clip long videos into Shorts using free tools (ffmpeg, edge-tts, Pexels).'
 domain: content
+tags:
+- content
+- content-creation
+- digital-content
+- factory
+- media
+- text-to-speech
+- video
 ---
 
 
@@ -15,6 +24,18 @@ metadata: { "openclaw": { "requires": { "bins": ["ffmpeg", "edge-tts"], "env": [
 ---
 ---
 # Content Factory
+## When to Use
+
+**Trigger phrases:**
+- "content factory"
+- "Help me with content factory"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 All-in-one YouTube content generator. Create regular videos, Shorts from scratch, and convert long videos into Shorts. Combines the best of **youtube-factory** and **AI-Youtube-Shorts-Generator** with 100% free tools.
 
@@ -480,3 +501,7 @@ Built for OpenClaw | 100% Free Tools | [Support the Creator](https://buymeacoffe
 - Confirm links work and point to correct destinations
 - Test video/audio quality before publishing
 - Validate content renders correctly on mobile devices
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

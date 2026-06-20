@@ -1,7 +1,15 @@
 ---
 name: design-thinking
-description: Solve complex problems through empathy, ideation, prototyping, and testing. Use when tackling ambiguous challenges with user-centered approaches.
+description: Solve complex problems through empathy, ideation, prototyping, and testing. Use when tackling ambiguous challenges
+  with user-centered approaches.
 domain: mindset
+tags:
+- design
+- mindset
+- personal-development
+- soft-skills
+- testing
+- thinking
 ---
 
 # Design Thinking
@@ -146,3 +154,7 @@ Human-centered problem-solving framework: empathize, define, ideate, prototype, 
 - [ ] Testing done with 5+ real users (not teammates)
 - [ ] Iteration based on test feedback (what's confusing, what to change)
 - [ ] Ship decision made (users understand, want, can use)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

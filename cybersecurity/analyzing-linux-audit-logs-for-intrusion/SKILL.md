@@ -7,7 +7,6 @@ description: 'Uses the Linux Audit framework (auditd) with ausearch and aureport
 
   '
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - auditd
 - ausearch
@@ -16,6 +15,7 @@ tags:
 - intrusion-detection
 - HIDS
 - forensics
+subdomain: incident-response
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -288,3 +288,7 @@ transport = tcp
 - Treating compliance checklists as security guarantees rather than minimum baselines
 - Failing to document exceptions and risk acceptance decisions
 - Relying on point-in-time audits instead of continuous monitoring
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

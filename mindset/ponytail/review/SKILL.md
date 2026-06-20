@@ -1,10 +1,28 @@
 ---
 name: review
-description: "Review a diff for over-engineering. Finds what to delete: reinvented stdlib, needless deps, speculative abstractions. One line per finding."
-homepage: https://github.com/DietrichGebert/ponytail
+description: 'Review a diff for over-engineering. Finds what to delete: reinvented stdlib, needless deps, speculative abstractions.
+  One line per finding.'
 domain: mindset
+tags:
+- mindset
+- personal-development
+- review
+- soft-skills
+homepage: https://github.com/DietrichGebert/ponytail
 license: MIT
 ---
+## When to Use
+
+**Trigger phrases:**
+- "review"
+- "Help me with review"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Review diffs for unnecessary complexity. One line per finding: location, what
 to cut, what replaces it. The diff's best outcome is getting shorter.
@@ -50,3 +68,11 @@ normal review pass, not this one. A single smoke test or `assert`-based
 self-check is the ponytail minimum, not bloat, never flag it for deletion.
 Does not apply the fixes, only lists them.
 "stop ponytail-review" or "normal mode": revert to verbose review style.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.
+
+## Verification
+
+- [ ] Skill output matches expected behavior

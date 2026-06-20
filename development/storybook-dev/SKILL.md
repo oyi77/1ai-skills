@@ -1,8 +1,13 @@
 ---
 name: storybook-dev
-description: Storybook component development — stories, addons, controls, accessibility
-  testing, visual regression
+description: Storybook component development — stories, addons, controls, accessibility testing, visual regression
 domain: development
+tags:
+- coding
+- dev
+- software-engineering
+- storybook
+- testing
 ---
 
 
@@ -352,3 +357,7 @@ npx chromatic --project-token=${{ secrets.CHROMATIC_TOKEN }}
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

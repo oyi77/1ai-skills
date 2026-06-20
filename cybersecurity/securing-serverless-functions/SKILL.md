@@ -7,13 +7,13 @@ description: 'This skill covers security hardening for serverless compute platfo
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - serverless-security
 - aws-lambda
 - azure-functions
 - function-hardening
 - supply-chain
+subdomain: cloud-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -356,3 +356,7 @@ SUMMARY:
   Functions with Secrets Manager: 19/47 (40%)
   Functions with Input Validation: 22/47 (47%)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

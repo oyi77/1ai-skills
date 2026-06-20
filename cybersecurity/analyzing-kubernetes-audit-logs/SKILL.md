@@ -6,12 +6,12 @@ description: 'Parses Kubernetes API server audit logs (JSON lines) to detect exe
 
   '
 domain: cybersecurity
-subdomain: container-security
 tags:
 - analyzing
 - kubernetes
 - audit
 - logs
+subdomain: container-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -95,3 +95,7 @@ if verb in ("get", "list") and resource == "secrets":
 - Cloud resource changes reverted or documented as intentional
 - IAM policies reviewed for least-privilege compliance after testing
 - No residual test resources left running (cost and security check)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

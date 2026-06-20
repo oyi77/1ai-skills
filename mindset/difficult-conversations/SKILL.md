@@ -1,7 +1,14 @@
 ---
 name: difficult-conversations
-description: Navigate hard talks like feedback, disagreements, and terminations using SBI, DESC, and the 3-conversations framework. Use when delivering bad news or addressing conflict.
+description: Navigate hard talks like feedback, disagreements, and terminations using SBI, DESC, and the 3-conversations framework.
+  Use when delivering bad news or addressing conflict.
 domain: mindset
+tags:
+- conversations
+- difficult
+- mindset
+- personal-development
+- soft-skills
 ---
 
 # Difficult Conversations
@@ -90,3 +97,7 @@ Every difficult conversation is really three conversations:
 - [ ] Their perspective heard and acknowledged
 - [ ] Concrete next steps agreed upon with follow-up date
 - [ ] Relationship intact or improved (not damaged)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

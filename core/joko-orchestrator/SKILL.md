@@ -1,8 +1,14 @@
 ---
 name: joko-orchestrator
-description: Use when deterministically coordinating autonomous planning and execution
-  across available skills under strict guardrails.
+description: Use when deterministically coordinating autonomous planning and execution across available skills under strict
+  guardrails.
 domain: core
+tags:
+- infrastructure
+- joko
+- memory
+- orchestrator
+- self-improvement
 ---
 persona:
   name: "Jeff Dean"

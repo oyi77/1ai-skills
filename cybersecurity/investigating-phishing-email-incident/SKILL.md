@@ -6,7 +6,6 @@ description: 'Investigates phishing email incidents from initial user report thr
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - phishing
@@ -15,6 +14,7 @@ tags:
 - splunk
 - defender
 - sandbox
+subdomain: soc-operations
 mitre_attack:
 - T1566.001
 - T1566.002
@@ -329,3 +329,7 @@ Containment:
 
 Status:       RESOLVED — No evidence of lateral movement post-compromise
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

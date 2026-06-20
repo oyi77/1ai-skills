@@ -1,8 +1,26 @@
 ---
 name: webhook-router
-description: Route webhooks intelligently
+description: Webhook Router. Use when working with webhook router in automation domain.
 domain: automation
+tags:
+- automation
+- productivity
+- router
+- webhook
+- workflow
 ---
+## When to Use
+
+**Trigger phrases:**
+- "webhook router"
+- "Help me with webhook router"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Webhook Router
 
 Route webhooks intelligently
@@ -75,3 +93,7 @@ Additional context and best practices for this skill.
 - If output quality is low, provide more context in your input
 - If the skill does not cover your use case, check related skills
 - For integration issues, verify prerequisites and dependencies are met
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

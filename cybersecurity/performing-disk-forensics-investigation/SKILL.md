@@ -7,13 +7,13 @@ description: 'Conducts disk forensics investigations using forensic imaging, fil
 
   '
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - disk-forensics
 - forensic-imaging
 - evidence-acquisition
 - file-recovery
 - chain-of-custody
+subdomain: incident-response
 mitre_attack:
 - T1070
 - T1027
@@ -305,3 +305,7 @@ TOOLS USED
 - PECmd 1.5.0 (prefetch parsing)
 - MFTECmd 1.2.2 (MFT analysis)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -5,13 +5,13 @@ description: 'Captures and analyzes network packet data using Wireshark and tsha
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - wireshark
 - packet-analysis
 - traffic-analysis
 - pcap
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -262,3 +262,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Query pattern: TXT record requests with base64-encoded subdomains
 - Response pattern: TXT records containing base64-encoded payloads
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

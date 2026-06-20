@@ -1,7 +1,13 @@
 ---
 name: mindfulness
-description: Practice presence, reduce stress, and improve focus through meditation and awareness techniques. Use daily for mental clarity and emotional regulation.
+description: Practice presence, reduce stress, and improve focus through meditation and awareness techniques. Use daily for
+  mental clarity and emotional regulation.
 domain: mindset
+tags:
+- mindfulness
+- mindset
+- personal-development
+- soft-skills
 ---
 
 # Mindfulness
@@ -115,3 +121,7 @@ Framework for practicing mindfulness: meditation, breathing techniques, body sca
 - [ ] Mindful moments integrated into daily activities (eating, walking, listening)
 - [ ] Breath awareness used before stressful situations (3 breaths)
 - [ ] One mindfulness session completed without judgment of "doing it wrong"
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

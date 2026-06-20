@@ -1,8 +1,13 @@
 ---
 name: prisma-orm
-description: Prisma ORM — schema modeling, migrations, client queries, middleware,
-  performance optimization
+description: Prisma ORM — schema modeling, migrations, client queries, middleware, performance optimization
 domain: development
+tags:
+- coding
+- orm
+- prisma
+- software-engineering
+- testing
 ---
 
 
@@ -183,3 +188,7 @@ prisma.$use(async (params, next) => {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

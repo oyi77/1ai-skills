@@ -5,7 +5,6 @@ description: 'Auditing Kubernetes cluster RBAC configurations to identify overly
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - kubernetes
@@ -14,6 +13,7 @@ tags:
 - eks
 - gke
 - aks
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -358,3 +358,7 @@ SUMMARY:
   Pods with auto-mounted tokens: 45 / 67
   Privileged containers: 8
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

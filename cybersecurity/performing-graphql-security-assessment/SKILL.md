@@ -3,7 +3,6 @@ name: performing-graphql-security-assessment
 description: Assessing GraphQL API endpoints for introspection leaks, injection attacks, authorization flaws, and denial-of-service
   vulnerabilities during authorized security tests.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - penetration-testing
 - graphql
@@ -11,6 +10,7 @@ tags:
 - owasp
 - web-security
 - introspection
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -369,3 +369,7 @@ A social network API allows querying `friends { friends { friends { ... } } }` u
 6. Remove GraphiQL/Playground from production
 7. Parameterize all database queries in resolvers
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

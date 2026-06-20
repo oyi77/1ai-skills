@@ -1,9 +1,25 @@
 ---
 name: vilona
-description: 'Skill: vilona. See SKILL.md body for details. Use when this domain is
-  relevant.'
+description: 'Skill: vilona. See SKILL.md body for details. Use when this domain is relevant.'
 domain: core
+tags:
+- infrastructure
+- memory
+- self-improvement
+- vilona
 ---
+## When to Use
+
+**Trigger phrases:**
+- "vilona"
+- "Help me with vilona"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Available Tools (USE ALL)
 
 | Tool | Use For | Priority |
@@ -237,3 +253,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

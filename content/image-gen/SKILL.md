@@ -1,8 +1,14 @@
 ---
 name: image-gen
-description: AI image generation — Stable Diffusion, Midjourney, DALL-E, ComfyUI.
-  Prompt engineering for images, inpainting, outpainting, ControlNet
+description: AI image generation — Stable Diffusion, Midjourney, DALL-E, ComfyUI. Prompt engineering for images, inpainting,
+  outpainting, ControlNet
 domain: content
+tags:
+- content-creation
+- digital-content
+- gen
+- image
+- media
 ---
 
 
@@ -227,3 +233,7 @@ response = client.images.edit(
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

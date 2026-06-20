@@ -7,7 +7,6 @@ description: 'This skill covers implementing automated security scanning for Inf
 
   '
 domain: cybersecurity
-subdomain: devsecops
 tags:
 - devsecops
 - cicd
@@ -16,6 +15,7 @@ tags:
 - tfsec
 - terraform
 - secure-sdlc
+subdomain: devsecops
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -292,3 +292,7 @@ FAILED CHECKS:
 
 QUALITY GATE: FAILED (2 HIGH severity findings)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

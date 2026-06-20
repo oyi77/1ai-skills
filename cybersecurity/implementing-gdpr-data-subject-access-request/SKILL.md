@@ -7,7 +7,6 @@ description: 'Automates GDPR Data Subject Access Request (DSAR) workflows includ
 
   '
 domain: cybersecurity
-subdomain: privacy-compliance
 tags:
 - gdpr
 - dsar
@@ -16,6 +15,7 @@ tags:
 - data-subject-rights
 - compliance
 - article-15
+subdomain: privacy-compliance
 version: '1.0'
 author: mukul975
 license: Apache-2.0
@@ -334,3 +334,7 @@ for m in matches:
 - EDPB Guidelines 01/2022 on Right of Access: https://www.edpb.europa.eu/system/files/2023-04/edpb_guidelines_202201_data_subject_rights_access_v2_en.pdf
 - GDPR Article 12 (DSAR Modalities): https://gdpr-info.eu/art-12-gdpr/
 - Regulation (EU) 2025/2518 (Procedural Rules): Cross-border GDPR enforcement procedural rules
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

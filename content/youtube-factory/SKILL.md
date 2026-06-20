@@ -1,12 +1,12 @@
 ---
 name: youtube-factory
-description: Generate complete YouTube videos from a single prompt - script, voiceover,
-  stock footage, captions, thumbnail. Self-contained, no external modules. 100% free
-  tools.
+description: Generate complete YouTube videos from a single prompt - script, voiceover, stock footage, captions, thumbnail.
+  Self-contained, no external modules. 100% free tools.
+domain: content
+tags: video, youtube, content-creation, tts, automation, faceless
 version: 1.3.0
 author: Mayank8290
 homepage: https://github.com/Mayank8290/openclaw-video-skills
-tags: video, youtube, content-creation, tts, automation, faceless
 metadata:
   openclaw:
     requires:
@@ -16,11 +16,22 @@ metadata:
       env:
       - PEXELS_API_KEY
     primaryEnv: PEXELS_API_KEY
-domain: content
 ---
 
 
 # YouTube Factory
+## When to Use
+
+**Trigger phrases:**
+- "youtube factory"
+- "Help me with youtube factory"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Generate complete YouTube videos from a single prompt. Script, voiceover, stock footage, captions, thumbnail - all automated.
 
@@ -224,3 +235,7 @@ Built for OpenClaw | 100% Free Tools | [Support the Creator](https://buymeacoffe
 - Confirm links work and point to correct destinations
 - Test video/audio quality before publishing
 - Validate content renders correctly on mobile devices
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,7 +1,14 @@
 ---
 name: persuasion-influence
-description: Apply Cialdini's 6 principles of influence ethically in business contexts. Use when pitching, selling, or driving adoption without formal authority.
+description: Apply Cialdini's 6 principles of influence ethically in business contexts. Use when pitching, selling, or driving
+  adoption without formal authority.
 domain: mindset
+tags:
+- influence
+- mindset
+- personal-development
+- persuasion
+- soft-skills
 ---
 
 # Persuasion & Influence
@@ -134,3 +141,7 @@ Systematic influence framework based on Robert Cialdini's *Influence* and *Pre-S
 - [ ] Ethical boundaries respected (no deception, coercion, or one-sided extraction)
 - [ ] Relationship strengthened (not transactional or burned)
 - [ ] Outcome benefits both parties
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

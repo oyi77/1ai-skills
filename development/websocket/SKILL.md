@@ -1,8 +1,13 @@
 ---
 name: websocket
-description: WebSocket development — real-time bidirectional communication, Socket.IO,
-  native WebSocket API, scaling patterns
+description: WebSocket development — real-time bidirectional communication, Socket.IO, native WebSocket API, scaling patterns
 domain: development
+tags:
+- api
+- coding
+- software-engineering
+- testing
+- websocket
 ---
 
 
@@ -258,3 +263,7 @@ io.use((socket, next) => {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

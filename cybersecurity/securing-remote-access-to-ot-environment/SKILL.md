@@ -7,7 +7,6 @@ description: 'This skill covers implementing secure remote access to OT/ICS envi
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -17,6 +16,7 @@ tags:
 - remote-access
 - jump-server
 - mfa
+subdomain: ot-ics-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -411,3 +411,7 @@ VENDOR ACCESS:
   Co-attended: [N]
   Recorded: [N]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

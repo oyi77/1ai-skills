@@ -1,7 +1,15 @@
 ---
 name: postai-automation
-description: "Automate TikTok and Instagram video creation from product images using POST AI — generates dozens of captioned, voiced-over variants for affiliate and e-commerce marketing."
+description: Automate TikTok and Instagram video creation from product images using POST AI — generates dozens of captioned,
+  voiced-over variants for affiliate and e-commerce marketing.
 domain: automation
+tags:
+- automation
+- postai
+- productivity
+- video
+- voice
+- workflow
 ---
 # POST AI Automation
 
@@ -367,3 +375,7 @@ if i % 10 == 0:
 - [ ] Rate limits are respected
 - [ ] Error handling is in place
 - [ ] Posts can be cancelled if needed
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

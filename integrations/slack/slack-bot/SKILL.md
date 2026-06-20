@@ -1,8 +1,27 @@
 ---
 name: slack-bot
-description: Skill for Build Slack bots. Provides automation and best practices.
+description: Slack Bot. Use when performing slack bot tasks in integrations workflows.
 domain: integrations
+tags:
+- api
+- bot
+- integrations
+- slack
+- third-party
+- workflow
 ---
+## When to Use
+
+**Trigger phrases:**
+- "slack bot"
+- "Help me with slack bot"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Slack Bot
 
 Build Slack bots
@@ -80,3 +99,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

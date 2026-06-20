@@ -7,7 +7,6 @@ description: 'Analyzes indicators of compromise (IOCs) including IP addresses, d
 
   '
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - IOC
 - VirusTotal
@@ -17,6 +16,7 @@ tags:
 - threat-intelligence
 - STIX
 - NIST-CSF
+subdomain: threat-intelligence
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -191,3 +191,7 @@ Export to STIX indicator object with confidence field set appropriately.
 - **Missing defanging**: Pasting live IOCs in emails or Confluence docs can trigger automated URL scanners or phishing tools.
 - **No expiration policy**: IOCs without TTLs accumulate in blocklists indefinitely, generating false positives as infrastructure is repurposed by legitimate users.
 - **Over-relying on single source**: VirusTotal aggregates AV opinions — all may be wrong or lag behind emerging malware. Use 3+ independent sources for high-stakes decisions.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

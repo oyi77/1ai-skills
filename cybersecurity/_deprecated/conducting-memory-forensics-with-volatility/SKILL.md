@@ -7,13 +7,13 @@ description: 'Performs memory forensics analysis using Volatility 3 to extract e
 
   '
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - memory-forensics
 - volatility
 - RAM-analysis
 - process-injection
 - DFIR
+subdomain: incident-response
 mitre_attack:
 - T1003
 - T1055
@@ -308,3 +308,7 @@ C2 IPs:     185.220.101.42, 91.215.85.17
 C2 Domains: [extracted from beacon config]
 Mutexes:    Global\MSCTF.Shared.MUTEX.ZRQ
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

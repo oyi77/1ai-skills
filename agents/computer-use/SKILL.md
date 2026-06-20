@@ -1,8 +1,13 @@
 ---
 name: computer-use
-description: Computer use agents — desktop automation, screen reading, mouse/keyboard
-  control, GUI interaction for AI agents
+description: Computer use agents — desktop automation, screen reading, mouse/keyboard control, GUI interaction for AI agents
 domain: agents
+tags:
+- ai-agent
+- automation
+- computer
+- orchestration
+- use
 ---
 
 ## Overview

@@ -1,14 +1,10 @@
 ---
 name: collecting-open-source-intelligence
-description: 'Collects and synthesizes open-source intelligence (OSINT) about threat actors, malicious infrastructure, and
+description: Collects and synthesizes open-source intelligence (OSINT) about threat actors, malicious infrastructure, and
   attack campaigns using publicly available data sources, passive reconnaissance tools, and dark web monitoring. Use when
   investigating external threat actor infrastructure, performing pre-engagement reconnaissance for authorized red team assessments,
-  or enriching CTI reports with publicly available adversary context. Activates for requests involving Maltego, Shodan, OSINT
-  framework, SpiderFoot, or infrastructure reconnaissance.
-
-  '
+  or enriching CTI reports with publicly available adversary context.
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - OSINT
 - Maltego
@@ -18,6 +14,7 @@ tags:
 - threat-intelligence
 - ATT&CK-T1591
 - NIST-CSF
+subdomain: threat-intelligence
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -171,3 +168,7 @@ python sf.py -s evil-domain.com -m sfp_shodan,sfp_virustotal,sfp_passivetotal \
 - **Outdated data**: WHOIS privacy services and bulletproof hosting rotate frequently. Always check data timestamps — 6-month-old passive DNS may no longer be valid.
 - **Attribution overconfidence**: Infrastructure overlap does not guarantee same threat actor. False flag operations deliberately share indicators across groups.
 - **Legal boundaries**: Some OSINT tools perform active scans (port scanning, banner grabbing). Confirm tool behavior before use against external targets without authorization.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,8 +1,13 @@
 ---
 name: neon-postgres
-description: Neon serverless Postgres — branching, autoscaling, connection pooling,
-  edge-compatible Postgres
+description: Neon serverless Postgres — branching, autoscaling, connection pooling, edge-compatible Postgres
 domain: development
+tags:
+- coding
+- neon
+- postgres
+- software-engineering
+- testing
 ---
 
 
@@ -156,3 +161,7 @@ const users = await db.select().from(usersTable);
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

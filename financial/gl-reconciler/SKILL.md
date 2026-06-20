@@ -1,8 +1,13 @@
 ---
 name: gl-reconciler
-description: Finds breaks, traces root cause, routes for sign-off. Use when user says
-  "reconcile GL", "find breaks", "trace accounting error".
+description: Finds breaks, traces root cause, routes for sign-off. Use when user says "reconcile GL", "find breaks", "trace
+  accounting error".
 domain: financial
+tags:
+- analysis
+- finance
+- investment
+- reconciler
 ---
 
 # GL Reconciler

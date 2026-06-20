@@ -1,7 +1,14 @@
 ---
 name: stakeholder-management
-description: Map, engage, and align stakeholders using the power-interest grid, RACI matrix, and communication plans. Use when navigating complex projects or organizational politics.
+description: Map, engage, and align stakeholders using the power-interest grid, RACI matrix, and communication plans. Use
+  when navigating complex projects or organizational politics.
 domain: mindset
+tags:
+- mindset
+- personal-development
+- rest-api
+- soft-skills
+- stakeholder
 ---
 
 # Stakeholder Management
@@ -146,3 +153,7 @@ Framework for identifying, mapping, engaging, and aligning stakeholders. Covers 
 - [ ] Key stakeholders pre-briefed before major meetings
 - [ ] Difficult stakeholder strategies ready (critic, hoarder, bystander, executive)
 - [ ] Stakeholder stance tracked (current vs desired, with action plan to close gap)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

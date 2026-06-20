@@ -1,8 +1,13 @@
 ---
 name: electron-apps
-description: Electron desktop app development — main/renderer process, IPC, native
-  menus, auto-update, packaging
+description: Electron desktop app development — main/renderer process, IPC, native menus, auto-update, packaging
 domain: development
+tags:
+- apps
+- coding
+- electron
+- software-engineering
+- testing
 ---
 
 
@@ -345,3 +350,7 @@ crashReporter.start({
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

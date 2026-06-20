@@ -7,7 +7,6 @@ description: 'Analyzes structured and unstructured threat intelligence feeds to 
 
   '
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - STIX
 - TAXII
@@ -18,6 +17,7 @@ tags:
 - MISP
 - CTI
 - NIST-CSF
+subdomain: threat-intelligence
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -146,3 +146,7 @@ Export enriched indicators via TAXII 2.1 push to SIEM (Splunk, Microsoft Sentine
 - **Feed overlap without deduplication**: Ingesting the same IOC from five feeds without deduplication inflates indicator counts and SIEM rule complexity.
 - **TLP violation**: Redistributing RED-classified intelligence outside authorized boundaries violates sharing agreements and trust relationships.
 - **Over-blocking on low-confidence indicators**: Indicators with confidence below 50 should trigger detection-only rules, not blocking, to avoid operational disruption.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

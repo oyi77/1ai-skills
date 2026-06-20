@@ -1,23 +1,33 @@
 ---
 name: marketing-ops
-description: ">\n  Complete AI-powered marketing & sales operating system for solo\
-  \ founders.\n  Covers the full revenue lifecycle: customer research, content creation,\n\
-  \  SEO/GEO/SMO optimization, paid ads, email sequences, sales enablement,\n  CRO,\
-  \ pricing, retention, analytics, automation, and global expansion.\n  Includes stage-based\
-  \ playbooks ($0→$100K MRR), AI agent orchestration,\n  PLG frameworks, Indonesia\
-  \ e-commerce, and decision-making infrastructure.\n  Use whenever the user mentions\
-  \ marketing, ads, SEO, content strategy,\n  campaigns, social media, email, copywriting,\
-  \ landing pages, conversions,\n  growth, funnels, brand voice, ad copy, ROAS, CPC,\
-  \ CTR, lead gen,\n  sales, pricing, churn, retention, partnerships, or any revenue\
-  \ task.\n  Triggers on: \"write a blog post,\" \"plan a campaign,\" \"audit my landing\
-  \ page,\"\n  \"create email sequence,\" \"keyword research,\" \"ad copy,\" \"content\
-  \ calendar,\"\n  \"help me get customers,\" \"grow my business,\" \"increase revenue.\"\
-  \n"
+description: ">\n  Complete AI-powered marketing & sales operating system for solo founders.\n  Covers the full revenue lifecycle:\
+  \ customer research, content creation,\n  SEO/GEO/SMO optimization, paid ads, email sequences, sales enablement,\n  CRO,\
+  \ pricing, retention, analytics, automation, and global expansion.\n  Includes stage-based playbooks ($0→$100K MRR), AI\
+  \ agent orchestration,\n  PLG frameworks, Indonesia e-commerce, and decision-making infrastructure."
 domain: marketing
+tags:
+- ai-agent
+- email
+- growth
+- marketing
+- ops
+- seo
 ---
 
 
 # Marketing Ops — AI CMO for Solo Founders
+## When to Use
+
+**Trigger phrases:**
+- "marketing ops"
+- "Help me with marketing ops"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 One AI-powered system that runs your entire marketing & sales operation
 so you can focus on building product. 4-layer architecture with shared
@@ -319,3 +329,7 @@ AI does: prospecting, researching, writing, reviewing, sending.
 - Check UTM parameters parse correctly in analytics dashboard
 - Confirm email deliverability via seed list test
 - Validate landing page speed (target < 3s load time)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

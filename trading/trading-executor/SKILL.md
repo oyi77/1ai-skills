@@ -1,13 +1,21 @@
 ---
 name: trading-executor
-description: "Execute trades via API with position sizing, order management, and slippage monitoring. Use when placing orders on exchanges."
+description: Execute trades via API with position sizing, order management, and slippage monitoring. Use when placing orders
+  on exchanges.
+domain: trading
+tags:
+- algorithms
+- api
+- executor
+- markets
+- monitoring
+- trading
 allowed-tools:
 - Bash(trading:*)
 - MCP(mt5:*)
 - MCP(slack:*)
 - fs
 - network
-domain: trading
 ---
 
 # Trading Executor

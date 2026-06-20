@@ -7,13 +7,13 @@ description: 'Detects rootkit presence on compromised systems by identifying hid
 
   '
 domain: cybersecurity
-subdomain: malware-analysis
 tags:
 - malware
 - rootkit
 - detection
 - kernel-analysis
 - memory-forensics
+subdomain: malware-analysis
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -339,3 +339,7 @@ REMEDIATION
 - Verify MBR/VBR/UEFI integrity for boot persistence
 - Full system rebuild recommended for kernel-level compromise
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

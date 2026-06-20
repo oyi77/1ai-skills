@@ -1,8 +1,13 @@
 ---
 name: supabase-patterns
-description: Supabase patterns — Row Level Security, edge functions, real-time subscriptions,
-  and auth integration
+description: Supabase patterns — Row Level Security, edge functions, real-time subscriptions, and auth integration
 domain: development
+tags:
+- coding
+- patterns
+- software-engineering
+- supabase
+- testing
 ---
 
 
@@ -114,3 +119,7 @@ const channel = supabase
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

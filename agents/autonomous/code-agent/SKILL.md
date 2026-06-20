@@ -1,7 +1,15 @@
 ---
 name: code-agent
-description: "Write production-quality code from specs — reads requirements, researches patterns, implements with tests, and iterates until verification passes. Use when implementing features, fixing bugs with known root causes, or building new modules."
+description: Write production-quality code from specs — reads requirements, researches patterns, implements with tests, and
+  iterates until verification passes. Use when implementing features, fixing bugs with known root causes, or building new
+  modules.
 domain: agents
+tags:
+- agent
+- ai-agent
+- automation
+- code
+- orchestration
 ---
 # Code Agent
 
@@ -296,3 +304,7 @@ After writing code, confirm:
 - [ ] Integration verified (new code works with existing system)
 - [ ] Documentation updated if public API changed
 - [ ] No [TODO] or placeholder code in production paths
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

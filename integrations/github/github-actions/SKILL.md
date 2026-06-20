@@ -1,8 +1,26 @@
 ---
 name: github-actions
-description: Automate GitHub Actions
+description: Github Actions. Use when working with github actions in integrations domain.
 domain: integrations
+tags:
+- actions
+- api
+- github
+- integrations
+- third-party
 ---
+## When to Use
+
+**Trigger phrases:**
+- "github actions"
+- "Help me with github actions"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Github Actions
 
 Automate GitHub Actions
@@ -86,3 +104,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

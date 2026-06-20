@@ -1,12 +1,17 @@
 ---
 name: feedback-collector
-description: Collect, analyze, and route feedback from users and systems. Turn feedback
-  into actionable improvement signals.
+description: Collect, analyze, and route feedback from users and systems. Turn feedback into actionable improvement signals.
+domain: meta
+tags:
+- collector
+- feedback
+- meta-learning
+- self-improvement
+- skill-evolution
 persona:
   name: User Research Lead
   expertise: Feedback systems, NLP, sentiment analysis
   philosophy: Every interaction is an opportunity to learn
-domain: meta
 ---
 ## Feedback Collector
 
@@ -33,6 +38,18 @@ feedback_channels:
 
 ```python
 # Collect feedback
+## When to Use
+
+**Trigger phrases:**
+- "feedback collector"
+- "Help me with feedback collector"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 /feedback-collector submit skill=seo-optimizer rating=4 comment="Good but slow"
 
 # Analyze sentiment
@@ -96,3 +113,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

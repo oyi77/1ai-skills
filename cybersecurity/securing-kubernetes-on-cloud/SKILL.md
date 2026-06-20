@@ -6,7 +6,6 @@ description: 'This skill covers hardening managed Kubernetes clusters on EKS, AK
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - kubernetes-security
 - eks
@@ -14,6 +13,7 @@ tags:
 - gke
 - pod-security-standards
 - container-runtime
+subdomain: cloud-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -412,3 +412,7 @@ HIGH FINDINGS:
   [K8S-005] Images deployed using mutable tags (:latest) in 8 deployments
   [K8S-006] RBAC ClusterRoleBinding grants cluster-admin to developers group
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

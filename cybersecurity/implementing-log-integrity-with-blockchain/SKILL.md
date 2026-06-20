@@ -5,12 +5,12 @@ description: Build an append-only log integrity chain using SHA-256 hash chainin
   hashes. Implements log ingestion, chain verification, tamper detection with pinpoint identification, and periodic checkpoint
   anchoring to external timestamping services.
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - implementing
 - log
 - integrity
 - with
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -89,3 +89,7 @@ If entry 42 is modified, chain_hash[42] will not match SHA256(chain_hash[41] + .
 - Output documented with screenshots or logs demonstrating expected behavior
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

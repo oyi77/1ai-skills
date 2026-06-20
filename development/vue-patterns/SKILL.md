@@ -1,8 +1,14 @@
 ---
 name: vue-patterns
-description: Vue.js 3 development patterns — Composition API, Pinia state management,
-  Vue Router, Nuxt.js, component architecture
+description: Vue.js 3 development patterns — Composition API, Pinia state management, Vue Router, Nuxt.js, component architecture
 domain: development
+tags:
+- api
+- coding
+- patterns
+- software-engineering
+- testing
+- vue
 ---
 
 
@@ -177,3 +183,7 @@ const HeavyComponent = defineAsyncComponent(() =>
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

@@ -1,20 +1,17 @@
 ---
 name: conducting-wireless-network-penetration-test
-description: 'Conducts authorized wireless network penetration tests to assess the security of WiFi infrastructure by testing
+description: Conducts authorized wireless network penetration tests to assess the security of WiFi infrastructure by testing
   for weak encryption protocols, captive portal bypasses, evil twin attacks, WPA2/WPA3 handshake capture, rogue access point
   detection, and client-side attacks. The tester evaluates wireless authentication, network segmentation, and the effectiveness
-  of wireless intrusion detection systems. Activates for requests involving wireless pentest, WiFi security assessment, WPA2/WPA3
-  testing, or rogue access point detection.
-
-  '
+  of wireless intrusion detection systems.
 domain: cybersecurity
-subdomain: penetration-testing
 tags:
 - wireless-pentest
 - WiFi-security
 - WPA2
 - WPA3
 - evil-twin
+subdomain: penetration-testing
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -214,3 +211,7 @@ the WPA2-Enterprise authentication required for employee access.
 4. Migrate IoT devices to 802.1X authentication with device certificates where supported
 5. Deploy WIDS to detect deauthentication attacks and rogue access points
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,8 +1,16 @@
 ---
 name: oh-my-opencode-features
-description: Complete reference of all oh-my-opencode features including agents, tools,
-  MCPs, hooks, workflow automation, and productivity enhancements
+description: Complete reference of all oh-my-opencode features including agents, tools, MCPs, hooks, workflow automation,
+  and productivity enhancements
 domain: integrations
+tags:
+- ai-agent
+- api
+- features
+- integrations
+- opencode
+- third-party
+- workflow
 ---
 
 # Oh My OpenCode Features

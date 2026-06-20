@@ -6,7 +6,6 @@ description: 'Correlates security events in IBM QRadar SIEM using AQL (Ariel Que
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - qradar
@@ -15,6 +14,7 @@ tags:
 - correlation
 - offense-management
 - ibm
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -314,3 +314,7 @@ Sources Correlated:
 Disposition:    TRUE POSITIVE — Escalated to Incident Response
 Ticket:         IR-2024-0432
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

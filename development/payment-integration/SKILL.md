@@ -1,8 +1,15 @@
 ---
 name: payment-integration
-description: Payment platform integration — Stripe, Paddle, Lemon Squeezy. Checkout
-  flows, subscriptions, webhooks, billing management
+description: Payment platform integration — Stripe, Paddle, Lemon Squeezy. Checkout flows, subscriptions, webhooks, billing
+  management
 domain: development
+tags:
+- coding
+- integration
+- payment
+- software-engineering
+- testing
+- webhook
 ---
 
 
@@ -189,3 +196,7 @@ app.post('/webhooks/lemonsqueezy', async (req, res) => {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

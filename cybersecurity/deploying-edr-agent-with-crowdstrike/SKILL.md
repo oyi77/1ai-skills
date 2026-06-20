@@ -7,7 +7,6 @@ description: 'Deploys and configures CrowdStrike Falcon EDR agents across enterp
 
   '
 domain: cybersecurity
-subdomain: endpoint-security
 tags:
 - endpoint
 - edr
@@ -15,6 +14,7 @@ tags:
 - Falcon
 - threat-detection
 - sensor-deployment
+subdomain: endpoint-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -295,3 +295,7 @@ reg query "HKLM\SYSTEM\CrowdStrike\{9b03c1d9-3138-44ed-9fae-d9f4c034b88d}\{16e04
 - **macOS System Extension blocked**: macOS requires explicit approval for kernel/system extensions. Use MDM to pre-approve CrowdStrike extensions before deployment.
 - **Conflicting security products**: Running multiple EDR/AV products causes performance issues and false positives. Coordinate exclusions or remove legacy AV before Falcon deployment.
 - **Sensor version pinning**: Falcon auto-updates sensors by default. Pin sensor versions in the console for change-controlled environments before testing new versions.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

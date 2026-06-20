@@ -5,7 +5,6 @@ description: 'Deploying Cloudflare Access with Cloudflare Tunnel to provide zero
 
   '
 domain: cybersecurity
-subdomain: zero-trust-architecture
 tags:
 - cloudflare
 - cloudflare-access
@@ -14,6 +13,7 @@ tags:
 - warp
 - ztna
 - cloudflare-one
+subdomain: zero-trust-architecture
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -431,3 +431,7 @@ ACCESS METRICS (last 30 days):
   Countries: 12
   Avg Session Duration: 6.2 hours
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

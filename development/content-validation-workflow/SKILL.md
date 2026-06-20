@@ -1,9 +1,29 @@
 ---
 name: content-validation-workflow
-description: "Validate AI-generated content quality through sample generation, human review gates, and controlled batch production workflows."
+description: Validate AI-generated content quality through sample generation, human review gates, and controlled batch production
+  workflows.
 domain: development
+tags:
+- coding
+- content
+- software-engineering
+- testing
+- validation
+- workflow
 ---
 # Content Workflow: Generate Sample → Human Review → Batch Production
+## When to Use
+
+**Trigger phrases:**
+- "content validation workflow"
+- "Help me with content validation workflow"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Apa Ini?
 
@@ -417,3 +437,7 @@ This validator integrates with:
 - Configuration uses environment variables or config files, not hardcoded values
 - Security-sensitive code (auth, payments, API) has explicit review
 - Code follows project conventions (naming, patterns, structure)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

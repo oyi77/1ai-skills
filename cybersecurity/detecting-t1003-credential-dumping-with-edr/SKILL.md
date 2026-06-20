@@ -3,7 +3,6 @@ name: detecting-t1003-credential-dumping-with-edr
 description: Detect OS credential dumping techniques targeting LSASS memory, SAM database, NTDS.dit, and cached credentials
   using EDR telemetry, Sysmon process access monitoring, and Windows security event correlation.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - credential-dumping
@@ -13,6 +12,7 @@ tags:
 - mimikatz
 - ntds
 - sam-database
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -185,3 +185,7 @@ ATT&CK Technique: [T1003.00x]
 Risk Level: [Critical/High/Medium]
 Credentials at Risk: [Scope assessment]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

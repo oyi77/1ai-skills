@@ -6,13 +6,13 @@ description: 'Designs and implements VLAN-based network segmentation on managed 
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - vlan
 - network-segmentation
 - switch-security
 - 802.1q
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -454,3 +454,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 | Unused Ports Shutdown | 10 ports in VLAN 999 |
 | VTP Transparent Mode | Enabled |
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

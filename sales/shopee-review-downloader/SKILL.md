@@ -1,10 +1,30 @@
 ---
 name: shopee-review-downloader
-description: "Download and analyze Shopee product reviews in bulk for competitive research, sentiment analysis, and market intelligence."
+description: Download and analyze Shopee product reviews in bulk for competitive research, sentiment analysis, and market
+  intelligence.
 domain: sales
+tags:
+- business-development
+- downloader
+- revenue
+- review
+- sales
+- shopee
 ---
 
 # Shopee Review Video Downloader
+## When to Use
+
+**Trigger phrases:**
+- "shopee review downloader"
+- "Help me with shopee review downloader"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Download product review videos from Shopee pages with automated browser navigation and metadata extraction.
 
@@ -407,3 +427,7 @@ MIT License - Use freely, modify as needed, provide attribution.
 - Check lead scoring model against actual conversion data
 - Confirm proposal/contract templates are current and branded
 - Validate payment links and checkout flow end-to-end
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

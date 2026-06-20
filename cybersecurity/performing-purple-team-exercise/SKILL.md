@@ -7,7 +7,6 @@ description: 'Performs purple team exercises by coordinating red team adversary 
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - purple-team
@@ -16,6 +15,7 @@ tags:
 - mitre-attack
 - adversary-emulation
 - detection-validation
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -340,3 +340,7 @@ DETAILED RESULTS:
 POST-EXERCISE COVERAGE: 93% (14/15) — up from 73% at start
 REMAINING GAP: T1486 requires EDR file monitoring enhancement
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

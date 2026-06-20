@@ -5,13 +5,13 @@ description: 'Installs, configures, and tunes Snort 3 intrusion detection system
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - snort
 - ids
 - intrusion-detection
 - rule-writing
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -439,3 +439,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Thresholded SID 1000004 to 5 alerts per source per hour
 - Added 3 custom rules for PHI exfiltration detection
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

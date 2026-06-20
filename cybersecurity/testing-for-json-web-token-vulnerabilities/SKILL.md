@@ -3,7 +3,6 @@ name: testing-for-json-web-token-vulnerabilities
 description: Test JWT implementations for critical vulnerabilities including algorithm confusion, none algorithm bypass, kid
   parameter injection, and weak secret exploitation to achieve authentication bypass and privilege escalation.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - jwt
 - json-web-token
@@ -12,6 +11,7 @@ tags:
 - token-forgery
 - kid-injection
 - jku-attack
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -266,3 +266,7 @@ python3 jwt_tool.py <JWT_TOKEN> -S hs256 -p "discovered_secret" \
 - Ignore jku/x5u headers or validate against known endpoints
 - Set appropriate token expiration (exp) and implement token revocation
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

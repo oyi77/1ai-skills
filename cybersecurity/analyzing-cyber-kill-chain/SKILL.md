@@ -1,14 +1,10 @@
 ---
 name: analyzing-cyber-kill-chain
-description: 'Analyzes intrusion activity against the Lockheed Martin Cyber Kill Chain framework to identify which phases
-  an adversary has completed, where defenses succeeded or failed, and what controls would have interrupted the attack at earlier
+description: Analyzes intrusion activity against the Lockheed Martin Cyber Kill Chain framework to identify which phases an
+  adversary has completed, where defenses succeeded or failed, and what controls would have interrupted the attack at earlier
   phases. Use when conducting post-incident analysis, building prevention-focused security controls, or mapping detection
-  gaps to kill chain phases. Activates for requests involving kill chain analysis, intrusion kill chain, attack phase mapping,
-  or Lockheed Martin kill chain framework.
-
-  '
+  gaps to kill chain phases.
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - kill-chain
 - Lockheed-Martin
@@ -16,6 +12,7 @@ tags:
 - intrusion-analysis
 - defense-in-depth
 - NIST-CSF
+subdomain: threat-intelligence
 version: 1.0.0
 author: team-cybersecurity
 license: Apache-2.0
@@ -167,3 +164,7 @@ Structure findings as:
 - **Ignoring Phases 1 and 2**: Reconnaissance and weaponization occur before the defender has visibility. Intelligence about these phases requires external sources (OSINT, threat intelligence).
 - **Missing insider threats**: The kill chain was designed for external adversaries. Insider threats may skip directly to Phase 7 without traversing earlier phases.
 - **Confusing with ATT&CK tactics**: The 7-phase kill chain and 14 ATT&CK tactics are complementary but not directly equivalent. Maintain distinction to prevent analytic confusion.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

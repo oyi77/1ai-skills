@@ -1,8 +1,13 @@
 ---
 name: rabbitmq-patterns
-description: RabbitMQ patterns — exchanges, queues, routing, dead letter queues, priority
-  queues, clustering
+description: RabbitMQ patterns — exchanges, queues, routing, dead letter queues, priority queues, clustering
 domain: development
+tags:
+- coding
+- patterns
+- rabbitmq
+- software-engineering
+- testing
 ---
 
 
@@ -185,3 +190,7 @@ await ch.consume('dead-letters', async (msg) => {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

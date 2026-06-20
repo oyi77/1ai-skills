@@ -6,7 +6,6 @@ description: 'Deploy and configure the Dragos Platform for OT network monitoring
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - scada
 - threat-intelligence
 - ndr
+subdomain: ot-ics-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -402,3 +402,7 @@ SIEM INTEGRATION:
   Status: [Connected/Disconnected]
   Events Forwarded (Last 24h): [count]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

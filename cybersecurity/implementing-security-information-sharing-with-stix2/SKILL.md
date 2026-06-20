@@ -5,12 +5,12 @@ description: 'Create, validate, and share STIX 2.1 threat intelligence objects u
 
   '
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - stix
 - taxii
 - threat-sharing
 - intelligence-exchange
+subdomain: threat-intelligence
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -428,3 +428,7 @@ validate_stix_bundle("emotet_campaign_bundle.json")
 - Acting on threat intelligence without validating source reliability
 - Sharing classified or sensitive indicators without proper handling procedures
 - Alerting threat actors to detection capabilities through visible response actions
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

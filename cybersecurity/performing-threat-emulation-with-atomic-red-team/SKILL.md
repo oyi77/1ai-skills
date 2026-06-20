@@ -6,12 +6,12 @@ description: 'Executes Atomic Red Team tests for MITRE ATT&CK technique validati
 
   '
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - performing
 - threat
 - emulation
 - with
+subdomain: threat-intelligence
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -112,3 +112,7 @@ for test in tests.get("atomic_tests", []):
 - All exploited vulnerabilities documented with reproduction steps
 - Scope boundaries confirmed — only authorized targets were tested
 - Remediation recommendations included for every finding
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

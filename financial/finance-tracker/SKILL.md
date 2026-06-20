@@ -1,7 +1,13 @@
 ---
 name: finance-tracker
-description: "Track real-time revenue across 5 income streams, monitor cashflow and runway, detect revenue gaps, and send threshold alerts via Telegram."
+description: Track real-time revenue across 5 income streams, monitor cashflow and runway, detect revenue gaps, and send threshold
+  alerts via Telegram.
 domain: financial
+tags:
+- analysis
+- finance
+- investment
+- tracker
 ---
 # Finance Tracker — BerkahKarya
 
@@ -1013,3 +1019,7 @@ After completing finance tracker setup, confirm:
 > Every hour without revenue is an hour closer to zero.
 > Run the alerts. Check the dashboard. Record every sale.
 > 🔥 — Vilona, BerkahKarya AI GM
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

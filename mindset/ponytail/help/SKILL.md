@@ -1,12 +1,29 @@
 ---
 name: help
-description: "Quick reference for ponytail's modes, skills, and commands. One-shot display."
-homepage: https://github.com/DietrichGebert/ponytail
+description: Quick reference for ponytail's modes, skills, and commands. One-shot display.
 domain: mindset
+tags:
+- help
+- mindset
+- personal-development
+- soft-skills
+homepage: https://github.com/DietrichGebert/ponytail
 license: MIT
 ---
 
 # Ponytail Help
+## When to Use
+
+**Trigger phrases:**
+- "help"
+- "Help me with help"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Display this reference card when invoked. One-shot, do NOT change mode,
 write flag files, or persist anything.
@@ -66,3 +83,11 @@ If `/plugin` is not recognized, your Claude Code is out of date. Update it (`npm
 ## More
 
 Full docs + examples: https://github.com/DietrichGebert/ponytail
+
+## Overview
+
+> Section content — see SKILL.md body for full details.
+
+## Verification
+
+- [ ] Skill output matches expected behavior

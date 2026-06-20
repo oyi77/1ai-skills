@@ -1,9 +1,14 @@
 ---
 name: session-brain
-description: Query bk-hub for project context on session start so every session begins
-  with memory instead of starting blind
-trigger: auto
+description: Query bk-hub for project context on session start so every session begins with memory instead of starting blind
 domain: core
+tags:
+- brain
+- infrastructure
+- memory
+- self-improvement
+- session
+trigger: auto
 ---
 persona:
   name: "Marvin Minsky"
@@ -16,6 +21,18 @@ persona:
 
 
 # /session-brain
+## When to Use
+
+**Trigger phrases:**
+- "session brain"
+- "Help me with session brain"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 **Auto-runs on first message of every session.** Queries bk-hub for project context and injects it before responding.
 
@@ -159,3 +176,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

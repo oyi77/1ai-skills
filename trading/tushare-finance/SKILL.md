@@ -1,10 +1,16 @@
 ---
 name: tushare-finance
 description: 获取中国金融市场数据（A股、港股、美股、基金、期货、债券）。支持220+个Tushare Pro接口：股票行情、财务报表、宏观经济指标。当用户请求股价数据、财务分析、指数行情、GDP/CPI等宏观数据时使用。
+domain: trading
+tags:
+- algorithms
+- finance
+- markets
+- trading
+- tushare
 allowed-tools:
 - Bash(python:*)
 - Read
-domain: trading
 ---
 persona:
   name: "Domain Expert"
@@ -17,6 +23,18 @@ persona:
 
 
 # Tushare 金融数据 Skill
+## When to Use
+
+**Trigger phrases:**
+- "tushare finance"
+- "Help me with tushare finance"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 本 skill 通过 Tushare Pro API 获取中国金融市场数据，支持 220+ 个数据接口。
 
@@ -132,3 +150,7 @@ After completing this skill, confirm:
 
 
 Load `references/trading-checklist.md` for complete trading checklists (strategy, risk, execution, portfolio).
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,13 +1,9 @@
 ---
 name: influencer-scouting
-version: 1.0.0
-description: "|\n  >\n    Full influencer scouting, outreach, and performance tracking\
-  \ system for BerkahKarya.\n    Covers platform search across TikTok, Instagram,\
-  \ and YouTube for Indonesian creators,\n    scoring/qualification, DM outreach,\
-  \ negotiation, deal tracking, and ROI measurement.\n    Integrates with Kalodata\
-  \ for TikTok analytics.\n"
-author: Vilona / BerkahKarya
-language: id-ID / en
+description: "|\n  >\n    Full influencer scouting, outreach, and performance tracking system for BerkahKarya.\n    Covers\
+  \ platform search across TikTok, Instagram, and YouTube for Indonesian creators,\n    scoring/qualification, DM outreach,\
+  \ negotiation, deal tracking, and ROI measurement.\n    Integrates with Kalodata for TikTok analytics.\n"
+domain: sales
 tags:
 - influencer
 - marketing
@@ -17,13 +13,27 @@ tags:
 - kol
 - affiliate
 - indonesia
+version: 1.0.0
+author: Vilona / BerkahKarya
+language: id-ID / en
 scripts: "|\n  - scripts/ig_scout.py\n    - scripts/tiktok_scout.py\n"
-domain: sales
 ---
 
 
 
 # Influencer Scouting Skill 🔍
+## When to Use
+
+**Trigger phrases:**
+- "influencer scouting"
+- "Help me with influencer scouting"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Find, qualify, and close Indonesian creators for BerkahKarya campaigns.
 
@@ -827,3 +837,7 @@ DEAL TYPES:
 - Check lead scoring model against actual conversion data
 - Confirm proposal/contract templates are current and branded
 - Validate payment links and checkout flow end-to-end
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

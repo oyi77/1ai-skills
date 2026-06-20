@@ -7,7 +7,6 @@ description: 'This skill covers deploying and tuning Web Application Firewall ru
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-waf
 - aws-waf
@@ -15,6 +14,7 @@ tags:
 - cloudflare-waf
 - owasp-protection
 - rate-limiting
+subdomain: cloud-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -346,3 +346,7 @@ FALSE POSITIVE ANALYSIS:
   Confirmed False Positives: 1 (SizeRestrictions_BODY for /api/upload)
   Action Taken: Rule exclusion applied
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

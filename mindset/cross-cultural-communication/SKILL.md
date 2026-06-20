@@ -1,7 +1,15 @@
 ---
 name: cross-cultural-communication
-description: Navigate cross-cultural communication using Hofstede's dimensions, high/low-context awareness, and async norms. Use when working with global teams or international stakeholders.
+description: Navigate cross-cultural communication using Hofstede's dimensions, high/low-context awareness, and async norms.
+  Use when working with global teams or international stakeholders.
 domain: mindset
+tags:
+- communication
+- cross
+- cultural
+- mindset
+- personal-development
+- soft-skills
 ---
 
 # Cross-Cultural Communication
@@ -91,3 +99,7 @@ Framework for effective communication across cultures, timezones, and communicat
 - [ ] Checked timezones before scheduling, rotated inconvenient times
 - [ ] Documented decisions explicitly (no assumptions of implied understanding)
 - [ ] Verified understanding with team members (didn't assume)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,14 +1,10 @@
 ---
 name: monitoring-darkweb-sources
-description: 'Monitors dark web forums, marketplaces, paste sites, and ransomware leak sites for mentions of organizational
+description: Monitors dark web forums, marketplaces, paste sites, and ransomware leak sites for mentions of organizational
   assets, leaked credentials, threatened attacks, and threat actor communications to provide early warning intelligence. Use
   when establishing dark web monitoring coverage, investigating specific data breach claims, or enriching incident investigations
-  with dark web context. Activates for requests involving dark web OSINT, leak site monitoring, credential exposure, Recorded
-  Future dark web, or Tor hidden service intelligence.
-
-  '
+  with dark web context.
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - dark-web
 - OSINT
@@ -17,6 +13,7 @@ tags:
 - Recorded-Future
 - SpiderFoot
 - CTI
+subdomain: threat-intelligence
 version: 1.0.0
 author: team-cybersecurity
 license: Apache-2.0
@@ -173,3 +170,7 @@ For each dark web finding:
 - **Missing clearnet sources**: Most dark web intelligence programs miss Telegram channels, Discord servers, and paste sites which operate on the clearnet and host significant criminal activity.
 - **Inadequate legal review**: Dark web monitoring must be reviewed by legal counsel — passive monitoring is generally lawful but active participation in criminal markets is not.
 - **No evidence preservation**: Dark web content disappears rapidly. Capture timestamped evidence immediately upon discovery using commercial service exports.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

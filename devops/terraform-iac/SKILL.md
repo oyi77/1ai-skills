@@ -1,8 +1,13 @@
 ---
 name: terraform-iac
-description: Infrastructure as Code with Terraform — providers, modules, state management,
-  workspaces, multi-cloud deployments
+description: Infrastructure as Code with Terraform — providers, modules, state management, workspaces, multi-cloud deployments
 domain: devops
+tags:
+- ci-cd
+- devops
+- iac
+- infrastructure
+- terraform
 ---
 
 
@@ -205,3 +210,7 @@ envs/
 - **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
 - **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
 - **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures
+
+## Verification
+
+- [ ] Skill output matches expected behavior

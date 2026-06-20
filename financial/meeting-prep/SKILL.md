@@ -1,8 +1,14 @@
 ---
 name: meeting-prep
-description: Prepares briefing pack before client/investor meetings. Use when user
-  says "prep for meeting", "briefing pack", "client meeting".
+description: Prepares briefing pack before client/investor meetings. Use when user says "prep for meeting", "briefing pack",
+  "client meeting".
 domain: financial
+tags:
+- analysis
+- finance
+- investment
+- meeting
+- prep
 ---
 
 # Meeting Prep!

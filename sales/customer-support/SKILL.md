@@ -1,8 +1,16 @@
 ---
 name: customer-support
-description: Use when handling customer support via browser - email responses, chat
-  interactions, ticket management, and escalation workflows.
+description: Use when handling customer support via browser - email responses, chat interactions, ticket management, and escalation
+  workflows.
 domain: sales
+tags:
+- business-development
+- customer
+- email
+- revenue
+- sales
+- support
+- workflow
 ---
 
 

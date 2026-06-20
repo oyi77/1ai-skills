@@ -7,7 +7,6 @@ description: 'Implements memory protection mechanisms including DEP (Data Execut
 
   '
 domain: cybersecurity
-subdomain: endpoint-security
 tags:
 - endpoint
 - memory-protection
@@ -15,6 +14,7 @@ tags:
 - ASLR
 - exploit-mitigation
 - CFG
+subdomain: endpoint-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -130,3 +130,7 @@ GPO: Computer Configuration → Admin Templates → Windows Components
 - **DEP compatibility**: Legacy 32-bit applications may crash with DEP AlwaysOn. Use OptOut with exceptions.
 - **Mandatory ASLR breaking apps**: Some applications are not ASLR-compatible. Test before enforcing ForceRelocateImages.
 - **CFG limited to compiled-in support**: CFG only works for applications compiled with /guard:cf. Cannot be retroactively applied.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,8 +1,13 @@
 ---
 name: dynamodb-patterns
-description: Amazon DynamoDB patterns — single table design, GSI/LSI, DynamoDB Streams,
-  PartiQL, performance optimization
+description: Amazon DynamoDB patterns — single table design, GSI/LSI, DynamoDB Streams, PartiQL, performance optimization
 domain: development
+tags:
+- coding
+- dynamodb
+- patterns
+- software-engineering
+- testing
 ---
 
 
@@ -176,3 +181,7 @@ UPDATE "MyTable" SET "name" = 'Updated' WHERE "PK" = 'USER#123' AND "SK" = 'PROF
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

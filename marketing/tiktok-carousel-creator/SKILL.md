@@ -1,21 +1,36 @@
 ---
 name: tiktok-carousel-creator
-description: ">\n  Creates TikTok image carousels with text overlays using Pexels\
-  \ API & FFmpeg, then uploads via PostBridge API.\n  Use when the user wants to:\
-  \ create TikTok slideshows or carousels, search images for social media content,\n\
-  \  post or upload slideshow content to TikTok, edit slide text, or manage image\
-  \ collections for content creation.\n  Do NOT use for: general TikTok account management,\
-  \ TikTok analytics or metrics, video editing or\n  video creation (this is for photo\
-  \ slideshows only), non-TikTok social media platforms, or any task unrelated\n \
-  \ to creating visual slideshow content for TikTok.\n"
-metadata: "{\n    \"openclaw\": {\n      \"emoji\": \"\U0001F4F1\",\n      \"requires\"\
-  : { \"bins\": [\"ffmpeg\", \"curl\"], \"env\": [\"PEXELS_API_KEY\"] }\n    }\n \
-  \ }\n"
+description: ">\n  Creates TikTok image carousels with text overlays using Pexels API & FFmpeg, then uploads via PostBridge\
+  \ API.\n  Use when the user wants to: create TikTok slideshows or carousels, search images for social media content,\n \
+  \ post or upload slideshow content to TikTok, edit slide text, or manage image collections for content creation."
 domain: marketing
+tags:
+- api
+- carousel
+- creator
+- growth
+- marketing
+- seo
+- social-media
+- tiktok
+metadata: "{\n    \"openclaw\": {\n      \"emoji\": \"\U0001F4F1\",\n      \"requires\": { \"bins\": [\"ffmpeg\", \"curl\"\
+  ], \"env\": [\"PEXELS_API_KEY\"] }\n    }\n  }\n"
 ---
 
 
 # TikTok Carousel Creator (Pexels + FFmpeg + PostBridge)
+## When to Use
+
+**Trigger phrases:**
+- "tiktok carousel creator"
+- "Help me with tiktok carousel creator"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 **Custom implementation for BerkahKarya** - Creates TikTok carousels with professional text overlays.
 
@@ -580,3 +595,7 @@ requests.put(r.json()["upload_url"], data=open(path,"rb"), headers={"Content-Typ
 - Check UTM parameters parse correctly in analytics dashboard
 - Confirm email deliverability via seed list test
 - Validate landing page speed (target < 3s load time)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

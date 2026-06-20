@@ -1,7 +1,14 @@
 ---
 name: alphaear-strategy
-description: "Score trading setups using AlphaEar multi-factor analysis (momentum, volume, sentiment). Use when evaluating entry/exit signals."
+description: Score trading setups using AlphaEar multi-factor analysis (momentum, volume, sentiment). Use when evaluating
+  entry/exit signals.
 domain: trading
+tags:
+- algorithms
+- alphaear
+- markets
+- strategy
+- trading
 ---
 ## Skill Definition
 
@@ -154,6 +161,18 @@ Practical workflows for full analysis, signal monitoring, and event-driven setup
 
 ```python
 # Run complete AlphaEar analysis
+## When to Use
+
+**Trigger phrases:**
+- "alphaear strategy"
+- "Help me with alphaear strategy"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 analysis = alphaear_analyze("NVDA")
 
 # Output includes:
@@ -421,3 +440,6 @@ After completing this skill, confirm:
 
 **Cross-reference:** For complete multi-asset analysis, also see `financial/all-in-one-finance` and `financial/wolf-finance`. For dark pool intelligence, see `trading/black-edge`. For prediction market sentiment, see `trading/investing-algorithm-framework`.
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

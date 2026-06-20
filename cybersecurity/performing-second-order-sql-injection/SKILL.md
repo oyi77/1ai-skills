@@ -3,7 +3,6 @@ name: performing-second-order-sql-injection
 description: Detect and exploit second-order SQL injection vulnerabilities where malicious input is stored in a database and
   later executed in an unsafe SQL query during a different application operation.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - second-order-sqli
 - stored-sql-injection
@@ -12,6 +11,7 @@ tags:
 - web-security
 - blind-injection
 - persistent-sqli
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -258,3 +258,7 @@ curl http://target.com/profile
 - Apply least-privilege database permissions
 - Enable SQL query logging for detecting injection attempts
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

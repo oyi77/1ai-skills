@@ -1,10 +1,18 @@
 ---
 name: telegram-userbot
-description: Full MTProto control of Telegram account via Telethon. DM, Voice Note,
-  Call, Video Call, Group/Channel management, member scraping, bot cloning, outreach
-  automation, broadcast, CRM tracking, content reposting, scheduled messaging, webhook
+description: Full MTProto control of Telegram account via Telethon. DM, Voice Note, Call, Video Call, Group/Channel management,
+  member scraping, bot cloning, outreach automation, broadcast, CRM tracking, content reposting, scheduled messaging, webhook
   triggers. Use for all Telegram automation as a real user (not bot API).
 domain: automation
+tags:
+- api
+- automation
+- productivity
+- telegram
+- userbot
+- video
+- voice
+- webhook
 ---
 
 # Telegram Userbot — Full Control
@@ -550,3 +558,7 @@ pip install telethon edge-tts --break-system-packages
 - [ ] Error handling is in place for common errors
 - [ ] Edge cases have been considered and handled
 - [ ] No placeholder content or TODOs remain
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

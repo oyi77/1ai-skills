@@ -1,7 +1,12 @@
 ---
 name: notion-api
-description: Full Notion API integration
+description: Query a database. Use when working with notion api in integrations domain.
 domain: integrations
+tags:
+- api
+- integrations
+- notion
+- third-party
 ---
 ## Notion Api
 
@@ -38,6 +43,18 @@ headers = {
 }
 
 # Query a database
+## When to Use
+
+**Trigger phrases:**
+- "notion api"
+- "Help me with notion api"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 resp = requests.post(
     "https://api.notion.com/v1/databases/{db_id}/query",
     headers=headers,
@@ -90,3 +107,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

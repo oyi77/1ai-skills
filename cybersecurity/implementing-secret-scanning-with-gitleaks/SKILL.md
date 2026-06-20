@@ -6,7 +6,6 @@ description: 'This skill covers implementing Gitleaks for detecting and preventi
 
   '
 domain: cybersecurity
-subdomain: devsecops
 tags:
 - devsecops
 - cicd
@@ -14,6 +13,7 @@ tags:
 - gitleaks
 - pre-commit
 - secure-sdlc
+subdomain: devsecops
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -369,3 +369,7 @@ NEW FINDINGS (blocking):
 QUALITY GATE: FAILED (3 new findings)
 Action: Rotate exposed credentials immediately.
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

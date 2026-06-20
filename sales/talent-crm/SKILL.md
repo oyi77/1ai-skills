@@ -1,11 +1,31 @@
 ---
 name: talent-crm
-description: "Manage talent pipeline with candidate tracking, outreach automation, and interview scheduling. Use for recruiting CRM."
+description: Manage talent pipeline with candidate tracking, outreach automation, and interview scheduling. Use for recruiting
+  CRM.
 domain: sales
+tags:
+- business-development
+- crm
+- pipeline
+- revenue
+- sales
+- talent
 ---
 
 
 # talent-crm
+## When to Use
+
+**Trigger phrases:**
+- "talent crm"
+- "Help me with talent crm"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ---
 name: talent-crm

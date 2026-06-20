@@ -1,8 +1,13 @@
 ---
 name: svelte-patterns
-description: Svelte 5 and SvelteKit development patterns — runes, stores, server-side
-  rendering, form actions, edge deployment
+description: Svelte 5 and SvelteKit development patterns — runes, stores, server-side rendering, form actions, edge deployment
 domain: development
+tags:
+- coding
+- patterns
+- software-engineering
+- svelte
+- testing
 ---
 
 
@@ -155,3 +160,7 @@ export const load: PageServerLoad = async ({ url, fetch }) => {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

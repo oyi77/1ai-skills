@@ -1,9 +1,13 @@
 ---
 name: affiliate-marketing
-description: AI-powered affiliate marketing automation. Research products, generate
-  content, optimize conversions, and build passive income through automated affiliate
-  campaigns.
+description: AI-powered affiliate marketing automation. Research products, generate content, optimize conversions, and build
+  passive income through automated affiliate campaigns.
 domain: marketing
+tags:
+- affiliate
+- growth
+- marketing
+- seo
 ---
 
 

@@ -1,7 +1,13 @@
 ---
 name: execution
-description: Ship projects reliably using goal-setting, progress tracking, and accountability. Use when moving from planning to delivery.
+description: Ship projects reliably using goal-setting, progress tracking, and accountability. Use when moving from planning
+  to delivery.
 domain: mindset
+tags:
+- execution
+- mindset
+- personal-development
+- soft-skills
 ---
 
 # Execution
@@ -120,3 +126,7 @@ Framework for reliable execution: goal decomposition, progress tracking, account
 - [ ] Execution barriers identified and addressed (perfectionism, distraction, etc.)
 - [ ] Weekly review completed (wins, learnings, next week plan)
 - [ ] Daily execution routine established (start/mid/end of day reflection)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

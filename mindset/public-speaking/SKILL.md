@@ -2,6 +2,12 @@
 name: public-speaking
 description: Deliver engaging talks and presentations using narrative structure, audience analysis, and stage presence techniques.
 domain: mindset
+tags:
+- mindset
+- personal-development
+- public
+- soft-skills
+- speaking
 ---
 
 # Public Speaking
@@ -208,3 +214,7 @@ Framework for delivering engaging presentations: narrative structure, audience a
 - [ ] Tough questions anticipated and prepared (5+ prepared answers)
 - [ ] Timing verified (talk + Q&A fits within slot)
 - [ ] Peer feedback received and incorporated (1+ dry run)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

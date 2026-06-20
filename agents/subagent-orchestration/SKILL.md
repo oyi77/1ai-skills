@@ -1,7 +1,13 @@
 ---
 name: subagent-orchestration
-description: "Manage context flow across spawned subagents, parallelize work in git worktrees, scale from 1 to N agents, and evaluate agent output with grading systems. Use when spawning subagents that need codebase context."
+description: Manage context flow across spawned subagents, parallelize work in git worktrees, scale from 1 to N agents, and
+  evaluate agent output with grading systems. Use when spawning subagents that need codebase context.
 domain: agents
+tags:
+- ai-agent
+- automation
+- orchestration
+- subagent
 ---
 ## Overview
 

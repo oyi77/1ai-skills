@@ -1,8 +1,13 @@
 ---
 name: cassandra-patterns
-description: Apache Cassandra patterns — data modeling, CQL, partition keys, clustering,
-  replication, performance tuning
+description: Apache Cassandra patterns — data modeling, CQL, partition keys, clustering, replication, performance tuning
 domain: development
+tags:
+- cassandra
+- coding
+- patterns
+- software-engineering
+- testing
 ---
 
 
@@ -167,3 +172,7 @@ UPDATE users SET name = 'Updated' WHERE user_id = ? IF name = 'Old';
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

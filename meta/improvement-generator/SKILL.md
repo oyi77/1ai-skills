@@ -1,12 +1,18 @@
 ---
 name: improvement-generator
-description: Generate specific, actionable improvements for skills based on performance
-  data and feedback. Create improvement plans, not just identify problems.
+description: Generate specific, actionable improvements for skills based on performance data and feedback. Create improvement
+  plans, not just identify problems.
+domain: meta
+tags:
+- generator
+- improvement
+- meta-learning
+- self-improvement
+- skill-evolution
 persona:
   name: Continuous Improvement Lead
   expertise: Root cause analysis, solution design, prioritization
   philosophy: Every problem has a solution
-domain: meta
 ---
 ## Improvement Generator
 
@@ -38,6 +44,18 @@ improvement_categories:
 
 ```python
 # Generate improvements
+## When to Use
+
+**Trigger phrases:**
+- "improvement generator"
+- "Help me with improvement generator"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 /improvement-generator create --skill seo-optimizer --data performance-report
 
 # Prioritize improvements
@@ -95,3 +113,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

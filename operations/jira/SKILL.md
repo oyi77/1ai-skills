@@ -1,9 +1,25 @@
 ---
 name: jira
-description: 'Skill: jira. See SKILL.md body for details. Use when this domain is
-  relevant.'
+description: 'Skill: jira. See SKILL.md body for details. Use when this domain is relevant.'
 domain: operations
+tags:
+- business-ops
+- jira
+- management
+- operations
 ---
+## When to Use
+
+**Trigger phrases:**
+- "jira"
+- "Help me with jira"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 *Use Jira for structured project tracking. Every task has a home.*
 
 ## When NOT to Use
@@ -67,3 +83,7 @@ After completing this skill, confirm:
 - If output quality is low, provide more context about the project configuration.
 - For bulk import issues, use the CSV importer with column mapping validation before committing.
 - If dashboards show stale data, verify the board filter JQL and refresh the gadget configuration.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

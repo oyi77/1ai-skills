@@ -1,8 +1,12 @@
 ---
 name: material-ui
-description: Material UI (MUI) React components — theming, styled engine, data grid,
-  date pickers, icons
+description: Material UI (MUI) React components — theming, styled engine, data grid, date pickers, icons
 domain: content
+tags:
+- content-creation
+- digital-content
+- material
+- media
 ---
 
 
@@ -174,3 +178,7 @@ export function DataTable({ rows }) {
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

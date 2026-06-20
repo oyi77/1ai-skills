@@ -1,7 +1,14 @@
 ---
 name: research-agent
-description: "Investigate topics deeply with cross-referenced sources and produce evidence-backed findings. Use when evaluating technologies before adoption, analyzing competitors, or investigating bug root causes across docs and issues."
+description: Investigate topics deeply with cross-referenced sources and produce evidence-backed findings. Use when evaluating
+  technologies before adoption, analyzing competitors, or investigating bug root causes across docs and issues.
 domain: agents
+tags:
+- agent
+- ai-agent
+- automation
+- orchestration
+- research
 ---
 # Research Agent
 
@@ -251,3 +258,7 @@ After completing research, confirm:
 - [ ] Recommendation is actionable (specific next steps, not vague advice)
 - [ ] Version-specific information verified against actual project versions
 - [ ] No [TODO] or placeholder content remains in output
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

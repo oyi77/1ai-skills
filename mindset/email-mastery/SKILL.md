@@ -1,7 +1,14 @@
 ---
 name: email-mastery
-description: Write effective professional emails using AIDA framework, subject line formulas, and follow-up cadences. Use when crafting cold outreach, negotiation emails, or follow-ups.
+description: Write effective professional emails using AIDA framework, subject line formulas, and follow-up cadences. Use
+  when crafting cold outreach, negotiation emails, or follow-ups.
 domain: mindset
+tags:
+- email
+- mastery
+- mindset
+- personal-development
+- soft-skills
 ---
 
 # Email Mastery
@@ -142,3 +149,7 @@ Thanks,
 - [ ] Single, low-friction CTA (calendar link, yes/no question)
 - [ ] Email under 200 words for cold outreach (or 300 for warm)
 - [ ] Follow-up cadence planned (days 3, 7, 14)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

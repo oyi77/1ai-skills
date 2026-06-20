@@ -7,13 +7,13 @@ description: 'Implements endpoint Data Loss Prevention (DLP) controls to detect 
 
   '
 domain: cybersecurity
-subdomain: endpoint-security
 tags:
 - endpoint
 - DLP
 - data-loss-prevention
 - data-protection
 - content-inspection
+subdomain: endpoint-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -195,3 +195,7 @@ DLP incident response:
 - **Too many SIT false positives**: Phone numbers, dates, and random number sequences can match PCI/SSN patterns. Tune confidence levels and require corroborating keywords.
 - **Ignoring user education**: DLP is most effective when users understand why data is protected. Policy tips should explain the restriction and provide approved alternatives.
 - **Not monitoring overrides**: If users frequently override DLP blocks, the policy is either too restrictive or users are ignoring data protection requirements. Review override reasons.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

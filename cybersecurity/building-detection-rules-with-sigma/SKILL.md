@@ -7,7 +7,6 @@ description: 'Builds vendor-agnostic detection rules using the Sigma rule format
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - sigma
@@ -17,6 +16,7 @@ tags:
 - splunk
 - elastic
 - sentinel
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -359,3 +359,7 @@ Testing:
   False Positives:   2 in 7-day backtest (svchost edge case — filter added)
   Performance:       Avg execution 3.2s on 50M events/day
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

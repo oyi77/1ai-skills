@@ -1,8 +1,13 @@
 ---
 name: semantic-kernel
-description: Microsoft Semantic Kernel — AI orchestration, plugins, planners, memory,
-  prompt templates
+description: Microsoft Semantic Kernel — AI orchestration, plugins, planners, memory, prompt templates
 domain: core
+tags:
+- infrastructure
+- kernel
+- memory
+- self-improvement
+- semantic
 ---
 
 ## Overview

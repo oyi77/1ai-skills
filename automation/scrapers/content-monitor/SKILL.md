@@ -1,8 +1,26 @@
 ---
 name: content-monitor
-description: Monitor content for changes
+description: Content Monitor. Use when working with content monitor in automation domain.
 domain: automation
+tags:
+- automation
+- content
+- monitor
+- productivity
+- workflow
 ---
+## When to Use
+
+**Trigger phrases:**
+- "content monitor"
+- "Help me with content monitor"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Content Monitor
 
 Monitor content for changes
@@ -75,3 +93,7 @@ Additional context and best practices for this skill.
 - If output quality is low, provide more context in your input
 - If the skill does not cover your use case, check related skills
 - For integration issues, verify prerequisites and dependencies are met
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

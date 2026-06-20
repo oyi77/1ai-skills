@@ -1,8 +1,16 @@
 ---
 name: multi-platform-distribution
-description: One piece of content becomes 10 — blog to Twitter thread, LinkedIn article,
-  YouTube script, newsletter, TikTok script, podcast outline, Reddit post
+description: One piece of content becomes 10 — blog to Twitter thread, LinkedIn article, YouTube script, newsletter, TikTok
+  script, podcast outline, Reddit post
 domain: content
+tags:
+- content-creation
+- digital-content
+- distribution
+- media
+- multi
+- platform
+- podcast
 ---
 
 
@@ -410,3 +418,7 @@ def track_performance(content_id):
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

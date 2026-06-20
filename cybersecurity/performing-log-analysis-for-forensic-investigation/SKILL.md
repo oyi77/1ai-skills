@@ -3,7 +3,6 @@ name: performing-log-analysis-for-forensic-investigation
 description: Collect, parse, and correlate system, application, and security logs to reconstruct events and establish timelines
   during forensic investigations.
 domain: cybersecurity
-subdomain: digital-forensics
 tags:
 - forensics
 - log-analysis
@@ -11,6 +10,7 @@ tags:
 - event-correlation
 - timeline-analysis
 - evidence-collection
+subdomain: digital-forensics
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -350,3 +350,7 @@ Log Analysis Summary:
 
   Report: /cases/case-2024-001/analysis/log_analysis_report.txt
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

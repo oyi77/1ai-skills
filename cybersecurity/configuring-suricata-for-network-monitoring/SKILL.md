@@ -5,13 +5,13 @@ description: 'Deploys and configures Suricata IDS/IPS with Emerging Threats rule
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - suricata
 - ids
 - ips
 - network-monitoring
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -434,3 +434,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 1. SID 9000003: Cobalt Strike JA3 from 10.10.5.12 to 203.0.113.50 (189 alerts)
 2. SID 9000002: DNS tunneling from 10.10.3.45 to suspect-domain.xyz (98 alerts)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

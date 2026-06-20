@@ -1,8 +1,14 @@
 ---
 name: referral-program
-description: Referral program design and automation — incentive structures, tracking,
-  viral loops, reward fulfillment. Use when building referral or affiliate programs.
+description: Referral program design and automation — incentive structures, tracking, viral loops, reward fulfillment. Use
+  when building referral or affiliate programs.
 domain: marketing
+tags:
+- growth
+- marketing
+- program
+- referral
+- seo
 ---
 
 
@@ -77,3 +83,7 @@ Referral program design and automation — incentive structures, tracking, viral
 - Check the references/ directory for checklists and templates
 - Join the community for best practices and support
 - Contribute improvements via pull requests
+
+## Verification
+
+- [ ] Skill output matches expected behavior

@@ -1,8 +1,26 @@
 ---
 name: slack-notifier
-description: Send Slack notifications
+description: Slack Notifier. Use when working with slack notifier in integrations domain.
 domain: integrations
+tags:
+- api
+- integrations
+- notifier
+- slack
+- third-party
 ---
+## When to Use
+
+**Trigger phrases:**
+- "slack notifier"
+- "Help me with slack notifier"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Slack Notifier
 
 Send Slack notifications
@@ -86,3 +104,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

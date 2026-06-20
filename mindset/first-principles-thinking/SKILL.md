@@ -1,7 +1,15 @@
 ---
 name: first-principles-thinking
-description: Decompose problems to fundamental truths using Musk's method. Use when challenging assumptions, solving novel problems, or questioning conventional approaches.
+description: Decompose problems to fundamental truths using Musk's method. Use when challenging assumptions, solving novel
+  problems, or questioning conventional approaches.
 domain: mindset
+tags:
+- first
+- mindset
+- personal-development
+- principles
+- soft-skills
+- thinking
 ---
 
 # First-Principles Thinking
@@ -105,3 +113,7 @@ Test your new model. Does it work? What did you miss?
 - [ ] At least 3 assumptions identified and challenged
 - [ ] Solution rebuilt from verified fundamentals (not analogy)
 - [ ] Validated with test or model (doesn't just sound good)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

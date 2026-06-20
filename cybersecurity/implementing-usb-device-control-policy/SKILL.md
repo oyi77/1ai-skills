@@ -7,13 +7,13 @@ description: 'Implements USB device control policies to restrict unauthorized re
 
   '
 domain: cybersecurity
-subdomain: endpoint-security
 tags:
 - endpoint
 - USB-control
 - device-control
 - data-loss-prevention
 - removable-media
+subdomain: endpoint-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -177,3 +177,7 @@ Computer Configuration → Administrative Templates → System → Device Instal
 - **Not communicating policy to users**: USB blocks without user notification generate helpdesk tickets. Display a notification explaining the policy.
 - **Ignoring USB-C and Thunderbolt**: Modern devices use USB-C for docking, charging, and storage. Policies must distinguish between USB storage and USB peripherals.
 - **No approved device process**: Users with legitimate USB needs (presentations, field data collection) require an exception process with approved, encrypted devices.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

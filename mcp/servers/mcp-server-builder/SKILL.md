@@ -1,13 +1,22 @@
 ---
 name: mcp-server-builder
-description: Create MCP (Model Context Protocol) servers for any API or service. Auto-generate
-  tools, resources, and prompts that any AI agent can use.
+description: Create MCP (Model Context Protocol) servers for any API or service. Auto-generate tools, resources, and prompts
+  that any AI agent can use.
+domain: mcp
+tags:
+- ai-agent
+- api
+- builder
+- mcp
+- mcp-server
+- model-context-protocol
+- server
+- tool-integration
 persona:
   name: Anthropic MCP Team
   expertise: Protocol design, API integration, AI agent architecture
   philosophy: Standards enable interoperability
   credentials: Created MCP standard at Anthropic
-domain: mcp
 ---
 ## MCP Server Builder
 
@@ -17,6 +26,18 @@ Create Model Context Protocol servers that expose any API to AI agents.
 
 ```python
 # Generate MCP server from OpenAPI spec
+## When to Use
+
+**Trigger phrases:**
+- "mcp server builder"
+- "Help me with mcp server builder"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 mcp generate --spec https://api.example.com/openapi.json
 
 # Or create custom server
@@ -98,3 +119,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

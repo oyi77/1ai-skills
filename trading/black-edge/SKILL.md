@@ -1,7 +1,13 @@
 ---
 name: black-edge
-description: "Apply institutional trading edge using order flow analysis, market microstructure, and dark pool signals."
+description: Apply institutional trading edge using order flow analysis, market microstructure, and dark pool signals.
 domain: trading
+tags:
+- algorithms
+- black
+- edge
+- markets
+- trading
 ---
 ## Skill Definition
 
@@ -146,6 +152,18 @@ Practical scenarios: satellite retail analysis, options flow anomaly detection, 
 
 ```python
 # Analyze parking lot data vs. consensus
+## When to Use
+
+**Trigger phrases:**
+- "black edge"
+- "Help me with black edge"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 parking_data = fetch_satellite_imagery(ticker="WMT")
 consensus_revenue = get_analyst_estimates(ticker="WMT")
 
@@ -492,3 +510,6 @@ After completing this skill, confirm:
 
 **Cross-reference:** For complete financial analysis framework (fundamental, technical, risk management), also see `financial/all-in-one-finance` and `financial/wolf-finance`.
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

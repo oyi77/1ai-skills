@@ -1,8 +1,16 @@
 ---
 name: content-creator
-description: Use when generating multi-platform content via browser automation - social
-  media, blogs, articles, video scripts, and images.
+description: Use when generating multi-platform content via browser automation - social media, blogs, articles, video scripts,
+  and images.
 domain: marketing
+tags:
+- content
+- creator
+- growth
+- marketing
+- seo
+- social-media
+- video
 ---
 
 
@@ -268,3 +276,7 @@ After completing this skill, confirm:
 | Generate AI videos | `google-flow` |
 | Generate AI images locally | `gemini-image-generator` |
 | Write/edit skills documentation | `writing-skills` |
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

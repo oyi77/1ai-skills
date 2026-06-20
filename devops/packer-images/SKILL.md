@@ -1,8 +1,16 @@
 ---
 name: packer-images
-description: HashiCorp Packer — machine image building, builders, provisioners, post-processors
-  for AWS/GCP/Azure
+description: HashiCorp Packer — machine image building, builders, provisioners, post-processors for AWS/GCP/Azure
 domain: devops
+tags:
+- aws
+- azure
+- ci-cd
+- devops
+- gcp
+- images
+- infrastructure
+- packer
 ---
 
 
@@ -179,3 +187,7 @@ packer build -var-file="prod.pkrvars.hcl" aws-ami.pkr.hcl
 - **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
 - **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
 - **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures
+
+## Verification
+
+- [ ] Skill output matches expected behavior

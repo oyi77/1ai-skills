@@ -7,7 +7,6 @@ description: 'This skill covers hardening and securing process historian servers
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -17,6 +16,7 @@ tags:
 - historian
 - osisoft-pi
 - data-integrity
+subdomain: ot-ics-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -411,3 +411,7 @@ DMZ REPLICATION:
   Method: [PI-to-PI / Data Diode / VPN]
   Direction: [Unidirectional / Bidirectional]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

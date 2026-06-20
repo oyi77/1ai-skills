@@ -7,13 +7,13 @@ description: 'Detects fileless malware and in-memory attacks that execute entire
 
   '
 domain: cybersecurity
-subdomain: endpoint-security
 tags:
 - endpoint
 - fileless-malware
 - memory-attacks
 - PowerShell
 - detection-engineering
+subdomain: endpoint-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -193,3 +193,7 @@ index=sysmon EventCode=13
 - **Disabled PowerShell logging**: Without Script Block Logging, deobfuscated PowerShell commands are invisible to defenders.
 - **AMSI bypass not detected**: Sophisticated attackers bypass AMSI before executing payloads. Detect AMSI bypass attempts as a high-priority alert.
 - **Not monitoring WMI events**: WMI persistence is a favored technique of APT groups. Sysmon events 19-21 must be enabled.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

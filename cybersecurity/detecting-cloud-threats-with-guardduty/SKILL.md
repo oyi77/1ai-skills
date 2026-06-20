@@ -6,13 +6,13 @@ description: 'This skill teaches security teams how to deploy and operationalize
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - amazon-guardduty
 - threat-detection
 - aws-security
 - runtime-monitoring
 - cloud-soc
+subdomain: cloud-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -323,3 +323,7 @@ STATISTICS:
   Auto-Remediated: 4
   Pending Investigation: 2
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

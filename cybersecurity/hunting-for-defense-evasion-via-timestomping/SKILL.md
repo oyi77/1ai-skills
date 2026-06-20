@@ -6,12 +6,12 @@ description: 'Detect NTFS timestamp manipulation (MITRE T1070.006) by comparing 
 
   '
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - timestomping
 - ntfs-forensics
 - mft-analysis
 - defense-evasion
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -373,3 +373,7 @@ generate_report(stomped_files, "D:\\Evidence\\timestomping_report.json")
 - Acting on threat intelligence without validating source reliability
 - Sharing classified or sensitive indicators without proper handling procedures
 - Alerting threat actors to detection capabilities through visible response actions
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

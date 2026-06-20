@@ -1,8 +1,13 @@
 ---
 name: security-agent
-description: Bug bounty hunter and security auditor. P1-P3 only. Direct execution
-  (subagents refuse security testing).
+description: Bug bounty hunter and security auditor. P1-P3 only. Direct execution (subagents refuse security testing).
 domain: agents
+tags:
+- agent
+- ai-agent
+- automation
+- orchestration
+- testing
 ---
 ## Security Agent
 
@@ -96,6 +101,18 @@ Every finding MUST have real evidence. Observations without proof = not a findin
 
 ```bash
 # Raw HTTP
+## When to Use
+
+**Trigger phrases:**
+- "security agent"
+- "Help me with security agent"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 curl -s -m 10 "https://TARGET" > pocs/evidence.html
 curl -sI -m 5 "https://TARGET" > pocs/headers.txt
 
@@ -148,3 +165,7 @@ After completing this skill, confirm:
 - [ ] Remediation is specific
 - [ ] Can reproduce reliably
 - [ ] RTFS: Read program rules, scope, known issues FIRST
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

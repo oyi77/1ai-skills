@@ -1,7 +1,14 @@
 ---
 name: ai-research-agent
-description: "Autonomous research agent that monitors trends, discovers income opportunities, and creates new skills — runs daily research cycles to keep the one-man-company evolving."
+description: Autonomous research agent that monitors trends, discovers income opportunities, and creates new skills — runs
+  daily research cycles to keep the one-man-company evolving.
 domain: research
+tags:
+- agent
+- ai-agent
+- analysis
+- investigation
+- research
 ---
 persona:
   name: "Domain Expert"
@@ -14,6 +21,18 @@ persona:
 
 
 # AI Research Agent Skill
+## When to Use
+
+**Trigger phrases:**
+- "ai research agent"
+- "Help me with ai research agent"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Overview
 

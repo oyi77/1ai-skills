@@ -6,12 +6,12 @@ description: 'Uses Rekall memory forensics framework to analyze memory dumps for
 
   '
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - extracting
 - memory
 - artifacts
 - with
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -106,3 +106,7 @@ print(f"Hidden PIDs: {hidden}")
 - Hash values computed and verified match between source and image
 - Chain of custody log complete with timestamps and examiner names
 - Analysis tools and versions documented for reproducibility
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

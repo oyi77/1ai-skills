@@ -1,7 +1,16 @@
 ---
 name: joko-moltbook
-description: "Queue-driven Moltbook posting agent with deduplication, idempotent operations, exponential backoff retries, and real-time monitoring."
+description: Queue-driven Moltbook posting agent with deduplication, idempotent operations, exponential backoff retries, and
+  real-time monitoring.
 domain: automation
+tags:
+- ai-agent
+- automation
+- joko
+- moltbook
+- monitoring
+- productivity
+- workflow
 ---
 persona:
   name: "Domain Expert"
@@ -14,6 +23,18 @@ persona:
 
 
 # Joko Moltbook Agent
+## When to Use
+
+**Trigger phrases:**
+- "joko moltbook"
+- "Help me with joko moltbook"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Queue-driven Moltbook posting agent with deduplication, idempotency, and monitoring.
 
@@ -243,3 +264,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

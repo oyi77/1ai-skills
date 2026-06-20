@@ -1,8 +1,16 @@
 ---
 name: voice-chatterbox-tts
-description: Free local TTS with voice cloning using Chatterbox. Zero API costs, word-level timing, whisper integration. Clone any voice with 10-60s reference audio. Use when generating narration, voiceovers, or custom AI voices.
+description: Free local TTS with voice cloning using Chatterbox. Zero API costs, word-level timing, whisper integration. Clone
+  any voice with 10-60s reference audio. Use when generating narration, voiceovers, or custom AI voices.
 domain: content
-tags: [tts, voice-cloning, local, free, whisper, narration, audio]
+tags:
+- tts
+- voice-cloning
+- local
+- free
+- whisper
+- narration
+- audio
 ---
 
 # Voice Chatterbox TTS
@@ -381,3 +389,7 @@ wav = model.generate(text, repetition_penalty=1.3)
 - `skill://voice-ai-agent` — Call handling with custom voices
 - `skill://remotion` — Video with synced subtitles
 - `skill://content-factory` — Automated content generation
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

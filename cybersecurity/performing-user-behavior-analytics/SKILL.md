@@ -7,7 +7,6 @@ description: 'Performs User and Entity Behavior Analytics (UEBA) to detect anoma
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - ueba
@@ -16,6 +15,7 @@ tags:
 - anomaly-detection
 - splunk
 - baseline
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -281,3 +281,7 @@ INVESTIGATION STATUS:
   admin_svc01: Under review — may be new automation deployment (checking with IT Ops)
   mwilson:     Pending HR context — employee on notice period, monitoring increased
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

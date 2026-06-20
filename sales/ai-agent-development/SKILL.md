@@ -1,8 +1,14 @@
 ---
 name: ai-agent-development
-description: Build and sell custom AI agents as services or products. Create vertical-specific
-  AI solutions for clients and generate $2K-$8K/month recurring revenue.
+description: Build and sell custom AI agents as services or products. Create vertical-specific AI solutions for clients and
+  generate $2K-$8K/month recurring revenue.
 domain: sales
+tags:
+- agent
+- ai-agent
+- business-development
+- revenue
+- sales
 ---
 
 
@@ -359,3 +365,7 @@ Build Agent → Deploy → Monthly Retainer → Upsell Features
 - **Low email reply rates (<3%)**: Messaging is too generic. Personalize with research.
 - **High churn in first 90 days**: Onboarding gap. Fix handoff from sales to success.
 - **Discounting above 20%**: Value perception problem. Reframe ROI, don't cut price.
+
+## Verification
+
+- [ ] Skill output matches expected behavior

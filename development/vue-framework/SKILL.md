@@ -1,8 +1,14 @@
 ---
 name: vue-framework
-description: Vue.js 3 development — Composition API, Pinia, Vue Router, Nuxt, SSR/SSG
-  patterns
+description: Vue.js 3 development — Composition API, Pinia, Vue Router, Nuxt, SSR/SSG patterns
 domain: development
+tags:
+- api
+- coding
+- framework
+- software-engineering
+- testing
+- vue
 ---
 
 
@@ -167,3 +173,7 @@ const { data: user } = await useFetch(`/api/users/${route.params.id}`)
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

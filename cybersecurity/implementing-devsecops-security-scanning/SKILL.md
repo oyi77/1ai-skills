@@ -7,7 +7,6 @@ description: 'Integrates Static Application Security Testing (SAST), Dynamic App
 
   '
 domain: cybersecurity
-subdomain: application-security
 tags:
 - devsecops
 - SAST
@@ -19,6 +18,7 @@ tags:
 - gitleaks
 - CI-CD
 - shift-left
+subdomain: application-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -404,3 +404,7 @@ pre-commit run --all-files  # Test against existing codebase
 - Testing against production systems without a defined scope and rules of engagement
 - Sharing sensitive findings or credentials in unencrypted communications
 - Failing to properly scope and contain the assessment before starting
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

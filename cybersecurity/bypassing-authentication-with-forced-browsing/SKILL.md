@@ -3,7 +3,6 @@ name: bypassing-authentication-with-forced-browsing
 description: Discovering and accessing unprotected pages, APIs, and administrative interfaces by enumerating URLs and bypassing
   authentication controls during authorized security assessments.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - penetration-testing
 - authentication-bypass
@@ -11,6 +10,7 @@ tags:
 - ffuf
 - directory-enumeration
 - owasp
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -313,3 +313,7 @@ The `/actuator/env` endpoint is exposed without authentication, revealing enviro
 4. Implement IP-based access restrictions for administrative interfaces
 5. Use a reverse proxy to restrict access to internal-only endpoints
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

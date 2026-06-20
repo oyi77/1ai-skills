@@ -1,13 +1,31 @@
 ---
 name: grok-browser
-description: "Use Grok's browser capabilities to search the web, analyze pages, and synthesize real-time information."
+description: Use Grok's browser capabilities to search the web, analyze pages, and synthesize real-time information.
 domain: research
+tags:
+- analysis
+- browser
+- grok
+- investigation
+- research
 ---
 name: grok-browser
 description: Query Grok AI via browser automation. Use when you need to ask Grok questions, get AI responses, or use Grok's DeepSearch/Think features. Copies response text instead of using screenshots.
 ---
 
 # Grok Browser Skill
+## When to Use
+
+**Trigger phrases:**
+- "grok browser"
+- "Help me with grok browser"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Query Grok (grok.com) via Chrome browser automation and copy responses.
 
@@ -228,3 +246,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -7,7 +7,6 @@ description: 'Performs OAuth 2.0 scope minimization review to identify over-perm
 
   '
 domain: cybersecurity
-subdomain: identity-access-management
 tags:
 - OAuth
 - scope-minimization
@@ -15,6 +14,7 @@ tags:
 - consent-review
 - third-party-risk
 - token-audit
+subdomain: identity-access-management
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -650,3 +650,7 @@ Priority 4 (Next Quarter): 31 stale grant revocations
 
 Estimated Scope Reduction:  34% of total permissions
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

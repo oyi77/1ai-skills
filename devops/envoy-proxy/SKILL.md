@@ -1,8 +1,13 @@
 ---
 name: envoy-proxy
-description: Envoy proxy — L4/L7 filtering, load balancing, circuit breaking, observability,
-  extensibility
+description: Envoy proxy — L4/L7 filtering, load balancing, circuit breaking, observability, extensibility
 domain: devops
+tags:
+- ci-cd
+- devops
+- envoy
+- infrastructure
+- proxy
 ---
 
 
@@ -159,3 +164,7 @@ clusters:
 - **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
 - **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
 - **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures
+
+## Verification
+
+- [ ] Skill output matches expected behavior

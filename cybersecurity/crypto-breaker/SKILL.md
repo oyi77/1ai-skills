@@ -1,9 +1,14 @@
 ---
 name: crypto-breaker
-description: Cryptographic attack techniques for breaking implementations, side-channel
-  attacks, and exploiting crypto weaknesses. Use when assessing crypto implementations,
-  finding side-channel leaks, or breaking custom cryptography.
+description: Cryptographic attack techniques for breaking implementations, side-channel attacks, and exploiting crypto weaknesses.
+  Use when assessing crypto implementations, finding side-channel leaks, or breaking custom cryptography.
 domain: cybersecurity
+tags:
+- breaker
+- crypto
+- cybersecurity
+- security
+- threat-defense
 ---
 
 # Crypto Breaker
@@ -291,3 +296,7 @@ hmac.compare_digest(hmac, expected_hmac)
 - Cryptopals challenges
 - OverTheWire Krypton
 - Natas challenges
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

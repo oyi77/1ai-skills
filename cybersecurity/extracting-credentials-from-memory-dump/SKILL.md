@@ -3,7 +3,6 @@ name: extracting-credentials-from-memory-dump
 description: Extract cached credentials, password hashes, Kerberos tickets, and authentication tokens from memory dumps using
   Volatility and Mimikatz for forensic investigation.
 domain: cybersecurity
-subdomain: digital-forensics
 tags:
 - forensics
 - credential-extraction
@@ -12,6 +11,7 @@ tags:
 - mimikatz
 - password-hashes
 - incident-response
+subdomain: digital-forensics
 mitre_attack:
 - T1003
 - T1558
@@ -365,3 +365,7 @@ Credential Extraction Summary:
     - High: Revoke all Kerberos tickets via krbtgt rotation
     - Medium: Audit DPAPI-protected data exposure
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

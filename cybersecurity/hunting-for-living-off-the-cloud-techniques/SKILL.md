@@ -3,7 +3,6 @@ name: hunting-for-living-off-the-cloud-techniques
 description: Hunt for adversary abuse of legitimate cloud services for C2, data staging, and exfiltration including abuse
   of Azure, AWS, GCP services, and SaaS platforms.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - mitre-attack
@@ -12,6 +11,7 @@ tags:
 - lotc
 - saas
 - proactive-detection
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -121,3 +121,7 @@ Risk Level: [Critical/High/Medium/Low]
 Confidence: [High/Medium/Low]
 Recommended Action: [Containment, investigation, monitoring]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,7 +1,16 @@
 ---
 name: berkahkarya-orchestrator
-description: "Orchestrate BerkahKarya multi-skill workflows by routing tasks to the right agents and coordinating cross-platform operations."
+description: Orchestrate BerkahKarya multi-skill workflows by routing tasks to the right agents and coordinating cross-platform
+  operations.
 domain: core
+tags:
+- ai-agent
+- berkahkarya
+- infrastructure
+- memory
+- orchestrator
+- self-improvement
+- workflow
 ---
 # BerkahKarya Orchestrator
 
@@ -277,3 +286,7 @@ After completing this skill, confirm:
 - [ ] All prerequisites are verified and documented
 - [ ] Error handling covers edge cases
 - [ ] Results are accurate and actionable
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

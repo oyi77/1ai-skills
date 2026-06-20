@@ -6,7 +6,6 @@ description: 'Implementing microsegmentation using Akamai Guardicore Segmentatio
 
   '
 domain: cybersecurity
-subdomain: zero-trust-architecture
 tags:
 - microsegmentation
 - guardicore
@@ -15,6 +14,7 @@ tags:
 - east-west-traffic
 - network-segmentation
 - lateral-movement
+subdomain: zero-trust-architecture
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -376,3 +376,7 @@ PCI CDE ISOLATION:
   Authorized CDE entry points:  4
   Lateral movement paths blocked: 95%
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

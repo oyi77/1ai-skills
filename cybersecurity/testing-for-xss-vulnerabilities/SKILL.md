@@ -1,20 +1,17 @@
 ---
 name: testing-for-xss-vulnerabilities
-description: 'Tests web applications for Cross-Site Scripting (XSS) vulnerabilities by injecting JavaScript payloads into
-  reflected, stored, and DOM-based contexts to demonstrate client-side code execution, session hijacking, and user impersonation.
-  The tester identifies all injection points and output contexts, crafts context-appropriate payloads, and bypasses sanitization
-  and CSP protections. Activates for requests involving XSS testing, cross-site scripting assessment, client-side injection
-  testing, or JavaScript injection vulnerability testing.
-
-  '
+description: Tests web applications for Cross-Site Scripting (XSS) vulnerabilities by injecting JavaScript payloads into reflected,
+  stored, and DOM-based contexts to demonstrate client-side code execution, session hijacking, and user impersonation. The
+  tester identifies all injection points and output contexts, crafts context-appropriate payloads, and bypasses sanitization
+  and CSP protections.
 domain: cybersecurity
-subdomain: penetration-testing
 tags:
 - XSS
 - cross-site-scripting
 - client-side-security
 - OWASP-A03
 - JavaScript-injection
+subdomain: penetration-testing
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -231,3 +228,7 @@ refunds, and modify orders. Affects all 23 support agents who view customer tick
 3. Set HttpOnly flag on session cookies to prevent JavaScript access
 4. Sanitize HTML input server-side using a whitelist approach (allow only safe tags)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -5,13 +5,13 @@ description: 'Simulates bandwidth throttling and network degradation attacks usi
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - bandwidth-throttling
 - qos
 - traffic-shaping
 - network-resilience
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -362,3 +362,7 @@ Map the application, test authentication and authorization, check for injection 
 2. Configure QoS to prioritize DSCP EF (46) marked traffic
 3. Set monitoring threshold at 80% bandwidth utilization for early warning
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

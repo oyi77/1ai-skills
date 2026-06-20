@@ -1,8 +1,15 @@
 ---
 name: model-fine-tuning
-description: Fine-tune LLMs and ML models — LoRA, QLoRA, PEFT, Hugging Face. Dataset
-  prep, training, evaluation, deployment
+description: Fine-tune LLMs and ML models — LoRA, QLoRA, PEFT, Hugging Face. Dataset prep, training, evaluation, deployment
 domain: core
+tags:
+- fine
+- infrastructure
+- machine-learning
+- memory
+- model
+- self-improvement
+- tuning
 ---
 
 ## Overview

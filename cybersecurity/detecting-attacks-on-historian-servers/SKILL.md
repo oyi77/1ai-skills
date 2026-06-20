@@ -6,7 +6,6 @@ description: 'Detect cyber attacks targeting OT historian servers (OSIsoft PI, I
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - pivot-point
 - data-integrity
 - lateral-movement
+subdomain: ot-ics-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -317,3 +317,7 @@ LATERAL MOVEMENT INDICATORS:
   Unauthorized Processes: [found/not found]
   Anomalous Authentication: [found/not found]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -3,7 +3,6 @@ name: testing-cors-misconfiguration
 description: Identifying and exploiting Cross-Origin Resource Sharing misconfigurations that allow unauthorized cross-domain
   data access and credential theft during security assessments.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - penetration-testing
 - cors
@@ -11,6 +10,7 @@ tags:
 - owasp
 - same-origin-policy
 - burpsuite
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -376,3 +376,7 @@ The server uses regex `target\.example\.com` to validate origins, but fails to a
 4. Validate origins with exact string matching, not regex substring matching
 5. Set Access-Control-Max-Age to a reasonable value (600 seconds)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

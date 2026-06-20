@@ -7,7 +7,6 @@ description: 'Analyzes Windows Security, System, and Sysmon event logs in Splunk
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - splunk
@@ -16,6 +15,7 @@ tags:
 - event-logs
 - mitre-attack
 - active-directory
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -327,3 +327,7 @@ ATT&CK Mapping:
   T1053.005 — Scheduled Task (persistence)
   T1059.001 — PowerShell (encoded execution)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,8 +1,13 @@
 ---
 name: swiftui-patterns
-description: SwiftUI native iOS/macOS development — declarative UI, Combine, Core
-  Data, widgets, App Clips
+description: SwiftUI native iOS/macOS development — declarative UI, Combine, Core Data, widgets, App Clips
 domain: development
+tags:
+- coding
+- patterns
+- software-engineering
+- swiftui
+- testing
 ---
 
 
@@ -400,3 +405,7 @@ struct SettingsView: View {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

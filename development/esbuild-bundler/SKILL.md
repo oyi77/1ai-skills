@@ -1,8 +1,13 @@
 ---
 name: esbuild-bundler
-description: esbuild bundler configuration — blazing fast JS/TS bundling, plugins,
-  watch mode, minification
+description: esbuild bundler configuration — blazing fast JS/TS bundling, plugins, watch mode, minification
 domain: development
+tags:
+- bundler
+- coding
+- esbuild
+- software-engineering
+- testing
 ---
 
 
@@ -329,3 +334,7 @@ await esbuild.build({
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

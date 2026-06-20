@@ -1,7 +1,14 @@
 ---
 name: critical-thinking
-description: Analyze arguments, identify biases, evaluate evidence, and make sound conclusions. Use when reasoning through complex problems or evaluating claims.
+description: Analyze arguments, identify biases, evaluate evidence, and make sound conclusions. Use when reasoning through
+  complex problems or evaluating claims.
 domain: mindset
+tags:
+- critical
+- mindset
+- personal-development
+- soft-skills
+- thinking
 ---
 
 # Critical Thinking
@@ -129,3 +136,7 @@ See also: [systems-thinking](#)
 - [ ] Logical fallacies checked: no ad hominem, straw man, false dilemma, etc.
 - [ ] Pre-mortem conducted: "what would failure look like and why?"
 - [ ] Counterargument articulated: can you state the opposing view clearly?
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

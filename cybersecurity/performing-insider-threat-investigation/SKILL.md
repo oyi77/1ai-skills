@@ -7,13 +7,13 @@ description: 'Investigates insider threat incidents involving employees, contrac
 
   '
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - insider-threat
 - user-behavior-analytics
 - data-exfiltration
 - privilege-misuse
 - DFIR
+subdomain: incident-response
 mitre_attack:
 - T1078
 - T1048
@@ -291,3 +291,7 @@ RECOMMENDATIONS
 3. [Regulatory notification assessment]
 4. [Access control improvements]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

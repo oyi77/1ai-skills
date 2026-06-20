@@ -7,13 +7,13 @@ description: 'Analyzes network traffic captures and flow data to identify advers
 
   '
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - network-forensics
 - PCAP-analysis
 - Wireshark
 - Zeek
 - traffic-analysis
+subdomain: incident-response
 mitre_attack:
 - T1071
 - T1095
@@ -300,3 +300,7 @@ EVIDENCE REFERENCES
 PCAP File:        INC-2025-1547_capture.pcap (SHA-256: ...)
 Zeek Logs:        /logs/zeek/2025-11-15/ (conn.log, ssl.log, dns.log)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

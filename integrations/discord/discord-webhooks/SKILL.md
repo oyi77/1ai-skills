@@ -1,7 +1,14 @@
 ---
 name: discord-webhooks
-description: Send Discord webhooks
+description: Simple message. Use when working with discord webhooks in integrations domain.
 domain: integrations
+tags:
+- api
+- discord
+- integrations
+- third-party
+- webhook
+- webhooks
 ---
 ## Discord Webhooks
 
@@ -30,6 +37,18 @@ Send Discord webhooks
 
 ```bash
 # Simple message
+## When to Use
+
+**Trigger phrases:**
+- "discord webhooks"
+- "Help me with discord webhooks"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 curl -X POST "$WEBHOOK_URL" -H "Content-Type: application/json" -d '{
   "content": "Deployment complete: v2.3.1",
   "username": "CI/CD Bot"
@@ -84,3 +103,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

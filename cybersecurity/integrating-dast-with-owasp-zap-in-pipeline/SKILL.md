@@ -6,7 +6,6 @@ description: 'This skill covers integrating OWASP ZAP (Zed Attack Proxy) for Dyn
 
   '
 domain: cybersecurity
-subdomain: devsecops
 tags:
 - devsecops
 - cicd
@@ -14,6 +13,7 @@ tags:
 - owasp-zap
 - dynamic-testing
 - secure-sdlc
+subdomain: devsecops
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -290,3 +290,7 @@ FAILING ALERTS:
 
 QUALITY GATE: FAILED (1 HIGH, 2 MEDIUM findings)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

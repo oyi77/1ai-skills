@@ -1,8 +1,12 @@
 ---
 name: grpc
-description: gRPC development — Protocol Buffers, service definitions, streaming,
-  interceptors, load balancing
+description: gRPC development — Protocol Buffers, service definitions, streaming, interceptors, load balancing
 domain: development
+tags:
+- coding
+- grpc
+- software-engineering
+- testing
 ---
 
 
@@ -293,3 +297,7 @@ client.GetUser({ id: '123' }, { deadline }, callback);
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

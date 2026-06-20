@@ -1,8 +1,16 @@
 ---
 name: buildkite-pipelines
-description: Buildkite CI pipelines — pipeline YAML, steps, agents, artifacts, test
-  splitting, dynamic pipelines
+description: Buildkite CI pipelines — pipeline YAML, steps, agents, artifacts, test splitting, dynamic pipelines
 domain: devops
+tags:
+- ai-agent
+- buildkite
+- ci-cd
+- devops
+- infrastructure
+- machine-learning
+- pipeline
+- pipelines
 ---
 
 
@@ -143,3 +151,7 @@ steps:
 - **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
 - **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
 - **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures
+
+## Verification
+
+- [ ] Skill output matches expected behavior

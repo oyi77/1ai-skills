@@ -1,8 +1,14 @@
 ---
 name: task-scheduler
-description: Task scheduling and cron patterns — node-cron, BullMQ, Celery, systemd
-  timers. Recurring jobs, distributed scheduling
+description: Task scheduling and cron patterns — node-cron, BullMQ, Celery, systemd timers. Recurring jobs, distributed scheduling
 domain: development
+tags:
+- coding
+- cron
+- scheduler
+- software-engineering
+- task
+- testing
 ---
 
 
@@ -250,3 +256,7 @@ run_with_lock('daily-report', generate_report)
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

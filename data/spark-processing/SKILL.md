@@ -1,8 +1,14 @@
 ---
 name: spark-processing
-description: Apache Spark distributed processing — DataFrames, SQL, streaming, MLlib,
-  cluster management
+description: Apache Spark distributed processing — DataFrames, SQL, streaming, MLlib, cluster management
 domain: data
+tags:
+- analytics
+- data-analysis
+- machine-learning
+- processing
+- spark
+- visualization
 ---
 
 
@@ -252,3 +258,7 @@ predictions = model.transform(test_df)
 - **Missing monitoring for data freshness**: Stale data causes wrong business decisions
 - **No rollback on failed transforms**: Failed transforms without rollback require manual recovery
 - **Hardcoded connection strings**: Credentials in code get committed to version control
+
+## Verification
+
+- [ ] Skill output matches expected behavior

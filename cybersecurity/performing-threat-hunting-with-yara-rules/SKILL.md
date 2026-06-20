@@ -5,12 +5,12 @@ description: 'Use YARA pattern-matching rules to hunt for malware, suspicious fi
 
   '
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - yara
 - malware-detection
 - threat-hunting
 - pattern-matching
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -447,3 +447,7 @@ print("YARA hunting pipeline active. Monitoring /mnt/quarantine/ ...")
 - Analyzing malware on a machine connected to the production network
 - Failing to isolate the analysis environment from the internet
 - Executing samples without proper containment (VM, sandbox)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

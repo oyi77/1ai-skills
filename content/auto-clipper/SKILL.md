@@ -1,14 +1,32 @@
 ---
 name: auto-clipper
-description: AI-powered video clipper - Convert long videos into viral Shorts/TikToks/Reels
-  automatically
-dependencies: "- faster-whisper\n  - textblob\n  - vadersentiment\n  - moviepy\n \
-  \ - opencv-python\n  - ffmpeg-python\n  - customtkinter\n"
+description: AI-powered video clipper - Convert long videos into viral Shorts/TikToks/Reels automatically
 domain: content
+tags:
+- auto
+- clipper
+- content-creation
+- digital-content
+- media
+- video
+dependencies: "- faster-whisper\n  - textblob\n  - vadersentiment\n  - moviepy\n  - opencv-python\n  - ffmpeg-python\n  -\
+  \ customtkinter\n"
 ---
 
 
 # Auto Clipper Indonesia 🎬
+## When to Use
+
+**Trigger phrases:**
+- "auto clipper"
+- "Help me with auto clipper"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 **Production-ready** AI-powered video clipper untuk content creator Indonesia.
 
@@ -305,3 +323,7 @@ Join our community:
 - Confirm links work and point to correct destinations
 - Test video/audio quality before publishing
 - Validate content renders correctly on mobile devices
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

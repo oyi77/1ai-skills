@@ -1,8 +1,13 @@
 ---
 name: vite-config
-description: Vite build tool configuration — plugins, SSR, library mode, environment
-  variables, dev server proxy
+description: Vite build tool configuration — plugins, SSR, library mode, environment variables, dev server proxy
 domain: development
+tags:
+- coding
+- config
+- software-engineering
+- testing
+- vite
 ---
 
 
@@ -308,3 +313,7 @@ export default defineConfig({
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

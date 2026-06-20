@@ -1,9 +1,15 @@
 ---
 name: build-in-public
-description: Document and share your startup journey, revenue, and learnings on social
-  media. Build audience, attract customers, and find co-founders through transparent
-  sharing.
+description: Document and share your startup journey, revenue, and learnings on social media. Build audience, attract customers,
+  and find co-founders through transparent sharing.
 domain: marketing
+tags:
+- build
+- growth
+- marketing
+- public
+- seo
+- social-media
 ---
 
 

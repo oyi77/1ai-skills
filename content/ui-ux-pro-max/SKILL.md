@@ -1,8 +1,17 @@
 ---
 name: ui-ux-pro-max
-description: Industry-specific design intelligence — 161 reasoning rules, 99 UX guidelines, 161 color palettes, 57 font pairings, 49 UI styles. Use when building professional UI, need industry-specific design, generating design systems, choosing colors or typography.
+description: Industry-specific design intelligence — 161 reasoning rules, 99 UX guidelines, 161 color palettes, 57 font pairings,
+  49 UI styles. Use when building professional UI, need industry-specific design, generating design systems, choosing colors
+  or typography.
 domain: content
-tags: [ui, ux, design, design-system, color-palette, typography, accessibility]
+tags:
+- ui
+- ux
+- design
+- design-system
+- color-palette
+- typography
+- accessibility
 ---
 
 
@@ -113,3 +122,7 @@ Agent: Searches finance palettes, recommends trust-building blues with accent gr
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

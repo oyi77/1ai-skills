@@ -1,19 +1,19 @@
 ---
 name: wolf-finance
-description: 'ACTIVATE for ANY finance, investment, trading, or market query. Triggers:
-  ticker symbols ($AAPL, BTC, EUR/USD), asset classes (stocks, crypto, forex, bonds,
-  commodities, derivatives, PE, hedge funds), concepts (DCF, P/E, RSI, MACD, Kelly,
-  VaR, Sharpe, Greeks, yield curve, carry trade, QE), actions ("should I buy/sell",
-  "analyze this", "build a portfolio", "hedge my position", "size this trade"), modeling
-  (valuation, forecasting, backtesting, Monte Carlo), corporate finance (M&A, IPO,
-  LBO, WACC, NPV, IRR), wealth management (asset allocation, tax-loss harvesting,
-  estate, retirement), and market intelligence (macro, central bank, geopolitics,
-  sector rotation). Also covers: institutional trading, quant strategies, family office,
-  investment banking, risk management, compliance, and regulation. USE THIS SKILL
-  whenever finance is even tangentially mentioned.
-
-  '
+description: 'ACTIVATE for ANY finance, investment, trading, or market query. Triggers: ticker symbols ($AAPL, BTC, EUR/USD),
+  asset classes (stocks, crypto, forex, bonds, commodities, derivatives, PE, hedge funds), concepts (DCF, P/E, RSI, MACD,
+  Kelly, VaR, Sharpe, Greeks, yield curve, carry trade, QE), actions ("should I buy/sell", "analyze this", "build a portfolio",
+  "hedge my position", "size this trade"), modeling (valuation, forecasting, backtesting, Monte Carlo), corporate finance
+  (M&A, IPO, LBO, WAC...'
 domain: financial
+tags:
+- analysis
+- crypto
+- finance
+- investment
+- testing
+- trading
+- wolf
 ---
 
 # 🐺 WOLF FINANCE — Institutional-Grade Intelligence Suite v2.0
@@ -371,3 +371,7 @@ After completing financial analysis, confirm:
 - Position sizing or portfolio allocation advice
 - Options, futures, or leverage strategies
 - Tax or legal interpretations
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

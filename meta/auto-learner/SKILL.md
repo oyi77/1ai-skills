@@ -1,12 +1,18 @@
 ---
 name: auto-learner
-description: Autonomous learning from execution data. Skills improve themselves by
-  identifying patterns in successful vs failed executions without human intervention.
+description: Autonomous learning from execution data. Skills improve themselves by identifying patterns in successful vs failed
+  executions without human intervention.
+domain: meta
+tags:
+- auto
+- learner
+- meta-learning
+- self-improvement
+- skill-evolution
 persona:
   name: Autonomous Learner
   expertise: Machine learning, pattern recognition, self-supervision
   philosophy: Learn by doing, improve by reflecting
-domain: meta
 ---
 ## Auto Learner
 
@@ -37,6 +43,18 @@ learning_modes:
 
 ```python
 # Enable auto-learning
+## When to Use
+
+**Trigger phrases:**
+- "auto learner"
+- "Help me with auto learner"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 /auto-learner enable --skill seo-optimizer
 
 # Trigger learning cycle
@@ -90,3 +108,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

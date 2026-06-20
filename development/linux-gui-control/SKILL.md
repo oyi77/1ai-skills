@@ -1,13 +1,19 @@
 ---
 name: linux-gui-control
-description: "Automate Linux desktop GUI interactions using xdotool, wmctrl, and dogtail for window management, mouse/keyboard simulation, and accessibility inspection."
-persona: "name: Linus Torvalds\n  title: The Linux Creator - Master of System Control\n\
-  \  expertise:\n  - Linux\n  - System Programming\n  - Git\n  - Operating Systems\n\
-  \  philosophy: Talk is cheap. Show me the code.\n  credentials:\n  - Created Linux\
-  \ kernel\n  - Created Git\n  - Maintains largest open source project\n  principles:\n\
-  \  - Control the system\n  - Script everything\n  - Prefer command line\n  - Automate\
-  \ workflows\n"
+description: Automate Linux desktop GUI interactions using xdotool, wmctrl, and dogtail for window management, mouse/keyboard
+  simulation, and accessibility inspection.
 domain: development
+tags:
+- coding
+- control
+- gui
+- linux
+- software-engineering
+- testing
+persona: "name: Linus Torvalds\n  title: The Linux Creator - Master of System Control\n  expertise:\n  - Linux\n  - System\
+  \ Programming\n  - Git\n  - Operating Systems\n  philosophy: Talk is cheap. Show me the code.\n  credentials:\n  - Created\
+  \ Linux kernel\n  - Created Git\n  - Maintains largest open source project\n  principles:\n  - Control the system\n  - Script\
+  \ everything\n  - Prefer command line\n  - Automate workflows\n"
 ---
 
 name: linux-gui-control
@@ -15,6 +21,18 @@ description: "Control the Linux desktop GUI using xdotool, wmctrl, and dogtail. 
 ---
 
 # Linux GUI Control
+## When to Use
+
+**Trigger phrases:**
+- "linux gui control"
+- "Help me with linux gui control"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 This skill provides tools and procedures for automating interactions with the Linux desktop environment.
 
@@ -123,3 +141,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -2,7 +2,25 @@
 name: mcp-discover
 description: Discover and connect to MCP servers
 domain: mcp
+tags:
+- discover
+- mcp
+- mcp-server
+- model-context-protocol
+- tool-integration
 ---
+## When to Use
+
+**Trigger phrases:**
+- "mcp discover"
+- "Help me with mcp discover"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Mcp Discover
 
 Discover and connect to MCP servers
@@ -82,3 +100,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

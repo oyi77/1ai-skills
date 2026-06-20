@@ -1,7 +1,15 @@
 ---
 name: deploy-agent
-description: "Ship code to production through a controlled pipeline with verification gates and rollback plans. Use when deploying features, managing CI/CD, running database migrations, or performing post-incident hotfix recovery."
+description: Ship code to production through a controlled pipeline with verification gates and rollback plans. Use when deploying
+  features, managing CI/CD, running database migrations, or performing post-incident hotfix recovery.
 domain: agents
+tags:
+- agent
+- ai-agent
+- automation
+- deploy
+- orchestration
+- pipeline
 ---
 # Deploy Agent
 
@@ -295,3 +303,7 @@ After deploying, confirm:
 - [ ] Team notified of successful deploy
 - [ ] Deployment recorded (version, time, who deployed, changes included)
 - [ ] No [TODO] or placeholder configuration in production
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

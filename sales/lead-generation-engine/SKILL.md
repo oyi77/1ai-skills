@@ -1,8 +1,16 @@
 ---
 name: lead-generation-engine
-description: AI-powered lead generation that scrapes intent signals, scores leads,
-  generates personalized multi-channel outreach, and manages the full CRM pipeline
+description: AI-powered lead generation that scrapes intent signals, scores leads, generates personalized multi-channel outreach,
+  and manages the full CRM pipeline
 domain: sales
+tags:
+- business-development
+- engine
+- generation
+- lead
+- pipeline
+- revenue
+- sales
 ---
 
 
@@ -322,3 +330,7 @@ python3 pipeline_report.py --period daily | mail -s "Daily Lead Gen Report" you@
 - **Low email reply rates (<3%)**: Messaging is too generic. Personalize with research.
 - **High churn in first 90 days**: Onboarding gap. Fix handoff from sales to success.
 - **Discounting above 20%**: Value perception problem. Reframe ROI, don't cut price.
+
+## Verification
+
+- [ ] Skill output matches expected behavior

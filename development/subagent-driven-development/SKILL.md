@@ -1,8 +1,13 @@
 ---
 name: subagent-driven-development
-description: Use when executing implementation plans with independent tasks in the
-  current session
+description: Use when executing implementation plans with independent tasks in the current session
 domain: development
+tags:
+- coding
+- driven
+- software-engineering
+- subagent
+- testing
 ---
 persona:
   name: "Domain Expert"

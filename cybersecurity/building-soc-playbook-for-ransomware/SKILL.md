@@ -6,7 +6,6 @@ description: 'Builds a structured SOC incident response playbook for ransomware 
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - ransomware
@@ -15,6 +14,7 @@ tags:
 - nist
 - mitre-attack
 - containment
+subdomain: soc-operations
 mitre_attack:
 - T1486
 - T1490
@@ -313,3 +313,7 @@ Total Affected: 1 server, 3 workstations
 Data Loss:      4 hours of file modifications (backup RPO)
 Exfiltration:   No evidence of data exfiltration confirmed
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

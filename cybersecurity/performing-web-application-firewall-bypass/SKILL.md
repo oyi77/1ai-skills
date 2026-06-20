@@ -3,7 +3,6 @@ name: performing-web-application-firewall-bypass
 description: Bypass Web Application Firewall protections using encoding techniques, HTTP method manipulation, parameter pollution,
   and payload obfuscation to deliver SQL injection, XSS, and other attack payloads past WAF detection rules.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - waf-bypass
 - waf-evasion
@@ -12,6 +11,7 @@ tags:
 - payload-obfuscation
 - encoding-bypass
 - web-security
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -285,3 +285,7 @@ curl "http://target.com/page?q=%253Cscript%253Ealert(1)%253C%252Fscript%253E"
 - Enable deep content inspection for all HTTP methods
 - Implement request normalization before rule evaluation
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

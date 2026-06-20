@@ -1,7 +1,14 @@
 ---
 name: project-management
-description: "Coordinate sprints, track deadlines, manage tasks, and maintain project documentation with Notion and Slack."
+description: Coordinate sprints, track deadlines, manage tasks, and maintain project documentation with Notion and Slack.
 domain: operations
+tags:
+- business-ops
+- management
+- notion
+- operations
+- project
+- slack
 ---
 persona:
   name: "Domain Expert"
@@ -14,6 +21,18 @@ persona:
 
 
 # Project Management
+## When to Use
+
+**Trigger phrases:**
+- "project management"
+- "Help me with project management"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Coordinate tasks, track deadlines, manage sprints, and maintain project documentation.
 
@@ -205,3 +224,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

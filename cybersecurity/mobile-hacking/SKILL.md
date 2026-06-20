@@ -1,9 +1,15 @@
 ---
 name: mobile-hacking
-description: Android and mobile application security testing — emulators, rooting,
-  traffic interception, dynamic instrumentation. Use when testing mobile apps for
-  vulnerabilities, reversing APKs, or bypassing security controls on Android.
+description: Android and mobile application security testing — emulators, rooting, traffic interception, dynamic instrumentation.
+  Use when testing mobile apps for vulnerabilities, reversing APKs, or bypassing security controls on Android.
 domain: cybersecurity
+tags:
+- cybersecurity
+- hacking
+- mobile
+- security
+- testing
+- threat-defense
 ---
 
 # Mobile Hacking Skill

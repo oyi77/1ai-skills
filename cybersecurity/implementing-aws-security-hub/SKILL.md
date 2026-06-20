@@ -7,13 +7,13 @@ description: 'This skill covers deploying AWS Security Hub as a centralized clou
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - aws-security-hub
 - cspm
 - compliance-automation
 - security-standards
 - finding-aggregation
+subdomain: cloud-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -262,3 +262,7 @@ FINDING SUMMARY:
   Auto-Remediated This Month: 89
   Suppressed: 23
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

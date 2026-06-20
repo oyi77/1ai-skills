@@ -1,9 +1,14 @@
 ---
 name: launch-strategy
-description: Go-to-market planning — launch sequencing, channel strategy, audience
-  building, PR outreach. Use when planning product launches, building launch checklists,
-  or coordinating multi-channel campaigns.
+description: Go-to-market planning — launch sequencing, channel strategy, audience building, PR outreach. Use when planning
+  product launches, building launch checklists, or coordinating multi-channel campaigns.
 domain: marketing
+tags:
+- growth
+- launch
+- marketing
+- seo
+- strategy
 ---
 
 
@@ -138,3 +143,11 @@ channels = {
 - **Email open rates below 15%**: Subject lines or sender reputation issue
 - **Bounce rate above 70%**: Landing page mismatch or slow load times
 - **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Overview
+
+> Section content — see SKILL.md body for full details.
+
+## Verification
+
+- [ ] Skill output matches expected behavior

@@ -1,8 +1,13 @@
 ---
 name: ai-marketplace
-description: Sell AI-powered services on Fiverr, Upwork, and Toptal. Offer automation,
-  content, and development services. Build recurring clients and generate $2K-10K/month.
+description: Sell AI-powered services on Fiverr, Upwork, and Toptal. Offer automation, content, and development services.
+  Build recurring clients and generate $2K-10K/month.
 domain: sales
+tags:
+- business-development
+- marketplace
+- revenue
+- sales
 ---
 
 persona:

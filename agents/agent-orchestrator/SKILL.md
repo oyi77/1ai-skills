@@ -1,8 +1,15 @@
 ---
 name: agent-orchestrator
-description: Multi-agent coordination framework. Define agent teams, task delegation, memory sharing, conflict resolution for complex workflows. Use when coordinating multiple AI agents working together on large-scale tasks.
+description: Multi-agent coordination framework. Define agent teams, task delegation, memory sharing, conflict resolution
+  for complex workflows. Use when coordinating multiple AI agents working together on large-scale tasks.
 domain: agents
-tags: [multi-agent, orchestration, coordination, teamwork, delegation, memory-sharing]
+tags:
+- multi-agent
+- orchestration
+- coordination
+- teamwork
+- delegation
+- memory-sharing
 ---
 
 # Agent Orchestrator
@@ -516,3 +523,7 @@ print(profile.bottlenecks())  # → ["VideoEditor: 78% of total time"]
 - `skill://teamwork` — Team management
 - `skill://dispatching-parallel-agents` — Parallel workflows
 - `skill://executing-plans` — Plan execution
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

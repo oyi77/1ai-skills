@@ -1,8 +1,15 @@
 ---
 name: oh-my-opencode-agents
-description: Deep dive into each oh-my-opencode agent - Sisyphus, Hephaestus, Oracle,
-  Librarian, Explore - their characteristics, use cases, and when to use each
+description: Deep dive into each oh-my-opencode agent - Sisyphus, Hephaestus, Oracle, Librarian, Explore - their characteristics,
+  use cases, and when to use each
 domain: integrations
+tags:
+- agents
+- ai-agent
+- api
+- integrations
+- opencode
+- third-party
 ---
 
 # Oh My OpenCode Agents

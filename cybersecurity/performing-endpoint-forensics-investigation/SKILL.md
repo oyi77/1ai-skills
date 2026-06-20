@@ -7,7 +7,6 @@ description: 'Performs digital forensics investigation on compromised endpoints 
 
   '
 domain: cybersecurity
-subdomain: endpoint-security
 tags:
 - endpoint
 - forensics
@@ -15,6 +14,7 @@ tags:
 - disk-imaging
 - incident-investigation
 - Volatility
+subdomain: endpoint-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -273,3 +273,7 @@ Structure forensic report:
 - **Analyzing only disk, ignoring memory**: In-memory-only malware (fileless attacks) leaves no disk artifacts. Always capture memory first.
 - **Not hashing evidence**: All evidence must be cryptographically hashed at collection time to prove integrity.
 - **Tunnel vision**: Focusing on one artifact when the timeline tells a broader story. Always build a comprehensive timeline.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

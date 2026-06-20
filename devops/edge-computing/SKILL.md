@@ -1,8 +1,13 @@
 ---
 name: edge-computing
-description: Edge computing — Cloudflare Workers, Vercel Edge, Deno Deploy. Edge rendering,
-  caching, edge databases
+description: Edge computing — Cloudflare Workers, Vercel Edge, Deno Deploy. Edge rendering, caching, edge databases
 domain: devops
+tags:
+- ci-cd
+- computing
+- devops
+- edge
+- infrastructure
 ---
 
 
@@ -92,3 +97,7 @@ export default {
 - **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
 - **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
 - **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures
+
+## Verification
+
+- [ ] Skill output matches expected behavior

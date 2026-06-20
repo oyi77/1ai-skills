@@ -1,8 +1,13 @@
 ---
 name: ansible-automation
-description: Ansible automation — playbooks, roles, inventory, variables, handlers,
-  Galaxy, AWX
+description: Ansible automation — playbooks, roles, inventory, variables, handlers, Galaxy, AWX
 domain: devops
+tags:
+- ansible
+- automation
+- ci-cd
+- devops
+- infrastructure
 ---
 
 
@@ -155,3 +160,7 @@ ansible-playbook site.yml --vault-password-file .vault_pass
 - **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
 - **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
 - **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures
+
+## Verification
+
+- [ ] Skill output matches expected behavior

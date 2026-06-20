@@ -1,8 +1,14 @@
 ---
 name: api-testing
-description: REST and GraphQL API testing — contract testing, schema validation, and
-  integration test automation
+description: REST and GraphQL API testing — contract testing, schema validation, and integration test automation
 domain: development
+tags:
+- api
+- coding
+- graphql
+- rest-api
+- software-engineering
+- testing
 ---
 
 
@@ -104,3 +110,7 @@ def test_graphql_query():
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

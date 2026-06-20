@@ -7,7 +7,6 @@ description: 'This skill covers deploying anomaly detection systems for industri
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - iec62443
 - anomaly-detection
 - machine-learning
+subdomain: ot-ics-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -359,3 +359,7 @@ ANOMALIES DETECTED: [N]
   Baseline: [Expected behavior]
   Observed: [Actual behavior]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

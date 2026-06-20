@@ -7,7 +7,6 @@ description: 'This skill covers designing and implementing security zones and co
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - iec62443
 - network-segmentation
 - zones-conduits
+subdomain: ot-ics-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -559,3 +559,7 @@ VALIDATION RESULTS:
   Prohibited path tests: [all blocked / exceptions]
   Protocol enforcement: [function code filtering verified]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

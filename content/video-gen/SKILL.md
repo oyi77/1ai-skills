@@ -1,8 +1,13 @@
 ---
 name: video-gen
-description: AI video generation — Sora, Runway, Pika, Kling. Text-to-video, image-to-video,
-  video editing with AI
+description: AI video generation — Sora, Runway, Pika, Kling. Text-to-video, image-to-video, video editing with AI
 domain: content
+tags:
+- content-creation
+- digital-content
+- gen
+- media
+- video
 ---
 
 
@@ -235,3 +240,7 @@ while True:
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

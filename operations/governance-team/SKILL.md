@@ -1,7 +1,15 @@
 ---
 name: governance-team
-description: "Manage organizational policies, access control, compliance frameworks, and governance processes with radical transparency principles."
+description: Manage organizational policies, access control, compliance frameworks, and governance processes with radical
+  transparency principles.
 domain: operations
+tags:
+- business-ops
+- compliance
+- governance
+- management
+- operations
+- team
 ---
 persona:
   name: "Domain Expert"
@@ -14,6 +22,18 @@ persona:
 
 
 # Governance Team
+## When to Use
+
+**Trigger phrases:**
+- "governance team"
+- "Help me with governance team"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Manage policies, access control, compliance, and governance processes.
 
@@ -117,3 +137,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

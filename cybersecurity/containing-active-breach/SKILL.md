@@ -7,13 +7,13 @@ description: 'Executes containment strategies to stop active adversary operation
 
   '
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - breach-containment
 - lateral-movement
 - network-isolation
 - credential-revocation
 - live-response
+subdomain: incident-response
 mitre_attack:
 - T1021
 - T1570
@@ -262,3 +262,7 @@ BUSINESS IMPACT
 - 3 user workstations isolated (users reassigned to loaners)
 - Estimated restoration: pending eradication completion
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

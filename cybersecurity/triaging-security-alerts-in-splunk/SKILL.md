@@ -7,7 +7,6 @@ description: 'Triages security alerts in Splunk Enterprise Security by classifyi
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - splunk
@@ -16,6 +15,7 @@ tags:
 - notable-events
 - correlation-search
 - incident-review
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -247,3 +247,7 @@ Disposition:  TRUE POSITIVE — Compromised credential
 Action:       Escalated to Tier 2, ticket IR-2024-0431 created
               Account jsmith disabled pending password reset
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

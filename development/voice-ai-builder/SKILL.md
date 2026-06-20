@@ -1,8 +1,16 @@
 ---
 name: voice-ai-builder
-description: Build voice-based AI agents for phone calls, meetings, customer support,
-  and sales qualification using Vapi, Bland, and Retell
+description: Build voice-based AI agents for phone calls, meetings, customer support, and sales qualification using Vapi,
+  Bland, and Retell
 domain: development
+tags:
+- ai-agent
+- api
+- builder
+- coding
+- software-engineering
+- testing
+- voice
 ---
 
 
@@ -313,3 +321,7 @@ Proven patterns for voice-ai-builder usage.
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

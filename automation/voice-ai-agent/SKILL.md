@@ -1,8 +1,15 @@
 ---
 name: voice-ai-agent
-description: AI voice agent for handling incoming calls, appointment scheduling, lead
-  qualification, and 24/7 customer service without human intervention.
+description: AI voice agent for handling incoming calls, appointment scheduling, lead qualification, and 24/7 customer service
+  without human intervention.
 domain: automation
+tags:
+- agent
+- ai-agent
+- automation
+- productivity
+- voice
+- workflow
 ---
 persona:
   name: "Domain Expert"

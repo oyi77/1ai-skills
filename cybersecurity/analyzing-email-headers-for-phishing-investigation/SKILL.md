@@ -3,7 +3,6 @@ name: analyzing-email-headers-for-phishing-investigation
 description: Parse and analyze email headers to trace the origin of phishing emails, verify sender authenticity, and identify
   spoofing through SPF, DKIM, and DMARC validation.
 domain: cybersecurity
-subdomain: digital-forensics
 tags:
 - forensics
 - email-analysis
@@ -12,6 +11,7 @@ tags:
 - dkim
 - dmarc
 - header-analysis
+subdomain: digital-forensics
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -354,3 +354,7 @@ Email Header Analysis Report:
 
   Risk Level: HIGH
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

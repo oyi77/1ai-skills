@@ -1,14 +1,10 @@
 ---
 name: correlating-threat-campaigns
-description: 'Correlates disparate security incidents, IOCs, and adversary behaviors across time and organizations to identify
+description: Correlates disparate security incidents, IOCs, and adversary behaviors across time and organizations to identify
   unified threat campaigns, attribute them to common threat actors, and extract shared indicators for improved detection.
   Use when multiple incidents exhibit overlapping indicators, when sector-wide attack campaigns require cross-organizational
-  analysis, or when building campaign-level intelligence products. Activates for requests involving campaign analysis, incident
-  clustering, cross-organizational IOC correlation, or MISP correlation engine.
-
-  '
+  analysis, or when building campaign-level intelligence products.
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - campaign-analysis
 - correlation
@@ -18,6 +14,7 @@ tags:
 - intrusion-set
 - clustering
 - CTI
+subdomain: threat-intelligence
 version: 1.0.0
 author: team-cybersecurity
 license: Apache-2.0
@@ -189,3 +186,7 @@ Structure the campaign report:
 - **Common malware conflation**: Multiple threat actors use Cobalt Strike. Shared capability does not indicate same actor without additional corroboration.
 - **Premature attribution**: Forcing campaign-to-actor attribution before evidence threshold is reached produces incorrect intelligence that persists in reports.
 - **Missing temporal analysis**: Events from different years may share infrastructure that was recycled by a different actor, not the same campaign.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

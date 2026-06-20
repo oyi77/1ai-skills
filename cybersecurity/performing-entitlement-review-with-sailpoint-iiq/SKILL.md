@@ -7,7 +7,6 @@ description: 'Performs entitlement review and access certification campaigns usi
 
   '
 domain: cybersecurity
-subdomain: identity-access-management
 tags:
 - SailPoint
 - IdentityIQ
@@ -15,6 +14,7 @@ tags:
 - entitlement-certification
 - IGA
 - access-governance
+subdomain: identity-access-management
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -492,3 +492,7 @@ SIGN-OFF
 Campaign Signed:        2026-02-14 by compliance-admin
 Audit Evidence:         Exported to /reports/Q1-2026-cert-evidence.pdf
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

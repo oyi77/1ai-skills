@@ -6,13 +6,13 @@ description: 'This skill covers implementing Okta as a centralized identity prov
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - okta
 - cloud-identity
 - single-sign-on
 - phishing-resistant-mfa
 - identity-lifecycle
+subdomain: cloud-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -306,3 +306,7 @@ RECOMMENDATIONS:
   [HIGH] Remediate 3 orphan cloud accounts not managed by Okta
   [MEDIUM] Reduce session duration for admin roles from 8h to 4h
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

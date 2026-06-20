@@ -1,22 +1,18 @@
 ---
 name: detecting-ai-model-prompt-injection-attacks
-description: 'Detects prompt injection attacks targeting LLM-based applications using a multi-layered defense combining regex
+description: Detects prompt injection attacks targeting LLM-based applications using a multi-layered defense combining regex
   pattern matching for known attack signatures, heuristic scoring for structural anomalies, and transformer-based classification
   with DeBERTa models. The detector analyzes user inputs before they reach the LLM, flagging direct injections (system prompt
   overrides, role-play escapes, instruction hijacking) and indirect injections (encoded payloads, multi-language obfuscation,
-  delimiter-based escapes). Based on the OWASP LLM Top 10 (LLM01:2025 Prompt Injection) and Simon Willison''s prompt injection
-  taxonomy. Activates for requests involving prompt injection detection, LLM input sanitization, AI security scanning, or
-  prompt attack classification.
-
-  '
+  delimiter-...
 domain: cybersecurity
-subdomain: ai-security
 tags:
 - prompt-injection
 - LLM-security
 - OWASP-LLM-Top10
 - NLP-classification
 - input-validation
+subdomain: ai-security
 version: 1.0.0
 author: mukul975
 license: Apache-2.0
@@ -193,3 +189,7 @@ Review the JSON output for any prompts flagged with `injection_detected: true` a
 - **Pytector**: Lightweight Python package for prompt injection detection supporting local DeBERTa/DistilBERT models and API-based safeguards
 - **OWASP LLM Top 10**: Industry-standard risk taxonomy for LLM application security, with LLM01 dedicated to prompt injection
 - **deepset/prompt-injections**: Hugging Face dataset containing labeled prompt injection examples used for training and evaluating detection models
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

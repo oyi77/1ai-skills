@@ -6,12 +6,12 @@ description: 'Deploys canary tokens and honeytokens (fake AWS credentials, DNS c
 
   '
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - implementing
 - honeytokens
 - for
 - breach
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -96,3 +96,7 @@ with open("/opt/backup/.aws/credentials", "w") as f:
 - Cloud resource changes reverted or documented as intentional
 - IAM policies reviewed for least-privilege compliance after testing
 - No residual test resources left running (cost and security check)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

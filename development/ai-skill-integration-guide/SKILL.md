@@ -1,8 +1,17 @@
 ---
 name: ai-skill-integration-guide
-description: Meta-skill for integrating external GitHub skill repos into 1ai-skills. Covers discovery, deduplication, format conversion, category mapping, validation, and quality gates. Use when integrating external skill repos, bulk skill imports, skill format conversion.
+description: Meta-skill for integrating external GitHub skill repos into 1ai-skills. Covers discovery, deduplication, format
+  conversion, category mapping, validation, and quality gates. Use when integrating external skill repos, bulk skill imports,
+  skill format conversion.
 domain: development
-tags: [meta, integration, skills, github, bulk-import, format-conversion, quality-gates]
+tags:
+- meta
+- integration
+- skills
+- github
+- bulk-import
+- format-conversion
+- quality-gates
 ---
 
 
@@ -178,3 +187,7 @@ Every imported skill must pass these gates before merge:
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

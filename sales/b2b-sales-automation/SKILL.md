@@ -1,13 +1,9 @@
 ---
 name: b2b-sales-automation
-version: 1.0.0
-description: "|\n  >\n    Full B2B sales pipeline automation for BerkahKarya — from\
-  \ cold prospect to onboarded client.\n    Covers ICP definition, lead sourcing,\
-  \ outreach sequences, proposal generation, CRM tracking,\n    and deal alerts via\
-  \ Telegram. Targets Indonesian SMEs needing AI automation, digital products,\n \
-  \   and content services.\n"
-author: Vilona / BerkahKarya
-language: id-ID / en
+description: "|\n  >\n    Full B2B sales pipeline automation for BerkahKarya — from cold prospect to onboarded client.\n \
+  \   Covers ICP definition, lead sourcing, outreach sequences, proposal generation, CRM tracking,\n    and deal alerts via\
+  \ Telegram. Targets Indonesian SMEs needing AI automation, digital products,\n    and content services.\n"
+domain: sales
 tags:
 - sales
 - b2b
@@ -16,13 +12,27 @@ tags:
 - proposal
 - pipeline
 - indonesian
+version: 1.0.0
+author: Vilona / BerkahKarya
+language: id-ID / en
 scripts: "|\n  - scripts/lead_scorer.py\n    - scripts/proposal_gen.py\n    - scripts/outreach_sequencer.py\n"
-domain: sales
 ---
 
 
 
 # B2B Sales Automation Skill 🔥
+## When to Use
+
+**Trigger phrases:**
+- "b2b sales automation"
+- "Help me with b2b sales automation"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Complete B2B sales pipeline: **Prospect → Qualify → Demo → Proposal → Negotiate → Close → Onboard**
 
@@ -853,3 +863,7 @@ PIPELINE TARGETS:
 - Check lead scoring model against actual conversion data
 - Confirm proposal/contract templates are current and branded
 - Validate payment links and checkout flow end-to-end
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

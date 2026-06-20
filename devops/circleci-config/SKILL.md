@@ -1,8 +1,14 @@
 ---
 name: circleci-config
-description: CircleCI configuration — workflows, jobs, orbs, caching, contexts, dynamic
-  config
+description: CircleCI configuration — workflows, jobs, orbs, caching, contexts, dynamic config
 domain: devops
+tags:
+- ci-cd
+- circleci
+- config
+- devops
+- infrastructure
+- workflow
 ---
 
 
@@ -166,3 +172,7 @@ workflows:
 - **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
 - **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
 - **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures
+
+## Verification
+
+- [ ] Skill output matches expected behavior

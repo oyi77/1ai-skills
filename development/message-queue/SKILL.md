@@ -1,8 +1,13 @@
 ---
 name: message-queue
-description: Message queue patterns — RabbitMQ, Redis Streams, SQS. Task queues, pub/sub,
-  dead letter queues, retry logic
+description: Message queue patterns — RabbitMQ, Redis Streams, SQS. Task queues, pub/sub, dead letter queues, retry logic
 domain: development
+tags:
+- coding
+- message
+- queue
+- software-engineering
+- testing
 ---
 
 
@@ -232,3 +237,7 @@ def handle_message(msg):
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

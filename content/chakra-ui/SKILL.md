@@ -1,8 +1,12 @@
 ---
 name: chakra-ui
-description: Chakra UI React component library — theming, responsive styles, color
-  mode, component composition
+description: Chakra UI React component library — theming, responsive styles, color mode, component composition
 domain: content
+tags:
+- chakra
+- content-creation
+- digital-content
+- media
 ---
 
 
@@ -168,3 +172,7 @@ export function ThemedCard() {
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

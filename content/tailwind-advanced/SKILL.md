@@ -1,8 +1,13 @@
 ---
 name: tailwind-advanced
-description: Advanced Tailwind CSS — custom plugins, JIT, container queries, animations,
-  dark mode, design systems
+description: Advanced Tailwind CSS — custom plugins, JIT, container queries, animations, dark mode, design systems
 domain: content
+tags:
+- advanced
+- content-creation
+- digital-content
+- media
+- tailwind
 ---
 
 
@@ -181,3 +186,7 @@ module.exports = {
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

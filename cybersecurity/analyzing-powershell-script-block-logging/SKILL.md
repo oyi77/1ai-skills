@@ -4,7 +4,6 @@ description: Parse Windows PowerShell Script Block Logs (Event ID 4104) from EVT
   payloads, and living-off-the-land techniques. Uses python-evtx to extract and reconstruct multi-block scripts, applies entropy
   analysis and pattern matching for Base64-encoded commands, Invoke-Expression abuse, download cradles, and AMSI bypass attempts.
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - powershell
 - script-block-logging
@@ -12,6 +11,7 @@ tags:
 - obfuscation-detection
 - windows-forensics
 - endpoint-security
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -95,3 +95,7 @@ Scripts split across multiple 4104 events share a `ScriptBlockId`. Concatenate b
 - Output documented with screenshots or logs demonstrating expected behavior
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,9 +1,27 @@
 ---
 name: rothschild-investment
-description: "Apply Rothschild dynasty principles for long-term wealth preservation, diversification, and generational planning."
+description: Apply Rothschild dynasty principles for long-term wealth preservation, diversification, and generational planning.
 domain: research
+tags:
+- analysis
+- investigation
+- investment
+- research
+- rothschild
 ---
 # Rothschild Dynasty System
+## When to Use
+
+**Trigger phrases:**
+- "rothschild investment"
+- "Help me with rothschild investment"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Core Wealth Philosophy
 
@@ -165,3 +183,7 @@ After completing this skill, confirm:
 - `wolf-finance` - Financial analysis
 - `mckinsey-research` - Strategic analysis
 - `business-development` - Deal making
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

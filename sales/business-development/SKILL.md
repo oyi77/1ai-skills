@@ -1,8 +1,15 @@
 ---
 name: business-development
-description: "Generate leads, research prospects, and manage outreach sequences with HubSpot and Exa integration. Use for B2B pipeline building."
-allowed-tools: "|\n  - MCP(hubspot:*)\n    - MCP(exa:*)\n    - MCP(slack:*)\n"
+description: Generate leads, research prospects, and manage outreach sequences with HubSpot and Exa integration. Use for B2B
+  pipeline building.
 domain: sales
+tags:
+- business
+- business-development
+- pipeline
+- revenue
+- sales
+allowed-tools: "|\n  - MCP(hubspot:*)\n    - MCP(exa:*)\n    - MCP(slack:*)\n"
 ---
 
 
@@ -17,6 +24,18 @@ persona:
 
 
 # Business Development
+## When to Use
+
+**Trigger phrases:**
+- "business development"
+- "Help me with business development"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Generate leads, research prospects, and manage outreach. Use HubSpot for CRM, Exa for prospect research, and Slack for team coordination.
 
@@ -233,3 +252,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

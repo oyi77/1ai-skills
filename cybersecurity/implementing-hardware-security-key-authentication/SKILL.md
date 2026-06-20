@@ -1,14 +1,10 @@
 ---
 name: implementing-hardware-security-key-authentication
-description: 'Implements FIDO2/WebAuthn hardware security key authentication including registration ceremonies, authentication
+description: Implements FIDO2/WebAuthn hardware security key authentication including registration ceremonies, authentication
   flows, YubiKey enrollment, and passkey migration strategies. Builds a complete relying party server using the python-fido2
   library that supports cross-platform authenticators, resident key (discoverable credential) workflows, and user verification
-  policies. Activates for requests involving FIDO2 implementation, WebAuthn registration, hardware security key enrollment,
-  YubiKey integration, or passkey migration from password-based authentication.
-
-  '
+  policies.
 domain: cybersecurity
-subdomain: identity-and-access-management
 tags:
 - FIDO2
 - WebAuthn
@@ -17,6 +13,7 @@ tags:
 - passkeys
 - passwordless-authentication
 - CTAP2
+subdomain: identity-and-access-management
 version: 1.0.0
 author: mukul975
 license: Apache-2.0
@@ -257,3 +254,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 | alice | YubiKey Backup | 2fc0579f... | 2026-02-15 | 2026-03-01 | 12 |
 | bob | YubiKey Primary | 2fc0579f... | 2026-02-16 | 2026-03-19 | 631 |
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

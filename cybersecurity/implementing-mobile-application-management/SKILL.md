@@ -1,15 +1,10 @@
 ---
 name: implementing-mobile-application-management
-description: 'Implements Mobile Application Management (MAM) policies to protect enterprise data on managed and unmanaged
-  mobile devices through app-level controls including data loss prevention, selective wipe, app configuration, and containerization.
+description: Implements Mobile Application Management (MAM) policies to protect enterprise data on managed and unmanaged mobile
+  devices through app-level controls including data loss prevention, selective wipe, app configuration, and containerization.
   Use when securing corporate apps on BYOD devices, implementing Intune App Protection Policies, or enforcing data separation
-  between personal and work apps. Activates for requests involving MAM deployment, app protection policies, mobile containerization,
-  or BYOD security.
-
-  '
+  between personal and work apps.
 domain: cybersecurity
-subdomain: mobile-security
-author: mahipal
 tags:
 - mobile-security
 - android
@@ -17,6 +12,8 @@ tags:
 - mam
 - enterprise-security
 - owasp-mobile
+subdomain: mobile-security
+author: mahipal
 version: 1.0.0
 license: Apache-2.0
 nist_csf:
@@ -202,3 +199,7 @@ Configure MAM monitoring dashboards:
 - **iOS managed pasteboard**: iOS enforces paste restrictions through managed pasteboard, which requires the app to opt-in via Intune SDK integration.
 - **App wrapping limitations**: Wrapped apps cannot use certain features (push notifications on some platforms). SDK integration is preferred for full functionality.
 - **User experience friction**: Overly restrictive policies cause user frustration and shadow IT. Start with Tier 1 and escalate based on data sensitivity.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

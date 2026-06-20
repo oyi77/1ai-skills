@@ -1,7 +1,13 @@
 ---
 name: crisis-management
-description: Respond to crises using incident command structure, stakeholder communication, and recovery planning. Use during security breaches, PR disasters, or operational failures.
+description: Respond to crises using incident command structure, stakeholder communication, and recovery planning. Use during
+  security breaches, PR disasters, or operational failures.
 domain: mindset
+tags:
+- crisis
+- mindset
+- personal-development
+- soft-skills
 ---
 
 # Crisis Management
@@ -198,3 +204,7 @@ Framework for managing crises: incident command, stakeholder communication, deci
 - [ ] Root cause identified (RCA completed)
 - [ ] Post-mortem held (blameless, action items with owners)
 - [ ] Runbook updated (document what worked, what didn't)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

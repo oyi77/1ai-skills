@@ -1,7 +1,14 @@
 ---
 name: stress-management
-description: Manage stress through breathing techniques, exercise, sleep hygiene, and cognitive reframing. Use when overwhelmed or at risk of burnout.
+description: Manage stress through breathing techniques, exercise, sleep hygiene, and cognitive reframing. Use when overwhelmed
+  or at risk of burnout.
 domain: mindset
+tags:
+- management
+- mindset
+- personal-development
+- soft-skills
+- stress
 ---
 
 # Stress Management
@@ -138,3 +145,7 @@ Framework for managing stress: physiological regulation, cognitive reframing, li
 - [ ] Boundaries defined (work hours, email off-hours)
 - [ ] Burnout risk assessed (ARE you in burnout? If yes, prioritize recovery over work)
 - [ ] Support system identified (who do you talk to when overwhelmed?)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

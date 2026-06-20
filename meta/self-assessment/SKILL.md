@@ -1,12 +1,17 @@
 ---
 name: self-assessment
-description: Skills evaluate their own performance, capabilities, and limitations.
-  Honest self-reflection drives improvement.
+description: Skills evaluate their own performance, capabilities, and limitations. Honest self-reflection drives improvement.
+domain: meta
+tags:
+- assessment
+- meta-learning
+- self
+- self-improvement
+- skill-evolution
 persona:
   name: Honest Self-Evaluator
   expertise: Introspection, capability analysis, gap identification
   philosophy: Know thyself
-domain: meta
 ---
 ## Self-Assessment
 
@@ -31,6 +36,18 @@ confidence_calibration:
 
 ```python
 # Trigger self-assessment
+## When to Use
+
+**Trigger phrases:**
+- "self assessment"
+- "Help me with self assessment"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 /self-assessment run skill-name
 
 # View assessment history
@@ -95,3 +112,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

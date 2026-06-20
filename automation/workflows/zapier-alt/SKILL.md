@@ -2,7 +2,26 @@
 name: zapier-alt
 description: Self-hosted Zapier alternative
 domain: automation
+tags:
+- alt
+- api
+- automation
+- productivity
+- workflow
+- zapier
 ---
+## When to Use
+
+**Trigger phrases:**
+- "zapier alt"
+- "Help me with zapier alt"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Zapier Alt
 
 Self-hosted Zapier alternative
@@ -75,3 +94,7 @@ Additional context and best practices for this skill.
 - If output quality is low, provide more context in your input
 - If the skill does not cover your use case, check related skills
 - For integration issues, verify prerequisites and dependencies are met
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

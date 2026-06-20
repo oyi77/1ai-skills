@@ -7,13 +7,13 @@ description: 'This skill outlines methodologies for performing authorized penetr
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-pentesting
 - offensive-security
 - aws-exploitation
 - shared-responsibility
 - mitre-attack-cloud
+subdomain: cloud-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -329,3 +329,7 @@ FINDING SUMMARY BY MITRE ATT&CK TACTIC:
   Discovery:           14 findings
   Total:               47 findings
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

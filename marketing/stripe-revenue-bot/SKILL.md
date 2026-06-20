@@ -1,8 +1,15 @@
 ---
 name: stripe-revenue-bot
-description: Automate posting your Stripe revenue milestones to Twitter/X. Build trust
-  through transparency, attract customers, and join the "build in public" movement.
+description: Automate posting your Stripe revenue milestones to Twitter/X. Build trust through transparency, attract customers,
+  and join the "build in public" movement.
 domain: marketing
+tags:
+- bot
+- growth
+- marketing
+- revenue
+- seo
+- stripe
 ---
 
 persona:

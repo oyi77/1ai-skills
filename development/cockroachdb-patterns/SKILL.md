@@ -1,8 +1,13 @@
 ---
 name: cockroachdb-patterns
-description: CockroachDB distributed SQL — PostgreSQL compatible, serializable isolation,
-  geo-partitioning, multi-region
+description: CockroachDB distributed SQL — PostgreSQL compatible, serializable isolation, geo-partitioning, multi-region
 domain: development
+tags:
+- cockroachdb
+- coding
+- patterns
+- software-engineering
+- testing
 ---
 
 
@@ -147,3 +152,7 @@ ALTER TABLE users SET LOCALITY REGIONAL BY ROW;
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

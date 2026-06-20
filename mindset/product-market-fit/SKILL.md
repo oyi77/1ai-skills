@@ -1,7 +1,15 @@
 ---
 name: product-market-fit
-description: Find and measure product-market fit using surveys, NPS, retention cohorts, and the Mom Test. Use when validating a product's viability.
+description: Find and measure product-market fit using surveys, NPS, retention cohorts, and the Mom Test. Use when validating
+  a product's viability.
 domain: mindset
+tags:
+- fit
+- market
+- mindset
+- personal-development
+- product
+- soft-skills
 ---
 
 # Product-Market Fit
@@ -199,3 +207,7 @@ Framework for finding and measuring product-market fit (PMF). Covers the Superhu
 - [ ] PMF scorecard calculated (3/5 metrics met = PMF)
 - [ ] If PMF < 40%: pivot plan documented (problem, segment, solution, distribution hypotheses)
 - [ ] If PMF ≥ 40%: growth plan defined (onboarding, distribution, hiring)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

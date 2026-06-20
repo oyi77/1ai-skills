@@ -1,9 +1,14 @@
 ---
 name: program-player
-description: Get invited to private bug bounty programs and build reputation on platforms.
-  Use when building platform reputation, applying to private programs, or optimizing
-  your hunter profile for maximum opportunities.
+description: Get invited to private bug bounty programs and build reputation on platforms. Use when building platform reputation,
+  applying to private programs, or optimizing your hunter profile for maximum opportunities.
 domain: cybersecurity
+tags:
+- cybersecurity
+- player
+- program
+- security
+- threat-defense
 ---
 
 # Program Player
@@ -235,3 +240,7 @@ Weekend: Writeup cleanup, learning, tool development (4h)
 | Expert (2+ years) | $20000+ | Full-time |
 
 Private programs typically pay 5-10x more than public programs for the same vulnerability type.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

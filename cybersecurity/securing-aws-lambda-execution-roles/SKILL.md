@@ -6,7 +6,6 @@ description: 'Securing AWS Lambda execution roles by implementing least-privileg
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - aws
@@ -14,6 +13,7 @@ tags:
 - iam
 - least-privilege
 - execution-roles
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -407,3 +407,7 @@ POLICY VALIDATION RESULTS:
   Policies with errors:              0
   Policies with suggestions:        12
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

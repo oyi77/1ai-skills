@@ -7,7 +7,6 @@ description: 'This skill covers detecting sophisticated cyber-physical attacks t
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -17,6 +16,7 @@ tags:
 - stuxnet
 - plc-integrity
 - apt
+subdomain: ot-ics-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -516,3 +516,7 @@ ENGINEERING WORKSTATION:
   Unauthorized modifications: [N]
   USB connections: [N]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,11 +1,28 @@
 ---
 name: ultra-realistic-media
-description: ULTRA REALISTIC MEDIA GENERATION - TRAINING SKILL. Use when relevant
-  to this domain.
+description: ULTRA REALISTIC MEDIA GENERATION - TRAINING SKILL. Use when relevant to this domain.
 domain: content
+tags:
+- content-creation
+- digital-content
+- media
+- realistic
+- ultra
 ---
 
 # ULTRA REALISTIC MEDIA GENERATION - TRAINING SKILL
+## When to Use
+
+**Trigger phrases:**
+- "ultra realistic media"
+- "Help me with ultra realistic media"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Overview
 

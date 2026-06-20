@@ -7,7 +7,6 @@ description: 'Configures host-based intrusion detection systems (HIDS) to monito
 
   '
 domain: cybersecurity
-subdomain: endpoint-security
 tags:
 - endpoint
 - HIDS
@@ -15,6 +14,7 @@ tags:
 - OSSEC
 - file-integrity-monitoring
 - intrusion-detection
+subdomain: endpoint-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -251,3 +251,7 @@ output.elasticsearch:
 - **Ignoring baseline establishment**: First FIM scan creates a baseline. Changes detected before baseline stabilization are noise, not threats. Allow 48 hours for baseline.
 - **Active response without testing**: Auto-blocking IPs or disabling accounts can cause outages. Test active response rules in a non-production environment first.
 - **Agent enrollment failures**: Agents must successfully enroll with the manager before monitoring begins. Verify firewall rules allow port 1514 and 1515 traffic.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

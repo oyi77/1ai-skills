@@ -7,7 +7,6 @@ description: 'Deploys DNS, HTTP, and AWS API key canary tokens across network in
 
   '
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - canary-tokens
 - intrusion-detection
@@ -15,6 +14,7 @@ tags:
 - network-security
 - honeytokens
 - breach-detection
+subdomain: security-operations
 version: '1.0'
 author: mukul975
 license: Apache-2.0
@@ -365,3 +365,7 @@ python scripts/agent.py --action inventory \
 - Zeltser Honeytoken Setup Guide: https://zeltser.com/honeytokens-canarytokens-setup/
 - Grafana Canary Token Case Study: https://grafana.com/blog/2025/08/25/canary-tokens-learn-all-about-the-unsung-heroes-of-security-at-grafana-labs/
 - AWS Infrastructure Canarytoken: https://blog.thinkst.com/2025/09/introducing-the-aws-infrastructure-canarytoken.html
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

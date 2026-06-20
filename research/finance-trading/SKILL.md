@@ -1,9 +1,28 @@
 ---
 name: finance-trading
-description: "Analyze financial markets using technical indicators, fundamental analysis, and macro trends. Use for investment research."
+description: Analyze financial markets using technical indicators, fundamental analysis, and macro trends. Use for investment
+  research.
 domain: research
+tags:
+- analysis
+- finance
+- investigation
+- research
+- trading
 ---
 # Maybe HFT Hedging EA
+## When to Use
+
+**Trigger phrases:**
+- "finance trading"
+- "Help me with finance trading"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 > *"The way to build long-term returns is through preservation of capital and home runs."* — **Paul Tudor Jones**
 
@@ -233,3 +252,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

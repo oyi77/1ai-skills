@@ -1,7 +1,14 @@
 ---
 name: smart-scraper
-description: AI-powered web scraper
+description: Twitter scraping. Use when working with smart scraper in automation domain.
 domain: automation
+tags:
+- api
+- automation
+- productivity
+- scraper
+- smart
+- workflow
 ---
 ## Smart Scraper
 
@@ -54,6 +61,18 @@ For social media scraping (Twitter, Reddit, YouTube, XiaoHongShu, Bilibili, Link
 
 ```bash
 # Twitter scraping
+## When to Use
+
+**Trigger phrases:**
+- "smart scraper"
+- "Help me with smart scraper"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 agent-reach twitter search "query" --limit 100 --format json
 
 # Reddit scraping
@@ -79,3 +98,7 @@ Agent-reach handles platform anti-scraping, auth, rate limits, and data normaliz
 - If output quality is low, provide more context in your input
 - If the skill does not cover your use case, check related skills
 - For integration issues, verify prerequisites and dependencies are met
+
+## Overview
+
+> Section content — see SKILL.md body for full details.
