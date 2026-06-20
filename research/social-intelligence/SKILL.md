@@ -253,7 +253,7 @@ agent-reach xhs search "类别 推荐" --limit 100
 1. **Social Intelligence** → user pain points
 2. `skill://triage-issue` → file GitHub issues
 3. `skill://to-prd` → convert to PRD
-4. `skill://task` → delegate implementation
+4. `skill://subagent-driven-development` → delegate implementation
 
 ## Advanced Patterns
 

@@ -1,10 +1,10 @@
 ---
-name: pricing-strategy
+name: pricing-frameworks
 description: Set prices using value-based, cost-plus, competitive, and subscription models. Includes tiering, anchoring, discounts, and pricing experiments.
 domain: mindset
 ---
 
-# Pricing Strategy
+# Pricing Frameworks
 
 Framework for setting and optimizing prices: value-based, cost-plus, competitive, subscription tiers, anchoring, discounts, and experimentation.
 

@@ -16,6 +16,7 @@ git clone https://github.com/oyi77/1ai-skills.git
 1. Read `SKILLS.json` for machine-readable totals per category.
 2. Read `AGENTS.md` for category descriptions.
 3. For `cybersecurity/` (785 skills), read `cybersecurity/AGENTS.md` for the subdomain map BEFORE loading individual skills.
+5. Run `python3 scripts/lint-skills.py` for quality checks before committing.
 4. Load only the specific `<category>/<skill-name>/SKILL.md` you need.
 
 Do NOT walk all 1315 skill dirs. Grep `SKILLS.json` first.

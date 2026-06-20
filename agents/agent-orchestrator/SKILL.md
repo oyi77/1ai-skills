@@ -63,9 +63,8 @@ team = {
 ## Installation
 
 This skill uses existing 1ai-skills infrastructure:
-- `skill://task` — Agent spawning
-- `skill://irc` — Inter-agent communication
-- `skill://hive-mind` — Consensus building
+ `skill://subagent-driven-development` — Agent spawning
+ `skill://hive-mind` — Inter-agent communication
 - `skill://teamwork` — Team management
 
 No additional installation required.
@@ -442,14 +441,14 @@ for agent, time in result.agent_times.items():
 
 ### With task spawning
 ```python
-# Orchestrator uses skill://task under the hood
+# Orchestrator uses skill://subagent-driven-development under the hood
 orch = Orchestrator(team)
 # Automatically spawns agents via task tool
 ```
 
 ### With IRC communication
 ```python
-# Agents communicate via skill://irc
+# Agents communicate via skill://hive-mind
 # No manual setup needed
 ```
 
@@ -512,9 +511,8 @@ print(profile.bottlenecks())  # → ["VideoEditor: 78% of total time"]
 
 ## Related Skills
 
-- `skill://task` — Agent spawning and delegation
-- `skill://irc` — Inter-agent communication
-- `skill://hive-mind` — Consensus building
+- `skill://subagent-driven-development` — Agent spawning and delegation
+- `skill://hive-mind` — Inter-agent communication
 - `skill://teamwork` — Team management
 - `skill://dispatching-parallel-agents` — Parallel workflows
 - `skill://executing-plans` — Plan execution

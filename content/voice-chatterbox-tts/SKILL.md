@@ -29,7 +29,7 @@ Free, local text-to-speech with voice cloning using Chatterbox TTS. Zero API cos
 - Multilingual content creation
 
 **When NOT to use:**
-- When real-time streaming is required (use edge-tts)
+ When real-time streaming is required (use other TTS services)
 - When you need 100+ voices (use Azure/Google TTS)
 - When computing resources are extremely limited
 
@@ -320,15 +320,15 @@ wav = model.generate("Hello world", audio_prompt_path=voice_path)
 
 1. **This skill** → Multi-voice generation
 2. `skill://content-factory` → Script generation
-3. `skill://audio-editor` → Post-processing
+ `skill://video-editor` → Post-processing
 4. `skill://content-publisher` → Distribution
 
 ### Voice Assistant
 
 1. **This skill** → Custom voice generation
 2. `skill://voice-ai-agent` → Call handling
-3. `skill://chatbot` → Conversation logic
-4. `skill://memory-system` → Context retention
+ `skill://voice-ai-agent` → Conversation logic
+ `skill://para-memory-files` → Context retention
 
 ## Performance Benchmarks
 
@@ -378,8 +378,6 @@ wav = model.generate(text, repetition_penalty=1.3)
 
 ## Related Skills
 
-- `skill://edge-tts` — Cloud TTS alternative (requires API)
-- `skill://faster-whisper` — Speech-to-text
 - `skill://voice-ai-agent` — Call handling with custom voices
 - `skill://remotion` — Video with synced subtitles
 - `skill://content-factory` — Automated content generation
