@@ -48,23 +48,27 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Agent Reach Integration
+
+For social media scraping (Twitter, Reddit, YouTube, XiaoHongShu, Bilibili, LinkedIn), prefer `skill://agent-reach` over custom scrapers:
+
+```bash
+# Twitter scraping
+agent-reach twitter search "query" --limit 100 --format json
+
+# Reddit scraping
+agent-reach reddit subreddit SubredditName --sort hot --limit 50
+
+# YouTube transcript extraction
+agent-reach youtube video "url" --transcript
+
+# Web page scraping (alternative to custom scrapers)
+agent-reach web_page "https://example.com" --format markdown
+```
+
+Agent-reach handles platform anti-scraping, auth, rate limits, and data normalization. Use this skill (smart-scraper) for custom web scraping of non-social-media sites. Use agent-reach for social platforms.
+
 ## Additional Notes
-
-Additional context and best practices for this skill.
-
-### Best Practices
-- Combine with related skills for comprehensive coverage
-- Review the verification checklist after applying this skill
-- Document patterns you discover for future use
-
-### Troubleshooting
-- If output quality is low, provide more context in your input
-- If the skill does not cover your use case, check related skills
-- For integration issues, verify prerequisites and dependencies are met
-
-## Additional Notes
-
-Additional context and best practices for this skill.
 
 ### Best Practices
 - Combine with related skills for comprehensive coverage

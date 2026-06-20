@@ -361,9 +361,30 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Agent Reach Integration
+
+For deeper platform scraping beyond trend monitoring, use `skill://agent-reach`:
+
+```bash
+# After identifying trending topics via TrendRadar, deep-dive on Twitter
+agent-reach twitter search "trending topic" --limit 100
+
+# Reddit discussion analysis
+agent-reach reddit search "trending topic" --limit 50
+
+# YouTube video transcript analysis
+agent-reach youtube search "trending topic" --limit 20 --transcript
+
+# XiaoHongShu trend research (Chinese market)
+agent-reach xhs search "热门话题" --limit 50
+```
+
+Use TrendRadar for monitoring and alerting, Agent Reach for deep content extraction. Combine with `skill://social-intelligence` for full sentiment analysis.
+
 ## Related Skills
 
 - [ai-research-agent](../ai-research-agent/SKILL.md) - Deep research
 - [larry-playbook](../../content/larry-playbook/SKILL.md) - Viral content
 - [market-research](../../marketing/market-research/SKILL.md) - Competitor analysis
+- [social-intelligence](../social-intelligence/SKILL.md) - Cross-platform sentiment
 - [continuous-learning](../continuous-learning/SKILL.md) - Learn from trends

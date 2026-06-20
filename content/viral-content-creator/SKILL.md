@@ -920,3 +920,23 @@ if i % 10 == 0:
 - Confirm links work and point to correct destinations
 - Test video/audio quality before publishing
 - Validate content renders correctly on mobile devices
+
+## Agent Reach Integration
+
+For real-time trend research and viral hook discovery, use `skill://agent-reach`:
+
+```bash
+# Find viral hooks on Twitter
+agent-reach twitter search "viral [your niche]" --limit 50
+
+# Reddit pain point mining for content ideas
+agent-reach reddit search "frustrated with" --subreddit [your niche]
+
+# YouTube competitor content analysis
+agent-reach youtube search "competitor content type" --limit 20 --transcript
+
+# XiaoHongShu trend analysis (Chinese market)
+agent-reach xhs search "爆品 推荐" --limit 50
+```
+
+Combine with `skill://social-intelligence` for full cross-platform sentiment before content creation.

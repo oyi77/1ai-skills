@@ -1,9 +1,9 @@
 # 1ai-Skills
-# 1308 Open-Source AI Agent Skills with Self-Evolving Meta-Skills
+# 1310 Open-Source AI Agent Skills with Self-Evolving Meta-Skills
 # https://github.com/oyi77/1ai-skills
 
 ## What This Is
-1ai-Skills is the largest open-source AI agent skill library. 1308 production-ready skills across 19 categories that enable AI agents to auto-evolve, auto-learn, and auto-improve. Each skill is a self-contained `SKILL.md` with YAML frontmatter (name, description, domain, tags, optional persona) that agents load on demand.
+1ai-Skills is the largest open-source AI agent skill library. 1310 production-ready skills across 19 categories that enable AI agents to auto-evolve, auto-learn, and auto-improve. Each skill is a self-contained `SKILL.md` with YAML frontmatter (name, description, domain, tags, optional persona) that agents load on demand.
 
 ## Installation
 ```bash
@@ -18,9 +18,9 @@ git clone https://github.com/oyi77/1ai-skills.git
 3. For `cybersecurity/` (785 skills), read `cybersecurity/AGENTS.md` for the subdomain map BEFORE loading individual skills.
 4. Load only the specific `<category>/<skill-name>/SKILL.md` you need.
 
-Do NOT walk all 1308 skill dirs. Grep `SKILLS.json` first.
+Do NOT walk all 1310 skill dirs. Grep `SKILLS.json` first.
 
-## Categories (1308 skills total, 19 categories)
+## Categories (1310 skills total, 19 categories)
 
 | Category | Skills | Focus |
 |---|---:|---|
@@ -33,14 +33,14 @@ Do NOT walk all 1308 skill dirs. Grep `SKILLS.json` first.
 | devops/ | 33 | Docker, Kubernetes, GitHub Actions, ArgoCD, GitLab CI, cloud operations, service mesh, GitOps, free cloud infrastructure |
 | integrations/ | 32 | Slack, Discord, Notion, GitHub — bots, webhooks, APIs, free SaaS toolkit, team collaboration, MCP servers |
 | automation/ | 28 | n8n workflows, WhatsApp/Telegram/Twitter bots, job hunter, scrapers, content publisher, Airflow pipelines, data pipelines |
-| research/ | 22 | McKinsey analysis, deep research, Polymarket analyst, continuous learning, competitive intelligence, market research, trend analysis |
+| research/ | 23 | McKinsey-style analysis, deep research, social intelligence, Polymarket, Sherlock deduction, competitive intelligence, market research |
 | trading/ | 20 | Black Edge, AlphaEar, Polymarket, Tushare, crypto trading bot, DeFi protocols, smart contracts, NFTs, commodities |
 | operations/ | 19 | Finance ops, revenue team, project management, payment invoicing, governance, KYC, statement audit, GL reconciliation, team ops |
 | financial/ | 15 | All-in-One Finance (16 modules), Wolf Finance (22 modules), model builder, earnings viewer, pitch deck, commodities, DeFi |
 | agents/ | 15 | Research, review, planning, code, deploy, refactor, subagent orchestration, security, autonomous trading agents |
 | meta/ | 13 | find-skills, create-skills, auto-evolve, skill evolution engine, auto-learner, skill datastore, continuous improvement |
 | sales/ | 13 | High-ticket closing, lead generation, business development, CRM automation, sales enablement, outreach automation |
-| mcp/ | 13 | MCP servers: GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase, codebase-memory (code intelligence) |
+| mcp/ | 14 | MCP servers: GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase, codebase-memory (code intelligence), agent-reach (social scraping) |
 | data/ | 10 | Data cleaning, anomaly detection, report generation, visualization, data pipelines, DBT, lakeFS, data versioning, analytics |
 | productivity/ | 10 | Google Workspace, calendar, email automation, Notion, daily planner, task management, meeting automation |
 
