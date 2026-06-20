@@ -48,6 +48,7 @@ done
 printf '%-15s %6s\n' "---------------" "------"
 printf '%-15s %6d\n' "TOTAL" "$total"
 printf '\nTooling dirs (no skills): %s\n' "${TOOLING_DIRS[*]}"
+# For quality checks (duplicates, description quality, cross-refs), run: python3 scripts/lint-skills.py
 
 # JSON output. NOTE: deliberately deterministic — no timestamp — so CI
 # can verify SKILLS.json is current with `git diff --quiet`. If you need

@@ -16,6 +16,18 @@ bash scripts/audit-skills.sh --write
 
 If validation finds issues, run `python3 scripts/validate-skills.py --fix` for auto-repair (missing closing `---`, missing name, missing description from H1).
 
+## Quality Linting (Recommended)
+
+For deeper quality checks (duplicate names, description quality, cross-reference validation):
+```bash
+python3 scripts/lint-skills.py
+
+To regenerate the enriched SKILLS.json with per-skill metadata (name, description, tags, persona):
+```bash
+python3 scripts/lint-skills.py --write
+```
+
+
 ## Skill Anatomy (Required)
 
 Every skill MUST follow this structure:

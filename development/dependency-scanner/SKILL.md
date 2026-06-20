@@ -343,7 +343,7 @@ for update in priorities:
 ### CI/CD Pipeline
 
 1. **This skill** — Audit on every PR
-2. `skill://devops/ci-cd` — GitHub Actions
+2. `skill://cicd-deployment` — GitHub Actions
 3. `skill://requesting-code-review` — Block on critical CVEs
 
 ### Security Workflow
@@ -395,4 +395,4 @@ pip-compile requirements.in
 - `skill://security-agent-hardening` — Agent security
 - `skill://auto-git-commiter` — Git automation
 - `skill://best-hacker` — Security testing
-- `skill://devops/ci-cd` — Pipeline integration
+ `skill://cicd-deployment` — Pipeline integration
