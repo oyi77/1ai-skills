@@ -1,8 +1,14 @@
 ---
 name: prefect-flows
-description: Prefect workflow orchestration — flows, tasks, deployments, work pools,
-  schedules, retries
+description: Prefect workflow orchestration — flows, tasks, deployments, work pools, schedules, retries
 domain: data
+tags:
+- analytics
+- data-analysis
+- flows
+- prefect
+- visualization
+- workflow
 ---
 
 
@@ -217,3 +223,7 @@ def parent_flow():
 - **Missing monitoring for data freshness**: Stale data causes wrong business decisions
 - **No rollback on failed transforms**: Failed transforms without rollback require manual recovery
 - **Hardcoded connection strings**: Credentials in code get committed to version control
+
+## Verification
+
+- [ ] Skill output matches expected behavior

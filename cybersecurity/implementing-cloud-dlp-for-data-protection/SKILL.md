@@ -5,7 +5,6 @@ description: 'Implementing Cloud Data Loss Prevention (DLP) using Amazon Macie, 
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - dlp
@@ -13,6 +12,7 @@ tags:
 - macie
 - data-classification
 - privacy
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -491,3 +491,7 @@ REMEDIATION ACTIONS:
   Access controls tightened:         14,200
   Sensitivity labels applied:        45,200
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

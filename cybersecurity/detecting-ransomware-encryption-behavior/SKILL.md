@@ -7,7 +7,6 @@ description: 'Detects ransomware encryption activity in real time using entropy 
 
   '
 domain: cybersecurity
-subdomain: ransomware-defense
 tags:
 - ransomware
 - detection
@@ -15,6 +14,7 @@ tags:
 - behavioral-analysis
 - file-monitoring
 - heuristics
+subdomain: ransomware-defense
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -227,3 +227,7 @@ Automated Response Actions:
 - **psutil (Python)**: Process and system monitoring library for tracking per-process I/O statistics
 - **Elastic Endpoint**: Commercial endpoint protection with built-in ransomware behavioral detection using canary files
 - **Wazuh**: Open-source security platform with file integrity monitoring and active response capabilities
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

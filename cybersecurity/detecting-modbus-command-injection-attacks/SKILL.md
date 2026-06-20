@@ -6,7 +6,6 @@ description: 'Detect command injection attacks against Modbus TCP/RTU protocol i
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - ids
 - scada
 - threat-detection
+subdomain: ot-ics-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -545,3 +545,7 @@ RECOMMENDED ACTIONS:
   2. Block unauthorized sources at industrial firewall
   3. Validate PLC register values against known-good state
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

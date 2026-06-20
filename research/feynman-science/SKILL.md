@@ -1,9 +1,27 @@
 ---
 name: feynman-science
-description: "Explain complex concepts simply using Feynman's technique: teach, identify gaps, simplify, and analogize."
+description: 'Explain complex concepts simply using Feynman''s technique: teach, identify gaps, simplify, and analogize.'
 domain: research
+tags:
+- analysis
+- feynman
+- investigation
+- research
+- science
 ---
 # Feynman Scientific Method
+## When to Use
+
+**Trigger phrases:**
+- "feynman science"
+- "Help me with feynman science"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Core Philosophy
 
@@ -189,3 +207,7 @@ After completing this skill, confirm:
 - `systematic-debugging` - Finding errors
 - `mckinsey-research` - Strategic research
 - `continuous-learning` - Improving over time
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

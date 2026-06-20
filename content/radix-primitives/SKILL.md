@@ -1,8 +1,13 @@
 ---
 name: radix-primitives
-description: Radix UI headless primitives — accessible, unstyled React components
-  for dialogs, dropdowns, tooltips
+description: Radix UI headless primitives — accessible, unstyled React components for dialogs, dropdowns, tooltips
 domain: content
+tags:
+- content-creation
+- digital-content
+- media
+- primitives
+- radix
 ---
 
 
@@ -173,3 +178,7 @@ export function Tip({ children, content }) {
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

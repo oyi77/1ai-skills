@@ -4,12 +4,12 @@ description: Automate GoPhish phishing simulation campaigns using the Python gop
   tracking pixels, configures SMTP sending profiles, builds target groups from CSV, launches campaigns, and analyzes results
   including open rates, click rates, and credential submission statistics for security awareness assessment.
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - performing
 - red
 - team
 - phishing
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -91,3 +91,7 @@ api.campaigns.post(campaign)
 - Output documented with screenshots or logs demonstrating expected behavior
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

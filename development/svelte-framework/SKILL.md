@@ -1,8 +1,13 @@
 ---
 name: svelte-framework
-description: Svelte and SvelteKit development — runes, stores, server-side rendering,
-  form actions, streaming
+description: Svelte and SvelteKit development — runes, stores, server-side rendering, form actions, streaming
 domain: development
+tags:
+- coding
+- framework
+- software-engineering
+- svelte
+- testing
 ---
 
 
@@ -179,3 +184,7 @@ export const load = async ({ fetch }) => {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

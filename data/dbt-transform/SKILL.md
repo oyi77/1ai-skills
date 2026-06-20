@@ -1,8 +1,13 @@
 ---
 name: dbt-transform
-description: dbt data transformation — models, tests, macros, sources, snapshots,
-  documentation, packages
+description: dbt data transformation — models, tests, macros, sources, snapshots, documentation, packages
 domain: data
+tags:
+- analytics
+- data-analysis
+- dbt
+- transform
+- visualization
 ---
 
 
@@ -277,3 +282,7 @@ dbt deps
 - **Missing monitoring for data freshness**: Stale data causes wrong business decisions
 - **No rollback on failed transforms**: Failed transforms without rollback require manual recovery
 - **Hardcoded connection strings**: Credentials in code get committed to version control
+
+## Verification
+
+- [ ] Skill output matches expected behavior

@@ -1,7 +1,15 @@
 ---
 name: remote-work
-description: Work effectively remotely including async communication, documentation, video meetings, and self-management in distributed teams.
+description: Work effectively remotely including async communication, documentation, video meetings, and self-management in
+  distributed teams.
 domain: mindset
+tags:
+- mindset
+- personal-development
+- remote
+- soft-skills
+- video
+- work
 ---
 
 # Remote Work
@@ -117,3 +125,7 @@ Framework for thriving as a remote worker: async communication, documentation, v
 - [ ] Daily routine established (start/end times, breaks, workspace)
 - [ ] Relationship-building activities scheduled (virtual coffee, team events)
 - [ ] Boundaries communicated (availability, response time expectations)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

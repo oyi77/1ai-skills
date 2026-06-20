@@ -1,8 +1,14 @@
 ---
 name: super-browser
-description: The ultimate browser automation framework combining the best of 8 top-rated
-  browser skills for unified local or cloud-based web task automation.
+description: The ultimate browser automation framework combining the best of 8 top-rated browser skills for unified local
+  or cloud-based web task automation.
 domain: research
+tags:
+- analysis
+- browser
+- investigation
+- research
+- super
 ---
 persona:
   name: "Marc Andreessen"
@@ -15,6 +21,18 @@ persona:
 
 
 # Super Browser Automation
+## When to Use
+
+**Trigger phrases:**
+- "super browser"
+- "Help me with super browser"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 **The ultimate browser automation framework.** Combines the best of 8 top-rated browser skills.
 
@@ -135,3 +153,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

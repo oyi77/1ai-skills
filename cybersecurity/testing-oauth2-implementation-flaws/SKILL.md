@@ -1,14 +1,10 @@
 ---
 name: testing-oauth2-implementation-flaws
-description: 'Tests OAuth 2.0 and OpenID Connect implementations for security flaws including authorization code interception,
+description: Tests OAuth 2.0 and OpenID Connect implementations for security flaws including authorization code interception,
   redirect URI manipulation, CSRF in OAuth flows, token leakage, scope escalation, and PKCE bypass. The tester evaluates the
   authorization server, client application, and token handling for common misconfigurations that enable account takeover or
-  unauthorized access. Activates for requests involving OAuth security testing, OIDC vulnerability assessment, OAuth2 redirect
-  bypass, or authorization code flow testing.
-
-  '
+  unauthorized access.
 domain: cybersecurity
-subdomain: api-security
 tags:
 - api-security
 - oauth2
@@ -16,6 +12,7 @@ tags:
 - authentication
 - redirect-uri
 - token-security
+subdomain: api-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -435,3 +432,7 @@ resources the OAuth scope grants access to.
 5. Enforce single-use authorization codes with a short TTL (max 60 seconds)
 6. Validate the audience (aud) claim in tokens before accepting them
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

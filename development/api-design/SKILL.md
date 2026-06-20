@@ -1,8 +1,14 @@
 ---
 name: api-design
-description: REST API design — resource modeling, versioning, pagination, error handling,
-  OpenAPI/Swagger documentation
+description: REST API design — resource modeling, versioning, pagination, error handling, OpenAPI/Swagger documentation
 domain: development
+tags:
+- api
+- coding
+- design
+- rest-api
+- software-engineering
+- testing
 ---
 
 
@@ -205,3 +211,7 @@ app.use((req, res, next) => {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

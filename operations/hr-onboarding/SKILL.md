@@ -1,7 +1,13 @@
 ---
 name: hr-onboarding
-description: "Design onboarding programs, manage new hire paperwork, and track 30-60-90 day milestones. Use when scaling teams or improving retention."
+description: Design onboarding programs, manage new hire paperwork, and track 30-60-90 day milestones. Use when scaling teams
+  or improving retention.
 domain: operations
+tags:
+- business-ops
+- management
+- onboarding
+- operations
 ---
 # HR & Onboarding Skill 🚀
 
@@ -910,3 +916,7 @@ TELEGRAM GROUPS:
 - [ ] Compliance requirements are met
 - [ ] Onboarding progress is tracked
 - [ ] Documentation is properly managed
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

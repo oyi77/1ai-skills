@@ -1,14 +1,10 @@
 ---
 name: automating-ioc-enrichment
-description: 'Automates the enrichment of raw indicators of compromise with multi-source threat intelligence context using
+description: Automates the enrichment of raw indicators of compromise with multi-source threat intelligence context using
   SOAR platforms, Python pipelines, or TIP playbooks to reduce analyst triage time and standardize enrichment outputs. Use
   when building automated enrichment workflows integrated with SIEM alerts, email submission pipelines, or bulk IOC processing
-  from threat feeds. Activates for requests involving SOAR enrichment, Cortex XSOAR, Splunk SOAR, TheHive, Python enrichment
-  pipelines, or automated IOC processing.
-
-  '
+  from threat feeds.
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - SOAR
 - enrichment
@@ -19,6 +15,7 @@ tags:
 - automation
 - CTI
 - NIST-CSF
+subdomain: threat-intelligence
 version: 1.0.0
 author: team-cybersecurity
 license: Apache-2.0
@@ -238,3 +235,7 @@ Track pipeline performance weekly:
 - **No caching**: Querying the same IOC 50 times generates unnecessary API costs. Cache enrichment results for 24 hours by default.
 - **Ignoring API failures silently**: Failed enrichment calls should be logged and trigger fallback logic, not silently produce empty results that appear as clean IOCs.
 - **Automating blocks on enrichment score alone**: Composite scores contain false positives; require human confirmation for blocking decisions against shared infrastructure.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

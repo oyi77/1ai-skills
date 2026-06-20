@@ -1,8 +1,14 @@
 ---
 name: lead-magnets
-description: Lead magnet design and creation — ebooks, templates, calculators, quizzes
-  matched to audience intent. Use when building lead generation funnels.
+description: Lead magnet design and creation — ebooks, templates, calculators, quizzes matched to audience intent. Use when
+  building lead generation funnels.
 domain: marketing
+tags:
+- growth
+- lead
+- magnets
+- marketing
+- seo
 ---
 
 
@@ -77,3 +83,7 @@ Lead magnet design and creation — ebooks, templates, calculators, quizzes matc
 - Check the references/ directory for checklists and templates
 - Join the community for best practices and support
 - Contribute improvements via pull requests
+
+## Verification
+
+- [ ] Skill output matches expected behavior

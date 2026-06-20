@@ -6,7 +6,6 @@ description: 'Implementing Cloud Security Posture Management (CSPM) to continuou
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - cspm
@@ -14,6 +13,7 @@ tags:
 - compliance
 - prowler
 - scoutsuite
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -330,3 +330,7 @@ AUTO-REMEDIATION (Last 7 Days):
   Manual remediation pending: 51
   Exceptions approved:        8
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

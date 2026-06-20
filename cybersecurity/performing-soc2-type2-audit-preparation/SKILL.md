@@ -1,14 +1,10 @@
 ---
 name: performing-soc2-type2-audit-preparation
-description: 'Automates SOC 2 Type II audit preparation including gap assessment against AICPA Trust Services Criteria (CC1-CC9),
+description: Automates SOC 2 Type II audit preparation including gap assessment against AICPA Trust Services Criteria (CC1-CC9),
   evidence collection from cloud providers and identity systems, control testing validation, remediation tracking, and continuous
   compliance monitoring. Covers all five TSC categories (Security, Availability, Processing Integrity, Confidentiality, Privacy)
-  with automated evidence gathering from AWS, Azure, GCP, Okta, GitHub, and Jira. Use when preparing for or maintaining SOC
-  2 Type II certification.
-
-  '
+  with automated evidence gathering from AWS, Azure, GCP, Okta, GitHub, and Jira.
 domain: cybersecurity
-subdomain: governance-risk-compliance
 tags:
 - performing
 - soc2
@@ -17,6 +13,7 @@ tags:
 - preparation
 - compliance
 - grc
+subdomain: governance-risk-compliance
 version: '1.0'
 author: mukul975
 license: Apache-2.0
@@ -332,3 +329,7 @@ ir_evidence = {
 - Output documented with screenshots or logs demonstrating expected behavior
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

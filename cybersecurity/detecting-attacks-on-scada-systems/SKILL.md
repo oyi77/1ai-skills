@@ -8,7 +8,6 @@ description: 'This skill covers detecting cyber attacks targeting Supervisory Co
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -17,6 +16,7 @@ tags:
 - iec62443
 - intrusion-detection
 - threat-detection
+subdomain: ot-ics-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -748,3 +748,7 @@ RECOMMENDED RESPONSE:
   2. [Verification step]
   3. [Escalation path]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

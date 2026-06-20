@@ -6,7 +6,6 @@ description: 'This skill covers implementing code signing for build artifacts to
 
   '
 domain: cybersecurity
-subdomain: devsecops
 tags:
 - devsecops
 - cicd
@@ -14,6 +13,7 @@ tags:
 - supply-chain
 - sigstore
 - secure-sdlc
+subdomain: devsecops
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -258,3 +258,7 @@ TRANSPARENCY LOG:
   Log index range: 24658135-24658137
   Verification: https://search.sigstore.dev
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

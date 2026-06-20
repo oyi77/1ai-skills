@@ -1,7 +1,14 @@
 ---
 name: mental-models
-description: Apply 20+ mental models for better decision-making including Circle of Competence, Inversion, Second-Order Thinking, and Margin of Safety.
+description: Apply 20+ mental models for better decision-making including Circle of Competence, Inversion, Second-Order Thinking,
+  and Margin of Safety.
 domain: mindset
+tags:
+- mental
+- mindset
+- models
+- personal-development
+- soft-skills
 ---
 
 # Mental Models
@@ -231,3 +238,7 @@ Collection of thinking tools for better decision-making. 20+ models across reaso
 - [ ] Checked for cognitive biases (confirmation, sunk cost, survivorship)
 - [ ] Combined models where appropriate (e.g., Inversion + Opportunity Cost)
 - [ ] Didn't overfit (models are guides, not rules)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

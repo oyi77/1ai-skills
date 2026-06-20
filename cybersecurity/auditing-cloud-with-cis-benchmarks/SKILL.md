@@ -7,13 +7,13 @@ description: 'This skill details how to conduct cloud security audits using Cent
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cis-benchmarks
 - cloud-audit
 - compliance-assessment
 - prowler
 - security-hardening
+subdomain: cloud-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -298,3 +298,7 @@ REMEDIATION PRIORITY:
   Medium (Fix within 60 days):   CloudWatch alarms, security group restrictions
   Low (Fix within 90 days):      Level 2 controls, informational items
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

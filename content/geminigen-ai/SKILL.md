@@ -1,10 +1,30 @@
 ---
 name: geminigen-ai
-description: "Unified multimedia API for image generation (nano-banana-pro, imagen-4), video generation (Grok, Veo, Sora), and text-to-speech. Replaces grok-video-generation, seedance, and gemini-image-generator."
+description: Unified multimedia API for image generation (nano-banana-pro, imagen-4), video generation (Grok, Veo, Sora),
+  and text-to-speech. Replaces grok-video-generation, seedance, and gemini-image-generator.
 domain: content
+tags:
+- api
+- content-creation
+- digital-content
+- geminigen
+- media
+- video
 ---
 
 # GeminiGen AI - Multimedia AI Platform
+## When to Use
+
+**Trigger phrases:**
+- "geminigen ai"
+- "Help me with geminigen ai"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 > ✅ **CANONICAL PROVIDER** — This is the single source of truth for all media generation in the 1ai-skills stack.
 > Image (nano-banana-pro) · Video (grok-3 / veo / sora) · TTS — all unified under this API.
@@ -279,3 +299,7 @@ Webhook payload includes `uuid`, `status`, and `generate_result` when complete.
 - Confirm links work and point to correct destinations
 - Test video/audio quality before publishing
 - Validate content renders correctly on mobile devices
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

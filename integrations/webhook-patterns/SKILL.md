@@ -1,8 +1,14 @@
 ---
 name: webhook-patterns
-description: Webhook design and handling — signature verification, retry logic, idempotency,
-  event routing, testing
+description: Webhook design and handling — signature verification, retry logic, idempotency, event routing, testing
 domain: integrations
+tags:
+- api
+- integrations
+- patterns
+- testing
+- third-party
+- webhook
 ---
 
 ## Overview

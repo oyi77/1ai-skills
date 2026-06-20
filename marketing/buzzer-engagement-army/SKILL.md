@@ -1,7 +1,15 @@
 ---
 name: buzzer-engagement-army
-description: "Multi-account engagement booster across TikTok, Instagram, and Facebook — automates likes, comments, and warmup schedules to beat algorithm suppression on new posts."
+description: Multi-account engagement booster across TikTok, Instagram, and Facebook — automates likes, comments, and warmup
+  schedules to beat algorithm suppression on new posts.
 domain: marketing
+tags:
+- army
+- buzzer
+- engagement
+- growth
+- marketing
+- seo
 ---
 # SKILL: buzzer-engagement-army
 
@@ -206,3 +214,11 @@ python test_buzzer.py --api
 - **Email open rates below 15%**: Subject lines or sender reputation issue
 - **Bounce rate above 70%**: Landing page mismatch or slow load times
 - **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Overview
+
+> Section content — see SKILL.md body for full details.
+
+## Verification
+
+- [ ] Skill output matches expected behavior

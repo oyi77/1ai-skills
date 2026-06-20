@@ -1,8 +1,16 @@
 ---
 name: accessibility-audit
-description: WCAG compliance audit — semantic HTML, ARIA, keyboard navigation, color
-  contrast, and screen reader testing
+description: WCAG compliance audit — semantic HTML, ARIA, keyboard navigation, color contrast, and screen reader testing
 domain: content
+tags:
+- accessibility
+- audit
+- compliance
+- content-creation
+- digital-content
+- machine-learning
+- media
+- testing
 ---
 
 
@@ -125,3 +133,7 @@ def audit_accessibility(url):
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

@@ -6,7 +6,6 @@ description: 'Automates Indicator of Compromise (IOC) enrichment by orchestratin
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - ioc
@@ -16,6 +15,7 @@ tags:
 - abuseipdb
 - shodan
 - threat-intelligence
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -455,3 +455,7 @@ IP: 45.33.32[.]156
   GreyNoise:    benign — Shodan scanner
   Action:       No action required (known scanner)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

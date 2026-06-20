@@ -1,14 +1,19 @@
 ---
 name: google-workspace
-description: Integrate with Google Workspace (Docs, Sheets, Drive, Calendar) using
-  MCP servers
+description: Integrate with Google Workspace (Docs, Sheets, Drive, Calendar) using MCP servers
+domain: productivity
+tags:
+- google
+- productivity
+- time-management
+- tools
+- workspace
 allowed-tools:
 - Bash(gcloud:*)
 - MCP(google-workspace:*)
 - MCP(google-drive:*)
 - MCP(google-sheets:*)
 - MCP(google-docs:*)
-domain: productivity
 ---
 persona:
   name: "Domain Expert"
@@ -21,6 +26,18 @@ persona:
 
 
 # Google Workspace Integration
+## When to Use
+
+**Trigger phrases:**
+- "google workspace"
+- "Help me with google workspace"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Comprehensive Google Workspace integration using MCP servers for Docs, Sheets, Drive, and Calendar.
 
@@ -346,3 +363,7 @@ After completing this skill, confirm:
 
 ---
 *Skill v2.0 - Google Workspace MCP Integration*
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

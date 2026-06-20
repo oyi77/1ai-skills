@@ -6,7 +6,6 @@ description: 'Builds SOC performance metrics and KPI tracking dashboards measuri
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - metrics
@@ -16,6 +15,7 @@ tags:
 - dashboard
 - reporting
 - continuous-improvement
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -335,3 +335,7 @@ AREAS FOR IMPROVEMENT:
   [2] Night shift MTTD 23% slower than day shift
   [3] 4 critical vulnerability scan tickets overdue on SLA
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

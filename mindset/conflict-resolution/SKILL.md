@@ -1,7 +1,14 @@
 ---
 name: conflict-resolution
-description: Resolve interpersonal and team conflicts using mediation techniques, non-violent communication, and de-escalation. Use when tensions arise between individuals or groups.
+description: Resolve interpersonal and team conflicts using mediation techniques, non-violent communication, and de-escalation.
+  Use when tensions arise between individuals or groups.
 domain: mindset
+tags:
+- conflict
+- mindset
+- personal-development
+- resolution
+- soft-skills
 ---
 
 # Conflict Resolution
@@ -161,3 +168,7 @@ Framework for resolving interpersonal and team conflicts: mediation, non-violent
 - [ ] Interests identified (underlying needs, not positions)
 - [ ] Agreement documented (clear actions, follow-up scheduled)
 - [ ] Repair attempt made (acknowledge rupture, take responsibility)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

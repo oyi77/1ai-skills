@@ -1,8 +1,13 @@
 ---
 name: vault-secrets
-description: HashiCorp Vault — secrets management, dynamic secrets, encryption, auth
-  methods, policies
+description: HashiCorp Vault — secrets management, dynamic secrets, encryption, auth methods, policies
 domain: devops
+tags:
+- ci-cd
+- devops
+- infrastructure
+- secrets
+- vault
 ---
 
 
@@ -156,3 +161,7 @@ path "database/creds/readonly" {
 - **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
 - **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
 - **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures
+
+## Verification
+
+- [ ] Skill output matches expected behavior

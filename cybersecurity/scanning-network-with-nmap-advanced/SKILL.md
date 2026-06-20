@@ -6,13 +6,13 @@ description: 'Performs advanced network reconnaissance using Nmap''s scripting e
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - nmap
 - port-scanning
 - service-enumeration
 - reconnaissance
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -240,3 +240,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 3. Upgrade MySQL to 8.0.x on 10.10.12.5 and restrict bind address
 4. Change SNMP community strings from "public" on 10.10.3.77
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

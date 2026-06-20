@@ -1,8 +1,25 @@
 ---
 name: ad-copy
-description: Write ad copy that converts
+description: Ad Copy. Use when working with ad copy in content domain.
 domain: content
+tags:
+- content-creation
+- copy
+- digital-content
+- media
 ---
+## When to Use
+
+**Trigger phrases:**
+- "ad copy"
+- "Help me with ad copy"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 
 ## Ad Copy
@@ -69,3 +86,7 @@ After completing this skill, confirm:
 - Check the references/ directory for checklists and templates
 - Join the community for best practices and support
 - Contribute improvements via pull requests
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

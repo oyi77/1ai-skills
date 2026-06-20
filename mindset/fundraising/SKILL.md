@@ -1,7 +1,14 @@
 ---
 name: fundraising
-description: Pitch investors using 10-slide deck structure, understand term sheets, and manage investor relations. Use when raising capital.
+description: Pitch investors using 10-slide deck structure, understand term sheets, and manage investor relations. Use when
+  raising capital.
 domain: mindset
+tags:
+- api
+- fundraising
+- mindset
+- personal-development
+- soft-skills
 ---
 
 # Fundraising
@@ -226,3 +233,7 @@ Framework for raising capital from angel investors and VCs. Covers pitch deck st
 - [ ] Warm intro paths identified (who can introduce you?)
 - [ ] Runway calculated (months of cash remaining)
 - [ ] Term sheet basics understood (valuation, liquidation preference, board seats, anti-dilution)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

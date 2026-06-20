@@ -6,12 +6,12 @@ description: 'Scans GitHub Actions workflows and CI/CD pipeline configurations f
 
   '
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - detecting
 - supply
 - chain
 - attacks
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -105,3 +105,7 @@ for step in job.get("steps", []):
 - All exploited vulnerabilities documented with reproduction steps
 - Scope boundaries confirmed — only authorized targets were tested
 - Remediation recommendations included for every finding
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

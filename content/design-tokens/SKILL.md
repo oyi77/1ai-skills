@@ -1,8 +1,13 @@
 ---
 name: design-tokens
-description: Design token systems — color, typography, spacing, and theme architecture
-  for consistent design
+description: Design token systems — color, typography, spacing, and theme architecture for consistent design
 domain: content
+tags:
+- content-creation
+- design
+- digital-content
+- media
+- tokens
 ---
 
 
@@ -126,3 +131,7 @@ on error:
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

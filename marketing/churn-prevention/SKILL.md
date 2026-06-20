@@ -1,9 +1,14 @@
 ---
 name: churn-prevention
-description: Retention messaging, cancellation flows, win-back campaigns, and customer
-  health scoring. Use when reducing churn rates, designing retention campaigns, or
-  implementing cancellation flows.
+description: Retention messaging, cancellation flows, win-back campaigns, and customer health scoring. Use when reducing churn
+  rates, designing retention campaigns, or implementing cancellation flows.
 domain: marketing
+tags:
+- churn
+- growth
+- marketing
+- prevention
+- seo
 ---
 
 
@@ -139,3 +144,11 @@ win_back_sequence = [
 - **Email open rates below 15%**: Subject lines or sender reputation issue
 - **Bounce rate above 70%**: Landing page mismatch or slow load times
 - **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Overview
+
+> Section content — see SKILL.md body for full details.
+
+## Verification
+
+- [ ] Skill output matches expected behavior

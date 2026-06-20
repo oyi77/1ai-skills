@@ -7,7 +7,6 @@ description: 'Detects and responds to OAuth token theft and replay attacks in cl
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - oauth
 - token-theft
@@ -17,6 +16,7 @@ tags:
 - token-replay
 - identity-security
 - PRT
+subdomain: cloud-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -297,3 +297,7 @@ Policy: "Alert on mass file download (exfiltration via stolen token)"
 - Exceeding the authorized scope of the engagement
 - Leaving persistent access mechanisms without explicit approval
 - Causing denial-of-service on production systems during testing
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

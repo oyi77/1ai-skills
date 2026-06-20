@@ -7,7 +7,6 @@ description: 'Implements HashiCorp Vault dynamic secrets engines for database cr
 
   '
 domain: cybersecurity
-subdomain: identity-access-management
 tags:
 - HashiCorp-Vault
 - dynamic-secrets
@@ -15,6 +14,7 @@ tags:
 - database-credentials
 - AWS-secrets
 - PKI
+subdomain: identity-access-management
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -624,3 +624,7 @@ Root Credential Rotated:        YES (all databases)
 Audit Logging:                  ENABLED (file + syslog)
 Policy Violations (24h):        7 (permission denied)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

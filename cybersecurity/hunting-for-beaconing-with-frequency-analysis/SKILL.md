@@ -3,7 +3,6 @@ name: hunting-for-beaconing-with-frequency-analysis
 description: Identify command-and-control beaconing patterns in network traffic by applying statistical frequency analysis,
   jitter calculation, and coefficient of variation scoring to detect periodic callbacks from compromised endpoints.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - beaconing
@@ -13,6 +12,7 @@ tags:
 - RITA
 - jitter-detection
 - mitre-t1071
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -199,3 +199,7 @@ Risk Score: [0-100]
 Risk Level: [Critical/High/Medium/Low]
 Indicators: [List of triggered risk factors]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

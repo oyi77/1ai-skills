@@ -6,7 +6,6 @@ description: 'Implementing AWS CloudTrail log analysis for security monitoring, 
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - aws
@@ -14,6 +13,7 @@ tags:
 - log-analysis
 - threat-detection
 - forensics
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -379,3 +379,7 @@ ALERTING STATUS:
   CloudWatch alarms active: 14 / 14
   Alerts fired (last 7 days): 8
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

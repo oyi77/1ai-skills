@@ -3,7 +3,6 @@ name: validating-backup-integrity-for-recovery
 description: Validate backup integrity through cryptographic hash verification, automated restore testing, corruption detection,
   and recoverability checks to ensure backups are reliable for disaster recovery and ransomware response scenarios.
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - incident-response
 - backup
@@ -11,6 +10,7 @@ tags:
 - hash-verification
 - restore-testing
 - disaster-recovery
+subdomain: incident-response
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -208,3 +208,7 @@ python agent.py --entropy-scan /restore-test
 - NIST CSF 2.0 RC.RP-03: Backup Integrity Verification
 - CIS Controls v8: Control 11 - Data Recovery
 - CISA Ransomware Guide: https://www.cisa.gov/stopransomware
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

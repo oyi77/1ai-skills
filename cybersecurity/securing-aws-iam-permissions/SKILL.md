@@ -6,13 +6,13 @@ description: 'This skill guides practitioners through hardening AWS Identity and
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - aws-iam
 - least-privilege
 - permission-boundaries
 - access-analyzer
 - cloud-identity
+subdomain: cloud-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -349,3 +349,7 @@ SUMMARY:
   Critical: 2 | High: 4 | Medium: 5 | Low: 3
   Compliance Score: 62% (CIS AWS Foundations Benchmark v3.0)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

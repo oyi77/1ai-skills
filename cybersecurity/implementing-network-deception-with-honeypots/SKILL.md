@@ -3,7 +3,6 @@ name: implementing-network-deception-with-honeypots
 description: Deploy and manage network honeypots using OpenCanary, T-Pot, or Cowrie to detect unauthorized access, lateral
   movement, and attacker reconnaissance.
 domain: cybersecurity
-subdomain: deception-technology
 tags:
 - deception
 - honeypot
@@ -13,6 +12,7 @@ tags:
 - detection
 - lateral-movement
 - network-security
+subdomain: deception-technology
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -110,3 +110,7 @@ Credentials Used: [Username:Password if applicable]
 Commands Executed: [For SSH honeypots]
 Risk Level: [Critical/High/Medium/Low]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

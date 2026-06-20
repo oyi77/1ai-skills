@@ -1,7 +1,13 @@
 ---
 name: growth-engine
-description: "Autonomous marketing experiment framework — design A/B tests, score hypotheses with ICE, validate results with statistical significance, and run automated optimization loops."
+description: Autonomous marketing experiment framework — design A/B tests, score hypotheses with ICE, validate results with
+  statistical significance, and run automated optimization loops.
 domain: marketing
+tags:
+- engine
+- growth
+- marketing
+- seo
 ---
 
 ## Skill Definition
@@ -273,6 +279,18 @@ Use this skill as part of a larger pipeline by calling it from your automation w
 
 ```python
 # 1. Generate hypothesis
+## When to Use
+
+**Trigger phrases:**
+- "growth engine"
+- "Help me with growth engine"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 hypothesis = growth_hypothesis(
     insight="Users who view demo video convert 3x higher",
     design="Add prominent demo CTA on homepage",
@@ -521,3 +539,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

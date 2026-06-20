@@ -1,8 +1,17 @@
 ---
 name: cloud-mcp
-description: MCP servers for cloud infrastructure. Connect AI agents to AWS, GCP,
-  and Azure for deployment, management, and infrastructure automation.
+description: MCP servers for cloud infrastructure. Connect AI agents to AWS, GCP, and Azure for deployment, management, and
+  infrastructure automation.
 domain: integrations
+tags:
+- ai-agent
+- api
+- aws
+- azure
+- cloud
+- gcp
+- integrations
+- mcp
 ---
 
 # Cloud MCP Skill

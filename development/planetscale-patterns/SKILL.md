@@ -1,8 +1,13 @@
 ---
 name: planetscale-patterns
-description: PlanetScale MySQL — branching, deploy requests, Vitess sharding, connection
-  handling, schema management
+description: PlanetScale MySQL — branching, deploy requests, Vitess sharding, connection handling, schema management
 domain: development
+tags:
+- coding
+- patterns
+- planetscale
+- software-engineering
+- testing
 ---
 
 
@@ -172,3 +177,7 @@ datasource db {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

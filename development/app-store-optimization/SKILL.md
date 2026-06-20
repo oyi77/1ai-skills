@@ -1,8 +1,14 @@
 ---
 name: app-store-optimization
-description: App Store and Play Store optimization — keywords, screenshots, reviews,
-  and conversion rate optimization
+description: App Store and Play Store optimization — keywords, screenshots, reviews, and conversion rate optimization
 domain: development
+tags:
+- app
+- coding
+- optimization
+- software-engineering
+- store
+- testing
 ---
 
 
@@ -107,3 +113,7 @@ def research_keywords(category, competitors):
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

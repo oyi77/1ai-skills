@@ -7,7 +7,6 @@ description: 'Implements security monitoring using Datadog Cloud SIEM, Cloud Sec
 
   '
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - siem
 - monitoring
@@ -17,6 +16,7 @@ tags:
 - detection-rules
 - CSM
 - workload-protection
+subdomain: security-operations
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -436,3 +436,7 @@ with ApiClient(configuration) as api_client:
 - Modifying cloud IAM policies or security groups without approval
 - Exposing cloud credentials or secrets in logs or reports
 - Running scans that generate excessive API calls and trigger billing alerts
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,8 +1,14 @@
 ---
 name: influencer-outreach
-description: Influencer and creator partnership management — discovery, outreach,
-  negotiation, campaign tracking. Use when running influencer marketing campaigns.
+description: Influencer and creator partnership management — discovery, outreach, negotiation, campaign tracking. Use when
+  running influencer marketing campaigns.
 domain: marketing
+tags:
+- growth
+- influencer
+- marketing
+- outreach
+- seo
 ---
 
 
@@ -77,3 +83,7 @@ Influencer and creator partnership management — discovery, outreach, negotiati
 - Check the references/ directory for checklists and templates
 - Join the community for best practices and support
 - Contribute improvements via pull requests
+
+## Verification
+
+- [ ] Skill output matches expected behavior

@@ -4,12 +4,12 @@ description: Deploy and query Arkime (formerly Moloch) for full packet capture n
   v3 to search sessions, download PCAPs, analyze connection patterns, detect beaconing behavior, and identify suspicious network
   flows. Monitors DNS queries, HTTP traffic, and TLS certificate anomalies across captured traffic.
 domain: cybersecurity
-subdomain: network-security
 tags:
 - implementing
 - network
 - traffic
 - analysis
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -90,3 +90,7 @@ Verdict: HIGH confidence C2 beaconing (jitter < 5%)
 - Captures verified as complete with no dropped packets
 - Detection rules tested against known-benign traffic for false positive rate
 - Alert thresholds validated and tuned to reduce noise
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

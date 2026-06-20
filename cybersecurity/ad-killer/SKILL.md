@@ -1,9 +1,15 @@
 ---
 name: ad-killer
-description: Active Directory and Windows domain exploitation for enterprise penetration
-  testing. Use when attacking Windows domains, exploiting AD misconfigurations, or
-  performing lateral movement in enterprise environments.
+description: Active Directory and Windows domain exploitation for enterprise penetration testing. Use when attacking Windows
+  domains, exploiting AD misconfigurations, or performing lateral movement in enterprise environments.
 domain: cybersecurity
+tags:
+- cybersecurity
+- killer
+- penetration-testing
+- security
+- testing
+- threat-defense
 ---
 
 # AD Killer
@@ -256,3 +262,7 @@ misc::skeleton
 - HackTheBox Pro Labs (RastaLabs, Offshore)
 - TryHackMe AD rooms
 - Vulnlab
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

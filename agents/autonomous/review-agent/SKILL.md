@@ -1,7 +1,14 @@
 ---
 name: review-agent
-description: "Read code changes with adversarial intent to find bugs, security holes, logic errors, and performance traps. Use when reviewing PRs, auditing refactoring for regressions, or running pre-deploy safety checks."
+description: Read code changes with adversarial intent to find bugs, security holes, logic errors, and performance traps.
+  Use when reviewing PRs, auditing refactoring for regressions, or running pre-deploy safety checks.
 domain: agents
+tags:
+- agent
+- ai-agent
+- automation
+- orchestration
+- review
 ---
 # Review Agent
 
@@ -218,3 +225,7 @@ After completing a review, confirm:
 - [ ] Critical issues block merge (no "approve with comments" for real bugs)
 - [ ] Positive observations included (reinforce good patterns, not just criticize)
 - [ ] No [TODO] or placeholder content in review output
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,8 +1,26 @@
 ---
 name: viz-creator
-description: Create visualizations
+description: Viz Creator. Use when working with viz creator in data domain.
 domain: data
+tags:
+- analytics
+- creator
+- data-analysis
+- visualization
+- viz
 ---
+## When to Use
+
+**Trigger phrases:**
+- "viz creator"
+- "Help me with viz creator"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 
 ## Viz Creator
@@ -69,3 +87,7 @@ After completing this skill, confirm:
 - Monitor output quality and iterate on configuration based on results
 - Keep dependencies up to date for security and performance
 - Document custom workflows and configurations for team knowledge sharing
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

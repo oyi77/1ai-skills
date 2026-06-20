@@ -6,7 +6,6 @@ description: 'Performing security reviews of serverless functions across AWS Lam
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - serverless
@@ -14,6 +13,7 @@ tags:
 - azure-functions
 - cloud-functions
 - security-review
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -334,3 +334,7 @@ SUMMARY:
   Functions without VPC:               28 / 34
   Functions with wildcard permissions: 12 / 34
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -3,7 +3,6 @@ name: performing-timeline-reconstruction-with-plaso
 description: Build comprehensive forensic super-timelines using Plaso (log2timeline) to correlate events across file systems,
   logs, and artifacts into a unified chronological view.
 domain: cybersecurity
-subdomain: digital-forensics
 tags:
 - forensics
 - timeline-analysis
@@ -11,6 +10,7 @@ tags:
 - log2timeline
 - super-timeline
 - event-correlation
+subdomain: digital-forensics
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -355,3 +355,7 @@ Timeline Reconstruction Summary:
     Incident Window:   /timeline/incident_window.csv (234K rows)
     Timesketch Import: /timeline/timeline.jsonl
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

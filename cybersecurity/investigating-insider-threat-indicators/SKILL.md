@@ -7,7 +7,6 @@ description: 'Investigates insider threat indicators including data exfiltration
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - insider-threat
@@ -16,6 +15,7 @@ tags:
 - ueba
 - investigation
 - hr-correlation
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -333,3 +333,7 @@ Evidence Collected:   4 items (SHA-256 verified, chain of custody documented)
 Recommendation:       Immediate access revocation recommended
                       Evidence package prepared for Legal review
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

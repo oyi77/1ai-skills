@@ -1,15 +1,10 @@
 ---
 name: testing-api-for-broken-object-level-authorization
-description: 'Tests REST and GraphQL APIs for Broken Object Level Authorization (BOLA/IDOR) vulnerabilities where an authenticated
+description: Tests REST and GraphQL APIs for Broken Object Level Authorization (BOLA/IDOR) vulnerabilities where an authenticated
   user can access or modify resources belonging to other users by manipulating object identifiers in API requests. The tester
   intercepts API calls, identifies object ID parameters (numeric IDs, UUIDs, slugs), and systematically replaces them with
-  IDs belonging to other users to determine if the server enforces per-object authorization. This is OWASP API Security Top
-  10 2023 risk API1. Activates for requests involving BOLA testing, IDOR in APIs, object-level authorization testing, or API
-  access control bypass.
-
-  '
+  IDs belonging to other users to determine if the server enforces per-object authorization.
 domain: cybersecurity
-subdomain: api-security
 tags:
 - api-security
 - owasp
@@ -17,6 +12,7 @@ tags:
 - idor
 - authorization
 - rest-security
+subdomain: api-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -420,3 +416,7 @@ enumeration trivial.
 4. Add authorization tests to the CI/CD pipeline for every endpoint that accepts object IDs
 5. Implement rate limiting per user to slow enumeration attempts
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

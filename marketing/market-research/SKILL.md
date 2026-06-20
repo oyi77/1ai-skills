@@ -1,9 +1,14 @@
 ---
 name: market-research
-description: Conduct market research, competitive analysis, and industry insights
-  with Exa and Firecrawl
-allowed-tools: "|\n  - MCP(exa:*)\n    - MCP(firecrawl:*)\n    - MCP(notion:*)\n"
+description: Conduct market research, competitive analysis, and industry insights with Exa and Firecrawl
 domain: marketing
+tags:
+- growth
+- market
+- marketing
+- research
+- seo
+allowed-tools: "|\n  - MCP(exa:*)\n    - MCP(firecrawl:*)\n    - MCP(notion:*)\n"
 ---
 
 
@@ -18,6 +23,18 @@ persona:
 
 
 # Market Research
+## When to Use
+
+**Trigger phrases:**
+- "market research"
+- "Help me with market research"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Expert Persona
 
@@ -268,3 +285,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

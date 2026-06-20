@@ -1,8 +1,14 @@
 ---
 name: requesting-code-review
-description: Use when completing tasks, implementing major features, or before merging
-  to verify work meets requirements
+description: Use when completing tasks, implementing major features, or before merging to verify work meets requirements
 domain: development
+tags:
+- code
+- coding
+- requesting
+- review
+- software-engineering
+- testing
 ---
 persona:
   name: "Domain Expert"

@@ -5,13 +5,13 @@ description: 'Captures WPA/WPA2 handshakes and performs offline password crackin
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - wifi
 - aircrack-ng
 - wpa2
 - wireless-security
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -310,3 +310,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 4. Consider WPA3-SAE for PSK networks to prevent offline cracking
 5. Enable 802.11w Protected Management Frames to prevent deauth attacks
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

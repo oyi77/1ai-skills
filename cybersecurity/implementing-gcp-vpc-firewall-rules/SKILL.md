@@ -6,7 +6,6 @@ description: 'Implementing and auditing GCP VPC firewall rules to enforce networ
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - gcp
@@ -14,6 +13,7 @@ tags:
 - firewall-rules
 - network-security
 - segmentation
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -347,3 +347,7 @@ REMEDIATION ACTIONS COMPLETED:
   Egress deny rule: Created at priority 65534
   Flow logs enabled: 6 subnets
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

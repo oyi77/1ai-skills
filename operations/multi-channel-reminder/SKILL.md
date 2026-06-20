@@ -1,9 +1,27 @@
 ---
 name: multi-channel-reminder
-description: 'Skill: multi-channel-reminder. See SKILL.md body for details. Use when
-  this domain is relevant.'
+description: 'Skill: multi-channel-reminder. See SKILL.md body for details. Use when this domain is relevant.'
 domain: operations
+tags:
+- business-ops
+- channel
+- management
+- multi
+- operations
+- reminder
 ---
+## When to Use
+
+**Trigger phrases:**
+- "multi channel reminder"
+- "Help me with multi channel reminder"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 *Never miss a task. Always notified. Multiple channels, one system.*
 
 ## When NOT to Use
@@ -67,3 +85,7 @@ After completing this skill, confirm:
 - For timezone mismatches, confirm the recipient's timezone is stored as IANA format (e.g., `Asia/Jakarta`).
 - If output quality is low, provide more context about the target audience and channels.
 - For rate-limited channels (e.g., WhatsApp Business), batch sends with configurable delays between messages.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

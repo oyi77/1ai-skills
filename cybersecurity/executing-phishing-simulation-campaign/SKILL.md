@@ -1,20 +1,17 @@
 ---
 name: executing-phishing-simulation-campaign
-description: 'Executes authorized phishing simulation campaigns to assess an organization''s susceptibility to email-based
-  social engineering attacks. The tester designs realistic phishing scenarios, builds credential harvesting infrastructure,
-  sends targeted phishing emails, and tracks open rates, click-through rates, and credential submission rates to measure human
-  security awareness. Activates for requests involving phishing simulation, social engineering assessment, email security
-  testing, or security awareness measurement.
-
-  '
+description: Executes authorized phishing simulation campaigns to assess an organization's susceptibility to email-based social
+  engineering attacks. The tester designs realistic phishing scenarios, builds credential harvesting infrastructure, sends
+  targeted phishing emails, and tracks open rates, click-through rates, and credential submission rates to measure human security
+  awareness.
 domain: cybersecurity
-subdomain: penetration-testing
 tags:
 - phishing-simulation
 - social-engineering
 - GoPhish
 - email-security
 - security-awareness
+subdomain: penetration-testing
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -225,3 +222,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 4. Conduct targeted training for Finance and Marketing departments
 5. Schedule quarterly phishing simulations to track improvement
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

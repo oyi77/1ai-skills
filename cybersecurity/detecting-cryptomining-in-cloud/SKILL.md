@@ -7,13 +7,13 @@ description: 'This skill teaches security teams how to detect and respond to una
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cryptomining-detection
 - cloud-abuse
 - resource-hijacking
 - guardduty-crypto
 - cost-anomaly
+subdomain: cloud-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -366,3 +366,7 @@ REMEDIATION:
   - AWS Config rule deployed: cloudtrail-enabled (auto-remediate)
   - SCP deployed: deny ec2:RunInstances for GPU instance types without approval
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

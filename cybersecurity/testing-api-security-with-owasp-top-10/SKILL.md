@@ -3,7 +3,6 @@ name: testing-api-security-with-owasp-top-10
 description: Systematically assessing REST and GraphQL API endpoints against the OWASP API Security Top 10 risks using automated
   and manual testing techniques.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - penetration-testing
 - api-security
@@ -12,6 +11,7 @@ tags:
 - graphql
 - burpsuite
 - postman
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -382,3 +382,7 @@ Authenticated users can access any order by iterating order IDs.
 Tested range: 1-1000, 847 valid orders accessible.
 PII exposure: names, addresses, payment details.
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

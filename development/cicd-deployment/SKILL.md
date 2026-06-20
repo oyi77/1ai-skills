@@ -1,10 +1,32 @@
 ---
 name: cicd-deployment
-description: "Build production CI/CD pipelines with GitHub Actions, Docker, zero-downtime blue/green deploys, rollback, and Telegram alerts."
+description: Build production CI/CD pipelines with GitHub Actions, Docker, zero-downtime blue/green deploys, rollback, and
+  Telegram alerts.
 domain: development
+tags:
+- cicd
+- coding
+- deployment
+- docker
+- github
+- pipeline
+- software-engineering
+- testing
 ---
 
 # cicd-deployment
+## When to Use
+
+**Trigger phrases:**
+- "cicd deployment"
+- "Help me with cicd deployment"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 **name:** cicd-deployment  
 **description:** Production-ready CI/CD pipeline and deployment skill for BerkahKarya Software House. Covers GitHub Actions workflows, systemd user services, Docker, VPS deployment, zero-downtime blue/green strategy, rollback, health checks, and Telegram notifications. Stack: Python/Node.js on Kali Linux (kali-openclaw). AI GM: Vilona.

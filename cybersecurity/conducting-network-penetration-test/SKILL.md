@@ -1,20 +1,16 @@
 ---
 name: conducting-network-penetration-test
-description: 'Conducts comprehensive network penetration tests against authorized target environments by performing host discovery,
+description: Conducts comprehensive network penetration tests against authorized target environments by performing host discovery,
   port scanning, service enumeration, vulnerability identification, and controlled exploitation to assess the security posture
   of network infrastructure. The tester follows PTES methodology from reconnaissance through post-exploitation and reporting.
-  Activates for requests involving network pentest, infrastructure security assessment, internal network testing, or external
-  perimeter testing.
-
-  '
 domain: cybersecurity
-subdomain: penetration-testing
 tags:
 - network-pentest
 - Nmap
 - Metasploit
 - vulnerability-exploitation
 - infrastructure-security
+subdomain: penetration-testing
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -232,3 +228,7 @@ ultimately accessing the customer database containing 50,000+ records.
 3. Restrict access to the Tomcat Manager interface to authorized management IPs only
 4. Implement network segmentation between web servers and database tier
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

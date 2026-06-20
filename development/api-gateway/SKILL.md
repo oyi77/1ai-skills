@@ -1,8 +1,14 @@
 ---
 name: api-gateway
-description: API gateway design — rate limiting, authentication, routing, caching,
-  request transformation. Kong, Traefik, custom gateways
+description: API gateway design — rate limiting, authentication, routing, caching, request transformation. Kong, Traefik,
+  custom gateways
 domain: development
+tags:
+- api
+- coding
+- gateway
+- software-engineering
+- testing
 ---
 
 
@@ -289,3 +295,7 @@ app.use('/api/products', cache(300), (req, res) => proxy.web(req, res, { target:
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

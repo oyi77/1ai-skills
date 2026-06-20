@@ -8,7 +8,6 @@ description: 'This skill covers conducting comprehensive security assessments of
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - industrial-control
 - iec62443
 - network-assessment
+subdomain: ot-ics-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -629,3 +629,7 @@ DETAILED FINDINGS:
     Impact: [operational and safety impact]
     Remediation: [specific technical remediation steps]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

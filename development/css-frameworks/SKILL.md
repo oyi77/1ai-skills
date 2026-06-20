@@ -1,8 +1,13 @@
 ---
 name: css-frameworks
-description: CSS framework patterns — Tailwind CSS, Bootstrap, PostCSS, Sass, CSS
-  Modules, CSS-in-JS
+description: CSS framework patterns — Tailwind CSS, Bootstrap, PostCSS, Sass, CSS Modules, CSS-in-JS
 domain: development
+tags:
+- coding
+- css
+- frameworks
+- software-engineering
+- testing
 ---
 
 
@@ -378,3 +383,7 @@ h1 {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

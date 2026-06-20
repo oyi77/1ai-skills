@@ -1,20 +1,17 @@
 ---
 name: performing-ransomware-tabletop-exercise
-description: 'Plans and facilitates tabletop exercises simulating ransomware incidents to test organizational readiness, decision-making,
+description: Plans and facilitates tabletop exercises simulating ransomware incidents to test organizational readiness, decision-making,
   and communication procedures. Designs realistic scenarios based on current ransomware threat actors (LockBit, ALPHV/BlackCat,
   Cl0p), injects covering double extortion, backup destruction, and regulatory notification requirements. Evaluates participant
-  responses against NIST CSF and CISA guidelines. Activates for requests involving ransomware tabletop, incident response
-  exercise, or ransomware readiness drill.
-
-  '
+  responses against NIST CSF and CISA guidelines.
 domain: cybersecurity
-subdomain: ransomware-defense
 tags:
 - ransomware
 - incident-response
 - tabletop-exercise
 - defense
 - preparedness
+subdomain: ransomware-defense
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -271,3 +268,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 | Area | Previous Score | Current Score | Trend |
 |------|---------------|--------------|-------|
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

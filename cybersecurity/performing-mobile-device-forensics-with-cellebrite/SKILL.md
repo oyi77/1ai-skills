@@ -3,7 +3,6 @@ name: performing-mobile-device-forensics-with-cellebrite
 description: Acquire and analyze mobile device data using Cellebrite UFED and open-source tools to extract communications,
   location data, and application artifacts.
 domain: cybersecurity
-subdomain: digital-forensics
 tags:
 - forensics
 - mobile-forensics
@@ -11,6 +10,7 @@ tags:
 - smartphone-analysis
 - ios-forensics
 - android-forensics
+subdomain: digital-forensics
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -374,3 +374,7 @@ Mobile Forensics Summary:
     Messages Export: /analysis/whatsapp_messages.csv
     Locations:       /analysis/photo_locations.json
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

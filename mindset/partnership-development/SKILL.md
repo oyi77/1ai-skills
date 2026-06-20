@@ -1,7 +1,14 @@
 ---
 name: partnership-development
-description: Find partners, structure deals, manage co-marketing, and revenue sharing. Use when building strategic alliances or channel partnerships.
+description: Find partners, structure deals, manage co-marketing, and revenue sharing. Use when building strategic alliances
+  or channel partnerships.
 domain: mindset
+tags:
+- development
+- mindset
+- partnership
+- personal-development
+- soft-skills
 ---
 
 # Partnership Development
@@ -181,3 +188,7 @@ Framework for building strategic partnerships: finding partners, structuring dea
 - [ ] Quarterly business review (QBR) scheduled
 - [ ] Escalation paths defined (bugs, disputes, low performance)
 - [ ] Contract signed (terms, SLAs, exit clause)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -7,13 +7,13 @@ description: 'This skill provides step-by-step procedures for identifying and re
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - s3-security
 - bucket-misconfiguration
 - data-exposure
 - public-access-block
 - aws-config
+subdomain: cloud-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -344,3 +344,7 @@ SUMMARY:
   Access Logging Coverage: 100%
   Block Public Access: 156/156 buckets
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -3,7 +3,6 @@ name: hunting-for-lolbins-execution-in-endpoint-logs
 description: Hunt for adversary abuse of Living Off the Land Binaries (LOLBins) by analyzing endpoint process creation logs
   for suspicious execution patterns of legitimate Windows system binaries used for malicious purposes.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - lolbins
@@ -12,6 +11,7 @@ tags:
 - process-monitoring
 - mitre-t1218
 - defense-evasion
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -203,3 +203,7 @@ Detection Category: [download_cradle/proxy_exec/uac_bypass/applocker_bypass]
 Network Activity: [Yes/No -- destination if applicable]
 Risk Level: [Critical/High/Medium/Low]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

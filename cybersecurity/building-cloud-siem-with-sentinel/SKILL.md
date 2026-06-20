@@ -7,13 +7,13 @@ description: 'This skill covers deploying Microsoft Sentinel as a cloud-native S
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - microsoft-sentinel
 - cloud-siem
 - kql-queries
 - soar-automation
 - threat-detection
+subdomain: cloud-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -351,3 +351,7 @@ AUTOMATION:
   Incidents Auto-Enriched: 198
   False Positive Rate: 12%
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,7 +1,15 @@
 ---
 name: continuous-learning
-description: "Transform session insights into actionable skills with confidence-weighted scoring — captures patterns, analyzes outcomes, and integrates learnings to improve agent performance."
+description: Transform session insights into actionable skills with confidence-weighted scoring — captures patterns, analyzes
+  outcomes, and integrates learnings to improve agent performance.
 domain: research
+tags:
+- ai-agent
+- analysis
+- continuous
+- investigation
+- learning
+- research
 ---
 persona:
   name: "Domain Expert"

@@ -6,7 +6,6 @@ description: 'Implement secure conduit architecture for OT remote access followi
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - zero-trust
 - conduit
 - mfa
+subdomain: ot-ics-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -397,3 +397,7 @@ POLICY COMPLIANCE:
   Time-Limited Sessions: [compliance %]
   Prohibited Target Attempts: [count blocked]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

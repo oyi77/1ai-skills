@@ -1,7 +1,14 @@
 ---
 name: planning-agent
-description: "Decompose complex tasks into executable, ordered steps with dependencies, risk assessments, and verification criteria. Use before implementing features touching 3+ files, coordinating multi-agent work, or migrating systems."
+description: Decompose complex tasks into executable, ordered steps with dependencies, risk assessments, and verification
+  criteria. Use before implementing features touching 3+ files, coordinating multi-agent work, or migrating systems.
 domain: agents
+tags:
+- agent
+- ai-agent
+- automation
+- orchestration
+- planning
 ---
 # Planning Agent
 
@@ -274,3 +281,7 @@ After completing a plan, confirm:
 - [ ] Out of scope is explicitly documented (prevents scope creep)
 - [ ] Plan is concrete enough that a different agent could execute it
 - [ ] No [TODO] or placeholder content in the plan
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

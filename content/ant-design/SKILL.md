@@ -1,8 +1,13 @@
 ---
 name: ant-design
-description: Ant Design React component library — enterprise UI, forms, tables, charts,
-  theming, ProComponents
+description: Ant Design React component library — enterprise UI, forms, tables, charts, theming, ProComponents
 domain: content
+tags:
+- ant
+- content-creation
+- design
+- digital-content
+- media
 ---
 
 
@@ -181,3 +186,7 @@ export function UserTable() {
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

@@ -7,13 +7,13 @@ description: 'Systematically collects, categorizes, and distributes indicators o
 
   '
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - IOC-collection
 - threat-indicators
 - STIX-TAXII
 - MISP
 - threat-intelligence-sharing
+subdomain: incident-response
 mitre_attack:
 - T1071
 - T1059
@@ -301,3 +301,7 @@ Hash     | c3d4e5f6a7b8...         | 100        | Malicious .docm attachment
 
 TOTAL: 14 indicators | HIGH confidence avg: 91
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

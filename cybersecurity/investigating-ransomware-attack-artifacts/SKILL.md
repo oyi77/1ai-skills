@@ -3,7 +3,6 @@ name: investigating-ransomware-attack-artifacts
 description: Identify, collect, and analyze ransomware attack artifacts to determine the variant, initial access vector, encryption
   scope, and recovery options.
 domain: cybersecurity
-subdomain: digital-forensics
 tags:
 - forensics
 - ransomware
@@ -11,6 +10,7 @@ tags:
 - incident-response
 - encryption-recovery
 - evidence-collection
+subdomain: digital-forensics
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -413,3 +413,7 @@ Ransomware Investigation Summary:
     Bitcoin: bc1q...
     Tor: http://lockbit...onion
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

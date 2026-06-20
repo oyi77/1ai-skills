@@ -1,9 +1,26 @@
 ---
 name: sherlock-research
-description: "Investigate problems systematically using Sherlock Holmes' method: observe, deduce, hypothesize, and verify."
+description: 'Investigate problems systematically using Sherlock Holmes'' method: observe, deduce, hypothesize, and verify.'
 domain: research
+tags:
+- analysis
+- investigation
+- research
+- sherlock
 ---
 # Sherlock Research Method
+## When to Use
+
+**Trigger phrases:**
+- "sherlock research"
+- "Help me with sherlock research"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## The Holmes Framework
 
@@ -162,3 +179,7 @@ After completing this skill, confirm:
 - `polymarket-analyst` - Probability research
 - `trendradar` - Market research
 - `brainstorming` - Problem exploration
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

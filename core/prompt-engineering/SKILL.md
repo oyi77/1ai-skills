@@ -1,9 +1,14 @@
 ---
 name: prompt-engineering
-description: Advanced prompt engineering — chain-of-thought, few-shot, tree-of-thought,
-  self-consistency, meta-prompting, system design, debugging, and optimization for
-  production AI systems.
+description: Advanced prompt engineering — chain-of-thought, few-shot, tree-of-thought, self-consistency, meta-prompting,
+  system design, debugging, and optimization for production AI systems.
 domain: core
+tags:
+- engineering
+- infrastructure
+- memory
+- prompt
+- self-improvement
 ---
 
 # Prompt Engineering
@@ -155,3 +160,7 @@ After completing this skill, confirm:
 - [ ] Token usage is optimized (no unnecessary context)
 - [ ] Edge cases are handled (empty input, max length, special characters)
 - [ ] Prompt is documented with examples and failure modes
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

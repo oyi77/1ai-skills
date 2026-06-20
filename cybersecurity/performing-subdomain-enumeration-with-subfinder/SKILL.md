@@ -3,7 +3,6 @@ name: performing-subdomain-enumeration-with-subfinder
 description: Enumerate subdomains of target domains using ProjectDiscovery's Subfinder passive reconnaissance tool to map
   the attack surface during security assessments.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - subdomain-enumeration
 - reconnaissance
@@ -12,6 +11,7 @@ tags:
 - subfinder
 - passive-recon
 - osint
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -221,3 +221,7 @@ subfinder -d example.com -silent | httpx -silent | gowitness file -f - -P screen
 - Investigate subdomains with CNAME pointing to unclaimed services
 - Restrict access to development and staging environments
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

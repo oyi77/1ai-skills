@@ -7,7 +7,6 @@ description: 'Implements external attack surface management (EASM) using Shodan,
 
   '
 domain: cybersecurity
-subdomain: offensive-security
 tags:
 - attack-surface
 - reconnaissance
@@ -16,6 +15,7 @@ tags:
 - subfinder
 - nuclei
 - asset-discovery
+subdomain: offensive-security
 version: '1.0'
 author: mukul975
 license: Apache-2.0
@@ -248,3 +248,7 @@ python agent.py \
 - All exploited vulnerabilities documented with reproduction steps
 - Scope boundaries confirmed — only authorized targets were tested
 - Remediation recommendations included for every finding
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

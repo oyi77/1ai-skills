@@ -2,7 +2,25 @@
 name: mcp-client
 description: Generic MCP client implementation
 domain: mcp
+tags:
+- client
+- mcp
+- mcp-server
+- model-context-protocol
+- tool-integration
 ---
+## When to Use
+
+**Trigger phrases:**
+- "mcp client"
+- "Help me with mcp client"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Mcp Client
 
 Generic MCP client implementation
@@ -77,3 +95,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -8,8 +8,6 @@ description: 'Performs runtime mobile security exploration of iOS applications u
 
   '
 domain: cybersecurity
-subdomain: mobile-security
-author: mahipal
 tags:
 - mobile-security
 - ios
@@ -17,6 +15,8 @@ tags:
 - frida
 - owasp-mobile
 - penetration-testing
+subdomain: mobile-security
+author: mahipal
 version: 1.0.0
 license: Apache-2.0
 atlas_techniques:
@@ -231,3 +231,7 @@ ios hooking search classes UITextField
 - **Keychain access scope**: Objection can only dump keychain items within the app's access group. System keychain items require separate jailbreak-level tools.
 - **Swift name mangling**: Swift method names are mangled in the runtime. Use `ios hooking list classes` with grep to find demangled names.
 - **Non-persistent changes**: All Objection modifications are runtime-only and reset on app restart. Document findings immediately.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

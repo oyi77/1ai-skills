@@ -1,13 +1,19 @@
 ---
 name: trading-orchestrator
-description: "Coordinate multi-strategy trading workflows by routing signals to the right executor and managing risk limits."
+description: Coordinate multi-strategy trading workflows by routing signals to the right executor and managing risk limits.
+domain: trading
+tags:
+- algorithms
+- markets
+- orchestrator
+- trading
+- workflow
 allowed-tools:
 - Bash(trading:*)
 - MCP(notion:*)
 - MCP(slack:*)
 - fs
 - network
-domain: trading
 ---
 
 # Trading Orchestrator

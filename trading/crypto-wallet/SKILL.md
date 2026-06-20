@@ -1,8 +1,13 @@
 ---
 name: crypto-wallet
-description: 'Skill: crypto-wallet. See SKILL.md body for details. Use when this domain
-  is relevant.'
+description: 'Skill: crypto-wallet. See SKILL.md body for details. Use when this domain is relevant.'
 domain: trading
+tags:
+- algorithms
+- crypto
+- markets
+- trading
+- wallet
 ---
 ## Overview
 

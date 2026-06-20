@@ -6,7 +6,6 @@ description: 'Implement network segmentation based on the Purdue Enterprise Refe
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - defense-in-depth
 - dmz
 - scada
+subdomain: ot-ics-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -477,3 +477,7 @@ DMZ COMPONENTS:
 FIREWALL RULES: [count] rules generated
 MIGRATION STEPS: [count] phases planned
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

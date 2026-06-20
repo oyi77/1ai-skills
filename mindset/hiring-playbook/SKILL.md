@@ -2,6 +2,12 @@
 name: hiring-playbook
 description: Design jobs, source candidates, run structured interviews, and onboard effectively. Use when hiring for any role.
 domain: mindset
+tags:
+- hiring
+- mindset
+- personal-development
+- playbook
+- soft-skills
 ---
 
 # Hiring Playbook
@@ -201,3 +207,7 @@ End-to-end hiring framework: job design, sourcing, structured interviewing, cult
 - [ ] Work sample or case study designed (simulates real work)
 - [ ] Offer components defined (salary, equity, benefits benchmarked)
 - [ ] 90-day onboarding plan written (Week 1, Month 1-3 milestones)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

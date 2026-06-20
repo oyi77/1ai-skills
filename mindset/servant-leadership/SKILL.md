@@ -1,7 +1,14 @@
 ---
 name: servant-leadership
-description: Lead by serving using Greenleaf's 10 characteristics. Use when empowering teams, removing obstacles, or building trust-based leadership.
+description: Lead by serving using Greenleaf's 10 characteristics. Use when empowering teams, removing obstacles, or building
+  trust-based leadership.
 domain: mindset
+tags:
+- leadership
+- mindset
+- personal-development
+- servant
+- soft-skills
 ---
 
 # Servant Leadership
@@ -211,3 +218,7 @@ Robert Greenleaf's leadership model: leading by serving the team, empowering gro
 - [ ] Career development discussed regularly (commitment to growth)
 - [ ] Team rituals established (building community)
 - [ ] Obstacles removed (stewardship: serving the team)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

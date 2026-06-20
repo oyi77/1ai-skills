@@ -1,7 +1,14 @@
 ---
 name: habit-formation
-description: Build and maintain habits using cue-routine-reward loops, habit stacking, and environment design. Use when creating new routines or breaking old patterns.
+description: Build and maintain habits using cue-routine-reward loops, habit stacking, and environment design. Use when creating
+  new routines or breaking old patterns.
 domain: mindset
+tags:
+- formation
+- habit
+- mindset
+- personal-development
+- soft-skills
 ---
 
 # Habit Formation
@@ -157,3 +164,7 @@ Framework for building and maintaining habits: cue-routine-reward loop, habit st
 - [ ] Tracking method set (streak counter, app, or journal)
 - [ ] Accountability in place (told someone your commitment)
 - [ ] "Never miss twice" principle adopted
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

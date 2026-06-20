@@ -1,8 +1,14 @@
 ---
 name: istio-mesh
-description: Istio service mesh — traffic management, security, observability for
-  Kubernetes microservices
+description: Istio service mesh — traffic management, security, observability for Kubernetes microservices
 domain: devops
+tags:
+- ci-cd
+- devops
+- infrastructure
+- istio
+- kubernetes
+- mesh
 ---
 
 
@@ -181,3 +187,7 @@ spec:
 - **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
 - **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
 - **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures
+
+## Verification
+
+- [ ] Skill output matches expected behavior

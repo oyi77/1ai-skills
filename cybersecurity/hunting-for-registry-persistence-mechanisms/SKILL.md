@@ -3,7 +3,6 @@ name: hunting-for-registry-persistence-mechanisms
 description: Hunt for registry-based persistence mechanisms including Run keys, Winlogon modifications, IFEO injection, and
   COM hijacking in Windows environments.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - mitre-attack
@@ -12,6 +11,7 @@ tags:
 - windows
 - t1547
 - proactive-detection
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -122,3 +122,7 @@ Risk Level: [Critical/High/Medium/Low]
 Confidence: [High/Medium/Low]
 Recommended Action: [Containment, investigation, monitoring]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,8 +1,16 @@
 ---
 name: canva
+description: Create, export, and manage Canva designs via the Connect API. Generate social posts, carousels, and graphics
+  programmatically.
+domain: marketing
+tags:
+- api
+- canva
+- growth
+- marketing
+- seo
+- social-media
 version: 1.0.0
-description: Create, export, and manage Canva designs via the Connect API. Generate
-  social posts, carousels, and graphics programmatically.
 homepage: https://github.com/abgohel/canva-skill
 metadata:
   clawdbot:
@@ -12,7 +20,6 @@ metadata:
       env:
       - CANVA_CLIENT_ID
       - CANVA_CLIENT_SECRET
-domain: marketing
 ---
 
 
@@ -252,3 +259,11 @@ Built by **Meow 😼** for the Moltbook community 🦞
 - **Email open rates below 15%**: Subject lines or sender reputation issue
 - **Bounce rate above 70%**: Landing page mismatch or slow load times
 - **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Overview
+
+> Section content — see SKILL.md body for full details.
+
+## Verification
+
+- [ ] Skill output matches expected behavior

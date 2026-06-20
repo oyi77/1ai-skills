@@ -1,7 +1,14 @@
 ---
 name: probabilistic-thinking
-description: Apply Bayesian updating, base rates, and expected value to decision-making. Use when reasoning under uncertainty or evaluating risks.
+description: Apply Bayesian updating, base rates, and expected value to decision-making. Use when reasoning under uncertainty
+  or evaluating risks.
 domain: mindset
+tags:
+- mindset
+- personal-development
+- probabilistic
+- soft-skills
+- thinking
 ---
 
 # Probabilistic Thinking
@@ -119,3 +126,7 @@ Reasoning with probabilities instead of binary certainty. Covers Bayesian updati
 - [ ] Expected value calculated (if decision involves payoffs)
 - [ ] Calibrated (confidence matches reality over time)
 - [ ] Fallacies avoided (gambler's fallacy, base rate neglect, etc.)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

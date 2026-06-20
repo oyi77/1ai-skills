@@ -1,8 +1,16 @@
 ---
 name: auto-git-commiter
-description: Automatically commit and push OpenClaw changes to GitHub. Enable continuous
-  improvement with automatic versioning, changelogs, and deployment-ready commits.
+description: Automatically commit and push OpenClaw changes to GitHub. Enable continuous improvement with automatic versioning,
+  changelogs, and deployment-ready commits.
 domain: core
+tags:
+- auto
+- commiter
+- git
+- github
+- infrastructure
+- memory
+- self-improvement
 ---
 persona:
   name: "Linus Torvalds"
@@ -15,6 +23,18 @@ persona:
 
 
 # Auto-Git-Committer Skill
+## When to Use
+
+**Trigger phrases:**
+- "auto git commiter"
+- "Help me with auto git commiter"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Overview
 

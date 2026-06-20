@@ -1,8 +1,18 @@
 ---
 name: anti-slop-frontend
-description: Anti-slop frontend framework for AI agents. Enforces better layout, typography, motion, and spacing to counter generic AI-generated boilerplate UIs. Use when building frontend, countering generic AI UIs, need distinctive visual design, image-to-code pipeline.
+description: Anti-slop frontend framework for AI agents. Enforces better layout, typography, motion, and spacing to counter
+  generic AI-generated boilerplate UIs. Use when building frontend, countering generic AI UIs, need distinctive visual design,
+  image-to-code pipeline.
 domain: content
-tags: [frontend, design, ui, anti-slop, taste, typography, motion, image-to-code]
+tags:
+- frontend
+- design
+- ui
+- anti-slop
+- taste
+- typography
+- motion
+- image-to-code
 ---
 
 
@@ -166,3 +176,7 @@ npx skills add Leonxlnx/taste-skill
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

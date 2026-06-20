@@ -6,12 +6,12 @@ description: 'Implements security chaos engineering experiments that deliberatel
 
   '
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - implementing
 - security
 - chaos
 - engineering
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -108,3 +108,7 @@ def run_experiment(setup_fn, verify_fn, rollback_fn, timeout=300):
 - Output documented with screenshots or logs demonstrating expected behavior
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

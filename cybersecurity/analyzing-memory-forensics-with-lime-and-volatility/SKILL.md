@@ -6,7 +6,6 @@ description: 'Performs Linux memory acquisition using LiME (Linux Memory Extract
 
   '
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - memory-forensics
 - linux-forensics
@@ -14,6 +13,7 @@ tags:
 - volatility
 - incident-response
 - kernel-modules
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -106,3 +106,7 @@ vol3 -f memory.lime linux.lsmod
 - Hash values computed and verified match between source and image
 - Chain of custody log complete with timestamps and examiner names
 - Analysis tools and versions documented for reproducibility
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

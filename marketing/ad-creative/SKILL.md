@@ -1,8 +1,13 @@
 ---
 name: ad-creative
-description: Ad creative production — visual briefs, copy variations, and A/B testing
-  frameworks for performance advertising.
+description: Ad creative production — visual briefs, copy variations, and A/B testing frameworks for performance advertising.
 domain: marketing
+tags:
+- creative
+- growth
+- marketing
+- seo
+- testing
 ---
 
 
@@ -202,3 +207,7 @@ def build_creative_test_matrix(product):
 - **Email open rates below 15%**: Subject lines or sender reputation issue
 - **Bounce rate above 70%**: Landing page mismatch or slow load times
 - **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Verification
+
+- [ ] Skill output matches expected behavior

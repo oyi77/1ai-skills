@@ -1,9 +1,12 @@
 ---
 name: ai-seo
-description: Optimize for AI search engines — Perplexity, ChatGPT Search, Google AI
-  Overviews, answer engine optimization. Use when adapting SEO strategy for AI-powered
-  search, optimizing for featured snippets, or building AI-friendly content.
+description: Optimize for AI search engines — Perplexity, ChatGPT Search, Google AI Overviews, answer engine optimization.
+  Use when adapting SEO strategy for AI-powered search, optimizing for featured snippets, or building AI-friendly content.
 domain: marketing
+tags:
+- growth
+- marketing
+- seo
 ---
 
 
@@ -151,3 +154,11 @@ def optimize_for_entities(content, target_entities):
 - **Email open rates below 15%**: Subject lines or sender reputation issue
 - **Bounce rate above 70%**: Landing page mismatch or slow load times
 - **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Overview
+
+> Section content — see SKILL.md body for full details.
+
+## Verification
+
+- [ ] Skill output matches expected behavior

@@ -1,20 +1,17 @@
 ---
 name: performing-web-application-penetration-test
-description: 'Performs systematic security testing of web applications following the OWASP Web Security Testing Guide (WSTG)
+description: Performs systematic security testing of web applications following the OWASP Web Security Testing Guide (WSTG)
   methodology to identify vulnerabilities in authentication, authorization, input validation, session management, and business
   logic. The tester uses Burp Suite as the primary interception proxy alongside manual testing techniques to find flaws that
-  automated scanners miss. Activates for requests involving web app pentest, OWASP testing, application security assessment,
-  or web vulnerability testing.
-
-  '
+  automated scanners miss.
 domain: cybersecurity
-subdomain: penetration-testing
 tags:
 - web-application-pentest
 - OWASP
 - Burp-Suite
 - WSTG
 - application-security
+subdomain: penetration-testing
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -236,3 +233,7 @@ Add authorization middleware that verifies the authenticated user's ID matches
 the order's userId field before returning order data. Implement UUIDs instead
 of sequential integers for order identifiers to prevent enumeration.
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

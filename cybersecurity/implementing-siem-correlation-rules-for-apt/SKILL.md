@@ -5,12 +5,12 @@ description: Write multi-event correlation rules that detect APT lateral movemen
   Event IDs 4624, 4648, 4688, and Sysmon Events 1/3 within sliding time windows to surface attack sequences invisible to single-event
   detections.
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - implementing
 - siem
 - correlation
 - rules
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -109,3 +109,7 @@ level: high
 - Output documented with screenshots or logs demonstrating expected behavior
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

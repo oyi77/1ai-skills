@@ -7,13 +7,13 @@ description: 'This skill covers deploying HashiCorp Vault for centralized secret
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - hashicorp-vault
 - secrets-management
 - dynamic-secrets
 - credential-rotation
 - zero-trust
+subdomain: cloud-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -374,3 +374,7 @@ CREDENTIAL HYGIENE:
   Average Lease TTL: 2.3 hours
   Secrets Rotated This Month: 12,456
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

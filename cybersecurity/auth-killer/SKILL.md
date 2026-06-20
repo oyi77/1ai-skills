@@ -1,9 +1,16 @@
 ---
 name: auth-killer
-description: Authentication and authorization bypass specialist — OAuth, SAML, JWT,
-  SSO, MFA bypass. Use when testing login flows, breaking authentication mechanisms,
-  or finding auth bypass vulnerabilities.
+description: Authentication and authorization bypass specialist — OAuth, SAML, JWT, SSO, MFA bypass. Use when testing login
+  flows, breaking authentication mechanisms, or finding auth bypass vulnerabilities.
 domain: cybersecurity
+tags:
+- auth
+- cybersecurity
+- killer
+- machine-learning
+- security
+- testing
+- threat-defense
 ---
 
 # Auth Killer
@@ -292,3 +299,7 @@ X-Forwarded-Host: evil.com
 | Session | Burp Sequencer |
 | MFA | Custom scripts, Burp Intruder |
 | General | Burp Suite, OWASP ZAP |
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

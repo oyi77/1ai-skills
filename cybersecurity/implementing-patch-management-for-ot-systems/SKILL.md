@@ -7,7 +7,6 @@ description: 'This skill covers implementing a structured patch management progr
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - iec62443
 - patch-management
 - vulnerability-management
+subdomain: ot-ics-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -371,3 +371,7 @@ COMPLIANCE:
   Deployed or mitigated: [N]/[N]
   Deferred with compensating controls: [N]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

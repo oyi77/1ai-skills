@@ -6,7 +6,6 @@ description: 'Detecting compromised cloud credentials across AWS, Azure, and GCP
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - credential-compromise
@@ -14,6 +13,7 @@ tags:
 - guardduty
 - incident-response
 - anomaly-detection
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -373,3 +373,7 @@ CONTAINMENT ACTIONS TAKEN:
   Passwords force-reset:          4
   MFA re-enrolled:                4
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -7,13 +7,13 @@ description: 'Implements application whitelisting using Windows AppLocker to res
 
   '
 domain: cybersecurity
-subdomain: endpoint-security
 tags:
 - endpoint
 - AppLocker
 - application-whitelisting
 - windows-security
 - software-restriction
+subdomain: endpoint-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -279,3 +279,7 @@ Get-WinEvent -LogName "Microsoft-Windows-AppLocker/EXE and DLL" `
 - **Forgetting Application Identity service**: AppLocker requires the AppIDSvc service running. If it stops, all rules stop enforcing.
 - **Admin bypass**: Local administrators can bypass AppLocker by default. For full enforcement, combine with WDAC which enforces for all users including admins.
 - **DLL rule performance**: Enabling DLL rules creates significant performance overhead. Only enable in high-security environments where the tradeoff is justified.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -6,7 +6,6 @@ description: 'Implements strategies to reduce SOC alert fatigue by tuning detect
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - alert-fatigue
@@ -15,6 +14,7 @@ tags:
 - false-positive
 - siem
 - detection-engineering
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -357,3 +357,7 @@ Changes Implemented:
 Detection Coverage Impact: NONE — ATT&CK coverage maintained at 67%
 True Positive Detection Rate: IMPROVED — 12 additional true positives caught per week
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

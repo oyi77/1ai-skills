@@ -3,7 +3,6 @@ name: testing-jwt-token-security
 description: Assessing JSON Web Token implementations for cryptographic weaknesses, algorithm confusion attacks, and authorization
   bypass vulnerabilities during security engagements.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - penetration-testing
 - jwt
@@ -11,6 +10,7 @@ tags:
 - web-security
 - token-security
 - burpsuite
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -381,3 +381,7 @@ The `kid` header parameter is used in a SQL query to look up signing keys. Injec
 4. Validate all JWT claims server-side (iss, aud, exp, nbf)
 5. Use a minimum key length of 256 bits for HMAC secrets
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

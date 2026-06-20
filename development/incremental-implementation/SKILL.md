@@ -1,8 +1,13 @@
 ---
 name: incremental-implementation
-description: Delivers changes incrementally. Use when implementing any feature or
-  change that touches more than one file.
+description: Delivers changes incrementally. Use when implementing any feature or change that touches more than one file.
 domain: development
+tags:
+- coding
+- implementation
+- incremental
+- software-engineering
+- testing
 ---
 
 

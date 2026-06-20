@@ -1,14 +1,10 @@
 ---
 name: managing-intelligence-lifecycle
-description: 'Manages the end-to-end cyber threat intelligence lifecycle from planning and direction through collection, processing,
+description: Manages the end-to-end cyber threat intelligence lifecycle from planning and direction through collection, processing,
   analysis, dissemination, and feedback to ensure intelligence products meet stakeholder requirements and continuously improve.
   Use when establishing or maturing a CTI program, defining intelligence requirements with business stakeholders, or building
-  feedback loops between intelligence consumers and producers. Activates for requests involving CTI program maturity, intelligence
-  requirements, PIRs, or intelligence lifecycle management.
-
-  '
+  feedback loops between intelligence consumers and producers.
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - CTI
 - intelligence-lifecycle
@@ -16,6 +12,7 @@ tags:
 - NIST-SP-800-150
 - threat-intelligence-program
 - NIST-CSF
+subdomain: threat-intelligence
 version: 1.0.0
 author: team-cybersecurity
 license: Apache-2.0
@@ -153,3 +150,7 @@ Track metrics quarterly: PIR coverage rate, IOC true positive rate, time-to-diss
 - **Tactical-only focus**: Overemphasis on IOC sharing neglects strategic intelligence that informs security investment and risk decisions.
 - **No metrics program**: Cannot demonstrate CTI program value without tracking detection contributions, true positive rates, and stakeholder satisfaction.
 - **Underfunded collection**: PIRs cannot be answered without appropriate collection sources; document and escalate gaps rather than producing low-confidence estimates.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

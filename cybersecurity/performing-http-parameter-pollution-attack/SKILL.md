@@ -3,7 +3,6 @@ name: performing-http-parameter-pollution-attack
 description: Execute HTTP Parameter Pollution attacks to bypass input validation, WAF rules, and security controls by injecting
   duplicate parameters that are processed differently by front-end and back-end systems.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - http-parameter-pollution
 - hpp
@@ -12,6 +11,7 @@ tags:
 - web-security
 - parameter-injection
 - server-parsing
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -232,3 +232,7 @@ python3 hpp_tester.py --url http://target.com/api/action \
 - Apply WAF rules that detect duplicate parameter patterns
 - Validate all parameters server-side regardless of client-side checks
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

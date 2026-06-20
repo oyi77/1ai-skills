@@ -6,7 +6,6 @@ description: 'Performing comprehensive security assessments of Google Cloud Plat
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - gcp
@@ -14,6 +13,7 @@ tags:
 - security-command-center
 - iam-audit
 - cis-benchmark
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -329,3 +329,7 @@ TOP REMEDIATION PRIORITIES:
   3. Rotate 18 service account keys older than 90 days (HIGH)
   4. Enable VPC flow logs on 22 subnets (MEDIUM)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

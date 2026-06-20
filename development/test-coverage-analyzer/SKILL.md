@@ -1,8 +1,14 @@
 ---
 name: test-coverage-analyzer
-description: Identify untested code paths — coverage reports, gap analysis, and test
-  prioritization
+description: Identify untested code paths — coverage reports, gap analysis, and test prioritization
 domain: development
+tags:
+- analyzer
+- coding
+- coverage
+- software-engineering
+- test
+- testing
 ---
 
 
@@ -99,3 +105,7 @@ def analyze_gaps(coverage_report):
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

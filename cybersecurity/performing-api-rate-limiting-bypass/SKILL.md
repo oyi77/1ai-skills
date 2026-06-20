@@ -1,14 +1,10 @@
 ---
 name: performing-api-rate-limiting-bypass
-description: 'Tests API rate limiting implementations for bypass vulnerabilities by manipulating request headers, IP addresses,
+description: Tests API rate limiting implementations for bypass vulnerabilities by manipulating request headers, IP addresses,
   HTTP methods, API versions, and encoding schemes to circumvent request throttling controls. The tester identifies rate limit
   headers, determines enforcement mechanisms, and attempts bypasses including X-Forwarded-For spoofing, parameter pollution,
-  case variation, and endpoint path manipulation. Maps to OWASP API4:2023 Unrestricted Resource Consumption. Activates for
-  requests involving rate limit bypass, API throttling evasion, brute force protection testing, or API abuse prevention assessment.
-
-  '
+  case variation, and endpoint path manipulation. Maps to OWASP API4:2023 Unrestricted Resource Consumption.
 domain: cybersecurity
-subdomain: api-security
 tags:
 - api-security
 - owasp
@@ -16,6 +12,7 @@ tags:
 - throttling
 - brute-force
 - dos-prevention
+subdomain: api-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -448,3 +445,7 @@ At 1000 attempts per minute, a 6-digit PIN can be brute-forced in under
 5. Use atomic rate limit counters (Redis INCR) to prevent race conditions
 6. Implement progressive delays (exponential backoff) in addition to hard limits
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

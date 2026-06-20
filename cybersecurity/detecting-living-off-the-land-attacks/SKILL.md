@@ -5,12 +5,12 @@ description: 'Detect abuse of legitimate Windows binaries (LOLBins) used for liv
 
   '
 domain: cybersecurity
-subdomain: threat-detection
 tags:
 - lolbins
 - lotl
 - fileless-attacks
 - process-monitoring
+subdomain: threat-detection
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -539,3 +539,7 @@ foreach ($binary in $lolbins_to_restrict) {
 - Exceeding the authorized scope of the engagement
 - Leaving persistent access mechanisms without explicit approval
 - Causing denial-of-service on production systems during testing
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

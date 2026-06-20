@@ -1,8 +1,13 @@
 ---
 name: storybook-ui
-description: Storybook for UI component development — stories, addons, controls, a11y
-  testing, visual regression
+description: Storybook for UI component development — stories, addons, controls, a11y testing, visual regression
 domain: content
+tags:
+- content-creation
+- digital-content
+- media
+- storybook
+- testing
 ---
 
 
@@ -167,3 +172,7 @@ export default {
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

@@ -3,7 +3,6 @@ name: recovering-deleted-files-with-photorec
 description: Recover deleted files from disk images and storage media using PhotoRec's file signature-based carving engine
   regardless of file system damage.
 domain: cybersecurity
-subdomain: digital-forensics
 tags:
 - forensics
 - file-recovery
@@ -11,6 +10,7 @@ tags:
 - file-carving
 - data-recovery
 - evidence-recovery
+subdomain: digital-forensics
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -274,3 +274,7 @@ PhotoRec Recovery Summary:
   Output Directory: /cases/case-2024-001/recovered/all/
   Hash Manifest:    /cases/case-2024-001/recovered/recovered_hashes.txt
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

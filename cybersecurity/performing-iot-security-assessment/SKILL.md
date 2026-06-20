@@ -1,20 +1,17 @@
 ---
 name: performing-iot-security-assessment
-description: 'Performs comprehensive security assessments of IoT devices and their ecosystems by testing hardware interfaces,
+description: Performs comprehensive security assessments of IoT devices and their ecosystems by testing hardware interfaces,
   firmware, network communications, cloud APIs, and companion mobile applications. The tester uses firmware extraction and
   analysis, hardware debugging via UART and JTAG, network protocol analysis, and runtime exploitation to identify vulnerabilities
-  across all layers of the IoT stack. Activates for requests involving IoT security testing, embedded device assessment, firmware
-  security analysis, or smart device penetration testing.
-
-  '
+  across all layers of the IoT stack.
 domain: cybersecurity
-subdomain: penetration-testing
 tags:
 - IoT-security
 - firmware-analysis
 - embedded-systems
 - hardware-hacking
 - UART-JTAG
+subdomain: penetration-testing
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -229,3 +226,7 @@ network entry point with root-level command execution capability.
 3. Encrypt stored WiFi credentials using a hardware-backed key
 4. Deploy cameras on an isolated VLAN with no access to the corporate network
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -7,7 +7,6 @@ description: 'Deploys deception-based honeytokens in Active Directory including 
 
   '
 domain: cybersecurity
-subdomain: deception-technology
 tags:
 - active-directory
 - honeytokens
@@ -16,6 +15,7 @@ tags:
 - detection
 - bloodhound
 - gpo
+subdomain: deception-technology
 version: '1.0'
 author: mukul975
 license: Apache-2.0
@@ -289,3 +289,7 @@ SecurityEvent
 - SpecterOps - Kerberoasting and AES-256: https://specterops.io/blog/2025/10/21/is-kerberoasting-still-a-risk-when-aes-256-kerberos-encryption-is-enabled/
 - APT29a Blog - Deploying Honeytokens in AD: https://apt29a.blogspot.com/2019/11/deploying-honeytokens-in-active.html
 - ADSecurity.org - Detecting Kerberoasting Activity: https://adsecurity.org/?p=3458
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

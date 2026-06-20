@@ -6,7 +6,6 @@ description: 'Implements threat modeling using the MITRE ATT&CK framework to map
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - mitre-attack
@@ -15,6 +14,7 @@ tags:
 - detection-coverage
 - attack-navigator
 - risk-assessment
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -419,3 +419,7 @@ INVESTMENT RECOMMENDATION:
   Closing top 10 gaps requires: 2 detection engineer FTEs, 60 days
   Expected coverage improvement: 64% -> 76%
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

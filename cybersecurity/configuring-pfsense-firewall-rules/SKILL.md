@@ -5,13 +5,13 @@ description: 'Configures pfSense firewall rules, NAT policies, VPN tunnels, and 
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - pfsense
 - firewall
 - nat
 - network-segmentation
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -379,3 +379,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - VPN: OpenVPN remote access configured with MFA
 - Logging: All traffic forwarded to SIEM (10.10.20.15)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

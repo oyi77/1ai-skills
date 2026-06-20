@@ -1,8 +1,27 @@
 ---
 name: k8s-deploy
-description: Generate K8s manifests
+description: K8S Deploy. Use when working with k8s deploy in devops domain.
 domain: devops
+tags:
+- ci-cd
+- deploy
+- devops
+- infrastructure
+- k8s
+- kubernetes
 ---
+## When to Use
+
+**Trigger phrases:**
+- "k8s deploy"
+- "Help me with k8s deploy"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 
 ## K8S Deploy
@@ -69,3 +88,7 @@ After completing this skill, confirm:
 - Monitor output quality and iterate on configuration based on results
 - Keep dependencies up to date for security and performance
 - Document custom workflows and configurations for team knowledge sharing
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,13 +1,19 @@
 ---
 name: performance-monitor
-description: Track and analyze skill execution performance. Measure latency, success
-  rates, accuracy, and resource usage for continuous improvement.
+description: Track and analyze skill execution performance. Measure latency, success rates, accuracy, and resource usage for
+  continuous improvement.
+domain: meta
+tags:
+- meta-learning
+- monitor
+- performance
+- self-improvement
+- skill-evolution
 persona:
   name: Performance Engineer
   expertise: Metrics, monitoring, optimization
   philosophy: If you can't measure it, you can't improve it
   credentials: SRE at Google, built monitoring systems
-domain: meta
 ---
 ## Performance Monitor
 
@@ -39,6 +45,18 @@ resource_metrics:
 
 ```python
 # Start monitoring
+## When to Use
+
+**Trigger phrases:**
+- "performance monitor"
+- "Help me with performance monitor"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 /performance-monitor start skill-name
 
 # Get report
@@ -85,3 +103,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

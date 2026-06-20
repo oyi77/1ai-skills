@@ -1,7 +1,12 @@
 ---
 name: company-kb
-description: company-kb — Company Knowledge Base Skill. Use when relevant to this
-  domain.
+description: company-kb — Company Knowledge Base Skill. Use when relevant to this domain.
+domain: core
+tags:
+- company
+- infrastructure
+- memory
+- self-improvement
 persona:
   name: Domain Expert
   title: Master of Company Kb
@@ -19,7 +24,6 @@ persona:
   - Continuous improvement
   - Evidence-based
   - Customer focused
-domain: core
 ---
 # company-kb — Company Knowledge Base Skill
 
@@ -132,3 +136,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

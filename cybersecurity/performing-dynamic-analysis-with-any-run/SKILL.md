@@ -6,13 +6,13 @@ description: 'Performs interactive dynamic malware analysis using the ANY.RUN cl
 
   '
 domain: cybersecurity
-subdomain: malware-analysis
 tags:
 - malware
 - dynamic-analysis
 - sandbox
 - ANY.RUN
 - interactive-analysis
+subdomain: malware-analysis
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -310,3 +310,7 @@ DROPPED FILES
 payload.dll  SHA-256: abc123... Detection: 48/72 (VirusTotal)
 config.dat   SHA-256: def456... (encrypted configuration)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

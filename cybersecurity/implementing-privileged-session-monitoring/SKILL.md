@@ -1,14 +1,9 @@
 ---
 name: implementing-privileged-session-monitoring
-description: 'Implements privileged session monitoring and recording using Privileged Access Management (PAM) solutions, focusing
+description: Implements privileged session monitoring and recording using Privileged Access Management (PAM) solutions, focusing
   on CyberArk Privileged Session Manager (PSM) and open-source alternatives. Covers session recording configuration, keystroke
-  logging, real-time monitoring, risk-based session analysis, and compliance audit trail generation. Activates for requests
-  involving privileged session recording, PAM session monitoring, CyberArk PSM configuration, administrator activity monitoring,
-  or compliance session auditing.
-
-  '
+  logging, real-time monitoring, risk-based session analysis, and compliance audit trail generation.
 domain: cybersecurity
-subdomain: identity-access-management
 tags:
 - PAM
 - CyberArk
@@ -17,6 +12,7 @@ tags:
 - session-recording
 - session-monitoring
 - compliance
+subdomain: identity-access-management
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -353,3 +349,7 @@ Example CEF Event:
 - Testing against production systems without a defined scope and rules of engagement
 - Sharing sensitive findings or credentials in unencrypted communications
 - Failing to properly scope and contain the assessment before starting
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

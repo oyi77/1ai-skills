@@ -1,8 +1,13 @@
 ---
 name: serverless
-description: Serverless architecture — AWS Lambda, Cloudflare Workers, Vercel Edge.
-  Event-driven design, cold start optimization
+description: Serverless architecture — AWS Lambda, Cloudflare Workers, Vercel Edge. Event-driven design, cold start optimization
 domain: devops
+tags:
+- aws
+- ci-cd
+- devops
+- infrastructure
+- serverless
 ---
 
 
@@ -97,3 +102,7 @@ export default {
 - **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
 - **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
 - **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures
+
+## Verification
+
+- [ ] Skill output matches expected behavior

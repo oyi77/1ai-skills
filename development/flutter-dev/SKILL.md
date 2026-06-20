@@ -1,8 +1,13 @@
 ---
 name: flutter-dev
-description: Flutter cross-platform development — Dart, widgets, state management,
-  platform channels, Firebase integration
+description: Flutter cross-platform development — Dart, widgets, state management, platform channels, Firebase integration
 domain: development
+tags:
+- coding
+- dev
+- flutter
+- software-engineering
+- testing
 ---
 
 
@@ -364,3 +369,7 @@ class AppTheme {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

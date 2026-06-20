@@ -3,7 +3,6 @@ name: analyzing-windows-registry-for-artifacts
 description: Extract and analyze Windows Registry hives to uncover user activity, installed software, autostart entries, and
   evidence of system compromise.
 domain: cybersecurity
-subdomain: digital-forensics
 tags:
 - forensics
 - windows-registry
@@ -11,6 +10,7 @@ tags:
 - regripper
 - registry-explorer
 - evidence-collection
+subdomain: digital-forensics
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -320,3 +320,7 @@ Registry Analysis Summary:
   Installed Software:     127 applications
   Suspicious Findings:    3 items flagged for review
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

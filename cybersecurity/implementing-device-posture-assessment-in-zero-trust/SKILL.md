@@ -6,7 +6,6 @@ description: 'Implementing device posture assessment as a zero trust access cont
 
   '
 domain: cybersecurity
-subdomain: zero-trust-architecture
 tags:
 - device-posture
 - zero-trust
@@ -15,6 +14,7 @@ tags:
 - intune
 - conditional-access
 - jamf
+subdomain: zero-trust-architecture
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -484,3 +484,7 @@ POSTURE DRIFT ALERTS:
   EDR sensor stopped:             3
   OS downgraded:                  1
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

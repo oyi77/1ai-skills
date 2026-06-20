@@ -7,7 +7,6 @@ description: 'Implements Delinea Secret Server for privileged access management 
 
   '
 domain: cybersecurity
-subdomain: identity-access-management
 tags:
 - PAM
 - Delinea
@@ -15,6 +14,7 @@ tags:
 - privileged-access
 - password-vault
 - credential-management
+subdomain: identity-access-management
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -448,3 +448,7 @@ SOX Controls Met:        12/12
 PCI-DSS Requirements:    8/8
 Password Age Violations: 3 (remediation in progress)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -3,13 +3,13 @@ name: conducting-post-incident-lessons-learned
 description: Facilitate structured post-incident reviews to identify root causes, document what worked and failed, and produce
   actionable recommendations to improve future incident response.
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - incident-response
 - lessons-learned
 - post-incident
 - after-action-review
 - process-improvement
+subdomain: incident-response
 mitre_attack:
 - T1190
 - T1566
@@ -218,3 +218,7 @@ tags:
 - Action items list with owners and deadlines
 - Updated IR playbooks and detection rules
 - Executive summary for leadership
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

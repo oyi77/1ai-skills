@@ -6,7 +6,6 @@ description: 'Securing API Gateway endpoints with AWS WAF by configuring managed
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - aws
@@ -15,6 +14,7 @@ tags:
 - rate-limiting
 - bot-protection
 - owasp
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -484,3 +484,7 @@ WAF RULE HEALTH:
   Rules in Count mode:    2 / 10 (under evaluation)
   False positive rate:    < 0.1%
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

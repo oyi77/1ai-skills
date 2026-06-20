@@ -3,7 +3,6 @@ name: performing-network-forensics-with-wireshark
 description: Capture and analyze network traffic using Wireshark and tshark to reconstruct network events, extract artifacts,
   and identify malicious communications.
 domain: cybersecurity
-subdomain: digital-forensics
 tags:
 - forensics
 - network-forensics
@@ -11,6 +10,7 @@ tags:
 - pcap
 - packet-analysis
 - traffic-analysis
+subdomain: digital-forensics
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -343,3 +343,7 @@ Network Forensics Summary:
     Domains: update-service.malware-c2.com, data.evil-dns.com
     Hashes:  3 file hashes flagged as malware
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

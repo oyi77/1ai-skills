@@ -1,20 +1,16 @@
 ---
 name: performing-privilege-escalation-assessment
-description: 'Performs privilege escalation assessments on compromised Linux and Windows systems to identify paths from low-privilege
+description: Performs privilege escalation assessments on compromised Linux and Windows systems to identify paths from low-privilege
   access to root or SYSTEM-level control. The tester enumerates misconfigurations, vulnerable services, kernel exploits, SUID
-  binaries, unquoted service paths, and credential stores to demonstrate the full impact of an initial compromise. Activates
-  for requests involving privilege escalation testing, local exploitation, post-compromise escalation, or OS-level security
-  assessment.
-
-  '
+  binaries, unquoted service paths, and credential stores to demonstrate the full impact of an initial compromise.
 domain: cybersecurity
-subdomain: penetration-testing
 tags:
 - privilege-escalation
 - post-exploitation
 - Linux-privesc
 - Windows-privesc
 - local-exploitation
+subdomain: penetration-testing
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -245,3 +241,7 @@ read access to 75,000 customer records including names, emails, and addresses.
 3. Audit all sudo entries for binaries listed in GTFOBins
 4. Implement sudo logging with auditd for all privileged command execution
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

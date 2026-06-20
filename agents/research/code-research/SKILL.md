@@ -1,7 +1,14 @@
 ---
 name: code-research
-description: "Produce structured understanding of unfamiliar codebases — architecture, data flows, dependencies, and conventions. Use when joining a new project, tracing feature implementations, or mapping system architecture."
+description: Produce structured understanding of unfamiliar codebases — architecture, data flows, dependencies, and conventions.
+  Use when joining a new project, tracing feature implementations, or mapping system architecture.
 domain: agents
+tags:
+- ai-agent
+- automation
+- code
+- orchestration
+- research
 ---
 # Code Research Agent
 

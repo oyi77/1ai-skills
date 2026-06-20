@@ -7,7 +7,6 @@ description: 'Builds a structured ransomware incident response playbook aligned 
 
   '
 domain: cybersecurity
-subdomain: ransomware-defense
 tags:
 - ransomware
 - incident-response
@@ -15,6 +14,7 @@ tags:
 - playbook
 - compliance
 - NIST
+subdomain: ransomware-defense
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -201,3 +201,7 @@ Post-Incident Report Template:
 - **ID Ransomware**: Service for identifying ransomware families from encrypted files and ransom notes
 - **MITRE ATT&CK**: Technique framework for mapping ransomware TTPs to detection opportunities
 - **Velociraptor**: Endpoint visibility tool for rapid triage and forensic artifact collection during incidents
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

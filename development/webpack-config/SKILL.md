@@ -1,8 +1,13 @@
 ---
 name: webpack-config
-description: Webpack 5 configuration — loaders, plugins, code splitting, tree shaking,
-  module federation, dev server
+description: Webpack 5 configuration — loaders, plugins, code splitting, tree shaking, module federation, dev server
 domain: development
+tags:
+- coding
+- config
+- software-engineering
+- testing
+- webpack
 ---
 
 
@@ -276,3 +281,7 @@ module.exports = {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

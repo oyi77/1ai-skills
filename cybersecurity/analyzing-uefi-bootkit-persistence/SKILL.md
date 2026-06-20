@@ -1,14 +1,10 @@
 ---
 name: analyzing-uefi-bootkit-persistence
-description: 'Analyzes UEFI bootkit persistence mechanisms including firmware implants in SPI flash, EFI System Partition
-  (ESP) modifications, Secure Boot bypass techniques, and UEFI variable manipulation. Covers detection of known bootkit families
+description: Analyzes UEFI bootkit persistence mechanisms including firmware implants in SPI flash, EFI System Partition (ESP)
+  modifications, Secure Boot bypass techniques, and UEFI variable manipulation. Covers detection of known bootkit families
   (BlackLotus, LoJax, MosaicRegressor, MoonBounce, CosmicStrand), ESP partition forensic inspection, chipsec-based firmware
-  integrity verification, and Secure Boot configuration auditing. Activates for requests involving UEFI malware analysis,
-  firmware persistence investigation, boot chain integrity verification, or Secure Boot bypass detection.
-
-  '
+  integrity verification, and Secure Boot configuration auditing.
 domain: cybersecurity
-subdomain: firmware-security
 tags:
 - UEFI
 - bootkit
@@ -17,6 +13,7 @@ tags:
 - chipsec
 - ESP
 - persistence
+subdomain: firmware-security
 version: 1.0.0
 author: mukul975
 license: Apache-2.0
@@ -395,3 +392,7 @@ REMEDIATION
 7. Reimport only trusted certificates into Secure Boot db
 8. Monitor MeasuredBoot logs for anomalous boot component loading
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

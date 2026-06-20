@@ -1,9 +1,15 @@
 ---
 name: cold-email
-description: Outbound email with personalization, deliverability optimization, follow-up
-  sequences, and compliance. Use when building cold email campaigns, improving email
-  deliverability, or designing outreach sequences.
+description: Outbound email with personalization, deliverability optimization, follow-up sequences, and compliance. Use when
+  building cold email campaigns, improving email deliverability, or designing outreach sequences.
 domain: marketing
+tags:
+- cold
+- compliance
+- email
+- growth
+- marketing
+- seo
 ---
 
 
@@ -140,3 +146,11 @@ def personalize(template, lead):
 - **Email open rates below 15%**: Subject lines or sender reputation issue
 - **Bounce rate above 70%**: Landing page mismatch or slow load times
 - **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Overview
+
+> Section content — see SKILL.md body for full details.
+
+## Verification
+
+- [ ] Skill output matches expected behavior

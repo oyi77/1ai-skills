@@ -7,7 +7,6 @@ description: 'Deploys deception technology including honeypots, honeytokens, and
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - deception
@@ -16,6 +15,7 @@ tags:
 - canary
 - lateral-movement
 - detection
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -328,3 +328,7 @@ Automated Response:
   [DONE] Incident INC0012567 created (P1 — Critical)
   [PENDING] Tier 2 investigation — determine if workstation compromised or insider threat
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

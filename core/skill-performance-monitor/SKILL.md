@@ -1,8 +1,15 @@
 ---
 name: skill-performance-monitor
-description: Monitor and analyze skill effectiveness in real-time. Track usage, success
-  rates, response quality, and user satisfaction for continuous optimization.
+description: Monitor and analyze skill effectiveness in real-time. Track usage, success rates, response quality, and user
+  satisfaction for continuous optimization.
 domain: core
+tags:
+- infrastructure
+- memory
+- monitor
+- performance
+- self-improvement
+- skill
 ---
 persona:
   name: "Brendan Gregg"
@@ -15,6 +22,18 @@ persona:
 
 
 # Skill Performance Monitor
+## When to Use
+
+**Trigger phrases:**
+- "skill performance monitor"
+- "Help me with skill performance monitor"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Overview
 

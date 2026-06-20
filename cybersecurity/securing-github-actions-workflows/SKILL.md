@@ -6,7 +6,6 @@ description: 'This skill covers hardening GitHub Actions workflows against suppl
 
   '
 domain: cybersecurity
-subdomain: devsecops
 tags:
 - devsecops
 - cicd
@@ -14,6 +13,7 @@ tags:
 - supply-chain
 - workflow-security
 - secure-sdlc
+subdomain: devsecops
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -289,3 +289,7 @@ SECRETS:
 
 SCORE: 6/10 (Remediate 5 HIGH findings)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

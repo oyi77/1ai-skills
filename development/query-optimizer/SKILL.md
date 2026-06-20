@@ -1,8 +1,13 @@
 ---
 name: query-optimizer
-description: Slow query analysis — EXPLAIN plans, index recommendations, N+1 detection,
-  and caching strategies
+description: Slow query analysis — EXPLAIN plans, index recommendations, N+1 detection, and caching strategies
 domain: development
+tags:
+- coding
+- optimizer
+- query
+- software-engineering
+- testing
 ---
 
 
@@ -107,3 +112,7 @@ def cached_query(key, query, ttl=300):
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

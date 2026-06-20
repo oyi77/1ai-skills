@@ -1,7 +1,14 @@
 ---
 name: linter-agent
-description: "Detect and fix code style violations, enforce project conventions, and ensure consistent formatting across the codebase. Use when cleaning lint errors before PRs, migrating linters, or bulk-applying new rules."
+description: Detect and fix code style violations, enforce project conventions, and ensure consistent formatting across the
+  codebase. Use when cleaning lint errors before PRs, migrating linters, or bulk-applying new rules.
 domain: agents
+tags:
+- agent
+- ai-agent
+- automation
+- linter
+- orchestration
 ---
 # Linter Agent
 
@@ -279,3 +286,7 @@ After linting, confirm:
 - [ ] Formatting is consistent across all files (run formatter in check mode)
 - [ ] No `eslint-disable` or `# noqa` without a comment explaining why
 - [ ] No [TODO] or placeholder content in lint configuration
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

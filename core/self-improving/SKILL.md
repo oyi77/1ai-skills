@@ -1,12 +1,20 @@
 ---
 name: self-improving
+description: Self-reflection + Self-criticism + Auto-learning from corrections + Self-organizing memory. Agent evaluates its
+  own work, catches mistakes, and improves permanently.
+domain: core
+tags:
+- ai-agent
+- improving
+- infrastructure
+- memory
+- self
+- self-improvement
 slug: self-improving
 version: 1.2.1
 homepage: https://clawic.com/skills/self-improving
-description: Self-reflection + Self-criticism + Auto-learning from corrections + Self-organizing
-  memory. Agent evaluates its own work, catches mistakes, and improves permanently.
-changelog: Clarified the core promise to highlight auto-learning from corrections
-  and self-organizing memory for continuous improvement.
+changelog: Clarified the core promise to highlight auto-learning from corrections and self-organizing memory for continuous
+  improvement.
 metadata:
   clawdbot:
     emoji: 🧠
@@ -18,7 +26,6 @@ metadata:
     - win32
     configPaths:
     - ~/self-improving/
-domain: core
 ---
 
 ## When NOT to Use
@@ -264,3 +271,7 @@ After completing this skill, confirm:
 - [ ] All prerequisites are verified and documented
 - [ ] Error handling covers edge cases
 - [ ] Results are accurate and actionable
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

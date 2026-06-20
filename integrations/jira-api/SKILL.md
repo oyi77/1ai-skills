@@ -1,8 +1,13 @@
 ---
 name: jira-api
-description: Jira API integration — issue management, sprint planning, workflow automation,
-  custom fields, JQL queries
+description: Jira API integration — issue management, sprint planning, workflow automation, custom fields, JQL queries
 domain: integrations
+tags:
+- api
+- integrations
+- jira
+- third-party
+- workflow
 ---
 
 ## Overview

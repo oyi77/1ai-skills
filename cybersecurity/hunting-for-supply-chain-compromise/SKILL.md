@@ -3,7 +3,6 @@ name: hunting-for-supply-chain-compromise
 description: Hunt for supply chain compromise indicators including trojanized software updates, compromised dependencies,
   unauthorized code modifications, and tampered build artifacts.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - mitre-attack
@@ -11,6 +10,7 @@ tags:
 - initial-access
 - t1195
 - proactive-detection
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -119,3 +119,7 @@ Risk Level: [Critical/High/Medium/Low]
 Confidence: [High/Medium/Low]
 Recommended Action: [Containment, investigation, monitoring]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

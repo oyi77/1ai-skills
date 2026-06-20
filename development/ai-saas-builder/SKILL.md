@@ -1,8 +1,15 @@
 ---
 name: ai-saas-builder
-description: Takes a problem statement and produces a deployable micro-SaaS product
-  — landing page, auth, payments, database, API, and billing
+description: Takes a problem statement and produces a deployable micro-SaaS product — landing page, auth, payments, database,
+  API, and billing
 domain: development
+tags:
+- api
+- builder
+- coding
+- saas
+- software-engineering
+- testing
 ---
 
 
@@ -351,3 +358,7 @@ if (!org.members.length) throw new TRPCError({ code: 'FORBIDDEN' });
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

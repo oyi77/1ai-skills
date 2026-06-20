@@ -7,13 +7,13 @@ description: 'Leverages Splunk Enterprise Security and SPL (Search Processing La
 
   '
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - splunk
 - SPL
 - SIEM
 - log-analysis
 - security-monitoring
+subdomain: incident-response
 mitre_attack:
 - T1070
 - T1562
@@ -301,3 +301,7 @@ RECOMMENDED DETECTIONS
 2. Threshold alert for LSASS access patterns
 3. Behavioral rule for beacon-interval network traffic
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

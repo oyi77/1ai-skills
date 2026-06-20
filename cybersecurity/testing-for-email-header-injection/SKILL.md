@@ -3,7 +3,6 @@ name: testing-for-email-header-injection
 description: Test web application email functionality for SMTP header injection vulnerabilities that allow attackers to inject
   additional email headers, modify recipients, and abuse contact forms for spam relay.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - email-injection
 - smtp-injection
@@ -12,6 +11,7 @@ tags:
 - spam-relay
 - contact-form
 - email-security
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -254,3 +254,7 @@ curl -X POST http://target.com/api/send-email \
 - Use parameterized email APIs that separate headers from data
 - Implement rate limiting on email-sending functionality
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

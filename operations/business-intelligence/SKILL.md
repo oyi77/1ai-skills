@@ -1,7 +1,14 @@
 ---
 name: business-intelligence
-description: "Define and track KPIs across revenue, marketing, and content performance with weekly business reviews and data-driven decisions."
+description: Define and track KPIs across revenue, marketing, and content performance with weekly business reviews and data-driven
+  decisions.
 domain: operations
+tags:
+- business
+- business-ops
+- intelligence
+- management
+- operations
 ---
 # Business Intelligence
 
@@ -231,3 +238,7 @@ Key questions:
 - [ ] Visualizations follow best practices
 - [ ] Methodology is documented
 - [ ] Data sources are reliable
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

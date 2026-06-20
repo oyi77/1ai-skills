@@ -6,7 +6,6 @@ description: 'Auditing Microsoft Entra ID (Azure Active Directory) configuration
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - azure
@@ -14,6 +13,7 @@ tags:
 - active-directory
 - iam-audit
 - conditional-access
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -302,3 +302,7 @@ CRITICAL FINDINGS:
   3. 156 users without MFA registration
   4. 2 guest users with Privileged Role Administrator role
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

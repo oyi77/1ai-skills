@@ -1,8 +1,15 @@
 ---
 name: video-semantic-match
-description: Find relevant video clips by analyzing script content using semantic search. Match video meaning to text instead of random selection. Use when sourcing B-roll, stock footage, or relevant visual content for narration.
+description: Find relevant video clips by analyzing script content using semantic search. Match video meaning to text instead
+  of random selection. Use when sourcing B-roll, stock footage, or relevant visual content for narration.
 domain: content
-tags: [video, semantic-search, ai, matching, b-roll, stock-footage]
+tags:
+- video
+- semantic-search
+- ai
+- matching
+- b-roll
+- stock-footage
 ---
 
 # Video Semantic Match
@@ -443,3 +450,7 @@ videos = matcher.find_matching_videos(
 - `skill://video-editor` — Video editing
 - `skill://youtube-factory` — YouTube upload automation
 - `skill://content-factory` — Multi-platform content
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

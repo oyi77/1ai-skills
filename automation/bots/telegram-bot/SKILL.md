@@ -2,7 +2,26 @@
 name: telegram-bot
 description: Telegram bot patterns for message handling and webhook integrations
 domain: automation
+tags:
+- automation
+- bot
+- productivity
+- telegram
+- webhook
+- workflow
 ---
+## When to Use
+
+**Trigger phrases:**
+- "telegram bot"
+- "Help me with telegram bot"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Telegram Bot
 
 Build Telegram bots
@@ -75,3 +94,7 @@ Additional context and best practices for this skill.
 - If output quality is low, provide more context in your input
 - If the skill does not cover your use case, check related skills
 - For integration issues, verify prerequisites and dependencies are met
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

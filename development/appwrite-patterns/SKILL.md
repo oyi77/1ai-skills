@@ -1,8 +1,13 @@
 ---
 name: appwrite-patterns
-description: Appwrite backend-as-a-service — auth, database, storage, functions, realtime
-  for web/mobile/desktop
+description: Appwrite backend-as-a-service — auth, database, storage, functions, realtime for web/mobile/desktop
 domain: development
+tags:
+- appwrite
+- coding
+- patterns
+- software-engineering
+- testing
 ---
 
 
@@ -171,3 +176,7 @@ console.log(result.stdout, result.stderr);
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

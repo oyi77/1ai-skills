@@ -1,8 +1,13 @@
 ---
 name: observability
-description: Observability stack — Prometheus, Grafana, Loki, OpenTelemetry. Metrics,
-  logs, traces, alerting, SLO monitoring
+description: Observability stack — Prometheus, Grafana, Loki, OpenTelemetry. Metrics, logs, traces, alerting, SLO monitoring
 domain: devops
+tags:
+- ci-cd
+- devops
+- infrastructure
+- monitoring
+- observability
 ---
 
 
@@ -228,3 +233,7 @@ Tempo/Jaeger (traces) + OpenTelemetry Collector
 - **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
 - **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
 - **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures
+
+## Verification
+
+- [ ] Skill output matches expected behavior

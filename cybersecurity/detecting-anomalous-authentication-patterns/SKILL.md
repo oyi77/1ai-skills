@@ -7,7 +7,6 @@ description: 'Detects anomalous authentication patterns using UEBA analytics, st
 
   '
 domain: cybersecurity
-subdomain: identity-access-management
 tags:
 - UEBA
 - authentication-anomaly
@@ -15,6 +14,7 @@ tags:
 - brute-force
 - credential-stuffing
 - behavioral-analytics
+subdomain: identity-access-management
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -756,3 +756,7 @@ Password Spray Campaign #1:
   Duration:          45 minutes
   Pattern:           2 attempts per user, 3-second interval
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

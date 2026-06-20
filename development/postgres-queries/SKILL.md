@@ -1,8 +1,13 @@
 ---
 name: postgres-queries
-description: PostgreSQL optimization — query tuning, schema design, indexing strategies,
-  and performance analysis
+description: PostgreSQL optimization — query tuning, schema design, indexing strategies, and performance analysis
 domain: development
+tags:
+- coding
+- postgres
+- queries
+- software-engineering
+- testing
 ---
 
 
@@ -102,3 +107,7 @@ CREATE INDEX idx_metadata ON products USING GIN(metadata);
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

@@ -7,7 +7,6 @@ description: 'Implements eBPF-based security monitoring using Cilium Tetragon fo
 
   '
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - implementing
 - ebpf
@@ -17,6 +16,7 @@ tags:
 - cilium
 - runtime
 - observability
+subdomain: security-operations
 version: '1.0'
 author: mukul975
 license: Apache-2.0
@@ -414,3 +414,7 @@ tetra getevents -o json | jq -c 'select(.process_kprobe != null)' | \
 - Captures verified as complete with no dropped packets
 - Detection rules tested against known-benign traffic for false positive rate
 - Alert thresholds validated and tuned to reduce noise
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

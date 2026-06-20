@@ -1,8 +1,13 @@
 ---
 name: playwright-e2e
-description: End-to-end test automation with Playwright — cross-browser testing, page
-  objects, and CI integration
+description: End-to-end test automation with Playwright — cross-browser testing, page objects, and CI integration
 domain: development
+tags:
+- coding
+- e2e
+- playwright
+- software-engineering
+- testing
 ---
 
 
@@ -117,3 +122,7 @@ const test = base.extend({
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

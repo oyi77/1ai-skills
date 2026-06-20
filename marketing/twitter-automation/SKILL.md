@@ -1,8 +1,14 @@
 ---
 name: twitter-automation
-description: Automate Twitter/X presence with AI-powered posting, engagement, and
-  growth. Schedule posts, auto-reply, track analytics, and build audience on autopilot.
+description: Automate Twitter/X presence with AI-powered posting, engagement, and growth. Schedule posts, auto-reply, track
+  analytics, and build audience on autopilot.
 domain: marketing
+tags:
+- automation
+- growth
+- marketing
+- seo
+- twitter
 ---
 
 persona:

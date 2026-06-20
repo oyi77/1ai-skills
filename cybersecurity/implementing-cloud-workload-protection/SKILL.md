@@ -6,12 +6,12 @@ description: 'Implements cloud workload protection using boto3 and google-cloud 
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - implementing
 - cloud
 - workload
 - protection
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -97,3 +97,7 @@ ssm.send_command(
 - Cloud resource changes reverted or documented as intentional
 - IAM policies reviewed for least-privilege compliance after testing
 - No residual test resources left running (cost and security check)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

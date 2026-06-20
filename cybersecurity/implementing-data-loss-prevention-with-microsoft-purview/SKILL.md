@@ -1,16 +1,11 @@
 ---
 name: implementing-data-loss-prevention-with-microsoft-purview
-description: 'Implements data loss prevention policies using Microsoft Purview to protect sensitive information across Exchange
+description: Implements data loss prevention policies using Microsoft Purview to protect sensitive information across Exchange
   Online, SharePoint, OneDrive, Teams, endpoint devices, and Power BI. The analyst configures sensitivity labels with encryption
   and content marking, creates DLP policies using built-in and custom sensitive information types with regex patterns, deploys
   endpoint DLP rules to control file operations on Windows and macOS devices, and monitors policy effectiveness through Activity
-  Explorer and DLP alert management. Uses PowerShell cmdlets and the Microsoft Graph API for programmatic policy management.
-  Activates for requests involving DLP policy creation, sensitivity label configuration, data classification, endpoint data
-  protection, or Microsoft Purview compliance administration.
-
-  '
+  Expl...
 domain: cybersecurity
-subdomain: data-protection
 tags:
 - DLP
 - Microsoft-Purview
@@ -18,6 +13,7 @@ tags:
 - endpoint-DLP
 - data-classification
 - compliance
+subdomain: data-protection
 version: 1.0.0
 author: mukul975
 license: Apache-2.0
@@ -628,3 +624,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - Override justification analysis: 78% "Business requirement", 15% "False positive",
   7% "Other"
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

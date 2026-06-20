@@ -3,7 +3,6 @@ name: performing-security-headers-audit
 description: Auditing HTTP security headers including CSP, HSTS, X-Frame-Options, and cookie attributes to identify missing
   or misconfigured browser-level protections.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - penetration-testing
 - security-headers
@@ -12,6 +11,7 @@ tags:
 - owasp
 - web-security
 - hardening
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -354,3 +354,7 @@ No HSTS header is present. An attacker on the network can perform an SSL strippi
 6. **Low**: Remove Server and X-Powered-By version information
 7. **Low**: Add Permissions-Policy to restrict unused browser features
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

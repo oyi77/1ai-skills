@@ -1,9 +1,15 @@
 ---
 name: continuous-hunter
-description: Automated continuous bug hunting pipeline that runs 24/7 across multiple
-  targets. Use when setting up persistent hunting, automating the find-report cycle,
-  or scaling bug bounty income through automation.
+description: Automated continuous bug hunting pipeline that runs 24/7 across multiple targets. Use when setting up persistent
+  hunting, automating the find-report cycle, or scaling bug bounty income through automation.
 domain: cybersecurity
+tags:
+- continuous
+- cybersecurity
+- hunter
+- pipeline
+- security
+- threat-defense
 ---
 
 # Continuous Hunter
@@ -208,3 +214,7 @@ This section covers income optimization for continuous hunter.
 | Reporting | Templates + automation scripts |
 | Monitoring | Custom watchers, cron, notifications |
 | Storage | SQLite/JSON for asset database |
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

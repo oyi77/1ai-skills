@@ -1,6 +1,12 @@
 ---
 name: kb
-description: "Query and maintain the knowledge base for project context, decisions, and architecture documentation. Use on session start."
+description: Query and maintain the knowledge base for project context, decisions, and architecture documentation. Use on
+  session start.
+domain: core
+tags:
+- infrastructure
+- memory
+- self-improvement
 persona:
   name: Domain Expert
   title: Master of Kb
@@ -18,7 +24,6 @@ persona:
   - Continuous improvement
   - Evidence-based
   - Customer focused
-domain: core
 ---
 # KB — BerkahKarya Knowledge Base Skill
 
@@ -158,3 +163,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

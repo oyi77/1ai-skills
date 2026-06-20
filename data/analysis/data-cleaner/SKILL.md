@@ -1,10 +1,29 @@
 ---
 name: data-cleaner
-description: Data Cleaner skill for automated data workflows. Provides tools and templates
-  for clean, cleaner, data operations, integration with AI pipelines, and performance
-  optimization.
+description: Data Cleaner skill for automated data workflows. Provides tools and templates for clean, cleaner, data operations,
+  integration with AI pipelines, and performance optimization.
 domain: data
+tags:
+- analytics
+- cleaner
+- data
+- data-analysis
+- pipeline
+- visualization
+- workflow
 ---
+## When to Use
+
+**Trigger phrases:**
+- "data cleaner"
+- "Help me with data cleaner"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 
 ## Data Cleaner
@@ -71,3 +90,7 @@ After completing this skill, confirm:
 - Monitor output quality and iterate on configuration based on results
 - Keep dependencies up to date for security and performance
 - Document custom workflows and configurations for team knowledge sharing
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -3,7 +3,6 @@ name: detecting-golden-ticket-attacks-in-kerberos-logs
 description: Detect Golden Ticket attacks in Active Directory by analyzing Kerberos TGT anomalies including mismatched encryption
   types, impossible ticket lifetimes, non-existent accounts, and forged PAC signatures in domain controller event logs.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - golden-ticket
@@ -11,6 +10,7 @@ tags:
 - active-directory
 - mitre-t1558-001
 - credential-abuse
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -129,3 +129,7 @@ Anomaly: [No prior TGT/RC4 in AES environment/Extended lifetime]
 KRBTGT Last Reset: [Date]
 Risk Level: [Critical]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

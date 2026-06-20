@@ -3,7 +3,6 @@ name: testing-for-xxe-injection-vulnerabilities
 description: Discovering and exploiting XML External Entity injection vulnerabilities to read server files, perform SSRF,
   and exfiltrate data during authorized penetration tests.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - penetration-testing
 - xxe
@@ -11,6 +10,7 @@ tags:
 - owasp
 - web-security
 - burpsuite
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -385,3 +385,7 @@ A resume upload feature processes DOCX files. Injecting XXE into the `[Content_T
 4. Implement input validation to reject DTD declarations in XML input
 5. Apply least-privilege file system permissions for the web server user
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

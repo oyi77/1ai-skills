@@ -1,8 +1,26 @@
 ---
 name: anomaly-detect
-description: Detect anomalies in data
+description: Anomaly Detect. Use when working with anomaly detect in data domain.
 domain: data
+tags:
+- analytics
+- anomaly
+- data-analysis
+- detect
+- visualization
 ---
+## When to Use
+
+**Trigger phrases:**
+- "anomaly detect"
+- "Help me with anomaly detect"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 
 ## Anomaly Detect
@@ -69,3 +87,7 @@ After completing this skill, confirm:
 - Monitor output quality and iterate on configuration based on results
 - Keep dependencies up to date for security and performance
 - Document custom workflows and configurations for team knowledge sharing
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

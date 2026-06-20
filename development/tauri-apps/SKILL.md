@@ -1,8 +1,14 @@
 ---
 name: tauri-apps
-description: Tauri desktop app development — Rust backend, web frontend, native APIs,
-  small binary size, cross-platform
+description: Tauri desktop app development — Rust backend, web frontend, native APIs, small binary size, cross-platform
 domain: development
+tags:
+- api
+- apps
+- coding
+- software-engineering
+- tauri
+- testing
 ---
 
 
@@ -317,3 +323,7 @@ async fn run_script(script: String) -> Result<String, String> {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

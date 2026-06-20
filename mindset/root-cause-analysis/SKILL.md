@@ -1,7 +1,14 @@
 ---
 name: root-cause-analysis
-description: Diagnose root causes using 5 Whys, fishbone diagrams, fault trees, and Pareto analysis. Use when troubleshooting recurring problems or post-incident analysis.
+description: Diagnose root causes using 5 Whys, fishbone diagrams, fault trees, and Pareto analysis. Use when troubleshooting
+  recurring problems or post-incident analysis.
 domain: mindset
+tags:
+- cause
+- mindset
+- personal-development
+- root
+- soft-skills
 ---
 
 # Root Cause Analysis
@@ -168,3 +175,7 @@ Deployment fails
 - [ ] Fixes defined (immediate, short-term, long-term)
 - [ ] Follow-up plan set (verify fixes prevent recurrence)
 - [ ] Lessons documented (post-mortem, wiki, etc.)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

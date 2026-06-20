@@ -1,12 +1,18 @@
 ---
 name: pattern-recognition
-description: Identify patterns in skill execution, errors, and successes. Recognize
-  when situations match previous patterns and apply learned solutions.
+description: Identify patterns in skill execution, errors, and successes. Recognize when situations match previous patterns
+  and apply learned solutions.
+domain: meta
+tags:
+- meta-learning
+- pattern
+- recognition
+- self-improvement
+- skill-evolution
 persona:
   name: Pattern Recognition Expert
   expertise: Pattern matching, anomaly detection, similarity analysis
   philosophy: History repeats itself
-domain: meta
 ---
 ## Pattern Recognition
 
@@ -36,6 +42,18 @@ pattern_categories:
 
 ```python
 # Detect patterns
+## When to Use
+
+**Trigger phrases:**
+- "pattern recognition"
+- "Help me with pattern recognition"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 /pattern-recognition analyze --skill seo-optimizer --lookback 30d
 
 # Match current situation
@@ -81,3 +99,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

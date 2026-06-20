@@ -1,15 +1,20 @@
 ---
 name: model-router
-description: Intelligent model routing via subagents - automatically spawn the right
-  model for each task complexity. Use when executing complex tasks that benefit from
-  specialized models, when you want to maintain fast session response times, when
-  distributing workload across multiple models, when running parallel subagents with
-  different capabilities, or when implementing adaptive model selection based on task
-  requirements.
+description: Intelligent model routing via subagents - automatically spawn the right model for each task complexity. Use when
+  executing complex tasks that benefit from specialized models, when you want to maintain fast session response times, when
+  distributing workload across multiple models, when running parallel subagents with different capabilities, or when implementing
+  adaptive model selection based on task requirements.
+domain: core
+tags:
+- ai-agent
+- infrastructure
+- memory
+- model
+- router
+- self-improvement
 dependencies:
 - sessions_spawn
 - subagents
-domain: core
 ---
 
 # Model Router Skill

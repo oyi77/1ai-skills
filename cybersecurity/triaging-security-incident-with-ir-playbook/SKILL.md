@@ -3,13 +3,13 @@ name: triaging-security-incident-with-ir-playbook
 description: Classify and prioritize security incidents using structured IR playbooks to determine severity, assign response
   teams, and initiate appropriate response procedures.
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - incident-response
 - triage
 - playbook
 - severity-classification
 - soc
+subdomain: incident-response
 mitre_attack:
 - T1190
 - T1566
@@ -258,3 +258,7 @@ curl -X PATCH "https://thehive.local/api/v1/case/$CASE_ID" \
 - IOC enrichment summary attached to case
 - Escalation notification to appropriate stakeholders
 - Initial timeline of events from alert data
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

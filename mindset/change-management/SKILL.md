@@ -1,7 +1,14 @@
 ---
 name: change-management
-description: Lead organizational change using Kotter's 8-step model, ADKAR framework, and stakeholder analysis. Use when rolling out major initiatives or transformations.
+description: Lead organizational change using Kotter's 8-step model, ADKAR framework, and stakeholder analysis. Use when rolling
+  out major initiatives or transformations.
 domain: mindset
+tags:
+- change
+- management
+- mindset
+- personal-development
+- soft-skills
 ---
 
 # Change Management
@@ -191,3 +198,7 @@ Framework for leading organizational change: Kotter's 8-step model, ADKAR, stake
 - [ ] Stakeholders analyzed (influence/support mapped, strategies defined)
 - [ ] Resistance addressed (concerns listened to, fears mitigated)
 - [ ] Adoption tracked (metrics: % teams using, NPS, productivity impact)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

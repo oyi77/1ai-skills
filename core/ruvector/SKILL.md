@@ -1,6 +1,12 @@
 ---
 name: ruvector
-description: "Generate and manage vector embeddings for semantic search and RAG retrieval across knowledge bases."
+description: Generate and manage vector embeddings for semantic search and RAG retrieval across knowledge bases.
+domain: core
+tags:
+- infrastructure
+- memory
+- ruvector
+- self-improvement
 persona:
   name: Edo Liberty
   title: The Vector Search Expert - Master of Similarity Search
@@ -19,7 +25,6 @@ persona:
   - Approximate is good enough
   - Scale to billions
   - Latency matters
-domain: core
 ---
 # RuVector Skill
 

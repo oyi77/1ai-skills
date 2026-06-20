@@ -3,7 +3,6 @@ name: collecting-volatile-evidence-from-compromised-host
 description: Collect volatile forensic evidence from a compromised system following order of volatility, preserving memory,
   network connections, processes, and system state before they are lost.
 domain: cybersecurity
-subdomain: incident-response
 tags:
 - incident-response
 - dfir
@@ -11,6 +10,7 @@ tags:
 - volatile-evidence
 - memory-forensics
 - chain-of-custody
+subdomain: incident-response
 mitre_attack:
 - T1003
 - T1055
@@ -280,3 +280,7 @@ EOF
 - System configuration snapshots
 - Evidence manifest with SHA256 checksums
 - Chain of custody documentation
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

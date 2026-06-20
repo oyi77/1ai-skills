@@ -1,8 +1,13 @@
 ---
 name: graphql-api
-description: GraphQL API development — schema design, resolvers, subscriptions, federation.
-  Apollo, Relay, performance optimization
+description: GraphQL API development — schema design, resolvers, subscriptions, federation. Apollo, Relay, performance optimization
 domain: development
+tags:
+- api
+- coding
+- graphql
+- software-engineering
+- testing
 ---
 
 
@@ -279,3 +284,7 @@ type Query {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

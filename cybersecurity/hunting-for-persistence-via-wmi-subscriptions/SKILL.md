@@ -3,7 +3,6 @@ name: hunting-for-persistence-via-wmi-subscriptions
 description: Hunt for adversary persistence through Windows Management Instrumentation event subscriptions by monitoring WMI
   consumer, filter, and binding creation events that execute malicious code triggered by system events.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - wmi-persistence
@@ -11,6 +10,7 @@ tags:
 - event-subscription
 - windows
 - endpoint-detection
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -170,3 +170,7 @@ Created: [Timestamp]
 User Context: [SYSTEM/User]
 Risk Level: [Critical/High/Medium/Low]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

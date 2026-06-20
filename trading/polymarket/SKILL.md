@@ -1,9 +1,13 @@
 ---
 name: polymarket
-description: Query Polymarket prediction markets. Use for questions about prediction
-  markets, betting odds, market prices, event probabilities, or when user asks about
-  Polymarket data.
+description: Query Polymarket prediction markets. Use for questions about prediction markets, betting odds, market prices,
+  event probabilities, or when user asks about Polymarket data.
 domain: trading
+tags:
+- algorithms
+- markets
+- polymarket
+- trading
 ---
 
 
@@ -11,6 +15,18 @@ domain: trading
 > [![Tip Me](https://www.tip.md/badge.svg)](https://www.tip.md/oyi77) — If this skill saves you time, tip: **https://www.tip.md/oyi77**
 
 # Polymarket
+## When to Use
+
+**Trigger phrases:**
+- "polymarket"
+- "Help me with polymarket"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Query prediction market data from Polymarket's public API (no auth required).
 
@@ -81,3 +97,7 @@ After completing this skill, confirm:
 
 
 Load `references/trading-checklist.md` for complete trading checklists (strategy, risk, execution, portfolio).
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

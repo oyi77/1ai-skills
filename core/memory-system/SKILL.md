@@ -1,7 +1,12 @@
 ---
 name: memory-system
-description: "Store, retrieve, and organize knowledge across sessions using structured memory files and entity tracking."
+description: Store, retrieve, and organize knowledge across sessions using structured memory files and entity tracking.
 domain: core
+tags:
+- infrastructure
+- memory
+- self-improvement
+- system
 ---
 # memory-system
 
@@ -302,3 +307,7 @@ After completing this skill, confirm:
 - [ ] All prerequisites are verified and documented
 - [ ] Error handling covers edge cases
 - [ ] Results are accurate and actionable
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

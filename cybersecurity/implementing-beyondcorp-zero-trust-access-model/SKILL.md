@@ -6,7 +6,6 @@ description: 'Implementing Google''s BeyondCorp zero trust access model to elimi
 
   '
 domain: cybersecurity
-subdomain: zero-trust-architecture
 tags:
 - beyondcorp
 - zero-trust
@@ -15,6 +14,7 @@ tags:
 - identity-aware-proxy
 - ztna
 - access-context-manager
+subdomain: zero-trust-architecture
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -365,3 +365,7 @@ VPN DECOMMISSION STATUS:
   Users still on VPN:              148 (5%)
   Planned decommission:            2026-03-15
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

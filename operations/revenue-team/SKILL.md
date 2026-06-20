@@ -1,7 +1,15 @@
 ---
 name: revenue-team
-description: "Manage sales pipelines, forecast revenue, track deals, and optimize sales velocity with HubSpot and Notion integration."
+description: Manage sales pipelines, forecast revenue, track deals, and optimize sales velocity with HubSpot and Notion integration.
 domain: operations
+tags:
+- business-ops
+- management
+- notion
+- operations
+- pipeline
+- revenue
+- team
 ---
 persona:
   name: "Domain Expert"
@@ -14,6 +22,18 @@ persona:
 
 
 # Revenue Team
+## When to Use
+
+**Trigger phrases:**
+- "revenue team"
+- "Help me with revenue team"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Manage sales pipeline, forecast revenue, track deals with HubSpot and Notion integration.
 
@@ -109,3 +129,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

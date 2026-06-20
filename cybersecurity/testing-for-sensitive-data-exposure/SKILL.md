@@ -3,7 +3,6 @@ name: testing-for-sensitive-data-exposure
 description: Identifying sensitive data exposure vulnerabilities including API key leakage, PII in responses, insecure storage,
   and unprotected data transmission during security assessments.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - penetration-testing
 - data-exposure
@@ -12,6 +11,7 @@ tags:
 - web-security
 - api-keys
 - secrets
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -405,3 +405,7 @@ The `.git` directory is accessible on the production server. Using git-dumper, t
 7. Enable TLS 1.2+ on all endpoints; redirect HTTP to HTTPS
 8. Implement secret scanning in CI/CD pipeline (trufflehog/gitleaks)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

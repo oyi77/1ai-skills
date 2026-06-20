@@ -1,9 +1,14 @@
 ---
 name: writeup-cash
-description: Monetize bug bounty findings through writeups, tools, and consulting.
-  Use when turning security research into income streams, writing paid writeups, or
-  building a security brand.
+description: Monetize bug bounty findings through writeups, tools, and consulting. Use when turning security research into
+  income streams, writing paid writeups, or building a security brand.
 domain: cybersecurity
+tags:
+- cash
+- cybersecurity
+- security
+- threat-defense
+- writeup
 ---
 
 # Writeup Cash
@@ -276,3 +281,7 @@ What you learned:
 | Courses (passive) | $500-$10000 | High (initial) |
 
 Total potential: $5000-$50000+/month with diversified income streams.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

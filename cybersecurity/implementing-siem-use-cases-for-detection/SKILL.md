@@ -6,7 +6,6 @@ description: 'Implements SIEM detection use cases by designing correlation rules
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - siem
@@ -16,6 +15,7 @@ tags:
 - splunk
 - elastic
 - sentinel
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -347,3 +347,7 @@ Health Metrics:
   Avg Detection Latency:     2.3 min (target: <5 min)
   Use Cases Deprecated:      3 (replaced by improved versions)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

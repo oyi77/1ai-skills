@@ -3,7 +3,6 @@ name: performing-cloud-forensics-with-aws-cloudtrail
 description: Perform forensic investigation of AWS environments using CloudTrail logs to reconstruct attacker activity, identify
   compromised credentials, and analyze API call patterns.
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - aws
@@ -13,6 +12,7 @@ tags:
 - dfir
 - boto3
 - s3
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -112,3 +112,7 @@ Actions Taken: [API calls by attacker]
 Data Accessed: [S3 objects, secrets, etc.]
 Persistence Mechanisms: [New users, keys, roles]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

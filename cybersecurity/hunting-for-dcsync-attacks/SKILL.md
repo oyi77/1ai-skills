@@ -3,7 +3,6 @@ name: hunting-for-dcsync-attacks
 description: Detect DCSync attacks by analyzing Windows Event ID 4662 for unauthorized DS-Replication-Get-Changes requests
   from non-domain-controller accounts.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - dcsync
@@ -13,6 +12,7 @@ tags:
 - mimikatz
 - windows
 - dfir
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -117,3 +117,7 @@ GUID Accessed: [Replication GUID]
 Risk Level: [Critical/High/Medium/Low]
 Recommended Action: [Disable account, reset krbtgt, investigate]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

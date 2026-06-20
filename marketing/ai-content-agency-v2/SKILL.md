@@ -1,10 +1,31 @@
 ---
 name: ai-content-agency-v2
-description: "9-workflow, 6-phase AI content agency blueprint — generates ads, videos, images, and landing pages from product info using LLM ideation through multi-provider rendering."
+description: 9-workflow, 6-phase AI content agency blueprint — generates ads, videos, images, and landing pages from product
+  info using LLM ideation through multi-provider rendering.
 domain: marketing
+tags:
+- agency
+- content
+- growth
+- marketing
+- seo
+- video
+- workflow
 ---
 
 # ULTIMATE MASTER BLUEPRINT v2.0
+## When to Use
+
+**Trigger phrases:**
+- "ai content agency v2"
+- "Help me with ai content agency v2"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## AI Content Agency — 9 Workflows, 6 Phases
 
 Mock Product A: "Madu Herbal Asli Hutan Kalimantan — Rp 85.000"
@@ -881,3 +902,7 @@ PHASE 5 → OUTPUT:
 - Check UTM parameters parse correctly in analytics dashboard
 - Confirm email deliverability via seed list test
 - Validate landing page speed (target < 3s load time)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

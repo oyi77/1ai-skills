@@ -1,8 +1,13 @@
 ---
 name: visual-regression
-description: Visual regression testing — screenshot comparison, baseline management,
-  and UI change detection
+description: Visual regression testing — screenshot comparison, baseline management, and UI change detection
 domain: development
+tags:
+- coding
+- regression
+- software-engineering
+- testing
+- visual
 ---
 
 
@@ -108,3 +113,7 @@ for (const vp of viewports) {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

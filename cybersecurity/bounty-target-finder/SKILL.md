@@ -1,9 +1,16 @@
 ---
 name: bounty-target-finder
-description: Find and prioritize high-paying bug bounty programs. Use when discovering
-  new targets, comparing bounty payouts, filtering programs by scope, or building
-  a target pipeline for continuous hunting.
+description: Find and prioritize high-paying bug bounty programs. Use when discovering new targets, comparing bounty payouts,
+  filtering programs by scope, or building a target pipeline for continuous hunting.
 domain: cybersecurity
+tags:
+- bounty
+- cybersecurity
+- finder
+- pipeline
+- security
+- target
+- threat-defense
 ---
 
 # Bounty Target Finder
@@ -142,3 +149,7 @@ curl -s "https://api.hackerone.com/v1/hackers/programs?page[size]=100" | jq '.da
 # Monitor for scope changes
 # diff previous scope snapshot with current
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

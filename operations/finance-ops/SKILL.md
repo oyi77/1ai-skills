@@ -1,7 +1,14 @@
 ---
 name: finance-ops
-description: "Run AI-powered CFO analysis for cost detection, financial modeling, scenario planning, and operational efficiency optimization."
+description: Run AI-powered CFO analysis for cost detection, financial modeling, scenario planning, and operational efficiency
+  optimization.
 domain: operations
+tags:
+- business-ops
+- finance
+- management
+- operations
+- ops
 ---
 ## Skill Definition
 
@@ -232,6 +239,18 @@ Practical examples showing real-world usage.
 
 ```python
 # Generate comprehensive CFO briefing
+## When to Use
+
+**Trigger phrases:**
+- "finance ops"
+- "Help me with finance ops"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 briefing = generate_cfo_briefing(
     company_data=load_company_financials(),
     period="2025-04"
@@ -457,3 +476,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

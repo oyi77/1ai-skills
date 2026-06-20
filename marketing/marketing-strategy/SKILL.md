@@ -1,8 +1,13 @@
 ---
 name: marketing-strategy
-description: Use when doing social media automation, content scheduling, analytics
-  tracking, and campaign management.
+description: Use when doing social media automation, content scheduling, analytics tracking, and campaign management.
 domain: marketing
+tags:
+- growth
+- marketing
+- seo
+- social-media
+- strategy
 ---
 
 
@@ -17,6 +22,18 @@ persona:
 
 
 # Marketing Skill 📢
+## When to Use
+
+**Trigger phrases:**
+- "marketing strategy"
+- "Help me with marketing strategy"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Expert Persona
 

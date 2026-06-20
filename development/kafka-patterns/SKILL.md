@@ -1,8 +1,13 @@
 ---
 name: kafka-patterns
-description: Apache Kafka patterns — producers, consumers, topics, consumer groups,
-  exactly-once semantics, event sourcing
+description: Apache Kafka patterns — producers, consumers, topics, consumer groups, exactly-once semantics, event sourcing
 domain: development
+tags:
+- coding
+- kafka
+- patterns
+- software-engineering
+- testing
 ---
 
 
@@ -221,3 +226,7 @@ serializer = AvroSerializer(schema_registry, order_schema)
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

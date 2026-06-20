@@ -1,6 +1,14 @@
 ---
 name: cloudflare-router
-description: "Manage Cloudflare DNS, CDN, and security rules via API. Use when configuring domains, SSL, WAF, or edge caching."
+description: Manage Cloudflare DNS, CDN, and security rules via API. Use when configuring domains, SSL, WAF, or edge caching.
+domain: core
+tags:
+- api
+- cloudflare
+- infrastructure
+- memory
+- router
+- self-improvement
 persona:
   name: Matthew Prince
   title: The Edge Network Expert - Master of Global Routing
@@ -19,7 +27,6 @@ persona:
   - Cache aggressively
   - Secure by default
   - Scale globally
-domain: core
 ---
 # Cloudflare Router SKILL
 
@@ -199,3 +206,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

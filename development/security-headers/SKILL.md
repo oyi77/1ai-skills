@@ -1,8 +1,13 @@
 ---
 name: security-headers
-description: Web security headers — CSP, CORS, HSTS, X-Frame-Options. Configure, audit,
-  and harden HTTP security headers
+description: Web security headers — CSP, CORS, HSTS, X-Frame-Options. Configure, audit, and harden HTTP security headers
 domain: development
+tags:
+- coding
+- headers
+- security
+- software-engineering
+- testing
 ---
 
 
@@ -194,3 +199,7 @@ server {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

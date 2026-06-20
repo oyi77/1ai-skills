@@ -1,7 +1,13 @@
 ---
 name: github-pr
-description: Skill for Handle pull requests. Provides automation and best practices.
+description: Create PR via CLI. Use when performing github pr tasks in integrations workflows.
 domain: integrations
+tags:
+- api
+- github
+- integrations
+- third-party
+- workflow
 ---
 ## Github Pr
 
@@ -30,6 +36,18 @@ Handle pull requests
 
 ```bash
 # Create PR via CLI
+## When to Use
+
+**Trigger phrases:**
+- "github pr"
+- "Help me with github pr"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 gh pr create --title "feat: add user auth" --body "## Summary
 - Added JWT-based auth
 - Protected /api routes"
@@ -76,3 +94,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

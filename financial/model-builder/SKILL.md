@@ -1,9 +1,14 @@
 ---
 name: model-builder
-description: Builds and updates DCF, LBO, and 3-statement financial models in Excel
-  with live data connections. Use when user says "build DCF", "create LBO model",
-  "populate 3-statement model".
+description: Builds and updates DCF, LBO, and 3-statement financial models in Excel with live data connections. Use when user
+  says "build DCF", "create LBO model", "populate 3-statement model".
 domain: financial
+tags:
+- analysis
+- builder
+- finance
+- investment
+- model
 ---
 
 # Model Builder

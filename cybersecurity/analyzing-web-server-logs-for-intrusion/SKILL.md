@@ -4,12 +4,12 @@ description: Parse Apache and Nginx access logs to detect SQL injection attempts
   web scanner fingerprints, and brute-force patterns. Uses regex-based pattern matching against OWASP attack signatures, GeoIP
   enrichment for source attribution, and statistical anomaly detection for request frequency and response size outliers.
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - analyzing
 - web
 - server
 - logs
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -94,3 +94,7 @@ Nikto/2.1.6, sqlmap/1.7, DirBuster-1.0-RC1, gobuster/3.1.0
 - Vulnerabilities reproduced with proof-of-concept and impact analysis
 - False positives filtered out through manual verification
 - Fix recommendations include code-level remediation guidance
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

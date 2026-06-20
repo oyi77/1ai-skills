@@ -1,8 +1,26 @@
 ---
 name: resend-mcp
-description: MCP server for Resend email
+description: Resend Mcp. Use when working with resend mcp in mcp domain.
 domain: mcp
+tags:
+- mcp
+- mcp-server
+- model-context-protocol
+- resend
+- tool-integration
 ---
+## When to Use
+
+**Trigger phrases:**
+- "resend mcp"
+- "Help me with resend mcp"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Resend Mcp
 
 MCP server for Resend email
@@ -70,3 +88,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

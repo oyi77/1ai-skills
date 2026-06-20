@@ -3,7 +3,6 @@ name: testing-for-business-logic-vulnerabilities
 description: Identifying flaws in application business logic that allow price manipulation, workflow bypass, and privilege
   escalation beyond what technical vulnerability scanners can detect.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - penetration-testing
 - business-logic
@@ -11,6 +10,7 @@ tags:
 - web-security
 - burpsuite
 - manual-testing
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -388,3 +388,7 @@ The password reset flow generates a one-time token but does not invalidate it af
 4. Implement idempotency keys to prevent duplicate transaction processing
 5. Rate-limit and log coupon applications, referral submissions, and transfers
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

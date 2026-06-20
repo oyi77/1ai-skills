@@ -6,7 +6,6 @@ description: 'Performing authorized AWS penetration testing using Pacu, the open
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - aws
@@ -14,6 +13,7 @@ tags:
 - penetration-testing
 - offensive-security
 - iam-exploitation
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -334,3 +334,7 @@ RECOMMENDATIONS:
   3. Reduce SOC response time to < 15 minutes for IAM escalation alerts
   4. Implement SCP blocking iam:CreatePolicyVersion in non-admin OUs
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

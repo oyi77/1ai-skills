@@ -7,8 +7,6 @@ description: 'Tests Android inter-process communication (IPC) through intents fo
 
   '
 domain: cybersecurity
-subdomain: mobile-security
-author: mahipal
 tags:
 - mobile-security
 - android
@@ -16,6 +14,8 @@ tags:
 - ipc-security
 - owasp-mobile
 - penetration-testing
+subdomain: mobile-security
+author: mahipal
 version: 1.0.0
 license: Apache-2.0
 nist_csf:
@@ -215,3 +215,7 @@ run app.service.send com.target.app com.target.app.MessengerService \
 - **Permission-protected components**: An exported component may still require a permission. Test with and without the required permission.
 - **Implicit intents vs explicit**: Only implicit intents (action-based) are interceptable by other apps. Explicit intents (specifying target) are secure.
 - **Custom permissions**: Apps can define custom permissions with different protection levels (normal, dangerous, signature). Signature-level permissions are only grantable to apps signed with the same certificate.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

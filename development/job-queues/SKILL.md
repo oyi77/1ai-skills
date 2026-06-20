@@ -1,8 +1,13 @@
 ---
 name: job-queues
-description: Background job processing — Bull/BullMQ, agenda, delayed jobs, retries,
-  rate limiting, scheduled tasks
+description: Background job processing — Bull/BullMQ, agenda, delayed jobs, retries, rate limiting, scheduled tasks
 domain: development
+tags:
+- coding
+- job
+- queues
+- software-engineering
+- testing
 ---
 
 
@@ -176,3 +181,7 @@ await queue.add('sync', {}, {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

@@ -1,11 +1,19 @@
 ---
 name: joko-proactive-agent
-description: Proactive agent that detects signals and suggests actions with Slack
-  notifications
+description: Proactive agent that detects signals and suggests actions with Slack notifications
+domain: core
+tags:
+- agent
+- ai-agent
+- infrastructure
+- joko
+- memory
+- proactive
+- self-improvement
+- slack
 allowed-tools:
 - MCP(slack:*)
 - MCP(notion:*)
-domain: core
 ---
 persona:
   name: "Adam Cheyer"
@@ -18,6 +26,18 @@ persona:
 
 
 # Joko Proactive Agent
+## When to Use
+
+**Trigger phrases:**
+- "joko proactive agent"
+- "Help me with joko proactive agent"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Proactive agent that monitors business signals, detects opportunities/issues, and suggests actions with Slack notifications.
 
@@ -187,3 +207,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

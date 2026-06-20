@@ -1,7 +1,14 @@
 ---
 name: decision-frameworks
-description: Apply structured decision frameworks like RICE, ICE, weighted scoring, and pre-mortem analysis. Use when prioritizing features, evaluating options, or making high-stakes decisions.
+description: Apply structured decision frameworks like RICE, ICE, weighted scoring, and pre-mortem analysis. Use when prioritizing
+  features, evaluating options, or making high-stakes decisions.
 domain: mindset
+tags:
+- decision
+- frameworks
+- mindset
+- personal-development
+- soft-skills
 ---
 
 # Decision Frameworks
@@ -132,3 +139,7 @@ Structured models for prioritization and decision-making. Covers RICE, ICE, weig
 - [ ] Sensitivity tested (what if key assumptions change?)
 - [ ] Top risks identified via pre-mortem (for high-stakes decisions)
 - [ ] Decision documented with rationale (not just score)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

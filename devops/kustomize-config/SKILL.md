@@ -1,8 +1,14 @@
 ---
 name: kustomize-config
-description: Kustomize Kubernetes configuration — bases, overlays, patches, generators,
-  transformers
+description: Kustomize Kubernetes configuration — bases, overlays, patches, generators, transformers
 domain: devops
+tags:
+- ci-cd
+- config
+- devops
+- infrastructure
+- kubernetes
+- kustomize
 ---
 
 
@@ -175,3 +181,7 @@ kustomize build overlays/production/
 - **Secrets in configuration files**: Secrets in YAML/JSON get committed to version control
 - **Missing monitoring and alerting**: Without monitoring, outages go undetected until users report them
 - **No documentation for runbooks**: Without runbooks, on-call engineers waste time re-discovering procedures
+
+## Verification
+
+- [ ] Skill output matches expected behavior

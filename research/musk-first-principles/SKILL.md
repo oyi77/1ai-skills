@@ -1,9 +1,28 @@
 ---
 name: musk-first-principles
-description: "Break problems down to fundamental truths and reason up using Elon Musk's first-principles methodology."
+description: Break problems down to fundamental truths and reason up using Elon Musk's first-principles methodology.
 domain: research
+tags:
+- analysis
+- first
+- investigation
+- musk
+- principles
+- research
 ---
 # Musk First-Principles Problem Solving
+## When to Use
+
+**Trigger phrases:**
+- "musk first principles"
+- "Help me with musk first principles"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 > *"You can't solve problems the same way you created them."* — **Elon Musk**
 
@@ -244,3 +263,7 @@ After completing this skill, confirm:
 - `brainstorming` - Problem exploration
 - `systematic-debugging` - Debugging solutions
 - `writing-plans` - Planning execution
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -7,7 +7,6 @@ description: 'Parses and analyzes the Windows Amcache.hve registry hive to extra
 
   '
 domain: cybersecurity
-subdomain: digital-forensics
 tags:
 - amcache
 - windows-forensics
@@ -16,6 +15,7 @@ tags:
 - eric-zimmerman
 - timeline-analysis
 - DFIR
+subdomain: digital-forensics
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -267,3 +267,7 @@ Combine Amcache data with other artifacts for a comprehensive timeline:
 - Failing to use write-blockers when acquiring forensic evidence
 - Not verifying hash integrity before and after imaging
 - Modifying original evidence during analysis
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

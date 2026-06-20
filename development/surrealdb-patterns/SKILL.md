@@ -1,8 +1,13 @@
 ---
 name: surrealdb-patterns
-description: SurrealDB multi-model database — document, graph, key-value. SurrealQL,
-  realtime subscriptions, embedded mode
+description: SurrealDB multi-model database — document, graph, key-value. SurrealQL, realtime subscriptions, embedded mode
 domain: development
+tags:
+- coding
+- patterns
+- software-engineering
+- surrealdb
+- testing
 ---
 
 
@@ -153,3 +158,7 @@ DEFINE INDEX email_index ON user FIELDS email UNIQUE;
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

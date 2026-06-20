@@ -1,9 +1,16 @@
 ---
 name: social-engineer
-description: Social engineering and phishing for authorized security assessments.
-  Use when testing human attack vectors, conducting phishing simulations, or assessing
-  organizational security awareness.
+description: Social engineering and phishing for authorized security assessments. Use when testing human attack vectors, conducting
+  phishing simulations, or assessing organizational security awareness.
 domain: cybersecurity
+tags:
+- cybersecurity
+- engineer
+- security
+- social
+- social-media
+- testing
+- threat-defense
 ---
 
 # Social Engineer
@@ -274,3 +281,7 @@ Social engineering assessments pay well:
 - Physical security testing: $3000-$15000
 - Security awareness training: $1000-$5000 per session
 - Red team engagement (includes SE): $10000-$50000
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

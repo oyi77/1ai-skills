@@ -1,9 +1,27 @@
 ---
 name: value-investing
-description: "Evaluate stocks using Warren Buffett's value investing: intrinsic value, margin of safety, and long-term moats."
+description: 'Evaluate stocks using Warren Buffett''s value investing: intrinsic value, margin of safety, and long-term moats.'
 domain: research
+tags:
+- analysis
+- investigation
+- investing
+- research
+- value
 ---
 # Value Investing System
+## When to Use
+
+**Trigger phrases:**
+- "value investing"
+- "Help me with value investing"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Core Framework
 
@@ -101,3 +119,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

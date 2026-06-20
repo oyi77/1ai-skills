@@ -1,6 +1,15 @@
 ---
 name: hive-mind
-description: "Coordinate multi-agent consensus using TiDB-backed shared memory. Use when agents need to agree on decisions or share state."
+description: Coordinate multi-agent consensus using TiDB-backed shared memory. Use when agents need to agree on decisions
+  or share state.
+domain: core
+tags:
+- ai-agent
+- hive
+- infrastructure
+- memory
+- mind
+- self-improvement
 persona:
   name: Deborah Gordon
   title: The Swarm Intelligence Expert - Master of Collective Behavior
@@ -19,7 +28,6 @@ persona:
   - No central control
   - Adapt to environment
   - Decentralized decisions
-domain: core
 ---
 name: hive-mind
 description: Sync memories across multiple agents using a shared TiDB Zero database.
@@ -32,6 +40,18 @@ metadata:
 ---
 
 # Hive Mind (Powered by TiDB Zero)
+## When to Use
+
+**Trigger phrases:**
+- "hive mind"
+- "Help me with hive mind"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Overview
 **Hive Mind** is a shared configuration store for your AI Agent. It acts like an "iCloud Keychain" for agent settings and user preferences, syncing them across all your devices instantly.

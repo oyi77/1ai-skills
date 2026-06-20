@@ -1,7 +1,15 @@
 ---
 name: workflow-builder
-description: "Build and automate business workflows with Notion task tracking, Slack notifications, Kanban boards, and cross-functional process orchestration."
+description: Build and automate business workflows with Notion task tracking, Slack notifications, Kanban boards, and cross-functional
+  process orchestration.
 domain: automation
+tags:
+- automation
+- builder
+- notion
+- productivity
+- slack
+- workflow
 ---
 persona:
   name: "Domain Expert"
@@ -14,6 +22,18 @@ persona:
 
 
 # Workflow Builder
+## When to Use
+
+**Trigger phrases:**
+- "workflow builder"
+- "Help me with workflow builder"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Build and automate workflows for business operations using Notion for task tracking and Slack for notifications.
 
@@ -164,3 +184,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

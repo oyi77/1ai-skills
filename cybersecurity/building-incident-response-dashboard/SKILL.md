@@ -6,7 +6,6 @@ description: 'Builds real-time incident response dashboards in Splunk, Elastic, 
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - dashboard
@@ -15,6 +14,7 @@ tags:
 - visualization
 - situational-awareness
 - metrics
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -331,3 +331,7 @@ Key Metrics:
 
 Business Impact: LOW — Finance file server offline, no customer-facing systems affected
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

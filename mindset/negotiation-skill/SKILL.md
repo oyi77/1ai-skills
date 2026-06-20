@@ -1,7 +1,15 @@
 ---
 name: negotiation-skill
-description: Prepare for, conduct, and close negotiations. Covers separate personalities, interests, needs, BATNA, ZOPA, and effective communication tactics.
+description: Prepare for, conduct, and close negotiations. Covers separate personalities, interests, needs, BATNA, ZOPA, and
+  effective communication tactics.
 domain: mindset
+tags:
+- mindset
+- negotiation
+- personal-development
+- rest-api
+- skill
+- soft-skills
 ---
 
 # Negotiation Skills
@@ -134,3 +142,7 @@ Update your negotiation strategies based on insights gained.
 - [ ] Personality styles considered (assertive, cooperative, competitive, avoidant).
 - [ ] Creative solutions explored for mutual benefit.
 - [ ] Communication strategy planned (how to present and respond).
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

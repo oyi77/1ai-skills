@@ -1,9 +1,25 @@
 ---
 name: clickup
-description: 'Skill: clickup. See SKILL.md body for details. Use when this domain
-  is relevant.'
+description: 'Skill: clickup. See SKILL.md body for details. Use when this domain is relevant.'
 domain: operations
+tags:
+- business-ops
+- clickup
+- management
+- operations
 ---
+## When to Use
+
+**Trigger phrases:**
+- "clickup"
+- "Help me with clickup"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 *Use ClickUp for flexible task management. Tasks, docs, time - all in one.*
 
 ## When NOT to Use
@@ -67,3 +83,7 @@ After completing this skill, confirm:
 - If output quality is low, provide more context about the workspace structure.
 - For SSO issues, verify the ClickUp plan supports the SAML/SSO integration tier.
 - If dashboards show stale data, force-refresh the widget or check the data source filter date range.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,9 +1,15 @@
 ---
 name: bug-chain-builder
-description: Chain multiple low-severity bugs into critical impact for maximum bounty
-  payouts. Use when combining vulnerabilities, escalating impact, or when a single
-  bug isn't enough for a high-severity report.
+description: Chain multiple low-severity bugs into critical impact for maximum bounty payouts. Use when combining vulnerabilities,
+  escalating impact, or when a single bug isn't enough for a high-severity report.
 domain: cybersecurity
+tags:
+- bug
+- builder
+- chain
+- cybersecurity
+- security
+- threat-defense
 ---
 
 # Bug Chain Builder
@@ -177,3 +183,7 @@ Severity: Critical (CVSS 9.1)
 | $500 (open redirect) | $10000 (ATO) | 20x |
 | $0 (self-XSS) | $5000 (session hijack) | ∞ |
 | $250 (subdomain takeover) | $15000 (auth bypass) | 60x |
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

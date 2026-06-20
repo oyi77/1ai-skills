@@ -6,7 +6,6 @@ description: 'Implementing Microsoft Defender for Cloud to enable cloud security
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - azure
@@ -14,6 +13,7 @@ tags:
 - cspm
 - cwpp
 - security-recommendations
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -354,3 +354,7 @@ SECURITY ALERTS (Last 7 Days):
   Medium severity:  12
   Low severity:     28
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

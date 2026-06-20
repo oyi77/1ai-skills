@@ -6,12 +6,12 @@ description: 'Detects credential stuffing attacks by analyzing authentication lo
 
   '
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - hunting
 - credential
 - stuffing
 - attacks
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -95,3 +95,7 @@ sprays = spray[spray["accounts"] > 10]
 - All exploited vulnerabilities documented with reproduction steps
 - Scope boundaries confirmed — only authorized targets were tested
 - Remediation recommendations included for every finding
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

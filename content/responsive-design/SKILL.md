@@ -1,8 +1,13 @@
 ---
 name: responsive-design
-description: Mobile-first responsive design — breakpoints, fluid typography, container
-  queries, and touch optimization
+description: Mobile-first responsive design — breakpoints, fluid typography, container queries, and touch optimization
 domain: content
+tags:
+- content-creation
+- design
+- digital-content
+- media
+- responsive
 ---
 
 
@@ -130,3 +135,7 @@ body { font-size: clamp(1rem, 2vw, 1.125rem); }
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

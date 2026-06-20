@@ -1,7 +1,14 @@
 ---
 name: unit-economics
-description: Calculate CAC, LTV, margins, payback period, and cohort analysis. Use when evaluating business model sustainability or optimizing growth efficiency.
+description: Calculate CAC, LTV, margins, payback period, and cohort analysis. Use when evaluating business model sustainability
+  or optimizing growth efficiency.
 domain: mindset
+tags:
+- economics
+- mindset
+- personal-development
+- soft-skills
+- unit
 ---
 
 # Unit Economics
@@ -189,3 +196,7 @@ Framework for analyzing per-customer profitability: CAC, LTV, LTV:CAC ratio, mar
 - [ ] Gross margin ≥ 70% for SaaS (if not, reduce COGS)
 - [ ] Cohort analysis run (retention improving over time?)
 - [ ] Improvement tactics prioritized (reduce CAC, increase LTV, reduce churn)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

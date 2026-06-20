@@ -3,7 +3,6 @@ name: performing-directory-traversal-testing
 description: Testing web applications for path traversal vulnerabilities that allow reading or writing arbitrary files on
   the server by manipulating file path parameters.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - penetration-testing
 - directory-traversal
@@ -11,6 +10,7 @@ tags:
 - lfi
 - owasp
 - web-security
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -357,3 +357,7 @@ Original `../` stripped by filter. Successful bypass: `....//....//....//etc/pas
 4. Remove sensitive files from web-accessible directories
 5. Disable PHP wrappers (allow_url_include, allow_url_fopen) if not required
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

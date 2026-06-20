@@ -6,7 +6,6 @@ description: 'Develop and implement OT-specific incident response playbooks alig
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - iec62443
 - nist
 - safety-critical
+subdomain: ot-ics-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -419,3 +419,7 @@ CONTAINMENT ACTIONS TAKEN:
 RECOVERY STATUS:
   [system] - [restored/pending] - [ETA]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

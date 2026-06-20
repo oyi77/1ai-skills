@@ -1,8 +1,15 @@
 ---
 name: database-mcp
-description: MCP server for SQL databases. Connect AI agents to PostgreSQL, MySQL,
-  MariaDB, and SQLite for natural language queries, schema management, and data operations.
+description: MCP server for SQL databases. Connect AI agents to PostgreSQL, MySQL, MariaDB, and SQLite for natural language
+  queries, schema management, and data operations.
 domain: integrations
+tags:
+- ai-agent
+- api
+- database
+- integrations
+- mcp
+- third-party
 ---
 
 # Database MCP Skill

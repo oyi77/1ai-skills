@@ -4,7 +4,6 @@ description: Use AI and LLM-based reasoning to correlate findings across multipl
   lookups, social media profiles, domain records, breach databases, and dark-web mentions—into unified intelligence profiles
   with confidence scoring and link analysis.
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - osint
 - ai-correlation
@@ -16,6 +15,7 @@ tags:
 - theharvester
 - spiderfoot
 - maltego
+subdomain: threat-intelligence
 version: '1.0'
 author: juliosuas
 license: Apache-2.0
@@ -416,3 +416,7 @@ The final output is a structured JSON correlation report and a Markdown intellig
 - Verify that no false positives from common usernames (e.g., "admin", "test") inflated entity profiles.
 - Ensure breach data timestamps are current and from reputable aggregators.
 - Validate that the final report does not include stale or retracted OSINT data.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

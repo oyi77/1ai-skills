@@ -1,14 +1,10 @@
 ---
 name: implementing-api-gateway-security-controls
-description: 'Implements security controls at the API gateway layer including authentication enforcement, rate limiting, request
+description: Implements security controls at the API gateway layer including authentication enforcement, rate limiting, request
   validation, IP allowlisting, TLS termination, and threat protection. The engineer configures API gateways (Kong, AWS API
   Gateway, Azure APIM, Apigee) to act as a centralized security enforcement point that validates, throttles, and monitors
-  all API traffic before it reaches backend services. Activates for requests involving API gateway security, API management
-  security, gateway authentication, or centralized API protection.
-
-  '
+  all API traffic before it reaches backend services.
 domain: cybersecurity
-subdomain: api-security
 tags:
 - api-security
 - api-gateway
@@ -16,6 +12,7 @@ tags:
 - aws-api-gateway
 - rate-limiting
 - waf
+subdomain: api-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -497,3 +494,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 - mTLS: Requests without client certificate rejected with 401
 - WAF: SQL injection payloads blocked (tested top 100 SQLi patterns)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

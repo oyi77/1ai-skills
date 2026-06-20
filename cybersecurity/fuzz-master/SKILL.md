@@ -1,9 +1,15 @@
 ---
 name: fuzz-master
-description: Advanced fuzzing techniques for finding zero-days and hidden vulnerabilities.
-  Use when automated scanners miss bugs, testing custom protocols, finding memory
-  corruption, or hunting for novel attack vectors.
+description: Advanced fuzzing techniques for finding zero-days and hidden vulnerabilities. Use when automated scanners miss
+  bugs, testing custom protocols, finding memory corruption, or hunting for novel attack vectors.
 domain: cybersecurity
+tags:
+- cybersecurity
+- fuzz
+- master
+- security
+- testing
+- threat-defense
 ---
 
 # Fuzz Master
@@ -281,3 +287,7 @@ Zero-days in popular software pay the most:
 | Grammar | Peach, boofuzz, Domato |
 | Analysis | GDB, WinDbg, rr, ASAN, MSAN |
 | Crash triage | afl-collect, crashwalk, exploitable |
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -5,13 +5,13 @@ description: 'Simulates VLAN hopping attacks using switch spoofing and double ta
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - vlan-hopping
 - layer2-attack
 - switch-security
 - 802.1q
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -361,3 +361,7 @@ Map the application, test authentication and authorization, check for injection 
 5. Enable port security on access ports
 6. Set VTP to transparent mode on all switches
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

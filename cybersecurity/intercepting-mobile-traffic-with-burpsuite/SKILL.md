@@ -7,8 +7,6 @@ description: 'Intercepts and analyzes HTTP/HTTPS traffic from mobile application
 
   '
 domain: cybersecurity
-subdomain: mobile-security
-author: mahipal
 tags:
 - mobile-security
 - android
@@ -16,6 +14,8 @@ tags:
 - burp-suite
 - traffic-interception
 - penetration-testing
+subdomain: mobile-security
+author: mahipal
 version: 1.0.0
 license: Apache-2.0
 nist_csf:
@@ -224,3 +224,7 @@ android sslpinning disable
 - **Certificate transparency**: Some apps use Certificate Transparency logs to detect MITM. Check for CT enforcement in the app.
 - **Non-HTTP protocols**: Burp Suite only handles HTTP/HTTPS. Use Wireshark for WebSocket, MQTT, gRPC, or custom binary protocols.
 - **VPN-based apps**: Apps using VPN tunnels bypass device proxy settings. May need iptables rules on a rooted device to redirect traffic.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

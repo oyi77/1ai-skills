@@ -6,7 +6,6 @@ description: 'Securing container registry images by implementing vulnerability s
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - containers
@@ -15,6 +14,7 @@ tags:
 - trivy
 - cosign
 - supply-chain
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -337,3 +337,7 @@ REGISTRY CONFIGURATION:
   Lifecycle policies:       20 / 24 repositories
   Image signing enforced:    8 / 24 repositories
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

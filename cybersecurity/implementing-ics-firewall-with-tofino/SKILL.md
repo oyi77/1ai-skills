@@ -6,7 +6,6 @@ description: 'Deploy and configure Tofino industrial firewalls from Belden/Hirsc
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - deep-packet-inspection
 - network-security
 - scada
+subdomain: ot-ics-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -378,3 +378,7 @@ MONITORING:
   Blocked Packets (24h): [count]
   DPI Violations (24h): [count]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,6 +1,13 @@
 ---
 name: zvec
-description: "Zero-copy vector operations for efficient similarity search and embedding storage in agent memory systems."
+description: Zero-copy vector operations for efficient similarity search and embedding storage in agent memory systems.
+domain: core
+tags:
+- ai-agent
+- infrastructure
+- memory
+- self-improvement
+- zvec
 persona:
   name: Mikolov et al.
   title: The Word2Vec Pioneers - Masters of Vector Embeddings
@@ -19,7 +26,6 @@ persona:
   - Capture semantic relationships
   - Train on large corpora
   - Visualize in 2D/3D
-domain: core
 ---
 # ZVec Skill
 

@@ -3,7 +3,6 @@ name: testing-for-xss-vulnerabilities-with-burpsuite
 description: Identifying and validating cross-site scripting vulnerabilities using Burp Suite's scanner, intruder, and repeater
   tools during authorized security assessments.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - penetration-testing
 - xss
@@ -11,6 +10,7 @@ tags:
 - owasp
 - web-security
 - cross-site-scripting
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -352,3 +352,7 @@ A WAF blocks common XSS patterns and CSP restricts inline scripts. Discover a JS
 4. Set HttpOnly and Secure flags on session cookies
 5. Add X-Content-Type-Options: nosniff header
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

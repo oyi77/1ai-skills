@@ -1,9 +1,14 @@
 ---
 name: binary-breaker
-description: Binary exploitation and reverse engineering for finding zero-days in
-  compiled software. Use when analyzing binaries, finding memory corruption bugs,
-  reverse engineering firmware, or hunting bugs in C/C++ applications.
+description: Binary exploitation and reverse engineering for finding zero-days in compiled software. Use when analyzing binaries,
+  finding memory corruption bugs, reverse engineering firmware, or hunting bugs in C/C++ applications.
 domain: cybersecurity
+tags:
+- binary
+- breaker
+- cybersecurity
+- security
+- threat-defense
 ---
 
 # Binary Breaker
@@ -289,3 +294,7 @@ screen /dev/ttyUSB0 115200
 - Exploit Education (Phoenix, Protostar)
 - HackTheBox (Pwn challenges)
 - CTFtime.org
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

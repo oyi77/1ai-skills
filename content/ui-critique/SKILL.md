@@ -1,8 +1,12 @@
 ---
 name: ui-critique
-description: Structured UI review — visual hierarchy, consistency, accessibility,
-  and actionable improvement feedback
+description: Structured UI review — visual hierarchy, consistency, accessibility, and actionable improvement feedback
 domain: content
+tags:
+- content-creation
+- critique
+- digital-content
+- media
 ---
 
 
@@ -114,3 +118,7 @@ def critique_ui(screenshot, url):
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

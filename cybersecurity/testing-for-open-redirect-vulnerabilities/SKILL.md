@@ -3,7 +3,6 @@ name: testing-for-open-redirect-vulnerabilities
 description: Identify and test open redirect vulnerabilities in web applications by analyzing URL redirection parameters,
   bypass techniques, and exploitation chains for phishing and token theft.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - open-redirect
 - url-redirect
@@ -12,6 +11,7 @@ tags:
 - url-validation
 - redirect-bypass
 - unvalidated-redirect
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -233,3 +233,7 @@ ffuf -w open-redirect-payloads.txt -u "http://target.com/redirect?url=FUZZ" -mr 
 - Reject any redirect URL containing external domains
 - Use indirect reference maps instead of direct URL parameters
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

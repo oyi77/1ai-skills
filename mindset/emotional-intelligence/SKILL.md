@@ -1,7 +1,15 @@
 ---
 name: emotional-intelligence
-description: Build self-awareness, empathy, and social skills using the EQ model. Use when improving relationships, communication, or leadership effectiveness.
+description: Build self-awareness, empathy, and social skills using the EQ model. Use when improving relationships, communication,
+  or leadership effectiveness.
 domain: mindset
+tags:
+- emotional
+- intelligence
+- mindset
+- personal-development
+- social-media
+- soft-skills
 ---
 
 # Emotional Intelligence
@@ -178,3 +186,7 @@ Framework for developing emotional intelligence (EQ) across 5 domains: self-awar
 - [ ] STOP technique practiced (Stop, Take a breath, Observe, Proceed)
 - [ ] Feedback sought from 5 people (360 check on EQ skills)
 - [ ] Daily emotion journal started (name 1-2 emotions daily, identify triggers)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

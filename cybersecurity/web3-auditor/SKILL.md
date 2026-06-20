@@ -1,9 +1,15 @@
 ---
 name: web3-auditor
-description: Smart contract and DeFi security auditing for maximum bounty payouts.
-  Use when auditing Solidity/Vyper contracts, testing DeFi protocols, hunting web3
-  vulnerabilities, or preparing Immunefi submissions.
+description: Smart contract and DeFi security auditing for maximum bounty payouts. Use when auditing Solidity/Vyper contracts,
+  testing DeFi protocols, hunting web3 vulnerabilities, or preparing Immunefi submissions.
 domain: cybersecurity
+tags:
+- auditor
+- cybersecurity
+- security
+- testing
+- threat-defense
+- web3
 ---
 
 # Web3 Auditor
@@ -309,3 +315,7 @@ Reentrancy / Access Control / Oracle Manipulation / etc.
 - Damn Vulnerable DeFi (practice)
 - Ethernaut (practice)
 - Trail of Bits: Not All Bugs Are Created Equal
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

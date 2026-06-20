@@ -5,13 +5,13 @@ description: 'Enumerates DNS records, attempts zone transfers, brute-forces subd
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - dns
 - enumeration
 - zone-transfer
 - reconnaissance
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -301,3 +301,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 4. **Missing DMARC Policy** (Medium): No DMARC record found, enabling email spoofing
 5. **Weak SPF Record** (Low): SPF uses ~all (soft fail) instead of -all (hard fail)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

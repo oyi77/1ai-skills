@@ -1,8 +1,13 @@
 ---
 name: drizzle-orm
-description: Drizzle ORM — type-safe SQL, schema definitions, migrations, queries,
-  relations for TypeScript/Node.js
+description: Drizzle ORM — type-safe SQL, schema definitions, migrations, queries, relations for TypeScript/Node.js
 domain: development
+tags:
+- coding
+- drizzle
+- orm
+- software-engineering
+- testing
 ---
 
 
@@ -168,3 +173,7 @@ await db.transaction(async (tx) => {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

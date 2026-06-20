@@ -1,13 +1,19 @@
 ---
 name: trading-risk-manager
-description: "Monitor portfolio risk, enforce position limits, and trigger stop-losses. Use when managing exposure across strategies."
+description: Monitor portfolio risk, enforce position limits, and trigger stop-losses. Use when managing exposure across strategies.
+domain: trading
+tags:
+- algorithms
+- manager
+- markets
+- risk
+- trading
 allowed-tools:
 - Bash(trading:*)
 - MCP(notion:*)
 - MCP(slack:*)
 - fs
 - network
-domain: trading
 ---
 
 # Trading Risk Manager

@@ -1,7 +1,17 @@
 ---
 name: postbridge-social-manager
-description: "Multi-platform social media posting, scheduling, analytics, and media management via PostBridge API for TikTok, Instagram, X, LinkedIn, and Facebook."
+description: Multi-platform social media posting, scheduling, analytics, and media management via PostBridge API for TikTok,
+  Instagram, X, LinkedIn, and Facebook.
 domain: automation
+tags:
+- api
+- automation
+- manager
+- postbridge
+- productivity
+- social
+- social-media
+- workflow
 ---
 # PostBridge Social Manager
 
@@ -432,3 +442,7 @@ curl -H "Authorization: Bearer $POSTBRIDGE_API_KEY" \
 - [ ] Rate limits are respected
 - [ ] Error handling is in place
 - [ ] Posts can be cancelled if needed
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

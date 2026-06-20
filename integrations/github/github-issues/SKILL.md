@@ -1,7 +1,14 @@
 ---
 name: github-issues
-description: Skill for Manage GitHub issues. Provides automation and best practices.
+description: Create an issue. Use when performing github issues tasks in integrations workflows.
 domain: integrations
+tags:
+- api
+- github
+- integrations
+- issues
+- third-party
+- workflow
 ---
 ## Github Issues
 
@@ -30,6 +37,18 @@ Manage GitHub issues
 
 ```bash
 # Create an issue
+## When to Use
+
+**Trigger phrases:**
+- "github issues"
+- "Help me with github issues"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 curl -X POST "https://api.github.com/repos/OWNER/REPO/issues" \
   -H "Authorization: token $GITHUB_TOKEN" \
   -d '{"title": "Bug: login fails", "labels": ["bug"]}'
@@ -76,3 +95,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

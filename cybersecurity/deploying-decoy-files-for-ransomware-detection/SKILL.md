@@ -7,7 +7,6 @@ description: 'Deploys canary files (honeytokens) across file systems to detect r
 
   '
 domain: cybersecurity
-subdomain: ransomware-defense
 tags:
 - ransomware
 - detection
@@ -15,6 +14,7 @@ tags:
 - honeytokens
 - deception
 - file-integrity
+subdomain: ransomware-defense
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -213,3 +213,7 @@ mv /path/to/canary/report.xlsx /path/to/canary/report.xlsx.locked
 - **OSSEC/Wazuh**: Open-source HIDS with built-in file integrity monitoring and alerting capabilities
 - **Elastic Endpoint**: Uses canary files internally for ransomware protection and key capture
 - **Sysmon**: Windows system monitor that logs file creation events (Event ID 11) for canary file monitoring
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

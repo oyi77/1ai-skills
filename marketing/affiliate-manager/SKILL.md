@@ -1,8 +1,14 @@
 ---
 name: affiliate-manager
-description: Automated discovery of affiliate programs, partnership opportunities,
-  and cross-promotion deals with outreach, commission tracking, and placement optimization
+description: Automated discovery of affiliate programs, partnership opportunities, and cross-promotion deals with outreach,
+  commission tracking, and placement optimization
 domain: marketing
+tags:
+- affiliate
+- growth
+- manager
+- marketing
+- seo
 ---
 
 
@@ -494,3 +500,7 @@ def check_anomalies(program_id, days=7):
 - **Email open rates below 15%**: Subject lines or sender reputation issue
 - **Bounce rate above 70%**: Landing page mismatch or slow load times
 - **Attribution gaps**: Missing UTM parameters or broken tracking pixels
+
+## Verification
+
+- [ ] Skill output matches expected behavior

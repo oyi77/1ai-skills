@@ -1,14 +1,10 @@
 ---
 name: auditing-tls-certificate-transparency-logs
-description: 'Monitors Certificate Transparency (CT) logs to detect unauthorized certificate issuance, discover subdomains
+description: Monitors Certificate Transparency (CT) logs to detect unauthorized certificate issuance, discover subdomains
   via CT data, and alert on suspicious certificate activity for owned domains. Uses the crt.sh API and direct CT log querying
   based on RFC 6962 to build continuous monitoring pipelines that catch rogue certificates, track CA behavior, and map the
-  external attack surface. Activates for requests involving certificate transparency monitoring, CT log auditing, subdomain
-  discovery via certificates, or certificate issuance alerting.
-
-  '
+  external attack surface.
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - certificate-transparency
 - CT-logs
@@ -16,6 +12,7 @@ tags:
 - subdomain-discovery
 - TLS-monitoring
 - RFC-6962
+subdomain: threat-intelligence
 version: 1.0.0
 author: mukul975
 license: Apache-2.0
@@ -228,3 +225,7 @@ Prioritize speed while maintaining accuracy — use pre-configured tools and tem
 | exarnple.com | 2 | Let's Encrypt | Investigate phishing |
 | examp1e.com | 1 | ZeroSSL | Investigate phishing |
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

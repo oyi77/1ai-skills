@@ -1,8 +1,14 @@
 ---
 name: firebase-patterns
-description: Firebase patterns — Firestore queries, auth flows, cloud functions, and
-  security rules
+description: Firebase patterns — Firestore queries, auth flows, cloud functions, and security rules
 domain: development
+tags:
+- coding
+- firebase
+- patterns
+- rest-api
+- software-engineering
+- testing
 ---
 
 
@@ -108,3 +114,7 @@ service cloud.firestore {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

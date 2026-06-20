@@ -1,8 +1,13 @@
 ---
 name: styled-components
-description: styled-components CSS-in-JS — tagged templates, theming, props, animations,
-  SSR, performance
+description: styled-components CSS-in-JS — tagged templates, theming, props, animations, SSR, performance
 domain: content
+tags:
+- components
+- content-creation
+- digital-content
+- media
+- styled
 ---
 
 
@@ -174,3 +179,7 @@ const AnimatedDiv = styled.div`
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

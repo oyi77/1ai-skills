@@ -1,8 +1,13 @@
 ---
 name: pandacss-styling
-description: Panda CSS zero-runtime styling — token system, patterns, recipes, conditions,
-  JSX styles
+description: Panda CSS zero-runtime styling — token system, patterns, recipes, conditions, JSX styles
 domain: content
+tags:
+- content-creation
+- digital-content
+- media
+- pandacss
+- styling
 ---
 
 
@@ -198,3 +203,7 @@ import { Stack, HStack, Grid } from "styled-system/jsx"
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

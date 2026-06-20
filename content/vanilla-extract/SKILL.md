@@ -1,8 +1,13 @@
 ---
 name: vanilla-extract
-description: Vanilla Extract zero-runtime CSS-in-JS — type-safe styles, Sprinkles,
-  Recipes, themes
+description: Vanilla Extract zero-runtime CSS-in-JS — type-safe styles, Sprinkles, Recipes, themes
 domain: content
+tags:
+- content-creation
+- digital-content
+- extract
+- media
+- vanilla
 ---
 
 
@@ -187,3 +192,7 @@ export const sprinkles = createSprinkles(responsiveProperties)
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

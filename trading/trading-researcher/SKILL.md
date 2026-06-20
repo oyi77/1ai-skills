@@ -1,13 +1,18 @@
 ---
 name: trading-researcher
-description: "Research market conditions, on-chain data, and sentiment to identify trading opportunities. Use for market analysis."
+description: Research market conditions, on-chain data, and sentiment to identify trading opportunities. Use for market analysis.
+domain: trading
+tags:
+- algorithms
+- markets
+- researcher
+- trading
 allowed-tools:
 - Bash(trading:*)
 - MCP(yahoo:*)
 - MCP(exa:*)
 - fs
 - network
-domain: trading
 ---
 
 # Trading Researcher

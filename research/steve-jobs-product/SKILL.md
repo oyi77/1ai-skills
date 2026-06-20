@@ -1,9 +1,29 @@
 ---
 name: steve-jobs-product
-description: "Design products using Steve Jobs' philosophy: simplicity, user experience, intersection of technology and liberal arts."
+description: 'Design products using Steve Jobs'' philosophy: simplicity, user experience, intersection of technology and liberal
+  arts.'
 domain: research
+tags:
+- analysis
+- investigation
+- jobs
+- product
+- research
+- steve
 ---
 # Steve Jobs Product System
+## When to Use
+
+**Trigger phrases:**
+- "steve jobs product"
+- "Help me with steve jobs product"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Core Philosophy
 
@@ -192,3 +212,7 @@ After completing this skill, confirm:
 - `humanizer` - Copy that converts
 - `content-creator` - Product marketing
 - `gemini-image-generator` - Visual assets
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

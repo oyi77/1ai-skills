@@ -1,8 +1,15 @@
 ---
 name: kyc-screener
-description: Parses onboarding docs, runs rules engine, flags compliance gaps. Use
-  when user says "KYC check", "onboard client", "screen company".
+description: Parses onboarding docs, runs rules engine, flags compliance gaps. Use when user says "KYC check", "onboard client",
+  "screen company".
 domain: financial
+tags:
+- analysis
+- compliance
+- finance
+- investment
+- kyc
+- screener
 ---
 
 # KYC Screener

@@ -6,7 +6,6 @@ description: 'Implements an integrated incident ticketing system connecting SIEM
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - ticketing
@@ -16,6 +15,7 @@ tags:
 - incident-management
 - sla
 - workflow
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -452,3 +452,7 @@ Metrics:
   Time to Resolve:     3 hours 37 minutes
   SLA Status:          MET (within 4-hour resolution target)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

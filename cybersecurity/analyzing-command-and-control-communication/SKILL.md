@@ -7,13 +7,13 @@ description: 'Analyzes malware command-and-control (C2) communication protocols 
 
   '
 domain: cybersecurity
-subdomain: malware-analysis
 tags:
 - malware
 - C2
 - command-and-control
 - beacon
 - protocol-analysis
+subdomain: malware-analysis
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -431,3 +431,7 @@ SID 9000010:      HTTP beacon pattern
 SID 9000011:      JA3 TLS fingerprint
 SID 9000013:      C2 certificate match
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

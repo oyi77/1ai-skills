@@ -1,7 +1,14 @@
 ---
 name: executive-presence
-description: Command rooms, communicate with gravitas, and project confidence. Covers body language, vocal tonality, storytelling, and handling pressure.
+description: Command rooms, communicate with gravitas, and project confidence. Covers body language, vocal tonality, storytelling,
+  and handling pressure.
 domain: mindset
+tags:
+- executive
+- mindset
+- personal-development
+- presence
+- soft-skills
 ---
 
 # Executive Presence
@@ -189,3 +196,7 @@ Framework for commanding rooms and projecting authority: body language, vocal to
 - [ ] Storytelling structure used (Situation → Complication → Resolution → Lesson)
 - [ ] Pressure handling practiced (pause → acknowledge → respond)
 - [ ] Credibility signals present (prepared, on time, admit mistakes, give credit)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

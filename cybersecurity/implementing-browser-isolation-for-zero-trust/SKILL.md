@@ -1,14 +1,10 @@
 ---
 name: implementing-browser-isolation-for-zero-trust
-description: 'Deploys remote browser isolation (RBI) as a core component of a Zero Trust architecture. Implements isolation
+description: Deploys remote browser isolation (RBI) as a core component of a Zero Trust architecture. Implements isolation
   policies with URL categorization and risk-based routing, content disarming and reconstruction (CDR) for file sanitization,
   data loss prevention controls within isolated sessions, and integration with Secure Web Gateway and ZTNA platforms. Based
-  on Cloudflare Browser Isolation, Menlo Security, and Zscaler RBI approaches. Use when hardening web access against zero-day
-  exploits, phishing, credential theft, and browser-based data exfiltration.
-
-  '
+  on Cloudflare Browser Isolation, Menlo Security, and Zscaler RBI approaches.
 domain: cybersecurity
-subdomain: network-security
 tags:
 - browser-isolation
 - zero-trust
@@ -17,6 +13,7 @@ tags:
 - URL-categorization
 - content-disarming
 - secure-web-gateway
+subdomain: network-security
 version: '1.0'
 author: mukul975
 license: Apache-2.0
@@ -413,3 +410,7 @@ print(f"Zero-day attacks prevented: {report['zero_day_blocked']}")
 - Output documented with screenshots or logs demonstrating expected behavior
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

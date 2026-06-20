@@ -6,7 +6,6 @@ description: 'Implements comprehensive Google Workspace security hardening inclu
 
   '
 domain: cybersecurity
-subdomain: identity-access-management
 tags:
 - Google-Workspace
 - admin-security
@@ -15,6 +14,7 @@ tags:
 - DLP
 - OAuth
 - cloud-security
+subdomain: identity-access-management
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -513,3 +513,7 @@ Public Link Sharing:    DISABLED
 External Group Members: DISABLED
 Shared Drive Creation:  ADMIN ONLY
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

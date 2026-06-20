@@ -7,7 +7,6 @@ description: 'Uses AWS Athena to query CloudTrail, VPC Flow Logs, S3 access logs
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud
 - forensics
@@ -17,6 +16,7 @@ tags:
 - vpc-flow-logs
 - s3
 - alb
+subdomain: cloud-security
 version: '1.0'
 author: mukul975
 license: Apache-2.0
@@ -526,3 +526,7 @@ python agent.py \
 - Hash values computed and verified match between source and image
 - Chain of custody log complete with timestamps and examiner names
 - Analysis tools and versions documented for reproducibility
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

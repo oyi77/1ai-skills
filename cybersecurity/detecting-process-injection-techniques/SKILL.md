@@ -7,13 +7,13 @@ description: 'Detects and analyzes process injection techniques used by malware 
 
   '
 domain: cybersecurity
-subdomain: malware-analysis
 tags:
 - malware
 - process-injection
 - detection
 - memory-forensics
 - defense-evasion
+subdomain: malware-analysis
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -398,3 +398,7 @@ T1055.012  Process Hollowing
 T1071.001  Web Protocols (HTTPS C2)
 T1036.005  Match Legitimate Name (svchost.exe)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,7 +1,14 @@
 ---
 name: active-listening
-description: Master active listening through the HEAR model, reflective listening, and questioning techniques. Use when coaching, resolving conflicts, or building trust.
+description: Master active listening through the HEAR model, reflective listening, and questioning techniques. Use when coaching,
+  resolving conflicts, or building trust.
 domain: mindset
+tags:
+- active
+- listening
+- mindset
+- personal-development
+- soft-skills
 ---
 
 # Active Listening
@@ -110,3 +117,7 @@ Name the emotion you observe to build empathy and encourage openness.
 - [ ] Labeled at least one emotion ("It seems like you're...")
 - [ ] Paused before responding (didn't interrupt or rehearse)
 - [ ] Confirmed understanding before offering solutions
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

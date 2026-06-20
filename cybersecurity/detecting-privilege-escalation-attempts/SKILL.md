@@ -3,7 +3,6 @@ name: detecting-privilege-escalation-attempts
 description: Detect privilege escalation attempts including token manipulation, UAC bypass, unquoted service paths, kernel
   exploits, and sudo/doas abuse across Windows and Linux.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - mitre-attack
@@ -11,6 +10,7 @@ tags:
 - token-manipulation
 - uac-bypass
 - proactive-detection
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -119,3 +119,7 @@ Risk Level: [Critical/High/Medium/Low]
 Confidence: [High/Medium/Low]
 Recommended Action: [Containment, investigation, monitoring]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

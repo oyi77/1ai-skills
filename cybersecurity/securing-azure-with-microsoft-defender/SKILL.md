@@ -7,13 +7,13 @@ description: 'This skill instructs security practitioners on deploying Microsoft
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - microsoft-defender
 - azure-security
 - cnapp
 - secure-score
 - cloud-workload-protection
+subdomain: cloud-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -303,3 +303,7 @@ ALERT SUMMARY (Last 30 Days):
     - Malware detected in storage (7)
     - Anomalous resource deployment (12)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

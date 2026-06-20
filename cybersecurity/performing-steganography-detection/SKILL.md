@@ -3,7 +3,6 @@ name: performing-steganography-detection
 description: Detect and extract hidden data embedded in images, audio, and other media files using steganalysis tools to uncover
   covert communication channels.
 domain: cybersecurity
-subdomain: digital-forensics
 tags:
 - forensics
 - steganography
@@ -11,6 +10,7 @@ tags:
 - hidden-data
 - covert-channels
 - image-analysis
+subdomain: digital-forensics
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -375,3 +375,7 @@ Steganalysis Summary:
 
   Report: /cases/case-2024-001/analysis/steg_report.json
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,8 +1,13 @@
 ---
 name: android-jetpack
-description: Android Jetpack Compose — declarative UI, state management, Material
-  Design, and Play Store deployment
+description: Android Jetpack Compose — declarative UI, state management, Material Design, and Play Store deployment
 domain: development
+tags:
+- android
+- coding
+- jetpack
+- software-engineering
+- testing
 ---
 
 
@@ -113,3 +118,7 @@ class ItemViewModel : ViewModel() {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

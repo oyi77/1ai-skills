@@ -6,7 +6,6 @@ description: 'Implementing AWS Security Hub to aggregate security findings acros
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - aws
@@ -14,6 +13,7 @@ tags:
 - compliance
 - cspm
 - cis-benchmark
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -344,3 +344,7 @@ AUTO-REMEDIATION ACTIONS (Last 30 Days):
   CloudTrail logging re-enabled:      3
   Total auto-remediated findings:    25
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

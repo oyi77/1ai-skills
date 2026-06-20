@@ -7,7 +7,6 @@ description: 'Evaluates and selects Threat Intelligence Platform (TIP) products 
 
   '
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - TIP
 - ThreatConnect
@@ -18,6 +17,7 @@ tags:
 - STIX-TAXII
 - CTI-program
 - procurement
+subdomain: threat-intelligence
 version: 1.0.0
 author: team-cybersecurity
 license: Apache-2.0
@@ -189,3 +189,7 @@ Plan 90-day implementation:
 - **Underestimating administration burden**: MISP and OpenCTI require dedicated admin time (minimum 0.25 FTE); budget accordingly.
 - **Ignoring data migration costs**: Moving historical intelligence from one TIP to another is costly and often impractical for legacy systems.
 - **Not testing SIEM integration in PoC**: TIP value depends heavily on downstream integration quality; always test SIEM/SOAR connectivity during evaluation.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

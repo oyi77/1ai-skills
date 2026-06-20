@@ -7,13 +7,13 @@ description: 'Analyzes encryption algorithms, key management, and file encryptio
 
   '
 domain: cybersecurity
-subdomain: malware-analysis
 tags:
 - malware
 - ransomware
 - encryption
 - cryptanalysis
 - reverse-engineering
+subdomain: malware-analysis
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -369,3 +369,7 @@ RECOVERY OPTIONS
 3. Memory forensics if machine was not rebooted (key may persist in RAM)
 4. Negotiate with attacker (last resort - no guarantee of decryption)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

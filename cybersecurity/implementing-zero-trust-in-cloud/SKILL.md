@@ -7,13 +7,13 @@ description: 'This skill guides organizations through implementing zero trust ar
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - zero-trust
 - beyondcorp
 - identity-aware-proxy
 - micro-segmentation
 - continuous-verification
+subdomain: cloud-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -353,3 +353,7 @@ RECOMMENDATIONS:
   3. [MEDIUM] Expand micro-segmentation to remaining 35% of workloads
   4. [MEDIUM] Deploy service mesh for east-west mTLS encryption
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

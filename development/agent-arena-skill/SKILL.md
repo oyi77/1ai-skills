@@ -1,7 +1,15 @@
 ---
 name: agent-arena-skill
-description: 'Skill: agent-arena-skill. See SKILL.md body for details. Use when this
-  domain is relevant.'
+description: 'Skill: agent-arena-skill. See SKILL.md body for details. Use when this domain is relevant.'
+domain: development
+tags:
+- agent
+- ai-agent
+- arena
+- coding
+- skill
+- software-engineering
+- testing
 persona:
   name: Demis Hassabis
   title: The AI Architect - Master of Agent Competition
@@ -20,8 +28,19 @@ persona:
   - Generalize across tasks
   - Safety first
   - Scale compute
-domain: development
 ---
+## When to Use
+
+**Trigger phrases:**
+- "agent arena skill"
+- "Help me with agent arena skill"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 Discover, register, and hire ERC-8004 autonomous agents across 16 blockchains. Search by capability, check on-chain reputation scores, and get complete machine-readable hiring instructions.
 
 Payment: USDC via x402 on Base mainnet
@@ -183,3 +202,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

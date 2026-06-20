@@ -1,7 +1,14 @@
 ---
 name: scenario-planning
-description: Plan for uncertainty using best/worst/likely scenarios, war-gaming, and trigger-based pivots. Use when facing high uncertainty or preparing for strategic decisions.
+description: Plan for uncertainty using best/worst/likely scenarios, war-gaming, and trigger-based pivots. Use when facing
+  high uncertainty or preparing for strategic decisions.
 domain: mindset
+tags:
+- mindset
+- personal-development
+- planning
+- scenario
+- soft-skills
 ---
 
 # Scenario Planning
@@ -128,3 +135,7 @@ Build 3 scenarios: **Best Case**, **Worst Case**, **Most Likely**
 - [ ] Triggers set for each scenario (when to pivot)
 - [ ] War-gaming conducted (if adversarial dynamics matter)
 - [ ] Team aligned on scenarios and pivot rules
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

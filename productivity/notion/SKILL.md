@@ -1,11 +1,31 @@
 ---
 name: notion
-description: "Automate Notion workflows including database CRUD, page creation, content publishing, and workspace management via API."
+description: Automate Notion workflows including database CRUD, page creation, content publishing, and workspace management
+  via API.
 domain: productivity
+tags:
+- api
+- notion
+- productivity
+- time-management
+- tools
+- workflow
 ---
 ## Usage Examples
 ```
 # Basic usage
+## When to Use
+
+**Trigger phrases:**
+- "notion"
+- "Help me with notion"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 invoke <skill-name> with appropriate parameters
 
 # Advanced usage with options
@@ -223,3 +243,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

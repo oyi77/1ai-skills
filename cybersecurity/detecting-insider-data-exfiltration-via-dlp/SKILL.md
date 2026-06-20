@@ -6,12 +6,12 @@ description: 'Detects insider data exfiltration by analyzing DLP policy violatio
 
   '
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - detecting
 - insider
 - data
 - exfiltration
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -96,3 +96,7 @@ suspicious = off_hours.groupby("user").size().sort_values(ascending=False)
 - Output documented with screenshots or logs demonstrating expected behavior
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

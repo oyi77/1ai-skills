@@ -6,13 +6,13 @@ description: 'Simulates SSL stripping attacks using sslstrip, Bettercap, and mit
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - ssl-stripping
 - https
 - hsts
 - tls-security
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -297,3 +297,7 @@ Map the application, test authentication and authorization, check for injection 
 3. Add Content-Security-Policy: upgrade-insecure-requests header
 4. Implement certificate transparency monitoring for the domain
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

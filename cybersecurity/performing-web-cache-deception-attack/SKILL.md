@@ -3,7 +3,6 @@ name: performing-web-cache-deception-attack
 description: Execute web cache deception attacks by exploiting path normalization discrepancies between CDN caching layers
   and origin servers to cache and retrieve sensitive authenticated content.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - web-cache-deception
 - cdn-attack
@@ -12,6 +11,7 @@ tags:
 - cloudflare
 - cache-key
 - static-resource
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -248,3 +248,7 @@ curl -s "http://target.com/account/profile/x.css" | grep -i "email\|name\|token\
 - Use path-based routing rules that reject unexpected extensions
 - Enable consistent path normalization between CDN and origin
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,8 +1,13 @@
 ---
 name: dagster-pipelines
-description: Dagster data orchestration — software-defined assets, ops, jobs, schedules,
-  sensors, IO managers
+description: Dagster data orchestration — software-defined assets, ops, jobs, schedules, sensors, IO managers
 domain: data
+tags:
+- analytics
+- dagster
+- data-analysis
+- pipelines
+- visualization
 ---
 
 
@@ -223,3 +228,7 @@ def my_dbt_assets(context, dbt: DbtCliClient):
 - **Missing monitoring for data freshness**: Stale data causes wrong business decisions
 - **No rollback on failed transforms**: Failed transforms without rollback require manual recovery
 - **Hardcoded connection strings**: Credentials in code get committed to version control
+
+## Verification
+
+- [ ] Skill output matches expected behavior

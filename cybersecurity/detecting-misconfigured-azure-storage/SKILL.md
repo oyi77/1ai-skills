@@ -6,7 +6,6 @@ description: 'Detecting misconfigured Azure Storage accounts including publicly 
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - azure
@@ -14,6 +13,7 @@ tags:
 - blob-storage
 - sas-tokens
 - data-protection
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -309,3 +309,7 @@ SUMMARY:
   Shared key access enabled:           18 / 24
   Keys not rotated in 90+ days:        14 / 24
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

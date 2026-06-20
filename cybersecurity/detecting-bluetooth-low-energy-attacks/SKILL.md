@@ -1,15 +1,10 @@
 ---
 name: detecting-bluetooth-low-energy-attacks
-description: 'Detects and analyzes Bluetooth Low Energy (BLE) security attacks including sniffing, replay attacks, GATT enumeration
+description: Detects and analyzes Bluetooth Low Energy (BLE) security attacks including sniffing, replay attacks, GATT enumeration
   abuse, and Man-in-the-Middle interception. Uses Ubertooth One and nRF52840 sniffers for packet capture, the bleak Python
   library for GATT service enumeration, and crackle for BLE encryption cracking. Use when assessing IoT device BLE security,
-  monitoring for BLE-based attacks on wireless infrastructure, or performing authorized BLE penetration testing. Activates
-  for requests involving BLE security assessment, Ubertooth sniffing, GATT enumeration, or BLE replay detection.
-
-  '
+  monitoring for BLE-based attacks on wireless infrastructure, or performing authorized BLE penetration testing.
 domain: cybersecurity
-subdomain: wireless-security
-author: mukul975
 tags:
 - ble
 - bluetooth
@@ -19,6 +14,8 @@ tags:
 - wireless-security
 - iot-security
 - replay-attack
+subdomain: wireless-security
+author: mukul975
 version: 1.0.0
 license: Apache-2.0
 nist_csf:
@@ -336,3 +333,7 @@ Each command should include a server-generated challenge that expires
 after use. Use LE Secure Connections for pairing to prevent passive
 capture of the pairing exchange.
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

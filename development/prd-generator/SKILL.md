@@ -1,8 +1,14 @@
 ---
 name: prd-generator
-description: Generate detailed Product Requirement Documents (PRDs) from feature descriptions.
-  Create structured specifications ready for implementation.
+description: Generate detailed Product Requirement Documents (PRDs) from feature descriptions. Create structured specifications
+  ready for implementation.
 domain: development
+tags:
+- coding
+- generator
+- prd
+- software-engineering
+- testing
 ---
 
 persona:

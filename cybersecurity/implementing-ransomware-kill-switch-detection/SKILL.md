@@ -7,7 +7,6 @@ description: 'Detects and exploits ransomware kill switch mechanisms including m
 
   '
 domain: cybersecurity
-subdomain: ransomware-defense
 tags:
 - ransomware
 - kill-switch
@@ -15,6 +14,7 @@ tags:
 - detection
 - WannaCry
 - malware-analysis
+subdomain: ransomware-defense
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -240,3 +240,7 @@ During an active incident, scan endpoints for ransomware-associated mutexes:
 - **malware-mutex (GitHub)**: Community-maintained database of mutexes used by known malware families
 - **ANY.RUN**: Interactive malware sandbox that reports mutex creation during dynamic analysis
 - **PassiveDNS**: DNS monitoring infrastructure for detecting kill switch domain resolution attempts
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

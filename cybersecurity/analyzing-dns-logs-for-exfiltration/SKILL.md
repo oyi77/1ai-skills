@@ -6,7 +6,6 @@ description: 'Analyzes DNS query logs to detect data exfiltration via DNS tunnel
 
   '
 domain: cybersecurity
-subdomain: soc-operations
 tags:
 - soc
 - dns
@@ -16,6 +15,7 @@ tags:
 - c2-detection
 - splunk
 - threat-detection
+subdomain: soc-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -331,3 +331,7 @@ Containment:
   [DONE] Domain evil-tunnel[.]com added to DNS sinkhole
   [DONE] Incident IR-2024-0448 created
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

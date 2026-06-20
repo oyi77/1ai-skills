@@ -1,8 +1,15 @@
 ---
 name: security-agent-hardening
-description: Secure AI agents against prompt injection, jailbreaking, data exfiltration, and supply chain attacks. Implement guardrails, sandboxing, and monitoring for safe autonomous operation.
+description: Secure AI agents against prompt injection, jailbreaking, data exfiltration, and supply chain attacks. Implement
+  guardrails, sandboxing, and monitoring for safe autonomous operation.
 domain: cybersecurity
-tags: [agent-security, prompt-injection, guardrails, sandboxing, llm-security, ai-safety]
+tags:
+- agent-security
+- prompt-injection
+- guardrails
+- sandboxing
+- llm-security
+- ai-safety
 ---
 
 # Security Agent Hardening
@@ -482,3 +489,7 @@ validator = InputValidator(
 - `skill://agent-orchestrator` — Secure multi-agent systems
 - `skill://systematic-debugging` — Debug security issues
 - `skill://verification-before-completion` — Pre-deployment checks
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

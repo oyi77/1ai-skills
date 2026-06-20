@@ -1,7 +1,16 @@
 ---
 name: viral-research-engine
-description: "Research trending topics, generate viral hooks, find content gaps, analyze competitors, and get hashtag recommendations for Indonesian short-form video creators on TikTok, Reels, and Shorts."
+description: Research trending topics, generate viral hooks, find content gaps, analyze competitors, and get hashtag recommendations
+  for Indonesian short-form video creators on TikTok, Reels, and Shorts.
 domain: content
+tags:
+- content-creation
+- digital-content
+- engine
+- media
+- research
+- video
+- viral
 ---
 
 # Viral Research Engine
@@ -341,3 +350,7 @@ print(f"Hashtags: {' '.join(hashtags)}")
 - Confirm links work and point to correct destinations
 - Test video/audio quality before publishing
 - Validate content renders correctly on mobile devices
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

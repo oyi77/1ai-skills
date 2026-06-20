@@ -8,7 +8,6 @@ description: 'This skill covers implementing North American Electric Reliability
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -18,6 +17,7 @@ tags:
 - nerc-cip
 - power-grid
 - compliance
+subdomain: ot-ics-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -455,3 +455,7 @@ COMPLIANCE STATUS BY STANDARD:
   CIP-010: [Status] - [N] gaps identified
   CIP-013: [Status] - [N] gaps identified
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,8 +1,14 @@
 ---
 name: cypress-e2e
-description: Cypress E2E testing — component testing, API testing, fixtures, custom
-  commands, CI integration
+description: Cypress E2E testing — component testing, API testing, fixtures, custom commands, CI integration
 domain: development
+tags:
+- api
+- coding
+- cypress
+- e2e
+- software-engineering
+- testing
 ---
 
 
@@ -338,3 +344,7 @@ module.exports = defineConfig({
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

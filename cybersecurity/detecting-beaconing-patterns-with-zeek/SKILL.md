@@ -6,12 +6,12 @@ description: 'Performs statistical analysis of Zeek conn.log connection interval
 
   '
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - detecting
 - beaconing
 - patterns
 - with
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -100,3 +100,7 @@ print(df[['id.orig_h', 'id.resp_h', 'ts', 'duration']].head())
 - Captures verified as complete with no dropped packets
 - Detection rules tested against known-benign traffic for false positive rate
 - Alert thresholds validated and tuned to reduce noise
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

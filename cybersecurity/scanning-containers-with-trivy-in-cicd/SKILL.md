@@ -7,7 +7,6 @@ description: 'This skill covers integrating Aqua Security''s Trivy scanner into 
 
   '
 domain: cybersecurity
-subdomain: devsecops
 tags:
 - devsecops
 - cicd
@@ -15,6 +14,7 @@ tags:
 - container-security
 - vulnerability-scanning
 - secure-sdlc
+subdomain: devsecops
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -357,3 +357,7 @@ MISCONFIGURATION:
 
 QUALITY GATE: FAILED (2 Critical, 5 High findings)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

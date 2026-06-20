@@ -1,6 +1,13 @@
 ---
 name: gateway-doctor
-description: "Diagnose and fix MCP gateway routing issues, health checks, and server connectivity problems."
+description: Diagnose and fix MCP gateway routing issues, health checks, and server connectivity problems.
+domain: core
+tags:
+- doctor
+- gateway
+- infrastructure
+- memory
+- self-improvement
 persona:
   name: Brendan Gregg
   title: The Systems Performance Expert - Master of Diagnostics
@@ -19,7 +26,6 @@ persona:
   - Find the bottleneck
   - Optimize the critical path
   - Monitor continuously
-domain: core
 ---
 # gateway-doctor
 
@@ -129,3 +135,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

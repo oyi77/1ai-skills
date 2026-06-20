@@ -3,7 +3,6 @@ name: detecting-dll-sideloading-attacks
 description: Detect DLL side-loading attacks where adversaries place malicious DLLs alongside legitimate applications to hijack
   execution flow for defense evasion.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - mitre-attack
@@ -12,6 +11,7 @@ tags:
 - t1574
 - edr
 - proactive-detection
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -127,3 +127,7 @@ App Location: [Expected/Anomalous]
 Host: [Hostname]
 Risk Level: [Critical/High/Medium/Low]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

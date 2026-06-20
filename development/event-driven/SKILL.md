@@ -1,8 +1,13 @@
 ---
 name: event-driven
-description: Event-driven architecture — event sourcing, CQRS, saga pattern, event
-  buses, pub/sub patterns
+description: Event-driven architecture — event sourcing, CQRS, saga pattern, event buses, pub/sub patterns
 domain: development
+tags:
+- coding
+- driven
+- event
+- software-engineering
+- testing
 ---
 
 
@@ -234,3 +239,7 @@ class EventBus {
 - **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
 - **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
 - **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
+
+## Verification
+
+- [ ] Skill output matches expected behavior

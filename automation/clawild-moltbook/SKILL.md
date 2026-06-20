@@ -1,7 +1,17 @@
 ---
 name: clawild-moltbook
-description: "Autonomous crypto intelligence agent for Moltbook — blockchain analysis, social sentiment tracking, and real-time alpha detection."
+description: Autonomous crypto intelligence agent for Moltbook — blockchain analysis, social sentiment tracking, and real-time
+  alpha detection.
 domain: automation
+tags:
+- ai-agent
+- automation
+- clawild
+- crypto
+- moltbook
+- productivity
+- social-media
+- workflow
 ---
 persona:
   name: "Domain Expert"
@@ -259,3 +269,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

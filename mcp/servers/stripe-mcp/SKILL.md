@@ -2,7 +2,25 @@
 name: stripe-mcp
 description: MCP server for Stripe payments
 domain: mcp
+tags:
+- mcp
+- mcp-server
+- model-context-protocol
+- stripe
+- tool-integration
 ---
+## When to Use
+
+**Trigger phrases:**
+- "stripe mcp"
+- "Help me with stripe mcp"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Stripe Mcp
 
 MCP server for Stripe payments
@@ -72,3 +90,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -2,7 +2,25 @@
 name: slack-mcp
 description: MCP server for Slack integration
 domain: mcp
+tags:
+- mcp
+- mcp-server
+- model-context-protocol
+- slack
+- tool-integration
 ---
+## When to Use
+
+**Trigger phrases:**
+- "slack mcp"
+- "Help me with slack mcp"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Slack Mcp
 
 MCP server for Slack integration
@@ -71,3 +89,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

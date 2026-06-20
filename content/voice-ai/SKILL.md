@@ -1,8 +1,15 @@
 ---
 name: voice-ai
-description: Voice AI — text-to-speech (ElevenLabs, OpenAI TTS), speech-to-text (Whisper),
-  voice cloning, real-time voice agents
+description: Voice AI — text-to-speech (ElevenLabs, OpenAI TTS), speech-to-text (Whisper), voice cloning, real-time voice
+  agents
 domain: content
+tags:
+- ai-agent
+- content-creation
+- digital-content
+- media
+- text-to-speech
+- voice
 ---
 
 
@@ -135,3 +142,7 @@ requests.post("https://api.vapi.ai/assistant",
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

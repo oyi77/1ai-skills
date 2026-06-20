@@ -7,7 +7,6 @@ description: 'Hardens Linux endpoints using CIS Benchmark recommendations for Ub
 
   '
 domain: cybersecurity
-subdomain: endpoint-security
 tags:
 - endpoint
 - hardening
@@ -15,6 +14,7 @@ tags:
 - CIS-benchmark
 - Ubuntu
 - RHEL
+subdomain: endpoint-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -260,3 +260,7 @@ oscap xccdf eval \
 - **Breaking SSH access**: Misconfiguring sshd_config (especially PermitRootLogin, PasswordAuthentication) can lock out administrators. Always test SSH configuration changes from a second session.
 - **Not testing firewall rules**: Enabling UFW without allowing SSH first will disconnect remote sessions permanently.
 - **Kernel parameter changes without testing**: Some sysctl settings can break application networking. Test in staging first.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

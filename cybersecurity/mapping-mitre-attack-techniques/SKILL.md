@@ -7,7 +7,6 @@ description: 'Maps observed adversary behaviors, security alerts, and detection 
 
   '
 domain: cybersecurity
-subdomain: threat-intelligence
 tags:
 - MITRE-ATT&CK
 - ATT&CK-Navigator
@@ -16,6 +15,7 @@ tags:
 - TTP
 - detection-engineering
 - NIST-CSF
+subdomain: threat-intelligence
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -186,3 +186,7 @@ Summarize coverage by tactic category (Initial Access, Execution, Persistence, e
 - **Ignoring sub-techniques**: Many adversaries use specific sub-techniques. Coverage of T1059 (parent) doesn't imply coverage of T1059.005 (Visual Basic).
 - **Static mapping without updates**: ATT&CK releases major versions annually. Coverage maps go stale as techniques are added, revised, or deprecated.
 - **Not mapping to adversary groups**: Generic coverage maps don't distinguish between techniques used by APTs targeting your sector vs. commodity malware.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

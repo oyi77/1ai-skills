@@ -1,7 +1,14 @@
 ---
 name: test-agent
-description: "Write comprehensive test suites covering happy paths, error paths, edge cases, and integration points. Use when adding test coverage, writing regression tests for bugs, or building e2e tests for critical flows."
+description: Write comprehensive test suites covering happy paths, error paths, edge cases, and integration points. Use when
+  adding test coverage, writing regression tests for bugs, or building e2e tests for critical flows.
 domain: agents
+tags:
+- agent
+- ai-agent
+- automation
+- orchestration
+- test
 ---
 # Test Agent
 
@@ -276,3 +283,7 @@ After writing tests, confirm:
 - [ ] Coverage is meaningful (not just hitting lines, but testing scenarios)
 - [ ] Regression tests added for any bugs fixed in this session
 - [ ] No [TODO] or placeholder assertions in test code
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

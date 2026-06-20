@@ -4,12 +4,12 @@ description: Analyze WAF (ModSecurity/AWS WAF/Cloudflare) logs to detect SQL inj
   audit logs and JSON WAF event logs to identify SQLi patterns (UNION SELECT, OR 1=1, SLEEP(), BENCHMARK()), tracks attack
   sources, correlates multi-stage injection attempts, and generates incident reports with OWASP classification.
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - detecting
 - sql
 - injection
 - via
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -90,3 +90,7 @@ Classification: UNION-based SQLi campaign
 - All exploited vulnerabilities documented with reproduction steps
 - Scope boundaries confirmed — only authorized targets were tested
 - Remediation recommendations included for every finding
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

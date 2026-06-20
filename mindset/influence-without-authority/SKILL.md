@@ -1,7 +1,16 @@
 ---
 name: influence-without-authority
-description: Gain buy-in from peers, stakeholders, and executives when you lack direct authority. Covers reciprocity, social proof, and coalition building.
+description: Gain buy-in from peers, stakeholders, and executives when you lack direct authority. Covers reciprocity, social
+  proof, and coalition building.
 domain: mindset
+tags:
+- authority
+- influence
+- mindset
+- personal-development
+- social-media
+- soft-skills
+- without
 ---
 
 # Influence Without Authority
@@ -132,3 +141,7 @@ Framework for influencing people you don't manage: reciprocity, social proof, co
 - [ ] Pre-brief held with allies before key meeting
 - [ ] Cialdini principles applied (reciprocity, social proof, consistency, etc.)
 - [ ] Ask framed in terms of THEIR priorities, not just yours
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

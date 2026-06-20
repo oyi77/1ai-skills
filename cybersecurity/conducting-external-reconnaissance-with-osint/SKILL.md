@@ -1,20 +1,17 @@
 ---
 name: conducting-external-reconnaissance-with-osint
-description: 'Conducts external reconnaissance using Open Source Intelligence (OSINT) techniques to map an organization''s
-  external attack surface without directly interacting with target systems. The tester gathers information from public sources
-  including DNS records, certificate transparency logs, search engines, social media, code repositories, and data breach databases
-  to build a comprehensive target profile. Activates for requests involving OSINT reconnaissance, external footprinting, attack
-  surface mapping, or passive information gathering.
-
-  '
+description: Conducts external reconnaissance using Open Source Intelligence (OSINT) techniques to map an organization's external
+  attack surface without directly interacting with target systems. The tester gathers information from public sources including
+  DNS records, certificate transparency logs, search engines, social media, code repositories, and data breach databases to
+  build a comprehensive target profile.
 domain: cybersecurity
-subdomain: penetration-testing
 tags:
 - OSINT
 - reconnaissance
 - attack-surface
 - footprinting
 - passive-recon
+subdomain: penetration-testing
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -222,3 +219,7 @@ This section covers external reconnaissance report - techcorp.io for conducting 
 3. Disable directory listings on docs.techcorp.io and audit all web servers
 4. Implement GitHub secret scanning across all organization repositories
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -5,7 +5,6 @@ description: 'Auditing Google Cloud Platform IAM permissions to identify overly 
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - gcp
@@ -13,6 +12,7 @@ tags:
 - permissions-audit
 - service-accounts
 - policy-analyzer
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -353,3 +353,7 @@ RECOMMENDER SUGGESTIONS:
   Priority HIGH:                     12
   Estimated permissions reduced:     2,847 individual permissions
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

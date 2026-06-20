@@ -5,13 +5,13 @@ description: 'Crafts and injects custom network packets using Scapy, hping3, and
 
   '
 domain: cybersecurity
-subdomain: network-security
 tags:
 - network-security
 - packet-injection
 - scapy
 - hping3
 - protocol-testing
+subdomain: network-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -362,3 +362,7 @@ Map the application, test authentication and authorization, check for injection 
 1. Land attack (src==dst) not detected -- add rule SID 2100333
 2. TCP RST injection not detected -- create custom rule for out-of-window RST
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

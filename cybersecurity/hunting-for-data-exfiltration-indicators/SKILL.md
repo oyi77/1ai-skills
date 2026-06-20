@@ -3,7 +3,6 @@ name: hunting-for-data-exfiltration-indicators
 description: Hunt for data exfiltration through network traffic analysis, detecting unusual data flows, DNS tunneling, cloud
   storage uploads, and encrypted channel abuse.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - mitre-attack
@@ -11,6 +10,7 @@ tags:
 - dlp
 - network-analysis
 - proactive-detection
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -139,3 +139,7 @@ Files Involved: [Count/Types]
 Risk Level: [Critical/High/Medium/Low]
 Confidence: [High/Medium/Low]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -2,6 +2,13 @@
 name: receiving-code-review
 description: Use when getting code feedback, before implementing suggestions.
 domain: development
+tags:
+- code
+- coding
+- receiving
+- review
+- software-engineering
+- testing
 ---
 
 persona:

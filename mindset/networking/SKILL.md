@@ -1,7 +1,13 @@
 ---
 name: networking
-description: Build and maintain professional relationships through strategic outreach, events, and follow-up. Use when expanding your professional network or finding opportunities.
+description: Build and maintain professional relationships through strategic outreach, events, and follow-up. Use when expanding
+  your professional network or finding opportunities.
 domain: mindset
+tags:
+- mindset
+- networking
+- personal-development
+- soft-skills
 ---
 
 # Networking
@@ -164,3 +170,7 @@ Framework for building and maintaining professional relationships: outreach, eve
 - [ ] CRM system set up (track contacts, last contact, next action)
 - [ ] Last 3 months: at least 1 meaningful touch point per key contact
 - [ ] Introductions made (connected 2+ people who should know each other)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

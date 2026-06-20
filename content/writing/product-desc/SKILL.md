@@ -1,8 +1,26 @@
 ---
 name: product-desc
-description: Write product descriptions
+description: Product Desc. Use when working with product desc in content domain.
 domain: content
+tags:
+- content-creation
+- desc
+- digital-content
+- media
+- product
 ---
+## When to Use
+
+**Trigger phrases:**
+- "product desc"
+- "Help me with product desc"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 
 ## Product Desc
@@ -69,3 +87,7 @@ After completing this skill, confirm:
 - Check the references/ directory for checklists and templates
 - Join the community for best practices and support
 - Contribute improvements via pull requests
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -6,7 +6,6 @@ description: 'Configuring Google Cloud Identity-Aware Proxy (IAP) to enforce per
 
   '
 domain: cybersecurity
-subdomain: zero-trust-architecture
 tags:
 - google-iap
 - identity-aware-proxy
@@ -15,6 +14,7 @@ tags:
 - access-context-manager
 - cloud-run
 - app-engine
+subdomain: zero-trust-architecture
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -418,3 +418,7 @@ ACCESS LOGS (last 24h):
   Denied by access level:   55
   Unique users:            134
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

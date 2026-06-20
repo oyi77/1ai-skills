@@ -1,8 +1,26 @@
 ---
 name: notion-pages
-description: Create and edit Notion pages
+description: Notion Pages. Use when working with notion pages in integrations domain.
 domain: integrations
+tags:
+- api
+- integrations
+- notion
+- pages
+- third-party
 ---
+## When to Use
+
+**Trigger phrases:**
+- "notion pages"
+- "Help me with notion pages"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 ## Notion Pages
 
 Create and edit Notion pages
@@ -82,3 +100,6 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Overview
+
+> Section content — see SKILL.md body for full details.

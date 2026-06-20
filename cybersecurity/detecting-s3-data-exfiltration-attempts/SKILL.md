@@ -6,7 +6,6 @@ description: 'Detecting data exfiltration attempts from AWS S3 buckets by analyz
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - aws
@@ -15,6 +14,7 @@ tags:
 - guardduty
 - macie
 - threat-detection
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -372,3 +372,7 @@ CONTAINMENT ACTIONS:
   [x] Bucket policy restricting to VPC-only access
   [x] TruffleHog scan initiated on developer repositories
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

@@ -1,8 +1,13 @@
 ---
 name: frontend-design
-description: Design system patterns — component architecture, Tailwind mastery, visual
-  hierarchy, and responsive layouts
+description: Design system patterns — component architecture, Tailwind mastery, visual hierarchy, and responsive layouts
 domain: content
+tags:
+- content-creation
+- design
+- digital-content
+- frontend
+- media
 ---
 
 
@@ -131,3 +136,7 @@ const Button = ({ variant = 'primary', size = 'md', children, ...props }) => {
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

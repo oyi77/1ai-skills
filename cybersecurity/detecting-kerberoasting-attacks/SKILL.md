@@ -3,7 +3,6 @@ name: detecting-kerberoasting-attacks
 description: Detect Kerberoasting attacks by monitoring for anomalous Kerberos TGS requests targeting service accounts with
   SPNs for offline password cracking.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - mitre-attack
@@ -12,6 +11,7 @@ tags:
 - kerberos
 - t1558
 - proactive-detection
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -121,3 +121,7 @@ Risk Level: [Critical/High/Medium/Low]
 Confidence: [High/Medium/Low]
 Recommended Action: [Containment, investigation, monitoring]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

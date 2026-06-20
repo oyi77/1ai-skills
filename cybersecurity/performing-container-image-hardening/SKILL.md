@@ -6,7 +6,6 @@ description: 'This skill covers hardening container images by minimizing attack 
 
   '
 domain: cybersecurity
-subdomain: devsecops
 tags:
 - devsecops
 - cicd
@@ -14,6 +13,7 @@ tags:
 - docker
 - cis-benchmark
 - secure-sdlc
+subdomain: devsecops
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -291,3 +291,7 @@ VULNERABILITY COMPARISON:
   After:  18 CVEs (0 Critical, 3 High)
   Reduction: 92.3%
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

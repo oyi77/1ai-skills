@@ -1,8 +1,14 @@
 ---
 name: monetization-strategist
-description: Turn content into revenue — newsletter businesses, YouTube automation,
-  affiliate sites, digital product creation, funnel design, audience building
+description: Turn content into revenue — newsletter businesses, YouTube automation, affiliate sites, digital product creation,
+  funnel design, audience building
 domain: content
+tags:
+- content-creation
+- digital-content
+- media
+- monetization
+- strategist
 ---
 
 
@@ -495,3 +501,7 @@ revenue_streams:
 - **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
 - **No content calendar**: Sporadic posting kills audience retention
 - **Ignoring analytics**: Content without measurement is just publishing, not marketing
+
+## Verification
+
+- [ ] Skill output matches expected behavior

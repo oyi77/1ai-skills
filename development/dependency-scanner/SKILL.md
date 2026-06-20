@@ -1,8 +1,15 @@
 ---
 name: dependency-scanner
-description: Automated dependency auditing for npm, pip, cargo, go. Detect vulnerabilities, outdated packages, license conflicts, and supply chain risks. Generate SBOMs and compliance reports.
+description: Automated dependency auditing for npm, pip, cargo, go. Detect vulnerabilities, outdated packages, license conflicts,
+  and supply chain risks. Generate SBOMs and compliance reports.
 domain: development
-tags: [security, dependencies, vulnerabilities, supply-chain, sbom, compliance]
+tags:
+- security
+- dependencies
+- vulnerabilities
+- supply-chain
+- sbom
+- compliance
 ---
 
 # Dependency Scanner
@@ -396,3 +403,7 @@ pip-compile requirements.in
 - `skill://auto-git-commiter` — Git automation
 - `skill://best-hacker` — Security testing
  `skill://cicd-deployment` — Pipeline integration
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

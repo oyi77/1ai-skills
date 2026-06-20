@@ -1,8 +1,13 @@
 ---
 name: portfolio-manager
-description: Portfolio Manager — BerkahKarya Quant Fund. Use when relevant to this
-  domain.
+description: Portfolio Manager — BerkahKarya Quant Fund. Use when relevant to this domain.
 domain: trading
+tags:
+- algorithms
+- manager
+- markets
+- portfolio
+- trading
 ---
 # Portfolio Manager — BerkahKarya Quant Fund
 
@@ -217,3 +222,7 @@ portfolio-manager → trading/strategy/xauusd_asia_7c_breakout (signals)
                  → telegram-userbot (trade alerts, daily P&L)
                  → business-intelligence (quant fund KPIs)
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

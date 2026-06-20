@@ -6,7 +6,6 @@ description: 'Implementing Zero Trust Network Access (ZTNA) in cloud environment
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - zero-trust
@@ -14,6 +13,7 @@ tags:
 - beyondcorp
 - identity-aware-proxy
 - micro-segmentation
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -393,3 +393,7 @@ MIGRATION STATUS:
   Phase 3 (high-risk apps):     0/6  in progress
   VPN decommission:            Scheduled after Phase 3
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

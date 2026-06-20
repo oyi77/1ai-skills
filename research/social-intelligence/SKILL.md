@@ -1,8 +1,16 @@
 ---
 name: social-intelligence
-description: Cross-platform social media intelligence gathering using Agent Reach. Research trends, sentiment, competitive intel, and user insights from Twitter, Reddit, YouTube, XiaoHongShu across 35+ platforms. Use when researching social proof, market sentiment, viral content patterns, or competitive positioning.
+description: Cross-platform social media intelligence gathering using Agent Reach. Research trends, sentiment, competitive
+  intel, and user insights from Twitter, Reddit, YouTube, XiaoHongShu across 35+ platforms. Use when researching social proof,
+  market sentiment, viral content patterns, or competitive positioning.
 domain: research
-tags: [social-media, research, sentiment-analysis, competitive-intelligence, trend-monitoring, agent-reach]
+tags:
+- social-media
+- research
+- sentiment-analysis
+- competitive-intelligence
+- trend-monitoring
+- agent-reach
 ---
 
 # Social Intelligence
@@ -316,3 +324,7 @@ agent-reach twitter search "niche keyword" --min-followers 5000 --limit 50
 - `skill://viral-content-creator` — convert insights to content
 - `skill://twitter-automation` — automate Twitter engagement
 - `skill://seo-optimizer` — convert social insights to SEO keywords
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

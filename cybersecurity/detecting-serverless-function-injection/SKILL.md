@@ -1,16 +1,11 @@
 ---
 name: detecting-serverless-function-injection
-description: 'Detects and prevents code injection attacks targeting serverless functions (AWS Lambda, Azure Functions, Google
+description: Detects and prevents code injection attacks targeting serverless functions (AWS Lambda, Azure Functions, Google
   Cloud Functions) through event source poisoning, malicious layer injection, runtime command execution, and IAM privilege
   escalation via function modification. The analyst combines static analysis of function code, CloudTrail event correlation,
   runtime behavior monitoring, and IAM policy auditing to identify injection vectors across the expanded serverless attack
-  surface including API Gateway, S3, SQS, DynamoDB Streams, and CloudWatch event triggers. Activates for requests involving
-  Lambda security assessment, serverless injection detection, function event poisoning analysis, or serverless privilege escalation
-  investigation.
-
-  '
+  surface including AP...
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - serverless-security
 - Lambda-injection
@@ -18,6 +13,7 @@ tags:
 - OWASP-serverless
 - IAM-escalation
 - CloudTrail
+subdomain: cloud-security
 version: 1.0.0
 author: mukul975
 license: Apache-2.0
@@ -531,3 +527,7 @@ Map the application, test authentication and authorization, check for injection 
 - Config rule: Lambda functions must not have layers from external accounts
 - Config rule: Lambda execution roles must not have wildcard resource permissions
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

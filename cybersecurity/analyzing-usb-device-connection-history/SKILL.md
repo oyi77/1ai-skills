@@ -3,7 +3,6 @@ name: analyzing-usb-device-connection-history
 description: Investigate USB device connection history from Windows registry, event logs, and setupapi logs to track removable
   media usage and potential data exfiltration.
 domain: cybersecurity
-subdomain: digital-forensics
 tags:
 - forensics
 - usb-forensics
@@ -11,6 +10,7 @@ tags:
 - registry-analysis
 - data-exfiltration
 - device-history
+subdomain: digital-forensics
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -393,3 +393,7 @@ USB Device History Analysis:
 
   Timeline: /cases/case-2024-001/analysis/usb_timeline.csv
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

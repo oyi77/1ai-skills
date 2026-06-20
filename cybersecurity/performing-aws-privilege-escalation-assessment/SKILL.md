@@ -6,7 +6,6 @@ description: 'Performing authorized privilege escalation assessments in AWS envi
 
   '
 domain: cybersecurity
-subdomain: cloud-security
 tags:
 - cloud-security
 - aws
@@ -14,6 +13,7 @@ tags:
 - iam
 - pacu
 - offensive-security
+subdomain: cloud-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -320,3 +320,7 @@ TOTAL ESCALATION PATHS: 4 (2 Critical, 1 High, 1 Medium)
 PERMISSION BOUNDARIES IN PLACE: 0 / 47 IAM principals
 SCP GUARDRAILS BLOCKING ESCALATION: 0 / 3 tested vectors
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

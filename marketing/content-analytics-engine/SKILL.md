@@ -1,10 +1,31 @@
 ---
 name: content-analytics-engine
-description: "Collect content performance data from PostBridge API and generate daily/weekly reports tracking the full revenue funnel — views, engagement, clicks, and sales."
+description: Collect content performance data from PostBridge API and generate daily/weekly reports tracking the full revenue
+  funnel — views, engagement, clicks, and sales.
 domain: marketing
+tags:
+- analytics
+- api
+- content
+- engine
+- growth
+- marketing
+- seo
 ---
 
 # Content Analytics Engine
+## When to Use
+
+**Trigger phrases:**
+- "content analytics engine"
+- "Help me with content analytics engine"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 **Category:** Marketing Analytics | Revenue Intelligence  
 **Status:** Production-Ready  
@@ -293,3 +314,7 @@ POSTBRIDGE_KEY = "REDACTED_ROTATED_CREDENTIAL"
 - Check UTM parameters parse correctly in analytics dashboard
 - Confirm email deliverability via seed list test
 - Validate landing page speed (target < 3s load time)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

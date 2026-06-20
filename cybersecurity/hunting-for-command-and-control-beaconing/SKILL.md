@@ -3,7 +3,6 @@ name: hunting-for-command-and-control-beaconing
 description: Detect C2 beaconing patterns in network traffic using frequency analysis, jitter detection, and domain reputation
   to identify compromised endpoints communicating with adversary infrastructure.
 domain: cybersecurity
-subdomain: threat-hunting
 tags:
 - threat-hunting
 - mitre-attack
@@ -11,6 +10,7 @@ tags:
 - beaconing
 - network-analysis
 - proactive-detection
+subdomain: threat-hunting
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -137,3 +137,7 @@ Domain Age: [Days]
 TI Match: [Yes/No - source]
 Risk Level: [Critical/High/Medium/Low]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

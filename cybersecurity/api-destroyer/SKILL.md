@@ -1,9 +1,17 @@
 ---
 name: api-destroyer
-description: Aggressive API security testing for REST, GraphQL, gRPC, and WebSocket
-  endpoints. Use when testing APIs for authorization flaws, injection, rate limiting
-  bypass, or business logic abuse.
+description: Aggressive API security testing for REST, GraphQL, gRPC, and WebSocket endpoints. Use when testing APIs for authorization
+  flaws, injection, rate limiting bypass, or business logic abuse.
 domain: cybersecurity
+tags:
+- api
+- aws
+- cybersecurity
+- destroyer
+- graphql
+- rest-api
+- security
+- testing
 ---
 
 # API Destroyer
@@ -258,3 +266,7 @@ API bugs are everywhere and pay well:
 - Mass assignment: $500-$5000
 - SSRF via API: $1000-$10000
 - Business logic: $1000-$50000
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

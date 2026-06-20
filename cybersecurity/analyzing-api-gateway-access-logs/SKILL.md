@@ -6,12 +6,12 @@ description: 'Parses API Gateway access logs (AWS API Gateway, Kong, Nginx) to d
 
   '
 domain: cybersecurity
-subdomain: security-operations
 tags:
 - analyzing
 - api
 - gateway
 - access
+subdomain: security-operations
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -93,3 +93,7 @@ scanners = scanner_ips[scanner_ips > 100]
 - All exploited vulnerabilities documented with reproduction steps
 - Scope boundaries confirmed — only authorized targets were tested
 - Remediation recommendations included for every finding
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

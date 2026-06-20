@@ -1,10 +1,31 @@
 ---
 name: clay-art-video-generator
-description: "Generate viral short-form videos with clay art/plasticine stop-motion diorama visuals for TikTok, Reels, and Shorts. Supports story mode and product review mode with lighting presets, camera angles, and Indonesian overlays."
+description: Generate viral short-form videos with clay art/plasticine stop-motion diorama visuals for TikTok, Reels, and
+  Shorts. Supports story mode and product review mode with lighting presets, camera angles, and Indonesian overlays.
 domain: content
+tags:
+- art
+- clay
+- content-creation
+- digital-content
+- generator
+- media
+- video
 ---
 
 # CLAY ART VIDEO GENERATOR SKILL
+## When to Use
+
+**Trigger phrases:**
+- "clay art video generator"
+- "Help me with clay art video generator"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 ## Deskripsi
 
@@ -219,3 +240,7 @@ python3 clay_generator.py --all
 - Confirm links work and point to correct destinations
 - Test video/audio quality before publishing
 - Validate content renders correctly on mobile devices
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

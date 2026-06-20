@@ -7,7 +7,6 @@ description: 'This skill covers implementing network segmentation in Operational
 
   '
 domain: cybersecurity
-subdomain: ot-ics-security
 tags:
 - ot-security
 - ics
@@ -16,6 +15,7 @@ tags:
 - iec62443
 - network-segmentation
 - vlan
+subdomain: ot-ics-security
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -518,3 +518,7 @@ VALIDATION RESULTS:
   Tests Passed: [N]/[Total]
   Critical Failures: [N]
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

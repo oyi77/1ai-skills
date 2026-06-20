@@ -1,10 +1,28 @@
 ---
 name: debt
-description: "Harvest every ponytail: shortcut comment into one debt ledger, so deferrals get tracked instead of forgotten. One-shot report."
-homepage: https://github.com/DietrichGebert/ponytail
+description: 'Harvest every ponytail: shortcut comment into one debt ledger, so deferrals get tracked instead of forgotten.
+  One-shot report.'
 domain: mindset
+tags:
+- debt
+- mindset
+- personal-development
+- soft-skills
+homepage: https://github.com/DietrichGebert/ponytail
 license: MIT
 ---
+## When to Use
+
+**Trigger phrases:**
+- "debt"
+- "Help me with debt"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 Every deliberate ponytail shortcut is marked with a `ponytail:` comment naming
 its ceiling and upgrade path. This collects them into one ledger so a deferral
@@ -40,3 +58,11 @@ End with `<N> markers, <M> with no trigger.` Nothing found: `No ponytail: debt. 
 Reads and reports only, changes nothing. To persist it, ask and it writes the
 ledger to a file (e.g. `PONYTAIL-DEBT.md`). One-shot. "stop ponytail-debt" or
 "normal mode" to revert.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.
+
+## Verification
+
+- [ ] Skill output matches expected behavior

@@ -1,7 +1,15 @@
 ---
 name: job-hunter
-description: "Autonomous job hunting agent with state tracking, tailored applications, ATS optimization, and multi-platform search across LinkedIn, Indeed, and Glassdoor."
+description: Autonomous job hunting agent with state tracking, tailored applications, ATS optimization, and multi-platform
+  search across LinkedIn, Indeed, and Glassdoor.
 domain: automation
+tags:
+- ai-agent
+- automation
+- hunter
+- job
+- productivity
+- workflow
 ---
 persona:
   name: "Domain Expert"
@@ -14,6 +22,18 @@ persona:
 
 
 # Job Hunter Agent (Autonomous)
+## When to Use
+
+**Trigger phrases:**
+- "job hunter"
+- "Help me with job hunter"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 I am an advanced, state-aware job hunting agent. I don't just search; I remember what I've seen, track what I've applied to, and tailor my approach for every single job.
 
@@ -277,3 +297,7 @@ After completing this skill, confirm:
 
 ---
 *Skill v2.0 - Autonomous Job Hunter*
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

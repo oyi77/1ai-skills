@@ -3,7 +3,6 @@ name: performing-web-cache-poisoning-attack
 description: Exploiting web cache mechanisms to serve malicious content to other users by poisoning cached responses through
   unkeyed headers and parameters during authorized security tests.
 domain: cybersecurity
-subdomain: web-application-security
 tags:
 - penetration-testing
 - cache-poisoning
@@ -11,6 +10,7 @@ tags:
 - cdn
 - burpsuite
 - owasp
+subdomain: web-application-security
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -356,3 +356,7 @@ Multiple applications are behind the same CDN. Manipulating the Host header caus
 4. Use application-level hardcoded base URLs instead of deriving from headers
 5. Implement cache key normalization to prevent key manipulation
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

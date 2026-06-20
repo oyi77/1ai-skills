@@ -6,7 +6,6 @@ description: 'Configuring Zscaler Private Access (ZPA) to replace traditional VP
 
   '
 domain: cybersecurity
-subdomain: zero-trust-architecture
 tags:
 - zscaler
 - zpa
@@ -15,6 +14,7 @@ tags:
 - app-connector
 - access-policy
 - sase
+subdomain: zero-trust-architecture
 version: '1.0'
 author: mahipal
 license: Apache-2.0
@@ -344,3 +344,7 @@ VPN MIGRATION:
   Users migrated to ZPA: 487 / 500
   VPN decommission date: 2026-03-15
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

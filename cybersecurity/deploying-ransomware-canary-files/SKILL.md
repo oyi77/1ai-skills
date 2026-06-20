@@ -1,14 +1,9 @@
 ---
 name: deploying-ransomware-canary-files
-description: 'Deploys and monitors ransomware canary files across critical directories using Python''s watchdog library for
+description: Deploys and monitors ransomware canary files across critical directories using Python's watchdog library for
   real-time filesystem event detection. Places strategically named decoy files that mimic high-value targets (financial records,
-  credentials, database exports) in locations ransomware typically enumerates first. Monitors for any read, modify, rename,
-  or delete operations on canary files and triggers immediate alerts via email, Slack webhook, or syslog when interaction
-  is detected, providing early warning before full encryption begins.
-
-  '
+  credentials, database exports) in locations ransomware typically enumerates first.
 domain: cybersecurity
-subdomain: ransomware-defense
 tags:
 - ransomware
 - canary-files
@@ -17,6 +12,7 @@ tags:
 - early-warning
 - deception
 - defense
+subdomain: ransomware-defense
 version: 1.0.0
 author: mahipal
 license: Apache-2.0
@@ -124,3 +120,7 @@ SHA-256 After: 7e91...2d3f
 Alert Channels: [email, slack, syslog]
 Action: Investigate immediately - potential ransomware activity
 ```
+
+## Overview
+
+> Section content — see SKILL.md body for full details.

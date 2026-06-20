@@ -1,11 +1,33 @@
 ---
 name: viral-content-creator
-description: "Generate 50+ video variations from a single product image across TikTok, Instagram, Facebook, Twitter, and YouTube with hook-based A/B testing, viral score prediction, and autopilot scheduling."
+description: Generate 50+ video variations from a single product image across TikTok, Instagram, Facebook, Twitter, and YouTube
+  with hook-based A/B testing, viral score prediction, and autopilot scheduling.
 domain: content
+tags:
+- content
+- content-creation
+- creator
+- digital-content
+- media
+- testing
+- video
+- viral
 ---
 
 
 # Viral Content Creator
+## When to Use
+
+**Trigger phrases:**
+- "viral content creator"
+- "Help me with viral content creator"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
 
 **Advanced Multi-Platform Content Generation & Automation System**
 
@@ -940,3 +962,7 @@ agent-reach xhs search "爆品 推荐" --limit 50
 ```
 
 Combine with `skill://social-intelligence` for full cross-platform sentiment before content creation.
+
+## Overview
+
+> Section content — see SKILL.md body for full details.
