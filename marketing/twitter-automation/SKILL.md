@@ -321,9 +321,30 @@ After completing this skill, confirm:
 - [ ] All required outputs generated
 - [ ] Success criteria met
 
+## Agent Reach Integration
+
+For real-time Twitter data gathering without API keys, use `skill://agent-reach`:
+
+```bash
+# Competitor sentiment research
+agent-reach twitter search "competitor name" --limit 100
+
+# Influencer discovery
+agent-reach twitter search "niche keyword" --min-followers 10000
+
+# Trend validation
+agent-reach twitter search "#trendingtopic" --since 24h
+
+# Thread analysis
+agent-reach twitter thread "https://x.com/user/status/123"
+```
+
+Use social-intelligence skill (`skill://social-intelligence`) for cross-platform sentiment analysis combining Twitter, Reddit, and YouTube data.
+
 ## Related Skills
 
 - [larry-playbook](../../content/larry-playbook/SKILL.md) - Viral TikTok content
 - [content-creator](../content-creator/SKILL.md) - Multi-platform content
+- [social-intelligence](../../research/social-intelligence/SKILL.md) - Cross-platform research
 - [marketing](../marketing/) - Broader marketing strategy
 - [sales](../sales/) - Convert engagement to revenue

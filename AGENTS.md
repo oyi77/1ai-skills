@@ -4,7 +4,7 @@
 # 1ai-skills
 
 ## Purpose
-Production-ready AI agent skill library. **1308 skills across 19 categories**, including 785 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
+Production-ready AI agent skill library. **1310 skills across 19 categories**, including 785 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
 
 Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `description`, `domain`, optional `persona`, `tags`). Agents load skills on demand via the `skill` tool.
 
@@ -21,17 +21,16 @@ Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `descri
 | `devops/` | 33 | Docker, Kubernetes, CI/CD (GH Actions, ArgoCD, GitLab), cloud ops, service mesh, GitOps |
 | `integrations/` | 32 | GitHub, Discord, Notion, Slack, Kalodata, OhMyOpenCode, MCP servers, team collaboration |
 | `automation/` | 28 | n8n, bots (WhatsApp/Telegram/Twitter), scrapers, publishing, Airflow pipelines, telegram-userbot |
-| `research/` | 22 | McKinsey-style analysis, deep research, Polymarket, Sherlock deduction, competitive intelligence |
+| `research/` | 23 | McKinsey analysis, deep research, Polymarket analyst, social intelligence, continuous learning, competitive intelligence, market research, trend analysis |
 | `trading/` | 20 | Crypto bot, Polymarket fast loop, weather trader, DeFi protocols, smart contracts, NFTs, portfolio mgr |
 | `operations/` | 19 | Governance, KYC, statement audit, GL reconciliation, team ops, project management, BI, HR, legal |
 | `financial/` | 15 | Wolf finance, value investing, tax-loss harvesting, model builder, commodities, DeFi, finance tracker |
 | `agents/` | 15 | Research, review, planning, code, deploy, refactor, lint, security, autonomous trading agents |
 | `meta/` | 13 | Self-improving meta-skills (auto-evolve, performance monitor, auto-learner), skill datastore |
-| `mcp/` | 13 | MCP server skills (GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase, codebase-memory for code intelligence) |
+| `mcp/` | 14 | MCP server skills (GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase, codebase-memory, agent-reach) |
 | `data/` | 10 | Data cleaning, anomaly detection, viz, reporting, data pipelines, DBT, lakeFS |
 | `productivity/` | 10 | Calendars, email, meetings, daily planner, Notion, Google Workspace |
-| **TOTAL** | **1308** | |
-
+| **TOTAL** | **1310** | |
 ## Tooling Dirs (no skills, support infrastructure)
 
 | Dir | Purpose |
