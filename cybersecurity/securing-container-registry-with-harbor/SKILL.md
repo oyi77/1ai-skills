@@ -267,3 +267,9 @@ curl -k "https://harbor.example.com/api/v2.0/audit-logs?page=1&page_size=10" \
 - [Harbor Documentation](https://goharbor.io/docs/)
 - [Harbor Security Best Practices](https://goharbor.io/docs/2.10.0/administration/vulnerability-scanning/)
 - [Harbor GitHub Repository](https://github.com/goharbor/harbor)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

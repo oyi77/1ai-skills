@@ -172,3 +172,9 @@ case 'invoice.payment_failed':
 - [ ] Fraud detection is in place
 - [ ] Payment failures are handled
 - [ ] Security best practices are followed
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

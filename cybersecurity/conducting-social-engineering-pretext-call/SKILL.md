@@ -220,3 +220,9 @@ This section covers phase 5: reporting for conducting social engineering pretext
 - Social Engineering Penetration Testing by Gavin Watson (Syngress)
 - The Art of Deception by Kevin Mitnick (Wiley)
 - NIST SP 800-50: Building an Information Technology Security Awareness and Training Program
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -446,3 +446,9 @@ After completing this skill, confirm:
 - [mckinsey-research](../mckinsey-research/SKILL.md) - Deep research
 - [self-improving](../../core/self-improving/SKILL.md) - Learning system
 - All 1ai-skills - Research targets
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

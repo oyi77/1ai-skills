@@ -87,3 +87,9 @@ After completing wallet implementation, confirm:
 - [ ] Multi-chain support tested on at least 2 EVM networks
 - [ ] Private keys never logged or stored in plaintext
 - [ ] Gas estimation returns reasonable values before transaction broadcast
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

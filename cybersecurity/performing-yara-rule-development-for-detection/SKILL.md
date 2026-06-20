@@ -372,3 +372,9 @@ def benchmark_rule(rule_text, scan_directory, iterations=3):
 - [Yara-Rules Community Repository](https://github.com/Yara-Rules/rules)
 - [ReversingLabs - Writing Detailed YARA Rules](https://www.reversinglabs.com/blog/writing-detailed-yara-rules-for-malware-detection)
 - [YARA Rule Crafting Deep Dive](https://cyberthreatintelligencenetwork.com/index.php/2024/09/11/yara-rule-crafting-a-deep-dive-into-signature-based-threat-hunting-strategies/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -297,3 +297,9 @@ scout aws --profile production
 - AWS Security Audit Checklist
 - CIS AWS Foundations Benchmark
 - AWS Well-Architected Security Pillar
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

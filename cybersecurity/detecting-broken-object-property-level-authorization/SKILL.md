@@ -433,3 +433,9 @@ def update_user(user_id, request_data, requesting_user):
 - Wallarm BOPLA Guide: https://lab.wallarm.com/api32023-broken-object-property-level-authorization/
 - API Security News BOPLA: https://apisecurity.io/owasp-api-security-top-10/api3-2023-broken-object-property-level-authorization/
 - CloudDefense BOPLA: https://www.clouddefense.ai/owasp/2023/3
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

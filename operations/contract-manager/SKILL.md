@@ -947,3 +947,9 @@ Step-by-step workflow for this skill.
 - [ ] Approval workflows are in place
 - [ ] Compliance is tracked
 - [ ] No placeholder content or TODOs remain
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

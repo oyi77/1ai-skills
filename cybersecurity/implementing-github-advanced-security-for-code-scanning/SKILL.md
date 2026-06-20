@@ -247,3 +247,9 @@ The organization-level security overview provides:
 - [CodeQL Query Repository](https://github.com/github/codeql)
 - [SARIF Specification](https://sarifweb.azurewebsites.net/)
 - [GitHub Security Overview](https://docs.github.com/en/code-security/security-overview/about-security-overview)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

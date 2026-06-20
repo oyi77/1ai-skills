@@ -227,3 +227,9 @@ The report should include:
 - PTES (Penetration Testing Execution Standard): http://www.pentest-standard.org/
 - TIBER-EU Framework for Red Teaming: https://www.ecb.europa.eu/paym/cyber-resilience/tiber-eu/
 - CBEST Intelligence-Led Testing: https://www.bankofengland.co.uk/financial-stability/financial-sector-continuity
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

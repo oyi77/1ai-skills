@@ -428,3 +428,9 @@ After completing this skill, confirm:
 - [seedance](../seedance/SKILL.md) - Video generation
 - [affiliate-marketing](../../marketing/affiliate-marketing/SKILL.md) - Monetization
 - [seo-auditor](../../marketing/seo-auditor/SKILL.md) - YouTube SEO
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

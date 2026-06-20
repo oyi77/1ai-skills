@@ -385,3 +385,9 @@ calculate_risk_score()
 - [From Zero to Process to XSOAR Playbook](https://live.paloaltonetworks.com/t5/community-blogs/from-zero-to-process-to-xsoar-playbook/ba-p/564568)
 - [XSOAR Common Playbooks Pack](https://www.paloaltonetworks.com/blog/security-operations/playbook-of-the-week-xsoar-common-playbook/)
 - [Cortex XSOAR Product Page](https://www.paloaltonetworks.com/cortex/cortex-xsoar)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

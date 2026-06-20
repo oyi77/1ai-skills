@@ -196,3 +196,9 @@ Verification covers position sizing accuracy, trade validation consistency, expo
 - [ ] Notion risk reports created on schedule
 - [ ] Trade validation database records updated
 - [ ] Risk reports include all required metrics for review
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

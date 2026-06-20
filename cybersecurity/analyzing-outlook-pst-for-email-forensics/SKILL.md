@@ -383,3 +383,9 @@ Summary:
   Encrypted attachments:       3 (67.2 MB total - possible exfiltration)
   Report: /analysis/email_report/pst_forensic_report.json
 ```
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

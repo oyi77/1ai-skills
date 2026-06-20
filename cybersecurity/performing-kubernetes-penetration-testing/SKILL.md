@@ -310,3 +310,9 @@ kubectl delete pod test-netpol test-egress test-metadata
 - [kube-bench - CIS Benchmark](https://github.com/aquasecurity/kube-bench)
 - [MITRE ATT&CK Containers Matrix](https://attack.mitre.org/matrices/enterprise/containers/)
 - [Kubernetes Threat Matrix - Microsoft](https://microsoft.github.io/Threat-Matrix-for-Kubernetes/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -164,3 +164,9 @@ This section covers core concepts for implementing pci dss compliance controls.
 - PCI SSC Quick Reference Guide
 - PCI DSS 4.0 Summary of Changes
 - UpGuard PCI DSS 4.0 Guide: https://www.upguard.com/blog/pci-compliance
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

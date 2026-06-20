@@ -571,3 +571,9 @@ Refer to the skill overview for detailed usage instructions.
 - oh-my-opencode-agents: Agent deep dive
 - oh-my-opencode-usage: Daily usage
 - oh-my-opencode-configuration: Advanced setup
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

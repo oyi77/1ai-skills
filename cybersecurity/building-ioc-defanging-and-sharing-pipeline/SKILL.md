@@ -406,3 +406,9 @@ distributor.push_to_misp(
 - [STIX 2.1 Indicator Specification](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html)
 - [Grokipedia: Defanging](https://grokipedia.com/page/defanging)
 - [Hunt.io: Best IOC Feeds](https://hunt.io/glossary/best-ioc-feeds)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -291,3 +291,9 @@ echo "Last Audit: $(ls -t reports/ 2>/dev/null | head -1 || echo 'Never')"
 echo "Target Sites: $(cat config.json | jq '.targets | length')"
 echo "Keyword Trackers: $(cat config.json | jq '.targets[0].keywords | length')"
 ```
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

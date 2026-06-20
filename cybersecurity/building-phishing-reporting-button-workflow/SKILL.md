@@ -128,3 +128,9 @@ A phishing reporting button empowers users to flag suspicious emails directly fr
 - Auto-retraction removes confirmed phishing from all inboxes
 - Reporter receives feedback notification with classification
 - Metrics dashboard shows report volume and accuracy trends
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

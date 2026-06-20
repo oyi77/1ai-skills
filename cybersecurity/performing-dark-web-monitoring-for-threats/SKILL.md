@@ -299,3 +299,9 @@ def generate_dark_web_report(findings, organization):
 - [DarkOwl](https://www.darkowl.com/)
 - [Intel 471](https://intel471.com/)
 - [Flare Systems](https://flare.io/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

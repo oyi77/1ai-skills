@@ -173,3 +173,9 @@ docker run --rm docker/docker-bench-security 2>&1 | grep -c "WARN"
 - [Docker Bench Security](https://github.com/docker/docker-bench-security)
 - [CIS Docker Benchmark](https://www.cisecurity.org/benchmark/docker)
 - [Docker Security Best Practices](https://docs.docker.com/engine/security/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

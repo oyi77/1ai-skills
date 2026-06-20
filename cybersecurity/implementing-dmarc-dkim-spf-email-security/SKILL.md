@@ -157,3 +157,9 @@ Use the `scripts/process.py` to parse DMARC aggregate XML reports and identify a
 - DKIM signature verified on test emails
 - DMARC record properly formatted and reporting enabled
 - Test emails pass all three checks in recipient's Authentication-Results header
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

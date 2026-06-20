@@ -221,3 +221,9 @@ recon-output/
 - Attack surface inventory complete with priority ranking
 - Missing tools logged with fallback results documented
 - Recon summary includes total counts per category and coverage gaps
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

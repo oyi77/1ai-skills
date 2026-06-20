@@ -140,3 +140,9 @@ Recommended attachment policy:
 - URL Defense rewrites and blocks known phishing URLs
 - TAP Dashboard displays threat summary
 - SIEM receives and alerts on TAP events
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

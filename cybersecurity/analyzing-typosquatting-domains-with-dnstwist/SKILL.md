@@ -355,3 +355,9 @@ generate_takedown_report(analysis["high"])
 - [Darktrace: Monitoring Typosquatting Domains](https://www.darktrace.com/blog/vigilance-in-action-monitoring-typosquatting-domains)
 - [Security Risk Advisors: Domain Monitoring](https://sra.io/blog/domain-monitoring-fast-and-cheap/)
 - [Conscia: How to Detect Typosquatting](https://conscia.com/blog/diving-deep-how-to-detect-typosquatting/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

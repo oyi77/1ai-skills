@@ -346,3 +346,9 @@ curl -k -X POST "https://nessus:8834/scans/$VERIFY_SCAN_ID/launch" \
 - Output documented with screenshots or logs demonstrating expected behavior
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

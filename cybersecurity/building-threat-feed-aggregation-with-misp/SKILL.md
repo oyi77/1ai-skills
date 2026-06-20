@@ -374,3 +374,9 @@ exporter.export_ioc_list("blocklist_ips.txt", ioc_types=["ip-dst"], days=7)
 - [PyMISP Documentation](https://pymisp.readthedocs.io/)
 - [Kraven Security: MISP Using Feeds](https://kravensecurity.com/threat-intelligence-with-misp-part-4-using-feeds/)
 - [Cosive: What is MISP](https://www.cosive.com/blog/what-is-misp-the-ultimate-introduction)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -88,3 +88,9 @@ After completing DeFi protocol implementation, confirm:
 - [ ] Slippage protection enforced (minAmountOut check)
 - [ ] Oracle integration uses TWAP, not spot price
 - [ ] ReentrancyGuard applied to all state-changing external calls
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

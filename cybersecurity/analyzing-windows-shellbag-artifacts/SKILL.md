@@ -254,3 +254,9 @@ Summary:
   Deleted folder evidence:        3 paths (anti-forensics indicator)
   CSV exported to:                /analysis/shellbag_output/
 ```
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

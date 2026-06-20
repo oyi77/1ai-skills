@@ -153,3 +153,9 @@ curl -s "https://api.hackerone.com/v1/hackers/programs?page[size]=100" | jq '.da
 ## Overview
 
 > Section content — see SKILL.md body for full details.
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

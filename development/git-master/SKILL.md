@@ -95,3 +95,9 @@ After completing Git operations, verify:
 - **Team members aware**: If history was rewritten on shared branches, confirm team members are aware and have updated their local copies
 - **No merge conflicts remaining**: Verify all conflicts were resolved correctly
 - **Branch is up to date**: Pull or rebase with the target branch if needed
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

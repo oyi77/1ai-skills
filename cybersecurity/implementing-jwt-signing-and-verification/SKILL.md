@@ -114,3 +114,9 @@ This section covers key concepts for implementing jwt signing and verification.
 - Vulnerabilities reproduced with proof-of-concept and impact analysis
 - False positives filtered out through manual verification
 - Fix recommendations include code-level remediation guidance
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

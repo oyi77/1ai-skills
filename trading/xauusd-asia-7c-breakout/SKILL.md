@@ -153,3 +153,9 @@ Verification covers signal accuracy, backtest validity, live execution guardrail
 - [ ] Position sizes calculated correctly based on risk parameters
 - [ ] SL levels placed at 1R from entry (R = last candle range)
 - [ ] TP levels placed at 2R from entry for 2:1 reward:risk
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

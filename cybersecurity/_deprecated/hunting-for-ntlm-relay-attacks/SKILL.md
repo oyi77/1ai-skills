@@ -79,3 +79,9 @@ NTLM relay attacks intercept and forward NTLM authentication messages to gain un
 ## Output
 
 JSON report with suspected relay events, IP-hostname correlation anomalies, SMB signing audit results, and MITRE ATT&CK mapping to T1557.001.
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

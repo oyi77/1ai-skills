@@ -112,3 +112,9 @@ def run_experiment(setup_fn, verify_fn, rollback_fn, timeout=300):
 ## Overview
 
 > Section content — see SKILL.md body for full details.
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

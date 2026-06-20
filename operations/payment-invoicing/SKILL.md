@@ -695,3 +695,9 @@ After completing this skill, confirm:
 **Payment Gateways**: TriPay, LYNK.ID, Midtrans  
 **Region**: Indonesia  
 **Key Feature**: Multi-gateway support with automated invoicing
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

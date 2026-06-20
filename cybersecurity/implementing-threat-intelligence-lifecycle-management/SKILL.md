@@ -418,3 +418,9 @@ disseminator = IntelligenceDisseminator()
 - [MISP Project](https://www.misp-project.org/)
 - [STIX/TAXII Documentation](https://oasis-open.github.io/cti-documentation/)
 - [CISA Known Exploited Vulnerabilities](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

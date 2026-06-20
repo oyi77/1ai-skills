@@ -202,3 +202,9 @@ Verification covers strategy design clarity, backtest accuracy, optimization rob
 - [ ] Backtest results documented with full metrics
 - [ ] Risk controls clearly specified
 - [ ] Documentation reviewed and approved by trading team
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -248,3 +248,9 @@ print('All SSVC decision tests passed')
 - [CISA SSVC Guide PDF](https://www.cisa.gov/sites/default/files/publications/cisa-ssvc-guide%20508c.pdf)
 - [FIRST EPSS API](https://www.first.org/epss/)
 - [CISA Known Exploited Vulnerabilities](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

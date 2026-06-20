@@ -503,3 +503,9 @@ After completing this skill, confirm:
 - [google-flow](../../productivity/google-flow/SKILL.md) - Google AI video platform
 - [larry-playbook](../larry-playbook/SKILL.md) - Viral content research and strategy
 - [tiktok-automation](../../marketing/tiktok-automation/SKILL.md) - Automated posting to TikTok
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

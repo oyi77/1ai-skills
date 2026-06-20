@@ -174,3 +174,9 @@ class IOCLifecycle:
 - [MISP Indicator Lifecycle](https://www.misp-project.org/)
 - [STIX Indicator Valid From/Until](https://docs.oasis-open.org/cti/stix/v2.1/stix-v2.1.html)
 - [IOC Quality Framework](https://www.first.org/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -211,3 +211,9 @@ EvilGinx3 is a man-in-the-middle attack framework used for phishing login creden
 - [ ] Session hijack demonstrated in browser with stolen cookies
 - [ ] Post-authentication access to target service confirmed
 - [ ] Evidence documented with screenshots and session logs
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

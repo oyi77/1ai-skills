@@ -265,3 +265,9 @@ docker ps -q | xargs docker inspect --format '{{.Id}}: User={{.Config.User}}'
 - [Docker Security Best Practices](https://docs.docker.com/engine/security/)
 - [Docker Bench Security Tool](https://github.com/docker/docker-bench-security)
 - [Hadolint - Dockerfile Linter](https://github.com/hadolint/hadolint)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -89,3 +89,9 @@ After completing NFT marketplace implementation, confirm:
 - [ ] EIP-2981 royaltyInfo returns correct recipient and amount
 - [ ] IPFS CID used for metadata (not HTTP URLs)
 - [ ] Escrow pattern handles buyer/seller disputes with timeout
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

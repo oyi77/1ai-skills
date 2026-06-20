@@ -195,3 +195,9 @@ The 2022 revision restructured 93 controls into four categories:
 - ISO/IEC 27005:2022 Information Security Risk Management
 - ISMS.online ISO 27001 Annex A Guide: https://www.isms.online/iso-27001/annex-a-2022/
 - IT Governance ISO 27001 Controls Guide: https://www.itgovernance.co.uk/blog/iso-27001-the-14-control-sets-of-annex-a-explained
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

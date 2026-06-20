@@ -32,6 +32,19 @@ persona:
 > [![Tip Me](https://www.tip.md/badge.svg)](https://www.tip.md/oyi77) — If this skill saves you time, tip: **https://www.tip.md/oyi77**
 # Polymarket FastLoop Trader
 
+## When to Use
+
+**Trigger phrases:**
+- "polymarket fast loop"
+- "Help me with polymarket fast loop"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
+
 Trade Polymarket's 5-minute crypto fast markets using real-time price signals. Default: BTC momentum from Binance. Works with ETH and SOL too.
 
 > **Polymarket only.** All trades execute on Polymarket with real USDC. Use `--live` for real trades, dry-run is the default.
@@ -320,3 +333,9 @@ Load `references/trading-checklist.md` for complete trading checklists (strategy
 ## Overview
 
 > Section content — see SKILL.md body for full details.
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -15,6 +15,19 @@ tags:
 
 # Viral Research Engine
 
+## When to Use
+
+**Trigger phrases:**
+- "viral research engine"
+- "Help me with viral research engine"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
+
 **Version:** 1.0.0  
 **Target Market:** Indonesia (TikTok, Instagram Reels, YouTube Shorts)  
 **Purpose:** Stop guessing. Know exactly what content to make, what hooks to use, and what niches are underserved.
@@ -354,3 +367,9 @@ print(f"Hashtags: {' '.join(hashtags)}")
 ## Overview
 
 > Section content — see SKILL.md body for full details.
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

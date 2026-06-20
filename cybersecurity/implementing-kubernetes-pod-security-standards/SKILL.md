@@ -296,3 +296,9 @@ kubescape scan framework nsa --namespace production
 - [Pod Security Admission - Kubernetes](https://kubernetes.io/docs/concepts/security/pod-security-admission/)
 - [Migrate from PodSecurityPolicy](https://kubernetes.io/docs/tasks/configure-pod-container/migrate-from-psp/)
 - [Kubescape PSS Scanner](https://github.com/kubescape/kubescape)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

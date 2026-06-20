@@ -277,3 +277,9 @@ Phase 4: GOVERNANCE (Ongoing)
 - [CyberArk ZSP Implementation with AWS](https://aws.amazon.com/blogs/apn/how-to-implement-zero-standing-privileges-with-cyberark-for-securing-access-to-the-aws-console/)
 - [CyberArk Blueprint - Zero Standing Privilege](https://docs.cyberark.com/cyberark-blueprint/latest/en/content/zero-standing-privilege.htm)
 - [CyberArk Secure Cloud Access Documentation](https://docs.cyberark.com/ispss-access/latest/en/content/getstarted/acc-frst-page.htm)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

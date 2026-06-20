@@ -130,3 +130,9 @@ Google Workspace provides advanced phishing and malware protection through the A
 - Enhanced Safe Browsing blocks known phishing URL clicked in email
 - APP-enrolled accounts reject non-FIDO2 authentication attempts
 - SPF, DKIM, DMARC all pass for outbound messages
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -315,3 +315,9 @@ echo "Selectors Learned: $(jq 'keys' selectors.json | wc -l)"
 echo "Last Upload: $(jq -r '.lastUsed' selectors.json 2>/dev/null || echo 'Never')"
 echo "Config Valid: $(jq . config.json > /dev/null 2>&1 && echo '✓' || echo '✗')"
 ```
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

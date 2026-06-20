@@ -291,3 +291,9 @@ if __name__ == "__main__":
 - PCAP Analysis Mastery: https://insanecyber.com/mastering-pcap-review/
 - SANS Network Forensics: https://www.sans.org/cyber-security-courses/network-forensics/
 - Public PCAPs for Practice: https://www.netresec.com/?page=PcapFiles
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

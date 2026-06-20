@@ -800,3 +800,9 @@ Recommended Actions:
   - Short-term: [Enable SMB/LDAP signing, disable LLMNR/NBT-NS]
   - Long-term: [Migrate to Kerberos, enforce EPA, restrict NTLM via GPO]
 ```
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -947,3 +947,9 @@ After completing this skill, confirm:
 **Last Updated**: 2026-02-16  
 **Tested**: ✅ Video generation successful (20 credits, 60s generation time)  
 **Model**: Veo 3.1 - Fast
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

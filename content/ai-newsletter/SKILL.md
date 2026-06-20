@@ -324,3 +324,9 @@ After completing this skill, confirm:
 - [ai-research-agent](../../research/ai-research-agent/SKILL.md) - Topic discovery
 - [email-automation](../../productivity/email-automation/SKILL.md) - Sending emails
 - [content-creator](../../marketing/content-creator/SKILL.md) - Content creation
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

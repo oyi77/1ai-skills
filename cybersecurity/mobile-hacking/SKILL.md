@@ -220,3 +220,9 @@ Before claiming a mobile security assessment is complete:
 - Medusa Framework: https://github.com/Ch0pin/medusa/
 - Magisk Releases: https://github.com/topjohnwu/Magisk/releases
 - scrcpy (device mirroring): https://github.com/Genymobile/scrcpy
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

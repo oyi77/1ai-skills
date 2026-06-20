@@ -191,3 +191,9 @@ function apiKeyAuth(req, res, next) {
 - [ ] Rate limiting is in place
 - [ ] Input is validated properly
 - [ ] OWASP guidelines are followed
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

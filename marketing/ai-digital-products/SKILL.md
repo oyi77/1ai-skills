@@ -369,3 +369,9 @@ After completing this skill, confirm:
 - [writing-skills](../../content/writing-skills/SKILL.md) - Create content
 - [automation](../automation/) - Build workflows
 - [marketing](../marketing/) - Promote products
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

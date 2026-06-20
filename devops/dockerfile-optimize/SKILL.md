@@ -93,3 +93,9 @@ Dockerfile optimization — multi-stage builds, layer caching, security hardenin
 - Build cache hit rate exceeds 80% when only application source code changes
 - Container runs as a non-root user confirmed by `docker exec whoami`
 - All required health check endpoints respond correctly from within the built container
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

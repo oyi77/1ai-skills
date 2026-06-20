@@ -90,3 +90,9 @@ PowerShell Empire is a post-exploitation framework consisting of listeners, stag
 ## Output
 
 JSON report with matched IOCs, decoded Base64 payloads, timeline of suspicious events, MITRE ATT&CK technique mappings, and severity scores.
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

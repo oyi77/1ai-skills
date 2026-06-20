@@ -47,7 +47,7 @@ SKILL_DIRS = [
 # ── Thresholds ──────────────────────────────────────────────────────────
 MIN_DESC_LENGTH = 30          # characters
 MAX_DESC_LENGTH = 500         # characters
-SIMILARITY_THRESHOLD = 0.85   # for near-duplicate detection
+SIMILARITY_THRESHOLD = 0.96   # for near-duplicate detection
 REQUIRED_SECTIONS = {"## When to Use"}
 RECOMMENDED_SECTIONS = {"## Overview", "## Process", "## Verification"}
 

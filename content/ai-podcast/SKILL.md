@@ -309,3 +309,9 @@ After completing this skill, confirm:
 - [ai-research-agent](../../research/ai-research-agent/SKILL.md) - Topic discovery
 - [writing-skills](../writing-skills/SKILL.md) - Script writing
 - [faceless-youtube](../faceless-youtube/SKILL.md) - Video repurposing
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

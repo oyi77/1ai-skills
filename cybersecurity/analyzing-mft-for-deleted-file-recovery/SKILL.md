@@ -293,3 +293,9 @@ Recovered files exported to: /analysis/mft_output/recovered/
 Full CSV report: /analysis/mft_output/mft_analysis.csv (395,264 rows)
 Timeline CSV: /analysis/mft_output/mft_timeline.csv
 ```
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

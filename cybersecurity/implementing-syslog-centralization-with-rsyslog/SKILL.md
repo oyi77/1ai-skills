@@ -102,3 +102,9 @@ action(type="omfwd" target="10.0.0.1" port="6514" protocol="tcp"
 ## Overview
 
 > Section content — see SKILL.md body for full details.
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

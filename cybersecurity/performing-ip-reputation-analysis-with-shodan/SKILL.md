@@ -333,3 +333,9 @@ def correlate_infrastructure(enricher, ip_address):
 - [Query.ai: Leveraging Shodan for Security Research](https://www.query.ai/resources/blogs/leveraging-shodan-for-security-research/)
 - [Torq: Shodan IP Enrichment Workflow](https://kb.torq.io/en/articles/9350284-shodan-ip-address-enrichment-with-cache-workflow-template)
 - [Recorded Future: Shodan Integration](https://support.recordedfuture.com/hc/en-us/articles/115001403928-Shodan)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

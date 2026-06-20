@@ -352,3 +352,9 @@ Attack Path 1: Domain Compromise via LLMNR Poisoning
 - PTES: http://www.pentest-standard.org/
 - Impacket: https://github.com/fortra/impacket
 - BloodHound: https://github.com/BloodHoundAD/BloodHound
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

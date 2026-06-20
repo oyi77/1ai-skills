@@ -414,3 +414,9 @@ print(f"Zero-day attacks prevented: {report['zero_day_blocked']}")
 ## Overview
 
 > Section content — see SKILL.md body for full details.
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -80,3 +80,9 @@ Implement Microsoft's Enhanced Security Admin Environment (ESAE) tiered administ
 - Treating compliance checklists as security guarantees rather than minimum baselines
 - Failing to document exceptions and risk acceptance decisions
 - Relying on point-in-time audits instead of continuous monitoring
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

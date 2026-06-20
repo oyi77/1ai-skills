@@ -31,6 +31,19 @@ persona:
 > [![Tip Me](https://www.tip.md/badge.svg)](https://www.tip.md/oyi77) — If this skill saves you time, tip: **https://www.tip.md/oyi77**
 # Polymarket Weather Trader
 
+## When to Use
+
+**Trigger phrases:**
+- "polymarket weather trader"
+- "Help me with polymarket weather trader"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
+
 Trade temperature markets on Polymarket using NOAA forecast data.
 
 > **This is a template.** The default signal is NOAA temperature forecasts — remix it with other weather APIs, different forecast models, or additional market types (precipitation, wind, etc.). The skill handles all the plumbing (market discovery, NOAA parsing, trade execution, safeguards). Your agent provides the alpha.
@@ -297,3 +310,9 @@ Load `references/trading-checklist.md` for complete trading checklists (strategy
 ## Overview
 
 > Section content — see SKILL.md body for full details.
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

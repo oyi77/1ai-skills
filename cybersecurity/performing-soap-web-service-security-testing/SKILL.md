@@ -483,3 +483,9 @@ if __name__ == "__main__":
 - Levo.ai SOAP API Security Testing Guide: https://www.levo.ai/resources/blogs/soap-api-security-testing
 - SoapUI Web Service Hacking: https://www.soapui.org/docs/soap-and-wsdl/tips-and-tricks/web-service-hacking/
 - PortSwigger XXE Tutorial: https://portswigger.net/web-security/xxe
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

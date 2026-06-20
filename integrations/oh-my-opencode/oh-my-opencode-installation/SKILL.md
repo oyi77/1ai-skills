@@ -582,3 +582,9 @@ npm view oh-my-opencode version && echo "✓ npm package verified"
 - oh-my-opencode-agents: Agent usage guide
 - oh-my-opencode-usage: Daily usage patterns
 - oh-my-opencode-configuration: Advanced configuration
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

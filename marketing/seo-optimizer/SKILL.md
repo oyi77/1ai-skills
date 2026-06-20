@@ -544,3 +544,9 @@ After completing an SEO optimization task, confirm:
 ---
 
 **Related Skills**: `marketing/content-creator`, `marketing/analytics-dashboard`, `marketing/market-research`, `marketing/marketing-ops`
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

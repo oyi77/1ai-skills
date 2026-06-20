@@ -295,3 +295,9 @@ echo "Exit code: $?"  # 0 = no vulns, 1 = vulns found
 - [Trivy GitHub Repository](https://github.com/aquasecurity/trivy)
 - [Trivy GitHub Action](https://github.com/aquasecurity/trivy-action)
 - [Aqua Security - Trivy Scanner Guide](https://www.aquasec.com/products/trivy/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

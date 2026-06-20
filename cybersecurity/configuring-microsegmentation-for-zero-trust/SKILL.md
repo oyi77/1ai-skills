@@ -208,3 +208,9 @@ Isolate critical applications (PCI cardholder data environment, SWIFT financial 
 - Illumio Core Administration Guide
 - VMware NSX Distributed Firewall Configuration Guide
 - Forrester Zero Trust eXtended (ZTX) Framework
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

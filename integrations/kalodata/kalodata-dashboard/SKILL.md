@@ -200,3 +200,9 @@ CLI dashboards enable:
 - Shareable markdown reports for stakeholders
 - Interactive exploration of large product datasets
 - Integration into automated workflows
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -131,3 +131,9 @@ Use `scripts/process.py` to analyze training completion, simulation results, and
 - Measurable reduction in phishing click rate over 6 months
 - Increase in user phishing report rate
 - Department-level improvement tracking
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

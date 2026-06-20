@@ -332,3 +332,9 @@ in-toto attestations map directly to SLSA (Supply chain Levels for Software Arti
 - [CNCF in-toto Graduation Announcement](https://www.cncf.io/announcements/2025/04/23/cncf-announces-graduation-of-in-toto-security-framework-enhancing-software-supply-chain-integrity-across-industries/)
 - [SLSA Framework](https://slsa.dev/)
 - [Sigstore Integration](https://www.sigstore.dev/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

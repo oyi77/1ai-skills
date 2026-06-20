@@ -376,3 +376,9 @@ echo "Model count: $(models list | wc -l)"
 echo "Config valid: $(cat config.json | jq '.modelRouter.tiers' > /dev/null && echo '✓' || echo '✗')"
 echo "Max concurrent: $(cat config.json | jq '.modelRouter.maxConcurrent' || echo '4 (default)')"
 ```
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

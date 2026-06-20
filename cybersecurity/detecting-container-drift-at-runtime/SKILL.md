@@ -283,3 +283,9 @@ For Azure Kubernetes environments, Microsoft Defender provides built-in binary d
 - [Microsoft Defender for Containers Drift Detection](https://techcommunity.microsoft.com/blog/microsoftdefendercloudblog/detect-container-drift-with-microsoft-defender-for-containers/4232044)
 - [Ensure Immutability of Containers at Runtime](https://notes.kodekloud.com/docs/Certified-Kubernetes-Security-Specialist-CKS/Monitoring-Logging-and-Runtime-Security/Ensure-Immutability-of-Containers-at-Runtime/)
 - [Falco Runtime Security](https://falco.org/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

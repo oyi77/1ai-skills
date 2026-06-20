@@ -361,3 +361,9 @@ After completing this skill, confirm:
 - [runtime-self-improvement](../../core/runtime-self-improvement/SKILL.md) - Apply improvements
 - [skill-performance-monitor](../../core/skill-performance-monitor/SKILL.md) - Track effectiveness
 - [self-improving](../../core/self-improving/SKILL.md) - Basic self-improvement
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

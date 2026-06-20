@@ -316,3 +316,9 @@ for gname, techs in group_techniques.items():
 - [attackcti Python Library](https://github.com/OTRF/ATTACK-Python-Client)
 - [ATT&CK STIX Data](https://github.com/mitre/cti)
 - [ATT&CK Groups](https://attack.mitre.org/groups/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

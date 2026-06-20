@@ -205,3 +205,9 @@ Generate review reports including:
 - [CIS Controls v8 - Control 5: Account Management](https://www.cisecurity.org/controls/account-management)
 - [Netwrix PAM Best Practices Guide](https://netwrix.com/en/resources/guides/privileged-account-management-best-practices/)
 - [StrongDM PAM Best Practices 2025](https://www.strongdm.com/blog/privileged-access-management-best-practices)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

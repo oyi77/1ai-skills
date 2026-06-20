@@ -601,3 +601,9 @@ Use built-in MCPs for web search, documentation, and code search.
 - oh-my-opencode-agents: Agent deep dive
 - oh-my-opencode-installation: Setup guide
 - oh-my-opencode-configuration: Advanced setup
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

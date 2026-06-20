@@ -354,3 +354,9 @@ Use social-intelligence skill (`skill://social-intelligence`) for cross-platform
 - [social-intelligence](../../research/social-intelligence/SKILL.md) - Cross-platform research
 - [marketing](../marketing/) - Broader marketing strategy
 - [sales](../sales/) - Convert engagement to revenue
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

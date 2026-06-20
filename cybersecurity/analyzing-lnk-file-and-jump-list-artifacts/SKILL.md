@@ -331,3 +331,9 @@ Summary:
   Suspicious artifacts:          3 (hidden window execution, USB drive access, network shares)
   CSV exported to:               /analysis/lnk_output/ and /analysis/jumplist_output/
 ```
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

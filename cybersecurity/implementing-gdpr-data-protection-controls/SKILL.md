@@ -224,3 +224,9 @@ The regulation requires organizations to implement measures appropriate to the r
 - ICO (UK) GDPR Guidance: https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/
 - CNIL (France) GDPR Compliance Toolkit
 - Article 29 Working Party Guidelines on DPIAs
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

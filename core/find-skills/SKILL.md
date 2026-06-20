@@ -560,3 +560,9 @@ After completing this skill, confirm:
 **Last Updated**: 2026-02-17  
 **Purpose**: Make OpenClaw complete and self-sufficient  
 **Key Feature**: Intelligent skill discovery with credibility scoring
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

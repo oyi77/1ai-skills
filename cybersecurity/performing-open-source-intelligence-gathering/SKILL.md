@@ -170,3 +170,9 @@ This section covers core concepts for performing open source intelligence gather
 - [ ] Credential leak assessment completed
 - [ ] Attack surface map documented
 - [ ] OSINT report compiled for engagement team
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

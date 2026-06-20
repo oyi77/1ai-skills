@@ -404,3 +404,9 @@ After completing this skill, confirm:
 - [larry-playbook](../../content/larry-playbook/SKILL.md) - Viral content creation
 - [marketing](../marketing/) - Broader marketing strategy
 - [sales](../sales/) - Convert engagement to revenue
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

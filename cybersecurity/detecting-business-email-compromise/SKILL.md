@@ -143,3 +143,9 @@ This section covers key concepts for detecting business email compromise.
 - Financial controls prevent unauthorized transfers in drills
 - Account compromise detection catches simulated attacks
 - Reduced BEC susceptibility in awareness assessments
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -80,3 +80,9 @@ Configure Microsoft Entra ID (Azure AD) Conditional Access policies for zero tru
 - Modifying cloud IAM policies or security groups without approval
 - Exposing cloud credentials or secrets in logs or reports
 - Running scans that generate excessive API calls and trigger billing alerts
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality
