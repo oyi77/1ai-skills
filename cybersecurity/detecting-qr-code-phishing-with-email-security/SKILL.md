@@ -155,3 +155,9 @@ This section covers key concepts for detecting qr code phishing with email secur
 - Mobile devices alert on malicious QR destinations
 - User reporting rate for quishing simulations exceeds 50%
 - False positive rate for QR detection below 1%
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

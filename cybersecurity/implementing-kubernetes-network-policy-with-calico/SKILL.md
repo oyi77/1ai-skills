@@ -363,3 +363,9 @@ kubectl exec -n production frontend-pod -- wget -qO- --timeout=2 http://backend-
 - Captures verified as complete with no dropped packets
 - Detection rules tested against known-benign traffic for false positive rate
 - Alert thresholds validated and tuned to reduce noise
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

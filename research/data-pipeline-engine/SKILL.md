@@ -277,3 +277,9 @@ crontab -e
 - [ ] Error handling is in place
 - [ ] Pipeline logic is documented
 - [ ] Data privacy is maintained
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

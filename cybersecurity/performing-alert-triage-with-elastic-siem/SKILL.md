@@ -289,3 +289,9 @@ Elastic's Attack Discovery automatically:
 - [SOC Analyst's Guide to Triage with Elastic](https://systemweakness.com/from-alert-to-action-a-soc-analysts-guide-to-triage-with-elastic-%EF%B8%8F-4e5354ab5da9)
 - [Elastic Blog - AI and 2025 SIEM Landscape](https://www.elastic.co/blog/ai-siem-landscape)
 - [Reducing False Positives with Elastic and Tines](https://www.elastic.co/blog/false-positives-automated-siem-investigations-elastic-tines)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -97,3 +97,9 @@ az functionapp create -g MyRG -p MyPlan -n MyFunc --runtime node
 ## Verification
 
 - [ ] Skill output matches expected behavior
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

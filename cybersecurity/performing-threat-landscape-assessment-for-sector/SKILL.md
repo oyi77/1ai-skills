@@ -334,3 +334,9 @@ generate_sector_report(assessment)
 - [FS-ISAC Financial Sector](https://www.fsisac.com/)
 - [H-ISAC Healthcare Sector](https://h-isac.org/)
 - [CyCognito: Threat Intelligence Lifecycle](https://www.cycognito.com/learn/threat-intelligence/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

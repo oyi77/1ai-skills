@@ -372,3 +372,9 @@ kubectl logs -n falco -l app.kubernetes.io/name=falco --tail=50 | grep -i escape
 - Cloud resource changes reverted or documented as intentional
 - IAM policies reviewed for least-privilege compliance after testing
 - No residual test resources left running (cost and security check)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

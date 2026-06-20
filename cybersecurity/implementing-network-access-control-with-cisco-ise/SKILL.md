@@ -375,3 +375,9 @@ test aaa server radius ISE-PRIMARY username testuser password testpass
 - [Cisco 802.1X Design Guide](https://www.cisco.com/c/en/us/support/docs/lan-switching/8021x/214843-guide-ieee-802-1x-deployment-with-cisco.html)
 - [CiscoLive ISE Deployment Guide 2025](https://www.ciscolive.com/c/dam/r/ciscolive/emea/docs/2025/pdf/BRKSEC-2660.pdf)
 - [Cisco ISE Wired 802.1X Configuration](https://www.networkcomputing.com/network-security/cisco-ise-wired-802-1x-configuration)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

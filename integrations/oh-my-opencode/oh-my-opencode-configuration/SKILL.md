@@ -914,3 +914,9 @@ opencode logs --mcp
 - oh-my-opencode-agents: Agent usage
 - oh-my-opencode-usage: Daily usage
 - oh-my-opencode-features: Complete features list
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

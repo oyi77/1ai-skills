@@ -214,3 +214,9 @@ curl -X POST "https://hooks.zapier.com/hooks/catch/123456/abcdef/" \
 - [ ] Logging and monitoring are configured
 - [ ] Zap logic is documented
 - [ ] Rate limits are respected
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

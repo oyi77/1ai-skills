@@ -286,3 +286,9 @@ Code Execution as SYSTEM
 - SharpHound: https://github.com/BloodHoundAD/SharpHound
 - MITRE ATT&CK S0521: https://attack.mitre.org/software/S0521/
 - SpecterOps BloodHound Documentation: https://bloodhound.readthedocs.io/
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

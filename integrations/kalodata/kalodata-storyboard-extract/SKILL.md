@@ -368,3 +368,9 @@ KALODATA_CF_CFLEARANCE=your_cf_clearance_token
 - [Kalodata Product Research](./kalodata-product-research.md) - Product intelligence
 - [Kalodata Video Analysis](./kalodata-video-analysis.md) - Video metrics
 - [Kalodata API Client](../src/kalodata/client.ts) - Core client
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

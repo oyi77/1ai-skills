@@ -393,3 +393,9 @@ def monthly_close(year, month):
 - [ ] Audit trails are in place
 - [ ] Financial data is backed up
 - [ ] Financial regulations are followed
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

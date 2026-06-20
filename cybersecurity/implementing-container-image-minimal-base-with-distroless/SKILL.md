@@ -242,3 +242,9 @@ trivy image myapp:distroless
 - [Distroless Images - Docker Documentation](https://docs.docker.com/dhi/core-concepts/distroless/)
 - [Alpine, Distroless, or Scratch? - Google Cloud](https://medium.com/google-cloud/alpine-distroless-or-scratch-caac35250e0b)
 - [Docker Hardened Images](https://www.infoq.com/news/2025/12/docker-hardened-images/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

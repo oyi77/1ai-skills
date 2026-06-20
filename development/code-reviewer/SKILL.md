@@ -285,3 +285,9 @@ After completing a code review, confirm:
 - [frontend-design](../../content/frontend-design/SKILL.md) - Design skills
 - [testing](../testing/) - Test coverage
 - [skill-performance-monitor](../../core/skill-performance-monitor/SKILL.md) - Track improvements
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

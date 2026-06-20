@@ -455,3 +455,9 @@ GRAPHQL_CONFIG = {
 - GraphQL.org Security: https://graphql.org/learn/security/
 - Escape.tech Cyclic Queries: https://escape.tech/blog/cyclic-queries-and-depth-limit/
 - PortSwigger GraphQL Vulnerabilities: https://portswigger.net/web-security/graphql
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

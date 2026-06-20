@@ -330,3 +330,9 @@ Domain                   | Name              | Expires            | Secure | Htt
 
 Report saved to: /analysis/hindsight_output/Hindsight_Report.xlsx
 ```
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

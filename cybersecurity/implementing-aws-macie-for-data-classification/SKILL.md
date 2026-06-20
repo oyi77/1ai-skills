@@ -385,3 +385,9 @@ aws macie2 list-classification-jobs \
 - AWS Macie Pricing
 - Supported File Types for Macie Analysis
 - GDPR and CCPA Compliance with Macie
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

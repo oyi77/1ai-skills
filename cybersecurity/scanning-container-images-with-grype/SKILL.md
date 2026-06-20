@@ -256,3 +256,9 @@ grype db list
 - Hash values computed and verified match between source and image
 - Chain of custody log complete with timestamps and examiner names
 - Analysis tools and versions documented for reproducibility
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -393,3 +393,9 @@ Use TrendRadar for monitoring and alerting, Agent Reach for deep content extract
 - [market-research](../../marketing/market-research/SKILL.md) - Competitor analysis
 - [social-intelligence](../social-intelligence/SKILL.md) - Cross-platform sentiment
 - [continuous-learning](../continuous-learning/SKILL.md) - Learn from trends
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

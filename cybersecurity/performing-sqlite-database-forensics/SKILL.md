@@ -399,3 +399,9 @@ Summary:
   Report: /analysis/sqlite_report/sqlite_forensics.json
   Recovered DB: /analysis/sqlite_report/History_recovered.db
 ```
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

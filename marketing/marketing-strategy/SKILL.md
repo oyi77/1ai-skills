@@ -691,3 +691,9 @@ After completing this skill, confirm:
 | Plan content calendars and strategy | This skill (`marketing`) |
 | Manage sales pipeline | `sales` |
 | Business partnerships and growth | `business-development` |
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

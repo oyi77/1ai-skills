@@ -396,3 +396,9 @@ After completing this skill, confirm:
 - [ai-agent-development](../ai-agent-development/SKILL.md) - Deliver AI services
 - [automation](../automation/) - Build systems
 - [ai-lead-generation](../ai-lead-generation/SKILL.md) - Find clients
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

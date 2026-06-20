@@ -175,3 +175,9 @@ Verification covers pre-execution checks, order fill confirmation, post-executio
 - [ ] Orders aborted on spread exceeding threshold
 - [ ] Orders aborted on volume drying up
 - [ ] Partial fills handled with clear escalation path
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

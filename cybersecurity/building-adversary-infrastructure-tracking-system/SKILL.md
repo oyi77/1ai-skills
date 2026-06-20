@@ -372,3 +372,9 @@ monitor = InfrastructureMonitor(tracker, known_indicators=set())
 - [Validin: Passive DNS Threat Hunting](https://www.validin.com/blog/announcing_validin_threat_hunting_platform/)
 - [SecurityTrails API](https://securitytrails.com/corp/api)
 - [Hunt.io: Uncovering Malicious Infrastructure](https://hunt.io/blog/practical-guide-unconvering-malicious-infrastructure)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

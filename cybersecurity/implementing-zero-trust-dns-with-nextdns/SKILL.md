@@ -402,3 +402,9 @@ Tier 3 - Compliance (Organization-specific):
 - [NIST SP 800-81-2: Secure DNS Deployment Guide](https://csrc.nist.gov/publications/detail/sp/800-81/2/final)
 - [RFC 8484: DNS Queries over HTTPS (DoH)](https://tools.ietf.org/html/rfc8484)
 - [RFC 7858: DNS over TLS (DoT)](https://tools.ietf.org/html/rfc7858)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

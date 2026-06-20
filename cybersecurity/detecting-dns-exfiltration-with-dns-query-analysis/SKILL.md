@@ -476,3 +476,9 @@ index=dns sourcetype=zeek:dns
 - [Akamai DNS Data Exfiltration](https://www.akamai.com/glossary/what-is-dns-data-exfiltration)
 - [SANS Detecting DNS Tunneling](https://www.giac.org/paper/gcia/1116/detecting-dns-tunneling/108367)
 - [Fidelis DNS Tunneling Detection](https://fidelissecurity.com/threatgeek/learn/dns-tunneling-detection/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

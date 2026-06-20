@@ -769,3 +769,9 @@ After completing this skill, confirm:
 **Platforms**: X, Instagram, TikTok, LinkedIn  
 **Key Feature**: Automated audience growth and engagement  
 **Safety**: Always respect platform ToS and rate limits
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

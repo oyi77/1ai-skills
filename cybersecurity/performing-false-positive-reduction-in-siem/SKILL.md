@@ -265,3 +265,9 @@ earliest=-24h
 - [ConnectWise - 9 Ways to Eliminate SIEM False Positives](https://www.connectwise.com/blog/9-ways-to-eliminate-siem-false-positives)
 - [Prophet Security - Alert Tuning Best Practices](https://www.prophetsecurity.ai/blog/security-operations-center-soc-best-practices-alert-tuning)
 - [ManageEngine - Reducing SIEM Alert False Positives](https://www.manageengine.com/log-management/siem/reducing-siem-alert-false-positives.html)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -1168,3 +1168,9 @@ telegram_notify "🚨 *Deploy FAILED* — \`my-service\` — manual action requi
 - Configuration uses environment variables or config files, not hardcoded values
 - Security-sensitive code (auth, payments, API) has explicit review
 - Code follows project conventions (naming, patterns, structure)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

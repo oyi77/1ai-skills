@@ -89,3 +89,9 @@ Deploy FIDO2/WebAuthn passwordless authentication using security keys and platfo
 - Testing without rate limiting, potentially causing service degradation
 - Storing sensitive test data (credentials, tokens) in plain text logs
 - Using automated scanners blindly without reviewing results for false positives
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

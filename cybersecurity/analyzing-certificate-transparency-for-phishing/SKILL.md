@@ -382,3 +382,9 @@ generate_ct_report(suspicious, alerts if 'alerts' in dir() else [], "mycompany.c
 - [Let's Encrypt: Certificate Transparency Logs](https://letsencrypt.org/docs/ct-logs/)
 - [SSLMate Cert Spotter](https://sslmate.com/certspotter/)
 - [CyberSierra: CT Logs as Early Warning System](https://cybersierra.co/blog/ssl-certificate-transparency-logs/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

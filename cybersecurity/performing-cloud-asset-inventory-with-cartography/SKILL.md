@@ -294,3 +294,9 @@ This section covers data model overview for performing cloud asset inventory wit
 - Cartography Documentation: https://cartography.dev
 - CNCF Sandbox Project
 - Neo4j Cypher Query Language Reference
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

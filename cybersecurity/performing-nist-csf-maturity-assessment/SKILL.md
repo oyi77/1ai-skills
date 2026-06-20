@@ -165,3 +165,9 @@ This section covers core concepts for performing nist csf maturity assessment.
 - NIST SP 800-53 Rev 5 (control catalog that maps to CSF)
 - NIST CSF 2.0 Quick Start Guides
 - CSF 2.0 Reference Tool: https://csrc.nist.gov/projects/cybersecurity-framework
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -1125,3 +1125,9 @@ skills/1ai-skills/sales/talent-crm/
 - Check lead scoring model against actual conversion data
 - Confirm proposal/contract templates are current and branded
 - Validate payment links and checkout flow end-to-end
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -250,3 +250,9 @@ Post-Deployment Validation:
 - Timeline of events reconstructed with corroborating evidence
 - Root cause identified and documented with contributing factors
 - Post-incident review completed with lessons learned and action items
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

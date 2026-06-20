@@ -324,3 +324,9 @@ if __name__ == "__main__":
 - SANS Practical Linux Forensics: https://nostarch.com/linuxforensics
 - HackTricks Linux Forensics: https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/linux-forensics
 - Log Sources for Digital Forensics: https://letsdefend.io/blog/log-sources-for-digital-forensics-windows-and-linux
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

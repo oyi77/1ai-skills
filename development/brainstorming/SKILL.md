@@ -322,3 +322,9 @@ After completing this skill, confirm:
 - [prd-generator](../prd-generator/SKILL.md) - Generate specifications
 - [frontend-design](../../content/frontend-design/SKILL.md) - Design implementation
 - [code-reviewer](../code-reviewer/SKILL.md) - Review implementation
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

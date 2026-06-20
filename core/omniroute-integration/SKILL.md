@@ -366,3 +366,9 @@ curl -s http://localhost:20128/.well-known/agent.json | jq .
 
 ---
 **Remember**: Always check if OmniRoute service is running before attempting to use its features. The integration provides powerful multi-provider LLM capabilities that can significantly enhance Opencode's agent capabilities.
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

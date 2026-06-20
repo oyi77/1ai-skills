@@ -674,3 +674,9 @@ bbot -t evilcorp.com -p web-thorough -c web.max_concurrent=10
 - [BBOT YARA Rules](https://www.blacklanternsecurity.com/bbot/Stable/modules/custom_yara_rules/)
 - [BBOT Lightfuzz](https://www.blacklanternsecurity.com/bbot/Stable/modules/lightfuzz/)
 - [BBOT Nuclei Integration](https://www.blacklanternsecurity.com/bbot/Stable/modules/nuclei/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

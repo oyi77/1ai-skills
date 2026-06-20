@@ -442,3 +442,9 @@ After completing this skill, confirm:
 - [sales](../sales/) - Close deals
 - [voice-ai-agent](../../automation/voice-ai-agent/SKILL.md) - Handle calls
 - [ai-consulting](../ai-consulting/SKILL.md) - Convert to projects
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

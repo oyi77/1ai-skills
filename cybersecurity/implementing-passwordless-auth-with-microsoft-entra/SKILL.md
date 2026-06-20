@@ -580,3 +580,9 @@ Avg Sign-In Time:        8.2s (passwordless) vs 24.1s (password)
 ## Overview
 
 > Section content — see SKILL.md body for full details.
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

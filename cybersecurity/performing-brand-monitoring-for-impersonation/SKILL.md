@@ -286,3 +286,9 @@ Regards,
 - [NetDiligence: Domain Security and Phishing](https://netdiligence.com/blog/2025/12/understanding-domain-security-brand-impersonation/)
 - [Flare: Digital Brand Protection](https://flare.io/glossary/digital-brand-protection/)
 - [dnstwist GitHub](https://github.com/elceef/dnstwist)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -266,3 +266,9 @@ Remove-AdfsCertificate -CertificateType Token-Signing -Thumbprint $oldThumbprint
 - [AD FS Design Guide](https://learn.microsoft.com/en-us/windows-server/identity/ad-fs/design/ad-fs-design-guide)
 - [Configure AD FS for Azure AD Federation](https://learn.microsoft.com/en-us/entra/identity/hybrid/connect/how-to-connect-fed-management)
 - [SAML 2.0 Authentication - OASIS](https://docs.oasis-open.org/security/saml/v2.0/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

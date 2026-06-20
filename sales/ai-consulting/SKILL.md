@@ -407,3 +407,9 @@ Say: "$3,000 project that typically saves $50K/year"
 ## Verification
 
 - [ ] Skill output matches expected behavior
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

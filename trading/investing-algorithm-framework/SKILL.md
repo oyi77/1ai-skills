@@ -239,3 +239,9 @@ After completing strategy development, confirm:
 - [ ] Walk-forward analysis shows consistent out-of-sample performance
 - [ ] Monte Carlo simulation run with 1000+ iterations
 - [ ] Live deployment starts with dry_run=True paper trading
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

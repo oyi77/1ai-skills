@@ -350,3 +350,9 @@ Monitoring:
 - [CISA Velociraptor Resource](https://www.cisa.gov/resources-tools/services/velociraptor)
 - [Velociraptor GitHub Repository](https://github.com/Velocidex/velociraptor)
 - [Pen Test Partners: Large-Scale Velociraptor](https://www.pentestpartners.com/security-blog/using-velociraptor-for-large-scale-endpoint-visibility-and-rapid-threat-hunting/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

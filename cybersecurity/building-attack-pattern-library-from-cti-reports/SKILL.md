@@ -356,3 +356,9 @@ templates = library.generate_detection_templates(mapped_behaviors)
 - [attackcti Python Library](https://github.com/OTRF/ATTACK-Python-Client)
 - [Sigma Rules Project](https://github.com/SigmaHQ/sigma)
 - [MITRE ATT&CK STIX Data](https://github.com/mitre/cti)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

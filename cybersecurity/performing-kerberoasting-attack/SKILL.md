@@ -139,3 +139,9 @@ Kerberoasting is a post-exploitation technique that targets service accounts in 
 - [ ] Offline cracking attempted with appropriate wordlists
 - [ ] Cracked credentials validated
 - [ ] Access level of compromised accounts assessed
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

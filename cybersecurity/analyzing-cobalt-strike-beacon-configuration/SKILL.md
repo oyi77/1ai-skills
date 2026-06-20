@@ -415,3 +415,9 @@ def analyze_c2_profile(beacon_config):
 - [SentinelLabs Beacon Configuration Analysis](https://www.sentinelone.com/labs/the-anatomy-of-an-apt-attack-and-cobaltstrike-beacons-encoded-configuration/)
 - [Cobalt Strike Staging and Config Extraction](https://blog.securehat.co.uk/cobaltstrike/extracting-config-from-cobaltstrike-stager-shellcode)
 - [MITRE ATT&CK - Cobalt Strike S0154](https://attack.mitre.org/software/S0154/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

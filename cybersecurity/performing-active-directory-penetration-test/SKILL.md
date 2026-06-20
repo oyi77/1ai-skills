@@ -321,3 +321,9 @@ mimikatz# misc::skeleton
 - HackTricks AD: https://book.hacktricks.wiki/en/windows-hardening/active-directory-methodology/index.html
 - SpecterOps AD Security: https://specterops.io/blog/
 - MITRE ATT&CK: https://attack.mitre.org/
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -351,3 +351,9 @@ class TIPMetrics:
 - [TheHive Project](https://thehive-project.org/)
 - [Cortex Documentation](https://github.com/TheHive-Project/Cortex)
 - [MISP-OpenCTI Integration](https://docs.opencti.io/latest/deployment/connectors/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

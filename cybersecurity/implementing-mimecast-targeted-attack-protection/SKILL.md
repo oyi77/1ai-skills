@@ -158,3 +158,9 @@ This section covers key concepts for implementing mimecast targeted attack prote
 - Internal Email Protect detects test lateral phishing scenario
 - Pre-delivery hold catches weaponized URL before reaching inbox
 - False positive rate below organizational threshold after tuning
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

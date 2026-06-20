@@ -360,3 +360,9 @@ Multiple applications are behind the same CDN. Manipulating the Host header caus
 ## Overview
 
 > Section content — see SKILL.md body for full details.
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

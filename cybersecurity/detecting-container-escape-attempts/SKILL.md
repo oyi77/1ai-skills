@@ -354,3 +354,9 @@ ausearch -k container_escape --interpret
 - [Container Escape Techniques - HackTricks](https://book.hacktricks.xyz/linux-hardening/privilege-escalation/docker-security/docker-breakout-privilege-escalation)
 - [MITRE ATT&CK T1611 - Escape to Host](https://attack.mitre.org/techniques/T1611/)
 - [Sysdig Container Security](https://sysdig.com/products/secure/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -566,3 +566,9 @@ For issues with MCP integrations:
 3. Review platform API documentation
 4. Check rate limits and quotas
 5. Contact platform support if needed
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -158,3 +158,9 @@ Before claiming any hunt is complete:
 - PoC is clean and non-destructive (no data exfiltration, no persistence mechanisms)
 - Scope compliance is documented (only tested in-scope assets)
 - Rate limits were respected (no denial-of-service conditions created)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

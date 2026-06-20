@@ -289,3 +289,9 @@ After campaign closes:
 - [Saviynt Simplifying Certifications with Intelligence](https://saviynt.com/blog/simplifying-certifications-with-intelligence)
 - [Saviynt Advanced Access Reviews](https://oxfordcomputergroup.com/resources/saviynt-advanced-access-reviews/)
 - [ISACA Access Recertification Best Practices](https://www.isaca.org/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -220,3 +220,9 @@ csv_output = misp.search(
 - [MISP GitHub Repository](https://github.com/MISP/MISP)
 - [MISP OpenAPI Specification](https://www.misp-project.org/openapi/)
 - [CIRCL OSINT Feed](https://www.circl.lu/doc/misp/feed-osint/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

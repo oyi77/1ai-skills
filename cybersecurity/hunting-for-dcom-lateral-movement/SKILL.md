@@ -711,3 +711,9 @@ Authentication Context:
 Risk Assessment: [Critical/High/Medium]
 Recommended Action: [Isolate, investigate source, reset credentials, restrict DCOM]
 ```
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

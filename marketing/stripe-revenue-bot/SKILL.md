@@ -364,3 +364,9 @@ After completing this skill, confirm:
 - [build-in-public](../build-in-public/SKILL.md) - Broader transparency strategy
 - [twitter-automation](../twitter-automation/SKILL.md) - Posting automation
 - [sales](../sales/) - Convert customers
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

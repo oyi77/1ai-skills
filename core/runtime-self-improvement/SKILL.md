@@ -332,3 +332,9 @@ After completing this skill, confirm:
 - [self-improving](../self-improving/SKILL.md) - Basic self-improvement
 - [auto-git-commiter](../auto-git-commiter/SKILL.md) - Auto-commit changes
 - [skill-performance-monitor](../skill-performance-monitor/SKILL.md) - Monitor skill effectiveness
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

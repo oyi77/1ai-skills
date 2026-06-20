@@ -265,3 +265,9 @@ auto_escalation_rules:
 - [ClearFeed - Incident Escalation Matrix](https://clearfeed.ai/blogs/incident-escalation-matrix)
 - [Vectra - SOC Operations Guide](https://www.vectra.ai/topics/soc-operations)
 - [Runframe - Incident Priority Levels Explained](https://runframe.io/learn/incident-priority)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

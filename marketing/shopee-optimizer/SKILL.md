@@ -290,3 +290,9 @@ echo "Products Count: $(./script.sh --count 2>/dev/null || echo 'Unknown')"
 echo "Last Sync: $(date -r last_sync 2>/dev/null || echo 'Never')"
 echo "API Rate Limit: $(./script.sh --rate-limit 2>/dev/null || echo 'Unknown')"
 ```
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

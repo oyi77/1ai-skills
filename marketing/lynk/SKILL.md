@@ -12,6 +12,19 @@ tags:
 
 # LYNK - Complete Affiliate Link Management with Browser Automation
 
+## When to Use
+
+**Trigger phrases:**
+- "lynk"
+- "Help me with lynk"
+
+**Use cases:**
+- When the task matches this skill's domain expertise
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+
+
 **Comprehensive LYNK skill with full browser automation capabilities**
 
 ---
@@ -656,3 +669,9 @@ python3 ~/.openclaw/workspace/skills/lynk/lynk_automation.py
 - Check UTM parameters parse correctly in analytics dashboard
 - Confirm email deliverability via seed list test
 - Validate landing page speed (target < 3s load time)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

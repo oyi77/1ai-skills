@@ -308,3 +308,9 @@ show system resources
 - [Best Practices for NGFW Deployment](https://docs.paloaltonetworks.com/best-practices)
 - [Palo Alto Firewall Best Practices Checklist](https://www.paloaltonetworks.com/cyberpedia/firewall-best-practices)
 - [NIST SP 800-41 Rev 1 - Firewall and Policy Guidelines](https://csrc.nist.gov/publications/detail/sp/800-41/rev-1/final)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

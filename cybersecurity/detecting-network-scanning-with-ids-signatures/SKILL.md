@@ -337,3 +337,9 @@ if __name__ == '__main__':
 - [Nmap IDS Evasion Techniques](https://nmap.org/book/subvert-ids.html)
 - [OPNsense Suricata Nmap Detection Rules](https://github.com/aleksibovellan/opnsense-suricata-nmaps)
 - [Emerging Threats Ruleset](https://rules.emergingthreats.net/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

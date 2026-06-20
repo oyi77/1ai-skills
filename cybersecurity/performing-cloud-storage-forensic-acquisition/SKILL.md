@@ -383,3 +383,9 @@ Acquisition Summary:
   Acquisition log:      /acquisition/gdrive/acquisition_log.csv
   Completion Time:      2024-01-19 08:18:47 UTC
 ```
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

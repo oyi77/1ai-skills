@@ -92,3 +92,9 @@ CI/CD pipeline design with GitHub Actions, GitLab CI — build, test, deploy aut
 - Deployment rollback completes within the documented RTO target
 - Matrix builds pass on all specified OS and runtime version combinations
 - Build artifacts are reproducible when rebuilt from the same commit SHA
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

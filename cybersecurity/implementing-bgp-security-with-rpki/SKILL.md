@@ -362,3 +362,9 @@ if __name__ == "__main__":
 - [RIPE NCC RPKI Dashboard](https://rpki.ripe.net/)
 - [RFC 6480 - RPKI Architecture](https://www.rfc-editor.org/rfc/rfc6480)
 - [RFC 6811 - BGP Origin AS Validation](https://www.rfc-editor.org/rfc/rfc6811)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

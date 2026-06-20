@@ -320,3 +320,9 @@ show counter global filter category ssl
 - [Cisco SSL/TLS Proxy](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/security/ios-xe-17/security-book-xe/m-ssl-proxy.html)
 - [NIST SP 800-52 Rev 2 - TLS Configuration](https://csrc.nist.gov/publications/detail/sp/800-52/rev-2/final)
 - [US-CERT Alert on HTTPS Inspection](https://www.cisa.gov/news-events/alerts/2017/03/13/https-interception-weakens-tls-security)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

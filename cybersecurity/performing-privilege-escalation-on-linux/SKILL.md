@@ -141,3 +141,9 @@ This section covers key escalation vectors for performing privilege escalation o
 - [ ] Root access achieved through identified vector
 - [ ] Evidence documented (screenshots, command output)
 - [ ] Alternative escalation paths identified
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -290,3 +290,9 @@ Refer to the skill overview for detailed usage instructions.
 - oh-my-opencode-configuration: Configuration options
 - oh-my-opencode-features: Complete features list
 - opencode-cli: OpenCode CLI usage
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

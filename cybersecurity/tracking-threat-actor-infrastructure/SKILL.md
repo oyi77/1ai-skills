@@ -332,3 +332,9 @@ def build_infrastructure_timeline(indicators):
 - [crt.sh Certificate Transparency](https://crt.sh/)
 - [PassiveTotal API](https://api.passivetotal.org/api/docs/)
 - [JARM Fingerprinting](https://github.com/salesforce/jarm)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

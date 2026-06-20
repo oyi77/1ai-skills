@@ -247,3 +247,9 @@ This section covers assessment methodology for performing physical intrusion ass
 - NIST SP 800-116 Rev. 1: Smart Card PIV guidelines
 - Deviant Ollam - Physical Security Assessment methodology
 - MITRE ATT&CK T1200: https://attack.mitre.org/techniques/T1200/
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

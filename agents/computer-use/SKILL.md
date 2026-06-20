@@ -305,3 +305,9 @@ After implementing computer use automation, confirm:
 - [ ] Error handling covers window-not-found, element-not-clickable, and timeout
 - [ ] Works in headless mode (Xvfb) if needed for CI/server environments
 - [ ] Cleanup releases all input handles and restores window state
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

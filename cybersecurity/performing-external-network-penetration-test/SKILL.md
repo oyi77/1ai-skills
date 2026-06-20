@@ -405,3 +405,9 @@ This section covers phase 6 — reporting for performing external network penetr
 - NIST SP 800-115: Technical Guide to Information Security Testing: https://csrc.nist.gov/publications/detail/sp/800-115/final
 - OSSTMM v3: https://www.isecom.org/OSSTMM.3.pdf
 - MITRE ATT&CK: https://attack.mitre.org/
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

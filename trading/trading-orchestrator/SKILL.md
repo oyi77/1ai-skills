@@ -230,3 +230,9 @@ Verification covers pipeline state transitions, circuit breaker triggers, notifi
 - [ ] Trading halts properly on all defined abnormal conditions
 - [ ] Safe abort procedures execute before positions are opened
 - [ ] Risk checks prevent trades that violate risk parameters
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

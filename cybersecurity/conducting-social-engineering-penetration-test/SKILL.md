@@ -388,3 +388,9 @@ This section covers phase 6 — reporting and recommendations for conducting soc
 - Social Engineer Toolkit: https://github.com/trustedsec/social-engineer-toolkit
 - Verizon DBIR: https://www.verizon.com/business/resources/reports/dbir/
 - NIST SP 800-61: Computer Security Incident Handling Guide
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

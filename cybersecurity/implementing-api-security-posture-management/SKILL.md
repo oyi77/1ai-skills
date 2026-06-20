@@ -439,3 +439,9 @@ policies:
 - StackHawk Best ASPM Tools: https://www.stackhawk.com/blog/best-aspm-tools/
 - AppSentinels API Security Posture Management: https://appsentinels.ai/blog/api-security-posture-management-from-reactive-protection-to-continuous-governance/
 - Palo Alto Networks ASPM: https://www.paloaltonetworks.com/cyberpedia/aspm-application-security-posture-management
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

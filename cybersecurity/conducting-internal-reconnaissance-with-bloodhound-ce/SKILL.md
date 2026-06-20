@@ -223,3 +223,9 @@ BloodHound Community Edition (CE) is a modern, web-based Active Directory reconn
 - [ ] Custom Cypher queries executed for advanced analysis
 - [ ] Attack paths prioritized by feasibility and stealth
 - [ ] Report generated with all identified paths and evidence
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

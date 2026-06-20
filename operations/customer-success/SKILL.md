@@ -356,3 +356,9 @@ ORDER BY 1 DESC;
 - [ ] Issues are followed up
 - [ ] Interactions are personalized
 - [ ] Churn indicators are monitored
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

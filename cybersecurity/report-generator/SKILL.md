@@ -188,3 +188,9 @@ Before marking a report as submission-ready, confirm:
 - [ ] Remediation guidance is specific and actionable
 - [ ] Report passes the 7-question validation gate
 - [ ] No typos, broken links, or missing screenshots
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

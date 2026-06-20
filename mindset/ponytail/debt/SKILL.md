@@ -66,3 +66,9 @@ ledger to a file (e.g. `PONYTAIL-DEBT.md`). One-shot. "stop ponytail-debt" or
 ## Verification
 
 - [ ] Skill output matches expected behavior
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

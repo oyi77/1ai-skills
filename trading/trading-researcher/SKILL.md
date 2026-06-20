@@ -174,3 +174,9 @@ Verification covers data quality, indicator accuracy, scan consistency, and inte
 - [ ] Exa search queries return relevant market research
 - [ ] Notion integration creates research log entries
 - [ ] Data collection jobs scheduled and running on configured intervals
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -297,3 +297,9 @@ Every merge request displays a security scanning widget showing:
 - [GitLab DAST Configuration](https://docs.gitlab.com/ee/user/application_security/dast/)
 - [GitLab Security Policies](https://docs.gitlab.com/ee/user/application_security/policies/)
 - [GitLab Vulnerability Management](https://docs.gitlab.com/ee/user/application_security/vulnerability_report/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

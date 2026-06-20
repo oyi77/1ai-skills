@@ -156,3 +156,9 @@ This section covers key concepts for performing adversary in the middle phishing
 - SIEM alerts fire on simulated AiTM sign-in patterns
 - Web proxy blocks connections to known PhaaS infrastructure
 - Post-compromise rules detect inbox rule creation after suspicious auth
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

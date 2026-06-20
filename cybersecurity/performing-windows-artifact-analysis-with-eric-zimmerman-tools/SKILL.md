@@ -329,3 +329,9 @@ All EZ Tools produce CSV output that can be:
 - SANS EZ Tools Training: https://www.sans.org/tools/ez-tools
 - SANS FOR508: Advanced Incident Response and Threat Hunting
 - SANS FOR498: Battlefield Forensics & Data Acquisition
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

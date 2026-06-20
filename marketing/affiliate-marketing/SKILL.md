@@ -529,3 +529,9 @@ After completing this skill, confirm:
 - [seo-auditor](../seo-auditor/SKILL.md) - Optimize content
 - [twitter-automation](../twitter-automation/SKILL.md) - Promote content
 - [build-in-public](../build-in-public/SKILL.md) - Build audience
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

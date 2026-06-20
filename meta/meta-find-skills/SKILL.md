@@ -271,3 +271,9 @@ After completing a skill discovery task, confirm:
 - [ ] Local skills checked first (no duplicate installation)
 - [ ] Minimum score 70/100 to recommend installation
 - [ ] User confirmed before installing any skill
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -362,3 +362,9 @@ gcloud apigee apis list-deployments \
 - Apigee Advanced API Security: https://docs.cloud.google.com/apigee/docs/api-security
 - Apigee OWASP API Top 10: https://docs.apigee.com/api-platform/faq/owasp-top-api-threats
 - Wallarm Apigee Security Policies Guide: https://lab.wallarm.com/what/apigee-api-security-policies-howto/
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

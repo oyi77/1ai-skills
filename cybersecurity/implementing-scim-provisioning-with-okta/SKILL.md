@@ -253,3 +253,9 @@ Okta provides an automated SCIM test suite (via Runscope/BlazeMeter) that valida
 - [Okta SCIM Developer Guide](https://developer.okta.com/docs/guides/scim-provisioning-integration-overview/main/)
 - [Build a SCIM API Service - Okta](https://developer.okta.com/docs/guides/scim-provisioning-integration-prepare/main/)
 - [SCIM Core Schema RFC 7643](https://tools.ietf.org/html/rfc7643)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -262,3 +262,9 @@ kubectl run frontend-test --image=busybox --labels=app=frontend --restart=Never 
 - [Calico Network Policies](https://docs.tigera.io/calico/latest/network-policy/)
 - [Cilium Network Policies](https://docs.cilium.io/en/stable/security/policy/)
 - [Network Policy Editor](https://editor.networkpolicy.io/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

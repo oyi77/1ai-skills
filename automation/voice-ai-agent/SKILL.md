@@ -348,3 +348,9 @@ After completing this skill, confirm:
 - [ai-lead-generation](../../sales/ai-lead-generation/SKILL.md) - Lead qualification
 - [sales](../sales/) - Close deals
 - [customer-support](../../sales/customer-support/SKILL.md) - Support automation
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

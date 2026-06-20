@@ -308,3 +308,9 @@ gvm-cli socket --socketpath /run/gvmd/gvmd.sock --gmp-username admin --gmp-passw
 - [GVM GitHub Repository](https://github.com/greenbone/openvas-scanner)
 - [python-gvm Library](https://github.com/greenbone/python-gvm)
 - [GVM Docker Deployment](https://greenbone.github.io/docs/latest/22.4/container/)
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

@@ -103,3 +103,9 @@ After completing smart contract development, confirm:
 - [ ] AccessControl or Ownable2Step used for admin functions
 - [ ] Unit tests cover happy path, revert conditions, and edge cases
 - [ ] Fork tests validate behavior against mainnet state
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

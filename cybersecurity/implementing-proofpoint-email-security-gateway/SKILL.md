@@ -160,3 +160,9 @@ This section covers key concepts for implementing proofpoint email security gate
 - TRAP successfully retracts test phishing message from inboxes post-delivery
 - False positive rate below 0.1% after initial tuning period
 - DMARC/SPF/DKIM authentication passes for all legitimate outbound mail
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality

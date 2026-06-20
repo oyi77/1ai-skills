@@ -93,3 +93,9 @@ with open("trending.csv", "w", newline="") as f:
 - Product listings create successfully in Shopify admin
 - Research reports appear in Notion database as expected
 - Slack alerts appear in configured channel without failures
+
+## Process
+
+1. Analyze the task requirements
+2. Apply domain expertise
+3. Verify output quality
