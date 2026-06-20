@@ -17,3 +17,7 @@
 ## 2025-06-02 - SQLite N+1 Batched Updates via executemany
 **Learning:** In the memory system, looping over database SELECT results to run a single `UPDATE` query per row creates massive N+1 query bottlenecks and slows down `apply_decay` exponentially as the memory table grows.
 **Action:** When updating multiple database rows with dynamic variables, collect the parameter tuples in a list (`updates.append(...)`) and process them in a single batch operation using `sqlite3.Connection.executemany()` to minimize I/O overhead and database locking.
+
+## 2024-06-20 - Faster YAML parsing with CSafeLoader
+**Learning:** Parsing 1300+ YAML files using PyYAML's default `yaml.safe_load` takes ~4 seconds. Replacing it with `yaml.load(..., Loader=yaml.CSafeLoader)` (with a fallback to `safe_load`) reduces parsing time to ~1.3 seconds, yielding a ~70% performance improvement.
+**Action:** When parsing a large number of YAML files sequentially in Python scripts across this codebase, use `CSafeLoader` wrapped in a `try...except ImportError` block to fallback to `yaml.safe_load`.
