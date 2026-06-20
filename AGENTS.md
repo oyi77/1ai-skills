@@ -4,7 +4,7 @@
 # 1ai-skills
 
 ## Purpose
-Production-ready AI agent skill library. **1310 skills across 19 categories**, including 785 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
+Production-ready AI agent skill library. **1315 skills across 19 categories**, including 786 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
 
 Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `description`, `domain`, optional `persona`, `tags`). Agents load skills on demand via the `skill` tool.
 
@@ -12,26 +12,26 @@ Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `descri
 
 | Category | Skills | Focus |
 |----------|-------:|-------|
-| `cybersecurity/` | 785 | Threat hunting, forensics, pen testing, SOC ops, malware analysis, cloud sec |
-| `development/` | 83 | TDD, debugging, code review, PRD, git worktrees, Kafka patterns, database ORMs, mobile dev, testing, messaging infra |
-| `content/` | 55 | Video/podcast generation, humanizer, Seedance, Remotion, faceless YT, design systems, UI frameworks, content kingdom |
+| `cybersecurity/` | 786 | Threat hunting, forensics, pen testing, SOC ops, malware analysis, cloud sec, agent security |
+| `development/` | 84 | TDD, debugging, code review, PRD, git worktrees, dependency scanning, Kafka patterns, database ORMs, mobile dev, testing, messaging infra |
+| `content/` | 57 | Video/podcast generation, TTS, voice cloning, semantic video matching, humanizer, Seedance, Remotion, faceless YT, design systems, UI frameworks |
 | `mindset/` | 55 | Negotiation, persuasion, storytelling, presentation, public speaking, leadership, emotional intelligence, critical thinking, decision frameworks, productivity, resilience |
 | `marketing/` | 45 | SEO, viral, Twitter automation, email, growth, ecommerce, affiliate management, buzzer engagement, TikTok |
 | `core/` | 42 | Self-improvement, memory, orchestration, session brain, hub memory, LLM/agent infrastructure, AI/ML, autonomy engine |
 | `devops/` | 33 | Docker, Kubernetes, CI/CD (GH Actions, ArgoCD, GitLab), cloud ops, service mesh, GitOps |
 | `integrations/` | 32 | GitHub, Discord, Notion, Slack, Kalodata, OhMyOpenCode, MCP servers, team collaboration |
 | `automation/` | 28 | n8n, bots (WhatsApp/Telegram/Twitter), scrapers, publishing, Airflow pipelines, telegram-userbot |
-| `research/` | 23 | McKinsey analysis, deep research, Polymarket analyst, social intelligence, continuous learning, competitive intelligence, market research, trend analysis |
-| `trading/` | 20 | Crypto bot, Polymarket fast loop, weather trader, DeFi protocols, smart contracts, NFTs, portfolio mgr |
-| `operations/` | 19 | Governance, KYC, statement audit, GL reconciliation, team ops, project management, BI, HR, legal |
+| `research/` | 23 | McKinsey analysis, deep research, social intelligence, Polymarket analyst, competitive intelligence, market research, trend analysis |
+| `trading/` | 20 | Crypto bot, Polymarket fast loop, weather trader, DeFi protocols, smart contracts, NFTs, portfolio management |
+| `agents/` | 16 | Research, review, planning, code, deploy, refactor, orchestrator, lint, security, autonomous trading agents |
 | `financial/` | 15 | Wolf finance, value investing, tax-loss harvesting, model builder, commodities, DeFi, finance tracker |
-| `agents/` | 15 | Research, review, planning, code, deploy, refactor, lint, security, autonomous trading agents |
 | `meta/` | 13 | Self-improving meta-skills (auto-evolve, performance monitor, auto-learner), skill datastore |
-| `mcp/` | 14 | MCP server skills (GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase, codebase-memory, agent-reach) |
-| `data/` | 10 | Data cleaning, anomaly detection, viz, reporting, data pipelines, DBT, lakeFS |
+| `sales/` | 13 | High-ticket closing, lead generation, business development, CRM automation, sales enablement, outreach automation |
+| `mcp/` | 14 | MCP servers: GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase, codebase-memory, agent-reach |
+| `data/` | 10 | Data cleaning, anomaly detection, visualization, reporting, data pipelines, DBT, lakeFS |
 | `productivity/` | 10 | Calendars, email, meetings, daily planner, Notion, Google Workspace |
-| **TOTAL** | **1310** | |
-## Tooling Dirs (no skills, support infrastructure)
+| `mcp/` | 14 | MCP server skills (GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase, codebase-memory, agent-reach) |
+| **TOTAL** | **1315** | |
 
 | Dir | Purpose |
 |-----|---------|
