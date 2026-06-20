@@ -4,6 +4,8 @@
   "description": "1310 production-ready AI agent skills with self-evolving meta-skills — cybersecurity, SEO, trading, marketing, automation, devops, content, financial services",
   "scripts": {
     "postinstall": "node scripts/install-hooks.js && node scripts/install-mcp-tools.js",
+    "install:deps": "node scripts/install-skill-deps.js",
+    "install:deps:dry-run": "node scripts/install-skill-deps.js --dry-run",
     "test": "python3 scripts/test_quality.py",
     "hooks": "node scripts/hooks-cli.js"
   },
