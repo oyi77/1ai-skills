@@ -27,3 +27,4 @@ node_modules/
 *.swp
 .vscode/
 .idea/
+validation-report.json
