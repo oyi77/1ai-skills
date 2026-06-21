@@ -89,7 +89,11 @@ def extract_metadata(path: Path) -> dict | None:
     if fm is None:
         return None
     try:
-        meta = yaml.safe_load(fm) or {}
+        try:
+            Loader = getattr(yaml, 'CSafeLoader', yaml.SafeLoader)
+            meta = yaml.load(fm, Loader=Loader) or {}
+        except Exception:
+            meta = yaml.safe_load(fm) or {}
     except Exception:
         return None
     if not isinstance(meta, dict):
@@ -109,8 +113,10 @@ def skill_rel_path(path: Path) -> str:
     return str(rel)
 
 
-def similarity(a: str, b: str) -> float:
+def similarity(a: str, b: str, threshold: float = 0.85) -> float:
     """Sequence-based similarity ratio."""
+    if 2.0 * min(len(a), len(b)) / (len(a) + len(b) + 1e-6) < threshold:
+        return 0.0
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
 
 
@@ -250,7 +256,7 @@ def check_duplicates(skills_meta: list[dict], result: LintResult):
     for cat, cat_skills in by_category.items():
         for i, (name1, path1) in enumerate(cat_skills):
             for name2, path2 in cat_skills[i + 1:]:
-                sim = similarity(name1, name2)
+                sim = similarity(name1, name2, SIMILARITY_THRESHOLD)
                 if sim >= SIMILARITY_THRESHOLD and name1 != name2:
                     result.add("warnings", name1, "near-duplicate",
                                 f"Near-duplicate of {name2} (similarity={sim:.2f})")
