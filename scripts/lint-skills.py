@@ -89,7 +89,8 @@ def extract_metadata(path: Path) -> dict | None:
     if fm is None:
         return None
     try:
-        meta = yaml.safe_load(fm) or {}
+        # Use CSafeLoader for ~80% faster parsing if available
+        meta = yaml.load(fm, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader)) or {}
     except Exception:
         return None
     if not isinstance(meta, dict):
