@@ -1,5 +1,5 @@
 {
-  "total_skills": 1315,
+  "total_skills": 1317,
   "category_count": 19,
   "categories": {
     "agents": 16,
@@ -8,7 +8,7 @@
     "core": 42,
     "cybersecurity": 786,
     "data": 10,
-    "development": 84,
+    "development": 86,
     "devops": 33,
     "financial": 15,
     "integrations": 32,
@@ -13927,6 +13927,20 @@
       ]
     },
     {
+      "name": "engineering-hard-rules",
+      "category": "development",
+      "description": "Non-negotiable engineering protocol for AI agents. Enforces READ→THINK→DECIDE→PLAN→BUILD→VERIFY→DOCS→REVIEW loop. Use when any code change requires evidence-first execution, blast radius analysis, and quality gates. Prevents vibe-coding and hallucinated completions.",
+      "domain": "development",
+      "tags": [
+        "engineering-discipline",
+        "code-quality",
+        "evidence-first",
+        "enforcement-protocol",
+        "agent-safety",
+        "quality-gates"
+      ]
+    },
+    {
       "name": "esbuild-bundler",
       "category": "development",
       "description": "esbuild bundler configuration — blazing fast JS/TS bundling, plugins, watch mode, minification",
@@ -14279,6 +14293,21 @@
         "prisma",
         "software-engineering",
         "testing"
+      ]
+    },
+    {
+      "name": "qa-review-fix-loop",
+      "category": "development",
+      "description": "Comprehensive QA→Review→Fix loop protocol for any codebase. Layer-based testing with evidence requirements. Use when performing full QA cycles, codebase audits, pre-release testing, or defect-driven development. Works on any stack — web, mobile, API, CLI, bots, engines.",
+      "domain": "development",
+      "tags": [
+        "qa",
+        "testing",
+        "quality-assurance",
+        "review-loop",
+        "defect-tracking",
+        "regression-testing",
+        "evidence-based"
       ]
     },
     {
