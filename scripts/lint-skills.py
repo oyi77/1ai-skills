@@ -89,7 +89,7 @@ def extract_metadata(path: Path) -> dict | None:
     if fm is None:
         return None
     try:
-        meta = yaml.safe_load(fm) or {}
+        meta = yaml.load(fm, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader)) or {}
     except Exception:
         return None
     if not isinstance(meta, dict):
@@ -111,6 +111,15 @@ def skill_rel_path(path: Path) -> str:
 
 def similarity(a: str, b: str) -> float:
     """Sequence-based similarity ratio."""
+    # Mathematical optimization: if the lengths are too different, they can never reach the threshold.
+    # ratio = 2.0 * M / T where M is matches, T is total length (len(a) + len(b))
+    # Maximum possible matches is min(len(a), len(b)).
+    # So max possible ratio is 2.0 * min(len(a), len(b)) / (len(a) + len(b))
+    # If max possible ratio < threshold, skip SequenceMatcher entirely.
+    if len(a) + len(b) > 0:
+        max_ratio = 2.0 * min(len(a), len(b)) / (len(a) + len(b))
+        if max_ratio < SIMILARITY_THRESHOLD:
+            return 0.0
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
 
 
