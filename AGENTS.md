@@ -4,7 +4,7 @@
 # 1ai-skills
 
 ## Purpose
-Production-ready AI agent skill library. **1317 skills across 19 categories**, including 786 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
+Production-ready AI agent skill library. **1318 skills across 19 categories**, including 786 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
 
 Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `description`, `domain`, optional `persona`, `tags`). Agents load skills on demand via the `skill` tool.
 
@@ -13,7 +13,7 @@ Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `descri
 | Category | Skills | Focus |
 |----------|-------:|-------|
 | `cybersecurity/` | 786 | Threat hunting, forensics, pen testing, SOC ops, malware analysis, cloud sec, agent security |
-| `development/` | 86 | TDD, debugging, code review, PRD, git worktrees, dependency scanning, Kafka patterns, database ORMs, mobile dev, testing, messaging infra |
+| `development/` | 87 | TDD, debugging, code review, PRD, git worktrees, dependency scanning, Kafka patterns, database ORMs, mobile dev, testing, messaging infra |
 | `content/` | 57 | Video/podcast generation, TTS, voice cloning, semantic video matching, humanizer, Seedance, Remotion, faceless YT, design systems, UI frameworks |
 | `mindset/` | 55 | Negotiation, persuasion, storytelling, presentation, public speaking, leadership, emotional intelligence, critical thinking, decision frameworks, productivity, resilience |
 | `marketing/` | 45 | SEO, viral, Twitter automation, email, growth, ecommerce, affiliate management, buzzer engagement, TikTok |
@@ -31,7 +31,7 @@ Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `descri
 | `data/` | 10 | Data cleaning, anomaly detection, visualization, reporting, data pipelines, DBT, lakeFS |
 | `productivity/` | 10 | Calendars, email, meetings, daily planner, Notion, Google Workspace |
 | `mcp/` | 14 | MCP server skills (GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase, codebase-memory, agent-reach) |
-| **TOTAL** | **1317** | |
+| **TOTAL** | **1318** | |
 
 | Dir | Purpose |
 |-----|---------|

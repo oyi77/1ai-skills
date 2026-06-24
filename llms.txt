@@ -1,9 +1,9 @@
 # 1ai-Skills
-# 1317 Open-Source AI Agent Skills with Self-Evolving Meta-Skills
+# 1318 Open-Source AI Agent Skills with Self-Evolving Meta-Skills
 # https://github.com/oyi77/1ai-skills
 
 ## What This Is
-1ai-Skills is the largest open-source AI agent skill library. 1317 production-ready skills across 19 categories that enable AI agents to auto-evolve, auto-learn, and auto-improve. Each skill is a self-contained `SKILL.md` with YAML frontmatter (name, description, domain, tags, optional persona) that agents load on demand.
+1ai-Skills is the largest open-source AI agent skill library. 1318 production-ready skills across 19 categories that enable AI agents to auto-evolve, auto-learn, and auto-improve. Each skill is a self-contained `SKILL.md` with YAML frontmatter (name, description, domain, tags, optional persona) that agents load on demand.
 
 ## Installation
 ```bash
@@ -19,9 +19,9 @@ git clone https://github.com/oyi77/1ai-skills.git
 5. Run `python3 scripts/lint-skills.py` for quality checks before committing.
 4. Load only the specific `<category>/<skill-name>/SKILL.md` you need.
 
-Do NOT walk all 1317 skill dirs. Grep `SKILLS.json` first.
+Do NOT walk all 1318 skill dirs. Grep `SKILLS.json` first.
 
-## Categories (1317 skills total, 19 categories)
+## Categories (1318 skills total, 19 categories)
 
 | Category | Skills | Focus |
 |---|---:|---|
@@ -44,7 +44,7 @@ Do NOT walk all 1317 skill dirs. Grep `SKILLS.json` first.
 | mcp/ | 14 | MCP servers: GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase, codebase-memory (code intelligence), agent-reach (social scraping) |
 | data/ | 10 | Data cleaning, anomaly detection, report generation, visualization, data pipelines, DBT, lakeFS, data versioning, analytics |
 | productivity/ | 10 | Google Workspace, calendar, email automation, Notion, daily planner, task management, meeting automation |
-**Total: 1317 skills**
+**Total: 1318 skills**
 ## Self-Evolving System (meta/)
 13 meta-skills form a self-improving agent operating system:
 - auto-evolve: continuous improvement loop
