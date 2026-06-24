@@ -17,3 +17,6 @@
 ## 2025-06-02 - SQLite N+1 Batched Updates via executemany
 **Learning:** In the memory system, looping over database SELECT results to run a single `UPDATE` query per row creates massive N+1 query bottlenecks and slows down `apply_decay` exponentially as the memory table grows.
 **Action:** When updating multiple database rows with dynamic variables, collect the parameter tuples in a list (`updates.append(...)`) and process them in a single batch operation using `sqlite3.Connection.executemany()` to minimize I/O overhead and database locking.
+## 2026-06-21 - Length heuristic for difflib.SequenceMatcher
+**Learning:** difflib.SequenceMatcher is extremely slow for comparing hundreds of strings in nested loops (O(N^2)). A simple length-based heuristic can prune pairs that have no mathematical possibility of meeting a high similarity threshold, providing a >10x speedup.
+**Action:** Next time I see `SequenceMatcher(...).ratio()` used in O(N^2) loops with a high threshold filter, implement a length ratio check `(2 * min(len(a), len(b))) / (len(a) + len(b))` before calling it to eliminate impossible matches.

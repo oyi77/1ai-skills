@@ -111,7 +111,11 @@ def validate_one(path: Path) -> list[str]:
         return errors
 
     try:
-        meta = yaml.safe_load(fm) or {}
+        try:
+            Loader = getattr(yaml, 'CSafeLoader', yaml.SafeLoader)
+            meta = yaml.load(fm, Loader=Loader) or {}
+        except Exception:
+            meta = yaml.safe_load(fm) or {}
     except Exception as exc:
         errors.append(f"invalid-yaml: {exc.__class__.__name__}")
         return errors
@@ -181,12 +185,20 @@ def fix_one(path: Path) -> list[str]:
         body = "".join(lines[cut:])
         fixes.append("added-closing-delimiter")
         try:
-            meta = yaml.safe_load(fm_raw) or {}
+            try:
+                Loader = getattr(yaml, 'CSafeLoader', yaml.SafeLoader)
+                meta = yaml.load(fm_raw, Loader=Loader) or {}
+            except Exception:
+                meta = yaml.safe_load(fm_raw) or {}
         except Exception:
             meta = {}
     else:
         try:
-            meta = yaml.safe_load(fm) or {}
+            try:
+                Loader = getattr(yaml, 'CSafeLoader', yaml.SafeLoader)
+                meta = yaml.load(fm, Loader=Loader) or {}
+            except Exception:
+                meta = yaml.safe_load(fm) or {}
         except Exception:
             meta = {}
 
@@ -257,7 +269,11 @@ def check_broken_links(skills: list[Path]) -> dict[str, list[str]]:
         if fm is None:
             continue
         try:
-            meta = yaml.safe_load(fm) or {}
+            try:
+                Loader = getattr(yaml, 'CSafeLoader', yaml.SafeLoader)
+                meta = yaml.load(fm, Loader=Loader) or {}
+            except Exception:
+                meta = yaml.safe_load(fm) or {}
         except Exception:
             continue
         if isinstance(meta, dict) and meta.get("name"):
