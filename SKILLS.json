@@ -1,5 +1,5 @@
 {
-  "total_skills": 1317,
+  "total_skills": 1318,
   "category_count": 19,
   "categories": {
     "agents": 16,
@@ -8,7 +8,7 @@
     "core": 42,
     "cybersecurity": 786,
     "data": 10,
-    "development": 86,
+    "development": 87,
     "devops": 33,
     "financial": 15,
     "integrations": 32,
@@ -13707,6 +13707,20 @@
         "patterns",
         "software-engineering",
         "testing"
+      ]
+    },
+    {
+      "name": "automated-test-generator",
+      "category": "development",
+      "description": "Generate test suites, analyze coverage, and scaffold E2E tests automatically. Use when creating tests for existing code, improving test coverage, scaffolding integration tests, or setting up E2E test automation for React, Next.js, Node.js, Python, Go, or any project.",
+      "domain": "development",
+      "tags": [
+        "test-generation",
+        "coverage-analysis",
+        "e2e-testing",
+        "test-automation",
+        "quality-assurance",
+        "test-scaffolding"
       ]
     },
     {
