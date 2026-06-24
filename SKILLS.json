@@ -1,5 +1,5 @@
 {
-  "total_skills": 1318,
+  "total_skills": 1319,
   "category_count": 19,
   "categories": {
     "agents": 16,
@@ -8,7 +8,7 @@
     "core": 42,
     "cybersecurity": 786,
     "data": 10,
-    "development": 87,
+    "development": 88,
     "devops": 33,
     "financial": 15,
     "integrations": 32,
@@ -13598,6 +13598,21 @@
         "testing"
       ],
       "persona": "Cal Newport"
+    },
+    {
+      "name": "agentic-quality-engineering",
+      "category": "development",
+      "description": "AI-powered quality engineering with flaky test detection, mutation testing, chaos engineering, risk-based test prioritization, and cross-project pattern learning. Use when building quality engineering systems, detecting flaky tests, implementing chaos testing, validating test effectiveness, or coordinating multiple QA agents.",
+      "domain": "development",
+      "tags": [
+        "quality-engineering",
+        "flaky-tests",
+        "mutation-testing",
+        "chaos-engineering",
+        "risk-based-testing",
+        "pattern-learning",
+        "test-automation"
+      ]
     },
     {
       "name": "ai-saas-builder",
