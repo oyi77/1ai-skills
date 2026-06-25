@@ -109,8 +109,13 @@ def skill_rel_path(path: Path) -> str:
     return str(rel)
 
 
-def similarity(a: str, b: str) -> float:
+def similarity(a: str, b: str, threshold: float = 0.0) -> float:
     """Sequence-based similarity ratio."""
+    # Optimization: The maximum possible matches between two strings is the length of the shorter string.
+    # Therefore, the maximum possible ratio is 2.0 * min(len(a), len(b)) / (len(a) + len(b)).
+    # If this theoretical maximum is already less than our threshold, skip the expensive SequenceMatcher.
+    if threshold > 0.0 and 2.0 * min(len(a), len(b)) < threshold * (len(a) + len(b)):
+        return 0.0
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
 
 
@@ -250,7 +255,7 @@ def check_duplicates(skills_meta: list[dict], result: LintResult):
     for cat, cat_skills in by_category.items():
         for i, (name1, path1) in enumerate(cat_skills):
             for name2, path2 in cat_skills[i + 1:]:
-                sim = similarity(name1, name2)
+                sim = similarity(name1, name2, threshold=SIMILARITY_THRESHOLD)
                 if sim >= SIMILARITY_THRESHOLD and name1 != name2:
                     result.add("warnings", name1, "near-duplicate",
                                 f"Near-duplicate of {name2} (similarity={sim:.2f})")
