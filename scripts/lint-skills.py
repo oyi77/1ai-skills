@@ -89,7 +89,7 @@ def extract_metadata(path: Path) -> dict | None:
     if fm is None:
         return None
     try:
-        meta = yaml.safe_load(fm) or {}
+        meta = yaml.load(fm, Loader=getattr(yaml, "CSafeLoader", yaml.SafeLoader)) or {}
     except Exception:
         return None
     if not isinstance(meta, dict):
@@ -250,6 +250,9 @@ def check_duplicates(skills_meta: list[dict], result: LintResult):
     for cat, cat_skills in by_category.items():
         for i, (name1, path1) in enumerate(cat_skills):
             for name2, path2 in cat_skills[i + 1:]:
+                # Fast length-based pre-check to avoid O(N^2) sequence matching
+                if 2.0 * min(len(name1), len(name2)) < SIMILARITY_THRESHOLD * (len(name1) + len(name2)):
+                    continue
                 sim = similarity(name1, name2)
                 if sim >= SIMILARITY_THRESHOLD and name1 != name2:
                     result.add("warnings", name1, "near-duplicate",
