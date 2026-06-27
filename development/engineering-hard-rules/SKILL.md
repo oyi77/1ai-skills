@@ -11,6 +11,11 @@ Non-negotiable engineering protocol for AI agents. Every substantive code change
 
 **Source:** HARDRULE.md — agent ownership & engineering enforcement protocol
 
+## Overview
+
+**Engineering Hard Rules** defines mandatory coding standards, quality gates, and enforcement protocols for AI agent development. Use when establishing baseline engineering discipline, onboarding new agents, or auditing compliance with coding standards.
+
+
 ## When to Use
 
 **Trigger phrases:**

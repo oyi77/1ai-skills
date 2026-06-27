@@ -22,7 +22,7 @@ nist_csf:
 - ID.RA-01
 - DE.CM-09
 ---
-# Performing Dynamic Analysis of Android App
+# Performing Dynamic Analysis Of Android App
 
 ## When to Use
 
@@ -44,239 +44,22 @@ Use this skill when:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Setup Frida Server on Android Device
+1. **Plan Operations** — Define objectives, scope, and success criteria for dynamic analysis of android app operations.
+2. **Prepare Environment** — Set up tools, access, and data sources required for dynamic analysis of android app.
+3. **Execute Core Workflow** — Perform the dynamic analysis of android app operations following established procedures.
+4. **Validate Results** — Verify that results meet quality standards and objectives.
+5. **Report Findings** — Document results, observations, and recommendations.
+6. **Follow Up** — Track remediation actions and verify fixes where applicable.
 
-```bash
-# Check device architecture
-adb shell getprop ro.product.cpu.abi
-# Output: arm64-v8a
+## Tools
 
-# Download matching Frida server from GitHub releases
-# https://github.com/frida/frida/releases
-# Push to device
-adb push frida-server-16.x.x-android-arm64 /data/local/tmp/frida-server
-adb shell chmod 755 /data/local/tmp/frida-server
-adb shell /data/local/tmp/frida-server &
-
-# Verify Frida connection
-frida-ps -U
-```
-
-### Step 2: Enumerate Application Attack Surface
-
-```bash
-# List all packages
-frida-ps -U -a
-
-# Attach Objection for high-level exploration
-objection --gadget com.target.app explore
-
-# List activities, services, receivers
-android hooking list activities
-android hooking list services
-android hooking list receivers
-
-# List loaded classes
-android hooking list classes
-android hooking search classes com.target.app
-```
-
-### Step 3: Hook Sensitive Methods
-
-```bash
-# Hook all methods of a class
-android hooking watch class com.target.app.auth.LoginManager
-
-# Hook specific method with argument dumping
-android hooking watch class_method com.target.app.auth.LoginManager.authenticate --dump-args --dump-return
-
-# Hook crypto operations
-android hooking watch class javax.crypto.Cipher --dump-args
-android hooking watch class java.security.MessageDigest --dump-args
-
-# Hook network calls
-android hooking watch class okhttp3.OkHttpClient --dump-args
-android hooking watch class java.net.URL --dump-args
-```
-
-### Step 4: Write Custom Frida Scripts for Deep Analysis
-
-```javascript
-// hook_crypto.js - Intercept encryption/decryption operations
-Java.perform(function() {
-    var Cipher = Java.use("javax.crypto.Cipher");
-
-    Cipher.doFinal.overload("[B").implementation = function(input) {
-        var mode = this.getAlgorithm();
-        console.log("[Cipher] Algorithm: " + mode);
-        console.log("[Cipher] Input: " + bytesToHex(input));
-
-        var result = this.doFinal(input);
-        console.log("[Cipher] Output: " + bytesToHex(result));
-        return result;
-    };
-
-    function bytesToHex(bytes) {
-        var hex = [];
-        for (var i = 0; i < bytes.length; i++) {
-            hex.push(("0" + (bytes[i] & 0xFF).toString(16)).slice(-2));
-        }
-        return hex.join("");
-    }
-});
-```
-
-```bash
-# Execute custom Frida script
-frida -U -f com.target.app -l hook_crypto.js --no-pause
-```
-
-### Step 5: Bypass Root Detection
-
-```javascript
-// root_bypass.js - Common root detection bypass
-Java.perform(function() {
-    // Bypass RootBeer library
-    var RootBeer = Java.use("com.scottyab.rootbeer.RootBeer");
-    RootBeer.isRooted.implementation = function() {
-        console.log("[RootBeer] isRooted() bypassed");
-        return false;
-    };
-
-    // Bypass generic file-based root checks
-    var File = Java.use("java.io.File");
-    var originalExists = File.exists;
-    File.exists.implementation = function() {
-        var path = this.getAbsolutePath();
-        var rootPaths = ["/system/app/Superuser.apk", "/system/xbin/su",
-                         "/sbin/su", "/system/bin/su", "/data/local/bin/su"];
-        if (rootPaths.indexOf(path) >= 0) {
-            console.log("[Root] Blocked check for: " + path);
-            return false;
-        }
-        return originalExists.call(this);
-    };
-
-    // Bypass SafetyNet/Play Integrity
-    try {
-        var SafetyNet = Java.use("com.google.android.gms.safetynet.SafetyNetApi");
-        console.log("[SafetyNet] Class found - may need additional bypass");
-    } catch(e) {}
-});
-```
-
-### Step 6: Analyze Network Communication at Runtime
-
-```javascript
-// network_monitor.js - Monitor all HTTP requests
-Java.perform(function() {
-    // Hook OkHttp3
-    try {
-        var OkHttpClient = Java.use("okhttp3.OkHttpClient");
-        var Interceptor = Java.use("okhttp3.Interceptor");
-        var Chain = Java.use("okhttp3.Interceptor$Chain");
-
-        console.log("[OkHttp] Monitoring network requests...");
-
-        var Request = Java.use("okhttp3.Request");
-        Request.url.implementation = function() {
-            var url = this.url();
-            console.log("[OkHttp] URL: " + url.toString());
-            return url;
-        };
-    } catch(e) {
-        console.log("[OkHttp] Not found, trying HttpURLConnection");
-    }
-
-    // Hook HttpURLConnection
-    var URL = Java.use("java.net.URL");
-    URL.openConnection.overload().implementation = function() {
-        console.log("[URL] Opening: " + this.toString());
-        return this.openConnection();
-    };
-});
-```
-
-### Step 7: Extract Decrypted Data and Secrets
-
-```bash
-# Using Objection for quick extraction
-objection --gadget com.target.app explore
-
-# Dump Android Keystore entries
-android keystore list
-android keystore dump
-
-# Search heap for sensitive objects
-android heap search instances com.target.app.model.User
-android heap evaluate <handle> "JSON.stringify(clazz)"
-
-# Memory string search
-memory search "password" --string
-memory search "api_key" --string
-```
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **Dynamic Instrumentation** | Modifying application behavior at runtime by injecting code into the running process |
-| **Method Hooking** | Replacing or wrapping function implementations to intercept arguments and return values |
-| **Frida Server** | Daemon running on the target device that receives instrumentation commands from the host |
-| **Dalvik/ART Runtime** | Android runtime environments; Frida hooks at the ART level for Java/Kotlin methods |
-| **Heap Inspection** | Examining live objects in the application's memory heap to extract runtime data |
-
-## When NOT to Use
-
-- You don't have explicit written authorization to test
-- Task is about defense/detection, not offense (use detection skills)
-- You need to implement security controls (use implementing-* skills)
-- Task requires compliance auditing (use auditing-* skills)
-- You're investigating an incident (use incident response skills)
-- Target is out of scope for your engagement
-- Task is about vulnerability scanning only (use scanning tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Sharing sensitive findings or credentials in unencrypted communications
-- Failing to properly scope and contain the assessment before starting
+- **Analysis Platform** — Data processing and visualization
+- **Collaboration Tools** — Team coordination and knowledge sharing
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Tools & Systems
-
-- **Frida**: Dynamic instrumentation toolkit for injecting JavaScript into native Android processes
-- **Objection**: Higher-level Frida wrapper with pre-built Android and iOS security testing commands
-- **frida-trace**: Automated method tracing utility for quick reconnaissance of app behavior
-- **Drozer**: Android security assessment framework for testing IPC and exported components
-- **Android Studio Profiler**: Runtime monitoring for CPU, memory, and network activity
-
-## Common Pitfalls
-
-- **Frida version mismatch**: The Frida server on the device must match the frida-tools version on the host. Version mismatches cause connection failures.
-- **Anti-Frida detection**: Some apps detect Frida by checking for the Frida server process, scanning memory for Frida signatures, or monitoring `/proc/self/maps`. Use Frida Gadget injection or custom server builds.
-- **Obfuscated class names**: When ProGuard/R8 is applied, class and method names are shortened (e.g., `a.b.c.d()`). Use `android hooking search classes` to discover actual runtime names.
-- **Multi-DEX apps**: Large apps split across multiple DEX files may not have all classes loaded at startup. Hook class loaders or use `Java.enumerateLoadedClasses()` after app is fully initialized.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All dynamic analysis of android app procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

@@ -22,8 +22,7 @@ nist_csf:
 - ID.RA-01
 - DE.CM-01
 ---
-
-# Analyzing Malicious PDF with peepdf
+# Analyzing Malicious Pdf With Peepdf
 
 ## When to Use
 
@@ -43,80 +42,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Triage with pdfid**: Scan PDF for suspicious keywords (/JS, /JavaScript, /OpenAction, /Launch, /EmbeddedFile).
-2. **Interactive Analysis**: Open PDF in peepdf interactive mode to explore object structure.
-3. **Identify Suspicious Objects**: Locate objects containing JavaScript, streams, or encoded data.
-4. **Extract Content**: Dump suspicious streams and decode filters (FlateDecode, ASCIIHexDecode).
-5. **Deobfuscate JavaScript**: Analyze extracted JS for shellcode, heap sprays, or exploit code.
-6. **Check VirusTotal**: Use peepdf vtcheck to cross-reference file hash with AV detections.
-7. **Generate IOCs**: Extract URLs, domains, hashes, and shellcode signatures.
+1. **Scope the Analysis** — Define what malicious pdf artifacts or data sources to examine and the investigation timeline.
+2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
+3. **Extract Key Indicators** — Use peepdf to parse and extract relevant malicious pdf data points from collected artifacts.
+4. **Correlate Findings** — Cross-reference extracted data with other sources (threat intel, logs, timelines).
+5. **Build Timeline** — Construct a chronological sequence of events related to malicious pdf.
+6. **Document Analysis** — Write findings report with evidence, conclusions, and recommendations.
 
-## Key Concepts
+## Tools
 
-| Concept | Description |
-|---------|-------------|
-| /OpenAction | Automatic action executed when PDF is opened |
-| /JavaScript /JS | Embedded JavaScript code in PDF objects |
-| /Launch | Action that launches external applications |
-| /EmbeddedFile | File embedded within the PDF structure |
-| FlateDecode | zlib compression filter used to hide content |
-| Object Streams | PDF objects stored in compressed streams |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| peepdf / peepdf-3 | Interactive PDF analysis with JS emulation |
-| pdfid.py | Quick triage scanning for suspicious keywords |
-| pdf-parser.py | Deep object-level PDF parsing |
-| VirusTotal | Hash lookup and AV detection cross-reference |
-| CyberChef | Decode and transform extracted payloads |
-
-## When NOT to Use
-
-- You need to perform the attack, not analyze it (use performing-* skills)
-- Task is about detection, not analysis (use detecting-* skills)
-- You need to implement controls (use implementing-* skills)
-- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
-- You don't have access to the artifacts/logs to analyze
-- Task requires real-time monitoring (use SOC tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Sharing sensitive findings or credentials in unencrypted communications
-- Failing to properly scope and contain the assessment before starting
+- **peepdf** — Primary tool for this skill
+- **Forensic Toolkit** — Evidence collection and analysis
+- **Timeline Tools** — Chronological event reconstruction
+- **Log Analysis Platform** — Centralized log parsing and search
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Output Format
-
-```
-Analysis Report: PDF-MAL-[DATE]-[SEQ]
-File: [filename.pdf]
-SHA-256: [hash]
-Suspicious Keywords: [/JS, /OpenAction, etc.]
-Objects with JavaScript: [Object IDs]
-Extracted URLs: [List]
-Shellcode Detected: [Yes/No]
-Embedded Files: [Count and types]
-VirusTotal Detections: [X/Y engines]
-Risk Level: [Critical/High/Medium/Low]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All malicious pdf procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

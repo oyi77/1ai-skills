@@ -21,10 +21,7 @@ nist_csf:
 - GV.OV-01
 - DE.AE-02
 ---
-
-
-# Analyzing PowerShell Script Block Logging
-
+# Analyzing Powershell Script Block Logging
 
 ## When to Use
 
@@ -40,68 +37,25 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-1. Install dependencies: `pip install python-evtx lxml`
-2. Collect PowerShell Operational logs: `Microsoft-Windows-PowerShell%4Operational.evtx`
-3. Parse Event ID 4104 entries using python-evtx to extract ScriptBlockText, ScriptBlockId, and MessageNumber/MessageTotal for multi-part script reconstruction.
-4. Apply detection heuristics:
-   - Base64-encoded commands (`-EncodedCommand`, `FromBase64String`)
-   - Download cradles (`DownloadString`, `DownloadFile`, `Invoke-WebRequest`, `Net.WebClient`)
-   - AMSI bypass patterns (`AmsiUtils`, `amsiInitFailed`)
-   - Obfuscation indicators (high entropy, tick-mark insertion, string concatenation)
-5. Generate a report with reconstructed scripts, risk scores, and MITRE ATT&CK mappings.
+1. **Scope the Analysis** — Define what powershell script block logging artifacts or data sources to examine and the investigation timeline.
+2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
+3. **Extract Key Indicators** — Parse and extract relevant powershell script block logging data points from collected artifacts.
+4. **Correlate Findings** — Cross-reference extracted data with other sources (threat intel, logs, timelines).
+5. **Build Timeline** — Construct a chronological sequence of events related to powershell script block logging.
+6. **Document Analysis** — Write findings report with evidence, conclusions, and recommendations.
 
-```bash
-python scripts/agent.py --evtx-file /path/to/PowerShell-Operational.evtx --output ps_analysis.json
-```
+## Tools
 
-## Examples
+- **Forensic Toolkit** — Evidence collection and analysis
+- **Timeline Tools** — Chronological event reconstruction
+- **Log Analysis Platform** — Centralized log parsing and search
 
-```bash
-# Basic usage example
-# Replace with domain-specific commands from the workflow above
-```
-### Detect Encoded Command Execution
-```python
-import base64
-if "-encodedcommand" in script_text.lower():
-    encoded = script_text.split()[-1]
-    decoded = base64.b64decode(encoded).decode("utf-16-le")
-```
-
-### Reconstruct Multi-Block Script
-Scripts split across multiple 4104 events share a `ScriptBlockId`. Concatenate blocks ordered by `MessageNumber` to recover the full script.
-## When NOT to Use
-
-- You need to perform the attack, not analyze it (use performing-* skills)
-- Task is about detection, not analysis (use detecting-* skills)
-- You need to implement controls (use implementing-* skills)
-- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
-- You don't have access to the artifacts/logs to analyze
-- Task requires real-time monitoring (use SOC tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All powershell script block logging procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

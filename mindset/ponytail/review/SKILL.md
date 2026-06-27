@@ -11,6 +11,8 @@ tags:
 homepage: https://github.com/DietrichGebert/ponytail
 license: MIT
 ---
+# Review
+
 ## When to Use
 
 **Trigger phrases:**
@@ -27,58 +29,37 @@ license: MIT
 Review diffs for unnecessary complexity. One line per finding: location, what
 to cut, what replaces it. The diff's best outcome is getting shorter.
 
-## Format
+## Core Principles
 
-`L<line>: <tag> <what>. <replacement>.`, or `<file>:L<line>: ...` for
-multi-file diffs.
+- **Start small** — Begin with manageable review practices and build incrementally
+- **Be consistent** — Daily practice beats occasional intense effort
+- **Track progress** — Measure improvement to maintain motivation
+- **Reflect regularly** — Review what's working and adjust your approach
 
-Tags:
+## Daily Practice
 
-- `delete:` dead code, unused flexibility, speculative feature. Replacement: nothing.
-- `stdlib:` hand-rolled thing the standard library ships. Name the function.
-- `native:` dependency or code doing what the platform already does. Name the feature.
-- `yagni:` abstraction with one implementation, config nobody sets, layer with one caller.
-- `shrink:` same logic, fewer lines. Show the shorter form.
+1. **Morning intention** — Set a specific review goal for the day
+2. **Active practice** — Apply review techniques during real situations
+3. **Evening reflection** — Review the day's review moments and lessons learned
+4. **Journal entry** — Record insights, wins, and areas for improvement
 
-## Examples
+## Frameworks
 
-❌ "This EmailValidator class might be more complex than necessary, have you
-considered whether all these validation rules are needed at this stage?"
+- **OODA Loop** — Observe, Orient, Decide, Act — for rapid review decision cycles
+- **PDCA Cycle** — Plan, Do, Check, Act — for iterative review improvement
+- **After-Action Review** — What happened? Why? What to improve?
+- **Deliberate Practice** — Focused effort on specific review weaknesses
 
-✅ `L12-38: stdlib: 27-line validator class. "@" in email, 1 line, real validation is the confirmation mail.`
+## Common Pitfalls
 
-✅ `L4: native: moment.js imported for one format call. Intl.DateTimeFormat, 0 deps.`
+- **Perfectionism** — Waiting for ideal conditions instead of starting now
+- **Inconsistency** — Practicing sporadically instead of building a routine
+- **Isolation** — Not seeking feedback or accountability partners
+- **Overwhelm** — Trying to improve everything at once instead of focusing
 
-✅ `repo.py:L88: yagni: AbstractRepository with one implementation. Inline it until a second one exists.`
+## Resources
 
-✅ `L52-71: delete: retry wrapper around an idempotent local call. Nothing replaces it.`
-
-✅ `L30-44: shrink: manual loop builds dict. dict(zip(keys, values)), 1 line.`
-
-## Scoring
-
-End with the only metric that matters: `net: -<N> lines possible.`
-
-If there is nothing to cut, say `Lean already. Ship.` and stop.
-
-## Boundaries
-
-Complexity only, correctness bugs, security holes, and performance go to a
-normal review pass, not this one. A single smoke test or `assert`-based
-self-check is the ponytail minimum, not bloat, never flag it for deletion.
-Does not apply the fixes, only lists them.
-"stop ponytail-review" or "normal mode": revert to verbose review style.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Verification
-
-- [ ] Skill output matches expected behavior
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- Keep a review journal for tracking progress
+- Find an accountability partner or mentor
+- Set weekly review challenges with measurable outcomes
+- Review and adjust your approach monthly

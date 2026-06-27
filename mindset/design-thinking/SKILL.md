@@ -11,10 +11,7 @@ tags:
 - testing
 - thinking
 ---
-
 # Design Thinking
-
-Human-centered problem-solving framework: empathize, define, ideate, prototype, test, implement.
 
 ## When to Use
 
@@ -24,143 +21,37 @@ Human-centered problem-solving framework: empathize, define, ideate, prototype, 
 - Cross-functional collaboration on tough challenges
 - **When NOT to use**: Known problems with defined solutions (use standard processes), or urgent issues requiring immediate action
 
-## The 5-Phase Process
+## Core Principles
 
-### 1. Empathize
+- **Start small** — Begin with manageable design thinking practices and build incrementally
+- **Be consistent** — Daily practice beats occasional intense effort
+- **Track progress** — Measure improvement to maintain motivation
+- **Reflect regularly** — Review what's working and adjust your approach
 
-**Goal**: Understand the user's experience, needs, and context.
+## Daily Practice
 
-**Methods**:
-- **User interviews**: 1:1 conversations (open-ended, non-leading)
-- **Observation**: Watch users in their natural environment
-- **Immersion**: Use the product or situation yourself
-- **Stakeholder maps**: Who's involved? Who's affected?
+1. **Morning intention** — Set a specific design thinking goal for the day
+2. **Active practice** — Apply design thinking techniques during real situations
+3. **Evening reflection** — Review the day's design thinking moments and lessons learned
+4. **Journal entry** — Record insights, wins, and areas for improvement
 
-**Key question**: "What is the user's world like?"
+## Frameworks
 
-**Time**: 1-4 weeks.
+- **OODA Loop** — Observe, Orient, Decide, Act — for rapid design thinking decision cycles
+- **PDCA Cycle** — Plan, Do, Check, Act — for iterative design thinking improvement
+- **After-Action Review** — What happened? Why? What to improve?
+- **Deliberate Practice** — Focused effort on specific design thinking weaknesses
 
----
+## Common Pitfalls
 
-### 2. Define
+- **Perfectionism** — Waiting for ideal conditions instead of starting now
+- **Inconsistency** — Practicing sporadically instead of building a routine
+- **Isolation** — Not seeking feedback or accountability partners
+- **Overwhelm** — Trying to improve everything at once instead of focusing
 
-**Goal**: Frame the problem clearly based on insights.
+## Resources
 
-**Problem statement template**:
-> **[User]** needs **[need]** because **[insight]**.
-
-**Example**:
-- ❌ Broad: "The checkout is broken."
-- ✅ Refined: "Busy parents need a one-click checkout because they often abandon carts when interrupted by family needs."
-
-**Key question**: "What's the real problem we're solving?"
-
----
-
-### 3. Ideate
-
-**Goal**: Generate many solutions without judgment.
-
-**Structured brainstorming**:
-- **Divergent phase**: Generate as many ideas as possible (quantity over quality)
-- **Convergent phase**: Prioritize (vote, dot-mocracy, impact vs effort matrix)
-
-**Methods**:
-- Brainstorming (50+ ideas in 30 minutes)
-- Worst possible idea (loosen up)
-- SCAMPER (Substitute, Combine, Adapt, Modify, Put to other use, Eliminate, Reverse)
-- Crazy 8s (8 ideas in 8 minutes)
-
-**Rule**: Defer judgment. Wild ideas are welcome. Build on others' ideas.
-
----
-
-### 4. Prototype
-
-**Goal**: Make ideas tangible and testable quickly.
-
-**Low-fidelity → High-fidelity**:
-- **Sketch**: Paper drawing (5 min)
-- **Wireframe**: Balsamiq, Figma, or HTML/CSS (hours)
-- **MVP**: Minimal code or physical version (days)
-- **Clickable prototype**: Interactive demo (days or weeks)
-
-**Key**: Prototype to learn, not to ship. Fail fast, cheap.
-
----
-
-### 5. Test
-
-**Goal**: Learn from users with prototypes.
-
-**Testing structure**:
-1. **Setup**: "We have this idea. Please try it and tell us what you think."
-2. **Observe**: Watch them use the prototype (don't guide)
-3. **Ask**: "What's confusing? What would you change?"
-4. **Iterate**: Fix, test again
-
-**Key**: Test with real users (not teammates). Test early, often.
-
----
-
-## Implementation (When to Ship)
-
-**Gate**: Only ship when testing shows users:
-- Understand it (no confusion)
-- Want it (express interest, would pay)
-- Can use it (task completion >80%)
-
-**Process**:
-1. Final testing (QA, edge cases)
-2. Launch plan (communication, rollout, support)
-3. Measure outcomes (retention, satisfaction, business metrics)
-
----
-
-## Design Thinking Mindset
-
-**Principles**:
-- **Human-centered**: Start with user needs, not technology
-- **Bias toward action**: Build to think (prototyping > analysis)
-- **Iterative**: Fail fast, learn, improve
-- **Collaborative**: Cross-functional teams (diverse perspectives)
-- **Optimistic**: Every problem can be solved
-
----
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|-----------------|---------|
-| "We know what users want" | You're probably wrong. Empathy phase exists for a reason. |
-| "We don't have time to prototype" | Prototyping saves time (catches wrong direction early). |
-| "We should just build it" | Building without testing = most expensive prototype. |
-| "Design thinking is for designers" | It's for everyone. Product, engineering, ops, leaders. |
-
-## Red Flags
-
-- You skip the empathy phase ("we already know the user")
-- Problem statement is vague or solution-flavored ("we need feature X")
-- You generate only 2-3 ideas (not generating enough options)
-- Prototype takes weeks (too high fidelity, too slow)
-- You test with teammates (confirmation bias, not real users)
-
-## Verification
-
-- [ ] Empathy phase completed (3+ user interviews or observations)
-- [ ] Problem statement defined (user + need + insight)
-- [ ] Ideation session held (20+ ideas generated)
-- [ ] Prototype created (low-fidelity, <1 day)
-- [ ] Testing done with 5+ real users (not teammates)
-- [ ] Iteration based on test feedback (what's confusing, what to change)
-- [ ] Ship decision made (users understand, want, can use)
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- Keep a design thinking journal for tracking progress
+- Find an accountability partner or mentor
+- Set weekly design thinking challenges with measurable outcomes
+- Review and adjust your approach monthly

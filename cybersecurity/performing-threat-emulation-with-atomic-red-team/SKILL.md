@@ -35,9 +35,7 @@ nist_csf:
 - DE.CM-01
 - DE.AE-02
 ---
-
-# Performing Threat Emulation with Atomic Red Team
-
+# Performing Threat Emulation With Atomic Red Team
 
 ## When to Use
 
@@ -53,72 +51,25 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-Use atomic-operator to execute Atomic Red Team tests and validate detection coverage
-against MITRE ATT&CK techniques.
+1. **Plan Operations** — Define objectives, scope, and success criteria for threat emulation operations.
+2. **Prepare Environment** — Set up tools, access, and data sources required for threat emulation.
+3. **Execute Core Workflow** — Use atomic red team to perform threat emulation operations following established procedures.
+4. **Validate Results** — Verify that results meet quality standards and objectives.
+5. **Report Findings** — Document results, observations, and recommendations.
+6. **Follow Up** — Track remediation actions and verify fixes where applicable.
 
-```python
-from atomic_operator import AtomicOperator
+## Tools
 
-operator = AtomicOperator()
-# Run a specific technique test
-operator.run(
-    technique="T1059.001",  # PowerShell execution
-    atomics_path="./atomic-red-team/atomics",
-)
-```
+- **atomic red team** — Primary tool for this skill
+- **Analysis Platform** — Data processing and visualization
+- **Collaboration Tools** — Team coordination and knowledge sharing
 
-Key workflow:
-1. Clone the atomic-red-team repository for test definitions
-2. Select ATT&CK techniques matching your detection rules
-3. Execute atomic tests using atomic-operator
-4. Check SIEM/EDR for corresponding alerts
-5. Document detection gaps and update rules
-
-## Examples
-
-```python
-# Parse atomic test YAML definitions
-import yaml
-with open("atomics/T1059.001/T1059.001.yaml") as f:
-    tests = yaml.safe_load(f)
-for test in tests.get("atomic_tests", []):
-    print(f"Test: {test['name']}")
-    print(f"  Platforms: {test.get('supported_platforms', [])}")
-```
-## When NOT to Use
-
-- You don't have explicit written authorization to test
-- Task is about defense/detection, not offense (use detection skills)
-- You need to implement security controls (use implementing-* skills)
-- Task requires compliance auditing (use auditing-* skills)
-- You're investigating an incident (use incident response skills)
-- Target is out of scope for your engagement
-- Task is about vulnerability scanning only (use scanning tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All threat emulation procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

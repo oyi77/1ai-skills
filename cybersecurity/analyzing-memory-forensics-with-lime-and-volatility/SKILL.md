@@ -23,9 +23,7 @@ nist_csf:
 - GV.OV-01
 - DE.AE-02
 ---
-
-# Analyzing Memory Forensics with LiME and Volatility
-
+# Analyzing Memory Forensics With Lime And Volatility
 
 ## When to Use
 
@@ -41,78 +39,26 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-Acquire Linux memory using LiME kernel module, then analyze with Volatility 3
-to extract forensic artifacts from the memory image.
+1. **Scope the Analysis** — Define what memory forensics artifacts or data sources to examine and the investigation timeline.
+2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
+3. **Extract Key Indicators** — Use lime and volatility to parse and extract relevant memory forensics data points from collected artifacts.
+4. **Correlate Findings** — Cross-reference extracted data with other sources (threat intel, logs, timelines).
+5. **Build Timeline** — Construct a chronological sequence of events related to memory forensics.
+6. **Document Analysis** — Write findings report with evidence, conclusions, and recommendations.
 
-```bash
-# LiME acquisition
-insmod lime-$(uname -r).ko "path=/evidence/memory.lime format=lime"
+## Tools
 
-# Volatility 3 analysis
-vol3 -f /evidence/memory.lime linux.pslist
-vol3 -f /evidence/memory.lime linux.bash
-vol3 -f /evidence/memory.lime linux.sockstat
-```
+- **lime and volatility** — Primary tool for this skill
+- **Forensic Toolkit** — Evidence collection and analysis
+- **Timeline Tools** — Chronological event reconstruction
+- **Log Analysis Platform** — Centralized log parsing and search
 
-```python
-import volatility3
-from volatility3.framework import contexts, automagic
-from volatility3.plugins.linux import pslist, bash, sockstat
-
-# Programmatic Volatility 3 usage
-context = contexts.Context()
-automagics = automagic.available(context)
-```
-
-Key analysis steps:
-1. Acquire memory with LiME (format=lime or format=raw)
-2. List processes with linux.pslist, compare with linux.psscan
-3. Extract bash command history with linux.bash
-4. List network connections with linux.sockstat
-5. Check loaded kernel modules with linux.lsmod for rootkits
-
-## Examples
-
-```bash
-# Full forensic workflow
-vol3 -f memory.lime linux.pslist | grep -v "\[kthread\]"
-vol3 -f memory.lime linux.bash
-vol3 -f memory.lime linux.malfind
-vol3 -f memory.lime linux.lsmod
-```
-## When NOT to Use
-
-- You need to perform the attack, not analyze it (use performing-* skills)
-- Task is about detection, not analysis (use detecting-* skills)
-- You need to implement controls (use implementing-* skills)
-- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
-- You don't have access to the artifacts/logs to analyze
-- Task requires real-time monitoring (use SOC tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Failing to use write-blockers when acquiring forensic evidence
-- Not verifying hash integrity before and after imaging
-- Modifying original evidence during analysis
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Hash values computed and verified match between source and image
-- Chain of custody log complete with timestamps and examiner names
-- Analysis tools and versions documented for reproducibility
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All memory forensics procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

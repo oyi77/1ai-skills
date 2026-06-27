@@ -25,7 +25,6 @@ nist_csf:
 - DE.AE-02
 - RS.MA-01
 ---
-
 # Analyzing Windows Amcache Artifacts
 
 ## When to Use
@@ -51,229 +50,23 @@ nist_csf:
 
 ## Workflow
 
-1. **Prepare the environment** — ensure write-blocker is connected and test workstation is ready
-2. **Document the source** — record device serial, model, and pre-acquisition hash
-3. **Acquire the image** — use the appropriate tool with hash verification enabled
-4. **Verify integrity** — compare source and image hashes; document any discrepancies
-5. **Analyze and report** — perform the analysis and document findings with chain of custody
-### Step 1: Acquire the Amcache.hve File
+1. **Scope the Analysis** — Define what windows amcache artifacts artifacts or data sources to examine and the investigation timeline.
+2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
+3. **Extract Key Indicators** — Parse and extract relevant windows amcache artifacts data points from collected artifacts.
+4. **Correlate Findings** — Cross-reference extracted data with other sources (threat intel, logs, timelines).
+5. **Build Timeline** — Construct a chronological sequence of events related to windows amcache artifacts.
+6. **Document Analysis** — Write findings report with evidence, conclusions, and recommendations.
 
-Extract the Amcache hive from a forensic image or live system:
+## Tools
 
-```powershell
-# From a live system (requires elevated privileges and raw copy tool)
-# Amcache.hve is locked by the system; use a raw disk copy tool
-# Option A: FTK Imager - mount image and navigate to:
-# C:\Windows\appcompat\Programs\Amcache.hve
-# Also collect: Amcache.hve.LOG1, Amcache.hve.LOG2
-
-# Option B: Using KAPE for automated triage collection
-kape.exe --tsource C: --tdest D:\Evidence\%m --target Amcache
-
-# Option C: From a mounted forensic image (E: = mounted image)
-copy "E:\Windows\appcompat\Programs\Amcache.hve" D:\Evidence\
-copy "E:\Windows\appcompat\Programs\Amcache.hve.LOG1" D:\Evidence\
-copy "E:\Windows\appcompat\Programs\Amcache.hve.LOG2" D:\Evidence\
-```
-
-Always collect the transaction log files (`.LOG1`, `.LOG2`) alongside the hive. AmcacheParser replays uncommitted transactions from these logs to recover the most complete data.
-
-### Step 2: Parse Amcache with AmcacheParser
-
-Run AmcacheParser against the acquired hive:
-
-```powershell
-# Basic parsing with CSV output
-AmcacheParser.exe -f "D:\Evidence\Amcache.hve" --csv "D:\Evidence\Output"
-
-# Parse with a SHA-1 whitelist to exclude known-good entries (NSRL)
-AmcacheParser.exe -f "D:\Evidence\Amcache.hve" -w "D:\Whitelists\nsrl_sha1.txt" --csv "D:\Evidence\Output"
-
-# Parse with a SHA-1 inclusion list (only show matches against known-bad hashes)
-AmcacheParser.exe -f "D:\Evidence\Amcache.hve" -b "D:\IOCs\malware_sha1.txt" --csv "D:\Evidence\Output"
-
-# Include deleted entries with high-precision timestamps
-AmcacheParser.exe -f "D:\Evidence\Amcache.hve" --csv "D:\Evidence\Output" -i --mp
-```
-
-AmcacheParser produces multiple CSV files in the output directory:
-
-| Output File | Contents |
-|-------------|----------|
-| `Amcache_AssociatedFileEntries.csv` | File entries with SHA-1 hashes, paths, sizes, and timestamps |
-| `Amcache_UnassociatedFileEntries.csv` | Orphaned file entries from older Amcache format |
-| `Amcache_ProgramEntries.csv` | Installed program metadata (name, publisher, version, install date) |
-| `Amcache_DeviceContainers.csv` | USB and device connection history |
-| `Amcache_DevicePnps.csv` | Plug-and-Play device driver information |
-| `Amcache_DriverBinaries.csv` | Loaded driver binaries with paths and hashes |
-
-### Step 3: Analyze File Entries for Suspicious Programs
-
-Open the `AssociatedFileEntries.csv` in Timeline Explorer and examine key columns:
-
-```
-Key columns to review:
-- ProgramId          : Links file to its parent program entry
-- SHA1               : Hash for threat intel lookups
-- FullPath           : Original file location on disk
-- FileSize           : Size of the executable
-- FileKeyLastWriteTimestamp : When the Amcache entry was last updated
-- Name               : File name
-- Publisher           : Code signing publisher (blank = unsigned)
-- BinProductVersion  : Version string from the PE header
-- LinkDate           : PE compilation timestamp (useful for detecting timestomping)
-```
-
-Filter for suspicious indicators:
-
-```
-# In Timeline Explorer, apply these filters:
-
-# 1. Find unsigned executables (potentially malicious)
-Publisher column = (empty)
-
-# 2. Find executables from suspicious paths
-FullPath contains: \temp\, \appdata\, \downloads\, \public\, \programdata\
-
-# 3. Find executables with recent timestamps during incident window
-FileKeyLastWriteTimestamp between: 2026-03-15 00:00:00 and 2026-03-16 00:00:00
-
-# 4. Find executables with suspicious compilation dates (timestomping)
-LinkDate year < 2015 AND FileKeyLastWriteTimestamp year = 2026
-```
-
-### Step 4: Correlate SHA-1 Hashes with Threat Intelligence
-
-Extract SHA-1 hashes and check against malware databases:
-
-```powershell
-# Extract unique SHA-1 hashes from the parsed output
-# Using PowerShell to extract the SHA1 column
-Import-Csv "D:\Evidence\Output\Amcache_AssociatedFileEntries.csv" |
-  Select-Object -ExpandProperty SHA1 -Unique |
-  Where-Object { $_ -ne "" } |
-  Out-File "D:\Evidence\Output\extracted_hashes.txt"
-
-# Check hashes against VirusTotal using vt-cli
-foreach ($hash in Get-Content "D:\Evidence\Output\extracted_hashes.txt") {
-    vt file $hash --format json | Select-Object -Property meaningful_name, last_analysis_stats
-}
-
-# Check hashes against CIRCL hashlookup
-foreach ($hash in Get-Content "D:\Evidence\Output\extracted_hashes.txt") {
-    Invoke-RestMethod -Uri "https://hashlookup.circl.lu/lookup/sha1/$hash"
-}
-
-# Cross-reference with NSRL to identify known-good vs. unknown
-# Unknown hashes that are not in NSRL warrant closer investigation
-```
-
-### Step 5: Analyze Program Entries for Unauthorized Installations
-
-Review the `ProgramEntries.csv` for software the attacker may have installed:
-
-```
-Key columns in ProgramEntries:
-- ProgramName        : Display name of installed application
-- ProgramVersion     : Version string
-- Publisher          : Software publisher
-- InstallDate        : When the program was installed
-- Source             : Installation source (msi, exe, etc.)
-- UninstallKey       : Registry uninstall path
-- PathsList         : Installation directories
-```
-
-Look for:
-- Remote access tools (AnyDesk, TeamViewer, ngrok, Chisel)
-- Hacking tools (Mimikatz, PsExec, Cobalt Strike)
-- Tunneling utilities (plink, socat, WireGuard)
-- Programs installed during the incident window
-- Programs installed to non-standard locations
-
-### Step 6: Analyze Driver Binaries for Rootkit Evidence
-
-Review the `DriverBinaries.csv` for suspicious loaded drivers:
-
-```
-Key columns in DriverBinaries:
-- DriverName         : Name of the driver
-- DriverInBox        : Whether it shipped with Windows (false = third-party)
-- DriverSigned       : Whether the driver has a valid signature
-- DriverTimeStamp    : Compilation timestamp
-- Product            : Product associated with the driver
-- ProductVersion     : Driver version
-- SHA1               : Hash of the driver binary
-```
-
-Filter for `DriverInBox = false` and `DriverSigned = false` to find unsigned third-party drivers that may be rootkits or vulnerable drivers used in BYOVD (Bring Your Own Vulnerable Driver) attacks.
-
-### Step 7: Build a Timeline from Amcache Data
-
-Combine Amcache data with other artifacts for a comprehensive timeline:
-
-```powershell
-# Merge Amcache CSV with other EZ Tools output using Timeline Explorer
-# Load the following CSVs into Timeline Explorer:
-# - Amcache_AssociatedFileEntries.csv (file evidence)
-# - Amcache_ProgramEntries.csv (install evidence)
-# - Prefetch output from PECmd.exe (execution evidence)
-# - ShimCache output from AppCompatCacheParser.exe (execution evidence)
-
-# Sort all entries by timestamp to reconstruct the attack sequence
-# Timeline Explorer supports multi-file loading and column-based sorting
-
-# Export the combined timeline
-# File > Save to CSV > combined_timeline.csv
-```
-
-## Key Concepts
-
-| Term | Definition |
-|------|------------|
-| **Amcache.hve** | A Windows registry hive at `C:\Windows\appcompat\Programs\Amcache.hve` that stores metadata about applications, files, and drivers for application compatibility purposes |
-| **Associated File Entry** | An Amcache record linked to a specific program installation, containing file path, size, hash, and timestamps |
-| **Unassociated File Entry** | An orphaned Amcache record from an older format that is not linked to a program entry; common on Windows 7/8 systems |
-| **Program Entry** | Amcache record containing installation metadata: program name, version, publisher, install date, and uninstall key |
-| **SHA-1 Hash** | Cryptographic hash stored in Amcache for each registered file, enabling malware identification through threat intelligence lookups |
-| **LinkDate** | The PE compilation timestamp embedded in the executable header; discrepancy with file system timestamps may indicate timestomping |
-| **Transaction Logs** | `.LOG1` and `.LOG2` files containing uncommitted registry transactions that AmcacheParser replays for complete data recovery |
-| **NSRL (National Software Reference Library)** | NIST-maintained database of SHA-1 hashes for known commercial software, used as a whitelist to filter benign entries |
+- **Forensic Toolkit** — Evidence collection and analysis
+- **Timeline Tools** — Chronological event reconstruction
+- **Log Analysis Platform** — Centralized log parsing and search
 
 ## Verification
 
-- [ ] Amcache.hve and transaction logs (LOG1, LOG2) were collected from the forensic image
-- [ ] AmcacheParser produced all expected CSV output files without errors
-- [ ] SHA-1 hashes were extracted and checked against VirusTotal or CIRCL hashlookup
-- [ ] Unsigned executables in suspicious paths have been flagged for further analysis
-- [ ] Program entries show all software installations within the incident window
-- [ ] Driver binaries have been checked for unsigned or out-of-box entries
-- [ ] LinkDate vs. FileKeyLastWriteTimestamp comparison has been performed to detect timestomping
-- [ ] Amcache findings are correlated with Prefetch and ShimCache for execution confirmation
-- [ ] Final timeline integrates Amcache data with other forensic artifacts
-## When NOT to Use
-
-- You need to perform the attack, not analyze it (use performing-* skills)
-- Task is about detection, not analysis (use detecting-* skills)
-- You need to implement controls (use implementing-* skills)
-- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
-- You don't have access to the artifacts/logs to analyze
-- Task requires real-time monitoring (use SOC tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Failing to use write-blockers when acquiring forensic evidence
-- Not verifying hash integrity before and after imaging
-- Modifying original evidence during analysis
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All windows amcache artifacts procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

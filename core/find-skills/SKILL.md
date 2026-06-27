@@ -168,13 +168,13 @@ Refer to the skill overview for detailed usage instructions.
 **react-performance-tips** by community-dev
 - React optimization patterns
 - 8.2K uses | Updated 1 month ago
-- [View Details](https://skills.sh/community-dev/skills/react-performance-tips)
+- [View Details](https://skills.sh/community-dev#)
 
 ### ⚠️ Use with Caution (Score: 55/100)
 **react-optimizer** by new-dev
 - Basic React optimization
 - 450 uses | Updated 6 months ago
-- [View Details](https://skills.sh/new-dev/skills/react-optimizer)
+- [View Details](https://skills.sh/new-dev#)
 
 **Would you like me to install the top recommendation?**
 ```

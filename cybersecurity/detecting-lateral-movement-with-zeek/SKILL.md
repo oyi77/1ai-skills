@@ -23,13 +23,7 @@ nist_csf:
 - ID.AM-03
 - PR.DS-02
 ---
-
-# Detecting Lateral Movement with Zeek
-
-Analyze Zeek network logs to identify lateral movement techniques including
-SMB admin share access, DCE/RPC remote service creation, NTLM account spray,
-Kerberos ticket anomalies, and large internal data transfers indicative
-of staging or exfiltration between hosts.
+# Detecting Lateral Movement With Zeek
 
 ## When to Use
 
@@ -54,186 +48,24 @@ of staging or exfiltration between hosts.
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Verify Zeek Log Collection
+1. **Define Detection Scope** — Identify the specific lateral movement techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for lateral movement.
+3. **Build Detection Queries** — Write zeek queries targeting lateral movement indicators. Use platform-specific query language for optimal performance.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-Confirm that Zeek is producing the required log files for lateral movement detection:
+## Tools
 
-```bash
-# Check that all required analyzers are producing logs
-ls -la /opt/zeek/logs/current/conn.log
-ls -la /opt/zeek/logs/current/smb_mapping.log
-ls -la /opt/zeek/logs/current/smb_files.log
-ls -la /opt/zeek/logs/current/dce_rpc.log
-ls -la /opt/zeek/logs/current/kerberos.log
-ls -la /opt/zeek/logs/current/ntlm.log
-
-# Quick field check on conn.log
-zeek-cut id.orig_h id.resp_h id.resp_p proto service < /opt/zeek/logs/current/conn.log | head -20
-```
-
-### Step 2: Parse conn.log for Internal Lateral Patterns
-
-Identify connections between internal hosts on lateral-movement-associated ports:
-
-```bash
-# Extract SMB connections (port 445) between internal hosts
-zeek-cut ts id.orig_h id.orig_p id.resp_h id.resp_p proto service duration orig_bytes resp_bytes \
-  < /opt/zeek/logs/current/conn.log \
-  | awk '$5 == 445 && $7 == "smb"'
-
-# Extract DCE/RPC connections (port 135)
-zeek-cut ts id.orig_h id.resp_h id.resp_p service \
-  < /opt/zeek/logs/current/conn.log \
-  | awk '$4 == 135'
-
-# Extract WinRM connections (port 5985/5986)
-zeek-cut ts id.orig_h id.resp_h id.resp_p service \
-  < /opt/zeek/logs/current/conn.log \
-  | awk '$4 == 5985 || $4 == 5986'
-```
-
-### Step 3: Analyze SMB Admin Share Access
-
-Detect access to administrative shares (C$, ADMIN$, IPC$) which is the primary vector for tools like PsExec:
-
-```bash
-# Check smb_mapping.log for admin share access
-zeek-cut ts id.orig_h id.resp_h path share_type \
-  < /opt/zeek/logs/current/smb_mapping.log \
-  | grep -iE '(C\$|ADMIN\$|IPC\$)'
-
-# Check smb_files.log for file writes to admin shares
-zeek-cut ts id.orig_h id.resp_h action path name size \
-  < /opt/zeek/logs/current/smb_files.log \
-  | grep -i 'SMB::FILE_WRITE'
-```
-
-Deploy the following Zeek script to generate `notice.log` alerts on admin share access:
-
-```zeek
-@load base/protocols/smb
-@load base/frameworks/notice
-
-redef enum Notice::Type += {
-    Admin_Share_Access
-};
-
-event smb1_tree_connect_andx_request(c: connection, hdr: SMB1::Header, path: string, service: string) {
-    if ( /\$/ in path )
-        NOTICE([$note=Admin_Share_Access,
-                $msg=fmt("Admin share access: %s -> %s (%s)", c$id$orig_h, c$id$resp_h, path),
-                $conn=c]);
-}
-```
-
-### Step 4: Detect DCE/RPC Remote Service Operations
-
-Monitor for remote service creation and scheduled task registration via DCE/RPC:
-
-```bash
-# Look for service control manager operations (PsExec pattern)
-zeek-cut ts id.orig_h id.resp_h endpoint operation \
-  < /opt/zeek/logs/current/dce_rpc.log \
-  | grep -iE '(svcctl|atsvc|ITaskSchedulerService)'
-```
-
-### Step 5: Detect NTLM Account Spray
-
-Analyze ntlm.log for authentication anomalies indicating credential reuse.
-Zeek's ntlm.log does not expose password hashes, so this detection identifies
-a single account authenticating to many hosts in a short window — the network
-signature of credential spraying tools like CrackMapExec:
-
-```bash
-# Extract NTLM authentications
-zeek-cut ts id.orig_h id.resp_h username domainname server_nb_computer_name success \
-  < /opt/zeek/logs/current/ntlm.log
-
-# Failed NTLM authentications (brute force or credential testing)
-zeek-cut ts id.orig_h id.resp_h username success \
-  < /opt/zeek/logs/current/ntlm.log \
-  | awk '$5 == "F"'
-
-# Sort by timestamp for timeline analysis
-zeek-cut ts id.orig_h id.resp_h username success \
-  < /opt/zeek/logs/current/ntlm.log \
-  | sort -k1,1
-```
-
-Deploy the following Zeek script to generate `notice.log` alerts when a single
-account touches more hosts than the threshold in a rolling window:
-
-```zeek
-@load base/protocols/ntlm
-@load base/frameworks/notice
-
-redef enum Notice::Type += {
-    NTLM_Account_Spray
-};
-
-global ntlm_tracker: table[string] of set[addr] &create_expire=5min;
-const spray_threshold = 3 &redef;
-
-event ntlm_log(rec: NTLM::Info) {
-    if ( ! rec?$username || rec$username == "-" )
-        return;
-    if ( rec$username !in ntlm_tracker )
-        ntlm_tracker[rec$username] = set();
-    add ntlm_tracker[rec$username][rec$id$resp_h];
-    if ( |ntlm_tracker[rec$username]| >= spray_threshold )
-        NOTICE([$note=NTLM_Account_Spray,
-                $msg=fmt("NTLM account spray: %s -> %d hosts", rec$username, |ntlm_tracker[rec$username]|),
-                $sub=rec$username,
-                $conn=rec$id]);
-}
-```
-
-### Step 6: Run the Automated Analysis Agent
-
-Use the provided agent.py for comprehensive lateral movement detection:
-
-```bash
-python3 agent.py /opt/zeek/logs/current/
-python3 agent.py /opt/zeek/logs/2026-03-18/  # Analyze a specific date
-```
+- **zeek** — Primary tool for this skill
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
 ## Verification
 
-- Confirm conn.log captures internal SMB (port 445) and DCE/RPC (port 135) connections with correct field parsing
-- Verify smb_mapping.log correctly logs admin share paths (C$, ADMIN$, IPC$)
-- Test with a known PsExec execution in a lab: expect to see SMB FILE_WRITE of the service binary followed by DCE/RPC svcctl CreateService
-- Validate NTLM log parsing by performing a test authentication and confirming username, domain, and success fields are captured; verify the NTLM Account Spray Zeek script generates a `notice.log` entry when the spray threshold is exceeded
-- Cross-reference Zeek alerts with Sysmon Event ID 1 (Process Creation) on the target host to confirm end-to-end detection
-- Verify the agent correctly handles both TSV and JSON Zeek log formats
-## When NOT to Use
-
-- You need to perform the attack to test detection (use performing-* skills)
-- Task is about analyzing past incidents (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about threat hunting proactively (use hunting-* skills)
-- You don't have access to logs or monitoring data
-- Task requires incident response (use IR skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Capturing traffic on networks without authorization or privacy considerations
-- Leaving packet captures containing sensitive data unencrypted on disk
-- Deploying inline blocking rules without testing for false positives first
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All lateral movement procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

@@ -44,89 +44,21 @@ nist_csf:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Generate Canary Files
+1. **Define Objectives** — Clarify the goals and scope for ransomware canary files.
+2. **Gather Resources** — Collect tools, data, and access needed for ransomware canary files.
+3. **Execute Process** — Carry out ransomware canary files operations methodically.
+4. **Verify Quality** — Check results against acceptance criteria.
+5. **Document Outcomes** — Record findings, decisions, and next steps.
 
-Create decoy files with realistic names and content that attract ransomware scanners. Files should have names like `Passwords.xlsx`, `Financial_Report_2026.docx`, `backup_credentials.csv` and contain plausible-looking but fake data. Place them in directories ransomware typically targets first: user desktops, Documents folders, network share roots, and backup paths.
+## Tools
 
-### Step 2: Deploy Filesystem Monitor
-
-Use Python's watchdog library with a custom `FileSystemEventHandler` that watches canary file paths. The handler triggers on `on_modified`, `on_deleted`, `on_moved`, and `on_created` events for canary files. Any legitimate user or process should never touch these files, so any interaction is a high-confidence indicator of ransomware or unauthorized access.
-
-### Step 3: Configure Alert Pipeline
-
-Wire the filesystem monitor to multiple alert channels: email via SMTP, Slack webhook POST, syslog forwarding to SIEM, and local log file. Include the triggering event type, file path, timestamp, and process information (when available) in alert payloads.
-
-### Step 4: Validate and Test
-
-Simulate ransomware behavior by programmatically modifying, renaming, and deleting canary files to verify the detection pipeline fires correctly. Measure time-to-alert and validate alert delivery across all configured channels.
-
-## Key Concepts
-
-| Term | Definition |
-|------|------------|
-| **Canary File** | A decoy file placed in a monitored directory that triggers an alert when accessed, modified, or deleted |
-| **Watchdog** | Python library that monitors filesystem events using OS-native APIs (inotify on Linux, FSEvents on macOS, ReadDirectoryChangesW on Windows) |
-| **Honey File** | Synonym for canary file; a fake document designed to attract and detect malicious activity |
-| **Entropy Check** | Measuring randomness in file content to detect encryption (ransomware produces high-entropy output) |
-
-## Tools & Systems
-
-- **watchdog**: Python filesystem monitoring library using OS-native event APIs
-- **smtplib**: Python standard library for SMTP email alerting
-- **requests**: HTTP library for Slack webhook integration
-- **hashlib**: SHA-256 hashing for canary file integrity verification
-- **psutil**: Process information gathering when canary file access is detected
-
-## When NOT to Use
-
-- You need to test the deployment (use performing-* skills)
-- Task is about configuring deployed tools (use configuring-* skills)
-- You need to analyze deployment output (use analyzing-* skills)
-- Task is about building deployment automation (use building-* skills)
-- You don't have deployment access
-- Task requires change management (follow change process)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Sharing sensitive findings or credentials in unencrypted communications
-- Failing to properly scope and contain the assessment before starting
+- **Analysis Platform** — Data processing and visualization
+- **Collaboration Tools** — Team coordination and knowledge sharing
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Output Format
-
-```
-RANSOMWARE CANARY ALERT
-========================
-Timestamp: 2026-03-11T14:23:07Z
-Event: FILE_MODIFIED
-Canary File: /srv/shares/finance/Passwords.xlsx
-Directory: /srv/shares/finance
-SHA-256 Before: a3f2...8b4c
-SHA-256 After: 7e91...2d3f
-Alert Channels: [email, slack, syslog]
-Action: Investigate immediately - potential ransomware activity
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All ransomware canary files procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

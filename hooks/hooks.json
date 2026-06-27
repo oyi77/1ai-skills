@@ -1,5 +1,5 @@
 {
-  "hooks_version": "3.4.0",
+  "hooks_version": "3.5.0",
   "hooks": {
     "session:start": {
       "command": "bash hooks/session-start.sh $PWD",
@@ -15,6 +15,7 @@
     },
     "auto-evolve": {
       "tracker": { "type": "PostToolUse", "matcher": "Skill", "script": "hooks/auto-evolve/skill-tracker.js" },
+      "banner": { "type": "PostToolUse", "matcher": "Skill", "script": "hooks/auto-evolve/skill-banner.js", "timeout": 3 },
       "committer": { "type": "PostToolUse", "matcher": "Write|Edit", "script": "hooks/auto-evolve/skill-committer.js" },
       "feedback": { "type": "UserPromptSubmit", "script": "hooks/auto-evolve/skill-feedback-capture.js" },
       "evolver": { "type": "SessionEnd", "script": "hooks/auto-evolve/skill-evolver.js" }

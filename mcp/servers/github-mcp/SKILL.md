@@ -9,6 +9,8 @@ tags:
 - model-context-protocol
 - tool-integration
 ---
+# Github Mcp
+
 ## When to Use
 
 **Trigger phrases:**
@@ -21,80 +23,35 @@ tags:
 **When NOT to use:**
 - For tasks outside this skill's scope
 
-## Github Mcp
-
-MCP server for GitHub automation
-
-### Usage
-
-```
-/github-mcp <task>
-```
-
-### Features
-
-- Automated execution
-- Error handling
-- Result validation
-
-## How to Use
-
-1. Set the GITHUB_PERSONAL_ACCESS_TOKEN environment variable
-2. Configure the MCP server in your client settings
-3. Use tools for repository, issue, PR, and workflow management
-
-## Available Tools
-
-| Tool | Description |
-|------|-------------|
-| `search_repositories` | Search GitHub repos by query |
-| `create_issue` | Create a new issue with labels and assignees |
-| `create_pull_request` | Open a PR with title, body, and base branch |
-| `list_issues` | List issues with filters (state, labels, assignee) |
-| `get_file_contents` | Read file content from a repository |
-| `create_or_update_file` | Commit a file change directly |
-
-## Common Patterns
-
-- Use search_repositories before get_file_contents to resolve repo IDs
-- Create issues with structured templates for consistency
-- Link PRs to issues using keywords for automatic closing
-
-## When NOT to Use
-
-- When the MCP server requires organization admin permissions
-- When the repository contains classified or export-controlled code
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- MCP server does not validate webhook payload signatures
-- Agent does not handle GitHub API deprecation notices
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Webhook payload signatures are validated before processing
-- [ ] API deprecation notices are monitored and addressed
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Github Mcp implements a Model Context Protocol server for Model Context Protocol.
 
-## Process
+## Architecture
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- **Server** — MCP-compliant server exposing tools and resources
+- **Transport** — stdio or HTTP transport layer
+- **Tools** — Callable functions with JSON Schema definitions
+- **Resources** — Readable data sources with URI-based access
+
+## Setup
+
+1. Install the MCP server package
+2. Configure environment variables and credentials
+3. Register the server in MCP client configuration
+4. Test tool invocations and resource access
+
+## Configuration
+
+- Server name and version
+- Transport type (stdio, SSE, HTTP)
+- Tool definitions with input/output schemas
+- Resource URI patterns
+- Authentication and rate limiting
+
+## Integration
+
+- Compatible with Claude, Cursor, and other MCP clients
+- Supports streaming responses for large payloads
+- Handles errors with standard MCP error codes
+

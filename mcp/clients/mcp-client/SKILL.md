@@ -9,6 +9,8 @@ tags:
 - model-context-protocol
 - tool-integration
 ---
+# Mcp Client
+
 ## When to Use
 
 **Trigger phrases:**
@@ -21,86 +23,35 @@ tags:
 **When NOT to use:**
 - For tasks outside this skill's scope
 
-## Mcp Client
-
-Generic MCP client implementation
-
-### Usage
-
-```
-/mcp-client <task>
-```
-
-### Features
-
-- Automated execution
-- Error handling
-- Result validation
-
-## How to Use
-
-1. Configure the MCP server connection in your client settings
-2. Initialize the client with the server endpoint and authentication
-3. List available tools, resources, and prompts from the server
-4. Call tools with structured arguments and handle responses
-
-## Client Configuration
-
-```json
-{
-  "mcpServers": {
-    "my-server": {
-      "command": "npx",
-      "args": ["-y", "@my-org/mcp-server"],
-      "env": { "API_KEY": "${MY_API_KEY}" }
-    }
-  }
-}
-```
-
-## Common Patterns
-
-- Use SSE transport for remote MCP servers
-- Implement tool discovery before calling tools
-- Handle server restarts with automatic reconnection
-- Cache tool schemas to reduce initialization overhead
-- Validate tool arguments against the server JSON schema
-
-## When NOT to Use
-
-- When the MCP server handles credentials or authentication tokens
-- When the server processes data subject to regulatory retention requirements
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- MCP server does not validate inputs causing downstream errors
-- Agent does not handle server connection failures with retry logic
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Input parameters are validated before server-side processing
-- [ ] Connection failures trigger automatic retry with backoff
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Mcp Client implements a Model Context Protocol server for Model Context Protocol.
 
-## Process
+## Architecture
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- **Server** — MCP-compliant server exposing tools and resources
+- **Transport** — stdio or HTTP transport layer
+- **Tools** — Callable functions with JSON Schema definitions
+- **Resources** — Readable data sources with URI-based access
+
+## Setup
+
+1. Install the MCP server package
+2. Configure environment variables and credentials
+3. Register the server in MCP client configuration
+4. Test tool invocations and resource access
+
+## Configuration
+
+- Server name and version
+- Transport type (stdio, SSE, HTTP)
+- Tool definitions with input/output schemas
+- Resource URI patterns
+- Authentication and rate limiting
+
+## Integration
+
+- Compatible with Claude, Cursor, and other MCP clients
+- Supports streaming responses for large payloads
+- Handles errors with standard MCP error codes
+

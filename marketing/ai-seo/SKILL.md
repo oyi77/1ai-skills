@@ -8,21 +8,7 @@ tags:
 - marketing
 - seo
 ---
-
-
-
-# AI SEO
-
-Optimize content for AI-powered search engines and answer engines.
-
-## Capabilities
-
-- AI Overview optimization
-- Answer engine optimization (Perplexity, ChatGPT Search)
-- Structured data for AI consumption
-- Content formatting for LLM extraction
-- Entity-based SEO
-- Citation and source optimization
+# Ai Seo
 
 ## When to Use
 
@@ -31,140 +17,31 @@ Optimize content for AI-powered search engines and answer engines.
 - Building content that AI engines cite
 - Implementing structured data markup
 
-## When NOT to Use
-
-- Task is about sales, not marketing (use sales skills)
-- Task is about product development (use product skills)
-- You need to analyze marketing data (use analytics skills)
-- Task is about customer support (use support skills)
-- You don't have marketing assets
-- Task requires legal review (consult legal)
-
-
-## Pseudo Code
-
-The ai-seo workflow follows a standard pipeline pattern.
-
-Core flow:
-```
-# ai-seo primary flow
-input = prepare(raw_data)
-result = process(input, config={adapting, answer, building, chatgpt, content})
-validate(result)
-deliver(result)
-```
-
-Error handling:
-```
-on error:
-  log(error_details)
-  retry_with_backoff(max=3)
-  if still_failing: alert_and_escalate()
-```
-
-
-### Core Workflow
-```
-# ai-seo primary flow
-input = prepare(raw_data)
-result = process(input, config={adapting, answer, building, chatgpt, content})
-validate(result)
-deliver(result)
-```
-
-### Error Handling
-```
-on error:
-  log(error_details)
-  retry_with_backoff(max=3)
-  if still_failing: alert_and_escalate()
-```
-
-
-### AI-Friendly Content Structure
-
-```markdown
-# [Primary Question as H1]
-
-## Direct Answer (first 2-3 sentences)
-[Concise answer that AI can extract as a snippet]
-
-## Detailed Explanation
-[Supporting details, examples, data]
-
-## Key Takeaways
-- Point 1
-- Point 2
-- Point 3
-
-## Sources
-- [Source 1](url)
-- [Source 2](url)
-```
-
-### Structured Data
-
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [{
-    "@type": "Question",
-    "name": "What is RAG?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "RAG (Retrieval-Augmented Generation) is a pattern that grounds LLM responses in factual data by retrieving relevant documents before generating answers."
-    }
-  }]
-}
-```
-
-### Entity Optimization
-
-```python
-def optimize_for_entities(content, target_entities):
-    """Ensure content mentions key entities AI engines look for."""
-    for entity in target_entities:
-        if entity not in content:
-            content = add_entity_context(content, entity)
-    return content
-```
-
-## Common Patterns
-
-- **Question-based headings**: H2/H3 as questions users ask
-- **Direct answers first**: First 2 sentences should answer the question
-- **Structured data**: FAQ, HowTo, Article schema on every page
-- **Source citations**: Link to authoritative sources AI engines trust
-- **Entity richness**: Mention related entities, not just keywords
-
-## How to Use
-
-1. Define campaign objective and target KPIs
-2. Set up tracking and attribution (UTMs, pixels, events)
-3. Create campaign assets (copy, creatives, landing pages)
-4. Launch with small budget for testing
-5. Monitor metrics daily, optimize underperformers
-6. Scale winners, pause losers, document learnings
-
-## Red Flags
-
-- **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue
-- **Ad spend with zero conversions**: Pause and review targeting/creative
-- **Email open rates below 15%**: Subject lines or sender reputation issue
-- **Bounce rate above 70%**: Landing page mismatch or slow load times
-- **Attribution gaps**: Missing UTM parameters or broken tracking pixels
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Ai Seo drives growth marketing with data-driven strategies.
 
-## Verification
+## Workflow
 
-- [ ] Skill output matches expected behavior
+1. **Research** — Analyze market, competitors, and audience
+2. **Strategy** — Define goals, channels, and messaging
+3. **Create** — Develop content and creative assets
+4. **Launch** — Deploy campaigns across channels
+5. **Optimize** — A/B test and iterate based on data
+6. **Report** — Track KPIs and ROI
 
-## Process
+## Key Metrics
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- Reach and impressions
+- Engagement rate (likes, shares, comments)
+- Conversion rate (clicks → leads → customers)
+- Customer acquisition cost (CAC)
+- Return on ad spend (ROAS)
+
+## Best Practices
+
+- Test everything — headlines, images, CTAs, timing
+- Focus on one channel at a time, then expand
+- Build organic before scaling paid
+- Track attribution across the full funnel
+

@@ -24,7 +24,7 @@ nist_csf:
 - GV.SC-06
 - GV.SC-07
 ---
-# Detecting Typosquatting Packages in npm and PyPI
+# Detecting Typosquatting Packages In Npm Pypi
 
 ## When to Use
 
@@ -45,166 +45,23 @@ nist_csf:
 
 ## Workflow
 
-1. **Scope and authorize** — confirm written authorization and define target boundaries
-2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
-3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
-4. **Post-exploitation** — document access level, lateral movement, and data exposure
-5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
-### Step 1: Build the Target Package Watchlist
+1. **Define Detection Scope** — Identify the specific typosquatting packages in npm pypi techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for typosquatting packages in npm pypi.
+3. **Build Detection Queries** — Write detection rules, Sigma rules, or SIEM queries targeting typosquatting packages in npm pypi indicators.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-Establish the set of legitimate packages to monitor for typosquats:
+## Tools
 
-- **Extract project dependencies**: Parse `requirements.txt`, `Pipfile.lock`, `package.json`, or `package-lock.json` to extract all direct and transitive dependency names
-- **Include popular packages**: Supplement with high-value targets from the top 1000 PyPI downloads (available from `https://hugovk.github.io/top-pypi-packages/`) or top npm packages by download count
-- **Add organization packages**: Include any packages published by your organization that attackers might target with typosquats to intercept internal installations
-- **Normalize names**: PyPI treats hyphens, underscores, and periods as equivalent (PEP 503 normalization: `re.sub(r"[-_.]+", "-", name).lower()`). npm package names are case-sensitive but scoped packages use `@scope/name` format. Normalize before comparison.
-
-### Step 2: Generate Candidate Typosquat Names
-
-Produce potential typosquat variants for each target package:
-
-- **Character omission**: Remove each character one at a time (`requests` -> `rquests`, `requets`, `reqests`)
-- **Character transposition**: Swap adjacent characters (`requests` -> `erquests`, `rqeuests`, `reques ts`)
-- **Character substitution**: Replace characters with keyboard-adjacent keys using a QWERTY distance map (`requests` -> `rrquests`, `requesta`)
-- **Character insertion**: Insert common characters at each position (`requests` -> `rrequests`, `reqquests`)
-- **Separator manipulation**: For hyphenated names, try removing, doubling, or replacing separators (`my-package` -> `mypackage`, `my--package`, `my_package`)
-- **Common prefix/suffix attacks**: Prepend or append common strings (`python-requests`, `requests-python`, `requests2`, `requests-lib`)
-
-### Step 3: Query Registry APIs for Candidate Packages
-
-Check whether generated candidate names actually exist in the registry:
-
-- **PyPI JSON API**: Send `GET https://pypi.org/pypi/<candidate>/json` for each candidate. A `200` response means the package exists; `404` means it does not. Extract from the response: `info.name`, `info.version`, `info.author`, `info.summary`, `info.home_page`, `info.project_urls`, and `releases` (keyed by version with `upload_time_iso_8601` timestamps).
-- **npm registry API**: Send `GET https://registry.npmjs.org/<candidate>` with `Accept: application/json`. Extract: `name`, `description`, `dist-tags.latest`, `time.created`, `time.modified`, `maintainers`, and `versions`.
-- **Rate limiting**: PyPI has no published rate limits but respect reasonable request rates (1-2 requests/second). npm registry returns `429` when rate limited; implement exponential backoff.
-- **Batch optimization**: For large candidate lists, parallelize requests with connection pooling (`requests.Session`) and limit concurrency to avoid triggering abuse protections.
-
-### Step 4: Analyze Package Metadata for Suspicion Signals
-
-Score each existing candidate package against multiple heuristic signals:
-
-- **Levenshtein distance**: Calculate the edit distance between the candidate name and the target. Packages with distance 1-2 from a popular package are high-priority suspects. Historical analysis shows 18 of 40 known typosquats had Levenshtein distance of 2 or less from their targets.
-- **Publish date recency**: Compare the candidate's first publish date against the target's. A package created years after its near-namesake is more suspicious. Flag packages created within the last 90 days that are similar to packages published years ago.
-- **Download count disparity**: Compare weekly downloads. Legitimate similarly-named packages typically have comparable or explainable download counts. A package with 50 downloads versus its near-namesake with 5 million downloads is suspicious. PyPI download stats are available via BigQuery (`pypistats.org/api/`); npm provides download counts at `https://api.npmjs.org/downloads/point/last-week/<package>`.
-- **Author and maintainer analysis**: Check if the candidate package author matches the legitimate package author. Different authors for near-identical names increase suspicion.
-- **Description similarity**: Compare package descriptions. Typosquats frequently copy or closely paraphrase the target package description to appear legitimate.
-- **Version count**: Legitimate packages typically have many versions over time. A package with only 1-2 versions and a name similar to a popular package is suspicious.
-- **Repository URL analysis**: Check if the candidate links to the same repository as the target (likely legitimate fork/mirror) or has no repository URL (suspicious).
-
-### Step 5: Score, Rank, and Report Findings
-
-Combine signals into a composite risk score and generate an actionable report:
-
-- **Weighted scoring**: Assign weights to each signal. Example: Levenshtein distance 1 = 40 points, Levenshtein distance 2 = 25 points, created < 90 days ago = 15 points, download ratio < 0.001 = 15 points, different author = 10 points, single version = 5 points. Total score out of 100.
-- **Threshold classification**: Score >= 70: HIGH risk (likely typosquat), 40-69: MEDIUM risk (requires manual review), < 40: LOW risk (likely legitimate)
-- **Generate report**: For each flagged package, include the target it mimics, all signal values, the composite score, direct links to both packages on the registry, and a recommendation (block, investigate, or allow)
-- **Actionable output**: Produce a blocklist of flagged package names that can be imported into package manager deny-lists, CI/CD policy engines, or artifact repository proxy rules
-
-## Key Concepts
-
-| Term | Definition |
-|------|------------|
-| **Typosquatting** | Registering a package name that closely resembles a popular package, exploiting common typos to trick developers into installing malicious code |
-| **Levenshtein Distance** | The minimum number of single-character edits (insertions, deletions, substitutions) required to transform one string into another; the primary metric for measuring name similarity |
-| **Dependency Confusion** | A broader supply chain attack where attackers publish malicious packages to public registries with names matching private internal packages, exploiting package manager resolution order |
-| **PEP 503 Normalization** | The Python packaging specification that treats hyphens, underscores, and periods as equivalent in package names, meaning `my-package`, `my_package`, and `my.package` resolve to the same package |
-| **QWERTY Distance** | A keyboard-layout-aware distance metric measuring how far apart two keys are on a standard keyboard, used to detect substitutions from adjacent key mistyping |
-| **Combosquatting** | A variant of typosquatting where attackers prepend or append common words to a package name (e.g., `requests-security`, `python-requests`) |
-| **StarJacking** | An attack where a typosquat package links its repository URL to the legitimate package's GitHub repository to inflate apparent credibility |
-
-## Tools & Systems
-
-- **PyPI JSON API**: REST API at `https://pypi.org/pypi/<package>/json` returning package metadata including name, author, versions, upload timestamps, and project URLs
-- **npm Registry API**: REST API at `https://registry.npmjs.org/<package>` returning package metadata including maintainers, version history, creation timestamps, and distribution info
-- **python-Levenshtein / rapidfuzz**: Python libraries for fast string distance computation, supporting Levenshtein, Damerau-Levenshtein, Jaro-Winkler, and other similarity metrics
-- **pypistats.org API**: Provides download statistics for PyPI packages, enabling download count comparison between suspected typosquats and their targets
-- **npm download counts API**: Endpoint at `https://api.npmjs.org/downloads/point/<period>/<package>` providing download statistics for npm packages
-
-## Common Scenarios
-
-**Scenario 1: External network penetration test**
-Enumerate external-facing services, identify vulnerable versions, attempt exploitation within scope, pivot to internal resources if authorized.
-
-**Scenario 2: Web application security assessment**
-Map the application, test authentication and authorization, check for injection and XSS, assess API endpoints, and test business logic flaws.
-### Scenario: Auditing a Python Project for Typosquatted Dependencies
-
-**Context**: A security team discovers that a developer's workstation was compromised after installing a Python package. The incident response team needs to audit all project dependencies for potential typosquats and establish ongoing monitoring.
-
-**Approach**:
-1. Parse `requirements.txt` and `Pipfile.lock` to extract all 87 direct and transitive dependencies
-2. Generate typosquat candidates for each dependency using character omission, transposition, substitution, and separator manipulation, producing approximately 2,400 candidate names
-3. Query the PyPI JSON API for each candidate, finding 34 that actually exist as published packages
-4. Score each existing candidate: 3 packages score above 70 (HIGH risk) with Levenshtein distance 1, created within the last 60 days, single version, and fewer than 100 downloads
-5. Manual review confirms 2 of the 3 are malicious typosquats containing obfuscated code that exfiltrates environment variables during installation
-6. Block the malicious packages in the organization's artifact proxy, report to PyPI for takedown via `security@pypi.org`, and add all 87 dependencies to the ongoing monitoring watchlist
-7. Implement the detection agent as a scheduled CI job that runs weekly and alerts on new HIGH-risk findings
-
-**Pitfalls**:
-- Not normalizing PyPI package names per PEP 503 before comparison, causing missed matches between hyphenated and underscored variants
-- Setting the Levenshtein distance threshold too low (only 1) and missing typosquats at distance 2 that use double substitutions
-- Relying solely on name similarity without checking metadata signals, leading to high false positive rates on legitimately similar package names
-- Not accounting for npm scoped packages (`@scope/name`) which have different naming rules than unscoped packages
-- Querying the registries too aggressively and getting rate-limited or IP-blocked
-
-## When NOT to Use
-
-- You need to perform the attack to test detection (use performing-* skills)
-- Task is about analyzing past incidents (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about threat hunting proactively (use hunting-* skills)
-- You don't have access to logs or monitoring data
-- Task requires incident response (use IR skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Output Format
-
-```
-## Typosquatting Detection Report
-
-**Scan Date**: 2026-03-19
-**Registry**: PyPI
-**Packages Monitored**: 87
-**Candidates Generated**: 2,412
-**Candidates Found in Registry**: 34
-**Flagged as Suspicious**: 5
-
-### HIGH Risk (Score >= 70)
-
-| Suspect Package | Target Package | Levenshtein | Created | Downloads | Score |
-|----------------|---------------|-------------|---------|-----------|-------|
-| reqeusts       | requests      | 1           | 2026-02-28 | 43     | 92    |
-| requsets       | requests      | 1           | 2026-03-01 | 12     | 88    |
-| numpyy         | numpy         | 1           | 2026-01-15 | 67     | 78    |
-
-### Recommendation
-- BLOCK: reqeusts, requsets, numpyy (add to artifact proxy deny-list)
-- REPORT: Submit malware reports to security@pypi.org with package names and evidence
-- MONITOR: Continue weekly scans for the full dependency watchlist
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All typosquatting packages in npm pypi procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

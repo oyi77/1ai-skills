@@ -11,10 +11,7 @@ tags:
 - video
 - work
 ---
-
 # Remote Work
-
-Framework for thriving as a remote worker: async communication, documentation, video meeting etiquette, self-management, and building relationships remotely.
 
 ## When to Use
 
@@ -24,114 +21,37 @@ Framework for thriving as a remote worker: async communication, documentation, v
 - Optimizing remote collaboration and communication
 - **When NOT to use**: Co-located teams with occasional remote days (use different rhythms)
 
-## Async-First Communication
+## Core Principles
 
-**Principle**: Default to asynchronous communication (don't interrupt unless urgent).
+- **Start small** — Begin with manageable remote work practices and build incrementally
+- **Be consistent** — Daily practice beats occasional intense effort
+- **Track progress** — Measure improvement to maintain motivation
+- **Reflect regularly** — Review what's working and adjust your approach
 
-**Tools**:
-- **Slack/Discord**: For quick async questions and updates
-- **Notion/Docs**: For long-form documentation and decisions
-- **Loom**: For recorded video updates (better than typing)
-- **Email**: For formal or external communication
+## Daily Practice
 
-**Guidelines**:
-- Write clear subject lines and summaries (BLUF)
-- Use threads (keep conversations organized)
-- Set status indicators (online, busy, away, deep work)
-- Respond within 1 business day (or set expectations)
+1. **Morning intention** — Set a specific remote work goal for the day
+2. **Active practice** — Apply remote work techniques during real situations
+3. **Evening reflection** — Review the day's remote work moments and lessons learned
+4. **Journal entry** — Record insights, wins, and areas for improvement
 
----
+## Frameworks
 
-## Documentation Standards
+- **OODA Loop** — Observe, Orient, Decide, Act — for rapid remote work decision cycles
+- **PDCA Cycle** — Plan, Do, Check, Act — for iterative remote work improvement
+- **After-Action Review** — What happened? Why? What to improve?
+- **Deliberate Practice** — Focused effort on specific remote work weaknesses
 
-**Write it down**:
+## Common Pitfalls
 
-| What | Where | Format |
-|------|-------|--------|
-| Decisions | Notion / Wiki | Decision log (context, options, outcome, rationale) |
-| Processes | Notion / Wiki | Step-by-step guides |
-| Meeting notes | Shared doc | Agenda, discussion, action items |
-| Project updates | Async update | Status, blockers, next steps |
+- **Perfectionism** — Waiting for ideal conditions instead of starting now
+- **Inconsistency** — Practicing sporadically instead of building a routine
+- **Isolation** — Not seeking feedback or accountability partners
+- **Overwhelm** — Trying to improve everything at once instead of focusing
 
-**Why**: Async reduces meetings. Documentation scales. New hires ramp faster.
+## Resources
 
----
-
-## Effective Video Meetings
-
-### Before
-
-- Does this need to be a meeting? (Could it be an async update?)
-- Send agenda 24 hours in advance
-- Invite only necessary people
-
-### During
-
-- Camera on (builds connection, but understandable if off)
-- Mute when not speaking
-- Use "raise hand" feature (don't interrupt)
-- Be present (no multitasking)
-
-### After
-
-- Share notes and action items within 24 hours
-- Record (if useful for absent team members)
-
----
-
-## Self-Management
-
-- Create a daily routine (start/end times)
-- Dedicated workspace (separate from relaxation areas)
-- Take breaks (don't sit for 8 hours straight)
-- Set boundaries (communicate availability)
-- Avoid burnout (sign off at reasonable time)
-
----
-
-## Building Relationships Remotely
-
-| Activity | Frequency | Impact |
-|----------|-----------|--------|
-| Virtual coffee chats | Weekly | High (builds personal connection) |
-| Team social events | Monthly | Medium (fun, informal) |
-| Async watercooler | Ongoing | Low-medium (Slack channels, #random) |
-| In-person offsites | Quarterly/annual | Highest (deep bonding) |
-
----
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|-----------------|---------|
-| "I'll just message them" | Async first. Write it down. Don't interrupt deep work. |
-| "This could be a quick call" | Most "quick calls" become 30 minutes. Default to async. |
-| "I work better at night" | Fine if team expectations are set. Don't disappear. |
-| "Remote work is lonely" | Proactively build relationships. Virtual coffee, Slack channels, offsites. |
-
-## Red Flags
-
-- You have more meetings than focused work time (sync overload)
-- Decisions are made verbally and not documented (tribal knowledge)
-- You don't know what your remote teammates are working on
-- You feel isolated from the team
-- You work irregular hours without clear communication
-
-## Verification
-
-- [ ] Async-first approach adopted (default to async, reduce meetings)
-- [ ] Documentation standard set (decisions, processes, project updates written down)
-- [ ] Video meeting discipline practiced (agenda, notes, action items)
-- [ ] Daily routine established (start/end times, breaks, workspace)
-- [ ] Relationship-building activities scheduled (virtual coffee, team events)
-- [ ] Boundaries communicated (availability, response time expectations)
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- Keep a remote work journal for tracking progress
+- Find an accountability partner or mentor
+- Set weekly remote work challenges with measurable outcomes
+- Review and adjust your approach monthly

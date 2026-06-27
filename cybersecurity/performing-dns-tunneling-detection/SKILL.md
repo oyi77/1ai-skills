@@ -21,9 +21,7 @@ nist_csf:
 - GV.OV-01
 - DE.AE-02
 ---
-
-# Performing DNS Tunneling Detection
-
+# Performing Dns Tunneling Detection
 
 ## When to Use
 
@@ -39,78 +37,24 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-Analyze DNS traffic for indicators of DNS tunneling using entropy analysis and
-statistical methods on query name characteristics.
+1. **Plan Operations** — Define objectives, scope, and success criteria for dns tunneling detection operations.
+2. **Prepare Environment** — Set up tools, access, and data sources required for dns tunneling detection.
+3. **Execute Core Workflow** — Perform the dns tunneling detection operations following established procedures.
+4. **Validate Results** — Verify that results meet quality standards and objectives.
+5. **Report Findings** — Document results, observations, and recommendations.
+6. **Follow Up** — Track remediation actions and verify fixes where applicable.
 
-```python
-import math
-from collections import Counter
+## Tools
 
-def shannon_entropy(data):
-    if not data:
-        return 0
-    counter = Counter(data)
-    length = len(data)
-    return -sum((c/length) * math.log2(c/length) for c in counter.values())
+- **Analysis Platform** — Data processing and visualization
+- **Collaboration Tools** — Team coordination and knowledge sharing
 
-# Legitimate domain: low entropy (~3.0-3.5)
-print(shannon_entropy("www.google.com"))
-# DNS tunnel: high entropy (~4.0-5.0)
-print(shannon_entropy("aGVsbG8gd29ybGQ.tunnel.example.com"))
-```
-
-Key detection indicators:
-1. High Shannon entropy in query names (> 3.5 for subdomain labels)
-2. Unusually long query names (> 50 characters)
-3. High volume of TXT record requests to a single domain
-4. High unique subdomain count per parent domain
-5. Non-standard character distribution in labels
-
-## Examples
-
-```python
-from scapy.all import rdpcap, DNS, DNSQR
-packets = rdpcap("dns_traffic.pcap")
-for pkt in packets:
-    if pkt.haslayer(DNSQR):
-        query = pkt[DNSQR].qname.decode()
-        entropy = shannon_entropy(query)
-        if entropy > 4.0:
-            print(f"Suspicious: {query} (entropy={entropy:.2f})")
-```
-## When NOT to Use
-
-- You don't have explicit written authorization to test
-- Task is about defense/detection, not offense (use detection skills)
-- You need to implement security controls (use implementing-* skills)
-- Task requires compliance auditing (use auditing-* skills)
-- You're investigating an incident (use incident response skills)
-- Target is out of scope for your engagement
-- Task is about vulnerability scanning only (use scanning tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Acting on threat intelligence without validating source reliability
-- Sharing classified or sensitive indicators without proper handling procedures
-- Alerting threat actors to detection capabilities through visible response actions
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All dns tunneling detection procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

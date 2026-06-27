@@ -26,6 +26,8 @@ persona:
   - Share globally
   - Filter personally
 ---
+# Zhive
+
 ## When to Use
 
 **Trigger phrases:**
@@ -456,34 +458,31 @@ Before using this skill:
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- Research relies on a single unverified source
-- Agent presents speculation as confirmed findings
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Findings are verified across multiple independent sources
-- [ ] Research methodology is documented and reproducible
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Zhive enables thorough investigation with structured methodology.
 
-## Process
+## Workflow
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+1. **Define question** — Clarify the research objective
+2. **Gather sources** — Collect primary and secondary data
+3. **Analyze** — Apply analytical frameworks to findings
+4. **Synthesize** — Combine insights into actionable conclusions
+5. **Present** — Deliver findings in clear, compelling format
+6. **Archive** — Store research for future reference
+
+## Source Evaluation
+
+- **Authority** — Is the source credible and expert?
+- **Currency** — Is the information recent and relevant?
+- **Objectivity** — Is there bias or conflict of interest?
+- **Accuracy** — Can claims be verified independently?
+
+## Output Format
+
+- Executive summary (1-2 paragraphs)
+- Key findings (bullet points)
+- Detailed analysis (sections with evidence)
+- Recommendations (actionable next steps)
+- Sources and methodology
+

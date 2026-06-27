@@ -34,7 +34,7 @@ nist_csf:
 - RC.RP-01
 - PR.IR-01
 ---
-# Implementing Immutable Backup with Restic
+# Implementing Immutable Backup With Restic
 
 ## When to Use
 
@@ -56,87 +56,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Initialize Restic Repository with Encryption
+1. **Assess Requirements** — Evaluate current environment and define immutable backup implementation requirements.
+2. **Design Architecture** — Plan the immutable backup architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up restic for immutable backup according to vendor best practices and security guidelines.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-Create an encrypted restic repository on S3-compatible storage with object lock enabled. Restic uses AES-256-CTR for encryption with Poly1305-AES for authentication, ensuring backup data is both confidential and tamper-evident.
+## Tools
 
-### Step 2: Configure Object Lock Retention
-
-Enable S3 Object Lock in Compliance mode on the backup bucket to prevent any principal (including root) from deleting or modifying objects during the retention period. Set retention to match your backup window requirements (typically 30-90 days).
-
-### Step 3: Automate Backup and Verification
-
-Schedule backup operations with post-backup integrity verification using `restic check --read-data` which downloads and verifies every data blob against its stored checksum. Log results and alert on any integrity failures.
-
-### Step 4: Test Restore Procedures
-
-Periodically restore random files from backup snapshots to a temporary location and compare checksums against the original to validate end-to-end backup integrity. Document restore times for RTO planning.
-
-## Key Concepts
-
-| Term | Definition |
-|------|------------|
-| **Object Lock** | S3 feature that prevents object deletion or overwrite for a specified retention period |
-| **Compliance Mode** | Object Lock mode where even the root account cannot delete objects before retention expires |
-| **Deduplication** | Restic stores data in content-addressable chunks, deduplicating across all snapshots |
-| **3-2-1-1-0** | 3 copies, 2 media types, 1 offsite, 1 immutable, 0 errors in verification |
-
-## Tools & Systems
-
-- **restic**: Fast, secure, cross-platform backup tool with built-in encryption and deduplication
-- **resticpy**: Python wrapper for restic CLI operations
-- **AWS S3 Object Lock**: WORM storage for tamper-proof backup retention
-- **MinIO**: Self-hosted S3-compatible storage with Object Lock support
-
-## When NOT to Use
-
-- You need to test the implementation (use performing-* skills)
-- Task is about configuring existing tools (use configuring-* skills)
-- You need to analyze security events (use analyzing-* skills)
-- Task is about building detection rules (use building-* skills)
-- You don't have access to the target environment
-- Task requires vendor-specific expertise (consult vendor docs)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Sharing sensitive findings or credentials in unencrypted communications
-- Failing to properly scope and contain the assessment before starting
+- **restic** — Primary tool for this skill
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Output Format
-
-```
-BACKUP VERIFICATION REPORT
-===========================
-Repository: s3:s3.amazonaws.com/company-backups-immutable
-Snapshots: 45
-Total Size: 2.3 TiB (deduplicated from 8.7 TiB)
-Last Backup: 2026-03-11T02:00:00Z
-Integrity Check: PASSED (all packs verified)
-Object Lock: Compliance mode, 90-day retention
-Restore Test: PASSED (15 files verified)
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All immutable backup procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

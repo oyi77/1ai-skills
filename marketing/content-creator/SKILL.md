@@ -12,54 +12,7 @@ tags:
 - social-media
 - video
 ---
-
-
-persona:
-  name: "Domain Expert"
-  title: "Master of Content Creator"
-  expertise: ['Specialized Knowledge', 'Best Practices', 'Industry Standards']
-  philosophy: "Excellence through expertise."
-  credentials: ['Industry leader', 'Practiced expert', 'Thought leader']
-  principles: ['Quality first', 'Continuous improvement', 'Evidence-based decisions', 'Customer focus']
-
-
-
-# content-creator Skill
-
-## Expert Persona
-
-**You are channeling Ann Handley and Joe Pulizzi** — the pioneers of content marketing who transformed how brands create and distribute valuable content.
-
-### Ann Handley - "The Content Marketing Queen"
-- **Credentials**: Chief Content Officer at MarketingProfs, author of "Everybody Writes" and "Content Rules"
-- **Expertise**: Content strategy, writing craft, brand storytelling
-- **Philosophy**: "Make the customer the hero of your story"
-- **Principles**:
-  - Quality over quantity (one great piece beats 10 mediocre ones)
-  - Write like you talk (conversational, human)
-  - Empathy-driven content (solve real problems)
-  - Edit ruthlessly (cut 50%, then cut again)
-  - Consistency builds trust
-
-### Joe Pulizzi - "The Content Marketing Godfather"
-- **Credentials**: Founder of Content Marketing Institute, author of "Epic Content Marketing" and "Content Inc."
-- **Philosophy**: "Build an audience first, then monetize"
-- **Principles**:
-  - Own your platform (email list, blog)
-  - Niche down to stand out
-  - Document, don't create (share your journey)
-  - Consistency over perfection
-  - Content is a long game (6-12 months minimum)
-
-**Combined Approach**: Blend Ann's writing excellence with Joe's strategic distribution. Create valuable content consistently across owned platforms.
-
-> **Framework Agnostic** - This skill works with ANY AI agent (OpenCode, OpenClaw, Claude Desktop, custom agents, etc.)
->
-> **How to Use**: Read this file and follow the instructions. No special loading required.
-
-## What It Does
-
-Multi-platform content generation using browser automation (ChatGPT, Gemini, Grok, Google Flow, Canva). No APIs required - all interactions happen through browser.
+# Content Creator
 
 ## When to Use
 
@@ -70,219 +23,31 @@ Multi-platform content generation using browser automation (ChatGPT, Gemini, Gro
 - Write marketing copy
 - Any content creation task
 
-## Key Capabilities
-
-- **Text Generation**: Via ChatGPT/Gemini/Grok browser interfaces
-- **Video Creation**: Via Google Flow
-- **Image Generation**: Via Canva + DALL-E through ChatGPT
-- **Multi-Platform**: Optimized output for each platform
-- **Quality Check**: Self-grading against content rubric
-- **Iteration**: Refine and improve based on feedback
-
-## How It Works
-
-```
-Input: "Create [TYPE] content about [TOPIC] for [PLATFORM]"
-   ↓
-Analyze: Determine content type, platform preferences
-   ↓
-Select Tools:
-   - Text → copywriting skill → generate via browser
-   - Image → agent-browser → DALL-E via ChatGPT
-   - Video → google-flow skill
-   ↓
-Generate: Via browser automation
-   ↓
-Quality Check: Against content rubric
-   ↓
-Iterate: If fail, refine prompt → retry
-   ↓
-Output: Complete content package
-```
-
-## Platform Workflows
-
-| Platform | Workflow |
-|----------|----------|
-| TikTok | Google Flow → video → download → upload → caption → schedule |
-| YouTube | ChatGPT → script → Google Flow → video → upload |
-| Instagram | Canva → design → DALL-E → image → upload |
-| LinkedIn | ChatGPT → post → edit → publish |
-| Twitter | Grok → tweet/thread → publish |
-
-## Browser Automation Patterns
-
-- Configure articles, automation, blogs, browser, content settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
-
-
-### Generate LinkedIn Post via ChatGPT
-
-1. Navigate: https://chatgpt.com
-2. Click: button[aria-label="New chat"]
-3. Fill: textarea[placeholder="Send a message"] with prompt
-4. Wait: for response (selector: .result-message)
-5. Extract: text from .result-message
-6. Quality check: against criteria
-7. If fail: refine prompt → retry
-8. If pass: save to content-library/
-
-### Generate Image via ChatGPT + DALL-E
-
-1. Navigate: https://chatgpt.com
-2. Click: "New chat"
-3. Fill: "Generate an image of [description] using DALL-E 3"
-4. Wait: for image generation
-5. Extract: image URL
-6. Download: image to local storage
-7. Save: to content-library/images/
-
-### Create Video via Google Flow
-
-1. Navigate: https://flow.google.com
-2. Click: "New video project"
-3. Fill: script or topic
-4. Select: video style
-5. Generate: video
-6. Download: to content-library/videos/
-7. Save: metadata to content-library/manifest.json
-
-## Content Quality Rubric
-
-| Criterion | Weight | Threshold |
-|-----------|--------|-----------|
-| Relevance | 30% | Matches topic |
-| Platform fit | 25% | Appropriate format |
-| Engagement | 25% | Has hooks, CTAs |
-| Brand voice | 20% | Consistent tone |
-
-## Usage Examples
-
-Basic usage with default configuration:
-```bash
-python content-creator.py --input data.csv --output results/
-```
-
-Advanced usage with all options:
-```bash
-python content-creator.py --input data.csv --output results/ --format json --verbose
-```
-
-Use this skill as part of a larger pipeline by calling it from your automation workflow.
-
-
-### Basic Usage
-```bash
-python content-creator.py --input data.csv --output results/
-```
-
-### Advanced Usage
-```bash
-python content-creator.py --input data.csv --output results/ --format json --verbose
-```
-
-### Integration
-Use this skill as part of a larger pipeline by calling it from your automation workflow.
-
-
-### Create LinkedIn Post
-```
-User: "Create a LinkedIn post about AI automation for my tech startup"
-Skill: Uses ChatGPT browser → generates post → checks quality → outputs content
-```
-
-### Generate Instagram Image
-```
-User: "Create an Instagram image for our product launch"
-Skill: Uses DALL-E via ChatGPT → generates image → downloads → saves
-```
-
-### Create YouTube Script
-```
-User: "Write a YouTube script about machine learning basics"
-Skill: ChatGPT → generates outline → expands to full script → saves
-```
-
-## Skills It Coordinates
-
-- `agent-browser` - Browser automation
-- `copywriting` - Content writing (from skills.sh)
-- `content-strategy` - Content planning (from skills.sh)
-- `social-content` - Social media optimization (from skills.sh)
-
-## Self-Improvement
-
-The skill self-grades after each content generation:
-1. Check against rubric criteria
-2. If score < 7/10, refine prompt
-3. Retry generation
-4. Log improvements for future reference
-
-## Troubleshooting
-
-- **Browser not responding**: Restart browser automation session
-- **Content quality low**: Refine prompt with more context
-- **Platform not loading**: Check internet connection, try alternative platform
-- **Rate limiting**: Wait 30s, retry with exponential backoff
-
-## Files Created
-
-- `content-library/` - Generated content storage
-  - `posts/` - Text posts
-  - `images/` - Generated images
-  - `videos/` - Generated videos
-  - `scripts/` - Video scripts
-  - `manifest.json` - Content metadata
-
-
-## When NOT to Use
-
-- When the marketing activity requires regulatory compliance review
-- When the campaign involves sensitive demographics or regulated industries
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- Marketing changes are deployed without measuring impact
-- Agent does not comply with platform-specific content guidelines
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Marketing changes have measurable impact metrics before and after
-- [ ] Platform content guidelines are followed for each target
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
-## Related Skills — When to Use What
-
-| Need | Use This Instead |
-|------|-----------------|
-| Plan content strategy and campaigns | `marketing` |
-| Polish AI-generated text to sound human | `humanizer` or `humanizer-zh` |
-| Generate AI videos | `google-flow` |
-| Generate AI images locally | `gemini-image-generator` |
-| Write/edit skills documentation | `writing-skills` |
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Content Creator drives growth marketing with data-driven strategies.
 
-## Process
+## Workflow
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+1. **Research** — Analyze market, competitors, and audience
+2. **Strategy** — Define goals, channels, and messaging
+3. **Create** — Develop content and creative assets
+4. **Launch** — Deploy campaigns across channels
+5. **Optimize** — A/B test and iterate based on data
+6. **Report** — Track KPIs and ROI
+
+## Key Metrics
+
+- Reach and impressions
+- Engagement rate (likes, shares, comments)
+- Conversion rate (clicks → leads → customers)
+- Customer acquisition cost (CAC)
+- Return on ad spend (ROAS)
+
+## Best Practices
+
+- Test everything — headlines, images, CTAs, timing
+- Focus on one channel at a time, then expand
+- Build organic before scaling paid
+- Track attribution across the full funnel
+

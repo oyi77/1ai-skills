@@ -44,155 +44,21 @@ Use this skill when:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Collect and Normalize Events
+1. **Define Objectives** — Clarify the goals and scope for threat campaigns.
+2. **Gather Resources** — Collect tools, data, and access needed for threat campaigns.
+3. **Execute Process** — Carry out threat campaigns operations methodically.
+4. **Verify Quality** — Check results against acceptance criteria.
+5. **Document Outcomes** — Record findings, decisions, and next steps.
 
-Gather all candidate events for correlation from:
-- Internal SIEM (raw events, alert history)
-- TIP (historical indicators and events)
-- ISAC sharing (partner-submitted events in MISP or TAXII)
-- Commercial intelligence (Recorded Future, Mandiant, CrowdStrike reports)
+## Tools
 
-Normalize all events to STIX 2.1 schema with consistent timestamp (UTC), indicator types, and confidence scores. Ensure all indicators have source attribution and collection date.
-
-### Step 2: Identify Correlation Pivot Points
-
-Apply systematic pivot analysis across four dimensions:
-
-**Infrastructure pivots**:
-- Same IP address or /24 subnet across events
-- Same domain registrant email or WHOIS organization
-- Same ASN or hosting provider with same account fingerprint
-- Same SSL certificate fingerprint or serial number across C2 domains
-
-**Capability pivots**:
-- Same malware hash or YARA signature match
-- Same C2 communication protocol (Cobalt Strike beacon config, Sliver implant parameters)
-- Same exploit code or weaponized document template
-- Same obfuscation method or packer fingerprint
-
-**Temporal pivots**:
-- Events occurring within same time window (operational hours suggesting same timezone)
-- Sequential events with logical kill chain progression
-- Malware compilation timestamps clustering in same date range
-
-**Victimology pivots**:
-- Same target sector (healthcare, energy, financial)
-- Same target geography
-- Same targeted technology (specific ERP vendor, VPN appliance brand)
-
-### Step 3: Calculate Correlation Confidence
-
-Apply weighted scoring for campaign attribution:
-```python
-def calculate_campaign_confidence(events: list) -> float:
-    scores = []
-
-    # Infrastructure overlap (highest weight — most discriminating)
-    infra_overlap = count_shared_infra(events) / len(events)
-    scores.append(infra_overlap * 40)
-
-    # Capability overlap (high weight — TTPs are durable)
-    capability_overlap = count_shared_ttps(events) / len(events)
-    scores.append(capability_overlap * 35)
-
-    # Temporal proximity (moderate weight)
-    temporal_score = assess_temporal_clustering(events)
-    scores.append(temporal_score * 15)
-
-    # Victimology alignment (lower weight — many actors target same sector)
-    victim_score = assess_victim_pattern(events)
-    scores.append(victim_score * 10)
-
-    total = sum(scores)
-    if total >= 70: return "HIGH"
-    elif total >= 45: return "MEDIUM"
-    else: return "LOW"
-```
-
-### Step 4: Build Campaign Graph
-
-In OpenCTI or Maltego, construct campaign graph:
-- Campaign object (STIX) as central node
-- Intrusion Set → uses → Malware objects
-- Intrusion Set → uses → Infrastructure objects
-- Intrusion Set → targets → Identity objects (victim organizations/sectors)
-- Campaign → attributed-to → Threat Actor (if attribution achieved)
-- Indicators → indicates → Malware (linking technical observables to capabilities)
-
-Label each relationship with evidence reference and confidence.
-
-### Step 5: Produce Campaign Intelligence Report
-
-Structure the campaign report:
-1. **Campaign name**: Assign descriptive codename based on targeting theme or tooling
-2. **Timeline**: First/last observed dates with activity phases
-3. **Attribution**: Suspected threat actor with confidence level
-4. **Target profile**: Industry verticals, geographies, organization sizes
-5. **TTPs summary**: ATT&CK Navigator heatmap for campaign-specific techniques
-6. **Shared indicators**: IOCs that span multiple incidents (highest confidence for blocking)
-7. **Detection guidance**: Sigma/YARA rules specific to this campaign
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **Campaign** | STIX object representing a grouping of adversarial behaviors with common objectives over a defined time period |
-| **Intrusion Set** | STIX object grouping related intrusion activity by common objectives, even when actor identity is uncertain |
-| **Pivot** | Using a single data point (IOC, infrastructure, TTP) to discover related events or adversary artifacts |
-| **Clustering** | Machine learning or manual grouping of incidents based on feature similarity to identify campaign boundaries |
-| **False Correlation** | Incorrect linking of unrelated incidents due to shared infrastructure (CDNs, shared hosting) or common tools |
-
-## When NOT to Use
-
-- Task is outside your authorization scope
-- You need to implement controls (use implementing-* skills)
-- Task is about analysis, not action (use analyzing-* skills)
-- You don't have access to target systems
-- Task requires compliance expertise (consult professionals)
-- Task is about defense, not offense (use defensive skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Destroying potential evidence during the containment phase
-- Failing to document the chain of custody for all collected artifacts
-- Communicating incident details over unencrypted or monitored channels
+- **Analysis Platform** — Data processing and visualization
+- **Collaboration Tools** — Team coordination and knowledge sharing
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Timeline of events reconstructed with corroborating evidence
-- Root cause identified and documented with contributing factors
-- Post-incident review completed with lessons learned and action items
-
-## Tools & Systems
-
-- **MISP Correlation Engine**: Automatic correlation of events sharing attribute values across the MISP instance and federated instances
-- **OpenCTI Graph**: Interactive relationship graph for visualizing campaign linkages with STIX object types
-- **Maltego**: Link analysis for infrastructure and capability pivoting across multiple data sources
-- **Neo4j**: Graph database with Cypher queries for large-scale campaign correlation (millions of events)
-
-## Common Pitfalls
-
-- **CDN/Shared hosting false positives**: Cloudflare, AWS CloudFront, and bulletproof hosters serve multiple threat actors. Shared IP alone does not establish campaign linkage.
-- **Common malware conflation**: Multiple threat actors use Cobalt Strike. Shared capability does not indicate same actor without additional corroboration.
-- **Premature attribution**: Forcing campaign-to-actor attribution before evidence threshold is reached produces incorrect intelligence that persists in reports.
-- **Missing temporal analysis**: Events from different years may share infrastructure that was recycled by a different actor, not the same campaign.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All threat campaigns procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

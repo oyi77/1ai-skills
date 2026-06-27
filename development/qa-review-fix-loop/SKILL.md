@@ -11,6 +11,11 @@ Comprehensive, evidence-based QA protocol. Layer-based testing with mandatory re
 
 **Source:** QA_REVIEW_FIX_LOOP_PROTOCOL.md — universal QA protocol
 
+## Overview
+
+**QA Review-Fix Loop** implements an iterative quality cycle: review code → identify issues → fix → re-review → verify. Maintains a fix queue and tracks resolution progress until all issues are resolved.
+
+
 ## When to Use
 
 **Trigger phrases:**

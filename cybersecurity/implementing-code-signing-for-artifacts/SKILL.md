@@ -23,8 +23,7 @@ nist_csf:
 - ID.IM-04
 - PR.PS-04
 ---
-
-# Implementing Code Signing for Artifacts
+# Implementing Code Signing For Artifacts
 
 ## When to Use
 
@@ -45,226 +44,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Generate and Manage Signing Keys
+1. **Assess Requirements** — Evaluate current environment and define code signing implementation requirements.
+2. **Design Architecture** — Plan the code signing architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up artifacts for code signing according to vendor best practices and security guidelines.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-```bash
-# Generate GPG key for artifact signing
-gpg --full-generate-key --batch <<EOF
-Key-Type: eddsa
-Key-Curve: ed25519
-Subkey-Type: eddsa
-Subkey-Curve: ed25519
-Name-Real: CI Build System
-Name-Email: ci-signing@company.com
-Expire-Date: 1y
-%no-protection
-EOF
+## Tools
 
-# Export public key for distribution
-gpg --armor --export ci-signing@company.com > signing-key.pub
-
-# Export private key for CI/CD (store in secrets manager)
-gpg --armor --export-secret-keys ci-signing@company.com > signing-key.priv
-```
-
-### Step 2: Sign Build Artifacts in CI/CD
-
-```yaml
-# .github/workflows/build-sign.yml
-name: Build and Sign
-
-on:
-  push:
-    tags: ['v*']
-
-jobs:
-  build-sign:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      id-token: write  # For Sigstore keyless signing
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Build artifacts
-        run: |
-          make build
-          sha256sum dist/* > dist/checksums.sha256
-
-      - name: Import GPG Key
-        run: |
-          echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --batch --import
-          gpg --list-secret-keys
-
-      - name: Sign artifacts
-        run: |
-          for file in dist/*; do
-            gpg --detach-sign --armor --local-user ci-signing@company.com "$file"
-          done
-
-      - name: Install cosign for keyless signing
-        uses: sigstore/cosign-installer@v3
-
-      - name: Keyless sign with Sigstore
-        run: |
-          for file in dist/*.tar.gz; do
-            cosign sign-blob "$file" \
-              --output-signature "${file}.sig" \
-              --output-certificate "${file}.cert" \
-              --yes
-          done
-
-      - name: Create Release with signed artifacts
-        uses: softprops/action-gh-release@v2
-        with:
-          files: |
-            dist/*
-            dist/*.asc
-            dist/*.sig
-            dist/*.cert
-```
-
-### Step 3: Verify Signatures in Deployment Pipeline
-
-```bash
-# Verify GPG signature
-gpg --import signing-key.pub
-gpg --verify artifact.tar.gz.asc artifact.tar.gz
-
-# Verify Sigstore keyless signature
-cosign verify-blob artifact.tar.gz \
-  --signature artifact.tar.gz.sig \
-  --certificate artifact.tar.gz.cert \
-  --certificate-identity ci-signing@company.com \
-  --certificate-oidc-issuer https://token.actions.githubusercontent.com
-
-# Verify checksums
-sha256sum --check checksums.sha256
-```
-
-### Step 4: Sign npm Packages with Provenance
-
-```json
-{
-  "scripts": {
-    "prepublishOnly": "npm run build && npm run test"
-  },
-  "publishConfig": {
-    "provenance": true
-  }
-}
-```
-
-```bash
-# Publish npm package with provenance attestation
-npm publish --provenance
-```
-
-## Key Concepts
-
-| Term | Definition |
-|------|------------|
-| Code Signing | Cryptographic process of signing software artifacts to verify publisher identity and artifact integrity |
-| Detached Signature | Signature stored in a separate file from the artifact, allowing independent distribution |
-| Keyless Signing | Sigstore's approach using short-lived certificates tied to OIDC identities instead of long-lived keys |
-| Provenance | Metadata describing how, where, and by whom an artifact was built |
-| Transparency Log | Append-only log (Rekor) that records all signing events for public auditability |
-| Trust Chain | Hierarchical chain from root CA to signing certificate establishing trust in the signer's identity |
-| SLSA | Supply-chain Levels for Software Artifacts — framework defining levels of supply chain security |
-
-## Tools & Systems
-
-- **GPG/PGP**: Traditional asymmetric cryptography tool for signing and verifying artifacts
-- **Sigstore (cosign)**: Modern keyless signing infrastructure using OIDC identity and transparency logs
-- **Rekor**: Sigstore's transparency log recording all signing events immutably
-- **Fulcio**: Sigstore's certificate authority issuing short-lived certificates bound to OIDC identities
-- **notation**: Microsoft's artifact signing tool for OCI registries (Project Notary v2)
-
-## Common Scenarios
-
-**Scenario 1: Standard Implementing Code Signing For Artifacts assessment**
-Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
-
-**Scenario 2: Emergency Implementing Code Signing For Artifacts response**
-Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
-### Scenario: Establishing Signed Release Pipeline
-
-**Context**: An open-source project needs to sign release artifacts so users can verify authenticity and detect tampering.
-
-**Approach**:
-1. Use Sigstore keyless signing in GitHub Actions (no key management overhead)
-2. Sign all release binaries with `cosign sign-blob` using OIDC identity
-3. Generate and sign checksums file for bulk verification
-4. Upload signatures, certificates, and checksums alongside release artifacts
-5. Document verification instructions in the project README
-6. Add verification step to the Homebrew formula or apt repository
-
-**Pitfalls**: GPG key compromise requires revoking and re-signing all artifacts. Sigstore keyless signing avoids this by using ephemeral keys. Long-lived signing keys in CI/CD secrets are a supply chain risk if the CI system is compromised.
-
-## When NOT to Use
-
-- You need to test the implementation (use performing-* skills)
-- Task is about configuring existing tools (use configuring-* skills)
-- You need to analyze security events (use analyzing-* skills)
-- Task is about building detection rules (use building-* skills)
-- You don't have access to the target environment
-- Task requires vendor-specific expertise (consult vendor docs)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Sharing sensitive findings or credentials in unencrypted communications
-- Failing to properly scope and contain the assessment before starting
+- **artifacts** — Primary tool for this skill
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Output Format
-
-```
-Artifact Signing Report
-========================
-Pipeline: Build and Sign v2.3.0
-Date: 2026-02-23
-Signing Method: Sigstore Keyless + GPG
-
-SIGNED ARTIFACTS:
-  app-v2.3.0-linux-amd64.tar.gz
-    GPG:      PASS (ci-signing@company.com, EdDSA/Ed25519)
-    Sigstore: PASS (Rekor entry: 24658135, Fulcio cert issued)
-    SHA256:   a1b2c3d4...
-
-  app-v2.3.0-darwin-arm64.tar.gz
-    GPG:      PASS
-    Sigstore: PASS (Rekor entry: 24658136)
-    SHA256:   e5f6g7h8...
-
-  checksums.sha256
-    GPG:      PASS (detached signature)
-
-TRANSPARENCY LOG:
-  Entries recorded: 3
-  Log index range: 24658135-24658137
-  Verification: https://search.sigstore.dev
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All code signing procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

@@ -21,8 +21,7 @@ nist_csf:
 - PR.DS-10
 - DE.CM-01
 ---
-
-# Performing Subdomain Enumeration with Subfinder
+# Performing Subdomain Enumeration With Subfinder
 
 ## When to Use
 - During the reconnaissance phase of penetration testing or bug bounty hunting
@@ -41,193 +40,23 @@ nist_csf:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1 — Install and Configure Subfinder
-```bash
-# Install subfinder
-go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+1. **Plan Operations** — Define objectives, scope, and success criteria for subdomain enumeration operations.
+2. **Prepare Environment** — Set up tools, access, and data sources required for subdomain enumeration.
+3. **Execute Core Workflow** — Use subfinder to perform subdomain enumeration operations following established procedures.
+4. **Validate Results** — Verify that results meet quality standards and objectives.
+5. **Report Findings** — Document results, observations, and recommendations.
+6. **Follow Up** — Track remediation actions and verify fixes where applicable.
 
-# Verify installation
-subfinder -version
+## Tools
 
-# Configure API keys for enhanced results
-mkdir -p $HOME/.config/subfinder
-cat > $HOME/.config/subfinder/provider-config.yaml << 'EOF'
-shodan:
-  - YOUR_SHODAN_API_KEY
-censys:
-  - YOUR_CENSYS_API_ID:YOUR_CENSYS_API_SECRET
-virustotal:
-  - YOUR_VT_API_KEY
-securitytrails:
-  - YOUR_ST_API_KEY
-chaos:
-  - YOUR_CHAOS_API_KEY
-EOF
-```
-
-### Step 2 — Run Basic Subdomain Enumeration
-```bash
-# Single domain enumeration
-subfinder -d example.com -o subdomains.txt
-
-# Multiple domains from a file
-subfinder -dL domains.txt -o all_subdomains.txt
-
-# Use all passive sources (slower but more thorough)
-subfinder -d example.com -all -o subdomains_all.txt
-
-# Silent mode for piping to other tools
-subfinder -d example.com -silent | httpx -silent -status-code
-```
-
-### Step 3 — Filter and Customize Source Selection
-```bash
-# Use specific sources only
-subfinder -d example.com -s crtsh,virustotal,shodan -o filtered.txt
-
-# Exclude specific sources
-subfinder -d example.com -es github -o results.txt
-
-# Enable recursive subdomain enumeration
-subfinder -d example.com -recursive -o recursive_subs.txt
-
-# Match specific patterns
-subfinder -d example.com -m "api,dev,staging" -o matched.txt
-```
-
-### Step 4 — Control Rate Limiting and Output Format
-```bash
-# Rate limit to avoid API throttling
-subfinder -d example.com -rate-limit 10 -t 5 -o rate_limited.txt
-
-# JSON output for programmatic processing
-subfinder -d example.com -oJ -o subdomains.json
-
-# Output with source information
-subfinder -d example.com -cs -o subdomains_with_sources.txt
-
-# Collect results in a directory per domain
-subfinder -dL domains.txt -oD ./results/
-```
-
-### Step 5 — Validate Discovered Subdomains with httpx
-```bash
-# Pipe subfinder output to httpx for live validation
-subfinder -d example.com -silent | httpx -silent -status-code -title -tech-detect -o live_hosts.txt
-
-# Check for specific ports
-subfinder -d example.com -silent | httpx -ports 80,443,8080,8443 -o web_services.txt
-
-# Resolve IP addresses
-subfinder -d example.com -silent | dnsx -a -resp -o resolved.txt
-```
-
-### Step 6 — Integrate with Broader Recon Pipeline
-```bash
-# Chain with nuclei for vulnerability scanning
-subfinder -d example.com -silent | httpx -silent | nuclei -t cves/ -o vulns.txt
-
-# Combine with amass for comprehensive enumeration
-subfinder -d example.com -o subfinder_results.txt
-amass enum -passive -d example.com -o amass_results.txt
-cat subfinder_results.txt amass_results.txt | sort -u > combined_subdomains.txt
-
-# Screenshot discovered hosts
-subfinder -d example.com -silent | httpx -silent | gowitness file -f - -P screenshots/
-```
-
-## Key Concepts
-
-| Concept | Description |
-|---------|-------------|
-| Passive Enumeration | Discovering subdomains without directly querying target DNS servers |
-| Certificate Transparency | Public logs of SSL/TLS certificates revealing subdomain names |
-| DNS Aggregation | Collecting subdomain data from multiple passive DNS databases |
-| Recursive Enumeration | Discovering subdomains of subdomains for deeper coverage |
-| Source Providers | External APIs and databases queried for subdomain intelligence |
-| CNAME Records | Canonical name records that may reveal additional infrastructure |
-| Wildcard DNS | DNS configuration returning results for any subdomain query |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| Subfinder | Primary passive subdomain enumeration engine |
-| httpx | HTTP probe tool for validating live subdomains |
-| dnsx | DNS resolution and validation toolkit |
-| Nuclei | Template-based vulnerability scanner for discovered hosts |
-| Amass | Complementary subdomain enumeration with active/passive modes |
-| gowitness | Web screenshot utility for visual reconnaissance |
-| Shodan | Internet-wide scanning database for subdomain intelligence |
-| crt.sh | Certificate transparency log search engine |
-
-## Common Scenarios
-
-1. **Bug Bounty Reconnaissance** — Enumerate all subdomains of a target program scope to identify forgotten or misconfigured assets that may contain vulnerabilities
-2. **Attack Surface Mapping** — Build a comprehensive inventory of externally accessible subdomains for ongoing security monitoring and risk assessment
-3. **Cloud Asset Discovery** — Identify subdomains pointing to cloud services (AWS, Azure, GCP) that may be vulnerable to subdomain takeover
-4. **CI/CD Integration** — Automate subdomain monitoring in pipelines to detect new subdomains and alert on changes to the attack surface
-5. **Merger & Acquisition Due Diligence** — Map the complete external footprint of an acquisition target during security assessment
-
-## When NOT to Use
-
-- You don't have explicit written authorization to test
-- Task is about defense/detection, not offense (use detection skills)
-- You need to implement security controls (use implementing-* skills)
-- Task requires compliance auditing (use auditing-* skills)
-- You're investigating an incident (use incident response skills)
-- Target is out of scope for your engagement
-- Task is about vulnerability scanning only (use scanning tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Sharing sensitive findings or credentials in unencrypted communications
-- Failing to properly scope and contain the assessment before starting
+- **subfinder** — Primary tool for this skill
+- **Analysis Platform** — Data processing and visualization
+- **Collaboration Tools** — Team coordination and knowledge sharing
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Output Format
-
-```
-## Subdomain Enumeration Report
-- **Target Domain**: example.com
-- **Total Subdomains Found**: 247
-- **Live Hosts**: 183
-- **Unique IP Addresses**: 42
-- **Sources Used**: crt.sh, VirusTotal, Shodan, SecurityTrails, Censys
-
-### Discovered Subdomains
-| Subdomain | IP Address | Status Code | Technology |
-|-----------|-----------|-------------|------------|
-| api.example.com | 10.0.1.5 | 200 | Nginx, Node.js |
-| staging.example.com | 10.0.2.10 | 403 | Apache |
-| dev.example.com | 10.0.3.15 | 200 | Express |
-
-### Recommendations
-- Remove DNS records for decommissioned subdomains
-- Investigate subdomains with CNAME pointing to unclaimed services
-- Restrict access to development and staging environments
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All subdomain enumeration procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

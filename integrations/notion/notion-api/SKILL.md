@@ -8,41 +8,8 @@ tags:
 - notion
 - third-party
 ---
-## Notion Api
+# Notion Api
 
-Full Notion API integration
-
-### Usage
-
-```
-/notion-api <task>
-```
-
-### Features
-
-- Automated execution
-- Error handling
-- Result validation
-
-## How to Use
-
-1. Create an integration at notion.so/my-integrations
-2. Share target databases/pages with the integration
-3. Use the Notion API to read, create, and update content
-4. Handle pagination for large result sets
-
-## API Operations
-
-```python
-import requests
-
-NOTION_TOKEN = "secret_..."
-headers = {
-    "Authorization": f"Bearer {NOTION_TOKEN}",
-    "Notion-Version": "2022-06-28"
-}
-
-# Query a database
 ## When to Use
 
 **Trigger phrases:**
@@ -72,47 +39,29 @@ resp = requests.post(
 )
 ```
 
-## Common Patterns
-
-- Use database properties for structured data (not freeform text)
-- Handle rate limits (3 requests per second)
-- Use rollup and relation properties for cross-database linking
-
-## When NOT to Use
-
-- When the integration requires admin-level permissions on the target platform
-- When the data exchange involves regulated information requiring encryption
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- Integration does not handle API errors or service unavailability
-- Agent does not verify data consistency across connected systems
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] API errors and service outages are handled with appropriate retry logic
-- [ ] Data consistency is verified across all connected systems
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Notion Api connects with external platforms via system connectivity.
 
-## Process
+## Setup
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+1. **Authenticate** — Configure API keys, OAuth tokens, or webhooks
+2. **Map data** — Define field mappings between systems
+3. **Test connection** — Verify connectivity and permissions
+4. **Sync data** — Initial data synchronization
+5. **Monitor** — Track sync health and error rates
+
+## Configuration
+
+- API credentials (stored securely, never hardcoded)
+- Rate limiting and retry policies
+- Webhook endpoints for real-time updates
+- Data transformation rules
+
+## Error Handling
+
+- Retry with exponential backoff on transient failures
+- Alert on auth failures or rate limit hits
+- Log all API requests/responses for debugging
+- Graceful degradation when external service is down
+

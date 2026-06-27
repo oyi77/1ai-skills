@@ -25,7 +25,7 @@ nist_csf:
 - DE.CM-01
 - DE.AE-02
 ---
-# Automating IOC Enrichment
+# Automating Ioc Enrichment
 
 ## When to Use
 
@@ -45,203 +45,21 @@ Use this skill when:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Design Enrichment Pipeline Architecture
+1. **Define Objectives** — Clarify the goals and scope for ioc enrichment.
+2. **Gather Resources** — Collect tools, data, and access needed for ioc enrichment.
+3. **Execute Process** — Carry out ioc enrichment operations methodically.
+4. **Verify Quality** — Check results against acceptance criteria.
+5. **Document Outcomes** — Record findings, decisions, and next steps.
 
-Define the enrichment flow for each IOC type:
-```
-SIEM Alert → Extract IOCs → Classify Type → Route to enrichment functions
-  IP Address → AbuseIPDB + Shodan + VirusTotal IP + MISP
-  Domain → VirusTotal Domain + PassiveTotal + Shodan + MISP
-  URL → URLScan.io + VirusTotal URL + Google Safe Browse
-  File Hash → VirusTotal Files + MalwareBazaar + MISP
-→ Aggregate results → Calculate confidence score → Update alert → Notify analyst
-```
+## Tools
 
-### Step 2: Implement Python Enrichment Functions
-
-```python
-import requests
-import time
-from dataclasses import dataclass, field
-from typing import Optional
-
-RATE_LIMIT_DELAY = 0.25  # 4 requests/second for VT free tier
-
-@dataclass
-class EnrichmentResult:
-    ioc_value: str
-    ioc_type: str
-    vt_malicious: int = 0
-    vt_total: int = 0
-    abuse_confidence: int = 0
-    shodan_ports: list = field(default_factory=list)
-    misp_events: list = field(default_factory=list)
-    confidence_score: int = 0
-
-def enrich_ip(ip: str, vt_key: str, abuse_key: str, shodan_key: str) -> EnrichmentResult:
-    result = EnrichmentResult(ip, "ip")
-
-    # VirusTotal IP lookup
-    vt_resp = requests.get(
-        f"https://www.virustotal.com/api/v3/ip_addresses/{ip}",
-        headers={"x-apikey": vt_key}
-    )
-    if vt_resp.status_code == 200:
-        stats = vt_resp.json()["data"]["attributes"]["last_analysis_stats"]
-        result.vt_malicious = stats.get("malicious", 0)
-        result.vt_total = sum(stats.values())
-
-    time.sleep(RATE_LIMIT_DELAY)
-
-    # AbuseIPDB
-    abuse_resp = requests.get(
-        "https://api.abuseipdb.com/api/v2/check",
-        headers={"Key": abuse_key, "Accept": "application/json"},
-        params={"ipAddress": ip, "maxAgeInDays": 90}
-    )
-    if abuse_resp.status_code == 200:
-        result.abuse_confidence = abuse_resp.json()["data"]["abuseConfidenceScore"]
-
-    # Calculate composite confidence score
-    result.confidence_score = min(
-        (result.vt_malicious / max(result.vt_total, 1)) * 60 +
-        (result.abuse_confidence / 100) * 40, 100
-    )
-
-    return result
-
-def enrich_hash(sha256: str, vt_key: str) -> EnrichmentResult:
-    result = EnrichmentResult(sha256, "sha256")
-    vt_resp = requests.get(
-        f"https://www.virustotal.com/api/v3/files/{sha256}",
-        headers={"x-apikey": vt_key}
-    )
-    if vt_resp.status_code == 200:
-        stats = vt_resp.json()["data"]["attributes"]["last_analysis_stats"]
-        result.vt_malicious = stats.get("malicious", 0)
-        result.vt_total = sum(stats.values())
-        result.confidence_score = int((result.vt_malicious / max(result.vt_total, 1)) * 100)
-    return result
-```
-
-### Step 3: Build SOAR Playbook (Cortex XSOAR)
-
-In Cortex XSOAR, create an enrichment playbook:
-1. **Trigger**: Alert created in SIEM (via webhook or polling)
-2. **Extract IOCs**: Use "Extract Indicators" task with regex patterns for IP, domain, URL, hash
-3. **Parallel enrichment**: Fan-out to multiple enrichment tasks simultaneously
-4. **VT Enrichment**: Call `!vt-file-scan` or `!vt-ip-scan` commands
-5. **AbuseIPDB check**: Call `!abuseipdb-check-ip` command
-6. **MISP Lookup**: Call `!misp-search` for cross-referencing
-7. **Score aggregation**: Python transform task computing composite score
-8. **Conditional routing**: If score ≥70 → High Priority queue; if 40–69 → Medium; <40 → Auto-close with note
-9. **Alert enrichment**: Write enrichment results to alert context for analyst view
-
-### Step 4: Handle Rate Limiting and Failures
-
-```python
-import time
-from functools import wraps
-
-def rate_limited(max_per_second):
-    min_interval = 1.0 / max_per_second
-    def decorator(func):
-        last_called = [0.0]
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-            elapsed = time.time() - last_called[0]
-            wait = min_interval - elapsed
-            if wait > 0:
-                time.sleep(wait)
-            result = func(*args, **kwargs)
-            last_called[0] = time.time()
-            return result
-        return wrapper
-    return decorator
-
-def retry_on_429(max_retries=3):
-    def decorator(func):
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-            for attempt in range(max_retries):
-                response = func(*args, **kwargs)
-                if response.status_code == 429:
-                    retry_after = int(response.headers.get("Retry-After", 60))
-                    time.sleep(retry_after)
-                else:
-                    return response
-        return wrapper
-    return decorator
-```
-
-### Step 5: Metrics and Tuning
-
-Track pipeline performance weekly:
-- **Enrichment latency**: Target <30 seconds from alert trigger to enriched output
-- **API success rate**: Target >99% (identify rate limit or outage events)
-- **True positive rate**: Track analyst overrides of automated confidence scores
-- **Cost**: Track API call volume against budget (VT Enterprise: $X per 1M lookups)
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **SOAR** | Security Orchestration, Automation, and Response — platform for automating security workflows and integrating disparate tools |
-| **Enrichment Playbook** | Automated workflow sequence that adds contextual intelligence to raw security events |
-| **Rate Limiting** | API provider restrictions on request frequency (e.g., VT free: 4 requests/minute); pipelines must respect these limits |
-| **Composite Confidence Score** | Single score aggregating signals from multiple enrichment sources using weighted formula |
-| **Fan-out Pattern** | Parallel execution of multiple enrichment queries simultaneously to minimize total enrichment latency |
-
-## When NOT to Use
-
-- Task is outside your authorization scope
-- You need to implement controls (use implementing-* skills)
-- Task is about analysis, not action (use analyzing-* skills)
-- You don't have access to target systems
-- Task requires compliance expertise (consult professionals)
-- Task is about defense, not offense (use defensive skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Acting on threat intelligence without validating source reliability
-- Sharing classified or sensitive indicators without proper handling procedures
-- Alerting threat actors to detection capabilities through visible response actions
+- **Analysis Platform** — Data processing and visualization
+- **Collaboration Tools** — Team coordination and knowledge sharing
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Tools & Systems
-
-- **Cortex XSOAR (Palo Alto)**: Enterprise SOAR with 700+ marketplace integrations including VT, MISP, Shodan, and AbuseIPDB
-- **Splunk SOAR (Phantom)**: SOAR platform with Python-based playbooks; native Splunk SIEM integration
-- **Tines**: No-code SOAR platform with webhook-driven automation; cost-effective for smaller teams
-- **TheHive + Cortex**: Open-source IR/enrichment platform with observable enrichment via Cortex analyzers
-
-## Common Pitfalls
-
-- **Blocking on enrichment latency**: If enrichment takes >5 minutes, analysts start working unenriched alerts, defeating the purpose. Set timeout limits and provide partial results.
-- **No caching**: Querying the same IOC 50 times generates unnecessary API costs. Cache enrichment results for 24 hours by default.
-- **Ignoring API failures silently**: Failed enrichment calls should be logged and trigger fallback logic, not silently produce empty results that appear as clean IOCs.
-- **Automating blocks on enrichment score alone**: Composite scores contain false positives; require human confirmation for blocking decisions against shared infrastructure.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All ioc enrichment procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

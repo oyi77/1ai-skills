@@ -1,6 +1,6 @@
 ---
 name: polymarket
-description: Query Polymarket prediction markets. Use for questions about prediction markets, betting odds, market prices,
+description: Natural-language interface to Polymarket prediction markets. Ask questions about event probabilities, market odds, price movements, and betting strategies in plain English.
   event probabilities, or when user asks about Polymarket data.
 domain: trading
 tags:
@@ -9,12 +9,8 @@ tags:
 - polymarket
 - trading
 ---
-
-
-
-> [![Tip Me](https://www.tip.md/badge.svg)](https://www.tip.md/oyi77) — If this skill saves you time, tip: **https://www.tip.md/oyi77**
-
 # Polymarket
+
 ## When to Use
 
 **Trigger phrases:**
@@ -30,80 +26,40 @@ tags:
 
 Query prediction market data from Polymarket's public API (no auth required).
 
-## Quick Start
-
-```bash
-# Top markets by 24h volume
-python3 scripts/polymarket.py --top
-
-# Search markets
-python3 scripts/polymarket.py --search "trump"
-
-# Get specific market by slug
-python3 scripts/polymarket.py --slug "will-trump-win-the-2024-election"
-
-# List events (grouped markets)
-python3 scripts/polymarket.py --events
-```
-
-## Script Location
-
-`skills/polymarket/scripts/polymarket.py`
-
-## API Endpoints
-
-The script uses `gamma-api.polymarket.com`:
-- `/markets` - Individual markets with prices, volumes
-- `/events` - Event groups containing related markets
-
-## Output Format
-
-Markets show: question, Yes/No prices (as percentages), 24h volume, total volume.
-
-## Interpreting Prices
-
-- `outcomePrices` are 0-1 representing probability
-- Price of 0.65 for "Yes" = market thinks 65% chance of Yes
-- Higher volume = more liquid, more reliable signal
-
-## When NOT to Use
-
-- When the prediction market analysis is used for financial advice requiring licensing
-- When the markets involve prohibited categories in the user's jurisdiction
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- Probability estimates are not calibrated against historical outcomes
-- Agent does not account for liquidity and market maker spreads
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Probability estimates are calibrated against historical resolution data
-- [ ] Liquidity and spread costs are factored into expected value calculations
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
-
-Load `references/trading-checklist.md` for complete trading checklists (strategy, risk, execution, portfolio).
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Polymarket provides market analysis capabilities with risk management.
 
-## Process
+## Workflow
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+1. **Research** — Analyze market conditions and opportunities
+2. **Plan** — Define entry, exit, and position sizing
+3. **Execute** — Place trades with proper order types
+4. **Monitor** — Track positions and market changes
+5. **Manage risk** — Apply stop-losses and hedging
+6. **Review** — Post-trade analysis and journaling
+
+## Risk Management
+
+- Never risk more than 1-2% of portfolio per trade
+- Set stop-loss before entering any position
+- Diversify across uncorrelated assets
+- Size positions based on volatility (ATR)
+- Have a maximum daily loss limit
+
+## Key Metrics
+
+- Win rate and profit factor
+- Sharpe ratio and max drawdown
+- Average risk-reward ratio
+- Expectancy per trade
+- Correlation to benchmark
+
+## Discipline Rules
+
+- Follow your trading plan — no impulsive trades
+- Cut losses short, let winners run
+- Review every trade in your journal
+- Never revenge trade after a loss
+- Take breaks after consecutive losses
+

@@ -9,6 +9,8 @@ tags:
 - supabase
 - tool-integration
 ---
+# Supabase Mcp
+
 ## When to Use
 
 **Trigger phrases:**
@@ -21,81 +23,35 @@ tags:
 **When NOT to use:**
 - For tasks outside this skill's scope
 
-## Supabase Mcp
-
-MCP server for Supabase databases
-
-### Usage
-
-```
-/supabase-mcp <task>
-```
-
-### Features
-
-- Automated execution
-- Error handling
-- Result validation
-
-## How to Use
-
-1. Get project URL and anon/service key from Supabase dashboard
-2. Configure the MCP server with SUPABASE_URL and SUPABASE_KEY
-3. Use tools for database queries, auth management, and storage
-
-## Available Tools
-
-| Tool | Description |
-|------|-------------|
-| `query_table` | Query rows from a table with filters |
-| `insert_rows` | Insert one or more rows into a table |
-| `update_rows` | Update rows matching a filter |
-| `invoke_function` | Call an Edge Function |
-| `list_buckets` | List storage buckets |
-| `get_user` | Retrieve user details by ID |
-
-## Common Patterns
-
-- Use Row Level Security (RLS) policies for multi-tenant access
-- Use Edge Functions for server-side logic with low latency
-- Enable realtime subscriptions for live data updates
-- Use storage buckets for file uploads with signed URLs
-
-## When NOT to Use
-
-- When Supabase stores regulated data requiring specific compliance certifications
-- When the database operations affect production data without backup verification
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- MCP server does not enforce row-level security policies
-- Agent does not handle Supabase connection pool exhaustion
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Row-level security policies are enforced
-- [ ] Connection pool exhaustion is handled gracefully
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Supabase Mcp implements a Model Context Protocol server for Model Context Protocol.
 
-## Process
+## Architecture
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- **Server** — MCP-compliant server exposing tools and resources
+- **Transport** — stdio or HTTP transport layer
+- **Tools** — Callable functions with JSON Schema definitions
+- **Resources** — Readable data sources with URI-based access
+
+## Setup
+
+1. Install the MCP server package
+2. Configure environment variables and credentials
+3. Register the server in MCP client configuration
+4. Test tool invocations and resource access
+
+## Configuration
+
+- Server name and version
+- Transport type (stdio, SSE, HTTP)
+- Tool definitions with input/output schemas
+- Resource URI patterns
+- Authentication and rate limiting
+
+## Integration
+
+- Compatible with Claude, Cursor, and other MCP clients
+- Supports streaming responses for large payloads
+- Handles errors with standard MCP error codes
+

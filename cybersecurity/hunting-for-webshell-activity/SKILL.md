@@ -27,7 +27,6 @@ nist_csf:
 - DE.AE-07
 - ID.RA-05
 ---
-
 # Hunting For Webshell Activity
 
 ## When to Use
@@ -48,86 +47,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Formulate Hypothesis**: Define a testable hypothesis based on threat intelligence or ATT&CK gap analysis.
-2. **Identify Data Sources**: Determine which logs and telemetry are needed to validate or refute the hypothesis.
-3. **Execute Queries**: Run detection queries against SIEM and EDR platforms to collect relevant events.
-4. **Analyze Results**: Examine query results for anomalies, correlating across multiple data sources.
-5. **Validate Findings**: Distinguish true positives from false positives through contextual analysis.
-6. **Correlate Activity**: Link findings to broader attack chains and threat actor TTPs.
-7. **Document and Report**: Record findings, update detection rules, and recommend response actions.
+1. **Define Detection Scope** — Identify the specific  techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for .
+3. **Build Detection Queries** — Write webshell activity queries targeting  indicators. Use platform-specific query language for optimal performance.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-## Key Concepts
+## Tools
 
-| Concept | Description |
-|---------|-------------|
-| T1505.003 | Web Shell |
-| T1190 | Exploit Public-Facing Application |
-| T1059.001 | PowerShell |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| CrowdStrike Falcon | EDR telemetry and threat detection |
-| Microsoft Defender for Endpoint | Advanced hunting with KQL |
-| Splunk Enterprise | SIEM log analysis with SPL queries |
-| Elastic Security | Detection rules and investigation timeline |
-| Sysmon | Detailed Windows event monitoring |
-| Velociraptor | Endpoint artifact collection and hunting |
-| Sigma Rules | Cross-platform detection rule format |
-
-## Common Scenarios
-
-1. **Scenario 1**: China Chopper web shell via IIS vulnerability
-2. **Scenario 2**: ASPXSpy through vulnerable upload
-3. **Scenario 3**: PHP shell hidden in image file
-4. **Scenario 4**: JSP shell via Tomcat manager console
-
-## When NOT to Use
-
-- You're responding to a known incident (use IR skills)
-- Task is about analyzing confirmed malware (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about vulnerability scanning (use scanning tools)
-- You don't have access to endpoint/network data
-- Task requires compliance auditing (use auditing-* skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
+- **webshell activity** — Primary tool for this skill
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Vulnerabilities reproduced with proof-of-concept and impact analysis
-- False positives filtered out through manual verification
-- Fix recommendations include code-level remediation guidance
-
-## Output Format
-
-```
-Hunt ID: TH-HUNTIN-[DATE]-[SEQ]
-Technique: T1505.003
-Host: [Hostname]
-User: [Account context]
-Evidence: [Log entries, process trees, network data]
-Risk Level: [Critical/High/Medium/Low]
-Confidence: [High/Medium/Low]
-Recommended Action: [Containment, investigation, monitoring]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All  procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

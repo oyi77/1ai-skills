@@ -19,10 +19,7 @@ nist_csf:
 - ID.AM-03
 - PR.DS-02
 ---
-
-
-# Analyzing Network Flow Data with Netflow
-
+# Analyzing Network Flow Data With Netflow
 
 ## When to Use
 
@@ -38,66 +35,26 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-1. Install dependencies: `pip install netflow`
-2. Collect NetFlow/IPFIX data from routers or use the built-in collector: `python -m netflow.collector -p 9995`
-3. Parse captured flow data using `netflow.parse_packet()`.
-4. Analyze flows for:
-   - Port scanning: single source to many destinations on same port
-   - Data exfiltration: high byte-count outbound flows to unusual destinations
-   - C2 beaconing: periodic connections with consistent intervals
-   - Volumetric anomalies: traffic spikes beyond baseline thresholds
-5. Generate a prioritized findings report.
+1. **Scope the Analysis** — Define what network flow data artifacts or data sources to examine and the investigation timeline.
+2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
+3. **Extract Key Indicators** — Use netflow to parse and extract relevant network flow data data points from collected artifacts.
+4. **Correlate Findings** — Cross-reference extracted data with other sources (threat intel, logs, timelines).
+5. **Build Timeline** — Construct a chronological sequence of events related to network flow data.
+6. **Document Analysis** — Write findings report with evidence, conclusions, and recommendations.
 
-```bash
-python scripts/agent.py --flow-file captured_flows.json --output netflow_report.json
-```
+## Tools
 
-## Examples
+- **netflow** — Primary tool for this skill
+- **Forensic Toolkit** — Evidence collection and analysis
+- **Timeline Tools** — Chronological event reconstruction
+- **Log Analysis Platform** — Centralized log parsing and search
 
-```bash
-# Capture and analyze network traffic
-tcpdump -i eth0 -w capture.pcap -c 10000
-```
-### Parse NetFlow v9 Packet
-```python
-import netflow
-data, _ = netflow.parse_packet(raw_bytes, templates={})
-for flow in data.flows:
-    print(flow.IPV4_SRC_ADDR, flow.IPV4_DST_ADDR, flow.IN_BYTES)
-```
-## When NOT to Use
-
-- You need to perform the attack, not analyze it (use performing-* skills)
-- Task is about detection, not analysis (use detecting-* skills)
-- You need to implement controls (use implementing-* skills)
-- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
-- You don't have access to the artifacts/logs to analyze
-- Task requires real-time monitoring (use SOC tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Capturing traffic on networks without authorization or privacy considerations
-- Leaving packet captures containing sensitive data unencrypted on disk
-- Deploying inline blocking rules without testing for false positives first
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Captures verified as complete with no dropped packets
-- Detection rules tested against known-benign traffic for false positive rate
-- Alert thresholds validated and tuned to reduce noise
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All network flow data procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

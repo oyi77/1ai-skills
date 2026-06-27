@@ -23,7 +23,7 @@ nist_csf:
 - DE.CM-01
 - PR.IR-01
 ---
-# Implementing USB Device Control Policy
+# Implementing Usb Device Control Policy
 
 ## When to Use
 
@@ -44,146 +44,23 @@ Use this skill when:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Inventory Current USB Usage
+1. **Assess Requirements** — Evaluate current environment and define usb device control policy implementation requirements.
+2. **Design Architecture** — Plan the usb device control policy architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up and configure each usb device control policy component according to best practices.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-```powershell
-# Enumerate currently connected USB devices
-Get-PnpDevice -Class USB | Select-Object InstanceId, FriendlyName, Status
+## Tools
 
-# Query USB storage history from registry
-Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Enum\USBSTOR\*\*" |
-  Select-Object FriendlyName, ContainerID, HardwareID
-
-# Collect USB usage across fleet (via EDR or scripts)
-# CrowdStrike: Investigate → USB Device Activity
-# MDE: DeviceEvents | where ActionType == "UsbDriveMounted"
-```
-
-### Step 2: Configure GPO Device Control
-
-```
-Computer Configuration → Administrative Templates → System → Removable Storage Access
-
-- All Removable Storage classes: Deny all access → Enabled
-  (Block read AND write for all removable storage)
-
-OR for granular control:
-- CD and DVD: Deny read access → Enabled
-- Removable Disks: Deny write access → Enabled (read-only USB)
-- Tape Drives: Deny all access → Enabled
-- WPD Devices: Deny all access → Enabled
-
-To allow specific approved USB devices:
-Computer Configuration → Administrative Templates → System → Device Installation
-  → Device Installation Restrictions
-
-- Prevent installation of devices not described by other policy settings → Enabled
-- Allow installation of devices that match any of these device IDs → Enabled
-  Add approved Device IDs: USB\VID_0781&PID_5583 (example: SanDisk Cruzer)
-```
-
-### Step 3: Deploy via Microsoft Defender for Endpoint
-
-```xml
-<!-- MDE Device Control policy (XML format) -->
-<PolicyGroups>
-  <Group Id="{d9a81dc0-1234-5678-9abc-def012345678}"
-    Type="Device" Name="Approved USB Devices">
-    <MatchClause>
-      <MatchType>VID_PID</MatchType>
-      <MatchData>0781_5583</MatchData> <!-- SanDisk -->
-    </MatchClause>
-  </Group>
-</PolicyGroups>
-
-<PolicyRules>
-  <Rule Id="{rule-guid}" Name="Block unapproved USB storage">
-    <IncludedIdList>
-      <PrimaryId>RemovableMediaDevices</PrimaryId>
-    </IncludedIdList>
-    <ExcludedIdList>
-      <GroupId>{d9a81dc0-1234-5678-9abc-def012345678}</GroupId>
-    </ExcludedIdList>
-    <Entry>
-      <Type>Deny</Type>
-      <AccessMask>63</AccessMask> <!-- All access -->
-      <Options>4</Options> <!-- Show notification -->
-    </Entry>
-  </Rule>
-</PolicyRules>
-```
-
-### Step 4: Audit and Monitor
-
-```
-# Monitor USB events in SIEM:
-# Windows Event ID 6416 - New external device recognized
-# Windows Event ID 4663 - File access on removable media
-# MDE: DeviceEvents where ActionType contains "Usb"
-
-# Generate USB activity reports monthly
-# Track: blocked attempts, approved device usage, exception requests
-```
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **VID/PID** | Vendor ID and Product ID that uniquely identify USB device models |
-| **Device Instance ID** | Unique identifier for a specific physical USB device |
-| **Device Control** | EDR/endpoint feature restricting device access based on type, vendor, or serial number |
-| **USB Class** | USB device category (mass storage 08h, HID 03h, printer 07h) |
-
-## When NOT to Use
-
-- You need to test the implementation (use performing-* skills)
-- Task is about configuring existing tools (use configuring-* skills)
-- You need to analyze security events (use analyzing-* skills)
-- Task is about building detection rules (use building-* skills)
-- You don't have access to the target environment
-- Task requires vendor-specific expertise (consult vendor docs)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Treating compliance checklists as security guarantees rather than minimum baselines
-- Failing to document exceptions and risk acceptance decisions
-- Relying on point-in-time audits instead of continuous monitoring
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Tools & Systems
-
-- **Microsoft Defender Device Control**: MDE module for USB restriction policies
-- **CrowdStrike Falcon Device Control**: EDR-based USB policy enforcement
-- **Group Policy (Removable Storage Access)**: Built-in Windows USB restriction via GPO
-- **Endpoint Protector**: Third-party device control and DLP solution
-
-## Common Pitfalls
-
-- **Blocking all USB without exception**: Keyboards and mice are USB HID devices. Block only mass storage class, not all USB.
-- **Not communicating policy to users**: USB blocks without user notification generate helpdesk tickets. Display a notification explaining the policy.
-- **Ignoring USB-C and Thunderbolt**: Modern devices use USB-C for docking, charging, and storage. Policies must distinguish between USB storage and USB peripherals.
-- **No approved device process**: Users with legitimate USB needs (presentations, field data collection) require an exception process with approved, encrypted devices.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All usb device control policy procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

@@ -28,9 +28,7 @@ nist_csf:
 - GV.OV-01
 - DE.AE-02
 ---
-
-# Detecting Supply Chain Attacks in CI/CD
-
+# Detecting Supply Chain Attacks In Ci Cd
 
 ## When to Use
 
@@ -46,72 +44,25 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-Scan CI/CD workflow files for supply chain risks by parsing GitHub Actions YAML,
-checking for unpinned dependencies, script injection vectors, and secrets exposure.
+1. **Define Detection Scope** — Identify the specific supply chain attacks in ci cd techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for supply chain attacks in ci cd.
+3. **Build Detection Queries** — Write detection rules, Sigma rules, or SIEM queries targeting supply chain attacks in ci cd indicators.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-```python
-import yaml
-from pathlib import Path
+## Tools
 
-for wf in Path(".github/workflows").glob("*.yml"):
-    with open(wf) as f:
-        workflow = yaml.safe_load(f)
-    for job_name, job in workflow.get("jobs", {}).items():
-        for step in job.get("steps", []):
-            uses = step.get("uses", "")
-            if uses and "@" in uses and not uses.split("@")[1].startswith("sha"):
-                print(f"Unpinned action: {uses} in {wf.name}")
-```
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
-Key supply chain risks:
-1. Unpinned GitHub Actions (using @main instead of SHA)
-2. Script injection via ${{ github.event }} expressions
-3. Overly permissive GITHUB_TOKEN permissions
-4. Third-party actions with write access to repo
-5. Dependency confusion via public/private package name collision
-
-## Examples
-
-```python
-# Check for script injection in run steps
-for step in job.get("steps", []):
-    run_cmd = step.get("run", "")
-    if "${{" in run_cmd and "github.event" in run_cmd:
-        print(f"Script injection risk: {run_cmd[:80]}")
-```
-## When NOT to Use
-
-- You need to perform the attack to test detection (use performing-* skills)
-- Task is about analyzing past incidents (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about threat hunting proactively (use hunting-* skills)
-- You don't have access to logs or monitoring data
-- Task requires incident response (use IR skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All supply chain attacks in ci cd procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

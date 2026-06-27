@@ -83,8 +83,8 @@ npx skills list | grep <skill-name>
 ### 1. Add to `TOOLS.md`
 ```markdown
 - **hive-mind**: Store/Retrieve persistent key-value preferences.
-  - **Location**: `{baseDir}/skills/hive_mind/SKILL.md`
-  - **Command**: `python {baseDir}/skills/hive_mind/run.py --action set --key "theme" --value "dark"`
+  - **Location**: `{baseDir}/skills/hive-mind_mind/SKILL.md`
+  - **Command**: `python {baseDir}/skills/hive-mind_mind/run.py --action set --key "theme" --value "dark"`
 ```
 
 ### 2. Add to `AGENTS.md` (Protocol)

@@ -23,7 +23,7 @@ nist_csf:
 - DE.CM-01
 - PR.IR-01
 ---
-# Configuring Windows Event Logging for Detection
+# Configuring Windows Event Logging For Detection
 
 ## When to Use
 
@@ -44,183 +44,22 @@ Use this skill when:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Configure Advanced Audit Policy via GPO
+1. **Define Objectives** — Clarify the goals and scope for windows event logging.
+2. **Gather Resources** — Collect tools, data, and access needed for windows event logging.
+3. **Execute Process** — Carry out windows event logging operations methodically.
+4. **Verify Quality** — Check results against acceptance criteria.
+5. **Document Outcomes** — Record findings, decisions, and next steps.
 
-```
-Computer Configuration → Windows Settings → Security Settings
-  → Advanced Audit Policy Configuration → Audit Policies
+## Tools
 
-Recommended settings:
-Account Logon:
-  - Audit Credential Validation: Success, Failure
-  - Audit Kerberos Authentication: Success, Failure
-
-Account Management:
-  - Audit Security Group Management: Success
-  - Audit User Account Management: Success, Failure
-
-Logon/Logoff:
-  - Audit Logon: Success, Failure
-  - Audit Logoff: Success
-  - Audit Special Logon: Success
-  - Audit Other Logon/Logoff Events: Success, Failure
-
-Object Access:
-  - Audit File Share: Success, Failure
-  - Audit Removable Storage: Success, Failure
-  - Audit SAM: Success
-
-Policy Change:
-  - Audit Audit Policy Change: Success, Failure
-  - Audit Authentication Policy Change: Success
-
-Privilege Use:
-  - Audit Sensitive Privilege Use: Success, Failure
-
-Detailed Tracking:
-  - Audit Process Creation: Success
-  - Audit DPAPI Activity: Success, Failure
-```
-
-### Step 2: Enable Command Line in Process Creation Events
-
-```powershell
-# Registry: Enable command line logging in Event 4688
-New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\Audit" `
-  -Name ProcessCreationIncludeCmdLine_Enabled -Value 1 -PropertyType DWORD -Force
-
-# GPO: Computer Configuration → Administrative Templates → System → Audit Process Creation
-# "Include command line in process creation events" → Enabled
-```
-
-### Step 3: Configure Event Log Sizes
-
-```powershell
-# Increase Security log to 1 GB (default 20 MB is insufficient)
-wevtutil sl Security /ms:1073741824
-
-# Increase PowerShell Operational log
-wevtutil sl "Microsoft-Windows-PowerShell/Operational" /ms:536870912
-
-# Set log retention to overwrite as needed
-wevtutil sl Security /rt:false
-
-# Configure via GPO:
-# Computer Configuration → Administrative Templates → Windows Components
-#   → Event Log Service → Security
-# Maximum log file size (KB): 1048576
-```
-
-### Step 4: Configure Windows Event Forwarding (WEF)
-
-```powershell
-# On collector server:
-wecutil qc /q
-
-# Create subscription for high-value events:
-# Event IDs: 4624 (logon), 4625 (failed logon), 4688 (process create),
-# 4672 (special privilege), 4720 (user created), 4728 (group membership),
-# 7045 (service installed), 1102 (log cleared)
-
-# On source endpoints (GPO):
-# Configure WinRM: winrm quickconfig
-# Configure event forwarding: Computer Configuration → Admin Templates
-#   → Windows Components → Event Forwarding
-# Configure target Subscription Manager: Server=http://collector:5985/wsman/SubscriptionManager/WEC
-```
-
-### Step 5: Key Event IDs for Detection
-
-```
-Authentication Events:
-  4624 - Successful logon (Type 2=Interactive, 3=Network, 10=RemoteInteractive)
-  4625 - Failed logon attempt
-  4648 - Logon using explicit credentials (RunAs, pass-the-hash indicator)
-  4672 - Special privileges assigned (admin logon)
-  4776 - NTLM credential validation
-
-Process Events:
-  4688 - Process creation (with command line if enabled)
-  4689 - Process termination
-
-Account Events:
-  4720 - User account created
-  4722 - User account enabled
-  4724 - Password reset attempted
-  4728 - Member added to security group
-  4732 - Member added to local group
-  4756 - Member added to universal group
-
-Service/System Events:
-  7045 - New service installed (persistence indicator)
-  1102 - Audit log cleared (evidence tampering)
-  4697 - Service installed in the system
-
-Lateral Movement Indicators:
-  4648 + 4624(Type 3) - Credential-based lateral movement
-  5140 - Network share accessed
-  5145 - Network share access check (detailed file share)
-```
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **Advanced Audit Policy** | Granular audit subcategories (58 subcategories vs. 9 basic categories) |
-| **Event ID 4688** | Process creation event; essential for tracking execution on endpoints |
-| **WEF** | Windows Event Forwarding; centralized log collection without third-party agents |
-| **Logon Type** | Numeric code indicating authentication method (2=interactive, 3=network, 10=RDP) |
-
-## When NOT to Use
-
-- You need to implement from scratch (use implementing-* skills)
-- Task is about testing the configuration (use performing-* skills)
-- You need to analyze misconfigurations (use analyzing-* skills)
-- Task is about building automation (use building-* skills)
-- You don't have admin access to the system
-- Task requires vendor professional services
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Treating compliance checklists as security guarantees rather than minimum baselines
-- Failing to document exceptions and risk acceptance decisions
-- Relying on point-in-time audits instead of continuous monitoring
+- **detection** — Primary tool for this skill
+- **Analysis Platform** — Data processing and visualization
+- **Collaboration Tools** — Team coordination and knowledge sharing
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Tools & Systems
-
-- **Windows Event Forwarding (WEF)**: Built-in centralized log collection
-- **NXLog**: Open-source log forwarding agent for Windows events
-- **Winlogbeat**: Elastic Agent for shipping Windows event logs to Elasticsearch
-- **Palantir WEF Configuration**: Open-source WEF subscription templates
-
-## Common Pitfalls
-
-- **Using basic audit policy instead of advanced**: Basic and advanced audit policies conflict. Always use advanced audit policy exclusively.
-- **Default log size too small**: 20 MB Security log fills in minutes on busy servers. Set minimum 1 GB.
-- **Missing command line logging**: Event 4688 without command line content has minimal detection value. Always enable ProcessCreationIncludeCmdLine_Enabled.
-- **Not forwarding logs**: Local event logs are lost when endpoints are wiped by ransomware. Forward to centralized SIEM immediately.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All windows event logging procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

@@ -30,7 +30,7 @@ nist_csf:
 - DE.CM-01
 - PR.IR-01
 ---
-# Deploying Osquery for Endpoint Monitoring
+# Deploying Osquery For Endpoint Monitoring
 
 ## When to Use
 
@@ -51,193 +51,22 @@ Use this skill when:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Install Osquery
+1. **Define Objectives** — Clarify the goals and scope for osquery.
+2. **Gather Resources** — Collect tools, data, and access needed for osquery.
+3. **Execute Process** — Carry out osquery operations methodically.
+4. **Verify Quality** — Check results against acceptance criteria.
+5. **Document Outcomes** — Record findings, decisions, and next steps.
 
-```bash
-# Ubuntu/Debian
-export OSQUERY_KEY=1484120AC4E9F8A1A577AEEE97A80C63C9D8B80B
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys $OSQUERY_KEY
-add-apt-repository 'deb [arch=amd64] https://pkg.osquery.io/deb deb main'
-apt-get update && apt-get install osquery -y
+## Tools
 
-# Windows (MSI)
-# Download from https://osquery.io/downloads/official
-msiexec /i osquery-5.12.1.msi /quiet
-
-# macOS
-brew install osquery
-```
-
-### Step 2: Configure Osquery
-
-```json
-// /etc/osquery/osquery.conf (Linux/macOS) or C:\ProgramData\osquery\osquery.conf
-{
-  "options": {
-    "config_plugin": "filesystem",
-    "logger_plugin": "filesystem",
-    "logger_path": "/var/log/osquery",
-    "disable_logging": "false",
-    "schedule_splay_percent": "10",
-    "events_expiry": "3600",
-    "verbose": "false",
-    "worker_threads": "2",
-    "enable_monitor": "true",
-    "disable_events": "false",
-    "disable_audit": "false",
-    "audit_allow_config": "true",
-    "host_identifier": "hostname",
-    "enable_syslog": "true"
-  },
-  "schedule": {
-    "process_monitor": {
-      "query": "SELECT pid, name, path, cmdline, uid, parent FROM processes WHERE on_disk = 0;",
-      "interval": 300,
-      "description": "Detect processes running without on-disk binary (fileless)"
-    },
-    "listening_ports": {
-      "query": "SELECT DISTINCT p.name, p.path, lp.port, lp.protocol, lp.address FROM listening_ports lp JOIN processes p ON lp.pid = p.pid WHERE lp.port != 0;",
-      "interval": 600,
-      "description": "Monitor listening network ports"
-    },
-    "persistence_check": {
-      "query": "SELECT name, path, source FROM startup_items;",
-      "interval": 3600,
-      "description": "Monitor persistence mechanisms"
-    },
-    "installed_packages": {
-      "query": "SELECT name, version, source FROM deb_packages;",
-      "interval": 86400,
-      "description": "Daily software inventory"
-    },
-    "users_and_groups": {
-      "query": "SELECT u.username, u.uid, u.gid, u.shell, u.directory FROM users u WHERE u.uid >= 1000;",
-      "interval": 3600
-    },
-    "crontab_monitor": {
-      "query": "SELECT * FROM crontab;",
-      "interval": 3600,
-      "description": "Monitor scheduled tasks"
-    },
-    "suid_binaries": {
-      "query": "SELECT path, username, permissions FROM suid_bin;",
-      "interval": 86400,
-      "description": "Detect SUID binaries"
-    }
-  },
-  "packs": {
-    "incident-response": "/usr/share/osquery/packs/incident-response.conf",
-    "ossec-rootkit": "/usr/share/osquery/packs/ossec-rootkit.conf",
-    "vuln-management": "/usr/share/osquery/packs/vuln-management.conf"
-  }
-}
-```
-
-### Step 3: Threat Hunting Queries
-
-```sql
--- Detect processes with no on-disk binary (potential fileless malware)
-SELECT pid, name, path, cmdline FROM processes WHERE on_disk = 0;
-
--- Find listening ports not associated with known services
-SELECT lp.port, lp.protocol, p.name, p.path
-FROM listening_ports lp JOIN processes p ON lp.pid = p.pid
-WHERE lp.port NOT IN (22, 80, 443, 3306, 5432);
-
--- Detect unauthorized SSH keys
-SELECT * FROM authorized_keys WHERE NOT key LIKE '%admin-team%';
-
--- Find recently modified system binaries
-SELECT path, mtime, size FROM file
-WHERE path LIKE '/usr/bin/%' AND mtime > (strftime('%s', 'now') - 86400);
-
--- Detect processes connecting to external IPs
-SELECT DISTINCT p.name, p.path, pn.remote_address, pn.remote_port
-FROM process_open_sockets pn JOIN processes p ON pn.pid = p.pid
-WHERE pn.remote_address NOT LIKE '10.%'
-  AND pn.remote_address NOT LIKE '172.16.%'
-  AND pn.remote_address NOT LIKE '192.168.%'
-  AND pn.remote_address != '127.0.0.1'
-  AND pn.remote_address != '0.0.0.0';
-
--- Windows: Detect unsigned running executables
-SELECT p.name, p.path, a.result AS signature_status
-FROM processes p JOIN authenticode a ON p.path = a.path
-WHERE a.result != 'trusted';
-```
-
-### Step 4: Deploy FleetDM for Centralized Management
-
-```bash
-# FleetDM provides centralized osquery management
-# Deploy FleetDM server, configure agents to report to it
-# Agents use TLS enrollment and config from Fleet
-
-# Agent configuration for Fleet:
-# --tls_hostname=fleet.corp.com
-# --tls_server_certs=/etc/osquery/fleet.pem
-# --enroll_secret_path=/etc/osquery/enroll_secret
-```
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **Osquery** | Open-source endpoint agent that exposes OS state as SQL tables for querying |
-| **Schedule** | Periodic queries that run at defined intervals and log results |
-| **Pack** | Collection of related queries grouped for specific use cases (IR, compliance) |
-| **FleetDM** | Open-source osquery fleet management platform |
-| **Differential Results** | Osquery logs only changes between query executions, reducing data volume |
-
-## When NOT to Use
-
-- You need to test the deployment (use performing-* skills)
-- Task is about configuring deployed tools (use configuring-* skills)
-- You need to analyze deployment output (use analyzing-* skills)
-- Task is about building deployment automation (use building-* skills)
-- You don't have deployment access
-- Task requires change management (follow change process)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Sharing sensitive findings or credentials in unencrypted communications
-- Failing to properly scope and contain the assessment before starting
+- **endpoint monitoring** — Primary tool for this skill
+- **Analysis Platform** — Data processing and visualization
+- **Collaboration Tools** — Team coordination and knowledge sharing
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Tools & Systems
-
-- **Osquery**: https://osquery.io/ - endpoint visibility agent
-- **FleetDM**: https://fleetdm.com/ - centralized fleet management
-- **Kolide**: Cloud-based osquery management with Slack integration
-- **osquery-go**: Go client library for osquery extensions
-
-## Common Pitfalls
-
-- **Query performance**: Complex queries with large table scans impact endpoint performance. Use WHERE clauses and test query cost with `EXPLAIN`.
-- **Schedule intervals too aggressive**: Running heavy queries every 60 seconds causes CPU spikes. Use 300-3600 second intervals for most queries.
-- **Not using differential mode**: Without differential logging, osquery logs all results every interval. Differential mode logs only changes.
-- **Missing event tables**: Some osquery tables require events framework enabled (process_events, socket_events). Enable with `--disable_events=false`.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All osquery procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

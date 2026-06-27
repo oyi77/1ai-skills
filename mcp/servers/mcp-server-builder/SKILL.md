@@ -18,14 +18,8 @@ persona:
   philosophy: Standards enable interoperability
   credentials: Created MCP standard at Anthropic
 ---
-## MCP Server Builder
+# Mcp Server Builder
 
-Create Model Context Protocol servers that expose any API to AI agents.
-
-### Quick Start
-
-```python
-# Generate MCP server from OpenAPI spec
 ## When to Use
 
 **Trigger phrases:**
@@ -90,41 +84,35 @@ MCP is a protocol that allows AI systems to access external tools and data throu
 
 Works with Claude Code, Cursor, and any MCP-compatible client.
 
-## When NOT to Use
-
-- When the MCP server handles authentication credentials
-- When the server processes data subject to regulatory retention requirements
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- MCP server does not validate input parameters causing runtime errors
-- Agent does not handle MCP server connection failures with retry logic
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Input parameters are validated before processing
-- [ ] Connection failures trigger retry with exponential backoff
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Mcp Server Builder implements a Model Context Protocol server for Model Context Protocol.
 
-## Process
+## Architecture
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- **Server** — MCP-compliant server exposing tools and resources
+- **Transport** — stdio or HTTP transport layer
+- **Tools** — Callable functions with JSON Schema definitions
+- **Resources** — Readable data sources with URI-based access
+
+## Setup
+
+1. Install the MCP server package
+2. Configure environment variables and credentials
+3. Register the server in MCP client configuration
+4. Test tool invocations and resource access
+
+## Configuration
+
+- Server name and version
+- Transport type (stdio, SSE, HTTP)
+- Tool definitions with input/output schemas
+- Resource URI patterns
+- Authentication and rate limiting
+
+## Integration
+
+- Compatible with Claude, Cursor, and other MCP clients
+- Supports streaming responses for large payloads
+- Handles errors with standard MCP error codes
+

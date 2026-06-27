@@ -19,10 +19,7 @@ nist_csf:
 - ID.AM-03
 - PR.DS-02
 ---
-
-
-# Implementing Network Traffic Analysis with Arkime
-
+# Implementing Network Traffic Analysis With Arkime
 
 ## When to Use
 
@@ -38,65 +35,26 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-1. Install dependencies: `pip install requests`
-2. Configure Arkime viewer URL and credentials.
-3. Run the agent to query Arkime sessions and analyze traffic:
-   - Search sessions by IP, port, protocol, or expression
-   - Download PCAP data for forensic analysis
-   - Detect C2 beaconing via connection interval analysis
-   - Identify DNS tunneling through query length statistics
-   - Flag connections to known-bad TLS certificate issuers
+1. **Assess Requirements** — Evaluate current environment and define network traffic analysis implementation requirements.
+2. **Design Architecture** — Plan the network traffic analysis architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up arkime for network traffic analysis according to vendor best practices and security guidelines.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-```bash
-python scripts/agent.py --arkime-url https://arkime.local:8005 --user admin --password secret --output arkime_report.json
-```
+## Tools
 
-## Examples
+- **arkime** — Primary tool for this skill
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
-```bash
-# Capture and analyze network traffic
-tcpdump -i eth0 -w capture.pcap -c 10000
-```
-### Beaconing Detection
-```
-Source: 10.1.2.50 -> 185.220.101.34:443
-Sessions: 288 over 24 hours
-Avg interval: 300s, Jitter: 4.2%
-Verdict: HIGH confidence C2 beaconing (jitter < 5%)
-```
-## When NOT to Use
-
-- You need to test the implementation (use performing-* skills)
-- Task is about configuring existing tools (use configuring-* skills)
-- You need to analyze security events (use analyzing-* skills)
-- Task is about building detection rules (use building-* skills)
-- You don't have access to the target environment
-- Task requires vendor-specific expertise (consult vendor docs)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Capturing traffic on networks without authorization or privacy considerations
-- Leaving packet captures containing sensitive data unencrypted on disk
-- Deploying inline blocking rules without testing for false positives first
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Captures verified as complete with no dropped packets
-- Detection rules tested against known-benign traffic for false positive rate
-- Alert thresholds validated and tuned to reduce noise
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All network traffic analysis procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

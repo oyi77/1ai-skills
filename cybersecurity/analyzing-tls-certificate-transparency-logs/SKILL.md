@@ -24,9 +24,7 @@ nist_csf:
 - GV.OV-01
 - DE.AE-02
 ---
-
-# Analyzing TLS Certificate Transparency Logs
-
+# Analyzing Tls Certificate Transparency Logs
 
 ## When to Use
 
@@ -42,69 +40,25 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-Query crt.sh Certificate Transparency database to find certificates issued for
-domains similar to your organization's brand, detecting phishing infrastructure.
+1. **Scope the Analysis** — Define what tls certificate transparency logs artifacts or data sources to examine and the investigation timeline.
+2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
+3. **Extract Key Indicators** — Parse and extract relevant tls certificate transparency logs data points from collected artifacts.
+4. **Correlate Findings** — Cross-reference extracted data with other sources (threat intel, logs, timelines).
+5. **Build Timeline** — Construct a chronological sequence of events related to tls certificate transparency logs.
+6. **Document Analysis** — Write findings report with evidence, conclusions, and recommendations.
 
-```python
-from pycrtsh import Crtsh
+## Tools
 
-c = Crtsh()
-# Search for certificates matching a domain
-certs = c.search("example.com")
-for cert in certs:
-    print(cert["id"], cert["name_value"])
+- **Forensic Toolkit** — Evidence collection and analysis
+- **Timeline Tools** — Chronological event reconstruction
+- **Log Analysis Platform** — Centralized log parsing and search
 
-# Get full certificate details
-details = c.get(certs[0]["id"], type="id")
-```
-
-Key analysis steps:
-1. Query crt.sh for all certificates matching your domain pattern
-2. Identify certificates with typosquatting variations (Levenshtein distance)
-3. Flag certificates from unexpected CAs
-4. Monitor for wildcard certificates on suspicious subdomains
-5. Cross-reference with known phishing infrastructure
-
-## Examples
-
-```python
-from pycrtsh import Crtsh
-c = Crtsh()
-certs = c.search("%.example.com")
-for cert in certs:
-    print(f"Issuer: {cert.get('issuer_name')}, Domain: {cert.get('name_value')}")
-```
-## When NOT to Use
-
-- You need to perform the attack, not analyze it (use performing-* skills)
-- Task is about detection, not analysis (use detecting-* skills)
-- You need to implement controls (use implementing-* skills)
-- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
-- You don't have access to the artifacts/logs to analyze
-- Task requires real-time monitoring (use SOC tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Sharing sensitive findings or credentials in unencrypted communications
-- Failing to properly scope and contain the assessment before starting
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All tls certificate transparency logs procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

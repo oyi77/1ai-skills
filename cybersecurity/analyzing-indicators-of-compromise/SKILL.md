@@ -28,7 +28,7 @@ nist_csf:
 - DE.CM-01
 - DE.AE-02
 ---
-# Analyzing Indicators of Compromise
+# Analyzing Indicators Of Compromise
 
 ## When to Use
 
@@ -48,156 +48,23 @@ Use this skill when:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Normalize and Classify IOC Types
+1. **Scope the Analysis** — Define what indicators of compromise artifacts or data sources to examine and the investigation timeline.
+2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
+3. **Extract Key Indicators** — Parse and extract relevant indicators of compromise data points from collected artifacts.
+4. **Correlate Findings** — Cross-reference extracted data with other sources (threat intel, logs, timelines).
+5. **Build Timeline** — Construct a chronological sequence of events related to indicators of compromise.
+6. **Document Analysis** — Write findings report with evidence, conclusions, and recommendations.
 
-Before enriching, classify each IOC:
-- **IPv4/IPv6 address**: Check if RFC 1918 private (skip external enrichment), validate format
-- **Domain/FQDN**: Defang for safe handling (`evil[.]com`), extract registered domain via tldextract
-- **URL**: Extract domain + path separately; check for redirectors
-- **File hash**: Identify hash type (MD5/SHA-1/SHA-256); prefer SHA-256 for uniqueness
-- **Email address**: Split into domain (check MX/DMARC) and local part for pattern analysis
+## Tools
 
-Defang IOCs in documentation (replace `.` with `[.]` and `://` with `[://]`) to prevent accidental clicks.
-
-### Step 2: Multi-Source Enrichment
-
-**VirusTotal (file hash, URL, IP, domain)**:
-```python
-import vt
-
-client = vt.Client("YOUR_VT_API_KEY")
-
-# File hash lookup
-file_obj = client.get_object(f"/files/{sha256_hash}")
-detections = file_obj.last_analysis_stats
-print(f"Malicious: {detections['malicious']}/{sum(detections.values())}")
-
-# Domain analysis
-domain_obj = client.get_object(f"/domains/{domain}")
-print(domain_obj.last_analysis_stats)
-print(domain_obj.reputation)
-client.close()
-```
-
-**AbuseIPDB (IP addresses)**:
-```python
-import requests
-
-response = requests.get(
-    "https://api.abuseipdb.com/api/v2/check",
-    headers={"Key": "YOUR_KEY", "Accept": "application/json"},
-    params={"ipAddress": "1.2.3.4", "maxAgeInDays": 90}
-)
-data = response.json()["data"]
-print(f"Confidence: {data['abuseConfidenceScore']}%, Reports: {data['totalReports']}")
-```
-
-**MalwareBazaar (file hashes)**:
-```python
-response = requests.post(
-    "https://mb-api.abuse.ch/api/v1/",
-    data={"query": "get_info", "hash": sha256_hash}
-)
-result = response.json()
-if result["query_status"] == "ok":
-    print(result["data"][0]["tags"], result["data"][0]["signature"])
-```
-
-### Step 3: Contextualize with Campaign Attribution
-
-Query MISP for existing events matching the IOC:
-```python
-from pymisp import PyMISP
-
-misp = PyMISP("https://misp.example.com", "API_KEY")
-results = misp.search(value="evil-domain.com", type_attribute="domain")
-for event in results:
-    print(event["Event"]["info"], event["Event"]["threat_level_id"])
-```
-
-Check Shodan for IP context (hosting provider, open ports, banners) to identify if the IP belongs to bulletproof hosting or a legitimate cloud provider (false positive risk).
-
-### Step 4: Assign Confidence Score and Disposition
-
-Apply a tiered decision framework:
-- **Block (High Confidence ≥ 70%)**: ≥15 AV detections on VT, AbuseIPDB score ≥70, matches known malware family or campaign
-- **Monitor/Alert (Medium 40–69%)**: 5–14 AV detections, moderate AbuseIPDB score, no campaign attribution
-- **Whitelist/Investigate (Low <40%)**: ≤4 AV detections, no abuse reports, legitimate service (Google, Cloudflare CDN IPs)
-- **False Positive**: Legitimate business service incorrectly flagged; document and exclude from future alerts
-
-### Step 5: Document and Distribute
-
-Record findings in TIP/MISP with:
-- All enrichment data collected (timestamps, source, score)
-- Disposition decision and rationale
-- Blocking actions taken (firewall, proxy, DNS sinkhole)
-- Related incident ticket number
-
-Export to STIX indicator object with confidence field set appropriately.
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **IOC** | Indicator of Compromise — observable network or host artifact indicating potential compromise |
-| **Enrichment** | Process of adding contextual data to a raw IOC from multiple intelligence sources |
-| **Defanging** | Modifying IOCs (replacing `.` with `[.]`) to prevent accidental activation in documentation |
-| **False Positive Rate** | Percentage of benign artifacts incorrectly flagged as malicious; critical for tuning block thresholds |
-| **Sinkhole** | DNS server redirecting malicious domain lookups to a benign IP for detection without blocking traffic entirely |
-| **TTL** | Time-to-live for an IOC in blocking controls; IP indicators should expire after 30 days, domains after 90 days |
-
-## When NOT to Use
-
-- You need to perform the attack, not analyze it (use performing-* skills)
-- Task is about detection, not analysis (use detecting-* skills)
-- You need to implement controls (use implementing-* skills)
-- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
-- You don't have access to the artifacts/logs to analyze
-- Task requires real-time monitoring (use SOC tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Acting on threat intelligence without validating source reliability
-- Sharing classified or sensitive indicators without proper handling procedures
-- Alerting threat actors to detection capabilities through visible response actions
+- **Forensic Toolkit** — Evidence collection and analysis
+- **Timeline Tools** — Chronological event reconstruction
+- **Log Analysis Platform** — Centralized log parsing and search
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Tools & Systems
-
-- **VirusTotal**: Multi-engine malware scanner and threat intelligence platform with 70+ AV engines, sandbox reports, and community comments
-- **AbuseIPDB**: Community-maintained IP reputation database with 90-day abuse report history
-- **MalwareBazaar (abuse.ch)**: Free malware hash repository with YARA rule associations and malware family tagging
-- **URLScan.io**: Free URL analysis service that captures screenshots, DOM, and network requests for phishing URL triage
-- **Shodan**: Internet-wide scan data providing hosting provider, open ports, and banner information for IP enrichment
-
-## Common Pitfalls
-
-- **Blocking shared infrastructure**: CDN IPs (Cloudflare 104.21.x.x, AWS CloudFront) may legitimately host malicious content but blocking the IP disrupts thousands of legitimate sites.
-- **VT score obsession**: Low VT detection count does not mean benign — zero-day malware and custom APT tools often score 0 initially. Check sandbox behavior, MISP, and passive DNS.
-- **Missing defanging**: Pasting live IOCs in emails or Confluence docs can trigger automated URL scanners or phishing tools.
-- **No expiration policy**: IOCs without TTLs accumulate in blocklists indefinitely, generating false positives as infrastructure is repurposed by legitimate users.
-- **Over-relying on single source**: VirusTotal aggregates AV opinions — all may be wrong or lag behind emerging malware. Use 3+ independent sources for high-stakes decisions.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All indicators of compromise procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

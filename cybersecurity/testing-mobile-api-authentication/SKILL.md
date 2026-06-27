@@ -21,7 +21,7 @@ nist_csf:
 - ID.RA-01
 - DE.CM-09
 ---
-# Testing Mobile API Authentication
+# Testing Mobile Api Authentication
 
 ## When to Use
 
@@ -43,190 +43,23 @@ Use this skill when:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Map Authentication Endpoints
+1. **Reconnaissance** — Gather information about the target related to mobile api authentication. Identify attack surface.
+2. **Vulnerability Identification** — Enumerate potential mobile api authentication weaknesses using automated and manual techniques.
+3. **Exploit Development/Selection** — Choose or develop exploits targeting identified mobile api authentication vulnerabilities.
+4. **Execution** — Execute the mobile api authentication test in a controlled manner with proper authorization.
+5. **Post-Exploitation** — Document the impact and extent of successful exploitation.
+6. **Reporting** — Write detailed findings with reproduction steps, impact assessment, and remediation guidance.
 
-Intercept mobile app traffic to identify authentication-related endpoints:
+## Tools
 
-```
-POST /api/v1/auth/login          - Initial authentication
-POST /api/v1/auth/register       - Account registration
-POST /api/v1/auth/refresh        - Token refresh
-POST /api/v1/auth/logout         - Session termination
-POST /api/v1/auth/forgot-password - Password reset
-POST /api/v1/auth/verify-otp     - OTP verification
-GET  /api/v1/auth/me             - Authenticated user profile
-```
-
-### Step 2: Analyze Token Format and Security
-
-**JWT Analysis:**
-```bash
-# Decode JWT without verification
-echo "eyJhbGciOiJIUzI1NiIs..." | cut -d. -f2 | base64 -d 2>/dev/null
-
-# Check for common JWT vulnerabilities:
-# 1. None algorithm attack
-# Change header to: {"alg":"none","typ":"JWT"}
-# Remove signature: header.payload.
-
-# 2. Algorithm confusion (RS256 to HS256)
-# If server uses RS256, try HS256 with public key as secret
-
-# 3. Weak signing key
-# Use hashcat or jwt-cracker to brute-force HMAC secret
-hashcat -m 16500 jwt.txt wordlist.txt
-
-# 4. Expiration bypass
-# Modify "exp" claim to future timestamp
-```
-
-**Opaque Token Analysis:**
-```
-- Test token length and entropy
-- Check if tokens are sequential/predictable
-- Test token reuse after logout
-- Verify token invalidation on password change
-```
-
-### Step 3: Test Authentication Bypass
-
-```bash
-# Test missing authentication
-curl -X GET https://api.target.com/api/v1/users/profile
-
-# Test with empty/null token
-curl -X GET https://api.target.com/api/v1/users/profile \
-  -H "Authorization: Bearer "
-
-curl -X GET https://api.target.com/api/v1/users/profile \
-  -H "Authorization: Bearer null"
-
-# Test with expired token (should fail)
-curl -X GET https://api.target.com/api/v1/users/profile \
-  -H "Authorization: Bearer <expired_token>"
-
-# Test token from different user
-curl -X GET https://api.target.com/api/v1/users/123/profile \
-  -H "Authorization: Bearer <user_456_token>"
-```
-
-### Step 4: Test IDOR / Broken Object-Level Authorization
-
-```bash
-# Change user ID in request path
-curl -X GET https://api.target.com/api/v1/users/123/orders \
-  -H "Authorization: Bearer <user_456_token>"
-
-# Change object ID in request body
-curl -X PUT https://api.target.com/api/v1/orders/789 \
-  -H "Authorization: Bearer <user_456_token>" \
-  -d '{"status": "cancelled"}'
-
-# Test horizontal privilege escalation
-# Access admin endpoints with regular user token
-curl -X GET https://api.target.com/api/v1/admin/users \
-  -H "Authorization: Bearer <regular_user_token>"
-```
-
-### Step 5: Test Session Management
-
-```bash
-# Test concurrent sessions
-# Login from multiple devices simultaneously - should both remain valid?
-
-# Test session invalidation after logout
-TOKEN=$(curl -s -X POST https://api.target.com/api/v1/auth/login \
-  -d '{"email":"test@test.com","password":"pass"}' | jq -r '.token')
-
-# Logout
-curl -X POST https://api.target.com/api/v1/auth/logout \
-  -H "Authorization: Bearer $TOKEN"
-
-# Try using the same token (should fail)
-curl -X GET https://api.target.com/api/v1/users/me \
-  -H "Authorization: Bearer $TOKEN"
-
-# Test session invalidation after password change
-# Token obtained before password change should be invalidated
-```
-
-### Step 6: Test OAuth 2.0 / OIDC Mobile Flows
-
-```bash
-# Test for authorization code interception
-# Check if PKCE (Proof Key for Code Exchange) is enforced
-# Test with missing code_verifier parameter
-
-# Test redirect URI manipulation
-# Try custom scheme hijacking: myapp://callback
-# Test with modified redirect_uri parameter
-
-# Test scope escalation
-# Request higher privileges than granted
-```
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **BOLA/IDOR** | Broken Object Level Authorization - accessing resources by changing identifiers without server-side authorization checks |
-| **JWT** | JSON Web Token - self-contained authentication token with header, payload, and signature components |
-| **PKCE** | Proof Key for Code Exchange - OAuth 2.0 extension preventing authorization code interception in mobile apps |
-| **Token Refresh** | Mechanism for obtaining new access tokens using long-lived refresh tokens without re-authentication |
-| **Session Fixation** | Attack where adversary sets a known session ID before victim authenticates, then hijacks the session |
-
-## When NOT to Use
-
-- You need to perform real attacks, not test (use performing-* skills)
-- Task is about analyzing test results (use analyzing-* skills)
-- You need to implement test infrastructure (use implementing-* skills)
-- Task is about building test tools (use building-* skills)
-- You don't have test environment access
-- Task requires compliance validation (use auditing-* skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Testing without rate limiting, potentially causing service degradation
-- Storing sensitive test data (credentials, tokens) in plain text logs
-- Using automated scanners blindly without reviewing results for false positives
+- **Vulnerability Scanner** — Automated weakness identification
+- **Exploitation Framework** — Controlled exploitation testing
+- **Reporting Tool** — Findings documentation and tracking
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Vulnerabilities reproduced with proof-of-concept and impact analysis
-- False positives filtered out through manual verification
-- Fix recommendations include code-level remediation guidance
-
-## Tools & Systems
-
-- **Burp Suite**: HTTP proxy for intercepting and modifying authentication requests
-- **jwt_tool**: Python tool for testing JWT vulnerabilities (none algorithm, key confusion, claim manipulation)
-- **Postman**: API testing client for crafting authentication requests
-- **hashcat**: Password/JWT secret cracking tool for testing HMAC signing key strength
-- **Autorize**: Burp Suite extension for automated authorization testing
-
-## Common Pitfalls
-
-- **Rate limiting masks issues**: API may rate-limit test requests. Use delays between requests and test from the tester's authorized perspective first.
-- **Token in URL**: Some mobile APIs pass tokens in URL query parameters, exposing them in server logs and browser history. Flag as finding even if authorization works correctly.
-- **Refresh token rotation**: Some APIs rotate refresh tokens on each use. If your test invalidates the refresh token, you may lock out your test account.
-- **Mobile-specific OAuth**: Mobile apps use custom URI schemes for OAuth redirects, which can be intercepted by malicious apps registered for the same scheme.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All mobile api authentication procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

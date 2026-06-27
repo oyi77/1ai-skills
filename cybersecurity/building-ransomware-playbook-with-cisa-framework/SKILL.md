@@ -24,8 +24,7 @@ nist_csf:
 - RC.RP-01
 - PR.IR-01
 ---
-
-# Building Ransomware Playbook with CISA Framework
+# Building Ransomware Playbook With Cisa Framework
 
 ## When to Use
 
@@ -48,166 +47,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Preparation Phase (CISA Part 1 - Prevention)
+1. **Assess Requirements** — Evaluate current environment and define ransomware playbook implementation requirements.
+2. **Design Architecture** — Plan the ransomware playbook architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up cisa framework for ransomware playbook according to vendor best practices and security guidelines.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-Establish ransomware-specific defenses before an incident:
+## Tools
 
-```
-CISA Preparation Checklist:
-━━━━━━━━━━━━━━━━━━━━━━━━━━
-[ ] Maintain offline, encrypted backups tested for restoration
-[ ] Create and exercise a cyber incident response plan (IRP)
-[ ] Implement network segmentation between IT and OT networks
-[ ] Enable MFA on all remote access and privileged accounts
-[ ] Deploy endpoint detection and response (EDR) on all endpoints
-[ ] Disable or restrict RDP; require VPN for remote access
-[ ] Maintain a software/hardware asset inventory
-[ ] Apply patches within 48 hours for internet-facing systems
-[ ] Configure email filtering and disable macro execution by default
-[ ] Conduct regular phishing awareness training
-[ ] Implement application allowlisting (AppLocker/WDAC)
-[ ] Test backup restoration quarterly and document RTO/RPO
-```
-
-### Step 2: Detection and Analysis Phase
-
-Identify ransomware indicators and assess scope:
-
-```
-Detection Indicators:
-━━━━━━━━━━━━━━━━━━━━
-- Mass file rename operations with new extensions (.locked, .encrypted)
-- Ransom notes appearing in directories (README.txt, DECRYPT.html)
-- Volume Shadow Copy deletion (vssadmin delete shadows)
-- Abnormal CPU usage from encryption processes
-- EDR/AV alerts for known ransomware signatures
-- Network connections to known C2 infrastructure
-- Unusual lateral movement via SMB or PsExec
-- Sysmon Event ID 11 (file creation) spikes
-
-Initial Analysis Steps (CISA):
-  1. Take system images and memory captures of affected devices
-  2. Identify patient zero and initial access vector
-  3. Determine the ransomware family (ID Ransomware, ransom note analysis)
-  4. Assess encryption scope: which systems, shares, and data are affected
-  5. Check if data exfiltration occurred (double extortion indicator)
-```
-
-### Step 3: Containment Phase
-
-Stop the spread and preserve evidence:
-
-```
-Immediate Containment (First 1-4 hours):
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-1. Isolate affected systems from the network (disable NICs, VLAN quarantine)
-2. If unable to disconnect, power down affected systems
-3. Disable shared drives to prevent encryption spread
-4. Reset credentials for compromised accounts (especially admin/service accounts)
-5. Block known ransomware IOCs at firewall/proxy (C2 domains, IPs)
-6. Preserve forensic evidence (memory dumps, disk images, logs)
-7. Engage legal counsel and prepare breach notification if data exfiltrated
-
-Extended Containment:
-  - Identify and patch the initial access vector (phishing, RDP, VPN vuln)
-  - Audit all Active Directory accounts for persistence (scheduled tasks, services)
-  - Check for backdoors or additional malware beyond the ransomware payload
-```
-
-### Step 4: Eradication and Recovery Phase
-
-Remove the threat and restore operations:
-
-```
-CISA Recovery Steps:
-━━━━━━━━━━━━━━━━━━━
-1. Rebuild affected systems from known-clean images (do NOT decrypt in place)
-2. Restore data from offline backups (verify backup integrity first)
-3. Reset ALL passwords including service accounts, krbtgt (twice, 12h apart)
-4. Scan restored systems with updated AV/EDR before reconnecting to network
-5. Re-enable services in priority order based on business criticality
-6. Monitor restored systems intensively for 72 hours for reinfection
-
-Recovery Priority Matrix:
-  P1 (0-4h):  Domain controllers, DNS, authentication infrastructure
-  P2 (4-24h): Email, critical business applications, databases
-  P3 (1-3d):  File servers, departmental applications
-  P4 (3-7d):  Non-critical systems, development environments
-```
-
-### Step 5: Post-Incident Activity
-
-Document lessons learned and improve defenses:
-
-```
-Post-Incident Report Template:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-1. Executive summary: What happened, impact, resolution
-2. Timeline: Detection to full recovery with timestamps
-3. Root cause analysis: Initial access vector and propagation path
-4. Scope: Number of systems, data volumes, business impact in hours/dollars
-5. Response effectiveness: What worked, what failed, what was missing
-6. Recommendations: Specific technical and procedural improvements
-7. Compliance actions: Notification timeline, regulatory obligations met
-8. Updated playbook: Revisions based on lessons learned
-```
+- **cisa framework** — Primary tool for this skill
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
 ## Verification
 
-- Validate playbook completeness against CISA StopRansomware checklist items
-- Conduct tabletop exercise using the playbook with all stakeholders
-- Verify backup restoration procedures work within documented RTO targets
-- Test communication plans including out-of-band channels
-- Confirm legal and regulatory notification procedures are current
-- Review and update the playbook at least annually or after any incident
-
-## Key Concepts
-
-| Term | Definition |
-|------|------------|
-| **CISA StopRansomware Guide** | Joint CISA/MS-ISAC/NSA/FBI guide providing ransomware prevention best practices and response checklists |
-| **RTO/RPO** | Recovery Time Objective (max downtime) and Recovery Point Objective (max data loss); critical metrics for backup planning |
-| **Double Extortion** | Ransomware tactic where attackers both encrypt data and threaten to publish stolen data unless paid |
-| **Patient Zero** | The first system compromised in an incident; identifying it reveals the initial access vector |
-| **Tabletop Exercise** | Simulated incident scenario walked through by the response team to validate the playbook without live systems |
-
-## When NOT to Use
-
-- You need to test what you built (use performing-* skills)
-- Task is about configuring existing systems (use configuring-* skills)
-- You need to analyze the output (use analyzing-* skills)
-- Task is about implementing vendor solutions (use implementing-* skills)
-- You don't have infrastructure access
-- Task requires compliance validation (use auditing-* skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Destroying potential evidence during the containment phase
-- Failing to document the chain of custody for all collected artifacts
-- Communicating incident details over unencrypted or monitored channels
-
-## Tools & Systems
-
-- **CISA StopRansomware Guide**: Primary framework for ransomware response planning and prevention
-- **NIST CSF**: Cybersecurity Framework providing the Identify/Protect/Detect/Respond/Recover structure
-- **ID Ransomware**: Service for identifying ransomware families from encrypted files and ransom notes
-- **MITRE ATT&CK**: Technique framework for mapping ransomware TTPs to detection opportunities
-- **Velociraptor**: Endpoint visibility tool for rapid triage and forensic artifact collection during incidents
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All ransomware playbook procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

@@ -10,6 +10,8 @@ tags:
 - operations
 - reminder
 ---
+# Multi Channel Reminder
+
 ## When to Use
 
 **Trigger phrases:**
@@ -24,74 +26,31 @@ tags:
 
 *Never miss a task. Always notified. Multiple channels, one system.*
 
-## When NOT to Use
-
-- When the operational process requires change advisory board approval
-- When the process involves legally mandated human review or sign-off
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- Operational changes are made without stakeholder communication
-- Agent does not track compliance with established processes
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Changes are communicated to stakeholders before implementation
-- [ ] Compliance with established processes is tracked and reported
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
-## How to Use
-
-1. Define the reminder schedule: one-time, recurring (daily/weekly/monthly), or event-triggered.
-2. Select delivery channels: email, SMS, WhatsApp, Telegram, Slack, Discord, or push notification.
-3. Configure escalation rules: if the primary channel fails or the reminder is unacknowledged, escalate to the next channel.
-4. Use timezone-aware scheduling to respect recipient local time (never send at 3 AM).
-5. Track acknowledgment: mark a reminder as "done" to stop follow-up escalation.
-6. Aggregate reminders into daily digests for low-priority items to avoid notification fatigue.
-
-### Multi-Channel Delivery
-
-- WhatsApp: use WAHA API or WhatsApp Business API for session-based messaging.
-- Telegram: use Bot API with inline keyboard buttons for acknowledgment actions.
-- Email: use transactional email providers (Resend, SendGrid) with tracking pixels for open rates.
-- SMS: use Twilio or Vonage for reliable delivery with delivery receipt callbacks.
-- Slack/Discord: use webhook URLs for channel-targeted notifications.
-
-### Best Practices
-
-- Respect user notification preferences and quiet hours; never override opt-outs.
-- Use idempotent reminder creation to prevent duplicate sends on retry.
-- Log all sent reminders with channel, status, and timestamp for audit trails.
-- Review the verification checklist after applying this skill.
-- Document channel-specific formatting quirks (e.g., MarkdownV2 escaping for Telegram).
-
-### Troubleshooting
-
-- If reminders are not delivered, verify the channel API credentials are not expired.
-- If duplicates are sent, check for missing idempotency keys in the reminder creation logic.
-- For timezone mismatches, confirm the recipient's timezone is stored as IANA format (e.g., `Asia/Jakarta`).
-- If output quality is low, provide more context about the target audience and channels.
-- For rate-limited channels (e.g., WhatsApp Business), batch sends with configurable delays between messages.
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Multi Channel Reminder streamlines operational efficiency for operational excellence.
 
-## Process
+## Workflow
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+1. **Assess** — Evaluate current state and identify gaps
+2. **Design** — Plan improved processes and workflows
+3. **Implement** — Roll out changes with team alignment
+4. **Measure** — Track operational KPIs
+5. **Iterate** — Continuous improvement based on data
+
+## SOP Template
+
+- **Purpose** — Why this process exists
+- **Scope** — Who and what it covers
+- **Procedure** — Step-by-step instructions
+- **Escalation** — When and how to escalate
+- **Review** — Schedule for periodic updates
+
+## Key Metrics
+
+- Process completion time
+- Error/rework rate
+- Team satisfaction scores
+- Cost per operation
+- SLA compliance rate
+

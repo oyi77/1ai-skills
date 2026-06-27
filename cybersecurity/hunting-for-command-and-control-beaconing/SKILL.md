@@ -26,8 +26,7 @@ nist_csf:
 - DE.AE-07
 - ID.RA-05
 ---
-
-# Hunting for Command and Control Beaconing
+# Hunting For Command And Control Beaconing
 
 ## When to Use
 
@@ -47,103 +46,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Identify Beaconing Characteristics**: Define what constitutes beaconing (regular intervals, small payload sizes, consistent destinations, jitter patterns).
-2. **Collect Network Telemetry**: Aggregate proxy logs, DNS queries, and connection metadata for analysis.
-3. **Apply Frequency Analysis**: Identify connections with regular intervals using statistical methods (standard deviation, coefficient of variation).
-4. **Filter Known-Good Traffic**: Exclude legitimate periodic traffic (Windows Update, AV updates, heartbeat services, NTP).
-5. **Analyze Domain/IP Reputation**: Check identified beaconing destinations against threat intel, WHOIS data, and certificate transparency logs.
-6. **Investigate Endpoint Context**: Correlate beaconing activity with process creation, user context, and file system changes on source endpoints.
-7. **Confirm and Respond**: Validate C2 activity, block communication, and initiate incident response.
+1. **Define Detection Scope** — Identify the specific  techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for .
+3. **Build Detection Queries** — Write command and control beaconing queries targeting  indicators. Use platform-specific query language for optimal performance.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-## Key Concepts
+## Tools
 
-| Concept | Description |
-|---------|-------------|
-| T1071 | Application Layer Protocol (HTTP/HTTPS/DNS C2) |
-| T1071.001 | Web Protocols (HTTP/S beaconing) |
-| T1071.004 | DNS (DNS tunneling C2) |
-| T1573 | Encrypted Channel |
-| T1572 | Protocol Tunneling |
-| T1568 | Dynamic Resolution (DGA, fast-flux) |
-| T1132 | Data Encoding in C2 |
-| T1095 | Non-Application Layer Protocol |
-| Beacon Interval | Time between C2 check-ins |
-| Jitter | Random variation in beacon interval |
-| DGA | Domain Generation Algorithm |
-| Fast-Flux | Rapidly changing DNS resolution |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| RITA (Real Intelligence Threat Analytics) | Automated beacon detection in Zeek logs |
-| Splunk | Statistical beacon analysis with SPL |
-| Elastic Security | ML-based anomaly detection for beaconing |
-| Zeek/Bro | Network connection metadata collection |
-| Suricata | Network IDS with JA3/JA4 fingerprinting |
-| VirusTotal | Domain and IP reputation checking |
-| PassiveDNS | Historical DNS resolution data |
-| Flare | C2 profile detection |
-
-## Common Scenarios
-
-1. **Cobalt Strike Beacon**: HTTP/HTTPS beaconing with configurable sleep time and jitter to malleable C2 profiles.
-2. **DNS Tunneling C2**: Data exfiltration and command receipt via encoded DNS TXT/CNAME queries to attacker-controlled domains.
-3. **Sliver C2 over HTTPS**: Modern C2 framework using HTTPS with configurable beacon intervals and domain fronting.
-4. **DGA-based C2**: Malware generating random domains daily, with adversary registering upcoming domains for C2.
-5. **Legitimate Service Abuse**: C2 over legitimate cloud services (Azure, AWS, Slack, Discord, Telegram).
-
-## When NOT to Use
-
-- You're responding to a known incident (use IR skills)
-- Task is about analyzing confirmed malware (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about vulnerability scanning (use scanning tools)
-- You don't have access to endpoint/network data
-- Task requires compliance auditing (use auditing-* skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Capturing traffic on networks without authorization or privacy considerations
-- Leaving packet captures containing sensitive data unencrypted on disk
-- Deploying inline blocking rules without testing for false positives first
+- **command and control beaconing** — Primary tool for this skill
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Captures verified as complete with no dropped packets
-- Detection rules tested against known-benign traffic for false positive rate
-- Alert thresholds validated and tuned to reduce noise
-
-## Output Format
-
-```
-Hunt ID: TH-C2-[DATE]-[SEQ]
-Source IP: [Internal IP]
-Source Host: [Hostname]
-Destination: [Domain/IP]
-Protocol: [HTTP/HTTPS/DNS/Custom]
-Beacon Interval: [Average seconds]
-Jitter: [Percentage]
-Connection Count: [Total connections]
-Data Volume: [Bytes sent/received]
-First Seen: [Timestamp]
-Last Seen: [Timestamp]
-Domain Age: [Days]
-TI Match: [Yes/No - source]
-Risk Level: [Critical/High/Medium/Low]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All  procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

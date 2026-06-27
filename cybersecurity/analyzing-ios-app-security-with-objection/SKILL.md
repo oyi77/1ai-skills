@@ -32,7 +32,7 @@ nist_csf:
 - ID.RA-01
 - DE.CM-09
 ---
-# Analyzing iOS App Security with Objection
+# Analyzing Ios App Security With Objection
 
 ## When to Use
 
@@ -56,188 +56,24 @@ Use this skill when:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Prepare the Testing Environment
+1. **Scope the Analysis** — Define what ios app security artifacts or data sources to examine and the investigation timeline.
+2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
+3. **Extract Key Indicators** — Use objection to parse and extract relevant ios app security data points from collected artifacts.
+4. **Correlate Findings** — Cross-reference extracted data with other sources (threat intel, logs, timelines).
+5. **Build Timeline** — Construct a chronological sequence of events related to ios app security.
+6. **Document Analysis** — Write findings report with evidence, conclusions, and recommendations.
 
-**For jailbroken devices:**
-```bash
-# Install Frida server on device via Cydia/Sileo
-# SSH to device and start Frida server
-ssh root@<device_ip> "/usr/sbin/frida-server -D"
+## Tools
 
-# Verify Frida connectivity
-frida-ps -U  # List processes on USB-connected device
-```
-
-**For non-jailbroken devices (authorized testing):**
-```bash
-# Patch IPA with Frida gadget
-objection patchipa --source target.ipa --codesign-signature "Apple Development: test@example.com"
-
-# Install patched IPA
-ideviceinstaller -i target-patched.ipa
-```
-
-### Step 2: Attach Objection to Target App
-
-```bash
-# Attach to running app by bundle ID
-objection --gadget "com.target.app" explore
-
-# Or spawn the app fresh
-objection --gadget "com.target.app" explore --startup-command "ios hooking list classes"
-```
-
-Once attached, Objection provides an interactive REPL for runtime exploration.
-
-### Step 3: Assess Data Storage Security (MASVS-STORAGE)
-
-```bash
-# Dump iOS Keychain items accessible to the app
-ios keychain dump
-
-# List files in app sandbox
-ios plist cat Info.plist
-env  # Show app environment paths
-
-# Inspect NSUserDefaults for sensitive data
-ios nsuserdefaults get
-
-# List SQLite databases
-sqlite connect app_data.db
-sqlite execute query "SELECT * FROM credentials"
-
-# Check for sensitive data in pasteboard
-ios pasteboard monitor
-```
-
-### Step 4: Evaluate Network Security (MASVS-NETWORK)
-
-```bash
-# Disable SSL/TLS certificate pinning
-ios sslpinning disable
-
-# Verify pinning is bypassed by observing traffic in Burp Suite proxy
-# Monitor network-related class method calls
-ios hooking watch class NSURLSession
-ios hooking watch class NSURLConnection
-```
-
-### Step 5: Inspect Authentication and Authorization (MASVS-AUTH)
-
-```bash
-# List all Objective-C classes
-ios hooking list classes
-
-# Search for authentication-related classes
-ios hooking search classes Auth
-ios hooking search classes Login
-ios hooking search classes Token
-
-# Hook authentication methods to observe parameters
-ios hooking watch method "+[AuthManager validateToken:]" --dump-args --dump-return
-
-# Monitor biometric authentication calls
-ios hooking watch class LAContext
-```
-
-### Step 6: Assess Binary Protections (MASVS-RESILIENCE)
-
-```bash
-# Check jailbreak detection implementation
-ios jailbreak disable
-
-# Simulate jailbreak detection bypass
-ios jailbreak simulate
-
-# List loaded frameworks and libraries
-memory list modules
-
-# Search memory for sensitive strings
-memory search "password" --string
-memory search "api_key" --string
-memory search "Bearer" --string
-
-# Dump specific memory regions
-memory dump all dump_output/
-```
-
-### Step 7: Review Platform Interaction (MASVS-PLATFORM)
-
-```bash
-# List URL schemes registered by the app
-ios info binary
-ios bundles list_frameworks
-
-# Hook URL scheme handlers
-ios hooking watch method "-[AppDelegate application:openURL:options:]" --dump-args
-
-# Monitor clipboard access
-ios pasteboard monitor
-
-# Check for custom keyboard restrictions
-ios hooking search classes UITextField
-```
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **Objection** | Runtime mobile exploration toolkit built on Frida that provides pre-built scripts for common security testing tasks |
-| **Frida Gadget** | Shared library injected into app process to enable Frida instrumentation without jailbreak |
-| **Keychain** | iOS secure credential storage system; Objection can dump items accessible to the target app's keychain access group |
-| **SSL Pinning Bypass** | Runtime modification of certificate validation logic to allow proxy interception of HTTPS traffic |
-| **Method Hooking** | Intercepting Objective-C/Swift method calls at runtime to observe arguments, return values, and modify behavior |
-
-## When NOT to Use
-
-- You need to perform the attack, not analyze it (use performing-* skills)
-- Task is about detection, not analysis (use detecting-* skills)
-- You need to implement controls (use implementing-* skills)
-- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
-- You don't have access to the artifacts/logs to analyze
-- Task requires real-time monitoring (use SOC tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Sharing sensitive findings or credentials in unencrypted communications
-- Failing to properly scope and contain the assessment before starting
+- **objection** — Primary tool for this skill
+- **Forensic Toolkit** — Evidence collection and analysis
+- **Timeline Tools** — Chronological event reconstruction
+- **Log Analysis Platform** — Centralized log parsing and search
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Tools & Systems
-
-- **Objection**: High-level Frida-powered mobile security exploration toolkit with pre-built commands
-- **Frida**: Dynamic instrumentation framework providing JavaScript injection into native app processes
-- **Frida-tools**: CLI utilities for Frida including frida-ps, frida-trace, and frida-discover
-- **ideviceinstaller**: Cross-platform tool for installing/managing iOS apps via USB
-- **Burp Suite**: HTTP proxy for intercepting traffic after SSL pinning bypass
-
-## Common Pitfalls
-
-- **App crashes on attach**: Some apps implement Frida detection. Use `--startup-command` to hook anti-Frida checks early in the app lifecycle.
-- **Keychain access scope**: Objection can only dump keychain items within the app's access group. System keychain items require separate jailbreak-level tools.
-- **Swift name mangling**: Swift method names are mangled in the runtime. Use `ios hooking list classes` with grep to find demangled names.
-- **Non-persistent changes**: All Objection modifications are runtime-only and reset on app restart. Document findings immediately.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All ios app security procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

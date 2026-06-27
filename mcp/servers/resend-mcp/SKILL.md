@@ -9,6 +9,8 @@ tags:
 - resend
 - tool-integration
 ---
+# Resend Mcp
+
 ## When to Use
 
 **Trigger phrases:**
@@ -21,79 +23,35 @@ tags:
 **When NOT to use:**
 - For tasks outside this skill's scope
 
-## Resend Mcp
-
-MCP server for Resend email
-
-### Usage
-
-```
-/resend-mcp <task>
-```
-
-### Features
-
-- Automated execution
-- Error handling
-- Result validation
-
-## How to Use
-
-1. Get a Resend API key from resend.com/api-keys
-2. Configure the MCP server with RESEND_API_KEY
-3. Use tools to send transactional emails with templates
-
-## Available Tools
-
-| Tool | Description |
-|------|-------------|
-| `send_email` | Send an email to recipients |
-| `create_contact` | Add a contact to an audience |
-| `list_contacts` | List contacts with pagination |
-| `send_batch` | Send multiple emails in a single API call |
-
-## Common Patterns
-
-- Use HTML templates for consistent email formatting
-- Send batch emails to reduce API calls for bulk operations
-- Use audiences to segment contacts by purpose
-- Set reply-to addresses for two-way communication
-
-## When NOT to Use
-
-- When email sending must comply with CAN-SPAM or GDPR requirements
-- When the email content is transactional and requires delivery guarantees
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- MCP server does not validate email addresses before sending
-- Agent does not handle bounce and complaint webhooks from Resend
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Email addresses are validated before send operations
-- [ ] Bounce and complaint webhooks are processed and acted upon
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Resend Mcp implements a Model Context Protocol server for Model Context Protocol.
 
-## Process
+## Architecture
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- **Server** — MCP-compliant server exposing tools and resources
+- **Transport** — stdio or HTTP transport layer
+- **Tools** — Callable functions with JSON Schema definitions
+- **Resources** — Readable data sources with URI-based access
+
+## Setup
+
+1. Install the MCP server package
+2. Configure environment variables and credentials
+3. Register the server in MCP client configuration
+4. Test tool invocations and resource access
+
+## Configuration
+
+- Server name and version
+- Transport type (stdio, SSE, HTTP)
+- Tool definitions with input/output schemas
+- Resource URI patterns
+- Authentication and rate limiting
+
+## Integration
+
+- Compatible with Claude, Cursor, and other MCP clients
+- Supports streaming responses for large payloads
+- Handles errors with standard MCP error codes
+

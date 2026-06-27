@@ -200,7 +200,7 @@ function install() {
       hooks: [{
         type: 'command',
         command: `node "${scriptPath}"`,
-        timeout: def.type === 'PostToolUse' && def.matcher === 'Write|Edit' ? 35 : 5
+        timeout: def.timeout || (def.type === 'PostToolUse' && def.matcher === 'Write|Edit' ? 35 : 5)
       }]
     };
     // Remove undefined matcher

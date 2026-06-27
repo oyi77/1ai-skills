@@ -24,8 +24,7 @@ nist_csf:
 - RC.RP-01
 - PR.IR-01
 ---
-
-# Deploying Decoy Files for Ransomware Detection
+# Deploying Decoy Files For Ransomware Detection
 
 ## When to Use
 
@@ -48,178 +47,22 @@ nist_csf:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Design Canary File Strategy
+1. **Define Objectives** — Clarify the goals and scope for decoy files.
+2. **Gather Resources** — Collect tools, data, and access needed for decoy files.
+3. **Execute Process** — Carry out decoy files operations methodically.
+4. **Verify Quality** — Check results against acceptance criteria.
+5. **Document Outcomes** — Record findings, decisions, and next steps.
 
-Plan file placement for maximum detection coverage:
+## Tools
 
-```
-Canary File Placement Strategy:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Naming Convention:
-  - Use names that sort FIRST and LAST alphabetically in each directory
-  - Ransomware typically enumerates directories A-Z or Z-A
-  - Examples: _AAAA_budget_2024.docx, ~zzzz_report_final.xlsx
-
-Placement Locations:
-  - Root of every file share (\\server\share\_AAAA_canary.docx)
-  - Desktop, Documents, Downloads on each endpoint
-  - Department-specific shares (Finance, HR, Legal)
-  - Backup staging directories
-  - Home directories of high-privilege accounts
-
-File Types:
-  - .docx, .xlsx, .pdf (most targeted by ransomware)
-  - .sql, .bak (database files, high value)
-  - Mix of file types to detect ransomware that targets specific extensions
-```
-
-### Step 2: Generate Realistic Canary Files
-
-Create decoy files with realistic content and metadata:
-
-```python
-import os
-import time
-
-def create_canary_docx(filepath, content="Q4 Financial Summary - Confidential"):
-    """Create a realistic .docx canary file using python-docx."""
-    from docx import Document
-    doc = Document()
-    doc.add_heading("Financial Report - CONFIDENTIAL", level=1)
-    doc.add_paragraph(content)
-    doc.add_paragraph(f"Generated: {time.strftime('%Y-%m-%d')}")
-    doc.save(filepath)
-
-def create_canary_txt(filepath):
-    """Create a simple text canary with known content for hash verification."""
-    content = "CANARY_TOKEN_DO_NOT_MODIFY\n"
-    content += f"Created: {time.strftime('%Y-%m-%dT%H:%M:%S')}\n"
-    content += "This file is monitored for unauthorized changes.\n"
-    with open(filepath, "w") as f:
-        f.write(content)
-```
-
-### Step 3: Deploy File System Watcher
-
-Monitor canary files for any modification, rename, or deletion:
-
-```python
-from watchdog.observers import Observer
-from watchdog.events import FileSystemEventHandler
-
-class CanaryHandler(FileSystemEventHandler):
-    def __init__(self, canary_paths, alert_callback):
-        self.canary_paths = set(canary_paths)
-        self.alert_callback = alert_callback
-
-    def on_modified(self, event):
-        if event.src_path in self.canary_paths:
-            self.alert_callback("MODIFIED", event.src_path)
-
-    def on_deleted(self, event):
-        if event.src_path in self.canary_paths:
-            self.alert_callback("DELETED", event.src_path)
-
-    def on_moved(self, event):
-        if event.src_path in self.canary_paths:
-            self.alert_callback("RENAMED", event.src_path)
-```
-
-### Step 4: Configure Alerting and Response
-
-Define automated responses when canary files are triggered:
-
-```
-Alert Response Matrix:
-━━━━━━━━━━━━━━━━━━━━━
-Event: Canary MODIFIED
-  → Severity: CRITICAL
-  → Action: Alert SOC, identify modifying process (PID), isolate endpoint
-
-Event: Canary DELETED
-  → Severity: HIGH
-  → Action: Alert SOC, check for ransomware note in same directory
-
-Event: Canary RENAMED (new extension added)
-  → Severity: CRITICAL
-  → Action: Alert SOC, check extension against known ransomware extensions
-  → Automated: Kill modifying process, disable network interface
-
-Event: Multiple canaries triggered within 60 seconds
-  → Severity: EMERGENCY
-  → Action: Network-wide isolation, activate incident response plan
-```
-
-### Step 5: Validate Detection Coverage
-
-Test that canary files detect actual ransomware behavior:
-
-```bash
-# Simulate ransomware encryption (safe test - modifies canary content)
-echo "ENCRYPTED_BY_TEST" > /path/to/canary/_AAAA_budget.docx
-
-# Simulate ransomware rename (adds extension)
-mv /path/to/canary/report.xlsx /path/to/canary/report.xlsx.locked
-
-# Verify alerts were generated in SIEM/alerting system
-```
+- **ransomware detection** — Primary tool for this skill
+- **Analysis Platform** — Data processing and visualization
+- **Collaboration Tools** — Team coordination and knowledge sharing
 
 ## Verification
 
-- Confirm all canary files are present and unmodified using stored hash baselines
-- Verify that modifying any canary file generates an alert within the expected timeframe (under 30 seconds)
-- Test that alert routing to SOC/SIEM is functional with a controlled modification
-- Validate that automated response actions (process kill, network isolation) execute correctly
-- Check that canary files survive normal backup and restore operations
-- Ensure legitimate users and processes are excluded from false-positive alerts (backup agents, AV scans)
-
-## Key Concepts
-
-| Term | Definition |
-|------|------------|
-| **Canary File** | A decoy file placed in a directory that is monitored for any access or modification, serving as a tripwire for unauthorized activity |
-| **Honeytoken** | A broader category of deception artifacts (files, credentials, database records) designed to alert when accessed |
-| **File Integrity Monitoring** | Continuous monitoring of file attributes (hash, size, permissions, timestamps) to detect unauthorized changes |
-| **ReadDirectoryChangesW** | Windows API for monitoring file system changes in a directory; used by the watchdog library on Windows |
-| **inotify** | Linux kernel subsystem for monitoring file system events; provides near-instant notification of file changes |
-
-## When NOT to Use
-
-- You need to test the deployment (use performing-* skills)
-- Task is about configuring deployed tools (use configuring-* skills)
-- You need to analyze deployment output (use analyzing-* skills)
-- Task is about building deployment automation (use building-* skills)
-- You don't have deployment access
-- Task requires change management (follow change process)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Acting on threat intelligence without validating source reliability
-- Sharing classified or sensitive indicators without proper handling procedures
-- Alerting threat actors to detection capabilities through visible response actions
-
-## Tools & Systems
-
-- **watchdog (Python)**: Cross-platform file system event monitoring library supporting Windows, Linux, and macOS
-- **Canarytokens (Thinkst)**: Free hosted service for generating various types of canary tokens including files, URLs, and DNS tokens
-- **OSSEC/Wazuh**: Open-source HIDS with built-in file integrity monitoring and alerting capabilities
-- **Elastic Endpoint**: Uses canary files internally for ransomware protection and key capture
-- **Sysmon**: Windows system monitor that logs file creation events (Event ID 11) for canary file monitoring
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All decoy files procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

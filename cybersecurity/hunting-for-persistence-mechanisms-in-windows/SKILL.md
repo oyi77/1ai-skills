@@ -27,8 +27,7 @@ nist_csf:
 - DE.AE-07
 - ID.RA-05
 ---
-
-# Hunting for Persistence Mechanisms in Windows
+# Hunting For Persistence Mechanisms In Windows
 
 ## When to Use
 
@@ -48,98 +47,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Enumerate Known Persistence Locations**: Build a comprehensive list of Windows persistence points (Run keys, services, scheduled tasks, WMI, startup folder, DLL search order, COM hijacks, AppInit DLLs, Image File Execution Options).
-2. **Collect Endpoint Data**: Use EDR, Sysmon, or Velociraptor to collect current persistence artifacts from endpoints across the environment.
-3. **Baseline Legitimate Persistence**: Compare collected data against known-good baselines (Autoruns snapshots, GPO-deployed entries, SCCM configurations).
-4. **Identify Anomalies**: Flag new, unsigned, or unknown entries in persistence locations that deviate from the baseline.
-5. **Investigate Suspicious Entries**: For each anomaly, examine the binary it points to, its digital signature, file hash, and creation timestamp.
-6. **Correlate with Process Activity**: Link persistence entries to process execution, network activity, and user login events.
-7. **Document and Remediate**: Record findings, remove malicious persistence, and update detection rules.
+1. **Define Detection Scope** — Identify the specific  techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for .
+3. **Build Detection Queries** — Write persistence mechanisms in windows queries targeting  indicators. Use platform-specific query language for optimal performance.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-## Key Concepts
+## Tools
 
-| Concept | Description |
-|---------|-------------|
-| T1547.001 | Registry Run Keys / Startup Folder |
-| T1543.003 | Windows Service (Create or Modify) |
-| T1053.005 | Scheduled Task |
-| T1546.003 | WMI Event Subscription |
-| T1546.015 | Component Object Model (COM) Hijacking |
-| T1546.012 | Image File Execution Options Injection |
-| T1546.010 | AppInit DLLs |
-| T1547.004 | Winlogon Helper DLL |
-| T1547.005 | Security Support Provider |
-| T1574.001 | DLL Search Order Hijacking |
-| TA0003 | Persistence Tactic |
-| Autoruns | Sysinternals tool showing persistent entries |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| Sysinternals Autoruns | Comprehensive persistence enumeration |
-| Velociraptor | Endpoint-wide persistence artifact collection |
-| CrowdStrike Falcon | Real-time persistence monitoring |
-| Sysmon | Registry and WMI event monitoring |
-| OSQuery | SQL-based persistence queries |
-| RECmd | Registry Explorer for forensic analysis |
-| Splunk | SIEM correlation of persistence events |
-
-## Common Scenarios
-
-1. **Registry Run Key Backdoor**: Malware adds `HKCU\Software\Microsoft\Windows\CurrentVersion\Run` entry pointing to payload in `%APPDATA%`.
-2. **WMI Event Subscription**: Adversary creates WMI consumer/filter pair that executes PowerShell on system boot.
-3. **Malicious Service**: Attacker creates Windows service with `sc create` pointing to a backdoor binary.
-4. **COM Object Hijack**: Legitimate COM CLSID InprocServer32 path replaced with malicious DLL.
-5. **IFEO Debugger Injection**: Image File Execution Options key set with debugger pointing to implant for common utilities.
-
-## When NOT to Use
-
-- You're responding to a known incident (use IR skills)
-- Task is about analyzing confirmed malware (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about vulnerability scanning (use scanning tools)
-- You don't have access to endpoint/network data
-- Task requires compliance auditing (use auditing-* skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Acting on threat intelligence without validating source reliability
-- Sharing classified or sensitive indicators without proper handling procedures
-- Alerting threat actors to detection capabilities through visible response actions
+- **persistence mechanisms in windows** — Primary tool for this skill
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Output Format
-
-```
-Hunt ID: TH-PERSIST-[DATE]-[SEQ]
-Persistence Type: [Registry/Service/Task/WMI/COM/Other]
-MITRE Technique: T1547.xxx / T1543.xxx / T1053.xxx
-Location: [Full registry key / service name / task path]
-Value: [Binary path / command line]
-Host(s): [Affected endpoints]
-Signed: [Yes/No]
-Hash: [SHA256]
-Creation Time: [Timestamp]
-Risk Level: [Critical/High/Medium/Low]
-Verdict: [Malicious/Suspicious/Benign]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All  procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

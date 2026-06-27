@@ -20,10 +20,7 @@ nist_csf:
 - GV.OV-01
 - DE.AE-02
 ---
-
-
-# Implementing SIEM Correlation Rules for APT
-
+# Implementing Siem Correlation Rules For Apt
 
 ## When to Use
 
@@ -39,83 +36,26 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-1. Install dependencies: `pip install requests pyyaml sigma-cli`
-2. Connect to the Splunk REST API and define correlation searches that chain multiple event types across hosts.
-3. Build Sigma rules in YAML that express multi-step detection logic for lateral movement patterns:
-   - RDP logon (4624 LogonType=10) followed by service installation (7045) on same target within 15 minutes
-   - Pass-the-Hash: NTLM logon (4624 LogonType=3) followed by process creation (4688) of admin tools
-   - PsExec-style: Named pipe creation (Sysmon 17/18) correlated with remote service creation (7045)
-4. Convert Sigma rules to Splunk SPL using `sigma-cli convert`.
-5. Deploy correlation searches to Splunk ES via the REST API.
-6. Run the agent to generate and install correlation rules, then audit existing rules for coverage gaps.
+1. **Assess Requirements** — Evaluate current environment and define siem correlation rules implementation requirements.
+2. **Design Architecture** — Plan the siem correlation rules architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up apt for siem correlation rules according to vendor best practices and security guidelines.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-```bash
-python scripts/agent.py --splunk-url https://localhost:8089 --username admin --password changeme --output correlation_report.json
-```
+## Tools
 
-## Examples
+- **apt** — Primary tool for this skill
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
-```bash
-# Basic usage example
-# Replace with domain-specific commands from the workflow above
-```
-### Detect RDP Lateral Movement Chain
-```
-index=wineventlog (EventCode=4624 Logon_Type=10) OR (EventCode=7045)
-| transaction Computer maxspan=15m startswith=(EventCode=4624) endswith=(EventCode=7045)
-| where eventcount >= 2
-| table _time Computer Account_Name ServiceName
-```
-
-### Sigma Rule for PsExec Lateral Movement
-```yaml
-title: PsExec Lateral Movement Detection
-logsource:
-  product: windows
-  service: sysmon
-detection:
-  pipe_created:
-    EventID: 17
-    PipeName|startswith: '\PSEXESVC'
-  service_installed:
-    EventID: 7045
-    ServiceFileName|contains: 'PSEXESVC'
-  timeframe: 5m
-  condition: pipe_created | near service_installed
-level: high
-```
-## When NOT to Use
-
-- You need to test the implementation (use performing-* skills)
-- Task is about configuring existing tools (use configuring-* skills)
-- You need to analyze security events (use analyzing-* skills)
-- Task is about building detection rules (use building-* skills)
-- You don't have access to the target environment
-- Task requires vendor-specific expertise (consult vendor docs)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Acting on threat intelligence without validating source reliability
-- Sharing classified or sensitive indicators without proper handling procedures
-- Alerting threat actors to detection capabilities through visible response actions
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All siem correlation rules procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

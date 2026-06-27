@@ -24,7 +24,7 @@ nist_csf:
 - DE.CM-01
 - PR.IR-01
 ---
-# Implementing Memory Protection with DEP and ASLR
+# Implementing Memory Protection With Dep Aslr
 
 ## When to Use
 
@@ -39,104 +39,24 @@ Use this skill when hardening endpoints against memory-based exploits by configu
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Configure System-Level Mitigations
+1. **Assess Requirements** — Evaluate current environment and define memory protection implementation requirements.
+2. **Design Architecture** — Plan the memory protection architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up dep aslr for memory protection according to vendor best practices and security guidelines.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-```powershell
-# Enable system-wide DEP (Data Execution Prevention)
-# Boot configuration: OptIn (default), OptOut (recommended), AlwaysOn
-bcdedit /set nx AlwaysOn
+## Tools
 
-# Verify ASLR status (enabled by default on modern Windows)
-Get-ProcessMitigation -System
-# MandatoryASLR, BottomUpASLR, HighEntropyASLR should be ON
-
-# Enable all system-level mitigations
-Set-ProcessMitigation -System -Enable DEP,SEHOP,ForceRelocateImages,BottomUp,HighEntropy
-```
-
-### Step 2: Configure Per-Application Mitigations
-
-```powershell
-# Harden high-risk applications (browsers, Office, PDF readers)
-Set-ProcessMitigation -Name "WINWORD.EXE" -Enable DEP,SEHOP,ForceRelocateImages,CFG,StrictHandle
-Set-ProcessMitigation -Name "EXCEL.EXE" -Enable DEP,SEHOP,ForceRelocateImages,CFG,StrictHandle
-Set-ProcessMitigation -Name "AcroRd32.exe" -Enable DEP,SEHOP,ForceRelocateImages,CFG
-Set-ProcessMitigation -Name "chrome.exe" -Enable DEP,CFG,ForceRelocateImages
-Set-ProcessMitigation -Name "msedge.exe" -Enable DEP,CFG,ForceRelocateImages
-
-# Export configuration for deployment
-Get-ProcessMitigation -RegistryConfigFilePath "C:\exploit_protection.xml"
-# Deploy via Intune or GPO
-```
-
-### Step 3: Deploy via Intune/GPO
-
-```
-Intune: Endpoint Security → Attack Surface Reduction → Exploit Protection
-  Import exploit_protection.xml template
-
-GPO: Computer Configuration → Admin Templates → Windows Components
-  → Windows Defender Exploit Guard → Exploit Protection
-  → "Use a common set of exploit protection settings" → Enabled
-  → Point to XML file on network share
-```
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **DEP** | Marks memory pages as non-executable to prevent shellcode execution in data regions |
-| **ASLR** | Randomizes memory addresses of loaded modules to defeat hardcoded ROP gadgets |
-| **CFG** | Validates indirect call targets at runtime to prevent control flow hijacking |
-| **SEHOP** | Validates SEH chain integrity to prevent SEH-based exploitation |
-
-## When NOT to Use
-
-- You need to test the implementation (use performing-* skills)
-- Task is about configuring existing tools (use configuring-* skills)
-- You need to analyze security events (use analyzing-* skills)
-- Task is about building detection rules (use building-* skills)
-- You don't have access to the target environment
-- Task requires vendor-specific expertise (consult vendor docs)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Failing to use write-blockers when acquiring forensic evidence
-- Not verifying hash integrity before and after imaging
-- Modifying original evidence during analysis
+- **dep aslr** — Primary tool for this skill
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Hash values computed and verified match between source and image
-- Chain of custody log complete with timestamps and examiner names
-- Analysis tools and versions documented for reproducibility
-
-## Tools & Systems
-- **Windows Exploit Protection**: Built-in per-process mitigation management
-- **EMET (legacy)**: Enhanced Mitigation Experience Toolkit (predecessor, now deprecated)
-- **ProcessMitigations PowerShell**: Get/Set-ProcessMitigation cmdlets
-
-## Common Pitfalls
-- **DEP compatibility**: Legacy 32-bit applications may crash with DEP AlwaysOn. Use OptOut with exceptions.
-- **Mandatory ASLR breaking apps**: Some applications are not ASLR-compatible. Test before enforcing ForceRelocateImages.
-- **CFG limited to compiled-in support**: CFG only works for applications compiled with /guard:cf. Cannot be retroactively applied.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All memory protection procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization
