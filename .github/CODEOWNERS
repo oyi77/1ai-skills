@@ -1,0 +1,18 @@
+# Default owners for everything in the repo
+* @oyi77
+
+# Skill content — category owners can review their domain
+cybersecurity/ @oyi77
+development/ @oyi77
+marketing/ @oyi77
+trading/ @oyi77
+
+# Infrastructure — requires careful review
+scripts/ @oyi77
+hooks/ @oyi77
+.github/ @oyi77
+
+# Core config files
+SKILLS.json @oyi77
+package.json @oyi77
+AGENTS.md @oyi77
