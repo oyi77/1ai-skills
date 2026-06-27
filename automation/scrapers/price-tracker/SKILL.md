@@ -1,6 +1,6 @@
 ---
 name: price-tracker
-description: Track price changes automatically
+description: Track price changes automatically across e-commerce sites. Get alerts when prices drop below your target.
 domain: automation
 tags:
 - automation

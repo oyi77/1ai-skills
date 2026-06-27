@@ -79,3 +79,10 @@ def generate_content(topic: str, format: str = "article"):
 | "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
 | "I will optimize later" | SEO and distribution need optimization from the start. |
 | "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
+
+## Verification
+
+- [ ] Content meets quality standards and brief requirements
+- [ ] Output is properly formatted for target platform
+- [ ] All facts and references verified
+- [ ] SEO/distribution optimization applied where applicable

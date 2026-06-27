@@ -1,8 +1,15 @@
 ---
 name: agent-security-scanner
-description: Agentic security patterns for AI agent systems including attack vector defense, sandboxing, input sanitization, security scanning, CVE awareness, and least-privilege tool access. Use when securing agent configurations, scanning for vulnerabilities, hardening agent tool access, or defending against prompt injection and data exfiltration.
+description: Agentic security patterns for AI agent systems including attack vector defense, sandboxing, input sanitization, security scanning, CVE awareness, and least-privilege tool access. Use when.
 domain: core
-tags: [security, prompt-injection, sandboxing, agentshield, least-privilege, cve, scanning]
+tags: 
+- [security
+- prompt-injection
+- sandboxing
+- agentshield
+- least-privilege
+- cve
+- scanning]
 persona:
   name: "AgentShield"
   title: "Agentic Security Engineer"

@@ -1,6 +1,6 @@
 ---
 name: ifttt-maker
-description: Create IFTTT-style automations
+description: Create IFTTT-style if-this-then-that automations for connecting apps and services with trigger-action workflows.
 domain: automation
 tags:
 - automation

@@ -1,8 +1,14 @@
 ---
 name: automated-test-generator
-description: Generate test suites, analyze coverage, and scaffold E2E tests automatically. Use when creating tests for existing code, improving test coverage, scaffolding integration tests, or setting up E2E test automation for React, Next.js, Node.js, Python, Go, or any project.
+description: Generate test suites, analyze coverage, and scaffold E2E tests automatically. Use when creating tests for existing code, improving test coverage, scaffolding integration tests, or setting.
 domain: development
-tags: [test-generation, coverage-analysis, e2e-testing, test-automation, quality-assurance, test-scaffolding]
+tags: 
+- [test-generation
+- coverage-analysis
+- e2e-testing
+- test-automation
+- quality-assurance
+- test-scaffolding]
 ---
 
 # Automated Test Generator

@@ -1,6 +1,6 @@
 ---
 name: stripe-mcp
-description: MCP server for Stripe payments
+description: MCP server for Stripe payments. Process payments, manage subscriptions, and handle billing via standardized protocol.
 domain: mcp
 tags:
 - mcp

@@ -279,7 +279,8 @@ detection:
     timeframe: 5m
 level: high
 tags:
-    - attack.credential_access
+   
+- - attack.credential_access
     - attack.t1557.001
 falsepositives:
     - Legitimate WINS servers or DNS servers responding to broadcast queries
@@ -620,7 +621,8 @@ detection:
     condition: selection and not filter_localhost
 level: high
 tags:
-    - attack.credential_access
+   
+- - attack.credential_access
     - attack.t1557.001
     - attack.t1187
 falsepositives:

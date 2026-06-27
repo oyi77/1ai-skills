@@ -213,7 +213,8 @@ detection:
     condition: selection_parent and selection_child and not filter_legitimate
 level: high
 tags:
-    - attack.lateral_movement
+   
+- - attack.lateral_movement
     - attack.t1021.003
 falsepositives:
     - Legitimate remote MMC administration by authorized IT staff
@@ -251,7 +252,8 @@ detection:
     condition: selection and not filter_interactive
 level: medium
 tags:
-    - attack.lateral_movement
+   
+- - attack.lateral_movement
     - attack.t1021.003
 falsepositives:
     - Users launching command prompts from Explorer context menus
@@ -285,7 +287,8 @@ detection:
     condition: network_connection | near process_creation
 level: high
 tags:
-    - attack.lateral_movement
+   
+- - attack.lateral_movement
     - attack.t1021.003
 ```
 

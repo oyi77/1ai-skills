@@ -3,7 +3,13 @@ name: youtube-factory
 description: Generate complete YouTube videos from a single prompt - script, voiceover, stock footage, captions, thumbnail.
   Self-contained, no external modules. 100% free tools.
 domain: content
-tags: video, youtube, content-creation, tts, automation, faceless
+tags: 
+- video
+- youtube
+- content-creation
+- tts
+- automation
+- faceless
 version: 1.3.0
 author: Mayank8290
 homepage: https://github.com/Mayank8290/openclaw-video-skills
@@ -91,3 +97,10 @@ def generate_content(topic: str, format: str = "article"):
 | "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
 | "I will optimize later" | SEO and distribution need optimization from the start. |
 | "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
+
+## Verification
+
+- [ ] Content meets quality standards and brief requirements
+- [ ] Output is properly formatted for target platform
+- [ ] All facts and references verified
+- [ ] SEO/distribution optimization applied where applicable

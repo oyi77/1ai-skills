@@ -1,6 +1,6 @@
 ---
 name: n8n-builder
-description: Build n8n automation workflows
+description: Build n8n automation workflows visually. Create complex multi-step automations with 400+ integrations.
 domain: automation
 tags:
 - automation
