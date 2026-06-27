@@ -87,10 +87,6 @@ Load plan, review critically, execute tasks in batches, report for review betwee
 ## The Process
 
 - Configure approved, artifact, checkpoint, completed, discipline settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Step 1: Load and Review Plan

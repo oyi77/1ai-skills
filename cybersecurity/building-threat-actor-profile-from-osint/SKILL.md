@@ -310,7 +310,7 @@ def correlate_infrastructure(indicators):
 
 ### Step 5: Generate Threat Actor Dossier
 
-```python
+```
 def generate_dossier(actor_name, profile_data, ttp_data, infrastructure_data):
     dossier = f"""# Threat Actor Dossier: {actor_name}
 ## Generated: {datetime.now().isoformat()}

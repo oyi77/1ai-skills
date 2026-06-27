@@ -59,10 +59,6 @@ Generate detailed Product Requirement Documents from feature descriptions. Creat
 ## PRD Structure
 
 - Configure create, descriptions, detailed, documents, feature settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. Executive Summary
@@ -100,10 +96,6 @@ Generate detailed Product Requirement Documents from feature descriptions. Creat
 ## User Stories
 
 - Configure create, descriptions, detailed, documents, feature settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Story 1: [Title]
@@ -143,10 +135,6 @@ System requirements for prd-generator.
 ## Technical
 
 - Configure create, descriptions, detailed, documents, feature settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Architecture
@@ -170,10 +158,6 @@ System requirements for prd-generator.
 ## Design
 
 - Configure create, descriptions, detailed, documents, feature settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Layout
@@ -195,10 +179,6 @@ System requirements for prd-generator.
 ## Testing
 
 - Configure create, descriptions, detailed, documents, feature settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Unit Tests
@@ -219,10 +199,6 @@ System requirements for prd-generator.
 ## Rollout
 
 - Configure create, descriptions, detailed, documents, feature settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Phased Release
@@ -239,10 +215,6 @@ System requirements for prd-generator.
 ## Analytics
 
 - Configure create, descriptions, detailed, documents, feature settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Key Metrics
@@ -280,10 +252,6 @@ Before generating PRD, ask:
 ## Feature: User Dashboard
 
 - Configure create, descriptions, detailed, documents, feature settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Problem
@@ -309,10 +277,6 @@ So that I can track my progress.
 ## Integration
 
 - Configure create, descriptions, detailed, documents, feature settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### With Brainstorming

@@ -35,10 +35,6 @@ Shopee Optimizer provides comprehensive automation for managing Shopee store ope
 ## The Process
 
 - Configure across, adjustments, analytics, automating, automation settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Step 1: Authentication Setup

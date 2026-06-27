@@ -323,10 +323,6 @@ Full Prompt: "A majestic eagle soaring through the sky above snow-capped mountai
 ## Key Features & Capabilities
 
 - Configure animate, audio, aurora, create, from settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. Synchronized Audio Generation
@@ -395,10 +391,6 @@ Prompt: "...no audio, silent video"
 ## Creating Longer Videos
 
 - Configure animate, audio, aurora, create, from settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Limitation
@@ -453,10 +445,6 @@ ffmpeg -i grok-clip-1.mp4 -i grok-clip-2.mp4 \
 ## Integration with Other Skills
 
 - Configure animate, audio, aurora, create, from settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Send via Telegram
@@ -522,10 +510,6 @@ Strategy: Use both tools for different purposes
 ## Troubleshooting
 
 - Configure animate, audio, aurora, create, from settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Common Issues
@@ -604,10 +588,6 @@ Strategy: Use both tools for different purposes
 ## Use Cases
 
 - Configure animate, audio, aurora, create, from settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Marketing & Advertising

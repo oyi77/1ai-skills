@@ -68,10 +68,6 @@ Complete email marketing automation for customer nurturing. Create campaigns, se
 ## Email Service Providers
 
 - Configure automate, build, campaigns, create, customer settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Recommended for Indonesia
@@ -82,10 +78,6 @@ Complete email marketing automation for customer nurturing. Create campaigns, se
 ## Campaign Types
 
 - Configure automate, build, campaigns, create, customer settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. Newsletter
@@ -234,10 +226,6 @@ verbose: true
 ## Automation Examples
 
 - Configure automate, build, campaigns, create, customer settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### SendGrid Integration
@@ -277,10 +265,6 @@ async function sendInvoiceEmail(invoice) {
 ## List Management
 
 - Configure automate, build, campaigns, create, customer settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Segmentation

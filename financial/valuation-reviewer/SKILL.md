@@ -71,7 +71,7 @@ valuation_methods = {
 ### Phase 2: Validate Valuations!
 
 **Key Checks:**
-```python
+```
 validation = {
     "market_comps": verify_multiples("EV/EBITDA", "P/E", "P/Book"),
     "dcf_assumptions": verify_wacc("10.5%", "8.5%"),  # Should be 10-12%

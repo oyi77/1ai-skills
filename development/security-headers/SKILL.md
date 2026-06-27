@@ -35,10 +35,6 @@ HTTP security headers protect web applications from XSS, clickjacking, MIME snif
 ## Pseudo Content
 
 - Configure audit, configure, cors, frame, harden settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Content Security Policy (CSP)

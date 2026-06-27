@@ -394,10 +394,6 @@ report = f"""# Affiliate Revenue Report — {month_start} to {datetime.now().str
 ## Total Revenue: ${total:,.2f}
 
 - Configure affiliate, automated, commission, cross, deals settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ## By Program

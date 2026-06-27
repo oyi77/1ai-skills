@@ -45,10 +45,6 @@ Offer fractional AI engineering and consulting services to companies that need A
 ## Service Offerings
 
 - Configure afford, companies, consulting, engineering, executive settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. AI Assessment (One-time)
@@ -96,10 +92,6 @@ Output: Trained team, materials
 ## Target Clients
 
 - Configure afford, companies, consulting, engineering, executive settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### By Size
@@ -127,10 +119,6 @@ Output: Trained team, materials
 ## Sales Process
 
 - Configure afford, companies, consulting, engineering, executive settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Stage 1: Discovery (30 min - Free)
@@ -242,10 +230,6 @@ you cut through the AI hype and deliver real business value."
 ## Tools & Resources
 
 - Configure afford, companies, consulting, engineering, executive settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Client Management
@@ -302,10 +286,6 @@ Consulting → Build agent → Upsell maintenance → Referrals
 ## Pricing Psychology
 
 - Configure afford, companies, consulting, engineering, executive settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Anchor High

@@ -34,11 +34,6 @@ Train AI agents to generate ultra realistic images and videos using multiple sta
 
 ## 🎯 CORE CONCEPTS
 
-- Configure domain, generation, media, realistic, relevant settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Ultra Realism Standards
@@ -55,11 +50,6 @@ Train AI agents to generate ultra realistic images and videos using multiple sta
 
 ## 🛠️ TOOLBOX: 4 PROVIDERS
 
-- Configure domain, generation, media, realistic, relevant settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. NVIDIA Flux (Image) 🎨
@@ -96,11 +86,6 @@ Train AI agents to generate ultra realistic images and videos using multiple sta
 
 ## 📚 PROVEN PROMPT FORMULAS
 
-- Configure domain, generation, media, realistic, relevant settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Ultra Realistic Portrait Formula
@@ -168,11 +153,6 @@ Film grain overlay, lens flare from setting sun, cinematic quality
 
 ## 🏆 STEP-BY-STEP TRAINING PROGRAM
 
-- Configure domain, generation, media, realistic, relevant settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Phase 1: Image Excellence (Days 1-3)
@@ -279,11 +259,6 @@ focus: dramatic lighting, camera movement, color grading
 
 ## 🎯 QUALITY CHECKLIST
 
-- Configure domain, generation, media, realistic, relevant settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Image Realism Checklist
@@ -316,11 +291,6 @@ focus: dramatic lighting, camera movement, color grading
 
 ## 📊 ADVANCED PROMPTING STRATEGIES
 
-- Configure domain, generation, media, realistic, relevant settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Negative Prompting (What NOT To Generate)
@@ -381,11 +351,6 @@ final_prompt = f"{refined_prompt}, [final tweak]"
 
 ## 🚀 COMMERCIAL APPLICATIONS
 
-- Configure domain, generation, media, realistic, relevant settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### E-Commerce Photography
@@ -483,11 +448,6 @@ brand_film = grok.generate(
 
 ## ⚡ PERFORMANCE TIPS
 
-- Configure domain, generation, media, realistic, relevant settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Speed Optimization
@@ -539,11 +499,6 @@ batch_flux = flux.generate_batch([
 
 ## 🧪 TESTING & VALIDATION
 
-- Configure domain, generation, media, realistic, relevant settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### A/B Testing Framework
@@ -584,11 +539,6 @@ def evaluate_realism(image):
 
 ## 📈 PROGRESS TRACKING
 
-- Configure domain, generation, media, realistic, relevant settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Weekly Goals
@@ -615,11 +565,6 @@ def evaluate_realism(image):
 
 ## 🎯 FINAL ASSESSMENT
 
-- Configure domain, generation, media, realistic, relevant settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Ultra Realism Certification Criteria

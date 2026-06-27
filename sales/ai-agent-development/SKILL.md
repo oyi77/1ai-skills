@@ -46,10 +46,6 @@ Build custom AI agents for businesses and sell them as services or products. Cre
 ## Business Models
 
 - Configure agent, agents, build, clients, create settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. Agent-as-a-Service (Recurring)
@@ -80,10 +76,6 @@ Example: Legal agent, HR agent, etc.
 ## High-Demand Agent Types
 
 - Configure agent, agents, build, clients, create settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### By Industry
@@ -113,10 +105,6 @@ Example: Legal agent, HR agent, etc.
 ## Development Stack
 
 - Configure agent, agents, build, clients, create settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Core Tools
@@ -136,10 +124,6 @@ Example: Legal agent, HR agent, etc.
 ## Development Process
 
 - Configure agent, agents, build, clients, create settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Phase 1: Discovery (1-2 days)
@@ -217,10 +201,6 @@ result = agent.invoke({
 ## Tools & Integrations
 
 - Configure agent, agents, build, clients, create settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Knowledge Base
@@ -269,10 +249,6 @@ Build Agent → Deploy → Monthly Retainer → Upsell Features
 ## Pricing Guide
 
 - Configure agent, agents, build, clients, create settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Starter Agent ($199/mo)

@@ -48,10 +48,6 @@ If you haven't completed Phase 1, you cannot propose fixes.
 ## Four Phases
 
 - Configure before, behavior, debugging, encountering, failure settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Phase 1: Root Cause Investigation

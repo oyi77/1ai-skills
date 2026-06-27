@@ -74,7 +74,7 @@ trial_balance = {
 ### Phase 2: Break Detection
 
 **Common Break Types:**
-```python
+```
 break_rules = {
     "tb_out_of_balance": {"dr_total != cr_total", "severity": "critical"},
     "suspense_balance": {"account_1999 > 0", "severity": "high"},

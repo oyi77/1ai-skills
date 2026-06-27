@@ -198,10 +198,6 @@ Capture rationalizations from baseline testing:
 ## RED-GREEN-REFACTOR for Skills
 
 - Configure before, creating, deployment, editing, existing settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### RED: Baseline

@@ -56,10 +56,6 @@ scout → onboard → contract → activate → track → pay → scale.
 ## 1. Talent Database
 
 - Configure crm, domain, relevant, talent, this settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Scouting Criteria (Minimum Bar)
@@ -120,10 +116,6 @@ PROSPECT → CONTACTED → NEGOTIATING → SIGNED → ACTIVE → RENEWAL / EXPIR
 ## 2. Client Database
 
 - Configure crm, domain, relevant, talent, this settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Client Profile Fields
@@ -169,10 +161,6 @@ PROSPECTING → PROPOSAL SENT → NEGOTIATING → CLOSED (WON/LOST) → ACTIVE �
 ## 3. Talent Scouting
 
 - Configure crm, domain, relevant, talent, this settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Search Process
@@ -239,10 +227,6 @@ Search: `"affiliate shopee Indonesia"`, `"jualan digital Indonesia"`,
 ## 4. Contract Lifecycle
 
 - Configure crm, domain, relevant, talent, this settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Stages & Actions
@@ -295,10 +279,6 @@ Early Termination:   30-day notice required
 ## 5. Commission Tracking
 
 - Configure crm, domain, relevant, talent, this settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Commission Structure
@@ -356,10 +336,6 @@ Payout statuses: `pending | approved | paid | disputed`
 ## 6. Performance Analytics
 
 - Configure crm, domain, relevant, talent, this settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Talent KPIs
@@ -587,10 +563,6 @@ Vilona | AI GM, BerkahKarya Talent Agency
 ## 8. Integration
 
 - Configure crm, domain, relevant, talent, this settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 8.1 Telegram Notifications (telegram-userbot)
@@ -667,10 +639,6 @@ Sheet 4: KPI Dashboard (auto-calculated)
 ## 9. Scripts
 
 - Configure crm, domain, relevant, talent, this settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### `scripts/talent_scout.py`
@@ -1014,10 +982,6 @@ if __name__ == "__main__":
 ## 10. KPIs
 
 - Configure crm, domain, relevant, talent, this settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Primary KPIs (Monthly)

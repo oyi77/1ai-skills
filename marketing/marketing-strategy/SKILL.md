@@ -103,10 +103,6 @@ Handle social media, content scheduling, analytics, and campaign management acro
 ## Content Strategy Framework
 
 - Configure analytics, automation, campaign, content, doing settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### The AIDA Model for Posts
@@ -141,10 +137,6 @@ Handle social media, content scheduling, analytics, and campaign management acro
 ## Content Calendar Management
 
 - Configure analytics, automation, campaign, content, doing settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Monthly Planning Template
@@ -189,10 +181,6 @@ Handle social media, content scheduling, analytics, and campaign management acro
 ## Analytics & KPIs
 
 - Configure analytics, automation, campaign, content, doing settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Key Metrics to Track
@@ -219,10 +207,6 @@ Handle social media, content scheduling, analytics, and campaign management acro
 ## Platform Breakdown
 
 - Configure analytics, automation, campaign, content, doing settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Twitter
@@ -248,10 +232,6 @@ Handle social media, content scheduling, analytics, and campaign management acro
 ## Campaign Management
 
 - Configure analytics, automation, campaign, content, doing settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Campaign Planning Template
@@ -295,10 +275,6 @@ Handle social media, content scheduling, analytics, and campaign management acro
 ## Content Generation Prompts
 
 - Configure analytics, automation, campaign, content, doing settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### For Twitter Threads
@@ -395,10 +371,6 @@ Schedule recurring execution via cron or workflow engine.
 ## Brand Voice Guidelines
 
 - Configure analytics, automation, campaign, content, doing settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Voice Definition Template
@@ -436,10 +408,6 @@ Reserved ----[X]---- Enthusiastic
 ## Scripts
 
 - Configure analytics, automation, campaign, content, doing settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### content-calendar.sh
@@ -475,10 +443,6 @@ Generate weekly analytics summaries.
 ## 🤖 Automation Scripts (AI-Powered)
 
 - Configure analytics, automation, campaign, content, doing settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### buzzer.py — Strategic Engagement Buzzer
@@ -588,10 +552,6 @@ python3 scripts/analytics.py demo
 ## Integration Tips
 
 - Configure analytics, automation, campaign, content, doing settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### With Other Skills

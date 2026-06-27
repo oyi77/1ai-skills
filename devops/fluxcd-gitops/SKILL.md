@@ -34,10 +34,6 @@ Flux CD is a GitOps toolkit for Kubernetes using source, kustomize, helm, and no
 ## Pseudo Source
 
 - Configure automation, controllers, flux, fluxcd, gitops settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### GitRepository

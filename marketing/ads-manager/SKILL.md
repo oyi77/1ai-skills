@@ -76,10 +76,6 @@ This skill enables deep competitive ad research, trend analysis, and campaign st
 ## Core Capabilities
 
 - Configure ads, analyze, clone, competitor, integrated settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. Competitive Ad Research
@@ -113,10 +109,6 @@ This skill enables deep competitive ad research, trend analysis, and campaign st
 ## MCP Server Integrations
 
 - Configure ads, analyze, clone, competitor, integrated settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. Ads MCP (Primary)
@@ -405,10 +397,6 @@ See `templates/campaign-brief.md` for full template.
 ## Installation
 
 - Configure ads, analyze, clone, competitor, integrated settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. Configure MCP Servers
@@ -454,10 +442,6 @@ curl https://ai.quanti.io/mcp/health
 ## Usage
 
 - Configure ads, analyze, clone, competitor, integrated settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Quick Start
@@ -491,10 +475,6 @@ Deliverables:
 ## Metrics to Track
 
 - Configure ads, analyze, clone, competitor, integrated settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Campaign Performance

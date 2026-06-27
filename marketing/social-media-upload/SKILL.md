@@ -390,10 +390,6 @@ const mediaButton = document.querySelector('[data-control-name="media"]');
 ## Multi-Platform Distribution
 
 - Configure across, content, distribute, facebook, images settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Workflow: Post to All Platforms
@@ -471,10 +467,6 @@ function optimizeCaption(baseCaption, platform) {
 ## Integration with Video Generation Skills
 
 - Configure across, content, distribute, facebook, images settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### From Google Flow to Social Media

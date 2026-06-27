@@ -115,10 +115,6 @@ persona: "name: \"Stephen King\"\n  title: \"Master of Natural Prose\"\n  expert
 ## 内容模式
 
 - Configure chinese, from, human, humanizer, make settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. 过度强调意义、遗产和更广泛的趋势
@@ -208,10 +204,6 @@ persona: "name: \"Stephen King\"\n  title: \"Master of Natural Prose\"\n  expert
 ## 语言和语法模式
 
 - Configure chinese, from, human, humanizer, make settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 7. 过度使用的"AI 词汇"
@@ -293,10 +285,6 @@ persona: "name: \"Stephen King\"\n  title: \"Master of Natural Prose\"\n  expert
 ## 风格模式
 
 - Configure chinese, from, human, humanizer, make settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 13. 破折号过度使用
@@ -382,10 +370,6 @@ persona: "name: \"Stephen King\"\n  title: \"Master of Natural Prose\"\n  expert
 ## 交流模式
 
 - Configure chinese, from, human, humanizer, make settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 19. 协作交流痕迹
@@ -431,10 +415,6 @@ persona: "name: \"Stephen King\"\n  title: \"Master of Natural Prose\"\n  expert
 ## 填充词和回避
 
 - Configure chinese, from, human, humanizer, make settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 22. 填充短语

@@ -95,10 +95,6 @@ Automate audience growth and engagement activities across major social media pla
 ## ⚠️ Safety & Ethics
 
 - Configure across, activities, audience, automate, build settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Critical Guidelines
@@ -132,10 +128,6 @@ Automate audience growth and engagement activities across major social media pla
 ## Platform-Specific Engagement
 
 - Configure across, activities, audience, automate, build settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### X (Twitter) Engagement
@@ -498,10 +490,6 @@ Best,
 ## AI-Powered Contextual Comments
 
 - Configure across, activities, audience, automate, build settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Generate Relevant Comments
@@ -633,10 +621,6 @@ async function targetedEngagement(keywords, targetFollowers) {
 ## Analytics & Tracking
 
 - Configure across, activities, audience, automate, build settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Track Engagement Metrics
