@@ -219,6 +219,44 @@ Pre-composed module combinations for common analysis scenarios.
 
 ## Structured Output (Step 3)
 
+### ⚡ TRADE CARD (mandatory for any directional recommendation — output FIRST, before deep analysis)
+
+The trade card is the single most important output. It must appear at the TOP of every actionable response. No exceptions.
+
+```
+┌─────────────────────────────────────────────┐
+│  ASSET: [BTC/USDT]   DATE: [YYYY-MM-DD]     │
+│                                               │
+│  SIGNAL:  ▲ LONG  /  ▼ SHORT  /  ◆ HOLD     │
+│  CONVICTION: [0.0–1.0]   R:R = [X.X : 1]     │
+│                                               │
+│  ENTRY:      $[price] (market / limit)        │
+│  ─────────────────────────────────────────    │
+│  TP1:        $[price]  (+X.X%)  [reason]      │
+│  TP2:        $[price]  (+X.X%)  [reason]      │
+│  TP3:        $[price]  (+X.X%)  [reason]      │
+│  ─────────────────────────────────────────    │
+│  STOP LOSS:  $[price]  (−X.X%)  [reason]      │
+│  ─────────────────────────────────────────    │
+│  SIZE:       [X%] portfolio                    │
+│  HORIZON:    [days/weeks/months]              │
+│  GATE:       [FULL / REDUCED / SKIP]          │
+└─────────────────────────────────────────────┘
+```
+
+**Trade Card Rules:**
+1. **Always 3 TPs.** TP1 = conservative (first resistance/profit zone), TP2 = base case, TP3 = extended/optimistic.
+2. **SL is mandatory.** No trade card without a stop loss. Include the technical reason (below support, below MA, % based).
+3. **R:R must be ≥ 1.5:1.** If R:R < 1.5, do NOT recommend the trade — state "R:R insufficient, waiting for better entry."
+4. **Staged entries** use multiple lines: `ENTRY 1: $X (25%)`, `ENTRY 2: $Y (25%)`, etc.
+5. **For SHORT signals**, invert: TP1/TP2/TP3 are *below* entry (take-profit on downside), SL is *above* entry.
+6. **HOLD / NO-TRADE = no card.** Just state: `◆ HOLD — [reason]` or `NO TRADE — [reason]`. Skip the entire card — no TP, no SL, no size.
+
+**Quick Trade Card** (for simple queries like "should I buy BTC?"):
+Just the trade card + 2-line rationale. Skip the full analysis below.
+
+### Full Analysis (follows the trade card)
+
 Every response follows this structure (adapt depth to complexity):
 
 ```
@@ -242,19 +280,12 @@ Every response follows this structure (adapt depth to complexity):
    → Bull / Base / Bear probabilities
    → Top 3 risks with mitigation
 
-6. ACTION PLAN
-   → Entry: $[price] or signal trigger
-   → Exit: $[price] or thesis break
-   → Stop: $[price] or [X%] drawdown
-   → Size: [X%] portfolio (gate result)
-   → Horizon: [days/weeks/months]
-
-7. LOGIC CHAIN (for macro/event-driven)
+6. LOGIC CHAIN (for macro/event-driven)
    → Causal transmission diagram
    → Feedback loops and second-order effects
 ```
 
-**Quick query format** (e.g., "what's BTC sentiment?"): Bullets 1 + 4 + 6 only.
+**Quick query format** (e.g., "what's BTC sentiment?"): Trade card + Score matrix only.
 
 ---
 
