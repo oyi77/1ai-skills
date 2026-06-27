@@ -1,0 +1,13 @@
+{
+  "name": "1ai-skills",
+  "owner": "oyi77",
+  "repo": "1ai-skills",
+  "description": "1320 production-ready AI agent skills across 19 categories",
+  "categories": ["skills", "agents", "automation", "security", "devops"],
+  "install": {
+    "claude": "plugin marketplace add oyi77/1ai-skills",
+    "cursor": "Copy SKILL.md files into .cursor/rules/",
+    "gemini": "gemini skills install https://github.com/oyi77/1ai-skills.git --path skills",
+    "opencode": "See docs/opencode-setup.md"
+  }
+}
