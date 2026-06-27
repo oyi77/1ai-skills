@@ -161,7 +161,8 @@ def fix_skill(path: Path, dry_run: bool = False) -> dict:
         return {"path": str(path), "error": "no-frontmatter"}
 
     try:
-        meta = yaml.safe_load(fm) or {}
+        # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing of 1300+ SKILL.md files.
+        meta = yaml.load(fm, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader)) or {}
     except Exception:
         return {"path": str(path), "error": "invalid-yaml"}
 
