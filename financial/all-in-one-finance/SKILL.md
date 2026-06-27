@@ -219,41 +219,88 @@ Pre-composed module combinations for common analysis scenarios.
 
 ## Structured Output (Step 3)
 
-### ⚡ TRADE CARD (mandatory for any directional recommendation — output FIRST, before deep analysis)
+### ⚡ TRADE CARD (mandatory for any directional recommendation — output FIRST)
 
 The trade card is the single most important output. It must appear at the TOP of every actionable response. No exceptions.
 
+**Format: plain text, no box characters.** Must render cleanly on any screen width (mobile, terminal, chat).
+
 ```
-┌─────────────────────────────────────────────┐
-│  ASSET: [BTC/USDT]   DATE: [YYYY-MM-DD]     │
-│                                               │
-│  SIGNAL:  ▲ LONG  /  ▼ SHORT  /  ◆ HOLD     │
-│  CONVICTION: [0.0–1.0]   R:R = [X.X : 1]     │
-│                                               │
-│  ENTRY:      $[price] (market / limit)        │
-│  ─────────────────────────────────────────    │
-│  TP1:        $[price]  (+X.X%)  [reason]      │
-│  TP2:        $[price]  (+X.X%)  [reason]      │
-│  TP3:        $[price]  (+X.X%)  [reason]      │
-│  ─────────────────────────────────────────    │
-│  STOP LOSS:  $[price]  (−X.X%)  [reason]      │
-│  ─────────────────────────────────────────    │
-│  SIZE:       [X%] portfolio                    │
-│  HORIZON:    [days/weeks/months]              │
-│  GATE:       [FULL / REDUCED / SKIP]          │
-└─────────────────────────────────────────────┘
+ASSET: [BTC/USDT]
+DATE: [YYYY-MM-DD]
+TF: [M1/M5/M15/H1/H4/D1/W1]
+STYLE: [Scalp/Intraday/Swing/Position]
+
+SIGNAL: [▲ LONG / ▼ SHORT]
+CONVICTION: [0.0–1.0]
+R:R = [X.X : 1]
+
+ENTRY 1: $[price] ([%] size) — [reason]
+ENTRY 2: $[price] ([%] size) — [reason]
+
+TP1: $[price] (+X.X%) — [reason]
+TP2: $[price] (+X.X%) — [reason]
+TP3: $[price] (+X.X%) — [reason]
+
+SL: $[price] (−X.X%) — [reason]
+
+SIZE: [X%] portfolio
+HORIZON: [timeframe]
+GATE: [FULL / REDUCED / SKIP]
 ```
 
-**Trade Card Rules:**
-1. **Always 3 TPs.** TP1 = conservative (first resistance/profit zone), TP2 = base case, TP3 = extended/optimistic.
-2. **SL is mandatory.** No trade card without a stop loss. Include the technical reason (below support, below MA, % based).
-3. **R:R must be ≥ 1.5:1.** If R:R < 1.5, do NOT recommend the trade — state "R:R insufficient, waiting for better entry."
-4. **Staged entries** use multiple lines: `ENTRY 1: $X (25%)`, `ENTRY 2: $Y (25%)`, etc.
-5. **For SHORT signals**, invert: TP1/TP2/TP3 are *below* entry (take-profit on downside), SL is *above* entry.
-6. **HOLD / NO-TRADE = no card.** Just state: `◆ HOLD — [reason]` or `NO TRADE — [reason]`. Skip the entire card — no TP, no SL, no size.
+#### Timeframe Classification & Rules
 
-**Quick Trade Card** (for simple queries like "should I buy BTC?"):
-Just the trade card + 2-line rationale. Skip the full analysis below.
+| TF | Style | TP1 Target | TP2 Target | TP3 Target | SL Max | R:R Min | Hold |
+|----|-------|-----------|-----------|-----------|--------|---------|------|
+| M1 | Scalp | 0.05–0.15% | 0.2–0.4% | 0.5–1.0% | 0.1–0.3% | 1.5:1 | seconds–minutes |
+| M5 | Scalp | 0.1–0.3% | 0.3–0.7% | 0.8–1.5% | 0.2–0.5% | 1.5:1 | minutes |
+| M15 | Scalp/Intraday | 0.2–0.5% | 0.5–1.2% | 1.5–3.0% | 0.3–0.8% | 1.5:1 | minutes–1h |
+| H1 | Intraday | 0.5–1.5% | 1.5–3.0% | 3.0–5.0% | 0.5–1.5% | 1.5:1 | hours |
+| H4 | Intraday/Swing | 1.0–3.0% | 3.0–6.0% | 6.0–10% | 1.0–2.5% | 1.5:1 | hours–days |
+| D1 | Swing | 3.0–8.0% | 8.0–15% | 15–25% | 3.0–8.0% | 1.5:1 | days–weeks |
+| W1 | Position | 10–20% | 20–40% | 40–80% | 8–15% | 2.0:1 | weeks–months |
+
+#### Scalping Card Example (M5)
+```
+ASSET: BTC/USDT
+TF: M5 | STYLE: Scalp
+SIGNAL: ▲ LONG | CONVICTION: 0.70 | R:R = 2.1:1
+
+ENTRY: $60,500 (market)
+TP1: $60,590 (+0.15%) — VWAP reclaim
+TP2: $60,700 (+0.33%) — session high
+TP3: $60,850 (+0.58%) — liquidity sweep
+SL: $60,420 (−0.13%) — below M5 demand
+
+SIZE: 3% portfolio | HOLD: 5–15 min | GATE: FULL
+```
+
+#### Swing Card Example (D1)
+```
+ASSET: ETH/USDT
+TF: D1 | STYLE: Swing
+SIGNAL: ▲ LONG | CONVICTION: 0.48 | R:R = 1.7:1
+
+ENTRY 1: $1,575 (33%) — market
+ENTRY 2: $1,525 (33%) — support test
+ENTRY 3: $1,410 (34%) — deep support
+TP1: $1,740 (+10.5%) — descending TL
+TP2: $1,890 (+19.8%) — 50 DMA
+TP3: $2,200 (+39.7%) — range high
+SL: $1,340 (−15.0%) — below $1,404
+
+SIZE: 1.5-2% per tranche | HOLD: 3-6 months | GATE: REDUCED
+```
+
+#### Trade Card Rules
+1. **Always 3 TPs.** Targets scale by timeframe (see table above).
+2. **SL is mandatory.** No card without a stop. Include technical reason.
+3. **R:R ≥ 1.5:1** (scalping/intraday) or **≥ 2.0:1** (swing/position). Below threshold → `NO TRADE — R:R insufficient`.
+4. **Staged entries** for swing/position only. Scalping = single entry (speed matters).
+5. **SHORT** → TPs below entry, SL above. Same format, inverted direction.
+6. **HOLD / NO-TRADE = no card.** Just: `◆ HOLD — [reason]`. Skip everything.
+7. **Always state TF and style.** Don't make the reader guess.
 
 ### Full Analysis (follows the trade card)
 
