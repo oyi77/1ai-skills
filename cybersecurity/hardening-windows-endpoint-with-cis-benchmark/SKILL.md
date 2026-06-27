@@ -24,7 +24,7 @@ nist_csf:
 - DE.CM-01
 - PR.IR-01
 ---
-# Hardening Windows Endpoint with CIS Benchmark
+# Hardening Windows Endpoint With Cis Benchmark
 
 ## When to Use
 
@@ -46,199 +46,22 @@ Use this skill when:
 
 ## Workflow
 
-1. **Scope and authorize** — confirm written authorization and define target boundaries
-2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
-3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
-4. **Post-exploitation** — document access level, lateral movement, and data exposure
-5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
-### Step 1: Select CIS Benchmark Profile Level
+1. **Define Objectives** — Clarify the goals and scope for windows endpoint.
+2. **Gather Resources** — Collect tools, data, and access needed for windows endpoint.
+3. **Execute Process** — Carry out windows endpoint operations methodically.
+4. **Verify Quality** — Check results against acceptance criteria.
+5. **Document Outcomes** — Record findings, decisions, and next steps.
 
-CIS provides two profile levels for Windows endpoints:
+## Tools
 
-**Level 1 (L1) - Corporate/Enterprise Environment**:
-- Practical hardening settings that can be applied to most organizations
-- Minimal impact on functionality and user experience
-- Covers: password policy, audit policy, user rights, security options, Windows Firewall
-
-**Level 2 (L2) - High Security/Sensitive Data**:
-- Includes all L1 settings plus additional restrictions
-- May impact usability (disabling autorun, restricting remote desktop, enhanced audit logging)
-- Appropriate for systems handling PII, PHI, PCI data, or classified information
-
-Select profile based on data classification and risk tolerance of the endpoint.
-
-### Step 2: Import CIS GPO Baselines
-
-CIS provides pre-built GPO templates (Build Kits) for each benchmark version:
-
-```powershell
-# Download CIS Build Kit from CIS WorkBench (requires CIS SecureSuite membership)
-# Extract the GPO backup to a staging directory
-
-# Import the CIS GPO into Active Directory
-Import-GPO -BackupGpoName "CIS Microsoft Windows 11 Enterprise v3.0.0 L1" `
-  -TargetName "CIS-Win11-L1-Baseline" `
-  -Path "C:\CIS-GPO-Backups\Win11-Enterprise" `
-  -CreateIfNeeded
-
-# Link GPO to target OU
-New-GPLink -Name "CIS-Win11-L1-Baseline" `
-  -Target "OU=Workstations,DC=corp,DC=example,DC=com" `
-  -LinkEnabled Yes
-```
-
-### Step 3: Apply Key CIS Benchmark Categories
-
-**Account Policies (Section 1)**:
-```
-Password Policy:
-  - Minimum password length: 14 characters (1.1.4)
-  - Maximum password age: 365 days (1.1.3)
-  - Password complexity: Enabled (1.1.5)
-  - Store passwords using reversible encryption: Disabled (1.1.6)
-
-Account Lockout Policy:
-  - Account lockout threshold: 5 invalid logon attempts (1.2.1)
-  - Account lockout duration: 15 minutes (1.2.2)
-  - Reset account lockout counter after: 15 minutes (1.2.3)
-```
-
-**Local Policies - Audit Policy (Section 17)**:
-```
-Audit Policy Configuration:
-  - Audit Credential Validation: Success and Failure (17.1.1)
-  - Audit Security Group Management: Success (17.2.5)
-  - Audit Logon: Success and Failure (17.5.1)
-  - Audit Process Creation: Success (17.6.1)
-  - Audit Removable Storage: Success and Failure (17.6.4)
-```
-
-**Security Options (Section 2.3)**:
-```
-  - Interactive logon: Do not display last user name: Enabled (2.3.7.1)
-  - Interactive logon: Machine inactivity limit: 900 seconds (2.3.7.3)
-  - Network access: Do not allow anonymous enumeration of SAM accounts: Enabled (2.3.10.2)
-  - Network security: LAN Manager authentication level: Send NTLMv2 response only (2.3.11.7)
-  - UAC: Run all administrators in Admin Approval Mode: Enabled (2.3.17.6)
-```
-
-**Windows Firewall (Section 9)**:
-```
-  - Domain Profile: Firewall state: On (9.1.1)
-  - Domain Profile: Inbound connections: Block (9.1.2)
-  - Private Profile: Firewall state: On (9.2.1)
-  - Public Profile: Firewall state: On (9.3.1)
-  - Public Profile: Inbound connections: Block (9.3.2)
-```
-
-### Step 4: Validate with CIS-CAT Assessment
-
-```powershell
-# Run CIS-CAT Pro Assessor against target endpoint
-# CIS-CAT produces an HTML/XML report with pass/fail per recommendation
-
-.\Assessor-CLI.bat `
-  -b "benchmarks\CIS_Microsoft_Windows_11_Enterprise_Benchmark_v3.0.0-xccdf.xml" `
-  -p "Level 1 (L1) - Corporate/Enterprise Environment" `
-  -rd "C:\CIS-Reports" `
-  -nts
-
-# Review report for failed controls
-# Score target: 95%+ for L1, 90%+ for L2 (due to operational exceptions)
-```
-
-### Step 5: Document Exceptions and Compensating Controls
-
-For each CIS recommendation that cannot be applied:
-1. Document the specific recommendation ID and title
-2. State the business justification for the exception
-3. Define the compensating control that addresses the residual risk
-4. Set a review date (quarterly) to reassess the exception
-5. Obtain sign-off from the information security officer
-
-Example exception:
-```
-Recommendation: 2.3.7.3 - Interactive logon: Machine inactivity limit: 900 seconds
-Exception: Kiosk systems in manufacturing floor require 1800 seconds
-Compensating Control: Physical badge-access to manufacturing area, CCTV monitoring
-Review Date: 2026-06-01
-Approved By: CISO
-```
-
-### Step 6: Continuous Compliance Monitoring
-
-Configure recurring CIS-CAT scans via scheduled tasks or SCCM:
-```powershell
-# Create scheduled task for weekly CIS-CAT assessment
-$action = New-ScheduledTaskAction -Execute "C:\CIS-CAT\Assessor-CLI.bat" `
-  -Argument "-b benchmarks\CIS_Win11_v3.0.0-xccdf.xml -p Level1 -rd C:\CIS-Reports -nts"
-$trigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Sunday -At 2am
-$principal = New-ScheduledTaskPrincipal -UserId "SYSTEM" -RunLevel Highest
-Register-ScheduledTask -TaskName "CIS-Benchmark-Scan" -Action $action `
-  -Trigger $trigger -Principal $principal
-```
-
-Feed results into SIEM for drift detection and dashboard reporting.
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **CIS Benchmark** | Consensus-based security configuration guide developed by CIS with input from government, industry, and academia |
-| **Level 1 Profile** | Practical security baseline suitable for most organizations with minimal operational impact |
-| **Level 2 Profile** | Extended security baseline for high-security environments that may reduce functionality |
-| **CIS-CAT** | CIS Configuration Assessment Tool that automates benchmark compliance checking |
-| **Build Kit** | Pre-configured GPO templates provided by CIS that implement benchmark recommendations |
-| **Scoring** | CIS recommendations are either Scored (compliance-measurable) or Not Scored (best-practice guidance) |
-
-## When NOT to Use
-
-- Task is outside your authorization scope
-- You need to implement controls (use implementing-* skills)
-- Task is about analysis, not action (use analyzing-* skills)
-- You don't have access to target systems
-- Task requires compliance expertise (consult professionals)
-- Task is about defense, not offense (use defensive skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
+- **cis benchmark** — Primary tool for this skill
+- **Analysis Platform** — Data processing and visualization
+- **Collaboration Tools** — Team coordination and knowledge sharing
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Tools & Systems
-
-- **CIS-CAT Pro Assessor**: Automated benchmark compliance scanner (requires CIS SecureSuite license)
-- **Microsoft Security Compliance Toolkit (SCT)**: Microsoft's own GPO baselines (complementary to CIS)
-- **Group Policy Management Console (GPMC)**: Enterprise GPO deployment and management
-- **LGPO.exe**: Microsoft tool for applying GPOs to standalone (non-domain) systems
-- **Nessus/Tenable**: Vulnerability scanner with CIS benchmark audit files
-
-## Common Pitfalls
-
-- **Applying L2 to all endpoints**: Level 2 restrictions (disabling Autoplay, restricting Remote Desktop) break workflows on standard workstations. Reserve L2 for endpoints handling sensitive data.
-- **Not testing GPOs in pilot OU**: Deploy CIS GPOs to a test OU with representative hardware/software before organization-wide rollout to avoid breaking line-of-business applications.
-- **Ignoring CIS benchmark version updates**: CIS benchmarks update with each Windows feature release. Running an outdated benchmark misses new security settings and generates false compliance reports.
-- **Forgetting local admin accounts**: CIS benchmarks assume domain-joined endpoints. Standalone systems require LGPO.exe or Microsoft Intune for baseline enforcement.
-- **No exception process**: Applying 100% of CIS recommendations is rarely feasible. Without a formal exception process, teams either ignore hardening or break applications.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All windows endpoint procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

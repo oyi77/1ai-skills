@@ -9,6 +9,8 @@ tags:
 - notion
 - tool-integration
 ---
+# Notion Mcp
+
 ## When to Use
 
 **Trigger phrases:**
@@ -21,81 +23,35 @@ tags:
 **When NOT to use:**
 - For tasks outside this skill's scope
 
-## Notion Mcp
-
-MCP server for Notion databases
-
-### Usage
-
-```
-/notion-mcp <task>
-```
-
-### Features
-
-- Automated execution
-- Error handling
-- Result validation
-
-## How to Use
-
-1. Create a Notion integration at notion.so/my-integrations
-2. Share target pages/databases with the integration
-3. Configure the MCP server with NOTION_API_KEY
-
-## Available Tools
-
-| Tool | Description |
-|------|-------------|
-| `query_database` | Query a database with filters and sorts |
-| `create_page` | Create a new page in a database |
-| `update_page` | Update page properties |
-| `get_page_content` | Read page blocks (content) |
-| `append_blocks` | Add content blocks to a page |
-| `search` | Full-text search across the workspace |
-
-## Common Patterns
-
-- Query databases with property filters for structured retrieval
-- Use page templates for consistent content creation
-- Append blocks in batches to minimize API calls
-- Use relation properties to link pages across databases
-
-## When NOT to Use
-
-- When Notion stores regulated compliance documentation
-- When the workspace data has specific data residency requirements
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- MCP server does not handle Notion block-based content model correctly
-- Agent does not preserve Notion page metadata during updates
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Block-based content model is handled correctly
-- [ ] Page metadata is preserved during update operations
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Notion Mcp implements a Model Context Protocol server for Model Context Protocol.
 
-## Process
+## Architecture
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- **Server** — MCP-compliant server exposing tools and resources
+- **Transport** — stdio or HTTP transport layer
+- **Tools** — Callable functions with JSON Schema definitions
+- **Resources** — Readable data sources with URI-based access
+
+## Setup
+
+1. Install the MCP server package
+2. Configure environment variables and credentials
+3. Register the server in MCP client configuration
+4. Test tool invocations and resource access
+
+## Configuration
+
+- Server name and version
+- Transport type (stdio, SSE, HTTP)
+- Tool definitions with input/output schemas
+- Resource URI patterns
+- Authentication and rate limiting
+
+## Integration
+
+- Compatible with Claude, Cursor, and other MCP clients
+- Supports streaming responses for large payloads
+- Handles errors with standard MCP error codes
+

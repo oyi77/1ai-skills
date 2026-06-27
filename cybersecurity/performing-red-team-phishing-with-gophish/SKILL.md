@@ -19,7 +19,7 @@ nist_csf:
 - GV.OV-01
 - DE.AE-02
 ---
-
+# Performing Red Team Phishing With Gophish
 
 ## When to Use
 
@@ -35,69 +35,25 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-1. Install dependencies: `pip install gophish requests`
-2. Deploy GoPhish server and obtain an API key from Settings.
-3. Use the Python gophish library to automate campaign setup:
-   - Create email templates with HTML body and tracking
-   - Configure SMTP sending profiles
-   - Import target groups from CSV
-   - Create landing pages for credential capture
-   - Launch and monitor campaigns
-4. Analyze campaign results: opens, clicks, submitted data, reported.
+1. **Plan Operations** — Define objectives, scope, and success criteria for red team phishing operations.
+2. **Prepare Environment** — Set up tools, access, and data sources required for red team phishing.
+3. **Execute Core Workflow** — Use gophish to perform red team phishing operations following established procedures.
+4. **Validate Results** — Verify that results meet quality standards and objectives.
+5. **Report Findings** — Document results, observations, and recommendations.
+6. **Follow Up** — Track remediation actions and verify fixes where applicable.
 
-```bash
-# For authorized penetration testing and lab environments only
-python scripts/agent.py --gophish-url https://localhost:3333 --api-key <key> --campaign-name "Q1 Awareness" --output phishing_report.json
-```
+## Tools
 
-## Examples
+- **gophish** — Primary tool for this skill
+- **Analysis Platform** — Data processing and visualization
+- **Collaboration Tools** — Team coordination and knowledge sharing
 
-```bash
-# Basic usage example
-# Replace with domain-specific commands from the workflow above
-```
-### Create Campaign via API
-```python
-from gophish import Gophish
-from gophish.models import Campaign, Template, Group, SMTP, Page
-api = Gophish("api_key", host="https://localhost:3333", verify=False)  # Self-signed cert on localhost lab
-campaign = Campaign(name="Q1 Test", groups=[Group(name="Sales Team")],
-    template=Template(name="IT Password Reset"), smtp=SMTP(name="Internal SMTP"),
-    page=Page(name="Credential Page"))
-api.campaigns.post(campaign)
-```
-## When NOT to Use
-
-- You don't have explicit written authorization to test
-- Task is about defense/detection, not offense (use detection skills)
-- You need to implement security controls (use implementing-* skills)
-- Task requires compliance auditing (use auditing-* skills)
-- You're investigating an incident (use incident response skills)
-- Target is out of scope for your engagement
-- Task is about vulnerability scanning only (use scanning tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Sharing sensitive findings or credentials in unencrypted communications
-- Failing to properly scope and contain the assessment before starting
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All red team phishing procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

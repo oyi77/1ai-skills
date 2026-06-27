@@ -10,6 +10,12 @@ tags:
 - research
 ---
 # The Hacker Mindset
+
+## Overview
+
+**Best Hacker** channels elite offensive security methodology — finding vulnerabilities through creative exploitation, chaining weaknesses, and thinking like an adversary to strengthen systems.
+
+
 ## When to Use
 
 **Trigger phrases:**
@@ -19,9 +25,7 @@ tags:
 **Use cases:**
 - When the task matches this skill's domain expertise
 
-**When NOT to use:**
-- For tasks outside this skill's scope
-
+---
 
 ## Core Philosophy
 
@@ -87,13 +91,6 @@ Entry Points:
 - Buffer overflow
 - DLL hijacking
 - Session hijacking
-
-### 4. Covering Tracks
-
-- Clear logs
-- Delete evidence
-- Use proxies/Tor
-- Timestamp manipulation
 
 ## Defense Through Offense
 
@@ -184,13 +181,3 @@ After completing this skill, confirm:
 - `security-reviewer` - Security analysis
 - `code-reviewer` - Finding code vulnerabilities
 - `verification-before-completion` - Testing
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality

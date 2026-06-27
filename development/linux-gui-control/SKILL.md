@@ -15,12 +15,8 @@ persona: "name: Linus Torvalds\n  title: The Linux Creator - Master of System Co
   \ Linux kernel\n  - Created Git\n  - Maintains largest open source project\n  principles:\n  - Control the system\n  - Script\
   \ everything\n  - Prefer command line\n  - Automate workflows\n"
 ---
+# Linux Gui Control
 
-name: linux-gui-control
-description: "Control the Linux desktop GUI using xdotool, wmctrl, and dogtail. Use when you need to interact with non-browser applications, simulate mouse/keyboard input, manage windows, or inspect the UI hierarchy of applications on X11/GNOME. Supports: (1) Clicking/typing in apps, (2) Resizing/moving windows, (3) Extracting text-based UI trees from apps (A11y), (4) Taking screenshots for visual analysis."
----
-
-# Linux GUI Control
 ## When to Use
 
 **Trigger phrases:**
@@ -36,117 +32,32 @@ description: "Control the Linux desktop GUI using xdotool, wmctrl, and dogtail. 
 
 This skill provides tools and procedures for automating interactions with the Linux desktop environment.
 
-## Quick Start
-
-Get started with linux-gui-control in three steps.
-
-1. Install dependencies: `pip install -r requirements.txt` or `npm install`
-2. Configure settings in `config.yaml` or `.env`
-3. Run: `python main.py --mode linux-gui-control` or `npm run dev`
-
-Verify setup:
-```bash
-python main.py --check-config
-python main.py --run
-```
-
-
-### 1. Identify Target Window
-Use `wmctrl` to find the exact name of the window you want to control.
-```bash
-wmctrl -l
-```
-
-### 2. Inspect UI Hierarchy
-For apps supporting accessibility (GNOME apps, Electron apps with `--force-renderer-accessibility`), use the inspection script to find button names without taking screenshots.
-```bash
-python3 scripts/inspect_ui.py "<app_name>"
-```
-
-### 3. Perform Actions
-Use `xdotool` via the helper script for common actions.
-```bash
-# Activate window
-./scripts/gui_action.sh activate "<window_name>"
-
-# Click coordinates
-./scripts/gui_action.sh click 500 500
-
-# Type text
-./scripts/gui_action.sh type "Hello World"
-
-# Press a key
-./scripts/gui_action.sh key "Return"
-```
-
-## Workflows
-
-Step-by-step linux-gui-control execution process.
-
-**Step 1: Configure** — Set up targets and parameters in config file.
-
-**Step 2: Execute** — Run the linux-gui-control workflow with configured inputs.
-
-**Step 3: Review** — Analyze outputs and iterate on configuration.
-
-**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
-
-
-### Operating an App via Text UI
-1. List windows with `wmctrl -l`.
-2. Activate the target window.
-3. Run `scripts/inspect_ui.py` to get the list of buttons and inputs.
-4. Use `xdotool key Tab` and `Return` to navigate, or `click` if coordinates are known.
-5. If text-based inspection fails, fallback to taking a screenshot and using vision.
-
-### Forcing Accessibility in Electron Apps
-Many modern apps (VS Code, Discord, Cider, Chrome) need a flag to expose their UI tree:
-```bash
-pkill <app>
-nohup <app> --force-renderer-accessibility > /dev/null 2>&1 &
-```
-
-## Tool Reference
-
-- **wmctrl**: Window management (list, activate, move, resize).
-- **xdotool**: Input simulation (click, type, key, mousemove).
-- **dogtail**: UI tree extraction via AT-SPI (Accessibility bus).
-- **scrot**: Lightweight screenshot tool.
-## When NOT to Use
-
-- When the code change is in a frozen release branch under change management
-- When the task requires access to production systems the agent cannot reach
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- Code changes are made without running the existing test suite
-- Agent does not handle error cases or edge conditions
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] All existing tests pass after code changes are applied
-- [ ] Error handling covers documented failure modes and edge cases
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Linux Gui Control supports coding practices with best practices and proven patterns.
 
-## Process
+## Workflow
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+1. **Understand requirements** — Clarify acceptance criteria and constraints
+2. **Design solution** — Plan architecture and identify patterns
+3. **Implement** — Write code following project conventions
+4. **Test** — Unit tests, integration tests, edge cases
+5. **Review** — Code review for quality, security, and performance
+6. **Document** — Update relevant docs and changelogs
+
+## Quality Gates
+
+- [ ] All tests passing
+- [ ] No lint errors or warnings
+- [ ] Code coverage meets threshold (≥70%)
+- [ ] No security vulnerabilities detected
+- [ ] Documentation updated
+
+## Best Practices
+
+- Follow SOLID principles and KISS
+- Write self-documenting code with clear naming
+- Handle errors explicitly — no silent failures
+- Keep functions small and focused (<50 lines)
+- Use immutable data patterns where possible
+

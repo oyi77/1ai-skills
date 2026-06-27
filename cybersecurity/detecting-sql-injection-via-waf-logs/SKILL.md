@@ -19,10 +19,7 @@ nist_csf:
 - GV.OV-01
 - DE.AE-02
 ---
-
-
-# Detecting SQL Injection via WAF Logs
-
+# Detecting Sql Injection Via Waf Logs
 
 ## When to Use
 
@@ -38,65 +35,26 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-1. Install dependencies: `pip install requests`
-2. Collect WAF logs (ModSecurity audit log, AWS WAF JSON logs, or Cloudflare firewall events).
-3. Run the agent to parse and analyze:
-   - Detect SQLi payloads via 15+ regex patterns
-   - Classify attacks by OWASP injection type (classic, blind, time-based, UNION-based)
-   - Identify persistent attackers by IP clustering
-   - Correlate multi-request injection campaigns
-   - Calculate attack success probability based on response codes
+1. **Define Detection Scope** — Identify the specific sql injection techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for sql injection.
+3. **Build Detection Queries** — Write waf logs queries targeting sql injection indicators. Use platform-specific query language for optimal performance.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-```bash
-python scripts/agent.py --log-file /var/log/modsec_audit.log --format modsecurity --output sqli_report.json
-```
+## Tools
 
-## Examples
+- **waf logs** — Primary tool for this skill
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
-```bash
-# Basic usage example
-# Replace with domain-specific commands from the workflow above
-```
-### ModSecurity SQLi Detection
-```
-Rule 942100 triggered: SQL Injection Attack Detected via libinjection
-URI: /api/users?id=1' UNION SELECT username,password FROM users--
-Source IP: 203.0.113.42 (47 requests in 5 minutes)
-Classification: UNION-based SQLi campaign
-```
-## When NOT to Use
-
-- You need to perform the attack to test detection (use performing-* skills)
-- Task is about analyzing past incidents (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about threat hunting proactively (use hunting-* skills)
-- You don't have access to logs or monitoring data
-- Task requires incident response (use IR skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All sql injection procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

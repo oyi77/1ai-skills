@@ -26,7 +26,6 @@ nist_csf:
 - DE.AE-07
 - ID.RA-05
 ---
-
 # Detecting Insider Threat Behaviors
 
 ## When to Use
@@ -47,85 +46,23 @@ nist_csf:
 
 ## Workflow
 
-1. **Formulate Hypothesis**: Define a testable hypothesis based on threat intelligence or ATT&CK gap analysis.
-2. **Identify Data Sources**: Determine which logs and telemetry are needed to validate or refute the hypothesis.
-3. **Execute Queries**: Run detection queries against SIEM and EDR platforms to collect relevant events.
-4. **Analyze Results**: Examine query results for anomalies, correlating across multiple data sources.
-5. **Validate Findings**: Distinguish true positives from false positives through contextual analysis.
-6. **Correlate Activity**: Link findings to broader attack chains and threat actor TTPs.
-7. **Document and Report**: Record findings, update detection rules, and recommend response actions.
+1. **Define Detection Scope** — Identify the specific insider threat behaviors techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for insider threat behaviors.
+3. **Build Detection Queries** — Write detection rules, Sigma rules, or SIEM queries targeting insider threat behaviors indicators.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-## Key Concepts
+## Tools
 
-| Concept | Description |
-|---------|-------------|
-| T1078 | Valid Accounts |
-| T1530 | Data from Cloud Storage Object |
-| T1567 | Exfiltration Over Web Service |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| CrowdStrike Falcon | EDR telemetry and threat detection |
-| Microsoft Defender for Endpoint | Advanced hunting with KQL |
-| Splunk Enterprise | SIEM log analysis with SPL queries |
-| Elastic Security | Detection rules and investigation timeline |
-| Sysmon | Detailed Windows event monitoring |
-| Velociraptor | Endpoint artifact collection and hunting |
-| Sigma Rules | Cross-platform detection rule format |
-
-## Common Scenarios
-
-1. **Scenario 1**: Employee downloading bulk files before resignation
-2. **Scenario 2**: IT admin accessing HR data outside job function
-3. **Scenario 3**: Service account used for unauthorized data queries
-4. **Scenario 4**: Contractor copying source code to personal cloud storage
-
-## When NOT to Use
-
-- You need to perform the attack to test detection (use performing-* skills)
-- Task is about analyzing past incidents (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about threat hunting proactively (use hunting-* skills)
-- You don't have access to logs or monitoring data
-- Task requires incident response (use IR skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Acting on threat intelligence without validating source reliability
-- Sharing classified or sensitive indicators without proper handling procedures
-- Alerting threat actors to detection capabilities through visible response actions
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Output Format
-
-```
-Hunt ID: TH-DETECT-[DATE]-[SEQ]
-Technique: T1078
-Host: [Hostname]
-User: [Account context]
-Evidence: [Log entries, process trees, network data]
-Risk Level: [Critical/High/Medium/Low]
-Confidence: [High/Medium/Low]
-Recommended Action: [Containment, investigation, monitoring]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All insider threat behaviors procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

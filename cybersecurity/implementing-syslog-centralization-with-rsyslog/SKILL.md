@@ -19,10 +19,7 @@ nist_csf:
 - GV.OV-01
 - DE.AE-02
 ---
-
-
-# Implementing Syslog Centralization with Rsyslog
-
+# Implementing Syslog Centralization With Rsyslog
 
 ## When to Use
 
@@ -38,73 +35,26 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-1. Install dependencies: `pip install jinja2 paramiko`
-2. Generate TLS certificates for rsyslog server and clients using OpenSSL.
-3. Run the agent to generate rsyslog server and client configurations:
-   - Server: TLS listener on port 6514, per-host directory output, JSON-format templates
-   - Client: TLS forwarding with disk-assisted queues for reliability
-4. Deploy configurations to servers via SSH (paramiko).
-5. Validate TLS connectivity and log delivery.
+1. **Assess Requirements** — Evaluate current environment and define syslog centralization implementation requirements.
+2. **Design Architecture** — Plan the syslog centralization architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up rsyslog for syslog centralization according to vendor best practices and security guidelines.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-```bash
-python scripts/agent.py --server-ip 10.0.0.1 --clients 10.0.0.10,10.0.0.11 --ca-cert ca.pem --output syslog_report.json
-```
+## Tools
 
-## Examples
+- **rsyslog** — Primary tool for this skill
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
-```bash
-# Basic usage example
-# Replace with domain-specific commands from the workflow above
-```
-### Server Configuration (TLS)
-```
-module(load="imtcp" StreamDriver.Name="gtls" StreamDriver.Mode="1"
-       StreamDriver.Authmode="x509/name")
-input(type="imtcp" port="6514")
-template(name="PerHostLog" type="string" string="/var/log/remote/%HOSTNAME%/%PROGRAMNAME%.log")
-*.* ?PerHostLog
-```
-
-### Client Configuration (Reliable Forwarding)
-```
-action(type="omfwd" target="10.0.0.1" port="6514" protocol="tcp"
-       StreamDriver="gtls" StreamDriverMode="1"
-       StreamDriverAuthMode="x509/name"
-       queue.type="LinkedList" queue.filename="fwdRule1"
-       queue.maxdiskspace="1g" queue.saveonshutdown="on"
-       action.resumeRetryCount="-1")
-```
-## When NOT to Use
-
-- You need to test the implementation (use performing-* skills)
-- Task is about configuring existing tools (use configuring-* skills)
-- You need to analyze security events (use analyzing-* skills)
-- Task is about building detection rules (use building-* skills)
-- You don't have access to the target environment
-- Task requires vendor-specific expertise (consult vendor docs)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Sharing sensitive findings or credentials in unencrypted communications
-- Failing to properly scope and contain the assessment before starting
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All syslog centralization procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

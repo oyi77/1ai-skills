@@ -28,8 +28,7 @@ nist_csf:
 - DE.AE-07
 - ID.RA-05
 ---
-
-# Hunting for DCSync Attacks
+# Hunting For Dcsync Attacks
 
 ## When to Use
 
@@ -49,81 +48,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Enable Auditing**: Ensure Audit Directory Service Access is enabled on domain controllers.
-2. **Collect Events**: Gather Windows Event ID 4662 with AccessMask 0x100 (Control Access).
-3. **Filter Replication GUIDs**: Search for DS-Replication-Get-Changes and DS-Replication-Get-Changes-All.
-4. **Identify Non-DC Sources**: Flag events where SubjectUserName is not a domain controller machine account.
-5. **Correlate with Network**: Cross-reference source IPs against known DC addresses.
-6. **Validate Findings**: Exclude legitimate replication tools (Azure AD Connect, SCCM).
-7. **Respond**: Disable compromised accounts, reset krbtgt, investigate lateral movement.
+1. **Define Detection Scope** — Identify the specific  techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for .
+3. **Build Detection Queries** — Write dcsync attacks queries targeting  indicators. Use platform-specific query language for optimal performance.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-## Key Concepts
+## Tools
 
-| Concept | Description |
-|---------|-------------|
-| DCSync | Technique abusing AD replication protocol to extract password hashes |
-| Event ID 4662 | Directory Service Access audit event |
-| DS-Replication-Get-Changes | GUID 1131f6aa-9c07-11d1-f79f-00c04fc2dcd2 |
-| DS-Replication-Get-Changes-All | GUID 1131f6ad-9c07-11d1-f79f-00c04fc2dcd2 |
-| AccessMask 0x100 | Control Access right indicating extended rights verification |
-| T1003.006 | OS Credential Dumping: DCSync |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| Windows Event Viewer | Direct event log analysis |
-| Splunk | SIEM correlation of Event 4662 |
-| Elastic Security | Detection rules for DCSync patterns |
-| Mimikatz lsadump::dcsync | Attack tool used to perform DCSync |
-| Impacket secretsdump.py | Python-based DCSync implementation |
-| BloodHound | Identify accounts with replication rights |
-
-## When NOT to Use
-
-- You're responding to a known incident (use IR skills)
-- Task is about analyzing confirmed malware (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about vulnerability scanning (use scanning tools)
-- You don't have access to endpoint/network data
-- Task requires compliance auditing (use auditing-* skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
+- **dcsync attacks** — Primary tool for this skill
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Output Format
-
-```
-Hunt ID: TH-DCSYNC-[DATE]-[SEQ]
-Technique: T1003.006
-Domain Controller: [DC hostname]
-Subject Account: [Account performing replication]
-Source IP: [Non-DC IP address]
-GUID Accessed: [Replication GUID]
-Risk Level: [Critical/High/Medium/Low]
-Recommended Action: [Disable account, reset krbtgt, investigate]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All  procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

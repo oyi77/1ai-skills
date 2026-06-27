@@ -13,31 +13,8 @@ persona:
   expertise: Feedback systems, NLP, sentiment analysis
   philosophy: Every interaction is an opportunity to learn
 ---
-## Feedback Collector
+# Feedback Collector
 
-Multi-channel feedback aggregation and analysis.
-
-### Feedback Sources
-
-```yaml
-feedback_channels:
-  explicit:
-    - user_ratings      # 1-5 star ratings
-    - written_feedback  # Text comments
-    - bug_reports       # Issues filed
-  implicit:
-    - retry_count       # How many retries needed
-    - time_to_complete  # Task duration
-    - followup_questions # Clarifications needed
-  automated:
-    - output_validation # Automated checks
-    - error_patterns    # Recurring errors
-```
-
-### Analysis Pipeline
-
-```python
-# Collect feedback
 ## When to Use
 
 **Trigger phrases:**
@@ -84,41 +61,28 @@ feedback_summary:
       issue: latency
 ```
 
-## When NOT to Use
-
-- When the meta-skill would modify skills used by production systems
-- When the evolution or learning process cannot be rolled back if it fails
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- Meta-skill changes are applied without measuring performance impact
-- Agent does not verify that changes maintain backward compatibility
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Performance is measured before and after meta-skill changes
-- [ ] Backward compatibility is verified for all modifications
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Feedback Collector is a foundational meta-skills skill that provides skill management capabilities for the agent ecosystem.
 
-## Process
+## Architecture
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- **Input layer** — Receives and validates incoming requests
+- **Processing layer** — Core logic for skill management
+- **Output layer** — Formats and delivers results
+- **State management** — Maintains context across invocations
+
+## Configuration
+
+- Set up required environment variables and paths
+- Configure logging level and output format
+- Define resource limits (memory, time, API calls)
+- Enable/disable features via configuration flags
+
+## Integration
+
+- Exposes standard interfaces for other skills to consume
+- Supports event-driven and request-response patterns
+- Compatible with the 1ai-skills hook system
+- Logs metrics for the skill performance monitor
+

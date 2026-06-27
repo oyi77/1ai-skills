@@ -27,8 +27,7 @@ nist_csf:
 - DE.AE-07
 - ID.RA-05
 ---
-
-# Detecting DLL Sideloading Attacks
+# Detecting Dll Sideloading Attacks
 
 ## When to Use
 
@@ -48,92 +47,23 @@ nist_csf:
 
 ## Workflow
 
-1. **Identify Sideloading Targets**: Research known vulnerable applications that load DLLs without full path qualification (LOLBAS, DLL-sideload databases).
-2. **Monitor DLL Load Events**: Query Sysmon Event ID 7 for DLL loads where the DLL path differs from the application's expected directory.
-3. **Check DLL Signatures**: Flag unsigned or untrusted DLLs loaded by signed executables.
-4. **Detect Path Anomalies**: Identify legitimate executables running from unusual locations (Temp, AppData, Public) that may be decoy wrappers.
-5. **Hash Verification**: Compare loaded DLL hashes against known-good versions and threat intel feeds.
-6. **Correlate with Process Behavior**: Check if the host process exhibits unusual behavior (network connections, child processes) after loading the suspicious DLL.
-7. **Document and Remediate**: Report sideloading instances, quarantine malicious DLLs, and update detection rules.
+1. **Define Detection Scope** — Identify the specific dll sideloading attacks techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for dll sideloading attacks.
+3. **Build Detection Queries** — Write detection rules, Sigma rules, or SIEM queries targeting dll sideloading attacks indicators.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-## Key Concepts
+## Tools
 
-| Concept | Description |
-|---------|-------------|
-| T1574.002 | DLL Side-Loading |
-| T1574.001 | DLL Search Order Hijacking |
-| T1574.006 | Dynamic Linker Hijacking |
-| T1574.008 | Path Interception by Search Order Hijacking |
-| DLL Search Order | Windows DLL loading priority path |
-| Side-Loading | Placing malicious DLL where legitimate app loads it |
-| Phantom DLL | DLL that legitimate apps try to load but does not exist |
-| DLL Proxying | Malicious DLL forwarding calls to legitimate DLL |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| Sysmon | Event ID 7 DLL load monitoring |
-| CrowdStrike Falcon | DLL load detection with process context |
-| Microsoft Defender for Endpoint | DLL load anomaly detection |
-| Process Monitor | Real-time DLL load tracing |
-| DLL Export Viewer | Verify DLL export functions |
-| Sigcheck | Digital signature verification |
-| pe-sieve | PE analysis for proxied DLLs |
-
-## Common Scenarios
-
-1. **Legitimate App Wrapper**: Adversary copies signed application (e.g., OneDrive updater) to temp folder alongside malicious DLL with same name as expected dependency.
-2. **Phantom DLL Exploitation**: Malicious DLL placed in PATH location where legitimate app searches for non-existent DLL.
-3. **DLL Proxy Loading**: Malicious version.dll proxies all exports to real version.dll while executing malicious code on DllMain.
-4. **Software Update Hijack**: Attacker replaces DLL in update staging directory before legitimate updater loads it.
-
-## When NOT to Use
-
-- You need to perform the attack to test detection (use performing-* skills)
-- Task is about analyzing past incidents (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about threat hunting proactively (use hunting-* skills)
-- You don't have access to logs or monitoring data
-- Task requires incident response (use IR skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Output Format
-
-```
-Hunt ID: TH-SIDELOAD-[DATE]-[SEQ]
-Technique: T1574.002
-Host Application: [Legitimate signed executable]
-Sideloaded DLL: [Malicious DLL name and path]
-Expected DLL Path: [Where DLL should legitimately be]
-DLL Signed: [Yes/No]
-App Location: [Expected/Anomalous]
-Host: [Hostname]
-Risk Level: [Critical/High/Medium/Low]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All dll sideloading attacks procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

@@ -24,8 +24,7 @@ nist_csf:
 - RC.RP-01
 - PR.IR-01
 ---
-
-# Implementing Anti-Ransomware Group Policy
+# Implementing Anti Ransomware Group Policy
 
 ## When to Use
 
@@ -48,201 +47,23 @@ nist_csf:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Block Ransomware Execution Paths with AppLocker
+1. **Assess Requirements** — Evaluate current environment and define anti ransomware group policy implementation requirements.
+2. **Design Architecture** — Plan the anti ransomware group policy architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up and configure each anti ransomware group policy component according to best practices.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-Configure AppLocker to prevent executables from running in common ransomware staging locations:
+## Tools
 
-```
-AppLocker GPO Path:
-  Computer Configuration → Policies → Windows Settings →
-  Security Settings → Application Control Policies → AppLocker
-
-Key Rules:
-━━━━━━━━━
-1. DENY executable rules for user-writable paths:
-   - %USERPROFILE%\AppData\Local\Temp\*     (email attachment extraction)
-   - %USERPROFILE%\AppData\Roaming\*         (CryptoLocker staging)
-   - %USERPROFILE%\Downloads\*               (web downloads)
-   - %TEMP%\*                                (temporary extraction)
-   - %USERPROFILE%\Desktop\*                 (social engineering drops)
-
-2. ALLOW default rules:
-   - C:\Windows\* (signed by Microsoft)
-   - C:\Program Files\* and C:\Program Files (x86)\*
-   - Administrator group: all paths
-
-3. Enable Application Identity service:
-   Computer Configuration → Policies → Windows Settings →
-   Security Settings → System Services →
-   Application Identity → Automatic
-```
-
-### Step 2: Enable Controlled Folder Access
-
-Protect critical directories from unauthorized modification:
-
-```
-Controlled Folder Access GPO Path:
-  Computer Configuration → Administrative Templates →
-  Windows Components → Microsoft Defender Antivirus →
-  Microsoft Defender Exploit Guard → Controlled Folder Access
-
-Settings:
-━━━━━━━━━
-1. Configure Controlled folder access: Enabled → Block mode
-2. Configure protected folders: Add custom paths
-   - \\fileserver\shares\finance
-   - \\fileserver\shares\hr
-   - C:\Users\*\Documents
-   - C:\Users\*\Desktop
-
-3. Configure allowed applications: Whitelist trusted apps
-   - C:\Program Files\Microsoft Office\*
-   - C:\Program Files\Adobe\*
-   - Line-of-business applications
-
-Default protected folders (automatic):
-  Documents, Pictures, Videos, Music, Desktop, Favorites
-```
-
-### Step 3: Configure Attack Surface Reduction (ASR) Rules
-
-Enable ASR rules that target ransomware delivery mechanisms:
-
-```
-ASR Rules GPO Path:
-  Computer Configuration → Administrative Templates →
-  Windows Components → Microsoft Defender Antivirus →
-  Microsoft Defender Exploit Guard → Attack Surface Reduction
-
-Critical ASR Rules for Ransomware Prevention:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-GUID                                    Rule
-BE9BA2D9-53EA-4CDC-84E5-9B1EEEE46550   Block executable content from email
-D4F940AB-401B-4EFC-AADC-AD5F3C50688A   Block Office apps from creating child processes
-3B576869-A4EC-4529-8536-B80A7769E899   Block Office apps from creating executable content
-75668C1F-73B5-4CF0-BB93-3ECF5CB7CC84   Block Office apps from injecting into processes
-D3E037E1-3EB8-44C8-A917-57927947596D   Block JavaScript/VBScript from launching downloads
-5BEB7EFE-FD9A-4556-801D-275E5FFC04CC   Block execution of obfuscated scripts
-92E97FA1-2EDF-4476-BDD6-9DD0B4DDDC7B   Block Win32 API calls from Office macros
-01443614-CD74-433A-B99E-2ECDC07BFC25   Block executable files unless they meet prevalence criteria
-
-Set each rule to: Block (1) or Audit (2) for initial testing
-```
-
-### Step 4: Restrict Lateral Movement Vectors
-
-Lock down SMB, RDP, and WMI to limit ransomware propagation:
-
-```
-Network Restrictions:
-━━━━━━━━━━━━━━━━━━━━
-1. Disable SMBv1:
-   Computer Configuration → Administrative Templates →
-   Network → Lanman Workstation → Enable insecure guest logons: Disabled
-
-   Computer Configuration → Administrative Templates →
-   MS Security Guide → Configure SMBv1 server: Disabled
-
-2. Restrict Remote Desktop:
-   Computer Configuration → Administrative Templates →
-   Windows Components → Remote Desktop Services →
-   Remote Desktop Session Host → Connections →
-   Allow users to connect remotely: Disabled (or restricted to specific groups)
-
-3. Disable remote WMI:
-   Windows Firewall → Inbound Rules →
-   Block Windows Management Instrumentation (WMI) inbound
-
-4. Disable AutoPlay/AutoRun:
-   Computer Configuration → Administrative Templates →
-   Windows Components → AutoPlay Policies →
-   Turn off AutoPlay: Enabled (All drives)
-
-5. Disable PowerShell remoting for non-admin users:
-   Computer Configuration → Administrative Templates →
-   Windows Components → Windows PowerShell →
-   Turn on Script Execution: Allow only signed scripts
-```
-
-### Step 5: Audit and Validate GPO Compliance
-
-Verify that GPO settings are applied correctly across the domain:
-
-```powershell
-# Check GPO application on endpoint
-gpresult /r /scope:computer
-
-# Verify AppLocker rules
-Get-AppLockerPolicy -Effective | Select-Object -ExpandProperty RuleCollections
-
-# Check Controlled Folder Access status
-Get-MpPreference | Select-Object EnableControlledFolderAccess
-
-# List protected folders
-Get-MpPreference | Select-Object -ExpandProperty ControlledFolderAccessProtectedFolders
-
-# Check ASR rules
-Get-MpPreference | Select-Object -ExpandProperty AttackSurfaceReductionRules_Ids
-Get-MpPreference | Select-Object -ExpandProperty AttackSurfaceReductionRules_Actions
-```
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
 ## Verification
 
-- Run `gpresult /r` on test endpoints to confirm GPO application
-- Attempt to run an executable from `%AppData%\Temp` to verify AppLocker blocks it
-- Modify a file in a protected folder from an unlisted application to confirm CFA blocks it
-- Test ASR rules by opening a macro-enabled document and verifying child process blocking
-- Validate that legitimate applications in the allowlist still function correctly
-- Check Windows Event Log for AppLocker events (Event IDs 8003, 8004) and CFA events (1123, 1124)
-
-## Key Concepts
-
-| Term | Definition |
-|------|------------|
-| **AppLocker** | Windows application control feature that restricts which executables, scripts, and DLLs users can run based on publisher, path, or hash rules |
-| **Controlled Folder Access** | Microsoft Defender feature that prevents untrusted applications from modifying files in protected directories |
-| **Attack Surface Reduction (ASR)** | Set of rules in Microsoft Defender Exploit Guard that block specific attack behaviors like Office macro child processes |
-| **Software Restriction Policies (SRP)** | Legacy Windows feature (deprecated in Win 11) for restricting executables; replaced by AppLocker and WDAC |
-| **WDAC** | Windows Defender Application Control; the successor to AppLocker with stronger enforcement using code integrity policies |
-
-## When NOT to Use
-
-- You need to test the implementation (use performing-* skills)
-- Task is about configuring existing tools (use configuring-* skills)
-- You need to analyze security events (use analyzing-* skills)
-- Task is about building detection rules (use building-* skills)
-- You don't have access to the target environment
-- Task requires vendor-specific expertise (consult vendor docs)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Treating compliance checklists as security guarantees rather than minimum baselines
-- Failing to document exceptions and risk acceptance decisions
-- Relying on point-in-time audits instead of continuous monitoring
-
-## Tools & Systems
-
-- **Group Policy Management Console (GPMC)**: Primary tool for creating and managing GPOs in Active Directory
-- **AppLocker**: Built-in Windows application whitelisting and blacklisting engine
-- **Microsoft Defender Exploit Guard**: Suite including CFA, ASR rules, and Network Protection
-- **GPResult**: Command-line tool for verifying GPO application status on endpoints
-- **PowerShell Get-MpPreference**: Cmdlet for querying Microsoft Defender configuration including ASR and CFA status
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All anti ransomware group policy procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

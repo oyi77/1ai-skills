@@ -9,6 +9,8 @@ tags:
 - visualization
 - viz
 ---
+# Viz Creator
+
 ## When to Use
 
 **Trigger phrases:**
@@ -21,79 +23,31 @@ tags:
 **When NOT to use:**
 - For tasks outside this skill's scope
 
-
-
-## Viz Creator
-
-Create visualizations
-
-### Usage
-
-```
-/viz-creator <task>
-```
-
-### Features
-
-- Automated execution
-- Error handling
-- Result validation
-
-## When NOT to Use
-
-- When the visualization is for scientific publication requiring peer review
-- When the data contains sensitive information that cannot be displayed publicly
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- Visualization uses misleading scales or truncated axes
-- Agent does not verify color choices are accessible to colorblind users
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Axis scales are honest and do not misrepresent the data
-- [ ] Color choices meet accessibility standards for colorblind users
-- [ ] All required outputs generated
-- [ ] Success criteria met
-## Notes
-
-- This skill integrates with the broader 1ai-skills ecosystem for data workflows
-- Combine with related skills for maximum impact across your pipeline
-- Monitor output quality and iterate on configuration based on results
-- Keep dependencies up to date for security and performance
-- Document custom workflows and configurations for team knowledge sharing
-## Additional Resources
-
-- Review the 1ai-skills repository for related data skills
-- Check the references/ directory for checklists and templates
-- Join the community for best practices and support
-- Contribute improvements via pull requests
-## Notes
-
-- This skill integrates with the broader 1ai-skills ecosystem for data workflows
-- Combine with related skills for maximum impact across your pipeline
-- Monitor output quality and iterate on configuration based on results
-- Keep dependencies up to date for security and performance
-- Document custom workflows and configurations for team knowledge sharing
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Viz Creator handles data analysis with support for multiple data formats and sources.
 
-## Process
+## Workflow
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+1. **Connect** — Establish connection to data sources
+2. **Extract** — Pull data from source systems
+3. **Transform** — Apply cleaning, normalization, and enrichment
+4. **Load** — Write processed data to target destinations
+5. **Validate** — Verify data quality and completeness
+6. **Document** — Record schema changes and data lineage
+
+## Data Quality Checks
+
+- [ ] No null values in required fields
+- [ ] Data types match schema definitions
+- [ ] Referential integrity maintained
+- [ ] Duplicate detection applied
+- [ ] Outlier handling documented
+
+## Supported Formats
+
+- JSON, CSV, Parquet, Avro
+- SQL databases (PostgreSQL, MySQL, SQLite)
+- REST APIs and webhooks
+- File systems (local, S3, GCS)
+

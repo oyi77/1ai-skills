@@ -9,6 +9,8 @@ tags:
 - model-context-protocol
 - tool-integration
 ---
+# Mcp Discover
+
 ## When to Use
 
 **Trigger phrases:**
@@ -21,91 +23,35 @@ tags:
 **When NOT to use:**
 - For tasks outside this skill's scope
 
-## Mcp Discover
-
-Discover and connect to MCP servers
-
-### Usage
-
-```
-/mcp-discover <task>
-```
-
-### Features
-
-- Automated execution
-- Error handling
-- Result validation
-
-## How to Use
-
-1. Connect to an MCP server and request its capability manifest
-2. Enumerate available tools, resources, and prompt templates
-3. Inspect tool schemas for argument types and descriptions
-4. Build a capability map for routing and orchestration
-
-## Discovery Flow
-
-```python
-async def discover_server(server_config):
-    client = MCPClient(server_config)
-    await client.initialize()
-
-    capabilities = {
-        "tools": await client.list_tools(),
-        "resources": await client.list_resources(),
-        "prompts": await client.list_prompts()
-    }
-
-    for tool in capabilities["tools"]:
-        print(f"Tool: {tool.name}")
-        print(f"  Description: {tool.description}")
-
-    return capabilities
-```
-
-## Common Patterns
-
-- Cache discovery results to avoid repeated initialization
-- Use tool descriptions for intelligent routing decisions
-- Map MCP capabilities to your agent skill requirements
-- Handle servers that dynamically add/remove tools at runtime
-
-## When NOT to Use
-
-- When the MCP server handles credentials or authentication tokens
-- When the server processes data subject to regulatory retention requirements
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- MCP server does not validate inputs causing downstream errors
-- Agent does not handle server connection failures with retry logic
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Input parameters are validated before server-side processing
-- [ ] Connection failures trigger automatic retry with backoff
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Mcp Discover implements a Model Context Protocol server for Model Context Protocol.
 
-## Process
+## Architecture
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- **Server** — MCP-compliant server exposing tools and resources
+- **Transport** — stdio or HTTP transport layer
+- **Tools** — Callable functions with JSON Schema definitions
+- **Resources** — Readable data sources with URI-based access
+
+## Setup
+
+1. Install the MCP server package
+2. Configure environment variables and credentials
+3. Register the server in MCP client configuration
+4. Test tool invocations and resource access
+
+## Configuration
+
+- Server name and version
+- Transport type (stdio, SSE, HTTP)
+- Tool definitions with input/output schemas
+- Resource URI patterns
+- Authentication and rate limiting
+
+## Integration
+
+- Compatible with Claude, Cursor, and other MCP clients
+- Supports streaming responses for large payloads
+- Handles errors with standard MCP error codes
+

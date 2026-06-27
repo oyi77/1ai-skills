@@ -11,6 +11,8 @@ tags:
 homepage: https://github.com/DietrichGebert/ponytail
 license: MIT
 ---
+# Audit
+
 ## When to Use
 
 **Trigger phrases:**
@@ -27,43 +29,37 @@ license: MIT
 ponytail-review, repo-wide. Scan the whole tree instead of a diff. Rank
 findings biggest cut first.
 
-## Tags
+## Core Principles
 
-Same as ponytail-review:
+- **Start small** — Begin with manageable audit practices and build incrementally
+- **Be consistent** — Daily practice beats occasional intense effort
+- **Track progress** — Measure improvement to maintain motivation
+- **Reflect regularly** — Review what's working and adjust your approach
 
-- `delete:` dead code, unused flexibility, speculative feature. Replacement: nothing.
-- `stdlib:` hand-rolled thing the standard library ships. Name the function.
-- `native:` dependency or code doing what the platform already does. Name the feature.
-- `yagni:` abstraction with one implementation, config nobody sets, layer with one caller.
-- `shrink:` same logic, fewer lines. Show the shorter form.
+## Daily Practice
 
-## Hunt
+1. **Morning intention** — Set a specific audit goal for the day
+2. **Active practice** — Apply audit techniques during real situations
+3. **Evening reflection** — Review the day's audit moments and lessons learned
+4. **Journal entry** — Record insights, wins, and areas for improvement
 
-Deps the stdlib or platform already ships, single-implementation interfaces,
-factories with one product, wrappers that only delegate, files exporting one
-thing, dead flags and config, hand-rolled stdlib.
+## Frameworks
 
-## Output
+- **OODA Loop** — Observe, Orient, Decide, Act — for rapid audit decision cycles
+- **PDCA Cycle** — Plan, Do, Check, Act — for iterative audit improvement
+- **After-Action Review** — What happened? Why? What to improve?
+- **Deliberate Practice** — Focused effort on specific audit weaknesses
 
-One line per finding, ranked: `<tag> <what to cut>. <replacement>. [path]`.
-End with `net: -<N> lines, -<M> deps possible.` Nothing to cut: `Lean already. Ship.`
+## Common Pitfalls
 
-## Boundaries
+- **Perfectionism** — Waiting for ideal conditions instead of starting now
+- **Inconsistency** — Practicing sporadically instead of building a routine
+- **Isolation** — Not seeking feedback or accountability partners
+- **Overwhelm** — Trying to improve everything at once instead of focusing
 
-Complexity only, correctness bugs, security holes, and performance go to a
-normal review pass. Lists findings, applies nothing. One-shot.
-"stop ponytail-audit" or "normal mode" to revert.
+## Resources
 
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Verification
-
-- [ ] Skill output matches expected behavior
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- Keep a audit journal for tracking progress
+- Find an accountability partner or mentor
+- Set weekly audit challenges with measurable outcomes
+- Review and adjust your approach monthly

@@ -1,6 +1,6 @@
 ---
 name: data
-description: Centralized database for meta-skill operations. Stores performance metrics, feedback, patterns, and skill evolution
+description: Raw data storage layer for 1ai-skills. Provides structured data persistence, query interface, and data pipeline support for skill operations.
   history.
 domain: meta
 tags:
@@ -13,93 +13,8 @@ persona:
   expertise: SQLite, data modeling, query optimization
   philosophy: Data is the foundation of intelligence
 ---
-## Meta Skill Datastore
+# Data
 
-Storage layer for self-improving agent system.
-
-### Database Schema
-
-```sql
--- Performance metrics
-CREATE TABLE skill_executions (
-    id INTEGER PRIMARY KEY,
-    skill_name TEXT NOT NULL,
-    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    success BOOLEAN,
-    latency_ms INTEGER,
-    tokens_used INTEGER,
-    cost_usd REAL,
-    user_satisfaction REAL,
-    output_quality REAL,
-    error_type TEXT,
-    input_hash TEXT
-);
-
--- Feedback collection
-CREATE TABLE feedback (
-    id INTEGER PRIMARY KEY,
-    skill_name TEXT NOT NULL,
-    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
-    rating INTEGER, -- 1-5
-    comment TEXT,
-    sentiment_score REAL,
-    source TEXT, -- 'explicit', 'implicit', 'automated'
-    processed BOOLEAN DEFAULT FALSE
-);
-
--- Pattern recognition
-CREATE TABLE patterns (
-    id INTEGER PRIMARY KEY,
-    skill_name TEXT NOT NULL,
-    pattern_type TEXT, -- 'success', 'failure', 'input', 'execution'
-    pattern_hash TEXT,
-    frequency INTEGER,
-    first_seen DATETIME,
-    last_seen DATETIME,
-    success_rate REAL
-);
-
--- Skill versions
-CREATE TABLE skill_versions (
-    id INTEGER PRIMARY KEY,
-    skill_name TEXT NOT NULL,
-    version TEXT,
-    previous_version TEXT,
-    changes TEXT,
-    breaking_change BOOLEAN,
-    deployed_at DATETIME,
-    rolled_back BOOLEAN DEFAULT FALSE
-);
-
--- Improvements
-CREATE TABLE improvements (
-    id INTEGER PRIMARY KEY,
-    skill_name TEXT NOT NULL,
-    improvement_type TEXT,
-    description TEXT,
-    impact_score REAL,
-    effort_score REAL,
-    status TEXT, -- 'proposed', 'approved', 'implemented', 'rejected'
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-
--- Learning cycles
-CREATE TABLE learning_cycles (
-    id INTEGER PRIMARY KEY,
-    skill_name TEXT NOT NULL,
-    cycle_number INTEGER,
-    started_at DATETIME,
-    completed_at DATETIME,
-    samples_analyzed INTEGER,
-    improvements_generated INTEGER,
-    status TEXT
-);
-```
-
-### Usage
-
-```python
-# Record execution
 ## When to Use
 
 **Trigger phrases:**
@@ -129,41 +44,28 @@ Connects to:
 - pattern-recognition (queries patterns)
 - skill-evolution (tracks versions)
 
-## When NOT to Use
-
-- When the meta-skill would modify skills used by production systems
-- When the evolution or learning process cannot be rolled back if it fails
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- Meta-skill changes are applied without measuring performance impact
-- Agent does not verify that changes maintain backward compatibility
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Performance is measured before and after meta-skill changes
-- [ ] Backward compatibility is verified for all modifications
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Data is a foundational meta-skills skill that provides skill management capabilities for the agent ecosystem.
 
-## Process
+## Architecture
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- **Input layer** — Receives and validates incoming requests
+- **Processing layer** — Core logic for skill management
+- **Output layer** — Formats and delivers results
+- **State management** — Maintains context across invocations
+
+## Configuration
+
+- Set up required environment variables and paths
+- Configure logging level and output format
+- Define resource limits (memory, time, API calls)
+- Enable/disable features via configuration flags
+
+## Integration
+
+- Exposes standard interfaces for other skills to consume
+- Supports event-driven and request-response patterns
+- Compatible with the 1ai-skills hook system
+- Logs metrics for the skill performance monitor
+

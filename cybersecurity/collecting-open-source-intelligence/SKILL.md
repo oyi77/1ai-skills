@@ -24,7 +24,7 @@ nist_csf:
 - DE.CM-01
 - DE.AE-02
 ---
-# Collecting Open-Source Intelligence
+# Collecting Open Source Intelligence
 
 ## When to Use
 
@@ -44,137 +44,21 @@ Use this skill when:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Define Collection Requirements
+1. **Define Objectives** — Clarify the goals and scope for open source intelligence.
+2. **Gather Resources** — Collect tools, data, and access needed for open source intelligence.
+3. **Execute Process** — Carry out open source intelligence operations methodically.
+4. **Verify Quality** — Check results against acceptance criteria.
+5. **Document Outcomes** — Record findings, decisions, and next steps.
 
-Establish the intelligence requirement (IR) before collecting. Document:
-- Target: threat actor group, malicious domain, IP range, or organization
-- Priority Intelligence Requirements (PIRs): What specific questions need answering?
-- Legal authority: Passive OSINT is legal; active probing requires authorization
-- Data handling: TLP classification for collected intelligence
+## Tools
 
-### Step 2: Passive DNS and WHOIS Investigation
-
-```bash
-# Passive DNS via SecurityTrails API
-curl "https://api.securitytrails.com/v1/domain/evil-domain.com/dns/a" \
-  -H "apikey: YOUR_KEY"
-
-# WHOIS history via ARIN / RIPE
-whois -h whois.arin.net evil-domain.com
-
-# Certificate transparency logs (no API key required)
-curl "https://crt.sh/?q=%.evil-domain.com&output=json" | jq '.[].name_value'
-```
-
-Certificate transparency logs reveal all subdomains for a target domain, often exposing staging, VPN, or internal infrastructure inadvertently made public.
-
-### Step 3: Shodan Infrastructure Mapping
-
-```python
-import shodan
-
-api = shodan.Shodan("YOUR_SHODAN_API_KEY")
-
-# Search for specific C2 framework signatures (Cobalt Strike beacon)
-results = api.search('product:"Cobalt Strike" port:443')
-for r in results['matches']:
-    print(r['ip_str'], r['port'], r['org'], r.get('ssl', {}).get('cert', {}).get('subject', ''))
-
-# Find infrastructure associated with a known threat actor's ASN
-results = api.search('asn:AS12345 http.title:"Redirector"')
-```
-
-Correlate Shodan results with passive DNS to build infrastructure clusters.
-
-### Step 4: Maltego Graph Analysis
-
-In Maltego, use these built-in transforms for threat actor infrastructure mapping:
-1. Start with a known malicious domain (Entity: Domain)
-2. Run "To IP Address [DNS]" → identifies hosting IPs
-3. Run "To Shared Hosting" → identifies co-hosted domains (potentially same threat actor)
-4. Run "To DNS Name [Reverse DNS]" → identifies PTR records
-5. Run "To Whois" → identifies registrant email/organization
-6. Pivot on registrant email → "To Domains [Registrant Email]" → expands to all domains registered with same email
-
-Maltego Maltego Cyber threat intelligence transforms (VirusTotal, Shodan, PassiveTotal, URLScan) extend graph coverage.
-
-### Step 5: Dark Web and Paste Site Monitoring
-
-Use SpiderFoot HX or manual searches for:
-- Paste sites (Pastebin, Ghostbin): search for leaked credentials, IOCs, malware configs
-- Dark web forums: via Tor browser with appropriate operational security
-- GitHub/GitLab: search for exposed credentials or organization-specific strings
-
-```bash
-# SpiderFoot CLI for automated OSINT
-python sf.py -s evil-domain.com -m sfp_shodan,sfp_virustotal,sfp_passivetotal \
-  -o TF -R result.json
-```
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **Passive OSINT** | Intelligence collection that does not send any packets to target systems — uses public databases, search engines, cached data |
-| **PIR** | Priority Intelligence Requirement — specific question the intelligence collection must answer, preventing unfocused data gathering |
-| **Certificate Transparency** | Public log of all SSL/TLS certificates issued by CAs, enabling discovery of subdomains via crt.sh |
-| **Pivoting** | Using one data point (IP, email, registrant name) to discover related infrastructure or accounts |
-| **ASN** | Autonomous System Number — block of IP addresses under a single routing policy; useful for clustering threat actor infrastructure |
-| **Co-hosted Domains** | Multiple domains resolving to the same IP, potentially indicating shared attacker infrastructure |
-
-## When NOT to Use
-
-- You need to analyze collected intelligence (use analyzing-* skills)
-- Task is about detecting collection activity (use detecting-* skills)
-- You need to implement collection tools (use implementing-* skills)
-- Task is about building collection infrastructure (use building-* skills)
-- You don't have access to intelligence sources
-- Task requires classified access (follow clearance process)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Acting on threat intelligence without validating source reliability
-- Sharing classified or sensitive indicators without proper handling procedures
-- Alerting threat actors to detection capabilities through visible response actions
+- **Analysis Platform** — Data processing and visualization
+- **Collaboration Tools** — Team coordination and knowledge sharing
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Tools & Systems
-
-- **Maltego**: Graph-based link analysis platform with 50+ data source transforms for IP, domain, email, and social media analysis
-- **Shodan**: Internet-wide scanner database with 1B+ indexed devices; supports banner, port, SSL certificate, and vulnerability searches
-- **SpiderFoot**: Automated OSINT tool with 200+ modules covering DNS, WHOIS, dark web, breach data, and social media
-- **Recon-ng**: Python-based OSINT framework with modular design for domain, email, and social media reconnaissance
-- **crt.sh**: Free certificate transparency search engine for subdomain and certificate discovery
-- **OSINT Framework (osintframework.com)**: Curated directory of OSINT tools organized by intelligence category
-
-## Common Pitfalls
-
-- **Leaving digital footprints**: Visiting a threat actor's website or Shodan-queried IP can alert the adversary. Use Tor or VPN with a dedicated OSINT VM.
-- **Confirmation bias in graph analysis**: Maltego graphs can create false connections. Verify each pivot independently before treating as confirmed.
-- **Outdated data**: WHOIS privacy services and bulletproof hosting rotate frequently. Always check data timestamps — 6-month-old passive DNS may no longer be valid.
-- **Attribution overconfidence**: Infrastructure overlap does not guarantee same threat actor. False flag operations deliberately share indicators across groups.
-- **Legal boundaries**: Some OSINT tools perform active scans (port scanning, banner grabbing). Confirm tool behavior before use against external targets without authorization.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All open source intelligence procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

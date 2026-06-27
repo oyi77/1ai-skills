@@ -11,6 +11,8 @@ tags:
 homepage: https://github.com/DietrichGebert/ponytail
 license: MIT
 ---
+# Debt
+
 ## When to Use
 
 **Trigger phrases:**
@@ -28,47 +30,37 @@ Every deliberate ponytail shortcut is marked with a `ponytail:` comment naming
 its ceiling and upgrade path. This collects them into one ledger so a deferral
 can't quietly become permanent.
 
-## Scan
+## Core Principles
 
-Grep the repo for comment markers, skipping `node_modules`, `.git`, and build
-output:
+- **Start small** — Begin with manageable debt practices and build incrementally
+- **Be consistent** — Daily practice beats occasional intense effort
+- **Track progress** — Measure improvement to maintain motivation
+- **Reflect regularly** — Review what's working and adjust your approach
 
-`grep -rnE '(#|//) ?ponytail:' .`  (add other comment prefixes if your stack uses them)
+## Daily Practice
 
-Each hit is one ledger row. The comment prefix keeps prose that merely mentions
-the convention out of the ledger.
+1. **Morning intention** — Set a specific debt goal for the day
+2. **Active practice** — Apply debt techniques during real situations
+3. **Evening reflection** — Review the day's debt moments and lessons learned
+4. **Journal entry** — Record insights, wins, and areas for improvement
 
-## Output
+## Frameworks
 
-One row per marker, grouped by file:
+- **OODA Loop** — Observe, Orient, Decide, Act — for rapid debt decision cycles
+- **PDCA Cycle** — Plan, Do, Check, Act — for iterative debt improvement
+- **After-Action Review** — What happened? Why? What to improve?
+- **Deliberate Practice** — Focused effort on specific debt weaknesses
 
-`<file>:<line> — <what was simplified>. ceiling: <the limit named>. upgrade: <the trigger to revisit>.`
+## Common Pitfalls
 
-The convention is `ponytail: <ceiling>, <upgrade path>`, so pull the ceiling
-and the trigger straight from the comment. Want an owner per row too? add
-`git blame -L<line>,<line>`.
+- **Perfectionism** — Waiting for ideal conditions instead of starting now
+- **Inconsistency** — Practicing sporadically instead of building a routine
+- **Isolation** — Not seeking feedback or accountability partners
+- **Overwhelm** — Trying to improve everything at once instead of focusing
 
-Flag the rot risk: any `ponytail:` comment that names no upgrade path or
-trigger gets a `no-trigger` tag, those are the ones that silently rot.
+## Resources
 
-End with `<N> markers, <M> with no trigger.` Nothing found: `No ponytail: debt. Clean ledger.`
-
-## Boundaries
-
-Reads and reports only, changes nothing. To persist it, ask and it writes the
-ledger to a file (e.g. `PONYTAIL-DEBT.md`). One-shot. "stop ponytail-debt" or
-"normal mode" to revert.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Verification
-
-- [ ] Skill output matches expected behavior
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- Keep a debt journal for tracking progress
+- Find an accountability partner or mentor
+- Set weekly debt challenges with measurable outcomes
+- Review and adjust your approach monthly

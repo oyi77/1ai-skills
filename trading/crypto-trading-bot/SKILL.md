@@ -11,19 +11,8 @@ tags:
 - markets
 - trading
 ---
-persona:
-  name: "Domain Expert"
-  title: "Master of Crypto Trading Bot"
-  expertise: ['Trading Excellence', 'Best Practices', 'Professional Standards']
-  philosophy: "Excellence is not a skill, it's an attitude."
-  credentials: ['Industry leader', 'Practiced professional', 'Thought leader']
-  principles: ['Quality first', 'Continuous improvement', 'Evidence-based', 'Customer focused']
+# Crypto Trading Bot
 
-
-
-> [![Tip Me](https://www.tip.md/badge.svg)](https://www.tip.md/oyi77) — If this skill saves you time, tip: **https://www.tip.md/oyi77**
-
-# Crypto Trading Bot Developer
 ## When to Use
 
 **Trigger phrases:**
@@ -39,97 +28,40 @@ persona:
 
 幫你整加密貨幣自動交易機器人
 
-## 核心功能
-
-Core capabilities spanning signal reception, CEX/DEX automation, arbitrage detection, and smart stop-loss management.
-
-
-### 1. TradingView Pine Script 信号 Bot
-- 接收TradingView webhook信號
-- 自動執行買賣指令
-- 支持多交易所對接
-
-### 2. CEX 自動化交易
-- Binance, Bybit, OKX API 對接
-- 現貨/合約自動化
-- 網格交易策略
-
-### 3. DEX Arbitrage
-- 跨DEX套利機會檢測
-- Flash loan 整合（如適用）
-- 風險評估
-
-### 4. 智能止盈止損
-- 移動止損
-- 分批止盈
-- Time-based exit
-
-## 使用流程
-
-```
-1. 用戶話「整交易Bot」
-2. 問清楚：
-   - 目標交易所
-   - 交易對 (e.g., BTC/USDT)
-   - 策略類型
-   - 預算
-3. 提供報價同timeline
-```
-
-## 報價參考
-
-| 類型 | 價格範圍 |
-|------|----------|
-| 簡單信號Bot | $200-500 |
-| 網格交易 | $300-800 |
-| 複雜策略 | $1000-3000 |
-| 月費維護 | $100-300/月 |
-
-## 技術栈
-
-- Python (CCXT, pandas)
-- Pine Script
-- Node.js
-- API Webhooks
-
-## When NOT to Use
-
-- When the exchange or platform does not support API-based operations
-- When the trading activity involves regulated instruments requiring compliance approval
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- Trades execute without verifying market conditions and order book state
-- Agent does not implement stop-loss or risk management controls
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Market conditions and order book state are verified before trade execution
-- [ ] Stop-loss and risk management controls are in place for all positions
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
-
-Load `references/trading-checklist.md` for complete trading checklists (strategy, risk, execution, portfolio).
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Crypto Trading Bot provides market analysis capabilities with risk management.
 
-## Process
+## Workflow
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+1. **Research** — Analyze market conditions and opportunities
+2. **Plan** — Define entry, exit, and position sizing
+3. **Execute** — Place trades with proper order types
+4. **Monitor** — Track positions and market changes
+5. **Manage risk** — Apply stop-losses and hedging
+6. **Review** — Post-trade analysis and journaling
+
+## Risk Management
+
+- Never risk more than 1-2% of portfolio per trade
+- Set stop-loss before entering any position
+- Diversify across uncorrelated assets
+- Size positions based on volatility (ATR)
+- Have a maximum daily loss limit
+
+## Key Metrics
+
+- Win rate and profit factor
+- Sharpe ratio and max drawdown
+- Average risk-reward ratio
+- Expectancy per trade
+- Correlation to benchmark
+
+## Discipline Rules
+
+- Follow your trading plan — no impulsive trades
+- Cut losses short, let winners run
+- Review every trade in your journal
+- Never revenge trade after a loss
+- Take breaks after consecutive losses
+

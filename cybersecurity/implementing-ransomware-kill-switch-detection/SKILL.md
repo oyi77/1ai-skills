@@ -24,7 +24,6 @@ nist_csf:
 - RC.RP-01
 - PR.IR-01
 ---
-
 # Implementing Ransomware Kill Switch Detection
 
 ## When to Use
@@ -48,205 +47,23 @@ nist_csf:
 
 ## Workflow
 
-1. **Scope and authorize** — confirm written authorization and define target boundaries
-2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
-3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
-4. **Post-exploitation** — document access level, lateral movement, and data exposure
-5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
-### Step 1: Identify Kill Switch Mechanisms in Ransomware
+1. **Assess Requirements** — Evaluate current environment and define ransomware kill switch detection implementation requirements.
+2. **Design Architecture** — Plan the ransomware kill switch detection architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up and configure each ransomware kill switch detection component according to best practices.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-Analyze samples for common kill switch patterns:
+## Tools
 
-```
-Kill Switch Types Found in Ransomware:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-1. MUTEX-BASED (most common):
-   - Ransomware creates a named mutex at startup
-   - If mutex already exists → another instance is running → exit
-   - Defense: Pre-create the mutex to prevent execution
-   - Examples:
-     WannaCry:     Global\MsWinZonesCacheCounterMutexA
-     Conti:        kasKDJSAFJauisiudUASIIQWUA82
-     REvil:        Global\{GUID-based-on-machine}
-     Ryuk:         Global\YOURPRODUCT_MUTEX
-
-2. DOMAIN-BASED:
-   - Ransomware resolves a hardcoded domain before executing
-   - If domain resolves → security sandbox detected → exit
-   - Defense: Register/sinkhole the domain to activate kill switch
-   - Examples:
-     WannaCry v1:  iuqerfsodp9ifjaposdfjhgosurijfaewrwergwea.com
-     WannaCry v1:  fferfsodp9ifjaposdfjhgosurijfaewrwergwea.com
-
-3. REGISTRY-BASED:
-   - Check for specific registry key/value before executing
-   - If key exists → exit (anti-analysis or kill switch)
-   - Defense: Create the registry key proactively
-
-4. FILE-BASED:
-   - Check for existence of specific file or directory
-   - If marker file exists → exit
-   - Defense: Create the marker file on all endpoints
-
-5. LANGUAGE-BASED:
-   - Check system language/keyboard layout
-   - Exit if Russian/CIS country keyboard detected
-   - Common in Eastern European ransomware groups
-```
-
-### Step 2: Deploy Mutex Vaccination
-
-Pre-create known ransomware mutexes on endpoints to prevent execution:
-
-```python
-# Windows mutex vaccination using ctypes
-import ctypes
-from ctypes import wintypes
-
-kernel32 = ctypes.WinDLL('kernel32', use_last_error=True)
-
-def create_mutex(name):
-    """Create a named mutex to vaccinate against ransomware."""
-    handle = kernel32.CreateMutexW(None, False, name)
-    error = ctypes.get_last_error()
-    if handle == 0:
-        return False, f"Failed to create mutex: error {error}"
-    if error == 183:  # ERROR_ALREADY_EXISTS
-        return True, f"Mutex already exists (already vaccinated): {name}"
-    return True, f"Mutex created successfully: {name}"
-
-KNOWN_RANSOMWARE_MUTEXES = [
-    "Global\\MsWinZonesCacheCounterMutexA",        # WannaCry
-    "Global\\kasKDJSAFJauisiudUASIIQWUA82",        # Conti
-    "Global\\YOURPRODUCT_MUTEX",                     # Ryuk variant
-    "Global\\JhbGjhBsSQjz",                         # Maze
-    "Global\\sdjfhksjdhfsd",                         # Generic ransomware
-]
-```
-
-### Step 3: Monitor for Mutex Creation Events
-
-Use Sysmon to detect when ransomware creates its characteristic mutexes:
-
-```xml
-<!-- Sysmon configuration for mutex monitoring -->
-<Sysmon schemaversion="4.90">
-  <EventFiltering>
-    <!-- Event ID 1: Process creation with mutex indicators -->
-    <ProcessCreate onmatch="include">
-      <CommandLine condition="contains">mutex</CommandLine>
-      <CommandLine condition="contains">CreateMutex</CommandLine>
-    </ProcessCreate>
-  </EventFiltering>
-</Sysmon>
-```
-
-```
-Detection via Event Logs:
-━━━━━━━━━━━━━━━━━━━━━━━━
-Windows Security Log:
-  Event ID 4688: Process creation (enable command line logging)
-
-Sysmon:
-  Event ID 1:  Process create (includes command line and hashes)
-  Event ID 17: Pipe created (named pipes, similar to mutexes)
-
-PowerShell detection:
-  Event ID 4104: Script block logging (detect mutex creation in scripts)
-
-Velociraptor artifact:
-  Windows.Detection.Mutants - Enumerates all named mutant objects
-```
-
-### Step 4: Monitor DNS for Kill Switch Domains
-
-Detect ransomware domain-based kill switch resolution attempts:
-
-```
-DNS Monitoring for Kill Switch Domains:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-1. Monitor DNS queries for known kill switch domains
-2. High-entropy domain names (>4.0 entropy in domain label) may indicate
-   ransomware kill switch domains or DGA-generated C2 domains
-3. Queries to newly registered domains from endpoints that typically
-   only access well-established domains
-
-Indicators:
-  - Domain with no prior resolution history
-  - Domain registered in last 24-72 hours
-  - High character entropy in domain name
-  - Resolution attempt followed by either mass encryption (kill switch failed)
-    or process termination (kill switch activated)
-```
-
-### Step 5: Enumerate Active Mutexes for Incident Response
-
-During an active incident, scan endpoints for ransomware-associated mutexes:
-
-```powershell
-# PowerShell: List all named mutant objects using Sysinternals Handle
-# handle.exe -a -p <PID> | findstr "Mutant"
-
-# Velociraptor query for mutex hunting:
-# SELECT * FROM glob(globs="\\BaseNamedObjects\\*") WHERE Name =~ "mutex_pattern"
-
-# Python-based enumeration (requires pywin32):
-# import win32event
-# handle = win32event.OpenMutex(0x00100000, False, "Global\\MutexName")
-```
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
 ## Verification
 
-- Verify mutex vaccination by attempting to create the same mutex (should get ERROR_ALREADY_EXISTS)
-- Test that vaccinated mutexes survive system reboot (they do not; re-apply at startup via scheduled task)
-- Confirm DNS monitoring detects test queries for known kill switch domains
-- Validate Sysmon event generation for mutex creation by running a test script
-- Check that vaccination does not interfere with legitimate applications using similar mutex names
-- Test against actual ransomware samples in an isolated sandbox to confirm kill switch activation
-
-## Key Concepts
-
-| Term | Definition |
-|------|------------|
-| **Mutex (Mutant)** | A Windows kernel synchronization object used to ensure only one instance of a program runs; ransomware uses named mutexes to prevent re-infection |
-| **Kill Switch** | A mechanism in ransomware that causes it to terminate without encrypting if a specific condition is met (mutex exists, domain resolves, file present) |
-| **Mutex Vaccination** | Proactively creating named mutexes on endpoints that match known ransomware mutex names, preventing the ransomware from executing |
-| **Domain Sinkhole** | Registering or redirecting a malicious domain to a controlled server; used to activate domain-based kill switches |
-| **DGA (Domain Generation Algorithm)** | Algorithm used by malware to generate pseudo-random domain names for C2 communication, sometimes incorporating kill switch checks |
-
-## When NOT to Use
-
-- You need to test the implementation (use performing-* skills)
-- Task is about configuring existing tools (use configuring-* skills)
-- You need to analyze security events (use analyzing-* skills)
-- Task is about building detection rules (use building-* skills)
-- You don't have access to the target environment
-- Task requires vendor-specific expertise (consult vendor docs)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
-
-## Tools & Systems
-
-- **Sysmon**: Microsoft system monitor providing Event ID 17/18 for named pipe and mutex creation monitoring
-- **Velociraptor**: Endpoint visibility tool with built-in artifacts for enumerating mutant (mutex) objects on Windows
-- **Sysinternals Handle**: Command-line tool for listing open handles including named mutexes per process
-- **malware-mutex (GitHub)**: Community-maintained database of mutexes used by known malware families
-- **ANY.RUN**: Interactive malware sandbox that reports mutex creation during dynamic analysis
-- **PassiveDNS**: DNS monitoring infrastructure for detecting kill switch domain resolution attempts
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All ransomware kill switch detection procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

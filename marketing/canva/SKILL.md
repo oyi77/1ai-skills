@@ -21,12 +21,7 @@ metadata:
       - CANVA_CLIENT_ID
       - CANVA_CLIENT_SECRET
 ---
-
-
-
-# Canva Skill
-
-Create, export, and manage Canva designs via the Connect API.
+# Canva
 
 ## When to Use
 
@@ -36,240 +31,31 @@ Create, export, and manage Canva designs via the Connect API.
 - "Create a carousel from these points"
 - "Upload this image to Canva"
 
-## Prerequisites
-
-1. **Create a Canva Integration:**
-   - Go to https://www.canva.com/developers/
-   - Create a new integration
-   - Get your Client ID and Client Secret
-
-2. **Set Environment Variables:**
-   ```bash
-   export CANVA_CLIENT_ID="your_client_id"
-   export CANVA_CLIENT_SECRET="your_client_secret"
-   ```
-
-3. **Authenticate (first time):**
-   Run the auth flow to get access tokens (stored in `~/.canva/tokens.json`)
-
-## API Base URL
-
-```
-https://api.canva.com/rest/v1
-```
-
-## Authentication
-
-Canva uses OAuth 2.0. The skill handles token refresh automatically.
-
-```bash
-# Get access token (stored in ~/.canva/tokens.json)
-ACCESS_TOKEN=$(cat ~/.canva/tokens.json | jq -r '.access_token')
-```
-
-## Core Operations
-
-- Configure canva, carousels, connect, create, designs settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
-
-
-### List Designs
-
-```bash
-curl -s "https://api.canva.com/rest/v1/designs" \
-  -H "Authorization: Bearer $ACCESS_TOKEN" | jq .
-```
-
-### Get Design Details
-
-```bash
-curl -s "https://api.canva.com/rest/v1/designs/{designId}" \
-  -H "Authorization: Bearer $ACCESS_TOKEN" | jq .
-```
-
-### Create Design from Template
-
-```bash
-curl -X POST "https://api.canva.com/rest/v1/autofills" \
-  -H "Authorization: Bearer $ACCESS_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "brand_template_id": "TEMPLATE_ID",
-    "data": {
-      "title": {"type": "text", "text": "Your Title"},
-      "body": {"type": "text", "text": "Your body text"}
-    }
-  }'
-```
-
-### Export Design
-
-```bash
-# Start export job
-curl -X POST "https://api.canva.com/rest/v1/exports" \
-  -H "Authorization: Bearer $ACCESS_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "design_id": "DESIGN_ID",
-    "format": {"type": "png", "width": 1080, "height": 1080}
-  }'
-
-# Check export status
-curl -s "https://api.canva.com/rest/v1/exports/{jobId}" \
-  -H "Authorization: Bearer $ACCESS_TOKEN" | jq .
-```
-
-### Upload Asset
-
-```bash
-curl -X POST "https://api.canva.com/rest/v1/asset-uploads" \
-  -H "Authorization: Bearer $ACCESS_TOKEN" \
-  -H "Content-Type: application/octet-stream" \
-  -H 'Asset-Upload-Metadata: {"name": "my-image.png"}' \
-  --data-binary @image.png
-```
-
-### List Brand Templates
-
-```bash
-curl -s "https://api.canva.com/rest/v1/brand-templates" \
-  -H "Authorization: Bearer $ACCESS_TOKEN" | jq .
-```
-
-## Export Formats
-
-| Format | Options |
-|--------|---------|
-| PNG | width, height, lossless |
-| JPG | width, height, quality (1-100) |
-| PDF | standard, print |
-| MP4 | (for video designs) |
-| GIF | (for animated designs) |
-
-## Common Workflows
-
-Step-by-step canva execution process.
-
-**Step 1: Configure** — Set up targets and parameters in config file.
-
-**Step 2: Execute** — Run the canva workflow with configured inputs.
-
-**Step 3: Review** — Analyze outputs and iterate on configuration.
-
-**Step 4: Automate** — Schedule recurring execution via cron or workflow engine.
-
-
-### Step 1: Configure
-Set up targets and parameters in config file.
-
-### Step 2: Execute
-Run the canva workflow with configured inputs.
-
-### Step 3: Review
-Analyze outputs and iterate on configuration.
-
-### Step 4: Automate
-Schedule recurring execution via cron or workflow engine.
-
-
-### Create Instagram Post
-
-1. List brand templates: `GET /brand-templates`
-2. Find Instagram post template
-3. Autofill with content: `POST /autofills`
-4. Export as PNG 1080x1080: `POST /exports`
-5. Download the exported file
-
-### Create Carousel
-
-1. Create multiple designs using autofill
-2. Export each as PNG
-3. Combine for posting
-
-### Batch Export
-
-1. List designs: `GET /designs`
-2. Loop through and export each
-3. Download all files
-
-## Rate Limits
-
-- Most endpoints: 100 requests/minute
-- Upload/Export: 30 requests/minute
-
-## Error Handling
-
-Common errors:
-- `401` - Token expired, refresh needed
-- `403` - Missing required scope
-- `429` - Rate limit exceeded
-- `404` - Design/template not found
-
-## Scopes Required
-
-- `design:content:read` - Read designs
-- `design:content:write` - Create/modify designs
-- `asset:read` - Read assets
-- `asset:write` - Upload assets
-- `brandtemplate:content:read` - Read brand templates
-
-## Tips
-
-1. **Use Brand Templates** - Pre-designed templates are faster than creating from scratch
-2. **Batch Operations** - Group exports to avoid rate limits
-3. **Cache Template IDs** - Store commonly used template IDs locally
-4. **Check Job Status** - Exports are async; poll until complete
-
-## Resources
-
-- [Canva Connect API Docs](https://www.canva.dev/docs/connect/)
-- [OpenAPI Spec](https://www.canva.dev/sources/connect/api/latest/api.yml)
-- [Starter Kit](https://github.com/canva-sdks/canva-connect-api-starter-kit)
-
----
-
-Built by **Meow 😼** for the Moltbook community 🦞
-
-## How to Use
-
-1. Define campaign objective and target KPIs
-2. Set up tracking and attribution (UTMs, pixels, events)
-3. Create campaign assets (copy, creatives, landing pages)
-4. Launch with small budget for testing
-5. Monitor metrics daily, optimize underperformers
-6. Scale winners, pause losers, document learnings
-
-## When NOT to Use
-
-- Task is about sales, not marketing (use sales skills)
-- Task is about product development (use product skills)
-- You need to analyze marketing data (use analytics skills)
-- Task is about customer support (use support skills)
-- You don't have marketing assets
-- Task requires legal review (consult legal)
-
-
-## Red Flags
-
-- **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue
-- **Ad spend with zero conversions**: Pause and review targeting/creative
-- **Email open rates below 15%**: Subject lines or sender reputation issue
-- **Bounce rate above 70%**: Landing page mismatch or slow load times
-- **Attribution gaps**: Missing UTM parameters or broken tracking pixels
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Canva drives growth marketing with data-driven strategies.
 
-## Verification
+## Workflow
 
-- [ ] Skill output matches expected behavior
+1. **Research** — Analyze market, competitors, and audience
+2. **Strategy** — Define goals, channels, and messaging
+3. **Create** — Develop content and creative assets
+4. **Launch** — Deploy campaigns across channels
+5. **Optimize** — A/B test and iterate based on data
+6. **Report** — Track KPIs and ROI
 
-## Process
+## Key Metrics
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- Reach and impressions
+- Engagement rate (likes, shares, comments)
+- Conversion rate (clicks → leads → customers)
+- Customer acquisition cost (CAC)
+- Return on ad spend (ROAS)
+
+## Best Practices
+
+- Test everything — headlines, images, CTAs, timing
+- Focus on one channel at a time, then expand
+- Build organic before scaling paid
+- Track attribution across the full funnel
+

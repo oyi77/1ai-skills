@@ -26,7 +26,6 @@ nist_csf:
 - DE.AE-07
 - ID.RA-05
 ---
-
 # Detecting T1548 Abuse Elevation Control Mechanism
 
 ## When to Use
@@ -47,131 +46,23 @@ nist_csf:
 
 ## Workflow
 
-1. **Monitor UAC Registry Modifications**: Many UAC bypasses modify registry keys under `HKCU\Software\Classes\ms-settings\shell\open\command` or `HKCU\Software\Classes\mscfile\shell\open\command`. Track Sysmon Events 12/13 for these changes.
-2. **Detect Auto-Elevating Process Abuse**: Certain Windows binaries auto-elevate without UAC prompts (fodhelper.exe, computerdefaults.exe, eventvwr.exe). Hunt for these being launched by non-standard parent processes.
-3. **Track Process Integrity Level Changes**: Monitor for processes escalating from medium to high integrity level without corresponding UAC consent events.
-4. **Hunt for Elevated Process Spawning**: Detect when auto-elevating processes spawn unexpected children (cmd.exe, powershell.exe) -- indicating UAC bypass exploitation.
-5. **Monitor Linux Elevation Abuse**: Track sudo misconfiguration exploitation, setuid binary abuse, and capability manipulation.
-6. **Correlate with Privilege Escalation Chain**: Map elevation abuse to the broader attack chain, identifying what was done with escalated privileges.
+1. **Define Detection Scope** — Identify the specific t1548 abuse elevation control mechanism techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for t1548 abuse elevation control mechanism.
+3. **Build Detection Queries** — Write detection rules, Sigma rules, or SIEM queries targeting t1548 abuse elevation control mechanism indicators.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-## Key Concepts
+## Tools
 
-| Concept | Description |
-|---------|-------------|
-| T1548.002 | Bypass User Account Control |
-| T1548.001 | Setuid and Setgid (Linux) |
-| T1548.003 | Sudo and Sudo Caching |
-| T1548.004 | Elevated Execution with Prompt (macOS) |
-| UAC Auto-Elevation | Windows binaries that elevate without prompt |
-| fodhelper.exe | Common UAC bypass vector via registry hijack |
-| eventvwr.exe | MSC file handler UAC bypass |
-| Integrity Level | Windows process trust level (Low/Medium/High/System) |
-
-## Detection Queries
-
-This section covers detection queries for detecting t1548 abuse elevation control mechanism.
-
-- Ensure all prerequisites are met before proceeding
-- Follow the documented workflow steps in sequence
-- Record results and any anomalies encountered during this phase
-### Splunk -- UAC Bypass via Registry Modification
-```spl
-index=sysmon (EventCode=12 OR EventCode=13)
-| where match(TargetObject, "(?i)HKCU\\\\Software\\\\Classes\\\\(ms-settings|mscfile|exefile|Folder)\\\\shell\\\\open\\\\command")
-| table _time Computer User EventCode TargetObject Details Image
-```
-
-### Splunk -- Auto-Elevating Process Abuse
-```spl
-index=sysmon EventCode=1
-| where match(Image, "(?i)(fodhelper|computerdefaults|eventvwr|sdclt|slui|cmstp)\.exe$")
-| where NOT match(ParentImage, "(?i)(explorer|svchost|services)\.exe$")
-| table _time Computer User Image CommandLine ParentImage ParentCommandLine
-```
-
-### KQL -- UAC Bypass Detection
-```kql
-DeviceRegistryEvents
-| where Timestamp > ago(7d)
-| where RegistryKey has_any ("ms-settings\\shell\\open\\command", "mscfile\\shell\\open\\command")
-| where ActionType == "RegistryValueSet"
-| project Timestamp, DeviceName, RegistryKey, RegistryValueData, InitiatingProcessFileName
-```
-
-### Sigma Rule
-```yaml
-title: UAC Bypass via Registry Modification
-status: stable
-logsource:
-    product: windows
-    category: registry_set
-detection:
-    selection:
-        TargetObject|contains:
-            - '\ms-settings\shell\open\command'
-            - '\mscfile\shell\open\command'
-            - '\exefile\shell\open\command'
-    condition: selection
-level: high
-tags:
-    - attack.privilege_escalation
-    - attack.t1548.002
-```
-
-## Common Scenarios
-
-1. **fodhelper.exe Registry Hijack**: Attacker sets `HKCU\Software\Classes\ms-settings\shell\open\command` to a malicious executable, then launches fodhelper.exe which auto-elevates and executes the hijacked command.
-2. **eventvwr.exe MSC Bypass**: Modifying `HKCU\Software\Classes\mscfile\shell\open\command` to intercept Event Viewer's auto-elevation behavior.
-3. **sdclt.exe Bypass**: Leveraging the Windows Backup utility's auto-elevation to execute arbitrary commands.
-4. **CMSTP.exe INF Bypass**: Using Connection Manager Profile Installer with a malicious INF file to bypass UAC via `/s /ni` flags.
-5. **DLL Hijacking in Auto-Elevate**: Placing malicious DLLs in search paths of auto-elevating executables.
-
-## When NOT to Use
-
-- You need to perform the attack to test detection (use performing-* skills)
-- Task is about analyzing past incidents (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about threat hunting proactively (use hunting-* skills)
-- You don't have access to logs or monitoring data
-- Task requires incident response (use IR skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Output Format
-
-```
-Hunt ID: TH-UAC-[DATE]-[SEQ]
-Host: [Hostname]
-Bypass Method: [Registry hijack/DLL hijack/Token manipulation]
-Auto-Elevate Binary: [fodhelper.exe/eventvwr.exe/etc.]
-Registry Key Modified: [Full registry path]
-Payload Executed: [Command or binary path]
-User Context: [Account]
-Risk Level: [Critical/High/Medium]
-ATT&CK Technique: [T1548.00x]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All t1548 abuse elevation control mechanism procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

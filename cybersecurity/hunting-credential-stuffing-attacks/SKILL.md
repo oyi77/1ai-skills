@@ -21,9 +21,7 @@ nist_csf:
 - GV.OV-01
 - DE.AE-02
 ---
-
 # Hunting Credential Stuffing Attacks
-
 
 ## When to Use
 
@@ -39,69 +37,25 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-Analyze authentication logs to detect credential stuffing by identifying patterns
-of distributed login failures, high IP diversity, and suspicious ASN distribution.
+1. **Define Detection Scope** — Identify the specific credential stuffing attacks techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for credential stuffing attacks.
+3. **Build Detection Queries** — Write detection rules, Sigma rules, or SIEM queries targeting credential stuffing attacks indicators.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-```python
-import pandas as pd
-from collections import Counter
+## Tools
 
-# Load auth logs
-df = pd.read_csv("auth_logs.csv", parse_dates=["timestamp"])
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
-# Credential stuffing indicator: many IPs trying few accounts
-ip_per_account = df[df["status"] == "failed"].groupby("username")["source_ip"].nunique()
-accounts_under_attack = ip_per_account[ip_per_account > 50]
-```
-
-Key detection indicators:
-1. High unique source IPs per failed username
-2. Low success rate across many accounts (< 1%)
-3. ASN concentration from cloud/proxy providers
-4. Geographic impossibility (same account, distant locations)
-5. User-agent uniformity across distributed IPs
-
-## Examples
-
-```python
-# Password spray: one password tried across many accounts
-spray = df[df["status"] == "failed"].groupby(["source_ip", "password_hash"]).agg(
-    accounts=("username", "nunique")).reset_index()
-sprays = spray[spray["accounts"] > 10]
-```
-## When NOT to Use
-
-- You're responding to a known incident (use IR skills)
-- Task is about analyzing confirmed malware (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about vulnerability scanning (use scanning tools)
-- You don't have access to endpoint/network data
-- Task requires compliance auditing (use auditing-* skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All credential stuffing attacks procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

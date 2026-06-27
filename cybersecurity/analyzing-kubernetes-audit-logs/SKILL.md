@@ -21,9 +21,7 @@ nist_csf:
 - ID.AM-08
 - DE.CM-01
 ---
-
 # Analyzing Kubernetes Audit Logs
-
 
 ## When to Use
 
@@ -39,69 +37,25 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-Parse Kubernetes audit log files (JSON lines format) to detect security-relevant
-events including unauthorized access, privilege escalation, and data exfiltration.
+1. **Scope the Analysis** — Define what kubernetes audit logs artifacts or data sources to examine and the investigation timeline.
+2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
+3. **Extract Key Indicators** — Parse and extract relevant kubernetes audit logs data points from collected artifacts.
+4. **Correlate Findings** — Cross-reference extracted data with other sources (threat intel, logs, timelines).
+5. **Build Timeline** — Construct a chronological sequence of events related to kubernetes audit logs.
+6. **Document Analysis** — Write findings report with evidence, conclusions, and recommendations.
 
-```python
-import json
+## Tools
 
-with open("/var/log/kubernetes/audit.log") as f:
-    for line in f:
-        event = json.loads(line)
-        verb = event.get("verb")
-        resource = event.get("objectRef", {}).get("resource")
-        user = event.get("user", {}).get("username")
-        if verb == "create" and resource == "pods/exec":
-            print(f"Pod exec by {user}")
-```
+- **Forensic Toolkit** — Evidence collection and analysis
+- **Timeline Tools** — Chronological event reconstruction
+- **Log Analysis Platform** — Centralized log parsing and search
 
-Key events to detect:
-1. pods/exec and pods/attach (shell into containers)
-2. secrets access (get/list/watch)
-3. clusterrolebindings creation (RBAC escalation)
-4. Privileged pod creation
-5. Anonymous or system:unauthenticated access
-
-## Examples
-
-```python
-# Detect secret enumeration
-if verb in ("get", "list") and resource == "secrets":
-    print(f"Secret access: {user} -> {event['objectRef'].get('name')}")
-```
-## When NOT to Use
-
-- You need to perform the attack, not analyze it (use performing-* skills)
-- Task is about detection, not analysis (use detecting-* skills)
-- You need to implement controls (use implementing-* skills)
-- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
-- You don't have access to the artifacts/logs to analyze
-- Task requires real-time monitoring (use SOC tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Modifying cloud IAM policies or security groups without approval
-- Exposing cloud credentials or secrets in logs or reports
-- Running scans that generate excessive API calls and trigger billing alerts
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Cloud resource changes reverted or documented as intentional
-- IAM policies reviewed for least-privilege compliance after testing
-- No residual test resources left running (cost and security check)
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All kubernetes audit logs procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

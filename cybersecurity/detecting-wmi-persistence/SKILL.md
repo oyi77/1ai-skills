@@ -28,8 +28,7 @@ nist_csf:
 - DE.AE-07
 - ID.RA-05
 ---
-
-# Detecting WMI Persistence
+# Detecting Wmi Persistence
 
 ## When to Use
 
@@ -49,82 +48,23 @@ nist_csf:
 
 ## Workflow
 
-1. **Collect Telemetry**: Parse Sysmon Event IDs 19 (WmiEventFilter), 20 (WmiEventConsumer), 21 (WmiEventConsumerToFilter).
-2. **Identify Suspicious Consumers**: Flag CommandLineEventConsumer and ActiveScriptEventConsumer types executing code.
-3. **Analyze Event Filters**: Examine WQL queries in EventFilters for process start triggers or timer-based execution.
-4. **Correlate Bindings**: Match FilterToConsumerBindings linking suspicious filters to consumers.
-5. **Check Persistence Locations**: Query WMI namespaces root\subscription and root\default for active subscriptions.
-6. **Validate Findings**: Cross-reference with known-good WMI subscriptions (SCCM, AV products).
-7. **Document and Remediate**: Remove malicious subscriptions and update detection rules.
+1. **Define Detection Scope** — Identify the specific wmi persistence techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for wmi persistence.
+3. **Build Detection Queries** — Write detection rules, Sigma rules, or SIEM queries targeting wmi persistence indicators.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-## Key Concepts
+## Tools
 
-| Concept | Description |
-|---------|-------------|
-| Sysmon Event 19 | WmiEventFilter creation detected |
-| Sysmon Event 20 | WmiEventConsumer creation detected |
-| Sysmon Event 21 | WmiEventConsumerToFilter binding detected |
-| T1546.003 | Event Triggered Execution: WMI Event Subscription |
-| CommandLineEventConsumer | Executes system commands when filter triggers |
-| ActiveScriptEventConsumer | Runs VBScript/JScript when filter triggers |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| Sysmon | Windows event monitoring for WMI activity |
-| WMI Explorer | GUI tool for browsing WMI namespaces |
-| Autoruns | Sysinternals tool listing persistence mechanisms |
-| PowerShell Get-WMIObject | Enumerate WMI event subscriptions |
-| Splunk | SIEM analysis of Sysmon WMI events |
-| Velociraptor | Endpoint WMI artifact collection |
-
-## When NOT to Use
-
-- You need to perform the attack to test detection (use performing-* skills)
-- Task is about analyzing past incidents (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about threat hunting proactively (use hunting-* skills)
-- You don't have access to logs or monitoring data
-- Task requires incident response (use IR skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Capturing traffic on networks without authorization or privacy considerations
-- Leaving packet captures containing sensitive data unencrypted on disk
-- Deploying inline blocking rules without testing for false positives first
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Captures verified as complete with no dropped packets
-- Detection rules tested against known-benign traffic for false positive rate
-- Alert thresholds validated and tuned to reduce noise
-
-## Output Format
-
-```
-Hunt ID: TH-WMI-[DATE]-[SEQ]
-Technique: T1546.003
-Host: [Hostname]
-Event Type: [EventFilter|EventConsumer|Binding]
-Consumer Type: [CommandLine|ActiveScript]
-WQL Query: [Filter query text]
-Command: [Executed command or script]
-Risk Level: [Critical/High/Medium/Low]
-Recommended Action: [Remove subscription, investigate lateral movement]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All wmi persistence procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

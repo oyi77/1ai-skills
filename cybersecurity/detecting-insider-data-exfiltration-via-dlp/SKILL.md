@@ -21,9 +21,7 @@ nist_csf:
 - GV.OV-01
 - DE.AE-02
 ---
-
-# Detecting Insider Data Exfiltration via DLP
-
+# Detecting Insider Data Exfiltration Via Dlp
 
 ## When to Use
 
@@ -39,70 +37,26 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-Analyze endpoint activity logs, cloud storage access, and email DLP events to detect
-data exfiltration patterns using behavioral baselines and statistical anomaly detection.
+1. **Define Detection Scope** — Identify the specific insider data exfiltration techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for insider data exfiltration.
+3. **Build Detection Queries** — Write dlp queries targeting insider data exfiltration indicators. Use platform-specific query language for optimal performance.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-```python
-import pandas as pd
+## Tools
 
-df = pd.read_csv("file_activity.csv", parse_dates=["timestamp"])
-# Baseline: average daily upload volume per user
-baseline = df.groupby(["user", df["timestamp"].dt.date])["bytes_transferred"].sum()
-user_avg = baseline.groupby("user").mean()
+- **dlp** — Primary tool for this skill
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
-# Alert on users exceeding 3x their baseline
-today = df[df["timestamp"].dt.date == pd.Timestamp.today().date()]
-today_totals = today.groupby("user")["bytes_transferred"].sum()
-anomalies = today_totals[today_totals > user_avg * 3]
-```
-
-Key indicators:
-1. Upload volume exceeding 3x daily baseline
-2. Access to files outside normal scope
-3. Bulk downloads before resignation
-4. Off-hours file access patterns
-5. USB/external device usage spikes
-
-## Examples
-
-```python
-# Detect off-hours activity
-df["hour"] = df["timestamp"].dt.hour
-off_hours = df[(df["hour"] < 6) | (df["hour"] > 22)]
-suspicious = off_hours.groupby("user").size().sort_values(ascending=False)
-```
-## When NOT to Use
-
-- You need to perform the attack to test detection (use performing-* skills)
-- Task is about analyzing past incidents (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about threat hunting proactively (use hunting-* skills)
-- You don't have access to logs or monitoring data
-- Task requires incident response (use IR skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Treating compliance checklists as security guarantees rather than minimum baselines
-- Failing to document exceptions and risk acceptance decisions
-- Relying on point-in-time audits instead of continuous monitoring
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All insider data exfiltration procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

@@ -33,8 +33,7 @@ nist_csf:
 - DE.AE-07
 - ID.RA-05
 ---
-
-# Hunting for Data Exfiltration Indicators
+# Hunting For Data Exfiltration Indicators
 
 ## When to Use
 
@@ -54,98 +53,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Define Exfiltration Channels**: Identify potential channels (HTTP/S uploads, DNS tunneling, email attachments, cloud storage, removable media, encrypted protocols).
-2. **Baseline Normal Data Flows**: Establish baseline outbound data transfer volumes per user, host, and destination over a 30-day window.
-3. **Detect Volume Anomalies**: Identify hosts or users transferring significantly more data than baseline to external destinations.
-4. **Analyze Transfer Destinations**: Check destination domains/IPs against threat intel, identify newly registered domains, personal cloud storage, and foreign infrastructure.
-5. **Inspect Protocol Abuse**: Look for DNS tunneling (large/frequent TXT queries), ICMP tunneling, or data hidden in allowed protocols.
-6. **Correlate with File Access**: Link exfiltration indicators to file access events on sensitive file shares, databases, or repositories.
-7. **Report and Contain**: Document findings with evidence, estimate data exposure, and recommend containment actions.
+1. **Define Detection Scope** — Identify the specific  techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for .
+3. **Build Detection Queries** — Write data exfiltration indicators queries targeting  indicators. Use platform-specific query language for optimal performance.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-## Key Concepts
+## Tools
 
-| Concept | Description |
-|---------|-------------|
-| T1041 | Exfiltration Over C2 Channel |
-| T1048 | Exfiltration Over Alternative Protocol |
-| T1048.001 | Exfiltration Over Symmetric Encrypted Non-C2 |
-| T1048.002 | Exfiltration Over Asymmetric Encrypted Non-C2 |
-| T1048.003 | Exfiltration Over Unencrypted/Obfuscated Non-C2 |
-| T1567 | Exfiltration Over Web Service |
-| T1567.002 | Exfiltration to Cloud Storage |
-| T1052 | Exfiltration Over Physical Medium |
-| T1029 | Scheduled Transfer |
-| T1030 | Data Transfer Size Limits (staging) |
-| T1537 | Transfer Data to Cloud Account |
-| T1020 | Automated Exfiltration |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| Splunk | SIEM for data volume analysis and SPL queries |
-| Zeek | Network metadata for data flow analysis |
-| Microsoft Defender for Cloud Apps | CASB for cloud exfiltration |
-| Netskope | Cloud DLP and exfiltration detection |
-| Suricata | Network IDS for protocol anomaly detection |
-| RITA | DNS exfiltration and beacon detection |
-| ExtraHop | Network traffic analysis for data flow |
-
-## Common Scenarios
-
-1. **Cloud Storage Exfiltration**: User uploads sensitive documents to personal Google Drive or Dropbox via browser.
-2. **DNS Tunneling**: Malware exfiltrates data encoded in DNS subdomain queries to attacker-controlled nameserver.
-3. **HTTPS Upload**: Compromised system POSTs large data blobs to C2 server over encrypted HTTPS.
-4. **Email Attachment Exfiltration**: Insider forwards sensitive documents to personal email accounts.
-5. **Staging and Compression**: Adversary stages data in compressed archives before slow exfiltration to avoid detection.
-
-## When NOT to Use
-
-- You're responding to a known incident (use IR skills)
-- Task is about analyzing confirmed malware (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about vulnerability scanning (use scanning tools)
-- You don't have access to endpoint/network data
-- Task requires compliance auditing (use auditing-* skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Capturing traffic on networks without authorization or privacy considerations
-- Leaving packet captures containing sensitive data unencrypted on disk
-- Deploying inline blocking rules without testing for false positives first
+- **data exfiltration indicators** — Primary tool for this skill
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Captures verified as complete with no dropped packets
-- Detection rules tested against known-benign traffic for false positive rate
-- Alert thresholds validated and tuned to reduce noise
-
-## Output Format
-
-```
-Hunt ID: TH-EXFIL-[DATE]-[SEQ]
-Exfiltration Channel: [HTTP/DNS/Email/Cloud/USB]
-Source: [Host/User]
-Destination: [Domain/IP/Service]
-Data Volume: [Bytes/MB/GB]
-Time Period: [Start - End]
-Protocol: [HTTPS/DNS/SMTP/SMB]
-Files Involved: [Count/Types]
-Risk Level: [Critical/High/Medium/Low]
-Confidence: [High/Medium/Low]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All  procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

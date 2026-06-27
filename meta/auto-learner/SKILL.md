@@ -14,35 +14,8 @@ persona:
   expertise: Machine learning, pattern recognition, self-supervision
   philosophy: Learn by doing, improve by reflecting
 ---
-## Auto Learner
+# Auto Learner
 
-Skills that learn from their own experience.
-
-### Learning Mechanisms
-
-```yaml
-learning_modes:
-  supervised:
-    source: labeled_examples
-    method: fine_tuning
-    
-  reinforcement:
-    source: execution_outcomes
-    method: reward_optimization
-    
-  unsupervised:
-    source: execution_patterns
-    method: pattern_mining
-    
-  self_supervised:
-    source: input_output_pairs
-    method: contrastive_learning
-```
-
-### Usage
-
-```python
-# Enable auto-learning
 ## When to Use
 
 **Trigger phrases:**
@@ -79,41 +52,28 @@ learning_modes:
 - Rollback always available
 - Tests must pass before deployment
 
-## When NOT to Use
-
-- When the learning source contains copyrighted material
-- When learned patterns could encode sensitive or biased information
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- Learning source quality is not validated before integration
-- Agent does not test learned patterns before deploying them
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Source quality is validated before learning integration
-- [ ] Learned patterns are tested before deployment
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Auto Learner is a foundational meta-skills skill that provides skill management capabilities for the agent ecosystem.
 
-## Process
+## Architecture
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- **Input layer** — Receives and validates incoming requests
+- **Processing layer** — Core logic for skill management
+- **Output layer** — Formats and delivers results
+- **State management** — Maintains context across invocations
+
+## Configuration
+
+- Set up required environment variables and paths
+- Configure logging level and output format
+- Define resource limits (memory, time, API calls)
+- Enable/disable features via configuration flags
+
+## Integration
+
+- Exposes standard interfaces for other skills to consume
+- Supports event-driven and request-response patterns
+- Compatible with the 1ai-skills hook system
+- Logs metrics for the skill performance monitor
+

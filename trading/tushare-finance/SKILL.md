@@ -12,17 +12,8 @@ allowed-tools:
 - Bash(python:*)
 - Read
 ---
-persona:
-  name: "Domain Expert"
-  title: "Master of Tushare Finance"
-  expertise: ['Trading Excellence', 'Best Practices', 'Professional Standards']
-  philosophy: "Excellence is not a skill, it's an attitude."
-  credentials: ['Industry leader', 'Practiced professional', 'Thought leader']
-  principles: ['Quality first', 'Continuous improvement', 'Evidence-based', 'Customer focused']
+# Tushare Finance
 
-
-
-# Tushare 金融数据 Skill
 ## When to Use
 
 **Trigger phrases:**
@@ -38,125 +29,40 @@ persona:
 
 本 skill 通过 Tushare Pro API 获取中国金融市场数据，支持 220+ 个数据接口。
 
-## 快速开始
-
-Configure your Tushare Pro token and verify Python dependencies before querying financial data.
-
-
-### 1. Token 配置
-
-**询问用户**：是否已配置 Tushare Token？
-
-如未配置，引导用户：
-1. 访问 https://tushare.pro 注册
-2. 获取 Token
-3. 配置环境变量：`export TUSHARE_TOKEN="your_token"`
-
-### 2. 验证依赖
-
-检查 Python 环境：
-```bash
-python -c "import tushare, pandas; print('OK')"
-```
-
-如报错，安装依赖：
-```bash
-pip install tushare pandas
-```
-
-## 常用接口速查
-
-| 数据类型 | 接口方法 | 说明 |
-|---------|---------|------|
-| 股票列表 | `pro.stock_basic()` | 获取所有股票列表 |
-| 日线行情 | `pro.daily()` | 获取日线行情数据 |
-| 财务指标 | `pro.fina_indicator()` | 财务指标（ROE等） |
-| 利润表 | `pro.income()` | 利润表数据 |
-| 指数行情 | `pro.index_daily()` | 指数日线数据 |
-| 基金净值 | `pro.fund_nav()` | 基金净值数据 |
-| GDP数据 | `pro.gdp()` | 国内生产总值 |
-| CPI数据 | `pro.cpi()` | 居民消费价格指数 |
-
-**完整接口列表**：查看 [接口文档索引](reference/README.md)
-
-## 数据获取流程
-
-1. **查找接口**：根据需求在 [接口索引](reference/README.md) 找到对应接口
-2. **阅读文档**：查看 `reference/接口文档/[接口名].md` 了解参数
-3. **编写代码**：
-   ```python
-   import tushare as ts
-
-   # 初始化（使用环境变量中的 Token）
-   pro = ts.pro_api()
-
-   # 调用接口
-   df = pro.daily(ts_code='000001.SZ', start_date='20241201', end_date='20241231')
-   ```
-4. **返回结果**：DataFrame 格式
-
-## 参数格式说明
-
-- **日期**：YYYYMMDD（如 20241231）
-- **股票代码**：ts_code 格式（如 000001.SZ, 600000.SH）
-- **返回格式**：pandas DataFrame
-
-## 接口文档参考
-
-**接口索引**：[reference/README.md](reference/README.md)
-
-接口文档按类别组织：
-- 股票数据（39 个接口）
-- 指数数据（18 个接口）
-- 基金数据（11 个接口）
-- 期货期权（16 个接口）
-- 宏观经济（10 个接口）
-- 港股美股（23 个接口）
-- 债券数据（16 个接口）
-
-## 参考资源
-
-- **Tushare 官方文档**：https://tushare.pro/document/2
-- **API 测试工具**：https://tushare.pro/document/1
-
-## When NOT to Use
-
-- When the exchange or platform does not support API-based operations
-- When the trading activity involves regulated instruments requiring compliance approval
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- Trades execute without verifying market conditions and order book state
-- Agent does not implement stop-loss or risk management controls
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Market conditions and order book state are verified before trade execution
-- [ ] Stop-loss and risk management controls are in place for all positions
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
-
-Load `references/trading-checklist.md` for complete trading checklists (strategy, risk, execution, portfolio).
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Tushare Finance provides market analysis capabilities with risk management.
 
-## Process
+## Workflow
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+1. **Research** — Analyze market conditions and opportunities
+2. **Plan** — Define entry, exit, and position sizing
+3. **Execute** — Place trades with proper order types
+4. **Monitor** — Track positions and market changes
+5. **Manage risk** — Apply stop-losses and hedging
+6. **Review** — Post-trade analysis and journaling
+
+## Risk Management
+
+- Never risk more than 1-2% of portfolio per trade
+- Set stop-loss before entering any position
+- Diversify across uncorrelated assets
+- Size positions based on volatility (ATR)
+- Have a maximum daily loss limit
+
+## Key Metrics
+
+- Win rate and profit factor
+- Sharpe ratio and max drawdown
+- Average risk-reward ratio
+- Expectancy per trade
+- Correlation to benchmark
+
+## Discipline Rules
+
+- Follow your trading plan — no impulsive trades
+- Cut losses short, let winners run
+- Review every trade in your journal
+- Never revenge trade after a loss
+- Take breaks after consecutive losses
+

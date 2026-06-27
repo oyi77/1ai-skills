@@ -33,8 +33,7 @@ nist_csf:
 - ID.AM-05
 - GV.OC-02
 ---
-
-# Implementing OT Network Traffic Analysis with Nozomi
+# Implementing Ot Network Traffic Analysis With Nozomi
 
 ## When to Use
 
@@ -56,258 +55,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Deploy Guardian Sensors for Passive Monitoring
+1. **Assess Requirements** — Evaluate current environment and define ot network traffic analysis implementation requirements.
+2. **Design Architecture** — Plan the ot network traffic analysis architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up nozomi for ot network traffic analysis according to vendor best practices and security guidelines.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-```python
-#!/usr/bin/env python3
-"""Nozomi Guardian Deployment Manager and Alert Analyzer.
+## Tools
 
-Manages Nozomi Guardian sensor deployment validation, asset inventory
-extraction, and threat alert analysis for OT environments.
-"""
-
-import json
-import sys
-from collections import defaultdict
-from datetime import datetime
-from typing import Dict, List, Optional
-
-try:
-    import requests
-except ImportError:
-    print("Install requests: pip install requests")
-    sys.exit(1)
-
-
-class NozomiGuardianManager:
-    """Manages Nozomi Networks Guardian for OT monitoring."""
-
-    def __init__(self, guardian_url: str, api_token: str, verify_ssl: bool = False):
-        self.guardian_url = guardian_url.rstrip("/")
-        self.session = requests.Session()
-        self.session.headers.update({
-            "Authorization": f"Bearer {api_token}",
-            "Content-Type": "application/json",
-        })
-        self.session.verify = verify_ssl
-
-    def get_nodes(self, node_type: Optional[str] = None) -> List[Dict]:
-        """Retrieve discovered network nodes (assets)."""
-        params = {}
-        if node_type:
-            params["type"] = node_type
-        resp = self.session.get(f"{self.guardian_url}/api/v1/nodes", params=params)
-        resp.raise_for_status()
-        return resp.json().get("result", [])
-
-    def get_alerts(self, severity: str = "high", limit: int = 100) -> List[Dict]:
-        """Retrieve security alerts."""
-        params = {"severity": severity, "limit": limit, "status": "open"}
-        resp = self.session.get(f"{self.guardian_url}/api/v1/alerts", params=params)
-        resp.raise_for_status()
-        return resp.json().get("result", [])
-
-    def get_links(self) -> List[Dict]:
-        """Retrieve communication links between nodes."""
-        resp = self.session.get(f"{self.guardian_url}/api/v1/links")
-        resp.raise_for_status()
-        return resp.json().get("result", [])
-
-    def get_vulnerabilities(self) -> List[Dict]:
-        """Retrieve detected vulnerabilities."""
-        resp = self.session.get(f"{self.guardian_url}/api/v1/vulnerabilities")
-        resp.raise_for_status()
-        return resp.json().get("result", [])
-
-    def validate_deployment(self):
-        """Validate Guardian sensor deployment and coverage."""
-        print(f"\n{'='*65}")
-        print("NOZOMI GUARDIAN DEPLOYMENT VALIDATION")
-        print(f"{'='*65}")
-        print(f"Guardian URL: {self.guardian_url}")
-        print(f"Validation Time: {datetime.now().isoformat()}")
-
-        # Check system status
-        try:
-            resp = self.session.get(f"{self.guardian_url}/api/v1/system/status")
-            if resp.status_code == 200:
-                status = resp.json()
-                print(f"\n--- SYSTEM STATUS ---")
-                print(f"  Version: {status.get('version', 'N/A')}")
-                print(f"  Uptime: {status.get('uptime', 'N/A')}")
-                print(f"  Packets Processed: {status.get('packets_processed', 'N/A')}")
-                print(f"  Threat Intelligence: {status.get('threat_intelligence_version', 'N/A')}")
-        except requests.RequestException as e:
-            print(f"  [!] System status unavailable: {e}")
-
-        # Asset discovery summary
-        nodes = self.get_nodes()
-        print(f"\n--- ASSET DISCOVERY ---")
-        print(f"  Total Nodes Discovered: {len(nodes)}")
-
-        type_counts = defaultdict(int)
-        vendor_counts = defaultdict(int)
-        protocol_set = set()
-        for node in nodes:
-            type_counts[node.get("type", "unknown")] += 1
-            vendor_counts[node.get("vendor", "Unknown")] += 1
-            for proto in node.get("protocols", []):
-                protocol_set.add(proto)
-
-        print(f"\n  By Type:")
-        for ntype, count in sorted(type_counts.items(), key=lambda x: -x[1]):
-            print(f"    {ntype}: {count}")
-
-        print(f"\n  By Vendor:")
-        for vendor, count in sorted(vendor_counts.items(), key=lambda x: -x[1])[:10]:
-            print(f"    {vendor}: {count}")
-
-        print(f"\n  Protocols Observed: {', '.join(sorted(protocol_set))}")
-
-        # Alert summary
-        alerts = self.get_alerts(severity="high")
-        print(f"\n--- ALERT SUMMARY ---")
-        print(f"  High/Critical Alerts: {len(alerts)}")
-
-        alert_types = defaultdict(int)
-        for alert in alerts:
-            alert_types[alert.get("type_id", "unknown")] += 1
-
-        for atype, count in sorted(alert_types.items(), key=lambda x: -x[1])[:10]:
-            print(f"    {atype}: {count}")
-
-        # Vulnerability summary
-        vulns = self.get_vulnerabilities()
-        print(f"\n--- VULNERABILITY SUMMARY ---")
-        print(f"  Total Vulnerabilities: {len(vulns)}")
-
-        sev_counts = defaultdict(int)
-        for vuln in vulns:
-            sev_counts[vuln.get("severity", "unknown")] += 1
-
-        for sev in ["critical", "high", "medium", "low"]:
-            if sev in sev_counts:
-                print(f"    {sev.capitalize()}: {sev_counts[sev]}")
-
-    def analyze_communication_patterns(self):
-        """Analyze OT communication patterns for anomalies."""
-        links = self.get_links()
-        nodes = {n.get("id"): n for n in self.get_nodes()}
-
-        print(f"\n--- COMMUNICATION ANALYSIS ---")
-        print(f"  Total Communication Links: {len(links)}")
-
-        # Identify cross-zone communications
-        cross_zone = []
-        for link in links:
-            src_node = nodes.get(link.get("source_id"), {})
-            dst_node = nodes.get(link.get("destination_id"), {})
-            src_zone = src_node.get("zone", "unknown")
-            dst_zone = dst_node.get("zone", "unknown")
-
-            if src_zone != dst_zone and src_zone != "unknown" and dst_zone != "unknown":
-                cross_zone.append({
-                    "source": src_node.get("label", "Unknown"),
-                    "source_zone": src_zone,
-                    "destination": dst_node.get("label", "Unknown"),
-                    "dest_zone": dst_zone,
-                    "protocols": link.get("protocols", []),
-                })
-
-        if cross_zone:
-            print(f"\n  Cross-Zone Communications: {len(cross_zone)}")
-            for comm in cross_zone[:10]:
-                print(f"    {comm['source']} ({comm['source_zone']}) -> "
-                      f"{comm['destination']} ({comm['dest_zone']}) "
-                      f"via {', '.join(comm['protocols'])}")
-
-
-if __name__ == "__main__":
-    manager = NozomiGuardianManager(
-        guardian_url="https://nozomi-guardian.plant.local",
-        api_token="your-api-token",
-    )
-
-    manager.validate_deployment()
-    manager.analyze_communication_patterns()
-```
-
-## Key Concepts
-
-| Term | Definition |
-|------|------------|
-| Guardian | Nozomi Networks passive sensor that monitors OT network traffic via SPAN/TAP without generating additional traffic |
-| Vantage | Nozomi cloud-based central management platform for aggregating data across multiple Guardian sensors |
-| Behavioral Anomaly Detection (BAD) | Nozomi's AI-driven approach to detecting deviations from learned normal OT network behavior |
-| Smart Polling | Nozomi's active query feature using native protocols to safely extract additional device details |
-| Asset Intelligence | Nozomi's automatic identification and classification of OT/IoT assets from network traffic |
-| Threat Intelligence Feed | Nozomi Labs-maintained feed of OT-specific threat indicators, updated based on global honeypot data |
-
-## When NOT to Use
-
-- You need to test the implementation (use performing-* skills)
-- Task is about configuring existing tools (use configuring-* skills)
-- You need to analyze security events (use analyzing-* skills)
-- Task is about building detection rules (use building-* skills)
-- You don't have access to the target environment
-- Task requires vendor-specific expertise (consult vendor docs)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Capturing traffic on networks without authorization or privacy considerations
-- Leaving packet captures containing sensitive data unencrypted on disk
-- Deploying inline blocking rules without testing for false positives first
+- **nozomi** — Primary tool for this skill
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Captures verified as complete with no dropped packets
-- Detection rules tested against known-benign traffic for false positive rate
-- Alert thresholds validated and tuned to reduce noise
-
-## Output Format
-
-```
-NOZOMI GUARDIAN OT MONITORING REPORT
-=======================================
-Site: [site name]
-Date: YYYY-MM-DD
-
-ASSET VISIBILITY:
-  Total Assets: [count]
-  PLCs: [count] | HMIs: [count] | Switches: [count]
-  Protocols: [list]
-  Vendors: [top 5]
-
-THREAT DETECTION:
-  Critical Alerts: [count]
-  High Alerts: [count]
-  Top Alert Categories: [list]
-
-VULNERABILITIES:
-  Critical: [count]
-  High: [count]
-
-NETWORK ANALYSIS:
-  Communication Links: [count]
-  Cross-Zone Flows: [count]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All ot network traffic analysis procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

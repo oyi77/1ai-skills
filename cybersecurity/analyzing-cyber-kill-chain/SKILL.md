@@ -42,135 +42,23 @@ Use this skill when:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Map Observed Actions to Kill Chain Phases
+1. **Scope the Analysis** — Define what cyber kill chain artifacts or data sources to examine and the investigation timeline.
+2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
+3. **Extract Key Indicators** — Parse and extract relevant cyber kill chain data points from collected artifacts.
+4. **Correlate Findings** — Cross-reference extracted data with other sources (threat intel, logs, timelines).
+5. **Build Timeline** — Construct a chronological sequence of events related to cyber kill chain.
+6. **Document Analysis** — Write findings report with evidence, conclusions, and recommendations.
 
-The Lockheed Martin Cyber Kill Chain consists of seven phases. Map all observed adversary actions:
+## Tools
 
-**Phase 1 - Reconnaissance**: Adversary gathers target information before attack.
-- Indicators: DNS queries from adversary IP, LinkedIn scraping, job posting analysis, Shodan scans of organization infrastructure
-
-**Phase 2 - Weaponization**: Adversary creates attack tool (malware + exploit).
-- Indicators: Malware compilation timestamps, exploit document metadata, builder artifacts in malware samples
-
-**Phase 3 - Delivery**: Adversary transmits weapon to target.
-- Indicators: Phishing emails, malicious attachments, drive-by downloads, USB drops, supply chain compromise
-
-**Phase 4 - Exploitation**: Adversary exploits vulnerability to execute code.
-- Indicators: CVE exploitation events in application/OS logs, memory corruption artifacts, shellcode execution
-
-**Phase 5 - Installation**: Adversary establishes persistence on target.
-- Indicators: New scheduled tasks, registry run keys, service installation, web shells, bootkits
-
-**Phase 6 - Command & Control (C2)**: Adversary communicates with compromised system.
-- Indicators: Beaconing traffic (regular intervals), DNS tunneling, HTTPS to uncommon domains, C2 framework signatures (Cobalt Strike, Sliver)
-
-**Phase 7 - Actions on Objectives**: Adversary achieves goals.
-- Indicators: Data staging/exfiltration, lateral movement, ransomware execution, destructive activity
-
-### Step 2: Identify Phase Completion and Detection Points
-
-Create a phase matrix for the incident:
-```
-Phase 1: Recon        → Completed (undetected)
-Phase 2: Weaponize    → Completed (undetected — pre-attack)
-Phase 3: Delivery     → Completed; phishing email bypassed SEG
-Phase 4: Exploit      → Completed; CVE-2023-23397 exploited
-Phase 5: Install      → DETECTED: EDR flagged scheduled task creation (attack stalled here)
-Phase 6: C2           → Not achieved (installation blocked)
-Phase 7: Objectives   → Not achieved
-```
-
-For each phase completed without detection, document the defensive control gap.
-
-### Step 3: Map to MITRE ATT&CK for Technique Detail
-
-Each kill chain phase maps to multiple ATT&CK tactics:
-- Delivery → Initial Access (TA0001)
-- Exploitation → Execution (TA0002)
-- Installation → Persistence (TA0003), Privilege Escalation (TA0004)
-- C2 → Command and Control (TA0011)
-- Actions on Objectives → Exfiltration (TA0010), Impact (TA0040)
-
-Within each phase, enumerate specific ATT&CK techniques observed and map to existing detections.
-
-### Step 4: Identify Courses of Action per Phase
-
-For each phase, document applicable defensive courses of action (COAs):
-- **Detect COA**: What detection would alert on adversary activity in this phase?
-- **Deny COA**: What control would prevent the adversary from completing this phase?
-- **Disrupt COA**: What control would interrupt the adversary mid-phase?
-- **Degrade COA**: What control would reduce the adversary's effectiveness in this phase?
-- **Deceive COA**: What deception (honeypots, canary tokens) would expose activity in this phase?
-- **Destroy COA**: What active defense capability would neutralize adversary infrastructure?
-
-### Step 5: Produce Kill Chain Analysis Report
-
-Structure findings as:
-1. Attack narrative (timeline of phases)
-2. Phase-by-phase analysis with evidence
-3. Detection point analysis (what worked, what failed)
-4. Defensive recommendation per phase prioritized by cost/effectiveness
-5. Control improvement roadmap
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **Kill Chain** | Sequential model of adversary intrusion phases; breaking any link theoretically stops the attack |
-| **Courses of Action (COA)** | Defensive responses mapped to each kill chain phase: detect, deny, disrupt, degrade, deceive, destroy |
-| **Beaconing** | Regular, periodic C2 check-in pattern from compromised host to adversary server; detectable by frequency analysis |
-| **Phase Completion** | Adversary successfully finishes a kill chain phase and progresses to the next; defense-in-depth aims to prevent this |
-| **Intelligence Gain/Loss** | Analysis of whether detecting at Phase 5 (vs. Phase 3) reduced intelligence about adversary capabilities or intent |
-
-## When NOT to Use
-
-- You need to perform the attack, not analyze it (use performing-* skills)
-- Task is about detection, not analysis (use detecting-* skills)
-- You need to implement controls (use implementing-* skills)
-- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
-- You don't have access to the artifacts/logs to analyze
-- Task requires real-time monitoring (use SOC tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Sharing sensitive findings or credentials in unencrypted communications
-- Failing to properly scope and contain the assessment before starting
+- **Forensic Toolkit** — Evidence collection and analysis
+- **Timeline Tools** — Chronological event reconstruction
+- **Log Analysis Platform** — Centralized log parsing and search
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Tools & Systems
-
-- **MITRE ATT&CK Navigator**: Overlay kill chain phases with ATT&CK technique coverage for integrated analysis
-- **Elastic Security EQL**: Event Query Language for querying multi-phase attack sequences in Elastic SIEM
-- **Splunk ES**: Timeline visualization and correlation searches for kill chain phase sequencing
-- **MISP**: Kill chain tagging via galaxy clusters for structured incident event documentation
-
-## Common Pitfalls
-
-- **Linear assumption**: Adversaries don't always progress linearly — they may skip phases (weaponization already complete from previous campaign) or loop back (re-establish C2 after detection).
-- **Ignoring Phases 1 and 2**: Reconnaissance and weaponization occur before the defender has visibility. Intelligence about these phases requires external sources (OSINT, threat intelligence).
-- **Missing insider threats**: The kill chain was designed for external adversaries. Insider threats may skip directly to Phase 7 without traversing earlier phases.
-- **Confusing with ATT&CK tactics**: The 7-phase kill chain and 14 ATT&CK tactics are complementary but not directly equivalent. Maintain distinction to prevent analytic confusion.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All cyber kill chain procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

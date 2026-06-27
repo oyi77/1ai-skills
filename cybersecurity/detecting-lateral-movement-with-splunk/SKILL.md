@@ -27,8 +27,7 @@ nist_csf:
 - DE.AE-07
 - ID.RA-05
 ---
-
-# Detecting Lateral Movement with Splunk
+# Detecting Lateral Movement With Splunk
 
 ## When to Use
 
@@ -48,98 +47,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Define Lateral Movement Scope**: Identify which lateral movement techniques to hunt (RDP, SMB/Admin Shares, WinRM, PsExec, WMI, DCOM, SSH).
-2. **Query Authentication Events**: Use SPL to search for Type 3 (Network) and Type 10 (RemoteInteractive) logons across the environment.
-3. **Build Authentication Graphs**: Map source-to-destination authentication relationships to identify unusual connection patterns.
-4. **Detect First-Time Relationships**: Identify new source-destination pairs that have not been seen in the historical baseline.
-5. **Correlate with Process Activity**: Link authentication events to subsequent process creation on destination hosts.
-6. **Identify Anomalous Patterns**: Flag lateral movement to sensitive servers, unusual hours, service account misuse, or rapid multi-host access.
-7. **Report and Contain**: Document lateral movement path, affected systems, and coordinate containment response.
+1. **Define Detection Scope** — Identify the specific lateral movement techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for lateral movement.
+3. **Build Detection Queries** — Write splunk queries targeting lateral movement indicators. Use platform-specific query language for optimal performance.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-## Key Concepts
+## Tools
 
-| Concept | Description |
-|---------|-------------|
-| T1021 | Remote Services (parent technique) |
-| T1021.001 | Remote Desktop Protocol (RDP) |
-| T1021.002 | SMB/Windows Admin Shares |
-| T1021.003 | Distributed COM (DCOM) |
-| T1021.004 | SSH |
-| T1021.006 | Windows Remote Management (WinRM) |
-| T1570 | Lateral Tool Transfer |
-| T1047 | Windows Management Instrumentation |
-| T1569.002 | Service Execution (PsExec) |
-| Logon Type 3 | Network logon (SMB, WinRM, mapped drives) |
-| Logon Type 10 | Remote Interactive (RDP) |
-| Event ID 4624 | Successful logon |
-| Event ID 4648 | Explicit credential logon (runas, PsExec) |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| Splunk Enterprise | SIEM for log aggregation and SPL queries |
-| Splunk Enterprise Security | Threat detection and notable events |
-| Windows Event Forwarding | Centralize Windows logs |
-| Sysmon | Detailed process and network telemetry |
-| BloodHound | AD attack path analysis |
-| PingCastle | AD security assessment |
-
-## Common Scenarios
-
-1. **PsExec Lateral Movement**: Adversary uses PsExec to execute commands on remote systems via SMB, generating Type 3 logon with ADMIN$ share access.
-2. **RDP Pivoting**: Attacker RDPs to internal systems using stolen credentials, creating Type 10 logon events.
-3. **WMI Remote Execution**: Adversary uses WMIC process call create to spawn processes on remote hosts.
-4. **WinRM PowerShell Remoting**: Attacker uses Enter-PSSession or Invoke-Command to execute code on remote systems.
-5. **Pass-the-Hash via SMB**: Compromised NTLM hashes used to authenticate to remote systems without knowing the plaintext password.
-
-## When NOT to Use
-
-- You need to perform the attack to test detection (use performing-* skills)
-- Task is about analyzing past incidents (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about threat hunting proactively (use hunting-* skills)
-- You don't have access to logs or monitoring data
-- Task requires incident response (use IR skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Capturing traffic on networks without authorization or privacy considerations
-- Leaving packet captures containing sensitive data unencrypted on disk
-- Deploying inline blocking rules without testing for false positives first
+- **splunk** — Primary tool for this skill
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Captures verified as complete with no dropped packets
-- Detection rules tested against known-benign traffic for false positive rate
-- Alert thresholds validated and tuned to reduce noise
-
-## Output Format
-
-```
-Hunt ID: TH-LATMOV-[DATE]-[SEQ]
-Movement Type: [RDP/SMB/WinRM/WMI/DCOM/PsExec]
-Source Host: [Hostname/IP]
-Destination Host: [Hostname/IP]
-Account Used: [Username]
-Logon Type: [3/10/other]
-First Seen: [Timestamp]
-Event Count: [Number of events]
-Risk Level: [Critical/High/Medium/Low]
-Lateral Movement Path: [A -> B -> C -> D]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All lateral movement procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

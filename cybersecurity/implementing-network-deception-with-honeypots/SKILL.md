@@ -21,8 +21,7 @@ nist_csf:
 - DE.AE-06
 - PR.IR-01
 ---
-
-# Implementing Network Deception with Honeypots
+# Implementing Network Deception With Honeypots
 
 ## When to Use
 
@@ -43,80 +42,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Plan Deployment**: Select honeypot types and network placement strategy.
-2. **Install Honeypot**: Deploy OpenCanary, Cowrie, or T-Pot on dedicated host.
-3. **Configure Services**: Enable emulated services (SSH, HTTP, SMB, FTP, RDP).
-4. **Set Up Alerting**: Configure log forwarding to SIEM and alert channels.
-5. **Deploy Canary Tokens**: Place credential files, shares, and DNS entries.
-6. **Monitor Interactions**: Analyze honeypot logs for attacker activity.
-7. **Tune and Maintain**: Update configurations based on detection results.
+1. **Assess Requirements** — Evaluate current environment and define network deception implementation requirements.
+2. **Design Architecture** — Plan the network deception architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up honeypots for network deception according to vendor best practices and security guidelines.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-## Key Concepts
+## Tools
 
-| Concept | Description |
-|---------|-------------|
-| OpenCanary | Lightweight Python honeypot with modular service emulation |
-| Cowrie | Medium-interaction SSH/Telnet honeypot capturing commands |
-| T-Pot | Multi-honeypot platform with ELK stack visualization |
-| Canary Token | Tripwire credential or file that alerts when accessed |
-| Low-Interaction | Emulates services at protocol level without full OS |
-| High-Interaction | Full OS honeypot capturing complete attacker sessions |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| OpenCanary | Modular honeypot daemon with service emulation |
-| Cowrie | SSH/Telnet honeypot with session recording |
-| T-Pot | All-in-one multi-honeypot platform |
-| Dionaea | Malware-capturing honeypot for exploit detection |
-| Splunk/Elastic | SIEM for honeypot alert aggregation |
-
-## When NOT to Use
-
-- You need to test the implementation (use performing-* skills)
-- Task is about configuring existing tools (use configuring-* skills)
-- You need to analyze security events (use analyzing-* skills)
-- Task is about building detection rules (use building-* skills)
-- You don't have access to the target environment
-- Task requires vendor-specific expertise (consult vendor docs)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Capturing traffic on networks without authorization or privacy considerations
-- Leaving packet captures containing sensitive data unencrypted on disk
-- Deploying inline blocking rules without testing for false positives first
+- **honeypots** — Primary tool for this skill
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Captures verified as complete with no dropped packets
-- Detection rules tested against known-benign traffic for false positive rate
-- Alert thresholds validated and tuned to reduce noise
-
-## Output Format
-
-```
-Alert: HONEYPOT-[SERVICE]-[DATE]-[SEQ]
-Honeypot: [Hostname/IP]
-Service: [SSH/HTTP/SMB/FTP/RDP]
-Source IP: [Attacker IP]
-Interaction: [Login attempt/Port scan/File access]
-Credentials Used: [Username:Password if applicable]
-Commands Executed: [For SSH honeypots]
-Risk Level: [Critical/High/Medium/Low]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All network deception procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

@@ -26,8 +26,7 @@ nist_csf:
 - DE.AE-07
 - ID.RA-05
 ---
-
-# Hunting for Persistence via WMI Subscriptions
+# Hunting For Persistence Via Wmi Subscriptions
 
 ## When to Use
 
@@ -47,136 +46,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Enumerate Existing WMI Subscriptions**: Query all permanent WMI event subscriptions on target systems. A clean system typically has very few or zero permanent subscriptions, making anomalies easy to spot.
-2. **Monitor WMI Event Creation (Sysmon 19/20/21)**: Sysmon Event 19 captures WmiEventFilter activity, Event 20 captures WmiEventConsumer activity, and Event 21 captures WmiEventConsumerToFilter binding.
-3. **Analyze Consumer Types**: Focus on ActiveScriptEventConsumer (runs VBScript/JScript) and CommandLineEventConsumer (executes commands) -- these are the dangerous types used for persistence.
-4. **Check Event Filter Triggers**: Examine what triggers the subscription. Common malicious triggers include system startup (Win32_ProcessStartTrace), user logon, or timer-based execution intervals.
-5. **Investigate WmiPrvSe.exe Child Processes**: When a WMI subscription fires, the action is executed by WmiPrvSe.exe. Hunt for unusual child processes of WmiPrvSe.exe.
-6. **Correlate with MOF Compilation**: Detect `mofcomp.exe` usage which compiles MOF files to create WMI subscriptions programmatically.
-7. **Validate and Respond**: Confirm malicious subscriptions, remove them, and trace back to the initial infection vector.
+1. **Define Detection Scope** — Identify the specific  techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for .
+3. **Build Detection Queries** — Write persistence via wmi subscriptions queries targeting  indicators. Use platform-specific query language for optimal performance.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-## Key Concepts
+## Tools
 
-| Concept | Description |
-|---------|-------------|
-| T1546.003 | Event Triggered Execution: WMI Event Subscription |
-| __EventFilter | WMI class defining the trigger condition |
-| __EventConsumer | WMI class defining the action to perform |
-| __FilterToConsumerBinding | Links a filter to a consumer |
-| ActiveScriptEventConsumer | Consumer that runs VBScript or JScript |
-| CommandLineEventConsumer | Consumer that executes command lines |
-| WmiPrvSe.exe | WMI Provider Host that executes subscription actions |
-| MOF File | Managed Object Format used to define WMI objects |
-
-## Detection Queries
-
-This section covers detection queries for hunting for persistence via wmi subscriptions.
-
-- Ensure all prerequisites are met before proceeding
-- Follow the documented workflow steps in sequence
-- Record results and any anomalies encountered during this phase
-### Splunk -- WMI Subscription Creation via Sysmon
-```spl
-index=sysmon (EventCode=19 OR EventCode=20 OR EventCode=21)
-| eval event_type=case(EventCode=19, "EventFilter", EventCode=20, "EventConsumer", EventCode=21, "FilterToConsumerBinding")
-| table _time Computer User event_type EventNamespace Name Query Destination Operation
-```
-
-### Splunk -- WMI Subscription via Windows Event 5861
-```spl
-index=wineventlog source="Microsoft-Windows-WMI-Activity/Operational" EventCode=5861
-| table _time Computer NamespaceName Operation PossibleCause
-```
-
-### PowerShell -- Enumerate WMI Subscriptions
-```powershell
-Get-WmiObject -Namespace root\subscription -Class __EventFilter
-Get-WmiObject -Namespace root\subscription -Class __EventConsumer
-Get-WmiObject -Namespace root\subscription -Class __FilterToConsumerBinding
-```
-
-### KQL -- WmiPrvSe.exe Spawning Suspicious Children
-```kql
-DeviceProcessEvents
-| where Timestamp > ago(7d)
-| where InitiatingProcessFileName =~ "wmiprvse.exe"
-| where FileName in~ ("cmd.exe", "powershell.exe", "wscript.exe", "cscript.exe", "mshta.exe", "rundll32.exe")
-| project Timestamp, DeviceName, FileName, ProcessCommandLine
-```
-
-### Sigma Rule
-```yaml
-title: WMI Event Subscription Persistence
-status: stable
-logsource:
-    product: windows
-    category: wmi_event
-detection:
-    selection_consumer:
-        EventID: 20
-        Destination|contains:
-            - 'ActiveScriptEventConsumer'
-            - 'CommandLineEventConsumer'
-    condition: selection_consumer
-level: high
-tags:
-    - attack.persistence
-    - attack.t1546.003
-```
-
-## Common Scenarios
-
-1. **APT29 WMI Persistence**: Creates an ActiveScriptEventConsumer that executes a VBScript backdoor on system startup, surviving reboots and credential resets.
-2. **Turla WMI Backdoor**: Uses Win32_ProcessStartTrace filter combined with CommandLineEventConsumer for covert command execution.
-3. **FIN8 WMI Timer**: Interval-based __IntervalTimerEvent triggering encoded PowerShell downloads every 30 minutes.
-4. **MOF-Based Installation**: Adversary drops a .mof file and compiles it with `mofcomp.exe` to silently create persistent subscriptions.
-
-## When NOT to Use
-
-- You're responding to a known incident (use IR skills)
-- Task is about analyzing confirmed malware (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about vulnerability scanning (use scanning tools)
-- You don't have access to endpoint/network data
-- Task requires compliance auditing (use auditing-* skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Acting on threat intelligence without validating source reliability
-- Sharing classified or sensitive indicators without proper handling procedures
-- Alerting threat actors to detection capabilities through visible response actions
+- **persistence via wmi subscriptions** — Primary tool for this skill
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Output Format
-
-```
-Hunt ID: TH-WMI-[DATE]-[SEQ]
-Host: [Hostname]
-Subscription Name: [Filter/Consumer name]
-Filter Query: [WQL trigger condition]
-Consumer Type: [ActiveScript/CommandLine]
-Consumer Action: [Script content or command]
-Binding: [Filter-to-Consumer link]
-Created: [Timestamp]
-User Context: [SYSTEM/User]
-Risk Level: [Critical/High/Medium/Low]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All  procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

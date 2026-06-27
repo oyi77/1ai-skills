@@ -10,21 +10,7 @@ tags:
 - seo
 - strategy
 ---
-
-
-
 # Pricing Strategy
-
-Design pricing that maximizes revenue and conversion.
-
-## Capabilities
-
-- Pricing tier design (good/better/best)
-- Anchoring and psychology tactics
-- Pricing page layout optimization
-- A/B testing pricing experiments
-- Freemium vs free trial strategy
-- Annual/monthly toggle optimization
 
 ## When to Use
 
@@ -33,132 +19,31 @@ Design pricing that maximizes revenue and conversion.
 - Adding or restructuring pricing tiers
 - Testing pricing experiments
 
-## When NOT to Use
-
-- Task is about sales, not marketing (use sales skills)
-- Task is about product development (use product skills)
-- You need to analyze marketing data (use analytics skills)
-- Task is about customer support (use support skills)
-- You don't have marketing assets
-- Task requires legal review (consult legal)
-
-
-## Pseudo Code
-
-The pricing-strategy workflow follows a standard pipeline pattern.
-
-Core flow:
-```
-# pricing-strategy primary flow
-input = prepare(raw_data)
-result = process(input, config={anchoring, conversion, design, designing, optimization})
-validate(result)
-deliver(result)
-```
-
-Error handling:
-```
-on error:
-  log(error_details)
-  retry_with_backoff(max=3)
-  if still_failing: alert_and_escalate()
-```
-
-
-### Core Workflow
-```
-# pricing-strategy primary flow
-input = prepare(raw_data)
-result = process(input, config={anchoring, conversion, design, designing, optimization})
-validate(result)
-deliver(result)
-```
-
-### Error Handling
-```
-on error:
-  log(error_details)
-  retry_with_backoff(max=3)
-  if still_failing: alert_and_escalate()
-```
-
-
-### Tier Design
-
-```python
-pricing_tiers = {
-    "starter": {
-        "price": 29,
-        "features": ["Core features", "5 users", "Email support"],
-        "highlight": False,
-    },
-    "pro": {
-        "price": 79,
-        "features": ["Everything in Starter", "Unlimited users", "Priority support", "API access"],
-        "highlight": True,  # Most popular badge
-    },
-    "enterprise": {
-        "price": "Custom",
-        "features": ["Everything in Pro", "SSO", "Dedicated support", "SLA"],
-        "highlight": False,
-    }
-}
-```
-
-### Anchoring Strategy
-
-```
-Display order: Enterprise ($299) → Pro ($79) → Starter ($29)
-- Enterprise makes Pro look affordable (anchoring)
-- "Most Popular" badge on Pro guides choice
-- Annual toggle shows savings percentage
-```
-
-### A/B Test
-
-```python
-experiments = [
-    {"name": "price_point", "variants": [29, 39, 49], "metric": "revenue_per_visitor"},
-    {"name": "tier_count", "variants": [2, 3, 4], "metric": "conversion_rate"},
-    {"name": "annual_default", "variants": ["monthly", "annual"], "metric": "ltv"},
-]
-```
-
-## Common Patterns
-
-- **3 tiers**: Simple choice architecture (Hick's Law)
-- **Anchor high**: Show most expensive option first
-- **Highlight middle**: "Most popular" badge on target tier
-- **Annual savings**: Show 20% savings for annual billing
-- **Social proof**: "Join 10,000+ teams" near pricing
-
-## How to Use
-
-1. Define campaign objective and target KPIs
-2. Set up tracking and attribution (UTMs, pixels, events)
-3. Create campaign assets (copy, creatives, landing pages)
-4. Launch with small budget for testing
-5. Monitor metrics daily, optimize underperformers
-6. Scale winners, pause losers, document learnings
-
-## Red Flags
-
-- **Metrics declining 3+ days**: Investigate funnel leaks or audience fatigue
-- **Ad spend with zero conversions**: Pause and review targeting/creative
-- **Email open rates below 15%**: Subject lines or sender reputation issue
-- **Bounce rate above 70%**: Landing page mismatch or slow load times
-- **Attribution gaps**: Missing UTM parameters or broken tracking pixels
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Pricing Strategy drives growth marketing with data-driven strategies.
 
-## Verification
+## Workflow
 
-- [ ] Skill output matches expected behavior
+1. **Research** — Analyze market, competitors, and audience
+2. **Strategy** — Define goals, channels, and messaging
+3. **Create** — Develop content and creative assets
+4. **Launch** — Deploy campaigns across channels
+5. **Optimize** — A/B test and iterate based on data
+6. **Report** — Track KPIs and ROI
 
-## Process
+## Key Metrics
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- Reach and impressions
+- Engagement rate (likes, shares, comments)
+- Conversion rate (clicks → leads → customers)
+- Customer acquisition cost (CAC)
+- Return on ad spend (ROAS)
+
+## Best Practices
+
+- Test everything — headlines, images, CTAs, timing
+- Focus on one channel at a time, then expand
+- Build organic before scaling paid
+- Track attribution across the full funnel
+

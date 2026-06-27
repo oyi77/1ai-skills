@@ -24,7 +24,6 @@ nist_csf:
 - RC.RP-01
 - PR.IR-01
 ---
-
 # Analyzing Ransomware Payment Wallets
 
 ## When to Use
@@ -48,158 +47,23 @@ nist_csf:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Extract Wallet Address from Ransom Note
+1. **Scope the Analysis** — Define what ransomware payment wallets artifacts or data sources to examine and the investigation timeline.
+2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
+3. **Extract Key Indicators** — Parse and extract relevant ransomware payment wallets data points from collected artifacts.
+4. **Correlate Findings** — Cross-reference extracted data with other sources (threat intel, logs, timelines).
+5. **Build Timeline** — Construct a chronological sequence of events related to ransomware payment wallets.
+6. **Document Analysis** — Write findings report with evidence, conclusions, and recommendations.
 
-Parse the ransom note to identify the payment address(es):
+## Tools
 
-```
-Common address formats:
-  Bitcoin (P2PKH):   1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa  (starts with 1)
-  Bitcoin (P2SH):    3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy  (starts with 3)
-  Bitcoin (Bech32):  bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq (starts with bc1)
-  Monero:            4... (95 characters, much harder to trace)
-  Ethereum:          0x... (40 hex chars)
-```
-
-### Step 2: Query Blockchain Explorer for Transaction History
-
-Retrieve all transactions associated with the wallet:
-
-```python
-import requests
-
-def get_wallet_transactions(address):
-    """Query blockchain.com API for address transactions."""
-    url = f"https://blockchain.info/rawaddr/{address}"
-    resp = requests.get(url, timeout=30)
-    resp.raise_for_status()
-    data = resp.json()
-    return {
-        "address": address,
-        "n_tx": data.get("n_tx", 0),
-        "total_received_satoshi": data.get("total_received", 0),
-        "total_sent_satoshi": data.get("total_sent", 0),
-        "final_balance_satoshi": data.get("final_balance", 0),
-        "transactions": data.get("txs", []),
-    }
-```
-
-### Step 3: Map Fund Flow and Identify Clusters
-
-Trace outputs from the ransom wallet to downstream addresses:
-
-```
-Fund Flow Analysis:
-━━━━━━━━━━━━━━━━━━
-Victim Payment ──► Ransom Wallet ──► Consolidation Wallet
-                                  ├─► Mixer/Tumbler Service
-                                  ├─► Exchange Deposit Address
-                                  └─► Peel Chain (sequential small outputs)
-
-Key indicators:
-  - Consolidation: Multiple ransom payments aggregated into one wallet
-  - Peel chains: Sequential transactions with diminishing outputs
-  - Mixer usage: Funds sent to known mixer addresses (Wasabi, Samourai, ChipMixer)
-  - Exchange cashout: Deposits to known exchange wallets (Binance, Kraken hot wallets)
-```
-
-### Step 4: Cross-Reference with Known Wallet Databases
-
-Check addresses against known ransomware infrastructure:
-
-```python
-# Check WalletExplorer for entity identification
-def check_wallet_explorer(address):
-    url = f"https://www.walletexplorer.com/api/1/address?address={address}&caller=research"
-    resp = requests.get(url, timeout=30)
-    data = resp.json()
-    return {
-        "wallet_id": data.get("wallet_id"),
-        "label": data.get("label", "Unknown"),
-        "is_exchange": data.get("is_exchange", False),
-    }
-```
-
-### Step 5: Generate Attribution Report
-
-Compile findings into a structured intelligence report:
-
-```
-RANSOMWARE WALLET ANALYSIS REPORT
-====================================
-Ransom Address:      bc1q...xyz
-Family Attribution:  LockBit 3.0 (based on ransom note format)
-Total Received:      4.25 BTC ($178,500 at time of payment)
-Total Sent:          4.25 BTC (wallet fully drained)
-Number of Payments:  3 (likely 3 separate victims)
-
-FUND FLOW:
-  Payment 1: 1.5 BTC → Consolidation wallet → Binance deposit
-  Payment 2: 1.0 BTC → Wasabi Mixer → Unknown
-  Payment 3: 1.75 BTC → Peel chain (12 hops) → OKX deposit
-
-CLUSTER ANALYSIS:
-  Related wallets: 47 addresses identified in same cluster
-  Total cluster volume: 156.3 BTC ($6.5M USD)
-  First activity: 2024-01-15
-  Last activity: 2024-09-22
-```
+- **Forensic Toolkit** — Evidence collection and analysis
+- **Timeline Tools** — Chronological event reconstruction
+- **Log Analysis Platform** — Centralized log parsing and search
 
 ## Verification
 
-- Confirm wallet address format is valid before querying APIs
-- Cross-reference transaction timestamps with known incident timelines
-- Validate cluster associations by checking common-input-ownership heuristic
-- Compare findings against OFAC SDN list for sanctioned addresses
-- Verify exchange attribution against multiple sources (WalletExplorer, OXT, Chainalysis)
-
-## Key Concepts
-
-| Term | Definition |
-|------|------------|
-| **UTXO** | Unspent Transaction Output; the fundamental unit of Bitcoin that tracks ownership through a chain of transactions |
-| **Cluster Analysis** | Grouping multiple Bitcoin addresses believed to be controlled by the same entity using common-input-ownership and change-address heuristics |
-| **Peel Chain** | A laundering pattern where funds are sent through many sequential transactions, each peeling off a small amount to a new address |
-| **CoinJoin/Mixer** | Privacy techniques that combine multiple users' transactions to obscure the link between sender and receiver |
-| **Common Input Ownership** | Heuristic that assumes all inputs to a single transaction are controlled by the same entity |
-
-## When NOT to Use
-
-- You need to perform the attack, not analyze it (use performing-* skills)
-- Task is about detection, not analysis (use detecting-* skills)
-- You need to implement controls (use implementing-* skills)
-- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
-- You don't have access to the artifacts/logs to analyze
-- Task requires real-time monitoring (use SOC tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Sharing sensitive findings or credentials in unencrypted communications
-- Failing to properly scope and contain the assessment before starting
-
-## Tools & Systems
-
-- **Chainalysis Reactor**: Enterprise blockchain investigation platform with entity attribution and cross-chain tracing
-- **WalletExplorer**: Free tool that clusters Bitcoin addresses and labels known services (exchanges, mixers, markets)
-- **OXT.me**: Advanced Bitcoin transaction visualization with UTXO graph analysis
-- **Blockstream.info**: Open-source Bitcoin block explorer with full API access
-- **blockchain.com API**: Free API for querying Bitcoin address balances and transaction histories
-- **OFAC SDN List**: U.S. Treasury sanctioned address list for compliance checking
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All ransomware payment wallets procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

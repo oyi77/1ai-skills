@@ -20,7 +20,6 @@ nist_csf:
 - DE.AE-07
 - ID.RA-05
 ---
-
 # Building Threat Hunt Hypothesis Framework
 
 ## When to Use
@@ -41,87 +40,23 @@ nist_csf:
 
 ## Workflow
 
-1. **Formulate Hypothesis**: Define a testable hypothesis based on threat intelligence or ATT&CK gap analysis.
-2. **Identify Data Sources**: Determine which logs and telemetry are needed to validate or refute the hypothesis.
-3. **Execute Queries**: Run detection queries against SIEM and EDR platforms to collect relevant events.
-4. **Analyze Results**: Examine query results for anomalies, correlating across multiple data sources.
-5. **Validate Findings**: Distinguish true positives from false positives through contextual analysis.
-6. **Correlate Activity**: Link findings to broader attack chains and threat actor TTPs.
-7. **Document and Report**: Record findings, update detection rules, and recommend response actions.
+1. **Assess Requirements** — Evaluate current environment and define threat hunt hypothesis framework implementation requirements.
+2. **Design Architecture** — Plan the threat hunt hypothesis framework architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up and configure each threat hunt hypothesis framework component according to best practices.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-## Key Concepts
+## Tools
 
-| Concept | Description |
-|---------|-------------|
-| TA0001 | Initial Access |
-| TA0003 | Persistence |
-| TA0008 | Lateral Movement |
-| TA0010 | Exfiltration |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| CrowdStrike Falcon | EDR telemetry and threat detection |
-| Microsoft Defender for Endpoint | Advanced hunting with KQL |
-| Splunk Enterprise | SIEM log analysis with SPL queries |
-| Elastic Security | Detection rules and investigation timeline |
-| Sysmon | Detailed Windows event monitoring |
-| Velociraptor | Endpoint artifact collection and hunting |
-| Sigma Rules | Cross-platform detection rule format |
-
-## Common Scenarios
-
-1. **Scenario 1**: Intelligence-driven hunt based on APT campaign report
-2. **Scenario 2**: ATT&CK coverage gap analysis driving hypothesis creation
-3. **Scenario 3**: Anomaly-driven hypothesis from UEBA alert investigation
-4. **Scenario 4**: Situational awareness hunt based on industry sector threats
-
-## When NOT to Use
-
-- You need to test what you built (use performing-* skills)
-- Task is about configuring existing systems (use configuring-* skills)
-- You need to analyze the output (use analyzing-* skills)
-- Task is about implementing vendor solutions (use implementing-* skills)
-- You don't have infrastructure access
-- Task requires compliance validation (use auditing-* skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Output Format
-
-```
-Hunt ID: TH-BUILDI-[DATE]-[SEQ]
-Technique: TA0001
-Host: [Hostname]
-User: [Account context]
-Evidence: [Log entries, process trees, network data]
-Risk Level: [Critical/High/Medium/Low]
-Confidence: [High/Medium/Low]
-Recommended Action: [Containment, investigation, monitoring]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All threat hunt hypothesis framework procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

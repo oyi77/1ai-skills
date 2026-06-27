@@ -20,8 +20,7 @@ nist_csf:
 - DE.AE-07
 - ID.RA-05
 ---
-
-# Detecting Golden Ticket Attacks in Kerberos Logs
+# Detecting Golden Ticket Attacks In Kerberos Logs
 
 ## When to Use
 
@@ -40,102 +39,23 @@ nist_csf:
 
 ## Workflow
 
-1. **Monitor TGT Requests (Event 4768)**: Track Kerberos authentication service requests. Golden Tickets bypass the AS-REQ/AS-REP exchange entirely, so the absence of 4768 before 4769 is suspicious.
-2. **Detect Encryption Type Anomalies**: Golden Tickets often use RC4 (0x17) encryption. If your domain enforces AES (0x12), any RC4 TGT is a red flag. Monitor TicketEncryptionType in Event 4769.
-3. **Check Ticket Lifetime Anomalies**: Default Kerberos TGT lifetime is 10 hours with 7-day renewal. Golden Tickets can be forged with 10-year lifetimes. Detect tickets with durations exceeding policy.
-4. **Hunt for Non-Existent SIDs**: Golden Tickets can include arbitrary SIDs (including non-existent accounts or groups). Correlate TGS requests against known AD SID inventory.
-5. **Detect TGS Without Prior TGT**: When a service ticket (4769) appears without a preceding TGT request (4768) from the same IP/account, this may indicate a pre-existing Golden Ticket.
-6. **Monitor KRBTGT Password Age**: Track when KRBTGT was last reset. If KRBTGT hash hasn't changed since a known compromise, Golden Tickets from that period remain valid.
-7. **Validate PAC Signatures**: With KB5008380+ and PAC validation enforcement, domain controllers reject forged PACs. Monitor for Kerberos failures indicating PAC validation errors.
+1. **Define Detection Scope** — Identify the specific golden ticket attacks in kerberos logs techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for golden ticket attacks in kerberos logs.
+3. **Build Detection Queries** — Write detection rules, Sigma rules, or SIEM queries targeting golden ticket attacks in kerberos logs indicators.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-## Detection Queries
+## Tools
 
-This section covers detection queries for detecting golden ticket attacks in kerberos logs.
-
-- Ensure all prerequisites are met before proceeding
-- Follow the documented workflow steps in sequence
-- Record results and any anomalies encountered during this phase
-### Splunk -- RC4 Encryption in Kerberos TGS
-```spl
-index=wineventlog EventCode=4769
-| where TicketEncryptionType="0x17"
-| where ServiceName!="krbtgt"
-| stats count by TargetUserName ServiceName IpAddress TicketEncryptionType Computer
-| where count > 5
-| sort -count
-```
-
-### Splunk -- TGS Without Prior TGT
-```spl
-index=wineventlog (EventCode=4768 OR EventCode=4769)
-| stats earliest(_time) as first_tgt by TargetUserName IpAddress EventCode
-| eventstats earliest(eval(if(EventCode=4768, first_tgt, null()))) as tgt_time by TargetUserName IpAddress
-| where EventCode=4769 AND (isnull(tgt_time) OR first_tgt < tgt_time)
-| table TargetUserName IpAddress first_tgt tgt_time
-```
-
-### KQL -- Golden Ticket Indicators
-```kql
-SecurityEvent
-| where EventID == 4769
-| where TicketEncryptionType == "0x17"
-| where ServiceName != "krbtgt"
-| summarize Count=count() by TargetUserName, IpAddress, ServiceName
-| where Count > 5
-```
-
-## Common Scenarios
-
-1. **Post-DCSync Golden Ticket**: After extracting KRBTGT hash, attacker forges TGT with Domain Admin SID, valid for months until KRBTGT is rotated twice.
-2. **RC4 Downgrade**: Golden Ticket forged with RC4 encryption in an AES-only environment, detectable by encryption type mismatch.
-3. **Cross-Domain Golden Ticket**: Forged inter-realm TGT used to pivot between AD domains/forests.
-4. **Persistence After Remediation**: Golden Tickets surviving password resets because KRBTGT was only rotated once (both current and previous hashes are valid).
-
-## When NOT to Use
-
-- You need to perform the attack to test detection (use performing-* skills)
-- Task is about analyzing past incidents (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about threat hunting proactively (use hunting-* skills)
-- You don't have access to logs or monitoring data
-- Task requires incident response (use IR skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Output Format
-
-```
-Hunt ID: TH-GOLDEN-[DATE]-[SEQ]
-Suspected Account: [Account using forged ticket]
-Source IP: [Client IP]
-Target Service: [SPN accessed]
-Encryption Type: [RC4/AES128/AES256]
-Anomaly: [No prior TGT/RC4 in AES environment/Extended lifetime]
-KRBTGT Last Reset: [Date]
-Risk Level: [Critical]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All golden ticket attacks in kerberos logs procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

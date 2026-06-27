@@ -11,6 +11,11 @@ AI-powered quality engineering beyond traditional testing. Covers flaky test det
 
 **Source:** Adapted from proffesor-for-testing/agentic-qe — 60 QE agents, 75 skills, MCP server
 
+## Overview
+
+**Agentic Quality Engineering** applies software quality practices to AI agent systems — test strategies for LLM outputs, evaluation harnesses, regression detection, and quality metrics specific to autonomous agents.
+
+
 ## When to Use
 
 **Trigger phrases:**

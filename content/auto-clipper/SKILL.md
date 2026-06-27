@@ -12,9 +12,8 @@ tags:
 dependencies: "- faster-whisper\n  - textblob\n  - vadersentiment\n  - moviepy\n  - opencv-python\n  - ffmpeg-python\n  -\
   \ customtkinter\n"
 ---
+# Auto Clipper
 
-
-# Auto Clipper Indonesia 🎬
 ## When to Use
 
 **Trigger phrases:**
@@ -30,300 +29,31 @@ dependencies: "- faster-whisper\n  - textblob\n  - vadersentiment\n  - moviepy\n
 
 **Production-ready** AI-powered video clipper untuk content creator Indonesia.
 
-## 🎯 Features
-
-- **AI Transcription** - local Whisper model (Indonesian + English)
-- **Golden Moment Detection** - automaticamente detect best clips
-- **Smart Reframe** - 9:16 vertical conversion dengan face tracking
-- **Subtitle Burn** - Auto-generate dan burn subtitles
-- **Batch Processing** - Process unlimited clips
-- **Progress Tracking** - Real-time status updates
-
-## 📦 Files
-
-```
-auto-clipper/
-├── SKILL.md              # This file
-├── config.json           # Configuration
-├── auto_clipper.py       # Main skill wrapper
-└── core/                 # Core modules (from project)
-    ├── __init__.py
-    ├── video_analyzer.py
-    ├── clip_engine.py
-    ├── reframe_engine.py
-    ├── subtitle_engine.py
-    └── workflow.py
-```
-
-## 🔧 Installation
-
-- Configure auto, automatically, clipper, convert, into settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
-
-
-### Install Dependencies
-```bash
-pip install faster-whisper textblob vaderSentiment
-pip install moviepy opencv-python ffmpeg-python
-pip install customtkinter pillow requests
-```
-
-### Install FFmpeg (Required)
-```bash
-# Linux
-sudo apt install ffmpeg
-
-# macOS
-brew install ffmpeg
-
-# Windows
-# Download from https://ffmpeg.org/download.html
-# Add to PATH
-```
-
-## 📖 Usage
-
-- Configure auto, automatically, clipper, convert, into settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
-
-
-### Basic Usage
-```python
-from auto_clipper import AutoClipperSkill
-
-# Initialize
-skill = AutoClipperSkill()
-
-# Full workflow (analyze + process + export)
-results = skill.process_video(
-    video_path="path/to/video.mp4",
-    num_clips=10,
-    clip_duration=30
-)
-print(f"Created {len(results)} clips")
-```
-
-### Advanced Usage
-```python
-# With custom configuration
-skill = AutoClipperSkill(config={
-    "clip_duration": 45,
-    "output_resolution": "1080p",
-    "num_clips": 15,
-    "add_subtitles": True
-})
-
-# Analyze only - get golden moments
-moments = skill.analyze_video("video.mp4")
-print(f"Found {len(moments)} golden moments")
-
-# Process specific clips
-results = skill.process_clips(
-    video_path="video.mp4",
-    clip_indices=[0, 2, 5],  # Process specific moments
-    add_subtitles=True
-)
-
-# Export with subtitle style
-results = skill.export(
-    video_path="video.mp4",
-    clips=selected_moments,
-    subtitle_style="social",
-    output_resolution="1080p"
-)
-```
-
-### CLI Usage
-```bash
-# Process video
-python auto_clipper.py --video video.mp4 --clips 10 --duration 30
-
-# Analyze video only
-python auto_clipper.py --video video.mp4 --analyze
-
-# With subtitles
-python auto_clipper.py --video video.mp4 --subtitles --style social
-```
-
-## ⚙️ Configuration
-
-Edit `config.json`:
-```json
-{
-  "clip_duration": 30,
-  "output_resolution": "720p",
-  "whisper_model": "base",
-  "num_clips": 10,
-  "add_subtitles": true,
-  "output_format": "mp4",
-  "output_directory": "./output"
-}
-```
-
-## 🎨 Subtitle Styles
-
-```python
-# Clean - Minimal subtitles
-style = "clean"
-
-# Bold - High attention
-style = "bold"
-
-# Social - Large, for mobile
-style = "social"
-
-# TikTok - Top position
-style = "tiktok"
-```
-
-## 📊 Output
-
-Results dalam format:
-```python
-{
-    "clip_id": "clip_001",
-    "status": "success",
-    "output_path": "./output/clip_001.mp4",
-    "start_time": 30.5,
-    "end_time": 60.2,
-    "duration": 29.7,
-    "size_mb": 12.5,
-    "original_text": "Hook: This blew my mind..."
-}
-```
-
-## 🛠️ Troubleshooting
-
-- Configure auto, automatically, clipper, convert, into settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
-
-
-### Whisper Installation Failed?
-
-```bash
-# Windows
-pip install faster-whisper --no-build-isolation
-
-# Linux/macOS
-sudo apt install libasound2-dev  # For audio support
-pip install faster-whisper
-```
-
-### FFmpeg Not Found?
-
-```bash
-# Verify installation
-ffmpeg -version
-
-# Add to PATH (Windows)
-setx PATH "%PATH%;C:\ffmpeg\bin"
-
-# macOS
-echo 'export PATH="/usr/local/opt/ffmpeg/bin:$PATH"' >> ~/.zshrc
-```
-
-### Memory Issues?
-
-Use smaller Whisper model:
-```python
-skill = AutoClipperSkill(config={"whisper_model": "tiny"})
-```
-
-### Processing Slow?
-
-Optimize settings:
-```json
-{
-  "output_resolution": "720p",
-  "whisper_model": "tiny",
-  "clip_duration": 30
-}
-```
-
-## 📈 Performance
-
-| Setting | Speed | Quality |
-|---------|-------|---------|
-| Whisper tiny + 720p | ⚡ Fast | Good |
-| Whisper base + 720p | 🚀 Normal | Better |
-| Whisper small + 1080p | 🚶 Slow | Best |
-
-## ⚠️ Requirements
-
-- **OS**: Windows 10/11, macOS, Linux
-- **Python**: 3.11+
-- **Memory**: 4GB RAM minimum (8GB recommended)
-- **Storage**: 2GB for dependencies
-- **FFmpeg**: Required for video processing
-
-## 🚀 Next Updates
-
-Planned improvements:
-- [ ] Distribution automation (TikTok/IG/YT)
-- [ ] Face beautification filter
-- [ ] Background music addition
-- [ ] Template library
-- [ ] Cloud rendering option
-
-## 📝 License
-
-Proprietary - BerkahKarya
-
-## 💰 Support
-
-Join our community:
-- Telegram: @berkahkarya
-- Website: berkahkarya.id
-
----
-
-**BerkahKarya** ⚡ | Auto Clipper Indonesia
-
-## How to Use
-
-1. Define content goal (traffic, engagement, conversion, brand awareness)
-2. Research target audience pain points and search intent
-3. Generate content using appropriate AI tools
-4. Edit and humanize output for authenticity
-5. Optimize for target platform (SEO, hashtags, format)
-6. Schedule and distribute across channels
-7. Measure performance and iterate
-
-## When NOT to Use
-
-- Task is about content strategy, not creation (use strategy skills)
-- Task is about content distribution (use distribution skills)
-- You need to analyze content performance (use analytics skills)
-- Task is about content moderation (use moderation tools)
-- You don't have content guidelines
-- Task requires domain expertise (consult experts)
-
-
-## Red Flags
-
-- **AI-generated content sounds robotic**: Always run through humanizer before publishing
-- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
-- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
-- **No content calendar**: Sporadic posting kills audience retention
-- **Ignoring analytics**: Content without measurement is just publishing, not marketing
-
-## Verification
-
-- Check readability score (target grade 8 or below for general audiences)
-- Verify all images have alt text and proper dimensions per platform
-- Confirm links work and point to correct destinations
-- Test video/audio quality before publishing
-- Validate content renders correctly on mobile devices
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Auto Clipper enables content production with professional quality and consistency.
+
+## Workflow
+
+1. **Define brief** — Set objectives, audience, and style guidelines
+2. **Research and gather** — Collect source material and reference content
+3. **Create draft** — Generate initial content following the brief
+4. **Refine and edit** — Polish for quality, accuracy, and engagement
+5. **Publish and distribute** — Deploy to target platforms
+6. **Track performance** — Monitor engagement and iterate
+
+## Quality Checklist
+
+- [ ] Content matches the defined brief and audience
+- [ ] All facts verified against authoritative sources
+- [ ] Formatting consistent with style guidelines
+- [ ] SEO/distribution optimization applied
+- [ ] Call-to-action clear and compelling
+
+## Tools
+
+- Content management system for publishing
+- Analytics platform for performance tracking
+- Design tools for visual assets
+- Collaboration tools for review cycles
+

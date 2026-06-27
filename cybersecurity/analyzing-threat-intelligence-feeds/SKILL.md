@@ -48,111 +48,23 @@ Use this skill when:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Enumerate and Prioritize Feed Sources
+1. **Scope the Analysis** — Define what threat intelligence feeds artifacts or data sources to examine and the investigation timeline.
+2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
+3. **Extract Key Indicators** — Parse and extract relevant threat intelligence feeds data points from collected artifacts.
+4. **Correlate Findings** — Cross-reference extracted data with other sources (threat intel, logs, timelines).
+5. **Build Timeline** — Construct a chronological sequence of events related to threat intelligence feeds.
+6. **Document Analysis** — Write findings report with evidence, conclusions, and recommendations.
 
-List all available feeds categorized by type (commercial, government, ISAC, OSINT):
-- Commercial: Recorded Future, Mandiant Advantage, CrowdStrike Falcon Intelligence
-- Government: CISA AIS (Automated Indicator Sharing), FBI InfraGard, MS-ISAC
-- OSINT: AlienVault OTX, Abuse.ch, PhishTank, Emerging Threats
+## Tools
 
-Score each feed on: update frequency, historical accuracy rate, coverage of your sector, and attribution depth. Use a weighted scoring matrix with criteria from NIST SP 800-150 (Guide to Cyber Threat Information Sharing).
-
-### Step 2: Ingest via TAXII 2.1 or API
-
-For TAXII-enabled feeds:
-```
-taxii2-client discover https://feed.example.com/taxii/
-taxii2-client get-collection --collection-id <id> --since 2024-01-01
-```
-
-For REST API feeds (e.g., Recorded Future):
-- Query `/v2/indicator/search` with `risk_score_min=65` to filter low-confidence IOCs
-- Apply rate limiting and exponential backoff for API resilience
-
-### Step 3: Normalize to STIX 2.1
-
-Convert each IOC to STIX 2.1 objects using the OASIS standard schema:
-- IP address → `indicator` object with `pattern: "[ipv4-addr:value = '...']"`
-- Domain → `indicator` with `pattern: "[domain-name:value = '...']"`
-- File hash → `indicator` with `pattern: "[file:hashes.SHA-256 = '...']"`
-
-Attach `relationship` objects linking indicators to `threat-actor` or `malware` objects. Use `confidence` field (0–100) based on source fidelity rating.
-
-### Step 4: Deduplicate and Enrich
-
-Run deduplication against existing TIP database using normalized value + type as composite key. Enrich surviving IOCs:
-- VirusTotal: detection ratio, sandbox behavior reports
-- PassiveTotal (RiskIQ): WHOIS history, passive DNS, SSL certificate chains
-- Shodan: banner data, open ports, geographic location
-
-### Step 5: Distribute to Consuming Systems
-
-Export enriched indicators via TAXII 2.1 push to SIEM (Splunk, Microsoft Sentinel), firewalls (Palo Alto XSOAR playbooks), and EDR platforms. Set TTL (time-to-live) per indicator type: IP addresses 30 days, domains 90 days, file hashes 1 year.
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **STIX 2.1** | Structured Threat Information Expression — OASIS standard JSON schema for CTI objects including indicators, threat actors, campaigns, and relationships |
-| **TAXII 2.1** | Trusted Automated eXchange of Intelligence Information — HTTPS-based protocol for sharing STIX content between servers and clients |
-| **IOC** | Indicator of Compromise — observable artifact (IP, domain, hash, URL) that indicates a system may have been breached |
-| **TLP** | Traffic Light Protocol — color-coded classification (RED/AMBER/GREEN/WHITE) defining sharing restrictions for CTI |
-| **Confidence Score** | Numeric value (0–100 in STIX) reflecting the producer's certainty about an indicator's malicious attribution |
-| **Feed Fidelity** | Historical accuracy rate of a feed measured by true positive rate in production detections |
-
-## When NOT to Use
-
-- You need to perform the attack, not analyze it (use performing-* skills)
-- Task is about detection, not analysis (use detecting-* skills)
-- You need to implement controls (use implementing-* skills)
-- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
-- You don't have access to the artifacts/logs to analyze
-- Task requires real-time monitoring (use SOC tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Acting on threat intelligence without validating source reliability
-- Sharing classified or sensitive indicators without proper handling procedures
-- Alerting threat actors to detection capabilities through visible response actions
+- **Forensic Toolkit** — Evidence collection and analysis
+- **Timeline Tools** — Chronological event reconstruction
+- **Log Analysis Platform** — Centralized log parsing and search
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Tools & Systems
-
-- **ThreatConnect TC Exchange**: Aggregates 100+ commercial and OSINT feeds; provides automated playbooks for IOC enrichment
-- **MISP (Malware Information Sharing Platform)**: Open-source TIP supporting STIX/TAXII; widely used by ISACs and government CERTs
-- **OpenCTI**: Open-source platform with native MITRE ATT&CK integration and graph-based relationship visualization
-- **Recorded Future**: Commercial feed with AI-powered risk scoring and real-time dark web monitoring
-- **taxii2-client**: Python library for TAXII 2.0/2.1 client operations (pip install taxii2-client)
-- **PyMISP**: Python API for MISP feed management and IOC submission
-
-## Common Pitfalls
-
-- **IOC age staleness**: IP addresses and domains rotate frequently; applying 1-year-old IOCs generates false positives. Enforce TTL policies.
-- **Missing context**: Blocking an IOC without understanding the associated campaign or adversary can disrupt legitimate business traffic (e.g., CDN IPs shared with malicious actors).
-- **Feed overlap without deduplication**: Ingesting the same IOC from five feeds without deduplication inflates indicator counts and SIEM rule complexity.
-- **TLP violation**: Redistributing RED-classified intelligence outside authorized boundaries violates sharing agreements and trust relationships.
-- **Over-blocking on low-confidence indicators**: Indicators with confidence below 50 should trigger detection-only rules, not blocking, to avoid operational disruption.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All threat intelligence feeds procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

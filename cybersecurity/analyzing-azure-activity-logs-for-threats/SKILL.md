@@ -23,9 +23,7 @@ nist_csf:
 - GV.OV-01
 - DE.AE-02
 ---
-
-# Analyzing Azure Activity Logs for Threats
-
+# Analyzing Azure Activity Logs For Threats
 
 ## When to Use
 
@@ -41,74 +39,26 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-Use azure-monitor-query to execute KQL queries against Azure Log Analytics workspaces,
-detecting suspicious admin operations and sign-in anomalies.
+1. **Scope the Analysis** — Define what azure activity logs artifacts or data sources to examine and the investigation timeline.
+2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
+3. **Extract Key Indicators** — Use threats to parse and extract relevant azure activity logs data points from collected artifacts.
+4. **Correlate Findings** — Cross-reference extracted data with other sources (threat intel, logs, timelines).
+5. **Build Timeline** — Construct a chronological sequence of events related to azure activity logs.
+6. **Document Analysis** — Write findings report with evidence, conclusions, and recommendations.
 
-```python
-from azure.identity import DefaultAzureCredential
-from azure.monitor.query import LogsQueryClient
-from datetime import timedelta
+## Tools
 
-credential = DefaultAzureCredential()
-client = LogsQueryClient(credential)
+- **threats** — Primary tool for this skill
+- **Forensic Toolkit** — Evidence collection and analysis
+- **Timeline Tools** — Chronological event reconstruction
+- **Log Analysis Platform** — Centralized log parsing and search
 
-response = client.query_workspace(
-    workspace_id="WORKSPACE_ID",
-    query="AzureActivity | where OperationNameValue has 'MICROSOFT.AUTHORIZATION/ROLEASSIGNMENTS/WRITE' | take 10",
-    timespan=timedelta(hours=24),
-)
-```
-
-Key detection queries:
-1. Role assignment changes (privilege escalation)
-2. Resource group and subscription modifications
-3. Key vault secret access from new IPs
-4. Network security group rule changes
-5. Conditional access policy modifications
-
-## Examples
-
-```python
-# Detect new Global Admin role assignments
-query = '''
-AuditLogs
-| where OperationName == "Add member to role"
-| where TargetResources[0].modifiedProperties[0].newValue has "Global Administrator"
-'''
-```
-## When NOT to Use
-
-- You need to perform the attack, not analyze it (use performing-* skills)
-- Task is about detection, not analysis (use detecting-* skills)
-- You need to implement controls (use implementing-* skills)
-- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
-- You don't have access to the artifacts/logs to analyze
-- Task requires real-time monitoring (use SOC tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Modifying cloud IAM policies or security groups without approval
-- Exposing cloud credentials or secrets in logs or reports
-- Running scans that generate excessive API calls and trigger billing alerts
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Cloud resource changes reverted or documented as intentional
-- IAM policies reviewed for least-privilege compliance after testing
-- No residual test resources left running (cost and security check)
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All azure activity logs procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

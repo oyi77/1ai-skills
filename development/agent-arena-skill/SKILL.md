@@ -29,6 +29,8 @@ persona:
   - Safety first
   - Scale compute
 ---
+# Agent Arena Skill
+
 ## When to Use
 
 **Trigger phrases:**
@@ -180,34 +182,32 @@ Agent Arena is itself registered as ERC-8004 agent #18500:
 - When the task is too trivial to warrant this skill
 - When a more appropriate skill exists
 
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- Code changes are made without running the existing test suite
-- Agent does not handle error cases or edge conditions
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] All existing tests pass after code changes are applied
-- [ ] Error handling covers documented failure modes and edge cases
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Agent Arena Skill supports coding practices with best practices and proven patterns.
 
-## Process
+## Workflow
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+1. **Understand requirements** — Clarify acceptance criteria and constraints
+2. **Design solution** — Plan architecture and identify patterns
+3. **Implement** — Write code following project conventions
+4. **Test** — Unit tests, integration tests, edge cases
+5. **Review** — Code review for quality, security, and performance
+6. **Document** — Update relevant docs and changelogs
+
+## Quality Gates
+
+- [ ] All tests passing
+- [ ] No lint errors or warnings
+- [ ] Code coverage meets threshold (≥70%)
+- [ ] No security vulnerabilities detected
+- [ ] Documentation updated
+
+## Best Practices
+
+- Follow SOLID principles and KISS
+- Write self-documenting code with clear naming
+- Handle errors explicitly — no silent failures
+- Keep functions small and focused (<50 lines)
+- Use immutable data patterns where possible
+

@@ -20,10 +20,7 @@ nist_csf:
 - GV.OV-01
 - DE.AE-02
 ---
-
-
-# Implementing Log Integrity with Blockchain
-
+# Implementing Log Integrity With Blockchain
 
 ## When to Use
 
@@ -39,63 +36,26 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-1. Install dependencies: `pip install requests`
-2. Ingest log entries from syslog, JSON, or plain text files.
-3. For each entry, compute SHA-256 hash of: previous_hash + timestamp + log_content.
-4. Store the chain as a JSON ledger with entry index, timestamp, content hash, previous hash, and chain hash.
-5. Verify chain integrity by recomputing all hashes and detecting breaks.
-6. Optionally anchor checkpoint hashes to an external timestamping service.
+1. **Assess Requirements** — Evaluate current environment and define log integrity implementation requirements.
+2. **Design Architecture** — Plan the log integrity architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up blockchain for log integrity according to vendor best practices and security guidelines.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-```bash
-python scripts/agent.py --log-file /var/log/syslog --chain-file log_chain.json --verify --output integrity_report.json
-```
+## Tools
 
-## Examples
+- **blockchain** — Primary tool for this skill
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
-```bash
-# Basic usage example
-# Replace with domain-specific commands from the workflow above
-```
-### Chain Entry Structure
-```json
-{"index": 42, "timestamp": "2024-01-15T10:30:00Z", "content_hash": "a1b2c3...",
- "prev_hash": "d4e5f6...", "chain_hash": "SHA256(prev_hash + timestamp + content_hash)"}
-```
-
-### Tamper Detection
-If entry 42 is modified, chain_hash[42] will not match SHA256(chain_hash[41] + ...), and all entries from 42 onward will be flagged as invalid.
-## When NOT to Use
-
-- You need to test the implementation (use performing-* skills)
-- Task is about configuring existing tools (use configuring-* skills)
-- You need to analyze security events (use analyzing-* skills)
-- Task is about building detection rules (use building-* skills)
-- You don't have access to the target environment
-- Task requires vendor-specific expertise (consult vendor docs)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Acting on threat intelligence without validating source reliability
-- Sharing classified or sensitive indicators without proper handling procedures
-- Alerting threat actors to detection capabilities through visible response actions
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All log integrity procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

@@ -9,6 +9,8 @@ tags:
 - productivity
 - workflow
 ---
+# Content Monitor
+
 ## When to Use
 
 **Trigger phrases:**
@@ -21,85 +23,30 @@ tags:
 **When NOT to use:**
 - For tasks outside this skill's scope
 
-## Content Monitor
-
-Monitor content for changes
-
-### Usage
-
-```
-/content-monitor <task>
-```
-
-### Features
-
-- Automated execution
-- Error handling
-- Result validation
-
-## When NOT to Use
-
-- When monitoring content behind authentication walls you do not own
-- When the monitoring frequency would overwhelm the target server
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- Monitor checks for changes too infrequently missing critical updates
-- Agent does not distinguish meaningful changes from cosmetic ones
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Monitoring frequency matches the content change velocity
-- [ ] Meaningful changes are distinguished from cosmetic ones
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
-## Additional Notes
-
-Additional context and best practices for this skill.
-
-### Best Practices
-- Combine with related skills for comprehensive coverage
-- Review the verification checklist after applying this skill
-- Document patterns you discover for future use
-
-### Troubleshooting
-- If output quality is low, provide more context in your input
-- If the skill does not cover your use case, check related skills
-- For integration issues, verify prerequisites and dependencies are met
-
-## Additional Notes
-
-Additional context and best practices for this skill.
-
-### Best Practices
-- Combine with related skills for comprehensive coverage
-- Review the verification checklist after applying this skill
-- Document patterns you discover for future use
-
-### Troubleshooting
-- If output quality is low, provide more context in your input
-- If the skill does not cover your use case, check related skills
-- For integration issues, verify prerequisites and dependencies are met
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Content Monitor automates workflow automation to reduce manual effort and increase reliability.
 
-## Process
+## Workflow
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+1. **Define triggers** — Set up events or schedules that initiate the automation
+2. **Configure inputs** — Specify data sources and parameters
+3. **Design pipeline** — Define the sequence of automated steps
+4. **Add error handling** — Set up retries, alerts, and fallback paths
+5. **Test end-to-end** — Validate the full automation with realistic data
+6. **Deploy and monitor** — Activate and track performance
+
+## Configuration
+
+- Set trigger conditions (schedule, webhook, event)
+- Define input validation rules
+- Configure notification channels for alerts
+- Set retry policies and timeout limits
+
+## Best Practices
+
+- Start with simple automations and iterate
+- Add logging at every step for debugging
+- Use idempotent operations where possible
+- Test with edge cases before deploying
+

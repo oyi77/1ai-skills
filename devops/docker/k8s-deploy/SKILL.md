@@ -10,6 +10,8 @@ tags:
 - k8s
 - kubernetes
 ---
+# K8S Deploy
+
 ## When to Use
 
 **Trigger phrases:**
@@ -22,79 +24,31 @@ tags:
 **When NOT to use:**
 - For tasks outside this skill's scope
 
-
-
-## K8S Deploy
-
-Generate K8s manifests
-
-### Usage
-
-```
-/k8s-deploy <task>
-```
-
-### Features
-
-- Automated execution
-- Error handling
-- Result validation
-
-## When NOT to Use
-
-- When the infrastructure change is in a compliance-governed environment
-- When the deployment target requires manual verification by operations staff
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- Infrastructure changes are applied without version control
-- Agent does not verify the change was applied correctly
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Infrastructure changes are captured in version-controlled configuration
-- [ ] Change application is verified against expected state
-- [ ] All required outputs generated
-- [ ] Success criteria met
-## Notes
-
-- This skill integrates with the broader 1ai-skills ecosystem for devops workflows
-- Combine with related skills for maximum impact across your pipeline
-- Monitor output quality and iterate on configuration based on results
-- Keep dependencies up to date for security and performance
-- Document custom workflows and configurations for team knowledge sharing
-## Additional Resources
-
-- Review the 1ai-skills repository for related devops skills
-- Check the references/ directory for checklists and templates
-- Join the community for best practices and support
-- Contribute improvements via pull requests
-## Notes
-
-- This skill integrates with the broader 1ai-skills ecosystem for devops workflows
-- Combine with related skills for maximum impact across your pipeline
-- Monitor output quality and iterate on configuration based on results
-- Keep dependencies up to date for security and performance
-- Document custom workflows and configurations for team knowledge sharing
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+K8S Deploy manages infrastructure management with reliability and scalability.
 
-## Process
+## Workflow
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+1. **Define infrastructure** — Specify resources and configuration
+2. **Version control** — Store all configurations in Git
+3. **Automate deployment** — CI/CD pipeline for consistent releases
+4. **Monitor** — Set up observability (metrics, logs, traces)
+5. **Respond** — Incident response procedures and runbooks
+6. **Optimize** — Performance tuning and cost management
+
+## Configuration
+
+- Environment variables for secrets and config
+- Infrastructure as Code (Terraform, Pulumi, CloudFormation)
+- Container orchestration (Docker, Kubernetes)
+- CI/CD pipeline (GitHub Actions, GitLab CI, ArgoCD)
+
+## Reliability Checklist
+
+- [ ] Health checks configured
+- [ ] Auto-scaling policies defined
+- [ ] Backup and recovery tested
+- [ ] Rollback procedure documented
+- [ ] Monitoring alerts configured
+

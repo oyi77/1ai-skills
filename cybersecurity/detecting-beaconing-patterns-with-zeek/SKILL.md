@@ -21,9 +21,7 @@ nist_csf:
 - GV.OV-01
 - DE.AE-02
 ---
-
-# Detecting Beaconing Patterns with Zeek
-
+# Detecting Beaconing Patterns With Zeek
 
 ## When to Use
 
@@ -39,74 +37,26 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-Load Zeek conn.log data using ZAT (Zeek Analysis Tools), group connections by
-source/destination pairs, and compute timing statistics to identify beaconing.
+1. **Define Detection Scope** — Identify the specific beaconing patterns techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for beaconing patterns.
+3. **Build Detection Queries** — Write zeek queries targeting beaconing patterns indicators. Use platform-specific query language for optimal performance.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-```python
-from zat.log_to_dataframe import LogToDataFrame
-import numpy as np
+## Tools
 
-log_to_df = LogToDataFrame()
-conn_df = log_to_df.create_dataframe('/path/to/conn.log')
+- **zeek** — Primary tool for this skill
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
-# Group by src/dst pair and calculate inter-arrival time
-for (src, dst), group in conn_df.groupby(['id.orig_h', 'id.resp_h']):
-    times = group['ts'].sort_values()
-    intervals = times.diff().dt.total_seconds().dropna()
-    if len(intervals) > 10:
-        std_dev = np.std(intervals)
-        mean_interval = np.mean(intervals)
-        # Low std_dev relative to mean = likely beaconing
-```
-
-Key analysis steps:
-1. Parse Zeek conn.log into DataFrame with ZAT LogToDataFrame
-2. Group connections by source IP and destination IP pairs
-3. Calculate inter-arrival time intervals between consecutive connections
-4. Compute standard deviation and coefficient of variation
-5. Flag pairs with low coefficient of variation as potential beacons
-
-## Examples
-
-```python
-from zat.log_to_dataframe import LogToDataFrame
-log_to_df = LogToDataFrame()
-df = log_to_df.create_dataframe('conn.log')
-print(df[['id.orig_h', 'id.resp_h', 'ts', 'duration']].head())
-```
-## When NOT to Use
-
-- You need to perform the attack to test detection (use performing-* skills)
-- Task is about analyzing past incidents (use analyzing-* skills)
-- You need to implement detection rules (use implementing-* skills)
-- Task is about threat hunting proactively (use hunting-* skills)
-- You don't have access to logs or monitoring data
-- Task requires incident response (use IR skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Capturing traffic on networks without authorization or privacy considerations
-- Leaving packet captures containing sensitive data unencrypted on disk
-- Deploying inline blocking rules without testing for false positives first
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Captures verified as complete with no dropped packets
-- Detection rules tested against known-benign traffic for false positive rate
-- Alert thresholds validated and tuned to reduce noise
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All beaconing patterns procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

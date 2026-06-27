@@ -24,7 +24,7 @@ nist_csf:
 - DE.CM-01
 - PR.IR-01
 ---
-# Implementing Disk Encryption with BitLocker
+# Implementing Disk Encryption With Bitlocker
 
 ## When to Use
 
@@ -46,216 +46,24 @@ Use this skill when:
 
 ## Workflow
 
-1. **Prepare the environment** — ensure write-blocker is connected and test workstation is ready
-2. **Document the source** — record device serial, model, and pre-acquisition hash
-3. **Acquire the image** — use the appropriate tool with hash verification enabled
-4. **Verify integrity** — compare source and image hashes; document any discrepancies
-5. **Analyze and report** — perform the analysis and document findings with chain of custody
-### Step 1: Verify TPM and System Requirements
+1. **Assess Requirements** — Evaluate current environment and define disk encryption implementation requirements.
+2. **Design Architecture** — Plan the disk encryption architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up bitlocker for disk encryption according to vendor best practices and security guidelines.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-```powershell
-# Check TPM status
-Get-Tpm
-# ManufacturerId, ManufacturerVersion, TpmPresent, TpmReady, TpmEnabled
+## Tools
 
-# Check TPM version (2.0 required for best compatibility)
-(Get-WmiObject -Namespace "root\cimv2\security\microsofttpm" -Class Win32_Tpm).SpecVersion
-
-# Check UEFI/Secure Boot
-Confirm-SecureBootUEFI
-# Returns True if Secure Boot is enabled
-
-# Check BitLocker readiness
-$vol = Get-BitLockerVolume -MountPoint "C:"
-$vol.VolumeStatus  # Should be "FullyDecrypted"
-$vol.ProtectionStatus  # Should be "Off"
-```
-
-### Step 2: Configure BitLocker GPO Settings
-
-```
-Computer Configuration → Administrative Templates → Windows Components → BitLocker Drive Encryption
-
-Operating System Drives:
-  - Require additional authentication at startup: Enabled
-    - Allow BitLocker without compatible TPM: Disabled (enforce TPM)
-    - Configure TPM startup: Allow TPM
-    - Configure TPM startup PIN: Allow startup PIN with TPM
-    - Configure TPM startup key: Allow startup key with TPM
-
-  - Choose how BitLocker-protected OS drives can be recovered: Enabled
-    - Allow data recovery agent: True
-    - Configure storage of recovery information to AD DS: Enabled
-    - Save recovery info to AD DS for OS drives: Store recovery passwords and key packages
-    - Do not enable BitLocker until recovery information is stored: Enabled
-
-  - Choose drive encryption method and cipher strength:
-    - OS drives: XTS-AES 256-bit (Windows 10 1511+)
-    - Fixed drives: XTS-AES 256-bit
-    - Removable drives: AES-CBC 256-bit (for cross-platform compatibility)
-
-Fixed Data Drives:
-  - Choose how BitLocker-protected fixed drives can be recovered: Enabled
-    - Store recovery passwords in AD DS: Enabled
-
-Removable Data Drives:
-  - Control use of BitLocker on removable drives: Enabled
-  - Configure use of passwords for removable drives: Require complexity
-```
-
-### Step 3: Enable BitLocker - Command Line
-
-```powershell
-# Enable BitLocker with TPM-only protector (transparent to user)
-Enable-BitLocker -MountPoint "C:" -EncryptionMethod XtsAes256 `
-  -TpmProtector -SkipHardwareTest
-
-# Enable BitLocker with TPM + PIN (recommended for laptops)
-$pin = ConvertTo-SecureString "123456" -AsPlainText -Force
-Enable-BitLocker -MountPoint "C:" -EncryptionMethod XtsAes256 `
-  -TpmAndPinProtector -Pin $pin
-
-# Add recovery password protector
-Add-BitLockerKeyProtector -MountPoint "C:" -RecoveryPasswordProtector
-
-# Backup recovery key to Active Directory
-Backup-BitLockerKeyProtector -MountPoint "C:" `
-  -KeyProtectorId (Get-BitLockerVolume -MountPoint "C:").KeyProtector[1].KeyProtectorId
-
-# Encrypt fixed data drives
-Enable-BitLocker -MountPoint "D:" -EncryptionMethod XtsAes256 `
-  -RecoveryPasswordProtector -AutoUnlockEnabled
-```
-
-### Step 4: Deploy via Intune (Enterprise)
-
-```
-Intune → Endpoint Security → Disk encryption → Create Profile
-
-Platform: Windows 10 and later
-Profile: BitLocker
-
-Settings:
-  BitLocker base settings:
-    - Encryption for operating system drives: Require
-    - Encryption for fixed data drives: Require
-    - Encryption for removable data drives: Require
-
-  Operating system drive settings:
-    - Additional authentication at startup: Require
-    - TPM startup: Allowed
-    - TPM startup PIN: Required (for high-security endpoints)
-    - Encryption method: XTS-AES 256-bit
-    - Recovery: Escrow to Azure AD
-
-  Fixed drive settings:
-    - Encryption method: XTS-AES 256-bit
-    - Recovery: Escrow to Azure AD
-
-  Assign to: All managed Windows devices (or specific groups)
-```
-
-### Step 5: Manage Recovery Keys
-
-```powershell
-# View recovery key on local system
-(Get-BitLockerVolume -MountPoint "C:").KeyProtector |
-  Where-Object {$_.KeyProtectorType -eq "RecoveryPassword"} |
-  Select-Object KeyProtectorId, RecoveryPassword
-
-# Retrieve recovery key from Active Directory (requires RSAT)
-Get-ADObject -Filter {objectClass -eq "msFVE-RecoveryInformation"} `
-  -SearchBase "CN=COMPUTER01,OU=Workstations,DC=corp,DC=example,DC=com" `
-  -Properties msFVE-RecoveryPassword |
-  Select-Object -ExpandProperty msFVE-RecoveryPassword
-
-# Retrieve recovery key from Azure AD
-# Azure Portal → Azure AD → Devices → [device] → BitLocker keys
-# Or via Microsoft Graph API:
-# GET /devices/{id}/bitlockerRecoveryKeys
-```
-
-### Step 6: Monitor Encryption Status
-
-```powershell
-# Check encryption status across fleet
-manage-bde -status C:
-
-# Expected output for encrypted drive:
-#   Conversion Status: Fully Encrypted
-#   Percentage Encrypted: 100.0%
-#   Encryption Method: XTS-AES 256
-#   Protection Status: Protection On
-#   Key Protectors: TPM, Numerical Password
-
-# PowerShell compliance check
-$vol = Get-BitLockerVolume -MountPoint "C:"
-if ($vol.ProtectionStatus -eq "On" -and $vol.VolumeStatus -eq "FullyEncrypted") {
-    Write-Host "COMPLIANT: BitLocker enabled and fully encrypted"
-} else {
-    Write-Host "NON-COMPLIANT: BitLocker status - Protection: $($vol.ProtectionStatus), Volume: $($vol.VolumeStatus)"
-}
-```
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **TPM (Trusted Platform Module)** | Hardware security chip that stores BitLocker encryption keys and provides measured boot integrity |
-| **XTS-AES 256** | Encryption cipher used by BitLocker; XTS mode provides better protection for disk encryption than CBC |
-| **Recovery Key** | 48-digit numerical password used to unlock BitLocker-encrypted drive when TPM authentication fails |
-| **Key Protector** | Method used to unlock BitLocker (TPM, TPM+PIN, recovery password, startup key, smart card) |
-| **Used Space Only Encryption** | Encrypts only sectors containing data; faster initial encryption but may leave remnant data in free space |
-| **Full Disk Encryption** | Encrypts entire volume including free space; slower but more secure for drives that previously contained data |
-
-## When NOT to Use
-
-- You need to test the implementation (use performing-* skills)
-- Task is about configuring existing tools (use configuring-* skills)
-- You need to analyze security events (use analyzing-* skills)
-- Task is about building detection rules (use building-* skills)
-- You don't have access to the target environment
-- Task requires vendor-specific expertise (consult vendor docs)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Failing to use write-blockers when acquiring forensic evidence
-- Not verifying hash integrity before and after imaging
-- Modifying original evidence during analysis
+- **bitlocker** — Primary tool for this skill
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Hash values computed and verified match between source and image
-- Chain of custody log complete with timestamps and examiner names
-- Analysis tools and versions documented for reproducibility
-
-## Tools & Systems
-
-- **BitLocker (built-in)**: Windows full disk encryption feature
-- **manage-bde.exe**: Command-line BitLocker management tool
-- **BitLocker Recovery Password Viewer**: RSAT tool for viewing recovery keys in Active Directory
-- **MBAM (Microsoft BitLocker Administration and Monitoring)**: Enterprise BitLocker management (legacy, replaced by Intune)
-- **Microsoft Intune**: Cloud-based BitLocker policy deployment and recovery key management
-
-## Common Pitfalls
-
-- **Not escrowing recovery keys before encryption**: If recovery keys are not saved to AD/Azure AD before encryption, they may be permanently lost if the TPM fails.
-- **Using TPM-only without PIN**: TPM-only mode is transparent but vulnerable to cold boot attacks and evil maid attacks. Add a startup PIN for laptops leaving the office.
-- **Encrypting used space only on repurposed drives**: If a drive previously contained sensitive data, "used space only" encryption leaves deleted data unencrypted in free space. Use full disk encryption for repurposed drives.
-- **Forgetting removable drives**: USB drives and external disks are common data loss vectors. Enforce BitLocker To Go for removable media.
-- **No pre-provisioning for SCCM deployments**: Pre-provision BitLocker during OSD task sequence to encrypt before OS deployment, avoiding the lengthy post-deployment encryption process.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All disk encryption procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

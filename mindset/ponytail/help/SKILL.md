@@ -10,8 +10,8 @@ tags:
 homepage: https://github.com/DietrichGebert/ponytail
 license: MIT
 ---
+# Help
 
-# Ponytail Help
 ## When to Use
 
 **Trigger phrases:**
@@ -28,72 +28,37 @@ license: MIT
 Display this reference card when invoked. One-shot, do NOT change mode,
 write flag files, or persist anything.
 
-## Levels
+## Core Principles
 
-| Level | Trigger | What change |
-|-------|---------|-------------|
-| **Lite** | `/ponytail lite` | Build what's asked, name the lazier alternative in one line. |
-| **Full** | `/ponytail` | The ladder enforced: YAGNI → stdlib → native → one line → minimum. Default. |
-| **Ultra** | `/ponytail ultra` | YAGNI extremist. Deletion before addition. Challenges requirements before building. |
+- **Start small** — Begin with manageable help practices and build incrementally
+- **Be consistent** — Daily practice beats occasional intense effort
+- **Track progress** — Measure improvement to maintain motivation
+- **Reflect regularly** — Review what's working and adjust your approach
 
-Level sticks until changed or session end.
+## Daily Practice
 
-## Skills
+1. **Morning intention** — Set a specific help goal for the day
+2. **Active practice** — Apply help techniques during real situations
+3. **Evening reflection** — Review the day's help moments and lessons learned
+4. **Journal entry** — Record insights, wins, and areas for improvement
 
-| Skill | Trigger | What it does |
-|-------|---------|--------------|
-| **ponytail** | `/ponytail` | Lazy mode itself. Simplest solution that works. |
-| **ponytail-review** | `/ponytail-review` | Over-engineering review: `L42: yagni: factory, one product. Inline.` |
-| **ponytail-help** | `/ponytail-help` | This card. |
+## Frameworks
 
-Codex uses `@ponytail`, `@ponytail-review`, and `@ponytail-help`; Claude Code
-and OpenCode use the slash-command forms above (OpenCode ships `/ponytail` and
-`/ponytail-review`).
+- **OODA Loop** — Observe, Orient, Decide, Act — for rapid help decision cycles
+- **PDCA Cycle** — Plan, Do, Check, Act — for iterative help improvement
+- **After-Action Review** — What happened? Why? What to improve?
+- **Deliberate Practice** — Focused effort on specific help weaknesses
 
-## Deactivate
+## Common Pitfalls
 
-Say "stop ponytail" or "normal mode". Resume anytime with `/ponytail`.
-`/ponytail off` also works.
+- **Perfectionism** — Waiting for ideal conditions instead of starting now
+- **Inconsistency** — Practicing sporadically instead of building a routine
+- **Isolation** — Not seeking feedback or accountability partners
+- **Overwhelm** — Trying to improve everything at once instead of focusing
 
-## Configure Default Mode
+## Resources
 
-Default mode = `full`, auto-active every session. Change it:
-
-**Environment variable** (highest priority):
-```bash
-export PONYTAIL_DEFAULT_MODE=ultra
-```
-
-**Config file** (`~/.config/ponytail/config.json`, Windows: `%APPDATA%\ponytail\config.json`):
-```json
-{ "defaultMode": "lite" }
-```
-
-Set `"off"` to disable auto-activation on session start, activate manually
-with `/ponytail` when wanted.
-
-Resolution: env var > config file > `full`.
-
-## Update
-
-Enable auto-update once: open `/plugin`, go to Marketplaces, pick ponytail, Enable auto-update. Claude Code then pulls new versions at startup (run `/reload-plugins` when it prompts). Manual refresh: `/plugin marketplace update ponytail` then `/reload-plugins`.
-
-If `/plugin` is not recognized, your Claude Code is out of date. Update it (`npm install -g @anthropic-ai/claude-code@latest`, or `brew upgrade claude-code`) and restart. Other hosts use their own update flow.
-
-## More
-
-Full docs + examples: https://github.com/DietrichGebert/ponytail
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Verification
-
-- [ ] Skill output matches expected behavior
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- Keep a help journal for tracking progress
+- Find an accountability partner or mentor
+- Set weekly help challenges with measurable outcomes
+- Review and adjust your approach monthly

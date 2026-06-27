@@ -21,9 +21,7 @@ nist_csf:
 - GV.OV-01
 - DE.AE-02
 ---
-
-# Implementing mTLS for Zero Trust Services
-
+# Implementing Mtls For Zero Trust Services
 
 ## When to Use
 
@@ -39,69 +37,26 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-Generate CA certificates, issue service certificates, and configure mutual TLS
-verification for service-to-service authentication.
+1. **Assess Requirements** — Evaluate current environment and define mtls implementation requirements.
+2. **Design Architecture** — Plan the mtls architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up zero trust services for mtls according to vendor best practices and security guidelines.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-```python
-from cryptography import x509
-from cryptography.x509.oid import NameOID
-from cryptography.hazmat.primitives import hashes, serialization
-from cryptography.hazmat.primitives.asymmetric import rsa
-import datetime
+## Tools
 
-# Generate CA key and certificate
-ca_key = rsa.generate_private_key(public_exponent=65537, key_size=4096)
-ca_cert = (x509.CertificateBuilder()
-    .subject_name(x509.Name([x509.NameAttribute(NameOID.COMMON_NAME, "Internal CA")]))
-    .issuer_name(x509.Name([x509.NameAttribute(NameOID.COMMON_NAME, "Internal CA")]))
-    .public_key(ca_key.public_key())
-    .serial_number(x509.random_serial_number())
-    .not_valid_before(datetime.datetime.utcnow())
-    .not_valid_after(datetime.datetime.utcnow() + datetime.timedelta(days=3650))
-    .add_extension(x509.BasicConstraints(ca=True, path_length=None), critical=True)
-    .sign(ca_key, hashes.SHA256()))
-```
+- **zero trust services** — Primary tool for this skill
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
-## Examples
-
-```python
-import ssl
-context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
-context.load_cert_chain("client.pem", "client-key.pem")
-context.load_verify_locations("ca.pem")
-context.verify_mode = ssl.CERT_REQUIRED
-```
-## When NOT to Use
-
-- You need to test the implementation (use performing-* skills)
-- Task is about configuring existing tools (use configuring-* skills)
-- You need to analyze security events (use analyzing-* skills)
-- Task is about building detection rules (use building-* skills)
-- You don't have access to the target environment
-- Task requires vendor-specific expertise (consult vendor docs)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Sharing sensitive findings or credentials in unencrypted communications
-- Failing to properly scope and contain the assessment before starting
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All mtls procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

@@ -21,9 +21,7 @@ nist_csf:
 - GV.OV-01
 - DE.AE-02
 ---
-
-# Analyzing API Gateway Access Logs
-
+# Analyzing Api Gateway Access Logs
 
 ## When to Use
 
@@ -39,67 +37,25 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-Parse API gateway access logs to identify attack patterns including broken object
-level authorization (BOLA), excessive data exposure, and injection attempts.
+1. **Scope the Analysis** — Define what api gateway access logs artifacts or data sources to examine and the investigation timeline.
+2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
+3. **Extract Key Indicators** — Parse and extract relevant api gateway access logs data points from collected artifacts.
+4. **Correlate Findings** — Cross-reference extracted data with other sources (threat intel, logs, timelines).
+5. **Build Timeline** — Construct a chronological sequence of events related to api gateway access logs.
+6. **Document Analysis** — Write findings report with evidence, conclusions, and recommendations.
 
-```python
-import pandas as pd
+## Tools
 
-df = pd.read_json("api_gateway_logs.json", lines=True)
-# Detect BOLA: same user accessing many different resource IDs
-bola = df.groupby(["user_id", "endpoint"]).agg(
-    unique_ids=("resource_id", "nunique")).reset_index()
-suspicious = bola[bola["unique_ids"] > 50]
-```
+- **Forensic Toolkit** — Evidence collection and analysis
+- **Timeline Tools** — Chronological event reconstruction
+- **Log Analysis Platform** — Centralized log parsing and search
 
-Key detection patterns:
-1. BOLA/IDOR: sequential resource ID enumeration
-2. Rate limit bypass via header manipulation
-3. Credential scanning (401 surges from single source)
-4. SQL/NoSQL injection in query parameters
-5. Unusual HTTP methods (DELETE, PATCH) on read-only endpoints
-
-## Examples
-
-```python
-# Detect 401 surges indicating credential scanning
-auth_failures = df[df["status_code"] == 401]
-scanner_ips = auth_failures.groupby("source_ip").size()
-scanners = scanner_ips[scanner_ips > 100]
-```
-## When NOT to Use
-
-- You need to perform the attack, not analyze it (use performing-* skills)
-- Task is about detection, not analysis (use detecting-* skills)
-- You need to implement controls (use implementing-* skills)
-- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
-- You don't have access to the artifacts/logs to analyze
-- Task requires real-time monitoring (use SOC tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Exceeding the authorized scope of the engagement
-- Leaving persistent access mechanisms without explicit approval
-- Causing denial-of-service on production systems during testing
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- All exploited vulnerabilities documented with reproduction steps
-- Scope boundaries confirmed — only authorized targets were tested
-- Remediation recommendations included for every finding
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All api gateway access logs procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

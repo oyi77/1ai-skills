@@ -32,7 +32,7 @@ nist_csf:
 - DE.CM-01
 - PR.IR-01
 ---
-# Implementing Endpoint DLP Controls
+# Implementing Endpoint Dlp Controls
 
 ## When to Use
 
@@ -53,155 +53,23 @@ Use this skill when:
 
 ## Workflow
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
-### Step 1: Define Sensitive Information Types
+1. **Assess Requirements** — Evaluate current environment and define endpoint dlp controls implementation requirements.
+2. **Design Architecture** — Plan the endpoint dlp controls architecture, including components, integrations, and data flows.
+3. **Configure Components** — Set up and configure each endpoint dlp controls component according to best practices.
+4. **Test Integration** — Validate that all components work together. Run functional and security tests.
+5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
+6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
 
-```
-Microsoft Purview → Data Classification → Sensitive info types
+## Tools
 
-Built-in SITs for common data:
-- Credit card number (PCI)
-- Social Security Number (PII)
-- Health records (HIPAA)
-- Passport number
-- Bank account number
-
-Custom SIT example (Employee ID):
-  Pattern: EMP-[0-9]{6}
-  Confidence: High
-  Keywords: "employee id", "emp id", "staff number"
-```
-
-### Step 2: Create DLP Policy
-
-```
-Microsoft Purview → Data loss prevention → Policies → Create policy
-
-Policy Configuration:
-1. Template: Financial / Medical / PII (or custom)
-2. Locations: Devices (endpoint DLP)
-3. Conditions:
-   - Content contains: Credit card numbers (min 5 instances)
-   - OR Content contains: SSN (min 1 instance)
-4. Actions:
-   - Block: Prevent copy to USB, cloud, email
-   - Audit: Log but allow (for initial deployment)
-   - Notify: Show user notification with policy tip
-5. User notifications:
-   - "This file contains sensitive data and cannot be copied to this location"
-   - Allow override with business justification (optional)
-```
-
-### Step 3: Configure Endpoint DLP Activities
-
-```
-Monitored endpoint activities:
-- Upload to cloud service (OneDrive, Dropbox, Google Drive)
-- Copy to removable media (USB drives)
-- Copy to network share
-- Print document
-- Copy to clipboard
-- Access by unallowed browser (non-managed browser)
-- Access by unallowed app
-- Copy to Remote Desktop session
-
-For each activity, configure:
-- Audit only (log the action)
-- Block with override (user can justify and proceed)
-- Block (prevent action entirely)
-```
-
-### Step 4: Deploy in Audit Mode
-
-```
-Deploy DLP policy in "Test mode with notifications" first:
-1. Policy runs in audit mode for 2-4 weeks
-2. Review DLP alerts in Activity Explorer
-3. Identify false positives
-4. Tune SIT patterns and conditions
-5. Add exclusions for legitimate workflows
-6. Switch to "Turn on the policy" (enforcement)
-```
-
-### Step 5: Monitor and Respond
-
-```
-Purview → Data loss prevention → Activity explorer
-
-Key metrics:
-- DLP policy matches per day/week
-- Top matched sensitive info types
-- Top users triggering DLP
-- Top activities blocked (USB, cloud, email)
-- Override rate (percentage of blocks overridden)
-
-DLP incident response:
-1. Review DLP alert with matched content
-2. Verify sensitivity of detected data
-3. Assess intent (accidental vs. intentional)
-4. If intentional exfiltration → escalate to security incident
-5. If accidental → educate user, refine policy
-```
-
-## Key Concepts
-
-| Term | Definition |
-|------|-----------|
-| **DLP** | Data Loss Prevention; technology that detects and prevents unauthorized transmission of sensitive data |
-| **SIT** | Sensitive Information Type; pattern matching rules for identifying sensitive data (regex, keywords, ML classifiers) |
-| **Policy Tip** | User-facing notification explaining why an action was blocked and how to request an override |
-| **Content Inspection** | Deep inspection of file contents to identify sensitive data patterns |
-| **Exact Data Match (EDM)** | DLP matching against a specific database of known sensitive values (exact SSNs, employee records) |
-
-## When NOT to Use
-
-- You need to test the implementation (use performing-* skills)
-- Task is about configuring existing tools (use configuring-* skills)
-- You need to analyze security events (use analyzing-* skills)
-- Task is about building detection rules (use building-* skills)
-- You don't have access to the target environment
-- Task requires vendor-specific expertise (consult vendor docs)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Sharing sensitive findings or credentials in unencrypted communications
-- Failing to properly scope and contain the assessment before starting
+- **Configuration Management** — Infrastructure as code and automation
+- **Monitoring Stack** — Observability and alerting
+- **Documentation Platform** — Runbooks and architecture docs
 
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Tools & Systems
-
-- **Microsoft Purview DLP**: Cloud-managed endpoint DLP included in M365 E5
-- **Symantec DLP (Broadcom)**: Enterprise DLP with endpoint, network, and cloud modules
-- **Digital Guardian**: Endpoint DLP with data classification and protection
-- **Forcepoint DLP**: Unified DLP platform with endpoint agent
-- **Code42 Incydr**: Insider risk detection with file exfiltration monitoring
-
-## Common Pitfalls
-
-- **Over-blocking in enforcement mode**: Deploy DLP in audit mode first. Blocking common workflows without warning causes productivity loss.
-- **Too many SIT false positives**: Phone numbers, dates, and random number sequences can match PCI/SSN patterns. Tune confidence levels and require corroborating keywords.
-- **Ignoring user education**: DLP is most effective when users understand why data is protected. Policy tips should explain the restriction and provide approved alternatives.
-- **Not monitoring overrides**: If users frequently override DLP blocks, the policy is either too restrictive or users are ignoring data protection requirements. Review override reasons.
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All endpoint dlp controls procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

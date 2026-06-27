@@ -18,9 +18,8 @@ persona: "name: \"Mark Zuckerberg\"\n  title: \"The Social Architect - Master of
   Done is better than perfect\"\n    - \"Focus on one metric that matters\"\n    - \"Copy competitors mercilessly\"\n    -\
   \ \"Acquisitions > Building from scratch\"\n"
 ---
+# Social Growth
 
-
-# Social Growth System
 ## When to Use
 
 **Trigger phrases:**
@@ -33,159 +32,31 @@ persona: "name: \"Mark Zuckerberg\"\n  title: \"The Social Architect - Master of
 **When NOT to use:**
 - For tasks outside this skill's scope
 
-
-## The Zuckerberg Playbook
-
-- Configure approach, building, effects, growth, iteration settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
-
-
-### Network Effects Physics
-
-**Metcalfe's Law in Action:**
-```
-Network Value = n² (where n = number of users)
-
-Example:
-- 1M users = 1T possible connections
-- 2M users = 4T possible connections
-- 4x value from 2x users
-```
-
-**Types of Network Effects:**
-
-| Type | Example | Strength |
-|------|---------|----------|
-| Direct | Phone network | Strong |
-| Two-sided | Uber/Lyft | Medium |
-| Data | Google Search | Strong |
-| Platform | iOS App Store | Very Strong |
-
-### Growth Hacking Framework
-
-**The Viral Loop:**
-1. **Activation** - User signs up
-2. **Retention** - User finds value
-3. **Referral** - User invites others
-4. **Monetization** - User generates revenue
-
-**Growth Metrics:**
-- DAU/MAU ratio (daily/monthly active)
-- Viral coefficient (K-factor)
-- Time spent
-- Messages sent per user
-
-### The Facebook Growth Machine
-
-**Early Tactics:**
-- College-only launch (exclusivity)
-- Email address book import
-- Photo tagging (notifications)
-- News Feed (engagement)
-- Mobile first (growth)
-
-**Acquisition Strategy:**
-- Buy competitors before they're threats
-- Instagram: $1B (now worth $100B+)
-- WhatsApp: $19B (bought messaging)
-- Oculus: VR bet
-
-## Move Fast Framework
-
-- Configure approach, building, effects, growth, iteration settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
-
-
-### Speed Over Perfection
-
-> "If you are not embarrassed by your first version, you waited too long."
-
-**Weekly Shipping:**
-- Ship something every week
-- Test in production
-- Measure, learn, iterate
-- Kill features that don't work
-
-### The Hacker Way
-
-**Code wins arguments:**
-- Demo over presentation
-- Working prototype over spec
-- Data over opinion
-- Ship over plan
-
-## Metrics That Matter
-
-- Configure approach, building, effects, growth, iteration settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
-
-
-### The One Metric
-
-Focus on ONE number that drives everything:
-
-- Facebook: Monthly Active Users
-- Uber: Rides per week
-- Airbnb: Nights booked
-
-**Don't chase:**
-- Vanity metrics (downloads, registrations)
-- Engagement without retention
-- Revenue without unit economics
-
----
-
-
-## When NOT to Use
-
-- When the marketing activity requires regulatory compliance review
-- When the campaign involves sensitive demographics or regulated industries
-- When the task is too trivial to warrant this skill
-- When a more appropriate skill exists
-
-## Common Rationalizations
-
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
-
-## Red Flags
-
-- Marketing changes are deployed without measuring impact
-- Agent does not comply with platform-specific content guidelines
-- Watch for shortcuts and skipped steps
-
-## Verification
-
-After completing this skill, confirm:
-
-- [ ] Marketing changes have measurable impact metrics before and after
-- [ ] Platform content guidelines are followed for each target
-- [ ] All required outputs generated
-- [ ] Success criteria met
-
-## Related Skills
-
-- `steve-jobs-product` - Product design
-- `opportunity-exploitation` - Customer obsession
-- `rockefeller-wealth` - Monopoly thinking
-
 ## Overview
 
-> Section content — see SKILL.md body for full details.
+Social Growth drives growth marketing with data-driven strategies.
 
-## Process
+## Workflow
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+1. **Research** — Analyze market, competitors, and audience
+2. **Strategy** — Define goals, channels, and messaging
+3. **Create** — Develop content and creative assets
+4. **Launch** — Deploy campaigns across channels
+5. **Optimize** — A/B test and iterate based on data
+6. **Report** — Track KPIs and ROI
+
+## Key Metrics
+
+- Reach and impressions
+- Engagement rate (likes, shares, comments)
+- Conversion rate (clicks → leads → customers)
+- Customer acquisition cost (CAC)
+- Return on ad spend (ROAS)
+
+## Best Practices
+
+- Test everything — headlines, images, CTAs, timing
+- Focus on one channel at a time, then expand
+- Build organic before scaling paid
+- Track attribution across the full funnel
+

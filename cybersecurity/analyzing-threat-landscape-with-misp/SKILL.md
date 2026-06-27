@@ -26,10 +26,7 @@ nist_csf:
 - DE.CM-01
 - DE.AE-02
 ---
-
-
-# Analyzing Threat Landscape with MISP
-
+# Analyzing Threat Landscape With Misp
 
 ## When to Use
 
@@ -45,67 +42,26 @@ nist_csf:
 - Python 3.8+ with required dependencies installed
 - Appropriate authorization for any testing activities
 
-## Instructions
+## Workflow
 
-1. Install dependencies: `pip install pymisp`
-2. Configure MISP URL and API key.
-3. Run the agent to generate threat landscape analysis:
-   - Pull event statistics by threat level and date range
-   - Analyze attribute type distributions (IP, domain, hash, URL)
-   - Identify top MITRE ATT&CK techniques from event tags
-   - Track threat actor activity via galaxy clusters
-   - Generate temporal trend analysis of IOC submissions
+1. **Scope the Analysis** — Define what threat landscape artifacts or data sources to examine and the investigation timeline.
+2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
+3. **Extract Key Indicators** — Use misp to parse and extract relevant threat landscape data points from collected artifacts.
+4. **Correlate Findings** — Cross-reference extracted data with other sources (threat intel, logs, timelines).
+5. **Build Timeline** — Construct a chronological sequence of events related to threat landscape.
+6. **Document Analysis** — Write findings report with evidence, conclusions, and recommendations.
 
-```bash
-python scripts/agent.py --misp-url https://misp.local --api-key YOUR_KEY --days 90 --output landscape_report.json
-```
+## Tools
 
-## Examples
+- **misp** — Primary tool for this skill
+- **Forensic Toolkit** — Evidence collection and analysis
+- **Timeline Tools** — Chronological event reconstruction
+- **Log Analysis Platform** — Centralized log parsing and search
 
-```bash
-# Basic usage example
-# Replace with domain-specific commands from the workflow above
-```
-### Threat Landscape Summary
-```
-Period: Last 90 days
-Events analyzed: 1,247
-Top threat level: High (43%)
-Top attribute type: ip-dst (31%), domain (22%), sha256 (18%)
-Top MITRE technique: T1566 Phishing (89 events)
-Top threat actor: APT28 (34 events)
-```
-## When NOT to Use
-
-- You need to perform the attack, not analyze it (use performing-* skills)
-- Task is about detection, not analysis (use detecting-* skills)
-- You need to implement controls (use implementing-* skills)
-- Task is about threat hunting, not post-incident analysis (use hunting-* skills)
-- You don't have access to the artifacts/logs to analyze
-- Task requires real-time monitoring (use SOC tools)
-
-
-## Red Flags
-
-- Performing actions without explicit written authorization from the asset owner
-- Testing against production systems without a defined scope and rules of engagement
-- Analyzing malware on a machine connected to the production network
-- Failing to isolate the analysis environment from the internet
-- Executing samples without proper containment (VM, sandbox)
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Sample hash recorded and verified (MD5, SHA-1, SHA-256)
-- Analysis environment confirmed isolated from production network
-- Indicators of compromise (IOCs) extracted and documented
-
-## Overview
-
-> Section content — see SKILL.md body for full details.
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] All threat landscape procedures executed completely and documented
+- [ ] Findings validated against multiple data sources
+- [ ] False positives identified and filtered
+- [ ] Results documented with evidence and timestamps
+- [ ] Recommendations provided with risk-based prioritization

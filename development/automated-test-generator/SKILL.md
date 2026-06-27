@@ -11,6 +11,11 @@ Generate test suites, analyze code coverage, and scaffold E2E tests automaticall
 
 **Source:** Adapted from davila7/claude-code-templates senior-qa skill + alirezarezvani/claude-skills senior-qa
 
+## Overview
+
+**Automated Test Generator** analyzes code and automatically generates unit, integration, and property-based tests. Uses AST analysis and pattern recognition to create meaningful test cases that catch real bugs.
+
+
 ## When to Use
 
 **Trigger phrases:**
