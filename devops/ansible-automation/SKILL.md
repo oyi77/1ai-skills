@@ -115,7 +115,7 @@ roles/
 ```
 
 ### Dynamic Inventory
-```python
+```
 # inventory/aws_ec2.yml
 plugin: amazon.aws.aws_ec2
 regions:

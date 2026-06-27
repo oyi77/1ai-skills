@@ -57,3 +57,12 @@ Business Development drives revenue generation with systematic processes.
 - Track everything in CRM
 - Ask for referrals after every closed deal
 
+
+## Workflow
+
+1. **Understand requirements** — Clarify objectives and scope
+2. **Set up tools** — Configure required tools and access
+3. **Execute** — Perform the core operations
+4. **Validate** — Verify results meet quality standards
+5. **Document** — Record findings and decisions
+

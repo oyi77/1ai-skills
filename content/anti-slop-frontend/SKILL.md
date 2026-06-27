@@ -25,10 +25,6 @@ The framework covers layout systems, typography hierarchies, motion design, spac
 ## Implementation Skills
 
 - Configure agents, anti, better, boilerplate, building settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### taste-skill (v2)
@@ -89,10 +85,6 @@ Design taste layer for Stitch-based component generation — ensures consistent 
 ## Image Generation Skills
 
 - Configure agents, anti, better, boilerplate, building settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### imagegen-frontend-web
@@ -110,10 +102,6 @@ Generate cohesive brand identity kits — logo variants, color palettes, typogra
 ## Visual Style Variants
 
 - Configure agents, anti, better, boilerplate, building settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Soft/Premium

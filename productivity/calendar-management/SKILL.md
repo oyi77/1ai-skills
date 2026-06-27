@@ -61,3 +61,12 @@ Calendar Management enhances workflow optimization with proven systems and tools
 - Review and adjust systems weekly
 - Eliminate before optimizing
 
+
+## Workflow
+
+1. **Understand requirements** — Clarify objectives and scope
+2. **Set up tools** — Configure required tools and access
+3. **Execute** — Perform the core operations
+4. **Validate** — Verify results meet quality standards
+5. **Document** — Record findings and decisions
+

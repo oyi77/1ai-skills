@@ -283,7 +283,7 @@ for sub in subdomains[:20]:
 
 ### Step 4: Generate CT Intelligence Report
 
-```python
+```
 def generate_ct_report(suspicious_certs, certstream_alerts, domain):
     report = f"""# Certificate Transparency Intelligence Report
 ## Target Domain: {domain}

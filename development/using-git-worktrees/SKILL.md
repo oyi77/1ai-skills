@@ -84,10 +84,6 @@ Which would you prefer?
 ## Safety Verification
 
 - Configure before, creates, current, directory, executing settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### For Project-Local Directories (.worktrees or worktrees)
@@ -115,10 +111,6 @@ No .gitignore verification needed - outside project entirely.
 ## Creation Steps
 
 - Configure before, creates, current, directory, executing settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. Detect Project Name
@@ -203,10 +195,6 @@ Ready to implement <feature-name>
 ## Common Mistakes
 
 - Configure before, creates, current, directory, executing settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Skipping ignore verification

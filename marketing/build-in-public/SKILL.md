@@ -86,10 +86,6 @@ Build in Public (BIP) is a movement where founders share their startup journey t
 ## Core Strategies
 
 - Configure attract, audience, build, customers, document settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. Revenue Transparency
@@ -146,10 +142,6 @@ Share your startup process:
 ## Automation Tools
 
 - Configure attract, audience, build, customers, document settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Connect Your Stack

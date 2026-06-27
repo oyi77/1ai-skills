@@ -58,10 +58,6 @@ Write code before test? Delete it. Start over.
 ## Red-Green-Refactor
 
 - Configure before, bugfix, code, development, driven settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### RED: Write Failing Test

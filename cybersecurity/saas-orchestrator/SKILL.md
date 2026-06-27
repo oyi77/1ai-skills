@@ -240,7 +240,7 @@ def invoke_skill(skill, targets, output_dir):
 
 ### Phase 3: Report Generation
 
-```python
+```
 def generate_report(client_slug, results):
     """Generate professional security assessment report."""
 

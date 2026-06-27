@@ -111,7 +111,7 @@ python main.py --run
 ### 2. Generate Instruction
 
 Use the prompt optimizer:
-```python
+```
 python prompt_optimizer.py --category fashion --style minimal --product "white dress"
 ```
 
@@ -131,10 +131,6 @@ python prompt_optimizer.py --category fashion --style minimal --product "white d
 ## Usage
 
 - Configure commerce, gemini, generating, generator, image settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Command Line
@@ -197,10 +193,6 @@ defaults:
 ## Integration
 
 - Configure commerce, gemini, generating, generator, image settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Next Step: ChatGPT Video Generation

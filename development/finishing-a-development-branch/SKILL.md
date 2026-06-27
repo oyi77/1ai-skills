@@ -63,10 +63,6 @@ Guide completion of development work by presenting clear options and handling ch
 ## The Process
 
 - Configure branch, cleanup, complete, completion, decide settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Step 1: Verify Tests

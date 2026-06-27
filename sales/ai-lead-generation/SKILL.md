@@ -55,10 +55,6 @@ Use AI to automate the entire lead generation process - from finding prospects t
 ## The AI Lead Gen Pipeline
 
 - Configure automated, book, customers, data, effort settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Stage 1: Prospecting (Automated)
@@ -102,10 +98,6 @@ Output: Booked meetings
 ## Best Tools
 
 - Configure automated, book, customers, data, effort settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Prospecting
@@ -144,10 +136,6 @@ Output: Booked meetings
 ## ICP Framework
 
 - Configure automated, book, customers, data, effort settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Define by:
@@ -260,10 +248,6 @@ Day 21: Remove from sequence
 ## AI Personalization
 
 - Configure automated, book, customers, data, effort settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Use AI To:
@@ -316,10 +300,6 @@ AI Lead Gen → Outbound → Qualify → Demo → Close
 ## Metrics & Benchmarks
 
 - Configure automated, book, customers, data, effort settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Lead Gen Metrics
@@ -376,10 +356,6 @@ ROI: 1900%
 ## Cold Email Warm-up
 
 - Configure automated, book, customers, data, effort settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Day 1-3: 5 emails

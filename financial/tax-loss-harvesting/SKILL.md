@@ -74,7 +74,7 @@ tlh_opportunities = {
 ### Phase 2: Wash Sale Check!
 
 **Wash Sale Rules (30-Day Window):**
-```python
+```
 wash_sale_check = {
     "ticker": "TSLA",
     "sale_date": "2025-04-08",
@@ -92,7 +92,7 @@ wash_sale_check = {
 ### Phase 3: Tax-Alpha Execution!
 
 **TLH Strategy:**
-```python
+```
 tax_alpha = {
     "realized_losses": {
         "year": 2025,

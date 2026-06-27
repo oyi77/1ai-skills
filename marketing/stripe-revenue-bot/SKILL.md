@@ -91,10 +91,6 @@ Automate posting your Stripe revenue milestones to Twitter/X. Connect your Strip
 ## Tools & Integration
 
 - Configure attract, automate, bot, build, customers settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### OpenTweet (Recommended)
@@ -147,10 +143,6 @@ def stripe_webhook():
 ## Event Types to Post
 
 - Configure attract, automate, bot, build, customers settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### High-Impact Events (Recommended)
@@ -182,10 +174,6 @@ def stripe_webhook():
 ## Customization Options
 
 - Configure attract, automate, bot, build, customers settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Tone Variations
@@ -303,10 +291,6 @@ Stage 4: Document  →  build-in-public (share journey)
 ## Troubleshooting
 
 - Configure attract, automate, bot, build, customers settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Common Issues

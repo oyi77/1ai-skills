@@ -43,10 +43,6 @@ Post-production video editing using FFmpeg automation. Enhance videos from `goog
 ## FFmpeg Commands
 
 - Configure audio, captions, clips, content, convert settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. Add Captions/Subtitles
@@ -121,10 +117,6 @@ ffmpeg -i video.mp4 -i logo.png -filter_complex "overlay=W-w-10:H-h-10" watermar
 ## Automation Examples
 
 - Configure audio, captions, clips, content, convert settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Auto-Caption Generator

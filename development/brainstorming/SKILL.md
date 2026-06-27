@@ -58,10 +58,6 @@ Effective brainstorming skill to use before building features. Clarify intent, e
 ## Brainstorming Process
 
 - Configure align, brainstorming, clarify, decisions, design settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. Clarify Intent
@@ -112,10 +108,6 @@ Recommended approach:
 ## Framework
 
 - Configure align, brainstorming, clarify, decisions, design settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### The 5 Whys
@@ -148,10 +140,6 @@ Won't have: Out of scope
 ## Decision Framework
 
 - Configure align, brainstorming, clarify, decisions, design settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Build vs Buy vs Open Source
@@ -189,10 +177,6 @@ Open Source:
 ## Brainstorming Results
 
 - Configure align, brainstorming, clarify, decisions, design settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Problem Statement
@@ -233,10 +217,6 @@ Open Source:
 ## Integration
 
 - Configure align, brainstorming, clarify, decisions, design settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Before Building

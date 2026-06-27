@@ -108,10 +108,6 @@ Automate your Twitter/X presence with AI-powered tools for content posting, enga
 ## Core Capabilities
 
 - Configure analytics, audience, auto, automate, automation settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. Content Scheduling
@@ -200,10 +196,6 @@ twitter-automation is part of **revenue-team** for:
 ## Setup Examples
 
 - Configure analytics, audience, auto, automate, automation settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### OpenTweet Configuration (Recommended for Devs)

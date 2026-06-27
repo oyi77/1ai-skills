@@ -33,10 +33,6 @@ TikTok Automation Skill provides production-ready automation for TikTok content 
 ## The Process
 
 - Configure automatically, automation, browser, captions, changing settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Step 1: Session and Login

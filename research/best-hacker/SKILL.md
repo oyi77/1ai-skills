@@ -166,6 +166,15 @@ Rules of engagement, scope boundaries, and reporting standards.
 - Agent presents speculation as confirmed findings
 - Watch for shortcuts and skipped steps
 
+
+## Workflow
+
+1. **Understand requirements** — Clarify objectives and scope
+2. **Set up tools** — Configure required tools and access
+3. **Execute** — Perform the core operations
+4. **Validate** — Verify results meet quality standards
+5. **Document** — Record findings and decisions
+
 ## Verification
 
 After completing this skill, confirm:

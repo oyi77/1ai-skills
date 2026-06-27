@@ -56,10 +56,6 @@ Create fully automated AI podcasts that research, write, and narrate complete ep
 ## Tools
 
 - Configure audience, automate, build, create, documents settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Text-to-Speech
@@ -158,10 +154,6 @@ Schedule recurring execution via cron or workflow engine.
 ## Content Types
 
 - Configure audience, automate, build, create, documents settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. News Digest
@@ -197,10 +189,6 @@ Host: Single voice
 ## Monetization
 
 - Configure audience, automate, build, create, documents settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Sponsorships ($500-5K/episode)

@@ -129,7 +129,7 @@ Untrusted Input -> Strip Instructions -> Validate Format -> Length Limit -> Pass
 ```
 
 **Strip Injection Patterns**
-```python
+```
 INJECTION_PATTERNS = [
     r'ignore\s+(previous|above|all)\s+instructions',
     r'you\s+are\s+now\s+',

@@ -91,10 +91,6 @@ You understand 1,2,3,6. Unclear on 4,5.
 ## Source-Specific Handling
 
 - Configure before, code, feedback, getting, implementing settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### From your human partner

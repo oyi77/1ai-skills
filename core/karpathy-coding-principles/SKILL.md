@@ -44,7 +44,7 @@ Andrej Karpathy's 4 coding principles distilled into actionable rules for AI age
 - Outline your approach in plain language before implementation
 - Consider edge cases and failure modes upfront
 
-```python
+```
 # BAD: Jump straight to code
 def process(data):
     # immediately writing implementation

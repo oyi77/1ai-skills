@@ -35,10 +35,6 @@ SEO Auditor provides comprehensive website optimization capabilities including t
 ## The Process
 
 - Configure analysis, analyzing, auditor, audits, automating settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Step 1: Target Configuration

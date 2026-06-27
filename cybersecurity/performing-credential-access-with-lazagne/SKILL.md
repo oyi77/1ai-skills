@@ -150,7 +150,7 @@ LaZagne is an open-source post-exploitation tool designed to retrieve credential
 
 ### Phase 4: Credential Analysis and Prioritization
 1. Parse JSON output for unique credentials:
-   ```python
+   ```
    import json
    with open("creds.json") as f:
        results = json.load(f)

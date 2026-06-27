@@ -53,10 +53,6 @@ Perform professional code reviews targeting local changes or remote PRs to impro
 ## Review Process
 
 - Configure based, best, changes, code, community settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. Gather Context
@@ -89,10 +85,6 @@ Perform professional code reviews targeting local changes or remote PRs to impro
 ## Review Checklist
 
 - Configure based, best, changes, code, community settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Correctness
@@ -133,10 +125,6 @@ Perform professional code reviews targeting local changes or remote PRs to impro
 ## Output Format
 
 - Configure based, best, changes, code, community settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Summary
@@ -144,10 +132,6 @@ Perform professional code reviews targeting local changes or remote PRs to impro
 ## Code Review Summary
 
 - Configure based, best, changes, code, community settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Overall
@@ -164,10 +148,6 @@ Perform professional code reviews targeting local changes or remote PRs to impro
 ## Issues
 
 - Configure based, best, changes, code, community settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 🔴 Blocking (Must Fix)
@@ -189,10 +169,6 @@ Perform professional code reviews targeting local changes or remote PRs to impro
 ## Integration
 
 - Configure based, best, changes, code, community settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### With GitHub

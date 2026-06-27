@@ -81,10 +81,6 @@ Seedance 2.0 (即梦) is ByteDance's powerful AI video generation platform that 
 ## Ten Core Capabilities
 
 - Configure bytedance, cinematic, engineering, extension, generate settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### 1. Pure Text Generation
@@ -142,10 +138,6 @@ Synchronize visual rhythm precisely with music beats.
 ## Prompt Structure
 
 - Configure bytedance, cinematic, engineering, extension, generate settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Basic Formula
@@ -175,10 +167,6 @@ golden hour, wide shot, shallow depth of field, film grain
 ## Advanced Techniques
 
 - Configure bytedance, cinematic, engineering, extension, generate settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Technical Parameters
@@ -201,10 +189,6 @@ For videos >15 seconds, split into 15s segments with explicit continuity points.
 ## Multi-Modal Reference System
 
 - Configure bytedance, cinematic, engineering, extension, generate settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Image References (`@图片1` ~ `@图片9`)
@@ -290,10 +274,6 @@ verbose: true
 ## Usage
 
 - Configure bytedance, cinematic, engineering, extension, generate settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Trigger Keywords
@@ -397,10 +377,6 @@ seedance is part of the **digital-ops-team** for:
 ## Examples
 
 - Configure bytedance, cinematic, engineering, extension, generate settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Example 1: Cyberpunk City Night

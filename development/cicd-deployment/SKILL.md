@@ -108,10 +108,6 @@ Store in repo Settings → Secrets and variables → Actions:
 ## GitHub Actions Template
 
 - Configure cicd, deployment, domain, relevant, this settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### `.github/workflows/deploy.yml`
@@ -361,10 +357,6 @@ jobs:
 ## Deployment Scripts
 
 - Configure cicd, deployment, domain, relevant, this settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### `scripts/deploy.sh`
@@ -819,10 +811,6 @@ networks:
 ## BerkahKarya Service Patterns
 
 - Configure cicd, deployment, domain, relevant, this settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### FastAPI Service — Minimum Viable Structure
@@ -987,10 +975,6 @@ curl /health → 200?
 ## Rollback Strategy
 
 - Configure cicd, deployment, domain, relevant, this settings before first use
-- Review output quality and adjust parameters
-- Monitor performance metrics during execution
-- Document custom configurations for team reference
-- Schedule regular runs for consistent results
 
 
 ### Automatic (on deploy failure)
