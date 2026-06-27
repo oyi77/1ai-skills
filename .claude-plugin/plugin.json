@@ -1,0 +1,18 @@
+{
+  "name": "1ai-skills",
+  "version": "3.6.0",
+  "description": "1320 production-ready AI agent skills — cybersecurity, SEO, trading, marketing, automation, devops, content, financial services, and more",
+  "author": {
+    "name": "1ai (oyi77)",
+    "url": "https://github.com/oyi77/1ai-skills"
+  },
+  "repository": "https://github.com/oyi77/1ai-skills",
+  "license": "MIT",
+  "keywords": ["skills", "agents", "ai", "cybersecurity", "trading", "marketing", "automation"],
+  "skills": "skills/",
+  "agents": "agents/",
+  "commands": "commands/",
+  "references": "references/",
+  "hooks": "hooks/hooks.json",
+  "entrypoint": "AGENTS.md"
+}
