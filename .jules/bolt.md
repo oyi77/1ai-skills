@@ -17,3 +17,7 @@
 ## 2025-06-02 - SQLite N+1 Batched Updates via executemany
 **Learning:** In the memory system, looping over database SELECT results to run a single `UPDATE` query per row creates massive N+1 query bottlenecks and slows down `apply_decay` exponentially as the memory table grows.
 **Action:** When updating multiple database rows with dynamic variables, collect the parameter tuples in a list (`updates.append(...)`) and process them in a single batch operation using `sqlite3.Connection.executemany()` to minimize I/O overhead and database locking.
+
+## 2025-06-27 - [Optimize YAML Parsing Speed]
+**Learning:** Parsing hundreds or thousands of YAML files (e.g., `SKILL.md` frontmatter) using `yaml.safe_load()` in pure Python creates a massive CPU bottleneck during batch operations.
+**Action:** When working with PyYAML for large-scale file processing, always switch to the C-extension loader `yaml.load(..., Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))`. This provides a ~5x speedup by seamlessly utilizing the C-based parser when available, while safely falling back to pure Python without complex nested exception handling.
