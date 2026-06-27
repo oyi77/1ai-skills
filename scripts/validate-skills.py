@@ -111,7 +111,8 @@ def validate_one(path: Path) -> list[str]:
         return errors
 
     try:
-        meta = yaml.safe_load(fm) or {}
+        # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing of 1300+ SKILL.md files.
+        meta = yaml.load(fm, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader)) or {}
     except Exception as exc:
         errors.append(f"invalid-yaml: {exc.__class__.__name__}")
         return errors
@@ -181,12 +182,14 @@ def fix_one(path: Path) -> list[str]:
         body = "".join(lines[cut:])
         fixes.append("added-closing-delimiter")
         try:
-            meta = yaml.safe_load(fm_raw) or {}
+            # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing of 1300+ SKILL.md files.
+            meta = yaml.load(fm_raw, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader)) or {}
         except Exception:
             meta = {}
     else:
         try:
-            meta = yaml.safe_load(fm) or {}
+            # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing of 1300+ SKILL.md files.
+            meta = yaml.load(fm, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader)) or {}
         except Exception:
             meta = {}
 
@@ -257,7 +260,8 @@ def check_broken_links(skills: list[Path]) -> dict[str, list[str]]:
         if fm is None:
             continue
         try:
-            meta = yaml.safe_load(fm) or {}
+            # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing of 1300+ SKILL.md files.
+            meta = yaml.load(fm, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader)) or {}
         except Exception:
             continue
         if isinstance(meta, dict) and meta.get("name"):
