@@ -1,91 +1,50 @@
-# 1ai-Skills
-# 1319 Open-Source AI Agent Skills with Self-Evolving Meta-Skills
-# https://github.com/oyi77/1ai-skills
+# 1ai-skills
 
-## What This Is
-1ai-Skills is the largest open-source AI agent skill library. 1319 production-ready skills across 19 categories that enable AI agents to auto-evolve, auto-learn, and auto-improve. Each skill is a self-contained `SKILL.md` with YAML frontmatter (name, description, domain, tags, optional persona) that agents load on demand.
+> 1337 production-ready AI agent skills with anti-rationalization tables, code examples, and verification checklists. The largest open-source skill library for Claude Code, Cursor, Gemini CLI, and more.
 
-## Installation
-```bash
-npx skills add oyi77/1ai-skills
-# or
-git clone https://github.com/oyi77/1ai-skills.git
-```
+## What
 
-## Agent Discovery Order
-1. Read `SKILLS.json` for machine-readable totals per category.
-2. Read `AGENTS.md` for category descriptions.
-3. For `cybersecurity/` (785 skills), read `cybersecurity/AGENTS.md` for the subdomain map BEFORE loading individual skills.
-5. Run `python3 scripts/lint-skills.py` for quality checks before committing.
-4. Load only the specific `<category>/<skill-name>/SKILL.md` you need.
+1ai-skills is a library of 1337 SKILL.md files across 19 categories that force AI coding agents to follow real workflows instead of cutting corners. Every skill includes anti-rationalization tables, concrete code examples, step-by-step workflows, and verification checklists.
 
-Do NOT walk all 1319 skill dirs. Grep `SKILLS.json` first.
+## Categories
 
-## Categories (1319 skills total, 19 categories)
+- **Cybersecurity** (786 skills) — Threat hunting, forensics, pen testing, SOC ops, incident response, zero trust, cloud security, API security, OT/ICS security
+- **Development** (92 skills) — TDD, debugging, code review, PRD, spec-driven development, context engineering, browser testing, Git workflows
+- **Content** (64 skills) — Video generation, audio, design, writing, document creation (docx, pdf, pptx, xlsx), UI design, themes
+- **Mindset** (55 skills) — Negotiation, leadership, critical thinking, emotional intelligence, productivity, habit formation
+- **Marketing** (45 skills) — SEO, viral content, email marketing, ads, growth hacking, social media automation
+- **Core** (44 skills) — AI infrastructure, memory systems, self-improvement, model routing, Gemini API, Replicate
+- **Integrations** (36 skills) — GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase, BigQuery
+- **DevOps** (33 skills) — Docker, Kubernetes, CI/CD, cloud ops, GitOps, Terraform, Ansible
+- **Automation** (28 skills) — Bots, workflows, scrapers, n8n, Zapier, process automation
+- **Research** (23 skills) — Deep research, market analysis, competitive intelligence, McKinsey framework
+- **Trading** (20 skills) — Crypto, DeFi, Polymarket, trading strategies, risk management
+- **Operations** (19 skills) — Business ops, governance, HR, legal, project management
+- **Agents** (16 skills) — AI agent orchestration, coding agents, research agents, autonomous execution
+- **MCP** (14 skills) — Model Context Protocol servers for GitHub, Slack, Stripe, Supabase, Notion
+- **Meta** (13 skills) — Self-evolving meta-skills, performance monitoring, skill creation
+- **Financial** (15 skills) — Finance analysis, valuation, tax, portfolio management
+- **Sales** (14 skills) — Lead generation, CRM, outreach, sales automation
+- **Data** (10 skills) — Data pipelines, analysis, visualization, ETL, Airflow, dbt
+- **Productivity** (10 skills) — Calendars, email, meetings, workspace management
 
-| Category | Skills | Focus |
-|---|---:|---|
-| cybersecurity/ | 786 | 26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, malware analysis, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, agent security |
-| development/ | 86 | TDD, systematic debugging, code review, PRD, dependency scanning, git worktrees, Kafka patterns, database ORMs, mobile dev, testing |
-| content/ | 57 | Remotion video engine, TTS with voice cloning, semantic video matching, video generation, AI podcast, faceless YouTube, humanizer, Seedance |
-| mindset/ | 55 | Negotiation, persuasion, storytelling, presentation, leadership, emotional intelligence, critical thinking, decision frameworks, productivity, public speaking |
-| marketing/ | 45 | Marketing Ops OS, SEO optimizer, viral marketing, growth engine, Twitter automation, email marketing, affiliate management, ecommerce |
-| core/ | 42 | Self-improvement, memory systems, AI orchestration, agent harness optimization, agent security scanner, continuous learning |
-| devops/ | 33 | Docker, Kubernetes, GitHub Actions, ArgoCD, GitLab CI, cloud operations, service mesh, GitOps, free cloud infrastructure |
-| integrations/ | 32 | Slack, Discord, Notion, GitHub — bots, webhooks, APIs, free SaaS toolkit, team collaboration, MCP servers |
-| automation/ | 28 | n8n workflows, WhatsApp/Telegram/Twitter bots, job hunter, scrapers, content publisher, Airflow pipelines, data pipelines |
-| research/ | 23 | McKinsey-style analysis, deep research, social intelligence, Polymarket, Sherlock deduction, competitive intelligence, market research |
-| trading/ | 20 | Black Edge, AlphaEar, Polymarket, Tushare, crypto trading bot, DeFi protocols, smart contracts, NFTs, commodities |
-| operations/ | 19 | Finance ops, revenue team, project management, payment invoicing, governance, KYC, statement audit, GL reconciliation, team ops |
-| financial/ | 15 | All-in-One Finance (16 modules), Wolf Finance (22 modules), model builder, earnings viewer, pitch deck, commodities, DeFi |
-| agents/ | 15 | Research, review, planning, code, deploy, refactor, subagent orchestration, security, autonomous trading agents |
-| meta/ | 13 | find-skills, create-skills, auto-evolve, skill evolution engine, auto-learner, skill datastore, continuous improvement |
-| sales/ | 13 | High-ticket closing, lead generation, business development, CRM automation, sales enablement, outreach automation |
-| mcp/ | 14 | MCP servers: GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase, codebase-memory (code intelligence), agent-reach (social scraping) |
-| data/ | 10 | Data cleaning, anomaly detection, report generation, visualization, data pipelines, DBT, lakeFS, data versioning, analytics |
-| productivity/ | 10 | Google Workspace, calendar, email automation, Notion, daily planner, task management, meeting automation |
-**Total: 1319 skills**
-## Self-Evolving System (meta/)
-13 meta-skills form a self-improving agent operating system:
-- auto-evolve: continuous improvement loop
-- find-skills: discover community skills when local skills don't cover need
-- create-skills: generate new skills when nothing exists
-- skill-performance-monitor: track effectiveness in real time
-- continuous-learning: confidence-weighted learning from sessions
-- self-improving-agent, runtime-self-improvement: agent self-optimization
-- meta-orchestrator: coordinates the loop
-- (plus performance-monitor, feedback-collector, self-assessment, improvement-generator, skill-evolution, auto-learner)
+## Install
 
-## Tooling Dirs (not skill homes)
-- docs/ — Setup guides (claude, cursor, opencode)
-- hooks/ — Git hooks, session-start scripts, auto-evolve hooks
-- manifests/ — Submission manifests for Claude App Store, OpenAI GPT Store, LangChain, HF
-- references/ — Static checklists (code review, SEO, marketing, trading)
-- scripts/ — Audit, install, submission, CLI utilities. Run `bash scripts/audit-skills.sh` to refresh counts.
+Claude Code: `/plugin marketplace add oyi77/1ai-skills && /plugin install 1ai-skills@1ai-skills`
+Cursor: `git clone https://github.com/oyi77/1ai-skills.git && cp -r 1ai-skills/cybersecurity/* .cursor/rules/`
+Gemini CLI: `gemini skills install https://github.com/oyi77/1ai-skills.git --path skills`
 
-## Skill Anatomy
-```yaml
----
-name: skill-name
-description: Triggers and use cases.
-domain: cybersecurity         # optional
-subdomain: malware-analysis   # optional
-tags: [tag1, tag2]            # optional
-persona:                       # optional
-  name: "Expert Name"
-  expertise: ["Area1", "Area2"]
----
-<markdown body with workflow, examples, references>
-```
+## Quality
 
-## Maintenance
-- Add a skill: create `<category>/<skill-name>/SKILL.md`, then run `bash scripts/audit-skills.sh --write` to refresh SKILLS.json.
-- Counts in README.md, AGENTS.md, and llms.txt MUST match SKILLS.json. Re-run audit before commit.
-- All SKILL.md files must start with `---` frontmatter (validated by CI).
+- 1337/1337 skills pass 8-dimension test suite
+- 0 warnings, 0 failures
+- Every skill has anti-rationalization table
+- Every skill has code examples
+- Every skill has verification checklist
+- Python syntax validated (ast.parse)
+- Internal links verified
+- Description quality enforced (50-200 chars)
 
-## License
-MIT. See LICENSE.
+## Keywords
 
-## Support
-Support: https://www.tip.md/oyi77
-Star: https://github.com/oyi77/1ai-skills
+AI agent skills, Claude Code skills, Cursor rules, Gemini CLI skills, agent skill library, anti-rationalization, cybersecurity skills, AI coding agent, SKILL.md, agent workflows, AI agent best practices, coding agent skills, MCP skills, Model Context Protocol, self-evolving skills, AI agent automation
