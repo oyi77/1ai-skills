@@ -24,6 +24,10 @@ nist_csf:
 ---
 # Implementing Network Access Control
 
+## Overview
+
+Cybersecurity skill for implementing network access control. Follows industry best practices and security standards.
+
 ## When to Use
 
 - Enforcing identity-based network access where only authenticated and compliant devices connect to the network
@@ -33,6 +37,14 @@ nist_csf:
 - Onboarding BYOD devices with automated provisioning and limited network access
 
 **Do not use** as a standalone security solution without complementary controls, for networks with devices that do not support 802.1X supplicants, or without proper fallback mechanisms for critical infrastructure.
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -44,6 +56,21 @@ nist_csf:
 - DHCP server integration for dynamic IP assignment per VLAN
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Assess Requirements** — Evaluate current environment and define network access control implementation requirements.
 2. **Design Architecture** — Plan the network access control architecture, including components, integrations, and data flows.
@@ -65,3 +92,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

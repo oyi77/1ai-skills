@@ -48,11 +48,29 @@ Autonomous AI agent that learns and improves viral content over time using Olive
 
 ---
 
+
+## When NOT to Use
+
+- When the content requires deep domain expertise you do not have
+- For legal, medical, or financial advice content
+- When real-time data is required (use live data feeds)
+
+
 ## Overview
 
 Larry Playbook enables content production with professional quality and consistency.
 
 ## Workflow
+
+```python
+# Example: Content generation pipeline
+def generate_content(topic: str, format: str = "article"):
+    outline = create_outline(topic)
+    draft = write_draft(outline, format)
+    edited = edit_for_quality(draft)
+    optimized = optimize_for_seo(edited)
+    return publish(optimized)
+```
 
 1. **Define brief** — Set objectives, audience, and style guidelines
 2. **Research and gather** — Collect source material and reference content
@@ -76,3 +94,10 @@ Larry Playbook enables content production with professional quality and consiste
 - Design tools for visual assets
 - Collaboration tools for review cycles
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
+| "I will optimize later" | SEO and distribution need optimization from the start. |
+| "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |

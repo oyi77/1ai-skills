@@ -24,6 +24,10 @@ nist_csf:
 ---
 # Auditing Tls Certificate Transparency Logs
 
+## Overview
+
+Cybersecurity skill for auditing tls certificate transparency logs. Follows industry best practices and security standards.
+
 ## When to Use
 
 - Monitoring owned domains for unauthorized or unexpected certificate issuance by unknown Certificate Authorities
@@ -34,6 +38,14 @@ nist_csf:
 
 **Do not use** for attacking or disrupting Certificate Authorities, for scraping CT logs in violation of rate limits or terms of service, or as the sole method of subdomain enumeration without corroborating results through DNS verification.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Python 3.10+ with `requests`, `cryptography`, and `pyOpenSSL` libraries installed
@@ -43,6 +55,21 @@ nist_csf:
 - Basic understanding of X.509 certificate structure and TLS certificate chain validation
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Objectives** — Clarify the goals and scope for tls certificate transparency logs.
 2. **Gather Resources** — Collect tools, data, and access needed for tls certificate transparency logs.
@@ -62,3 +89,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

@@ -24,6 +24,10 @@ nist_csf:
 ---
 # Performing Dynamic Analysis Of Android App
 
+## Overview
+
+Cybersecurity skill for performing dynamic analysis of android app. Follows industry best practices and security standards.
+
 ## When to Use
 
 Use this skill when:
@@ -34,6 +38,14 @@ Use this skill when:
 
 **Do not use** this skill on production environments without authorization -- dynamic instrumentation can alter app behavior and trigger security alerts.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Rooted Android device or emulator (Genymotion, Android Studio AVD with writable system)
@@ -43,6 +55,21 @@ Use this skill when:
 - Target APK installed on device
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Plan Operations** — Define objectives, scope, and success criteria for dynamic analysis of android app operations.
 2. **Prepare Environment** — Set up tools, access, and data sources required for dynamic analysis of android app.
@@ -63,3 +90,11 @@ Use this skill when:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

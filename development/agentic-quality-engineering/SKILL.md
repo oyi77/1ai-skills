@@ -44,6 +44,14 @@ AI-powered quality engineering beyond traditional testing. Covers flaky test det
 - Simple test generation (use `skill://automated-test-generator`)
 - Code review (use `skill://code-reviewer`)
 
+
+## When NOT to Use
+
+- For throwaway prototypes (skip the ceremony)
+- When the fix is a single-line change with no side effects
+- When the codebase already has a working solution
+
+
 ## Process
 
 ### 1. Flaky Test Detection & Stabilization
@@ -288,6 +296,14 @@ After implementing quality engineering, confirm:
 - [ ] Contract tests validate API boundaries
 - [ ] Anti-sycophancy checks reject hollow tests
 - [ ] Pattern learning captures reusable test strategies
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Tests slow me down" | Bugs slow you down 10x more. Tests are speed, not overhead. |
+| "I will refactor later" | Technical debt compounds. Refactor as you go. |
+| "It works on my machine" | If it is not in CI, it does not work. Ship proof, not claims. |
 
 ## Related Skills
 

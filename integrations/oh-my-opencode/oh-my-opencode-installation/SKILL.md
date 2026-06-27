@@ -576,6 +576,14 @@ npm view oh-my-opencode version && echo "✓ npm package verified"
 - Oh My OpenCode: https://github.com/code-yeongyu/oh-my-opencode
 - Installation Guide: https://github.com/code-yeongyu/oh-my-opencode/blob/master/docs/guide/installation.md
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "I will handle auth later" | Retrofitting auth is 10x harder. Build it from day one. |
+| "APIs do not change" | APIs change. Version your integrations and handle deprecations. |
+| "Webhooks are optional" | Without webhooks, you miss real-time events. They are essential. |
+
 ## Related Skills
 
 - oh-my-opencode: Overall integration

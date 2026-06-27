@@ -26,6 +26,10 @@ nist_csf:
 ---
 # Implementing Aws Nitro Enclave Security
 
+## Overview
+
+Cybersecurity skill for implementing aws nitro enclave security. Follows industry best practices and security standards.
+
 ## When to Use
 
 - Processing sensitive data (PII, PHI, financial records, cryptographic secrets) that must be isolated from EC2 instance operators and administrators
@@ -35,6 +39,14 @@ nist_csf:
 - Hardening existing workloads that currently decrypt secrets on the parent instance by migrating decryption into an enclave boundary
 
 **Do not use** when the workload does not handle sensitive data that requires hardware-level isolation, when the instance type does not support Nitro Enclaves (requires Nitro-based instances with at least 4 vCPUs), or when latency constraints make the vsock communication overhead unacceptable.
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -46,6 +58,21 @@ nist_csf:
 - The Nitro Enclaves allocator service configured with sufficient memory and vCPU allocation in `/etc/nitro_enclaves/allocator.yaml`
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Assess Requirements** — Evaluate current environment and define aws nitro enclave security implementation requirements.
 2. **Design Architecture** — Plan the aws nitro enclave security architecture, including components, integrations, and data flows.
@@ -67,3 +94,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

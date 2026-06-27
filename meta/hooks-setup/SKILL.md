@@ -184,3 +184,11 @@ After completing this skill, confirm:
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Skills do not need to evolve" | Static skills become outdated. Self-evolving skills improve continuously. |
+| "Manual skill management is fine" | With 1000+ skills, manual management is impossible. Automate. |
+| "Performance does not matter" | Skill performance directly impacts agent effectiveness. Track it. |

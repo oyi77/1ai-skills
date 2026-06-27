@@ -43,6 +43,14 @@ This skill covers end-to-end deployment of ZPA including connector setup, applic
 - When building or improving security architecture for this domain
 - When conducting security assessments that require this implementation
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Familiarity with zero trust architecture concepts and tools
@@ -209,3 +217,11 @@ ZPA supports clientless browser-based access for web applications, enabling ZTNA
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

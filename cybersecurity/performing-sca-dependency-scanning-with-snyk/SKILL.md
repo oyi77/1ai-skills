@@ -26,6 +26,10 @@ nist_csf:
 ---
 # Performing Sca Dependency Scanning With Snyk
 
+## Overview
+
+Cybersecurity skill for performing sca dependency scanning with snyk. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When applications use open-source packages that may contain known vulnerabilities
@@ -36,6 +40,14 @@ nist_csf:
 
 **Do not use** for scanning proprietary application code for logic vulnerabilities (use SAST), for runtime vulnerability detection (use DAST), or for container OS package scanning alone (use Trivy for a free alternative).
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Snyk account (free tier covers up to 200 tests per month for open source)
@@ -44,6 +56,21 @@ nist_csf:
 - Project with supported package manifests: package.json, requirements.txt, pom.xml, go.mod, Gemfile, etc.
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Plan Operations** — Define objectives, scope, and success criteria for sca dependency scanning operations.
 2. **Prepare Environment** — Set up tools, access, and data sources required for sca dependency scanning.
@@ -65,3 +92,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

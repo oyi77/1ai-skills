@@ -27,6 +27,10 @@ nist_csf:
 ---
 # Investigating Insider Threat Indicators
 
+## Overview
+
+Cybersecurity skill for investigating insider threat indicators. Follows industry best practices and security standards.
+
 ## When to Use
 
 Use this skill when:
@@ -36,6 +40,14 @@ Use this skill when:
 - Management reports concerns about an employee accessing sensitive data outside their role
 
 **Do not use** without proper legal authorization — insider threat investigations must be coordinated with HR, Legal, and Privacy teams before monitoring begins.
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -47,6 +59,21 @@ Use this skill when:
 - Chain of custody procedures for evidence preservation
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Objectives** — Clarify the goals and scope for insider threat indicators.
 2. **Gather Resources** — Collect tools, data, and access needed for insider threat indicators.
@@ -66,3 +93,11 @@ Use this skill when:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

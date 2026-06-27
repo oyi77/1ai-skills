@@ -359,6 +359,14 @@ Say: "$3,000 project that typically saves $50K/year"
 
 ---
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Cold outreach does not work" | It works when personalized and targeted. Generic spam does not. |
+| "I will follow up later" | 80% of sales require 5+ follow-ups. Follow up consistently. |
+| "Price is the only factor" | Value, trust, and timing matter more than price. Sell outcomes. |
+
 ## Related Skills
 
 - [ai-agent-development](../ai-agent-development/SKILL.md) - Build for clients

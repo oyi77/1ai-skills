@@ -27,6 +27,10 @@ nist_csf:
 ---
 # Analyzing Windows Amcache Artifacts
 
+## Overview
+
+Cybersecurity skill for analyzing windows amcache artifacts. Follows industry best practices and security standards.
+
 ## When to Use
 
 - Determining which programs have existed or executed on a Windows system during incident response
@@ -37,6 +41,14 @@ nist_csf:
 - Analyzing driver loading history to detect rootkits or malicious kernel modules
 
 **Do not use** as sole proof of program execution. Amcache proves file existence and metadata registration, but ShimCache (AppCompatCache) and Prefetch provide stronger execution evidence. Use all three artifacts together for conclusive analysis.
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -49,6 +61,21 @@ nist_csf:
 - Write access to an output directory for CSV results
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Scope the Analysis** — Define what windows amcache artifacts artifacts or data sources to examine and the investigation timeline.
 2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
@@ -70,3 +97,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

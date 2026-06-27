@@ -283,3 +283,11 @@ crontab -e
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "First result is good enough" | Deep research finds better answers. Keep digging. |
+| "I do not need to verify sources" | Unverified sources lead to wrong conclusions. Always cross-check. |
+| "Research is a one-time thing" | Markets change. Research needs to be continuous, not one-off. |

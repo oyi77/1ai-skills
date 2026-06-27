@@ -42,12 +42,24 @@ nist_csf:
 ---
 # Performing Ai Driven Osint Correlation
 
+## Overview
+
+Cybersecurity skill for performing ai driven osint correlation. Follows industry best practices and security standards.
+
 ## When to Use
 
 - You have collected raw OSINT data from multiple tools and sources but need to identify connections, contradictions, and patterns across them.
 - You need to build a unified intelligence profile for a target entity (person, organization, or infrastructure) from fragmented data.
 - Traditional manual correlation is too slow or error-prone for the volume of data collected.
 - You want confidence-scored assessments of identity linkage across platforms rather than simple keyword matching.
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -60,6 +72,21 @@ nist_csf:
 - Optional: API keys for Shodan, VirusTotal, HaveIBeenPwned, Hunter.io
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Plan Operations** — Define objectives, scope, and success criteria for ai driven osint correlation operations.
 2. **Prepare Environment** — Set up tools, access, and data sources required for ai driven osint correlation.
@@ -80,3 +107,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

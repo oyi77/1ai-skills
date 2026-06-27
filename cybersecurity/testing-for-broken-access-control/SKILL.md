@@ -22,6 +22,10 @@ nist_csf:
 ---
 # Testing For Broken Access Control
 
+## Overview
+
+Cybersecurity skill for testing for broken access control. Follows industry best practices and security standards.
+
 ## When to Use
 
 - During authorized penetration tests as the primary assessment for OWASP A01:2021 - Broken Access Control
@@ -29,6 +33,14 @@ nist_csf:
 - For testing multi-tenant applications where users in one organization should not access another's data
 - When assessing API endpoints for missing or inconsistent authorization checks
 - During security audits where privilege escalation and unauthorized access are primary concerns
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -40,6 +52,21 @@ nist_csf:
 - **ffuf**: For discovering hidden endpoints that may lack access controls
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Reconnaissance** — Gather information about the target related to . Identify attack surface.
 2. **Vulnerability Identification** — Enumerate potential  weaknesses using automated and manual techniques.
@@ -62,3 +89,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

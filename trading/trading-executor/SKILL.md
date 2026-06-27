@@ -181,3 +181,11 @@ Verification covers pre-execution checks, order fill confirmation, post-executio
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "I will cut losses later" | Later never comes. Set stop-losses before entering any trade. |
+| "This time is different" | It never is. Follow your strategy, not your emotions. |
+| "I do not need to journal" | Journaling reveals patterns in your behavior. Track every trade. |

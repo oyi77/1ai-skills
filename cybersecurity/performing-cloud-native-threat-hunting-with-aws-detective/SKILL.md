@@ -212,3 +212,11 @@ This skill guides you through hunt for threats in aws environments using detecti
 - Use a dedicated test account or project to avoid production impact
 - Set up billing alerts before running resource-intensive scans
 - Review and revert any IAM or security group changes after testing
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

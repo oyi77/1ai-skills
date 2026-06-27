@@ -40,6 +40,14 @@ Generate test suites, analyze code coverage, and scaffold E2E tests automaticall
 - Manual QA testing (use `skill://qa-review-fix-loop`)
 - Code review (use `skill://code-reviewer`)
 
+
+## When NOT to Use
+
+- For throwaway prototypes (skip the ceremony)
+- When the fix is a single-line change with no side effects
+- When the codebase already has a working solution
+
+
 ## Process
 
 ### Step 1 — Discover the Codebase
@@ -194,6 +202,14 @@ After generating tests, confirm:
 - [ ] Mocks are appropriate (mock external deps, not internal logic)
 - [ ] Test names are descriptive (explain the scenario, not just the function)
 - [ ] E2E tests cover critical user journeys
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Tests slow me down" | Bugs slow you down 10x more. Tests are speed, not overhead. |
+| "I will refactor later" | Technical debt compounds. Refactor as you go. |
+| "It works on my machine" | If it is not in CI, it does not work. Ship proof, not claims. |
 
 ## Related Skills
 

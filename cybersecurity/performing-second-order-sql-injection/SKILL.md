@@ -23,12 +23,24 @@ nist_csf:
 ---
 # Performing Second Order Sql Injection
 
+## Overview
+
+Cybersecurity skill for performing second order sql injection. Follows industry best practices and security standards.
+
 ## When to Use
 - When first-order SQL injection testing reveals proper input sanitization at storage time
 - During penetration testing of applications with user-generated content stored in databases
 - When testing multi-step workflows where stored data feeds subsequent database queries
 - During assessment of admin panels that display or process user-submitted data
 - When evaluating stored procedure execution paths that use previously stored data
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 - Burp Suite Professional for request tracking across application flows
@@ -39,6 +51,21 @@ nist_csf:
 - Multiple user accounts for testing stored data across different contexts
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Plan Operations** — Define objectives, scope, and success criteria for second order sql injection operations.
 2. **Prepare Environment** — Set up tools, access, and data sources required for second order sql injection.
@@ -59,3 +86,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

@@ -84,6 +84,14 @@ if days_to_catalyst <= 7:
 
 Load `references/trading-checklist.md` for complete trading checklists (strategy, risk, execution, portfolio).
 
+
+## When NOT to Use
+
+- When you cannot afford to lose the capital at risk
+- For instruments you do not understand
+- When emotional state impairs judgment (revenge trading, FOMO)
+
+
 ## Overview
 
 Alphaear Strategy provides market analysis capabilities with risk management.
@@ -121,3 +129,17 @@ Alphaear Strategy provides market analysis capabilities with risk management.
 - Never revenge trade after a loss
 - Take breaks after consecutive losses
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "I will cut losses later" | Later never comes. Set stop-losses before entering any trade. |
+| "This time is different" | It never is. Follow your strategy, not your emotions. |
+| "I do not need to journal" | Journaling reveals patterns in your behavior. Track every trade. |
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

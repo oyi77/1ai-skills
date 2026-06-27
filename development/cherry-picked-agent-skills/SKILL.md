@@ -184,6 +184,27 @@ Six unique agent workflow skills cherry-picked from [addyosmani/agent-skills](ht
 
 ## Process
 
+```python
+# Example: TDD workflow
+def test_user_creation():
+    user = create_user(name="Alice", email="alice@example.com")
+    assert user.name == "Alice"
+    assert user.email == "alice@example.com"
+    assert user.created_at is not None
+
+def test_user_creation_invalid_email():
+    with pytest.raises(ValidationError):
+        create_user(name="Alice", email="invalid")
+```
+
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Tests slow me down" | Bugs slow you down 10x more. Tests are speed, not overhead. |
+| "I will refactor later" | Technical debt compounds. Refactor as you go. |
+| "It works on my machine" | If it is not in CI, it does not work. Ship proof, not claims. |

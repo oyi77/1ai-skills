@@ -25,6 +25,10 @@ nist_csf:
 ---
 # Implementing Aws Security Hub Compliance
 
+## Overview
+
+Cybersecurity skill for implementing aws security hub compliance. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When establishing centralized security posture management across multiple AWS accounts
@@ -35,6 +39,14 @@ nist_csf:
 
 **Do not use** for real-time threat detection (use GuardDuty), for vulnerability scanning (use Inspector), or for data classification (use Macie). Security Hub aggregates findings from these services but does not replace them.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - AWS Organizations with delegated administrator for Security Hub
@@ -44,6 +56,21 @@ nist_csf:
 - SNS topics configured for alert routing to security team
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Assess Requirements** — Evaluate current environment and define aws security hub compliance implementation requirements.
 2. **Design Architecture** — Plan the aws security hub compliance architecture, including components, integrations, and data flows.
@@ -65,3 +92,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

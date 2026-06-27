@@ -96,6 +96,29 @@ Dockerfile optimization — multi-stage builds, layer caching, security hardenin
 
 ## Process
 
+```yaml
+# Example: GitHub Actions CI
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -e ".[test]"
+      - run: pytest --cov
+```
+
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Manual deployments are fine" | Manual deployments are error-prone and不可 repeatable. Automate. |
+| "We do not need monitoring" | Without monitoring, you are flying blind. Add observability from day one. |
+| "Infrastructure as code is overkill" | IaC enables reproducibility, version control, and disaster recovery. |

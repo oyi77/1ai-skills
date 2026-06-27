@@ -33,6 +33,10 @@ nist_csf:
 ---
 # Building Cloud Siem With Sentinel
 
+## Overview
+
+Cybersecurity skill for building cloud siem with sentinel. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When establishing a centralized security operations center for multi-cloud environments
@@ -43,6 +47,14 @@ nist_csf:
 
 **Do not use** for AWS-only environments where Security Hub and GuardDuty suffice, for endpoint detection requiring EDR capabilities (use Defender for Endpoint), or for compliance posture monitoring (see building-cloud-security-posture-management).
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Azure subscription with Microsoft Sentinel enabled on a Log Analytics workspace
@@ -51,6 +63,21 @@ nist_csf:
 - KQL (Kusto Query Language) proficiency for writing detection rules and hunting queries
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Assess Requirements** — Evaluate current environment and define cloud siem implementation requirements.
 2. **Design Architecture** — Plan the cloud siem architecture, including components, integrations, and data flows.
@@ -73,3 +100,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

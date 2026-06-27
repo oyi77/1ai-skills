@@ -31,6 +31,10 @@ nist_csf:
 ---
 # Performing Soc Tabletop Exercise
 
+## Overview
+
+Cybersecurity skill for performing soc tabletop exercise. Follows industry best practices and security standards.
+
 ## When to Use
 
 Use this skill when:
@@ -42,6 +46,14 @@ Use this skill when:
 
 **Do not use** as a replacement for technical purple team exercises — tabletop exercises test processes and decision-making, not technical detection capabilities.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Exercise facilitator with incident response experience
@@ -52,6 +64,21 @@ Use this skill when:
 - Existing incident response plan and playbooks for reference during exercise
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Plan Operations** — Define objectives, scope, and success criteria for soc tabletop exercise operations.
 2. **Prepare Environment** — Set up tools, access, and data sources required for soc tabletop exercise.
@@ -72,3 +99,11 @@ Use this skill when:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

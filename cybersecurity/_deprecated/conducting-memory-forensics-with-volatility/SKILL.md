@@ -30,6 +30,10 @@ nist_csf:
 ---
 # Conducting Memory Forensics With Volatility
 
+## Overview
+
+Cybersecurity skill for conducting memory forensics with volatility. Follows industry best practices and security standards.
+
 ## When to Use
 
 - An endpoint has been contained during an active incident and volatile evidence must be preserved
@@ -39,6 +43,14 @@ nist_csf:
 - A rootkit or kernel-level compromise is suspected and disk-based analysis is insufficient
 
 **Do not use** for analyzing disk images or file system artifacts; use disk forensics tools (Autopsy, FTK) for those tasks.
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -50,6 +62,21 @@ nist_csf:
 - Chain of custody documentation for evidence handling
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Scope the Analysis** — Define what memory forensics artifacts or data sources to examine and the investigation timeline.
 2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
@@ -72,3 +99,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

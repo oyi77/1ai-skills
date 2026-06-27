@@ -25,6 +25,10 @@ nist_csf:
 ---
 # Securing Aws Lambda Execution Roles
 
+## Overview
+
+Cybersecurity skill for securing aws lambda execution roles. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When deploying new Lambda functions and defining their IAM execution roles
@@ -35,6 +39,14 @@ nist_csf:
 
 **Do not use** for securing Lambda function invocation (use resource-based policies and API Gateway authorizers), for Lambda code security (use SAST tools), or for Lambda network security (use VPC configuration and security groups).
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - IAM permissions for policy creation, role modification, and Access Analyzer operations
@@ -44,6 +56,21 @@ nist_csf:
 - Understanding of each function's required AWS service interactions
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Objectives** — Clarify the goals and scope for aws lambda execution roles.
 2. **Gather Resources** — Collect tools, data, and access needed for aws lambda execution roles.
@@ -63,3 +90,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

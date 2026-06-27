@@ -309,3 +309,11 @@ strings process_dump.dmp | findstr -i "password\|token\|session\|bearer"
 - OWASP Thick Client Testing Guide: https://owasp.org/www-project-thick-client-top-10/
 - Ghidra: https://ghidra-sre.org/
 - Echo Mirage: https://sourceforge.net/projects/echomirage/
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

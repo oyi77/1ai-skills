@@ -34,11 +34,35 @@ tags:
 
 ---
 
+
+## When NOT to Use
+
+- When the audience is too small to justify the effort
+- For regulated industries without compliance review
+- When the campaign budget does not support the channel
+
+
 ## Overview
 
 Content Analytics Engine drives growth marketing with data-driven strategies.
 
 ## Workflow
+
+```python
+# Example: SEO keyword analysis
+def analyze_keywords(keywords: list[str]) -> list[dict]:
+    results = []
+    for kw in keywords:
+        volume = get_search_volume(kw)
+        difficulty = get_difficulty(kw)
+        results.append({
+            "keyword": kw,
+            "volume": volume,
+            "difficulty": difficulty,
+            "opportunity": volume / max(difficulty, 1),
+        })
+    return sorted(results, key=lambda x: x["opportunity"], reverse=True)
+```
 
 1. **Research** — Analyze market, competitors, and audience
 2. **Strategy** — Define goals, channels, and messaging
@@ -62,3 +86,17 @@ Content Analytics Engine drives growth marketing with data-driven strategies.
 - Build organic before scaling paid
 - Track attribution across the full funnel
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Good products sell themselves" | They do not. Marketing is how people discover your product. |
+| "I will start marketing after launch" | Build audience before launch. Pre-launch momentum is critical. |
+| "SEO is dead" | SEO evolves. GEO (Generative Engine Optimization) is the new frontier. |
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

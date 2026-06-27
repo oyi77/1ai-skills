@@ -28,6 +28,14 @@ tags:
 
 Download product review videos from Shopee pages with automated browser navigation and metadata extraction.
 
+
+## When NOT to Use
+
+- When the prospect is not a good fit for your product
+- For markets where you have no distribution channel
+- When the deal size does not justify the effort
+
+
 ## Overview
 
 Shopee Review Downloader drives revenue generation with systematic processes.
@@ -60,9 +68,34 @@ Shopee Review Downloader drives revenue generation with systematic processes.
 
 ## Workflow
 
+```python
+# Example: Lead scoring
+def score_lead(lead: dict) -> int:
+    score = 0
+    if lead.get("company_size", 0) > 100: score += 20
+    if lead.get("budget", 0) > 10000: score += 25
+    if lead.get("timeline") == "immediate": score += 30
+    if lead.get("engagement_level", 0) > 3: score += 25
+    return min(score, 100)
+```
+
 1. **Understand requirements** — Clarify objectives and scope
 2. **Set up tools** — Configure required tools and access
 3. **Execute** — Perform the core operations
 4. **Validate** — Verify results meet quality standards
 5. **Document** — Record findings and decisions
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Cold outreach does not work" | It works when personalized and targeted. Generic spam does not. |
+| "I will follow up later" | 80% of sales require 5+ follow-ups. Follow up consistently. |
+| "Price is the only factor" | Value, trust, and timing matter more than price. Sell outcomes. |
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

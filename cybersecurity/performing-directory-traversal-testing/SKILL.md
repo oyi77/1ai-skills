@@ -22,6 +22,10 @@ nist_csf:
 ---
 # Performing Directory Traversal Testing
 
+## Overview
+
+Cybersecurity skill for performing directory traversal testing. Follows industry best practices and security standards.
+
 ## When to Use
 
 - During authorized penetration tests when the application handles file paths in URL parameters or request bodies
@@ -29,6 +33,14 @@ nist_csf:
 - For assessing Local File Inclusion (LFI) and Remote File Inclusion (RFI) vulnerabilities
 - When evaluating template engines, logging systems, or report generators that reference files
 - During security assessments of APIs that accept file names or paths as parameters
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -40,6 +52,21 @@ nist_csf:
 - **curl**: For manual testing of traversal payloads
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Plan Operations** — Define objectives, scope, and success criteria for directory traversal testing operations.
 2. **Prepare Environment** — Set up tools, access, and data sources required for directory traversal testing.
@@ -60,3 +87,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

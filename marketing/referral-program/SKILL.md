@@ -90,6 +90,30 @@ Referral program design and automation — incentive structures, tracking, viral
 
 ## Process
 
+```python
+# Example: SEO keyword analysis
+def analyze_keywords(keywords: list[str]) -> list[dict]:
+    results = []
+    for kw in keywords:
+        volume = get_search_volume(kw)
+        difficulty = get_difficulty(kw)
+        results.append({
+            "keyword": kw,
+            "volume": volume,
+            "difficulty": difficulty,
+            "opportunity": volume / max(difficulty, 1),
+        })
+    return sorted(results, key=lambda x: x["opportunity"], reverse=True)
+```
+
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Good products sell themselves" | They do not. Marketing is how people discover your product. |
+| "I will start marketing after launch" | Build audience before launch. Pre-launch momentum is critical. |
+| "SEO is dead" | SEO evolves. GEO (Generative Engine Optimization) is the new frontier. |

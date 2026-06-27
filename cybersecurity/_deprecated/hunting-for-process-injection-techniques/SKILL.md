@@ -42,6 +42,14 @@ Process injection (MITRE ATT&CK T1055) allows adversaries to execute code in the
 - When SOC analysts need structured procedures for this analysis type
 - When validating security monitoring coverage for related attack techniques
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Sysmon installed with Event IDs 8 and 10 enabled
@@ -50,6 +58,21 @@ Process injection (MITRE ATT&CK T1055) allows adversaries to execute code in the
 - JSON-formatted Sysmon event logs
 
 ## Steps
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Parse Sysmon Events** — Ingest Event IDs 1, 8, and 10 from JSON log files
 2. **Detect CreateRemoteThread** — Flag Event ID 8 with suspicious source-target process pairs
@@ -79,3 +102,11 @@ Process injection (MITRE ATT&CK T1055) allows adversaries to execute code in the
 - Vulnerabilities reproduced with proof-of-concept and impact analysis
 - False positives filtered out through manual verification
 - Fix recommendations include code-level remediation guidance
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

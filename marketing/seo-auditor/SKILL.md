@@ -293,3 +293,11 @@ echo "Keyword Trackers: $(cat config.json | jq '.targets[0].keywords | length')"
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Good products sell themselves" | They do not. Marketing is how people discover your product. |
+| "I will start marketing after launch" | Build audience before launch. Pre-launch momentum is critical. |
+| "SEO is dead" | SEO evolves. GEO (Generative Engine Optimization) is the new frontier. |

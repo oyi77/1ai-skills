@@ -42,6 +42,14 @@ Connects to:
 - pattern-recognition (queries patterns)
 - skill-evolution (tracks versions)
 
+
+## When NOT to Use
+
+- When the skill is stable and not changing
+- For skills with fewer than 10 invocations (not enough data)
+- When manual curation produces better results
+
+
 ## Overview
 
 Meta Skill Datastore is a foundational meta-skills skill that provides skill management capabilities for the agent ecosystem.
@@ -67,3 +75,17 @@ Meta Skill Datastore is a foundational meta-skills skill that provides skill man
 - Compatible with the 1ai-skills hook system
 - Logs metrics for the skill performance monitor
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Skills do not need to evolve" | Static skills become outdated. Self-evolving skills improve continuously. |
+| "Manual skill management is fine" | With 1000+ skills, manual management is impossible. Automate. |
+| "Performance does not matter" | Skill performance directly impacts agent effectiveness. Track it. |
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

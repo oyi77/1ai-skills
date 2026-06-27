@@ -25,6 +25,10 @@ nist_csf:
 ---
 # Remediating S3 Bucket Misconfiguration
 
+## Overview
+
+Cybersecurity skill for remediating s3 bucket misconfiguration. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When AWS Config or Security Hub reports S3 buckets with public access or missing encryption
@@ -35,6 +39,14 @@ nist_csf:
 
 **Do not use** for Azure Blob Storage or GCP Cloud Storage misconfigurations, for S3 data classification (see implementing-cloud-dlp-policy), or for S3 access pattern analysis unrelated to security.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - AWS account with S3 administrative permissions (s3:*, s3-outposts:*)
@@ -43,6 +55,21 @@ nist_csf:
 - Macie enabled for sensitive data discovery in S3 buckets
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Objectives** — Clarify the goals and scope for s3 bucket misconfiguration.
 2. **Gather Resources** — Collect tools, data, and access needed for s3 bucket misconfiguration.
@@ -62,3 +89,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

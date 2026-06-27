@@ -24,6 +24,10 @@ nist_csf:
 ---
 # Implementing Api Gateway Security Controls
 
+## Overview
+
+Cybersecurity skill for implementing api gateway security controls. Follows industry best practices and security standards.
+
 ## When to Use
 
 - Deploying a centralized authentication and authorization layer for microservice APIs
@@ -33,6 +37,14 @@ nist_csf:
 - Integrating WAF rules with the API gateway to block injection, XSS, and known attack patterns
 
 **Do not use** as the sole security layer. API gateways provide defense in depth but backend services must also validate authorization and input.
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -44,6 +56,21 @@ nist_csf:
 - Backend service endpoints registered and reachable from the gateway
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Assess Requirements** — Evaluate current environment and define api gateway security controls implementation requirements.
 2. **Design Architecture** — Plan the api gateway security controls architecture, including components, integrations, and data flows.
@@ -65,3 +92,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

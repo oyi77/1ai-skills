@@ -23,6 +23,10 @@ nist_csf:
 ---
 # Performing Api Security Testing With Postman
 
+## Overview
+
+Cybersecurity skill for performing api security testing with postman. Follows industry best practices and security standards.
+
 ## When to Use
 
 - Building repeatable API security test suites for OWASP API Security Top 10 coverage
@@ -32,6 +36,14 @@ nist_csf:
 - Establishing a baseline security test collection for new API endpoints before deployment
 
 **Do not use** against production APIs without authorization. Postman security testing involves sending potentially malicious payloads.
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -43,6 +55,21 @@ nist_csf:
 - API environment variables for base URL, tokens, and test data
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Plan Operations** — Define objectives, scope, and success criteria for api security testing operations.
 2. **Prepare Environment** — Set up tools, access, and data sources required for api security testing.
@@ -64,3 +91,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

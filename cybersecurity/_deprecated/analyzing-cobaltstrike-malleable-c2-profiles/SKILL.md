@@ -35,6 +35,14 @@ Cobalt Strike Malleable C2 profiles are domain-specific language scripts that cu
 - When SOC analysts need structured procedures for this analysis type
 - When validating security monitoring coverage for related attack techniques
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Python 3.9+ with `dissect.cobaltstrike` and/or `pyMalleableC2`
@@ -44,6 +52,21 @@ Cobalt Strike Malleable C2 profiles are domain-specific language scripts that cu
 - PCAP analysis tools for traffic validation
 
 ## Steps
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. Install libraries: `pip install dissect.cobaltstrike` or `pip install pyMalleableC2`
 2. Parse profile with `C2Profile.from_path("profile.profile")`
@@ -71,3 +94,11 @@ A JSON report containing extracted C2 URIs, HTTP headers, user agents, sleep/jit
 - Output documented with screenshots or logs demonstrating expected behavior
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

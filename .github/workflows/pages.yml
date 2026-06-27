@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'docs/**'
+      - 'SKILLS.json'
+      - 'scripts/generate-site.py'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -26,6 +28,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate site from SKILLS.json
+        run: python3 scripts/generate-site.py
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

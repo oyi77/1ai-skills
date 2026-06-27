@@ -22,12 +22,24 @@ nist_csf:
 ---
 # Investigating Ransomware Attack Artifacts
 
+## Overview
+
+Cybersecurity skill for investigating ransomware attack artifacts. Follows industry best practices and security standards.
+
 ## When to Use
 - Immediately after discovering ransomware encryption on systems
 - When performing forensic analysis to understand the full scope of a ransomware incident
 - For identifying the ransomware variant and determining if decryption is possible
 - When tracing the attack chain from initial access to encryption
 - For documenting evidence to support law enforcement and insurance claims
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 - Forensic images of affected systems (preserve before remediation)
@@ -39,6 +51,21 @@ nist_csf:
 - Isolated sandbox environment for malware analysis
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Objectives** — Clarify the goals and scope for ransomware attack artifacts.
 2. **Gather Resources** — Collect tools, data, and access needed for ransomware attack artifacts.
@@ -58,3 +85,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

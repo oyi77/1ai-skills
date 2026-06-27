@@ -12,12 +12,24 @@ tags:
 ---
 # Presentation Design
 
+## Overview
+
+Mindset skill for presentation design. Builds capability through deliberate practice and structured frameworks.
+
 ## When to Use
 
 - Building pitch decks, keynote presentations, or sales decks
 - Designing internal presentations for executives or teams
 - Creating webinar or conference talk slides
 - **When NOT to use**: Written reports, technical documentation, or dense reference materials
+
+
+## When NOT to Use
+
+- When the situation requires professional counseling or therapy
+- For high-stakes decisions that need expert judgment
+- When the skill conflicts with cultural or personal values
+
 
 ## Core Principles
 
@@ -53,3 +65,26 @@ tags:
 - Find an accountability partner or mentor
 - Set weekly presentation design challenges with measurable outcomes
 - Review and adjust your approach monthly
+
+```markdown
+# Daily Practice Template
+
+## Morning (5 min)
+- Set intention for the day
+- Review top 3 priorities
+
+## During the day
+- Practice the skill in real situations
+- Note moments of success and struggle
+
+## Evening (5 min)
+- Reflect: What worked? What did not?
+- Log one lesson learned
+```
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

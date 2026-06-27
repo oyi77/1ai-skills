@@ -23,6 +23,10 @@ nist_csf:
 ---
 # Conducting Wireless Network Penetration Test
 
+## Overview
+
+Cybersecurity skill for conducting wireless network penetration test. Follows industry best practices and security standards.
+
 ## When to Use
 
 - Assessing the security of enterprise wireless networks including guest, corporate, and IoT WiFi segments
@@ -33,6 +37,14 @@ nist_csf:
 
 **Do not use** against wireless networks without written authorization from the network owner, for jamming or denial-of-service attacks against wireless infrastructure unless explicitly authorized, or in environments where wireless disruption could affect life-safety systems.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Written authorization specifying target SSIDs, BSSIDs, and physical testing locations
@@ -42,6 +54,21 @@ nist_csf:
 - Knowledge of the target's wireless architecture (SSIDs, authentication types, RADIUS infrastructure)
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Scope the Analysis** — Define what wireless network penetration test artifacts or data sources to examine and the investigation timeline.
 2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
@@ -63,3 +90,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

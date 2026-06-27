@@ -25,11 +25,29 @@ tags:
 - Portfolio construction and risk management across asset classes
 - Institutional-grade reporting for investment committees
 
+
+## When NOT to Use
+
+- For personal financial advice (consult a licensed advisor)
+- When the analysis requires real-time market data you do not have
+- For tax or legal decisions (consult professionals)
+
+
 ## Overview
 
 Wolf Finance provides finance operations with accuracy and compliance.
 
 ## Workflow
+
+```python
+# Example: Portfolio risk calculation
+def calculate_risk(returns: list[float]) -> dict:
+    import statistics
+    mean = statistics.mean(returns)
+    stdev = statistics.stdev(returns)
+    sharpe = mean / stdev if stdev > 0 else 0
+    return {"mean": mean, "stdev": stdev, "sharpe_ratio": sharpe}
+```
 
 1. **Gather data** — Collect financial data from authoritative sources
 2. **Analyze** — Apply financial models and calculations
@@ -52,3 +70,17 @@ Wolf Finance provides finance operations with accuracy and compliance.
 - Redact sensitive financial data in reports
 - Document assumptions and methodologies
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "The market will recover" | Do not hope. Analyze. Set stop-losses and follow your strategy. |
+| "I do not need to track expenses" | What you do not measure, you cannot optimize. Track everything. |
+| "One spreadsheet is enough" | Financial models need version control and audit trails. Use proper tools. |
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

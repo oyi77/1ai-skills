@@ -26,6 +26,10 @@ nist_csf:
 ---
 # Configuring Identity Aware Proxy With Google Iap
 
+## Overview
+
+Cybersecurity skill for configuring identity aware proxy with google iap. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When protecting Google Cloud applications (App Engine, Cloud Run, GKE, Compute Engine) with identity-based access
@@ -35,6 +39,14 @@ nist_csf:
 - When configuring programmatic access to IAP-protected resources using service accounts
 
 **Do not use** for non-HTTP applications that cannot be placed behind an HTTPS load balancer, for public-facing applications that need unauthenticated access, or when applications handle their own authentication and IAP would conflict with existing auth flows.
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -46,6 +58,21 @@ nist_csf:
 - OAuth consent screen configured for the project
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Objectives** — Clarify the goals and scope for identity aware proxy.
 2. **Gather Resources** — Collect tools, data, and access needed for identity aware proxy.
@@ -66,3 +93,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

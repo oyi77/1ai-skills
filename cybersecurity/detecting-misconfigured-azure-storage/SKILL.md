@@ -33,6 +33,10 @@ nist_csf:
 ---
 # Detecting Misconfigured Azure Storage
 
+## Overview
+
+Cybersecurity skill for detecting misconfigured azure storage. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When performing a security audit of Azure Storage accounts across subscriptions
@@ -43,6 +47,14 @@ nist_csf:
 
 **Do not use** for Azure SQL or Cosmos DB security auditing (use dedicated database security tools), for real-time threat detection on storage operations (use Defender for Storage), or for Azure Files or Data Lake Gen2 specific auditing without adapting the checks.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Azure CLI installed and authenticated (`az login`) with Reader and Storage Account Contributor roles
@@ -52,6 +64,21 @@ nist_csf:
 - ScoutSuite or Prowler Azure provider for automated assessment
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Detection Scope** — Identify the specific misconfigured azure storage techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
 2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for misconfigured azure storage.
@@ -73,3 +100,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

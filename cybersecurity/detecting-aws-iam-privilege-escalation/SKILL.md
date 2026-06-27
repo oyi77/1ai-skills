@@ -44,6 +44,21 @@ This skill uses boto3 and Cloudsplaining-style analysis to identify IAM privileg
 
 ## Steps
 
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
+
 1. **Download IAM Authorization Details** — Call iam:GetAccountAuthorizationDetails to retrieve all users, groups, roles, and policies
 2. **Analyze Policies for Privilege Escalation** — Check each policy for known escalation permission combinations
 3. **Identify Wildcard Resource Policies** — Flag policies using Resource: "*" with dangerous actions
@@ -81,3 +96,11 @@ This skill uses boto3 and Cloudsplaining-style analysis to identify IAM privileg
 - Cloud resource changes reverted or documented as intentional
 - IAM policies reviewed for least-privilege compliance after testing
 - No residual test resources left running (cost and security check)
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

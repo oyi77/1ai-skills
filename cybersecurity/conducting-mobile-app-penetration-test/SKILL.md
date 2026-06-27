@@ -31,6 +31,10 @@ nist_csf:
 ---
 # Conducting Mobile App Penetration Test
 
+## Overview
+
+Cybersecurity skill for conducting mobile app penetration test. Follows industry best practices and security standards.
+
 ## When to Use
 
 - Testing mobile applications before release to identify security vulnerabilities and data protection issues
@@ -40,6 +44,14 @@ nist_csf:
 - Assessing mobile application resistance to reverse engineering, tampering, and runtime manipulation
 
 **Do not use** against mobile applications without written authorization from the application owner, for distributing modified or repackaged applications, or for testing apps on the public app stores without a separate test build.
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -53,6 +65,21 @@ nist_csf:
 > **Legal Notice:** This skill is for authorized security testing and educational purposes only. Unauthorized use against systems you do not own or have written permission to test is illegal and may violate computer fraud laws.
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Scope the Analysis** — Define what mobile app penetration test artifacts or data sources to examine and the investigation timeline.
 2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
@@ -74,3 +101,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

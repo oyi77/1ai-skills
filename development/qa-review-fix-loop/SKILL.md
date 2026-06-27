@@ -39,6 +39,14 @@ Comprehensive, evidence-based QA protocol. Layer-based testing with mandatory re
 - Code review only (use `skill://code-reviewer`)
 - Unit test writing (use `skill://test-driven-development`)
 
+
+## When NOT to Use
+
+- For throwaway prototypes (skip the ceremony)
+- When the fix is a single-line change with no side effects
+- When the codebase already has a working solution
+
+
 ## Process
 
 ### Step 0 — Discover the Codebase
@@ -200,6 +208,14 @@ Use this for each layer:
 | 2 | Automated/Manual | N | N | N | 0 |
 
 Status progression: `Not started` → `In QA` → `Fixing` → `Re-QA` → `CLEARED`
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Tests slow me down" | Bugs slow you down 10x more. Tests are speed, not overhead. |
+| "I will refactor later" | Technical debt compounds. Refactor as you go. |
+| "It works on my machine" | If it is not in CI, it does not work. Ship proof, not claims. |
 
 ## Related Skills
 

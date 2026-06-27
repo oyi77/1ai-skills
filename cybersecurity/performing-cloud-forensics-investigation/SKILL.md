@@ -23,12 +23,24 @@ nist_csf:
 ---
 # Performing Cloud Forensics Investigation
 
+## Overview
+
+Cybersecurity skill for performing cloud forensics investigation. Follows industry best practices and security standards.
+
 ## When to Use
 - When investigating a security breach in AWS, Azure, or GCP cloud environments
 - For collecting volatile and non-volatile evidence from cloud infrastructure
 - When tracing unauthorized access through cloud service API logs
 - During incident response requiring preservation of cloud-based evidence
 - For analyzing compromised virtual machines, containers, or serverless functions
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 - Administrative access to the cloud account under investigation
@@ -39,6 +51,21 @@ nist_csf:
 - Evidence preservation procedures for cloud environments
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Plan Operations** — Define objectives, scope, and success criteria for cloud forensics investigation operations.
 2. **Prepare Environment** — Set up tools, access, and data sources required for cloud forensics investigation.
@@ -59,3 +86,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

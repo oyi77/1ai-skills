@@ -262,3 +262,11 @@ After completing this skill, confirm:
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "I will add monitoring later" | Without monitoring, you cannot detect failures. Add it from day one. |
+| "One model is enough" | Different tasks need different models. Route intelligently. |
+| "Premature optimization" | Infrastructure decisions are hard to change later. Design for scale early. |

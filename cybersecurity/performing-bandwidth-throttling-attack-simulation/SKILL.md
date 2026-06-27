@@ -23,6 +23,10 @@ nist_csf:
 ---
 # Performing Bandwidth Throttling Attack Simulation
 
+## Overview
+
+Cybersecurity skill for performing bandwidth throttling attack simulation. Follows industry best practices and security standards.
+
 ## When to Use
 
 - Testing application resilience to degraded network conditions during authorized security assessments
@@ -32,6 +36,14 @@ nist_csf:
 - Testing network monitoring tools' ability to detect abnormal bandwidth utilization patterns
 
 **Do not use** on production networks without authorization and a maintenance window, for causing denial-of-service conditions, or against critical infrastructure without safety controls.
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -46,6 +58,21 @@ nist_csf:
 > **Legal Notice:** This skill is for authorized security testing and educational purposes only. Unauthorized use against systems you do not own or have written permission to test is illegal and may violate computer fraud laws.
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Plan Operations** — Define objectives, scope, and success criteria for bandwidth throttling attack simulation operations.
 2. **Prepare Environment** — Set up tools, access, and data sources required for bandwidth throttling attack simulation.
@@ -66,3 +93,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

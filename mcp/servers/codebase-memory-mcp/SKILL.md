@@ -22,6 +22,14 @@ tags:
 - Cross-file impact analysis: "What breaks if I change this function?"
 - **When NOT to use**: Single-file tasks (just read it), trivial codebases (<10 files), or when you already have full context
 
+
+## When NOT to Use
+
+- When a simpler HTTP client would suffice
+- For internal tools that do not need cross-platform compatibility
+- When the tool is used by a single agent in a single context
+
+
 ## Overview
 
 Codebase Memory Mcp implements a Model Context Protocol server for Model Context Protocol.
@@ -54,3 +62,29 @@ Codebase Memory Mcp implements a Model Context Protocol server for Model Context
 - Supports streaming responses for large payloads
 - Handles errors with standard MCP error codes
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "I will just use curl" | MCP handles auth, retries, streaming, and type safety. Use the SDK. |
+| "One mega-server is simpler" | Single-responsibility servers are easier to debug and maintain. |
+| "MCP is just a wrapper" | MCP enables cross-platform tool sharing. It is infrastructure, not overhead. |
+
+```typescript
+// Example: MCP server tool definition
+import { McpServer } from "@modelcontextprotocol/sdk";
+
+const server = new McpServer({ name: "my-tools", version: "1.0.0" });
+
+server.tool("search", { query: z.string() }, async ({ query }) => {
+  const results = await search(query);
+  return { content: [{ type: "text", text: JSON.stringify(results) }] };
+});
+```
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

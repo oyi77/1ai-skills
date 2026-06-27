@@ -41,6 +41,10 @@ nist_csf:
 ---
 # Implementing Llm Guardrails For Security
 
+## Overview
+
+Cybersecurity skill for implementing llm guardrails for security. Follows industry best practices and security standards.
+
 ## When to Use
 
 - Deploying a new LLM-powered application that processes user input and needs input/output safety controls
@@ -52,6 +56,14 @@ nist_csf:
 
 **Do not use** as a replacement for proper authentication, authorization, and network security controls. Guardrails are a defense-in-depth layer, not a perimeter defense. Not suitable for real-time content moderation of user-to-user communication without LLM involvement.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Python 3.10+ with pip for installing guardrail dependencies
@@ -61,6 +73,21 @@ nist_csf:
 - Familiarity with YAML configuration and basic Colang 2.0 syntax for defining rail flows
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Assess Requirements** — Evaluate current environment and define llm guardrails implementation requirements.
 2. **Design Architecture** — Plan the llm guardrails architecture, including components, integrations, and data flows.
@@ -83,3 +110,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

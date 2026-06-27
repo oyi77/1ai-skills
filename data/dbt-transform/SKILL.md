@@ -292,3 +292,11 @@ dbt deps
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "CSV is fine for everything" | Structured databases enable queries, integrity, and scale. |
+| "I will add data validation later" | Bad data propagates silently. Validate at ingestion. |
+| "Small datasets do not need optimization" | Even small datasets benefit from proper indexing and schema design. |

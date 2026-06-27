@@ -33,6 +33,10 @@ nist_csf:
 ---
 # Implementing Hardware Security Key Authentication
 
+## Overview
+
+Cybersecurity skill for implementing hardware security key authentication. Follows industry best practices and security standards.
+
 ## When to Use
 
 - Deploying phishing-resistant multi-factor authentication (MFA) using FIDO2 hardware security keys for high-value accounts (administrators, developers, privileged users)
@@ -43,6 +47,14 @@ nist_csf:
 
 **Do not use** without HTTPS in production (WebAuthn requires a secure origin), for systems where users cannot physically access a USB/NFC port, or as the sole authentication factor without a recovery mechanism for lost keys.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Python 3.10+ with `fido2` (python-fido2 >= 2.0.0), `flask`, and `cryptography` libraries installed
@@ -52,6 +64,21 @@ nist_csf:
 - Understanding of public key cryptography, challenge-response protocols, and HTTP session management
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Assess Requirements** — Evaluate current environment and define hardware security key authentication implementation requirements.
 2. **Design Architecture** — Plan the hardware security key authentication architecture, including components, integrations, and data flows.
@@ -73,3 +100,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

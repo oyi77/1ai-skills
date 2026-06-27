@@ -13,6 +13,10 @@ tags:
 ---
 # Cross Cultural Communication
 
+## Overview
+
+Mindset skill for cross cultural communication. Builds capability through deliberate practice and structured frameworks.
+
 ## When to Use
 
 - Leading or collaborating with globally distributed teams
@@ -20,6 +24,14 @@ tags:
 - Managing async communication across timezones
 - Onboarding team members from different cultural backgrounds
 - **When NOT to use**: Stereotyping individuals based on national culture alone (use as context, not rule)
+
+
+## When NOT to Use
+
+- When the situation requires professional counseling or therapy
+- For high-stakes decisions that need expert judgment
+- When the skill conflicts with cultural or personal values
+
 
 ## Core Principles
 
@@ -55,3 +67,26 @@ tags:
 - Find an accountability partner or mentor
 - Set weekly cross cultural communication challenges with measurable outcomes
 - Review and adjust your approach monthly
+
+```markdown
+# Daily Practice Template
+
+## Morning (5 min)
+- Set intention for the day
+- Review top 3 priorities
+
+## During the day
+- Practice the skill in real situations
+- Note moments of success and struggle
+
+## Evening (5 min)
+- Reflect: What worked? What did not?
+- Log one lesson learned
+```
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

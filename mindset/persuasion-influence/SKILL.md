@@ -12,6 +12,10 @@ tags:
 ---
 # Persuasion Influence
 
+## Overview
+
+Mindset skill for persuasion influence. Builds capability through deliberate practice and structured frameworks.
+
 ## When to Use
 
 - Pitching ideas, products, or proposals without formal authority
@@ -19,6 +23,14 @@ tags:
 - Selling to prospects or closing deals
 - Building coalition support for strategic decisions
 - **When NOT to use**: Manipulation, coercion, or when ethical concerns arise
+
+
+## When NOT to Use
+
+- When the situation requires professional counseling or therapy
+- For high-stakes decisions that need expert judgment
+- When the skill conflicts with cultural or personal values
+
 
 ## Core Principles
 
@@ -54,3 +66,26 @@ tags:
 - Find an accountability partner or mentor
 - Set weekly persuasion influence challenges with measurable outcomes
 - Review and adjust your approach monthly
+
+```markdown
+# Daily Practice Template
+
+## Morning (5 min)
+- Set intention for the day
+- Review top 3 priorities
+
+## During the day
+- Practice the skill in real situations
+- Note moments of success and struggle
+
+## Evening (5 min)
+- Reflect: What worked? What did not?
+- Log one lesson learned
+```
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

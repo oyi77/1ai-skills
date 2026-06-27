@@ -38,6 +38,14 @@ agent-reach web_page "https://example.com" --format markdown
 
 Agent-reach handles platform anti-scraping, auth, rate limits, and data normalization. Use this skill (smart-scraper) for custom web scraping of non-social-media sites. Use agent-reach for social platforms.
 
+
+## When NOT to Use
+
+- For one-off tasks that will never repeat
+- When the process requires human judgment at every step
+- When the cost of automation exceeds the cost of manual execution
+
+
 ## Overview
 
 Smart Scraper automates workflow automation to reduce manual effort and increase reliability.
@@ -65,3 +73,17 @@ Smart Scraper automates workflow automation to reduce manual effort and increase
 - Use idempotent operations where possible
 - Test with edge cases before deploying
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Manual is faster for one-off tasks" | One-off tasks become recurring. Automate early, save time later. |
+| "I will add error handling later" | You never do. Handle errors from day one. |
+| "Automation is overkill" | If you do it twice, automate it. If you do it daily, it is critical infrastructure. |
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings
