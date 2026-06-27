@@ -44,6 +44,14 @@ User: "Buat meeting notes untuk meeting yesterday"
 Vilona: Uses notion_create_pages
 ```
 
+
+## When NOT to Use
+
+- When the tool already handles the workflow natively
+- For personal preferences that do not affect output quality
+- When the overhead of the system exceeds the time saved
+
+
 ## Overview
 
 Notion enhances workflow optimization with proven systems and tools.
@@ -84,3 +92,17 @@ Notion enhances workflow optimization with proven systems and tools.
 4. **Validate** — Verify results meet quality standards
 5. **Document** — Record findings and decisions
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "I am too busy to organize" | Disorganization costs more time than organizing. Invest upfront. |
+| "Multitasking is productive" | Context switching costs 25 minutes per switch. Focus on one thing. |
+| "I will remember this" | You will not. Write it down. Externalize your memory. |
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

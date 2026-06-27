@@ -36,7 +36,20 @@ Reference for free-tier SaaS tools across team collaboration, project management
 - Task is about defense, not offense (use defensive skills)
 
 
-## Process / Steps
+## Process
+
+```python
+# Example: API integration with retry
+import httpx
+from tenacity import retry, stop_after_attempt, wait_exponential
+
+@retry(stop=stop_after_attempt(3), wait=wait_exponential(min=1, max=10))
+async def api_call(url: str, payload: dict):
+    async with httpx.AsyncClient() as client:
+        resp = await client.post(url, json=payload)
+        resp.raise_for_status()
+        return resp.json()
+``` / Steps
 
 1. **Identify team size** -- Free tier user limits vary widely (3 to unlimited).
 2. **Check integration needs** -- Does the tool integrate with the rest of the stack (Slack, GitHub, etc.)?
@@ -158,3 +171,11 @@ Refer to the skill overview for detailed usage instructions.
 2. Provide required inputs as specified in the skill definition
 3. Review the output for correctness before delivering to the user
 4. Combine with related skills for complex multi-step workflows
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "I will handle auth later" | Retrofitting auth is 10x harder. Build it from day one. |
+| "APIs do not change" | APIs change. Version your integrations and handle deprecations. |
+| "Webhooks are optional" | Without webhooks, you miss real-time events. They are essential. |

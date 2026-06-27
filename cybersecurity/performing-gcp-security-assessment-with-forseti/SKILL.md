@@ -35,6 +35,10 @@ nist_csf:
 ---
 # Performing Gcp Security Assessment With Forseti
 
+## Overview
+
+Cybersecurity skill for performing gcp security assessment with forseti. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When conducting periodic security assessments of GCP organizations and projects
@@ -45,6 +49,14 @@ nist_csf:
 
 **Do not use** as a replacement for GCP Security Command Center Premium for real-time threat detection, for application-level vulnerability scanning (use Web Security Scanner), or for GKE-specific security (use GKE Security Posture).
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - GCP Organization with Organization Admin or Security Admin IAM role
@@ -54,6 +66,21 @@ nist_csf:
 - Python 3.8+ for custom audit scripts using google-cloud-asset and google-cloud-securitycenter libraries
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Plan Operations** — Define objectives, scope, and success criteria for gcp security assessment operations.
 2. **Prepare Environment** — Set up tools, access, and data sources required for gcp security assessment.
@@ -75,3 +102,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

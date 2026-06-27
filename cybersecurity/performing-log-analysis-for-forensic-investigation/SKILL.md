@@ -22,12 +22,24 @@ nist_csf:
 ---
 # Performing Log Analysis For Forensic Investigation
 
+## Overview
+
+Cybersecurity skill for performing log analysis for forensic investigation. Follows industry best practices and security standards.
+
 ## When to Use
 - When reconstructing the timeline of a security incident from available log sources
 - During post-breach investigation to identify initial access, lateral movement, and exfiltration
 - When correlating events across multiple systems and log sources
 - For establishing evidence of unauthorized access or policy violations
 - When preparing forensic reports requiring detailed event chronology
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 - Access to collected log files (Windows Event Logs, syslog, application logs)
@@ -38,6 +50,21 @@ nist_csf:
 - Timeline analysis tools (log2timeline, Plaso)
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Plan Operations** — Define objectives, scope, and success criteria for log analysis operations.
 2. **Prepare Environment** — Set up tools, access, and data sources required for log analysis.
@@ -59,3 +86,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

@@ -34,11 +34,32 @@ tags:
 - When using vendored dependencies with known state
 - For runtime-only security (use SAST/DAST instead)
 
+
+## When NOT to Use
+
+- For throwaway prototypes (skip the ceremony)
+- When the fix is a single-line change with no side effects
+- When the codebase already has a working solution
+
+
 ## Overview
 
 Dependency Scanner supports coding practices with best practices and proven patterns.
 
 ## Workflow
+
+```python
+# Example: TDD workflow
+def test_user_creation():
+    user = create_user(name="Alice", email="alice@example.com")
+    assert user.name == "Alice"
+    assert user.email == "alice@example.com"
+    assert user.created_at is not None
+
+def test_user_creation_invalid_email():
+    with pytest.raises(ValidationError):
+        create_user(name="Alice", email="invalid")
+```
 
 1. **Understand requirements** — Clarify acceptance criteria and constraints
 2. **Design solution** — Plan architecture and identify patterns
@@ -63,3 +84,17 @@ Dependency Scanner supports coding practices with best practices and proven patt
 - Keep functions small and focused (<50 lines)
 - Use immutable data patterns where possible
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Tests slow me down" | Bugs slow you down 10x more. Tests are speed, not overhead. |
+| "I will refactor later" | Technical debt compounds. Refactor as you go. |
+| "It works on my machine" | If it is not in CI, it does not work. Ship proof, not claims. |
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

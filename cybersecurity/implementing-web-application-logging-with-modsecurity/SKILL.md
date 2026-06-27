@@ -95,3 +95,11 @@ ModSecurity: Warning. Pattern match "(?:union\s+select)" [file "/etc/modsecurity
 - Vulnerabilities reproduced with proof-of-concept and impact analysis
 - False positives filtered out through manual verification
 - Fix recommendations include code-level remediation guidance
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

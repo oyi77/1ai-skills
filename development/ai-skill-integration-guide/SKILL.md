@@ -191,3 +191,11 @@ Every imported skill must pass these gates before merge:
 ## Verification
 
 - [ ] Skill output matches expected behavior
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Tests slow me down" | Bugs slow you down 10x more. Tests are speed, not overhead. |
+| "I will refactor later" | Technical debt compounds. Refactor as you go. |
+| "It works on my machine" | If it is not in CI, it does not work. Ship proof, not claims. |

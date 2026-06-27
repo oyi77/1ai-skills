@@ -30,6 +30,10 @@ nist_csf:
 ---
 # Building Identity Governance Lifecycle Process
 
+## Overview
+
+Cybersecurity skill for building identity governance lifecycle process. Follows industry best practices and security standards.
+
 ## When to Use
 
 - Organization lacks automated joiner-mover-leaver (JML) processes for identity management
@@ -41,6 +45,14 @@ nist_csf:
 
 **Do not use** for single-application user management; identity governance addresses cross-system lifecycle management requiring correlation of authoritative HR sources with downstream application provisioning.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Authoritative HR system (Workday, SAP SuccessFactors, BambooHR) as identity source of truth
@@ -51,6 +63,21 @@ nist_csf:
 - Stakeholder buy-in from HR, IT, security, and business unit managers
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Assess Requirements** — Evaluate current environment and define identity governance lifecycle process implementation requirements.
 2. **Design Architecture** — Plan the identity governance lifecycle process architecture, including components, integrations, and data flows.
@@ -72,3 +99,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

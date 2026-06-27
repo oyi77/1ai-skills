@@ -34,6 +34,10 @@ nist_csf:
 ---
 # Detecting Dnp3 Protocol Anomalies
 
+## Overview
+
+Cybersecurity skill for detecting dnp3 protocol anomalies. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When monitoring SCADA systems in the energy sector where DNP3 is the primary protocol
@@ -44,6 +48,14 @@ nist_csf:
 
 **Do not use** for non-DNP3 protocol monitoring (see detecting-modbus-command-injection-attacks for Modbus), for DNP3 Secure Authentication configuration (separate implementation), or for protocol-agnostic network anomaly detection.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Network TAP/SPAN on DNP3 communication segments (TCP port 20000 or serial)
@@ -53,6 +65,21 @@ nist_csf:
 - DNP3 communication topology map (master-to-outstation relationships)
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Detection Scope** — Identify the specific dnp3 protocol anomalies techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
 2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for dnp3 protocol anomalies.
@@ -74,3 +101,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

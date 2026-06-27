@@ -34,6 +34,10 @@ nist_csf:
 ---
 # Deploying Cloudflare Access For Zero Trust
 
+## Overview
+
+Cybersecurity skill for deploying cloudflare access for zero trust. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When replacing VPN infrastructure with identity-aware application access using Cloudflare One
@@ -44,6 +48,14 @@ nist_csf:
 
 **Do not use** for applications requiring persistent UDP connections not supported by Cloudflare Tunnel, for environments requiring air-gapped or fully on-premises access control, or when regulatory requirements prohibit routing traffic through third-party cloud infrastructure.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Cloudflare account with Zero Trust subscription (Free for up to 50 users, paid plans for larger teams)
@@ -53,6 +65,21 @@ nist_csf:
 - Cloudflare WARP client for device-level enrollment (optional but recommended)
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Objectives** — Clarify the goals and scope for cloudflare access.
 2. **Gather Resources** — Collect tools, data, and access needed for cloudflare access.
@@ -73,3 +100,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

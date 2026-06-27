@@ -25,6 +25,10 @@ nist_csf:
 ---
 # Implementing Secrets Management With Vault
 
+## Overview
+
+Cybersecurity skill for implementing secrets management with vault. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When applications store database passwords, API keys, or certificates in environment variables or config files
@@ -35,6 +39,14 @@ nist_csf:
 
 **Do not use** for AWS-only environments where AWS Secrets Manager suffices without multi-cloud requirements, for application-level encryption logic (though Vault Transit can help), or for identity federation (see managing-cloud-identity-with-okta).
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - HashiCorp Vault server deployed in HA mode (Consul or Raft storage backend)
@@ -43,6 +55,21 @@ nist_csf:
 - Kubernetes cluster with Vault Agent Injector or CSI provider for workload integration
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Assess Requirements** — Evaluate current environment and define secrets management implementation requirements.
 2. **Design Architecture** — Plan the secrets management architecture, including components, integrations, and data flows.
@@ -65,3 +92,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

@@ -56,6 +56,14 @@ multiple groups, and assess detection coverage gaps against known adversaries.
 - When SOC analysts need structured procedures for this analysis type
 - When validating security monitoring coverage for related attack techniques
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Python 3.8+ with attackcti and stix2 libraries installed
@@ -95,3 +103,11 @@ multiple groups, and assess detection coverage gaps against known adversaries.
 - Output documented with screenshots or logs demonstrating expected behavior
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

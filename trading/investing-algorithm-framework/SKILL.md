@@ -222,6 +222,14 @@ AI agents can query backtest results via the built-in MCP server. Enables agent-
 - Building cross-sectional ranking and selection systems
 - Generating professional backtest reports for review
 
+
+## When NOT to Use
+
+- When you cannot afford to lose the capital at risk
+- For instruments you do not understand
+- When emotional state impairs judgment (revenge trading, FOMO)
+
+
 ## Red Flags
 
 - Backtest uses future data (lookahead bias in signal generation)
@@ -245,3 +253,11 @@ After completing strategy development, confirm:
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "I will cut losses later" | Later never comes. Set stop-losses before entering any trade. |
+| "This time is different" | It never is. Follow your strategy, not your emotions. |
+| "I do not need to journal" | Journaling reveals patterns in your behavior. Track every trade. |

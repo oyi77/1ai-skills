@@ -48,6 +48,14 @@ language: id-ID / en
 
 ---
 
+
+## When NOT to Use
+
+- When the prospect is not a good fit for your product
+- For markets where you have no distribution channel
+- When the deal size does not justify the effort
+
+
 ## Architecture
 
 Sales is built INTO 1ai-social as MCP tools (prefixed `sales_`).
@@ -127,3 +135,18 @@ NEW → CONTACTED → QUALIFIED → DEMO → PROPOSAL → NEGOTIATION → CLOSED
 7. sales_schedule_follow_up()              → track follow-ups
 8. sales_pipeline_report()                 → analytics
 ```
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Cold outreach does not work" | It works when personalized and targeted. Generic spam does not. |
+| "I will follow up later" | 80% of sales require 5+ follow-ups. Follow up consistently. |
+| "Price is the only factor" | Value, trust, and timing matter more than price. Sell outcomes. |
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

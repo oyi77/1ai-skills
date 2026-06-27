@@ -26,6 +26,14 @@ Oh My OpenCode provides a curated suite of specialized agents, each optimized fo
 - **Librarian**: When you need to consult official documentation, open-source implementations, or best practices for unfamiliar libraries
 - **Explore**: When you need rapid codebase exploration, pattern discovery across modules, or quick file/symbol location
 
+
+## When NOT to Use
+
+- When the platform has a native solution that works
+- For one-time data imports (use CSV/JSON instead)
+- When the API is deprecated or being sunset
+
+
 ## The Agent Team
 - Primary agent handles core task execution
 - Validator agent checks output quality
@@ -331,6 +339,14 @@ Refer to the skill overview for detailed usage instructions.
 - Agent System: https://github.com/code-yeongyu/oh-my-opencode#for-those-who-want-to-read-meet-sisyphus
 - Agent-Model Matching: https://github.com/code-yeongyu/oh-my-opencode/blob/master/docs/guide/agent-model-matching.md
 - Quality Standards: https://github.com/code-yeongyu/oh-my-opencode/blob/master/docs/features.md
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "I will handle auth later" | Retrofitting auth is 10x harder. Build it from day one. |
+| "APIs do not change" | APIs change. Version your integrations and handle deprecations. |
+| "Webhooks are optional" | Without webhooks, you miss real-time events. They are essential. |
 
 ## Related Skills
 

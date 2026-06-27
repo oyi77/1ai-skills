@@ -25,12 +25,24 @@ nist_csf:
 ---
 # Triaging Security Incident With Ir Playbook
 
+## Overview
+
+Cybersecurity skill for triaging security incident with ir playbook. Follows industry best practices and security standards.
+
 ## When to Use
 - New security alert received from SIEM, EDR, or other detection sources
 - SOC analyst needs to determine if an alert is a true positive requiring response
 - Incident needs severity classification and team assignment
 - Multiple concurrent incidents require prioritization
 - Automated triage rules need validation or tuning
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 - SIEM platform with alert correlation (Splunk, Elastic, QRadar, Sentinel)
@@ -41,6 +53,21 @@ nist_csf:
 - Threat intelligence feeds for IOC enrichment
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Objectives** — Clarify the goals and scope for security incident.
 2. **Gather Resources** — Collect tools, data, and access needed for security incident.
@@ -61,3 +88,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

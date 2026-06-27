@@ -110,3 +110,11 @@ After completing this skill, confirm:
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "I am too busy to organize" | Disorganization costs more time than organizing. Invest upfront. |
+| "Multitasking is productive" | Context switching costs 25 minutes per switch. Focus on one thing. |
+| "I will remember this" | You will not. Write it down. Externalize your memory. |

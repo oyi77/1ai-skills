@@ -36,6 +36,14 @@ This skill analyzes Zeek dns.log files (TSV format) to detect exfiltration indic
 - When SOC analysts need structured procedures for this analysis type
 - When validating security monitoring coverage for related attack techniques
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Python 3.9 or later with math and collections modules (stdlib)
@@ -98,3 +106,11 @@ This skill analyzes Zeek dns.log files (TSV format) to detect exfiltration indic
 - Captures verified as complete with no dropped packets
 - Detection rules tested against known-benign traffic for false positive rate
 - Alert thresholds validated and tuned to reduce noise
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

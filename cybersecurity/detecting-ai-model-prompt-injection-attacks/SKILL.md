@@ -42,6 +42,10 @@ nist_csf:
 ---
 # Detecting Ai Model Prompt Injection Attacks
 
+## Overview
+
+Cybersecurity skill for detecting ai model prompt injection attacks. Follows industry best practices and security standards.
+
 ## When to Use
 
 - Scanning user inputs to LLM-powered applications before they are forwarded to the model
@@ -52,6 +56,14 @@ nist_csf:
 
 **Do not use** as the sole defense mechanism against prompt injection -- always combine with output validation, privilege separation, and least-privilege tool access. Not suitable for detecting jailbreaks that do not involve injection of adversarial instructions.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Python 3.10+ with pip for installing detection dependencies
@@ -61,6 +73,21 @@ nist_csf:
 - Sample prompt injection payloads for testing (the script includes a built-in test suite)
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Detection Scope** — Identify the specific ai model prompt injection attacks techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
 2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for ai model prompt injection attacks.
@@ -82,3 +109,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

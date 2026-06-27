@@ -38,7 +38,20 @@ Comprehensive reference of free-tier SaaS, PaaS, and IaaS services for developer
 - Task is trivially simple (single line fix)
 
 
-## Process / Steps
+## Process
+
+```python
+# Example: TDD workflow
+def test_user_creation():
+    user = create_user(name="Alice", email="alice@example.com")
+    assert user.name == "Alice"
+    assert user.email == "alice@example.com"
+    assert user.created_at is not None
+
+def test_user_creation_invalid_email():
+    with pytest.raises(ValidationError):
+        create_user(name="Alice", email="invalid")
+``` / Steps
 
 1. **Identify requirements** -- What category of service is needed (compute, database, auth, etc.)?
 2. **Check free tier limits** -- Verify request limits, storage caps, user limits, and duration (always-free vs. time-limited trial).
@@ -230,3 +243,11 @@ Curated resources for free-dev-resources.
 4. Verify against expected outcomes (manual and automated)
 5. Document usage, edge cases, and integration points
 6. Review with team before merging to shared branches
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Tests slow me down" | Bugs slow you down 10x more. Tests are speed, not overhead. |
+| "I will refactor later" | Technical debt compounds. Refactor as you go. |
+| "It works on my machine" | If it is not in CI, it does not work. Ship proof, not claims. |

@@ -186,6 +186,17 @@ After completing this skill, confirm:
 
 ## Process
 
+```python
+# Example: Source evaluation
+def evaluate_source(url: str) -> dict:
+    return {
+        "authority": check_domain_authority(url),
+        "currency": get_last_updated(url),
+        "objectivity": detect_bias(url),
+        "accuracy": cross_reference(url),
+    }
+```
+
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality

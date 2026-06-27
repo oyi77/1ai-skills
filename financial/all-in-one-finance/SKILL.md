@@ -61,6 +61,14 @@ digraph finance_trigger {
 
 ---
 
+
+## When NOT to Use
+
+- For personal financial advice (consult a licensed advisor)
+- When the analysis requires real-time market data you do not have
+- For tax or legal decisions (consult professionals)
+
+
 ## Module Registry
 
 | Module | Domain | Trigger Keywords | File |
@@ -436,3 +444,11 @@ digraph asset_class {
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "The market will recover" | Do not hope. Analyze. Set stop-losses and follow your strategy. |
+| "I do not need to track expenses" | What you do not measure, you cannot optimize. Track everything. |
+| "One spreadsheet is enough" | Financial models need version control and audit trails. Use proper tools. |

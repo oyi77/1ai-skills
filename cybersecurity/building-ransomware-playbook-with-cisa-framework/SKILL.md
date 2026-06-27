@@ -26,6 +26,10 @@ nist_csf:
 ---
 # Building Ransomware Playbook With Cisa Framework
 
+## Overview
+
+Cybersecurity skill for building ransomware playbook with cisa framework. Follows industry best practices and security standards.
+
 ## When to Use
 
 - An organization needs to create or update its ransomware incident response playbook following CISA guidelines
@@ -35,6 +39,14 @@ nist_csf:
 - After a ransomware incident to update the playbook with lessons learned and close identified gaps
 
 **Do not use** as a substitute for legal counsel regarding ransom payment decisions, breach notification timelines, or regulatory obligations specific to your jurisdiction.
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -46,6 +58,21 @@ nist_csf:
 - Access to organization's asset inventory and backup configuration documentation
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Assess Requirements** — Evaluate current environment and define ransomware playbook implementation requirements.
 2. **Design Architecture** — Plan the ransomware playbook architecture, including components, integrations, and data flows.
@@ -68,3 +95,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

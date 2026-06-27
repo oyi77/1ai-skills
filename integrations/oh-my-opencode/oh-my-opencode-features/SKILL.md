@@ -564,6 +564,14 @@ Refer to the skill overview for detailed usage instructions.
 - Agent System: https://github.com/code-yeongyu/oh-my-opencode#for-those-who-want-to-read-meet-sisyphus
 - OpenCode Docs: https://opencode.ai/docs/
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "I will handle auth later" | Retrofitting auth is 10x harder. Build it from day one. |
+| "APIs do not change" | APIs change. Version your integrations and handle deprecations. |
+| "Webhooks are optional" | Without webhooks, you miss real-time events. They are essential. |
+
 ## Related Skills
 
 - oh-my-opencode: Overall integration

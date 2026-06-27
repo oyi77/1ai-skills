@@ -23,12 +23,24 @@ nist_csf:
 ---
 # Performing Web Cache Deception Attack
 
+## Overview
+
+Cybersecurity skill for performing web cache deception attack. Follows industry best practices and security standards.
+
 ## When to Use
 - When testing applications behind CDNs or reverse proxies (Cloudflare, Akamai, Varnish, Nginx)
 - During assessment of authenticated page caching behavior
 - When evaluating path normalization differences between caching and origin layers
 - During bug bounty hunting on applications with aggressive caching policies
 - When testing for sensitive data exposure through cache layer misconfiguration
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 - Understanding of HTTP caching mechanisms (Cache-Control, Vary, Age headers)
@@ -42,6 +54,21 @@ nist_csf:
 > **Legal Notice:** This skill is for authorized security testing and educational purposes only. Unauthorized use against systems you do not own or have written permission to test is illegal and may violate computer fraud laws.
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Plan Operations** — Define objectives, scope, and success criteria for web cache deception attack operations.
 2. **Prepare Environment** — Set up tools, access, and data sources required for web cache deception attack.
@@ -62,3 +89,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

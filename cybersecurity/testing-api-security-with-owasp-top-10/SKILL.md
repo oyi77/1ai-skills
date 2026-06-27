@@ -23,6 +23,10 @@ nist_csf:
 ---
 # Testing Api Security With Owasp Top 10
 
+## Overview
+
+Cybersecurity skill for testing api security with owasp top 10. Follows industry best practices and security standards.
+
 ## When to Use
 
 - During authorized API penetration testing engagements
@@ -30,6 +34,14 @@ nist_csf:
 - Before deploying new API endpoints to production environments
 - When reviewing API security posture against the OWASP API Security Top 10 (2023)
 - For validating API gateway security controls and rate limiting effectiveness
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -42,6 +54,21 @@ nist_csf:
 - **jq**: JSON processor for parsing API responses (`apt install jq`)
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Reconnaissance** — Gather information about the target related to api security. Identify attack surface.
 2. **Vulnerability Identification** — Enumerate potential api security weaknesses using automated and manual techniques.
@@ -64,3 +91,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

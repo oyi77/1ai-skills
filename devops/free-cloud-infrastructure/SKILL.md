@@ -36,7 +36,22 @@ Reference for free-tier cloud infrastructure across major providers. Focuses on 
 - Task is about defense, not offense (use defensive skills)
 
 
-## Process / Steps
+## Process
+
+```yaml
+# Example: GitHub Actions CI
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -e ".[test]"
+      - run: pytest --cov
+``` / Steps
 
 1. **Define workload** -- What compute, storage, and database resources are needed?
 2. **Check always-free vs. trial** -- Always-free tiers persist indefinitely; 12-month trials expire. Prefer always-free for long-lived projects.
@@ -158,3 +173,11 @@ Curated resources for free-cloud-infrastructure.
 4. Set up secrets management (Vault, AWS Secrets Manager, etc.)
 5. Document runbooks for deployment, rollback, and incident response
 6. Test disaster recovery procedures regularly
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Manual deployments are fine" | Manual deployments are error-prone and不可 repeatable. Automate. |
+| "We do not need monitoring" | Without monitoring, you are flying blind. Add observability from day one. |
+| "Infrastructure as code is overkill" | IaC enables reproducibility, version control, and disaster recovery. |

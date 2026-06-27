@@ -162,3 +162,11 @@ Summary:
 - Hash values computed and verified match between source and image
 - Chain of custody log complete with timestamps and examiner names
 - Analysis tools and versions documented for reproducibility
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

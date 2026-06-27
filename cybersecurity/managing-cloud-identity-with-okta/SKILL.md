@@ -24,6 +24,10 @@ nist_csf:
 ---
 # Managing Cloud Identity With Okta
 
+## Overview
+
+Cybersecurity skill for managing cloud identity with okta. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When centralizing authentication across AWS, Azure, and GCP console access through a single identity provider
@@ -34,6 +38,14 @@ nist_csf:
 
 **Do not use** for cloud-native identity management without external IdP requirements (use AWS IAM Identity Center or Azure AD natively), for application-level authorization logic, or for secrets management (see implementing-secrets-management-with-vault).
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Okta organization with admin console access and appropriate license tier (Workforce Identity)
@@ -42,6 +54,21 @@ nist_csf:
 - Device management platform (Intune, Jamf) for device trust integration
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Objectives** — Clarify the goals and scope for cloud identity.
 2. **Gather Resources** — Collect tools, data, and access needed for cloud identity.
@@ -62,3 +89,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

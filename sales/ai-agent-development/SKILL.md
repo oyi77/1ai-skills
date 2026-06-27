@@ -317,6 +317,14 @@ Build Agent → Deploy → Monthly Retainer → Upsell Features
 
 ---
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Cold outreach does not work" | It works when personalized and targeted. Generic spam does not. |
+| "I will follow up later" | 80% of sales require 5+ follow-ups. Follow up consistently. |
+| "Price is the only factor" | Value, trust, and timing matter more than price. Sell outcomes. |
+
 ## Related Skills
 
 - [voice-ai-agent](../../automation/voice-ai-agent/SKILL.md) - Voice agent building

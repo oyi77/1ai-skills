@@ -26,6 +26,10 @@ nist_csf:
 ---
 # Integrating Sast Into Github Actions Pipeline
 
+## Overview
+
+Cybersecurity skill for integrating sast into github actions pipeline. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When development teams need automated code-level vulnerability detection on every pull request
@@ -36,6 +40,14 @@ nist_csf:
 
 **Do not use** for runtime vulnerability detection (use DAST instead), for scanning third-party dependencies (use SCA tools like Snyk), or for infrastructure-as-code scanning (use Checkov or tfsec).
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - GitHub repository with GitHub Actions enabled
@@ -44,6 +56,21 @@ nist_csf:
 - Repository code in a supported language: Python, JavaScript/TypeScript, Java, C/C++, C#, Go, Ruby, Swift, Kotlin
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Objectives** — Clarify the goals and scope for sast into github actions pipeline.
 2. **Gather Resources** — Collect tools, data, and access needed for sast into github actions pipeline.
@@ -63,3 +90,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

@@ -204,3 +204,11 @@ Trigger Module → Iterator → Aggregator → Router → Filter → Action
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Manual is faster for one-off tasks" | One-off tasks become recurring. Automate early, save time later. |
+| "I will add error handling later" | You never do. Handle errors from day one. |
+| "Automation is overkill" | If you do it twice, automate it. If you do it daily, it is critical infrastructure. |

@@ -29,6 +29,10 @@ nist_csf:
 ---
 # Auditing Cloud With Cis Benchmarks
 
+## Overview
+
+Cybersecurity skill for auditing cloud with cis benchmarks. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When performing initial security audits of cloud environments against industry-standard benchmarks
@@ -39,6 +43,14 @@ nist_csf:
 
 **Do not use** for runtime threat detection (see detecting-cloud-threats-with-guardduty), for application-level security testing (see conducting-cloud-penetration-testing), or for compliance frameworks not based on CIS (refer to specific regulatory skill files).
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Read-only access to target cloud accounts (AWS SecurityAudit policy, Azure Reader role, GCP Viewer role)
@@ -47,6 +59,21 @@ nist_csf:
 - Remediation access for implementing fixes (separate from audit credentials)
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Objectives** — Clarify the goals and scope for cloud.
 2. **Gather Resources** — Collect tools, data, and access needed for cloud.
@@ -67,3 +94,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

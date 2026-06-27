@@ -118,3 +118,11 @@ Open Items (next meeting):
 2. Provide required inputs as specified in the skill definition
 3. Review the output for correctness before delivering to the user
 4. Combine with related skills for complex multi-step workflows
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "I am too busy to organize" | Disorganization costs more time than organizing. Invest upfront. |
+| "Multitasking is productive" | Context switching costs 25 minutes per switch. Focus on one thing. |
+| "I will remember this" | You will not. Write it down. Externalize your memory. |

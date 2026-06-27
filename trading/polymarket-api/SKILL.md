@@ -27,11 +27,28 @@ tags:
 
 Query prediction market data from Polymarket's public API (no auth required).
 
+
+## When NOT to Use
+
+- When you cannot afford to lose the capital at risk
+- For instruments you do not understand
+- When emotional state impairs judgment (revenge trading, FOMO)
+
+
 ## Overview
 
 Polymarket Api provides market analysis capabilities with risk management.
 
 ## Workflow
+
+```python
+# Example: Position sizing (Kelly Criterion)
+def kelly_size(win_rate: float, avg_win: float, avg_loss: float) -> float:
+    if avg_loss == 0: return 0
+    b = avg_win / abs(avg_loss)
+    kelly = (win_rate * b - (1 - win_rate)) / b
+    return max(0, min(kelly * 0.5, 0.02))  # Half-Kelly, max 2%
+```
 
 1. **Research** — Analyze market conditions and opportunities
 2. **Plan** — Define entry, exit, and position sizing
@@ -64,3 +81,17 @@ Polymarket Api provides market analysis capabilities with risk management.
 - Never revenge trade after a loss
 - Take breaks after consecutive losses
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "I will cut losses later" | Later never comes. Set stop-losses before entering any trade. |
+| "This time is different" | It never is. Follow your strategy, not your emotions. |
+| "I do not need to journal" | Journaling reveals patterns in your behavior. Track every trade. |
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

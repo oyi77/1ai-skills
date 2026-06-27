@@ -22,12 +22,24 @@ nist_csf:
 ---
 # Acquiring Disk Image With Dd And Dcfldd
 
+## Overview
+
+Cybersecurity skill for acquiring disk image with dd and dcfldd. Follows industry best practices and security standards.
+
 ## When to Use
 - When you need to create a forensic copy of a suspect drive for investigation
 - During incident response when preserving volatile disk evidence before analysis
 - When law enforcement or legal proceedings require a verified bit-for-bit copy
 - Before performing any destructive analysis on a storage device
 - When acquiring images from physical drives, USB devices, or memory cards
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 - Linux-based forensic workstation (SIFT, Kali, or any Linux distro)
@@ -38,6 +50,21 @@ nist_csf:
 - SHA-256 or MD5 hashing utilities (`sha256sum`, `md5sum`)
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Objectives** — Clarify the goals and scope for disk image.
 2. **Gather Resources** — Collect tools, data, and access needed for disk image.
@@ -58,3 +85,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

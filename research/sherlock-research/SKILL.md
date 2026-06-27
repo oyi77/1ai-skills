@@ -22,11 +22,30 @@ tags:
 **When NOT to use:**
 - For tasks outside this skill's scope
 
+
+## When NOT to Use
+
+- When the answer is already known and documented
+- For time-sensitive decisions that cannot wait for thorough research
+- When the topic is outside your domain of competence
+
+
 ## Overview
 
 Sherlock Research enables thorough investigation with structured methodology.
 
 ## Workflow
+
+```python
+# Example: Source evaluation
+def evaluate_source(url: str) -> dict:
+    return {
+        "authority": check_domain_authority(url),
+        "currency": get_last_updated(url),
+        "objectivity": detect_bias(url),
+        "accuracy": cross_reference(url),
+    }
+```
 
 1. **Define question** — Clarify the research objective
 2. **Gather sources** — Collect primary and secondary data
@@ -50,3 +69,17 @@ Sherlock Research enables thorough investigation with structured methodology.
 - Recommendations (actionable next steps)
 - Sources and methodology
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "First result is good enough" | Deep research finds better answers. Keep digging. |
+| "I do not need to verify sources" | Unverified sources lead to wrong conclusions. Always cross-check. |
+| "Research is a one-time thing" | Markets change. Research needs to be continuous, not one-off. |
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

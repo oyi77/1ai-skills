@@ -79,6 +79,21 @@ This section covers key concepts for implementing privileged access management w
 
 ## Workflow
 
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
+
 1. **Scope the task** — define objectives, boundaries, and success criteria
 2. **Gather information** — collect all necessary data and context before proceeding
 3. **Execute the core workflow** — follow the domain-specific steps methodically

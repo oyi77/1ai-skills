@@ -36,6 +36,14 @@ Google BeyondCorp Enterprise implements the zero trust security model by elimina
 - When building or improving security architecture for this domain
 - When conducting security assessments that require this implementation
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Google Cloud project with BeyondCorp Enterprise license
@@ -46,6 +54,21 @@ Google BeyondCorp Enterprise implements the zero trust security model by elimina
 - Python 3.9+ with google-cloud-iap library
 
 ## Steps
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Scope the task** — define objectives, boundaries, and success criteria
 2. **Gather information** — collect all necessary data and context before proceeding
@@ -79,3 +102,11 @@ JSON report containing IAP-protected resources, access level definitions, policy
 - Output documented with screenshots or logs demonstrating expected behavior
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

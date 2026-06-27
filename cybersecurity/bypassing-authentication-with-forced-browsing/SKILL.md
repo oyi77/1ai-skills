@@ -22,6 +22,10 @@ nist_csf:
 ---
 # Bypassing Authentication With Forced Browsing
 
+## Overview
+
+Cybersecurity skill for bypassing authentication with forced browsing. Follows industry best practices and security standards.
+
 ## When to Use
 
 - During authorized penetration tests to discover hidden or unprotected administrative pages
@@ -29,6 +33,14 @@ nist_csf:
 - For identifying backup files, configuration files, and debug interfaces left exposed in production
 - When assessing access control on API endpoints that should require authentication
 - During security audits to validate that all sensitive resources enforce session validation
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -40,6 +52,21 @@ nist_csf:
 - **Target access**: Network connectivity and valid test credentials for authenticated comparison
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Objectives** — Clarify the goals and scope for authentication.
 2. **Gather Resources** — Collect tools, data, and access needed for authentication.
@@ -60,3 +87,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

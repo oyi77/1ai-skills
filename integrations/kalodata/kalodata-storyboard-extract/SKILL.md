@@ -363,6 +363,14 @@ KALODATA_CF_CFLEARANCE=your_cf_clearance_token
 4. **Content Ideas**: Use as starting points - customize for your product
 5. **Scene Timing**: Use `startTime` and `endTime` to replicate exact structure
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "I will handle auth later" | Retrofitting auth is 10x harder. Build it from day one. |
+| "APIs do not change" | APIs change. Version your integrations and handle deprecations. |
+| "Webhooks are optional" | Without webhooks, you miss real-time events. They are essential. |
+
 ## Related Skills
 
 - [Kalodata Product Research](./kalodata-product-research.md) - Product intelligence

@@ -388,3 +388,11 @@ privacy_policy = generate_privacy_policy({
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We do not need SOPs" | Without SOPs, quality depends on memory. Document everything. |
+| "Manual processes work fine" | Manual processes do not scale and are error-prone. Automate. |
+| "Compliance is optional" | Compliance protects you legally. Build it in from the start. |

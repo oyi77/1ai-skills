@@ -12,6 +12,10 @@ tags:
 ---
 # Active Listening
 
+## Overview
+
+Mindset skill for active listening. Builds capability through deliberate practice and structured frameworks.
+
 ## When to Use
 
 - Coaching or mentoring conversations
@@ -19,6 +23,14 @@ tags:
 - Building rapport or trust with stakeholders
 - Discovery calls or needs assessment
 - **When NOT to use**: Emergency decisions requiring immediate action, or when you're the subject-matter expert presenting
+
+
+## When NOT to Use
+
+- When the situation requires professional counseling or therapy
+- For high-stakes decisions that need expert judgment
+- When the skill conflicts with cultural or personal values
+
 
 ## Core Principles
 
@@ -54,3 +66,26 @@ tags:
 - Find an accountability partner or mentor
 - Set weekly active listening challenges with measurable outcomes
 - Review and adjust your approach monthly
+
+```markdown
+# Daily Practice Template
+
+## Morning (5 min)
+- Set intention for the day
+- Review top 3 priorities
+
+## During the day
+- Practice the skill in real situations
+- Note moments of success and struggle
+
+## Evening (5 min)
+- Reflect: What worked? What did not?
+- Log one lesson learned
+```
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

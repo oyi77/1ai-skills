@@ -46,6 +46,21 @@ This skill covers configuring Fluentd and Fluent Bit for centralized log collect
 
 ## Steps
 
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
+
 1. **Generate Fluent Bit Configuration** — Create input, filter, and output configuration for endpoint log collection
 2. **Generate Fluentd Aggregator Configuration** — Configure the central Fluentd instance with forward input, parsing, and multi-output routing
 3. **Configure Log Filtering and Enrichment** — Add record_transformer and grep filters for log enrichment and noise reduction
@@ -81,3 +96,11 @@ This skill covers configuring Fluentd and Fluent Bit for centralized log collect
 - Output documented with screenshots or logs demonstrating expected behavior
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

@@ -23,6 +23,10 @@ nist_csf:
 ---
 # Performing Iot Security Assessment
 
+## Overview
+
+Cybersecurity skill for performing iot security assessment. Follows industry best practices and security standards.
+
 ## When to Use
 
 - Evaluating the security of IoT devices before deployment in enterprise or critical infrastructure environments
@@ -33,6 +37,14 @@ nist_csf:
 
 **Do not use** against IoT devices without written authorization, for modifying firmware on devices you do not own, or against medical devices or safety-critical systems without specific medical device testing authorization and safety protocols.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Physical access to the target IoT device(s) for hardware analysis and testing
@@ -42,6 +54,21 @@ nist_csf:
 - Soldering equipment for accessing hardware debug points if needed
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Plan Operations** — Define objectives, scope, and success criteria for iot security assessment operations.
 2. **Prepare Environment** — Set up tools, access, and data sources required for iot security assessment.
@@ -62,3 +89,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

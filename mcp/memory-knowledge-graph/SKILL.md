@@ -125,3 +125,11 @@ After completing this skill, confirm:
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "I will just use curl" | MCP handles auth, retries, streaming, and type safety. Use the SDK. |
+| "One mega-server is simpler" | Single-responsibility servers are easier to debug and maintain. |
+| "MCP is just a wrapper" | MCP enables cross-platform tool sharing. It is infrastructure, not overhead. |

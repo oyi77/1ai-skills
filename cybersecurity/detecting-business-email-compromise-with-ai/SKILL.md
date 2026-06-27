@@ -60,6 +60,21 @@ AI-powered BEC detection uses machine learning, NLP, and behavioral analytics to
 
 ## Workflow
 
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
+
 1. **Scope and authorize** — confirm written authorization and define target boundaries
 2. **Reconnaissance** — enumerate targets, services, and potential attack surfaces
 3. **Exploitation** — attempt exploitation of identified vulnerabilities within scope
@@ -146,3 +161,11 @@ AI-powered BEC detection uses machine learning, NLP, and behavioral analytics to
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

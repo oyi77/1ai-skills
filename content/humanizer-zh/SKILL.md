@@ -557,6 +557,16 @@ After completing this skill, confirm:
 
 ## Process
 
+```python
+# Example: Content generation pipeline
+def generate_content(topic: str, format: str = "article"):
+    outline = create_outline(topic)
+    draft = write_draft(outline, format)
+    edited = edit_for_quality(draft)
+    optimized = optimize_for_seo(edited)
+    return publish(optimized)
+```
+
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality

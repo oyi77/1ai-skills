@@ -35,6 +35,10 @@ nist_csf:
 ---
 # Hunting Advanced Persistent Threats
 
+## Overview
+
+Cybersecurity skill for hunting advanced persistent threats. Follows industry best practices and security standards.
+
 ## When to Use
 
 Use this skill when:
@@ -44,6 +48,14 @@ Use this skill when:
 
 **Do not use** this skill as a substitute for incident response when a confirmed breach is in progress — escalate to IR procedures (NIST SP 800-61).
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - EDR platform with telemetry retention (CrowdStrike Falcon, Microsoft Defender for Endpoint, or SentinelOne) covering 30+ days
@@ -52,6 +64,21 @@ Use this skill when:
 - Threat hunting platform or query interface (Velociraptor, osquery fleet, or Splunk ES)
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Detection Scope** — Identify the specific advanced persistent threats techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
 2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for advanced persistent threats.
@@ -73,3 +100,11 @@ Use this skill when:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

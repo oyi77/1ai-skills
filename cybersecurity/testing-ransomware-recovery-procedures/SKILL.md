@@ -23,6 +23,10 @@ nist_csf:
 ---
 # Testing Ransomware Recovery Procedures
 
+## Overview
+
+Cybersecurity skill for testing ransomware recovery procedures. Follows industry best practices and security standards.
+
 ## When to Use
 
 Use this skill when:
@@ -34,6 +38,14 @@ Use this skill when:
 
 **Do not use** for active incident response during a live ransomware attack. Use dedicated IR playbooks instead.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Isolated recovery test environment (air-gapped or network-segmented lab)
@@ -43,6 +55,21 @@ Use this skill when:
 - Recovery runbooks with step-by-step procedures for each critical system
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Reconnaissance** — Gather information about the target related to ransomware recovery procedures. Identify attack surface.
 2. **Vulnerability Identification** — Enumerate potential ransomware recovery procedures weaknesses using automated and manual techniques.
@@ -64,3 +91,11 @@ Use this skill when:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

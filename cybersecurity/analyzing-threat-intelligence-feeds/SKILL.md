@@ -29,6 +29,10 @@ nist_csf:
 ---
 # Analyzing Threat Intelligence Feeds
 
+## Overview
+
+Cybersecurity skill for analyzing threat intelligence feeds. Follows industry best practices and security standards.
+
 ## When to Use
 
 Use this skill when:
@@ -39,6 +43,14 @@ Use this skill when:
 
 **Do not use** this skill for raw packet capture analysis or live incident triage without first establishing a CTI baseline.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Access to a Threat Intelligence Platform (TIP) such as ThreatConnect, MISP, or OpenCTI
@@ -47,6 +59,21 @@ Use this skill when:
 - Role with read/write permissions to the TIP's indicator database
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Scope the Analysis** — Define what threat intelligence feeds artifacts or data sources to examine and the investigation timeline.
 2. **Preserve Evidence** — Create forensic copies of relevant data. Maintain chain of custody documentation.
@@ -68,3 +95,11 @@ Use this skill when:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

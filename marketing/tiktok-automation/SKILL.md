@@ -317,3 +317,11 @@ echo "Config Valid: $(jq . config.json > /dev/null 2>&1 && echo 'âœ“' || echo 'â
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Good products sell themselves" | They do not. Marketing is how people discover your product. |
+| "I will start marketing after launch" | Build audience before launch. Pre-launch momentum is critical. |
+| "SEO is dead" | SEO evolves. GEO (Generative Engine Optimization) is the new frontier. |

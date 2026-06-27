@@ -26,6 +26,10 @@ nist_csf:
 ---
 # Implementing Disk Encryption With Bitlocker
 
+## Overview
+
+Cybersecurity skill for implementing disk encryption with bitlocker. Follows industry best practices and security standards.
+
 ## When to Use
 
 Use this skill when:
@@ -36,6 +40,14 @@ Use this skill when:
 
 **Do not use** this skill for Linux disk encryption (use LUKS/dm-crypt) or macOS (use FileVault).
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Windows 10/11 Pro, Enterprise, or Education edition
@@ -45,6 +57,21 @@ Use this skill when:
 - Active Directory or Azure AD for recovery key escrow
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Assess Requirements** — Evaluate current environment and define disk encryption implementation requirements.
 2. **Design Architecture** — Plan the disk encryption architecture, including components, integrations, and data flows.
@@ -67,3 +94,11 @@ Use this skill when:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

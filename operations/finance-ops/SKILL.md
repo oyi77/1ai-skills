@@ -111,6 +111,14 @@ print(f"Quick Wins: {len(audit_results.quick_wins)}")
 
 ---
 
+
+## When NOT to Use
+
+- For processes that change daily (too much overhead)
+- When the team is too small to benefit from SOPs
+- For one-time events that will not repeat
+
+
 ## Overview
 
 Finance Ops streamlines operational efficiency for operational excellence.
@@ -139,3 +147,17 @@ Finance Ops streamlines operational efficiency for operational excellence.
 - Cost per operation
 - SLA compliance rate
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We do not need SOPs" | Without SOPs, quality depends on memory. Document everything. |
+| "Manual processes work fine" | Manual processes do not scale and are error-prone. Automate. |
+| "Compliance is optional" | Compliance protects you legally. Build it in from the start. |
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

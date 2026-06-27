@@ -47,6 +47,21 @@ Active Directory forest trusts enable authentication across organizational bound
 
 ## Steps
 
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
+
 1. Enumerate forest trust relationships via LDAP trusted domain objects
 2. Query trust attributes and SID filtering status for each trust
 3. Perform SID lookups across trust boundaries using LsarLookupNames3
@@ -84,3 +99,11 @@ Active Directory forest trusts enable authentication across organizational bound
 - Captures verified as complete with no dropped packets
 - Detection rules tested against known-benign traffic for false positive rate
 - Alert thresholds validated and tuned to reduce noise
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

@@ -907,6 +907,14 @@ opencode logs --mcp
 - OpenCode Config: https://opencode.ai/docs/config/
 - Agent-Model Matching: https://github.com/code-yeongyu/oh-my-opencode/blob/master/docs/guide/agent-model-matching.md
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "I will handle auth later" | Retrofitting auth is 10x harder. Build it from day one. |
+| "APIs do not change" | APIs change. Version your integrations and handle deprecations. |
+| "Webhooks are optional" | Without webhooks, you miss real-time events. They are essential. |
+
 ## Related Skills
 
 - oh-my-opencode: Overall integration

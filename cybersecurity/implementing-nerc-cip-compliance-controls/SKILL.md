@@ -29,6 +29,10 @@ nist_csf:
 ---
 # Implementing Nerc Cip Compliance Controls
 
+## Overview
+
+Cybersecurity skill for implementing nerc cip compliance controls. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When a registered entity must achieve or maintain NERC CIP compliance for BES cyber systems
@@ -39,6 +43,14 @@ nist_csf:
 
 **Do not use** for non-BES industrial systems (see implementing-iec-62443-security-zones), for general IT compliance frameworks (see auditing-cloud-with-cis-benchmarks), or for physical security of substations without cyber components.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Understanding of NERC CIP standards (CIP-002 through CIP-014)
@@ -48,6 +60,21 @@ nist_csf:
 - Familiarity with NERC Glossary of Terms (BES Cyber Asset, BES Cyber System, Electronic Access Point)
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Assess Requirements** — Evaluate current environment and define nerc cip compliance controls implementation requirements.
 2. **Design Architecture** — Plan the nerc cip compliance controls architecture, including components, integrations, and data flows.
@@ -69,3 +96,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

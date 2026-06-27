@@ -26,6 +26,10 @@ nist_csf:
 ---
 # Securing Container Registry Images
 
+## Overview
+
+Cybersecurity skill for securing container registry images. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When establishing security controls for container image registries (ECR, ACR, GCR, Docker Hub)
@@ -36,6 +40,14 @@ nist_csf:
 
 **Do not use** for runtime container security (use Falco or Sysdig), for Kubernetes admission control (use OPA Gatekeeper or Kyverno after establishing registry controls), or for host-level vulnerability scanning (use Amazon Inspector or Qualys).
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Trivy installed (`brew install trivy` or `apt install trivy`)
@@ -45,6 +57,21 @@ nist_csf:
 - Container registry access (ECR, ACR, GCR, or private registry)
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Define Objectives** — Clarify the goals and scope for container registry images.
 2. **Gather Resources** — Collect tools, data, and access needed for container registry images.
@@ -64,3 +91,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

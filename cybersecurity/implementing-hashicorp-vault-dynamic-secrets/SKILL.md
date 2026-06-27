@@ -26,6 +26,10 @@ nist_csf:
 ---
 # Implementing Hashicorp Vault Dynamic Secrets
 
+## Overview
+
+Cybersecurity skill for implementing hashicorp vault dynamic secrets. Follows industry best practices and security standards.
+
 ## When to Use
 
 - Applications use static database credentials stored in configuration files or environment variables
@@ -37,6 +41,14 @@ nist_csf:
 
 **Do not use** for storing static secrets that cannot be dynamically generated (use Vault's KV secrets engine instead); dynamic secrets are for credentials that can be programmatically created and revoked on target systems.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - HashiCorp Vault 1.15+ (Community or Enterprise edition)
@@ -47,6 +59,21 @@ nist_csf:
 - Vault policies and authentication methods configured for consuming applications
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Assess Requirements** — Evaluate current environment and define hashicorp vault dynamic secrets implementation requirements.
 2. **Design Architecture** — Plan the hashicorp vault dynamic secrets architecture, including components, integrations, and data flows.
@@ -68,3 +95,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

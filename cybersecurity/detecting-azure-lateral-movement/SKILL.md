@@ -47,6 +47,21 @@ Lateral movement in Azure AD/Entra ID differs from on-premises environments. Att
 
 ## Steps
 
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
+
 1. **Inventory cloud assets** — enumerate services, roles, and configurations in scope
 2. **Assess configurations** — check against security best practices and CIS benchmarks
 3. **Test access controls** — verify IAM policies, network ACLs, and security group rules
@@ -105,3 +120,11 @@ JSON report containing detected lateral movement indicators, correlated event ch
 - Cloud resource changes reverted or documented as intentional
 - IAM policies reviewed for least-privilege compliance after testing
 - No residual test resources left running (cost and security check)
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

@@ -24,6 +24,10 @@ nist_csf:
 ---
 # Testing Api Authentication Weaknesses
 
+## Overview
+
+Cybersecurity skill for testing api authentication weaknesses. Follows industry best practices and security standards.
+
 ## When to Use
 
 - Assessing REST API authentication mechanisms for bypass vulnerabilities before production deployment
@@ -33,6 +37,14 @@ nist_csf:
 - Validating session management including token expiration, revocation, and refresh token security
 
 **Do not use** without written authorization. Authentication testing involves attempting to bypass security controls.
+
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
 
 ## Prerequisites
 
@@ -44,6 +56,21 @@ nist_csf:
 - API documentation or OpenAPI specification
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Reconnaissance** — Gather information about the target related to api authentication weaknesses. Identify attack surface.
 2. **Vulnerability Identification** — Enumerate potential api authentication weaknesses weaknesses using automated and manual techniques.
@@ -65,3 +92,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

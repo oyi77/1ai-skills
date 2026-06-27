@@ -24,6 +24,10 @@ nist_csf:
 ---
 # Implementing Mobile Application Management
 
+## Overview
+
+Cybersecurity skill for implementing mobile application management. Follows industry best practices and security standards.
+
 ## When to Use
 
 Use this skill when:
@@ -34,6 +38,14 @@ Use this skill when:
 
 **Do not use** when full device management (MDM) is already deployed and sufficient -- MAM adds complexity when MDM already provides the needed controls.
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Microsoft Intune or equivalent MAM platform (VMware Workspace ONE, MobileIron)
@@ -43,6 +55,21 @@ Use this skill when:
 - Azure AD Premium P1 or P2 licenses for conditional access
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Assess Requirements** — Evaluate current environment and define mobile application management implementation requirements.
 2. **Design Architecture** — Plan the mobile application management architecture, including components, integrations, and data flows.
@@ -64,3 +91,11 @@ Use this skill when:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

@@ -44,6 +44,14 @@ results = requests.get(f"{BASE_URL}/post-results", headers=HEADERS).json()
 
 **Full reference:** `~/.openclaw/workspace/skills/postbridge-social-manager/SKILL.md`
 
+
+## When NOT to Use
+
+- When the audience is too small to justify the effort
+- For regulated industries without compliance review
+- When the campaign budget does not support the channel
+
+
 ## Overview
 
 Tiktok Terintegrasi drives growth marketing with data-driven strategies.
@@ -72,3 +80,17 @@ Tiktok Terintegrasi drives growth marketing with data-driven strategies.
 - Build organic before scaling paid
 - Track attribution across the full funnel
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Good products sell themselves" | They do not. Marketing is how people discover your product. |
+| "I will start marketing after launch" | Build audience before launch. Pre-launch momentum is critical. |
+| "SEO is dead" | SEO evolves. GEO (Generative Engine Optimization) is the new frontier. |
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

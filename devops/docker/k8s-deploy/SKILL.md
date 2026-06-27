@@ -24,11 +24,34 @@ tags:
 **When NOT to use:**
 - For tasks outside this skill's scope
 
+
+## When NOT to Use
+
+- For infrastructure that will be decommissioned within a week
+- When the team lacks access to the target environment
+- When the change requires downtime that cannot be scheduled
+
+
 ## Overview
 
 K8S Deploy manages infrastructure management with reliability and scalability.
 
 ## Workflow
+
+```yaml
+# Example: GitHub Actions CI
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -e ".[test]"
+      - run: pytest --cov
+```
 
 1. **Define infrastructure** — Specify resources and configuration
 2. **Version control** — Store all configurations in Git
@@ -52,3 +75,17 @@ K8S Deploy manages infrastructure management with reliability and scalability.
 - [ ] Rollback procedure documented
 - [ ] Monitoring alerts configured
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Manual deployments are fine" | Manual deployments are error-prone and不可 repeatable. Automate. |
+| "We do not need monitoring" | Without monitoring, you are flying blind. Add observability from day one. |
+| "Infrastructure as code is overkill" | IaC enables reproducibility, version control, and disaster recovery. |
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings

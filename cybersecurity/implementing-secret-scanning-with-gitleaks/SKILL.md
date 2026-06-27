@@ -25,6 +25,10 @@ nist_csf:
 ---
 # Implementing Secret Scanning With Gitleaks
 
+## Overview
+
+Cybersecurity skill for implementing secret scanning with gitleaks. Follows industry best practices and security standards.
+
 ## When to Use
 
 - When developers may accidentally commit API keys, passwords, tokens, or private keys to repositories
@@ -35,6 +39,14 @@ nist_csf:
 
 **Do not use** for detecting secrets in running applications or memory (use runtime secret detection), for managing secrets after detection (use Vault or AWS Secrets Manager), or for scanning container images (use Trivy or Grype).
 
+
+## When NOT to Use
+
+- When you lack proper authorization for testing
+- For production systems without change management
+- When the task requires legal or compliance expertise beyond technical scope
+
+
 ## Prerequisites
 
 - Gitleaks v8.18+ installed via binary, Go install, or Docker
@@ -43,6 +55,21 @@ nist_csf:
 - CI/CD platform access (GitHub Actions, GitLab CI, or equivalent)
 
 ## Workflow
+
+```python
+# Example: IOC detection
+import re
+
+IOC_PATTERNS = {
+    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
+    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
+    "hash_md5": r"\b[a-f0-9]{32}\b",
+    "hash_sha256": r"\b[a-f0-9]{64}\b",
+}
+
+def extract_iocs(text: str) -> dict:
+    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```
 
 1. **Assess Requirements** — Evaluate current environment and define secret scanning implementation requirements.
 2. **Design Architecture** — Plan the secret scanning architecture, including components, integrations, and data flows.
@@ -65,3 +92,11 @@ nist_csf:
 - [ ] False positives identified and filtered
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
+| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |

@@ -145,3 +145,11 @@ body { font-size: clamp(1rem, 2vw, 1.125rem); }
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
+| "I will optimize later" | SEO and distribution need optimization from the start. |
+| "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |

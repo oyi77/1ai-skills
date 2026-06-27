@@ -39,6 +39,14 @@ Non-negotiable engineering protocol for AI agents. Every substantive code change
 - Documentation-only changes with no code impact
 - Configuration changes that don't affect behavior
 
+
+## When NOT to Use
+
+- For throwaway prototypes (skip the ceremony)
+- When the fix is a single-line change with no side effects
+- When the codebase already has a working solution
+
+
 ## Process
 
 ### The Core Loop (enforced order, every substantive turn)
@@ -141,6 +149,14 @@ After completing any code change, confirm:
 - [ ] No dead code or TODOs left behind
 - [ ] Documentation synced
 - [ ] Review receipts (command output proving it works)
+
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "Tests slow me down" | Bugs slow you down 10x more. Tests are speed, not overhead. |
+| "I will refactor later" | Technical debt compounds. Refactor as you go. |
+| "It works on my machine" | If it is not in CI, it does not work. Ship proof, not claims. |
 
 ## Related Skills
 

@@ -196,6 +196,19 @@ After completing this skill, confirm:
 
 ## Process
 
+```python
+# Example: TDD workflow
+def test_user_creation():
+    user = create_user(name="Alice", email="alice@example.com")
+    assert user.name == "Alice"
+    assert user.email == "alice@example.com"
+    assert user.created_at is not None
+
+def test_user_creation_invalid_email():
+    with pytest.raises(ValidationError):
+        create_user(name="Alice", email="invalid")
+```
+
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality

@@ -26,11 +26,31 @@ tags:
 **When NOT to use:**
 - For tasks outside this skill's scope
 
+
+## When NOT to Use
+
+- For real-time transactional workloads (use OLTP databases)
+- When the dataset fits in a spreadsheet (use simpler tools)
+- When data privacy regulations prohibit cloud processing
+
+
 ## Overview
 
 Data Cleaner handles data analysis with support for multiple data formats and sources.
 
 ## Workflow
+
+```python
+# Example: Data pipeline
+import pandas as pd
+
+def pipeline(source: str):
+    df = pd.read_csv(source)
+    df = df.dropna()
+    df = df.drop_duplicates()
+    df["processed_at"] = pd.Timestamp.now()
+    return df.to_parquet("output.parquet")
+```
 
 1. **Connect** — Establish connection to data sources
 2. **Extract** — Pull data from source systems
@@ -54,3 +74,17 @@ Data Cleaner handles data analysis with support for multiple data formats and so
 - REST APIs and webhooks
 - File systems (local, S3, GCS)
 
+## Anti-Rationalization
+
+| Rationalization | Reality |
+|---|---|
+| "CSV is fine for everything" | Structured databases enable queries, integrity, and scale. |
+| "I will add data validation later" | Bad data propagates silently. Validate at ingestion. |
+| "Small datasets do not need optimization" | Even small datasets benefit from proper indexing and schema design. |
+
+## Verification
+
+- [ ] All steps executed successfully
+- [ ] Results validated against acceptance criteria
+- [ ] Error handling tested with edge cases
+- [ ] Documentation updated with findings
