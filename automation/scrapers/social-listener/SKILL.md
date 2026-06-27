@@ -1,6 +1,6 @@
 ---
 name: social-listener
-description: Listen to social media mentions
+description: Listen to social media mentions and sentiment across platforms. Monitor brand, competitors, and industry keywords.
 domain: automation
 tags:
 - automation

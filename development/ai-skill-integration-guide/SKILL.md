@@ -68,7 +68,10 @@ All 1ai-skills must follow the standard YAML frontmatter format.
 name: skill-name          # kebab-case, unique across repo
 description: What it does. Use when [trigger1], [trigger2].  # max ~200 chars
 domain: category-name     # must match an existing category directory
-tags: [tag1, tag2, tag3]  # 3-8 relevant tags
+tags: 
+- [tag1
+- tag2
+- tag3]  # 3-8 relevant tags
 ---
 ```
 

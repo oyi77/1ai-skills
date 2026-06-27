@@ -8,7 +8,13 @@ description: Assess organizational cybersecurity maturity against NIST CSF frame
   cybersecurity posture and create improvement roadmaps.
 domain: cybersecurity
 subdomain: compliance-governance
-tags: [compliance, governance, nist, csf, maturity-assessment, risk-management]
+tags: 
+- [compliance
+- governance
+- nist
+- csf
+- maturity-assessment
+- risk-management]
 nist_csf: [GV.OC-01, GV.RM-01, GV.PO-01, ID.RA-01, GV.OV-01]
 version: "1.0"
 author: mahipal

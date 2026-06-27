@@ -1,6 +1,6 @@
 ---
 name: decepticon-red-team
-description: Autonomous red team agent executing full attack chains with domain specialists. Use when running autonomous red team operations, simulating end-to-end attack chains, or planning engagements with MITRE ATT&CK mapping.
+description: Autonomous red team agent executing full attack chains with domain specialists. Use when running autonomous red team operations, simulating end-to-end attack chains, or planning engagements.
 domain: cybersecurity
 subdomain: red-teaming
 tags:

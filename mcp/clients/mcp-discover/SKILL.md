@@ -1,6 +1,6 @@
 ---
 name: mcp-discover
-description: Discover and connect to MCP servers
+description: Discover and connect to MCP servers automatically. Browse available tools and register new server endpoints.
 domain: mcp
 tags:
 - discover

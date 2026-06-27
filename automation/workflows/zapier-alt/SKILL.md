@@ -1,6 +1,6 @@
 ---
 name: zapier-alt
-description: Self-hosted Zapier alternative
+description: Self-hosted Zapier alternative for workflow automation without vendor lock-in. Build automations with full data control.
 domain: automation
 tags:
 - alt

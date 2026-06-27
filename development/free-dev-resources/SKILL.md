@@ -2,7 +2,13 @@
 name: free-dev-resources
 description: Recommend free-tier developer services and SaaS tools. Use when choosing free infrastructure, comparing free tiers, setting up side projects, or optimizing costs for startups and indie devs.
 domain: development
-tags: [free-tier, saas, cost-optimization, developer-tools, cloud, side-project]
+tags: 
+- [free-tier
+- saas
+- cost-optimization
+- developer-tools
+- cloud
+- side-project]
 ---
 
 

@@ -2,7 +2,13 @@
 name: meeting-management
 description: AI-powered meeting management — agenda creation, note-taking, action item extraction, follow-up tracking. Use when planning meetings, capturing decisions, or tracking meeting outcomes.
 domain: productivity
-tags: [meetings, notes, action-items, agenda, follow-up, collaboration]
+tags: 
+- [meetings
+- notes
+- action-items
+- agenda
+- follow-up
+- collaboration]
 ---
 
 ## When NOT to Use

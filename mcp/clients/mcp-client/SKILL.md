@@ -1,6 +1,6 @@
 ---
 name: mcp-client
-description: Generic MCP client implementation
+description: Generic MCP client implementation for connecting to any Model Context Protocol server with standardized tool access.
 domain: mcp
 tags:
 - client

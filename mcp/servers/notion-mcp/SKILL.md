@@ -1,6 +1,6 @@
 ---
 name: notion-mcp
-description: MCP server for Notion databases
+description: MCP server for Notion databases. Query pages, manage databases, and automate Notion workflows via standardized protocol.
 domain: mcp
 tags:
 - mcp

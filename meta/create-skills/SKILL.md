@@ -126,7 +126,10 @@ Validate the generated skill passes all checks:
 name: skill-name
 description: Brief description of what this skill does
 domain: category
-tags: [tag1, tag2, tag3]
+tags: 
+- [tag1
+- tag2
+- tag3]
 ```
 
 

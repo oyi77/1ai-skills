@@ -1,8 +1,14 @@
 ---
 name: agent-harness-optimizer
-description: Agent harness optimization patterns for token efficiency, memory persistence, session management, and cross-harness parity. Use when optimizing agent performance, reducing token costs, configuring hook profiles, managing session lifecycles, or running agents across Claude Code, Cursor, OpenCode, Codex, and Gemini.
+description: Agent harness optimization patterns for token efficiency, memory persistence, session management, and cross-harness parity. Use when optimizing agent performance, reducing token costs,.
 domain: core
-tags: [token-optimization, memory-persistence, session-management, hooks, cross-harness, performance]
+tags: 
+- [token-optimization
+- memory-persistence
+- session-management
+- hooks
+- cross-harness
+- performance]
 persona:
   name: "NanoClaw"
   title: "Harness Performance Architect"

@@ -1,6 +1,6 @@
 ---
 name: supabase-mcp
-description: MCP server for Supabase databases
+description: MCP server for Supabase databases. Query tables, manage auth, and handle storage through standardized protocol.
 domain: mcp
 tags:
 - mcp

@@ -1,8 +1,14 @@
 ---
 name: karpathy-coding-principles
-description: Andrej Karpathy's 4 coding principles — think before coding, simplicity first, surgical changes, goal-driven execution. Use when coding, reviewing code quality, reducing overengineering, improving LLM output, writing clean code.
+description: Andrej Karpathy's 4 coding principles — think before coding, simplicity first, surgical changes, goal-driven execution. Use when coding, reviewing code quality, reducing overengineering,.
 domain: core
-tags: [coding-principles, code-quality, best-practices, karpathy, simplicity, clean-code]
+tags: 
+- [coding-principles
+- code-quality
+- best-practices
+- karpathy
+- simplicity
+- clean-code]
 ---
 
 ## When NOT to Use
