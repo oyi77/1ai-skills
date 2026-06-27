@@ -178,7 +178,7 @@ Film grain overlay, lens flare from setting sun, cinematic quality
 ### Phase 1: Image Excellence (Days 1-3)
 
 **Day 1: Master NVIDIA Flux Basics**
-```python
+```
 # Generate 20 portrait variations
 fluent prompts:
 1. Ultra realistic portrait - Indonesian female, 25, natural light
@@ -191,7 +191,7 @@ fluent prompts:
 ```
 
 **Day 2: Product Photography**
-```python
+```
 # Generate 20 product shots
 products: phones, watches, jewelry, cosmetics, food
 
@@ -201,7 +201,7 @@ products: phones, watches, jewelry, cosmetics, food
 ```
 
 **Day 3: Advanced Techniques**
-```python
+```
 # Multi-layered compositions
 # Environmental portraits (person + setting)
 # Dynamic lighting (backlight, rim light, three-point)
@@ -213,7 +213,7 @@ products: phones, watches, jewelry, cosmetics, food
 ### Phase 2: Video Mastery (Days 4-6)
 
 **Day 4: BytePlus Seedance Basics**
-```python
+```
 # Generate 10 short clips (5-10s)
 topics: product showcase, lifestyle, environment
 
@@ -223,7 +223,7 @@ topics: product showcase, lifestyle, environment
 ```
 
 **Day 5: Grok Imagine Cinematic Shots**
-```python
+```
 # Generate 8 cinematic clips (6-10s)
 focus: dramatic lighting, camera movement, color grading
 
@@ -231,7 +231,7 @@ focus: dramatic lighting, camera movement, color grading
 ```
 
 **Day 6: Multi-Provider Hybrid**
-```python
+```
 # Generate stills with Flux, animate with Seedance
 # Create storyboards with Flux video, enhance with Grok
 
@@ -241,7 +241,7 @@ focus: dramatic lighting, camera movement, color grading
 ### Phase 3: Integration (Days 7-10)
 
 **Days 7-8: Content Pipelines**
-```python
+```
 # Pipeline 1: TikTok Product Promos
   - Product shots (Flux)
   - Smooth camera pans (Seedance)
@@ -259,7 +259,7 @@ focus: dramatic lighting, camera movement, color grading
 ```
 
 **Days 9-10: Real-World Projects**
-```python
+```
 # Project 1: Complete product launch video
 # - Static product shots (Flux)
 # - 360-degree rotation (Seedance)
@@ -354,9 +354,9 @@ stock photo aesthetic, generic stock
 prompt_1 = "Indonesian woman, 25, studio lighting..."
 
 # Step 2: Generate variations with consistent features
-prompt_2 = f"{prompt_1}, slight smile, looking right"
-prompt_3 = f"{prompt_1, laughing, looking up"
-prompt_4 = f"{prompt_1, serious expression, profile view"
+prompt_2 = prompt_1 + ", slight smile, looking right"
+prompt_3 = f"{prompt_1}, laughing, looking up"
+prompt_4 = f"{prompt_1}, serious expression, profile view"
 
 # Extract consistent features:
 # facial structure, hair style, eye color, skin tone
