@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1ai-Skills — 1337 AI Agent Skills — 1ai-Skills</title>
+<title>Examples — 1ai-Skills — 1ai-Skills</title>
 <meta name="description" content="1ai-Skills: 1337 production-grade AI agent skills with anti-rationalization tables.">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -159,177 +159,128 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
 <section class="page">
   <div class="container">
     <div class="page-header">
-      <h1>The <span class="grad">Largest</span> AI Agent Skill Library</h1>
-      <p>1337 production-grade skills across 19 categories. Every skill tested, every skill has anti-rationalization tables.</p>
-      <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a href="docs.html" class="btn btn-primary">Get Started</a>
-        <a href="browse.html" class="btn btn-ghost">Browse Skills</a>
-        <a href="examples.html" class="btn btn-ghost">Examples</a>
+      <h1><span class="grad">Examples</span> & Use Cases</h1>
+      <p>Real-world scenarios showing how skills work in practice.</p>
+    </div>
+
+    <div class="docs-layout">
+      <div class="docs-sidebar">
+        <a href="#use-case-1" class="active">Security Audit</a>
+        <a href="#use-case-2">Code Review</a>
+        <a href="#use-case-3">Marketing Campaign</a>
+        <a href="#use-case-4">Trading Strategy</a>
+        <a href="#use-case-5">Document Generation</a>
+        <a href="#use-case-6">Multi-Skill Workflow</a>
       </div>
-    </div>
 
-    <div class="grid-4" style="margin-bottom:60px">
-      <div class="card" style="text-align:center"><div style="font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">1337</div><p>Skills</p></div>
-      <div class="card" style="text-align:center"><div style="font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">19</div><p>Categories</p></div>
-      <div class="card" style="text-align:center"><div style="font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">0</div><p>Warnings</p></div>
-      <div class="card" style="text-align:center"><div style="font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">100%</div><p>Pass Rate</p></div>
-    </div>
+      <div class="docs-content">
 
-    <h2 style="text-align:center;margin-bottom:30px">New Skills</h2>
-    <div class="grid-3" style="margin-bottom:60px">
-      <div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Model Router</h3>
-  <p>Intelligent model routing via subagents - automatically spawn the right model for each task complexi</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">core</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Pdf Creator</h3>
-  <p>Create, edit, and extract text from PDF documents. Generate reports, invoices, and forms. Parse exis</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Pptx Creator</h3>
-  <p>Create and edit PowerPoint presentations programmatically. Generate slide decks with layouts, charts</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Theme Factory</h3>
-  <p>Generate and apply professional color themes, typography systems, and design tokens for applications</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Docx Creator</h3>
-  <p>Create, edit, and analyze Word documents programmatically using python-docx or docx.js. Generate rep</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Canvas Design</h3>
-  <p>Design visual art and graphics using HTML5 Canvas, p5.js, or SVG. Create generative art, data visual</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Xlsx Creator</h3>
-  <p>Create, edit, and analyze Excel spreadsheets programmatically. Generate financial models, data table</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Frontend Ui Design</h3>
-  <p>Design and build production-grade UI components using React, Vue, or vanilla HTML/CSS. Create respon</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Replicate Runner</h3>
-  <p>Run AI models on Replicate cloud API. Deploy image generation, video creation, audio processing, and</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">core</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Gemini Api Dev</h3>
-  <p>Build applications using Google Gemini API. Handle chat completions, multimodal inputs, function cal</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">core</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Spec Driven Development</h3>
-  <p>Write a PRD covering objectives, commands, structure, code style, testing, and boundaries before any</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">development</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Browser Testing Devtools</h3>
-  <p>Test web applications using browser DevTools, Playwright, or Puppeteer. Automate E2E testing, visual</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">development</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Git Workflow Mastery</h3>
-  <p>Master Git workflows including branching strategies, interactive rebase, cherry-pick, bisect, worktr</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">development</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Context Engineering</h3>
-  <p>Design and manage the context window for AI coding agents. Structure prompts, manage file loading, a</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">development</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Supabase Integration</h3>
-  <p>Integrate Supabase for authentication, database, storage, and real-time subscriptions. Build full-st</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">integrations</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Bigquery Integration</h3>
-  <p>Integrate Google BigQuery for large-scale data analytics. Write SQL queries, manage datasets, export</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">integrations</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Firebase Integration</h3>
-  <p>Integrate Firebase for authentication, Firestore database, Cloud Functions, hosting, and push notifi</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">integrations</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Stripe Integration</h3>
-  <p>Integrate Stripe for payments, subscriptions, invoicing, and billing. Handle checkout sessions, webh</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">integrations</span></div>
-</div>
-    </div>
+        <h2 id="use-case-1">Use Case: Security Audit</h2>
+        <p>You need to audit a web application for vulnerabilities before launch.</p>
+        <h3>Agent loads: <code>conducting-api-security-testing</code></h3>
+        <pre><code># The agent sees this Anti-Rationalization Table:
+| Rationalization | Reality |
+|---|---|
+| "We are too small to be targeted" | Automated attacks target everyone |
+| "Security slows us down" | A breach slows you down 100x more |
+| "We will fix it after launch" | Vulnerabilities in production are exploited within hours |
 
-    <h2 style="text-align:center;margin-bottom:30px">Categories</h2>
-    <div class="grid-4">
-      <div class="card fade-in">
-  <h3>Cybersecurity</h3>
-  <p><strong>786</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Development</h3>
-  <p><strong>92</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Content</h3>
-  <p><strong>64</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Mindset</h3>
-  <p><strong>55</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Marketing</h3>
-  <p><strong>45</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Core</h3>
-  <p><strong>44</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Integrations</h3>
-  <p><strong>36</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Devops</h3>
-  <p><strong>33</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Automation</h3>
-  <p><strong>28</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Research</h3>
-  <p><strong>23</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Trading</h3>
-  <p><strong>20</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Operations</h3>
-  <p><strong>19</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Agents</h3>
-  <p><strong>16</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Financial</h3>
-  <p><strong>15</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Mcp</h3>
-  <p><strong>14</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Sales</h3>
-  <p><strong>14</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Meta</h3>
-  <p><strong>13</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Data</h3>
-  <p><strong>10</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Productivity</h3>
-  <p><strong>10</strong> skills</p>
-</div>
+# Agent follows the Workflow:
+1. **Reconnaissance** — Map API endpoints and parameters
+2. **Authentication Testing** — Test auth bypass, token manipulation
+3. **Authorization Testing** — Test IDOR, privilege escalation
+4. **Input Validation** — Test injection, XSS, SSRF
+5. **Business Logic** — Test rate limiting, race conditions
+6. **Report** — Document findings with reproduction steps</code></pre>
+        <p>The agent cannot skip steps because the anti-rationalization table explicitly addresses the excuses it would use.</p>
+
+        <h2 id="use-case-2">Use Case: Code Review</h2>
+        <p>You need to review a pull request for quality and security.</p>
+        <h3>Agent loads: <code>requesting-code-review</code></h3>
+        <pre><code># Anti-Rationalization Table:
+| Rationalization | Reality |
+|---|---|
+| "It looks correct to me" | Visual review misses logic errors. Run the tests. |
+| "The tests pass" | Passing tests != correct code. Check edge cases. |
+| "Small change, no review needed" | Most bugs come from "small" changes. Review everything. |
+
+# Agent follows the Workflow:
+1. **Read the diff** — Understand what changed and why
+2. **Check tests** — Verify test coverage for changed code
+3. **Security scan** — Check for injection, auth bypass, data leaks
+4. **Performance** — Check for N+1 queries, memory leaks
+5. **Documentation** — Verify docs updated with code changes
+6. **Report** — List findings with severity and fix suggestions</code></pre>
+
+        <h2 id="use-case-3">Use Case: Marketing Campaign</h2>
+        <p>You need to launch a product with a multi-channel marketing campaign.</p>
+        <h3>Agent loads: <code>marketing-ops</code></h3>
+        <pre><code># The agent follows a structured marketing workflow:
+1. **Customer Research** — Define ICP, pain points, messaging
+2. **Content Strategy** — Blog posts, social, email sequences
+3. **SEO Optimization** — Keyword research, on-page SEO
+4. **Paid Ads** — Campaign structure, targeting, creative
+5. **Launch Sequence** — Pre-launch, launch day, post-launch
+6. **Analytics** — Track KPIs, optimize based on data</code></pre>
+
+        <h2 id="use-case-4">Use Case: Trading Strategy</h2>
+        <p>You need to develop and backtest a trading strategy.</p>
+        <h3>Agent loads: <code>trading-strategist</code></h3>
+        <pre><code># Anti-Rationalization Table:
+| Rationalization | Reality |
+|---|---|
+| "This time is different" | It never is. Follow your strategy, not your emotions. |
+| "I will cut losses later" | Later never comes. Set stop-losses before entering. |
+| "I do not need to journal" | Journaling reveals patterns in your behavior. Track every trade. |
+
+# Agent follows the Workflow:
+1. **Market Analysis** — Identify regime, trend, volatility
+2. **Strategy Design** — Entry/exit rules, position sizing
+3. **Backtesting** — Test on historical data
+4. **Risk Management** — Stop-loss, max drawdown, correlation
+5. **Paper Trading** — Test in live market without real money
+6. **Live Trading** — Deploy with monitoring and kill switch</code></pre>
+
+        <h2 id="use-case-5">Use Case: Document Generation</h2>
+        <p>You need to generate a quarterly report as a Word document.</p>
+        <h3>Agent loads: <code>docx-creator</code></h3>
+        <pre><code># Python code from the skill:
+from docx import Document
+from docx.shared import Inches, Pt
+
+doc = Document()
+doc.add_heading('Q2 Revenue Report', 0)
+
+p = doc.add_paragraph()
+run = p.add_run('Revenue increased by 23%')
+run.bold = True
+run.font.size = Pt(14)
+
+table = doc.add_table(rows=1, cols=3)
+table.style = 'Light Shading Accent 1'
+hdr = table.rows[0].cells
+hdr[0].text = 'Metric'
+hdr[1].text = 'Q1'
+hdr[2].text = 'Q2'
+
+doc.save('report.docx')</code></pre>
+
+        <h2 id="use-case-6">Use Case: Multi-Skill Workflow</h2>
+        <p>Complex tasks benefit from multiple skills working together.</p>
+        <h3>Example: Product Launch Pipeline</h3>
+        <pre><code># 1. spec-driven-development — Define what to build
+# 2. frontend-ui-design — Build the UI
+# 3. browser-testing-devtools — Test the UI
+# 4. docx-creator — Generate user documentation
+# 5. marketing-ops — Plan the launch campaign
+# 6. seo-optimizer — Optimize landing page
+# 7. stripe-integration — Set up payments
+# 8. requesting-code-review — Review everything
+
+# Each skill provides domain-specific expertise
+# The anti-rationalization tables prevent cutting corners at every step</code></pre>
+
+      </div>
     </div>
   </div>
 </section>
@@ -354,6 +305,12 @@ document.querySelectorAll('.fade-in').forEach(el => {
   },{threshold:.1}).observe(el);
 });
 
+document.querySelectorAll('.docs-sidebar a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.docs-sidebar a').forEach(x => x.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
 </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1ai-Skills — 1337 AI Agent Skills — 1ai-Skills</title>
+<title>API Reference — 1ai-Skills — 1ai-Skills</title>
 <meta name="description" content="1ai-Skills: 1337 production-grade AI agent skills with anti-rationalization tables.">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -159,177 +159,111 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
 <section class="page">
   <div class="container">
     <div class="page-header">
-      <h1>The <span class="grad">Largest</span> AI Agent Skill Library</h1>
-      <p>1337 production-grade skills across 19 categories. Every skill tested, every skill has anti-rationalization tables.</p>
-      <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a href="docs.html" class="btn btn-primary">Get Started</a>
-        <a href="browse.html" class="btn btn-ghost">Browse Skills</a>
-        <a href="examples.html" class="btn btn-ghost">Examples</a>
+      <h1><span class="grad">API</span> Reference</h1>
+      <p>Machine-readable formats and integration details.</p>
+    </div>
+
+    <div class="docs-layout">
+      <div class="docs-sidebar">
+        <a href="#skills-json" class="active">SKILLS.json</a>
+        <a href="#skill-md">SKILL.md Format</a>
+        <a href="#frontmatter">Frontmatter Fields</a>
+        <a href="#hooks">Hooks</a>
+        <a href="#test-suite">Test Suite</a>
       </div>
-    </div>
 
-    <div class="grid-4" style="margin-bottom:60px">
-      <div class="card" style="text-align:center"><div style="font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">1337</div><p>Skills</p></div>
-      <div class="card" style="text-align:center"><div style="font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">19</div><p>Categories</p></div>
-      <div class="card" style="text-align:center"><div style="font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">0</div><p>Warnings</p></div>
-      <div class="card" style="text-align:center"><div style="font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">100%</div><p>Pass Rate</p></div>
-    </div>
+      <div class="docs-content">
 
-    <h2 style="text-align:center;margin-bottom:30px">New Skills</h2>
-    <div class="grid-3" style="margin-bottom:60px">
-      <div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Model Router</h3>
-  <p>Intelligent model routing via subagents - automatically spawn the right model for each task complexi</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">core</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Pdf Creator</h3>
-  <p>Create, edit, and extract text from PDF documents. Generate reports, invoices, and forms. Parse exis</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Pptx Creator</h3>
-  <p>Create and edit PowerPoint presentations programmatically. Generate slide decks with layouts, charts</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Theme Factory</h3>
-  <p>Generate and apply professional color themes, typography systems, and design tokens for applications</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Docx Creator</h3>
-  <p>Create, edit, and analyze Word documents programmatically using python-docx or docx.js. Generate rep</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Canvas Design</h3>
-  <p>Design visual art and graphics using HTML5 Canvas, p5.js, or SVG. Create generative art, data visual</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Xlsx Creator</h3>
-  <p>Create, edit, and analyze Excel spreadsheets programmatically. Generate financial models, data table</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Frontend Ui Design</h3>
-  <p>Design and build production-grade UI components using React, Vue, or vanilla HTML/CSS. Create respon</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Replicate Runner</h3>
-  <p>Run AI models on Replicate cloud API. Deploy image generation, video creation, audio processing, and</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">core</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Gemini Api Dev</h3>
-  <p>Build applications using Google Gemini API. Handle chat completions, multimodal inputs, function cal</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">core</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Spec Driven Development</h3>
-  <p>Write a PRD covering objectives, commands, structure, code style, testing, and boundaries before any</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">development</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Browser Testing Devtools</h3>
-  <p>Test web applications using browser DevTools, Playwright, or Puppeteer. Automate E2E testing, visual</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">development</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Git Workflow Mastery</h3>
-  <p>Master Git workflows including branching strategies, interactive rebase, cherry-pick, bisect, worktr</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">development</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Context Engineering</h3>
-  <p>Design and manage the context window for AI coding agents. Structure prompts, manage file loading, a</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">development</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Supabase Integration</h3>
-  <p>Integrate Supabase for authentication, database, storage, and real-time subscriptions. Build full-st</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">integrations</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Bigquery Integration</h3>
-  <p>Integrate Google BigQuery for large-scale data analytics. Write SQL queries, manage datasets, export</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">integrations</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Firebase Integration</h3>
-  <p>Integrate Firebase for authentication, Firestore database, Cloud Functions, hosting, and push notifi</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">integrations</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Stripe Integration</h3>
-  <p>Integrate Stripe for payments, subscriptions, invoicing, and billing. Handle checkout sessions, webh</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">integrations</span></div>
-</div>
-    </div>
+        <h2 id="skills-json">SKILLS.json</h2>
+        <p>Machine-readable catalog of all 1337 skills. Used by agents for skill discovery.</p>
+        <pre><code>{
+  "total_skills": 1337,
+  "category_count": 19,
+  "categories": {
+    "cybersecurity": 786,
+    "development": 92,
+    "content": 64,
+    ...
+  },
+  "skills": [
+    {
+      "name": "seo-optimizer",
+      "category": "marketing",
+      "description": "Optimize content for search engines...",
+      "domain": "marketing",
+      "tags": ["seo", "marketing", "growth"]
+    },
+    ...
+  ]
+}</code></pre>
 
-    <h2 style="text-align:center;margin-bottom:30px">Categories</h2>
-    <div class="grid-4">
-      <div class="card fade-in">
-  <h3>Cybersecurity</h3>
-  <p><strong>786</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Development</h3>
-  <p><strong>92</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Content</h3>
-  <p><strong>64</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Mindset</h3>
-  <p><strong>55</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Marketing</h3>
-  <p><strong>45</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Core</h3>
-  <p><strong>44</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Integrations</h3>
-  <p><strong>36</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Devops</h3>
-  <p><strong>33</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Automation</h3>
-  <p><strong>28</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Research</h3>
-  <p><strong>23</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Trading</h3>
-  <p><strong>20</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Operations</h3>
-  <p><strong>19</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Agents</h3>
-  <p><strong>16</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Financial</h3>
-  <p><strong>15</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Mcp</h3>
-  <p><strong>14</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Sales</h3>
-  <p><strong>14</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Meta</h3>
-  <p><strong>13</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Data</h3>
-  <p><strong>10</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Productivity</h3>
-  <p><strong>10</strong> skills</p>
-</div>
+        <h2 id="skill-md">SKILL.md Format</h2>
+        <p>Every skill is a Markdown file with YAML frontmatter.</p>
+        <pre><code>---
+name: skill-name           # kebab-case, matches directory name
+description: One sentence   # 50-200 chars, action-oriented
+domain: category            # matches parent directory
+tags:                       # 3-5 relevant tags
+- tag1
+- tag2
+- tag3
+---
+
+# Skill Title
+
+## When to Use          (required)
+## When NOT to Use      (recommended)
+## Overview             (recommended)
+## Workflow              (required)
+## Anti-Rationalization (recommended)
+## Code Example         (recommended)
+## Verification         (recommended)</code></pre>
+
+        <h2 id="frontmatter">Frontmatter Fields</h2>
+        <table>
+          <tr><th>Field</th><th>Required</th><th>Type</th><th>Description</th></tr>
+          <tr><td><code>name</code></td><td>Yes</td><td>string</td><td>Kebab-case skill name. Must match directory name.</td></tr>
+          <tr><td><code>description</code></td><td>Yes</td><td>string</td><td>50-200 chars. Action-oriented. Used for search/discovery.</td></tr>
+          <tr><td><code>domain</code></td><td>Yes</td><td>string</td><td>Category name. Must match parent directory.</td></tr>
+          <tr><td><code>tags</code></td><td>Yes</td><td>list</td><td>3-5 lowercase kebab-case tags.</td></tr>
+          <tr><td><code>version</code></td><td>No</td><td>string</td><td>Semantic version (e.g., "1.0.0").</td></tr>
+          <tr><td><code>author</code></td><td>No</td><td>string</td><td>Skill author name.</td></tr>
+          <tr><td><code>subdomain</code></td><td>No</td><td>string</td><td>Sub-category (e.g., "threat-hunting").</td></tr>
+        </table>
+
+        <h2 id="hooks">Hooks</h2>
+        <p>1ai-skills includes hooks for skill lifecycle events:</p>
+        <table>
+          <tr><th>Hook</th><th>Type</th><th>Description</th></tr>
+          <tr><td><code>skill-tracker</code></td><td>PostToolUse</td><td>Logs every skill invocation with metrics</td></tr>
+          <tr><td><code>skill-banner</code></td><td>PostToolUse</td><td>Shows ASCII art activation banner</td></tr>
+          <tr><td><code>skill-committer</code></td><td>PostToolUse</td><td>Auto-commits skill changes</td></tr>
+          <tr><td><code>skill-feedback</code></td><td>UserPromptSubmit</td><td>Captures user feedback on skills</td></tr>
+          <tr><td><code>skill-evolver</code></td><td>SessionEnd</td><td>Analyzes usage and suggests improvements</td></tr>
+        </table>
+
+        <h2 id="test-suite">Test Suite</h2>
+        <pre><code># Run all tests
+python3 scripts/test-skills.py
+
+# Output:
+# Total:    1337
+# Passed:   1337 (100.0%)
+# Failed:   0
+# Warnings: 0
+# Time:     0.96s
+
+# JSON output for CI
+python3 scripts/test-skills.py --json > test-results.json</code></pre>
+
+        <h3>Exit Codes</h3>
+        <table>
+          <tr><th>Code</th><th>Meaning</th></tr>
+          <tr><td><code>0</code></td><td>All skills pass</td></tr>
+          <tr><td><code>1</code></td><td>One or more skills failed</td></tr>
+        </table>
+
+      </div>
     </div>
   </div>
 </section>
@@ -354,6 +288,12 @@ document.querySelectorAll('.fade-in').forEach(el => {
   },{threshold:.1}).observe(el);
 });
 
+document.querySelectorAll('.docs-sidebar a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.querySelectorAll('.docs-sidebar a').forEach(x => x.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
 </script>
 </body>
 </html>
