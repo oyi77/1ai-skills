@@ -110,8 +110,12 @@ def skill_rel_path(path: Path) -> str:
     return str(rel)
 
 
-def similarity(a: str, b: str) -> float:
-    """Sequence-based similarity ratio."""
+def similarity(a: str, b: str, threshold: float = 0.0) -> float:
+    """Sequence-based similarity ratio with length-based pre-check."""
+    len_a, len_b = len(a), len(b)
+    if threshold > 0.0 and (len_a + len_b) > 0:
+        if 2.0 * min(len_a, len_b) < threshold * (len_a + len_b):
+            return 0.0
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
 
 
@@ -251,7 +255,7 @@ def check_duplicates(skills_meta: list[dict], result: LintResult):
     for cat, cat_skills in by_category.items():
         for i, (name1, path1) in enumerate(cat_skills):
             for name2, path2 in cat_skills[i + 1:]:
-                sim = similarity(name1, name2)
+                sim = similarity(name1, name2, threshold=SIMILARITY_THRESHOLD)
                 if sim >= SIMILARITY_THRESHOLD and name1 != name2:
                     result.add("warnings", name1, "near-duplicate",
                                 f"Near-duplicate of {name2} (similarity={sim:.2f})")
