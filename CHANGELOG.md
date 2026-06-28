@@ -43,7 +43,7 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 ## [3.0.0] — 2026-05-01
 
 ### Added
-- Initial 1319 skill library across 19 categories
+- Initial 1337 skill library across 19 categories
 - SKILLS.json machine-readable catalog
 - Category-based directory structure
 - YAML frontmatter standard for all skills

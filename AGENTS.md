@@ -66,7 +66,7 @@ Determine your session type, then load the required rules **in order**:
 # 1ai-skills
 
 ## Purpose
-Production-ready AI agent skill library. **1319 skills across 19 categories**, including 786 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
+Production-ready AI agent skill library. **1337 skills across 19 categories**, including 786 cybersecurity skills (26 subdomains: threat hunting, forensics, pen testing, red teaming, cloud security, SOC ops, incident response, API security, zero trust, DevSecOps, compliance, OT/ICS, IAM, and more).
 
 Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `description`, `domain`, optional `persona`, `tags`). Agents load skills on demand via the `skill` tool.
 
@@ -93,7 +93,7 @@ Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `descri
 | `data/` | 10 | Data cleaning, anomaly detection, visualization, reporting, data pipelines, DBT, lakeFS |
 | `productivity/` | 10 | Calendars, email, meetings, daily planner, Notion, Google Workspace |
 | `mcp/` | 14 | MCP server skills (GitHub, Linear, Notion, Resend, Slack, Stripe, Supabase, codebase-memory, agent-reach) |
-| **TOTAL** | **1319** | |
+| **TOTAL** | **1337** | |
 
 | Dir | Purpose |
 |-----|---------|
