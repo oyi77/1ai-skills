@@ -1,7 +1,7 @@
 {
   "name": "1ai-skills",
   "version": "3.5.0",
-  "description": "1319 production-ready AI agent skills with self-evolving meta-skills — cybersecurity, SEO, trading, marketing, automation, devops, content, financial services",
+  "description": "1337 production-ready AI agent skills with self-evolving meta-skills — cybersecurity, SEO, trading, marketing, automation, devops, content, financial services",
   "scripts": {
     "postinstall": "node scripts/install-hooks.js && node scripts/install-mcp-tools.js",
     "install:deps": "node scripts/install-skill-deps.js",
