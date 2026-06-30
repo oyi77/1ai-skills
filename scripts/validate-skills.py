@@ -232,8 +232,9 @@ def fix_one(path: Path) -> list[str]:
             ordered[key] = meta.pop(key)
     ordered.update(meta)
 
-    new_fm = yaml.safe_dump(
-        ordered, sort_keys=False, allow_unicode=True, width=120
+    # Optimization: Use CSafeDumper when available for ~5x faster YAML dumping of 1300+ SKILL.md files.
+    new_fm = yaml.dump(
+        ordered, sort_keys=False, allow_unicode=True, width=120, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper)
     ).rstrip()
     new_text = (
         f"---\n{new_fm}\n---\n{body}"
