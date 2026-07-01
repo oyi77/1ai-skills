@@ -1,16 +1,17 @@
 {
   "name": "1ai-skills",
-  "version": "3.5.0",
+  "version": "3.6.0",
   "description": "1337 production-ready AI agent skills with self-evolving meta-skills — cybersecurity, SEO, trading, marketing, automation, devops, content, financial services",
   "scripts": {
-    "postinstall": "node scripts/install-hooks.js && node scripts/install-mcp-tools.js",
+    "postinstall": "node scripts/install-hooks.js && node scripts/install-mcp-tools.js && node scripts/postinstall-check.js",
     "install:deps": "node scripts/install-skill-deps.js",
     "install:deps:dry-run": "node scripts/install-skill-deps.js --dry-run",
     "lint:skills": "python3 scripts/lint-skills.py",
     "lint:skills:write": "python3 scripts/lint-skills.py --write"
   },
   "bin": {
-    "1ai-skills-hooks": "scripts/hooks-cli.js"
+    "1ai-skills-hooks": "scripts/hooks-cli.js",
+    "1ai-skills": "scripts/cli.js"
   },
   "keywords": [
     "ai",
