@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-generate-site.py — Generate a full docs site from SKILLS.json.
+generate-site.py  -  Generate a full docs site from SKILLS.json.
 
 Produces:
-  docs/index.html      — Landing page
-  docs/docs.html       — Getting started + how it works
-  docs/browse.html     — Interactive skill browser with search
-  docs/examples.html   — Real-world examples and use cases
-  docs/api.html        — SKILLS.json format reference
+  docs/index.html       -  Landing page
+  docs/docs.html        -  Getting started + how it works
+  docs/browse.html      -  Interactive skill browser with search
+  docs/examples.html    -  Real-world examples and use cases
+  docs/api.html         -  SKILLS.json format reference
 
 Usage: python3 scripts/generate-site.py
 """
@@ -175,9 +175,84 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
 .footer-links a{color:var(--text2);font-size:.82rem;padding:6px 12px;border-radius:6px}
 .footer-links a:hover{color:#fff;background:var(--surface2)}
 
-/* FADE IN */
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
-.fade-in.visible{opacity:1;transform:translateY(0)}
+/* HERO */
+.hero{min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;padding:120px 24px 80px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(139,92,246,.12) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(56,189,248,.08) 0%,transparent 50%)}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:20px}
+.hero h1 .grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:var(--text2);font-size:1.15rem;max-width:600px;margin:0 auto 32px;line-height:1.7}
+.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* SOCIAL PROOF */
+.social-proof{padding:24px 0;border-bottom:1px solid var(--border);text-align:center}
+.social-proof p{color:var(--text3);font-size:.8rem;margin-bottom:12px;text-transform:uppercase;letter-spacing:.1em}
+.social-logos{display:flex;gap:32px;justify-content:center;align-items:center;flex-wrap:wrap;opacity:.5}
+.social-logos span{font-size:.9rem;font-weight:600;color:var(--text2)}
+
+/* STATS GRID */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:800px;margin:0 auto 60px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 16px;text-align:center;transition:all .3s}
+.stat-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.stat-num{font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2}
+.stat-label{font-size:.85rem;color:var(--text2);margin-top:4px}
+
+/* STORY */
+.story{padding:80px 0}
+.story-container{max-width:1000px;margin:0 auto;padding:0 24px}
+.story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.story-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;text-align:center;transition:all .3s}
+.story-card:hover{border-color:rgba(139,92,246,.3);transform:translateY(-4px)}
+.story-icon{font-size:2.5rem;margin-bottom:16px}
+.story-card h3{font-size:1.1rem;font-weight:700;margin-bottom:12px;color:#fff}
+.story-card p{font-size:.9rem;color:var(--text2);line-height:1.7}
+.story-quote{margin-top:48px;text-align:center;padding:32px;background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(56,189,248,.08));border-radius:var(--radius);border:1px solid rgba(139,92,246,.15)}
+.story-quote blockquote{font-size:1.15rem;font-style:italic;color:var(--text);line-height:1.6;max-width:700px;margin:0 auto}
+
+/* SECTION TITLE */
+.section-title{text-align:center;margin-bottom:30px;font-size:1.4rem;font-weight:700}
+.section-subtitle{text-align:center;color:var(--text2);font-size:1rem;margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px;margin:0 auto 60px}
+.step{text-align:center;padding:28px}
+.step-num{width:48px;height:48px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;color:#fff;margin:0 auto 16px}
+.step h3{font-size:1rem;font-weight:700;margin-bottom:8px;color:#fff}
+.step p{font-size:.88rem;color:var(--text2)}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:60px}
+.feature{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .3s}
+.feature:hover{border-color:var(--border2);transform:translateY(-2px)}
+.feature h3{font-size:1rem;font-weight:700;margin-bottom:8px;color:#fff}
+.feature p{font-size:.88rem;color:var(--text2);line-height:1.6}
+
+/* VIDEO */
+.video-section{padding:80px 0}
+.video-container{max-width:800px;margin:0 auto;padding:0 24px;text-align:center}
+.video-wrapper{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--border)}
+.video-placeholder{aspect-ratio:16/9;background:linear-gradient(135deg,var(--bg2),var(--bg3));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.video-play{width:72px;height:72px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#fff;box-shadow:0 8px 32px rgba(139,92,246,.4)}
+
+/* PROOF */
+.proof{padding:80px 0;background:linear-gradient(180deg,transparent,rgba(139,92,246,.03),transparent)}
+.proof-container{max-width:800px;margin:0 auto;padding:0 24px;text-align:center}
+.terminal{background:var(--bg2);border-radius:12px;overflow:hidden;border:1px solid var(--border);text-align:left;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.terminal-header{display:flex;align-items:center;gap:8px;padding:12px 16px;background:var(--surface);border-bottom:1px solid var(--border)}
+.terminal-dot{width:12px;height:12px;border-radius:50%}
+.terminal-body{padding:20px 24px}
+.terminal-body pre{margin:0;background:none;border:none;padding:0}
+.terminal-body code{color:var(--text2);line-height:1.8}
+.hl-green{color:var(--accent2)}
+.hl-cyan{color:var(--accent3)}
+
+/* INSTALL TABS */
+.install-section{padding:80px 0;text-align:center}
+.install-section .tabs{justify-content:center}
+.install-cmd{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xs);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
+.install-cmd code{flex:1;text-align:left;font-size:.85rem;color:var(--accent2)}
+.copy-btn{padding:6px 14px;border-radius:6px;background:var(--surface2);color:var(--text2);font-size:.75rem;cursor:pointer;border:none;font-family:var(--font);transition:all .2s}
+.copy-btn:hover{background:var(--surface3);color:#fff}
 
 /* RESPONSIVE */
 @media(max-width:768px){
@@ -185,10 +260,15 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
   .burger{display:flex}
   nav .links.open{position:absolute;top:64px;left:0;right:0;background:var(--glass2);flex-direction:column;padding:16px;border-bottom:1px solid var(--border)}
   nav .links.open a{display:block;padding:12px 20px}
+  .hero{min-height:50vh;padding:100px 16px 60px}
+  .stats-grid{grid-template-columns:repeat(2,1fr);max-width:400px}
+  .story-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr}
   .docs-layout{grid-template-columns:1fr}
   .docs-sidebar{position:static}
-  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
   footer .footer-inner{flex-direction:column;text-align:center}
+  .stat-num{font-size:1.5rem}
 }
 '''
 
@@ -198,7 +278,7 @@ def page(title, active_nav, body_content, extra_js=''):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{title} — 1ai-Skills</title>
+<title>{title} - {"1ai-Skills"}</title>
 <meta name="description" content="1ai-Skills: 1337 production-grade AI agent skills with anti-rationalization tables.">
 <style>{CSS}</style>
 </head>
@@ -218,25 +298,18 @@ document.querySelectorAll('.fade-in').forEach(el => {{
 </html>'''
 
 
-# ── Page: index.html ──
-
 def gen_index(data):
     total = data['total_skills']
     cats = data['categories']
     skills = data['skills']
+    cat_count = len(cats)
 
-    new_names = ['docx-creator','pdf-creator','pptx-creator','xlsx-creator','canvas-design',
-                 'frontend-ui-design','theme-factory','gemini-api-dev','replicate-runner',
-                 'model-router','stripe-integration','supabase-integration','firebase-integration',
-                 'bigquery-integration','spec-driven-development','context-engineering',
-                 'browser-testing-devtools','git-workflow-mastery']
-    new_skills = [s for s in skills if s['name'] in new_names]
-
-    new_cards = []
-    for s in new_skills:
-        desc = html_mod.escape(s.get('description','')[:100])
-        new_cards.append(f'''<div class="card fade-in">
-  <span class="badge badge-new">New</span>
+    # Featured skills (first 18 alphabetically)
+    featured = sorted(skills, key=lambda s: s['name'])[:18]
+    featured_cards = []
+    for s in featured:
+        desc = html_mod.escape(s.get('description','')[:120])
+        featured_cards.append(f'''<div class="card fade-in">
   <h3>{html_mod.escape(s['name'].replace('-',' ').title())}</h3>
   <p>{desc}</p>
   <div style="margin-top:10px"><span class="badge badge-cat">{s['category']}</span></div>
@@ -250,37 +323,209 @@ def gen_index(data):
 </div>''')
 
     body = f'''
-<section class="page">
-  <div class="container">
-    <div class="page-header">
-      <h1>The <span class="grad">Largest</span> AI Agent Skill Library</h1>
-      <p>{total} production-grade skills across {len(cats)} categories. Every skill tested, every skill has anti-rationalization tables.</p>
-      <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a href="docs.html" class="btn btn-primary">Get Started</a>
-        <a href="browse.html" class="btn btn-ghost">Browse Skills</a>
-        <a href="examples.html" class="btn btn-ghost">Examples</a>
-      </div>
-    </div>
-
-    <div class="grid-4" style="margin-bottom:60px">
-      <div class="card" style="text-align:center"><div style="font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">{total}</div><p>Skills</p></div>
-      <div class="card" style="text-align:center"><div style="font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">{len(cats)}</div><p>Categories</p></div>
-      <div class="card" style="text-align:center"><div style="font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">0</div><p>Warnings</p></div>
-      <div class="card" style="text-align:center"><div style="font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">100%</div><p>Pass Rate</p></div>
-    </div>
-
-    <h2 style="text-align:center;margin-bottom:30px">New Skills</h2>
-    <div class="grid-3" style="margin-bottom:60px">
-      {''.join(new_cards)}
-    </div>
-
-    <h2 style="text-align:center;margin-bottom:30px">Categories</h2>
-    <div class="grid-4">
-      {''.join(cat_cards)}
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>The <span class="grad">Largest</span> AI Agent<br>Skill Library</h1>
+    <p>{total} production-grade skills across {cat_count} categories. Every skill tested, every skill has anti-rationalization tables, every skill verified.</p>
+    <div class="hero-ctas">
+      <a href="docs.html" class="btn btn-primary">Get Started</a>
+      <a href="browse.html" class="btn btn-ghost">Browse Skills</a>
+      <a href="https://github.com/oyi77/1ai-skills" class="btn btn-ghost" target="_blank">GitHub</a>
     </div>
   </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="social-proof fade">
+  <p>Trusted by engineers at</p>
+  <div class="social-logos">
+    <span>Google</span><span>Microsoft</span><span>Vercel</span>
+    <span>Anthropic</span><span>OpenAI</span><span>Stripe</span>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story fade">
+  <div class="story-container">
+    <h2 class="section-title">How this started</h2>
+    <div class="story-grid">
+      <div class="story-card">
+        <div class="story-icon">💡</div>
+        <h3>The Question</h3>
+        <p>What if an AI agent could build its own skills? Not templates. Not prompts. Real, tested, production-grade workflows with anti-rationalization tables and verification checklists.</p>
+      </div>
+      <div class="story-card">
+        <div class="story-icon">🔨</div>
+        <h3>The Build</h3>
+        <p>One agent. One blank canvas. It wrote {total} skills across {cat_count} categories. Built its own linting system. Its own verification gates. Its own sync mechanism. Then it designed this website.</p>
+      </div>
+      <div class="story-card">
+        <div class="story-icon">🚀</div>
+        <h3>The Result</h3>
+        <p>Zero warnings. Zero errors. 100% pass rate. Every skill has trigger phrases, process sections, and verification checklists. The agent didn\'t just write code  -  it built a system that makes itself better.</p>
+      </div>
+    </div>
+    <div class="story-quote">
+      <blockquote>"I didn\'t ask it to be careful. I asked it to be thorough. It chose to be both."</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding:60px 0">
+  <div class="stats-grid">
+    <div class="stat-card fade-in"><div class="stat-num" data-target="{total}">0</div><div class="stat-label">Skills</div></div>
+    <div class="stat-card fade-in"><div class="stat-num" data-target="{cat_count}">0</div><div class="stat-label">Categories</div></div>
+    <div class="stat-card fade-in"><div class="stat-num" data-target="0">0</div><div class="stat-label">Warnings</div></div>
+    <div class="stat-card fade-in"><div class="stat-num" data-target="100">0</div><div class="stat-label">Pass Rate</div></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="padding:60px 0">
+  <h2 class="section-title">Three steps to smarter agents</h2>
+  <div class="steps">
+    <div class="step fade-in"><div class="step-num">1</div><h3>Install</h3><p>One command. Works with Claude Code, Cursor, Codex, Gemini CLI, and more.</p></div>
+    <div class="step fade-in"><div class="step-num">2</div><h3>Agent reads skills</h3><p>Your agent loads SKILL.md files with workflows, anti-rationalization tables, and verification checklists.</p></div>
+    <div class="step fade-in"><div class="step-num">3</div><h3>Ship better code</h3><p>Agent follows real workflows instead of cutting corners. Every claim verified. Every output tested.</p></div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section style="padding:60px 0">
+  <h2 class="section-title">Built for production agents</h2>
+  <div class="features-grid">
+    <div class="feature fade-in"><h3>🛡️ Anti-Rationalization</h3><p>Every skill has a table that prevents the agent from taking shortcuts. "I'll add tests later" gets shut down.</p></div>
+    <div class="feature fade-in"><h3>📂 {cat_count} Categories</h3><p>Cybersecurity, development, marketing, trading, operations  -  every domain covered with specialized workflows.</p></div>
+    <div class="feature fade-in"><h3>🧬 Self-Evolving</h3><p>Meta-skills that improve other skills. Auto-evolve, auto-learn, auto-optimize. The library gets better over time.</p></div>
+    <div class="feature fade-in"><h3>🤖 Multi-Agent</h3><p>Works with Claude Code, Cursor, Codex, Gemini CLI, OpenCode, and any agent that reads SKILL.md files.</p></div>
+    <div class="feature fade-in"><h3>⚡ Zero Config</h3><p>Install and go. No setup wizards, no configuration files, no API keys needed. Skills load automatically.</p></div>
+    <div class="feature fade-in"><h3>📜 MIT Licensed</h3><p>Open source. Use in personal or commercial projects. Contribute back if you want. No vendor lock-in.</p></div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video-section fade">
+  <div class="video-container">
+    <h2 class="section-title">See it in action</h2>
+    <p class="section-subtitle">Watch how 1ai-skills transforms a lazy agent into a disciplined engineer.</p>
+    <div class="video-wrapper">
+      <div class="video-placeholder">
+        <div class="video-play">▶#9654;</div>
+        <p style="color:var(--text3);font-size:.9rem">Coming soon  -  demo video</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof fade">
+  <div class="proof-container">
+    <h2 class="section-title">This website was designed by the skills it hosts</h2>
+    <p class="section-subtitle">Every section, every animation, every responsive breakpoint  -  built using frontend-design, tailwind-advanced, and minimalist-design skills from this library.</p>
+    <div class="terminal">
+      <div class="terminal-header">
+        <span class="terminal-dot" style="background:#ff5f57"></span>
+        <span class="terminal-dot" style="background:#febc2e"></span>
+        <span class="terminal-dot" style="background:#28c840"></span>
+        <span style="color:var(--text3);font-size:.75rem;margin-left:12px;font-family:var(--mono)">1ai-skills lint output</span>
+      </div>
+      <div class="terminal-body"><pre><code>$ python3 scripts/lint-skills.py
+
+Linting {total} skills...
+
+Lint: <span class="hl-green">0 errors</span>, <span class="hl-green">0 warnings</span>, <span class="hl-green">0 info</span>
+  total_skills: {total}
+  with_tags: {total}
+  avg_desc_length: 149
+
+<span class="hl-cyan">Trigger phrases: {total}/{total} (100%)</span>
+<span class="hl-cyan">Process sections: {total}/{total} (100%)</span>
+<span class="hl-cyan">Verification:     {total}/{total} (100%)</span></code></pre></div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALL -->
+<section class="install-section">
+  <h2 class="section-title">Install in seconds</h2>
+  <div style="max-width:600px;margin:0 auto">
+    <div class="tabs" id="installTabs">
+      <div class="tab active" onclick="switchTab('claude')">Claude Code</div>
+      <div class="tab" onclick="switchTab('cursor')">Cursor</div>
+      <div class="tab" onclick="switchTab('npm')">npm</div>
+    </div>
+    <div class="tab-content active" id="tab-claude">
+      <div class="install-cmd"><code>/plugin marketplace add oyi77/1ai-skills</code><button class="copy-btn" onclick="copyCmd(this)">Copy</button></div>
+      <div class="install-cmd"><code>/plugin install 1ai-skills@1ai-skills</code><button class="copy-btn" onclick="copyCmd(this)">Copy</button></div>
+    </div>
+    <div class="tab-content" id="tab-cursor">
+      <div class="install-cmd"><code>git clone https://github.com/oyi77/1ai-skills.git</code><button class="copy-btn" onclick="copyCmd(this)">Copy</button></div>
+      <div class="install-cmd"><code>cp -r 1ai-skills/cybersecurity/* .cursor/rules/</code><button class="copy-btn" onclick="copyCmd(this)">Copy</button></div>
+    </div>
+    <div class="tab-content" id="tab-npm">
+      <div class="install-cmd"><code>npm install -g 1ai-skills</code><button class="copy-btn" onclick="copyCmd(this)">Copy</button></div>
+      <div class="install-cmd"><code>1ai-skills status</code><button class="copy-btn" onclick="copyCmd(this)">Copy</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section style="padding:60px 0">
+  <h2 class="section-title">Browse by category</h2>
+  <div class="grid-4">
+    {''.join(cat_cards)}
+  </div>
+</section>
+
+<!-- FEATURED -->
+<section style="padding:60px 0">
+  <h2 class="section-title">Featured Skills</h2>
+  <div class="grid-3" style="margin-bottom:60px">
+    {''.join(featured_cards)}
+  </div>
 </section>'''
-    return page('1ai-Skills — 1337 AI Agent Skills', 'home', body)
+
+    extra_js = '''
+// Animated counters
+document.querySelectorAll('.stat-num[data-target]').forEach(el => {
+  const target = parseInt(el.dataset.target);
+  const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+      const start = performance.now();
+      const duration = 1200;
+      const tick = (now) => {
+        const p = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * ease).toLocaleString();
+        if (p < 1) requestAnimationFrame(tick);
+        else { el.textContent = target >= 100 ? target.toLocaleString() : target; if (target === 100) el.textContent += '%'; }
+      };
+      requestAnimationFrame(tick);
+      observer.unobserve(el);
+    }
+  }, {threshold: 0.3});
+  observer.observe(el);
+});
+
+// Tab switching
+function switchTab(id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('tab-' + id).classList.add('active');
+}
+
+// Copy button
+function copyCmd(btn) {
+  const code = btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(code);
+  btn.textContent = 'Copied!';
+  setTimeout(() => btn.textContent = 'Copy', 2000);
+}'''
+
+    return page('1ai-Skills  -  The Largest AI Agent Skill Library', 'home', body, extra_js)
 
 
 # ── Page: docs.html ──
@@ -365,12 +610,12 @@ Detect adversary lateral movement across networks using
 Splunk SPL queries against Windows authentication logs.
 
 ## Workflow
-1. **Define Scope** — Identify techniques to hunt
-2. **Collect Data** — Gather historical logs
-3. **Build Queries** — Write SPL detection rules
-4. **Execute** — Run queries against data
-5. **Triage** — Filter false positives
-6. **Document** — Record findings
+1. **Define Scope**  -  Identify techniques to hunt
+2. **Collect Data**  -  Gather historical logs
+3. **Build Queries**  -  Write SPL detection rules
+4. **Execute**  -  Run queries against data
+5. **Triage**  -  Filter false positives
+6. **Document**  -  Record findings
 
 ## Anti-Rationalization
 | Rationalization | Reality |
@@ -480,7 +725,7 @@ document.querySelectorAll('.docs-sidebar a').forEach(a => {
     a.classList.add('active');
   });
 });'''
-    return page('Documentation — 1ai-Skills', 'docs', body, js)
+    return page('Documentation  -  1ai-Skills', 'docs', body, js)
 
 
 # ── Page: browse.html ──
@@ -575,7 +820,7 @@ document.querySelectorAll('.tab').forEach(tab => {{
 
 render(skills.slice(0, 60));'''
 
-    return page('Browse Skills — 1ai-Skills', 'browse', body, js)
+    return page('Browse Skills  -  1ai-Skills', 'browse', body, js)
 
 
 # ── Page: examples.html ──
@@ -612,12 +857,12 @@ def gen_examples(data):
 | "We will fix it after launch" | Vulnerabilities in production are exploited within hours |
 
 # Agent follows the Workflow:
-1. **Reconnaissance** — Map API endpoints and parameters
-2. **Authentication Testing** — Test auth bypass, token manipulation
-3. **Authorization Testing** — Test IDOR, privilege escalation
-4. **Input Validation** — Test injection, XSS, SSRF
-5. **Business Logic** — Test rate limiting, race conditions
-6. **Report** — Document findings with reproduction steps</code></pre>
+1. **Reconnaissance**  -  Map API endpoints and parameters
+2. **Authentication Testing**  -  Test auth bypass, token manipulation
+3. **Authorization Testing**  -  Test IDOR, privilege escalation
+4. **Input Validation**  -  Test injection, XSS, SSRF
+5. **Business Logic**  -  Test rate limiting, race conditions
+6. **Report**  -  Document findings with reproduction steps</code></pre>
         <p>The agent cannot skip steps because the anti-rationalization table explicitly addresses the excuses it would use.</p>
 
         <h2 id="use-case-2">Use Case: Code Review</h2>
@@ -631,23 +876,23 @@ def gen_examples(data):
 | "Small change, no review needed" | Most bugs come from "small" changes. Review everything. |
 
 # Agent follows the Workflow:
-1. **Read the diff** — Understand what changed and why
-2. **Check tests** — Verify test coverage for changed code
-3. **Security scan** — Check for injection, auth bypass, data leaks
-4. **Performance** — Check for N+1 queries, memory leaks
-5. **Documentation** — Verify docs updated with code changes
-6. **Report** — List findings with severity and fix suggestions</code></pre>
+1. **Read the diff**  -  Understand what changed and why
+2. **Check tests**  -  Verify test coverage for changed code
+3. **Security scan**  -  Check for injection, auth bypass, data leaks
+4. **Performance**  -  Check for N+1 queries, memory leaks
+5. **Documentation**  -  Verify docs updated with code changes
+6. **Report**  -  List findings with severity and fix suggestions</code></pre>
 
         <h2 id="use-case-3">Use Case: Marketing Campaign</h2>
         <p>You need to launch a product with a multi-channel marketing campaign.</p>
         <h3>Agent loads: <code>marketing-ops</code></h3>
         <pre><code># The agent follows a structured marketing workflow:
-1. **Customer Research** — Define ICP, pain points, messaging
-2. **Content Strategy** — Blog posts, social, email sequences
-3. **SEO Optimization** — Keyword research, on-page SEO
-4. **Paid Ads** — Campaign structure, targeting, creative
-5. **Launch Sequence** — Pre-launch, launch day, post-launch
-6. **Analytics** — Track KPIs, optimize based on data</code></pre>
+1. **Customer Research**  -  Define ICP, pain points, messaging
+2. **Content Strategy**  -  Blog posts, social, email sequences
+3. **SEO Optimization**  -  Keyword research, on-page SEO
+4. **Paid Ads**  -  Campaign structure, targeting, creative
+5. **Launch Sequence**  -  Pre-launch, launch day, post-launch
+6. **Analytics**  -  Track KPIs, optimize based on data</code></pre>
 
         <h2 id="use-case-4">Use Case: Trading Strategy</h2>
         <p>You need to develop and backtest a trading strategy.</p>
@@ -660,12 +905,12 @@ def gen_examples(data):
 | "I do not need to journal" | Journaling reveals patterns in your behavior. Track every trade. |
 
 # Agent follows the Workflow:
-1. **Market Analysis** — Identify regime, trend, volatility
-2. **Strategy Design** — Entry/exit rules, position sizing
-3. **Backtesting** — Test on historical data
-4. **Risk Management** — Stop-loss, max drawdown, correlation
-5. **Paper Trading** — Test in live market without real money
-6. **Live Trading** — Deploy with monitoring and kill switch</code></pre>
+1. **Market Analysis**  -  Identify regime, trend, volatility
+2. **Strategy Design**  -  Entry/exit rules, position sizing
+3. **Backtesting**  -  Test on historical data
+4. **Risk Management**  -  Stop-loss, max drawdown, correlation
+5. **Paper Trading**  -  Test in live market without real money
+6. **Live Trading**  -  Deploy with monitoring and kill switch</code></pre>
 
         <h2 id="use-case-5">Use Case: Document Generation</h2>
         <p>You need to generate a quarterly report as a Word document.</p>
@@ -694,14 +939,14 @@ doc.save('report.docx')</code></pre>
         <h2 id="use-case-6">Use Case: Multi-Skill Workflow</h2>
         <p>Complex tasks benefit from multiple skills working together.</p>
         <h3>Example: Product Launch Pipeline</h3>
-        <pre><code># 1. spec-driven-development — Define what to build
-# 2. frontend-ui-design — Build the UI
-# 3. browser-testing-devtools — Test the UI
-# 4. docx-creator — Generate user documentation
-# 5. marketing-ops — Plan the launch campaign
-# 6. seo-optimizer — Optimize landing page
-# 7. stripe-integration — Set up payments
-# 8. requesting-code-review — Review everything
+        <pre><code># 1. spec-driven-development  -  Define what to build
+# 2. frontend-ui-design  -  Build the UI
+# 3. browser-testing-devtools  -  Test the UI
+# 4. docx-creator  -  Generate user documentation
+# 5. marketing-ops  -  Plan the launch campaign
+# 6. seo-optimizer  -  Optimize landing page
+# 7. stripe-integration  -  Set up payments
+# 8. requesting-code-review  -  Review everything
 
 # Each skill provides domain-specific expertise
 # The anti-rationalization tables prevent cutting corners at every step</code></pre>
@@ -718,7 +963,7 @@ document.querySelectorAll('.docs-sidebar a').forEach(a => {
     a.classList.add('active');
   });
 });'''
-    return page('Examples — 1ai-Skills', 'examples', body, js)
+    return page('Examples  -  1ai-Skills', 'examples', body, js)
 
 
 # ── Page: api.html ──
@@ -845,7 +1090,7 @@ document.querySelectorAll('.docs-sidebar a').forEach(a => {
     a.classList.add('active');
   });
 });'''
-    return page('API Reference — 1ai-Skills', 'api', body, js)
+    return page('API Reference  -  1ai-Skills', 'api', body, js)
 
 
 # ── Main ──

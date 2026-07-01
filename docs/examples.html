@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Examples — 1ai-Skills — 1ai-Skills</title>
+<title>Examples  -  1ai-Skills - 1ai-Skills</title>
 <meta name="description" content="1ai-Skills: 1337 production-grade AI agent skills with anti-rationalization tables.">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -118,9 +118,84 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
 .footer-links a{color:var(--text2);font-size:.82rem;padding:6px 12px;border-radius:6px}
 .footer-links a:hover{color:#fff;background:var(--surface2)}
 
-/* FADE IN */
-.fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
-.fade-in.visible{opacity:1;transform:translateY(0)}
+/* HERO */
+.hero{min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;padding:120px 24px 80px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(139,92,246,.12) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(56,189,248,.08) 0%,transparent 50%)}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:20px}
+.hero h1 .grad{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:var(--text2);font-size:1.15rem;max-width:600px;margin:0 auto 32px;line-height:1.7}
+.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* SOCIAL PROOF */
+.social-proof{padding:24px 0;border-bottom:1px solid var(--border);text-align:center}
+.social-proof p{color:var(--text3);font-size:.8rem;margin-bottom:12px;text-transform:uppercase;letter-spacing:.1em}
+.social-logos{display:flex;gap:32px;justify-content:center;align-items:center;flex-wrap:wrap;opacity:.5}
+.social-logos span{font-size:.9rem;font-weight:600;color:var(--text2)}
+
+/* STATS GRID */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:800px;margin:0 auto 60px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 16px;text-align:center;transition:all .3s}
+.stat-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.stat-num{font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2}
+.stat-label{font-size:.85rem;color:var(--text2);margin-top:4px}
+
+/* STORY */
+.story{padding:80px 0}
+.story-container{max-width:1000px;margin:0 auto;padding:0 24px}
+.story-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.story-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:32px;text-align:center;transition:all .3s}
+.story-card:hover{border-color:rgba(139,92,246,.3);transform:translateY(-4px)}
+.story-icon{font-size:2.5rem;margin-bottom:16px}
+.story-card h3{font-size:1.1rem;font-weight:700;margin-bottom:12px;color:#fff}
+.story-card p{font-size:.9rem;color:var(--text2);line-height:1.7}
+.story-quote{margin-top:48px;text-align:center;padding:32px;background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(56,189,248,.08));border-radius:var(--radius);border:1px solid rgba(139,92,246,.15)}
+.story-quote blockquote{font-size:1.15rem;font-style:italic;color:var(--text);line-height:1.6;max-width:700px;margin:0 auto}
+
+/* SECTION TITLE */
+.section-title{text-align:center;margin-bottom:30px;font-size:1.4rem;font-weight:700}
+.section-subtitle{text-align:center;color:var(--text2);font-size:1rem;margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:900px;margin:0 auto 60px}
+.step{text-align:center;padding:28px}
+.step-num{width:48px;height:48px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.2rem;color:#fff;margin:0 auto 16px}
+.step h3{font-size:1rem;font-weight:700;margin-bottom:8px;color:#fff}
+.step p{font-size:.88rem;color:var(--text2)}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:60px}
+.feature{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .3s}
+.feature:hover{border-color:var(--border2);transform:translateY(-2px)}
+.feature h3{font-size:1rem;font-weight:700;margin-bottom:8px;color:#fff}
+.feature p{font-size:.88rem;color:var(--text2);line-height:1.6}
+
+/* VIDEO */
+.video-section{padding:80px 0}
+.video-container{max-width:800px;margin:0 auto;padding:0 24px;text-align:center}
+.video-wrapper{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--border)}
+.video-placeholder{aspect-ratio:16/9;background:linear-gradient(135deg,var(--bg2),var(--bg3));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.video-play{width:72px;height:72px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#fff;box-shadow:0 8px 32px rgba(139,92,246,.4)}
+
+/* PROOF */
+.proof{padding:80px 0;background:linear-gradient(180deg,transparent,rgba(139,92,246,.03),transparent)}
+.proof-container{max-width:800px;margin:0 auto;padding:0 24px;text-align:center}
+.terminal{background:var(--bg2);border-radius:12px;overflow:hidden;border:1px solid var(--border);text-align:left;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.terminal-header{display:flex;align-items:center;gap:8px;padding:12px 16px;background:var(--surface);border-bottom:1px solid var(--border)}
+.terminal-dot{width:12px;height:12px;border-radius:50%}
+.terminal-body{padding:20px 24px}
+.terminal-body pre{margin:0;background:none;border:none;padding:0}
+.terminal-body code{color:var(--text2);line-height:1.8}
+.hl-green{color:var(--accent2)}
+.hl-cyan{color:var(--accent3)}
+
+/* INSTALL TABS */
+.install-section{padding:80px 0;text-align:center}
+.install-section .tabs{justify-content:center}
+.install-cmd{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xs);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
+.install-cmd code{flex:1;text-align:left;font-size:.85rem;color:var(--accent2)}
+.copy-btn{padding:6px 14px;border-radius:6px;background:var(--surface2);color:var(--text2);font-size:.75rem;cursor:pointer;border:none;font-family:var(--font);transition:all .2s}
+.copy-btn:hover{background:var(--surface3);color:#fff}
 
 /* RESPONSIVE */
 @media(max-width:768px){
@@ -128,10 +203,15 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
   .burger{display:flex}
   nav .links.open{position:absolute;top:64px;left:0;right:0;background:var(--glass2);flex-direction:column;padding:16px;border-bottom:1px solid var(--border)}
   nav .links.open a{display:block;padding:12px 20px}
+  .hero{min-height:50vh;padding:100px 16px 60px}
+  .stats-grid{grid-template-columns:repeat(2,1fr);max-width:400px}
+  .story-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr}
   .docs-layout{grid-template-columns:1fr}
   .docs-sidebar{position:static}
-  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
   footer .footer-inner{flex-direction:column;text-align:center}
+  .stat-num{font-size:1.5rem}
 }
 </style>
 </head>
@@ -186,12 +266,12 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
 | "We will fix it after launch" | Vulnerabilities in production are exploited within hours |
 
 # Agent follows the Workflow:
-1. **Reconnaissance** — Map API endpoints and parameters
-2. **Authentication Testing** — Test auth bypass, token manipulation
-3. **Authorization Testing** — Test IDOR, privilege escalation
-4. **Input Validation** — Test injection, XSS, SSRF
-5. **Business Logic** — Test rate limiting, race conditions
-6. **Report** — Document findings with reproduction steps</code></pre>
+1. **Reconnaissance**  -  Map API endpoints and parameters
+2. **Authentication Testing**  -  Test auth bypass, token manipulation
+3. **Authorization Testing**  -  Test IDOR, privilege escalation
+4. **Input Validation**  -  Test injection, XSS, SSRF
+5. **Business Logic**  -  Test rate limiting, race conditions
+6. **Report**  -  Document findings with reproduction steps</code></pre>
         <p>The agent cannot skip steps because the anti-rationalization table explicitly addresses the excuses it would use.</p>
 
         <h2 id="use-case-2">Use Case: Code Review</h2>
@@ -205,23 +285,23 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
 | "Small change, no review needed" | Most bugs come from "small" changes. Review everything. |
 
 # Agent follows the Workflow:
-1. **Read the diff** — Understand what changed and why
-2. **Check tests** — Verify test coverage for changed code
-3. **Security scan** — Check for injection, auth bypass, data leaks
-4. **Performance** — Check for N+1 queries, memory leaks
-5. **Documentation** — Verify docs updated with code changes
-6. **Report** — List findings with severity and fix suggestions</code></pre>
+1. **Read the diff**  -  Understand what changed and why
+2. **Check tests**  -  Verify test coverage for changed code
+3. **Security scan**  -  Check for injection, auth bypass, data leaks
+4. **Performance**  -  Check for N+1 queries, memory leaks
+5. **Documentation**  -  Verify docs updated with code changes
+6. **Report**  -  List findings with severity and fix suggestions</code></pre>
 
         <h2 id="use-case-3">Use Case: Marketing Campaign</h2>
         <p>You need to launch a product with a multi-channel marketing campaign.</p>
         <h3>Agent loads: <code>marketing-ops</code></h3>
         <pre><code># The agent follows a structured marketing workflow:
-1. **Customer Research** — Define ICP, pain points, messaging
-2. **Content Strategy** — Blog posts, social, email sequences
-3. **SEO Optimization** — Keyword research, on-page SEO
-4. **Paid Ads** — Campaign structure, targeting, creative
-5. **Launch Sequence** — Pre-launch, launch day, post-launch
-6. **Analytics** — Track KPIs, optimize based on data</code></pre>
+1. **Customer Research**  -  Define ICP, pain points, messaging
+2. **Content Strategy**  -  Blog posts, social, email sequences
+3. **SEO Optimization**  -  Keyword research, on-page SEO
+4. **Paid Ads**  -  Campaign structure, targeting, creative
+5. **Launch Sequence**  -  Pre-launch, launch day, post-launch
+6. **Analytics**  -  Track KPIs, optimize based on data</code></pre>
 
         <h2 id="use-case-4">Use Case: Trading Strategy</h2>
         <p>You need to develop and backtest a trading strategy.</p>
@@ -234,12 +314,12 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
 | "I do not need to journal" | Journaling reveals patterns in your behavior. Track every trade. |
 
 # Agent follows the Workflow:
-1. **Market Analysis** — Identify regime, trend, volatility
-2. **Strategy Design** — Entry/exit rules, position sizing
-3. **Backtesting** — Test on historical data
-4. **Risk Management** — Stop-loss, max drawdown, correlation
-5. **Paper Trading** — Test in live market without real money
-6. **Live Trading** — Deploy with monitoring and kill switch</code></pre>
+1. **Market Analysis**  -  Identify regime, trend, volatility
+2. **Strategy Design**  -  Entry/exit rules, position sizing
+3. **Backtesting**  -  Test on historical data
+4. **Risk Management**  -  Stop-loss, max drawdown, correlation
+5. **Paper Trading**  -  Test in live market without real money
+6. **Live Trading**  -  Deploy with monitoring and kill switch</code></pre>
 
         <h2 id="use-case-5">Use Case: Document Generation</h2>
         <p>You need to generate a quarterly report as a Word document.</p>
@@ -268,14 +348,14 @@ doc.save('report.docx')</code></pre>
         <h2 id="use-case-6">Use Case: Multi-Skill Workflow</h2>
         <p>Complex tasks benefit from multiple skills working together.</p>
         <h3>Example: Product Launch Pipeline</h3>
-        <pre><code># 1. spec-driven-development — Define what to build
-# 2. frontend-ui-design — Build the UI
-# 3. browser-testing-devtools — Test the UI
-# 4. docx-creator — Generate user documentation
-# 5. marketing-ops — Plan the launch campaign
-# 6. seo-optimizer — Optimize landing page
-# 7. stripe-integration — Set up payments
-# 8. requesting-code-review — Review everything
+        <pre><code># 1. spec-driven-development  -  Define what to build
+# 2. frontend-ui-design  -  Build the UI
+# 3. browser-testing-devtools  -  Test the UI
+# 4. docx-creator  -  Generate user documentation
+# 5. marketing-ops  -  Plan the launch campaign
+# 6. seo-optimizer  -  Optimize landing page
+# 7. stripe-integration  -  Set up payments
+# 8. requesting-code-review  -  Review everything
 
 # Each skill provides domain-specific expertise
 # The anti-rationalization tables prevent cutting corners at every step</code></pre>
