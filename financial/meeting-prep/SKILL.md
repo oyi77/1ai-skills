@@ -19,7 +19,7 @@ tags:
 
 **Core Philosophy:** Every meeting is a trust-building moment. Walk in prepared, walk out with commitment.
 
-## Overview:
+## Overview
 
 Prepares comprehensive briefing packs before client/investor meetings. Handles the full workflow: research → analyze → synthesize → brief.
 

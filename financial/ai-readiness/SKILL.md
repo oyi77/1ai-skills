@@ -18,7 +18,7 @@ tags:
 
 **Core Philosophy:** AI readiness isn't about having GPUs — it's about culture, data, and leadership. Assess the COMPANY, not the tech stack.
 
-## Overview:!
+## Overview
 
 Assesses portfolio company AI readiness across 5 dimensions: Strategy, Data, Tech, Culture, ROI. Outputs maturity score (1-5) and roadmap.
 

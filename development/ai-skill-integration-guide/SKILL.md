@@ -144,7 +144,7 @@ Every imported skill must pass these gates before merge:
 
 **Gate 5 — No Leaks**: No hardcoded paths, API keys, user-specific config, or internal URLs. Safe for any user to install.
 
-## Process Summary
+## Process
 
 ```
 1. Discovery    → Read repo, list skills, extract metadata

@@ -19,7 +19,7 @@ tags:
 
 **Core Philosophy:** LP reporting is a fiduciary duty. Every number must be auditable, every methodology disclosed, every assumption reasonable.
 
-## Overview:
+## Overview
 
 Ingests GP (General Partner) packages, runs valuation templates, and stages LP reporting. Handles the full workflow: ingest → validate → calculate → report.
 

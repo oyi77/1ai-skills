@@ -20,7 +20,7 @@ tags:
 
 **Core Philosophy:** Every onboarding is a risk decision. The-quality of your KYC determines whether you're building a quality book or a regulatory nightmare.
 
-## Overview:
+## Overview
 
 Parses onboarding documents, runs compliance rules engine, and flags gaps. Handles the full KYC workflow: ingest → parse → screen → flag → report.
 

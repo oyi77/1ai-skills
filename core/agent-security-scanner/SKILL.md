@@ -42,7 +42,7 @@ AI agents present a unique attack surface: they read untrusted input, execute co
 - Task is about defense, not offense (use defensive skills)
 
 
-## Process / Steps
+## Process
 1. Gather requirements and constraints from the user
 2. Validate prerequisites (tools, permissions, data)
 3. Execute the core operation with error handling

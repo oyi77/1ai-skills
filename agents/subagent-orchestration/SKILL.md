@@ -33,7 +33,7 @@ Subagent orchestration solves the fundamental challenge of multi-agent systems: 
 - Task is about agent training, not orchestration
 - You don't need context management (task is self-contained)
 
-## Process / Steps
+## Process
 
 Follow these steps in order. Each step builds on the previous one.
 
