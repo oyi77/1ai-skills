@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1ai-Skills — 1337 AI Agent Skills — 1ai-Skills</title>
-<meta name="description" content="1ai-Skills: 1337 production-grade AI agent skills with anti-rationalization tables.">
+<title>1ai-Skills — The Largest AI Agent Skill Library</title>
+<meta name="description" content="1334 production-grade AI agent skills with anti-rationalization tables across 19 categories.">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -16,7 +16,6 @@
   --border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.12);
   --glass:rgba(12,12,26,.6);--glass2:rgba(12,12,26,.8);
   --radius:16px;--radius-sm:10px;--radius-xs:6px;
-  --shadow:0 8px 32px rgba(0,0,0,.4);
   --font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
   --mono:'SF Mono','Fira Code','Cascadia Code',Consolas,monospace;
 }
@@ -26,8 +25,6 @@ a{color:var(--accent3);text-decoration:none;transition:color .2s}
 a:hover{color:#7dd3fc}
 .container{max-width:1240px;margin:0 auto;padding:0 24px}
 code{font-family:var(--mono);background:var(--surface2);padding:2px 6px;border-radius:4px;font-size:.88em}
-pre{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xs);padding:20px;overflow-x:auto;font-family:var(--mono);font-size:.85rem;color:var(--accent2);line-height:1.7}
-pre code{background:none;padding:0}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--glass2);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
@@ -44,7 +41,7 @@ nav .links a:not(.btn):hover{color:#fff;background:var(--surface2)}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .burger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px}
 
-/* PAGE LAYOUT */
+/* PAGE */
 .page{padding:100px 0 60px;min-height:100vh}
 .page-header{text-align:center;margin-bottom:56px}
 .page-header h1{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
@@ -57,56 +54,56 @@ nav .links a:not(.btn):hover{color:#fff;background:var(--surface2)}
 .card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px;color:#fff}
 .card p{font-size:.88rem;color:var(--text2);line-height:1.6}
 
-/* GRID */
-.grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px}
+/* STATS GRID — centered 4-column */
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:16px;
+  max-width:800px;
+  margin:0 auto 60px;
+}
+.stat-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px 16px;
+  text-align:center;
+  transition:all .3s;
+}
+.stat-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.stat-num{
+  font-size:2rem;
+  font-weight:800;
+  background:var(--grad);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  line-height:1.2;
+}
+.stat-label{
+  font-size:.85rem;
+  color:var(--text2);
+  margin-top:4px;
+}
+
+/* GRIDS */
 .grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
 .grid-4{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-
-/* TABLE */
-table{width:100%;border-collapse:collapse;margin:20px 0}
-th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--border)}
-th{color:var(--accent);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
-td{font-size:.9rem;color:var(--text2)}
-tr:hover td{color:var(--text);background:var(--surface)}
 
 /* BADGE */
 .badge{display:inline-block;font-size:.7rem;font-weight:600;padding:3px 10px;border-radius:999px;text-transform:uppercase;letter-spacing:.05em}
 .badge-cat{background:rgba(139,92,246,.15);color:var(--accent)}
-.badge-new{background:rgba(244,114,182,.15);color:var(--accent4)}
 
-/* SEARCH */
-.search-wrap{max-width:500px;margin:0 auto 40px;position:relative}
-.search-wrap input{width:100%;padding:14px 20px 14px 48px;border-radius:var(--radius-sm);border:1px solid var(--border2);background:var(--surface);color:var(--text);font-size:.95rem;font-family:var(--font);outline:none;transition:border-color .2s}
-.search-wrap input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(139,92,246,.15)}
-.search-wrap .search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text3);font-size:1.1rem;pointer-events:none}
+/* SECTION TITLES */
+.section-title{text-align:center;margin-bottom:30px;font-size:1.4rem;font-weight:700}
 
 /* SKILL CARD */
-.skill-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:all .3s;cursor:pointer}
+.skill-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:all .3s;cursor:default}
 .skill-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .skill-card h4{font-size:.95rem;font-weight:700;margin-bottom:6px;color:#fff}
 .skill-card .desc{font-size:.82rem;color:var(--text2);line-height:1.5;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .skill-card .meta{display:flex;gap:8px;flex-wrap:wrap}
 .skill-card .meta span{font-size:.7rem;padding:2px 8px;border-radius:999px;background:var(--surface2);color:var(--text3)}
-
-/* SIDEBAR */
-.docs-layout{display:grid;grid-template-columns:240px 1fr;gap:40px;align-items:start}
-.docs-sidebar{position:sticky;top:80px}
-.docs-sidebar a{display:block;padding:8px 16px;color:var(--text2);font-size:.85rem;border-radius:8px;transition:all .2s;border-left:2px solid transparent}
-.docs-sidebar a:hover,.docs-sidebar a.active{color:#fff;background:var(--surface2);border-left-color:var(--accent)}
-.docs-content h2{font-size:1.4rem;font-weight:700;margin:40px 0 16px;padding-top:20px;border-top:1px solid var(--border)}
-.docs-content h2:first-child{margin-top:0;border-top:none;padding-top:0}
-.docs-content h3{font-size:1.1rem;font-weight:600;margin:24px 0 12px}
-.docs-content p{margin-bottom:16px;color:var(--text2)}
-.docs-content ul{margin-bottom:16px;padding-left:20px;color:var(--text2)}
-.docs-content li{margin-bottom:6px}
-
-/* TABS */
-.tabs{display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid var(--border)}
-.tab{padding:10px 20px;cursor:pointer;color:var(--text2);font-size:.9rem;font-weight:500;border-bottom:2px solid transparent;transition:all .2s}
-.tab:hover{color:#fff}
-.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
-.tab-content{display:none}
-.tab-content.active{display:block}
 
 /* FOOTER */
 footer{padding:48px 0;border-top:1px solid var(--border)}
@@ -122,16 +119,25 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
 .fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 
+/* LOADING */
+.loading{text-align:center;padding:40px;color:var(--text3)}
+
 /* RESPONSIVE */
 @media(max-width:768px){
   nav .links a:not(.btn){display:none}
   .burger{display:flex}
   nav .links.open{position:absolute;top:64px;left:0;right:0;background:var(--glass2);flex-direction:column;padding:16px;border-bottom:1px solid var(--border)}
   nav .links.open a{display:block;padding:12px 20px}
-  .docs-layout{grid-template-columns:1fr}
-  .docs-sidebar{position:static}
-  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr);max-width:400px}
+  .grid-3{grid-template-columns:1fr}
+  .grid-4{grid-template-columns:repeat(2,1fr)}
   footer .footer-inner{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:10px;max-width:320px}
+  .stat-card{padding:16px 8px}
+  .stat-num{font-size:1.5rem}
+  .page-header h1{font-size:1.6rem}
 }
 </style>
 </head>
@@ -148,10 +154,7 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
       <a href="browse.html">Browse</a>
       <a href="examples.html">Examples</a>
       <a href="api.html">API</a>
-      <a href="https://github.com/oyi77/1ai-skills" class="btn btn-ghost" target="_blank">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-        GitHub
-      </a>
+      <a href="https://github.com/oyi77/1ai-skills" target="_blank" class="btn btn-primary">GitHub</a>
     </div>
   </div>
 </nav>
@@ -160,7 +163,7 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
   <div class="container">
     <div class="page-header">
       <h1>The <span class="grad">Largest</span> AI Agent Skill Library</h1>
-      <p>1337 production-grade skills across 19 categories. Every skill tested, every skill has anti-rationalization tables.</p>
+      <p>Production-grade skills with anti-rationalization tables. Every skill tested, every skill verified.</p>
       <div style="margin-top:24px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
         <a href="docs.html" class="btn btn-primary">Get Started</a>
         <a href="browse.html" class="btn btn-ghost">Browse Skills</a>
@@ -168,168 +171,24 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
       </div>
     </div>
 
-    <div class="grid-4" style="margin-bottom:60px">
-      <div class="card" style="text-align:center"><div style="font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">1337</div><p>Skills</p></div>
-      <div class="card" style="text-align:center"><div style="font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">19</div><p>Categories</p></div>
-      <div class="card" style="text-align:center"><div style="font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">0</div><p>Warnings</p></div>
-      <div class="card" style="text-align:center"><div style="font-size:2rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">100%</div><p>Pass Rate</p></div>
+    <!-- STATS — centered, responsive -->
+    <div class="stats-grid" id="stats">
+      <div class="stat-card fade-in"><div class="stat-num" id="statTotal">—</div><div class="stat-label">Skills</div></div>
+      <div class="stat-card fade-in"><div class="stat-num" id="statCats">—</div><div class="stat-label">Categories</div></div>
+      <div class="stat-card fade-in"><div class="stat-num">0</div><div class="stat-label">Warnings</div></div>
+      <div class="stat-card fade-in"><div class="stat-num">100%</div><div class="stat-label">Pass Rate</div></div>
     </div>
 
-    <h2 style="text-align:center;margin-bottom:30px">New Skills</h2>
-    <div class="grid-3" style="margin-bottom:60px">
-      <div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Model Router</h3>
-  <p>Intelligent model routing via subagents - automatically spawn the right model for each task complexi</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">core</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Pdf Creator</h3>
-  <p>Create, edit, and extract text from PDF documents. Generate reports, invoices, and forms. Parse exis</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Pptx Creator</h3>
-  <p>Create and edit PowerPoint presentations programmatically. Generate slide decks with layouts, charts</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Theme Factory</h3>
-  <p>Generate and apply professional color themes, typography systems, and design tokens for applications</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Docx Creator</h3>
-  <p>Create, edit, and analyze Word documents programmatically using python-docx or docx.js. Generate rep</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Canvas Design</h3>
-  <p>Design visual art and graphics using HTML5 Canvas, p5.js, or SVG. Create generative art, data visual</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Xlsx Creator</h3>
-  <p>Create, edit, and analyze Excel spreadsheets programmatically. Generate financial models, data table</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Frontend Ui Design</h3>
-  <p>Design and build production-grade UI components using React, Vue, or vanilla HTML/CSS. Create respon</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">content</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Replicate Runner</h3>
-  <p>Run AI models on Replicate cloud API. Deploy image generation, video creation, audio processing, and</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">core</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Gemini Api Dev</h3>
-  <p>Build applications using Google Gemini API. Handle chat completions, multimodal inputs, function cal</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">core</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Spec Driven Development</h3>
-  <p>Write a PRD covering objectives, commands, structure, code style, testing, and boundaries before any</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">development</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Browser Testing Devtools</h3>
-  <p>Test web applications using browser DevTools, Playwright, or Puppeteer. Automate E2E testing, visual</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">development</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Git Workflow Mastery</h3>
-  <p>Master Git workflows including branching strategies, interactive rebase, cherry-pick, bisect, worktr</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">development</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Context Engineering</h3>
-  <p>Design and manage the context window for AI coding agents. Structure prompts, manage file loading, a</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">development</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Supabase Integration</h3>
-  <p>Integrate Supabase for authentication, database, storage, and real-time subscriptions. Build full-st</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">integrations</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Bigquery Integration</h3>
-  <p>Integrate Google BigQuery for large-scale data analytics. Write SQL queries, manage datasets, export</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">integrations</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Firebase Integration</h3>
-  <p>Integrate Firebase for authentication, Firestore database, Cloud Functions, hosting, and push notifi</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">integrations</span></div>
-</div><div class="card fade-in">
-  <span class="badge badge-new">New</span>
-  <h3>Stripe Integration</h3>
-  <p>Integrate Stripe for payments, subscriptions, invoicing, and billing. Handle checkout sessions, webh</p>
-  <div style="margin-top:10px"><span class="badge badge-cat">integrations</span></div>
-</div>
+    <!-- FEATURED SKILLS — dynamic -->
+    <h2 class="section-title">Featured Skills</h2>
+    <div class="grid-3" id="featuredSkills" style="margin-bottom:60px">
+      <div class="loading">Loading skills...</div>
     </div>
 
-    <h2 style="text-align:center;margin-bottom:30px">Categories</h2>
-    <div class="grid-4">
-      <div class="card fade-in">
-  <h3>Cybersecurity</h3>
-  <p><strong>786</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Development</h3>
-  <p><strong>92</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Content</h3>
-  <p><strong>64</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Mindset</h3>
-  <p><strong>55</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Marketing</h3>
-  <p><strong>45</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Core</h3>
-  <p><strong>44</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Integrations</h3>
-  <p><strong>36</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Devops</h3>
-  <p><strong>33</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Automation</h3>
-  <p><strong>28</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Research</h3>
-  <p><strong>23</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Trading</h3>
-  <p><strong>20</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Operations</h3>
-  <p><strong>19</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Agents</h3>
-  <p><strong>16</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Financial</h3>
-  <p><strong>15</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Mcp</h3>
-  <p><strong>14</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Sales</h3>
-  <p><strong>14</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Meta</h3>
-  <p><strong>13</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Data</h3>
-  <p><strong>10</strong> skills</p>
-</div><div class="card fade-in">
-  <h3>Productivity</h3>
-  <p><strong>10</strong> skills</p>
-</div>
+    <!-- CATEGORIES — dynamic -->
+    <h2 class="section-title">Categories</h2>
+    <div class="grid-4" id="categoryGrid">
+      <div class="loading">Loading categories...</div>
     </div>
   </div>
 </section>
@@ -347,13 +206,68 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
     </div>
   </div>
 </footer>
-<script>
-document.querySelectorAll('.fade-in').forEach(el => {
-  new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting){el.classList.add('visible');this.unobserve(el)} })
-  },{threshold:.1}).observe(el);
-});
 
+<script>
+(async () => {
+  try {
+    const res = await fetch('site-data.json');
+    if (!res.ok) return;
+    const data = await res.json();
+
+    // Stats
+    document.getElementById('statTotal').textContent = data.total.toLocaleString();
+    document.getElementById('statCats').textContent = data.categoryCount;
+
+    // Featured skills
+    const featuredEl = document.getElementById('featuredSkills');
+    if (data.featured && data.featured.length) {
+      featuredEl.innerHTML = data.featured.map(s => `
+        <div class="skill-card fade-in">
+          <h4>${esc(s.name)}</h4>
+          <div class="desc">${esc(s.description)}</div>
+          <div class="meta"><span class="badge badge-cat">${esc(s.category)}</span></div>
+        </div>
+      `).join('');
+    }
+
+    // Categories
+    const catEl = document.getElementById('categoryGrid');
+    if (data.categories && data.categories.length) {
+      catEl.innerHTML = data.categories.map(c => `
+        <div class="card fade-in">
+          <h3>${esc(c.name)}</h3>
+          <p><strong>${c.count}</strong> skills</p>
+        </div>
+      `).join('');
+    }
+
+    // Re-init fade-in observers
+    initFadeIn();
+  } catch (e) {
+    console.error('Failed to load site data:', e);
+  }
+})();
+
+function esc(s) {
+  const d = document.createElement('div');
+  d.textContent = s || '';
+  return d.innerHTML;
+}
+
+function initFadeIn() {
+  document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
+    new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          this.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 }).observe(el);
+  });
+}
+
+initFadeIn();
 </script>
 </body>
 </html>
