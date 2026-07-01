@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# sync-skills.sh — Sync 1ai-skills repo into ~/.agents/skills/
+# sync-skills.sh — Sync ALL 1ai-skills into ~/.agents/skills/
 # Usage: ./scripts/sync-skills.sh [--dry-run] [--clean]
 #
-# Scans all SKILL.md files in content/ (including nested subdirs like content/video/)
-# and copies them to ~/.agents/skills/<skill-name>/
+# Scans ALL SKILL.md files across all categories (content, core, development,
+# marketing, cybersecurity, etc.) and copies to ~/.agents/skills/<skill-name>/
 
 set -euo pipefail
 
@@ -19,14 +19,26 @@ for arg in "$@"; do
   esac
 done
 
-# Find all SKILL.md files in content/ (flat + nested)
-mapfile -t SKILLS < <(find "$REPO_ROOT/content" -name "SKILL.md" -type f | sort)
+# Category directories that contain skills
+CATEGORIES=(
+  content core development integrations marketing meta mindset
+  operations productivity research sales trading data devops
+  cybersecurity automation financial mcp
+)
+
+# Find all SKILL.md across all categories (flat + nested)
+SEARCH_DIRS=()
+for cat in "${CATEGORIES[@]}"; do
+  [ -d "$REPO_ROOT/$cat" ] && SEARCH_DIRS+=("$REPO_ROOT/$cat")
+done
+
+mapfile -t SKILLS < <(find "${SEARCH_DIRS[@]}" -name "SKILL.md" -type f | sort)
 
 SYNCED=0
 SKIPPED=0
 REMOVED=0
 
-echo "Source: $REPO_ROOT/content/"
+echo "Source: $REPO_ROOT (all categories)"
 echo "Target: $TARGET"
 echo "Skills found: ${#SKILLS[@]}"
 echo ""
@@ -37,6 +49,12 @@ declare -A SOURCE_SKILLS
 for skill_file in "${SKILLS[@]}"; do
   skill_dir="$(dirname "$skill_file")"
   skill_name="$(basename "$skill_dir")"
+
+  # Skip if name collision (prefer content/ over others)
+  if [ -n "${SOURCE_SKILLS[$skill_name]+x}" ]; then
+    ((SKIPPED++)) || true
+    continue
+  fi
   SOURCE_SKILLS["$skill_name"]=1
 
   src="$skill_dir"
@@ -45,7 +63,6 @@ for skill_file in "${SKILLS[@]}"; do
   # Check if sync needed (compare SKILL.md mtime)
   if [ -f "$dst/SKILL.md" ]; then
     if [ "$skill_file" -ot "$dst/SKILL.md" ] 2>/dev/null; then
-      # Installed is newer — skip
       ((SKIPPED++)) || true
       continue
     fi
@@ -56,7 +73,8 @@ for skill_file in "${SKILLS[@]}"; do
   else
     rm -rf "$dst"
     cp -r "$src" "$dst"
-    echo "  ✓ synced: $skill_name ($(wc -l < "$dst/SKILL.md")L)"
+    lines=$(wc -l < "$dst/SKILL.md")
+    echo "  ✓ $skill_name (${lines}L)"
   fi
   ((SYNCED++)) || true
 done
@@ -66,6 +84,7 @@ if $CLEAN; then
   echo ""
   echo "Cleaning stale skills..."
   for installed in "$TARGET"/*/; do
+    [ -d "$installed" ] || continue
     name="$(basename "$installed")"
     if [ -z "${SOURCE_SKILLS[$name]+x}" ]; then
       if $DRY_RUN; then
@@ -80,7 +99,7 @@ if $CLEAN; then
 fi
 
 echo ""
-echo "Done: $SYNCED synced, $SKIPPED skipped (up to date)"
+echo "Done: $SYNCED synced, $SKIPPED skipped (up to date or collision)"
 if $CLEAN; then
   echo "      $REMOVED stale skills removed"
 fi
