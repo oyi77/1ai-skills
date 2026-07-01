@@ -15,6 +15,13 @@ Build new agent skills with proper structure, triggers, and verification.
 
 ## When to Use
 
+**Trigger phrases:**
+- "skill builder"
+- "Wants to create an AI skill from a documentation site, GitHub repo, PDF, video,"
+- "Needs to convert documentation into a format suitable for LLM consumption"
+- "Wants to update or sync existing skills with their source documentation"
+
+
 Use this skill when the user:
 - Wants to create an AI skill from a documentation site, GitHub repo, PDF, video, or other source
 - Needs to convert documentation into a format suitable for LLM consumption

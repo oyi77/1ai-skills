@@ -18,6 +18,13 @@ Mindset skill for stress management. Builds capability through deliberate practi
 
 ## When to Use
 
+**Trigger phrases:**
+- "stress management"
+- "Feeling overwhelmed by workload or pressure"
+- "Physical symptoms of stress (tension, fatigue, insomnia)"
+- "Burnout risk (chronic stress without recovery)"
+
+
 - Feeling overwhelmed by workload or pressure
 - Physical symptoms of stress (tension, fatigue, insomnia)
 - Burnout risk (chronic stress without recovery)

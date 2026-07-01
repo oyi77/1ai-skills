@@ -34,6 +34,13 @@ Cybersecurity skill for detecting t1548 abuse elevation control mechanism. Follo
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting t1548 abuse elevation control mechanism"
+- "When hunting for privilege escalation via UAC bypass in Windows environments"
+- "After threat intelligence indicates use of UAC bypass exploits by active threat"
+- "When investigating how attackers achieved administrative access without triggeri"
+
+
 - When hunting for privilege escalation via UAC bypass in Windows environments
 - After threat intelligence indicates use of UAC bypass exploits by active threat groups
 - When investigating how attackers achieved administrative access without triggering UAC prompts

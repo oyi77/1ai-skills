@@ -35,6 +35,13 @@ Cybersecurity skill for detecting suspicious powershell execution. Follows indus
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting suspicious powershell execution"
+- "When proactively hunting for indicators of detecting suspicious powershell execu"
+- "After threat intelligence indicates active campaigns using these techniques"
+- "During incident response to scope compromise related to these techniques"
+
+
 - When proactively hunting for indicators of detecting suspicious powershell execution in the environment
 - After threat intelligence indicates active campaigns using these techniques
 - During incident response to scope compromise related to these techniques

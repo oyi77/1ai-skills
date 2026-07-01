@@ -36,6 +36,13 @@ Cybersecurity skill for detecting supply chain attacks in ci cd. Follows industr
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting supply chain attacks in ci cd"
+- "When investigating security incidents that require detecting supply chain attack"
+- "When building detection rules or threat hunting queries for this domain"
+- "When SOC analysts need structured procedures for this analysis type"
+
+
 - When investigating security incidents that require detecting supply chain attacks in ci cd
 - When building detection rules or threat hunting queries for this domain
 - When SOC analysts need structured procedures for this analysis type

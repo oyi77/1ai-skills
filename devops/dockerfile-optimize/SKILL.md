@@ -27,6 +27,13 @@ Dockerfile optimization — multi-stage builds, layer caching, security hardenin
 
 ## When to Use
 
+**Trigger phrases:**
+- "dockerfile optimize"
+- "Building and configuring this technology"
+- "Integrating with existing workflows"
+- "Optimizing performance and reliability"
+
+
 - Building and configuring this technology
 - Integrating with existing workflows
 - Optimizing performance and reliability

@@ -26,6 +26,13 @@ CI/CD pipeline design with GitHub Actions, GitLab CI — build, test, deploy aut
 
 ## When to Use
 
+**Trigger phrases:**
+- "ci cd pipeline"
+- "Building and configuring this technology"
+- "Integrating with existing workflows"
+- "Optimizing performance and reliability"
+
+
 - Building and configuring this technology
 - Integrating with existing workflows
 - Optimizing performance and reliability

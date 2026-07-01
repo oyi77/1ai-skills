@@ -38,6 +38,13 @@ Cybersecurity skill for deploying osquery for endpoint monitoring. Follows indus
 
 ## When to Use
 
+**Trigger phrases:**
+- "deploying osquery for endpoint monitoring"
+- "Deploying osquery across Windows, macOS, and Linux endpoints for fleet-wide visi"
+- "Building threat hunting queries using osquery's SQL interface"
+- "Monitoring endpoint compliance (installed software, open ports, running services"
+
+
 Use this skill when:
 - Deploying osquery across Windows, macOS, and Linux endpoints for fleet-wide visibility
 - Building threat hunting queries using osquery's SQL interface

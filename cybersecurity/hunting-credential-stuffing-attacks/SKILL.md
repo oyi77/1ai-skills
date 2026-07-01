@@ -29,6 +29,13 @@ Cybersecurity skill for hunting credential stuffing attacks. Follows industry be
 
 ## When to Use
 
+**Trigger phrases:**
+- "hunting credential stuffing attacks"
+- "When investigating security incidents that require hunting credential stuffing a"
+- "When building detection rules or threat hunting queries for this domain"
+- "When SOC analysts need structured procedures for this analysis type"
+
+
 - When investigating security incidents that require hunting credential stuffing attacks
 - When building detection rules or threat hunting queries for this domain
 - When SOC analysts need structured procedures for this analysis type

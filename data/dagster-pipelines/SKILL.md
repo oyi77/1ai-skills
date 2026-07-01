@@ -27,6 +27,13 @@ Dagster is a modern data orchestrator that treats data assets as first-class cit
 
 ## When to Use
 
+**Trigger phrases:**
+- "dagster pipelines"
+- "Building asset-centric data pipelines"
+- "Needing strong typing and testing for data workflows"
+- "Wanting local development and testing before production"
+
+
 - Building asset-centric data pipelines
 - Needing strong typing and testing for data workflows
 - Wanting local development and testing before production

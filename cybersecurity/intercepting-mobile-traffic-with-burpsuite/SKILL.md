@@ -32,6 +32,13 @@ Cybersecurity skill for intercepting mobile traffic with burpsuite. Follows indu
 
 ## When to Use
 
+**Trigger phrases:**
+- "intercepting mobile traffic with burpsuite"
+- "Testing mobile application API endpoints for authentication, authorization, and"
+- "Analyzing data transmitted between mobile apps and backend servers during penetr"
+- "Evaluating certificate pinning implementations and their bypass difficulty"
+
+
 Use this skill when:
 - Testing mobile application API endpoints for authentication, authorization, and injection vulnerabilities
 - Analyzing data transmitted between mobile apps and backend servers during penetration tests

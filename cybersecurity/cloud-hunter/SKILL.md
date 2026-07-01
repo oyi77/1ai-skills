@@ -21,6 +21,13 @@ Cybersecurity skill for cloud hunter. Follows industry best practices and securi
 
 ## When to Use
 
+**Trigger phrases:**
+- "cloud hunter"
+- "Testing cloud-hosted applications"
+- "Hunting exposed S3/GCS/Azure Blob storage"
+- "Auditing IAM policies and roles"
+
+
 - Testing cloud-hosted applications
 - Hunting exposed S3/GCS/Azure Blob storage
 - Auditing IAM policies and roles

@@ -39,6 +39,13 @@ Cybersecurity skill for analyzing windows event logs in splunk. Follows industry
 
 ## When to Use
 
+**Trigger phrases:**
+- "analyzing windows event logs in splunk"
+- "SOC analysts investigate alerts related to Windows authentication, process execu"
+- "Detection engineers build SPL queries for Windows-based threat detection"
+- "Incident responders need forensic timelines of Windows endpoint or domain contro"
+
+
 Use this skill when:
 - SOC analysts investigate alerts related to Windows authentication, process execution, or AD changes
 - Detection engineers build SPL queries for Windows-based threat detection

@@ -37,6 +37,13 @@ Cybersecurity skill for analyzing dns logs for exfiltration. Follows industry be
 
 ## When to Use
 
+**Trigger phrases:**
+- "analyzing dns logs for exfiltration"
+- "SOC teams suspect data exfiltration through DNS tunneling to bypass firewall/pro"
+- "Threat intelligence indicates adversaries using DNS-based C2 channels (e"
+- "UEBA detects anomalous DNS query volumes from specific hosts"
+
+
 Use this skill when:
 - SOC teams suspect data exfiltration through DNS tunneling to bypass firewall/proxy controls
 - Threat intelligence indicates adversaries using DNS-based C2 channels (e.g., Cobalt Strike DNS beacon)

@@ -32,6 +32,13 @@ Cybersecurity skill for deploying active directory honeytokens. Follows industry
 
 ## When to Use
 
+**Trigger phrases:**
+- "deploying active directory honeytokens"
+- "When deploying deception-based detection in Active Directory environments"
+- "When detecting Kerberoasting attacks via fake SPN honeytokens (honeyroasting)"
+- "When creating tripwire accounts to detect credential theft and lateral movement"
+
+
 - When deploying deception-based detection in Active Directory environments
 - When detecting Kerberoasting attacks via fake SPN honeytokens (honeyroasting)
 - When creating tripwire accounts to detect credential theft and lateral movement

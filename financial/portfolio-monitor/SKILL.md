@@ -25,6 +25,13 @@ Tracks portfolio company KPIs, monitors variances vs. underwriting, and calculat
 
 ## When to Use
 
+**Trigger phrases:**
+- "portfolio monitor"
+- "Monthly portfolio review (all companies)"
+- "Quarterly board meetings (underwriting vs"
+- "IRR/MOIC calculation (fund reporting)"
+
+
 - Monthly portfolio review (all companies)
 - Quarterly board meetings (underwriting vs. actuals)
 - IRR/MOIC calculation (fund reporting)

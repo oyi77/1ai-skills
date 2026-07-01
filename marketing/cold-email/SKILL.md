@@ -15,6 +15,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "cold email"
+- "Building outbound sales campaigns"
+- "Improving email deliverability rates"
+- "Designing multi-touch sequences"
+
+
 - Building outbound sales campaigns
 - Improving email deliverability rates
 - Designing multi-touch sequences

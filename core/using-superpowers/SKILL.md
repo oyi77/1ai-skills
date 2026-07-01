@@ -26,6 +26,13 @@ Establishes the fundamental workflow for finding and invoking skills before any 
 
 ## When to Use
 
+**Trigger phrases:**
+- "using superpowers"
+- "At the start of ANY conversation or task"
+- "When you think a skill might apply (even 1% chance)"
+- "Before responding to clarifying questions"
+
+
 - At the start of ANY conversation or task
 - When you think a skill might apply (even 1% chance)
 - Before responding to clarifying questions

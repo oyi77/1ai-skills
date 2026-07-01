@@ -29,6 +29,13 @@ Cybersecurity skill for analyzing api gateway access logs. Follows industry best
 
 ## When to Use
 
+**Trigger phrases:**
+- "analyzing api gateway access logs"
+- "When investigating security incidents that require analyzing api gateway access"
+- "When building detection rules or threat hunting queries for this domain"
+- "When SOC analysts need structured procedures for this analysis type"
+
+
 - When investigating security incidents that require analyzing api gateway access logs
 - When building detection rules or threat hunting queries for this domain
 - When SOC analysts need structured procedures for this analysis type

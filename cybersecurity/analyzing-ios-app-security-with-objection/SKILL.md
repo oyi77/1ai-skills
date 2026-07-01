@@ -38,6 +38,13 @@ Cybersecurity skill for analyzing ios app security with objection. Follows indus
 
 ## When to Use
 
+**Trigger phrases:**
+- "analyzing ios app security with objection"
+- "Performing runtime security assessment of iOS applications during authorized pen"
+- "Inspecting iOS keychain, filesystem, and memory for sensitive data exposure"
+- "Bypassing client-side security controls (SSL pinning, jailbreak detection) durin"
+
+
 Use this skill when:
 - Performing runtime security assessment of iOS applications during authorized penetration tests
 - Inspecting iOS keychain, filesystem, and memory for sensitive data exposure

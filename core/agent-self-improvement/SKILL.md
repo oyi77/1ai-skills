@@ -38,6 +38,13 @@ A meta-skill that monitors the performance of all other skills in the portfolio,
 
 ## When to Use
 
+**Trigger phrases:**
+- "agent self improvement"
+- "Weekly maintenance routine for skill portfolio"
+- "After adding new skills, check portfolio balance"
+- "When a skill's error rate exceeds threshold (>10%)"
+
+
 - Weekly maintenance routine for skill portfolio
 - After adding new skills, check portfolio balance
 - When a skill's error rate exceeds threshold (>10%)

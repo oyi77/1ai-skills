@@ -41,6 +41,13 @@ Cybersecurity skill for hunting advanced persistent threats. Follows industry be
 
 ## When to Use
 
+**Trigger phrases:**
+- "hunting advanced persistent threats"
+- "Conducting proactive threat hunting sprints (typically 2–4 week cycles) based on"
+- "A UEBA alert or anomaly detection system flags behavioral deviations warranting"
+- "A peer organization or ISAC sharing partner reports active APT compromise and yo"
+
+
 Use this skill when:
 - Conducting proactive threat hunting sprints (typically 2–4 week cycles) based on newly published APT intelligence
 - A UEBA alert or anomaly detection system flags behavioral deviations warranting deeper investigation

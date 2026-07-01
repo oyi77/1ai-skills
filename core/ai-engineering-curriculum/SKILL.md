@@ -40,6 +40,13 @@ Install: `npx skills add rohitg00/ai-engineering-from-scratch`
 
 ## When to Use
 
+**Trigger phrases:**
+- "ai engineering curriculum"
+- "User wants to learn AI engineering from scratch"
+- "Need to assess someone's AI skill level"
+- "Looking for structured learning path in ML/DL/LLMs/Agents"
+
+
 - User wants to learn AI engineering from scratch
 - Need to assess someone's AI skill level
 - Looking for structured learning path in ML/DL/LLMs/Agents

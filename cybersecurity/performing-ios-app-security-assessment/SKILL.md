@@ -32,6 +32,13 @@ Cybersecurity skill for performing ios app security assessment. Follows industry
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing ios app security assessment"
+- "Conducting authorized penetration tests of iOS applications against OWASP MASVS/"
+- "Performing dynamic analysis of iOS apps using Frida instrumentation and Objectio"
+- "Bypassing SSL/TLS certificate pinning to intercept and analyze app network traff"
+
+
 Use this skill when:
 - Conducting authorized penetration tests of iOS applications against OWASP MASVS/MASTG criteria
 - Performing dynamic analysis of iOS apps using Frida instrumentation and Objection runtime exploration

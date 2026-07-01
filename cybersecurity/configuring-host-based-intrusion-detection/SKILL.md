@@ -32,6 +32,13 @@ Cybersecurity skill for configuring host based intrusion detection. Follows indu
 
 ## When to Use
 
+**Trigger phrases:**
+- "configuring host based intrusion detection"
+- "Deploying HIDS agents (Wazuh, OSSEC, AIDE) across Windows and Linux endpoints"
+- "Configuring file integrity monitoring (FIM) for compliance (PCI DSS 11"
+- "Monitoring system configuration changes, rootkit detection, and security policy"
+
+
 Use this skill when:
 - Deploying HIDS agents (Wazuh, OSSEC, AIDE) across Windows and Linux endpoints
 - Configuring file integrity monitoring (FIM) for compliance (PCI DSS 11.5, NIST SI-7)

@@ -25,6 +25,13 @@ Ingests GP (General Partner) packages, runs valuation templates, and stages LP r
 
 ## When to Use
 
+**Trigger phrases:**
+- "valuation reviewer"
+- "GP package received (quarterly)"
+- "LP reporting cycle (quarterly/monthly)"
+- "Valuation methodology review"
+
+
 - GP package received (quarterly)
 - LP reporting cycle (quarterly/monthly)
 - Valuation methodology review

@@ -27,6 +27,13 @@ Consul provides service discovery, health checking, KV store, and secure service
 
 ## When to Use
 
+**Trigger phrases:**
+- "consul service mesh"
+- "Microservice architectures needing service discovery"
+- "Dynamic environments with frequent deployments"
+- "Zero-trust networking with mTLS between services"
+
+
 - Microservice architectures needing service discovery
 - Dynamic environments with frequent deployments
 - Zero-trust networking with mTLS between services

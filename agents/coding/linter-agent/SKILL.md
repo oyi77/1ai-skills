@@ -14,6 +14,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "linter agent"
+- "Cleaning up lint errors before a PR"
+- "Applying a new linting rule across the entire codebase"
+- "Formatting code after a merge conflict resolution"
+
+
 - Cleaning up lint errors before a PR
 - Applying a new linting rule across the entire codebase
 - Formatting code after a merge conflict resolution

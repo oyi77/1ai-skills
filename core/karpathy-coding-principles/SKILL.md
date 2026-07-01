@@ -34,6 +34,13 @@ Andrej Karpathy's 4 coding principles distilled into actionable rules for AI age
 
 ## When to Use
 
+**Trigger phrases:**
+- "karpathy coding principles"
+- "Writing or reviewing code for quality"
+- "Reducing overengineering in implementations"
+- "Coaching LLMs to produce cleaner output"
+
+
 - Writing or reviewing code for quality
 - Reducing overengineering in implementations
 - Coaching LLMs to produce cleaner output

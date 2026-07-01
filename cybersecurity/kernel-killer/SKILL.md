@@ -18,6 +18,13 @@ Cybersecurity skill for kernel killer. Follows industry best practices and secur
 
 ## When to Use
 
+**Trigger phrases:**
+- "kernel killer"
+- "Finding privilege escalation vulnerabilities"
+- "Exploiting kernel drivers"
+- "Analyzing kernel modules for bugs"
+
+
 - Finding privilege escalation vulnerabilities
 - Exploiting kernel drivers
 - Analyzing kernel modules for bugs

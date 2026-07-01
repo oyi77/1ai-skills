@@ -30,6 +30,13 @@ Cybersecurity skill for performing android app static analysis with mobsf. Follo
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing android app static analysis with mobsf"
+- "Conducting security assessment of Android APK or AAB files before production rel"
+- "Integrating automated mobile security scanning into CI/CD pipelines"
+- "Performing initial triage of Android applications during penetration testing eng"
+
+
 Use this skill when:
 - Conducting security assessment of Android APK or AAB files before production release
 - Integrating automated mobile security scanning into CI/CD pipelines

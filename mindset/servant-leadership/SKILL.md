@@ -18,6 +18,13 @@ Mindset skill for servant leadership. Builds capability through deliberate pract
 
 ## When to Use
 
+**Trigger phrases:**
+- "servant leadership"
+- "Leading teams (ICs, managers, or cross-functional)"
+- "Building trust and psychological safety"
+- "Empowering others to own decisions"
+
+
 - Leading teams (ICs, managers, or cross-functional)
 - Building trust and psychological safety
 - Empowering others to own decisions

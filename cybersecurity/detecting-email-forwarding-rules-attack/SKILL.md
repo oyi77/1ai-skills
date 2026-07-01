@@ -35,6 +35,13 @@ Cybersecurity skill for detecting email forwarding rules attack. Follows industr
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting email forwarding rules attack"
+- "When proactively hunting for indicators of detecting email forwarding rules atta"
+- "After threat intelligence indicates active campaigns using these techniques"
+- "During incident response to scope compromise related to these techniques"
+
+
 - When proactively hunting for indicators of detecting email forwarding rules attack in the environment
 - After threat intelligence indicates active campaigns using these techniques
 - During incident response to scope compromise related to these techniques

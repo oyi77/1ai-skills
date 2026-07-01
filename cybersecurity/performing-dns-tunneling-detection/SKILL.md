@@ -29,6 +29,13 @@ Cybersecurity skill for performing dns tunneling detection. Follows industry bes
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing dns tunneling detection"
+- "When conducting security assessments that involve performing dns tunneling detec"
+- "When following incident response procedures for related security events"
+- "When performing scheduled security testing or auditing activities"
+
+
 - When conducting security assessments that involve performing dns tunneling detection
 - When following incident response procedures for related security events
 - When performing scheduled security testing or auditing activities

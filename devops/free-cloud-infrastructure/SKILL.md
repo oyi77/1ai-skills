@@ -27,6 +27,13 @@ Reference for free-tier cloud infrastructure across major providers. Focuses on 
 
 ## When to Use
 
+**Trigger phrases:**
+- "free cloud infrastructure"
+- "Provisioning infrastructure for a side project or MVP"
+- "Comparing always-free vs"
+- "Architecting a zero-cost deployment pipeline"
+
+
 - Provisioning infrastructure for a side project or MVP
 - Comparing always-free vs. 12-month trial offerings
 - Architecting a zero-cost deployment pipeline

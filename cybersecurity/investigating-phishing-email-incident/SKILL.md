@@ -37,6 +37,13 @@ Cybersecurity skill for investigating phishing email incident. Follows industry 
 
 ## When to Use
 
+**Trigger phrases:**
+- "investigating phishing email incident"
+- "A user reports a suspicious email via the phishing report button or helpdesk tic"
+- "Email security gateway flags a message that bypassed initial filters"
+- "Automated detection identifies credential harvesting URLs or malicious attachmen"
+
+
 Use this skill when:
 - A user reports a suspicious email via the phishing report button or helpdesk ticket
 - Email security gateway flags a message that bypassed initial filters

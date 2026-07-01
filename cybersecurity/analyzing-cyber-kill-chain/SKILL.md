@@ -30,6 +30,13 @@ Cybersecurity skill for analyzing cyber kill chain. Follows industry best practi
 
 ## When to Use
 
+**Trigger phrases:**
+- "analyzing cyber kill chain"
+- "Conducting post-incident analysis to determine how far an adversary progressed t"
+- "Designing layered defensive controls with the goal of interrupting attacks at th"
+- "Producing threat intelligence reports that communicate attack progression to non"
+
+
 Use this skill when:
 - Conducting post-incident analysis to determine how far an adversary progressed through an attack sequence
 - Designing layered defensive controls with the goal of interrupting attacks at the earliest possible phase

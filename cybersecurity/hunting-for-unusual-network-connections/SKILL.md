@@ -34,6 +34,13 @@ Cybersecurity skill for hunting for unusual network connections. Follows industr
 
 ## When to Use
 
+**Trigger phrases:**
+- "hunting for unusual network connections"
+- "When proactively hunting for indicators of hunting for unusual network connectio"
+- "After threat intelligence indicates active campaigns using these techniques"
+- "During incident response to scope compromise related to these techniques"
+
+
 - When proactively hunting for indicators of hunting for unusual network connections in the environment
 - After threat intelligence indicates active campaigns using these techniques
 - During incident response to scope compromise related to these techniques

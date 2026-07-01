@@ -29,6 +29,13 @@ Cybersecurity skill for performing packet injection attack. Follows industry bes
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing packet injection attack"
+- "Testing IDS/IPS rules by injecting traffic that should trigger specific detectio"
+- "Validating firewall rules by crafting packets with specific flags, source addres"
+- "Assessing network stack resilience to malformed packets, fragmentation attacks,"
+
+
 - Testing IDS/IPS rules by injecting traffic that should trigger specific detection signatures
 - Validating firewall rules by crafting packets with specific flags, source addresses, and payloads
 - Assessing network stack resilience to malformed packets, fragmentation attacks, and protocol violations

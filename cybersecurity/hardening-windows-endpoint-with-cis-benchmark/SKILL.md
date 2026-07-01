@@ -32,6 +32,13 @@ Cybersecurity skill for hardening windows endpoint with cis benchmark. Follows i
 
 ## When to Use
 
+**Trigger phrases:**
+- "hardening windows endpoint with cis benchmark"
+- "Deploying new Windows 10/11 or Server 2019/2022 endpoints that require security"
+- "Establishing organization-wide security baselines using CIS Level 1 or Level 2 p"
+- "Remediating findings from compliance audits (PCI DSS, HIPAA, SOC 2) that referen"
+
+
 Use this skill when:
 - Deploying new Windows 10/11 or Server 2019/2022 endpoints that require security hardening
 - Establishing organization-wide security baselines using CIS Level 1 or Level 2 profiles

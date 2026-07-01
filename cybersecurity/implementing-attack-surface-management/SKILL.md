@@ -32,6 +32,13 @@ Cybersecurity skill for implementing attack surface management. Follows industry
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing attack surface management"
+- "When building an external attack surface management (EASM) program from scratch"
+- "When performing authorized external reconnaissance for penetration testing engag"
+- "When continuously monitoring organizational exposure across internet-facing asse"
+
+
 - When building an external attack surface management (EASM) program from scratch
 - When performing authorized external reconnaissance for penetration testing engagements
 - When continuously monitoring organizational exposure across internet-facing assets

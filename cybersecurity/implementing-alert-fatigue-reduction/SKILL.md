@@ -32,6 +32,13 @@ Cybersecurity skill for implementing alert fatigue reduction. Follows industry b
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing alert fatigue reduction"
+- "SOC analysts face more alerts than they can reasonably investigate (>100 alerts/"
+- "False positive rates exceed 70% on key detection rules"
+- "True positives are being missed or dismissed due to alert volume"
+
+
 Use this skill when:
 - SOC analysts face more alerts than they can reasonably investigate (>100 alerts/analyst/shift)
 - False positive rates exceed 70% on key detection rules

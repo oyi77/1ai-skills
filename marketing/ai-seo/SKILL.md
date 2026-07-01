@@ -12,6 +12,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "ai seo"
+- "Adapting SEO strategy for AI search"
+- "Optimizing for Google AI Overviews"
+- "Building content that AI engines cite"
+
+
 - Adapting SEO strategy for AI search
 - Optimizing for Google AI Overviews
 - Building content that AI engines cite

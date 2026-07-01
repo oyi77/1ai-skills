@@ -23,6 +23,13 @@ Enables extraction of AI-generated storyboards from viral TikTok Shop videos, in
 
 ## When to Use
 
+**Trigger phrases:**
+- "kalodata storyboard extract"
+- "**Analyze Viral Videos**: Understand what made a video successful"
+- "**Extract Scene Breakdowns**: Get detailed scene-by-scene analysis"
+- "**Camera Work Analysis**: Understand camera techniques used"
+
+
 - **Analyze Viral Videos**: Understand what made a video successful
 - **Extract Scene Breakdowns**: Get detailed scene-by-scene analysis
 - **Camera Work Analysis**: Understand camera techniques used

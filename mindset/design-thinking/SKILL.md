@@ -19,6 +19,13 @@ Mindset skill for design thinking. Builds capability through deliberate practice
 
 ## When to Use
 
+**Trigger phrases:**
+- "design thinking"
+- "Ambiguous or complex problems (no clear solution)"
+- "New product or feature development"
+- "Improving existing experiences (customer pain points)"
+
+
 - Ambiguous or complex problems (no clear solution)
 - New product or feature development
 - Improving existing experiences (customer pain points)

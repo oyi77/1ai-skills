@@ -18,6 +18,13 @@ Mindset skill for systems thinking. Builds capability through deliberate practic
 
 ## When to Use
 
+**Trigger phrases:**
+- "systems thinking"
+- "Diagnosing recurring problems that resist simple fixes"
+- "Understanding unintended consequences of interventions"
+- "Designing policies, processes, or products with network effects"
+
+
 - Diagnosing recurring problems that resist simple fixes
 - Understanding unintended consequences of interventions
 - Designing policies, processes, or products with network effects

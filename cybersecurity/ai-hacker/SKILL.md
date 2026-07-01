@@ -18,6 +18,13 @@ Cybersecurity skill for ai hacker. Follows industry best practices and security 
 
 ## When to Use
 
+**Trigger phrases:**
+- "ai hacker"
+- "Testing applications with AI/LLM features"
+- "Finding prompt injection vulnerabilities"
+- "Assessing AI-powered chatbots and assistants"
+
+
 - Testing applications with AI/LLM features
 - Finding prompt injection vulnerabilities
 - Assessing AI-powered chatbots and assistants

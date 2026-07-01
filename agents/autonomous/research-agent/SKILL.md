@@ -14,6 +14,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "research agent"
+- "Evaluating a technology, library, or framework before adoption"
+- "Investigating a bug root cause across documentation, issues, and forums"
+- "Competitive analysis of tools, products, or approaches"
+
+
 - Evaluating a technology, library, or framework before adoption
 - Investigating a bug root cause across documentation, issues, and forums
 - Competitive analysis of tools, products, or approaches

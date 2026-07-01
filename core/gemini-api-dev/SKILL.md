@@ -15,6 +15,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "gemini api dev"
+- "When building apps powered by Google Gemini models"
+- "When processing multimodal inputs (text + images + audio + video)"
+- "When implementing function calling or tool use with Gemini"
+
+
 - When building apps powered by Google Gemini models
 - When processing multimodal inputs (text + images + audio + video)
 - When implementing function calling or tool use with Gemini

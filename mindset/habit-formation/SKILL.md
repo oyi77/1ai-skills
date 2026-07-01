@@ -18,6 +18,13 @@ Mindset skill for habit formation. Builds capability through deliberate practice
 
 ## When to Use
 
+**Trigger phrases:**
+- "habit formation"
+- "Building new routines (exercise, reading, learning)"
+- "Breaking bad habits (procrastination, mindless scrolling)"
+- "Improving productivity or health"
+
+
 - Building new routines (exercise, reading, learning)
 - Breaking bad habits (procrastination, mindless scrolling)
 - Improving productivity or health

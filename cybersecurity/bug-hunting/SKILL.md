@@ -21,6 +21,13 @@ AI-orchestrated bug bounty workflow covering the full cycle from reconnaissance 
 
 ## When to Use
 
+**Trigger phrases:**
+- "bug hunting"
+- "Hunting on bug bounty programs (HackerOne, Bugcrowd, Intigriti, Immunefi)"
+- "Running security assessments against authorized web applications"
+- "Discovering and validating vulnerabilities in web2 or web3 targets"
+
+
 - Hunting on bug bounty programs (HackerOne, Bugcrowd, Intigriti, Immunefi)
 - Running security assessments against authorized web applications
 - Discovering and validating vulnerabilities in web2 or web3 targets

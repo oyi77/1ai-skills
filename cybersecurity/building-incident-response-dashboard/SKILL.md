@@ -32,6 +32,13 @@ Cybersecurity skill for building incident response dashboard. Follows industry b
 
 ## When to Use
 
+**Trigger phrases:**
+- "building incident response dashboard"
+- "IR teams need real-time dashboards during active incidents for coordination and"
+- "SOC leadership requires operational dashboards showing incident status and analy"
+- "Post-incident reviews need visual timelines and impact assessments"
+
+
 Use this skill when:
 - IR teams need real-time dashboards during active incidents for coordination and tracking
 - SOC leadership requires operational dashboards showing incident status and analyst workload

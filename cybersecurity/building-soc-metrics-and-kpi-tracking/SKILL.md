@@ -41,6 +41,13 @@ Cybersecurity skill for building soc metrics and kpi tracking. Follows industry 
 
 ## When to Use
 
+**Trigger phrases:**
+- "building soc metrics and kpi tracking"
+- "SOC leadership needs data-driven visibility into operational performance"
+- "Continuous improvement programs require baseline measurements and trend tracking"
+- "Executive reporting demands quantified security posture and ROI metrics"
+
+
 Use this skill when:
 - SOC leadership needs data-driven visibility into operational performance
 - Continuous improvement programs require baseline measurements and trend tracking

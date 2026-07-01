@@ -31,6 +31,13 @@ Cybersecurity skill for configuring windows defender advanced settings. Follows 
 
 ## When to Use
 
+**Trigger phrases:**
+- "configuring windows defender advanced settings"
+- "Configuring Microsoft Defender for Endpoint (MDE) beyond default settings for en"
+- "Implementing Attack Surface Reduction (ASR) rules to block common attack techniq"
+- "Enabling controlled folder access for ransomware protection"
+
+
 Use this skill when:
 - Configuring Microsoft Defender for Endpoint (MDE) beyond default settings for enhanced protection
 - Implementing Attack Surface Reduction (ASR) rules to block common attack techniques

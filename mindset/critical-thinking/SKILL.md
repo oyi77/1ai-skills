@@ -18,6 +18,13 @@ Mindset skill for critical thinking. Builds capability through deliberate practi
 
 ## When to Use
 
+**Trigger phrases:**
+- "critical thinking"
+- "Evaluating business proposals or strategic decisions"
+- "Analyzing research, data, or claims"
+- "Debugging complex technical or operational problems"
+
+
 - Evaluating business proposals or strategic decisions
 - Analyzing research, data, or claims
 - Debugging complex technical or operational problems

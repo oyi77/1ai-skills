@@ -26,6 +26,13 @@ Execute trades on broker with proper slippage checks and safe abort procedures. 
 
 ## When to Use
 
+**Trigger phrases:**
+- "trading executor"
+- "Placing market or limit orders on any supported broker (MT5, MT4, CCXT)"
+- "Validating slippage before confirming trade execution"
+- "Implementing safe abort procedures when market conditions deteriorate"
+
+
 - Placing market or limit orders on any supported broker (MT5, MT4, CCXT)
 - Validating slippage before confirming trade execution
 - Implementing safe abort procedures when market conditions deteriorate

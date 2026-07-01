@@ -26,6 +26,13 @@ shadcn/ui is a collection of reusable components built with Radix UI and Tailwin
 
 ## When to Use
 
+**Trigger phrases:**
+- "shadcn ui"
+- "Starting a new React/Next"
+- "Need accessible components without vendor lock-in"
+- "Want Tailwind-native components with full customization"
+
+
 - Starting a new React/Next.js project with polished UI
 - Need accessible components without vendor lock-in
 - Want Tailwind-native components with full customization

@@ -24,6 +24,13 @@ Crypto wallet development covering HD wallet derivation (BIP-32/39/44), transact
 
 ## When to Use
 
+**Trigger phrases:**
+- "crypto wallet"
+- "Building wallet apps"
+- "Multi-chain portfolio managers"
+- "DeFi dashboard integrations"
+
+
 - Building wallet apps
 - Multi-chain portfolio managers
 - DeFi dashboard integrations

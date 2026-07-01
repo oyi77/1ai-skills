@@ -32,6 +32,13 @@ Cybersecurity skill for testing android intents for vulnerabilities. Follows ind
 
 ## When to Use
 
+**Trigger phrases:**
+- "testing android intents for vulnerabilities"
+- "Assessing Android app exported activities, services, receivers, and content prov"
+- "Testing for intent injection and unauthorized component invocation"
+- "Evaluating broadcast receiver security for sensitive data exposure"
+
+
 Use this skill when:
 - Assessing Android app exported activities, services, receivers, and content providers
 - Testing for intent injection and unauthorized component invocation

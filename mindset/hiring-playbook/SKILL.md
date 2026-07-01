@@ -17,6 +17,13 @@ Mindset skill for hiring playbook. Builds capability through deliberate practice
 
 ## When to Use
 
+**Trigger phrases:**
+- "hiring playbook"
+- "Hiring for any role (IC, manager, executive)"
+- "Scaling a team rapidly"
+- "Improving hiring quality or reducing mis-hires"
+
+
 - Hiring for any role (IC, manager, executive)
 - Scaling a team rapidly
 - Improving hiring quality or reducing mis-hires

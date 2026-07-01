@@ -30,6 +30,13 @@ Access recertification (also called access certification or access review) is a 
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing access recertification with saviynt"
+- "When conducting security assessments that involve performing access recertificat"
+- "When following incident response procedures for related security events"
+- "When performing scheduled security testing or auditing activities"
+
+
 - When conducting security assessments that involve performing access recertification with saviynt
 - When following incident response procedures for related security events
 - When performing scheduled security testing or auditing activities

@@ -27,6 +27,13 @@ persona: "name: \"Stephen King\"\n  title: \"Master of Natural Prose\"\n  expert
 
 ## When to Use
 
+**Trigger phrases:**
+- "humanizer zh"
+- "当文本 AI 味道太重时"
+- "当需要让 AI 写作更自然时"
+- "当编辑 AI 辅助内容时"
+
+
 - 当文本 AI 味道太重时
 - 当需要让 AI 写作更自然时
 - 当编辑 AI 辅助内容时

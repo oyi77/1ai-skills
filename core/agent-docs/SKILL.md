@@ -30,6 +30,13 @@ Write documentation that AI agents can efficiently consume. Based on Vercel benc
 
 ## When to Use
 
+**Trigger phrases:**
+- "agent docs"
+- "Writing SKILL"
+- "Creating README files for agent consumption"
+- "Building API documentation"
+
+
 - Writing SKILL.md files that will be loaded by agents
 - Creating README files for agent consumption
 - Building API documentation

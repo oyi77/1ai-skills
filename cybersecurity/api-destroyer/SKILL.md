@@ -21,6 +21,13 @@ Cybersecurity skill for api destroyer. Follows industry best practices and secur
 
 ## When to Use
 
+**Trigger phrases:**
+- "api destroyer"
+- "Testing REST/GraphQL/gRPC/WebSocket APIs"
+- "Hunting IDOR/BOLA on API endpoints"
+- "Bypassing API rate limiting and authentication"
+
+
 - Testing REST/GraphQL/gRPC/WebSocket APIs
 - Hunting IDOR/BOLA on API endpoints
 - Bypassing API rate limiting and authentication

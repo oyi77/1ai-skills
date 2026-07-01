@@ -43,6 +43,13 @@ Cybersecurity skill for performing threat emulation with atomic red team. Follow
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing threat emulation with atomic red team"
+- "When conducting security assessments that involve performing threat emulation wi"
+- "When following incident response procedures for related security events"
+- "When performing scheduled security testing or auditing activities"
+
+
 - When conducting security assessments that involve performing threat emulation with atomic red team
 - When following incident response procedures for related security events
 - When performing scheduled security testing or auditing activities

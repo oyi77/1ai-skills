@@ -35,6 +35,13 @@ Cybersecurity skill for hunting for living off the cloud techniques. Follows ind
 
 ## When to Use
 
+**Trigger phrases:**
+- "hunting for living off the cloud techniques"
+- "When proactively hunting for indicators of hunting for living off the cloud tech"
+- "After threat intelligence indicates active campaigns using these techniques"
+- "During incident response to scope compromise related to these techniques"
+
+
 - When proactively hunting for indicators of hunting for living off the cloud techniques in the environment
 - After threat intelligence indicates active campaigns using these techniques
 - During incident response to scope compromise related to these techniques

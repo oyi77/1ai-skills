@@ -33,6 +33,11 @@ Institutional-grade modular finance intelligence system covering equities, crypt
 
 ## When to Use
 
+**Trigger phrases:**
+- "all in one finance"
+- "Use when working with all in one finance"
+
+
 ```dot
 digraph finance_trigger {
     "User mentions financial asset?" [shape=diamond];

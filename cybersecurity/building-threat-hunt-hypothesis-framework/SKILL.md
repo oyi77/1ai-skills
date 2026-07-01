@@ -28,6 +28,13 @@ Cybersecurity skill for building threat hunt hypothesis framework. Follows indus
 
 ## When to Use
 
+**Trigger phrases:**
+- "building threat hunt hypothesis framework"
+- "When proactively hunting for indicators of building threat hunt hypothesis frame"
+- "After threat intelligence indicates active campaigns using these techniques"
+- "During incident response to scope compromise related to these techniques"
+
+
 - When proactively hunting for indicators of building threat hunt hypothesis framework in the environment
 - After threat intelligence indicates active campaigns using these techniques
 - During incident response to scope compromise related to these techniques

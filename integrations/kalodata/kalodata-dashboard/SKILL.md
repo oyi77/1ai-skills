@@ -19,6 +19,13 @@ Creates CLI-based visual reports with ASCII/text-based charts, product cards, in
 
 ## When to Use
 
+**Trigger phrases:**
+- "kalodata dashboard"
+- "User asks for "dashboard", "report", "visualize", "charts", or "trends""
+- "Need to display revenue trends as ASCII line/bar charts in terminal"
+- "Creating product summary cards with key metrics"
+
+
 - User asks for "dashboard", "report", "visualize", "charts", or "trends"
 - Need to display revenue trends as ASCII line/bar charts in terminal
 - Creating product summary cards with key metrics

@@ -14,6 +14,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "perf agent"
+- "Application is slow and you need to find out why"
+- "Database queries are taking too long"
+- "Memory usage is growing (leak detection)"
+
+
 - Application is slow and you need to find out why
 - Database queries are taking too long
 - Memory usage is growing (leak detection)

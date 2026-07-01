@@ -13,6 +13,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "hr onboarding"
+- "Automating employee onboarding workflows"
+- "Managing employee documentation"
+- "Tracking onboarding progress"
+
+
 - Automating employee onboarding workflows
 - Managing employee documentation
 - Tracking onboarding progress

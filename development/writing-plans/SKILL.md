@@ -41,6 +41,13 @@ Write comprehensive implementation plans assuming the engineer has zero context 
 
 ## When to Use
 
+**Trigger phrases:**
+- "writing plans"
+- "When you have requirements or a spec for a multi-step task"
+- "Before any code implementation begins"
+- "When breaking down complex features into executable tasks"
+
+
 - When you have requirements or a spec for a multi-step task
 - Before any code implementation begins
 - When breaking down complex features into executable tasks

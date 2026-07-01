@@ -22,6 +22,13 @@ Enables getting videos associated with products, extracting downloadable video U
 
 ## When to Use
 
+**Trigger phrases:**
+- "kalodata video analysis"
+- "**Video Discovery**: Find videos associated with products"
+- "**Competitive Analysis**: Identify top-performing videos for products"
+- "**Creative Research**: Get downloadable video URLs for analysis"
+
+
 - **Video Discovery**: Find videos associated with products
 - **Competitive Analysis**: Identify top-performing videos for products
 - **Creative Research**: Get downloadable video URLs for analysis

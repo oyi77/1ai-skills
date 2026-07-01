@@ -17,6 +17,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "postbridge social manager"
+- "Managing social media accounts across platforms"
+- "Scheduling and publishing content"
+- "Engaging with followers automatically"
+
+
 - Managing social media accounts across platforms
 - Scheduling and publishing content
 - Engaging with followers automatically

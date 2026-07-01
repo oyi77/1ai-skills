@@ -27,6 +27,13 @@ Structured data markup for rich results and AI search visibility — JSON-LD, FA
 
 ## When to Use
 
+**Trigger phrases:**
+- "schema markup"
+- "Building marketing campaigns and funnels"
+- "Optimizing conversion and retention"
+- "Scaling acquisition channels"
+
+
 - Building marketing campaigns and funnels
 - Optimizing conversion and retention
 - Scaling acquisition channels

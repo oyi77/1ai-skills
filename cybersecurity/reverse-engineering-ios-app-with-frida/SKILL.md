@@ -30,6 +30,13 @@ Cybersecurity skill for reverse engineering ios app with frida. Follows industry
 
 ## When to Use
 
+**Trigger phrases:**
+- "reverse engineering ios app with frida"
+- "Analyzing iOS app internals during authorized security assessments without sourc"
+- "Extracting encryption keys, API secrets, or proprietary protocol details from ru"
+- "Understanding obfuscated Swift/Objective-C logic through runtime method tracing"
+
+
 Use this skill when:
 - Analyzing iOS app internals during authorized security assessments without source code
 - Extracting encryption keys, API secrets, or proprietary protocol details from running iOS apps

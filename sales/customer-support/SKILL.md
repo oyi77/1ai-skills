@@ -32,6 +32,13 @@ Automated customer support via browser — email triage, response generation, ti
 
 ## When to Use
 
+**Trigger phrases:**
+- "customer support"
+- "Handle customer support emails via Gmail"
+- "Process support tickets on web platforms"
+- "Generate context-aware responses"
+
+
 - Handle customer support emails via Gmail
 - Process support tickets on web platforms
 - Generate context-aware responses

@@ -26,6 +26,13 @@ Enables scheduled research automation with intelligent new product detection and
 
 ## When to Use
 
+**Trigger phrases:**
+- "kalodata monitor"
+- "User wants continuous monitoring of TikTok Shop product categories"
+- "User needs automatic detection of NEW products entering the market"
+- "User wants alerts when products cross revenue thresholds"
+
+
 - User wants continuous monitoring of TikTok Shop product categories
 - User needs automatic detection of NEW products entering the market
 - User wants alerts when products cross revenue thresholds

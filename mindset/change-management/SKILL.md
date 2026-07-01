@@ -18,6 +18,13 @@ Mindset skill for change management. Builds capability through deliberate practi
 
 ## When to Use
 
+**Trigger phrases:**
+- "change management"
+- "Rolling out new tools, processes, or policies"
+- "Organizational restructuring or culture change"
+- "Major strategic pivots"
+
+
 - Rolling out new tools, processes, or policies
 - Organizational restructuring or culture change
 - Major strategic pivots

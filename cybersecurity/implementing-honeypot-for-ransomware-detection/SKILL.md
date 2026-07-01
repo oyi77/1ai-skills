@@ -36,6 +36,13 @@ Cybersecurity skill for implementing honeypot for ransomware detection. Follows 
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing honeypot for ransomware detection"
+- "Deploying early-warning detection for ransomware encryption attempts using canar"
+- "Creating honeypot file shares that detect lateral movement and data staging befo"
+- "Supplementing EDR and SIEM-based detection with deception-layer alerts that have"
+
+
 - Deploying early-warning detection for ransomware encryption attempts using canary files
 - Creating honeypot file shares that detect lateral movement and data staging before encryption
 - Supplementing EDR and SIEM-based detection with deception-layer alerts that have near-zero false positives

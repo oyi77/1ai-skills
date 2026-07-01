@@ -18,6 +18,13 @@ Mindset skill for scenario planning. Builds capability through deliberate practi
 
 ## When to Use
 
+**Trigger phrases:**
+- "scenario planning"
+- "High uncertainty about future outcomes (market, technology, regulation)"
+- "Strategic decisions with long time horizons"
+- "Risk management and contingency planning"
+
+
 - High uncertainty about future outcomes (market, technology, regulation)
 - Strategic decisions with long time horizons
 - Risk management and contingency planning

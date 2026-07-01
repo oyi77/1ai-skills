@@ -29,6 +29,13 @@ Cybersecurity skill for performing container escape detection. Follows industry 
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing container escape detection"
+- "When conducting security assessments that involve performing container escape de"
+- "When following incident response procedures for related security events"
+- "When performing scheduled security testing or auditing activities"
+
+
 - When conducting security assessments that involve performing container escape detection
 - When following incident response procedures for related security events
 - When performing scheduled security testing or auditing activities

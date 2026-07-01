@@ -32,6 +32,13 @@ Cybersecurity skill for correlating security events in qradar. Follows industry 
 
 ## When to Use
 
+**Trigger phrases:**
+- "correlating security events in qradar"
+- "SOC analysts need to investigate QRadar offenses and correlate events across mul"
+- "Detection engineers build custom correlation rules to identify multi-stage attac"
+- "Alert tuning is required to reduce false positive offenses and improve signal qu"
+
+
 Use this skill when:
 - SOC analysts need to investigate QRadar offenses and correlate events across multiple log sources
 - Detection engineers build custom correlation rules to identify multi-stage attacks

@@ -20,6 +20,13 @@ Cybersecurity skill for auth killer. Follows industry best practices and securit
 
 ## When to Use
 
+**Trigger phrases:**
+- "auth killer"
+- "Testing login/authentication flows"
+- "Bypassing MFA/2FA"
+- "Exploiting OAuth/OIDC misconfigurations"
+
+
 - Testing login/authentication flows
 - Bypassing MFA/2FA
 - Exploiting OAuth/OIDC misconfigurations

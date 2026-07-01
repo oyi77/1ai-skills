@@ -21,6 +21,13 @@ This skill covers advanced Git operations that require deeper understanding of G
 
 ## When to Use
 
+**Trigger phrases:**
+- "git master"
+- "**Rebase operations**: When you need to reorganize commit history, fix commit or"
+- "**Squash operations**: When you need to combine multiple commits into a single l"
+- "**Bisect operations**: When you need to find the specific commit that introduced"
+
+
 - **Rebase operations**: When you need to reorganize commit history, fix commit order, or integrate with updated base branches
 - **Squash operations**: When you need to combine multiple commits into a single logical commit for cleaner history
 - **Bisect operations**: When you need to find the specific commit that introduced a bug

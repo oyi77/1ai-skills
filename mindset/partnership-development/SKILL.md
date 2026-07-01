@@ -18,6 +18,13 @@ Mindset skill for partnership development. Builds capability through deliberate 
 
 ## When to Use
 
+**Trigger phrases:**
+- "partnership development"
+- "Building channel partnerships (resellers, affiliates, integrations)"
+- "Strategic alliances (co-marketing, co-selling)"
+- "Platform ecosystems (marketplace, app store)"
+
+
 - Building channel partnerships (resellers, affiliates, integrations)
 - Strategic alliances (co-marketing, co-selling)
 - Platform ecosystems (marketplace, app store)

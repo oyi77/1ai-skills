@@ -47,6 +47,13 @@ Cybersecurity skill for mapping mitre attack techniques. Follows industry best p
 
 ## When to Use
 
+**Trigger phrases:**
+- "mapping mitre attack techniques"
+- "Generating an ATT&CK coverage heatmap to show which techniques your detection st"
+- "Tagging existing SIEM use cases or Sigma rules with ATT&CK technique IDs for str"
+- "Aligning your security program roadmap to specific adversary groups known to tar"
+
+
 Use this skill when:
 - Generating an ATT&CK coverage heatmap to show which techniques your detection stack addresses
 - Tagging existing SIEM use cases or Sigma rules with ATT&CK technique IDs for structured reporting

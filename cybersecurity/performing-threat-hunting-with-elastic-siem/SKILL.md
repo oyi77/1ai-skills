@@ -47,6 +47,13 @@ Cybersecurity skill for performing threat hunting with elastic siem. Follows ind
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing threat hunting with elastic siem"
+- "SOC teams need to proactively search for threats not caught by existing detectio"
+- "Threat intelligence reports describe new TTPs requiring validation against histo"
+- "Red team exercises reveal detection gaps that need hunting query development"
+
+
 Use this skill when:
 - SOC teams need to proactively search for threats not caught by existing detection rules
 - Threat intelligence reports describe new TTPs requiring validation against historical data

@@ -34,6 +34,13 @@ Cybersecurity skill for detecting privilege escalation attempts. Follows industr
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting privilege escalation attempts"
+- "When proactively hunting for indicators of detecting privilege escalation attemp"
+- "After threat intelligence indicates active campaigns using these techniques"
+- "During incident response to scope compromise related to these techniques"
+
+
 - When proactively hunting for indicators of detecting privilege escalation attempts in the environment
 - After threat intelligence indicates active campaigns using these techniques
 - During incident response to scope compromise related to these techniques

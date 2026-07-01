@@ -17,6 +17,13 @@ Mindset skill for networking. Builds capability through deliberate practice and 
 
 ## When to Use
 
+**Trigger phrases:**
+- "networking"
+- "Career transitions (job search, promotion)"
+- "Building professional community (industry peers)"
+- "Sales or business development"
+
+
 - Career transitions (job search, promotion)
 - Building professional community (industry peers)
 - Sales or business development

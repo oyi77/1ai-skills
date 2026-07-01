@@ -34,6 +34,13 @@ Cybersecurity skill for detecting insider threat behaviors. Follows industry bes
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting insider threat behaviors"
+- "When proactively hunting for indicators of detecting insider threat behaviors in"
+- "After threat intelligence indicates active campaigns using these techniques"
+- "During incident response to scope compromise related to these techniques"
+
+
 - When proactively hunting for indicators of detecting insider threat behaviors in the environment
 - After threat intelligence indicates active campaigns using these techniques
 - During incident response to scope compromise related to these techniques

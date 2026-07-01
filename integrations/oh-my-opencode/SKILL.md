@@ -19,6 +19,13 @@ Oh My OpenCode is the ultimate harness for OpenCode, providing advanced multi-mo
 
 ## When to Use
 
+**Trigger phrases:**
+- "oh my opencode"
+- "Installing or configuring OpenCode with oh-my-opencode"
+- "Operating OpenCode from OpenClaw environment"
+- "Leveraging advanced agents (Sisyphus, Hephaestus, Oracle, Librarian, Explore)"
+
+
 - Installing or configuring OpenCode with oh-my-opencode
 - Operating OpenCode from OpenClaw environment
 - Leveraging advanced agents (Sisyphus, Hephaestus, Oracle, Librarian, Explore)

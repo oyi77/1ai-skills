@@ -28,6 +28,13 @@ Apache Airflow is the industry standard for programmatically authoring, scheduli
 
 ## When to Use
 
+**Trigger phrases:**
+- "airflow pipelines"
+- "Building scheduled data pipelines (ETL/ELT)"
+- "Orchestrating multi-step workflows across systems"
+- "Needing retry logic, alerting, and monitoring for batch jobs"
+
+
 - Building scheduled data pipelines (ETL/ELT)
 - Orchestrating multi-step workflows across systems
 - Needing retry logic, alerting, and monitoring for batch jobs

@@ -20,6 +20,13 @@ This skill provides detailed guidance on configuring oh-my-opencode, covering al
 
 ## When to Use
 
+**Trigger phrases:**
+- "oh my opencode configuration"
+- "**Configure new projects** – Set up project-level configuration in `"
+- "**Configure user-wide settings** – Set up user-level configuration in `~/"
+- "**Customize agents** – Override default models, temperatures, and permissions fo"
+
+
 - **Configure new projects** – Set up project-level configuration in `.opencode/oh-my-opencode.jsonc`
 - **Configure user-wide settings** – Set up user-level configuration in `~/.config/opencode/oh-my-opencode.jsonc` ( lower priority)
 - **Customize agents** – Override default models, temperatures, and permissions for Sisyphus, Hephaestus, Oracle, Librarian, Explore

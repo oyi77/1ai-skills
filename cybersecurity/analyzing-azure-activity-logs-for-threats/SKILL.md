@@ -31,6 +31,13 @@ Cybersecurity skill for analyzing azure activity logs for threats. Follows indus
 
 ## When to Use
 
+**Trigger phrases:**
+- "analyzing azure activity logs for threats"
+- "When investigating security incidents that require analyzing azure activity logs"
+- "When building detection rules or threat hunting queries for this domain"
+- "When SOC analysts need structured procedures for this analysis type"
+
+
 - When investigating security incidents that require analyzing azure activity logs for threats
 - When building detection rules or threat hunting queries for this domain
 - When SOC analysts need structured procedures for this analysis type

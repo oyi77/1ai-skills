@@ -19,6 +19,13 @@ Cybersecurity skill for ad killer. Follows industry best practices and security 
 
 ## When to Use
 
+**Trigger phrases:**
+- "ad killer"
+- "Enterprise penetration testing"
+- "Active Directory security assessments"
+- "Lateral movement in Windows environments"
+
+
 - Enterprise penetration testing
 - Active Directory security assessments
 - Lateral movement in Windows environments

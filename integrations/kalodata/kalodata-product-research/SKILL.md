@@ -23,6 +23,13 @@ Enables querying and analyzing TikTok Shop products using Kalodata's product int
 
 ## When to Use
 
+**Trigger phrases:**
+- "kalodata product research"
+- "**Product Discovery**: Find trending or emerging products in any TikTok Shop cat"
+- "**Competitive Analysis**: Analyze creator count, pricing, and revenue patterns"
+- "**Market Research**: Understand category performance and trends"
+
+
 - **Product Discovery**: Find trending or emerging products in any TikTok Shop category
 - **Competitive Analysis**: Analyze creator count, pricing, and revenue patterns
 - **Market Research**: Understand category performance and trends

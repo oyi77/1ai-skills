@@ -261,6 +261,13 @@ Ready to implement auth feature
 
 ## When to Use
 
+**Trigger phrases:**
+- "using git worktrees"
+- "Starting feature work that needs isolation"
+- "Before executing implementation plans"
+- "Working on multiple branches simultaneously"
+
+
 - Starting feature work that needs isolation
 - Before executing implementation plans
 - Working on multiple branches simultaneously

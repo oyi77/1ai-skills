@@ -28,6 +28,13 @@ Deterministically coordinate autonomous planning and execution across available 
 
 ## When to Use
 
+**Trigger phrases:**
+- "joko orchestrator"
+- "When coordinating multiple skills for complex tasks"
+- "When planning and executing multi-step workflows"
+- "When you need strict guardrails for autonomous execution"
+
+
 - When coordinating multiple skills for complex tasks
 - When planning and executing multi-step workflows
 - When you need strict guardrails for autonomous execution

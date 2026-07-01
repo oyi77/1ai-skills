@@ -23,6 +23,13 @@ AI agents present a unique attack surface: they read untrusted input, execute co
 
 ## When to Use
 
+**Trigger phrases:**
+- "agent security scanner"
+- "Setting up security scanning for agent configurations ("
+- "Hardening agent tool permissions after modification"
+- "Auditing hooks and MCP servers for injection or exfiltration risks"
+
+
 - Setting up security scanning for agent configurations (.claude/, settings.json, MCP configs)
 - Hardening agent tool permissions after modification
 - Auditing hooks and MCP servers for injection or exfiltration risks

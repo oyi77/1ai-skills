@@ -18,6 +18,13 @@ Mindset skill for active listening. Builds capability through deliberate practic
 
 ## When to Use
 
+**Trigger phrases:**
+- "active listening"
+- "Coaching or mentoring conversations"
+- "Conflict resolution or difficult conversations"
+- "Building rapport or trust with stakeholders"
+
+
 - Coaching or mentoring conversations
 - Conflict resolution or difficult conversations
 - Building rapport or trust with stakeholders

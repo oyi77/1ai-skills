@@ -14,6 +14,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "paid ads"
+- "Setting up paid ad campaigns"
+- "Optimizing existing ad performance"
+- "Designing ad creative and copy"
+
+
 - Setting up paid ad campaigns
 - Optimizing existing ad performance
 - Designing ad creative and copy

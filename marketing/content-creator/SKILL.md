@@ -16,6 +16,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "content creator"
+- "Create social media content (TikTok, Instagram, LinkedIn, Twitter)"
+- "Generate blog posts and articles"
+- "Create video scripts"
+
+
 - Create social media content (TikTok, Instagram, LinkedIn, Twitter)
 - Generate blog posts and articles
 - Create video scripts

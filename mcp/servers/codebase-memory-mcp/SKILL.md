@@ -15,6 +15,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "codebase memory mcp"
+- "Navigating an unfamiliar codebase (first time exploring)"
+- "Understanding architecture: "What are the main modules and how do they connect?""
+- "Tracing call chains: "What calls `handlePayment()` and what does it call?""
+
+
 - Navigating an unfamiliar codebase (first time exploring)
 - Understanding architecture: "What are the main modules and how do they connect?"
 - Tracing call chains: "What calls `handlePayment()` and what does it call?"

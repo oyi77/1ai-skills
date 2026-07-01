@@ -28,6 +28,13 @@ Autonomously generate new skills when gaps are identified. Works as the **creati
 
 ## When to Use
 
+**Trigger phrases:**
+- "create skills"
+- "meta/find-skills reports no existing skill for a need"
+- "meta/auto-evolve identifies a capability gap from performance data"
+- "User explicitly requests "create a skill for X""
+
+
 **Automatic Activation** when:
 - meta/find-skills reports no existing skill for a need
 - meta/auto-evolve identifies a capability gap from performance data

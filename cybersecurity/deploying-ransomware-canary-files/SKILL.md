@@ -30,6 +30,13 @@ Cybersecurity skill for deploying ransomware canary files. Follows industry best
 
 ## When to Use
 
+**Trigger phrases:**
+- "deploying ransomware canary files"
+- "Deploying proactive ransomware detection on file servers, NAS devices, or endpoi"
+- "Building an early-warning system that detects ransomware before it encrypts busi"
+- "Supplementing EDR solutions with lightweight canary file monitoring on systems w"
+
+
 - Deploying proactive ransomware detection on file servers, NAS devices, or endpoint systems
 - Building an early-warning system that detects ransomware before it encrypts business-critical data
 - Supplementing EDR solutions with lightweight canary file monitoring on systems where agents cannot be deployed

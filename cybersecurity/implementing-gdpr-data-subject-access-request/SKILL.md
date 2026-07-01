@@ -32,6 +32,13 @@ Cybersecurity skill for implementing gdpr data subject access request. Follows i
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing gdpr data subject access request"
+- "When building automated DSAR processing pipelines for GDPR/UK GDPR compliance"
+- "When implementing PII discovery across structured and unstructured data sources"
+- "When creating response templates that satisfy Article 15 disclosure requirements"
+
+
 - When building automated DSAR processing pipelines for GDPR/UK GDPR compliance
 - When implementing PII discovery across structured and unstructured data sources
 - When creating response templates that satisfy Article 15 disclosure requirements

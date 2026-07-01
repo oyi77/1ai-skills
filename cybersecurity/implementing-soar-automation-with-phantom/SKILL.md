@@ -37,6 +37,13 @@ Cybersecurity skill for implementing soar automation with phantom. Follows indus
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing soar automation with phantom"
+- "SOC teams need to automate repetitive triage and enrichment tasks for high-volum"
+- "Manual response times exceed SLA requirements and automation can reduce MTTR"
+- "Multiple security tools (SIEM, EDR, firewall, TIP) need orchestrated response ac"
+
+
 Use this skill when:
 - SOC teams need to automate repetitive triage and enrichment tasks for high-volume alerts
 - Manual response times exceed SLA requirements and automation can reduce MTTR

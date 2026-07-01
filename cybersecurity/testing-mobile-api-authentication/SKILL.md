@@ -29,6 +29,13 @@ Cybersecurity skill for testing mobile api authentication. Follows industry best
 
 ## When to Use
 
+**Trigger phrases:**
+- "testing mobile api authentication"
+- "Assessing mobile app backend API authentication during penetration tests"
+- "Testing JWT token implementation for common vulnerabilities (none algorithm, wea"
+- "Evaluating OAuth 2"
+
+
 Use this skill when:
 - Assessing mobile app backend API authentication during penetration tests
 - Testing JWT token implementation for common vulnerabilities (none algorithm, weak signing)

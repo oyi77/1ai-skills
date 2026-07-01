@@ -34,6 +34,13 @@ Cybersecurity skill for building threat intelligence feed integration. Follows i
 
 ## When to Use
 
+**Trigger phrases:**
+- "building threat intelligence feed integration"
+- "SOC teams need automated ingestion of threat intelligence feeds into SIEM platfo"
+- "Multiple TI sources require normalization into a common format (STIX 2"
+- "Detection systems need real-time IOC matching against network and endpoint telem"
+
+
 Use this skill when:
 - SOC teams need automated ingestion of threat intelligence feeds into SIEM platforms
 - Multiple TI sources require normalization into a common format (STIX 2.1)

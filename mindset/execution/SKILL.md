@@ -17,6 +17,13 @@ Mindset skill for execution. Builds capability through deliberate practice and s
 
 ## When to Use
 
+**Trigger phrases:**
+- "execution"
+- "Moving from planning to delivery"
+- "Shipping projects on time and on scope"
+- "Overcoming analysis paralysis or procrastination"
+
+
 - Moving from planning to delivery
 - Shipping projects on time and on scope
 - Overcoming analysis paralysis or procrastination

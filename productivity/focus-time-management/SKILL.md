@@ -27,6 +27,13 @@ Evidence-based focus and time management system combining deep work principles, 
 
 ## When to Use
 
+**Trigger phrases:**
+- "focus time management"
+- "Creating a daily/weekly work schedule"
+- "Optimizing deep focus time for complex tasks"
+- "Managing distractions and context switching"
+
+
 - Creating a daily/weekly work schedule
 - Optimizing deep focus time for complex tasks
 - Managing distractions and context switching

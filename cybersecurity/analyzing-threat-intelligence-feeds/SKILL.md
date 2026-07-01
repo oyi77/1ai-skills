@@ -35,6 +35,13 @@ Cybersecurity skill for analyzing threat intelligence feeds. Follows industry be
 
 ## When to Use
 
+**Trigger phrases:**
+- "analyzing threat intelligence feeds"
+- "Ingesting new commercial or OSINT threat feeds and assessing their signal-to-noi"
+- "Normalizing heterogeneous IOC formats (STIX 2"
+- "Evaluating feed freshness, fidelity, and relevance to the organization's threat"
+
+
 Use this skill when:
 - Ingesting new commercial or OSINT threat feeds and assessing their signal-to-noise ratio
 - Normalizing heterogeneous IOC formats (STIX 2.1, OpenIOC, YARA, Sigma) into a unified schema

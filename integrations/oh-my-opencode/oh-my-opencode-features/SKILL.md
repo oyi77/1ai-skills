@@ -21,6 +21,13 @@ This skill provides a comprehensive reference of all features available in oh-my
 
 ## When to Use
 
+**Trigger phrases:**
+- "oh my opencode features"
+- "**Agent orchestration** – When you need specialized agents for complex tasks, de"
+- "**MultiModel workflows** – When leveraging multiple LLM providers, fallback chai"
+- "**Background execution** – When running parallel agents, async task completion,"
+
+
 - **Agent orchestration** – When you need specialized agents for complex tasks, deep work, architecture decisions, documentation, or codebase exploration
 - **MultiModel workflows** – When leveraging multiple LLM providers, fallback chains, or per-agent model optimization
 - **Background execution** – When running parallel agents, async task completion, or autonomous deep work

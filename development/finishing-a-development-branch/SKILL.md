@@ -39,6 +39,13 @@ persona:
 
 ## When to Use
 
+**Trigger phrases:**
+- "finishing a development branch"
+- "Implementation is complete and tests pass"
+- "You need to merge work back to main/master"
+- "You need to create a Pull Request"
+
+
 - Implementation is complete and tests pass
 - You need to merge work back to main/master
 - You need to create a Pull Request

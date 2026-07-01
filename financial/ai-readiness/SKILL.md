@@ -24,6 +24,13 @@ Assesses portfolio company AI readiness across 5 dimensions: Strategy, Data, Tec
 
 ## When to Use
 
+**Trigger phrases:**
+- "ai readiness"
+- "Due diligence (pre-investment)"
+- "Board presentation (AI strategy update)"
+- "Portfolio company assessment (annual)"
+
+
 - Due diligence (pre-investment)
 - Board presentation (AI strategy update)
 - Portfolio company assessment (annual)

@@ -18,6 +18,13 @@ Mindset skill for negotiation mastery. Builds capability through deliberate prac
 
 ## When to Use
 
+**Trigger phrases:**
+- "negotiation mastery"
+- "Negotiating contracts, salaries, partnerships, or vendor agreements"
+- "Resolving disputes or finding common ground"
+- "Structuring multi-party deals with competing interests"
+
+
 - Negotiating contracts, salaries, partnerships, or vendor agreements
 - Resolving disputes or finding common ground
 - Structuring multi-party deals with competing interests

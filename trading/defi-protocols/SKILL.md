@@ -24,6 +24,13 @@ DeFi protocol patterns for AMMs, lending, staking, and yield farming. Covers Uni
 
 ## When to Use
 
+**Trigger phrases:**
+- "defi protocols"
+- "Building DEX or AMM"
+- "Creating lending protocols"
+- "Yield aggregation strategies"
+
+
 - Building DEX or AMM
 - Creating lending protocols
 - Yield aggregation strategies

@@ -23,6 +23,13 @@ SEO Auditor provides comprehensive website optimization capabilities including t
 
 ## When to Use
 
+**Trigger phrases:**
+- "seo auditor"
+- "**Technical SEO audit**: Identifying crawl errors, speed issues, and mobile-frie"
+- "**Keyword tracking**: Monitoring rankings for target keywords over time"
+- "**Competitor analysis**: Comparing against competitors' SEO performance"
+
+
 - **Technical SEO audit**: Identifying crawl errors, speed issues, and mobile-friendliness problems
 - **Keyword tracking**: Monitoring rankings for target keywords over time
 - **Competitor analysis**: Comparing against competitors' SEO performance

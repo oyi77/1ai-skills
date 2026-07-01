@@ -39,6 +39,13 @@ AFL++ (American Fuzzy Lop Plus Plus) is a community-maintained fork of AFL that 
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing fuzz testing in cicd with aflplusplus"
+- "When deploying or configuring implementing fuzz testing in cicd with aflplusplus"
+- "When establishing security controls aligned to compliance requirements"
+- "When building or improving security architecture for this domain"
+
+
 - When deploying or configuring implementing fuzz testing in cicd with aflplusplus capabilities in your environment
 - When establishing security controls aligned to compliance requirements
 - When building or improving security architecture for this domain

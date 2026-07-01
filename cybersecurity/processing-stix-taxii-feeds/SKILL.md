@@ -34,6 +34,13 @@ Cybersecurity skill for processing stix taxii feeds. Follows industry best pract
 
 ## When to Use
 
+**Trigger phrases:**
+- "processing stix taxii feeds"
+- "Onboarding a new TAXII 2"
+- "Validating that ingested STIX bundles conform to the OASIS STIX 2"
+- "Building automated pipelines that parse STIX relationship objects to reconstruct"
+
+
 Use this skill when:
 - Onboarding a new TAXII 2.1 collection from a government feed (CISA AIS, FS-ISAC) or commercial provider
 - Validating that ingested STIX bundles conform to the OASIS STIX 2.1 specification before import

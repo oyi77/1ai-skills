@@ -26,6 +26,13 @@ Pipedream is a serverless integration and compute platform. It lets you build ev
 
 ## When to Use
 
+**Trigger phrases:**
+- "pipedream workflows"
+- "Building event-driven automation with custom code"
+- "Needing serverless compute for integration logic"
+- "Wanting npm package access in automation workflows"
+
+
 - Building event-driven automation with custom code
 - Needing serverless compute for integration logic
 - Wanting npm package access in automation workflows

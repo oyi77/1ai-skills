@@ -18,6 +18,13 @@ Mindset skill for conflict resolution. Builds capability through deliberate prac
 
 ## When to Use
 
+**Trigger phrases:**
+- "conflict resolution"
+- "Disagreements between team members"
+- "Cross-team tension (blame, silos, misalignment)"
+- "Customer or partner disputes"
+
+
 - Disagreements between team members
 - Cross-team tension (blame, silos, misalignment)
 - Customer or partner disputes

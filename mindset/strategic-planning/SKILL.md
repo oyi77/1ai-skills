@@ -18,6 +18,13 @@ Mindset skill for strategic planning. Builds capability through deliberate pract
 
 ## When to Use
 
+**Trigger phrases:**
+- "strategic planning"
+- "Setting annual or quarterly strategic direction"
+- "Aligning teams on priorities"
+- "Tracking execution and progress"
+
+
 - Setting annual or quarterly strategic direction
 - Aligning teams on priorities
 - Tracking execution and progress

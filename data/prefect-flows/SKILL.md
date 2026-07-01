@@ -27,6 +27,13 @@ Prefect is a modern workflow orchestration framework for Python. It uses decorat
 
 ## When to Use
 
+**Trigger phrases:**
+- "prefect flows"
+- "Building Python-based data pipelines"
+- "Needing local development with cloud deployment"
+- "Wanting simple decorator-based workflow definition"
+
+
 - Building Python-based data pipelines
 - Needing local development with cloud deployment
 - Wanting simple decorator-based workflow definition

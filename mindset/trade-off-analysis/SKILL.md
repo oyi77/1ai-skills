@@ -18,6 +18,13 @@ Mindset skill for trade off analysis. Builds capability through deliberate pract
 
 ## When to Use
 
+**Trigger phrases:**
+- "trade off analysis"
+- "Prioritizing initiatives with limited time/budget/people"
+- "Choosing between mutually exclusive options"
+- "Evaluating what to cut when resources are constrained"
+
+
 - Prioritizing initiatives with limited time/budget/people
 - Choosing between mutually exclusive options
 - Evaluating what to cut when resources are constrained

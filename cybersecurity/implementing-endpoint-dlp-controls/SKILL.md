@@ -40,6 +40,13 @@ Cybersecurity skill for implementing endpoint dlp controls. Follows industry bes
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing endpoint dlp controls"
+- "Deploying endpoint DLP to prevent sensitive data (PII, PHI, PCI) from leaving th"
+- "Configuring content inspection rules for email attachments, USB transfers, and c"
+- "Implementing Microsoft Purview DLP or Symantec DLP endpoint policies"
+
+
 Use this skill when:
 - Deploying endpoint DLP to prevent sensitive data (PII, PHI, PCI) from leaving the organization
 - Configuring content inspection rules for email attachments, USB transfers, and cloud uploads

@@ -26,6 +26,13 @@ Parses onboarding documents, runs compliance rules engine, and flags gaps. Handl
 
 ## When to Use
 
+**Trigger phrases:**
+- "kyc screener"
+- "New client onboarding (PE/Venture/Wealth Management)"
+- "Annual KYC refresh required"
+- "Suspicious activity flagged mid-relationship"
+
+
 - New client onboarding (PE/Venture/Wealth Management)
 - Annual KYC refresh required
 - Suspicious activity flagged mid-relationship

@@ -26,6 +26,13 @@ persona: "name: \"Ernest Hemingway\"\n  title: \"Master of Concise Prose\"\n  ex
 Writing skills IS Test-Driven Development applied to process documentation.
 
 ## When to Use
+
+**Trigger phrases:**
+- "writing skills"
+- "Creating new skills"
+- "Editing existing skills"
+- "Verifying skills work before deployment"
+
 - Creating new skills
 - Editing existing skills
 - Verifying skills work before deployment

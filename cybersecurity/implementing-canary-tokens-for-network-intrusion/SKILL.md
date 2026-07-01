@@ -32,6 +32,13 @@ Cybersecurity skill for implementing canary tokens for network intrusion. Follow
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing canary tokens for network intrusion"
+- "When deploying deception-based tripwires across network infrastructure to detect"
+- "When building early warning systems that alert on unauthorized access to sensiti"
+- "When planting fake AWS credentials, DNS beacons, or HTTP tokens to catch attacke"
+
+
 - When deploying deception-based tripwires across network infrastructure to detect intrusions
 - When building early warning systems that alert on unauthorized access to sensitive resources
 - When planting fake AWS credentials, DNS beacons, or HTTP tokens to catch attackers during lateral movement

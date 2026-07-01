@@ -15,6 +15,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "refactor agent"
+- "Reducing complexity in a function or module (cyclomatic complexity >10)"
+- "Extracting reusable components from duplicated code"
+- "Applying design patterns where they reduce coupling"
+
+
 - Reducing complexity in a function or module (cyclomatic complexity >10)
 - Extracting reusable components from duplicated code
 - Applying design patterns where they reduce coupling

@@ -31,6 +31,13 @@ Cybersecurity skill for detecting bluetooth low energy attacks. Follows industry
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting bluetooth low energy attacks"
+- "Performing authorized BLE security assessments of IoT devices, medical devices,"
+- "Monitoring a wireless environment for BLE-based replay attacks, spoofing, or una"
+- "Analyzing BLE packet captures to detect Man-in-the-Middle attacks or pairing exp"
+
+
 Use this skill when:
 - Performing authorized BLE security assessments of IoT devices, medical devices, or smart locks
 - Monitoring a wireless environment for BLE-based replay attacks, spoofing, or unauthorized enumeration

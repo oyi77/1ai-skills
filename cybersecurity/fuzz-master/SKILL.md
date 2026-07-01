@@ -19,6 +19,13 @@ Cybersecurity skill for fuzz master. Follows industry best practices and securit
 
 ## When to Use
 
+**Trigger phrases:**
+- "fuzz master"
+- "Automated scanners found nothing (time to fuzz)"
+- "Testing custom/proprietary protocols"
+- "Finding buffer overflows, crashes, memory corruption"
+
+
 - Automated scanners found nothing (time to fuzz)
 - Testing custom/proprietary protocols
 - Finding buffer overflows, crashes, memory corruption

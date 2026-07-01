@@ -31,6 +31,13 @@ Generate professional posed product images using Gemini AI with optimized prompt
 
 ## When to Use
 
+**Trigger phrases:**
+- "gemini image generator"
+- "When you need to create product images with model poses for e-commerce"
+- "When preparing TikTok/social media content featuring products"
+- "When you have product images and need them "modeled" without hiring photographer"
+
+
 - When you need to create product images with model poses for e-commerce
 - When preparing TikTok/social media content featuring products
 - When you have product images and need them "modeled" without hiring photographers

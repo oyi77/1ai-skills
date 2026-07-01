@@ -18,6 +18,13 @@ Cybersecurity skill for binary breaker. Follows industry best practices and secu
 
 ## When to Use
 
+**Trigger phrases:**
+- "binary breaker"
+- "Hunting zero-days in desktop applications"
+- "Firmware reverse engineering"
+- "Analyzing C/C++ applications for memory bugs"
+
+
 - Hunting zero-days in desktop applications
 - Firmware reverse engineering
 - Analyzing C/C++ applications for memory bugs

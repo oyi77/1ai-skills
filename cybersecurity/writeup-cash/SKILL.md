@@ -18,6 +18,13 @@ Cybersecurity skill for writeup cash. Follows industry best practices and securi
 
 ## When to Use
 
+**Trigger phrases:**
+- "writeup cash"
+- "Have accepted bug bounty reports to share"
+- "Want to build passive income from security research"
+- "Building a personal brand in security"
+
+
 - Have accepted bug bounty reports to share
 - Want to build passive income from security research
 - Building a personal brand in security

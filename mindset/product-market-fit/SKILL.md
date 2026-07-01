@@ -19,6 +19,13 @@ Mindset skill for product market fit. Builds capability through deliberate pract
 
 ## When to Use
 
+**Trigger phrases:**
+- "product market fit"
+- "Pre-PMF: validating a new product"
+- "Measuring PMF quantitatively (NPS, retention, growth)"
+- "Deciding whether to pivot or persevere"
+
+
 - Pre-PMF: validating a new product
 - Measuring PMF quantitatively (NPS, retention, growth)
 - Deciding whether to pivot or persevere

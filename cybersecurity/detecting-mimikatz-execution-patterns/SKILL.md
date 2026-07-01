@@ -35,6 +35,13 @@ Cybersecurity skill for detecting mimikatz execution patterns. Follows industry 
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting mimikatz execution patterns"
+- "When proactively hunting for indicators of detecting mimikatz execution patterns"
+- "After threat intelligence indicates active campaigns using these techniques"
+- "During incident response to scope compromise related to these techniques"
+
+
 - When proactively hunting for indicators of detecting mimikatz execution patterns in the environment
 - After threat intelligence indicates active campaigns using these techniques
 - During incident response to scope compromise related to these techniques

@@ -35,6 +35,13 @@ Cybersecurity skill for hunting for spearphishing indicators. Follows industry b
 
 ## When to Use
 
+**Trigger phrases:**
+- "hunting for spearphishing indicators"
+- "When proactively hunting for indicators of hunting for spearphishing indicators"
+- "After threat intelligence indicates active campaigns using these techniques"
+- "During incident response to scope compromise related to these techniques"
+
+
 - When proactively hunting for indicators of hunting for spearphishing indicators in the environment
 - After threat intelligence indicates active campaigns using these techniques
 - During incident response to scope compromise related to these techniques

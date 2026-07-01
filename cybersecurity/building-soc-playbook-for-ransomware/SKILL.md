@@ -43,6 +43,13 @@ Cybersecurity skill for building soc playbook for ransomware. Follows industry b
 
 ## When to Use
 
+**Trigger phrases:**
+- "building soc playbook for ransomware"
+- "SOC teams need a standardized ransomware response playbook for Tier 1-3 analysts"
+- "An organization lacks documented procedures for ransomware containment and recov"
+- "Tabletop exercises reveal gaps in ransomware response coordination"
+
+
 Use this skill when:
 - SOC teams need a standardized ransomware response playbook for Tier 1-3 analysts
 - An organization lacks documented procedures for ransomware containment and recovery

@@ -32,6 +32,13 @@ Cybersecurity skill for hardening linux endpoint with cis benchmark. Follows ind
 
 ## When to Use
 
+**Trigger phrases:**
+- "hardening linux endpoint with cis benchmark"
+- "Hardening Linux servers (Ubuntu, RHEL, CentOS, Debian) against CIS benchmarks"
+- "Automating Linux security baselines using Ansible, OpenSCAP, or shell scripts"
+- "Meeting compliance requirements (PCI DSS, HIPAA, SOC 2) for Linux endpoints"
+
+
 Use this skill when:
 - Hardening Linux servers (Ubuntu, RHEL, CentOS, Debian) against CIS benchmarks
 - Automating Linux security baselines using Ansible, OpenSCAP, or shell scripts

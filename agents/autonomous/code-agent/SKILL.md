@@ -15,6 +15,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "code agent"
+- "Implementing a new feature from a spec or plan"
+- "Fixing a bug with a known root cause"
+- "Writing a new module, service, or library"
+
+
 - Implementing a new feature from a spec or plan
 - Fixing a bug with a known root cause
 - Writing a new module, service, or library

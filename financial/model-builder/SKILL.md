@@ -25,6 +25,13 @@ Creates institutional-quality financial models: DCF (Discounted Cash Flow), LBO 
 
 ## When to Use
 
+**Trigger phrases:**
+- "model builder"
+- "Building a DCF for valuation"
+- "Creating an LBO model for private equity"
+- "Populating 3-statement model templates"
+
+
 - Building a DCF for valuation
 - Creating an LBO model for private equity
 - Populating 3-statement model templates

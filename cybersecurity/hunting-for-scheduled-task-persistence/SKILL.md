@@ -34,6 +34,13 @@ Cybersecurity skill for hunting for scheduled task persistence. Follows industry
 
 ## When to Use
 
+**Trigger phrases:**
+- "hunting for scheduled task persistence"
+- "When proactively hunting for indicators of hunting for scheduled task persistenc"
+- "After threat intelligence indicates active campaigns using these techniques"
+- "During incident response to scope compromise related to these techniques"
+
+
 - When proactively hunting for indicators of hunting for scheduled task persistence in the environment
 - After threat intelligence indicates active campaigns using these techniques
 - During incident response to scope compromise related to these techniques

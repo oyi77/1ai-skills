@@ -18,6 +18,13 @@ Mindset skill for persuasion influence. Builds capability through deliberate pra
 
 ## When to Use
 
+**Trigger phrases:**
+- "persuasion influence"
+- "Pitching ideas, products, or proposals without formal authority"
+- "Driving adoption of new tools, processes, or initiatives"
+- "Selling to prospects or closing deals"
+
+
 - Pitching ideas, products, or proposals without formal authority
 - Driving adoption of new tools, processes, or initiatives
 - Selling to prospects or closing deals

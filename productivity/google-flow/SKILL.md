@@ -35,6 +35,13 @@ Google Flow is an AI video generation tool that creates videos from text prompts
 
 ## When to Use
 
+**Trigger phrases:**
+- "google flow"
+- "When generating AI videos from text prompts"
+- "When automating Google Flow project management"
+- "When configuring video generation settings"
+
+
 - When generating AI videos from text prompts
 - When automating Google Flow project management
 - When configuring video generation settings

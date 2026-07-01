@@ -18,6 +18,13 @@ Mindset skill for competitive strategy. Builds capability through deliberate pra
 
 ## When to Use
 
+**Trigger phrases:**
+- "competitive strategy"
+- "Entering a new market or segment"
+- "Responding to competitive threats"
+- "Defining product positioning"
+
+
 - Entering a new market or segment
 - Responding to competitive threats
 - Defining product positioning

@@ -30,6 +30,13 @@ Canary Tokens are lightweight tripwire mechanisms that alert when an attacker ac
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing deception based detection with canarytoken"
+- "When deploying or configuring implementing deception based detection with canary"
+- "When establishing security controls aligned to compliance requirements"
+- "When building or improving security architecture for this domain"
+
+
 - When deploying or configuring implementing deception based detection with canarytoken capabilities in your environment
 - When establishing security controls aligned to compliance requirements
 - When building or improving security architecture for this domain

@@ -18,6 +18,13 @@ Mindset skill for unit economics. Builds capability through deliberate practice 
 
 ## When to Use
 
+**Trigger phrases:**
+- "unit economics"
+- "Evaluating business model sustainability"
+- "Deciding whether to scale go-to-market"
+- "Optimizing pricing, retention, or acquisition"
+
+
 - Evaluating business model sustainability
 - Deciding whether to scale go-to-market
 - Optimizing pricing, retention, or acquisition

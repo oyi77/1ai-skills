@@ -24,6 +24,13 @@ Finds breaks between GL accounts, traces root causes, and routes for sign-off. H
 
 ## When to Use
 
+**Trigger phrases:**
+- "gl reconciler"
+- "Month-end close process"
+- "Variance > 2% in any GL account"
+- "Suspense account balance > $0"
+
+
 - Month-end close process
 - Variance > 2% in any GL account
 - Suspense account balance > $0

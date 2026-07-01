@@ -15,6 +15,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "deploy agent"
+- "Deploying a new feature to staging or production"
+- "Setting up or modifying CI/CD pipelines"
+- "Rolling back a bad deployment"
+
+
 - Deploying a new feature to staging or production
 - Setting up or modifying CI/CD pipelines
 - Rolling back a bad deployment

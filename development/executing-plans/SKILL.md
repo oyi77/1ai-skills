@@ -42,6 +42,13 @@ Load plan, review critically, execute tasks in batches, report for review betwee
 
 ## When to Use
 
+**Trigger phrases:**
+- "executing plans"
+- "When you have a completed, Momus-approved plan ready for implementation"
+- "When following a structured plan with clear task breakdowns"
+- "When checkpoint reviews are needed between execution phases"
+
+
 - When you have a completed, Momus-approved plan ready for implementation
 - When following a structured plan with clear task breakdowns
 - When checkpoint reviews are needed between execution phases

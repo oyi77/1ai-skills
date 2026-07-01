@@ -36,6 +36,13 @@ Cybersecurity skill for analyzing indicators of compromise. Follows industry bes
 
 ## When to Use
 
+**Trigger phrases:**
+- "analyzing indicators of compromise"
+- "A phishing email or alert generates IOCs (URLs, IP addresses, file hashes) requi"
+- "Automated feeds deliver bulk IOCs that need confidence scoring before ingestion"
+- "An incident investigation requires contextual enrichment of observed network art"
+
+
 Use this skill when:
 - A phishing email or alert generates IOCs (URLs, IP addresses, file hashes) requiring rapid triage
 - Automated feeds deliver bulk IOCs that need confidence scoring before ingestion into blocking controls

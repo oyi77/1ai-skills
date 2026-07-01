@@ -34,6 +34,13 @@ Cybersecurity skill for detecting pass the hash attacks. Follows industry best p
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting pass the hash attacks"
+- "When proactively hunting for indicators of detecting pass the hash attacks in th"
+- "After threat intelligence indicates active campaigns using these techniques"
+- "During incident response to scope compromise related to these techniques"
+
+
 - When proactively hunting for indicators of detecting pass the hash attacks in the environment
 - After threat intelligence indicates active campaigns using these techniques
 - During incident response to scope compromise related to these techniques

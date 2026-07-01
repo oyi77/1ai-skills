@@ -38,6 +38,13 @@ Cybersecurity skill for detecting evasion techniques in endpoint logs. Follows i
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting evasion techniques in endpoint logs"
+- "Hunting for adversary defense evasion techniques (MITRE ATT&CK TA0005) in endpoi"
+- "Building detection rules for common evasion methods (process injection, timestom"
+- "Investigating incidents where adversaries disabled or bypassed security tools"
+
+
 Use this skill when:
 - Hunting for adversary defense evasion techniques (MITRE ATT&CK TA0005) in endpoint telemetry
 - Building detection rules for common evasion methods (process injection, timestomping, log clearing)
