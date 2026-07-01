@@ -31,6 +31,10 @@ API schema validation enforces that all data exchanged through APIs conforms to 
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing api schema validation security"
+- "Implement API schema validation using OpenAPI specifications and JSON Schema to "
+
 
 - When deploying or configuring implementing api schema validation security capabilities in your environment
 - When establishing security controls aligned to compliance requirements

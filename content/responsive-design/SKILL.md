@@ -25,6 +25,10 @@ Responsive design that works across all devices. Covers mobile-first approach, b
 - Handle responsive images and lazy loading
 
 ## When to Use
+**Trigger phrases:**
+- "responsive design"
+- "Mobile-first responsive design — breakpoints, fluid typography, container querie"
+
 
 - Building a new responsive layout
 - Existing layout breaks on certain screen sizes

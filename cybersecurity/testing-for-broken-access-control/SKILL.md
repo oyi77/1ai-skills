@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for testing for broken access control. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing for broken access control"
+- "Systematically testing web applications for broken access control vulnerabilitie"
+
 
 - During authorized penetration tests as the primary assessment for OWASP A01:2021 - Broken Access Control
 - When evaluating role-based access control (RBAC) implementations across all application endpoints

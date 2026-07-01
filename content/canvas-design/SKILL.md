@@ -14,6 +14,10 @@ tags:
 # Canvas Design
 
 ## When to Use
+**Trigger phrases:**
+- "canvas design"
+- "Design visual art and graphics using HTML5 Canvas, p5"
+
 
 - When creating visual diagrams, charts, or infographics
 - When generating algorithmic/generative art

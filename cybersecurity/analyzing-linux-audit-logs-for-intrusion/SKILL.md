@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for analyzing linux audit logs for intrusion. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing linux audit logs for intrusion"
+- "Uses the Linux Audit framework (auditd) with ausearch and aureport utilities to "
+
 
 - Investigating suspected unauthorized access or privilege escalation on Linux hosts
 - Hunting for evidence of exploitation, backdoor installation, or persistence mechanisms

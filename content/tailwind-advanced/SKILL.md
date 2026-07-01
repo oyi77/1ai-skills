@@ -26,6 +26,10 @@ Advanced Tailwind CSS patterns for production applications — custom plugins, c
 - JIT compiler optimization and purge strategies
 
 ## When to Use
+**Trigger phrases:**
+- "tailwind advanced"
+- "Advanced Tailwind CSS — custom plugins, JIT, container queries, animations, dark"
+
 
 - Building a design system on top of Tailwind
 - Need component-scoped responsive design (container queries)

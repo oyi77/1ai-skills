@@ -29,6 +29,10 @@ The Docker daemon (`dockerd`) runs with root privileges and controls all contain
 
 
 ## When to Use
+**Trigger phrases:**
+- "hardening docker daemon configuration"
+- "Harden the Docker daemon by configuring daemon"
+
 
 - When deploying or configuring hardening docker daemon configuration capabilities in your environment
 - When establishing security controls aligned to compliance requirements

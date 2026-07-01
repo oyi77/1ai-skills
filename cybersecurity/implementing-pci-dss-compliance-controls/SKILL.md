@@ -21,6 +21,10 @@ PCI DSS 4.0.1 establishes 12 requirements across 6 control objectives for organi
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing pci dss compliance controls"
+- "PCI DSS 4"
+
 
 - When deploying or configuring implementing pci dss compliance controls capabilities in your environment
 - When establishing security controls aligned to compliance requirements

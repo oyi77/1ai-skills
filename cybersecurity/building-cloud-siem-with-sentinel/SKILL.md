@@ -38,6 +38,10 @@ nist_csf:
 Cybersecurity skill for building cloud siem with sentinel. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "building cloud siem with sentinel"
+- "This skill covers deploying Microsoft Sentinel as a cloud-native SIEM and SOAR p"
+
 
 - When establishing a centralized security operations center for multi-cloud environments
 - When migrating from legacy SIEM platforms (Splunk, QRadar) to cloud-native architecture

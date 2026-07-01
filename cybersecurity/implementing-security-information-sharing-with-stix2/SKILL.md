@@ -33,6 +33,10 @@ nist_csf:
 Cybersecurity skill for implementing security information sharing with stix2. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing security information sharing with stix2"
+- "Create, validate, and share STIX 2"
+
 
 - Building a threat intelligence platform that exchanges IOCs with partner organizations
 - Automating ingestion and export of indicators from MISP, OpenCTI, or other TIP platforms

@@ -28,6 +28,10 @@ Automatically discover and integrate community skills when your local skills don
 **Makes your AI agent complete and self-sufficient** - never say "I cant do that" again!
 
 ## When to Use
+**Trigger phrases:**
+- "meta find skills"
+- "Automatically discover evaluate and activate community skills when local skills "
+
 
 **Automatic Activation** when:
 - User asks "how do I do X" where X isnt covered by local skills

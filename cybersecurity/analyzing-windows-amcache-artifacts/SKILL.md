@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for analyzing windows amcache artifacts. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing windows amcache artifacts"
+- "Parses and analyzes the Windows Amcache"
+
 
 - Determining which programs have existed or executed on a Windows system during incident response
 - Correlating SHA-1 hashes from Amcache against known malware databases (VirusTotal, CIRCL, MISP)

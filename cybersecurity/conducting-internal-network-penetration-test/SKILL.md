@@ -36,6 +36,10 @@ An internal network penetration test simulates an attacker who has already gaine
 
 
 ## When to Use
+**Trigger phrases:**
+- "conducting internal network penetration test"
+- "Execute an internal network penetration test simulating an insider threat or pos"
+
 
 - When conducting security assessments that involve conducting internal network penetration test
 - When following incident response procedures for related security events

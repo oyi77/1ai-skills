@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for recovering deleted files with photorec. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "recovering deleted files with photorec"
+- "Recover deleted files from disk images and storage media using PhotoRec's file s"
+
 - When recovering deleted files from a forensic disk image or storage device
 - When the file system is corrupted, formatted, or overwritten
 - During investigations requiring recovery of documents, images, videos, or databases

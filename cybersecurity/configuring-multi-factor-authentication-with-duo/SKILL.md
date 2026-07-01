@@ -28,6 +28,10 @@ Deploy Cisco Duo multi-factor authentication across enterprise applications, VPN
 
 
 ## When to Use
+**Trigger phrases:**
+- "configuring multi factor authentication with duo"
+- "Deploy Cisco Duo multi-factor authentication across enterprise applications, VPN"
+
 
 - When deploying or configuring configuring multi factor authentication with duo capabilities in your environment
 - When establishing security controls aligned to compliance requirements

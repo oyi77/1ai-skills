@@ -26,6 +26,10 @@ LangChain is the most widely used framework for building LLM applications. LangG
 - Integrate with 100+ LLM providers and tools
 
 ## When to Use
+**Trigger phrases:**
+- "langchain patterns"
+- "LangChain/LangGraph patterns — chains, agents, tools, memory, retrieval, graph w"
+
 
 - Building LLM-powered applications (chatbots, RAG, agents)
 - Needing structured chains for multi-step LLM workflows

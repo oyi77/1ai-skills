@@ -38,6 +38,10 @@ Automate legal and compliance tasks that solo entrepreneurs spend disproportiona
 - Audit cookie consent and data collection practices
 
 ## When to Use
+**Trigger phrases:**
+- "legal compliance"
+- "Contract generation, terms of service, privacy policies, GDPR/CCPA compliance ch"
+
 
 - Starting a new business and need legal documents
 - Launching a SaaS product requiring ToS and privacy policy

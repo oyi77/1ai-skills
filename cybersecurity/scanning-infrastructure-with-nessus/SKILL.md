@@ -27,6 +27,10 @@ Tenable Nessus is the industry-leading vulnerability scanner used to identify se
 
 
 ## When to Use
+**Trigger phrases:**
+- "scanning infrastructure with nessus"
+- "Tenable Nessus is the industry-leading vulnerability scanner used to identify se"
+
 
 - When conducting security assessments that involve scanning infrastructure with nessus
 - When following incident response procedures for related security events

@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for implementing network deception with honeypots. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing network deception with honeypots"
+- "Deploy and manage network honeypots using OpenCanary, T-Pot, or Cowrie to detect"
+
 
 - When deploying deception technology to detect lateral movement
 - To create early warning indicators for network intrusion

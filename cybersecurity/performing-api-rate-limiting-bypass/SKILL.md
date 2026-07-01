@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for performing api rate limiting bypass. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing api rate limiting bypass"
+- "Tests API rate limiting implementations for bypass vulnerabilities by manipulati"
+
 
 - Testing whether API rate limiting can be circumvented to enable brute force attacks on authentication endpoints
 - Assessing the effectiveness of API throttling controls against credential stuffing or account enumeration

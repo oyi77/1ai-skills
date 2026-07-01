@@ -26,6 +26,10 @@ nist_csf:
 Cybersecurity skill for implementing network traffic analysis with arkime. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing network traffic analysis with arkime"
+- "Deploy and query Arkime (formerly Moloch) for full packet capture network traffi"
+
 
 - When deploying or configuring implementing network traffic analysis with arkime capabilities in your environment
 - When establishing security controls aligned to compliance requirements

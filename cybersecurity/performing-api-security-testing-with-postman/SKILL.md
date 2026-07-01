@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing api security testing with postman. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing api security testing with postman"
+- "Uses Postman to perform structured API security testing by building collections "
+
 
 - Building repeatable API security test suites for OWASP API Security Top 10 coverage
 - Creating automated security regression tests that run in CI/CD pipelines via Newman

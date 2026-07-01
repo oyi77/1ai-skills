@@ -25,6 +25,10 @@ Optimize App Store and Play Store listings for maximum downloads. Covers keyword
 - Track conversion rates and organic download trends
 
 ## When to Use
+**Trigger phrases:**
+- "app store optimization"
+- "App Store and Play Store optimization — keywords, screenshots, reviews, and conv"
+
 
 - Launching a new app to the stores
 - Organic downloads have plateaued

@@ -29,6 +29,10 @@ Proofpoint Email Protection is a cloud-native secure email gateway (SEG) that ac
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing proofpoint email security gateway"
+- "Deploy and configure Proofpoint Email Protection as a secure email gateway to de"
+
 
 - When deploying or configuring implementing proofpoint email security gateway capabilities in your environment
 - When establishing security controls aligned to compliance requirements

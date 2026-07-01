@@ -26,6 +26,10 @@ nist_csf:
 Cybersecurity skill for implementing syslog centralization with rsyslog. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing syslog centralization with rsyslog"
+- "Configure rsyslog for centralized log collection with TLS encryption, custom tem"
+
 
 - When deploying or configuring implementing syslog centralization with rsyslog capabilities in your environment
 - When establishing security controls aligned to compliance requirements

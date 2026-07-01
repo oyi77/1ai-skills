@@ -31,6 +31,10 @@ API rate limiting is a critical security control that restricts the number of re
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing api abuse detection with rate limiting"
+- "Implement API abuse detection using token bucket, sliding window, and adaptive r"
+
 
 - When deploying or configuring implementing api abuse detection with rate limiting capabilities in your environment
 - When establishing security controls aligned to compliance requirements

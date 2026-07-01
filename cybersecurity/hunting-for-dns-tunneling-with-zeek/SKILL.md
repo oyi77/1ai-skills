@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for hunting for dns tunneling with zeek. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for dns tunneling with zeek"
+- "Detect DNS tunneling and data exfiltration by analyzing Zeek dns"
+
 
 - When hunting for data exfiltration over DNS covert channels
 - After threat intelligence indicates DNS-based C2 frameworks targeting your industry

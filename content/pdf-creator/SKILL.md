@@ -13,6 +13,10 @@ tags:
 # Pdf Creator
 
 ## When to Use
+**Trigger phrases:**
+- "pdf creator"
+- "Create, edit, and extract text from PDF documents"
+
 
 - When generating PDF reports, invoices, or certificates
 - When extracting text or data from existing PDFs

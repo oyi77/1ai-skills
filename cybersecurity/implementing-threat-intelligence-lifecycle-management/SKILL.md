@@ -30,6 +30,10 @@ The threat intelligence lifecycle is a structured, iterative process for transfo
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing threat intelligence lifecycle management"
+- "Implement a structured threat intelligence lifecycle encompassing planning, coll"
+
 
 - When deploying or configuring implementing threat intelligence lifecycle management capabilities in your environment
 - When establishing security controls aligned to compliance requirements

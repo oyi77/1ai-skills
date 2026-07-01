@@ -60,6 +60,10 @@ AI-powered affiliate marketing automation. Use AI agents to research products, g
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "affiliate marketing"
+- "AI-powered affiliate marketing automation"
+
 
 - Build passive income streams
 - Monetize existing audience

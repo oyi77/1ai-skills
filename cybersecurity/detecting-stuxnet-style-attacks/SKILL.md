@@ -33,6 +33,10 @@ nist_csf:
 Cybersecurity skill for detecting stuxnet style attacks. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting stuxnet style attacks"
+- "This skill covers detecting sophisticated cyber-physical attacks that follow the"
+
 
 - When implementing advanced threat detection for high-value OT targets (nuclear, chemical, critical infrastructure)
 - When building detection for APT-style attacks targeting PLC logic and process manipulation

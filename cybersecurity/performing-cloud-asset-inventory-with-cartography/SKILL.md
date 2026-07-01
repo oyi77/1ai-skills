@@ -31,6 +31,10 @@ Cartography is a CNCF sandbox project (originally created at Lyft) that consolid
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing cloud asset inventory with cartography"
+- "Perform comprehensive cloud asset inventory and relationship mapping using Carto"
+
 
 - When conducting security assessments that involve performing cloud asset inventory with cartography
 - When following incident response procedures for related security events

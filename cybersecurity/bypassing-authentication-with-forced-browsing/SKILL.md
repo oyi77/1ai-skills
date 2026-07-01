@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for bypassing authentication with forced browsing. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "bypassing authentication with forced browsing"
+- "Discovering and accessing unprotected pages, APIs, and administrative interfaces"
+
 
 - During authorized penetration tests to discover hidden or unprotected administrative pages
 - When testing whether authentication is consistently enforced across all application endpoints

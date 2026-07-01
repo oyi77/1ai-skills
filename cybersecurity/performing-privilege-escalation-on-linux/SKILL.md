@@ -37,6 +37,10 @@ Linux privilege escalation involves elevating from a low-privilege user account 
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing privilege escalation on linux"
+- "Linux privilege escalation involves elevating from a low-privilege user account "
+
 
 - When conducting security assessments that involve performing privilege escalation on linux
 - When following incident response procedures for related security events

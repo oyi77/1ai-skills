@@ -33,6 +33,10 @@ nist_csf:
 Cybersecurity skill for analyzing threat landscape with misp. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing threat landscape with misp"
+- "Analyze the threat landscape using MISP (Malware Information Sharing Platform) b"
+
 
 - When investigating security incidents that require analyzing threat landscape with misp
 - When building detection rules or threat hunting queries for this domain

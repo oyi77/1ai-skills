@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for configuring snort ids for intrusion detection. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "configuring snort ids for intrusion detection"
+- "Installs, configures, and tunes Snort 3 intrusion detection system to monitor ne"
+
 
 - Deploying a network-based intrusion detection system to monitor traffic at key network boundaries
 - Writing custom Snort rules to detect organization-specific threats, attack patterns, or policy violations

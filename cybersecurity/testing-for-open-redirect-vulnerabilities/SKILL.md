@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for testing for open redirect vulnerabilities. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing for open redirect vulnerabilities"
+- "Identify and test open redirect vulnerabilities in web applications by analyzing"
+
 - When testing login/logout flows that redirect users to specified URLs
 - During assessment of OAuth authorization endpoints with redirect_uri parameters
 - When auditing applications with URL parameters (next, url, redirect, return, goto, target)

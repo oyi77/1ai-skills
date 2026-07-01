@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for auditing tls certificate transparency logs. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "auditing tls certificate transparency logs"
+- "Monitors Certificate Transparency (CT) logs to detect unauthorized certificate i"
+
 
 - Monitoring owned domains for unauthorized or unexpected certificate issuance by unknown Certificate Authorities
 - Discovering subdomains and hidden services through certificates logged in public CT logs

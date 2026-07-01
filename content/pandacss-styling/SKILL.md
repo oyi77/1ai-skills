@@ -27,6 +27,10 @@ Panda CSS is a zero-runtime CSS-in-JS framework with a token system, patterns, r
 - Works with React, Vue, Solid, Qwik
 
 ## When to Use
+**Trigger phrases:**
+- "pandacss styling"
+- "Panda CSS zero-runtime styling — token system, patterns, recipes, conditions, JS"
+
 
 - Want type-safe styling with design tokens
 - Need component variants without runtime cost

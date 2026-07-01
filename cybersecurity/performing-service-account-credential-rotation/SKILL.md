@@ -29,6 +29,10 @@ Service accounts are non-human identities used by applications, daemons, CI/CD p
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing service account credential rotation"
+- "Automate credential rotation for service accounts across Active Directory, cloud"
+
 
 - When conducting security assessments that involve performing service account credential rotation
 - When following incident response procedures for related security events

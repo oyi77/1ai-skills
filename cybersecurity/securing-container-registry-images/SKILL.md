@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for securing container registry images. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "securing container registry images"
+- "Securing container registry images by implementing vulnerability scanning with T"
+
 
 - When establishing security controls for container image registries (ECR, ACR, GCR, Docker Hub)
 - When building CI/CD pipelines that enforce vulnerability scanning before image promotion

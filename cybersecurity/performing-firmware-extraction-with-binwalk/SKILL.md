@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing firmware extraction with binwalk. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing firmware extraction with binwalk"
+- "Performs firmware image extraction and analysis using binwalk to identify embedd"
+
 
 - Analyzing IoT device firmware downloaded from vendor sites or extracted from flash chips
 - Reverse engineering router, camera, or embedded device firmware for vulnerability research

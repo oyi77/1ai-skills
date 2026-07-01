@@ -17,6 +17,10 @@ tags:
 Mindset skill for email mastery. Builds capability through deliberate practice and structured frameworks.
 
 ## When to Use
+**Trigger phrases:**
+- "email mastery"
+- "Write effective professional emails using AIDA framework, subject line formulas,"
+
 
 - Cold outreach to prospects, partners, or investors
 - Follow-up sequences after meetings or proposals

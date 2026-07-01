@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for auditing kubernetes cluster rbac. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "auditing kubernetes cluster rbac"
+- "Auditing Kubernetes cluster RBAC configurations to identify overly permissive ro"
+
 
 - When performing security assessments of Kubernetes clusters (EKS, GKE, AKS, or self-managed)
 - When validating that RBAC policies enforce least privilege for users and service accounts

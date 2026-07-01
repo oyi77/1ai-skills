@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for detecting compromised cloud credentials. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting compromised cloud credentials"
+- "Detecting compromised cloud credentials across AWS, Azure, and GCP by analyzing "
+
 
 - When investigating alerts about unusual cloud API activity from unfamiliar locations
 - When building detection rules for credential theft and abuse across cloud environments

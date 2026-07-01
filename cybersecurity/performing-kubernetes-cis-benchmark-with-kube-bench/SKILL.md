@@ -29,6 +29,10 @@ kube-bench is an open-source Go tool by Aqua Security that runs the CIS Kubernet
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing kubernetes cis benchmark with kube bench"
+- "Audit Kubernetes cluster security posture against CIS benchmarks using kube-benc"
+
 
 - When conducting security assessments that involve performing kubernetes cis benchmark with kube bench
 - When following incident response procedures for related security events

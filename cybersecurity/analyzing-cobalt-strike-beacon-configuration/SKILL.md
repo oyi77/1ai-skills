@@ -29,6 +29,10 @@ Cobalt Strike is a commercial adversary simulation tool widely abused by threat 
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing cobalt strike beacon configuration"
+- "Extract and analyze Cobalt Strike beacon configuration from PE files and memory "
+
 
 - When investigating security incidents that require analyzing cobalt strike beacon configuration
 - When building detection rules or threat hunting queries for this domain

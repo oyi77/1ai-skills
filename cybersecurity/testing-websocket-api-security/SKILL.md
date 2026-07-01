@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for testing websocket api security. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing websocket api security"
+- "Tests WebSocket API implementations for security vulnerabilities including missi"
+
 
 - Assessing real-time communication APIs that use WebSocket (ws://) or Secure WebSocket (wss://) protocols
 - Testing for Cross-Site WebSocket Hijacking (CSWSH) where an attacker's page connects to a legitimate WebSocket server

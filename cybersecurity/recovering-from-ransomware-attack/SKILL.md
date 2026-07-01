@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for recovering from ransomware attack. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "recovering from ransomware attack"
+- "Executes structured recovery from a ransomware incident following NIST and CISA "
+
 
 - After ransomware has encrypted production systems and the decision has been made to recover from backups
 - When building or validating a ransomware recovery runbook before an actual incident

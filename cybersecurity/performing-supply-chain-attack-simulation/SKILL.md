@@ -31,6 +31,10 @@ Software supply chain attacks exploit trust in package registries through typosq
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing supply chain attack simulation"
+- "Simulate and detect software supply chain attacks including typosquatting detect"
+
 
 - When conducting security assessments that involve performing supply chain attack simulation
 - When following incident response procedures for related security events

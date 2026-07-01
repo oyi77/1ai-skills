@@ -29,6 +29,10 @@ Configure secure OAuth 2.0 authorization flows including Authorization Code with
 
 
 ## When to Use
+**Trigger phrases:**
+- "configuring oauth2 authorization flow"
+- "Configure secure OAuth 2"
+
 
 - When deploying or configuring configuring oauth2 authorization flow capabilities in your environment
 - When establishing security controls aligned to compliance requirements

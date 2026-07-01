@@ -28,6 +28,10 @@ Implement Microsoft's Enhanced Security Admin Environment (ESAE) tiered administ
 
 
 ## When to Use
+**Trigger phrases:**
+- "configuring active directory tiered model"
+- "Implement Microsoft's Enhanced Security Admin Environment (ESAE) tiered administ"
+
 
 - When deploying or configuring configuring active directory tiered model capabilities in your environment
 - When establishing security controls aligned to compliance requirements

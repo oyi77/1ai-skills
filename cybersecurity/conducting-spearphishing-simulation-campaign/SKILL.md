@@ -37,6 +37,10 @@ Spearphishing simulation is a targeted social engineering attack vector used by 
 
 
 ## When to Use
+**Trigger phrases:**
+- "conducting spearphishing simulation campaign"
+- "Spearphishing simulation is a targeted social engineering attack vector used by "
+
 
 - When conducting security assessments that involve conducting spearphishing simulation campaign
 - When following incident response procedures for related security events

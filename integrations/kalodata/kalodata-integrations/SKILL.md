@@ -23,6 +23,10 @@ Multi-platform connections for Kalodata research automation.
 Enables multi-platform integrations for Kalodata research automation, connecting Shopify for product listings, Notion for research reports, and Slack for alerts and daily digests. Provides CLI-friendly configuration management with secure API key handling.
 
 ## When to Use
+**Trigger phrases:**
+- "kalodata integrations"
+- "Multi-platform integrations for Kalodata research"
+
 
 - User wants to create Shopify product listings from TikTok Shop research
 - User needs to save research reports to Notion databases

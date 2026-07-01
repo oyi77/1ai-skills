@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for analyzing ransomware payment wallets. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing ransomware payment wallets"
+- "Traces ransomware cryptocurrency payment flows using blockchain analysis tools s"
+
 
 - An organization has been hit by ransomware and the ransom note contains a Bitcoin or cryptocurrency wallet address that needs investigation
 - Law enforcement or incident responders need to trace where ransom payments flowed after the victim paid

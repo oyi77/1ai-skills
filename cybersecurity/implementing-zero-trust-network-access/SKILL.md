@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for implementing zero trust network access. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing zero trust network access"
+- "Implementing Zero Trust Network Access (ZTNA) in cloud environments by configuri"
+
 
 - When replacing traditional VPN-based remote access with identity-based access controls
 - When implementing micro-segmentation to limit lateral movement within cloud networks

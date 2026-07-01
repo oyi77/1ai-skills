@@ -25,6 +25,10 @@ HTTP security headers protect web applications from XSS, clickjacking, MIME snif
 - Generate headers for Express, Nginx, Apache, Cloudflare
 
 ## When to Use
+**Trigger phrases:**
+- "security headers"
+- "Web security headers — CSP, CORS, HSTS, X-Frame-Options"
+
 
 - Hardening a web application before production
 - Fixing CSP or CORS issues in security audits

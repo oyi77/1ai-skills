@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for detecting lateral movement with zeek. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting lateral movement with zeek"
+- "Detect lateral movement in network traffic using Zeek (formerly Bro) log analysi"
+
 
 - Hunting for lateral movement after an initial compromise indicator is found on one endpoint
 - Investigating suspected NTLM account spray or Pass-the-Ticket attacks across the internal network

@@ -29,6 +29,10 @@ Helm is the Kubernetes package manager. Securing Helm deployments requires valid
 
 
 ## When to Use
+**Trigger phrases:**
+- "securing helm chart deployments"
+- "Secure Helm chart deployments by validating chart integrity, scanning templates "
+
 
 - When deploying or configuring securing helm chart deployments capabilities in your environment
 - When establishing security controls aligned to compliance requirements

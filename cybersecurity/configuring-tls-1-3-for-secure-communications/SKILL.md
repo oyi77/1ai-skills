@@ -26,6 +26,10 @@ TLS 1.3 (RFC 8446) is the latest version of the Transport Layer Security protoco
 
 
 ## When to Use
+**Trigger phrases:**
+- "configuring tls 1 3 for secure communications"
+- "TLS 1"
+
 
 - When deploying or configuring configuring tls 1 3 for secure communications capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -25,6 +25,10 @@ Envoy is a high-performance L4/L7 proxy designed for microservice architectures.
 - xDS API for dynamic configuration
 
 ## When to Use
+**Trigger phrases:**
+- "envoy proxy"
+- "Envoy proxy — L4/L7 filtering, load balancing, circuit breaking, observability, "
+
 
 - Service mesh data plane (Istio, Consul Connect)
 - API gateway / edge proxy

@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for integrating dast with owasp zap in pipeline. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "integrating dast with owasp zap in pipeline"
+- "This skill covers integrating OWASP ZAP (Zed Attack Proxy) for Dynamic Applicati"
+
 
 - When testing running web applications for vulnerabilities like XSS, SQLi, CSRF, and misconfigurations
 - When SAST alone is insufficient and runtime behavior testing is required

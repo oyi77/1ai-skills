@@ -33,6 +33,10 @@ SQLite is the most widely deployed database engine in the world, used by virtual
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing sqlite database forensics"
+- "Perform forensic analysis of SQLite databases to recover deleted records from fr"
+
 
 - When conducting security assessments that involve performing sqlite database forensics
 - When following incident response procedures for related security events

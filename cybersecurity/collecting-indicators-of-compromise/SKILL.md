@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for collecting indicators of compromise. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "collecting indicators of compromise"
+- "Systematically collects, categorizes, and distributes indicators of compromise ("
+
 
 - During active incident response to identify and block adversary infrastructure
 - Post-incident to document all observed adversary artifacts for future detection

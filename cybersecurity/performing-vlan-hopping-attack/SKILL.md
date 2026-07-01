@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing vlan hopping attack. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing vlan hopping attack"
+- "Simulates VLAN hopping attacks using switch spoofing and double tagging techniqu"
+
 
 - Testing the effectiveness of VLAN-based network segmentation during authorized penetration tests
 - Validating that switch trunk port configurations prevent unauthorized VLAN access

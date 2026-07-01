@@ -41,6 +41,10 @@ nist_csf:
 Cybersecurity skill for triaging security incident. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "triaging security incident"
+- "Performs initial triage of security incidents to determine severity, scope, and "
+
 
 - A SIEM or EDR alert fires and requires human classification before escalation
 - Multiple concurrent alerts arrive and the SOC must prioritize response order

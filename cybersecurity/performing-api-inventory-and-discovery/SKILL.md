@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for performing api inventory and discovery. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing api inventory and discovery"
+- "Performs API inventory and discovery to identify all API endpoints in an organiz"
+
 
 - Mapping the complete API attack surface of an organization before a security assessment
 - Identifying shadow APIs deployed by development teams without security review

@@ -32,6 +32,10 @@ in-toto is a CNCF graduated project that ensures the integrity of software suppl
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing supply chain security with in toto"
+- "Implement software supply chain integrity verification for container builds usin"
+
 
 - When deploying or configuring implementing supply chain security with in toto capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -28,6 +28,10 @@ Deploy SailPoint IdentityNow or IdentityIQ for identity governance and administr
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing identity governance with sailpoint"
+- "Deploy SailPoint IdentityNow or IdentityIQ for identity governance and administr"
+
 
 - When deploying or configuring implementing identity governance with sailpoint capabilities in your environment
 - When establishing security controls aligned to compliance requirements

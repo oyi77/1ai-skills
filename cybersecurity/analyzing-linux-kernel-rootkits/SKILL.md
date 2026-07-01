@@ -32,6 +32,10 @@ Linux kernel rootkits operate at ring 0, modifying kernel data structures to hid
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing linux kernel rootkits"
+- "Detect kernel-level rootkits in Linux memory dumps using Volatility3 linux plugi"
+
 
 - When investigating security incidents that require analyzing linux kernel rootkits
 - When building detection rules or threat hunting queries for this domain

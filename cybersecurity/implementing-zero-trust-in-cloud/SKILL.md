@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for implementing zero trust in cloud. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing zero trust in cloud"
+- "This skill guides organizations through implementing zero trust architecture in "
+
 
 - When migrating from traditional perimeter-based security to identity-centric access controls
 - When eliminating VPN dependencies for remote workforce access to cloud applications

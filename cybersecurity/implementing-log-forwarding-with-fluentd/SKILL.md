@@ -30,6 +30,10 @@ This skill covers configuring Fluentd and Fluent Bit for centralized log collect
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing log forwarding with fluentd"
+- "Configure Fluentd and Fluent Bit for centralized log aggregation, routing, filte"
+
 
 - When deploying or configuring implementing log forwarding with fluentd capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -45,6 +45,10 @@ and persistent mode for high-throughput fuzzing.
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing fuzzing with aflplusplus"
+- "Perform coverage-guided fuzzing of compiled binaries using AFL++ (American Fuzzy"
+
 
 - When conducting security assessments that involve performing fuzzing with aflplusplus
 - When following incident response procedures for related security events

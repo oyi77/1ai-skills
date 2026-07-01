@@ -28,6 +28,10 @@ persona:
 # Kb
 
 ## When to Use
+**Trigger phrases:**
+- "Domain Expert"
+- "Query and maintain the knowledge base for project context, decisions, and archit"
+
 
 Use this skill when:
 - Searching company knowledge (strategies, playbooks, finance, trading, marketing)

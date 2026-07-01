@@ -29,6 +29,10 @@ SpiderFoot is an open-source OSINT automation tool with 200+ modules that integr
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing osint with spiderfoot"
+- "Automate OSINT collection using SpiderFoot REST API and CLI for target profiling"
+
 
 - When conducting security assessments that involve performing osint with spiderfoot
 - When following incident response procedures for related security events

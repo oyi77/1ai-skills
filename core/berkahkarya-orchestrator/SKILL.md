@@ -15,6 +15,10 @@ tags:
 # Berkahkarya Orchestrator
 
 ## When to Use
+**Trigger phrases:**
+- "berkahkarya orchestrator"
+- "Orchestrate BerkahKarya multi-skill workflows by routing tasks to the right agen"
+
 
 - When the task falls within this skill's domain expertise
 - When automated execution saves time over manual work

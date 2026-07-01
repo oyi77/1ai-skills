@@ -35,6 +35,10 @@ Privilege escalation in Kubernetes occurs when a pod or container gains elevated
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting privilege escalation in kubernetes pods"
+- "Detect and prevent privilege escalation in Kubernetes pods by monitoring securit"
+
 
 - When investigating security incidents that require detecting privilege escalation in kubernetes pods
 - When building detection rules or threat hunting queries for this domain

@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for analyzing disk image with autopsy. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing disk image with autopsy"
+- "Perform comprehensive forensic analysis of disk images using Autopsy to recover "
+
 - When you have a forensic disk image and need structured analysis of its contents
 - During investigations requiring file recovery, keyword searching, and timeline analysis
 - When non-technical stakeholders need visual reports from forensic evidence

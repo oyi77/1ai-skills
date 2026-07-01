@@ -373,8 +373,8 @@ KALODATA_CF_CFLEARANCE=your_cf_clearance_token
 
 ## Related Skills
 
-- [Kalodata Product Research](./kalodata-product-research.md) - Product intelligence
-- [Kalodata Video Analysis](./kalodata-video-analysis.md) - Video metrics
+- Kalodata Product Research - Product intelligence
+- Kalodata Video Analysis - Video metrics
 - [Kalodata API Client](../src/kalodata/client.ts) - Core client
 
 ## Process

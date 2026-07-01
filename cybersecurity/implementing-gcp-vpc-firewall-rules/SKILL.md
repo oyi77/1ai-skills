@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for implementing gcp vpc firewall rules. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing gcp vpc firewall rules"
+- "Implementing and auditing GCP VPC firewall rules to enforce network segmentation"
+
 
 - When deploying new GCP workloads that require network-level access controls
 - When auditing existing firewall configurations for overly permissive rules

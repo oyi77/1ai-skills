@@ -29,6 +29,10 @@ Automatically discover and integrate community skills from skills.sh and awesome
 **Makes your OpenClaw complete and self-sufficient** - never say "I can't do that" again!
 
 ## When to Use
+**Trigger phrases:**
+- "find skills"
+- "Automatically discover, evaluate, and activate community skills when local skill"
+
 
 **Automatic Activation** when:
 - User asks "how do I do X" where X isn't covered by local skills

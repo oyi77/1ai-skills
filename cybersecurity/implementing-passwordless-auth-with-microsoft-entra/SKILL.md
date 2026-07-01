@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for implementing passwordless auth with microsoft entra. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing passwordless auth with microsoft entra"
+- "Implements passwordless authentication using Microsoft Entra ID with FIDO2 secur"
+
 
 - Organization wants to eliminate password-based attacks (phishing, credential stuffing, brute force)
 - Regulatory or internal mandate requires phishing-resistant MFA (Executive Order 14028, CISA guidance)

@@ -38,6 +38,10 @@ Social engineering penetration testing assesses an organization's human attack s
 
 
 ## When to Use
+**Trigger phrases:**
+- "conducting social engineering penetration test"
+- "Design and execute a social engineering penetration test including phishing, vis"
+
 
 - When conducting security assessments that involve conducting social engineering penetration test
 - When following incident response procedures for related security events

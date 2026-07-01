@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for detecting t1055 process injection with sysmon. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting t1055 process injection with sysmon"
+- "Detect process injection techniques (T1055) including classic DLL injection, pro"
+
 
 - When hunting for defense evasion techniques that hide malicious code inside legitimate processes
 - After EDR alerts for suspicious cross-process memory access or remote thread creation

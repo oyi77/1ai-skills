@@ -38,6 +38,10 @@ nist_csf:
 Cybersecurity skill for securing azure with microsoft defender. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "securing azure with microsoft defender"
+- "This skill instructs security practitioners on deploying Microsoft Defender for "
+
 
 - When deploying cloud workload protection across Azure subscriptions and resource groups
 - When establishing a Secure Score baseline and prioritizing security recommendations

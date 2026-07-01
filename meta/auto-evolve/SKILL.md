@@ -27,6 +27,10 @@ The **brain** of the self-evolving system. Continuously monitors performance ide
 **Single install then evolving** - the system gets smarter every day without human intervention!
 
 ## When to Use
+**Trigger phrases:**
+- "auto evolve"
+- "Continuously monitors system performance identifies improvement opportunities an"
+
 
 **Automatic Activation** when:
 - System performance degrades or gaps appear

@@ -28,6 +28,10 @@ Electron enables building cross-platform desktop applications using web technolo
 - Crash reporting and telemetry
 
 ## When to Use
+**Trigger phrases:**
+- "electron apps"
+- "Electron desktop app development — main/renderer process, IPC, native menus, aut"
+
 
 - Need desktop app with rich web UI
 - Already have a web app to package as desktop

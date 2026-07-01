@@ -30,6 +30,10 @@ This skill automates packet capture analysis using tshark (Wireshark CLI) and py
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing network traffic analysis with tshark"
+- "Automate network traffic analysis using tshark and pyshark for protocol statisti"
+
 
 - When conducting security assessments that involve performing network traffic analysis with tshark
 - When following incident response procedures for related security events

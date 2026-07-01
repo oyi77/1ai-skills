@@ -35,6 +35,10 @@ Build and monetize email newsletters using AI for content creation, curation, an
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "ai newsletter"
+- "Build and monetize AI-powered email newsletters"
+
 
 - Build direct audience relationship
 - Establish thought leadership

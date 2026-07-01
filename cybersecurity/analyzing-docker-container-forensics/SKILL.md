@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for analyzing docker container forensics. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing docker container forensics"
+- "Investigate compromised Docker containers by analyzing images, layers, volumes, "
+
 - When investigating a compromised Docker container or container host
 - For analyzing malicious Docker images pulled from registries
 - During incident response involving containerized application breaches

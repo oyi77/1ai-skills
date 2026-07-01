@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for implementing api rate limiting and throttling. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing api rate limiting and throttling"
+- "Implements API rate limiting and throttling controls using token bucket, sliding"
+
 
 - Protecting authentication endpoints against brute force and credential stuffing attacks
 - Preventing API abuse and resource exhaustion from automated scripts and bots

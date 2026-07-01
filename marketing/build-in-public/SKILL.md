@@ -63,6 +63,11 @@ Build in Public (BIP) is a movement where founders share their startup journey t
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "build in public"
+- "building in public"
+- "Document and share your startup journey, revenue, and learnings on social media"
+
 
 - Launch a new product or feature
 - Build audience from scratch
@@ -394,8 +399,8 @@ After completing this skill, confirm:
 
 - [twitter-automation](../twitter-automation/SKILL.md) - Schedule and automate posts
 - [larry-playbook](../../content/larry-playbook/SKILL.md) - Viral content creation
-- [marketing](../marketing/) - Broader marketing strategy
-- [sales](../sales/) - Convert engagement to revenue
+- marketing - Broader marketing strategy
+- sales - Convert engagement to revenue
 
 ## Process
 

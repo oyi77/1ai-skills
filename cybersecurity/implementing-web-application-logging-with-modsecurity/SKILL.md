@@ -45,6 +45,10 @@ audit logs for forensic analysis and generates alerts that feed into SIEM platfo
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing web application logging with modsecurity"
+- "Configure ModSecurity WAF with OWASP Core Rule Set (CRS) for web application log"
+
 
 - When deploying or configuring implementing web application logging with modsecurity capabilities in your environment
 - When establishing security controls aligned to compliance requirements

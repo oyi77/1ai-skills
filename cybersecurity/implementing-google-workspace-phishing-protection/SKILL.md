@@ -28,6 +28,10 @@ Google Workspace provides advanced phishing and malware protection through the A
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing google workspace phishing protection"
+- "Configure Google Workspace advanced phishing and malware protection settings inc"
+
 
 - When deploying or configuring implementing google workspace phishing protection capabilities in your environment
 - When establishing security controls aligned to compliance requirements

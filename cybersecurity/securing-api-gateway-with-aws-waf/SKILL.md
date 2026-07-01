@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for securing api gateway with aws waf. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "securing api gateway with aws waf"
+- "Securing API Gateway endpoints with AWS WAF by configuring managed rule groups f"
+
 
 - When deploying API Gateway endpoints that require protection against common web attacks
 - When implementing rate limiting and throttling to prevent API abuse and DDoS attacks

@@ -31,6 +31,10 @@ User and Entity Behavior Analytics (UEBA) moves beyond static rule-based detecti
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting insider threat with ueba"
+- "Implement User and Entity Behavior Analytics using Elasticsearch/OpenSearch to b"
+
 
 - When investigating security incidents that require detecting insider threat with ueba
 - When building detection rules or threat hunting queries for this domain

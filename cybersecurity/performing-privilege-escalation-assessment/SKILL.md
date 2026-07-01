@@ -33,6 +33,10 @@ nist_csf:
 Cybersecurity skill for performing privilege escalation assessment. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing privilege escalation assessment"
+- "Performs privilege escalation assessments on compromised Linux and Windows syste"
+
 
 - After gaining initial low-privilege access during a penetration test to demonstrate full system compromise
 - Assessing the security hardening of Linux and Windows servers against local privilege escalation attacks

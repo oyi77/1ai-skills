@@ -14,6 +14,10 @@ tags:
 # Docx Creator
 
 ## When to Use
+**Trigger phrases:**
+- "docx creator"
+- "Create, edit, and analyze Word documents programmatically using python-docx or d"
+
 
 - When generating Word documents from data or templates
 - When creating reports, proposals, or contracts programmatically

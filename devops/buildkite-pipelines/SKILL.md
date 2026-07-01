@@ -28,6 +28,10 @@ Buildkite is a CI/CD platform where pipelines are defined in YAML and executed b
 - Block steps for manual approval
 
 ## When to Use
+**Trigger phrases:**
+- "buildkite pipelines"
+- "Buildkite CI pipelines — pipeline YAML, steps, agents, artifacts, test splitting"
+
 
 - Need fast CI with self-hosted runners
 - Want test splitting for parallel execution

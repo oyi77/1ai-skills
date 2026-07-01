@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for implementing ot incident response playbook. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing ot incident response playbook"
+- "Develop and implement OT-specific incident response playbooks aligned with SANS "
+
 
 - When building OT-specific incident response procedures for the first time
 - When existing IT IR playbooks do not address ICS/SCADA-specific requirements

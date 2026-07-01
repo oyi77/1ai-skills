@@ -25,6 +25,10 @@ gRPC is a high-performance RPC framework using Protocol Buffers for serializatio
 - Generate client/server code for Go, Python, Node.js, Java
 
 ## When to Use
+**Trigger phrases:**
+- "grpc"
+- "gRPC development — Protocol Buffers, service definitions, streaming, interceptor"
+
 
 - Microservice-to-microservice communication requiring low latency
 - Real-time streaming (chat, live data, IoT)

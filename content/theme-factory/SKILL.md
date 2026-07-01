@@ -14,6 +14,10 @@ tags:
 # Theme Factory
 
 ## When to Use
+**Trigger phrases:**
+- "theme factory"
+- "Generate and apply professional color themes, typography systems, and design tok"
+
 
 - When creating a new visual theme or color palette
 - When defining design tokens for a design system

@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for detecting modbus command injection attacks. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting modbus command injection attacks"
+- "Detect command injection attacks against Modbus TCP/RTU protocol in ICS environm"
+
 
 - When deploying intrusion detection for environments using Modbus TCP (port 502) or Modbus RTU
 - When investigating suspected unauthorized modifications to PLC registers or coils

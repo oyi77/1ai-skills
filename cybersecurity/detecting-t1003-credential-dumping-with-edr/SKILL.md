@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for detecting t1003 credential dumping with edr. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting t1003 credential dumping with edr"
+- "Detect OS credential dumping techniques targeting LSASS memory, SAM database, NT"
+
 
 - When hunting for credential theft activity in the environment
 - After compromise indicators suggest attacker has elevated privileges

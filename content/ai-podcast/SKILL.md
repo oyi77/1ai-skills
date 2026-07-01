@@ -35,6 +35,10 @@ Create fully automated AI podcasts that research, write, and narrate complete ep
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "ai podcast"
+- "Create and automate AI-powered podcasts"
+
 
 - Build podcast presence without recording
 - Create content at scale

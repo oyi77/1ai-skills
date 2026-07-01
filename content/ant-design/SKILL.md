@@ -27,6 +27,10 @@ Ant Design is an enterprise-grade React UI library with 60+ components, a design
 - Ant Design Icons (300+)
 
 ## When to Use
+**Trigger phrases:**
+- "ant design"
+- "Ant Design React component library — enterprise UI, forms, tables, charts, themi"
+
 
 - Building enterprise admin dashboards and CMS
 - Need advanced form handling with complex validation

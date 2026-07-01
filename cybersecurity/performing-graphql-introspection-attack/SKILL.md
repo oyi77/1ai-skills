@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing graphql introspection attack. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing graphql introspection attack"
+- "Performs GraphQL introspection attacks to extract the full API schema including "
+
 
 - Testing GraphQL endpoints for exposed introspection that reveals the complete API schema
 - Mapping the attack surface of a GraphQL API to identify sensitive queries, mutations, and types

@@ -26,6 +26,10 @@ Implement production authentication — OAuth 2.0 flows, JWT tokens, session sto
 - Password hashing (bcrypt, argon2)
 
 ## When to Use
+**Trigger phrases:**
+- "auth patterns"
+- "Authentication patterns — OAuth 2"
+
 
 - Building user authentication systems
 - Implementing SSO with third-party providers

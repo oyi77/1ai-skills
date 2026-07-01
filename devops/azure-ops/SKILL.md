@@ -26,6 +26,10 @@ Azure operations covering VMs, App Service, Functions, AKS, Cosmos DB, and Azure
 - ARM/Bicep templates
 
 ## When to Use
+**Trigger phrases:**
+- "azure ops"
+- "Azure operations — Virtual Machines, App Service, Azure Functions, AKS, Cosmos D"
+
 
 - Azure cloud management
 - Enterprise identity with Azure AD

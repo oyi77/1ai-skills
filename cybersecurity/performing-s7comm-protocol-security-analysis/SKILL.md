@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for performing s7comm protocol security analysis. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing s7comm protocol security analysis"
+- "Perform security analysis of Siemens S7comm and S7CommPlus protocols used by SIM"
+
 
 - When assessing the security posture of Siemens SIMATIC S7 PLC environments
 - When building detection rules for S7comm-based attacks against S7-300/400/1200/1500 controllers

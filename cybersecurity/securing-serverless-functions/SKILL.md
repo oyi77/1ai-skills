@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for securing serverless functions. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "securing serverless functions"
+- "This skill covers security hardening for serverless compute platforms including "
+
 
 - When deploying Lambda functions or Azure Functions with access to sensitive data or cloud APIs
 - When auditing existing serverless workloads for overly permissive IAM roles

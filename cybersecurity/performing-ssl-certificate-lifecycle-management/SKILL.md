@@ -27,6 +27,10 @@ SSL/TLS certificate lifecycle management encompasses the full process of request
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing ssl certificate lifecycle management"
+- "SSL/TLS certificate lifecycle management encompasses the full process of request"
+
 
 - When conducting security assessments that involve performing ssl certificate lifecycle management
 - When following incident response procedures for related security events

@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for performing steganography detection. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing steganography detection"
+- "Detect and extract hidden data embedded in images, audio, and other media files "
+
 - When suspecting covert data hiding in images, audio, or video files
 - During investigations involving suspected data exfiltration via media files
 - For analyzing files in espionage or insider threat investigations

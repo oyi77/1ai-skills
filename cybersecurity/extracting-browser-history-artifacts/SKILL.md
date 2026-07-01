@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for extracting browser history artifacts. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "extracting browser history artifacts"
+- "Extract and analyze browser history, cookies, cache, downloads, and bookmarks fr"
+
 - When investigating user web activity as part of a forensic examination
 - During insider threat investigations to establish patterns of data exfiltration
 - When tracing user visits to malicious or policy-violating websites

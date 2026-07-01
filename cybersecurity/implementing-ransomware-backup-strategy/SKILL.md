@@ -39,6 +39,10 @@ nist_csf:
 Cybersecurity skill for implementing ransomware backup strategy. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing ransomware backup strategy"
+- "Designs and implements a ransomware-resilient backup strategy following the 3-2-"
+
 
 - Designing backup architecture that withstands ransomware encryption and deletion attempts
 - Migrating from traditional backup to ransomware-resilient backup with immutable storage

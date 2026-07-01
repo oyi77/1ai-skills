@@ -27,6 +27,10 @@ Harden LDAP directory services against common attacks including credential harve
 
 
 ## When to Use
+**Trigger phrases:**
+- "configuring ldap security hardening"
+- "Harden LDAP directory services against common attacks including credential harve"
+
 
 - When deploying or configuring configuring ldap security hardening capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -27,6 +27,10 @@ Hardening Docker containers for production involves applying security best pract
 
 
 ## When to Use
+**Trigger phrases:**
+- "hardening docker containers for production"
+- "Hardening Docker containers for production involves applying security best pract"
+
 
 - When deploying or configuring hardening docker containers for production capabilities in your environment
 - When establishing security controls aligned to compliance requirements

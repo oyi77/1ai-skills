@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for implementing data loss prevention with microsoft purview. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing data loss prevention with microsoft purview"
+- "Implements data loss prevention policies using Microsoft Purview to protect sens"
+
 
 - Deploying DLP policies to prevent sensitive data (PII, PHI, PCI, intellectual property) from leaving the organization through email, cloud storage, chat, or endpoint file operations
 - Configuring sensitivity labels with encryption, content marking, and auto-labeling to classify documents and emails by confidentiality level

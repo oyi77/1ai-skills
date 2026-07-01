@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for triaging security incident with ir playbook. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "triaging security incident with ir playbook"
+- "Classify and prioritize security incidents using structured IR playbooks to dete"
+
 - New security alert received from SIEM, EDR, or other detection sources
 - SOC analyst needs to determine if an alert is a true positive requiring response
 - Incident needs severity classification and team assignment

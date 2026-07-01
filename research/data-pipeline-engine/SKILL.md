@@ -38,6 +38,10 @@ Build automated data pipelines that extract from multiple sources, transform int
 - Data quality checks and anomaly detection
 
 ## When to Use
+**Trigger phrases:**
+- "data pipeline engine"
+- "ETL pipelines that pull data from multiple sources (APIs, databases, web scrapin"
+
 
 - "Pull competitor pricing from 50 sources daily and generate a weekly brief"
 - "Monitor product rankings across platforms and alert on changes"

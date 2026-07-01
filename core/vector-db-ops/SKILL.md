@@ -25,6 +25,10 @@ Vector database operations for AI applications. Covers embedding generation, ind
 - Manage vector database lifecycle (backup, scaling, monitoring)
 
 ## When to Use
+**Trigger phrases:**
+- "vector db ops"
+- "Vector database operations — Pinecone, Weaviate, Qdrant, ChromaDB"
+
 
 - Building RAG (Retrieval-Augmented Generation) systems
 - Implementing semantic search for documents or products

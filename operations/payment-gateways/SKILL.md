@@ -25,6 +25,10 @@ Integrate payment gateways for SaaS billing — Stripe, Paddle, Lemon Squeezy. H
 - Invoice generation and management
 
 ## When to Use
+**Trigger phrases:**
+- "payment gateways"
+- "Payment gateway integration — Stripe, Paddle, Lemon Squeezy, dunning, subscripti"
+
 
 - Building SaaS billing systems
 - Implementing subscription management

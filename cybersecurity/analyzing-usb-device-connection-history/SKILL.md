@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for analyzing usb device connection history. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing usb device connection history"
+- "Investigate USB device connection history from Windows registry, event logs, and"
+
 - When investigating potential data exfiltration via removable storage devices
 - During insider threat investigations to track USB device usage
 - For compliance audits verifying removable media policy enforcement

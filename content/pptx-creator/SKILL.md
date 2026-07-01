@@ -13,6 +13,10 @@ tags:
 # Pptx Creator
 
 ## When to Use
+**Trigger phrases:**
+- "pptx creator"
+- "Create and edit PowerPoint presentations programmatically"
+
 
 - When generating presentations from data or templates
 - When creating slide decks for meetings, pitches, or reports

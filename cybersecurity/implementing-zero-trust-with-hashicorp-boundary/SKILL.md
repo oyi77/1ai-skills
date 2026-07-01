@@ -31,6 +31,10 @@ HashiCorp Boundary is an identity-aware proxy that provides secure, zero trust a
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing zero trust with hashicorp boundary"
+- "Implement HashiCorp Boundary for identity-aware zero trust infrastructure access"
+
 
 - When deploying or configuring implementing zero trust with hashicorp boundary capabilities in your environment
 - When establishing security controls aligned to compliance requirements

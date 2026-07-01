@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for conducting external reconnaissance with osint. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "conducting external reconnaissance with osint"
+- "Conducts external reconnaissance using Open Source Intelligence (OSINT) techniqu"
+
 
 - Performing the initial reconnaissance phase of a penetration test to gather intelligence before active scanning
 - Mapping an organization's external attack surface to identify unknown or shadow IT assets

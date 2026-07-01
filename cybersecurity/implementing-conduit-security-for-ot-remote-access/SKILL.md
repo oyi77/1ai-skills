@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for implementing conduit security for ot remote access. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing conduit security for ot remote access"
+- "Implement secure conduit architecture for OT remote access following IEC 62443 z"
+
 
 - When replacing direct VPN connections from IT or vendors into OT control networks
 - When implementing IEC 62443-compliant conduit architecture for remote access paths

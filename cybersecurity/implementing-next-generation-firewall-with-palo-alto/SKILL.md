@@ -32,6 +32,10 @@ Palo Alto Networks Next-Generation Firewalls (NGFWs) move beyond traditional por
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing next generation firewall with palo alto"
+- "Configure and deploy Palo Alto Networks next-generation firewalls with App-ID, U"
+
 
 - When deploying or configuring implementing next generation firewall with palo alto capabilities in your environment
 - When establishing security controls aligned to compliance requirements

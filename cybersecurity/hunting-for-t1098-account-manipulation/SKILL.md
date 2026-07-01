@@ -34,6 +34,10 @@ MITRE ATT&CK T1098 (Account Manipulation) covers adversary actions to maintain o
 
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for t1098 account manipulation"
+- "Hunt for MITRE ATT&CK T1098 account manipulation including shadow admin creation"
+
 
 - When investigating security incidents that require hunting for t1098 account manipulation
 - When building detection rules or threat hunting queries for this domain

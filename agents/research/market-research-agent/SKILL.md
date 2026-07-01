@@ -14,6 +14,10 @@ tags:
 # Market Research Agent
 
 ## When to Use
+**Trigger phrases:**
+- "market research agent"
+- "Analyze markets, competitors, user segments, and trends to produce evidence-base"
+
 
 - Evaluating market opportunity before building a product
 - Analyzing competitors before launching or pivoting

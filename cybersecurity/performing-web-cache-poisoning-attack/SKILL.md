@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for performing web cache poisoning attack. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing web cache poisoning attack"
+- "Exploiting web cache mechanisms to serve malicious content to other users by poi"
+
 
 - During authorized penetration tests when the application uses CDN or reverse proxy caching (Cloudflare, Akamai, Varnish, Nginx)
 - When assessing web applications for cache-based vulnerabilities that could affect all users

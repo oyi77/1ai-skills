@@ -25,6 +25,10 @@ Apache Kafka is a distributed event streaming platform. This skill covers produc
 - Monitor lag, throughput, and consumer health
 
 ## When to Use
+**Trigger phrases:**
+- "kafka patterns"
+- "Apache Kafka patterns — producers, consumers, topics, consumer groups, exactly-o"
+
 
 - Building event-driven microservices
 - Need reliable message delivery with ordering guarantees

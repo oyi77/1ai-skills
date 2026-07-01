@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for monitoring scada modbus traffic anomalies. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "monitoring scada modbus traffic anomalies"
+- "Monitors Modbus TCP traffic on SCADA and ICS networks to detect anomalous functi"
+
 
 - Monitoring OT/ICS networks for unauthorized Modbus commands targeting PLCs, RTUs, or HMIs
 - Detecting reconnaissance activity such as Modbus device enumeration (function code 43, Read Device Identification)

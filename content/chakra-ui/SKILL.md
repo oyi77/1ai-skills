@@ -25,6 +25,10 @@ Chakra UI is a modular, accessible React component library with built-in dark mo
 - CSS-in-JS with Emotion under the hood
 
 ## When to Use
+**Trigger phrases:**
+- "chakra ui"
+- "Chakra UI React component library — theming, responsive styles, color mode, comp"
+
 
 - Building React apps with accessible components out of the box
 - Need responsive design without writing media queries

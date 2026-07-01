@@ -13,6 +13,10 @@ tags:
 # Context Engineering
 
 ## When to Use
+**Trigger phrases:**
+- "context engineering"
+- "Design and manage the context window for AI coding agents"
+
 
 - When setting up AI agent instructions for a project
 - When optimizing agent performance on large codebases

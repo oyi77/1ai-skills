@@ -19,6 +19,10 @@ tags:
 Oh My OpenCode provides a curated suite of specialized agents, each optimized for specific tasks. This skill provides detailed guidance on when and how to use each agent effectively.
 
 ## When to Use
+**Trigger phrases:**
+- "oh my opencode agents"
+- "Deep dive into each oh-my-opencode agent - Sisyphus, Hephaestus, Oracle, Librari"
+
 
 - **Sisyphus**: When you have complex multi-step tasks that need agent autonomy to figure out the approach
 - **Hephaestus**: When you need autonomous problem-solving with thorough research, especially for complex refactoring or feature implementation

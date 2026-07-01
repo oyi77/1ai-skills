@@ -35,6 +35,10 @@ Breach and Attack Simulation (BAS) is an automated, continuous approach to valid
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing continuous security validation with bas"
+- "Deploy Breach and Attack Simulation tools to continuously validate security cont"
+
 
 - When deploying or configuring implementing continuous security validation with bas capabilities in your environment
 - When establishing security controls aligned to compliance requirements

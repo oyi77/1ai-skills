@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for performing power grid cybersecurity assessment. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing power grid cybersecurity assessment"
+- "This skill covers conducting cybersecurity assessments of electric power grid in"
+
 
 - When conducting periodic cybersecurity assessments of power grid facilities per NERC CIP requirements
 - When assessing substation automation systems using IEC 61850 GOOSE and MMS protocols

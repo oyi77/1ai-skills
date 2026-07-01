@@ -334,7 +334,7 @@ async function researchCategory(categoryId: string) {
 
 - [Kalodata API Client](../src/kalodata/client.ts) - Core API client
 - [Kalodata Types](../src/kalodata/types.ts) - TypeScript definitions
-- [Video Research Skill](./kalodata-video-research.md) - Video content analysis
+- Video Research Skill - Video content analysis
 
 ## Process
 

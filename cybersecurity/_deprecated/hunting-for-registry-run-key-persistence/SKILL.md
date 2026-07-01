@@ -35,6 +35,10 @@ Registry Run keys (T1547.001) are one of the most commonly used persistence mech
 
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for registry run key persistence"
+- "Detect MITRE ATT&CK T1547"
+
 
 - When investigating security incidents that require hunting for registry run key persistence
 - When building detection rules or threat hunting queries for this domain

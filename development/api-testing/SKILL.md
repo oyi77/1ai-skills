@@ -25,6 +25,10 @@ API testing for REST and GraphQL endpoints. Covers contract testing, schema vali
 - Automate API regression testing in CI
 
 ## When to Use
+**Trigger phrases:**
+- "api testing"
+- "REST and GraphQL API testing — contract testing, schema validation, and integrat"
+
 
 - Building or consuming REST/GraphQL APIs
 - Need to verify API contracts between services

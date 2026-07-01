@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for implementing anti ransomware group policy. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing anti ransomware group policy"
+- "Configures Windows Group Policy Objects (GPO) to prevent ransomware execution an"
+
 
 - Hardening a Windows Active Directory environment against ransomware execution and propagation
 - Implementing defense-in-depth by blocking ransomware execution paths via Group Policy

@@ -19,6 +19,10 @@ tags:
 Mindset skill for influence without authority. Builds capability through deliberate practice and structured frameworks.
 
 ## When to Use
+**Trigger phrases:**
+- "influence without authority"
+- "Gain buy-in from peers, stakeholders, and executives when you lack direct author"
+
 
 - Cross-functional projects (no direct authority over team members)
 - Selling ideas to executives or peers

@@ -26,6 +26,10 @@ AES (Advanced Encryption Standard) is a symmetric block cipher standardized by N
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing aes encryption for data at rest"
+- "AES (Advanced Encryption Standard) is a symmetric block cipher standardized by N"
+
 
 - When deploying or configuring implementing aes encryption for data at rest capabilities in your environment
 - When establishing security controls aligned to compliance requirements

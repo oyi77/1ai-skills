@@ -54,6 +54,10 @@ nist_csf:
 NTLM relay attacks intercept NTLM authentication messages and forward them to a target service to gain unauthorized access. Attackers use tools like Responder for LLMNR/NBT-NS/mDNS poisoning, ntlmrelayx (Fox-IT/Impacket) for multi-protocol relay, and coercion techniques like PetitPotam (MS-EFSRPC) and DFSCoerce to force authentication from high-value targets like domain controllers. This skill provides a comprehensive event correlation framework using Windows Security Event 4624 LogonType 3 analysis, IP-to-hostname mismatch detection, Responder traffic identification, SMB/LDAP signing audit, and NTLM downgrade detection to identify relay attacks across Active Directory environments.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting ntlm relay with event correlation"
+- "Detect NTLM relay attacks through Windows Security Event correlation by analyzin"
+
 
 - Hunting for credential relay activity in Active Directory environments where NTLM authentication is still in use
 - Investigating alerts for authentication anomalies where the source IP does not match the expected workstation

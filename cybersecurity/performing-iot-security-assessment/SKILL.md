@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing iot security assessment. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing iot security assessment"
+- "Performs comprehensive security assessments of IoT devices and their ecosystems "
+
 
 - Evaluating the security of IoT devices before deployment in enterprise or critical infrastructure environments
 - Assessing consumer IoT products for security vulnerabilities as part of product security review or certification

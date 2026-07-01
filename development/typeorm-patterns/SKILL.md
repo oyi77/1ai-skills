@@ -26,6 +26,10 @@ TypeORM is a TypeScript ORM for Node.js that supports Active Record and Data Map
 - Connection pooling and replication
 
 ## When to Use
+**Trigger phrases:**
+- "typeorm patterns"
+- "TypeORM patterns — entities, repositories, migrations, relations, query builder,"
+
 
 - Building TypeScript/Node.js applications with SQL databases
 - Want both Active Record and Data Mapper patterns

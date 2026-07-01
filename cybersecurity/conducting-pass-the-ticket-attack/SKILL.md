@@ -38,6 +38,10 @@ Pass-the-Ticket (PtT) is a lateral movement technique that uses stolen Kerberos 
 
 
 ## When to Use
+**Trigger phrases:**
+- "conducting pass the ticket attack"
+- "Pass-the-Ticket (PtT) is a lateral movement technique that uses stolen Kerberos "
+
 
 - When conducting security assessments that involve conducting pass the ticket attack
 - When following incident response procedures for related security events

@@ -28,6 +28,10 @@ Deploy privileged access management for database systems including Oracle, SQL S
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing pam for database access"
+- "Deploy privileged access management for database systems including Oracle, SQL S"
+
 
 - When deploying or configuring implementing pam for database access capabilities in your environment
 - When establishing security controls aligned to compliance requirements

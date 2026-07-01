@@ -39,6 +39,10 @@ OWASP Threat Dragon is an open-source threat modeling tool that enables security
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing threat modeling with owasp threat dragon"
+- "Use OWASP Threat Dragon to create data flow diagrams, identify threats using STR"
+
 
 - When conducting security assessments that involve performing threat modeling with owasp threat dragon
 - When following incident response procedures for related security events

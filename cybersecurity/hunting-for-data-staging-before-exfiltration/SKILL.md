@@ -36,6 +36,10 @@ Before exfiltrating data, adversaries typically stage collected files in a centr
 
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for data staging before exfiltration"
+- "Detect data staging activity before exfiltration by monitoring for archive creat"
+
 
 - When investigating security incidents that require hunting for data staging before exfiltration
 - When building detection rules or threat hunting queries for this domain

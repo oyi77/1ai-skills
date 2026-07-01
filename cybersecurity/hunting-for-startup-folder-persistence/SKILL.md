@@ -36,6 +36,10 @@ Attackers use Windows startup folders for persistence (MITRE ATT&CK T1547.001 â€
 
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for startup folder persistence"
+- "Detect T1547"
+
 
 - When investigating security incidents that require hunting for startup folder persistence
 - When building detection rules or threat hunting queries for this domain

@@ -32,6 +32,10 @@ Wireless penetration testing evaluates the security of an organization's WiFi in
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing wireless network penetration test"
+- "Execute a wireless network penetration test to assess WiFi security by capturing"
+
 
 - When conducting security assessments that involve performing wireless network penetration test
 - When following incident response procedures for related security events

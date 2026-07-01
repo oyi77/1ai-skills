@@ -24,6 +24,10 @@ Safe database migration practices. Covers migration tools (Prisma, Knex, Flyway)
 - Test migrations against production data snapshots
 
 ## When to Use
+**Trigger phrases:**
+- "database migration"
+- "Safe database migrations — schema changes, data migrations, rollback strategies,"
+
 
 - Adding or modifying database schema
 - Need zero-downtime deployment with schema changes

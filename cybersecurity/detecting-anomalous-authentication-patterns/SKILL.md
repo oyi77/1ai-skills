@@ -38,6 +38,10 @@ nist_csf:
 Cybersecurity skill for detecting anomalous authentication patterns. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting anomalous authentication patterns"
+- "Detects anomalous authentication patterns using UEBA analytics, statistical base"
+
 
 - Security operations needs to identify compromised accounts from authentication log analysis
 - Implementing impossible travel detection to flag geographically inconsistent logins

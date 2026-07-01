@@ -28,6 +28,10 @@ Packer automates machine image creation for multiple platforms from a single sou
 - CI/CD integration for automated image pipelines
 
 ## When to Use
+**Trigger phrases:**
+- "packer images"
+- "HashiCorp Packer — machine image building, builders, provisioners, post-processo"
+
 
 - Building golden images for cloud deployments
 - Immutable infrastructure patterns

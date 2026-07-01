@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for implementing log integrity with blockchain. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing log integrity with blockchain"
+- "Build an append-only log integrity chain using SHA-256 hash chaining for tamper "
+
 
 - When deploying or configuring implementing log integrity with blockchain capabilities in your environment
 - When establishing security controls aligned to compliance requirements

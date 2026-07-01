@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for performing container image hardening. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing container image hardening"
+- "This skill covers hardening container images by minimizing attack surface, remov"
+
 
 - When building production container images that need minimal attack surface
 - When compliance requires CIS Docker Benchmark adherence for container configurations

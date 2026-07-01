@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing bandwidth throttling attack simulation. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing bandwidth throttling attack simulation"
+- "Simulates bandwidth throttling and network degradation attacks using tc, iperf3,"
+
 
 - Testing application resilience to degraded network conditions during authorized security assessments
 - Validating QoS policies detect and mitigate unauthorized traffic shaping on the network

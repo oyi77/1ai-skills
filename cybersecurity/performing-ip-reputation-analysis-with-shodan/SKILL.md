@@ -30,6 +30,10 @@ Shodan is the world's first search engine for internet-connected devices, contin
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing ip reputation analysis with shodan"
+- "Analyze IP address reputation using the Shodan API to identify open ports, runni"
+
 
 - When conducting security assessments that involve performing ip reputation analysis with shodan
 - When following incident response procedures for related security events

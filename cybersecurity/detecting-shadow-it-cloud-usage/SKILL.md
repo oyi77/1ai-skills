@@ -30,6 +30,10 @@ Shadow IT refers to unauthorized SaaS applications and cloud services used witho
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting shadow it cloud usage"
+- "Detect unauthorized SaaS and cloud service usage (shadow IT) by analyzing proxy "
+
 
 - When investigating security incidents that require detecting shadow it cloud usage
 - When building detection rules or threat hunting queries for this domain

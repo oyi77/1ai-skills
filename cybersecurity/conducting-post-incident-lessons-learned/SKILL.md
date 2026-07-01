@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for conducting post incident lessons learned. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "conducting post incident lessons learned"
+- "Facilitate structured post-incident reviews to identify root causes, document wh"
+
 - After any security incident has been fully resolved and recovery completed
 - Following tabletop exercises or IR simulations
 - After significant near-miss events

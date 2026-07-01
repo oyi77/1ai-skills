@@ -32,6 +32,10 @@ Windows Prefetch files (.pf) record application execution data including executa
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing windows prefetch with python"
+- "Parse Windows Prefetch files using the windowsprefetch Python library to reconst"
+
 
 - When investigating security incidents that require analyzing windows prefetch with python
 - When building detection rules or threat hunting queries for this domain

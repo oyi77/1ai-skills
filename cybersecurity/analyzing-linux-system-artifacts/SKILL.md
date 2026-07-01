@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for analyzing linux system artifacts. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing linux system artifacts"
+- "Examine Linux system artifacts including auth logs, cron jobs, shell history, an"
+
 - When investigating a compromised Linux server or workstation
 - For identifying persistence mechanisms (cron, systemd, SSH keys)
 - When tracing user activity through shell history and authentication logs

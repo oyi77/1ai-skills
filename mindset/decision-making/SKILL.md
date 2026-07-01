@@ -16,6 +16,10 @@ tags:
 Mindset skill for decision making. Builds capability through deliberate practice and structured frameworks.
 
 ## When to Use
+**Trigger phrases:**
+- "decision making"
+- "Make sound decisions under uncertainty using frameworks like RICE, weighted matr"
+
 
 - Prioritizing features, projects, or investments
 - Choosing between multiple options with trade-offs

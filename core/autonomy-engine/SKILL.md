@@ -15,6 +15,10 @@ tags:
 # Autonomy Engine
 
 ## When to Use
+**Trigger phrases:**
+- "autonomy engine"
+- "Core autonomy protocol for Vilona (BerkahKarya AI GM)"
+
 
 - When the task falls within this skill's domain expertise
 - When automated execution saves time over manual work

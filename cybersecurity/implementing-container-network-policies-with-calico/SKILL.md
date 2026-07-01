@@ -28,6 +28,10 @@ Calico provides Kubernetes-native and extended network policy enforcement throug
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing container network policies with calico"
+- "Enforce Kubernetes network segmentation using Calico CNI network policies and gl"
+
 
 - When deploying or configuring implementing container network policies with calico capabilities in your environment
 - When establishing security controls aligned to compliance requirements

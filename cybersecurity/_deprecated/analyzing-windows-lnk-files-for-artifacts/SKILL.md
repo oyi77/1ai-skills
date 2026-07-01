@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for analyzing windows lnk files for artifacts. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing windows lnk files for artifacts"
+- "Parse Windows LNK shortcut files to extract target paths, timestamps, volume inf"
+
 - When reconstructing user file access history from Windows shortcut files
 - For tracking accessed files, network shares, and removable media
 - During investigations to prove a user opened specific documents

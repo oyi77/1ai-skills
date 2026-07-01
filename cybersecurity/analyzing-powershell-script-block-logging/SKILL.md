@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for analyzing powershell script block logging. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing powershell script block logging"
+- "Parse Windows PowerShell Script Block Logs (Event ID 4104) from EVTX files to de"
+
 
 - When investigating security incidents that require analyzing powershell script block logging
 - When building detection rules or threat hunting queries for this domain

@@ -25,6 +25,10 @@ Frontend design skill for building beautiful, consistent UIs. Covers design syst
 - Implement dark mode and theme switching
 
 ## When to Use
+**Trigger phrases:**
+- "frontend design"
+- "Design system patterns — component architecture, Tailwind mastery, visual hierar"
+
 
 - Starting a new frontend project and need design system
 - Existing UI looks inconsistent or unprofessional

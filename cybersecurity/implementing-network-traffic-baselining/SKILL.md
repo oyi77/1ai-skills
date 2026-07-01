@@ -30,6 +30,10 @@ Network traffic baselining establishes normal communication patterns by analyzin
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing network traffic baselining"
+- "Build network traffic baselines from NetFlow/IPFIX data using Python pandas for "
+
 
 - When deploying or configuring implementing network traffic baselining capabilities in your environment
 - When establishing security controls aligned to compliance requirements

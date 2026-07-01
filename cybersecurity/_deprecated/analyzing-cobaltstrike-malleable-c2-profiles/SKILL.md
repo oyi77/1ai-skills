@@ -29,6 +29,10 @@ Cobalt Strike Malleable C2 profiles are domain-specific language scripts that cu
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing cobaltstrike malleable c2 profiles"
+- "Parse and analyze Cobalt Strike Malleable C2 profiles using dissect"
+
 
 - When investigating security incidents that require analyzing cobaltstrike malleable c2 profiles
 - When building detection rules or threat hunting queries for this domain

@@ -50,6 +50,10 @@ nist_csf:
 Cybersecurity skill for analyzing security logs with splunk. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing security logs with splunk"
+- "Leverages Splunk Enterprise Security and SPL (Search Processing Language) to inv"
+
 
 - Investigating a security incident that requires correlation across multiple log sources
 - Hunting for adversary activity using known TTPs and IOCs

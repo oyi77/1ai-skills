@@ -31,6 +31,10 @@ GitLab provides an integrated DevSecOps platform that embeds security testing di
 
 
 ## When to Use
+**Trigger phrases:**
+- "building devsecops pipeline with gitlab ci"
+- "Design and implement a comprehensive DevSecOps pipeline in GitLab CI/CD integrat"
+
 
 - When deploying or configuring building devsecops pipeline with gitlab ci capabilities in your environment
 - When establishing security controls aligned to compliance requirements

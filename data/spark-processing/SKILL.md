@@ -27,6 +27,10 @@ Apache Spark is a unified analytics engine for large-scale data processing. It p
 - Use Delta Lake for ACID transactions
 
 ## When to Use
+**Trigger phrases:**
+- "spark processing"
+- "Apache Spark distributed processing — DataFrames, SQL, streaming, MLlib, cluster"
+
 
 - Processing datasets too large for single-machine tools
 - Running SQL analytics on data lakes

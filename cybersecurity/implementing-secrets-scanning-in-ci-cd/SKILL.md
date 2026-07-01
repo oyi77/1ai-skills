@@ -29,6 +29,10 @@ Gitleaks scans git repositories and directories for hardcoded secrets using rege
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing secrets scanning in ci cd"
+- "Integrate gitleaks and trufflehog into CI/CD pipelines to detect leaked secrets "
+
 
 - When deploying or configuring implementing secrets scanning in ci cd capabilities in your environment
 - When establishing security controls aligned to compliance requirements

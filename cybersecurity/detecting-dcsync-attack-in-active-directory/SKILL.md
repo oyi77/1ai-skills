@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for detecting dcsync attack in active directory. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting dcsync attack in active directory"
+- "Detect DCSync attacks where adversaries abuse Active Directory replication privi"
+
 
 - When hunting for credential theft in Active Directory environments
 - After compromise of accounts with Replicating Directory Changes permissions

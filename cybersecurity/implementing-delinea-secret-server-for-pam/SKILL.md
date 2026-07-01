@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for implementing delinea secret server for pam. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing delinea secret server for pam"
+- "Implements Delinea Secret Server for privileged access management (PAM) includin"
+
 
 - Organization needs centralized privileged credential management across hybrid infrastructure
 - Compliance requirements mandate privileged access controls (SOX, PCI-DSS, HIPAA, NIST 800-53)

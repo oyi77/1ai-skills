@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for auditing cloud with cis benchmarks. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "auditing cloud with cis benchmarks"
+- "This skill details how to conduct cloud security audits using Center for Interne"
+
 
 - When performing initial security audits of cloud environments against industry-standard benchmarks
 - When preparing for SOC 2, ISO 27001, or regulatory audits that reference CIS controls

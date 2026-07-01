@@ -32,6 +32,10 @@ Certificate Transparency (CT) is an Internet security standard that creates a pu
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing certificate transparency for phishing"
+- "Monitor Certificate Transparency logs using crt"
+
 
 - When investigating security incidents that require analyzing certificate transparency for phishing
 - When building detection rules or threat hunting queries for this domain

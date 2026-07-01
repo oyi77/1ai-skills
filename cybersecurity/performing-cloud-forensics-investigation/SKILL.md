@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing cloud forensics investigation. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing cloud forensics investigation"
+- "Conduct forensic investigations in cloud environments by collecting and analyzin"
+
 - When investigating a security breach in AWS, Azure, or GCP cloud environments
 - For collecting volatile and non-volatile evidence from cloud infrastructure
 - When tracing unauthorized access through cloud service API logs

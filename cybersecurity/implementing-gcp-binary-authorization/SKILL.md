@@ -31,6 +31,10 @@ Binary Authorization is a Google Cloud deploy-time security control that ensures
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing gcp binary authorization"
+- "Implement GCP Binary Authorization to enforce deploy-time security controls that"
+
 
 - When deploying or configuring implementing gcp binary authorization capabilities in your environment
 - When establishing security controls aligned to compliance requirements

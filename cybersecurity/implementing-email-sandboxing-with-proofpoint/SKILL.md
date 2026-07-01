@@ -28,6 +28,10 @@ Email sandboxing detonates suspicious attachments and URLs in isolated environme
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing email sandboxing with proofpoint"
+- "Email sandboxing detonates suspicious attachments and URLs in isolated environme"
+
 
 - When deploying or configuring implementing email sandboxing with proofpoint capabilities in your environment
 - When establishing security controls aligned to compliance requirements

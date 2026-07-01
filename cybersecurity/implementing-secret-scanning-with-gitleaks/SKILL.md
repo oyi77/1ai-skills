@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for implementing secret scanning with gitleaks. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing secret scanning with gitleaks"
+- "This skill covers implementing Gitleaks for detecting and preventing hardcoded s"
+
 
 - When developers may accidentally commit API keys, passwords, tokens, or private keys to repositories
 - When establishing pre-commit gates that prevent secrets from entering the git history

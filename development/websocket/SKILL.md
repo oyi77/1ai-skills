@@ -26,6 +26,10 @@ WebSocket enables persistent, full-duplex communication between client and serve
 - Handle backpressure and message queuing
 
 ## When to Use
+**Trigger phrases:**
+- "websocket"
+- "WebSocket development — real-time bidirectional communication, Socket"
+
 
 - Chat applications and messaging systems
 - Live dashboards and real-time data feeds

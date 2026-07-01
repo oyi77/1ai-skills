@@ -68,6 +68,10 @@ Automate content distribution across major social media platforms from a single 
 - YouTube
 
 ## When to Use
+**Trigger phrases:**
+- "social media upload"
+- "Distribute content across multiple social media platforms (X, Instagram, TikTok,"
+
 
 - Distribute video content generated from `google-flow` or `grok-video-generation`
 - Post same content to multiple platforms simultaneously

@@ -13,6 +13,10 @@ tags:
 # Revenue Engine
 
 ## When to Use
+**Trigger phrases:**
+- "revenue engine"
+- "Manage revenue pipelines, track Stripe/analytics metrics, and automate financial"
+
 
 - When the task falls within this skill's domain expertise
 - When automated execution saves time over manual work

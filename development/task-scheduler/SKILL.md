@@ -26,6 +26,10 @@ Task schedulers handle recurring jobs, delayed execution, and distributed work s
 - Monitor job queues and execution metrics
 
 ## When to Use
+**Trigger phrases:**
+- "task scheduler"
+- "Task scheduling and cron patterns — node-cron, BullMQ, Celery, systemd timers"
+
 
 - Running periodic tasks (cleanup, reports, sync)
 - Need delayed job execution (send email after 5 min)

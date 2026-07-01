@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing arp spoofing attack simulation. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing arp spoofing attack simulation"
+- "Simulates ARP spoofing attacks in authorized lab or pentest environments using a"
+
 
 - Testing whether network switches and infrastructure properly implement Dynamic ARP Inspection (DAI)
 - Demonstrating man-in-the-middle attack risks to stakeholders during authorized security assessments

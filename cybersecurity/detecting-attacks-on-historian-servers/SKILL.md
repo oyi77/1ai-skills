@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for detecting attacks on historian servers. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting attacks on historian servers"
+- "Detect cyber attacks targeting OT historian servers (OSIsoft PI, Ignition, Wonde"
+
 
 - When monitoring historian servers that bridge IT and OT networks for compromise indicators
 - When detecting unauthorized queries or data manipulation in process historian databases

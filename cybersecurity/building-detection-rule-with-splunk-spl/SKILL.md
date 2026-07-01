@@ -37,6 +37,10 @@ Splunk Search Processing Language (SPL) is the primary query language used in Sp
 
 
 ## When to Use
+**Trigger phrases:**
+- "building detection rule with splunk spl"
+- "Build effective detection rules using Splunk Search Processing Language (SPL) co"
+
 
 - When deploying or configuring building detection rule with splunk spl capabilities in your environment
 - When establishing security controls aligned to compliance requirements

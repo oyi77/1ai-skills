@@ -26,6 +26,10 @@ Flowise is an open-source visual tool for building LLM workflows. It provides a 
 - Embed chatbot widget in websites
 
 ## When to Use
+**Trigger phrases:**
+- "flowise builder"
+- "Flowise visual LLM workflow builder — drag-drop chatflows, API endpoints, docume"
+
 
 - Building LLM apps without writing code
 - Prototyping RAG chatbots quickly

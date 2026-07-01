@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for testing ransomware recovery procedures. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing ransomware recovery procedures"
+- "Test and validate ransomware recovery procedures including backup restore operat"
+
 
 Use this skill when:
 - Validating that ransomware recovery plans actually work under realistic conditions

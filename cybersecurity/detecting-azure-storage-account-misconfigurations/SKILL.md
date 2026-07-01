@@ -40,6 +40,10 @@ Azure Storage accounts are a frequent target for attackers due to misconfigured 
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting azure storage account misconfigurations"
+- "Audit Azure Blob and ADLS storage accounts for public access exposure, weak or l"
+
 
 - When investigating security incidents that require detecting azure storage account misconfigurations
 - When building detection rules or threat hunting queries for this domain

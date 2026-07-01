@@ -16,6 +16,10 @@ tags:
 Mindset skill for time management. Builds capability through deliberate practice and structured frameworks.
 
 ## When to Use
+**Trigger phrases:**
+- "time management"
+- "Prioritize tasks, manage schedules, and avoid burnout using Eisenhower Matrix, t"
+
 
 - Feeling overwhelmed with tasks
 - Struggling to meet deadlines

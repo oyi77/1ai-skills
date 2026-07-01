@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for performing scada hmi security assessment. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing scada hmi security assessment"
+- "Perform security assessments of SCADA Human-Machine Interface (HMI) systems to i"
+
 
 - When assessing the security posture of HMI systems in SCADA/DCS environments
 - When evaluating web-based HMI interfaces for common web vulnerabilities

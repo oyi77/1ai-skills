@@ -29,6 +29,10 @@ Tauri is a framework for building lightweight, secure desktop applications with 
 - Sidecar and shell command execution
 
 ## When to Use
+**Trigger phrases:**
+- "tauri apps"
+- "Tauri desktop app development — Rust backend, web frontend, native APIs, small b"
+
 
 - Need desktop app with small footprint
 - Want native performance without bundling Chromium

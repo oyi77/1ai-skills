@@ -24,6 +24,10 @@ SwiftUI for building native iOS, macOS, watchOS, and tvOS apps. Covers declarati
 - Submit to App Store via TestFlight
 
 ## When to Use
+**Trigger phrases:**
+- "ios swiftui"
+- "SwiftUI development — declarative UI, state management, navigation, and Apple ec"
+
 
 - Building native iOS/macOS apps
 - Need deep Apple ecosystem integration (HealthKit, CarPlay, widgets)

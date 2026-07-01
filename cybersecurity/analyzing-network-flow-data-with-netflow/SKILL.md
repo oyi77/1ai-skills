@@ -26,6 +26,10 @@ nist_csf:
 Cybersecurity skill for analyzing network flow data with netflow. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing network flow data with netflow"
+- "Parse NetFlow v9 and IPFIX records to detect volumetric anomalies, port scanning"
+
 
 - When investigating security incidents that require analyzing network flow data with netflow
 - When building detection rules or threat hunting queries for this domain

@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for implementing aws config rules for compliance. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing aws config rules for compliance"
+- "Implementing AWS Config rules for continuous compliance monitoring of AWS resour"
+
 
 - When establishing continuous compliance monitoring for AWS resources against regulatory standards
 - When implementing automated detection and remediation of configuration drift

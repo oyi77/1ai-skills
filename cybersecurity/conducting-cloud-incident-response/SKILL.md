@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for conducting cloud incident response. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "conducting cloud incident response"
+- "Responds to security incidents in cloud environments (AWS, Azure, GCP) by perfor"
+
 
 - Cloud security posture management (CSPM) alerts on unauthorized resource changes
 - CloudTrail, Azure Activity Logs, or GCP Audit Logs show suspicious API calls

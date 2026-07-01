@@ -41,6 +41,10 @@ Cloud storage forensic acquisition involves collecting digital evidence from ser
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing cloud storage forensic acquisition"
+- "Perform forensic acquisition and analysis of cloud storage services including Go"
+
 
 - When conducting security assessments that involve performing cloud storage forensic acquisition
 - When following incident response procedures for related security events

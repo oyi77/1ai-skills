@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for detecting process hollowing technique. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting process hollowing technique"
+- "Detect process hollowing (T1055"
+
 
 - When investigating suspected fileless malware or in-memory threats
 - After EDR alerts on process injection or suspicious memory operations

@@ -24,6 +24,10 @@ Running LLMs in production — local inference with Ollama/llama.cpp to high-thr
 - OpenAI-compatible API endpoints
 
 ## When to Use
+**Trigger phrases:**
+- "llm deployment"
+- "LLM deployment and serving — vLLM, Ollama, TGI, llama"
+
 
 - Self-hosted LLM for privacy/cost
 - High-throughput API serving

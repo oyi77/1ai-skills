@@ -36,6 +36,10 @@ Before and during ransomware execution, adversaries establish C2 channels, exfil
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing ransomware network indicators"
+- "Identify ransomware network indicators including C2 beaconing patterns, TOR exit"
+
 
 - When investigating security incidents that require analyzing ransomware network indicators
 - When building detection rules or threat hunting queries for this domain

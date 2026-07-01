@@ -40,6 +40,10 @@ Amazon Macie is a fully managed data security and privacy service that uses mach
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing aws macie for data classification"
+- "Implement Amazon Macie to automatically discover, classify, and protect sensitiv"
+
 
 - When deploying or configuring implementing aws macie for data classification capabilities in your environment
 - When establishing security controls aligned to compliance requirements

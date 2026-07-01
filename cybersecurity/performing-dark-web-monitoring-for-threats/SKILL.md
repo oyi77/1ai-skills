@@ -30,6 +30,10 @@ Dark web monitoring involves systematically scanning Tor hidden services, underg
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing dark web monitoring for threats"
+- "Dark web monitoring involves systematically scanning Tor hidden services, underg"
+
 
 - When conducting security assessments that involve performing dark web monitoring for threats
 - When following incident response procedures for related security events

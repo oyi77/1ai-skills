@@ -36,6 +36,10 @@ nist_csf:
 Cybersecurity skill for detecting process injection techniques. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting process injection techniques"
+- "Detects and analyzes process injection techniques used by malware including clas"
+
 
 - EDR alerts on suspicious API call sequences (VirtualAllocEx + WriteProcessMemory + CreateRemoteThread)
 - A legitimate process (explorer.exe, svchost.exe) exhibits unexpected network connections or file operations

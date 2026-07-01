@@ -27,6 +27,10 @@ Jenkins shared libraries enable reusable pipeline code across multiple Jenkinsfi
 - Automatic loading with `@Library('my-lib@main')`
 
 ## When to Use
+**Trigger phrases:**
+- "jenkins shared libs"
+- "Jenkins shared libraries — reusable pipeline code, Groovy vars, resources, globa"
+
 
 - Multiple Jenkins pipelines share common steps
 - Need standardized CI/CD patterns across teams

@@ -22,6 +22,10 @@ ISO/IEC 27001:2022 is the international standard for establishing, implementing,
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing iso 27001 information security management"
+- "ISO/IEC 27001:2022 is the international standard for establishing, implementing,"
+
 
 - When deploying or configuring implementing iso 27001 information security management capabilities in your environment
 - When establishing security controls aligned to compliance requirements

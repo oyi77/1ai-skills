@@ -26,6 +26,10 @@ Dify is an open-source platform for building LLM applications with a visual work
 - Integrate with OpenAI, Azure, local models via Ollama
 
 ## When to Use
+**Trigger phrases:**
+- "dify workflow"
+- "Dify AI workflow platform — LLM apps, knowledge bases, agents, workflow orchestr"
+
 
 - Building LLM applications without coding
 - Needing visual workflow design for AI pipelines

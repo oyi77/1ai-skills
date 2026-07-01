@@ -34,6 +34,10 @@ Network packet captures (PCAP/PCAPNG files) represent the ultimate source of tru
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing network packet capture analysis"
+- "Perform forensic analysis of network packet captures (PCAP/PCAPNG) using Wiresha"
+
 
 - When conducting security assessments that involve performing network packet capture analysis
 - When following incident response procedures for related security events

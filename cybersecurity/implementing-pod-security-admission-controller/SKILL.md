@@ -28,6 +28,10 @@ Pod Security Admission (PSA) is a built-in Kubernetes admission controller (stab
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing pod security admission controller"
+- "Implement Kubernetes Pod Security Admission to enforce baseline and restricted s"
+
 
 - When deploying or configuring implementing pod security admission controller capabilities in your environment
 - When establishing security controls aligned to compliance requirements

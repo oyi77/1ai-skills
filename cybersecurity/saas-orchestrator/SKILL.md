@@ -39,6 +39,10 @@ Orchestration layer that packages the existing 23 security skills (bug-hunting, 
 - Compliance mapping (OWASP Top 10, CIS Benchmarks, SOC2)
 
 ## When to Use
+**Trigger phrases:**
+- "saas orchestrator"
+- "Wraps the existing 23 security skills into a sellable security-as-a-Service offe"
+
 
 - You want to monetize the existing security skills as a recurring service
 - Clients request security assessments or pentests

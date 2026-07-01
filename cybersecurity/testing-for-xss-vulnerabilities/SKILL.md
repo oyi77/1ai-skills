@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for testing for xss vulnerabilities. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing for xss vulnerabilities"
+- "Tests web applications for Cross-Site Scripting (XSS) vulnerabilities by injecti"
+
 
 - Testing web applications for client-side injection vulnerabilities as part of OWASP WSTG testing
 - Evaluating the effectiveness of input sanitization and output encoding across all application features

@@ -26,6 +26,10 @@ Kustomize is a Kubernetes-native configuration management tool that uses overlay
 - Resource ordering with hooks
 
 ## When to Use
+**Trigger phrases:**
+- "kustomize config"
+- "Kustomize Kubernetes configuration — bases, overlays, patches, generators, trans"
+
 
 - Multi-environment Kubernetes deployments (dev/staging/prod)
 - Customize third-party manifests without forking

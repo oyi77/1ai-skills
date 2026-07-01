@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for acquiring disk image with dd and dcfldd. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "acquiring disk image with dd and dcfldd"
+- "Create forensically sound bit-for-bit disk images using dd and dcfldd while pres"
+
 - When you need to create a forensic copy of a suspect drive for investigation
 - During incident response when preserving volatile disk evidence before analysis
 - When law enforcement or legal proceedings require a verified bit-for-bit copy

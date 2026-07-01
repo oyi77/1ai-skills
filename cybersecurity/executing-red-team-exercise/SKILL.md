@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for executing red team exercise. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "executing red team exercise"
+- "Executes comprehensive red team exercises that simulate real-world adversary ope"
+
 
 - Assessing an organization's ability to detect, respond to, and contain a realistic adversary operation
 - Testing the effectiveness of the security operations center (SOC), incident response team, and threat hunting capabilities

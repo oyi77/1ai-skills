@@ -30,6 +30,10 @@ Building a Threat Intelligence Platform (TIP) involves deploying and integrating
 
 
 ## When to Use
+**Trigger phrases:**
+- "building threat intelligence platform"
+- "Building a Threat Intelligence Platform (TIP) involves deploying and integrating"
+
 
 - When deploying or configuring building threat intelligence platform capabilities in your environment
 - When establishing security controls aligned to compliance requirements

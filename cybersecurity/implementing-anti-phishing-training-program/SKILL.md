@@ -28,6 +28,10 @@ Security awareness training is the human layer of phishing defense. An effective
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing anti phishing training program"
+- "Security awareness training is the human layer of phishing defense"
+
 
 - When deploying or configuring implementing anti phishing training program capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for extracting credentials from memory dump. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "extracting credentials from memory dump"
+- "Extract cached credentials, password hashes, Kerberos tickets, and authenticatio"
+
 - During incident response to determine what credentials an attacker had access to
 - When assessing the scope of credential compromise after a breach
 - For identifying accounts that need immediate password resets

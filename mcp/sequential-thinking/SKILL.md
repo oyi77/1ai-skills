@@ -24,6 +24,10 @@ Sequential thinking is a structured reasoning approach where problems are solved
 - Maintain reasoning context across thought chains
 
 ## When to Use
+**Trigger phrases:**
+- "sequential thinking"
+- "Dynamic problem-solving through thought sequences — iterative reasoning, hypothe"
+
 
 - Complex problems that need multi-step reasoning
 - Debugging where the root cause isn't obvious

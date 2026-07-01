@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for implementing beyondcorp zero trust access model. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing beyondcorp zero trust access model"
+- "Implementing Google''s BeyondCorp zero trust access model to eliminate implicit "
+
 
 - When replacing traditional VPN infrastructure with identity-based application access
 - When migrating to Google Cloud and requiring zero trust access for internal applications

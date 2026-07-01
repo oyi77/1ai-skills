@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for executing phishing simulation campaign. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "executing phishing simulation campaign"
+- "Executes authorized phishing simulation campaigns to assess an organization's su"
+
 
 - Measuring employee susceptibility to phishing attacks as part of a security awareness program
 - Testing the effectiveness of email security controls (secure email gateway, DMARC, SPF, DKIM)

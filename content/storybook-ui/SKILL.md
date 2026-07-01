@@ -26,6 +26,10 @@ Storybook is a frontend workshop for building, testing, and documenting UI compo
 - Documentation with autodocs and MDX
 
 ## When to Use
+**Trigger phrases:**
+- "storybook ui"
+- "Storybook for UI component development — stories, addons, controls, a11y testing"
+
 
 - Building a component library or design system
 - Need to develop UI components in isolation

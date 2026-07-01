@@ -35,6 +35,10 @@ A full-scope red team engagement simulates real-world adversary behavior across 
 
 
 ## When to Use
+**Trigger phrases:**
+- "conducting full scope red team engagement"
+- "Plan and execute a comprehensive red team engagement covering reconnaissance thr"
+
 
 - When conducting security assessments that involve conducting full scope red team engagement
 - When following incident response procedures for related security events

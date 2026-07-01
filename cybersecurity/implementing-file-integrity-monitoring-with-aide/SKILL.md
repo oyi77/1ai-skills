@@ -30,6 +30,10 @@ AIDE (Advanced Intrusion Detection Environment) is a host-based intrusion detect
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing file integrity monitoring with aide"
+- "Configure AIDE (Advanced Intrusion Detection Environment) for file integrity mon"
+
 
 - When deploying or configuring implementing file integrity monitoring with aide capabilities in your environment
 - When establishing security controls aligned to compliance requirements

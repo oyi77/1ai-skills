@@ -37,6 +37,10 @@ Azure service principals are identity objects used by applications, services, an
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting azure service principal abuse"
+- "Detect and investigate Azure service principal abuse including privilege escalat"
+
 
 - When investigating security incidents that require detecting azure service principal abuse
 - When building detection rules or threat hunting queries for this domain

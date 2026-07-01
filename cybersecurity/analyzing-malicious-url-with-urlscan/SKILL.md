@@ -30,6 +30,10 @@ URLScan.io is a free service for scanning and analyzing suspicious URLs. It capt
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing malicious url with urlscan"
+- "URLScan"
+
 
 - When investigating security incidents that require analyzing malicious url with urlscan
 - When building detection rules or threat hunting queries for this domain

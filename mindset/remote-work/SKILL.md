@@ -18,6 +18,10 @@ tags:
 Mindset skill for remote work. Builds capability through deliberate practice and structured frameworks.
 
 ## When to Use
+**Trigger phrases:**
+- "remote work"
+- "Work effectively remotely including async communication, documentation, video me"
+
 
 - Working in a remote-first or hybrid team
 - Managing distributed teams

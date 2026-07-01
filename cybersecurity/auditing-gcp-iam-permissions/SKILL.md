@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for auditing gcp iam permissions. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "auditing gcp iam permissions"
+- "Auditing Google Cloud Platform IAM permissions to identify overly permissive bin"
+
 
 - When performing security assessments of GCP organization or project IAM configurations
 - When identifying service accounts with excessive permissions or unused access

@@ -26,6 +26,10 @@ Istio provides a service mesh for Kubernetes with traffic management, mutual TLS
 - Multi-cluster federation
 
 ## When to Use
+**Trigger phrases:**
+- "istio mesh"
+- "Istio service mesh — traffic management, security, observability for Kubernetes "
+
 
 - Kubernetes microservice architectures
 - Need zero-trust networking with mTLS

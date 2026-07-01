@@ -37,6 +37,10 @@ Deploy FIDO2/WebAuthn passwordless authentication using security keys and platfo
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing passwordless authentication with fido2"
+- "Deploy FIDO2/WebAuthn passwordless authentication using security keys and platfo"
+
 
 - When deploying or configuring implementing passwordless authentication with fido2 capabilities in your environment
 - When establishing security controls aligned to compliance requirements

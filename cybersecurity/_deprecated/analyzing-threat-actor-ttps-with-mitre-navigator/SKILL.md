@@ -50,6 +50,10 @@ multiple groups, and assess detection coverage gaps against known adversaries.
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing threat actor ttps with mitre navigator"
+- "Map advanced persistent threat (APT) group tactics, techniques, and procedures ("
+
 
 - When investigating security incidents that require analyzing threat actor ttps with mitre navigator
 - When building detection rules or threat hunting queries for this domain

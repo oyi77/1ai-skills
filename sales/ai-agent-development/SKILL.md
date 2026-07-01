@@ -25,6 +25,10 @@ Build custom AI agents for businesses and sell them as services or products. Cre
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "ai agent development"
+- "Build and sell custom AI agents as services or products"
+
 
 - Client needs custom automation
 - Repetitive tasks that AI can handle
@@ -329,7 +333,7 @@ Build Agent → Deploy → Monthly Retainer → Upsell Features
 
 - [voice-ai-agent](../../automation/voice-ai-agent/SKILL.md) - Voice agent building
 - [ai-consulting](../ai-consulting/SKILL.md) - Client acquisition
-- [automation](../automation/) - Workflow building
+- automation - Workflow building
 
 ## How to Use
 

@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for analyzing network traffic with wireshark. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing network traffic with wireshark"
+- "Captures and analyzes network packet data using Wireshark and tshark to identify"
+
 
 - Investigating suspected network intrusions by examining packet-level evidence of command-and-control traffic, data exfiltration, or lateral movement
 - Diagnosing network performance issues such as retransmissions, fragmentation, or DNS resolution failures

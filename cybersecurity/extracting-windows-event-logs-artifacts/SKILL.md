@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for extracting windows event logs artifacts. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "extracting windows event logs artifacts"
+- "Extract, parse, and analyze Windows Event Logs (EVTX) using Chainsaw, Hayabusa, "
+
 - When investigating security incidents on Windows systems through event log analysis
 - For detecting lateral movement, privilege escalation, and persistence mechanisms
 - When performing threat hunting across Windows event log data

@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for securing github actions workflows. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "securing github actions workflows"
+- "This skill covers hardening GitHub Actions workflows against supply chain attack"
+
 
 - When GitHub Actions is the CI/CD platform and workflows need hardening against supply chain attacks
 - When workflows handle secrets, deploy to production, or have elevated permissions

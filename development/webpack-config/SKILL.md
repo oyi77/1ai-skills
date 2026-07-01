@@ -28,6 +28,10 @@ Webpack 5 is a static module bundler for modern JavaScript applications. It proc
 - Bundle analysis and optimization
 
 ## When to Use
+**Trigger phrases:**
+- "webpack config"
+- "Webpack 5 configuration — loaders, plugins, code splitting, tree shaking, module"
+
 
 - Building complex web applications with many dependencies
 - Need fine-grained control over bundling

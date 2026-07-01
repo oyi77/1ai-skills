@@ -25,6 +25,10 @@ Persistent memory system using knowledge graphs for AI agents. Stores entities, 
 - Query knowledge with natural language
 
 ## When to Use
+**Trigger phrases:**
+- "memory knowledge graph"
+- "Knowledge graph-based persistent memory for AI agents — entities, relations, and"
+
 
 - Building AI agents with long-term memory
 - Need to remember user preferences, facts, and context across sessions

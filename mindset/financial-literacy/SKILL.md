@@ -16,6 +16,10 @@ tags:
 Mindset skill for financial literacy. Builds capability through deliberate practice and structured frameworks.
 
 ## When to Use
+**Trigger phrases:**
+- "financial literacy"
+- "Manage personal and business finances including budgeting, cash flow, financial "
+
 
 - Managing personal or startup finances
 - Understanding business financial health

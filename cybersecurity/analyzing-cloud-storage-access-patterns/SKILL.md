@@ -33,6 +33,10 @@ nist_csf:
 Cybersecurity skill for analyzing cloud storage access patterns. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing cloud storage access patterns"
+- "Detect abnormal access patterns in AWS S3, GCS, and Azure Blob Storage by analyz"
+
 
 - When investigating security incidents that require analyzing cloud storage access patterns
 - When building detection rules or threat hunting queries for this domain

@@ -27,6 +27,10 @@ Audit service accounts across enterprise infrastructure to identify orphaned, ov
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing service account audit"
+- "Audit service accounts across enterprise infrastructure to identify orphaned, ov"
+
 
 - When conducting security assessments that involve performing service account audit
 - When following incident response procedures for related security events

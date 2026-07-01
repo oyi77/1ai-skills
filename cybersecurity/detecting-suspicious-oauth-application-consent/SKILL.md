@@ -30,6 +30,10 @@ Illicit consent grant attacks trick users into granting excessive permissions to
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting suspicious oauth application consent"
+- "Detect risky OAuth application consent grants in Azure AD / Microsoft Entra ID u"
+
 
 - When investigating security incidents that require detecting suspicious oauth application consent
 - When building detection rules or threat hunting queries for this domain

@@ -174,12 +174,12 @@ Machine-readable doc index for agents:
 
 ## Authentication
 
-- [Setup](docs/auth/setup.md): Environment vars and init
-- [Server](docs/auth/server.md): Cookie handling
+- Setup: Environment vars and init
+- Server: Cookie handling
 
 ## Database
 
-- [Schema](docs/db/schema.md): Full Prisma schema
+- Schema: Full Prisma schema
 ```
 
 **Location:** `/llms.txt` at domain root
@@ -211,7 +211,7 @@ AGENTS.md is part of your codebase. Controlled, version-pinned.
 
 ## Advanced Patterns
 
-For detailed guidance on RAG optimization, multi-framework docs, and API templates, see [references/advanced-patterns.md](references/advanced-patterns.md).
+For detailed guidance on RAG optimization, multi-framework docs, and API templates, see references/advanced-patterns.md.
 
 ## Validation Checklist
 

@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for performing mobile device forensics with cellebrite. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing mobile device forensics with cellebrite"
+- "Acquire and analyze mobile device data using Cellebrite UFED and open-source too"
+
 - When extracting evidence from smartphones or tablets during an investigation
 - For recovering deleted messages, call logs, and location data from mobile devices
 - During investigations involving communications via messaging apps

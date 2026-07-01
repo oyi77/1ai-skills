@@ -28,6 +28,10 @@ GoPhish is an open-source phishing simulation framework used by security teams t
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing phishing simulation with gophish"
+- "GoPhish is an open-source phishing simulation framework used by security teams t"
+
 
 - When conducting security assessments that involve performing phishing simulation with gophish
 - When following incident response procedures for related security events

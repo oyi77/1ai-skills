@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for investigating ransomware attack artifacts. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "investigating ransomware attack artifacts"
+- "Identify, collect, and analyze ransomware attack artifacts to determine the vari"
+
 - Immediately after discovering ransomware encryption on systems
 - When performing forensic analysis to understand the full scope of a ransomware incident
 - For identifying the ransomware variant and determining if decryption is possible

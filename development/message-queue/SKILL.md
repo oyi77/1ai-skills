@@ -25,6 +25,10 @@ Message queues decouple producers from consumers, enabling async processing, loa
 - Implement distributed work queues with acknowledgments
 
 ## When to Use
+**Trigger phrases:**
+- "message queue"
+- "Message queue patterns — RabbitMQ, Redis Streams, SQS"
+
 
 - Offloading heavy processing from API requests
 - Distributing work across multiple workers

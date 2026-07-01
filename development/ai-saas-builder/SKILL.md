@@ -37,6 +37,10 @@ An end-to-end pipeline for shipping micro-SaaS products as a solo operator. Take
 - Generate launch checklist (Product Hunt, Twitter, IndieHackers)
 
 ## When to Use
+**Trigger phrases:**
+- "ai saas builder"
+- "Takes a problem statement and produces a deployable micro-SaaS product — landing"
+
 
 - You have a business idea and want to ship a working product fast
 - You need to validate a market before investing weeks of development

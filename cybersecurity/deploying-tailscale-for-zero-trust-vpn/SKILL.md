@@ -32,6 +32,10 @@ Tailscale is a zero trust mesh VPN built on WireGuard that creates encrypted pee
 
 
 ## When to Use
+**Trigger phrases:**
+- "deploying tailscale for zero trust vpn"
+- "Deploy and configure Tailscale as a WireGuard-based zero trust mesh VPN with ide"
+
 
 - When deploying or configuring deploying tailscale for zero trust vpn capabilities in your environment
 - When establishing security controls aligned to compliance requirements

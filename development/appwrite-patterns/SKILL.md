@@ -27,6 +27,10 @@ Appwrite is an open-source backend-as-a-service platform providing auth, databas
 - Locale and avatars services
 
 ## When to Use
+**Trigger phrases:**
+- "appwrite patterns"
+- "Appwrite backend-as-a-service — auth, database, storage, functions, realtime for"
+
 
 - Full-featured BaaS without building from scratch
 - Flutter/mobile-first applications

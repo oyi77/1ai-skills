@@ -14,6 +14,10 @@ tags:
 # Firebase Integration
 
 ## When to Use
+**Trigger phrases:**
+- "firebase integration"
+- "Integrate Firebase for authentication, Firestore database, Cloud Functions, host"
+
 
 - When building real-time mobile or web apps with Firebase
 - When implementing Firebase Authentication (Google, Apple, email)

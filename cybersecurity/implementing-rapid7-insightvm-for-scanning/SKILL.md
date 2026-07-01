@@ -28,6 +28,10 @@ Rapid7 InsightVM (formerly Nexpose) is an enterprise vulnerability management pl
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing rapid7 insightvm for scanning"
+- "Deploy and configure Rapid7 InsightVM Security Console and Scan Engines for auth"
+
 
 - When deploying or configuring implementing rapid7 insightvm for scanning capabilities in your environment
 - When establishing security controls aligned to compliance requirements

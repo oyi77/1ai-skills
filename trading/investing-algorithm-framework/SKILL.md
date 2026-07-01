@@ -214,6 +214,10 @@ AI agents can query backtest results via the built-in MCP server. Enables agent-
 | Activity | Total trades, avg holding period, turnover |
 
 ## When to Use
+**Trigger phrases:**
+- "investing algorithm framework"
+- "Build algorithmic investing strategies with backtesting, signal generation, and "
+
 
 - Developing and backtesting quantitative trading strategies
 - Optimizing strategy parameters across multiple dimensions

@@ -301,7 +301,7 @@ try {
 
 - [Kalodata API Client](../src/kalodata/client.ts) - Core API client
 - [Kalodata Types](../src/kalodata/types.ts) - TypeScript definitions
-- [Product Research Skill](./kalodata-product-research.md) - Product intelligence
+- Product Research Skill - Product intelligence
 
 ## Process
 

@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for implementing devsecops security scanning. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing devsecops security scanning"
+- "Integrates Static Application Security Testing (SAST), Dynamic Application Secur"
+
 
 - Setting up automated security scanning in a new or existing CI/CD pipeline
 - Shifting security left by catching vulnerabilities before code reaches production

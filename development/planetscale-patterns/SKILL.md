@@ -27,6 +27,10 @@ PlanetScale is a MySQL-compatible serverless database platform built on Vitess. 
 - Data imports from existing MySQL databases
 
 ## When to Use
+**Trigger phrases:**
+- "planetscale patterns"
+- "PlanetScale MySQL — branching, deploy requests, Vitess sharding, connection hand"
+
 
 - MySQL-compatible serverless database
 - Need safe schema migrations without downtime

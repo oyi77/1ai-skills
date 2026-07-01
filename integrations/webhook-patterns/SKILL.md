@@ -25,6 +25,10 @@ Design, implement, and consume webhooks — secure signature verification, idemp
 - Testing with ngrok and webhook.site
 
 ## When to Use
+**Trigger phrases:**
+- "webhook patterns"
+- "Webhook design and handling — signature verification, retry logic, idempotency, "
+
 
 - Receiving real-time events from SaaS platforms
 - Building event-driven integrations between systems

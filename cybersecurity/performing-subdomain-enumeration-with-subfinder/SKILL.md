@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing subdomain enumeration with subfinder. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing subdomain enumeration with subfinder"
+- "Enumerate subdomains of target domains using ProjectDiscovery's Subfinder passiv"
+
 - During the reconnaissance phase of penetration testing or bug bounty hunting
 - When mapping the external attack surface of a target organization
 - Before performing vulnerability scanning on discovered subdomains

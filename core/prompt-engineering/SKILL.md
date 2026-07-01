@@ -13,6 +13,10 @@ tags:
 # Prompt Engineering
 
 ## When to Use
+**Trigger phrases:**
+- "prompt engineering"
+- "Advanced prompt engineering — chain-of-thought, few-shot, tree-of-thought, self-"
+
 
 - LLM outputs are inconsistent or low quality
 - Complex reasoning tasks that need step-by-step thinking

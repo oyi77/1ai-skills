@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing web application firewall bypass. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing web application firewall bypass"
+- "Bypass Web Application Firewall protections using encoding techniques, HTTP meth"
+
 - When confirmed vulnerabilities are blocked by WAF signature-based detection
 - During penetration testing where WAF prevents exploitation of known issues
 - When evaluating WAF rule effectiveness against evasion techniques

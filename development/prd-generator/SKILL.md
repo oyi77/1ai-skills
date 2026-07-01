@@ -48,6 +48,10 @@ Generate detailed Product Requirement Documents from feature descriptions. Creat
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "prd generator"
+- "Generate detailed Product Requirement Documents (PRDs) from feature descriptions"
+
 
 - Starting a new feature
 - Creating technical specifications

@@ -26,6 +26,10 @@ Implement background job processing — Bull/BullMQ for Redis-backed queues, del
 - Repeatable/cron jobs
 
 ## When to Use
+**Trigger phrases:**
+- "job queues"
+- "Background job processing — Bull/BullMQ, agenda, delayed jobs, retries, rate lim"
+
 
 - Sending emails/notifications asynchronously
 - Processing image/video uploads

@@ -28,6 +28,10 @@ Implement Just-In-Time (JIT) access provisioning to eliminate standing privilege
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing just in time access provisioning"
+- "Implement Just-In-Time (JIT) access provisioning to eliminate standing privilege"
+
 
 - When deploying or configuring implementing just in time access provisioning capabilities in your environment
 - When establishing security controls aligned to compliance requirements

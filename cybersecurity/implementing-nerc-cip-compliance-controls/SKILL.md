@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for implementing nerc cip compliance controls. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing nerc cip compliance controls"
+- "This skill covers implementing North American Electric Reliability Corporation C"
+
 
 - When a registered entity must achieve or maintain NERC CIP compliance for BES cyber systems
 - When preparing for a NERC CIP compliance audit by the Regional Entity

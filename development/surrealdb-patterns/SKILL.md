@@ -27,6 +27,10 @@ SurrealDB is a multi-model database that combines document, graph, key-value, an
 - HTTP REST API and WebSocket connections
 
 ## When to Use
+**Trigger phrases:**
+- "surrealdb patterns"
+- "SurrealDB multi-model database — document, graph, key-value"
+
 
 - Building applications needing both document and graph capabilities
 - Need realtime data subscriptions

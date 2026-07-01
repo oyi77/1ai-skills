@@ -30,6 +30,10 @@ SIEM use case tuning reduces alert fatigue by systematically analyzing detection
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing siem use case tuning"
+- "Tune SIEM detection rules to reduce false positives by analyzing alert volumes, "
+
 
 - When deploying or configuring implementing siem use case tuning capabilities in your environment
 - When establishing security controls aligned to compliance requirements

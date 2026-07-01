@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for performing sca dependency scanning with snyk. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing sca dependency scanning with snyk"
+- "This skill covers implementing Software Composition Analysis (SCA) using Snyk to"
+
 
 - When applications use open-source packages that may contain known vulnerabilities
 - When compliance requires tracking and remediating vulnerable dependencies (PCI DSS, SOC 2)

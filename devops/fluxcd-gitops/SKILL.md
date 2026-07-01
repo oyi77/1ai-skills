@@ -25,6 +25,10 @@ Flux CD is a GitOps toolkit for Kubernetes using source, kustomize, helm, and no
 - Dependency management between resources
 
 ## When to Use
+**Trigger phrases:**
+- "fluxcd gitops"
+- "Flux CD GitOps — source controllers, kustomize/helm controllers, image automatio"
+
 
 - Kubernetes GitOps without a separate UI
 - Prefer CRD-only approach over Application objects

@@ -28,6 +28,10 @@ Spearphishing targets specific individuals using personalized, researched conten
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting spearphishing with email gateway"
+- "Spearphishing targets specific individuals using personalized, researched conten"
+
 
 - When investigating security incidents that require detecting spearphishing with email gateway
 - When building detection rules or threat hunting queries for this domain

@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for detecting s3 data exfiltration attempts. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting s3 data exfiltration attempts"
+- "Detecting data exfiltration attempts from AWS S3 buckets by analyzing CloudTrail"
+
 
 - When GuardDuty detects anomalous S3 access patterns such as bulk downloads from unusual IPs
 - When investigating suspected data breach involving S3-stored sensitive data

@@ -32,6 +32,10 @@ AWS Verified Access is a Zero Trust Network Access (ZTNA) service that provides 
 
 
 ## When to Use
+**Trigger phrases:**
+- "configuring aws verified access for ztna"
+- "Configure AWS Verified Access to provide VPN-less zero trust network access to i"
+
 
 - When deploying or configuring configuring aws verified access for ztna capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for detecting lateral movement with splunk. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting lateral movement with splunk"
+- "Detect adversary lateral movement across networks using Splunk SPL queries again"
+
 
 - When hunting for adversary movement between compromised systems
 - After detecting credential theft to trace subsequent lateral activity

@@ -34,6 +34,10 @@ Shellbags are Windows registry artifacts that track how users interact with fold
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing windows shellbag artifacts"
+- "Analyze Windows Shellbag registry artifacts to reconstruct folder browsing activ"
+
 
 - When investigating security incidents that require analyzing windows shellbag artifacts
 - When building detection rules or threat hunting queries for this domain

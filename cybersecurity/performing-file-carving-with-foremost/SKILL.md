@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for performing file carving with foremost. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing file carving with foremost"
+- "Recover files from disk images and unallocated space using Foremost's header-foo"
+
 - When recovering files from unallocated disk space or corrupted file systems
 - For extracting evidence from formatted or wiped storage media
 - When file system metadata is unavailable but raw data sectors contain evidence

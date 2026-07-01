@@ -26,6 +26,10 @@ dbt (data build tool) enables analytics engineers to transform data in the wareh
 - Use packages for community macros and models
 
 ## When to Use
+**Trigger phrases:**
+- "dbt transform"
+- "dbt data transformation — models, tests, macros, sources, snapshots, documentati"
+
 
 - Transforming raw data into analytics-ready models in a warehouse
 - Needing version-controlled, testable SQL transformations

@@ -37,6 +37,10 @@ Monetization orchestration layer that turns content creation skills into revenue
 - Track revenue across all channels with unified reporting
 
 ## When to Use
+**Trigger phrases:**
+- "monetization strategist"
+- "Turn content into revenue — newsletter businesses, YouTube automation, affiliate"
+
 
 - You have content creation skills but no monetization strategy
 - Want to turn a newsletter into a revenue stream

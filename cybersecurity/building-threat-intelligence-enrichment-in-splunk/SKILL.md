@@ -31,6 +31,10 @@ Splunk's Threat Intelligence Framework in Enterprise Security enables SOC teams 
 
 
 ## When to Use
+**Trigger phrases:**
+- "building threat intelligence enrichment in splunk"
+- "Build automated threat intelligence enrichment pipelines in Splunk Enterprise Se"
+
 
 - When deploying or configuring building threat intelligence enrichment in splunk capabilities in your environment
 - When establishing security controls aligned to compliance requirements

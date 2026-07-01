@@ -26,6 +26,10 @@ CircleCI uses YAML-based `.circleci/config.yml` for CI/CD pipelines. Orbs provid
 - Matrix/parameterized builds
 
 ## When to Use
+**Trigger phrases:**
+- "circleci config"
+- "CircleCI configuration — workflows, jobs, orbs, caching, contexts, dynamic confi"
+
 
 - GitHub/GitLab repos needing fast CI/CD
 - Projects benefiting from orb ecosystem

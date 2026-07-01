@@ -37,6 +37,10 @@ This skill covers deploying SDP using the CSA v2.0 specification, implementing S
 
 
 ## When to Use
+**Trigger phrases:**
+- "deploying software defined perimeter"
+- "Deploy a Software-Defined Perimeter using the CSA v2"
+
 
 - When deploying or configuring deploying software defined perimeter capabilities in your environment
 - When establishing security controls aligned to compliance requirements

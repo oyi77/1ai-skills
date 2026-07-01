@@ -24,6 +24,10 @@ Jetpack Compose for building native Android apps. Covers declarative UI, state m
 - Navigate with Compose Navigation
 
 ## When to Use
+**Trigger phrases:**
+- "android jetpack"
+- "Android Jetpack Compose — declarative UI, state management, Material Design, and"
+
 
 - Building native Android apps
 - Need Material Design 3 components

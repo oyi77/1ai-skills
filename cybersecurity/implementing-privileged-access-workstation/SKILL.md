@@ -29,6 +29,10 @@ A Privileged Access Workstation (PAW) is a hardened device dedicated to performi
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing privileged access workstation"
+- "Design and implement Privileged Access Workstations (PAWs) with device hardening"
+
 
 - When deploying or configuring implementing privileged access workstation capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -17,6 +17,10 @@ tags:
 Mindset skill for presentation design. Builds capability through deliberate practice and structured frameworks.
 
 ## When to Use
+**Trigger phrases:**
+- "presentation design"
+- "Design persuasive presentations using the 10/20/30 rule, slide anatomy principle"
+
 
 - Building pitch decks, keynote presentations, or sales decks
 - Designing internal presentations for executives or teams

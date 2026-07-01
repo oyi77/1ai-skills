@@ -30,6 +30,10 @@ MISP is the leading open-source threat intelligence platform for collecting, sto
 
 
 ## When to Use
+**Trigger phrases:**
+- "building threat feed aggregation with misp"
+- "Deploy MISP (Malware Information Sharing Platform) to aggregate, correlate, and "
+
 
 - When deploying or configuring building threat feed aggregation with misp capabilities in your environment
 - When establishing security controls aligned to compliance requirements

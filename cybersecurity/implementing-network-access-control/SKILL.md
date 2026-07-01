@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for implementing network access control. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing network access control"
+- "Implements 802"
+
 
 - Enforcing identity-based network access where only authenticated and compliant devices connect to the network
 - Implementing zero-trust networking at the access layer with dynamic VLAN assignment based on user role

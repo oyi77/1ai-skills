@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for hunting for defense evasion via timestomping. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for defense evasion via timestomping"
+- "Detect NTFS timestamp manipulation (MITRE T1070"
+
 
 - Investigating suspected anti-forensic activity where an adversary may have altered file timestamps to blend malware into legitimate directories
 - Threat hunting for defense evasion (MITRE ATT&CK T1070.006) across compromised Windows systems

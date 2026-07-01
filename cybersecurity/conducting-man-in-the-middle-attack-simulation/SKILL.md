@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for conducting man in the middle attack simulation. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "conducting man in the middle attack simulation"
+- "Simulates man-in-the-middle attacks using Ettercap, mitmproxy, and Bettercap in "
+
 
 - Testing whether applications properly validate TLS certificates and enforce encrypted communications
 - Demonstrating the risk of cleartext protocols (HTTP, FTP, Telnet, SMTP) to organization stakeholders

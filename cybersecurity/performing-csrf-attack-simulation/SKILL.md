@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for performing csrf attack simulation. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing csrf attack simulation"
+- "Testing web applications for Cross-Site Request Forgery vulnerabilities by craft"
+
 
 - During authorized web application penetration tests to identify state-changing actions vulnerable to CSRF
 - When testing the effectiveness of anti-CSRF token implementations

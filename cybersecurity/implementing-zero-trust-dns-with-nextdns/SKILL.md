@@ -32,6 +32,10 @@ NextDNS is a cloud-based DNS resolver that provides encrypted DNS resolution (DN
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing zero trust dns with nextdns"
+- "Implement NextDNS as a zero trust DNS filtering layer with encrypted resolution,"
+
 
 - When deploying or configuring implementing zero trust dns with nextdns capabilities in your environment
 - When establishing security controls aligned to compliance requirements

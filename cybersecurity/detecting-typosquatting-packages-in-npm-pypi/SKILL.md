@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for detecting typosquatting packages in npm pypi. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting typosquatting packages in npm pypi"
+- "Detects typosquatting attacks in npm and PyPI package registries by analyzing pa"
+
 
 - Auditing project dependencies to identify packages whose names are suspiciously similar to popular libraries
 - Proactively scanning package registries for newly published packages that may be typosquats of your organization's packages

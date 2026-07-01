@@ -18,6 +18,10 @@ tags:
 This skill provides intelligent installation and configuration guidance for OpenCode and the oh-my-opencode harness. **It first detects what's already installed and only proceeds with installation if needed.**
 
 ## When to Use
+**Trigger phrases:**
+- "oh my opencode installation"
+- "Smart installation and configuration for OpenCode with oh-my-opencode harness - "
+
 
 - **First-time setup** – When OpenCode and oh-my-opencode need to be installed from scratch
 - **Reinstall/upgrade** – When reinstalling or updating oh-my-opencode to latest version

@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for performing entitlement review with sailpoint iiq. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing entitlement review with sailpoint iiq"
+- "Performs entitlement review and access certification campaigns using SailPoint I"
+
 
 - Quarterly or annual access certification campaigns are required for compliance (SOX, HIPAA, PCI-DSS)
 - Organization needs automated manager-based access reviews for all direct reports

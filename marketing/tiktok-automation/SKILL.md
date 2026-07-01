@@ -20,6 +20,10 @@ tags:
 TikTok Automation Skill provides production-ready automation for TikTok content posting and management. It features automatic login with session persistence, dynamic element detection that adapts to TikTok's changing UI, selector learning that saves successful selectors for future use, robust fallback mechanisms that retry with alternative selectors when primary ones fail, real-time progress tracking for upload status, and comprehensive logging for debugging and auditing. This skill enables reliable automated content posting without manual intervention.
 
 ## When to Use
+**Trigger phrases:**
+- "tiktok automation"
+- "Production-ready TikTok posting automation — handles login session persistence, "
+
 
 - **Auto-login with session persistence**: Maintain login sessions across sessions to avoid re-login
 - **Content upload**: Post videos with captions, hashtags, and settings

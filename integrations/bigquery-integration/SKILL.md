@@ -14,6 +14,10 @@ tags:
 # Bigquery Integration
 
 ## When to Use
+**Trigger phrases:**
+- "bigquery integration"
+- "Integrate Google BigQuery for large-scale data analytics"
+
 
 - When querying large datasets (TB-scale) with SQL
 - When building data warehouses or analytics pipelines

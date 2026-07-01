@@ -38,6 +38,10 @@ Kerberoasting is a post-exploitation technique that targets service accounts in 
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing kerberoasting attack"
+- "Kerberoasting is a post-exploitation technique that targets service accounts in "
+
 
 - When conducting security assessments that involve performing kerberoasting attack
 - When following incident response procedures for related security events

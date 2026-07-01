@@ -915,6 +915,10 @@ Step-by-step workflow for this skill.
 *Every deal documented. Every deadline owned.*
 
 ## When to Use
+**Trigger phrases:**
+- "contract manager"
+- "Contract lifecycle management for BerkahKarya — draft, review, negotiate,"
+
 
 - Managing contract lifecycle (creation, review, signing, renewal)
 - Tracking contract deadlines and milestones

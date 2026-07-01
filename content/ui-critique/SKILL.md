@@ -24,6 +24,10 @@ Structured framework for reviewing UI designs. Evaluates visual hierarchy, consi
 - Provide specific, actionable improvement recommendations
 
 ## When to Use
+**Trigger phrases:**
+- "ui critique"
+- "Structured UI review — visual hierarchy, consistency, accessibility, and actiona"
+
 
 - Before launching a new UI or redesign
 - Onboarding a new team member to design standards

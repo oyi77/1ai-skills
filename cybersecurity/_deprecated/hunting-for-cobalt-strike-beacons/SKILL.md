@@ -33,6 +33,10 @@ Cobalt Strike is the most prevalent command-and-control framework used by both r
 
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for cobalt strike beacons"
+- "Detect Cobalt Strike beacon network activity using default TLS certificate signa"
+
 
 - When investigating security incidents that require hunting for cobalt strike beacons
 - When building detection rules or threat hunting queries for this domain

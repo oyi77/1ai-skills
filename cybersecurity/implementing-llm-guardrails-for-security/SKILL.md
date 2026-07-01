@@ -46,6 +46,10 @@ nist_csf:
 Cybersecurity skill for implementing llm guardrails for security. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing llm guardrails for security"
+- "Implements input and output validation guardrails for LLM-powered applications t"
+
 
 - Deploying a new LLM-powered application that processes user input and needs input/output safety controls
 - Adding content policy enforcement to an existing chatbot or AI agent to comply with organizational policies

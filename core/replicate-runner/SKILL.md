@@ -14,6 +14,10 @@ tags:
 # Replicate Runner
 
 ## When to Use
+**Trigger phrases:**
+- "replicate runner"
+- "Run AI models on Replicate cloud API"
+
 
 - When running AI models without managing GPU infrastructure
 - When generating images, videos, or audio with state-of-the-art models

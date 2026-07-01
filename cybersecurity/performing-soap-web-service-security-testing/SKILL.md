@@ -32,6 +32,10 @@ SOAP (Simple Object Access Protocol) web services remain widely deployed in ente
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing soap web service security testing"
+- "Perform security testing of SOAP web services by analyzing WSDL definitions and "
+
 
 - When conducting security assessments that involve performing soap web service security testing
 - When following incident response procedures for related security events

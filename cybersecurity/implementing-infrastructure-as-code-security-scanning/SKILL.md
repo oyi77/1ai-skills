@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for implementing infrastructure as code security scanning. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing infrastructure as code security scanning"
+- "This skill covers implementing automated security scanning for Infrastructure as"
+
 
 - When provisioning cloud infrastructure with Terraform, CloudFormation, or Pulumi and needing automated security validation
 - When compliance frameworks require evidence of infrastructure configuration review before deployment

@@ -27,6 +27,10 @@ Patch management is the systematic process of identifying, testing, deploying, a
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing patch management workflow"
+- "Patch management is the systematic process of identifying, testing, deploying, a"
+
 
 - When deploying or configuring implementing patch management workflow capabilities in your environment
 - When establishing security controls aligned to compliance requirements

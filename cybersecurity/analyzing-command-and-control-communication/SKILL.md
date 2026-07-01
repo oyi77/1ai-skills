@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for analyzing command and control communication. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing command and control communication"
+- "Analyzes malware command-and-control (C2) communication protocols to understand "
+
 
 - Reverse engineering a malware sample has revealed network communication that needs protocol analysis
 - Building network-level detection signatures for a specific C2 framework (Cobalt Strike, Metasploit, Sliver)

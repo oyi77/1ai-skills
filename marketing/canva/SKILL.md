@@ -24,6 +24,10 @@ metadata:
 # Canva
 
 ## When to Use
+**Trigger phrases:**
+- "canva"
+- "Create, export, and manage Canva designs via the Connect API"
+
 
 - "Create an Instagram post about [topic]"
 - "Export my Canva design as PNG"

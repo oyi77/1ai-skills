@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for conducting network penetration test. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "conducting network penetration test"
+- "Conducts comprehensive network penetration tests against authorized target envir"
+
 
 - Assessing the security posture of internal or external network infrastructure before or after deployment
 - Validating firewall rules, network segmentation, and access controls under realistic attack conditions

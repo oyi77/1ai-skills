@@ -26,6 +26,10 @@ A cryptographic audit systematically reviews an application's use of cryptograph
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing cryptographic audit of application"
+- "A cryptographic audit systematically reviews an application's use of cryptograph"
+
 
 - When conducting security assessments that involve performing cryptographic audit of application
 - When following incident response procedures for related security events

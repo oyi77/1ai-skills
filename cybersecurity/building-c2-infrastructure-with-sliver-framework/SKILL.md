@@ -34,6 +34,10 @@ Sliver is an open-source, cross-platform adversary emulation framework developed
 
 
 ## When to Use
+**Trigger phrases:**
+- "building c2 infrastructure with sliver framework"
+- "Build and configure a resilient command-and-control infrastructure using BishopF"
+
 
 - When deploying or configuring building c2 infrastructure with sliver framework capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -39,6 +39,10 @@ nist_csf:
 Cybersecurity skill for implementing cloud dlp for data protection. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing cloud dlp for data protection"
+- "Implementing Cloud Data Loss Prevention (DLP) using Amazon Macie, Azure Informat"
+
 
 - When compliance frameworks (GDPR, HIPAA, PCI DSS) require automated sensitive data discovery and protection
 - When building data governance programs that classify and label data across cloud storage

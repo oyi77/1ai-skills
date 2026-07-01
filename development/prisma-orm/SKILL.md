@@ -26,6 +26,10 @@ Prisma is a Node.js/TypeScript ORM with auto-generated queries, type safety, and
 - Prisma Studio for visual data exploration
 
 ## When to Use
+**Trigger phrases:**
+- "prisma orm"
+- "Prisma ORM — schema modeling, migrations, client queries, middleware, performanc"
+
 
 - Building Node.js/TypeScript applications with SQL databases
 - Want auto-generated types from database schema

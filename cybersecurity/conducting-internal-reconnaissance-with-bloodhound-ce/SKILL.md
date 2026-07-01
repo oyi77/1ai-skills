@@ -37,6 +37,10 @@ BloodHound Community Edition (CE) is a modern, web-based Active Directory reconn
 
 
 ## When to Use
+**Trigger phrases:**
+- "conducting internal reconnaissance with bloodhound ce"
+- "Conduct internal Active Directory reconnaissance using BloodHound Community Edit"
+
 
 - When conducting security assessments that involve conducting internal reconnaissance with bloodhound ce
 - When following incident response procedures for related security events

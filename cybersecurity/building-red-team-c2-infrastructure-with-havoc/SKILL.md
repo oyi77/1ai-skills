@@ -38,6 +38,10 @@ Havoc is a modern, open-source post-exploitation command and control (C2) framew
 
 
 ## When to Use
+**Trigger phrases:**
+- "building red team c2 infrastructure with havoc"
+- "Deploy and configure the Havoc C2 framework with teamserver, HTTPS listeners, re"
+
 
 - When deploying or configuring building red team c2 infrastructure with havoc capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -32,6 +32,10 @@ Cloudflare provides multi-layer DDoS protection across its global network of ove
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing ddos mitigation with cloudflare"
+- "Configure Cloudflare DDoS protection with managed rulesets, rate limiting, WAF r"
+
 
 - When deploying or configuring implementing ddos mitigation with cloudflare capabilities in your environment
 - When establishing security controls aligned to compliance requirements

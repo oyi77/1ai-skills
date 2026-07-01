@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for auditing azure active directory configuration. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "auditing azure active directory configuration"
+- "Auditing Microsoft Entra ID (Azure Active Directory) configuration to identify r"
+
 
 - When performing a security assessment of an Azure tenant's identity configuration
 - When compliance audits require review of authentication policies, MFA enforcement, and role assignments

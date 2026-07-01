@@ -37,6 +37,10 @@ Hardware Security Modules (HSMs) provide tamper-resistant cryptographic key stor
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing hardware security module integration"
+- "Integrate Hardware Security Modules (HSMs) using PKCS#11 interface for cryptogra"
+
 
 - When conducting security assessments that involve performing hardware security module integration
 - When following incident response procedures for related security events

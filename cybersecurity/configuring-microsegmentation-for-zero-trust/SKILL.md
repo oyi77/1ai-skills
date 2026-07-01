@@ -37,6 +37,10 @@ This skill covers designing microsegmentation policies using workload identity, 
 
 
 ## When to Use
+**Trigger phrases:**
+- "configuring microsegmentation for zero trust"
+- "Configure microsegmentation policies to enforce least-privilege workload-to-work"
+
 
 - When deploying or configuring configuring microsegmentation for zero trust capabilities in your environment
 - When establishing security controls aligned to compliance requirements

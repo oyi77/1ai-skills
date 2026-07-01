@@ -29,6 +29,10 @@ Semgrep is an open-source static analysis tool that uses pattern-matching to fin
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing semgrep for custom sast rules"
+- "Write custom Semgrep SAST rules in YAML to detect application-specific vulnerabi"
+
 
 - When deploying or configuring implementing semgrep for custom sast rules capabilities in your environment
 - When establishing security controls aligned to compliance requirements

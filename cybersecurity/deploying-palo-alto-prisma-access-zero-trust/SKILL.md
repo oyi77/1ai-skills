@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for deploying palo alto prisma access zero trust. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "deploying palo alto prisma access zero trust"
+- "Deploying Palo Alto Networks Prisma Access for SASE-based zero trust network acc"
+
 
 - When implementing enterprise-grade SASE with integrated ZTNA, SWG, CASB, and FWaaS
 - When replacing both VPN and branch office firewalls with cloud-delivered security

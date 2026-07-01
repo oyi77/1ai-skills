@@ -39,6 +39,10 @@ nist_csf:
 Cybersecurity skill for detecting dnp3 protocol anomalies. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting dnp3 protocol anomalies"
+- "Detect anomalies in DNP3 (Distributed Network Protocol 3) communications used in"
+
 
 - When monitoring SCADA systems in the energy sector where DNP3 is the primary protocol
 - When building detection rules for DNP3-based attacks against RTUs and substations

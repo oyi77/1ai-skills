@@ -32,6 +32,10 @@ Resource Public Key Infrastructure (RPKI) provides cryptographic validation of B
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing bgp security with rpki"
+- "Implement BGP route origin validation using RPKI with Route Origin Authorization"
+
 
 - When deploying or configuring implementing bgp security with rpki capabilities in your environment
 - When establishing security controls aligned to compliance requirements

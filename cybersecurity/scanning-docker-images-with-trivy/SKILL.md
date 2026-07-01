@@ -27,6 +27,10 @@ Trivy is a comprehensive open-source vulnerability scanner by Aqua Security that
 
 
 ## When to Use
+**Trigger phrases:**
+- "scanning docker images with trivy"
+- "Trivy is a comprehensive open-source vulnerability scanner by Aqua Security that"
+
 
 - When conducting security assessments that involve scanning docker images with trivy
 - When following incident response procedures for related security events

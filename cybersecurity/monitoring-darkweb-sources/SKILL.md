@@ -38,6 +38,10 @@ nist_csf:
 Cybersecurity skill for monitoring darkweb sources. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "monitoring darkweb sources"
+- "Monitors dark web forums, marketplaces, paste sites, and ransomware leak sites f"
+
 
 Use this skill when:
 - Establishing continuous monitoring for organizational domain names, executive names, and product brands on dark web forums

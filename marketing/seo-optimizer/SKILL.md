@@ -55,6 +55,10 @@ persona:
 Complete SEO toolkit for organic growth. Research keywords, optimize content, track rankings, and improve search visibility. Essential for long-term sustainable traffic without paid ads.
 
 ## When to Use
+**Trigger phrases:**
+- "seo optimizer"
+- "Optimize content for search engines"
+
 
 - Research keywords for content
 - Optimize blog posts/pages

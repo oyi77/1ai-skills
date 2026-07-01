@@ -29,6 +29,10 @@ Single Sign-On (SSO) for Google Workspace allows organizations to authenticate u
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing google workspace sso configuration"
+- "Configure SAML 2"
+
 
 - When deploying or configuring implementing google workspace sso configuration capabilities in your environment
 - When establishing security controls aligned to compliance requirements

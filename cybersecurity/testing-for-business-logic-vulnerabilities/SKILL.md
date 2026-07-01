@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for testing for business logic vulnerabilities. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing for business logic vulnerabilities"
+- "Identifying flaws in application business logic that allow price manipulation, w"
+
 
 - During authorized penetration tests when automated scanners have found few technical vulnerabilities
 - When assessing e-commerce platforms for pricing, cart, and payment flow manipulations

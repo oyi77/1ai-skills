@@ -29,6 +29,10 @@ IAM permission boundaries are an advanced AWS feature that sets the maximum perm
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing aws iam permission boundaries"
+- "Configure IAM permission boundaries in AWS to delegate role creation to develope"
+
 
 - When deploying or configuring implementing aws iam permission boundaries capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -17,6 +17,10 @@ tags:
 Mindset skill for mental models. Builds capability through deliberate practice and structured frameworks.
 
 ## When to Use
+**Trigger phrases:**
+- "mental models"
+- "Apply 20+ mental models for better decision-making including Circle of Competenc"
+
 
 - Analyzing complex decisions
 - Avoiding cognitive biases

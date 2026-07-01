@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing http parameter pollution attack. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing http parameter pollution attack"
+- "Execute HTTP Parameter Pollution attacks to bypass input validation, WAF rules, "
+
 - When testing web applications for input validation bypass vulnerabilities
 - During WAF evasion testing to split attack payloads across duplicate parameters
 - When assessing how different technology stacks handle duplicate HTTP parameters

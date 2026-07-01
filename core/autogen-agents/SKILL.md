@@ -25,6 +25,10 @@ AutoGen is a framework for building multi-agent conversation systems. Agents cha
 - Use nested conversations for complex workflows
 
 ## When to Use
+**Trigger phrases:**
+- "autogen agents"
+- "AutoGen multi-agent conversations — AssistantAgent, UserProxyAgent, group chat, "
+
 
 - Building conversational AI systems with multiple perspectives
 - Needing agents that write and execute code

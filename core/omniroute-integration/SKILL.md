@@ -38,6 +38,10 @@ OmniRoute is a unified AI proxy/router that routes any LLM through one endpoint 
 - **OAuth Token Management** for Claude Code, Codex, Gemini CLI, Copilot, Kiro, Qwen, iFlow
 
 ## When to Use
+**Trigger phrases:**
+- "omniroute integration"
+- "Integrate with OmniRoute AI Router for multi-provider LLM routing, MCP server ac"
+
 
 Use this skill when:
 - You want to route LLM requests through multiple providers for reliability

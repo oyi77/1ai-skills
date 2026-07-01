@@ -30,6 +30,10 @@ STIX (Structured Threat Information eXpression) and TAXII (Trusted Automated eXc
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing stix taxii feed integration"
+- "STIX (Structured Threat Information eXpression) and TAXII (Trusted Automated eXc"
+
 
 - When deploying or configuring implementing stix taxii feed integration capabilities in your environment
 - When establishing security controls aligned to compliance requirements

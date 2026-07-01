@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for performing api fuzzing with restler. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing api fuzzing with restler"
+- "Uses Microsoft RESTler to perform stateful REST API fuzzing by automatically gen"
+
 
 - Performing automated security testing of REST APIs using their OpenAPI/Swagger specifications
 - Discovering bugs that only manifest through specific sequences of API calls (stateful testing)

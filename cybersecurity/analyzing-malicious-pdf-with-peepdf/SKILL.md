@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for analyzing malicious pdf with peepdf. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing malicious pdf with peepdf"
+- "Perform static analysis of malicious PDF documents using peepdf, pdfid, and pdf-"
+
 
 - When triaging suspicious PDF attachments from phishing emails
 - During malware analysis of PDF-based exploit documents

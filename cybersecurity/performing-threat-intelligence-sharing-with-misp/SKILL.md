@@ -30,6 +30,10 @@ MISP (Malware Information Sharing Platform) is an open-source threat intelligenc
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing threat intelligence sharing with misp"
+- "Use PyMISP to create, enrich, and share threat intelligence events on a MISP pla"
+
 
 - When conducting security assessments that involve performing threat intelligence sharing with misp
 - When following incident response procedures for related security events

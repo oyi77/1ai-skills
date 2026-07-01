@@ -28,6 +28,10 @@ Red team engagement planning is the foundational phase that defines scope, objec
 
 
 ## When to Use
+**Trigger phrases:**
+- "executing red team engagement planning"
+- "Red team engagement planning is the foundational phase that defines scope, objec"
+
 
 - When conducting security assessments that involve executing red team engagement planning
 - When following incident response procedures for related security events

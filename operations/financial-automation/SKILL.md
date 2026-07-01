@@ -39,6 +39,10 @@ An AI-powered financial management system for solo entrepreneurs. Automates invo
 - Export data for accountant/tax filing
 
 ## When to Use
+**Trigger phrases:**
+- "financial automation"
+- "AI CFO for solo businesses — invoicing, expense categorization, tax optimization"
+
 
 - Monthly bookkeeping is taking too much time
 - You need to track income/expenses across multiple accounts

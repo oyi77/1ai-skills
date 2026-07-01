@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for detecting lateral movement in network. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting lateral movement in network"
+- "Identifies lateral movement techniques in enterprise networks by analyzing authe"
+
 
 - Monitoring enterprise networks for post-compromise lateral movement patterns (pass-the-hash, RDP hopping, PSExec)
 - Building SIEM detection rules and alerts for common MITRE ATT&CK lateral movement techniques (T1021, T1570)

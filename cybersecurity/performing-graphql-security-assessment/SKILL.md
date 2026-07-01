@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for performing graphql security assessment. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing graphql security assessment"
+- "Assessing GraphQL API endpoints for introspection leaks, injection attacks, auth"
+
 
 - During authorized penetration tests when the target application uses a GraphQL API
 - When assessing single-page applications (React, Vue, Angular) that communicate via GraphQL

@@ -26,6 +26,10 @@ nist_csf:
 Cybersecurity skill for performing red team phishing with gophish. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing red team phishing with gophish"
+- "Automate GoPhish phishing simulation campaigns using the Python gophish library"
+
 
 - When conducting security assessments that involve performing red team phishing with gophish
 - When following incident response procedures for related security events

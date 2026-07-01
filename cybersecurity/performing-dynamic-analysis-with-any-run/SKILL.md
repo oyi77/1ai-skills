@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for performing dynamic analysis with any run. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing dynamic analysis with any run"
+- "Performs interactive dynamic malware analysis using the ANY"
+
 
 - Interactive malware analysis is needed where the analyst must click dialogs, enter credentials, or navigate installer screens
 - Rapid cloud-based sandbox analysis without maintaining local sandbox infrastructure

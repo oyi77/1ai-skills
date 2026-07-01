@@ -28,6 +28,10 @@ AI image generation creates images from text prompts using diffusion models. Thi
 - Set up local generation with ComfyUI or Automatic1111
 
 ## When to Use
+**Trigger phrases:**
+- "image gen"
+- "AI image generation — Stable Diffusion, Midjourney, DALL-E, ComfyUI"
+
 
 - Creating marketing visuals, thumbnails, social media images
 - Generating product mockups and concept art

@@ -24,6 +24,10 @@ Semantic Kernel is Microsoft's SDK for building AI agents and orchestrating AI p
 - Support RAG with vector stores and embeddings
 
 ## When to Use
+**Trigger phrases:**
+- "semantic kernel"
+- "Microsoft Semantic Kernel — AI orchestration, plugins, planners, memory, prompt "
+
 
 - Building AI agents in .NET/C#/Python enterprise environments
 - Needing structured plugin architecture for AI capabilities

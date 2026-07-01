@@ -43,6 +43,10 @@ Cloud incident containment requires cloud-native approaches that differ signific
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing cloud incident containment procedures"
+- "Execute cloud-native incident containment across AWS, Azure, and GCP by isolatin"
+
 
 - When conducting security assessments that involve performing cloud incident containment procedures
 - When following incident response procedures for related security events

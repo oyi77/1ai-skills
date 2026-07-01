@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing web cache deception attack. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing web cache deception attack"
+- "Execute web cache deception attacks by exploiting path normalization discrepanci"
+
 - When testing applications behind CDNs or reverse proxies (Cloudflare, Akamai, Varnish, Nginx)
 - During assessment of authenticated page caching behavior
 - When evaluating path normalization differences between caching and origin layers

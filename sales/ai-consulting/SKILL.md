@@ -25,6 +25,10 @@ Offer fractional AI engineering and consulting services to companies that need A
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "ai consulting"
+- "Offer fractional AI engineering and consulting services"
+
 
 - Companies need AI but no budget for full-time
 - Startup needs AI roadmap
@@ -371,7 +375,7 @@ Say: "$3,000 project that typically saves $50K/year"
 
 - [ai-agent-development](../ai-agent-development/SKILL.md) - Build for clients
 - [ai-lead-generation](../ai-lead-generation/SKILL.md) - Find clients
-- [automation](../automation/) - Implement solutions
+- automation - Implement solutions
 
 ## How to Use
 

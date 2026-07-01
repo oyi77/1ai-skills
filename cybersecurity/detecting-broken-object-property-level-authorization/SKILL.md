@@ -31,6 +31,10 @@ Broken Object Property Level Authorization (BOPLA), classified as API3:2023 in t
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting broken object property level authorization"
+- "Detect and test for OWASP API3:2023 Broken Object Property Level Authorization v"
+
 
 - When investigating security incidents that require detecting broken object property level authorization
 - When building detection rules or threat hunting queries for this domain

@@ -31,6 +31,10 @@ SSL/TLS inspection (also called SSL decryption, HTTPS inspection, or TLS break-a
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing ssl tls inspection configuration"
+- "Configure SSL/TLS inspection on network security devices to decrypt, inspect, an"
+
 
 - When conducting security assessments that involve performing ssl tls inspection configuration
 - When following incident response procedures for related security events

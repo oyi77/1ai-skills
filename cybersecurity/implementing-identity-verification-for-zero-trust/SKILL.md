@@ -43,6 +43,10 @@ This skill covers implementing phishing-resistant MFA, continuous identity verif
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing identity verification for zero trust"
+- "Implement continuous identity verification for zero trust using phishing-resista"
+
 
 - When deploying or configuring implementing identity verification for zero trust capabilities in your environment
 - When establishing security controls aligned to compliance requirements

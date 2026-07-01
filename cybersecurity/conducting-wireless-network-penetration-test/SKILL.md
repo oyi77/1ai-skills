@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for conducting wireless network penetration test. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "conducting wireless network penetration test"
+- "Conducts authorized wireless network penetration tests to assess the security of"
+
 
 - Assessing the security of enterprise wireless networks including guest, corporate, and IoT WiFi segments
 - Testing whether attackers within physical proximity can compromise wireless authentication and access internal networks

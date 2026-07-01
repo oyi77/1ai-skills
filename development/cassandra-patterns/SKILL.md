@@ -27,6 +27,10 @@ Apache Cassandra is a distributed NoSQL database designed for high availability 
 - Lightweight transactions (LWT) for conditional updates
 
 ## When to Use
+**Trigger phrases:**
+- "cassandra patterns"
+- "Apache Cassandra patterns — data modeling, CQL, partition keys, clustering, repl"
+
 
 - Write-heavy workloads requiring high throughput
 - Multi-datacenter, globally distributed applications

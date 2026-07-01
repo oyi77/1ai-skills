@@ -33,6 +33,10 @@ nist_csf:
 Cybersecurity skill for performing clickjacking attack test. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing clickjacking attack test"
+- "Testing web applications for clickjacking vulnerabilities by assessing frame emb"
+
 
 - During authorized penetration tests when assessing UI redressing vulnerabilities
 - When testing whether sensitive actions (delete account, transfer funds, change settings) can be performed via clickjacking

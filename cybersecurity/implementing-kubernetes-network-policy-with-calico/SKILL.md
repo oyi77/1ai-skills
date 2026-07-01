@@ -29,6 +29,10 @@ Calico is an open-source CNI plugin that provides fine-grained network policy en
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing kubernetes network policy with calico"
+- "Implement Kubernetes network segmentation using Calico NetworkPolicy and GlobalN"
+
 
 - When deploying or configuring implementing kubernetes network policy with calico capabilities in your environment
 - When establishing security controls aligned to compliance requirements

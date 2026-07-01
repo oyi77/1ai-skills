@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for performing timeline reconstruction with plaso. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing timeline reconstruction with plaso"
+- "Build comprehensive forensic super-timelines using Plaso (log2timeline) to corre"
+
 - When building a comprehensive forensic timeline from multiple evidence sources
 - For correlating events across file system metadata, event logs, browser history, and registry
 - During complex investigations requiring chronological reconstruction of activities

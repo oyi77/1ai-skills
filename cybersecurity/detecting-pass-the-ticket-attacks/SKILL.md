@@ -36,6 +36,10 @@ Pass-the-Ticket (PtT) is a credential theft technique (MITRE ATT&CK T1550.003) w
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting pass the ticket attacks"
+- "Detect Kerberos Pass-the-Ticket (PtT) attacks by analyzing Windows Event IDs 476"
+
 
 - When investigating security incidents that require detecting pass the ticket attacks
 - When building detection rules or threat hunting queries for this domain

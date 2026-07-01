@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for implementing device posture assessment in zero trust. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing device posture assessment in zero trust"
+- "Implementing device posture assessment as a zero trust access control by integra"
+
 
 - When enforcing device health as a prerequisite for accessing corporate applications
 - When integrating CrowdStrike ZTA scores, Intune compliance, or Jamf device status into access decisions

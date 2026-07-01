@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for implementing patch management for ot systems. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing patch management for ot systems"
+- "This skill covers implementing a structured patch management program for OT/ICS "
+
 
 - When establishing a formal OT patch management program for the first time
 - When responding to critical ICS-CERT advisories affecting deployed OT systems

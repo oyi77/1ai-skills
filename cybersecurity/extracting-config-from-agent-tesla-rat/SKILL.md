@@ -37,6 +37,10 @@ Agent Tesla is a .NET-based Remote Access Trojan (RAT) and keylogger that ranked
 
 
 ## When to Use
+**Trigger phrases:**
+- "extracting config from agent tesla rat"
+- "Extract embedded configuration from Agent Tesla RAT samples including SMTP/FTP/T"
+
 
 - When performing authorized security testing that involves extracting config from agent tesla rat
 - When analyzing malware samples or attack artifacts in a controlled environment

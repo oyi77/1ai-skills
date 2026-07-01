@@ -29,6 +29,10 @@ OPA Gatekeeper is a Kubernetes admission controller that enforces policies writt
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing opa gatekeeper for policy enforcement"
+- "Enforce Kubernetes admission policies using OPA Gatekeeper with ConstraintTempla"
+
 
 - When deploying or configuring implementing opa gatekeeper for policy enforcement capabilities in your environment
 - When establishing security controls aligned to compliance requirements

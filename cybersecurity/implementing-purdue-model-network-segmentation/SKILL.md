@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for implementing purdue model network segmentation. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing purdue model network segmentation"
+- "Implement network segmentation based on the Purdue Enterprise Reference Architec"
+
 
 - When designing or retrofitting network architecture for an ICS/SCADA environment
 - When implementing IEC 62443 zone and conduit requirements in a brownfield plant

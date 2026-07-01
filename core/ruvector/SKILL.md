@@ -35,6 +35,10 @@ persona:
 RuVector is a distributed vector database that **learns from every query**. Unlike static vector databases, RuVector uses GNN (Graph Neural Network) layers to improve search results over time. It's perfect for building self-improving AI memory systems.
 
 ## When to Use
+**Trigger phrases:**
+- "Edo Liberty"
+- "Generate and manage vector embeddings for semantic search and RAG retrieval acro"
+
 
 Use this skill when you need:
 - **Local vector storage** without external API dependencies

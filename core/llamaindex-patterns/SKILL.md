@@ -25,6 +25,10 @@ LlamaIndex is a data framework for connecting LLMs with external data. It provid
 - Implement advanced RAG patterns (routing, fusion, recursive)
 
 ## When to Use
+**Trigger phrases:**
+- "llamaindex patterns"
+- "LlamaIndex data framework — ingestion, indexing, query engines, chat engines, ag"
+
 
 - Building RAG applications over custom data sources
 - Needing structured document ingestion pipelines

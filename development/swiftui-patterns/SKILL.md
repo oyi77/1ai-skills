@@ -28,6 +28,10 @@ SwiftUI is Apple's declarative UI framework for building apps across all Apple p
 - Combine framework for reactive data flow
 
 ## When to Use
+**Trigger phrases:**
+- "swiftui patterns"
+- "SwiftUI native iOS/macOS development — declarative UI, Combine, Core Data, widge"
+
 
 - Building native Apple platform apps
 - Targeting iOS 16+ / macOS 13+ (mature SwiftUI)

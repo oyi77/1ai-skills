@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for performing cloud forensics with aws cloudtrail. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing cloud forensics with aws cloudtrail"
+- "Perform forensic investigation of AWS environments using CloudTrail logs to reco"
+
 
 - When investigating suspected AWS account compromise
 - After detecting unauthorized API calls or credential exposure

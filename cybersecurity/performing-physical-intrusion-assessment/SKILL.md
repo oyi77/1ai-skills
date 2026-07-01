@@ -35,6 +35,10 @@ Physical intrusion assessment evaluates an organization's physical security cont
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing physical intrusion assessment"
+- "Conduct authorized physical penetration testing using tailgating, badge cloning,"
+
 
 - When conducting security assessments that involve performing physical intrusion assessment
 - When following incident response procedures for related security events
