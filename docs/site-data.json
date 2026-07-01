@@ -1,0 +1,5513 @@
+{
+  "generated": "2026-07-01T15:04:35.116342+00:00",
+  "total": 1334,
+  "categories": [
+    {
+      "name": "cybersecurity",
+      "count": 786
+    },
+    {
+      "name": "development",
+      "count": 92
+    },
+    {
+      "name": "content",
+      "count": 60
+    },
+    {
+      "name": "mindset",
+      "count": 55
+    },
+    {
+      "name": "core",
+      "count": 45
+    },
+    {
+      "name": "marketing",
+      "count": 45
+    },
+    {
+      "name": "integrations",
+      "count": 36
+    },
+    {
+      "name": "devops",
+      "count": 33
+    },
+    {
+      "name": "automation",
+      "count": 28
+    },
+    {
+      "name": "research",
+      "count": 25
+    },
+    {
+      "name": "trading",
+      "count": 20
+    },
+    {
+      "name": "operations",
+      "count": 19
+    },
+    {
+      "name": "financial",
+      "count": 15
+    },
+    {
+      "name": "sales",
+      "count": 14
+    },
+    {
+      "name": "agents",
+      "count": 14
+    },
+    {
+      "name": "mcp",
+      "count": 14
+    },
+    {
+      "name": "meta",
+      "count": 13
+    },
+    {
+      "name": "data",
+      "count": 10
+    },
+    {
+      "name": "productivity",
+      "count": 10
+    }
+  ],
+  "categoryCount": 19,
+  "featured": [
+    {
+      "name": "AgentShield",
+      "description": "Agentic security patterns for AI agent systems including attack vector defense, sandboxing, input sanitization, security scanning, CVE awareness, and least-priv",
+      "category": "core"
+    },
+    {
+      "name": "Anthropic MCP Team",
+      "description": "Create MCP (Model Context Protocol) servers for any API or service. Auto-generate tools, resources, and prompts",
+      "category": "mcp"
+    },
+    {
+      "name": "Autonomous Learner",
+      "description": "Autonomous learning from execution data. Skills improve themselves by identifying patterns in successful vs failed",
+      "category": "meta"
+    },
+    {
+      "name": "Brendan Gregg",
+      "description": "Diagnose and fix MCP gateway routing issues, health checks, and server connectivity problems. Use when working with gateway doctor.",
+      "category": "core"
+    },
+    {
+      "name": "Cal Newport",
+      "description": "Generate daily plans with task priorities, track shipped work, and maintain cross-session accountability using",
+      "category": "development"
+    },
+    {
+      "name": "Continuous Improvement Lead",
+      "description": "Generate specific, actionable improvements for skills based on performance data and feedback. Create improvement",
+      "category": "meta"
+    },
+    {
+      "name": "Database Architect",
+      "description": "Raw data storage layer for 1ai-skills. Provides structured data persistence, query interface, and data pipeline support for skill operations.",
+      "category": "meta"
+    },
+    {
+      "name": "Deborah Gordon",
+      "description": "Coordinate multi-agent consensus using TiDB-backed shared memory. Use when agents need to agree on decisions",
+      "category": "core"
+    },
+    {
+      "name": "Demis Hassabis",
+      "description": "Skill: agent-arena-skill. See SKILL.md body for details. Use when this domain is relevant.",
+      "category": "development"
+    },
+    {
+      "name": "Domain Expert",
+      "description": "company-kb \u2014 Company Knowledge Base Skill. Use when relevant to this domain.",
+      "category": "core"
+    },
+    {
+      "name": "Domain Expert",
+      "description": "Query and maintain the knowledge base for project context, decisions, and architecture documentation. Use on",
+      "category": "core"
+    },
+    {
+      "name": "Edo Liberty",
+      "description": "Generate and manage vector embeddings for semantic search and RAG retrieval across knowledge bases.",
+      "category": "core"
+    },
+    {
+      "name": "Honest Self-Evaluator",
+      "description": "Skills evaluate their own performance, capabilities, and limitations. Honest self-reflection drives improvement. Use when working with self assessment.",
+      "category": "meta"
+    },
+    {
+      "name": "Kent Beck",
+      "description": "Skill: daily-dev-agentic. See SKILL.md body for details. Use when this domain is relevant.",
+      "category": "development"
+    },
+    {
+      "name": "Kevin Kelly",
+      "description": "Skill: zhive. See SKILL.md body for details. Use when this domain is relevant.",
+      "category": "research"
+    },
+    {
+      "name": "Lamarck",
+      "description": "Self-improving skill system that auto-extracts patterns from sessions into reusable skills with confidence scoring, skill versioning, import/export, and continu",
+      "category": "meta"
+    },
+    {
+      "name": "Matthew Prince",
+      "description": "Manage Cloudflare DNS, CDN, and security rules via API. Use when configuring domains, SSL, WAF, or edge caching.",
+      "category": "core"
+    },
+    {
+      "name": "Mikolov et al.",
+      "description": "Zero-copy vector operations for efficient similarity search and embedding storage in agent memory systems. Use when working with zvec.",
+      "category": "core"
+    }
+  ],
+  "allSkills": [
+    {
+      "name": "AgentShield",
+      "category": "core"
+    },
+    {
+      "name": "Anthropic MCP Team",
+      "category": "mcp"
+    },
+    {
+      "name": "Autonomous Learner",
+      "category": "meta"
+    },
+    {
+      "name": "Brendan Gregg",
+      "category": "core"
+    },
+    {
+      "name": "Cal Newport",
+      "category": "development"
+    },
+    {
+      "name": "Continuous Improvement Lead",
+      "category": "meta"
+    },
+    {
+      "name": "Database Architect",
+      "category": "meta"
+    },
+    {
+      "name": "Deborah Gordon",
+      "category": "core"
+    },
+    {
+      "name": "Demis Hassabis",
+      "category": "development"
+    },
+    {
+      "name": "Domain Expert",
+      "category": "core"
+    },
+    {
+      "name": "Domain Expert",
+      "category": "core"
+    },
+    {
+      "name": "Edo Liberty",
+      "category": "core"
+    },
+    {
+      "name": "Honest Self-Evaluator",
+      "category": "meta"
+    },
+    {
+      "name": "Kent Beck",
+      "category": "development"
+    },
+    {
+      "name": "Kevin Kelly",
+      "category": "research"
+    },
+    {
+      "name": "Lamarck",
+      "category": "meta"
+    },
+    {
+      "name": "Matthew Prince",
+      "category": "core"
+    },
+    {
+      "name": "Mikolov et al.",
+      "category": "core"
+    },
+    {
+      "name": "NanoClaw",
+      "category": "core"
+    },
+    {
+      "name": "Pattern Recognition Expert",
+      "category": "meta"
+    },
+    {
+      "name": "Performance Engineer",
+      "category": "meta"
+    },
+    {
+      "name": "User Research Lead",
+      "category": "meta"
+    },
+    {
+      "name": "accessibility-audit",
+      "category": "content"
+    },
+    {
+      "name": "acquiring-disk-image-with-dd-and-dcfldd",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "active-listening",
+      "category": "mindset"
+    },
+    {
+      "name": "ad-copy",
+      "category": "content"
+    },
+    {
+      "name": "ad-creative",
+      "category": "marketing"
+    },
+    {
+      "name": "ad-killer",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "adcp-advertising",
+      "category": "marketing"
+    },
+    {
+      "name": "ads-manager",
+      "category": "marketing"
+    },
+    {
+      "name": "affiliate-manager",
+      "category": "marketing"
+    },
+    {
+      "name": "affiliate-marketing",
+      "category": "marketing"
+    },
+    {
+      "name": "agent-docs",
+      "category": "core"
+    },
+    {
+      "name": "agent-orchestrator",
+      "category": "agents"
+    },
+    {
+      "name": "agent-reach",
+      "category": "mcp"
+    },
+    {
+      "name": "agent-self-improvement",
+      "category": "core"
+    },
+    {
+      "name": "agentic-quality-engineering",
+      "category": "development"
+    },
+    {
+      "name": "ai-agent-development",
+      "category": "sales"
+    },
+    {
+      "name": "ai-consulting",
+      "category": "sales"
+    },
+    {
+      "name": "ai-content-agency-v2",
+      "category": "marketing"
+    },
+    {
+      "name": "ai-digital-products",
+      "category": "marketing"
+    },
+    {
+      "name": "ai-engineering-curriculum",
+      "category": "core"
+    },
+    {
+      "name": "ai-hacker",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "ai-lead-generation",
+      "category": "sales"
+    },
+    {
+      "name": "ai-marketplace",
+      "category": "sales"
+    },
+    {
+      "name": "ai-newsletter",
+      "category": "content"
+    },
+    {
+      "name": "ai-podcast",
+      "category": "content"
+    },
+    {
+      "name": "ai-readiness",
+      "category": "financial"
+    },
+    {
+      "name": "ai-research-agent",
+      "category": "research"
+    },
+    {
+      "name": "ai-saas-builder",
+      "category": "development"
+    },
+    {
+      "name": "ai-seo",
+      "category": "marketing"
+    },
+    {
+      "name": "ai-skill-integration-guide",
+      "category": "development"
+    },
+    {
+      "name": "airflow-pipelines",
+      "category": "data"
+    },
+    {
+      "name": "all-in-one-finance",
+      "category": "financial"
+    },
+    {
+      "name": "alphaear-strategy",
+      "category": "trading"
+    },
+    {
+      "name": "analytics-dashboard",
+      "category": "marketing"
+    },
+    {
+      "name": "analytics-reporting",
+      "category": "marketing"
+    },
+    {
+      "name": "analyzing-active-directory-acl-abuse",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-android-malware-with-apktool",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-api-gateway-access-logs",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-apt-group-with-mitre-navigator",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-azure-activity-logs-for-threats",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-bootkit-and-rootkit-samples",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-browser-forensics-with-hindsight",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-campaign-attribution-evidence",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-certificate-transparency-for-phishing",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-cloud-storage-access-patterns",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-cobalt-strike-beacon-configuration",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-cobaltstrike-malleable-c2-profiles",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-command-and-control-communication",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-cyber-kill-chain",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-disk-image-with-autopsy",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-dns-logs-for-exfiltration",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-docker-container-forensics",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-email-headers-for-phishing-investigation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-ethereum-smart-contract-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-golang-malware-with-ghidra",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-heap-spray-exploitation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-indicators-of-compromise",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-ios-app-security-with-objection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-kubernetes-audit-logs",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-linux-audit-logs-for-intrusion",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-linux-elf-malware",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-linux-kernel-rootkits",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-linux-system-artifacts",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-lnk-file-and-jump-list-artifacts",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-macro-malware-in-office-documents",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-malicious-pdf-with-peepdf",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-malicious-url-with-urlscan",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-malware-behavior-with-cuckoo-sandbox",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-malware-family-relationships-with-malpedia",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-malware-persistence-with-autoruns",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-malware-sandbox-evasion-techniques",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-memory-dumps-with-volatility",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-memory-forensics-with-lime-and-volatility",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-mft-for-deleted-file-recovery",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-network-covert-channels-in-malware",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-network-flow-data-with-netflow",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-network-packets-with-scapy",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-network-traffic-for-incidents",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-network-traffic-of-malware",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-network-traffic-with-wireshark",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-office365-audit-logs-for-compromise",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-outlook-pst-for-email-forensics",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-packed-malware-with-upx-unpacker",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-pdf-malware-with-pdfid",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-persistence-mechanisms-in-linux",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-powershell-empire-artifacts",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-powershell-script-block-logging",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-prefetch-files-for-execution-history",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-ransomware-encryption-mechanisms",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-ransomware-leak-site-intelligence",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-ransomware-network-indicators",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-ransomware-payment-wallets",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-sbom-for-supply-chain-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-security-logs-with-splunk",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-slack-space-and-file-system-artifacts",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-supply-chain-malware-artifacts",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-threat-actor-ttps-with-mitre-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-threat-actor-ttps-with-mitre-navigator",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-threat-intelligence-feeds",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-threat-landscape-with-misp",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-tls-certificate-transparency-logs",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-typosquatting-domains-with-dnstwist",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-uefi-bootkit-persistence",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-usb-device-connection-history",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-web-server-logs-for-intrusion",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-windows-amcache-artifacts",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-windows-event-logs-in-splunk",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-windows-lnk-files-for-artifacts",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-windows-prefetch-with-python",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-windows-registry-for-artifacts",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "analyzing-windows-shellbag-artifacts",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "android-jetpack",
+      "category": "development"
+    },
+    {
+      "name": "anomaly-detect",
+      "category": "data"
+    },
+    {
+      "name": "ansible-automation",
+      "category": "devops"
+    },
+    {
+      "name": "ant-design",
+      "category": "content"
+    },
+    {
+      "name": "anti-slop-frontend",
+      "category": "content"
+    },
+    {
+      "name": "api-design",
+      "category": "development"
+    },
+    {
+      "name": "api-destroyer",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "api-gateway",
+      "category": "development"
+    },
+    {
+      "name": "api-testing",
+      "category": "development"
+    },
+    {
+      "name": "app-store-optimization",
+      "category": "development"
+    },
+    {
+      "name": "appwrite-patterns",
+      "category": "development"
+    },
+    {
+      "name": "argocd-gitops",
+      "category": "devops"
+    },
+    {
+      "name": "audit",
+      "category": "mindset"
+    },
+    {
+      "name": "auditing-aws-s3-bucket-permissions",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "auditing-azure-active-directory-configuration",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "auditing-cloud-with-cis-benchmarks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "auditing-gcp-iam-permissions",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "auditing-kubernetes-cluster-rbac",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "auditing-terraform-infrastructure-for-security",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "auditing-tls-certificate-transparency-logs",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "auth-killer",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "auth-patterns",
+      "category": "operations"
+    },
+    {
+      "name": "auto-clipper",
+      "category": "content"
+    },
+    {
+      "name": "auto-evolve",
+      "category": "meta"
+    },
+    {
+      "name": "auto-git-commiter",
+      "category": "core"
+    },
+    {
+      "name": "autogen-agents",
+      "category": "core"
+    },
+    {
+      "name": "automated-test-generator",
+      "category": "development"
+    },
+    {
+      "name": "automating-ioc-enrichment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "autonomy-engine",
+      "category": "core"
+    },
+    {
+      "name": "aws-ops",
+      "category": "devops"
+    },
+    {
+      "name": "azure-ops",
+      "category": "devops"
+    },
+    {
+      "name": "b-roll-finder",
+      "category": "content"
+    },
+    {
+      "name": "b2b-sales-automation",
+      "category": "sales"
+    },
+    {
+      "name": "bbot-recon",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "berkahkarya-orchestrator",
+      "category": "core"
+    },
+    {
+      "name": "best-hacker",
+      "category": "research"
+    },
+    {
+      "name": "bigquery-integration",
+      "category": "integrations"
+    },
+    {
+      "name": "binary-breaker",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "black-edge",
+      "category": "trading"
+    },
+    {
+      "name": "bounty-target-finder",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "brainstorming",
+      "category": "development"
+    },
+    {
+      "name": "browser-testing-devtools",
+      "category": "development"
+    },
+    {
+      "name": "browser-use",
+      "category": "agents"
+    },
+    {
+      "name": "bug-chain-builder",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "bug-hunting",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "build-in-public",
+      "category": "marketing"
+    },
+    {
+      "name": "building-adversary-infrastructure-tracking-system",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-attack-pattern-library-from-cti-reports",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-automated-malware-submission-pipeline",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-c2-infrastructure-with-sliver-framework",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-cloud-siem-with-sentinel",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-detection-rule-with-splunk-spl",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-detection-rules-with-sigma",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-devsecops-pipeline-with-gitlab-ci",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-identity-federation-with-saml-azure-ad",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-identity-governance-lifecycle-process",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-incident-response-dashboard",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-incident-response-playbook",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-incident-timeline-with-timesketch",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-ioc-defanging-and-sharing-pipeline",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-ioc-enrichment-pipeline-with-opencti",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-malware-incident-communication-template",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-patch-tuesday-response-process",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-phishing-reporting-button-workflow",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-ransomware-playbook-with-cisa-framework",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-red-team-c2-infrastructure-with-havoc",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-role-mining-for-rbac-optimization",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-soc-escalation-matrix",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-soc-metrics-and-kpi-tracking",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-soc-playbook-for-ransomware",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-threat-actor-profile-from-osint",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-threat-feed-aggregation-with-misp",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-threat-hunt-hypothesis-framework",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-threat-intelligence-enrichment-in-splunk",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-threat-intelligence-feed-integration",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-threat-intelligence-platform",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-vulnerability-aging-and-sla-tracking",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-vulnerability-dashboard-with-defectdojo",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-vulnerability-exception-tracking-system",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "building-vulnerability-scanning-workflow",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "buildkite-pipelines",
+      "category": "devops"
+    },
+    {
+      "name": "business-development",
+      "category": "sales"
+    },
+    {
+      "name": "business-intelligence",
+      "category": "operations"
+    },
+    {
+      "name": "business-model-canvas",
+      "category": "mindset"
+    },
+    {
+      "name": "buzzer-engagement-army",
+      "category": "marketing"
+    },
+    {
+      "name": "bypassing-authentication-with-forced-browsing",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "calendar-management",
+      "category": "productivity"
+    },
+    {
+      "name": "canva",
+      "category": "marketing"
+    },
+    {
+      "name": "canvas-design",
+      "category": "content"
+    },
+    {
+      "name": "career-ops",
+      "category": "productivity"
+    },
+    {
+      "name": "cassandra-patterns",
+      "category": "development"
+    },
+    {
+      "name": "chakra-ui",
+      "category": "content"
+    },
+    {
+      "name": "change-management",
+      "category": "mindset"
+    },
+    {
+      "name": "cherry-picked-agent-skills",
+      "category": "development"
+    },
+    {
+      "name": "churn-prevention",
+      "category": "marketing"
+    },
+    {
+      "name": "ci-cd-pipeline",
+      "category": "devops"
+    },
+    {
+      "name": "cicd-deployment",
+      "category": "development"
+    },
+    {
+      "name": "cilium-networking",
+      "category": "devops"
+    },
+    {
+      "name": "circleci-config",
+      "category": "devops"
+    },
+    {
+      "name": "clawild-moltbook",
+      "category": "automation"
+    },
+    {
+      "name": "clay-art-video-generator",
+      "category": "content"
+    },
+    {
+      "name": "clickup",
+      "category": "operations"
+    },
+    {
+      "name": "cloud-hunter",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "cloud-mcp",
+      "category": "integrations"
+    },
+    {
+      "name": "cockroachdb-patterns",
+      "category": "development"
+    },
+    {
+      "name": "code-agent",
+      "category": "agents"
+    },
+    {
+      "name": "code-research",
+      "category": "research"
+    },
+    {
+      "name": "code-reviewer",
+      "category": "development"
+    },
+    {
+      "name": "code-simplification",
+      "category": "development"
+    },
+    {
+      "name": "codebase-memory-mcp",
+      "category": "mcp"
+    },
+    {
+      "name": "cold-email",
+      "category": "marketing"
+    },
+    {
+      "name": "collecting-indicators-of-compromise",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "collecting-open-source-intelligence",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "collecting-threat-intelligence-with-misp",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "collecting-volatile-evidence-from-compromised-host",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "comment-reply-manager",
+      "category": "content"
+    },
+    {
+      "name": "communication-mcp",
+      "category": "integrations"
+    },
+    {
+      "name": "competitive-intelligence",
+      "category": "research"
+    },
+    {
+      "name": "competitive-strategy",
+      "category": "mindset"
+    },
+    {
+      "name": "competitor-alternatives",
+      "category": "marketing"
+    },
+    {
+      "name": "computer-use",
+      "category": "agents"
+    },
+    {
+      "name": "conducting-api-security-testing",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-cloud-incident-response",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-cloud-penetration-testing",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-domain-persistence-with-dcsync",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-external-reconnaissance-with-osint",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-full-scope-red-team-engagement",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-internal-network-penetration-test",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-internal-reconnaissance-with-bloodhound-ce",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-malware-incident-response",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-man-in-the-middle-attack-simulation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-memory-forensics-with-volatility",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-mobile-app-penetration-test",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-network-penetration-test",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-pass-the-ticket-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-phishing-incident-response",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-post-incident-lessons-learned",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-social-engineering-penetration-test",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-social-engineering-pretext-call",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-spearphishing-simulation-campaign",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conducting-wireless-network-penetration-test",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-active-directory-tiered-model",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-aws-verified-access-for-ztna",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-certificate-authority-with-openssl",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-host-based-intrusion-detection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-hsm-for-key-storage",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-identity-aware-proxy-with-google-iap",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-ldap-security-hardening",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-microsegmentation-for-zero-trust",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-multi-factor-authentication-with-duo",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-network-segmentation-with-vlans",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-oauth2-authorization-flow",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-pfsense-firewall-rules",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-snort-ids-for-intrusion-detection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-suricata-for-network-monitoring",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-tls-1-3-for-secure-communications",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-windows-defender-advanced-settings",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-windows-event-logging-for-detection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "configuring-zscaler-private-access-for-ztna",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "conflict-resolution",
+      "category": "mindset"
+    },
+    {
+      "name": "consul-service-mesh",
+      "category": "devops"
+    },
+    {
+      "name": "containing-active-breach",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "content-analytics-engine",
+      "category": "marketing"
+    },
+    {
+      "name": "content-creator",
+      "category": "marketing"
+    },
+    {
+      "name": "content-factory",
+      "category": "content"
+    },
+    {
+      "name": "content-kingdom",
+      "category": "content"
+    },
+    {
+      "name": "content-monitor",
+      "category": "automation"
+    },
+    {
+      "name": "content-planner-auto",
+      "category": "content"
+    },
+    {
+      "name": "content-publisher",
+      "category": "automation"
+    },
+    {
+      "name": "content-scheduler",
+      "category": "marketing"
+    },
+    {
+      "name": "content-validation-workflow",
+      "category": "development"
+    },
+    {
+      "name": "context-engineering",
+      "category": "development"
+    },
+    {
+      "name": "continuous-hunter",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "continuous-learning",
+      "category": "research"
+    },
+    {
+      "name": "contract-manager",
+      "category": "operations"
+    },
+    {
+      "name": "correlating-security-events-in-qradar",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "correlating-threat-campaigns",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "create-skills",
+      "category": "meta"
+    },
+    {
+      "name": "crewai-agents",
+      "category": "core"
+    },
+    {
+      "name": "crisis-management",
+      "category": "mindset"
+    },
+    {
+      "name": "critical-thinking",
+      "category": "mindset"
+    },
+    {
+      "name": "cron-designer",
+      "category": "automation"
+    },
+    {
+      "name": "cross-cultural-communication",
+      "category": "mindset"
+    },
+    {
+      "name": "crypto-breaker",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "crypto-trading-bot",
+      "category": "trading"
+    },
+    {
+      "name": "crypto-wallet",
+      "category": "trading"
+    },
+    {
+      "name": "css-frameworks",
+      "category": "development"
+    },
+    {
+      "name": "customer-success",
+      "category": "operations"
+    },
+    {
+      "name": "customer-support",
+      "category": "sales"
+    },
+    {
+      "name": "cypress-e2e",
+      "category": "development"
+    },
+    {
+      "name": "dagster-pipelines",
+      "category": "data"
+    },
+    {
+      "name": "daisyui-components",
+      "category": "content"
+    },
+    {
+      "name": "data-cleaner",
+      "category": "data"
+    },
+    {
+      "name": "data-pipeline-engine",
+      "category": "research"
+    },
+    {
+      "name": "database-mcp",
+      "category": "integrations"
+    },
+    {
+      "name": "database-migration",
+      "category": "development"
+    },
+    {
+      "name": "dbt-transform",
+      "category": "data"
+    },
+    {
+      "name": "debt",
+      "category": "mindset"
+    },
+    {
+      "name": "decepticon-red-team",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "decision-frameworks",
+      "category": "mindset"
+    },
+    {
+      "name": "decision-making",
+      "category": "mindset"
+    },
+    {
+      "name": "defi-protocols",
+      "category": "trading"
+    },
+    {
+      "name": "deobfuscating-javascript-malware",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "deobfuscating-powershell-obfuscated-malware",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "dependency-scanner",
+      "category": "development"
+    },
+    {
+      "name": "deploy-agent",
+      "category": "agents"
+    },
+    {
+      "name": "deploying-active-directory-honeytokens",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "deploying-cloudflare-access-for-zero-trust",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "deploying-decoy-files-for-ransomware-detection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "deploying-edr-agent-with-crowdstrike",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "deploying-osquery-for-endpoint-monitoring",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "deploying-palo-alto-prisma-access-zero-trust",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "deploying-ransomware-canary-files",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "deploying-software-defined-perimeter",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "deploying-tailscale-for-zero-trust-vpn",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "design-thinking",
+      "category": "mindset"
+    },
+    {
+      "name": "design-tokens",
+      "category": "content"
+    },
+    {
+      "name": "detecting-ai-model-prompt-injection-attacks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-anomalies-in-industrial-control-systems",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-anomalous-authentication-patterns",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-api-enumeration-attacks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-arp-poisoning-in-network-traffic",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-attacks-on-historian-servers",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-attacks-on-scada-systems",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-aws-cloudtrail-anomalies",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-aws-credential-exposure-with-trufflehog",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-aws-guardduty-findings-automation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-aws-iam-privilege-escalation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-azure-lateral-movement",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-azure-service-principal-abuse",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-azure-storage-account-misconfigurations",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-beaconing-patterns-with-zeek",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-bluetooth-low-energy-attacks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-broken-object-property-level-authorization",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-business-email-compromise",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-business-email-compromise-with-ai",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-cloud-threats-with-guardduty",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-command-and-control-over-dns",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-compromised-cloud-credentials",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-container-drift-at-runtime",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-container-escape-attempts",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-container-escape-with-falco-rules",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-credential-dumping-techniques",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-cryptomining-in-cloud",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-dcsync-attack-in-active-directory",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-deepfake-audio-in-vishing-attacks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-dll-sideloading-attacks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-dnp3-protocol-anomalies",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-dns-exfiltration-with-dns-query-analysis",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-email-account-compromise",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-email-forwarding-rules-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-evasion-techniques-in-endpoint-logs",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-exfiltration-over-dns-with-zeek",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-fileless-attacks-on-endpoints",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-fileless-malware-techniques",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-golden-ticket-attacks-in-kerberos-logs",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-golden-ticket-forgery",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-insider-data-exfiltration-via-dlp",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-insider-threat-behaviors",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-insider-threat-with-ueba",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-kerberoasting-attacks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-lateral-movement-in-network",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-lateral-movement-with-splunk",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-lateral-movement-with-zeek",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-living-off-the-land-attacks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-living-off-the-land-with-lolbas",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-malicious-scheduled-tasks-with-sysmon",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-mimikatz-execution-patterns",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-misconfigured-azure-storage",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-mobile-malware-behavior",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-modbus-command-injection-attacks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-modbus-protocol-anomalies",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-network-anomalies-with-zeek",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-network-scanning-with-ids-signatures",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-ntlm-relay-with-event-correlation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-oauth-token-theft",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-pass-the-hash-attacks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-pass-the-ticket-attacks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-port-scanning-with-fail2ban",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-privilege-escalation-attempts",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-privilege-escalation-in-kubernetes-pods",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-process-hollowing-technique",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-process-injection-techniques",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-qr-code-phishing-with-email-security",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-ransomware-encryption-behavior",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-ransomware-precursors-in-network",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-rdp-brute-force-attacks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-rootkit-activity",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-s3-data-exfiltration-attempts",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-serverless-function-injection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-service-account-abuse",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-shadow-api-endpoints",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-shadow-it-cloud-usage",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-spearphishing-with-email-gateway",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-sql-injection-via-waf-logs",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-stuxnet-style-attacks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-supply-chain-attacks-in-ci-cd",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-suspicious-oauth-application-consent",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-suspicious-powershell-execution",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-t1003-credential-dumping-with-edr",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-t1055-process-injection-with-sysmon",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-t1548-abuse-elevation-control-mechanism",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-typosquatting-packages-in-npm-pypi",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "detecting-wmi-persistence",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "difficult-conversations",
+      "category": "mindset"
+    },
+    {
+      "name": "dify-workflow",
+      "category": "core"
+    },
+    {
+      "name": "digital-real-estate",
+      "category": "content"
+    },
+    {
+      "name": "discord-bot",
+      "category": "integrations"
+    },
+    {
+      "name": "discord-webhooks",
+      "category": "integrations"
+    },
+    {
+      "name": "dispatching-parallel-agents",
+      "category": "research"
+    },
+    {
+      "name": "docker-compose",
+      "category": "devops"
+    },
+    {
+      "name": "dockerfile-opt",
+      "category": "devops"
+    },
+    {
+      "name": "dockerfile-optimize",
+      "category": "devops"
+    },
+    {
+      "name": "docx-creator",
+      "category": "content"
+    },
+    {
+      "name": "drizzle-orm",
+      "category": "development"
+    },
+    {
+      "name": "drone-ci",
+      "category": "devops"
+    },
+    {
+      "name": "dynamodb-patterns",
+      "category": "development"
+    },
+    {
+      "name": "earnings-viewer",
+      "category": "financial"
+    },
+    {
+      "name": "edge-computing",
+      "category": "devops"
+    },
+    {
+      "name": "electron-apps",
+      "category": "development"
+    },
+    {
+      "name": "email-automation",
+      "category": "productivity"
+    },
+    {
+      "name": "email-marketing",
+      "category": "marketing"
+    },
+    {
+      "name": "email-mastery",
+      "category": "mindset"
+    },
+    {
+      "name": "email-sequences",
+      "category": "marketing"
+    },
+    {
+      "name": "email-writer",
+      "category": "content"
+    },
+    {
+      "name": "emotional-intelligence",
+      "category": "mindset"
+    },
+    {
+      "name": "engineering-hard-rules",
+      "category": "development"
+    },
+    {
+      "name": "envoy-proxy",
+      "category": "devops"
+    },
+    {
+      "name": "eradicating-malware-from-infected-systems",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "esbuild-bundler",
+      "category": "development"
+    },
+    {
+      "name": "evaluating-threat-intelligence-platforms",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "event-driven",
+      "category": "development"
+    },
+    {
+      "name": "executing-active-directory-attack-simulation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "executing-phishing-simulation-campaign",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "executing-plans",
+      "category": "development"
+    },
+    {
+      "name": "executing-red-team-engagement-planning",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "executing-red-team-exercise",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "execution",
+      "category": "mindset"
+    },
+    {
+      "name": "executive-presence",
+      "category": "mindset"
+    },
+    {
+      "name": "exploiting-active-directory-certificate-services-esc1",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-active-directory-with-bloodhound",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-api-injection-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-bgp-hijacking-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-broken-function-level-authorization",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-broken-link-hijacking",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-constrained-delegation-abuse",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-deeplink-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-excessive-data-exposure-in-api",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-http-request-smuggling",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-idor-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-insecure-data-storage-in-mobile",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-insecure-deserialization",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-ipv6-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-jwt-algorithm-confusion-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-kerberoasting-with-impacket",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-mass-assignment-in-rest-apis",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-ms17-010-eternalblue-vulnerability",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-nopac-cve-2021-42278-42287",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-nosql-injection-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-oauth-misconfiguration",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-prototype-pollution-in-javascript",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-race-condition-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-server-side-request-forgery",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-smb-vulnerabilities-with-metasploit",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-sql-injection-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-sql-injection-with-sqlmap",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-template-injection-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-type-juggling-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-vulnerabilities-with-metasploit-framework",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-websocket-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "exploiting-zerologon-vulnerability-cve-2020-1472",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "extracting-browser-history-artifacts",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "extracting-config-from-agent-tesla-rat",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "extracting-credentials-from-memory-dump",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "extracting-iocs-from-malware-samples",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "extracting-memory-artifacts-with-rekall",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "extracting-windows-event-logs-artifacts",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "faceless-youtube",
+      "category": "content"
+    },
+    {
+      "name": "feynman-science",
+      "category": "research"
+    },
+    {
+      "name": "finance-ops",
+      "category": "operations"
+    },
+    {
+      "name": "finance-tracker",
+      "category": "financial"
+    },
+    {
+      "name": "finance-trading",
+      "category": "research"
+    },
+    {
+      "name": "financial-automation",
+      "category": "operations"
+    },
+    {
+      "name": "financial-literacy",
+      "category": "mindset"
+    },
+    {
+      "name": "find-skills",
+      "category": "core"
+    },
+    {
+      "name": "finishing-a-development-branch",
+      "category": "development"
+    },
+    {
+      "name": "firebase-integration",
+      "category": "integrations"
+    },
+    {
+      "name": "firebase-patterns",
+      "category": "development"
+    },
+    {
+      "name": "first-principles-thinking",
+      "category": "mindset"
+    },
+    {
+      "name": "flowise-builder",
+      "category": "automation"
+    },
+    {
+      "name": "flutter-dev",
+      "category": "development"
+    },
+    {
+      "name": "fluxcd-gitops",
+      "category": "devops"
+    },
+    {
+      "name": "focus-time-management",
+      "category": "productivity"
+    },
+    {
+      "name": "free-cloud-infrastructure",
+      "category": "devops"
+    },
+    {
+      "name": "free-dev-resources",
+      "category": "development"
+    },
+    {
+      "name": "free-saas-toolkit",
+      "category": "integrations"
+    },
+    {
+      "name": "frontend-design",
+      "category": "content"
+    },
+    {
+      "name": "frontend-ui-design",
+      "category": "content"
+    },
+    {
+      "name": "fundraising",
+      "category": "mindset"
+    },
+    {
+      "name": "fuzz-master",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "gcp-ops",
+      "category": "devops"
+    },
+    {
+      "name": "gemini-api-dev",
+      "category": "core"
+    },
+    {
+      "name": "gemini-image-generator",
+      "category": "content"
+    },
+    {
+      "name": "geminigen-ai",
+      "category": "content"
+    },
+    {
+      "name": "generating-threat-intelligence-reports",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "git-master",
+      "category": "development"
+    },
+    {
+      "name": "git-workflow-mastery",
+      "category": "development"
+    },
+    {
+      "name": "github-actions",
+      "category": "integrations"
+    },
+    {
+      "name": "github-issues",
+      "category": "integrations"
+    },
+    {
+      "name": "github-mcp",
+      "category": "mcp"
+    },
+    {
+      "name": "github-pr",
+      "category": "integrations"
+    },
+    {
+      "name": "gl-reconciler",
+      "category": "financial"
+    },
+    {
+      "name": "google-canvas",
+      "category": "productivity"
+    },
+    {
+      "name": "google-flow",
+      "category": "productivity"
+    },
+    {
+      "name": "google-workspace",
+      "category": "productivity"
+    },
+    {
+      "name": "governance-team",
+      "category": "operations"
+    },
+    {
+      "name": "graphql-api",
+      "category": "development"
+    },
+    {
+      "name": "grok-browser",
+      "category": "research"
+    },
+    {
+      "name": "growth-engine",
+      "category": "marketing"
+    },
+    {
+      "name": "grpc",
+      "category": "development"
+    },
+    {
+      "name": "habit-formation",
+      "category": "mindset"
+    },
+    {
+      "name": "hackingtool",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hardening-docker-containers-for-production",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hardening-docker-daemon-configuration",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hardening-linux-endpoint-with-cis-benchmark",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hardening-windows-endpoint-with-cis-benchmark",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "helm-charts",
+      "category": "devops"
+    },
+    {
+      "name": "help",
+      "category": "mindset"
+    },
+    {
+      "name": "hexstrike-ai-pentest",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "high-ticket-closing",
+      "category": "sales"
+    },
+    {
+      "name": "hiring-playbook",
+      "category": "mindset"
+    },
+    {
+      "name": "hooks-setup",
+      "category": "meta"
+    },
+    {
+      "name": "hr-onboarding",
+      "category": "operations"
+    },
+    {
+      "name": "humanizer",
+      "category": "content"
+    },
+    {
+      "name": "humanizer-zh",
+      "category": "content"
+    },
+    {
+      "name": "hunting-advanced-persistent-threats",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-credential-stuffing-attacks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-anomalous-powershell-execution",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-beaconing-with-frequency-analysis",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-cobalt-strike-beacons",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-command-and-control-beaconing",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-data-exfiltration-indicators",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-data-staging-before-exfiltration",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-dcom-lateral-movement",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-dcsync-attacks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-defense-evasion-via-timestomping",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-dns-based-persistence",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-dns-tunneling-with-zeek",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-domain-fronting-c2-traffic",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-lateral-movement-via-wmi",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-living-off-the-cloud-techniques",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-living-off-the-land-binaries",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-lolbins-execution-in-endpoint-logs",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-ntlm-relay-attacks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-persistence-mechanisms-in-windows",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-persistence-via-wmi-subscriptions",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-process-injection-techniques",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-registry-persistence-mechanisms",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-registry-run-key-persistence",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-scheduled-task-persistence",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-shadow-copy-deletion",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-spearphishing-indicators",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-startup-folder-persistence",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-supply-chain-compromise",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-suspicious-scheduled-tasks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-t1098-account-manipulation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-unusual-network-connections",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-unusual-service-installations",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "hunting-for-webshell-activity",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "ifttt-maker",
+      "category": "automation"
+    },
+    {
+      "name": "image-gen",
+      "category": "content"
+    },
+    {
+      "name": "implementing-aes-encryption-for-data-at-rest",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-alert-fatigue-reduction",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-anti-phishing-training-program",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-anti-ransomware-group-policy",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-api-abuse-detection-with-rate-limiting",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-api-gateway-security-controls",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-api-key-security-controls",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-api-rate-limiting-and-throttling",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-api-schema-validation-security",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-api-security-posture-management",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-api-security-testing-with-42crunch",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-api-threat-protection-with-apigee",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-application-whitelisting-with-applocker",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-aqua-security-for-container-scanning",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-attack-path-analysis-with-xm-cyber",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-attack-surface-management",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-aws-config-rules-for-compliance",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-aws-iam-permission-boundaries",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-aws-macie-for-data-classification",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-aws-nitro-enclave-security",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-aws-security-hub",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-aws-security-hub-compliance",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-azure-ad-privileged-identity-management",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-azure-defender-for-cloud",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-beyondcorp-zero-trust-access-model",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-bgp-security-with-rpki",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-browser-isolation-for-zero-trust",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-canary-tokens-for-network-intrusion",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-cisa-zero-trust-maturity-model",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-cloud-dlp-for-data-protection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-cloud-security-posture-management",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-cloud-trail-log-analysis",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-cloud-vulnerability-posture-management",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-cloud-waf-rules",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-cloud-workload-protection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-code-signing-for-artifacts",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-conditional-access-policies-azure-ad",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-conduit-security-for-ot-remote-access",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-container-image-minimal-base-with-distroless",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-container-network-policies-with-calico",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-continuous-security-validation-with-bas",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-data-loss-prevention-with-microsoft-purview",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-ddos-mitigation-with-cloudflare",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-deception-based-detection-with-canarytoken",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-delinea-secret-server-for-pam",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-device-posture-assessment-in-zero-trust",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-devsecops-security-scanning",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-diamond-model-analysis",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-digital-signatures-with-ed25519",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-disk-encryption-with-bitlocker",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-dmarc-dkim-spf-email-security",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-dragos-platform-for-ot-monitoring",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-ebpf-security-monitoring",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-email-sandboxing-with-proofpoint",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-end-to-end-encryption-for-messaging",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-endpoint-detection-with-wazuh",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-endpoint-dlp-controls",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-envelope-encryption-with-aws-kms",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-epss-score-for-vulnerability-prioritization",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-file-integrity-monitoring-with-aide",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-fuzz-testing-in-cicd-with-aflplusplus",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-gcp-binary-authorization",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-gcp-organization-policy-constraints",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-gcp-vpc-firewall-rules",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-gdpr-data-protection-controls",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-gdpr-data-subject-access-request",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-github-advanced-security-for-code-scanning",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-google-workspace-admin-security",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-google-workspace-phishing-protection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-google-workspace-sso-configuration",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-hardware-security-key-authentication",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-hashicorp-vault-dynamic-secrets",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-honeypot-for-ransomware-detection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-honeytokens-for-breach-detection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-ics-firewall-with-tofino",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-identity-governance-with-sailpoint",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-identity-verification-for-zero-trust",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-iec-62443-security-zones",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-image-provenance-verification-with-cosign",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-immutable-backup-with-restic",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-infrastructure-as-code-security-scanning",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-iso-27001-information-security-management",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-just-in-time-access-provisioning",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-jwt-signing-and-verification",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-kubernetes-network-policy-with-calico",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-kubernetes-pod-security-standards",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-llm-guardrails-for-security",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-log-forwarding-with-fluentd",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-log-integrity-with-blockchain",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-memory-protection-with-dep-aslr",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-microsegmentation-with-guardicore",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-mimecast-targeted-attack-protection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-mitre-attack-coverage-mapping",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-mobile-application-management",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-mtls-for-zero-trust-services",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-nerc-cip-compliance-controls",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-network-access-control",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-network-access-control-with-cisco-ise",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-network-deception-with-honeypots",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-network-intrusion-prevention-with-suricata",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-network-policies-for-kubernetes",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-network-segmentation-for-ot",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-network-segmentation-with-firewall-zones",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-network-traffic-analysis-with-arkime",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-network-traffic-baselining",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-next-generation-firewall-with-palo-alto",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-opa-gatekeeper-for-policy-enforcement",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-ot-incident-response-playbook",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-ot-network-traffic-analysis-with-nozomi",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-pam-for-database-access",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-passwordless-auth-with-microsoft-entra",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-passwordless-authentication-with-fido2",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-patch-management-for-ot-systems",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-patch-management-workflow",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-pci-dss-compliance-controls",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-pod-security-admission-controller",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-policy-as-code-with-open-policy-agent",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-privileged-access-management-with-cyberark",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-privileged-access-workstation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-privileged-session-monitoring",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-proofpoint-email-security-gateway",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-purdue-model-network-segmentation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-ransomware-backup-strategy",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-ransomware-kill-switch-detection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-rapid7-insightvm-for-scanning",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-rbac-hardening-for-kubernetes",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-rsa-key-pair-management",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-runtime-application-self-protection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-runtime-security-with-tetragon",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-saml-sso-with-okta",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-scim-provisioning-with-okta",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-secret-scanning-with-gitleaks",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-secrets-management-with-vault",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-secrets-scanning-in-ci-cd",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-security-chaos-engineering",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-security-information-sharing-with-stix2",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-security-monitoring-with-datadog",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-semgrep-for-custom-sast-rules",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-siem-correlation-rules-for-apt",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-siem-use-case-tuning",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-siem-use-cases-for-detection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-sigstore-for-software-signing",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-soar-automation-with-phantom",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-soar-playbook-for-phishing",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-soar-playbook-with-palo-alto-xsoar",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-stix-taxii-feed-integration",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-supply-chain-security-with-in-toto",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-syslog-centralization-with-rsyslog",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-taxii-server-with-opentaxii",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-threat-intelligence-lifecycle-management",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-threat-modeling-with-mitre-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-ticketing-system-for-incidents",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-usb-device-control-policy",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-velociraptor-for-ir-collection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-vulnerability-management-with-greenbone",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-vulnerability-remediation-sla",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-vulnerability-sla-breach-alerting",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-web-application-logging-with-modsecurity",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-zero-knowledge-proof-for-authentication",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-zero-standing-privilege-with-cyberark",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-zero-trust-dns-with-nextdns",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-zero-trust-for-saas-applications",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-zero-trust-in-cloud",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-zero-trust-network-access",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-zero-trust-network-access-with-zscaler",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-zero-trust-with-beyondcorp",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "implementing-zero-trust-with-hashicorp-boundary",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "incremental-implementation",
+      "category": "development"
+    },
+    {
+      "name": "influence-without-authority",
+      "category": "mindset"
+    },
+    {
+      "name": "influencer-outreach",
+      "category": "marketing"
+    },
+    {
+      "name": "influencer-scouting",
+      "category": "sales"
+    },
+    {
+      "name": "integrating-dast-with-owasp-zap-in-pipeline",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "integrating-sast-into-github-actions-pipeline",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "intercepting-mobile-traffic-with-burpsuite",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "investigating-insider-threat-indicators",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "investigating-phishing-email-incident",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "investigating-ransomware-attack-artifacts",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "investing-algorithm-framework",
+      "category": "trading"
+    },
+    {
+      "name": "ionic-capacitor",
+      "category": "development"
+    },
+    {
+      "name": "ios-swiftui",
+      "category": "development"
+    },
+    {
+      "name": "iot-hunter",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "istio-mesh",
+      "category": "devops"
+    },
+    {
+      "name": "jenkins-pipelines",
+      "category": "devops"
+    },
+    {
+      "name": "jenkins-shared-libs",
+      "category": "devops"
+    },
+    {
+      "name": "jira",
+      "category": "operations"
+    },
+    {
+      "name": "jira-api",
+      "category": "integrations"
+    },
+    {
+      "name": "job-hunter",
+      "category": "automation"
+    },
+    {
+      "name": "job-queues",
+      "category": "development"
+    },
+    {
+      "name": "joko-moltbook",
+      "category": "automation"
+    },
+    {
+      "name": "joko-orchestrator",
+      "category": "core"
+    },
+    {
+      "name": "joko-proactive-agent",
+      "category": "core"
+    },
+    {
+      "name": "k8s-deploy",
+      "category": "devops"
+    },
+    {
+      "name": "kafka-patterns",
+      "category": "development"
+    },
+    {
+      "name": "kalodata-dashboard",
+      "category": "integrations"
+    },
+    {
+      "name": "kalodata-integrations",
+      "category": "integrations"
+    },
+    {
+      "name": "kalodata-monitor",
+      "category": "integrations"
+    },
+    {
+      "name": "kalodata-product-research",
+      "category": "integrations"
+    },
+    {
+      "name": "kalodata-research-automation",
+      "category": "integrations"
+    },
+    {
+      "name": "kalodata-storyboard-extract",
+      "category": "integrations"
+    },
+    {
+      "name": "kalodata-video-analysis",
+      "category": "integrations"
+    },
+    {
+      "name": "karpathy-coding-principles",
+      "category": "core"
+    },
+    {
+      "name": "kernel-killer",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "kustomize-config",
+      "category": "devops"
+    },
+    {
+      "name": "kyc-screener",
+      "category": "financial"
+    },
+    {
+      "name": "lakefs-versioning",
+      "category": "automation"
+    },
+    {
+      "name": "langchain-patterns",
+      "category": "core"
+    },
+    {
+      "name": "larry-playbook",
+      "category": "content"
+    },
+    {
+      "name": "launch-strategy",
+      "category": "marketing"
+    },
+    {
+      "name": "lead-generation-engine",
+      "category": "sales"
+    },
+    {
+      "name": "lead-magnets",
+      "category": "marketing"
+    },
+    {
+      "name": "leadership-essentials",
+      "category": "mindset"
+    },
+    {
+      "name": "legal-assistant",
+      "category": "operations"
+    },
+    {
+      "name": "legal-compliance",
+      "category": "operations"
+    },
+    {
+      "name": "linear-api",
+      "category": "integrations"
+    },
+    {
+      "name": "linear-mcp",
+      "category": "mcp"
+    },
+    {
+      "name": "linkerd-mesh",
+      "category": "devops"
+    },
+    {
+      "name": "linter-agent",
+      "category": "agents"
+    },
+    {
+      "name": "linux-gui-control",
+      "category": "development"
+    },
+    {
+      "name": "llamaindex-patterns",
+      "category": "core"
+    },
+    {
+      "name": "llm-deployment",
+      "category": "core"
+    },
+    {
+      "name": "long-form",
+      "category": "content"
+    },
+    {
+      "name": "lynk",
+      "category": "marketing"
+    },
+    {
+      "name": "make-scenarios",
+      "category": "automation"
+    },
+    {
+      "name": "managing-cloud-identity-with-okta",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "managing-intelligence-lifecycle",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "mapping-mitre-attack-techniques",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "market-research",
+      "category": "marketing"
+    },
+    {
+      "name": "market-research-agent",
+      "category": "research"
+    },
+    {
+      "name": "marketing-ops",
+      "category": "marketing"
+    },
+    {
+      "name": "marketing-strategy",
+      "category": "marketing"
+    },
+    {
+      "name": "material-ui",
+      "category": "content"
+    },
+    {
+      "name": "maybe-hft",
+      "category": "research"
+    },
+    {
+      "name": "mckinsey-research",
+      "category": "research"
+    },
+    {
+      "name": "mcp-client",
+      "category": "mcp"
+    },
+    {
+      "name": "mcp-discover",
+      "category": "mcp"
+    },
+    {
+      "name": "meeting-management",
+      "category": "productivity"
+    },
+    {
+      "name": "meeting-prep",
+      "category": "financial"
+    },
+    {
+      "name": "memory-knowledge-graph",
+      "category": "mcp"
+    },
+    {
+      "name": "memory-system",
+      "category": "core"
+    },
+    {
+      "name": "mental-models",
+      "category": "mindset"
+    },
+    {
+      "name": "message-queue",
+      "category": "development"
+    },
+    {
+      "name": "meta-find-skills",
+      "category": "meta"
+    },
+    {
+      "name": "meta-skill-datastore",
+      "category": "meta"
+    },
+    {
+      "name": "mindfulness",
+      "category": "mindset"
+    },
+    {
+      "name": "minimalist-design",
+      "category": "content"
+    },
+    {
+      "name": "mobile-hacking",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "model-builder",
+      "category": "financial"
+    },
+    {
+      "name": "model-fine-tuning",
+      "category": "core"
+    },
+    {
+      "name": "model-router",
+      "category": "core"
+    },
+    {
+      "name": "moltbook-interact",
+      "category": "automation"
+    },
+    {
+      "name": "monetization-strategist",
+      "category": "content"
+    },
+    {
+      "name": "monitoring-darkweb-sources",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "monitoring-scada-modbus-traffic-anomalies",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "monorepo-tooling",
+      "category": "development"
+    },
+    {
+      "name": "month-end-closer",
+      "category": "financial"
+    },
+    {
+      "name": "multi-channel-reminder",
+      "category": "operations"
+    },
+    {
+      "name": "multi-platform-distribution",
+      "category": "content"
+    },
+    {
+      "name": "musk-first-principles",
+      "category": "research"
+    },
+    {
+      "name": "n8n-builder",
+      "category": "automation"
+    },
+    {
+      "name": "n8n-workflows",
+      "category": "automation"
+    },
+    {
+      "name": "negotiation-mastery",
+      "category": "mindset"
+    },
+    {
+      "name": "negotiation-skill",
+      "category": "mindset"
+    },
+    {
+      "name": "neon-postgres",
+      "category": "development"
+    },
+    {
+      "name": "networking",
+      "category": "mindset"
+    },
+    {
+      "name": "nft-marketplace",
+      "category": "trading"
+    },
+    {
+      "name": "nocode-orchestrator",
+      "category": "productivity"
+    },
+    {
+      "name": "nodejs-patterns",
+      "category": "development"
+    },
+    {
+      "name": "nomad-scheduler",
+      "category": "devops"
+    },
+    {
+      "name": "notion",
+      "category": "productivity"
+    },
+    {
+      "name": "notion-api",
+      "category": "integrations"
+    },
+    {
+      "name": "notion-db",
+      "category": "integrations"
+    },
+    {
+      "name": "notion-mcp",
+      "category": "mcp"
+    },
+    {
+      "name": "notion-pages",
+      "category": "integrations"
+    },
+    {
+      "name": "observability",
+      "category": "devops"
+    },
+    {
+      "name": "oh-my-opencode",
+      "category": "integrations"
+    },
+    {
+      "name": "oh-my-opencode-agents",
+      "category": "integrations"
+    },
+    {
+      "name": "oh-my-opencode-configuration",
+      "category": "integrations"
+    },
+    {
+      "name": "oh-my-opencode-features",
+      "category": "integrations"
+    },
+    {
+      "name": "oh-my-opencode-installation",
+      "category": "integrations"
+    },
+    {
+      "name": "oh-my-opencode-usage",
+      "category": "integrations"
+    },
+    {
+      "name": "omniroute-integration",
+      "category": "core"
+    },
+    {
+      "name": "operations-team",
+      "category": "operations"
+    },
+    {
+      "name": "opportunity-exploitation",
+      "category": "research"
+    },
+    {
+      "name": "packer-images",
+      "category": "devops"
+    },
+    {
+      "name": "paid-ads",
+      "category": "marketing"
+    },
+    {
+      "name": "pandacss-styling",
+      "category": "content"
+    },
+    {
+      "name": "paperpod",
+      "category": "content"
+    },
+    {
+      "name": "partnership-development",
+      "category": "mindset"
+    },
+    {
+      "name": "payment-gateways",
+      "category": "operations"
+    },
+    {
+      "name": "payment-integration",
+      "category": "development"
+    },
+    {
+      "name": "payment-invoicing",
+      "category": "operations"
+    },
+    {
+      "name": "pdf-creator",
+      "category": "content"
+    },
+    {
+      "name": "pentest-agent-orchestrator",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "pentestagent-tui",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "perf-agent",
+      "category": "agents"
+    },
+    {
+      "name": "performing-access-recertification-with-saviynt",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-access-review-and-certification",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-active-directory-bloodhound-analysis",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-active-directory-compromise-investigation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-active-directory-forest-trust-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-active-directory-penetration-test",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-active-directory-vulnerability-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-adversary-in-the-middle-phishing-detection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-agentless-vulnerability-scanning",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-ai-driven-osint-correlation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-alert-triage-with-elastic-siem",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-android-app-static-analysis-with-mobsf",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-api-fuzzing-with-restler",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-api-inventory-and-discovery",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-api-rate-limiting-bypass",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-api-security-testing-with-postman",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-arp-spoofing-attack-simulation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-asset-criticality-scoring-for-vulns",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-authenticated-scan-with-openvas",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-authenticated-vulnerability-scan",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-automated-malware-analysis-with-cape",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-aws-account-enumeration-with-scout-suite",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-aws-privilege-escalation-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-bandwidth-throttling-attack-simulation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-binary-exploitation-analysis",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-blind-ssrf-exploitation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-bluetooth-security-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-brand-monitoring-for-impersonation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-clickjacking-attack-test",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-cloud-asset-inventory-with-cartography",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-cloud-forensics-investigation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-cloud-forensics-with-aws-cloudtrail",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-cloud-incident-containment-procedures",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-cloud-log-forensics-with-athena",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-cloud-native-forensics-with-falco",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-cloud-native-threat-hunting-with-aws-detective",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-cloud-penetration-testing-with-pacu",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-cloud-storage-forensic-acquisition",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-container-escape-detection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-container-image-hardening",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-container-security-scanning-with-trivy",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-content-security-policy-bypass",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-credential-access-with-lazagne",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-cryptographic-audit-of-application",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-csrf-attack-simulation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-cve-prioritization-with-kev-catalog",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-dark-web-monitoring-for-threats",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-deception-technology-deployment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-directory-traversal-testing",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-disk-forensics-investigation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-dmarc-policy-enforcement-rollout",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-dns-enumeration-and-zone-transfer",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-dns-tunneling-detection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-docker-bench-security-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-dynamic-analysis-of-android-app",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-dynamic-analysis-with-any-run",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-endpoint-forensics-investigation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-endpoint-vulnerability-remediation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-entitlement-review-with-sailpoint-iiq",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-external-network-penetration-test",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-false-positive-reduction-in-siem",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-file-carving-with-foremost",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-firmware-extraction-with-binwalk",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-firmware-malware-analysis",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-fuzzing-with-aflplusplus",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-gcp-penetration-testing-with-gcpbucketbrute",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-gcp-security-assessment-with-forseti",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-graphql-depth-limit-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-graphql-introspection-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-graphql-security-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-hardware-security-module-integration",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-hash-cracking-with-hashcat",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-http-parameter-pollution-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-ics-asset-discovery-with-claroty",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-indicator-lifecycle-management",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-initial-access-with-evilginx3",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-insider-threat-investigation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-ioc-enrichment-automation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-ios-app-security-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-iot-security-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-ip-reputation-analysis-with-shodan",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-jwt-none-algorithm-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-kerberoasting-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-kubernetes-cis-benchmark-with-kube-bench",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-kubernetes-etcd-security-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-kubernetes-penetration-testing",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-lateral-movement-detection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-lateral-movement-with-wmiexec",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-linux-log-forensics-investigation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-log-analysis-for-forensic-investigation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-log-source-onboarding-in-siem",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-malware-hash-enrichment-with-virustotal",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-malware-ioc-extraction",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-malware-persistence-investigation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-malware-triage-with-yara",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-memory-forensics-with-volatility3",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-memory-forensics-with-volatility3-plugins",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-mobile-app-certificate-pinning-bypass",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-mobile-device-forensics-with-cellebrite",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-network-forensics-with-wireshark",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-network-packet-capture-analysis",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-network-traffic-analysis-with-tshark",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-network-traffic-analysis-with-zeek",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-nist-csf-maturity-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-oauth-scope-minimization-review",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-oil-gas-cybersecurity-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-open-source-intelligence-gathering",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-osint-with-spiderfoot",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-ot-network-security-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-ot-vulnerability-assessment-with-claroty",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-ot-vulnerability-scanning-safely",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-packet-injection-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-paste-site-monitoring-for-credentials",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-phishing-simulation-with-gophish",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-physical-intrusion-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-plc-firmware-security-analysis",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-post-quantum-cryptography-migration",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-power-grid-cybersecurity-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-privacy-impact-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-privilege-escalation-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-privilege-escalation-on-linux",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-privileged-account-access-review",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-privileged-account-discovery",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-purple-team-atomic-testing",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-purple-team-exercise",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-ransomware-response",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-ransomware-tabletop-exercise",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-red-team-phishing-with-gophish",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-red-team-with-covenant",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-s7comm-protocol-security-analysis",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-sca-dependency-scanning-with-snyk",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-scada-hmi-security-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-second-order-sql-injection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-security-headers-audit",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-serverless-function-security-review",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-service-account-audit",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-service-account-credential-rotation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-soap-web-service-security-testing",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-soc-tabletop-exercise",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-soc2-type2-audit-preparation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-sqlite-database-forensics",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-ssl-certificate-lifecycle-management",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-ssl-stripping-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-ssl-tls-inspection-configuration",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-ssl-tls-security-assessment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-ssrf-vulnerability-exploitation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-static-malware-analysis-with-pe-studio",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-steganography-detection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-subdomain-enumeration-with-subfinder",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-supply-chain-attack-simulation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-thick-client-application-penetration-test",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-threat-emulation-with-atomic-red-team",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-threat-hunting-with-elastic-siem",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-threat-hunting-with-yara-rules",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-threat-intelligence-sharing-with-misp",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-threat-landscape-assessment-for-sector",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-threat-modeling-with-owasp-threat-dragon",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-timeline-reconstruction-with-plaso",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-user-behavior-analytics",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-vlan-hopping-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-vulnerability-scanning-with-nessus",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-web-application-firewall-bypass",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-web-application-penetration-test",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-web-application-scanning-with-nikto",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-web-application-vulnerability-triage",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-web-cache-deception-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-web-cache-poisoning-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-wifi-password-cracking-with-aircrack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-windows-artifact-analysis-with-eric-zimmerman-tools",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-wireless-network-penetration-test",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-wireless-security-assessment-with-kismet",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "performing-yara-rule-development-for-detection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "personal-productivity",
+      "category": "mindset"
+    },
+    {
+      "name": "persuasion-influence",
+      "category": "mindset"
+    },
+    {
+      "name": "pipedream-workflows",
+      "category": "automation"
+    },
+    {
+      "name": "pitch-deck",
+      "category": "financial"
+    },
+    {
+      "name": "planetscale-patterns",
+      "category": "development"
+    },
+    {
+      "name": "planning-agent",
+      "category": "agents"
+    },
+    {
+      "name": "playwright-e2e",
+      "category": "development"
+    },
+    {
+      "name": "pocketbase-patterns",
+      "category": "development"
+    },
+    {
+      "name": "polymarket",
+      "category": "trading"
+    },
+    {
+      "name": "polymarket-analyst",
+      "category": "research"
+    },
+    {
+      "name": "polymarket-api",
+      "category": "trading"
+    },
+    {
+      "name": "polymarket-fast-loop",
+      "category": "trading"
+    },
+    {
+      "name": "polymarket-weather-trader",
+      "category": "trading"
+    },
+    {
+      "name": "ponytail",
+      "category": "mindset"
+    },
+    {
+      "name": "portfolio-manager",
+      "category": "trading"
+    },
+    {
+      "name": "portfolio-monitor",
+      "category": "financial"
+    },
+    {
+      "name": "postai-automation",
+      "category": "automation"
+    },
+    {
+      "name": "postbridge-social-manager",
+      "category": "automation"
+    },
+    {
+      "name": "postcss-plugins",
+      "category": "content"
+    },
+    {
+      "name": "postgres-queries",
+      "category": "development"
+    },
+    {
+      "name": "pptx-creator",
+      "category": "content"
+    },
+    {
+      "name": "prd-generator",
+      "category": "development"
+    },
+    {
+      "name": "prefect-flows",
+      "category": "data"
+    },
+    {
+      "name": "presentation-design",
+      "category": "mindset"
+    },
+    {
+      "name": "price-tracker",
+      "category": "automation"
+    },
+    {
+      "name": "pricing-frameworks",
+      "category": "mindset"
+    },
+    {
+      "name": "pricing-strategy",
+      "category": "marketing"
+    },
+    {
+      "name": "prioritizing-vulnerabilities-with-cvss-scoring",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "prisma-orm",
+      "category": "development"
+    },
+    {
+      "name": "probabilistic-thinking",
+      "category": "mindset"
+    },
+    {
+      "name": "processing-stix-taxii-feeds",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "product-desc",
+      "category": "content"
+    },
+    {
+      "name": "product-market-fit",
+      "category": "mindset"
+    },
+    {
+      "name": "product-team",
+      "category": "operations"
+    },
+    {
+      "name": "profiling-threat-actor-groups",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "program-player",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "project-management",
+      "category": "operations"
+    },
+    {
+      "name": "prompt-engineering",
+      "category": "core"
+    },
+    {
+      "name": "public-speaking",
+      "category": "mindset"
+    },
+    {
+      "name": "qa-review-fix-loop",
+      "category": "development"
+    },
+    {
+      "name": "query-optimizer",
+      "category": "development"
+    },
+    {
+      "name": "rabbitmq-patterns",
+      "category": "development"
+    },
+    {
+      "name": "radix-primitives",
+      "category": "content"
+    },
+    {
+      "name": "rag-builder",
+      "category": "core"
+    },
+    {
+      "name": "react-native-expo",
+      "category": "development"
+    },
+    {
+      "name": "receiving-code-review",
+      "category": "development"
+    },
+    {
+      "name": "recon-automation",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "recovering-deleted-files-with-photorec",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "recovering-from-ransomware-attack",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "refactor-agent",
+      "category": "agents"
+    },
+    {
+      "name": "referral-program",
+      "category": "marketing"
+    },
+    {
+      "name": "remediating-s3-bucket-misconfiguration",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "remote-work",
+      "category": "mindset"
+    },
+    {
+      "name": "remotion",
+      "category": "content"
+    },
+    {
+      "name": "replicate-runner",
+      "category": "core"
+    },
+    {
+      "name": "report-gen",
+      "category": "data"
+    },
+    {
+      "name": "report-generator",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "requesting-code-review",
+      "category": "development"
+    },
+    {
+      "name": "research-agent",
+      "category": "agents"
+    },
+    {
+      "name": "resend-mcp",
+      "category": "mcp"
+    },
+    {
+      "name": "resilience",
+      "category": "mindset"
+    },
+    {
+      "name": "responsive-design",
+      "category": "content"
+    },
+    {
+      "name": "revenue-engine",
+      "category": "core"
+    },
+    {
+      "name": "revenue-team",
+      "category": "operations"
+    },
+    {
+      "name": "reverse-engineering-android-malware-with-jadx",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "reverse-engineering-dotnet-malware-with-dnspy",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "reverse-engineering-ios-app-with-frida",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "reverse-engineering-malware-with-ghidra",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "reverse-engineering-ransomware-encryption-routine",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "reverse-engineering-rust-malware",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "review",
+      "category": "mindset"
+    },
+    {
+      "name": "review-agent",
+      "category": "agents"
+    },
+    {
+      "name": "rockefeller-wealth",
+      "category": "research"
+    },
+    {
+      "name": "root-cause-analysis",
+      "category": "mindset"
+    },
+    {
+      "name": "rothschild-investment",
+      "category": "research"
+    },
+    {
+      "name": "runtime-self-improvement",
+      "category": "core"
+    },
+    {
+      "name": "saas-orchestrator",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "sales-pipeline",
+      "category": "sales"
+    },
+    {
+      "name": "sales-strategy",
+      "category": "sales"
+    },
+    {
+      "name": "scanning-container-images-with-grype",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "scanning-containers-with-trivy-in-cicd",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "scanning-docker-images-with-trivy",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "scanning-infrastructure-with-nessus",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "scanning-kubernetes-manifests-with-kubesec",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "scanning-network-with-nmap-advanced",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "scenario-planning",
+      "category": "mindset"
+    },
+    {
+      "name": "schema-markup",
+      "category": "marketing"
+    },
+    {
+      "name": "securing-api-gateway-with-aws-waf",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "securing-aws-iam-permissions",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "securing-aws-lambda-execution-roles",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "securing-azure-with-microsoft-defender",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "securing-container-registry-images",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "securing-container-registry-with-harbor",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "securing-github-actions-workflows",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "securing-helm-chart-deployments",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "securing-historian-server-in-ot-environment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "securing-kubernetes-on-cloud",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "securing-remote-access-to-ot-environment",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "securing-serverless-functions",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "security-agent",
+      "category": "agents"
+    },
+    {
+      "name": "security-agent-hardening",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "security-headers",
+      "category": "development"
+    },
+    {
+      "name": "self-improving",
+      "category": "core"
+    },
+    {
+      "name": "semantic-kernel",
+      "category": "core"
+    },
+    {
+      "name": "seo-auditor",
+      "category": "marketing"
+    },
+    {
+      "name": "seo-optimizer",
+      "category": "marketing"
+    },
+    {
+      "name": "sequelize-patterns",
+      "category": "development"
+    },
+    {
+      "name": "sequential-thinking",
+      "category": "mcp"
+    },
+    {
+      "name": "servant-leadership",
+      "category": "mindset"
+    },
+    {
+      "name": "serverless",
+      "category": "devops"
+    },
+    {
+      "name": "session-brain",
+      "category": "core"
+    },
+    {
+      "name": "shadcn-ui",
+      "category": "content"
+    },
+    {
+      "name": "sherlock-research",
+      "category": "research"
+    },
+    {
+      "name": "shopee-optimizer",
+      "category": "marketing"
+    },
+    {
+      "name": "shopee-review-downloader",
+      "category": "sales"
+    },
+    {
+      "name": "skill-builder",
+      "category": "core"
+    },
+    {
+      "name": "skill-performance-monitor",
+      "category": "core"
+    },
+    {
+      "name": "slack-bot",
+      "category": "integrations"
+    },
+    {
+      "name": "slack-mcp",
+      "category": "mcp"
+    },
+    {
+      "name": "slack-notifier",
+      "category": "integrations"
+    },
+    {
+      "name": "slash-commands",
+      "category": "integrations"
+    },
+    {
+      "name": "smart-contract-dev",
+      "category": "trading"
+    },
+    {
+      "name": "smart-contract-exploiter",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "smart-scraper",
+      "category": "automation"
+    },
+    {
+      "name": "social-engineer",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "social-growth",
+      "category": "marketing"
+    },
+    {
+      "name": "social-intelligence",
+      "category": "research"
+    },
+    {
+      "name": "social-listener",
+      "category": "automation"
+    },
+    {
+      "name": "social-media-engagement",
+      "category": "marketing"
+    },
+    {
+      "name": "social-media-upload",
+      "category": "marketing"
+    },
+    {
+      "name": "spark-processing",
+      "category": "data"
+    },
+    {
+      "name": "spec-driven-development",
+      "category": "development"
+    },
+    {
+      "name": "stakeholder-management",
+      "category": "mindset"
+    },
+    {
+      "name": "statement-auditor",
+      "category": "financial"
+    },
+    {
+      "name": "steve-jobs-product",
+      "category": "research"
+    },
+    {
+      "name": "storage-mcp",
+      "category": "integrations"
+    },
+    {
+      "name": "storybook-dev",
+      "category": "development"
+    },
+    {
+      "name": "storybook-ui",
+      "category": "content"
+    },
+    {
+      "name": "storytelling-frameworks",
+      "category": "mindset"
+    },
+    {
+      "name": "strategic-planning",
+      "category": "mindset"
+    },
+    {
+      "name": "stress-management",
+      "category": "mindset"
+    },
+    {
+      "name": "stripe-integration",
+      "category": "integrations"
+    },
+    {
+      "name": "stripe-mcp",
+      "category": "mcp"
+    },
+    {
+      "name": "stripe-revenue-bot",
+      "category": "marketing"
+    },
+    {
+      "name": "styled-components",
+      "category": "content"
+    },
+    {
+      "name": "subagent-driven-development",
+      "category": "development"
+    },
+    {
+      "name": "subagent-orchestration",
+      "category": "agents"
+    },
+    {
+      "name": "supabase-integration",
+      "category": "integrations"
+    },
+    {
+      "name": "supabase-mcp",
+      "category": "mcp"
+    },
+    {
+      "name": "supabase-patterns",
+      "category": "development"
+    },
+    {
+      "name": "super-browser",
+      "category": "research"
+    },
+    {
+      "name": "supply-chain-attacker",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "surrealdb-patterns",
+      "category": "development"
+    },
+    {
+      "name": "svelte-framework",
+      "category": "development"
+    },
+    {
+      "name": "svelte-patterns",
+      "category": "development"
+    },
+    {
+      "name": "swiftui-patterns",
+      "category": "development"
+    },
+    {
+      "name": "systematic-debugging",
+      "category": "development"
+    },
+    {
+      "name": "systems-thinking",
+      "category": "mindset"
+    },
+    {
+      "name": "tailwind-advanced",
+      "category": "content"
+    },
+    {
+      "name": "talent-crm",
+      "category": "sales"
+    },
+    {
+      "name": "task-scheduler",
+      "category": "development"
+    },
+    {
+      "name": "tauri-apps",
+      "category": "development"
+    },
+    {
+      "name": "tax-loss-harvesting",
+      "category": "financial"
+    },
+    {
+      "name": "team-management",
+      "category": "mindset"
+    },
+    {
+      "name": "teamwork",
+      "category": "core"
+    },
+    {
+      "name": "tekton-pipelines",
+      "category": "devops"
+    },
+    {
+      "name": "telegram-bot",
+      "category": "automation"
+    },
+    {
+      "name": "telegram-userbot",
+      "category": "automation"
+    },
+    {
+      "name": "temporal-workflows",
+      "category": "data"
+    },
+    {
+      "name": "terraform-iac",
+      "category": "devops"
+    },
+    {
+      "name": "test-agent",
+      "category": "agents"
+    },
+    {
+      "name": "test-coverage-analyzer",
+      "category": "development"
+    },
+    {
+      "name": "test-driven-development",
+      "category": "development"
+    },
+    {
+      "name": "testing-android-intents-for-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-api-authentication-weaknesses",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-api-for-broken-object-level-authorization",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-api-for-mass-assignment-vulnerability",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-api-security-with-owasp-top-10",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-cors-misconfiguration",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-for-broken-access-control",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-for-business-logic-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-for-email-header-injection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-for-host-header-injection",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-for-json-web-token-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-for-open-redirect-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-for-sensitive-data-exposure",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-for-xml-injection-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-for-xss-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-for-xss-vulnerabilities-with-burpsuite",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-for-xxe-injection-vulnerabilities",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-jwt-token-security",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-mobile-api-authentication",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-oauth2-implementation-flaws",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-ransomware-recovery-procedures",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "testing-websocket-api-security",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "theme-factory",
+      "category": "content"
+    },
+    {
+      "name": "tiktok-automation",
+      "category": "marketing"
+    },
+    {
+      "name": "tiktok-carousel-creator",
+      "category": "marketing"
+    },
+    {
+      "name": "tiktok-terintegrasi",
+      "category": "marketing"
+    },
+    {
+      "name": "time-management",
+      "category": "mindset"
+    },
+    {
+      "name": "tracking-threat-actor-infrastructure",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "trade-off-analysis",
+      "category": "mindset"
+    },
+    {
+      "name": "trading-executor",
+      "category": "trading"
+    },
+    {
+      "name": "trading-orchestrator",
+      "category": "trading"
+    },
+    {
+      "name": "trading-researcher",
+      "category": "trading"
+    },
+    {
+      "name": "trading-risk-manager",
+      "category": "trading"
+    },
+    {
+      "name": "trading-strategist",
+      "category": "trading"
+    },
+    {
+      "name": "trendradar",
+      "category": "research"
+    },
+    {
+      "name": "triaging-security-alerts-in-splunk",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "triaging-security-incident",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "triaging-security-incident-with-ir-playbook",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "triaging-vulnerabilities-with-ssvc-framework",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "tushare-finance",
+      "category": "trading"
+    },
+    {
+      "name": "twitter-automation",
+      "category": "marketing"
+    },
+    {
+      "name": "twitter-bot",
+      "category": "automation"
+    },
+    {
+      "name": "typeorm-patterns",
+      "category": "development"
+    },
+    {
+      "name": "ui-critique",
+      "category": "content"
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "category": "content"
+    },
+    {
+      "name": "ultra-realistic-media",
+      "category": "content"
+    },
+    {
+      "name": "unit-economics",
+      "category": "mindset"
+    },
+    {
+      "name": "using-git-worktrees",
+      "category": "development"
+    },
+    {
+      "name": "using-superpowers",
+      "category": "core"
+    },
+    {
+      "name": "validating-backup-integrity-for-recovery",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "valuation-reviewer",
+      "category": "financial"
+    },
+    {
+      "name": "value-investing",
+      "category": "research"
+    },
+    {
+      "name": "vanilla-extract",
+      "category": "content"
+    },
+    {
+      "name": "vault-pki",
+      "category": "devops"
+    },
+    {
+      "name": "vault-secrets",
+      "category": "devops"
+    },
+    {
+      "name": "vector-db-ops",
+      "category": "core"
+    },
+    {
+      "name": "verification-before-completion",
+      "category": "development"
+    },
+    {
+      "name": "video-editor",
+      "category": "content"
+    },
+    {
+      "name": "video-gen",
+      "category": "content"
+    },
+    {
+      "name": "vilona",
+      "category": "core"
+    },
+    {
+      "name": "vilona-activate",
+      "category": "core"
+    },
+    {
+      "name": "viral-content-creator",
+      "category": "content"
+    },
+    {
+      "name": "viral-marketing",
+      "category": "marketing"
+    },
+    {
+      "name": "viral-research-engine",
+      "category": "content"
+    },
+    {
+      "name": "visual-regression",
+      "category": "development"
+    },
+    {
+      "name": "vite-config",
+      "category": "development"
+    },
+    {
+      "name": "viz-creator",
+      "category": "data"
+    },
+    {
+      "name": "voice-ai",
+      "category": "content"
+    },
+    {
+      "name": "voice-ai-agent",
+      "category": "automation"
+    },
+    {
+      "name": "voice-ai-builder",
+      "category": "development"
+    },
+    {
+      "name": "voice-chatterbox-tts",
+      "category": "content"
+    },
+    {
+      "name": "vue-framework",
+      "category": "development"
+    },
+    {
+      "name": "vue-patterns",
+      "category": "development"
+    },
+    {
+      "name": "vulnerability-scanner",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "wails-apps",
+      "category": "development"
+    },
+    {
+      "name": "web3-auditor",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "webhook-patterns",
+      "category": "integrations"
+    },
+    {
+      "name": "webhook-router",
+      "category": "automation"
+    },
+    {
+      "name": "webpack-config",
+      "category": "development"
+    },
+    {
+      "name": "websocket",
+      "category": "development"
+    },
+    {
+      "name": "whatsapp-bot",
+      "category": "automation"
+    },
+    {
+      "name": "wolf-finance",
+      "category": "financial"
+    },
+    {
+      "name": "workflow-builder",
+      "category": "automation"
+    },
+    {
+      "name": "writeup-cash",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "writing-plans",
+      "category": "development"
+    },
+    {
+      "name": "writing-skills",
+      "category": "content"
+    },
+    {
+      "name": "xauusd-asia-7c-breakout",
+      "category": "trading"
+    },
+    {
+      "name": "xlsx-creator",
+      "category": "content"
+    },
+    {
+      "name": "zapier-alt",
+      "category": "automation"
+    },
+    {
+      "name": "zapier-patterns",
+      "category": "automation"
+    }
+  ]
+}
