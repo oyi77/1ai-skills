@@ -9,7 +9,11 @@ tags: [ai-infrastructure, automation, parsing, scraping, rag]
 
 You have access to the Skill Seekers MCP server which provides 40 tools for converting knowledge sources into AI-ready skills.
 
-## When to Use This Skill
+## Overview
+
+Build new agent skills with proper structure, triggers, and verification.
+
+## When to Use
 
 Use this skill when the user:
 - Wants to create an AI skill from a documentation site, GitHub repo, PDF, video, or other source
@@ -75,3 +79,11 @@ Automatically detect the source type from user input:
 1. **Design** — Define interface, identify patterns, plan implementation
 1. **Implement** — Write code following existing conventions, add tests
 1. **Verify** — Run tests, check integration, validate behavior
+
+## Verification
+
+- [ ] Skill has SKILL.md with frontmatter
+- [ ] Has ## When to Use with triggers
+- [ ] Has ## Process section
+- [ ] Has ## Verification checklist
+- [ ] Lint passes with 0 errors

@@ -36,7 +36,7 @@ Autonomous codebase analysis agent that produces structured understanding of unf
 - You already know where everything is
 - Real-time debugging (use `systematic-debugging`)
 
-## Process / Steps
+## Process
 
 Follow these steps in order. Each step builds on the previous one.
 
@@ -230,7 +230,7 @@ grep -r "auth\|authenticate\|authorize\|permission\|role\|middleware" src/ | hea
 Structured output template for the codebase analysis.
 
 
-### Overview
+## Overview
 - **Project**: [name]
 - **Purpose**: [one sentence]
 - **Stack**: [language, framework, database, key dependencies]

@@ -19,7 +19,7 @@ tags:
 
 **Core Philosophy:** Close is not a deadline — it's a discipline. Every month-end is a pulse check on business health.
 
-## Overview:
+## Overview
 
 Automates the month-end close process: accruals, roll-forwards, variance commentary, and close checklist. Handles the full workflow: review → accrue → roll-forward → analyze → close.
 

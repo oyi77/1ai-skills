@@ -19,7 +19,7 @@ tags:
 
 **Core Philosophy:** Every distribution must be earned. Audit first, distribute second — never the reverse.
 
-## Overview:
+## Overview
 
 Audits LP (Limited Partner) statements before distribution. Handles the full audit workflow: ingest → reconcile → verify → approve. Uses waterfal methodology for systematic coverage.
 

@@ -19,7 +19,7 @@ tags:
 
 **Core Philosophy:** Taxes are the ONE cost you can control. Every dollar saved in taxes is a dollar working for you.
 
-## Overview:!
+## Overview
 
 Identifies tax-loss harvesting opportunities, manages wash sale constraints, and optimizes year-end tax positioning. Handles: scan → identify → trade → document.
 

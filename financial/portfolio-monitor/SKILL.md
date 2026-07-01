@@ -19,7 +19,7 @@ tags:
 
 **Core Philosophy:** Portfolio monitoring is about pattern recognition. Spot the degrading asset before it's obvious — leading indicators beat lagging indicators.
 
-## Overview:!
+## Overview
 
 Tracks portfolio company KPIs, monitors variances vs. underwriting, and calculates returns (IRR, MOIC). Handles the full workflow: ingest → track → analyze → report.
 

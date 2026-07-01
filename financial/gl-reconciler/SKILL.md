@@ -18,7 +18,7 @@ tags:
 
 **Core Philosophy:** Every dollar must be accounted for. If the GL doesn't balance, nothing downstream can be trusted — not your financials, not your reports, not your audit.
 
-## Overview:
+## Overview
 
 Finds breaks between GL accounts, traces root causes, and routes for sign-off. Handles the full reconciliation workflow: extract → compare → trace → correct → approve.
 

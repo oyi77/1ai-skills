@@ -76,7 +76,7 @@ def execute(input_data):
 ### Process Mapping
 
 ```markdown
-## Process: Customer Onboarding
+## Process
 Trigger: New customer signs up (Stripe webhook)
 
 Steps:
