@@ -36,6 +36,11 @@ Automate the entire customer lifecycle from onboarding to retention. Monitor cus
 
 ## When to Use
 
+**Trigger phrases:**
+- "customer success"
+- "Use when working with customer success"
+
+
 - SaaS product with recurring subscriptions
 - Customer onboarding takes >5 minutes of manual work
 - Churn rate is above 5% monthly

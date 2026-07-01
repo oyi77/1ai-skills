@@ -31,6 +31,11 @@ Splunk SOAR orchestrates and automates security operations through playbooks tha
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing soar playbook for phishing"
+- "Use when working with implementing soar playbook for phishing"
+
+
 - When deploying or configuring implementing soar playbook for phishing capabilities in your environment
 - When establishing security controls aligned to compliance requirements
 - When building or improving security architecture for this domain

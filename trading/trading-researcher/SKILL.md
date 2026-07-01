@@ -23,6 +23,11 @@ Automated market research and data collection for trading strategies. The Resear
 
 ## When to Use
 
+**Trigger phrases:**
+- "trading researcher"
+- "Use when working with trading researcher"
+
+
 - Analyzing current market conditions for specific symbols or multiple symbols
 - Collecting historical OHLCV data for backtesting and strategy development
 - Scanning watchlists for trading opportunities across multiple instruments

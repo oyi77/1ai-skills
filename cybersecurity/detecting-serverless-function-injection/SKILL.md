@@ -31,6 +31,11 @@ Cybersecurity skill for detecting serverless function injection. Follows industr
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting serverless function injection"
+- "Use when working with detecting serverless function injection"
+
+
 - Auditing Lambda/Cloud Functions for code injection vulnerabilities where unsanitized event data flows into dangerous runtime functions (`eval`, `exec`, `child_process.exec`, `os.system`)
 - Investigating incidents where an attacker modified function code or layers to establish persistence or exfiltrate data from the serverless environment
 - Detecting privilege escalation paths where an adversary with `lambda:UpdateFunctionCode` and `iam:PassRole` can assume higher-privilege execution roles

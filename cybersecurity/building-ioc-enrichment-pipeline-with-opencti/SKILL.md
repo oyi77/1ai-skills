@@ -31,6 +31,11 @@ OpenCTI is an open-source platform for managing cyber threat intelligence knowle
 
 ## When to Use
 
+**Trigger phrases:**
+- "building ioc enrichment pipeline with opencti"
+- "Use when working with building ioc enrichment pipeline with opencti"
+
+
 - When deploying or configuring building ioc enrichment pipeline with opencti capabilities in your environment
 - When establishing security controls aligned to compliance requirements
 - When building or improving security architecture for this domain

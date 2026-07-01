@@ -31,6 +31,11 @@ Cybersecurity skill for implementing aws security hub compliance. Follows indust
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing aws security hub compliance"
+- "Use when working with implementing aws security hub compliance"
+
+
 - When establishing centralized security posture management across multiple AWS accounts
 - When compliance requirements demand continuous monitoring against CIS, PCI DSS, or NIST 800-53 standards
 - When aggregating findings from GuardDuty, Inspector, Macie, Firewall Manager, and third-party tools

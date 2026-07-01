@@ -32,6 +32,11 @@ Cybersecurity skill for deploying decoy files for ransomware detection. Follows 
 
 ## When to Use
 
+**Trigger phrases:**
+- "deploying decoy files for ransomware detection"
+- "Use when working with deploying decoy files for ransomware detection"
+
+
 - Setting up early-warning detection for ransomware on file servers or endpoints
 - Supplementing EDR/AV with a deception-based detection layer that catches unknown ransomware variants
 - Creating high-fidelity ransomware alerts that have very low false-positive rates (legitimate users have no reason to touch decoy files)

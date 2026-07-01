@@ -30,6 +30,11 @@ Cybersecurity skill for detecting cloud threats with guardduty. Follows industry
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting cloud threats with guardduty"
+- "Use when working with detecting cloud threats with guardduty"
+
+
 - When establishing continuous threat detection for new or existing AWS accounts
 - When investigating GuardDuty findings related to compromised instances, credential abuse, or data exfiltration
 - When building automated incident response playbooks triggered by GuardDuty findings

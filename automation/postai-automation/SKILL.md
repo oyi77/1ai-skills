@@ -15,6 +15,11 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "postai automation"
+- "Use when working with postai automation"
+
+
 - Automating social media posting across platforms
 - Scheduling content for multiple accounts
 - Cross-posting from one platform to another

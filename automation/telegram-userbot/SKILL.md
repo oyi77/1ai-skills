@@ -18,6 +18,11 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "telegram userbot"
+- "Use when working with telegram userbot"
+
+
 - Automating Telegram messaging (DMs, group messages)
 - Scraping Telegram group/channel members
 - Running Telegram-based lead generation
