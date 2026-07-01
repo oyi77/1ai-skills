@@ -3,7 +3,7 @@ name: performing-post-quantum-cryptography-migration
 description: Assesses organizational readiness for post-quantum cryptography migration per NIST FIPS 203/204/205 standards.
   Performs cryptographic inventory scanning to identify quantum-vulnerable algorithms (RSA, ECDH, ECDSA), evaluates hybrid
   TLS configurations with X25519MLKEM768, and validates CRYSTALS-Kyber (ML-KEM) and CRYSTALS-Dilithium (ML-DSA) readiness.
-  Implements crypto-agility assessment using oqs-provider for OpenSSL.
+  Implements crypto-agility assessment using oqs-provider for OpenSSL. Use when working with performing post quantum cryptography migration.
 domain: cybersecurity
 tags:
 - post-quantum
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

@@ -1,7 +1,7 @@
 ---
 name: content-validation-workflow
 description: Validate AI-generated content quality through sample generation, human review gates, and controlled batch production
-  workflows.
+  workflows. Use when working with content validation workflow.
 domain: development
 tags:
 - coding
@@ -82,6 +82,13 @@ def test_user_creation_invalid_email():
 | "Tests slow me down" | Bugs slow you down 10x more. Tests are speed, not overhead. |
 | "I will refactor later" | Technical debt compounds. Refactor as you go. |
 | "It works on my machine" | If it is not in CI, it does not work. Ship proof, not claims. |
+
+
+## Process
+
+1. **Research** — Analyze target audience, competitors, and trending topics
+1. **Create** — Generate content following brand guidelines and best practices
+1. **Publish & Optimize** — Distribute to target platforms, track performance, iterate
 
 ## Verification
 

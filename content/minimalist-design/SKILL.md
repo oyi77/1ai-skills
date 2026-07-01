@@ -1,6 +1,6 @@
 ---
 name: minimalist-design
-description: Dieter Rams' approach to timeless product design - less but better
+description: Dieter Rams' approach to timeless product design - less but better. Use when working with minimalist design.
 domain: content
 tags:
 - content-creation
@@ -85,6 +85,13 @@ def generate_content(topic: str, format: str = "article"):
 | "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
 | "I will optimize later" | SEO and distribution need optimization from the start. |
 | "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run minimalist design workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

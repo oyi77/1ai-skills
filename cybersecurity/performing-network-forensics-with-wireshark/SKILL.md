@@ -1,7 +1,7 @@
 ---
 name: performing-network-forensics-with-wireshark
 description: Capture and analyze network traffic using Wireshark and tshark to reconstruct network events, extract artifacts,
-  and identify malicious communications.
+  and identify malicious communications. Use when working with performing network forensics with wireshark.
 domain: cybersecurity
 tags:
 - forensics
@@ -82,6 +82,13 @@ def extract_iocs(text: str) -> dict:
 - **wireshark** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

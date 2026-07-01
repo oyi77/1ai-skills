@@ -3,7 +3,7 @@ name: executing-active-directory-attack-simulation
 description: Executes authorized attack simulations against Active Directory environments to identify misconfigurations, weak
   credentials, dangerous privilege paths, and exploitable trust relationships that could lead to domain compromise. The tester
   uses BloodHound for attack path analysis, Mimikatz for credential extraction, and Impacket for protocol-level attacks including
-  Kerberoasting, AS-REP Roasting, and delegation abuse.
+  Kerberoasting, AS-REP Roasting, and delegation abuse. Use when working with executing active directory attack simulation.
 domain: cybersecurity
 tags:
 - Active-Directory
@@ -91,6 +91,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

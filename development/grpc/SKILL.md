@@ -1,6 +1,6 @@
 ---
 name: grpc
-description: gRPC development — Protocol Buffers, service definitions, streaming, interceptors, load balancing
+description: gRPC development — Protocol Buffers, service definitions, streaming, interceptors, load balancing. Use when working with grpc.
 domain: development
 tags:
 - coding

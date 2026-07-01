@@ -96,6 +96,13 @@ def score_lead(lead: dict) -> int:
 | "I will follow up later" | 80% of sales require 5+ follow-ups. Follow up consistently. |
 | "Price is the only factor" | Value, trust, and timing matter more than price. Sell outcomes. |
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run sales strategy workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] All steps executed successfully

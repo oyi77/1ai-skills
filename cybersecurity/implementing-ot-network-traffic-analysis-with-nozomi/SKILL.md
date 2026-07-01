@@ -4,7 +4,7 @@ description: 'Deploy Nozomi Networks Guardian sensors for passive OT network tra
   visibility, real-time threat detection, and vulnerability assessment across industrial control systems without disrupting
   operations, leveraging behavioral anomaly detection and protocol-aware monitoring.
 
-  '
+  '. Use when working with implementing ot network traffic analysis with nozomi.
 domain: cybersecurity
 tags:
 - ot-security
@@ -99,6 +99,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing ot network traffic analysis with nozomi workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

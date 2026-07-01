@@ -4,7 +4,7 @@ description: 'Implement network segmentation based on the Purdue Enterprise Refe
   industrial control system networks into hierarchical security zones from Level 0 physical process through Level 5 enterprise,
   enforcing strict traffic control between OT and IT domains.
 
-  '
+  '. Use when working with implementing purdue model network segmentation.
 domain: cybersecurity
 tags:
 - ot-security
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing purdue model network segmentation workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

@@ -1,7 +1,7 @@
 ---
 name: performing-graphql-security-assessment
 description: Assessing GraphQL API endpoints for introspection leaks, injection attacks, authorization flaws, and denial-of-service
-  vulnerabilities during authorized security tests.
+  vulnerabilities during authorized security tests. Use when working with performing graphql security assessment.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -84,6 +84,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

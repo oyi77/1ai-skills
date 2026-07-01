@@ -3,7 +3,7 @@ name: conducting-external-reconnaissance-with-osint
 description: Conducts external reconnaissance using Open Source Intelligence (OSINT) techniques to map an organization's external
   attack surface without directly interacting with target systems. The tester gathers information from public sources including
   DNS records, certificate transparency logs, search engines, social media, code repositories, and data breach databases to
-  build a comprehensive target profile.
+  build a comprehensive target profile. Use when working with conducting external reconnaissance with osint.
 domain: cybersecurity
 tags:
 - OSINT
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run conducting external reconnaissance with osint workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

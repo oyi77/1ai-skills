@@ -1,7 +1,7 @@
 ---
 name: performing-http-parameter-pollution-attack
 description: Execute HTTP Parameter Pollution attacks to bypass input validation, WAF rules, and security controls by injecting
-  duplicate parameters that are processed differently by front-end and back-end systems.
+  duplicate parameters that are processed differently by front-end and back-end systems. Use when working with performing http parameter pollution attack.
 domain: cybersecurity
 tags:
 - http-parameter-pollution
@@ -84,6 +84,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

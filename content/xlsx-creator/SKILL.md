@@ -83,6 +83,13 @@ ws.add_chart(chart, 'F2')
 wb.save('revenue.xlsx')
 ```
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run xlsx creator workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] Spreadsheet opens without errors

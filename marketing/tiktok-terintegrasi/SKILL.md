@@ -88,6 +88,13 @@ Tiktok Terintegrasi drives growth marketing with data-driven strategies.
 | "I will start marketing after launch" | Build audience before launch. Pre-launch momentum is critical. |
 | "SEO is dead" | SEO evolves. GEO (Generative Engine Optimization) is the new frontier. |
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run tiktok terintegrasi workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] All steps executed successfully

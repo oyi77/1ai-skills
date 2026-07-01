@@ -1,7 +1,7 @@
 ---
 name: monetization-strategist
 description: Turn content into revenue — newsletter businesses, YouTube automation, affiliate sites, digital product creation,
-  funnel design, audience building
+  funnel design, audience building. Use when working with monetization strategist.
 domain: content
 tags:
 - content-creation

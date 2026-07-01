@@ -3,7 +3,7 @@ name: configuring-snort-ids-for-intrusion-detection
 description: 'Installs, configures, and tunes Snort 3 intrusion detection system to monitor network traffic for malicious
   activity using custom and community rulesets, preprocessors, and alert output plugins on authorized network segments.
 
-  '
+  '. Use when working with configuring snort ids for intrusion detection.
 domain: cybersecurity
 tags:
 - network-security
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 - **intrusion detection** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

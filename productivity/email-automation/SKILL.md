@@ -102,6 +102,13 @@ def prioritize(tasks: list[dict]) -> dict:
 | "Multitasking is productive" | Context switching costs 25 minutes per switch. Focus on one thing. |
 | "I will remember this" | You will not. Write it down. Externalize your memory. |
 
+
+## Process
+
+1. **Research** — Analyze target audience, competitors, and trending topics
+1. **Create** — Generate content following brand guidelines and best practices
+1. **Publish & Optimize** — Distribute to target platforms, track performance, iterate
+
 ## Verification
 
 - [ ] All steps executed successfully

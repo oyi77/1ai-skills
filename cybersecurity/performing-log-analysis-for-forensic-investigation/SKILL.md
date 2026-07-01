@@ -1,7 +1,7 @@
 ---
 name: performing-log-analysis-for-forensic-investigation
 description: Collect, parse, and correlate system, application, and security logs to reconstruct events and establish timelines
-  during forensic investigations.
+  during forensic investigations. Use when working with performing log analysis for forensic investigation.
 domain: cybersecurity
 tags:
 - forensics
@@ -82,6 +82,13 @@ def extract_iocs(text: str) -> dict:
 - **forensic investigation** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

@@ -1,7 +1,7 @@
 ---
 name: performing-file-carving-with-foremost
 description: Recover files from disk images and unallocated space using Foremost's header-footer signature carving to extract
-  evidence regardless of file system state.
+  evidence regardless of file system state. Use when working with performing file carving with foremost.
 domain: cybersecurity
 tags:
 - forensics
@@ -82,6 +82,13 @@ def extract_iocs(text: str) -> dict:
 - **foremost** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

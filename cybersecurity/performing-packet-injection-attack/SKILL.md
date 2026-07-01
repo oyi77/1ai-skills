@@ -3,7 +3,7 @@ name: performing-packet-injection-attack
 description: 'Crafts and injects custom network packets using Scapy, hping3, and Nemesis during authorized security assessments
   to test firewall rules, IDS detection, protocol handling, and network stack resilience against malformed and spoofed traffic.
 
-  '
+  '. Use when working with performing packet injection attack.
 domain: cybersecurity
 tags:
 - network-security
@@ -81,6 +81,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

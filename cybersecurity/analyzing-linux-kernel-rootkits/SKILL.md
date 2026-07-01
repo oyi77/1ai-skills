@@ -2,7 +2,7 @@
 name: analyzing-linux-kernel-rootkits
 description: Detect kernel-level rootkits in Linux memory dumps using Volatility3 linux plugins (check_syscall, lsmod, hidden_modules),
   rkhunter system scanning, and /proc vs /sys discrepancy analysis to identify hooked syscalls, hidden kernel modules, and
-  tampered system structures.
+  tampered system structures. Use when detecting kernel-level rootkits in linux memory dumps using volatility3 linux.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:
@@ -159,6 +159,13 @@ Summary:
 - Failing to use write-blockers when acquiring forensic evidence
 - Not verifying hash integrity before and after imaging
 - Modifying original evidence during analysis
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

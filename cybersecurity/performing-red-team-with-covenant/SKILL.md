@@ -1,7 +1,7 @@
 ---
 name: performing-red-team-with-covenant
 description: Conduct red team operations using the Covenant C2 framework for authorized adversary simulation, including listener
-  setup, grunt deployment, task execution, and lateral movement tracking.
+  setup, grunt deployment, task execution, and lateral movement tracking. Use when conducting red team operations using the covenant c2 framework for.
 domain: cybersecurity
 subdomain: red-team
 tags:
@@ -102,6 +102,13 @@ JSON report with listener configuration, active grunts, executed tasks, and task
 - Exceeding the authorized scope of the engagement
 - Leaving persistent access mechanisms without explicit approval
 - Causing denial-of-service on production systems during testing
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

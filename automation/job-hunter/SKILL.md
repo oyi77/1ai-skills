@@ -1,7 +1,7 @@
 ---
 name: job-hunter
 description: Autonomous job hunting agent with state tracking, tailored applications, ATS optimization, and multi-platform
-  search across LinkedIn, Indeed, and Glassdoor.
+  search across LinkedIn, Indeed, and Glassdoor. Use when working with job hunter.
 domain: automation
 tags:
 - ai-agent
@@ -86,6 +86,13 @@ while True:
 | "Manual is faster for one-off tasks" | One-off tasks become recurring. Automate early, save time later. |
 | "I will add error handling later" | You never do. Handle errors from day one. |
 | "Automation is overkill" | If you do it twice, automate it. If you do it daily, it is critical infrastructure. |
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

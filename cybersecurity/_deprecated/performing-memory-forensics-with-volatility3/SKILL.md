@@ -1,7 +1,7 @@
 ---
 name: performing-memory-forensics-with-volatility3
 description: Analyze volatile memory dumps using Volatility 3 to extract running processes, network connections, loaded modules,
-  and evidence of malicious activity.
+  and evidence of malicious activity. Use when analyzeing volatile memory dumps using volatility 3 to extract running.
 domain: cybersecurity
 tags:
 - forensics
@@ -82,6 +82,13 @@ def extract_iocs(text: str) -> dict:
 - **volatility3** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

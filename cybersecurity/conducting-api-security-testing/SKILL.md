@@ -3,7 +3,7 @@ name: conducting-api-security-testing
 description: Conducts security testing of REST, GraphQL, and gRPC APIs to identify vulnerabilities in authentication, authorization,
   rate limiting, input validation, and business logic. The tester uses the OWASP API Security Top 10 as the testing framework,
   combining Burp Suite interception with Postman collections and custom scripts to test endpoint security at every privilege
-  level.
+  level. Use when working with conducting api security testing.
 domain: cybersecurity
 tags:
 - API-security
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

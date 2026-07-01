@@ -1,12 +1,10 @@
 ---
 name: detecting-attacks-on-scada-systems
-description: 'This skill covers detecting cyber attacks targeting Supervisory Control and Data Acquisition (SCADA) systems
+description: >  'This skill covers detecting cyber attacks targeting Supervisory Control and Data Acquisition (SCADA) systems
   including man-in-the-middle attacks on industrial protocols, unauthorized command injection into PLCs, HMI compromise, historian
   data manipulation, and denial-of-service against control system communications. It leverages OT-specific intrusion detection
   systems, industrial protocol anomaly detection, and process data analytics to identify attacks that traditional IT security
-  tools miss.
-
-  '
+  tool.
 domain: cybersecurity
 tags:
 - ot-security
@@ -99,6 +97,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

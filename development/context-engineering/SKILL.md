@@ -1,6 +1,6 @@
 ---
 name: context-engineering
-description: Design and manage the context window for AI coding agents. Structure prompts, manage file loading, and optimize token usage for maximum agent effectiveness.
+description: Design and manage the context window for AI coding agents. Structure prompts, manage file loading, and optimize token usage for maximum agent effectiveness. Use when designing and manage the context window for ai coding agents.
 domain: development
 tags:
 - engineering
@@ -64,6 +64,13 @@ Context Engineering is the practice of designing what information an AI agent se
 - Quality gates
 - Anti-rationalization rules
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run context engineering workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

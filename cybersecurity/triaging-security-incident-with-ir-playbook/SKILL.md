@@ -1,7 +1,7 @@
 ---
 name: triaging-security-incident-with-ir-playbook
 description: Classify and prioritize security incidents using structured IR playbooks to determine severity, assign response
-  teams, and initiate appropriate response procedures.
+  teams, and initiate appropriate response procedures. Use when working with triaging security incident with ir playbook.
 domain: cybersecurity
 tags:
 - incident-response
@@ -84,6 +84,13 @@ def extract_iocs(text: str) -> dict:
 - **ir playbook** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

@@ -83,6 +83,13 @@ Mindset skill for habit formation. Builds capability through deliberate practice
 - Log one lesson learned
 ```
 
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
+
 ## Verification
 
 - [ ] All steps executed successfully

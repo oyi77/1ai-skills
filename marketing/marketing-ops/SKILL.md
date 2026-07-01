@@ -92,6 +92,13 @@ def analyze_keywords(keywords: list[str]) -> list[dict]:
 | "I will start marketing after launch" | Build audience before launch. Pre-launch momentum is critical. |
 | "SEO is dead" | SEO evolves. GEO (Generative Engine Optimization) is the new frontier. |
 
+
+## Process
+
+1. **Research** — Analyze target audience, competitors, and trending topics
+1. **Create** — Generate content following brand guidelines and best practices
+1. **Publish & Optimize** — Distribute to target platforms, track performance, iterate
+
 ## Verification
 
 - [ ] All steps executed successfully

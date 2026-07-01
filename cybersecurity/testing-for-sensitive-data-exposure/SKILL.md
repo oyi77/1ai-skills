@@ -1,7 +1,7 @@
 ---
 name: testing-for-sensitive-data-exposure
 description: Identifying sensitive data exposure vulnerabilities including API key leakage, PII in responses, insecure storage,
-  and unprotected data transmission during security assessments.
+  and unprotected data transmission during security assessments. Use when working with testing for sensitive data exposure.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -95,6 +95,13 @@ def extract_iocs(text: str) -> dict:
 - **Vulnerability Scanner** — Automated weakness identification
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

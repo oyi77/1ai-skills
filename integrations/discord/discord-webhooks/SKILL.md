@@ -93,6 +93,13 @@ Discord Webhooks connects with external platforms via system connectivity.
 | "APIs do not change" | APIs change. Version your integrations and handle deprecations. |
 | "Webhooks are optional" | Without webhooks, you miss real-time events. They are essential. |
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run discord webhooks workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] All steps executed successfully

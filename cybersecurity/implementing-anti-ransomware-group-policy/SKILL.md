@@ -5,7 +5,7 @@ description: 'Configures Windows Group Policy Objects (GPO) to prevent ransomwar
   settings. Activates for requests involving Windows GPO hardening against ransomware, AppLocker configuration, Controlled
   Folder Access setup, or endpoint protection via Group Policy.
 
-  '
+  '. Use when working with implementing anti ransomware group policy.
 domain: cybersecurity
 tags:
 - ransomware
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing anti ransomware group policy workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

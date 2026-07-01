@@ -87,6 +87,13 @@ while True:
 | "I will add error handling later" | You never do. Handle errors from day one. |
 | "Automation is overkill" | If you do it twice, automate it. If you do it daily, it is critical infrastructure. |
 
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
+
 ## Verification
 
 - [ ] All steps executed successfully

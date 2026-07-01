@@ -80,6 +80,13 @@ def extract_iocs(text: str) -> dict:
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
 
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
+
 ## Verification
 
 - [ ] All intelligence lifecycle procedures executed completely and documented

@@ -1,7 +1,7 @@
 ---
 name: detecting-business-email-compromise-with-ai
 description: Deploy AI and NLP-powered detection systems to identify business email compromise attacks by analyzing writing
-  style, behavioral patterns, and contextual anomalies that evade traditional rule-based filters.
+  style, behavioral patterns, and contextual anomalies that evade traditional rule-based filters. Use when deploying ai and nlp-powered detection systems to identify business email.
 domain: cybersecurity
 subdomain: phishing-defense
 tags:

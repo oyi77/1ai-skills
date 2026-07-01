@@ -1,6 +1,6 @@
 ---
 name: wails-apps
-description: Wails desktop app development — Go backend, web frontend, native bindings, small binary, cross-platform
+description: Wails desktop app development — Go backend, web frontend, native bindings, small binary, cross-platform. Use when working with wails apps.
 domain: development
 tags:
 - apps

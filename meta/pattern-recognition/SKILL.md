@@ -1,7 +1,7 @@
 ---
 name: pattern-recognition
 description: Identify patterns in skill execution, errors, and successes. Recognize when situations match previous patterns
-  and apply learned solutions.
+  and apply learned solutions. Use when working with pattern recognition.
 domain: meta
 tags:
 - meta-learning
@@ -84,6 +84,13 @@ Pattern Recognition is a foundational meta-skills skill that provides skill mana
 | "Skills do not need to evolve" | Static skills become outdated. Self-evolving skills improve continuously. |
 | "Manual skill management is fine" | With 1000+ skills, manual management is impossible. Automate. |
 | "Performance does not matter" | Skill performance directly impacts agent effectiveness. Track it. |
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

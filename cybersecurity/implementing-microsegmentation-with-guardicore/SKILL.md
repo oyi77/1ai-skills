@@ -4,7 +4,7 @@ description: 'Implementing microsegmentation using Akamai Guardicore Segmentatio
   granular network policies, visualize east-west traffic flows, and enforce least-privilege communication between workloads
   across data centers and cloud.
 
-  '
+  '. Use when working with implementing microsegmentation with guardicore.
 domain: cybersecurity
 tags:
 - microsegmentation
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing microsegmentation with guardicore workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

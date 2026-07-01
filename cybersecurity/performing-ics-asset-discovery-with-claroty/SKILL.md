@@ -4,7 +4,7 @@ description: 'Perform comprehensive ICS/OT asset discovery using Claroty xDome p
   Edge active queries, and integration ecosystem to gain full visibility into industrial control system assets including PLCs,
   RTUs, HMIs, and network infrastructure across Purdue Model levels.
 
-  '
+  '. Use when working with performing ics asset discovery with claroty.
 domain: cybersecurity
 tags:
 - ot-security
@@ -98,6 +98,13 @@ def extract_iocs(text: str) -> dict:
 - **claroty** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

@@ -97,6 +97,13 @@ def route_request(task: str, prompt: str):
     raise RuntimeError("All models failed")
 ```
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run cloudflare router workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] All steps executed successfully

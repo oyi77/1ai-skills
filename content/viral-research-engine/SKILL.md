@@ -87,6 +87,13 @@ def generate_content(topic: str, format: str = "article"):
 | "I will optimize later" | SEO and distribution need optimization from the start. |
 | "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
 
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
+
 ## Verification
 
 - [ ] Content meets quality standards and brief requirements

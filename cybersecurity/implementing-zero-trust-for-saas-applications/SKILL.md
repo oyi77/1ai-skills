@@ -4,7 +4,7 @@ description: 'Implementing zero trust access controls for SaaS applications usin
   OAuth app governance, and session controls to enforce identity verification, device compliance, and data protection for
   cloud-hosted services.
 
-  '
+  '. Use when working with implementing zero trust for saas applications.
 domain: cybersecurity
 tags:
 - zero-trust
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing zero trust for saas applications workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

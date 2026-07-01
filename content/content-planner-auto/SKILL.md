@@ -82,6 +82,13 @@ def generate_content(topic: str, format: str = "article"):
 | "I will optimize later" | SEO and distribution need optimization from the start. |
 | "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
 
+
+## Process
+
+1. **Research** — Analyze target audience, competitors, and trending topics
+1. **Create** — Generate content following brand guidelines and best practices
+1. **Publish & Optimize** — Distribute to target platforms, track performance, iterate
+
 ## Verification
 
 - [ ] Content meets quality standards and brief requirements

@@ -1,7 +1,7 @@
 ---
 name: security-agent-hardening
 description: Secure AI agents against prompt injection, jailbreaking, data exfiltration, and supply chain attacks. Implement
-  guardrails, sandboxing, and monitoring for safe autonomous operation.
+  guardrails, sandboxing, and monitoring for safe autonomous operation. Use when working with security agent hardening.
 domain: cybersecurity
 tags:
 - agent-security
@@ -80,6 +80,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

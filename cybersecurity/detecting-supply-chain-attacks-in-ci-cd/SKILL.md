@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
 
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - [ ] All supply chain attacks in ci cd procedures executed completely and documented

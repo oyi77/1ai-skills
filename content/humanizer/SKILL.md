@@ -1,6 +1,6 @@
 ---
 name: humanizer
-description: Transform AI-generated content into natural, human-sounding writing with proper tone and style
+description: Transform AI-generated content into natural, human-sounding writing with proper tone and style. Use when working with humanizer.
 domain: content
 tags:
 - content-creation
@@ -89,6 +89,13 @@ def generate_content(topic: str, format: str = "article"):
 | "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
 | "I will optimize later" | SEO and distribution need optimization from the start. |
 | "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run humanizer workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

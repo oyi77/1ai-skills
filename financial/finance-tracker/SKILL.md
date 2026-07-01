@@ -1,7 +1,7 @@
 ---
 name: finance-tracker
 description: Track real-time revenue across 5 income streams, monitor cashflow and runway, detect revenue gaps, and send threshold
-  alerts via Telegram.
+  alerts via Telegram. Use when tracking real-time revenue across 5 income streams, monitor cashflow and.
 domain: financial
 tags:
 - analysis
@@ -75,6 +75,13 @@ def calculate_risk(returns: list[float]) -> dict:
 | "The market will recover" | Do not hope. Analyze. Set stop-losses and follow your strategy. |
 | "I do not need to track expenses" | What you do not measure, you cannot optimize. Track everything. |
 | "One spreadsheet is enough" | Financial models need version control and audit trails. Use proper tools. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run finance tracker workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

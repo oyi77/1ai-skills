@@ -87,6 +87,13 @@ while True:
 | "I will add error handling later" | You never do. Handle errors from day one. |
 | "Automation is overkill" | If you do it twice, automate it. If you do it daily, it is critical infrastructure. |
 
+
+## Process
+
+1. **Research** — Analyze target audience, competitors, and trending topics
+1. **Create** — Generate content following brand guidelines and best practices
+1. **Publish & Optimize** — Distribute to target platforms, track performance, iterate
+
 ## Verification
 
 - [ ] All steps executed successfully

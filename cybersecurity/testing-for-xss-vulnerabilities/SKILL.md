@@ -3,7 +3,7 @@ name: testing-for-xss-vulnerabilities
 description: Tests web applications for Cross-Site Scripting (XSS) vulnerabilities by injecting JavaScript payloads into reflected,
   stored, and DOM-based contexts to demonstrate client-side code execution, session hijacking, and user impersonation. The
   tester identifies all injection points and output contexts, crafts context-appropriate payloads, and bypasses sanitization
-  and CSP protections.
+  and CSP protections. Use when working with testing for xss vulnerabilities.
 domain: cybersecurity
 tags:
 - XSS
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **Vulnerability Scanner** — Automated weakness identification
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

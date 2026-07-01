@@ -79,6 +79,13 @@ def pipeline(source: str):
 | "I will add data validation later" | Bad data propagates silently. Validate at ingestion. |
 | "Small datasets do not need optimization" | Even small datasets benefit from proper indexing and schema design. |
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run report gen workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] All steps executed successfully

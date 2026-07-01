@@ -1,6 +1,6 @@
 ---
 name: security-agent
-description: Bug bounty hunter and security auditor. P1-P3 only. Direct execution (subagents refuse security testing).
+description: Bug bounty hunter and security auditor. P1-P3 only. Direct execution (subagents refuse security testing). Use when working with security agent.
 domain: agents
 tags:
 - agent
@@ -80,6 +80,13 @@ Security Agent is an AI agent skill for agent orchestration. It enables autonomo
 | "I will just do it manually" | Agents automate repetitive tasks — manual work does not scale |
 | "The agent will figure it out" | Without clear instructions, agents hallucinate. Give explicit context. |
 | "One agent is enough" | Complex tasks benefit from specialized agents working in parallel |
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

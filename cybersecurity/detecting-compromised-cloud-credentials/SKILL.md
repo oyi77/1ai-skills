@@ -4,7 +4,7 @@ description: 'Detecting compromised cloud credentials across AWS, Azure, and GCP
   travel patterns, unauthorized resource provisioning, and credential abuse indicators using GuardDuty, Defender for Identity,
   and SCC Event Threat Detection.
 
-  '
+  '. Use when working with detecting compromised cloud credentials.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

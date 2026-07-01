@@ -1,12 +1,10 @@
 ---
 name: analyzing-ios-app-security-with-objection
-description: 'Performs runtime mobile security exploration of iOS applications using Objection, a Frida-powered toolkit that
+description: >  'Performs runtime mobile security exploration of iOS applications using Objection, a Frida-powered toolkit that
   enables security testers to interact with app internals without jailbreaking. Use when assessing iOS app security posture,
   bypassing client-side protections, dumping keychain items, inspecting filesystem storage, and evaluating runtime behavior.
   Activates for requests involving iOS security testing, Objection runtime analysis, Frida-based iOS assessment, or mobile
-  runtime exploration.
-
-  '
+  runtime explo.
 domain: cybersecurity
 tags:
 - mobile-security
@@ -96,6 +94,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

@@ -1,11 +1,11 @@
 ---
 name: performing-insider-threat-investigation
-description: 'Investigates insider threat incidents involving employees, contractors, or trusted partners who misuse authorized
+description: >  'Investigates insider threat incidents involving employees, contractors, or trusted partners who misuse authorized
   access to steal data, sabotage systems, or violate security policies. Combines digital forensics, user behavior analytics,
   and HR/legal coordination to build an evidence-based case. Activates for requests involving insider threat investigation,
   employee data theft, privilege misuse, user behavior anomaly, or internal threat detection.
 
-  '
+  '.
 domain: cybersecurity
 tags:
 - insider-threat
@@ -94,6 +94,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

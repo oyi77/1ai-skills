@@ -1,7 +1,7 @@
 ---
 name: postbridge-social-manager
 description: Multi-platform social media posting, scheduling, analytics, and media management via PostBridge API for TikTok,
-  Instagram, X, LinkedIn, and Facebook.
+  Instagram, X, LinkedIn, and Facebook. Use when working with postbridge social manager.
 domain: automation
 tags:
 - api
@@ -81,6 +81,13 @@ while True:
 | "Manual is faster for one-off tasks" | One-off tasks become recurring. Automate early, save time later. |
 | "I will add error handling later" | You never do. Handle errors from day one. |
 | "Automation is overkill" | If you do it twice, automate it. If you do it daily, it is critical infrastructure. |
+
+
+## Process
+
+1. **Research** — Analyze target audience, competitors, and trending topics
+1. **Create** — Generate content following brand guidelines and best practices
+1. **Publish & Optimize** — Distribute to target platforms, track performance, iterate
 
 ## Verification
 

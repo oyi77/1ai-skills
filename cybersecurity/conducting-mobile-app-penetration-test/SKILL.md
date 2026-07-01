@@ -1,6 +1,6 @@
 ---
 name: conducting-mobile-app-penetration-test
-description: Conducts penetration testing of iOS and Android mobile applications following the OWASP Mobile Application Security
+description: >  Conducts penetration testing of iOS and Android mobile applications following the OWASP Mobile Application Security
   Testing Guide (MASTG) to identify vulnerabilities in data storage, network communication, authentication, cryptography,
   and platform-specific security controls. The tester performs static analysis of application binaries, dynamic analysis at
   runtime, and API security testing to evaluate the complete mobile attack surface.
@@ -97,6 +97,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

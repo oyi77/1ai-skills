@@ -1,7 +1,7 @@
 ---
 name: detecting-mimikatz-execution-patterns
 description: Detect Mimikatz execution through command-line patterns, LSASS access signatures, binary indicators, and in-memory
-  detection of known modules.
+  detection of known modules. Use when detecting mimikatz execution through command-line patterns, lsass access signatures, binary.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

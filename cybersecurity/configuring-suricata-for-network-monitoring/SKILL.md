@@ -3,7 +3,7 @@ name: configuring-suricata-for-network-monitoring
 description: 'Deploys and configures Suricata IDS/IPS with Emerging Threats rulesets, EVE JSON logging, and custom rules for
   real-time network traffic inspection, threat detection, and integration with SIEM platforms for centralized security monitoring.
 
-  '
+  '. Use when working with configuring suricata for network monitoring.
 domain: cybersecurity
 tags:
 - network-security
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 - **network monitoring** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

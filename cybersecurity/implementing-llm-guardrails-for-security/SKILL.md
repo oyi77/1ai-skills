@@ -3,7 +3,7 @@ name: implementing-llm-guardrails-for-security
 description: Implements input and output validation guardrails for LLM-powered applications to prevent prompt injection, data
   leakage, toxic content generation, and hallucinated outputs. Builds a security validation pipeline using NVIDIA NeMo Guardrails
   Colang definitions, custom Python validators for PII detection and content policy enforcement, and the Guardrails AI framework
-  for structured output validation.
+  for structured output validation. Use when working with implementing llm guardrails for security.
 domain: cybersecurity
 tags:
 - LLM-guardrails
@@ -106,6 +106,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

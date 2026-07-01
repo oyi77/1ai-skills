@@ -1,6 +1,6 @@
 ---
 name: supabase-integration
-description: Integrate Supabase for authentication, database, storage, and real-time subscriptions. Build full-stack applications with Postgres, Row Level Security, and Edge Functions.
+description: Integrate Supabase for authentication, database, storage, and real-time subscriptions. Build full-stack applications with Postgres, Row Level Security, and Edge Functions. Use when integrateing supabase for authentication, database, storage, and real-time subscriptions. build.
 domain: integrations
 tags:
 - database
@@ -63,6 +63,13 @@ const { data: posts } = await supabase
   .eq('status', 'published')
   .order('created_at', { ascending: false });
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run supabase integration workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

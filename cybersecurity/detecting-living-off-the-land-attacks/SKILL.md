@@ -3,7 +3,7 @@ name: detecting-living-off-the-land-attacks
 description: 'Detect abuse of legitimate Windows binaries (LOLBins) used for living off the land attacks. Monitors process
   creation, command-line arguments, and parent-child relationships to identify suspicious LOLBin execution patterns.
 
-  '
+  '. Use when working with detecting living off the land attacks.
 domain: cybersecurity
 tags:
 - lolbins
@@ -93,6 +93,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

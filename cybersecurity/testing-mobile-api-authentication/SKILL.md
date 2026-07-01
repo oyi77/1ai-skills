@@ -83,6 +83,13 @@ def extract_iocs(text: str) -> dict:
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
 
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
+
 ## Verification
 
 - [ ] All mobile api authentication procedures executed completely and documented

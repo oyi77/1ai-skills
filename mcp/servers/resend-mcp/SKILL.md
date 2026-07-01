@@ -83,6 +83,13 @@ server.tool("search", { query: z.string() }, async ({ query }) => {
 });
 ```
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run resend mcp workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] All steps executed successfully

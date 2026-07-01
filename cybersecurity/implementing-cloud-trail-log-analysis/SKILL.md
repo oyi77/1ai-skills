@@ -4,7 +4,7 @@ description: 'Implementing AWS CloudTrail log analysis for security monitoring, 
   using Athena, CloudWatch Logs Insights, and SIEM integration to identify unauthorized access, privilege escalation, and
   suspicious API activity.
 
-  '
+  '. Use when working with implementing cloud trail log analysis.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -88,6 +88,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing cloud trail log analysis workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

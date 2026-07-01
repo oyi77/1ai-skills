@@ -82,6 +82,13 @@ def execute_sop(sop_name: str, steps: list[str]) -> dict:
 | "Manual processes work fine" | Manual processes do not scale and are error-prone. Automate. |
 | "Compliance is optional" | Compliance protects you legally. Build it in from the start. |
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run clickup workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] All steps executed successfully

@@ -1,7 +1,7 @@
 ---
 name: testing-for-business-logic-vulnerabilities
 description: Identifying flaws in application business logic that allow price manipulation, workflow bypass, and privilege
-  escalation beyond what technical vulnerability scanners can detect.
+  escalation beyond what technical vulnerability scanners can detect. Use when working with testing for business logic vulnerabilities.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 - **Vulnerability Scanner** — Automated weakness identification
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

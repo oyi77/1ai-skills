@@ -1,6 +1,6 @@
 ---
 name: css-frameworks
-description: CSS framework patterns — Tailwind CSS, Bootstrap, PostCSS, Sass, CSS Modules, CSS-in-JS
+description: CSS framework patterns — Tailwind CSS, Bootstrap, PostCSS, Sass, CSS Modules, CSS-in-JS. Use when working with css frameworks.
 domain: development
 tags:
 - coding

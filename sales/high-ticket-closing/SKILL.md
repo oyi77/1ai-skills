@@ -1,6 +1,6 @@
 ---
 name: high-ticket-closing
-description: Jordan Belfort's Straight Line System - closing high-value deals through persuasion and psychology
+description: Jordan Belfort's Straight Line System - closing high-value deals through persuasion and psychology. Use when working with high ticket closing.
 domain: sales
 tags:
 - business-development
@@ -96,6 +96,13 @@ def score_lead(lead: dict) -> int:
 | "Cold outreach does not work" | It works when personalized and targeted. Generic spam does not. |
 | "I will follow up later" | 80% of sales require 5+ follow-ups. Follow up consistently. |
 | "Price is the only factor" | Value, trust, and timing matter more than price. Sell outcomes. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run high ticket closing workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

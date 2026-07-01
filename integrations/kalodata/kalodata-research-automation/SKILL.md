@@ -2,7 +2,7 @@
 name: kalodata-research-automation
 description: End-to-end competitive analysis automation that combines product research, video analysis, and storyboard extraction
   into a single workflow. Accepts product search criteria and returns complete competitive analysis with viral product insights,
-  video breakdowns, and content replication guides.
+  video breakdowns, and content replication guides. Use when working with kalodata research automation.
 domain: integrations
 tags:
 - api

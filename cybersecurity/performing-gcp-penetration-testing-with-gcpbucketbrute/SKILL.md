@@ -1,7 +1,7 @@
 ---
 name: performing-gcp-penetration-testing-with-gcpbucketbrute
 description: Perform GCP security testing using GCPBucketBrute for storage bucket enumeration, gcloud IAM privilege escalation
-  path analysis, and service account permission auditing
+  path analysis, and service account permission auditing. Use when performing gcp security testing using gcpbucketbrute for storage bucket enumeration,.
 domain: cybersecurity
 subdomain: cloud-security
 tags:
@@ -103,6 +103,13 @@ def extract_iocs(text: str) -> dict:
 - Exceeding the authorized scope of the engagement
 - Leaving persistent access mechanisms without explicit approval
 - Causing denial-of-service on production systems during testing
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

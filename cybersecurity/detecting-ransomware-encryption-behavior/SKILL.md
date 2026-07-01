@@ -1,11 +1,11 @@
 ---
 name: detecting-ransomware-encryption-behavior
-description: 'Detects ransomware encryption activity in real time using entropy analysis, file system I/O monitoring, and
+description: >  'Detects ransomware encryption activity in real time using entropy analysis, file system I/O monitoring, and
   behavioral heuristics. Identifies mass file modification patterns, abnormal entropy spikes in written data, and suspicious
   process behavior characteristic of ransomware encryption routines. Activates for requests involving ransomware behavioral
   detection, entropy-based file monitoring, I/O anomaly detection, or real-time encryption activity alerting.
 
-  '
+  '.
 domain: cybersecurity
 tags:
 - ransomware
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

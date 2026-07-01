@@ -1,10 +1,10 @@
 ---
 name: performing-power-grid-cybersecurity-assessment
-description: This skill covers conducting cybersecurity assessments of electric power grid infrastructure including generation
+description: >  This skill covers conducting cybersecurity assessments of electric power grid infrastructure including generation
   facilities, transmission substations, distribution systems, and energy management system (EMS) control centers. It addresses
   NERC CIP compliance verification, substation automation security, IEC 61850 protocol analysis, synchrophasor (PMU) network
   security, and the unique threat landscape targeting power grid operations as demonstrated by Industroyer/CrashOverride and
-  related atta...
+  related.
 domain: cybersecurity
 tags:
 - ot-security
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

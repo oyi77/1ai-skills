@@ -1,6 +1,6 @@
 ---
 name: tekton-pipelines
-description: Tekton CI/CD pipelines — Tasks, Pipelines, Triggers, Workspaces for Kubernetes-native CI
+description: Tekton CI/CD pipelines — Tasks, Pipelines, Triggers, Workspaces for Kubernetes-native CI. Use when working with tekton pipelines.
 domain: devops
 tags:
 - ci-cd

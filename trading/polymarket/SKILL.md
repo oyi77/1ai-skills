@@ -1,7 +1,7 @@
 ---
 name: polymarket
 description: Natural-language interface to Polymarket prediction markets. Ask questions about event probabilities, market odds, price movements, and betting strategies in plain English.
-  event probabilities, or when user asks about Polymarket data.
+  event probabilities, or when user asks about Polymarket data. Use when working with polymarket.
 domain: trading
 tags:
 - algorithms
@@ -87,6 +87,13 @@ def kelly_size(win_rate: float, avg_win: float, avg_loss: float) -> float:
 | "I will cut losses later" | Later never comes. Set stop-losses before entering any trade. |
 | "This time is different" | It never is. Follow your strategy, not your emotions. |
 | "I do not need to journal" | Journaling reveals patterns in your behavior. Track every trade. |
+
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
 
 ## Verification
 

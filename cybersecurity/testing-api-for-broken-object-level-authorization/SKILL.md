@@ -1,6 +1,6 @@
 ---
 name: testing-api-for-broken-object-level-authorization
-description: Tests REST and GraphQL APIs for Broken Object Level Authorization (BOLA/IDOR) vulnerabilities where an authenticated
+description: >  Tests REST and GraphQL APIs for Broken Object Level Authorization (BOLA/IDOR) vulnerabilities where an authenticated
   user can access or modify resources belonging to other users by manipulating object identifiers in API requests. The tester
   intercepts API calls, identifies object ID parameters (numeric IDs, UUIDs, slugs), and systematically replaces them with
   IDs belonging to other users to determine if the server enforces per-object authorization.
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **Vulnerability Scanner** — Automated weakness identification
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

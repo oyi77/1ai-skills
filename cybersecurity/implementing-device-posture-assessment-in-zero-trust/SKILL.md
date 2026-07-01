@@ -4,7 +4,7 @@ description: 'Implementing device posture assessment as a zero trust access cont
   from CrowdStrike ZTA, Microsoft Intune, and Jamf into conditional access policies that enforce compliance before granting
   resource access.
 
-  '
+  '. Use when working with implementing device posture assessment in zero trust.
 domain: cybersecurity
 tags:
 - device-posture
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing device posture assessment in zero trust workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

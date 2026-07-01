@@ -4,7 +4,7 @@ description: 'Perform security assessments of SCADA Human-Machine Interface (HMI
   HMIs, thin-client configurations, authentication mechanisms, and communication channels between HMI and PLCs, aligned with
   IEC 62443 and NIST SP 800-82 guidelines.
 
-  '
+  '. Use when working with performing scada hmi security assessment.
 domain: cybersecurity
 tags:
 - ot-security
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

@@ -3,7 +3,7 @@ name: implementing-log-integrity-with-blockchain
 description: Build an append-only log integrity chain using SHA-256 hash chaining for tamper detection. Each log entry is
   hashed with the previous entry's hash to create a blockchain-like structure where modifying any entry invalidates all subsequent
   hashes. Implements log ingestion, chain verification, tamper detection with pinpoint identification, and periodic checkpoint
-  anchoring to external timestamping services.
+  anchoring to external timestamping services. Use when building an append-only log integrity chain using sha-256 hash chaining.
 domain: cybersecurity
 tags:
 - implementing
@@ -82,6 +82,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing log integrity with blockchain workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

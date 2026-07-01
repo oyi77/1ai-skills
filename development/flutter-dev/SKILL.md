@@ -1,6 +1,6 @@
 ---
 name: flutter-dev
-description: Flutter cross-platform development — Dart, widgets, state management, platform channels, Firebase integration
+description: Flutter cross-platform development — Dart, widgets, state management, platform channels, Firebase integration. Use when working with flutter dev.
 domain: development
 tags:
 - coding

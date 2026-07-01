@@ -1,11 +1,9 @@
 ---
 name: detecting-oauth-token-theft
-description: 'Detects and responds to OAuth token theft and replay attacks in cloud environments, focusing on Microsoft Entra
+description: >  'Detects and responds to OAuth token theft and replay attacks in cloud environments, focusing on Microsoft Entra
   ID (Azure AD) token protection, conditional access policies, and sign-in anomaly detection. Covers access token theft, refresh
   token replay, Primary Refresh Token (PRT) abuse, and pass-the-cookie attacks. Activates for requests involving OAuth token
   theft detection, token replay prevention, Azure AD conditional access token protection, or cloud identity attack investigation.
-
-  '
 domain: cybersecurity
 tags:
 - oauth
@@ -93,6 +91,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

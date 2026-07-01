@@ -1,6 +1,6 @@
 ---
 name: canvas-design
-description: Design visual art and graphics using HTML5 Canvas, p5.js, or SVG. Create generative art, data visualizations, diagrams, and interactive graphics.
+description: Design visual art and graphics using HTML5 Canvas, p5.js, or SVG. Create generative art, data visualizations, diagrams, and interactive graphics. Use when designing visual art and graphics using html5 canvas, p5.js, or.
 domain: content
 tags:
 - design
@@ -70,6 +70,13 @@ function setup() {
   text('Data Visualization', width/2, 50);
 }
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run canvas design workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

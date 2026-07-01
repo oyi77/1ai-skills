@@ -1,6 +1,6 @@
 ---
 name: responsive-design
-description: Mobile-first responsive design — breakpoints, fluid typography, container queries, and touch optimization
+description: Mobile-first responsive design — breakpoints, fluid typography, container queries, and touch optimization. Use when working with responsive design.
 domain: content
 tags:
 - content-creation

@@ -1,6 +1,6 @@
 ---
 name: dbt-transform
-description: dbt data transformation — models, tests, macros, sources, snapshots, documentation, packages
+description: dbt data transformation — models, tests, macros, sources, snapshots, documentation, packages. Use when working with dbt transform.
 domain: data
 tags:
 - analytics

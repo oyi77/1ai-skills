@@ -1,6 +1,6 @@
 ---
 name: mcp-client
-description: Generic MCP client implementation for connecting to any Model Context Protocol server with standardized tool access.
+description: Generic MCP client implementation for connecting to any Model Context Protocol server with standardized tool access. Use when working with mcp client.
 domain: mcp
 tags:
 - client
@@ -82,6 +82,13 @@ server.tool("search", { query: z.string() }, async ({ query }) => {
   return { content: [{ type: "text", text: JSON.stringify(results) }] };
 });
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run mcp client workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

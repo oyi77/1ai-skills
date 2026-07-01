@@ -1,7 +1,7 @@
 ---
 name: scanning-container-images-with-grype
 description: Scan container images for known vulnerabilities using Anchore Grype with SBOM-based matching and configurable
-  severity thresholds.
+  severity thresholds. Use when scaning container images for known vulnerabilities using anchore grype with.
 domain: cybersecurity
 subdomain: container-security
 tags:

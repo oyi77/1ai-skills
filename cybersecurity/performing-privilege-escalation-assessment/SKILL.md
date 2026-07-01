@@ -2,7 +2,7 @@
 name: performing-privilege-escalation-assessment
 description: Performs privilege escalation assessments on compromised Linux and Windows systems to identify paths from low-privilege
   access to root or SYSTEM-level control. The tester enumerates misconfigurations, vulnerable services, kernel exploits, SUID
-  binaries, unquoted service paths, and credential stores to demonstrate the full impact of an initial compromise.
+  binaries, unquoted service paths, and credential stores to demonstrate the full impact of an initial compromise. Use when working with performing privilege escalation assessment.
 domain: cybersecurity
 tags:
 - privilege-escalation
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

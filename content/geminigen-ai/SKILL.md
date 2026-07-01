@@ -1,7 +1,7 @@
 ---
 name: geminigen-ai
 description: Unified multimedia API for image generation (nano-banana-pro, imagen-4), video generation (Grok, Veo, Sora),
-  and text-to-speech. Replaces grok-video-generation, seedance, and gemini-image-generator.
+  and text-to-speech. Replaces grok-video-generation, seedance, and gemini-image-generator. Use when working with geminigen ai.
 domain: content
 tags:
 - api
@@ -83,6 +83,13 @@ def generate_content(topic: str, format: str = "article"):
 | "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
 | "I will optimize later" | SEO and distribution need optimization from the start. |
 | "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run geminigen ai workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

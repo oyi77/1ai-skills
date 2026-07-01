@@ -100,6 +100,13 @@ Notion enhances workflow optimization with proven systems and tools.
 | "Multitasking is productive" | Context switching costs 25 minutes per switch. Focus on one thing. |
 | "I will remember this" | You will not. Write it down. Externalize your memory. |
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run notion workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] All steps executed successfully

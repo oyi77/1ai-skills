@@ -1,7 +1,7 @@
 ---
 name: testing-for-xxe-injection-vulnerabilities
 description: Discovering and exploiting XML External Entity injection vulnerabilities to read server files, perform SSRF,
-  and exfiltrate data during authorized penetration tests.
+  and exfiltrate data during authorized penetration tests. Use when working with testing for xxe injection vulnerabilities.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 - **Vulnerability Scanner** — Automated weakness identification
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

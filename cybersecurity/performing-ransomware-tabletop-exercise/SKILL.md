@@ -3,7 +3,7 @@ name: performing-ransomware-tabletop-exercise
 description: Plans and facilitates tabletop exercises simulating ransomware incidents to test organizational readiness, decision-making,
   and communication procedures. Designs realistic scenarios based on current ransomware threat actors (LockBit, ALPHV/BlackCat,
   Cl0p), injects covering double extortion, backup destruction, and regulatory notification requirements. Evaluates participant
-  responses against NIST CSF and CISA guidelines.
+  responses against NIST CSF and CISA guidelines. Use when working with performing ransomware tabletop exercise.
 domain: cybersecurity
 tags:
 - ransomware
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

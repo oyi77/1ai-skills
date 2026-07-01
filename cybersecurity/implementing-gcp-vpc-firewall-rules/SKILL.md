@@ -4,7 +4,7 @@ description: 'Implementing and auditing GCP VPC firewall rules to enforce networ
   traffic, apply hierarchical firewall policies across the organization, and monitor firewall rule effectiveness using VPC
   Flow Logs.
 
-  '
+  '. Use when working with implementing gcp vpc firewall rules.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -88,6 +88,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing gcp vpc firewall rules workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

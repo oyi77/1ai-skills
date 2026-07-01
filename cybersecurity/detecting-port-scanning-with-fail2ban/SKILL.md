@@ -4,7 +4,7 @@ description: 'Configures Fail2ban with custom filters and actions to detect port
   and network reconnaissance, automatically banning offending IP addresses and alerting security teams to suspicious network
   probing.
 
-  '
+  '. Use when working with detecting port scanning with fail2ban.
 domain: cybersecurity
 tags:
 - network-security
@@ -88,6 +88,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

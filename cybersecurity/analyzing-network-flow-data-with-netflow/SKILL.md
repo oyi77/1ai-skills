@@ -2,7 +2,7 @@
 name: analyzing-network-flow-data-with-netflow
 description: Parse NetFlow v9 and IPFIX records to detect volumetric anomalies, port scanning, data exfiltration, and C2 beaconing
   patterns. Uses the Python netflow library to decode flow records, builds traffic baselines, and applies statistical analysis
-  to identify flows with abnormal byte counts, connection durations, and periodic timing patterns.
+  to identify flows with abnormal byte counts, connection durations, and periodic timing patterns. Use when working with analyzing network flow data with netflow.
 domain: cybersecurity
 tags:
 - analyzing
@@ -81,6 +81,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
 
 ## Verification
 

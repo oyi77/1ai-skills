@@ -5,7 +5,7 @@ description: 'Detects anomalous authentication patterns using UEBA analytics, st
   across authentication logs. Activates for requests involving authentication anomaly detection, login behavior analysis,
   UEBA implementation, or suspicious sign-in investigation.
 
-  '
+  '. Use when working with detecting anomalous authentication patterns.
 domain: cybersecurity
 tags:
 - UEBA
@@ -97,6 +97,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

@@ -1,7 +1,7 @@
 ---
 name: schema-markup
 description: Structured data markup for rich results and AI search visibility — JSON-LD, FAQ, HowTo, Product schemas. Use
-  when implementing structured data for SEO.
+  when implementing structured data for SEO. Use when working with schema markup.
 domain: marketing
 tags:
 - growth

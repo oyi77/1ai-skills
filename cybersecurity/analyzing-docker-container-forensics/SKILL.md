@@ -1,7 +1,7 @@
 ---
 name: analyzing-docker-container-forensics
 description: Investigate compromised Docker containers by analyzing images, layers, volumes, logs, and runtime artifacts to
-  identify malicious activity and evidence.
+  identify malicious activity and evidence. Use when working with analyzing docker container forensics.
 domain: cybersecurity
 tags:
 - forensics
@@ -82,6 +82,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

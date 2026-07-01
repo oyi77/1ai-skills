@@ -4,7 +4,7 @@ description: 'Performing authorized privilege escalation assessments in AWS envi
   that allow users or roles to elevate their permissions using Pacu, CloudFox, Principal Mapper, and manual IAM policy analysis
   techniques.
 
-  '
+  '. Use when working with performing aws privilege escalation assessment.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -88,6 +88,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

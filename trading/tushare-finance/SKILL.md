@@ -1,6 +1,6 @@
 ---
 name: tushare-finance
-description: 获取中国金融市场数据（A股、港股、美股、基金、期货、债券）。支持220+个Tushare Pro接口：股票行情、财务报表、宏观经济指标。当用户请求股价数据、财务分析、指数行情、GDP/CPI等宏观数据时使用。
+description: 获取中国金融市场数据（A股、港股、美股、基金、期货、债券）。支持220+个Tushare Pro接口：股票行情、财务报表、宏观经济指标。当用户请求股价数据、财务分析、指数行情、GDP/CPI等宏观数据时使用。. Use when working with tushare finance.
 domain: trading
 tags:
 - algorithms
@@ -90,6 +90,13 @@ def kelly_size(win_rate: float, avg_win: float, avg_loss: float) -> float:
 | "I will cut losses later" | Later never comes. Set stop-losses before entering any trade. |
 | "This time is different" | It never is. Follow your strategy, not your emotions. |
 | "I do not need to journal" | Journaling reveals patterns in your behavior. Track every trade. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run tushare finance workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

@@ -4,7 +4,7 @@ description: 'Designs and implements VLAN-based network segmentation on managed 
   access control between segments, and reduce the attack surface by limiting lateral movement paths in enterprise network
   environments.
 
-  '
+  '. Use when working with configuring network segmentation with vlans.
 domain: cybersecurity
 tags:
 - network-security
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 - **vlans** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

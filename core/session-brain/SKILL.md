@@ -1,6 +1,6 @@
 ---
 name: session-brain
-description: Query bk-hub for project context on session start so every session begins with memory instead of starting blind
+description: Query bk-hub for project context on session start so every session begins with memory instead of starting blind. Use when working with session brain.
 domain: core
 tags:
 - brain
@@ -85,6 +85,13 @@ def route_request(task: str, prompt: str):
             continue
     raise RuntimeError("All models failed")
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run session brain workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

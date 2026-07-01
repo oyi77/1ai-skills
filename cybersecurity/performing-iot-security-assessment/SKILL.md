@@ -3,7 +3,7 @@ name: performing-iot-security-assessment
 description: Performs comprehensive security assessments of IoT devices and their ecosystems by testing hardware interfaces,
   firmware, network communications, cloud APIs, and companion mobile applications. The tester uses firmware extraction and
   analysis, hardware debugging via UART and JTAG, network protocol analysis, and runtime exploitation to identify vulnerabilities
-  across all layers of the IoT stack.
+  across all layers of the IoT stack. Use when working with performing iot security assessment.
 domain: cybersecurity
 tags:
 - IoT-security
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

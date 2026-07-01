@@ -1,7 +1,7 @@
 ---
 name: collecting-volatile-evidence-from-compromised-host
 description: Collect volatile forensic evidence from a compromised system following order of volatility, preserving memory,
-  network connections, processes, and system state before they are lost.
+  network connections, processes, and system state before they are lost. Use when working with collecting volatile evidence from compromised host.
 domain: cybersecurity
 tags:
 - incident-response
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run collecting volatile evidence from compromised host workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

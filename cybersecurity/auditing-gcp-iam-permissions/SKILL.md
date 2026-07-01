@@ -3,7 +3,7 @@ name: auditing-gcp-iam-permissions
 description: 'Auditing Google Cloud Platform IAM permissions to identify overly permissive bindings, primitive role usage,
   service account key proliferation, and cross-project access risks using gcloud CLI, Policy Analyzer, and IAM Recommender.
 
-  '
+  '. Use when working with auditing gcp iam permissions.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run auditing gcp iam permissions workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

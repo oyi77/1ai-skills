@@ -5,7 +5,7 @@ description: 'Traces ransomware cryptocurrency payment flows using blockchain an
   and supports law enforcement attribution. Activates for requests involving ransomware payment tracing, bitcoin wallet analysis,
   cryptocurrency forensics, or blockchain intelligence gathering.
 
-  '
+  '. Use when working with analyzing ransomware payment wallets.
 domain: cybersecurity
 tags:
 - ransomware
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
 
 ## Verification
 

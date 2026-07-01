@@ -1,6 +1,6 @@
 ---
 name: tailwind-advanced
-description: Advanced Tailwind CSS — custom plugins, JIT, container queries, animations, dark mode, design systems
+description: Advanced Tailwind CSS — custom plugins, JIT, container queries, animations, dark mode, design systems. Use when working with tailwind advanced.
 domain: content
 tags:
 - advanced

@@ -1,7 +1,7 @@
 ---
 name: rockefeller-wealth
 description: 'Apply Rockefeller''s systematic wealth-building strategies: vertical integration, capital allocation, and monopoly
-  thinking.'
+  thinking.'. Use when working with rockefeller wealth.
 domain: research
 tags:
 - analysis
@@ -82,6 +82,13 @@ def evaluate_source(url: str) -> dict:
 | "First result is good enough" | Deep research finds better answers. Keep digging. |
 | "I do not need to verify sources" | Unverified sources lead to wrong conclusions. Always cross-check. |
 | "Research is a one-time thing" | Markets change. Research needs to be continuous, not one-off. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run rockefeller wealth workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

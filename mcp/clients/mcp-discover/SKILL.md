@@ -1,6 +1,6 @@
 ---
 name: mcp-discover
-description: Discover and connect to MCP servers automatically. Browse available tools and register new server endpoints.
+description: Discover and connect to MCP servers automatically. Browse available tools and register new server endpoints. Use when working with mcp discover.
 domain: mcp
 tags:
 - discover
@@ -82,6 +82,13 @@ server.tool("search", { query: z.string() }, async ({ query }) => {
   return { content: [{ type: "text", text: JSON.stringify(results) }] };
 });
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run mcp discover workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

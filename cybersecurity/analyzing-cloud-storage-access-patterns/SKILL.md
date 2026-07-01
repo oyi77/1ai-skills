@@ -2,7 +2,7 @@
 name: analyzing-cloud-storage-access-patterns
 description: Detect abnormal access patterns in AWS S3, GCS, and Azure Blob Storage by analyzing CloudTrail Data Events, GCS
   audit logs, and Azure Storage Analytics. Identifies after-hours bulk downloads, access from new IP addresses, unusual API
-  calls (GetObject spikes), and potential data exfiltration using statistical baselines and time-series anomaly detection.
+  calls (GetObject spikes), and potential data exfiltration using statistical baselines and time-series anomaly detection. Use when detecting abnormal access patterns in aws s3, gcs, and azure.
 domain: cybersecurity
 tags:
 - analyzing
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

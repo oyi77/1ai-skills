@@ -1,7 +1,7 @@
 ---
 name: performing-threat-intelligence-sharing-with-misp
 description: Use PyMISP to create, enrich, and share threat intelligence events on a MISP platform, including IOC management,
-  feed integration, STIX export, and community sharing workflows.
+  feed integration, STIX export, and community sharing workflows. Use when working with performing threat intelligence sharing with misp.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:
@@ -97,6 +97,13 @@ A JSON report summarizing events created, attributes added, tags applied, feed s
 - Acting on threat intelligence without validating source reliability
 - Sharing classified or sensitive indicators without proper handling procedures
 - Alerting threat actors to detection capabilities through visible response actions
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

@@ -1,6 +1,6 @@
 ---
 name: stripe-integration
-description: Integrate Stripe for payments, subscriptions, invoicing, and billing. Handle checkout sessions, webhooks, customer management, and payment method handling.
+description: Integrate Stripe for payments, subscriptions, invoicing, and billing. Handle checkout sessions, webhooks, customer management, and payment method handling. Use when integrateing stripe for payments, subscriptions, invoicing, and billing. handle checkout.
 domain: integrations
 tags:
 - payments
@@ -73,6 +73,13 @@ app.post('/webhook', express.raw({type: 'application/json'}), (req, res) => {
   res.json({received: true});
 });
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run stripe integration workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

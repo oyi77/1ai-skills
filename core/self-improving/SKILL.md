@@ -1,7 +1,7 @@
 ---
 name: self-improving
 description: Self-reflection + Self-criticism + Auto-learning from corrections + Self-organizing memory. Agent evaluates its
-  own work, catches mistakes, and improves permanently.
+  own work, catches mistakes, and improves permanently. Use when working with self improving.
 domain: core
 tags:
 - ai-agent
@@ -95,6 +95,13 @@ def route_request(task: str, prompt: str):
             continue
     raise RuntimeError("All models failed")
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run self improving workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

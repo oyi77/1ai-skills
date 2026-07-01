@@ -1,6 +1,6 @@
 ---
 name: git-workflow-mastery
-description: Master Git workflows including branching strategies, interactive rebase, cherry-pick, bisect, worktrees, and advanced merge conflict resolution.
+description: Master Git workflows including branching strategies, interactive rebase, cherry-pick, bisect, worktrees, and advanced merge conflict resolution. Use when working with git workflow mastery.
 domain: development
 tags:
 - git
@@ -69,6 +69,13 @@ git bisect good v1.0
 # Worktree (parallel branches)
 git worktree add ../feature-branch feature/my-feature
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run git workflow mastery workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

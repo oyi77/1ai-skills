@@ -1,7 +1,7 @@
 ---
 name: agent-self-improvement
 description: Monitor performance of other skills, identify bottlenecks, suggest improvements, and auto-optimize the skill
-  portfolio
+  portfolio. Use when monitoring performance of other skills, identify bottlenecks, suggest improvements, and.
 domain: core
 tags:
 - agent

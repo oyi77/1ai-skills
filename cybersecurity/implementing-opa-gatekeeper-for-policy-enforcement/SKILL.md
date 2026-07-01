@@ -1,7 +1,7 @@
 ---
 name: implementing-opa-gatekeeper-for-policy-enforcement
 description: Enforce Kubernetes admission policies using OPA Gatekeeper with ConstraintTemplates, Rego rules, and the Gatekeeper
-  policy library.
+  policy library. Use when working with implementing opa gatekeeper for policy enforcement.
 domain: cybersecurity
 subdomain: container-security
 tags:

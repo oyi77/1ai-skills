@@ -2,7 +2,7 @@
 name: analyzing-windows-shellbag-artifacts
 description: Analyze Windows Shellbag registry artifacts to reconstruct folder browsing activity, detect access to removable
   media and network shares, and establish user interaction with directories even after deletion using SBECmd and ShellBags
-  Explorer.
+  Explorer. Use when analyzeing windows shellbag registry artifacts to reconstruct folder browsing activity,.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:

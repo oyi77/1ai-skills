@@ -1,6 +1,6 @@
 ---
 name: memory-system
-description: Store, retrieve, and organize knowledge across sessions using structured memory files and entity tracking.
+description: Store, retrieve, and organize knowledge across sessions using structured memory files and entity tracking. Use when working with memory system.
 domain: core
 tags:
 - infrastructure
@@ -78,6 +78,13 @@ def route_request(task: str, prompt: str):
             continue
     raise RuntimeError("All models failed")
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run memory system workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

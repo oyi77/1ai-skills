@@ -1,6 +1,6 @@
 ---
 name: job-queues
-description: Background job processing — Bull/BullMQ, agenda, delayed jobs, retries, rate limiting, scheduled tasks
+description: Background job processing — Bull/BullMQ, agenda, delayed jobs, retries, rate limiting, scheduled tasks. Use when working with job queues.
 domain: development
 tags:
 - coding

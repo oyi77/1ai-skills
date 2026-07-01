@@ -1,7 +1,7 @@
 ---
 name: hunting-for-data-exfiltration-indicators
 description: Hunt for data exfiltration through network traffic analysis, detecting unusual data flows, DNS tunneling, cloud
-  storage uploads, and encrypted channel abuse.
+  storage uploads, and encrypted channel abuse. Use when hunting for data exfiltration through network traffic analysis, detecting unusual.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -97,6 +97,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

@@ -1,7 +1,7 @@
 ---
 name: voice-ai
 description: Voice AI — text-to-speech (ElevenLabs, OpenAI TTS), speech-to-text (Whisper), voice cloning, real-time voice
-  agents
+  agents. Use when working with voice ai.
 domain: content
 tags:
 - ai-agent

@@ -2,7 +2,7 @@
 name: implementing-zero-trust-with-beyondcorp
 description: Deploy Google BeyondCorp Enterprise zero trust access controls using Identity-Aware Proxy (IAP), context-aware
   access policies, device trust validation, and Access Context Manager to enforce identity and posture-based access to GCP
-  resources and internal applications.
+  resources and internal applications. Use when deploying google beyondcorp enterprise zero trust access controls using identity-aware.
 domain: cybersecurity
 subdomain: zero-trust
 tags:
@@ -100,6 +100,13 @@ JSON report containing IAP-protected resources, access level definitions, policy
 - Testing against production systems without a defined scope and rules of engagement
 - Sharing sensitive findings or credentials in unencrypted communications
 - Failing to properly scope and contain the assessment before starting
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing zero trust with beyondcorp workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

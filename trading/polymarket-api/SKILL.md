@@ -89,6 +89,13 @@ def kelly_size(win_rate: float, avg_win: float, avg_loss: float) -> float:
 | "This time is different" | It never is. Follow your strategy, not your emotions. |
 | "I do not need to journal" | Journaling reveals patterns in your behavior. Track every trade. |
 
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
+
 ## Verification
 
 - [ ] All steps executed successfully

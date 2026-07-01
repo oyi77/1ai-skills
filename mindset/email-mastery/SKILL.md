@@ -1,7 +1,7 @@
 ---
 name: email-mastery
 description: Write effective professional emails using AIDA framework, subject line formulas, and follow-up cadences. Use
-  when crafting cold outreach, negotiation emails, or follow-ups.
+  when crafting cold outreach, negotiation emails, or follow-ups. Use when writeing effective professional emails using aida framework, subject line formulas,.
 domain: mindset
 tags:
 - email
@@ -86,6 +86,13 @@ Mindset skill for email mastery. Builds capability through deliberate practice a
 - Reflect: What worked? What did not?
 - Log one lesson learned
 ```
+
+
+## Process
+
+1. **Research** — Analyze target audience, competitors, and trending topics
+1. **Create** — Generate content following brand guidelines and best practices
+1. **Publish & Optimize** — Distribute to target platforms, track performance, iterate
 
 ## Verification
 

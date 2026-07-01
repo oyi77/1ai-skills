@@ -1,10 +1,10 @@
 ---
 name: detecting-ai-model-prompt-injection-attacks
-description: Detects prompt injection attacks targeting LLM-based applications using a multi-layered defense combining regex
+description: >  Detects prompt injection attacks targeting LLM-based applications using a multi-layered defense combining regex
   pattern matching for known attack signatures, heuristic scoring for structural anomalies, and transformer-based classification
   with DeBERTa models. The detector analyzes user inputs before they reach the LLM, flagging direct injections (system prompt
   overrides, role-play escapes, instruction hijacking) and indirect injections (encoded payloads, multi-language obfuscation,
-  delimiter-...
+  delim.
 domain: cybersecurity
 tags:
 - prompt-injection
@@ -105,6 +105,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

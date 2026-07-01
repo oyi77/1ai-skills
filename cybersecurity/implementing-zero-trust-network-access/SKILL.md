@@ -4,7 +4,7 @@ description: 'Implementing Zero Trust Network Access (ZTNA) in cloud environment
   continuous verification with conditional access policies, and replacing traditional VPN-based access with BeyondCorp-style
   architectures across AWS, Azure, and GCP.
 
-  '
+  '. Use when working with implementing zero trust network access.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -88,6 +88,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing zero trust network access workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

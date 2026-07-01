@@ -1,6 +1,6 @@
 ---
 name: auth-patterns
-description: Authentication patterns — OAuth 2.0, JWT, session management, MFA, RBAC, API key management
+description: Authentication patterns — OAuth 2.0, JWT, session management, MFA, RBAC, API key management. Use when working with auth patterns.
 domain: operations
 tags:
 - api

@@ -1,7 +1,7 @@
 ---
 name: ai-research-agent
 description: Autonomous research agent that monitors trends, discovers income opportunities, and creates new skills — runs
-  daily research cycles to keep the one-man-company evolving.
+  daily research cycles to keep the one-man-company evolving. Use when working with ai research agent.
 domain: research
 tags:
 - agent

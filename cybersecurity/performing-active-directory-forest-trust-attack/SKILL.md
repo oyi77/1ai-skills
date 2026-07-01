@@ -1,7 +1,7 @@
 ---
 name: performing-active-directory-forest-trust-attack
 description: Enumerate and audit Active Directory forest trust relationships using impacket for SID filtering analysis, trust
-  key extraction, cross-forest SID history abuse detection, and inter-realm Kerberos ticket assessment.
+  key extraction, cross-forest SID history abuse detection, and inter-realm Kerberos ticket assessment. Use when working with performing active directory forest trust attack.
 domain: cybersecurity
 subdomain: red-team
 tags:
@@ -96,6 +96,13 @@ def extract_iocs(text: str) -> dict:
 - Capturing traffic on networks without authorization or privacy considerations
 - Leaving packet captures containing sensitive data unencrypted on disk
 - Deploying inline blocking rules without testing for false positives first
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

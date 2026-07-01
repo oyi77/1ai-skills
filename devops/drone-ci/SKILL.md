@@ -1,6 +1,6 @@
 ---
 name: drone-ci
-description: Drone CI — container-native CI/CD, YAML pipelines, plugins, secrets, multi-machine builds
+description: Drone CI — container-native CI/CD, YAML pipelines, plugins, secrets, multi-machine builds. Use when working with drone ci.
 domain: devops
 tags:
 - ci-cd

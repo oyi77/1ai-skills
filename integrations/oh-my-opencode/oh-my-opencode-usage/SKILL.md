@@ -1,7 +1,7 @@
 ---
 name: oh-my-opencode-usage
 description: Daily usage patterns for oh-my-opencode including workflow commands, session management, agent invocation, and
-  productivity tips
+  productivity tips. Use when working with oh my opencode usage.
 domain: integrations
 tags:
 - ai-agent

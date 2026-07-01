@@ -4,7 +4,7 @@ description: 'Implements 802.1X port-based network access control using RADIUS a
   configurations to enforce identity-based access policies, posture assessment, and automatic VLAN assignment for authorized
   devices.
 
-  '
+  '. Use when working with implementing network access control.
 domain: cybersecurity
 tags:
 - network-security
@@ -88,6 +88,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing network access control workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

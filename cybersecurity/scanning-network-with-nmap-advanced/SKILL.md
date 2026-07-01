@@ -4,7 +4,7 @@ description: 'Performs advanced network reconnaissance using Nmap''s scripting e
   and output parsing to discover hosts, enumerate services, detect vulnerabilities, and fingerprint operating systems across
   authorized target networks.
 
-  '
+  '. Use when working with scanning network with nmap advanced.
 domain: cybersecurity
 tags:
 - network-security
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 - **nmap advanced** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run scanning network with nmap advanced workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

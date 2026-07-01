@@ -1,6 +1,6 @@
 ---
 name: firebase-integration
-description: Integrate Firebase for authentication, Firestore database, Cloud Functions, hosting, and push notifications. Build real-time mobile and web applications.
+description: Integrate Firebase for authentication, Firestore database, Cloud Functions, hosting, and push notifications. Build real-time mobile and web applications. Use when integrateing firebase for authentication, firestore database, cloud functions, hosting, and.
 domain: integrations
 tags:
 - firebase
@@ -69,6 +69,13 @@ const unsubscribe = onSnapshot(q, (snapshot) => {
   });
 });
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run firebase integration workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

@@ -83,6 +83,13 @@ Mindset skill for conflict resolution. Builds capability through deliberate prac
 - Log one lesson learned
 ```
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run conflict resolution workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] All steps executed successfully

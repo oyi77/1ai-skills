@@ -1,6 +1,6 @@
 ---
 name: financial-literacy
-description: Manage personal and business finances including budgeting, cash flow, financial statements, and basic FP&A.
+description: Manage personal and business finances including budgeting, cash flow, financial statements, and basic FP&A. Use when manageing personal and business finances including budgeting, cash flow, financial.
 domain: mindset
 tags:
 - financial
@@ -85,6 +85,13 @@ Mindset skill for financial literacy. Builds capability through deliberate pract
 - Reflect: What worked? What did not?
 - Log one lesson learned
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run financial literacy workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

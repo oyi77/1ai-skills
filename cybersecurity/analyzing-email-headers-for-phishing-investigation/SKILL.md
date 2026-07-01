@@ -1,7 +1,7 @@
 ---
 name: analyzing-email-headers-for-phishing-investigation
 description: Parse and analyze email headers to trace the origin of phishing emails, verify sender authenticity, and identify
-  spoofing through SPF, DKIM, and DMARC validation.
+  spoofing through SPF, DKIM, and DMARC validation. Use when working with analyzing email headers for phishing investigation.
 domain: cybersecurity
 tags:
 - forensics
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

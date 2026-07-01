@@ -1,7 +1,7 @@
 ---
 name: meta-skill-datastore
 description: Centralized database for meta-skill operations. Stores performance metrics, feedback, patterns, and skill evolution
-  history.
+  history. Use when working with meta skill datastore.
 domain: meta
 tags:
 - datastore
@@ -82,6 +82,13 @@ Meta Skill Datastore is a foundational meta-skills skill that provides skill man
 | "Skills do not need to evolve" | Static skills become outdated. Self-evolving skills improve continuously. |
 | "Manual skill management is fine" | With 1000+ skills, manual management is impossible. Automate. |
 | "Performance does not matter" | Skill performance directly impacts agent effectiveness. Track it. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run meta skill datastore workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

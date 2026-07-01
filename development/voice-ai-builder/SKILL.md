@@ -1,7 +1,7 @@
 ---
 name: voice-ai-builder
 description: Build voice-based AI agents for phone calls, meetings, customer support, and sales qualification using Vapi,
-  Bland, and Retell
+  Bland, and Retell. Use when building voice-based ai agents for phone calls, meetings, customer support,.
 domain: development
 tags:
 - ai-agent

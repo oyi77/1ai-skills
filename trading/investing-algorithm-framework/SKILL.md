@@ -1,6 +1,6 @@
 ---
 name: investing-algorithm-framework
-description: Build algorithmic investing strategies with backtesting, signal generation, and portfolio optimization frameworks.
+description: Build algorithmic investing strategies with backtesting, signal generation, and portfolio optimization frameworks. Use when building algorithmic investing strategies with backtesting, signal generation, and portfolio.
 domain: trading
 tags:
 - algorithm

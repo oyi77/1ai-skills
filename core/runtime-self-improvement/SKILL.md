@@ -1,7 +1,7 @@
 ---
 name: runtime-self-improvement
 description: Automatically improve OpenClaw and 1ai-skills at runtime. Analyze performance, detect gaps, enhance skills, and
-  self-optimize during operation.
+  self-optimize during operation. Use when working with runtime self improvement.
 domain: core
 tags:
 - improvement

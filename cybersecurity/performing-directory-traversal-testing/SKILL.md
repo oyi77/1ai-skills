@@ -1,7 +1,7 @@
 ---
 name: performing-directory-traversal-testing
 description: Testing web applications for path traversal vulnerabilities that allow reading or writing arbitrary files on
-  the server by manipulating file path parameters.
+  the server by manipulating file path parameters. Use when working with performing directory traversal testing.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -83,6 +83,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

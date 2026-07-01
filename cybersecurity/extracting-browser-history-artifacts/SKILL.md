@@ -1,7 +1,7 @@
 ---
 name: extracting-browser-history-artifacts
 description: Extract and analyze browser history, cookies, cache, downloads, and bookmarks from Chrome, Firefox, and Edge
-  for forensic evidence of user web activity.
+  for forensic evidence of user web activity. Use when working with extracting browser history artifacts.
 domain: cybersecurity
 tags:
 - forensics
@@ -81,6 +81,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run extracting browser history artifacts workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

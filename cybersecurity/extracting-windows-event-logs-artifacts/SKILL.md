@@ -1,7 +1,7 @@
 ---
 name: extracting-windows-event-logs-artifacts
 description: Extract, parse, and analyze Windows Event Logs (EVTX) using Chainsaw, Hayabusa, and EvtxECmd to detect lateral
-  movement, persistence, and privilege escalation.
+  movement, persistence, and privilege escalation. Use when working with extracting windows event logs artifacts.
 domain: cybersecurity
 tags:
 - forensics
@@ -81,6 +81,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run extracting windows event logs artifacts workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

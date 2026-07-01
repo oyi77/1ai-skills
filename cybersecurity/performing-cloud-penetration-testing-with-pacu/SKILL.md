@@ -4,7 +4,7 @@ description: 'Performing authorized AWS penetration testing using Pacu, the open
   IAM configurations, discover privilege escalation paths, test credential harvesting, and validate security controls through
   systematic attack simulation.
 
-  '
+  '. Use when working with performing cloud penetration testing with pacu.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 - **pacu** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

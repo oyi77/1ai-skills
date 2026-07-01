@@ -1,6 +1,6 @@
 ---
 name: best-hacker
-description: Apply hacker mindset to find vulnerabilities, break assumptions, and stress-test systems before attackers do.
+description: Apply hacker mindset to find vulnerabilities, break assumptions, and stress-test systems before attackers do. Use when working with best hacker.
 domain: research
 tags:
 - analysis
@@ -174,6 +174,13 @@ Rules of engagement, scope boundaries, and reporting standards.
 3. **Execute** — Perform the core operations
 4. **Validate** — Verify results meet quality standards
 5. **Document** — Record findings and decisions
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

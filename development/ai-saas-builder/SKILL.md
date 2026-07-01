@@ -1,7 +1,7 @@
 ---
 name: ai-saas-builder
 description: Takes a problem statement and produces a deployable micro-SaaS product — landing page, auth, payments, database,
-  API, and billing
+  API, and billing. Use when working with ai saas builder.
 domain: development
 tags:
 - api

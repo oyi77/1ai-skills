@@ -1,6 +1,6 @@
 ---
 name: gemini-api-dev
-description: Build applications using Google Gemini API. Handle chat completions, multimodal inputs, function calling, streaming, and grounding with Google Search.
+description: Build applications using Google Gemini API. Handle chat completions, multimodal inputs, function calling, streaming, and grounding with Google Search. Use when building applications using google gemini api. handle chat completions, multimodal.
 domain: core
 tags:
 - ai
@@ -66,6 +66,13 @@ for await (const chunk of response) {
   process.stdout.write(chunk.text);
 }
 ```
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

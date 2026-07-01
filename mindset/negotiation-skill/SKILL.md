@@ -88,6 +88,13 @@ Mindset skill for negotiation skill. Builds capability through deliberate practi
 - Log one lesson learned
 ```
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run negotiation skill workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] All steps executed successfully

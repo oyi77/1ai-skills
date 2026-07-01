@@ -3,7 +3,7 @@ name: monitoring-darkweb-sources
 description: Monitors dark web forums, marketplaces, paste sites, and ransomware leak sites for mentions of organizational
   assets, leaked credentials, threatened attacks, and threat actor communications to provide early warning intelligence. Use
   when establishing dark web monitoring coverage, investigating specific data breach claims, or enriching incident investigations
-  with dark web context.
+  with dark web context. Use when working with monitoring darkweb sources.
 domain: cybersecurity
 tags:
 - dark-web
@@ -92,6 +92,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Plan** — Define infrastructure requirements, security constraints, rollback strategy
+1. **Implement** — Configure resources, apply security best practices, test in staging
+1. **Deploy & Monitor** — Roll out to production, verify health checks, set up alerting
 
 ## Verification
 

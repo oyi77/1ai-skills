@@ -1,12 +1,10 @@
 ---
 name: performing-ot-network-security-assessment
-description: 'This skill covers conducting comprehensive security assessments of Operational Technology (OT) networks including
+description: >  'This skill covers conducting comprehensive security assessments of Operational Technology (OT) networks including
   SCADA systems, DCS architectures, and industrial control system communication paths. It addresses the Purdue Reference Model
   layers, identifies IT/OT convergence risks, evaluates firewall rules between zones, and maps industrial protocol traffic
   (Modbus, DNP3, OPC UA, EtherNet/IP) to detect misconfigurations, unauthorized connections, and attack surfaces in critical
-  infrastructure.
-
-  '
+  infrastr.
 domain: cybersecurity
 tags:
 - ot-security
@@ -89,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

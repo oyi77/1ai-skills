@@ -3,7 +3,7 @@ name: performing-vlan-hopping-attack
 description: 'Simulates VLAN hopping attacks using switch spoofing and double tagging techniques in authorized environments
   to test VLAN segmentation effectiveness and validate switch port security configurations against Layer 2 bypass attacks.
 
-  '
+  '. Use when working with performing vlan hopping attack.
 domain: cybersecurity
 tags:
 - network-security
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

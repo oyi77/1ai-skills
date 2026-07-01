@@ -1,7 +1,7 @@
 ---
 name: hunting-for-startup-folder-persistence
 description: Detect T1547.001 startup folder persistence by monitoring Windows startup directories for suspicious file creation,
-  analyzing autoruns entries, and using Python watchdog for real-time filesystem monitoring.
+  analyzing autoruns entries, and using Python watchdog for real-time filesystem monitoring. Use when detecting t1547.001 startup folder persistence by monitoring windows startup directories.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -98,6 +98,13 @@ def extract_iocs(text: str) -> dict:
 - Acting on threat intelligence without validating source reliability
 - Sharing classified or sensitive indicators without proper handling procedures
 - Alerting threat actors to detection capabilities through visible response actions
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

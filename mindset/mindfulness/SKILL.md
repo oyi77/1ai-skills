@@ -1,7 +1,7 @@
 ---
 name: mindfulness
 description: Practice presence, reduce stress, and improve focus through meditation and awareness techniques. Use daily for
-  mental clarity and emotional regulation.
+  mental clarity and emotional regulation. Use when working with mindfulness.
 domain: mindset
 tags:
 - mindfulness
@@ -85,6 +85,13 @@ Mindset skill for mindfulness. Builds capability through deliberate practice and
 - Reflect: What worked? What did not?
 - Log one lesson learned
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run mindfulness workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

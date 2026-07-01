@@ -1,7 +1,7 @@
 ---
 name: detecting-kerberoasting-attacks
 description: Detect Kerberoasting attacks by monitoring for anomalous Kerberos TGS requests targeting service accounts with
-  SPNs for offline password cracking.
+  SPNs for offline password cracking. Use when detecting kerberoasting attacks by monitoring for anomalous kerberos tgs requests.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

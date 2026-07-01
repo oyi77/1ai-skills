@@ -1,6 +1,6 @@
 ---
 name: public-speaking
-description: Deliver engaging talks and presentations using narrative structure, audience analysis, and stage presence techniques.
+description: Deliver engaging talks and presentations using narrative structure, audience analysis, and stage presence techniques. Use when working with public speaking.
 domain: mindset
 tags:
 - mindset
@@ -86,6 +86,13 @@ Mindset skill for public speaking. Builds capability through deliberate practice
 - Reflect: What worked? What did not?
 - Log one lesson learned
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run public speaking workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

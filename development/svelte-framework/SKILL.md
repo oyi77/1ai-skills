@@ -1,6 +1,6 @@
 ---
 name: svelte-framework
-description: Svelte and SvelteKit development — runes, stores, server-side rendering, form actions, streaming
+description: Svelte and SvelteKit development — runes, stores, server-side rendering, form actions, streaming. Use when working with svelte framework.
 domain: development
 tags:
 - coding

@@ -1,6 +1,6 @@
 ---
 name: musk-first-principles
-description: Break problems down to fundamental truths and reason up using Elon Musk's first-principles methodology.
+description: Break problems down to fundamental truths and reason up using Elon Musk's first-principles methodology. Use when working with musk first principles.
 domain: research
 tags:
 - analysis
@@ -81,6 +81,13 @@ def evaluate_source(url: str) -> dict:
 | "First result is good enough" | Deep research finds better answers. Keep digging. |
 | "I do not need to verify sources" | Unverified sources lead to wrong conclusions. Always cross-check. |
 | "Research is a one-time thing" | Markets change. Research needs to be continuous, not one-off. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run musk first principles workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

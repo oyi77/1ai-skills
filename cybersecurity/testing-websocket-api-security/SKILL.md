@@ -1,6 +1,6 @@
 ---
 name: testing-websocket-api-security
-description: Tests WebSocket API implementations for security vulnerabilities including missing authentication on WebSocket
+description: >  Tests WebSocket API implementations for security vulnerabilities including missing authentication on WebSocket
   upgrade, Cross-Site WebSocket Hijacking (CSWSH), injection attacks through WebSocket messages, insufficient input validation,
   denial-of-service via message flooding, and information leakage through WebSocket frames. The tester intercepts WebSocket
   handshakes and messages using Burp Suite, crafts malicious payloads, and tests for authorization bypass on WebSocket channels.
@@ -88,6 +88,13 @@ def extract_iocs(text: str) -> dict:
 - **Vulnerability Scanner** — Automated weakness identification
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

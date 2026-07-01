@@ -3,7 +3,7 @@ name: testing-api-authentication-weaknesses
 description: Tests API authentication mechanisms for weaknesses including broken token validation, missing authentication
   on endpoints, weak password policies, credential stuffing susceptibility, token leakage in URLs or logs, and session management
   flaws. The tester evaluates JWT implementation, API key handling, OAuth flows, and session token entropy to identify authentication
-  bypasses. Maps to OWASP API2:2023 Broken Authentication.
+  bypasses. Maps to OWASP API2:2023 Broken Authentication. Use when working with testing api authentication weaknesses.
 domain: cybersecurity
 tags:
 - api-security
@@ -88,6 +88,13 @@ def extract_iocs(text: str) -> dict:
 - **Vulnerability Scanner** — Automated weakness identification
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

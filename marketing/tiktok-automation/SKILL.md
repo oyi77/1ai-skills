@@ -1,7 +1,7 @@
 ---
 name: tiktok-automation
 description: Production-ready TikTok posting automation — handles login session persistence, dynamic UI selector learning,
-  fallback retries, and bulk video uploads.
+  fallback retries, and bulk video uploads. Use when working with tiktok automation.
 domain: marketing
 tags:
 - growth

@@ -84,6 +84,13 @@ Mindset skill for business model canvas. Builds capability through deliberate pr
 - Log one lesson learned
 ```
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run business model canvas workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] All steps executed successfully

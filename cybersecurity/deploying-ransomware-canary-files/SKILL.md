@@ -2,7 +2,7 @@
 name: deploying-ransomware-canary-files
 description: Deploys and monitors ransomware canary files across critical directories using Python's watchdog library for
   real-time filesystem event detection. Places strategically named decoy files that mimic high-value targets (financial records,
-  credentials, database exports) in locations ransomware typically enumerates first.
+  credentials, database exports) in locations ransomware typically enumerates first. Use when working with deploying ransomware canary files.
 domain: cybersecurity
 tags:
 - ransomware
@@ -81,6 +81,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

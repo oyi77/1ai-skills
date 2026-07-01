@@ -1,6 +1,6 @@
 ---
 name: trading-strategist
-description: Design and backtest trading strategies using technical indicators, fundamental analysis, and statistical models.
+description: Design and backtest trading strategies using technical indicators, fundamental analysis, and statistical models. Use when designing and backtest trading strategies using technical indicators, fundamental analysis,.
 domain: trading
 tags:
 - algorithms

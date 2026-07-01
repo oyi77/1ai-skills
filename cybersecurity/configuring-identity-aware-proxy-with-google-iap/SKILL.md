@@ -4,7 +4,7 @@ description: 'Configuring Google Cloud Identity-Aware Proxy (IAP) to enforce per
   Engine, App Engine, Cloud Run, and GKE services using access levels, context-aware policies, and programmatic access with
   service accounts.
 
-  '
+  '. Use when working with configuring identity aware proxy with google iap.
 domain: cybersecurity
 tags:
 - google-iap
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 - **google iap** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

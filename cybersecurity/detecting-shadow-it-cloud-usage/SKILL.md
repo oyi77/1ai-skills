@@ -1,7 +1,7 @@
 ---
 name: detecting-shadow-it-cloud-usage
 description: Detect unauthorized SaaS and cloud service usage (shadow IT) by analyzing proxy logs, DNS query logs, and netflow
-  data using Python pandas for traffic pattern analysis and domain classification.
+  data using Python pandas for traffic pattern analysis and domain classification. Use when detecting unauthorized saas and cloud service usage (shadow it) by.
 domain: cybersecurity
 subdomain: cloud-security
 tags:
@@ -93,6 +93,13 @@ def extract_iocs(text: str) -> dict:
 - Modifying cloud IAM policies or security groups without approval
 - Exposing cloud credentials or secrets in logs or reports
 - Running scans that generate excessive API calls and trigger billing alerts
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

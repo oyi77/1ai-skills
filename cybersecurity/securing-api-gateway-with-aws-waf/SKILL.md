@@ -4,7 +4,7 @@ description: 'Securing API Gateway endpoints with AWS WAF by configuring managed
   creating custom rate limiting rules, implementing bot control, setting up IP reputation filtering, and monitoring WAF metrics
   for security effectiveness.
 
-  '
+  '. Use when working with securing api gateway with aws waf.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -88,6 +88,13 @@ def extract_iocs(text: str) -> dict:
 - **aws waf** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

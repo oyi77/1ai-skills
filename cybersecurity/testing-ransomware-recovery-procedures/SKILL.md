@@ -1,7 +1,7 @@
 ---
 name: testing-ransomware-recovery-procedures
 description: Test and validate ransomware recovery procedures including backup restore operations, RTO/RPO target verification,
-  recovery sequencing, and clean restore validation to ensure organizational resilience against destructive ransomware attacks.
+  recovery sequencing, and clean restore validation to ensure organizational resilience against destructive ransomware attacks. Use when testing and validate ransomware recovery procedures including backup restore operations,.
 domain: cybersecurity
 tags:
 - incident-response
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 - **Vulnerability Scanner** — Automated weakness identification
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

@@ -1,10 +1,9 @@
 ---
 name: content-kingdom
-description: ">\n  Content Kingdom Orchestrator — the BRAIN that coordinates all 12 content phases\n  for BerkahKarya / JENDRALBOT.\
+description: >  ">\n  Content Kingdom Orchestrator — the BRAIN that coordinates all 12 content phases\n  for BerkahKarya / JENDRALBOT.\
   \ Sequences research → plan → script → create →\n  review → schedule → post → engage → analyze → optimize → repurpose →\
   \ scale.\n  Thin coordinator: imports existing autopilot_affiliate_engine and content-generator\n  scripts; only builds\
-  \ truly new modules (comment_manager, engagement_engine).\n  v2.0: GeminiGen API as primary media provider + Veris Design\
-  \ System enforced.\n"
+  \ truly new modules (comment_manager, engagement_engine).\n  v2.
 domain: content
 tags:
 - content

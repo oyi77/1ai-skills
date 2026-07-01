@@ -1,7 +1,7 @@
 ---
 name: hunting-for-shadow-copy-deletion
 description: Hunt for Volume Shadow Copy deletion activity that indicates ransomware preparation or anti-forensics by monitoring
-  vssadmin, wmic, and PowerShell shadow copy commands.
+  vssadmin, wmic, and PowerShell shadow copy commands. Use when hunting for volume shadow copy deletion activity that indicates ransomware.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

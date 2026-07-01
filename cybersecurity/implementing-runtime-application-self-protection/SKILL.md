@@ -2,7 +2,7 @@
 name: implementing-runtime-application-self-protection
 description: Deploy Runtime Application Self-Protection (RASP) agents to detect and block attacks from within application
   runtime, covering OpenRASP integration, attack pattern detection, and security policy configuration for Java and Python
-  web applications.
+  web applications. Use when deploying runtime application self-protection (rasp) agents to detect and block.
 domain: cybersecurity
 subdomain: application-security
 tags:
@@ -112,6 +112,13 @@ JSON report containing RASP policy audit results, detected attack attempts with 
 - Exceeding the authorized scope of the engagement
 - Leaving persistent access mechanisms without explicit approval
 - Causing denial-of-service on production systems during testing
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing runtime application self protection workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

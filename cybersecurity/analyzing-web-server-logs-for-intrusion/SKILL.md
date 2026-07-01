@@ -2,7 +2,7 @@
 name: analyzing-web-server-logs-for-intrusion
 description: Parse Apache and Nginx access logs to detect SQL injection attempts, local file inclusion, directory traversal,
   web scanner fingerprints, and brute-force patterns. Uses regex-based pattern matching against OWASP attack signatures, GeoIP
-  enrichment for source attribution, and statistical anomaly detection for request frequency and response size outliers.
+  enrichment for source attribution, and statistical anomaly detection for request frequency and response size outliers. Use when working with analyzing web server logs for intrusion.
 domain: cybersecurity
 tags:
 - analyzing
@@ -81,6 +81,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
 
 ## Verification
 

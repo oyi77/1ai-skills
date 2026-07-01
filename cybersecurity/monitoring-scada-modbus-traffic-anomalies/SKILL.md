@@ -1,6 +1,6 @@
 ---
 name: monitoring-scada-modbus-traffic-anomalies
-description: Monitors Modbus TCP traffic on SCADA and ICS networks to detect anomalous function code usage, unauthorized register
+description: >  Monitors Modbus TCP traffic on SCADA and ICS networks to detect anomalous function code usage, unauthorized register
   writes, and suspicious communication patterns. The analyst uses deep packet inspection with pymodbus, Scapy, and Zeek to
   baseline normal PLC/RTU communication behavior, then applies statistical and rule-based anomaly detection to identify reconnaissance,
   parameter manipulation, and denial-of-service attacks targeting Modbus devices on port 502.
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Plan** — Define infrastructure requirements, security constraints, rollback strategy
+1. **Implement** — Configure resources, apply security best practices, test in staging
+1. **Deploy & Monitor** — Roll out to production, verify health checks, set up alerting
 
 ## Verification
 

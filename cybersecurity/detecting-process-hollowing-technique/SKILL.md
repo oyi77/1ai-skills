@@ -1,7 +1,7 @@
 ---
 name: detecting-process-hollowing-technique
 description: Detect process hollowing (T1055.012) by analyzing memory-mapped sections, hollowed process indicators, and parent-child
-  process anomalies in EDR telemetry.
+  process anomalies in EDR telemetry. Use when detecting process hollowing (t1055.012) by analyzing memory-mapped sections, hollowed process.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

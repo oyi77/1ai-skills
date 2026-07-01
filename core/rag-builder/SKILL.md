@@ -1,6 +1,6 @@
 ---
 name: rag-builder
-description: RAG pipeline design — document chunking, embedding strategies, retrieval optimization, and answer generation
+description: RAG pipeline design — document chunking, embedding strategies, retrieval optimization, and answer generation. Use when working with rag builder.
 domain: core
 tags:
 - builder

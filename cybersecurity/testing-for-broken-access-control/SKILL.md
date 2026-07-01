@@ -1,7 +1,7 @@
 ---
 name: testing-for-broken-access-control
 description: Systematically testing web applications for broken access control vulnerabilities including privilege escalation,
-  missing function-level checks, and insecure direct object references.
+  missing function-level checks, and insecure direct object references. Use when working with testing for broken access control.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 - **Vulnerability Scanner** — Automated weakness identification
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

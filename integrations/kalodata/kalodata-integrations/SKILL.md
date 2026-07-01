@@ -1,7 +1,7 @@
 ---
 name: kalodata-integrations
 description: Multi-platform integrations for Kalodata research. Connect Shopify for product listings, Notion for research
-  reports, and Slack for alerts + daily digests. CLI-friendly with config-based API key management.
+  reports, and Slack for alerts + daily digests. CLI-friendly with config-based API key management. Use when working with kalodata integrations.
 domain: integrations
 tags:
 - api

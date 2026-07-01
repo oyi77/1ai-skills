@@ -1,7 +1,7 @@
 ---
 name: extracting-credentials-from-memory-dump
 description: Extract cached credentials, password hashes, Kerberos tickets, and authentication tokens from memory dumps using
-  Volatility and Mimikatz for forensic investigation.
+  Volatility and Mimikatz for forensic investigation. Use when working with extracting credentials from memory dump.
 domain: cybersecurity
 tags:
 - forensics
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run extracting credentials from memory dump workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

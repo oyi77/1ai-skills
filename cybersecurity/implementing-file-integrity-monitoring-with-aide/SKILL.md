@@ -1,7 +1,7 @@
 ---
 name: implementing-file-integrity-monitoring-with-aide
 description: Configure AIDE (Advanced Intrusion Detection Environment) for file integrity monitoring including baseline creation,
-  scheduled integrity checks, change detection, and alerting
+  scheduled integrity checks, change detection, and alerting. Use when configureing aide (advanced intrusion detection environment) for file integrity monitoring.
 domain: cybersecurity
 subdomain: endpoint-security
 tags:
@@ -93,6 +93,13 @@ def extract_iocs(text: str) -> dict:
 - Acting on threat intelligence without validating source reliability
 - Sharing classified or sensitive indicators without proper handling procedures
 - Alerting threat actors to detection capabilities through visible response actions
+
+## Process
+
+1. **Plan** — Define infrastructure requirements, security constraints, rollback strategy
+1. **Implement** — Configure resources, apply security best practices, test in staging
+1. **Deploy & Monitor** — Roll out to production, verify health checks, set up alerting
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

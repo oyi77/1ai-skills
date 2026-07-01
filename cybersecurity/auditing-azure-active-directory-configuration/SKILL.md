@@ -4,7 +4,7 @@ description: 'Auditing Microsoft Entra ID (Azure Active Directory) configuration
   overly permissive role assignments, stale accounts, conditional access gaps, and guest user risks using AzureAD PowerShell,
   Microsoft Graph API, and ScoutSuite.
 
-  '
+  '. Use when working with auditing azure active directory configuration.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

@@ -3,7 +3,7 @@ name: conducting-man-in-the-middle-attack-simulation
 description: 'Simulates man-in-the-middle attacks using Ettercap, mitmproxy, and Bettercap in authorized environments to intercept,
   analyze, and modify network traffic for testing encryption enforcement, certificate validation, and detection capabilities.
 
-  '
+  '. Use when working with conducting man in the middle attack simulation.
 domain: cybersecurity
 tags:
 - network-security
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

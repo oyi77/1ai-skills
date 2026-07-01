@@ -1,6 +1,6 @@
 ---
 name: self-assessment
-description: Skills evaluate their own performance, capabilities, and limitations. Honest self-reflection drives improvement.
+description: Skills evaluate their own performance, capabilities, and limitations. Honest self-reflection drives improvement. Use when working with self assessment.
 domain: meta
 tags:
 - assessment
@@ -102,6 +102,13 @@ Self Assessment is a foundational meta-skills skill that provides skill manageme
 | "Skills do not need to evolve" | Static skills become outdated. Self-evolving skills improve continuously. |
 | "Manual skill management is fine" | With 1000+ skills, manual management is impossible. Automate. |
 | "Performance does not matter" | Skill performance directly impacts agent effectiveness. Track it. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run self assessment workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

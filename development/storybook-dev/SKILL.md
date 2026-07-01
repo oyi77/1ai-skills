@@ -1,6 +1,6 @@
 ---
 name: storybook-dev
-description: Storybook component development — stories, addons, controls, accessibility testing, visual regression
+description: Storybook component development — stories, addons, controls, accessibility testing, visual regression. Use when working with storybook dev.
 domain: development
 tags:
 - coding

@@ -3,7 +3,7 @@ name: implementing-siem-correlation-rules-for-apt
 description: Write multi-event correlation rules that detect APT lateral movement by chaining Windows authentication events,
   process execution telemetry, and network connection logs across hosts. Uses Splunk SPL and Sigma rule format to correlate
   Event IDs 4624, 4648, 4688, and Sysmon Events 1/3 within sliding time windows to surface attack sequences invisible to single-event
-  detections.
+  detections. Use when writeing multi-event correlation rules that detect apt lateral movement by.
 domain: cybersecurity
 tags:
 - implementing
@@ -82,6 +82,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing siem correlation rules for apt workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

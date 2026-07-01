@@ -1,6 +1,6 @@
 ---
 name: implementing-api-rate-limiting-and-throttling
-description: Implements API rate limiting and throttling controls using token bucket, sliding window, and fixed window algorithms
+description: >  Implements API rate limiting and throttling controls using token bucket, sliding window, and fixed window algorithms
   to protect against brute force attacks, credential stuffing, resource exhaustion, and API abuse. The engineer configures
   per-user, per-IP, and per-endpoint rate limits using Redis-backed counters, API gateway plugins, or application middleware,
   and implements proper HTTP 429 responses with Retry-After headers.
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

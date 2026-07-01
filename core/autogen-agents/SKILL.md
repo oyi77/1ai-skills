@@ -1,6 +1,6 @@
 ---
 name: autogen-agents
-description: AutoGen multi-agent conversations — AssistantAgent, UserProxyAgent, group chat, code execution
+description: AutoGen multi-agent conversations — AssistantAgent, UserProxyAgent, group chat, code execution. Use when working with autogen agents.
 domain: core
 tags:
 - agents

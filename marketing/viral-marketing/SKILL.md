@@ -1,6 +1,6 @@
 ---
 name: viral-marketing
-description: Gary Vaynerchuk's content machine approach - producing high-volume, authentic content across all platforms
+description: Gary Vaynerchuk's content machine approach - producing high-volume, authentic content across all platforms. Use when working with viral marketing.
 domain: marketing
 tags:
 - growth
@@ -89,6 +89,13 @@ def analyze_keywords(keywords: list[str]) -> list[dict]:
 | "Good products sell themselves" | They do not. Marketing is how people discover your product. |
 | "I will start marketing after launch" | Build audience before launch. Pre-launch momentum is critical. |
 | "SEO is dead" | SEO evolves. GEO (Generative Engine Optimization) is the new frontier. |
+
+
+## Process
+
+1. **Research** — Analyze target audience, competitors, and trending topics
+1. **Create** — Generate content following brand guidelines and best practices
+1. **Publish & Optimize** — Distribute to target platforms, track performance, iterate
 
 ## Verification
 

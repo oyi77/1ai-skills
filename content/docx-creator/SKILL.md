@@ -77,6 +77,13 @@ hdr_cells[2].text = 'Q2'
 doc.save('report.docx')
 ```
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run docx creator workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] Document opens without errors in Word/LibreOffice

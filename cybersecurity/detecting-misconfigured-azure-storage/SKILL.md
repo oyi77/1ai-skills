@@ -4,7 +4,7 @@ description: 'Detecting misconfigured Azure Storage accounts including publicly 
   settings, overly permissive SAS tokens, disabled logging, and network access violations using Azure CLI, PowerShell, and
   Microsoft Defender for Storage.
 
-  '
+  '. Use when working with detecting misconfigured azure storage.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -96,6 +96,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

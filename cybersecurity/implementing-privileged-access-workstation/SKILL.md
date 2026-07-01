@@ -1,7 +1,7 @@
 ---
 name: implementing-privileged-access-workstation
 description: Design and implement Privileged Access Workstations (PAWs) with device hardening, just-in-time access, and integration
-  with CyberArk or BeyondTrust for secure administrative operations.
+  with CyberArk or BeyondTrust for secure administrative operations. Use when designing and implement privileged access workstations (paws) with device hardening,.
 domain: cybersecurity
 subdomain: identity-and-access-management
 tags:
@@ -93,6 +93,13 @@ def extract_iocs(text: str) -> dict:
 - Modifying cloud IAM policies or security groups without approval
 - Exposing cloud credentials or secrets in logs or reports
 - Running scans that generate excessive API calls and trigger billing alerts
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing privileged access workstation workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

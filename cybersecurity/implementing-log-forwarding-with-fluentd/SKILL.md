@@ -1,7 +1,7 @@
 ---
 name: implementing-log-forwarding-with-fluentd
 description: Configure Fluentd and Fluent Bit for centralized log aggregation, routing, filtering, and enrichment across distributed
-  infrastructure
+  infrastructure. Use when configureing fluentd and fluent bit for centralized log aggregation, routing,.
 domain: cybersecurity
 subdomain: security-operations
 tags:
@@ -94,6 +94,13 @@ def extract_iocs(text: str) -> dict:
 - Testing against production systems without a defined scope and rules of engagement
 - Sharing sensitive findings or credentials in unencrypted communications
 - Failing to properly scope and contain the assessment before starting
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing log forwarding with fluentd workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

@@ -1,7 +1,7 @@
 ---
 name: analyzing-prefetch-files-for-execution-history
 description: Parse Windows Prefetch files to determine program execution history including run counts, timestamps, and referenced
-  files for forensic investigation.
+  files for forensic investigation. Use when working with analyzing prefetch files for execution history.
 domain: cybersecurity
 tags:
 - forensics
@@ -82,6 +82,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
 
 ## Verification
 

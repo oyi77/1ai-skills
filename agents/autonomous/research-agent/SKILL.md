@@ -81,6 +81,13 @@ def orchestrate(tasks: list[Task]) -> dict:
 | "The agent will figure it out" | Without clear instructions, agents hallucinate. Give explicit context. |
 | "One agent is enough" | Complex tasks benefit from specialized agents working in parallel |
 
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
+
 ## Verification
 
 - [ ] All steps executed successfully

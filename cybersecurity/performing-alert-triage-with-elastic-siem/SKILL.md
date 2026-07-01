@@ -1,7 +1,7 @@
 ---
 name: performing-alert-triage-with-elastic-siem
 description: Perform systematic alert triage in Elastic Security SIEM to rapidly classify, prioritize, and investigate security
-  alerts for SOC operations.
+  alerts for SOC operations. Use when performing systematic alert triage in elastic security siem to rapidly.
 domain: cybersecurity
 subdomain: soc-operations
 tags:

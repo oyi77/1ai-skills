@@ -4,7 +4,7 @@ description: 'Implements comprehensive Google Workspace security hardening inclu
   MFA enforcement, DLP policies, email authentication (SPF/DKIM/DMARC), OAuth app control, and external sharing restrictions.
   Activates for requests involving Google Workspace hardening, G Suite security configuration, or cloud office security administration.
 
-  '
+  '. Use when working with implementing google workspace admin security.
 domain: cybersecurity
 tags:
 - Google-Workspace
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

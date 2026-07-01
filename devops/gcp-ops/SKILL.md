@@ -1,6 +1,6 @@
 ---
 name: gcp-ops
-description: Google Cloud operations — Compute Engine, Cloud Run, BigQuery, Cloud Functions, GKE, IAM
+description: Google Cloud operations — Compute Engine, Cloud Run, BigQuery, Cloud Functions, GKE, IAM. Use when working with gcp ops.
 domain: devops
 tags:
 - ci-cd

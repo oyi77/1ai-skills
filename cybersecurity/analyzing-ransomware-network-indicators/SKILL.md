@@ -1,7 +1,7 @@
 ---
 name: analyzing-ransomware-network-indicators
 description: Identify ransomware network indicators including C2 beaconing patterns, TOR exit node connections, data exfiltration
-  flows, and encryption key exchange via Zeek conn.log and NetFlow analysis
+  flows, and encryption key exchange via Zeek conn.log and NetFlow analysis. Use when working with analyzing ransomware network indicators.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -101,6 +101,13 @@ def extract_iocs(text: str) -> dict:
 - Capturing traffic on networks without authorization or privacy considerations
 - Leaving packet captures containing sensitive data unencrypted on disk
 - Deploying inline blocking rules without testing for false positives first
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

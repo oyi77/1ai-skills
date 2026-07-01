@@ -1,6 +1,6 @@
 ---
 name: database-migration
-description: Safe database migrations — schema changes, data migrations, rollback strategies, and zero-downtime deploys
+description: Safe database migrations — schema changes, data migrations, rollback strategies, and zero-downtime deploys. Use when working with database migration.
 domain: development
 tags:
 - coding

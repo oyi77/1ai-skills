@@ -1,7 +1,7 @@
 ---
 name: audit
 description: Audit the whole repo for over-engineering. A ranked list of what to delete, simplify, or replace with stdlib
-  or native features.
+  or native features. Use when auditing the whole repo for over-engineering. a ranked list of.
 domain: mindset
 tags:
 - audit
@@ -91,6 +91,13 @@ findings biggest cut first.
 - Reflect: What worked? What did not?
 - Log one lesson learned
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run audit workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

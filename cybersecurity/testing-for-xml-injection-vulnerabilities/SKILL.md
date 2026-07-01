@@ -1,7 +1,7 @@
 ---
 name: testing-for-xml-injection-vulnerabilities
 description: Test web applications for XML injection vulnerabilities including XXE, XPath injection, and XML entity attacks
-  to identify data exposure and server-side request forgery risks.
+  to identify data exposure and server-side request forgery risks. Use when testing web applications for xml injection vulnerabilities including xxe, xpath.
 domain: cybersecurity
 tags:
 - xml-injection
@@ -84,6 +84,13 @@ def extract_iocs(text: str) -> dict:
 - **Vulnerability Scanner** — Automated weakness identification
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

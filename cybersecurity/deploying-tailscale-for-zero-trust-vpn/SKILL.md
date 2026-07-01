@@ -1,7 +1,7 @@
 ---
 name: deploying-tailscale-for-zero-trust-vpn
 description: Deploy and configure Tailscale as a WireGuard-based zero trust mesh VPN with identity-aware access controls,
-  ACLs, and exit nodes for secure peer-to-peer connectivity.
+  ACLs, and exit nodes for secure peer-to-peer connectivity. Use when deploying and configure tailscale as a wireguard-based zero trust mesh.
 domain: cybersecurity
 subdomain: zero-trust-architecture
 tags:

@@ -1,7 +1,7 @@
 ---
 name: analyzing-network-packets-with-scapy
 description: Craft, send, sniff, and dissect network packets using Scapy for protocol analysis, network reconnaissance, and
-  traffic anomaly detection in authorized security testing
+  traffic anomaly detection in authorized security testing. Use when working with analyzing network packets with scapy.
 domain: cybersecurity
 subdomain: network-security
 tags:
@@ -91,6 +91,13 @@ JSON report containing packet statistics, protocol distribution, top source/dest
 - Capturing traffic on networks without authorization or privacy considerations
 - Leaving packet captures containing sensitive data unencrypted on disk
 - Deploying inline blocking rules without testing for false positives first
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

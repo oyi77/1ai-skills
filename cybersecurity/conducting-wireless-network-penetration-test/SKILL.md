@@ -3,7 +3,7 @@ name: conducting-wireless-network-penetration-test
 description: Conducts authorized wireless network penetration tests to assess the security of WiFi infrastructure by testing
   for weak encryption protocols, captive portal bypasses, evil twin attacks, WPA2/WPA3 handshake capture, rogue access point
   detection, and client-side attacks. The tester evaluates wireless authentication, network segmentation, and the effectiveness
-  of wireless intrusion detection systems.
+  of wireless intrusion detection systems. Use when working with conducting wireless network penetration test.
 domain: cybersecurity
 tags:
 - wireless-pentest
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

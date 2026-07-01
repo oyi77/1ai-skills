@@ -1,7 +1,7 @@
 ---
 name: performing-content-security-policy-bypass
 description: Analyze and bypass Content Security Policy implementations to achieve cross-site scripting by exploiting misconfigurations,
-  JSONP endpoints, unsafe directives, and policy injection techniques.
+  JSONP endpoints, unsafe directives, and policy injection techniques. Use when analyzeing and bypass content security policy implementations to achieve cross-site.
 domain: cybersecurity
 tags:
 - csp-bypass
@@ -82,6 +82,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

@@ -1,7 +1,7 @@
 ---
 name: performing-timeline-reconstruction-with-plaso
 description: Build comprehensive forensic super-timelines using Plaso (log2timeline) to correlate events across file systems,
-  logs, and artifacts into a unified chronological view.
+  logs, and artifacts into a unified chronological view. Use when building comprehensive forensic super-timelines using plaso (log2timeline) to correlate events.
 domain: cybersecurity
 tags:
 - forensics
@@ -82,6 +82,13 @@ def extract_iocs(text: str) -> dict:
 - **plaso** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

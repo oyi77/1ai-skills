@@ -1,7 +1,7 @@
 ---
 name: detecting-t1003-credential-dumping-with-edr
 description: Detect OS credential dumping techniques targeting LSASS memory, SAM database, NTDS.dit, and cached credentials
-  using EDR telemetry, Sysmon process access monitoring, and Windows security event correlation.
+  using EDR telemetry, Sysmon process access monitoring, and Windows security event correlation. Use when detecting os credential dumping techniques targeting lsass memory, sam database,.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -92,6 +92,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

@@ -1,7 +1,7 @@
 ---
 name: performing-steganography-detection
 description: Detect and extract hidden data embedded in images, audio, and other media files using steganalysis tools to uncover
-  covert communication channels.
+  covert communication channels. Use when detecting and extract hidden data embedded in images, audio, and.
 domain: cybersecurity
 tags:
 - forensics
@@ -81,6 +81,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

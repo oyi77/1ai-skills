@@ -1,7 +1,7 @@
 ---
 name: prompt-engineering
 description: Advanced prompt engineering — chain-of-thought, few-shot, tree-of-thought, self-consistency, meta-prompting,
-  system design, debugging, and optimization for production AI systems.
+  system design, debugging, and optimization for production AI systems. Use when working with prompt engineering.
 domain: core
 tags:
 - engineering
@@ -84,6 +84,13 @@ def route_request(task: str, prompt: str):
             continue
     raise RuntimeError("All models failed")
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run prompt engineering workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

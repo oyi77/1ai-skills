@@ -1,7 +1,7 @@
 ---
 name: auto-learner
 description: Autonomous learning from execution data. Skills improve themselves by identifying patterns in successful vs failed
-  executions without human intervention.
+  executions without human intervention. Use when working with auto learner.
 domain: meta
 tags:
 - auto
@@ -92,6 +92,13 @@ Auto Learner is a foundational meta-skills skill that provides skill management 
 | "Skills do not need to evolve" | Static skills become outdated. Self-evolving skills improve continuously. |
 | "Manual skill management is fine" | With 1000+ skills, manual management is impossible. Automate. |
 | "Performance does not matter" | Skill performance directly impacts agent effectiveness. Track it. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run auto learner workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

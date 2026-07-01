@@ -1,6 +1,6 @@
 ---
 name: product-team
-description: Manage PRD creation, roadmap planning, sprint coordination, and release management with Notion integration.
+description: Manage PRD creation, roadmap planning, sprint coordination, and release management with Notion integration. Use when manageing prd creation, roadmap planning, sprint coordination, and release management.
 domain: operations
 tags:
 - business-ops
@@ -84,6 +84,13 @@ def execute_sop(sop_name: str, steps: list[str]) -> dict:
 | "We do not need SOPs" | Without SOPs, quality depends on memory. Document everything. |
 | "Manual processes work fine" | Manual processes do not scale and are error-prone. Automate. |
 | "Compliance is optional" | Compliance protects you legally. Build it in from the start. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run product team workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

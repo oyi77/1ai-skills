@@ -1,6 +1,6 @@
 ---
 name: implementing-aws-nitro-enclave-security
-description: Implements AWS Nitro Enclave-based confidential computing environments with cryptographic attestation, KMS policy
+description: >  Implements AWS Nitro Enclave-based confidential computing environments with cryptographic attestation, KMS policy
   integration using PCR-based condition keys, and secure vsock communication channels. The practitioner builds enclave images,
   configures attestation-aware KMS policies, validates attestation documents against the AWS Nitro PKI root of trust, and
   establishes isolated computation pipelines for processing sensitive data such as PII, cryptographic keys, and healthcare
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

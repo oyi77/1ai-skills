@@ -4,7 +4,7 @@ description: 'Detects lateral movement techniques including Pass-the-Hash, PsExe
   spreading using SIEM correlation of Windows event logs, network flow data, and endpoint telemetry mapped to MITRE ATT&CK
   Lateral Movement (TA0008) techniques.
 
-  '
+  '. Use when working with performing lateral movement detection.
 domain: cybersecurity
 tags:
 - soc
@@ -96,6 +96,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

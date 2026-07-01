@@ -4,7 +4,7 @@ description: 'Performing security reviews of serverless functions across AWS Lam
   to identify overly permissive execution roles, insecure environment variables, injection vulnerabilities, and missing runtime
   protections.
 
-  '
+  '. Use when working with performing serverless function security review.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

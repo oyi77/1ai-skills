@@ -79,6 +79,13 @@ def extract_iocs(text: str) -> dict:
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
 
+
+## Process
+
+1. **Plan** — Define infrastructure requirements, security constraints, rollback strategy
+1. **Implement** — Configure resources, apply security best practices, test in staging
+1. **Deploy & Monitor** — Roll out to production, verify health checks, set up alerting
+
 ## Verification
 
 - [ ] All kubernetes audit logs procedures executed completely and documented

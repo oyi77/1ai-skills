@@ -1,7 +1,7 @@
 ---
 name: implementing-rbac-hardening-for-kubernetes
 description: Harden Kubernetes Role-Based Access Control by implementing least-privilege policies, auditing role bindings,
-  eliminating cluster-admin sprawl, and integrating external identity providers.
+  eliminating cluster-admin sprawl, and integrating external identity providers. Use when working with implementing rbac hardening for kubernetes.
 domain: cybersecurity
 subdomain: container-security
 tags:
