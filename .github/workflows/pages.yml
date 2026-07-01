@@ -35,11 +35,7 @@ jobs:
           python-version: '3.12'
 
       - name: Generate site from SKILLS.json
-        run: |
-          python3 --version
-          python3 scripts/generate-site.py 2>&1
-          echo "Generated files:"
-          ls -la docs/*.html
+        run: python3 scripts/generate-site.py
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
