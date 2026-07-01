@@ -36,6 +36,10 @@ Living Off the Land Binaries, Scripts, and Libraries (LOLBAS) are legitimate sys
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting living off the land with lolbas"
+- "Detect Living Off the Land Binaries (LOLBins/LOLBAS) abuse including certutil, r"
+
 
 - When investigating security incidents that require detecting living off the land with lolbas
 - When building detection rules or threat hunting queries for this domain

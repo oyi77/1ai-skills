@@ -34,6 +34,10 @@ Wazuh is an open-source SIEM and XDR platform for endpoint monitoring, threat de
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing endpoint detection with wazuh"
+- "Deploy and configure Wazuh SIEM/XDR for endpoint detection including agent manag"
+
 
 - When deploying or configuring implementing endpoint detection with wazuh capabilities in your environment
 - When establishing security controls aligned to compliance requirements

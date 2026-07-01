@@ -27,6 +27,10 @@ Kubernetes penetration testing systematically evaluates cluster security by simu
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing kubernetes penetration testing"
+- "Kubernetes penetration testing systematically evaluates cluster security by simu"
+
 
 - When conducting security assessments that involve performing kubernetes penetration testing
 - When following incident response procedures for related security events

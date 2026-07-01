@@ -30,6 +30,10 @@ metadata:
 # Self Improving
 
 ## When to Use
+**Trigger phrases:**
+- "self improving"
+- "Self-reflection + Self-criticism + Auto-learning from corrections + Self-organiz"
+
 
 User corrects you or points out mistakes. You complete significant work and want to evaluate the outcome. You notice something in your own output that could be better. Knowledge should compound over time without manual maintenance.
 

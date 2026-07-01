@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for hunting for persistence mechanisms in windows. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for persistence mechanisms in windows"
+- "Systematically hunt for adversary persistence mechanisms across Windows endpoint"
+
 
 - During periodic proactive threat hunts for dormant backdoors
 - After an incident to identify all persistence mechanisms an attacker planted

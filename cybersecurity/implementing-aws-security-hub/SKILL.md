@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for implementing aws security hub. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing aws security hub"
+- "This skill covers deploying AWS Security Hub as a centralized cloud security pos"
+
 
 - When establishing a centralized security findings dashboard across multiple AWS accounts
 - When enabling automated compliance checks against CIS, PCI-DSS, NIST, or AWS Foundational Security Best Practices

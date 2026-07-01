@@ -40,6 +40,10 @@ Business Email Compromise (BEC) is a sophisticated fraud scheme where attackers 
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting business email compromise"
+- "Business Email Compromise (BEC) is a sophisticated fraud scheme where attackers "
+
 
 - When investigating security incidents that require detecting business email compromise
 - When building detection rules or threat hunting queries for this domain

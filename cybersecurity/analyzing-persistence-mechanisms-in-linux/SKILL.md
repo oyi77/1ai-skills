@@ -41,6 +41,10 @@ Adversaries establish persistence on Linux systems through crontab jobs, systemd
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing persistence mechanisms in linux"
+- "Detect and analyze Linux persistence mechanisms including crontab entries, syste"
+
 
 - When investigating security incidents that require analyzing persistence mechanisms in linux
 - When building detection rules or threat hunting queries for this domain

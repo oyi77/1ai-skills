@@ -26,6 +26,10 @@ Vanilla Extract is a zero-runtime CSS-in-JS library. Styles are written in TypeS
 - Works with Vite, Webpack, esbuild, Next.js
 
 ## When to Use
+**Trigger phrases:**
+- "vanilla extract"
+- "Vanilla Extract zero-runtime CSS-in-JS — type-safe styles, Sprinkles, Recipes, t"
+
 
 - Want CSS-in-JS without runtime performance cost
 - Need type-safe styles in TypeScript projects

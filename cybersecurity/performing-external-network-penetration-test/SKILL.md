@@ -32,6 +32,10 @@ An external network penetration test simulates a real-world attacker targeting a
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing external network penetration test"
+- "Conduct a comprehensive external network penetration test to identify vulnerabil"
+
 
 - When conducting security assessments that involve performing external network penetration test
 - When following incident response procedures for related security events

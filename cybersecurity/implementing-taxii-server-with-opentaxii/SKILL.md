@@ -30,6 +30,10 @@ TAXII (Trusted Automated eXchange of Intelligence Information) is an OASIS stand
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing taxii server with opentaxii"
+- "Deploy and configure an OpenTAXII server to share and consume STIX-formatted cyb"
+
 
 - When deploying or configuring implementing taxii server with opentaxii capabilities in your environment
 - When establishing security controls aligned to compliance requirements

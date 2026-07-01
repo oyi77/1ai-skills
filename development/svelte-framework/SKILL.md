@@ -26,6 +26,10 @@ Build high-performance web apps with Svelte 5 (runes reactivity) and SvelteKit (
 - Adapter-based deployment (Vercel, Node, Cloudflare)
 
 ## When to Use
+**Trigger phrases:**
+- "svelte framework"
+- "Svelte and SvelteKit development — runes, stores, server-side rendering, form ac"
+
 
 - Building fast, lightweight web applications
 - SSR/SSG with minimal JavaScript

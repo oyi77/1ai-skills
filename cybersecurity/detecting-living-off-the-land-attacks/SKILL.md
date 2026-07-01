@@ -33,6 +33,10 @@ nist_csf:
 Cybersecurity skill for detecting living off the land attacks. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting living off the land attacks"
+- "Detect abuse of legitimate Windows binaries (LOLBins) used for living off the la"
+
 
 - Building detection rules for SIEM or EDR platforms to catch LOLBin abuse in real time
 - Investigating alerts where legitimate system binaries appear in unexpected execution contexts

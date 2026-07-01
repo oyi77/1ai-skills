@@ -25,6 +25,10 @@ End-to-end competitive analysisautomation that combines product research, video 
 Enables end-to-end competitive analysis automation that combines product research, video analysis, and storyboard extraction into a single workflow. Accepts product search criteria and returns complete competitive analysis with viral product insights, video breakdowns, and content replication guides.
 
 ## When to Use
+**Trigger phrases:**
+- "kalodata research automation"
+- "End-to-end competitive analysis automation that combines product research, video"
+
 
 - User wants comprehensive competitive analysis for TikTok Shop products
 - User needs end-to-end research: products → videos → storyboards → actionable insights

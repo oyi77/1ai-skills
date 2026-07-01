@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for implementing siem correlation rules for apt. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing siem correlation rules for apt"
+- "Write multi-event correlation rules that detect APT lateral movement by chaining"
+
 
 - When deploying or configuring implementing siem correlation rules for apt capabilities in your environment
 - When establishing security controls aligned to compliance requirements

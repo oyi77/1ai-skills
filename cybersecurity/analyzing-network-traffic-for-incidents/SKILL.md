@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for analyzing network traffic for incidents. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing network traffic for incidents"
+- "Analyzes network traffic captures and flow data to identify adversary activity d"
+
 
 - SIEM alerts on anomalous network traffic patterns requiring deeper investigation
 - C2 beaconing is suspected and needs confirmation through packet-level analysis

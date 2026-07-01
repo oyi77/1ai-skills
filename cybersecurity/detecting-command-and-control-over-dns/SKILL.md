@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for detecting command and control over dns. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting command and control over dns"
+- "Detects command-and-control (C2) communications tunneled through DNS protocol in"
+
 
 - Investigating suspected DNS tunneling used for C2 communication or data exfiltration
 - Analyzing DNS query logs for signs of encoded payloads in subdomain strings

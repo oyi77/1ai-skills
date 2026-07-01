@@ -184,6 +184,10 @@ BytePlus (Seedance T2V)
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "content kingdom"
+- "\n  Content Kingdom Orchestrator — the BRAIN that coordinates all 12 content pha"
+
 
 - Running the full daily content pipeline (`--pipeline`)
 - Running a specific phase only (`--phase research`, `--phase schedule`, etc.)

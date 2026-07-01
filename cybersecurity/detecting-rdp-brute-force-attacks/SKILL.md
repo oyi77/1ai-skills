@@ -28,6 +28,10 @@ RDP brute force attacks target Windows Remote Desktop Protocol services by attem
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting rdp brute force attacks"
+- "Detect RDP brute force attacks by analyzing Windows Security Event Logs for fail"
+
 
 - When investigating security incidents that require detecting rdp brute force attacks
 - When building detection rules or threat hunting queries for this domain

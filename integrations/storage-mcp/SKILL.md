@@ -34,6 +34,10 @@ MCP servers enabling AI agents to interact with cloud storage services. Automate
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "storage mcp"
+- "MCP servers for cloud storage"
+
 
 - Automated backups
 - File synchronization
@@ -393,7 +397,7 @@ Refer to the skill overview for detailed usage instructions.
 
 - [database-mcp](../database-mcp/SKILL.md) - Database operations
 - [cloud-mcp](../cloud-mcp/SKILL.md) - Cloud infrastructure
-- [automation](../automation/) - Workflow automation
+- automation - Workflow automation
 
 ## How to Use
 

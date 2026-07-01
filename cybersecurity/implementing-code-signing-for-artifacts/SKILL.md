@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for implementing code signing for artifacts. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing code signing for artifacts"
+- "This skill covers implementing code signing for build artifacts to ensure integr"
+
 
 - When establishing artifact integrity verification to prevent supply chain tampering
 - When compliance requires cryptographic proof that build artifacts are authentic and unmodified

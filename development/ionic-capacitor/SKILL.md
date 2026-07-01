@@ -27,6 +27,10 @@ Ionic Framework combined with Capacitor enables building cross-platform mobile a
 - Push notifications via Firebase Cloud Messaging
 
 ## When to Use
+**Trigger phrases:**
+- "ionic capacitor"
+- "Ionic + Capacitor hybrid mobile apps — Angular/React/Vue, native plugins, PWA, A"
+
 
 - Team has strong web development skills
 - Need to ship to iOS + Android + Web quickly

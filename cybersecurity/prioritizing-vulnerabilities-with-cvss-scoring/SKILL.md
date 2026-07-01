@@ -27,6 +27,10 @@ The Common Vulnerability Scoring System (CVSS) is the industry standard framewor
 
 
 ## When to Use
+**Trigger phrases:**
+- "prioritizing vulnerabilities with cvss scoring"
+- "The Common Vulnerability Scoring System (CVSS) is the industry standard framewor"
+
 
 - When managing security operations that require prioritizing vulnerabilities with cvss scoring
 - When improving security program maturity and operational processes

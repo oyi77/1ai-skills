@@ -33,6 +33,10 @@ DNSTwist is a domain name permutation engine that generates similar-looking doma
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing typosquatting domains with dnstwist"
+- "Detect typosquatting, homograph phishing, and brand impersonation domains using "
+
 
 - When investigating security incidents that require analyzing typosquatting domains with dnstwist
 - When building detection rules or threat hunting queries for this domain

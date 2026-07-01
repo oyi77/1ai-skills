@@ -26,6 +26,10 @@ Production Node.js patterns — framework selection (Express vs Fastify), stream
 - Health checks and readiness probes
 
 ## When to Use
+**Trigger phrases:**
+- "nodejs patterns"
+- "Node"
+
 
 - Building REST APIs and backend services
 - Processing large files or data streams

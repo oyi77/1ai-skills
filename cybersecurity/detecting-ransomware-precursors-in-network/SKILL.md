@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for detecting ransomware precursors in network. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting ransomware precursors in network"
+- "Detects early-stage ransomware indicators in network traffic before encryption b"
+
 
 - Building detection rules for pre-ransomware network activity (the average time from Cobalt Strike deployment to encryption is 17 minutes)
 - Monitoring for initial access broker (IAB) indicators that precede ransomware deployment

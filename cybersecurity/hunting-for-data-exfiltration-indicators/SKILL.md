@@ -40,6 +40,10 @@ nist_csf:
 Cybersecurity skill for hunting for data exfiltration indicators. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for data exfiltration indicators"
+- "Hunt for data exfiltration through network traffic analysis, detecting unusual d"
+
 
 - When hunting for data theft in compromised environments
 - After detecting unusual outbound data volumes or patterns

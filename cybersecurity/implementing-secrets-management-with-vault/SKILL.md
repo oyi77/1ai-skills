@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for implementing secrets management with vault. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing secrets management with vault"
+- "This skill covers deploying HashiCorp Vault for centralized secrets management a"
+
 
 - When applications store database passwords, API keys, or certificates in environment variables or config files
 - When migrating from static long-lived credentials to dynamic short-lived secrets

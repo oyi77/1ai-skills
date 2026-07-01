@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for performing aws privilege escalation assessment. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing aws privilege escalation assessment"
+- "Performing authorized privilege escalation assessments in AWS environments to id"
+
 
 - When conducting authorized penetration testing of AWS IAM configurations
 - When validating that IAM policies follow the principle of least privilege

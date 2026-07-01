@@ -47,6 +47,10 @@ nist_csf:
 Cybersecurity skill for performing ai driven osint correlation. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing ai driven osint correlation"
+- "Use AI and LLM-based reasoning to correlate findings across multiple OSINT sourc"
+
 
 - You have collected raw OSINT data from multiple tools and sources but need to identify connections, contradictions, and patterns across them.
 - You need to build a unified intelligence profile for a target entity (person, organization, or infrastructure) from fragmented data.

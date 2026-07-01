@@ -30,6 +30,10 @@ persona:
 # Gateway Doctor
 
 ## When to Use
+**Trigger phrases:**
+- "Brendan Gregg"
+- "Diagnose and fix MCP gateway routing issues, health checks, and server connectiv"
+
 
 - Periodic health checks (1 min interval)
 - User reports lag

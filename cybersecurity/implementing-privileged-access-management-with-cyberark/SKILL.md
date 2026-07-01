@@ -27,6 +27,10 @@ Deploy CyberArk Privileged Access Management to discover, vault, rotate, and mon
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing privileged access management with cyberark"
+- "Deploy CyberArk Privileged Access Management to discover, vault, rotate, and mon"
+
 
 - When deploying or configuring implementing privileged access management with cyberark capabilities in your environment
 - When establishing security controls aligned to compliance requirements

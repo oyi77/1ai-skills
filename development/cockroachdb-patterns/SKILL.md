@@ -27,6 +27,10 @@ CockroachDB is a distributed SQL database that's wire-compatible with PostgreSQL
 - Online schema changes
 
 ## When to Use
+**Trigger phrases:**
+- "cockroachdb patterns"
+- "CockroachDB distributed SQL — PostgreSQL compatible, serializable isolation, geo"
+
 
 - Need distributed SQL with PostgreSQL compatibility
 - Multi-region deployments with data locality requirements

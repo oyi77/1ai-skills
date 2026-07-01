@@ -25,6 +25,10 @@ Integrate with Atlassian Jira for project management automation — create/updat
 - Webhook event handling for real-time sync
 
 ## When to Use
+**Trigger phrases:**
+- "jira api"
+- "Jira API integration — issue management, sprint planning, workflow automation, c"
+
 
 - Automating bug/issue creation from monitoring alerts
 - Syncing tasks between Jira and other project tools

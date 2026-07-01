@@ -39,6 +39,10 @@ nist_csf:
 Cybersecurity skill for deploying cloudflare access for zero trust. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "deploying cloudflare access for zero trust"
+- "Deploying Cloudflare Access with Cloudflare Tunnel to provide zero trust access "
+
 
 - When replacing VPN infrastructure with identity-aware application access using Cloudflare One
 - When exposing self-hosted internal applications through Cloudflare Tunnel without opening inbound ports

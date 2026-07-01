@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for configuring network segmentation with vlans. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "configuring network segmentation with vlans"
+- "Designs and implements VLAN-based network segmentation on managed switches to is"
+
 
 - Segmenting an enterprise network into isolated security zones (corporate, servers, DMZ, guest, IoT)
 - Meeting compliance requirements (PCI-DSS, HIPAA, SOC 2) that mandate network isolation for sensitive data

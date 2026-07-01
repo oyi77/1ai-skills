@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for integrating sast into github actions pipeline. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "integrating sast into github actions pipeline"
+- "This skill covers integrating Static Application Security Testing (SAST) tools—C"
+
 
 - When development teams need automated code-level vulnerability detection on every pull request
 - When security teams require consistent SAST enforcement across all repositories in an organization

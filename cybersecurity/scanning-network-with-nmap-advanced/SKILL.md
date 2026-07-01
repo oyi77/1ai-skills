@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for scanning network with nmap advanced. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "scanning network with nmap advanced"
+- "Performs advanced network reconnaissance using Nmap''s scripting engine, timing "
+
 
 - Performing comprehensive asset discovery across large enterprise networks during authorized assessments
 - Enumerating service versions and configurations to identify outdated or vulnerable software

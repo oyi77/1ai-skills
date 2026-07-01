@@ -64,6 +64,10 @@ Create and sell digital products powered by AI - including prompt libraries, wor
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "ai digital products"
+- "Create and sell AI-powered digital products"
+
 
 - Create passive income
 - Leverage AI expertise
@@ -343,8 +347,8 @@ After completing this skill, confirm:
 ## Related Skills
 
 - [writing-skills](../../content/writing-skills/SKILL.md) - Create content
-- [automation](../automation/) - Build workflows
-- [marketing](../marketing/) - Promote products
+- automation - Build workflows
+- marketing - Promote products
 
 ## Process
 

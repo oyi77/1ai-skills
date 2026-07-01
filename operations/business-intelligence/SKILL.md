@@ -13,6 +13,10 @@ tags:
 # Business Intelligence
 
 ## When to Use
+**Trigger phrases:**
+- "business intelligence"
+- "Define and track KPIs across revenue, marketing, and content performance with we"
+
 
 - Generating business reports and dashboards
 - Analyzing business metrics and KPIs

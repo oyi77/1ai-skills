@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for hunting for beaconing with frequency analysis. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for beaconing with frequency analysis"
+- "Identify command-and-control beaconing patterns in network traffic by applying s"
+
 
 - When proactively searching for compromised endpoints calling back to C2 infrastructure
 - After threat intelligence reports indicate active C2 frameworks targeting your sector

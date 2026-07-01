@@ -28,6 +28,10 @@ Harbor is an open-source container registry that provides security features incl
 
 
 ## When to Use
+**Trigger phrases:**
+- "securing container registry with harbor"
+- "Harbor is an open-source container registry that provides security features incl"
+
 
 - When deploying or configuring securing container registry with harbor capabilities in your environment
 - When establishing security controls aligned to compliance requirements

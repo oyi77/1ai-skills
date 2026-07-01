@@ -31,6 +31,10 @@ ARP poisoning (ARP spoofing) is a Layer 2 attack where an adversary sends falsif
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting arp poisoning in network traffic"
+- "Detect and prevent ARP spoofing attacks using ARPWatch, Dynamic ARP Inspection, "
+
 
 - When investigating security incidents that require detecting arp poisoning in network traffic
 - When building detection rules or threat hunting queries for this domain

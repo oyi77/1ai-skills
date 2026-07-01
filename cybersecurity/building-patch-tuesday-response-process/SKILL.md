@@ -28,6 +28,10 @@ Microsoft releases security updates on the second Tuesday of each month ("Patch 
 
 
 ## When to Use
+**Trigger phrases:**
+- "building patch tuesday response process"
+- "Establish a structured operational process to triage, test, and deploy Microsoft"
+
 
 - When deploying or configuring building patch tuesday response process capabilities in your environment
 - When establishing security controls aligned to compliance requirements

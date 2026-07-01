@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for performing oauth scope minimization review. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing oauth scope minimization review"
+- "Performs OAuth 2"
+
 
 - Annual or quarterly review of third-party application OAuth permissions
 - After a security incident involving compromised OAuth tokens or unauthorized data access

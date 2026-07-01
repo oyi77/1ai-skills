@@ -44,6 +44,10 @@ nist_csf:
 Cybersecurity skill for detecting deepfake audio in vishing attacks. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting deepfake audio in vishing attacks"
+- "Detects AI-generated deepfake audio used in voice phishing (vishing) attacks by "
+
 
 - A suspected vishing call used an AI-cloned executive voice to authorize a wire transfer
 - Security operations received a voicemail that sounds like the CEO but the tone seems off

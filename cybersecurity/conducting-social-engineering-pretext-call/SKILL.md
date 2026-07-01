@@ -41,6 +41,10 @@ A pretext call (vishing) is a social engineering technique where an attacker imp
 
 
 ## When to Use
+**Trigger phrases:**
+- "conducting social engineering pretext call"
+- "Plan and execute authorized vishing (voice phishing) pretext calls to assess emp"
+
 
 - When conducting security assessments that involve conducting social engineering pretext call
 - When following incident response procedures for related security events

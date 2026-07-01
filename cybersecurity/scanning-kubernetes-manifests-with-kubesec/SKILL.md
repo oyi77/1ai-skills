@@ -31,6 +31,10 @@ Kubesec is an open-source security risk analysis tool developed by ControlPlane 
 
 
 ## When to Use
+**Trigger phrases:**
+- "scanning kubernetes manifests with kubesec"
+- "Perform security risk analysis on Kubernetes resource manifests using Kubesec to"
+
 
 - When conducting security assessments that involve scanning kubernetes manifests with kubesec
 - When following incident response procedures for related security events

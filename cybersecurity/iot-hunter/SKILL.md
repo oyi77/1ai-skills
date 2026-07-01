@@ -18,6 +18,10 @@ tags:
 Cybersecurity skill for iot hunter. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "iot hunter"
+- "IoT and embedded device security testing — firmware analysis, hardware interface"
+
 
 - Security assessment of IoT/embedded devices
 - Firmware reverse engineering

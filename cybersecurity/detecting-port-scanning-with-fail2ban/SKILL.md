@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for detecting port scanning with fail2ban. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting port scanning with fail2ban"
+- "Configures Fail2ban with custom filters and actions to detect port scanning acti"
+
 
 - Automatically blocking IP addresses that perform port scans against internet-facing servers
 - Defending SSH, HTTP, FTP, and other services against brute force attacks with automated IP banning

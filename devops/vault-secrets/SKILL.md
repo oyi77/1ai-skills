@@ -25,6 +25,10 @@ Vault secures, stores, and controls access to tokens, passwords, certificates, A
 - Audit logging
 
 ## When to Use
+**Trigger phrases:**
+- "vault secrets"
+- "HashiCorp Vault — secrets management, dynamic secrets, encryption, auth methods,"
+
 
 - Application secrets management
 - Dynamic short-lived credentials

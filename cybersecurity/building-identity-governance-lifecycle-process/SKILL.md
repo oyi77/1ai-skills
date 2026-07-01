@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for building identity governance lifecycle process. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "building identity governance lifecycle process"
+- "Builds comprehensive identity governance and lifecycle management processes incl"
+
 
 - Organization lacks automated joiner-mover-leaver (JML) processes for identity management
 - Access provisioning is manual and takes days, creating productivity loss and security gaps

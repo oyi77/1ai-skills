@@ -42,6 +42,10 @@ Build, scale, and monetize a portfolio of niche content websites. Solo operators
 - Scale from 1 site to 20+ with consistent quality
 
 ## When to Use
+**Trigger phrases:**
+- "digital real estate"
+- "Build and manage a portfolio of niche content sites generating affiliate and AdS"
+
 
 - Building passive income through content sites
 - Expanding existing portfolio to new niches

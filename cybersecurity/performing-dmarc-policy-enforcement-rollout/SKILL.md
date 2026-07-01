@@ -29,6 +29,10 @@ Domain-based Message Authentication, Reporting and Conformance (DMARC) is the co
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing dmarc policy enforcement rollout"
+- "Execute a phased DMARC rollout from p=none monitoring through p=quarantine to p="
+
 
 - When conducting security assessments that involve performing dmarc policy enforcement rollout
 - When following incident response procedures for related security events

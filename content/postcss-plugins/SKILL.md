@@ -26,6 +26,10 @@ PostCSS is a CSS transformation tool with a rich plugin ecosystem. Autoprefixer 
 - Source map support and watch mode
 
 ## When to Use
+**Trigger phrases:**
+- "postcss plugins"
+- "PostCSS plugin ecosystem — Autoprefixer, cssnano, nesting, custom plugins, prese"
+
 
 - Need vendor prefix automation
 - Want CSS minification as part of build pipeline

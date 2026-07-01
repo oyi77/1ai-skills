@@ -30,6 +30,10 @@ Ransomware groups operating under double-extortion models maintain data leak sit
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing ransomware leak site intelligence"
+- "Monitor and analyze ransomware group data leak sites (DLS) to track victim posti"
+
 
 - When investigating security incidents that require analyzing ransomware leak site intelligence
 - When building detection rules or threat hunting queries for this domain

@@ -33,6 +33,10 @@ Windows LNK (shortcut) files and Jump Lists are critical forensic artifacts that
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing lnk file and jump list artifacts"
+- "Analyze Windows LNK shortcut files and Jump List artifacts to establish evidence"
+
 
 - When investigating security incidents that require analyzing lnk file and jump list artifacts
 - When building detection rules or threat hunting queries for this domain

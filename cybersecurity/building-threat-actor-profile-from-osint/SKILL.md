@@ -30,6 +30,10 @@ Threat actor profiling using OSINT systematically gathers and analyzes publicly 
 
 
 ## When to Use
+**Trigger phrases:**
+- "building threat actor profile from osint"
+- "Build comprehensive threat actor profiles using open-source intelligence (OSINT)"
+
 
 - When deploying or configuring building threat actor profile from osint capabilities in your environment
 - When establishing security controls aligned to compliance requirements

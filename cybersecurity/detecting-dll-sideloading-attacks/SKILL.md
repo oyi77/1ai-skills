@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for detecting dll sideloading attacks. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting dll sideloading attacks"
+- "Detect DLL side-loading attacks where adversaries place malicious DLLs alongside"
+
 
 - When investigating potential DLL hijacking in enterprise environments
 - After EDR alerts on unsigned DLLs loaded by signed applications

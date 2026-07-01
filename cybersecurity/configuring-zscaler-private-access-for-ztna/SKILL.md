@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for configuring zscaler private access for ztna. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "configuring zscaler private access for ztna"
+- "Configuring Zscaler Private Access (ZPA) to replace traditional VPN with zero tr"
+
 
 - When replacing traditional VPN concentrators with application-level zero trust access
 - When providing remote users secure access to internal applications without network-level connectivity

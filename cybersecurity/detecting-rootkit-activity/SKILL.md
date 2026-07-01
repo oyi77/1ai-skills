@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for detecting rootkit activity. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting rootkit activity"
+- "Detects rootkit presence on compromised systems by identifying hidden processes,"
+
 
 - System shows signs of compromise but standard tools (Task Manager, netstat) show nothing abnormal
 - Antivirus/EDR detects rootkit signatures but cannot identify the specific hiding mechanism

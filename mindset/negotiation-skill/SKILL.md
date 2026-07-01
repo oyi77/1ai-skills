@@ -18,6 +18,10 @@ tags:
 Mindset skill for negotiation skill. Builds capability through deliberate practice and structured frameworks.
 
 ## When to Use
+**Trigger phrases:**
+- "negotiation skill"
+- "Prepare for, conduct, and close negotiations"
+
 
 - Acquiring a company or assets
 - Forming partnerships or joint ventures

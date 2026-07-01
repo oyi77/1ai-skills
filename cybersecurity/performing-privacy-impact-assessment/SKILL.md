@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for performing privacy impact assessment. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing privacy impact assessment"
+- "Automates the Privacy Impact Assessment (PIA) workflow including data flow mappi"
+
 
 - When launching a new system, product, or processing activity that handles personal data
 - When conducting GDPR Article 35 Data Protection Impact Assessments (DPIAs)

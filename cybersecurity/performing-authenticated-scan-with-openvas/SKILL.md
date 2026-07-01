@@ -30,6 +30,10 @@ OpenVAS (Open Vulnerability Assessment Scanner) is the scanner component of the 
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing authenticated scan with openvas"
+- "Configure and execute authenticated vulnerability scans using OpenVAS/Greenbone "
+
 
 - When conducting security assessments that involve performing authenticated scan with openvas
 - When following incident response procedures for related security events

@@ -29,6 +29,10 @@ Vite is a next-generation frontend build tool that leverages native ES modules f
 - Dev server proxy for API requests
 
 ## When to Use
+**Trigger phrases:**
+- "vite config"
+- "Vite build tool configuration — plugins, SSR, library mode, environment variable"
+
 
 - Starting new frontend projects (React, Vue, Svelte, Solid)
 - Building npm libraries for distribution

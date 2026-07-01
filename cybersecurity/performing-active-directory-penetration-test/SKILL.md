@@ -31,6 +31,10 @@ Active Directory (AD) penetration testing targets the central identity and acces
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing active directory penetration test"
+- "Conduct a focused Active Directory penetration test to enumerate domain objects,"
+
 
 - When conducting security assessments that involve performing active directory penetration test
 - When following incident response procedures for related security events

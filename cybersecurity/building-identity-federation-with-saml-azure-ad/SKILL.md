@@ -31,6 +31,10 @@ Identity federation enables users authenticated by one identity provider to acce
 
 
 ## When to Use
+**Trigger phrases:**
+- "building identity federation with saml azure ad"
+- "Establish SAML 2"
+
 
 - When deploying or configuring building identity federation with saml azure ad capabilities in your environment
 - When establishing security controls aligned to compliance requirements

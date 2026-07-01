@@ -32,6 +32,10 @@ Zeek (formerly Bro) is an open-source network analysis framework that operates a
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing network traffic analysis with zeek"
+- "Deploy Zeek network security monitor to capture, parse, and analyze network traf"
+
 
 - When conducting security assessments that involve performing network traffic analysis with zeek
 - When following incident response procedures for related security events

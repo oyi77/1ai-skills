@@ -26,6 +26,10 @@ Covenant is a collaborative .NET C2 framework for red teamers that provides a Sw
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing red team with covenant"
+- "Conduct red team operations using the Covenant C2 framework for authorized adver"
+
 
 - When conducting security assessments that involve performing red team with covenant
 - When following incident response procedures for related security events

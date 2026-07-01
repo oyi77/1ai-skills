@@ -33,6 +33,10 @@ AI-powered trending topic monitoring and analysis from 35+ platforms. Cut throug
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "trendradar"
+- "AI-powered trending topic monitoring from 35+ platforms"
+
 
 - Monitor industry trends in real-time
 - Research content topics and viral hooks

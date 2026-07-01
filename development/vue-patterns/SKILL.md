@@ -25,6 +25,10 @@ Vue.js 3 patterns for building modern web applications. Covers Composition API, 
 - Performance optimization (shallowRef, v-memo, lazy components)
 
 ## When to Use
+**Trigger phrases:**
+- "vue patterns"
+- "Vue"
+
 
 - Building Vue 3 applications or migrating from Vue 2
 - Designing state management with Pinia

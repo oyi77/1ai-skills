@@ -25,6 +25,10 @@ Drizzle ORM is a lightweight TypeScript ORM that feels like writing SQL. It prov
 - Support for PostgreSQL, MySQL, SQLite, Turso, D1
 
 ## When to Use
+**Trigger phrases:**
+- "drizzle orm"
+- "Drizzle ORM — type-safe SQL, schema definitions, migrations, queries, relations "
+
 
 - Building TypeScript/Node.js backends with SQL databases
 - Need type safety without heavy ORM overhead

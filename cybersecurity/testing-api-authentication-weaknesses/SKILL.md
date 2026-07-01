@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for testing api authentication weaknesses. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing api authentication weaknesses"
+- "Tests API authentication mechanisms for weaknesses including broken token valida"
+
 
 - Assessing REST API authentication mechanisms for bypass vulnerabilities before production deployment
 - Testing JWT token implementation for common weaknesses (none algorithm, key confusion, missing expiration)

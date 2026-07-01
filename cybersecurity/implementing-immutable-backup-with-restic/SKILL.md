@@ -41,6 +41,10 @@ nist_csf:
 Cybersecurity skill for implementing immutable backup with restic. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing immutable backup with restic"
+- "Implements immutable backup strategy using restic with S3-compatible storage and"
+
 
 - Establishing ransomware-resistant backup infrastructure with cryptographic integrity verification
 - Implementing 3-2-1-1-0 backup strategy where the extra 1 is an immutable copy

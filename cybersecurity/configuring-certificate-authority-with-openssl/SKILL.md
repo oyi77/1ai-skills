@@ -26,6 +26,10 @@ A Certificate Authority (CA) is the trust anchor in a PKI hierarchy, responsible
 
 
 ## When to Use
+**Trigger phrases:**
+- "configuring certificate authority with openssl"
+- "A Certificate Authority (CA) is the trust anchor in a PKI hierarchy, responsible"
+
 
 - When deploying or configuring configuring certificate authority with openssl capabilities in your environment
 - When establishing security controls aligned to compliance requirements

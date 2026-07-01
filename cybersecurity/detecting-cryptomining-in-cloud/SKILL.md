@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for detecting cryptomining in cloud. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting cryptomining in cloud"
+- "This skill teaches security teams how to detect and respond to unauthorized cryp"
+
 
 - When cloud billing alerts indicate unexpected compute cost spikes
 - When GuardDuty generates CryptoCurrency or Impact finding types

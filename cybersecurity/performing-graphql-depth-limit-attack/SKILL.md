@@ -31,6 +31,10 @@ GraphQL depth limit attacks exploit the recursive nature of GraphQL schemas to c
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing graphql depth limit attack"
+- "Execute and test GraphQL depth limit attacks using deeply nested recursive queri"
+
 
 - When conducting security assessments that involve performing graphql depth limit attack
 - When following incident response procedures for related security events

@@ -27,6 +27,10 @@ Envelope encryption is a strategy where data is encrypted with a data encryption
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing envelope encryption with aws kms"
+- "Envelope encryption is a strategy where data is encrypted with a data encryption"
+
 
 - When deploying or configuring implementing envelope encryption with aws kms capabilities in your environment
 - When establishing security controls aligned to compliance requirements

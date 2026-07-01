@@ -16,6 +16,10 @@ tags:
 Mindset skill for public speaking. Builds capability through deliberate practice and structured frameworks.
 
 ## When to Use
+**Trigger phrases:**
+- "public speaking"
+- "Deliver engaging talks and presentations using narrative structure, audience ana"
+
 
 - Conference talks (20-45 min)
 - Team presentations and all-hands

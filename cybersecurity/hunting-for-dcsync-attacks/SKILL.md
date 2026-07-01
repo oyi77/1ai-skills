@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for hunting for dcsync attacks. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for dcsync attacks"
+- "Detect DCSync attacks by analyzing Windows Event ID 4662 for unauthorized DS-Rep"
+
 
 - When hunting for DCSync credential theft (MITRE ATT&CK T1003.006)
 - After detecting Mimikatz or similar tools in the environment

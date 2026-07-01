@@ -39,6 +39,10 @@ nist_csf:
 Cybersecurity skill for performing lateral movement detection. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing lateral movement detection"
+- "Detects lateral movement techniques including Pass-the-Hash, PsExec, WMI executi"
+
 
 Use this skill when:
 - SOC teams need to detect attackers pivoting between systems after initial compromise

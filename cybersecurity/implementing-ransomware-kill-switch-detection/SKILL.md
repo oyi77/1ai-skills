@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for implementing ransomware kill switch detection. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing ransomware kill switch detection"
+- "Detects and exploits ransomware kill switch mechanisms including mutex-based exe"
+
 
 - Analyzing a ransomware sample to determine if it contains a kill switch mechanism (mutex, domain, registry)
 - Deploying proactive mutex vaccination across endpoints to prevent known ransomware families from executing

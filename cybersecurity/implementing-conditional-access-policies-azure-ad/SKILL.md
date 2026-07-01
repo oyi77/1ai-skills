@@ -28,6 +28,10 @@ Configure Microsoft Entra ID (Azure AD) Conditional Access policies for zero tru
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing conditional access policies azure ad"
+- "Configure Microsoft Entra ID (Azure AD) Conditional Access policies for zero tru"
+
 
 - When deploying or configuring implementing conditional access policies azure ad capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -17,6 +17,10 @@ tags:
 Mindset skill for stakeholder management. Builds capability through deliberate practice and structured frameworks.
 
 ## When to Use
+**Trigger phrases:**
+- "stakeholder management"
+- "Map, engage, and align stakeholders using the power-interest grid, RACI matrix, "
+
 
 - Managing complex projects with multiple stakeholders
 - Navigating organizational politics or cross-functional initiatives

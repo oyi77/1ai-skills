@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for auditing terraform infrastructure for security. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "auditing terraform infrastructure for security"
+- "Auditing Terraform infrastructure-as-code for security misconfigurations using C"
+
 
 - When integrating security scanning into CI/CD pipelines for Terraform deployments
 - When reviewing Terraform plans and modules for security best practices before applying

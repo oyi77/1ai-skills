@@ -30,6 +30,10 @@ Aqua Security provides Trivy, the world's most popular open-source universal sec
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing aqua security for container scanning"
+- "Deploy Aqua Security's Trivy scanner to detect vulnerabilities, misconfiguration"
+
 
 - When deploying or configuring implementing aqua security for container scanning capabilities in your environment
 - When establishing security controls aligned to compliance requirements

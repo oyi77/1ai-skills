@@ -29,6 +29,10 @@ Scapy is a Python packet manipulation library that enables crafting, sending, sn
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing network packets with scapy"
+- "Craft, send, sniff, and dissect network packets using Scapy for protocol analysi"
+
 
 - When investigating security incidents that require analyzing network packets with scapy
 - When building detection rules or threat hunting queries for this domain

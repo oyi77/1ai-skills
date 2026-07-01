@@ -47,6 +47,10 @@ nist_csf:
 Cybersecurity skill for detecting ai model prompt injection attacks. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting ai model prompt injection attacks"
+- "Detects prompt injection attacks targeting LLM-based applications using a multi-"
+
 
 - Scanning user inputs to LLM-powered applications before they are forwarded to the model
 - Building an input validation layer for chatbots, AI agents, or retrieval-augmented generation (RAG) pipelines

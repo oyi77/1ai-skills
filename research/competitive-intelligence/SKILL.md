@@ -41,6 +41,10 @@ Automated competitive intelligence engine that monitors competitors across multi
 - Alert on critical changes in real-time (pricing drops, new product launches)
 
 ## When to Use
+**Trigger phrases:**
+- "competitive intelligence"
+- "Continuous competitor monitoring — pricing changes, feature launches, job postin"
+
 
 - Setting up competitive monitoring for a new market or product category
 - Weekly strategy review needs current competitor landscape

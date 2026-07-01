@@ -27,6 +27,10 @@ An API gateway is a reverse proxy that sits between clients and backend services
 - Handle circuit breaking and retry logic
 
 ## When to Use
+**Trigger phrases:**
+- "api gateway"
+- "API gateway design — rate limiting, authentication, routing, caching, request tr"
+
 
 - Microservices architecture needing a unified entry point
 - Public APIs requiring authentication, rate limiting, and monitoring

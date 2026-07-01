@@ -26,6 +26,10 @@ End-to-end encryption (E2EE) ensures that only the communicating parties can rea
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing end to end encryption for messaging"
+- "End-to-end encryption (E2EE) ensures that only the communicating parties can rea"
+
 
 - When deploying or configuring implementing end to end encryption for messaging capabilities in your environment
 - When establishing security controls aligned to compliance requirements

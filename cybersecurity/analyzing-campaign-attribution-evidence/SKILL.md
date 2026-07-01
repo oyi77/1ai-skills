@@ -29,6 +29,10 @@ Campaign attribution analysis involves systematically evaluating evidence to det
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing campaign attribution evidence"
+- "Campaign attribution analysis involves systematically evaluating evidence to det"
+
 
 - When investigating security incidents that require analyzing campaign attribution evidence
 - When building detection rules or threat hunting queries for this domain

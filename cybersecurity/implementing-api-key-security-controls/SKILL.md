@@ -36,6 +36,10 @@ nist_csf:
 Cybersecurity skill for implementing api key security controls. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing api key security controls"
+- "Implements secure API key generation, storage, rotation, and revocation controls"
+
 
 - Designing secure API key generation with sufficient entropy and identifiable prefixes for leak detection
 - Implementing server-side API key hashing (never storing keys in plaintext) with SHA-256 or bcrypt

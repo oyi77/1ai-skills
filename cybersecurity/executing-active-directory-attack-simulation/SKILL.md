@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for executing active directory attack simulation. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "executing active directory attack simulation"
+- "Executes authorized attack simulations against Active Directory environments to "
+
 
 - Assessing the security of an Active Directory domain and forest against common and advanced attack techniques
 - Identifying attack paths from low-privilege domain user to Domain Admin using privilege relationship analysis

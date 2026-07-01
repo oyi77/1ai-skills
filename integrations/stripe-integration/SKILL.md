@@ -14,6 +14,10 @@ tags:
 # Stripe Integration
 
 ## When to Use
+**Trigger phrases:**
+- "stripe integration"
+- "Integrate Stripe for payments, subscriptions, invoicing, and billing"
+
 
 - When adding payment processing to an application
 - When implementing subscription billing or recurring payments

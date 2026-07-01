@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for implementing cloud security posture management. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing cloud security posture management"
+- "Implementing Cloud Security Posture Management (CSPM) to continuously monitor mu"
+
 
 - When establishing continuous security monitoring across AWS, Azure, and GCP environments
 - When compliance requirements demand automated posture assessment against CIS, SOC 2, or PCI DSS

@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for extracting memory artifacts with rekall. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "extracting memory artifacts with rekall"
+- "Uses Rekall memory forensics framework to analyze memory dumps for process hollo"
+
 
 - When performing authorized security testing that involves extracting memory artifacts with rekall
 - When analyzing malware samples or attack artifacts in a controlled environment

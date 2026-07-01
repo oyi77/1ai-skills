@@ -29,6 +29,10 @@ CSS frameworks and methodologies provide structured approaches to styling web ap
 - CSS animations and transitions
 
 ## When to Use
+**Trigger phrases:**
+- "css frameworks"
+- "CSS framework patterns — Tailwind CSS, Bootstrap, PostCSS, Sass, CSS Modules, CS"
+
 
 - **Tailwind**: Rapid prototyping, design systems, utility-first teams
 - **Bootstrap**: Quick admin panels, legacy projects, grid-heavy layouts

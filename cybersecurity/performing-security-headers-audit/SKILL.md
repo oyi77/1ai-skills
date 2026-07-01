@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing security headers audit. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing security headers audit"
+- "Auditing HTTP security headers including CSP, HSTS, X-Frame-Options, and cookie "
+
 
 - During authorized web application security assessments as a standard configuration review
 - When evaluating browser-level protections against XSS, clickjacking, and data leakage

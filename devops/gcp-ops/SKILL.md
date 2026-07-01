@@ -26,6 +26,10 @@ Google Cloud operations covering Compute Engine, Cloud Run for containers, BigQu
 - Cost management and committed use
 
 ## When to Use
+**Trigger phrases:**
+- "gcp ops"
+- "Google Cloud operations — Compute Engine, Cloud Run, BigQuery, Cloud Functions, "
+
 
 - GCP infrastructure management
 - Data analytics with BigQuery

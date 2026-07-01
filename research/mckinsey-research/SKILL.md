@@ -101,7 +101,7 @@ After collecting, confirm the inputs back to the user before proceeding.
 
 Run all 12 prompts sequentially, filling in the collected variables. Each prompt output should be a complete, standalone section.
 
-Load the full prompts from [references/prompts.md](references/prompts.md) and replace all {VARIABLE} placeholders with the user's inputs.
+Load the full prompts from references/prompts.md and replace all {VARIABLE} placeholders with the user's inputs.
 
 **The 12 analyses in order:**
 1. Market Sizing & TAM Analysis

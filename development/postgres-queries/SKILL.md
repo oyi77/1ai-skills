@@ -24,6 +24,10 @@ PostgreSQL query optimization and schema design. Covers EXPLAIN ANALYZE, index t
 - Configure connection pooling (PgBouncer, Supabase Pooler)
 
 ## When to Use
+**Trigger phrases:**
+- "postgres queries"
+- "PostgreSQL optimization — query tuning, schema design, indexing strategies, and "
+
 
 - Queries taking >100ms that should be <10ms
 - Database CPU or I/O is a bottleneck

@@ -26,6 +26,10 @@ Fine-tune pre-trained models for specific tasks. Covers LoRA/QLoRA for efficient
 - Deploy fine-tuned models via vLLM or Ollama
 
 ## When to Use
+**Trigger phrases:**
+- "model fine tuning"
+- "Fine-tune LLMs and ML models — LoRA, QLoRA, PEFT, Hugging Face"
+
 
 - Need a model specialized for a specific domain (legal, medical, code)
 - Want better performance on specific tasks than general models

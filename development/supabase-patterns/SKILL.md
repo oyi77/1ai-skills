@@ -24,6 +24,10 @@ Supabase-specific patterns for building secure, real-time applications. Covers R
 - Use Supabase Storage for file uploads
 
 ## When to Use
+**Trigger phrases:**
+- "supabase patterns"
+- "Supabase patterns — Row Level Security, edge functions, real-time subscriptions,"
+
 
 - Building multi-tenant SaaS with Supabase
 - Need real-time features (live updates, presence)

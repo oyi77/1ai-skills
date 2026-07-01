@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for analyzing uefi bootkit persistence. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing uefi bootkit persistence"
+- "Analyzes UEFI bootkit persistence mechanisms including firmware implants in SPI "
+
 
 - A compromised system re-establishes C2 communication after OS reinstallation or disk replacement
 - Secure Boot has been tampered with, disabled, or shows unexpected Machine Owner Key (MOK) enrollment

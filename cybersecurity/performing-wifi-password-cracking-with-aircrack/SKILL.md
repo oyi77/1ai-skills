@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing wifi password cracking with aircrack. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing wifi password cracking with aircrack"
+- "Captures WPA/WPA2 handshakes and performs offline password cracking using aircra"
+
 
 - Assessing the strength of WPA/WPA2/WPA3 passphrases during authorized wireless penetration tests
 - Testing whether wireless networks are using weak or default passwords that can be cracked offline

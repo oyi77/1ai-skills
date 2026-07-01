@@ -25,6 +25,10 @@ ArgoCD is a declarative GitOps continuous delivery tool for Kubernetes. Monitors
 - SSO, RBAC, and audit logging
 
 ## When to Use
+**Trigger phrases:**
+- "argocd gitops"
+- "ArgoCD GitOps — declarative continuous delivery, application sync, drift detecti"
+
 
 - GitOps-based Kubernetes deployments
 - Multi-cluster or multi-environment management

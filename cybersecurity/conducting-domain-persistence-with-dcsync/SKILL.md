@@ -37,6 +37,10 @@ DCSync is an attack technique that abuses the Microsoft Directory Replication Se
 
 
 ## When to Use
+**Trigger phrases:**
+- "conducting domain persistence with dcsync"
+- "Perform DCSync attacks to replicate Active Directory credentials and establish d"
+
 
 - When conducting security assessments that involve conducting domain persistence with dcsync
 - When following incident response procedures for related security events

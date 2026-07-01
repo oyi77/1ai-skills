@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for testing for host header injection. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing for host header injection"
+- "Test web applications for HTTP Host header injection vulnerabilities to identify"
+
 - When testing password reset functionality for token theft via host manipulation
 - During assessment of web caching behavior influenced by Host header values
 - When testing virtual host routing and server-side request processing

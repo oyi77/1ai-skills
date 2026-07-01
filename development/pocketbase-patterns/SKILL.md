@@ -28,6 +28,10 @@ PocketBase is an open-source backend consisting of an embedded SQLite database w
 - Go extensions for advanced customization
 
 ## When to Use
+**Trigger phrases:**
+- "pocketbase patterns"
+- "PocketBase — single-file backend with SQLite, realtime subscriptions, auth, file"
+
 
 - Rapid prototyping and MVPs
 - Small to medium applications

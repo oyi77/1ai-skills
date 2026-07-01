@@ -29,6 +29,10 @@ esbuild is an extremely fast JavaScript/TypeScript bundler and minifier written 
 - Library building (ESM, CJS, IIFE)
 
 ## When to Use
+**Trigger phrases:**
+- "esbuild bundler"
+- "esbuild bundler configuration — blazing fast JS/TS bundling, plugins, watch mode"
+
 
 - Need fastest possible build times
 - Building npm libraries

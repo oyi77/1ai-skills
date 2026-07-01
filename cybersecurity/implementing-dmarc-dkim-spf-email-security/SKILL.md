@@ -29,6 +29,10 @@ SPF, DKIM, and DMARC form the three pillars of email authentication. Together th
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing dmarc dkim spf email security"
+- "SPF, DKIM, and DMARC form the three pillars of email authentication"
+
 
 - When deploying or configuring implementing dmarc dkim spf email security capabilities in your environment
 - When establishing security controls aligned to compliance requirements

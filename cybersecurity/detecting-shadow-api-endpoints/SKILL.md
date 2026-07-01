@@ -31,6 +31,10 @@ Shadow APIs are API endpoints operating within an organization's environment tha
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting shadow api endpoints"
+- "Discover and inventory shadow API endpoints that operate outside documented spec"
+
 
 - When investigating security incidents that require detecting shadow api endpoints
 - When building detection rules or threat hunting queries for this domain

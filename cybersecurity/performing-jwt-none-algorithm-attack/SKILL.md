@@ -31,6 +31,10 @@ The JWT none algorithm attack exploits a vulnerability in JSON Web Token librari
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing jwt none algorithm attack"
+- "Execute and test the JWT none algorithm attack to bypass signature verification "
+
 
 - When conducting security assessments that involve performing jwt none algorithm attack
 - When following incident response procedures for related security events

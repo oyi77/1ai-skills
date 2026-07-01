@@ -38,6 +38,10 @@ nist_csf:
 Cybersecurity skill for implementing azure defender for cloud. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing azure defender for cloud"
+- "Implementing Microsoft Defender for Cloud to enable cloud security posture manag"
+
 
 - When enabling comprehensive security monitoring across Azure subscriptions
 - When implementing cloud workload protection for VMs, containers, SQL, storage, and Key Vault

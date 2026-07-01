@@ -26,6 +26,10 @@ nist_csf:
 Cybersecurity skill for detecting sql injection via waf logs. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting sql injection via waf logs"
+- "Analyze WAF (ModSecurity/AWS WAF/Cloudflare) logs to detect SQL injection attack"
+
 
 - When investigating security incidents that require detecting sql injection via waf logs
 - When building detection rules or threat hunting queries for this domain

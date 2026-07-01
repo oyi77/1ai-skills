@@ -26,6 +26,10 @@ React Native development with Expo for cross-platform mobile apps. Covers manage
 - Deploy OTA updates without app store review
 
 ## When to Use
+**Trigger phrases:**
+- "react native expo"
+- "React Native with Expo — managed workflow, native modules, navigation, and app s"
+
 
 - Building a mobile app for both iOS and Android
 - Need fast development with hot reload

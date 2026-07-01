@@ -30,6 +30,10 @@ The GCP Organization Policy Service provides centralized and programmatic contro
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing gcp organization policy constraints"
+- "Implement GCP Organization Policy constraints to enforce security guardrails acr"
+
 
 - When deploying or configuring implementing gcp organization policy constraints capabilities in your environment
 - When establishing security controls aligned to compliance requirements

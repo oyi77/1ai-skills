@@ -42,6 +42,10 @@ targeting remote systems.
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting malicious scheduled tasks with sysmon"
+- "Detect malicious scheduled task creation and modification using Sysmon Event IDs"
+
 
 - When investigating security incidents that require detecting malicious scheduled tasks with sysmon
 - When building detection rules or threat hunting queries for this domain

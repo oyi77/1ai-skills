@@ -29,6 +29,10 @@ Adversary-in-the-Middle (AiTM) phishing attacks use reverse-proxy infrastructure
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing adversary in the middle phishing detection"
+- "Detect and respond to Adversary-in-the-Middle (AiTM) phishing attacks that use r"
+
 
 - When conducting security assessments that involve performing adversary in the middle phishing detection
 - When following incident response procedures for related security events

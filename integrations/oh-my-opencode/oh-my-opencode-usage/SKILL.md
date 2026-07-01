@@ -20,6 +20,10 @@ tags:
 This skill provides practical guidance for daily use of oh-my-opencode, covering common workflows, commands, session management, and productivity patterns.
 
 ## When to Use
+**Trigger phrases:**
+- "oh my opencode usage"
+- "Daily usage patterns for oh-my-opencode including workflow commands, session man"
+
 
 - **Starting new project** – When initializing OpenCode and oh-my-opencode for a new project
 - **Daily development** – When using OpenCode for regular coding tasks, debugging, or code review

@@ -40,6 +40,10 @@ The CISA Zero Trust Maturity Model (ZTMM) Version 2.0, released in April 2023, p
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing cisa zero trust maturity model"
+- "Implement the CISA Zero Trust Maturity Model v2"
+
 
 - When deploying or configuring implementing cisa zero trust maturity model capabilities in your environment
 - When establishing security controls aligned to compliance requirements

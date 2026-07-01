@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for implementing sigstore for software signing. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing sigstore for software signing"
+- "Implements Sigstore-based software signing and verification using Cosign keyless"
+
 
 - Signing container images and software artifacts without managing long-lived cryptographic keys
 - Establishing verifiable provenance for build outputs in CI/CD pipelines using OIDC identity binding

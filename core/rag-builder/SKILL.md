@@ -24,6 +24,10 @@ Retrieval-Augmented Generation (RAG) is the standard pattern for grounding LLMs 
 - Evaluate RAG quality with RAGAS metrics
 
 ## When to Use
+**Trigger phrases:**
+- "rag builder"
+- "RAG pipeline design — document chunking, embedding strategies, retrieval optimiz"
+
 
 - Building a chatbot over your documentation or knowledge base
 - Need LLM answers grounded in factual, up-to-date data

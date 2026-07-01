@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for implementing api gateway security controls. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing api gateway security controls"
+- "Implements security controls at the API gateway layer including authentication e"
+
 
 - Deploying a centralized authentication and authorization layer for microservice APIs
 - Implementing rate limiting, throttling, and quota management across all API endpoints

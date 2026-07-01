@@ -40,6 +40,10 @@ Timesketch is an open-source collaborative forensic timeline analysis tool devel
 
 
 ## When to Use
+**Trigger phrases:**
+- "building incident timeline with timesketch"
+- "Build collaborative forensic incident timelines using Timesketch to ingest, norm"
+
 
 - When deploying or configuring building incident timeline with timesketch capabilities in your environment
 - When establishing security controls aligned to compliance requirements

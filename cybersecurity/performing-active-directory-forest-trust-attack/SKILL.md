@@ -29,6 +29,10 @@ Active Directory forest trusts enable authentication across organizational bound
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing active directory forest trust attack"
+- "Enumerate and audit Active Directory forest trust relationships using impacket f"
+
 
 - When conducting security assessments that involve performing active directory forest trust attack
 - When following incident response procedures for related security events

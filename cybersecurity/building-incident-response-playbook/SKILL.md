@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for building incident response playbook. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "building incident response playbook"
+- "Designs and documents structured incident response playbooks that define step-by"
+
 
 - Establishing or maturing an incident response program from scratch
 - Documenting procedures for a new incident type after a novel attack

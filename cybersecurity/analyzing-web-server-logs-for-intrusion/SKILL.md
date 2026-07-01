@@ -26,6 +26,10 @@ nist_csf:
 Cybersecurity skill for analyzing web server logs for intrusion. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing web server logs for intrusion"
+- "Parse Apache and Nginx access logs to detect SQL injection attempts, local file "
+
 
 - When investigating security incidents that require analyzing web server logs for intrusion
 - When building detection rules or threat hunting queries for this domain

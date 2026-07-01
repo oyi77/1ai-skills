@@ -33,6 +33,10 @@ The NTFS Master File Table ($MFT) is the central metadata repository for every f
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing mft for deleted file recovery"
+- "Analyze the NTFS Master File Table ($MFT) to recover metadata and content of del"
+
 
 - When investigating security incidents that require analyzing mft for deleted file recovery
 - When building detection rules or threat hunting queries for this domain

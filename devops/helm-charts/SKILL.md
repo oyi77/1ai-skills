@@ -26,6 +26,10 @@ Helm is the Kubernetes package manager. Charts are templated Kubernetes manifest
 - Chart testing and repository publishing
 
 ## When to Use
+**Trigger phrases:**
+- "helm charts"
+- "Helm chart development — templates, values, hooks, dependencies, chart testing, "
+
 
 - Packaging Kubernetes applications for distribution
 - Multi-environment deployments with value overrides

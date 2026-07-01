@@ -31,6 +31,10 @@ Kubernetes RBAC regulates access to cluster resources based on roles assigned to
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing rbac hardening for kubernetes"
+- "Harden Kubernetes Role-Based Access Control by implementing least-privilege poli"
+
 
 - When deploying or configuring implementing rbac hardening for kubernetes capabilities in your environment
 - When establishing security controls aligned to compliance requirements

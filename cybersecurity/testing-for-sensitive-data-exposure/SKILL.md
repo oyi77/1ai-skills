@@ -36,6 +36,10 @@ nist_csf:
 Cybersecurity skill for testing for sensitive data exposure. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing for sensitive data exposure"
+- "Identifying sensitive data exposure vulnerabilities including API key leakage, P"
+
 
 - During authorized penetration tests when assessing data protection controls
 - When evaluating applications for GDPR, PCI DSS, HIPAA, or other data protection compliance

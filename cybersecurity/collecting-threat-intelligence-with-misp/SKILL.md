@@ -30,6 +30,10 @@ MISP (Malware Information Sharing Platform) is an open-source threat intelligenc
 
 
 ## When to Use
+**Trigger phrases:**
+- "collecting threat intelligence with misp"
+- "MISP (Malware Information Sharing Platform) is an open-source threat intelligenc"
+
 
 - When managing security operations that require collecting threat intelligence with misp
 - When improving security program maturity and operational processes

@@ -57,6 +57,10 @@ Deploy AI voice agents to handle incoming calls, schedule appointments, qualify 
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "voice ai agent"
+- "AI voice agent for handling incoming calls, appointment scheduling, lead qualifi"
+
 
 - Answer incoming calls 24/7
 - Schedule appointments automatically
@@ -346,7 +350,7 @@ After completing this skill, confirm:
 ## Related Skills
 
 - [ai-lead-generation](../../sales/ai-lead-generation/SKILL.md) - Lead qualification
-- [sales](../sales/) - Close deals
+- sales - Close deals
 - [customer-support](../../sales/customer-support/SKILL.md) - Support automation
 
 ## Process

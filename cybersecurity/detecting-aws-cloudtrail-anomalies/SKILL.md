@@ -28,6 +28,10 @@ AWS CloudTrail records API calls across AWS services. This skill covers querying
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting aws cloudtrail anomalies"
+- "Detect unusual API call patterns in AWS CloudTrail logs using boto3, statistical"
+
 
 - When investigating security incidents that require detecting aws cloudtrail anomalies
 - When building detection rules or threat hunting queries for this domain

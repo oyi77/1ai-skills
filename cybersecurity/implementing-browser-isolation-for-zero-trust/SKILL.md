@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for implementing browser isolation for zero trust. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing browser isolation for zero trust"
+- "Deploys remote browser isolation (RBI) as a core component of a Zero Trust archi"
+
 
 - When deploying remote browser isolation as part of a Zero Trust security architecture
 - When protecting users from zero-day browser exploits and drive-by downloads

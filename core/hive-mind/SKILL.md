@@ -88,7 +88,7 @@ npx skills list | grep <skill-name>
 ```
 
 ### 2. Add to `AGENTS.md` (Protocol)
-Copy [PROTOCOL.md](PROTOCOL.md).
+Copy PROTOCOL.md.
 
 ## Usage
 *   **Set:** `python {baseDir}/run.py --action set --key "user.timezone" --value "UTC"`

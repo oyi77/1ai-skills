@@ -27,6 +27,10 @@ Jenkins pipelines define CI/CD workflows as code using Groovy-based DSL. Support
 - Blue Ocean visual pipeline editor integration
 
 ## When to Use
+**Trigger phrases:**
+- "jenkins pipelines"
+- "Jenkins pipeline as code — Declarative/Scripted pipelines, shared libraries, age"
+
 
 - CI/CD for Java, Node.js, Python, or polyglot projects
 - Complex multi-stage build/test/deploy workflows

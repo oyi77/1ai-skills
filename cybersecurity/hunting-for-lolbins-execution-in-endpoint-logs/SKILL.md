@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for hunting for lolbins execution in endpoint logs. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for lolbins execution in endpoint logs"
+- "Hunt for adversary abuse of Living Off the Land Binaries (LOLBins) by analyzing "
+
 
 - When hunting for fileless attack techniques that abuse built-in Windows binaries
 - After threat intelligence indicates LOLBin-based campaigns targeting your industry

@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for scanning containers with trivy in cicd. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "scanning containers with trivy in cicd"
+- "This skill covers integrating Aqua Security''s Trivy scanner into CI/CD pipeline"
+
 
 - When building Docker container images in CI/CD and needing automated vulnerability scanning before registry push
 - When establishing quality gates that prevent images with critical or high CVEs from reaching production

@@ -27,6 +27,10 @@ Nikto is an open-source web server and web application scanner that tests agains
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing web application scanning with nikto"
+- "Nikto is an open-source web server and web application scanner that tests agains"
+
 
 - When conducting security assessments that involve performing web application scanning with nikto
 - When following incident response procedures for related security events

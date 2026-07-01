@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for detecting ransomware encryption behavior. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting ransomware encryption behavior"
+- "Detects ransomware encryption activity in real time using entropy analysis, file"
+
 
 - Building or tuning a behavioral detection layer for ransomware that catches unknown/zero-day variants
 - Monitoring file servers and endpoints for mass encryption activity that evades signature-based detection

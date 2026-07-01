@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for testing for xml injection vulnerabilities. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing for xml injection vulnerabilities"
+- "Test web applications for XML injection vulnerabilities including XXE, XPath inj"
+
 - When testing applications that process XML input (SOAP APIs, XML-RPC, file uploads)
 - During penetration testing of applications with XML parsers
 - When assessing SAML-based authentication implementations

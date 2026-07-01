@@ -13,6 +13,10 @@ tags:
 # Xlsx Creator
 
 ## When to Use
+**Trigger phrases:**
+- "xlsx creator"
+- "Create, edit, and analyze Excel spreadsheets programmatically"
+
 
 - When generating Excel reports from data
 - When creating financial models or budgets

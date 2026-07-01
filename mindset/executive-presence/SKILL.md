@@ -17,6 +17,10 @@ tags:
 Mindset skill for executive presence. Builds capability through deliberate practice and structured frameworks.
 
 ## When to Use
+**Trigger phrases:**
+- "executive presence"
+- "Command rooms, communicate with gravitas, and project confidence"
+
 
 - Board meetings, investor pitches, all-hands
 - High-stakes presentations or negotiations

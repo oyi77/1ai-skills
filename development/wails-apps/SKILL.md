@@ -28,6 +28,10 @@ Wails is a Go framework for building desktop applications with web frontends. It
 - Auto-update support
 
 ## When to Use
+**Trigger phrases:**
+- "wails apps"
+- "Wails desktop app development — Go backend, web frontend, native bindings, small"
+
 
 - Want Go's performance and ecosystem for backend logic
 - Need single-binary distribution (no installer required)

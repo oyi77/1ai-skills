@@ -27,6 +27,10 @@ Docker Bench for Security is an open-source script that checks dozens of common 
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing docker bench security assessment"
+- "Docker Bench for Security is an open-source script that checks dozens of common "
+
 
 - When conducting security assessments that involve performing docker bench security assessment
 - When following incident response procedures for related security events

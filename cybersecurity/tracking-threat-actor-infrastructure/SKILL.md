@@ -31,6 +31,10 @@ Threat actor infrastructure tracking involves monitoring and mapping adversary-c
 
 
 ## When to Use
+**Trigger phrases:**
+- "tracking threat actor infrastructure"
+- "Threat actor infrastructure tracking involves monitoring and mapping adversary-c"
+
 
 - When managing security operations that require tracking threat actor infrastructure
 - When improving security program maturity and operational processes

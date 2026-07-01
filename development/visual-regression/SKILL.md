@@ -24,6 +24,10 @@ Detect unintended visual changes by comparing screenshots against baselines. Use
 - Ignore dynamic content (animations, timestamps)
 
 ## When to Use
+**Trigger phrases:**
+- "visual regression"
+- "Visual regression testing — screenshot comparison, baseline management, and UI c"
+
 
 - After UI changes — verify nothing broke visually
 - CSS refactoring — ensure visual parity

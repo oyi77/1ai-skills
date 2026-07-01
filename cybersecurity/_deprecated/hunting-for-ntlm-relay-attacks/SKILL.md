@@ -39,6 +39,10 @@ NTLM relay attacks intercept and forward NTLM authentication messages to gain un
 
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for ntlm relay attacks"
+- "Detect NTLM relay attacks by analyzing Windows Event 4624 logon type 3 with NTLM"
+
 
 - When investigating security incidents that require hunting for ntlm relay attacks
 - When building detection rules or threat hunting queries for this domain

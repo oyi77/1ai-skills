@@ -27,6 +27,10 @@ Kubernetes NetworkPolicies provide pod-level network segmentation by defining in
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing network policies for kubernetes"
+- "Kubernetes NetworkPolicies provide pod-level network segmentation by defining in"
+
 
 - When deploying or configuring implementing network policies for kubernetes capabilities in your environment
 - When establishing security controls aligned to compliance requirements

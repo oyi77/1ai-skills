@@ -16,6 +16,10 @@ tags:
 Mindset skill for mindfulness. Builds capability through deliberate practice and structured frameworks.
 
 ## When to Use
+**Trigger phrases:**
+- "mindfulness"
+- "Practice presence, reduce stress, and improve focus through meditation and aware"
+
 
 - Reducing stress and anxiety
 - Improving focus and concentration

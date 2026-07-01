@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for analyzing slack space and file system artifacts. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing slack space and file system artifacts"
+- "Examine file system slack space, MFT entries, USN journal, and alternate data st"
+
 - When searching for hidden or residual data in file system slack space
 - For analyzing NTFS Master File Table (MFT) entries for deleted file metadata
 - When reconstructing file operations from the USN Change Journal

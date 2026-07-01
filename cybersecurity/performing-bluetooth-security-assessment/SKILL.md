@@ -28,6 +28,10 @@ The agent uses bleak's asyncio API to discover nearby BLE devices, connect to ta
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing bluetooth security assessment"
+- "Assess Bluetooth Low Energy device security by scanning, enumerating GATT servic"
+
 
 - When conducting security assessments that involve performing bluetooth security assessment
 - When following incident response procedures for related security events

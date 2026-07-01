@@ -30,6 +30,10 @@ A SOC escalation matrix defines how security incidents move through the organiza
 
 
 ## When to Use
+**Trigger phrases:**
+- "building soc escalation matrix"
+- "Build a structured SOC escalation matrix defining severity tiers, response SLAs,"
+
 
 - When deploying or configuring building soc escalation matrix capabilities in your environment
 - When establishing security controls aligned to compliance requirements

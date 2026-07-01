@@ -38,6 +38,10 @@ Microsoft Outlook PST (Personal Storage Table) and OST (Offline Storage Table) f
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing outlook pst for email forensics"
+- "Analyze Microsoft Outlook PST and OST files for email forensic evidence includin"
+
 
 - When investigating security incidents that require analyzing outlook pst for email forensics
 - When building detection rules or threat hunting queries for this domain

@@ -31,6 +31,10 @@ The Stakeholder-Specific Vulnerability Categorization (SSVC) framework, develope
 
 
 ## When to Use
+**Trigger phrases:**
+- "triaging vulnerabilities with ssvc framework"
+- "Triage and prioritize vulnerabilities using CISA's Stakeholder-Specific Vulnerab"
+
 
 - When managing security operations that require triaging vulnerabilities with ssvc framework
 - When improving security program maturity and operational processes

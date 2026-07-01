@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for configuring identity aware proxy with google iap. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "configuring identity aware proxy with google iap"
+- "Configuring Google Cloud Identity-Aware Proxy (IAP) to enforce per-request ident"
+
 
 - When protecting Google Cloud applications (App Engine, Cloud Run, GKE, Compute Engine) with identity-based access
 - When implementing context-aware access requiring device posture and location verification

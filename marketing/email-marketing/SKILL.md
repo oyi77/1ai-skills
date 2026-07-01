@@ -56,6 +56,10 @@ persona:
 Complete email marketing automation for customer nurturing. Create campaigns, send newsletters, build drip sequences, and track performance. Essential for 1-man company lead nurturing and customer retention.
 
 ## When to Use
+**Trigger phrases:**
+- "email marketing"
+- "Create and send email campaigns, newsletters, and drip sequences"
+
 
 - Send newsletters
 - Nurture leads with drip campaigns

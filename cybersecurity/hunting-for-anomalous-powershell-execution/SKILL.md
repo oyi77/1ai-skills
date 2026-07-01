@@ -37,6 +37,10 @@ and fileless attack techniques even when the attacker uses obfuscation layers.
 
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for anomalous powershell execution"
+- "Hunt for malicious PowerShell activity by analyzing Script Block Logging (Event "
+
 
 - When investigating security incidents that require hunting for anomalous powershell execution
 - When building detection rules or threat hunting queries for this domain

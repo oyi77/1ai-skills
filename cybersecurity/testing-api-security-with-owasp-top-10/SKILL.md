@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for testing api security with owasp top 10. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing api security with owasp top 10"
+- "Systematically assessing REST and GraphQL API endpoints against the OWASP API Se"
+
 
 - During authorized API penetration testing engagements
 - When assessing REST, GraphQL, or gRPC APIs for security vulnerabilities

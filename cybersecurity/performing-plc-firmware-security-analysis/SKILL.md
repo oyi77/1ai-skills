@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for performing plc firmware security analysis. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing plc firmware security analysis"
+- "This skill covers analyzing Programmable Logic Controller (PLC) firmware for sec"
+
 
 - When assessing PLC security as part of an IEC 62443 component security evaluation (IEC 62443-4-2)
 - When validating firmware integrity after a suspected compromise or supply chain attack

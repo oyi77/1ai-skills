@@ -14,6 +14,10 @@ tags:
 # Browser Testing Devtools
 
 ## When to Use
+**Trigger phrases:**
+- "browser testing devtools"
+- "Test web applications using browser DevTools, Playwright, or Puppeteer"
+
 
 - When testing web application user flows
 - When debugging frontend issues with DevTools

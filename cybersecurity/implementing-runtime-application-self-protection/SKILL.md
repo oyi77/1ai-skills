@@ -36,6 +36,10 @@ Runtime Application Self-Protection (RASP) instruments application code at runti
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing runtime application self protection"
+- "Deploy Runtime Application Self-Protection (RASP) agents to detect and block att"
+
 
 - When deploying or configuring implementing runtime application self protection capabilities in your environment
 - When establishing security controls aligned to compliance requirements

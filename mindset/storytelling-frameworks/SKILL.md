@@ -17,6 +17,10 @@ tags:
 Mindset skill for storytelling frameworks. Builds capability through deliberate practice and structured frameworks.
 
 ## When to Use
+**Trigger phrases:**
+- "storytelling frameworks"
+- "Structure narratives for pitches, content, and communication using Hero's Journe"
+
 
 - Crafting pitch decks, keynote presentations, or sales narratives
 - Writing marketing copy, case studies, or content

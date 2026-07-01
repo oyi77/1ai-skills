@@ -36,6 +36,10 @@ MCP servers enabling AI agents to interact with Slack, Discord, and Telegram. Se
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "communication mcp"
+- "MCP servers for team communication"
+
 
 - Send notifications to channels
 - Automate status updates
@@ -383,8 +387,8 @@ Refer to the skill overview for detailed usage instructions.
 ## Related Skills
 
 - [skill-performance-monitor](../../core/skill-performance-monitor/SKILL.md) - Monitoring
-- [automation](../automation/) - Workflow automation
-- [alerting](../alerting/) - Alert management
+- automation - Workflow automation
+- alerting - Alert management
 
 ## How to Use
 

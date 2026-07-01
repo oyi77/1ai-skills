@@ -33,6 +33,10 @@ Perform professional code reviews targeting local changes or remote PRs to impro
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "code reviewer"
+- "Professional code review skill"
+
 
 - Review PRs before merging
 - Review local changes before committing
@@ -259,7 +263,7 @@ After completing a code review, confirm:
 ## Related Skills
 
 - [frontend-design](../../content/frontend-design/SKILL.md) - Design skills
-- [testing](../testing/) - Test coverage
+- testing - Test coverage
 - [skill-performance-monitor](../../core/skill-performance-monitor/SKILL.md) - Track improvements
 
 ## Process

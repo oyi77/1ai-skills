@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for performing log analysis for forensic investigation. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing log analysis for forensic investigation"
+- "Collect, parse, and correlate system, application, and security logs to reconstr"
+
 - When reconstructing the timeline of a security incident from available log sources
 - During post-breach investigation to identify initial access, lateral movement, and exfiltration
 - When correlating events across multiple systems and log sources

@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for configuring suricata for network monitoring. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "configuring suricata for network monitoring"
+- "Deploys and configures Suricata IDS/IPS with Emerging Threats rulesets, EVE JSON"
+
 
 - Deploying a high-performance IDS/IPS capable of multi-threaded packet processing for 10+ Gbps network links
 - Monitoring network traffic with protocol-aware inspection for HTTP, TLS, DNS, SMB, and other protocols

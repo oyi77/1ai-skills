@@ -29,6 +29,10 @@ Storybook is a frontend workshop for building UI components in isolation. It pro
 - Mock providers for context/state
 
 ## When to Use
+**Trigger phrases:**
+- "storybook dev"
+- "Storybook component development — stories, addons, controls, accessibility testi"
+
 
 - Building a component library or design system
 - Developing components before the app is ready

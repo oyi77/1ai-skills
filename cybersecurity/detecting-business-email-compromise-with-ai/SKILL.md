@@ -45,6 +45,10 @@ AI-powered BEC detection uses machine learning, NLP, and behavioral analytics to
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting business email compromise with ai"
+- "Deploy AI and NLP-powered detection systems to identify business email compromis"
+
 
 - When investigating security incidents that require detecting business email compromise with ai
 - When building detection rules or threat hunting queries for this domain

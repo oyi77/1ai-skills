@@ -30,6 +30,10 @@ The Diamond Model of Intrusion Analysis provides a structured framework for anal
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing diamond model analysis"
+- "The Diamond Model of Intrusion Analysis provides a structured framework for anal"
+
 
 - When deploying or configuring implementing diamond model analysis capabilities in your environment
 - When establishing security controls aligned to compliance requirements

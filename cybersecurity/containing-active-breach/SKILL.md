@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for containing active breach. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "containing active breach"
+- "Executes containment strategies to stop active adversary operations and prevent "
+
 
 - A confirmed intrusion is in progress with an active adversary on the network
 - Malware is spreading laterally across endpoints or servers

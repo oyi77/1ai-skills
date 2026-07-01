@@ -30,6 +30,10 @@ Log source onboarding is the systematic process of integrating new data sources 
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing log source onboarding in siem"
+- "Perform structured log source onboarding into SIEM platforms by configuring coll"
+
 
 - When conducting security assessments that involve performing log source onboarding in siem
 - When following incident response procedures for related security events

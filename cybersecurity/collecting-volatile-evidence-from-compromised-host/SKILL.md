@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for collecting volatile evidence from compromised host. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "collecting volatile evidence from compromised host"
+- "Collect volatile forensic evidence from a compromised system following order of "
+
 - Security incident confirmed and compromised host identified
 - Before system isolation, shutdown, or remediation begins
 - Memory-resident malware suspected (fileless attacks)

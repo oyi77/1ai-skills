@@ -30,6 +30,10 @@ This skill analyzes Zeek dns.log files (TSV format) to detect exfiltration indic
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting exfiltration over dns with zeek"
+- "Detect DNS-based data exfiltration by analyzing Zeek dns"
+
 
 - When investigating security incidents that require detecting exfiltration over dns with zeek
 - When building detection rules or threat hunting queries for this domain

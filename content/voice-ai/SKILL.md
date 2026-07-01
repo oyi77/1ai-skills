@@ -27,6 +27,10 @@ Voice AI covers TTS, STT, voice cloning, and real-time conversational agents. In
 - Audio processing (pydub)
 
 ## When to Use
+**Trigger phrases:**
+- "voice ai"
+- "Voice AI — text-to-speech (ElevenLabs, OpenAI TTS), speech-to-text (Whisper), vo"
+
 
 - Voiceovers for videos/podcasts
 - Voice-based customer support

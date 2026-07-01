@@ -28,6 +28,10 @@ Creative is the #1 driver of ad performance. In 2026, 70% of ad auction outcomes
 - Design thumb-stopping creative concepts
 
 ## When to Use
+**Trigger phrases:**
+- "ad creative"
+- "Ad creative production — visual briefs, copy variations, and A/B testing framewo"
+
 
 - Ad performance is declining (creative fatigue)
 - Need to scale ad production without scaling team

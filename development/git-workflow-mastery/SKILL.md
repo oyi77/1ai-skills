@@ -14,6 +14,10 @@ tags:
 # Git Workflow Mastery
 
 ## When to Use
+**Trigger phrases:**
+- "git workflow mastery"
+- "Master Git workflows including branching strategies, interactive rebase, cherry-"
+
 
 - When setting up branching strategy for a team
 - When resolving complex merge conflicts

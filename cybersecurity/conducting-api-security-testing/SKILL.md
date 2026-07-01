@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for conducting api security testing. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "conducting api security testing"
+- "Conducts security testing of REST, GraphQL, and gRPC APIs to identify vulnerabil"
+
 
 - Testing API endpoints for authorization flaws, injection vulnerabilities, and business logic bypasses
 - Assessing the security of microservices architecture where APIs are the primary communication method

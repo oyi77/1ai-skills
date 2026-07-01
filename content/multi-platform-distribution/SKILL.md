@@ -44,6 +44,10 @@ Transform a single piece of content into platform-specific formats, schedule dis
 - Track cross-platform performance in unified dashboard
 
 ## When to Use
+**Trigger phrases:**
+- "multi platform distribution"
+- "One piece of content becomes 10 — blog to Twitter thread, LinkedIn article, YouT"
+
 
 - "I wrote a blog post, distribute it everywhere"
 - "Turn this article into a Twitter thread and LinkedIn post"

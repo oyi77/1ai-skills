@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for implementing zero trust for saas applications. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing zero trust for saas applications"
+- "Implementing zero trust access controls for SaaS applications using CASB, SSPM, "
+
 
 - When securing access to SaaS applications (Microsoft 365, Google Workspace, Salesforce, Slack)
 - When implementing conditional access policies requiring MFA and device compliance for SaaS

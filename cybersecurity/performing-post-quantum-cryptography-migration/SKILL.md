@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for performing post quantum cryptography migration. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing post quantum cryptography migration"
+- "Assesses organizational readiness for post-quantum cryptography migration per NI"
+
 
 - When assessing organizational readiness for the NIST post-quantum cryptography transition
 - When building a cryptographic inventory to identify quantum-vulnerable algorithms across infrastructure

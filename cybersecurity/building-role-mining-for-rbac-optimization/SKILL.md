@@ -29,6 +29,10 @@ Role mining is the process of analyzing existing user-permission assignments to 
 
 
 ## When to Use
+**Trigger phrases:**
+- "building role mining for rbac optimization"
+- "Apply bottom-up and top-down role mining techniques to discover optimal RBAC rol"
+
 
 - When deploying or configuring building role mining for rbac optimization capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -26,6 +26,10 @@ Edge computing with Cloudflare Workers, Vercel Edge Runtime, and Deno Deploy. Ed
 - KV storage at edge
 
 ## When to Use
+**Trigger phrases:**
+- "edge computing"
+- "Edge computing — Cloudflare Workers, Vercel Edge, Deno Deploy"
+
 
 - Low-latency global apps
 - A/B testing at edge

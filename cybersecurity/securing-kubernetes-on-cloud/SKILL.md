@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for securing kubernetes on cloud. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "securing kubernetes on cloud"
+- "This skill covers hardening managed Kubernetes clusters on EKS, AKS, and GKE by "
+
 
 - When deploying new managed Kubernetes clusters in production with security requirements
 - When hardening existing EKS, AKS, or GKE clusters after a security audit or pentest finding

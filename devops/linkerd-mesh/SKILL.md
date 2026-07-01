@@ -26,6 +26,10 @@ Linkerd is a lightweight, security-first service mesh for Kubernetes. Adds autom
 - CLI and dashboard for observability
 
 ## When to Use
+**Trigger phrases:**
+- "linkerd mesh"
+- "Linkerd service mesh — lightweight Kubernetes mesh, mTLS, traffic splitting, obs"
+
 
 - Kubernetes needing simple service mesh
 - Want mTLS without complex configuration

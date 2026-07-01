@@ -33,6 +33,10 @@ nist_csf:
 Cybersecurity skill for securing remote access to ot environment. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "securing remote access to ot environment"
+- "This skill covers implementing secure remote access to OT/ICS environments for o"
+
 
 - When implementing or upgrading remote access architecture for OT environments
 - When onboarding vendors who require remote access to OT systems for support and maintenance

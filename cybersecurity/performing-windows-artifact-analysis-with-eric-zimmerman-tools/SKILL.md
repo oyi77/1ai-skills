@@ -36,6 +36,10 @@ Eric Zimmerman's EZ Tools suite is a collection of open-source forensic utilitie
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing windows artifact analysis with eric zimmerman tools"
+- "Perform comprehensive Windows forensic artifact analysis using Eric Zimmerman's "
+
 
 - When conducting security assessments that involve performing windows artifact analysis with eric zimmerman tools
 - When following incident response procedures for related security events

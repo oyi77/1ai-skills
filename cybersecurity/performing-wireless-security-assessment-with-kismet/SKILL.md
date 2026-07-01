@@ -32,6 +32,10 @@ Kismet is an open-source wireless network detector, packet sniffer, and wireless
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing wireless security assessment with kismet"
+- "Conduct wireless network security assessments using Kismet to detect rogue acces"
+
 
 - When conducting security assessments that involve performing wireless security assessment with kismet
 - When following incident response procedures for related security events

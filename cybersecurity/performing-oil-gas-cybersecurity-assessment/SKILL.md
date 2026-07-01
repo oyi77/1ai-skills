@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for performing oil gas cybersecurity assessment. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing oil gas cybersecurity assessment"
+- "This skill covers conducting cybersecurity assessments specific to oil and gas f"
+
 
 - When conducting a cybersecurity assessment of a refinery, pipeline, or production facility
 - When preparing for TSA Pipeline Security Directive compliance (SD-01, SD-02)

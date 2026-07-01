@@ -46,6 +46,10 @@ Effective brainstorming skill to use before building features. Clarify intent, e
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "brainstorming"
+- "Effective brainstorming skill for features and projects"
+
 
 - Starting a new feature
 - Solving a complex problem

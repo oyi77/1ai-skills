@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for automating ioc enrichment. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "automating ioc enrichment"
+- "Automates the enrichment of raw indicators of compromise with multi-source threa"
+
 
 Use this skill when:
 - Building a SOAR playbook that automatically enriches SIEM alerts with threat intelligence context before routing to analysts

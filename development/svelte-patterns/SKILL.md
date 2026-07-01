@@ -24,6 +24,10 @@ Svelte 5 introduces runes (`$state`, `$derived`, `$effect`) replacing the old re
 - Edge deployment with adapters (Vercel, Cloudflare, Node)
 
 ## When to Use
+**Trigger phrases:**
+- "svelte patterns"
+- "Svelte 5 and SvelteKit development patterns — runes, stores, server-side renderi"
+
 
 - Building reactive UIs with minimal boilerplate
 - Need SSR/SSG with SvelteKit

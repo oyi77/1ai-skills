@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for performing insider threat investigation. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing insider threat investigation"
+- "Investigates insider threat incidents involving employees, contractors, or trust"
+
 
 - DLP (Data Loss Prevention) alerts on large data transfers to personal cloud storage or USB devices
 - User behavior analytics (UBA) detects anomalous access patterns for a user account

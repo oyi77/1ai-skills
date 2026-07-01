@@ -36,6 +36,10 @@ Cyber threat intelligence (CTI) reports from vendors like Mandiant, CrowdStrike,
 
 
 ## When to Use
+**Trigger phrases:**
+- "building attack pattern library from cti reports"
+- "Extract and catalog attack patterns from cyber threat intelligence reports into "
+
 
 - When deploying or configuring building attack pattern library from cti reports capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for implementing policy as code with open policy agent. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing policy as code with open policy agent"
+- "This skill covers implementing Open Policy Agent (OPA) and Gatekeeper for policy"
+
 
 - When enforcing organizational security policies across Kubernetes clusters programmatically
 - When requiring admission control that blocks non-compliant resources from being created

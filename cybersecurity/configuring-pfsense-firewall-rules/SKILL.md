@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for configuring pfsense firewall rules. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "configuring pfsense firewall rules"
+- "Configures pfSense firewall rules, NAT policies, VPN tunnels, and traffic shapin"
+
 
 - Deploying a perimeter or internal firewall to segment and protect network zones (DMZ, internal, guest, IoT)
 - Creating granular access control rules to restrict traffic between VLANs and network segments

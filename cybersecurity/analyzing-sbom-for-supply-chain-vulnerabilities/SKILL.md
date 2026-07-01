@@ -40,6 +40,10 @@ nist_csf:
 Cybersecurity skill for analyzing sbom for supply chain vulnerabilities. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing sbom for supply chain vulnerabilities"
+- "Parses Software Bill of Materials (SBOM) in CycloneDX and SPDX JSON formats to i"
+
 
 - A new regulatory requirement (EO 14028, EU CRA) mandates SBOM analysis for software deliveries
 - Security team needs to assess third-party risk by scanning vendor-provided SBOMs

@@ -42,6 +42,10 @@ PowerShell Empire is a post-exploitation framework consisting of listeners, stag
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing powershell empire artifacts"
+- "Detect PowerShell Empire framework artifacts in Windows event logs by identifyin"
+
 
 - When investigating security incidents that require analyzing powershell empire artifacts
 - When building detection rules or threat hunting queries for this domain

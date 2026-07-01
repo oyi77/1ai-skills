@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for implementing ics firewall with tofino. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing ics firewall with tofino"
+- "Deploy and configure Tofino industrial firewalls from Belden/Hirschmann to prote"
+
 
 - When deploying zone-level firewall protection directly in front of critical PLCs or RTUs
 - When requiring deep packet inspection of industrial protocols (Modbus, EtherNet/IP, OPC, S7comm)

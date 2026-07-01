@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for testing jwt token security. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing jwt token security"
+- "Assessing JSON Web Token implementations for cryptographic weaknesses, algorithm"
+
 
 - During authorized penetration tests when the application uses JWT for authentication or authorization
 - When assessing API security where JWTs are passed as Bearer tokens or in cookies

@@ -11,6 +11,10 @@ tags:
 # Memory System
 
 ## When to Use
+**Trigger phrases:**
+- "memory system"
+- "Store, retrieve, and organize knowledge across sessions using structured memory "
+
 
 - When the task falls within this skill's domain expertise
 - When automated execution saves time over manual work

@@ -62,6 +62,10 @@ Automate posting your Stripe revenue milestones to Twitter/X. Connect your Strip
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "stripe revenue bot"
+- "Automate posting your Stripe revenue milestones to Twitter/X"
+
 
 - Post every new sale automatically
 - Celebrate MRR milestones ($100, $1K, $10K, $100K)
@@ -347,7 +351,7 @@ After completing this skill, confirm:
 
 - [build-in-public](../build-in-public/SKILL.md) - Broader transparency strategy
 - [twitter-automation](../twitter-automation/SKILL.md) - Posting automation
-- [sales](../sales/) - Convert customers
+- sales - Convert customers
 
 ## Process
 

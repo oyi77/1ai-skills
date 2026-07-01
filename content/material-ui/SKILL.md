@@ -25,6 +25,10 @@ Material UI (MUI) is a comprehensive React component library implementing Google
 - CSS-in-JS with Emotion or styled-components
 
 ## When to Use
+**Trigger phrases:**
+- "material ui"
+- "Material UI (MUI) React components — theming, styled engine, data grid, date pic"
+
 
 - Building enterprise React applications with Material Design
 - Need advanced data tables with sorting, filtering, pagination

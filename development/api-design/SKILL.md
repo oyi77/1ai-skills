@@ -27,6 +27,10 @@ Design production REST APIs — resource naming conventions, versioning strategi
 - Authentication patterns (JWT, API keys, OAuth)
 
 ## When to Use
+**Trigger phrases:**
+- "api design"
+- "REST API design — resource modeling, versioning, pagination, error handling, Ope"
+
 
 - Designing a new REST API
 - Refactoring existing API for consistency

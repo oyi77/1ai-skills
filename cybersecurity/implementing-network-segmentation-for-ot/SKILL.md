@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for implementing network segmentation for ot. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing network segmentation for ot"
+- "This skill covers implementing network segmentation in Operational Technology en"
+
 
 - When an OT security assessment reveals a flat network with no segmentation between Purdue levels
 - When implementing IEC 62443 zone/conduit architecture after completing risk assessment (IEC 62443-3-2)

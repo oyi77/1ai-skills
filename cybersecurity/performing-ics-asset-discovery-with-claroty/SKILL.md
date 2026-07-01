@@ -40,6 +40,10 @@ nist_csf:
 Cybersecurity skill for performing ics asset discovery with claroty. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing ics asset discovery with claroty"
+- "Perform comprehensive ICS/OT asset discovery using Claroty xDome platform, lever"
+
 
 - When gaining initial visibility into an OT environment with unknown or poorly documented assets
 - When preparing for an IEC 62443 risk assessment requiring a complete asset inventory

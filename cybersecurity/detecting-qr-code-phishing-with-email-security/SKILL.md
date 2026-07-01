@@ -35,6 +35,10 @@ QR code phishing (quishing) is a rapidly growing attack vector where malicious U
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting qr code phishing with email security"
+- "Detect and prevent QR code phishing (quishing) attacks that bypass traditional e"
+
 
 - When investigating security incidents that require detecting qr code phishing with email security
 - When building detection rules or threat hunting queries for this domain

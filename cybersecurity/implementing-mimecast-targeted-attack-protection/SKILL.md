@@ -28,6 +28,10 @@ Mimecast Targeted Threat Protection (TTP) is a suite of advanced email security 
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing mimecast targeted attack protection"
+- "Deploy Mimecast Targeted Threat Protection including URL Protect, Attachment Pro"
+
 
 - When deploying or configuring implementing mimecast targeted attack protection capabilities in your environment
 - When establishing security controls aligned to compliance requirements

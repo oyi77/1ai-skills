@@ -40,6 +40,10 @@ Build and deploy AI voice agents that handle phone calls, meetings, customer sup
 - A/B test different voice personas and scripts
 
 ## When to Use
+**Trigger phrases:**
+- "voice ai builder"
+- "Build voice-based AI agents for phone calls, meetings, customer support, and sal"
+
 
 - Client wants AI to handle inbound support calls
 - Sales team needs AI-qualified leads before human handoff

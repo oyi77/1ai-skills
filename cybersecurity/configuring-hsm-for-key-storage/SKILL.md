@@ -34,6 +34,10 @@ Hardware Security Modules (HSMs) are tamper-resistant physical devices that safe
 
 
 ## When to Use
+**Trigger phrases:**
+- "configuring hsm for key storage"
+- "Hardware Security Modules (HSMs) are tamper-resistant physical devices that safe"
+
 
 - When deploying or configuring configuring hsm for key storage capabilities in your environment
 - When establishing security controls aligned to compliance requirements

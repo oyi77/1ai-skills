@@ -36,6 +36,10 @@ Credential dumping (MITRE ATT&CK T1003) is a post-exploitation technique where a
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting credential dumping techniques"
+- "Detect LSASS credential dumping, SAM database extraction, and NTDS"
+
 
 - When investigating security incidents that require detecting credential dumping techniques
 - When building detection rules or threat hunting queries for this domain

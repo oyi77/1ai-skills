@@ -30,6 +30,10 @@ Privileged Account Access Review is a critical identity governance process that 
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing privileged account access review"
+- "Conduct systematic reviews of privileged accounts to validate access rights, ide"
+
 
 - When conducting security assessments that involve performing privileged account access review
 - When following incident response procedures for related security events

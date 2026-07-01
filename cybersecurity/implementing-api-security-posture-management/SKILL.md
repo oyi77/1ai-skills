@@ -31,6 +31,10 @@ API Security Posture Management (API-SPM) provides continuous visibility into an
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing api security posture management"
+- "Implement API Security Posture Management to continuously discover, classify, an"
+
 
 - When deploying or configuring implementing api security posture management capabilities in your environment
 - When establishing security controls aligned to compliance requirements

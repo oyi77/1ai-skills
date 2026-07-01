@@ -27,6 +27,10 @@ Pod Security Standards (PSS) define three levels of security policies -- Privile
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing kubernetes pod security standards"
+- "Pod Security Standards (PSS) define three levels of security policies -- Privile"
+
 
 - When deploying or configuring implementing kubernetes pod security standards capabilities in your environment
 - When establishing security controls aligned to compliance requirements

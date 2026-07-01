@@ -40,6 +40,10 @@ nist_csf:
 Cybersecurity skill for detecting modbus protocol anomalies. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting modbus protocol anomalies"
+- "This skill covers detecting anomalies in Modbus/TCP and Modbus RTU communication"
+
 
 - When deploying Modbus-specific intrusion detection in an OT environment
 - When building baseline models for deterministic Modbus polling patterns

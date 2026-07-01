@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for auditing aws s3 bucket permissions. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "auditing aws s3 bucket permissions"
+- "Systematically audit AWS S3 bucket permissions to identify publicly accessible b"
+
 
 - When conducting a security assessment of AWS environments to identify publicly exposed data
 - When onboarding a new AWS account and establishing a security baseline for storage resources

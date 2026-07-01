@@ -27,6 +27,10 @@ Build modern web applications with Vue.js 3 — Composition API reactivity, Pini
 - Testing with Vitest + Vue Test Utils
 
 ## When to Use
+**Trigger phrases:**
+- "vue framework"
+- "Vue"
+
 
 - Building single-page applications (SPAs)
 - Server-side rendered apps (Nuxt 3)

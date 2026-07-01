@@ -36,6 +36,10 @@ MCP servers enabling AI agents to interact with major cloud providers (AWS, GCP,
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "cloud mcp"
+- "MCP servers for cloud infrastructure"
+
 
 - Deploy applications to cloud
 - Manage infrastructure
@@ -386,9 +390,9 @@ Refer to the skill overview for detailed usage instructions.
 
 ## Related Skills
 
-- [automation](../automation/) - Workflow automation
-- [deployment](../deployment/) - Deployment pipelines
-- [security](../security/) - Cloud security
+- automation - Workflow automation
+- deployment - Deployment pipelines
+- security - Cloud security
 
 ## How to Use
 

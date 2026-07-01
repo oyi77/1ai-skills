@@ -40,6 +40,10 @@ nist_csf:
 Cybersecurity skill for performing gcp security assessment with forseti. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing gcp security assessment with forseti"
+- "Performing comprehensive security assessments of Google Cloud Platform environme"
+
 
 - When conducting periodic security assessments of GCP organizations and projects
 - When onboarding new GCP projects and establishing security baselines

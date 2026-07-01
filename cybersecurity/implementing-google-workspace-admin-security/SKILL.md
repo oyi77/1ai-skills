@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for implementing google workspace admin security. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing google workspace admin security"
+- "Implements comprehensive Google Workspace security hardening including admin con"
+
 
 - Deploying or hardening a Google Workspace environment for enterprise use
 - CIS benchmark compliance assessment for Google Workspace configuration

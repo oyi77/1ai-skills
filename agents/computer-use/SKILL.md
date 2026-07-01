@@ -25,6 +25,10 @@ Computer use enables AI agents to interact with desktop applications through scr
 - Implement safety boundaries to prevent destructive actions
 
 ## When to Use
+**Trigger phrases:**
+- "computer use"
+- "Computer use agents — desktop automation, screen reading, mouse/keyboard control"
+
 
 - Automating desktop applications that have no API
 - Testing GUI applications

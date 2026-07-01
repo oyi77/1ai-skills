@@ -29,6 +29,10 @@ SCIM (System for Cross-domain Identity Management) is an open standard protocol 
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing scim provisioning with okta"
+- "Implement automated user provisioning and deprovisioning using SCIM 2"
+
 
 - When deploying or configuring implementing scim provisioning with okta capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -38,6 +38,10 @@ The General Data Protection Regulation (EU) 2016/679 (GDPR) is the EU's comprehe
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing gdpr data protection controls"
+- "The General Data Protection Regulation (EU) 2016/679 (GDPR) is the EU's comprehe"
+
 
 - When deploying or configuring implementing gdpr data protection controls capabilities in your environment
 - When establishing security controls aligned to compliance requirements

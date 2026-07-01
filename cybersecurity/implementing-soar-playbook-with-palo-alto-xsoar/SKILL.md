@@ -35,6 +35,10 @@ Cortex XSOAR (formerly Demisto) is Palo Alto Networks' Security Orchestration, A
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing soar playbook with palo alto xsoar"
+- "Implement automated incident response playbooks in Cortex XSOAR to orchestrate s"
+
 
 - When deploying or configuring implementing soar playbook with palo alto xsoar capabilities in your environment
 - When establishing security controls aligned to compliance requirements

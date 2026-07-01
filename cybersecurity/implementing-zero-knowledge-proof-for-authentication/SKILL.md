@@ -26,6 +26,10 @@ Zero-Knowledge Proofs (ZKPs) allow a prover to demonstrate knowledge of a secret
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing zero knowledge proof for authentication"
+- "Zero-Knowledge Proofs (ZKPs) allow a prover to demonstrate knowledge of a secret"
+
 
 - When deploying or configuring implementing zero knowledge proof for authentication capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -27,6 +27,10 @@ Payment integration patterns for Stripe, Paddle, and Lemon Squeezy. Covers check
 - Customer portal for self-service billing
 
 ## When to Use
+**Trigger phrases:**
+- "payment integration"
+- "Payment platform integration — Stripe, Paddle, Lemon Squeezy"
+
 
 - Adding payments to a SaaS product
 - Implementing subscription billing

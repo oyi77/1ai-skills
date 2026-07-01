@@ -35,6 +35,10 @@ Volatility3 (v2.26.0+, feature parity release May 2025) is the standard framewor
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing memory forensics with volatility3 plugins"
+- "Analyze memory dumps using Volatility3 plugins to detect injected code, rootkits"
+
 
 - When conducting security assessments that involve performing memory forensics with volatility3 plugins
 - When following incident response procedures for related security events

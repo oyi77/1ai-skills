@@ -31,6 +31,10 @@ Amazon GuardDuty is a threat detection service that continuously monitors AWS ac
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting aws guardduty findings automation"
+- "Automate AWS GuardDuty threat detection findings processing using EventBridge an"
+
 
 - When investigating security incidents that require detecting aws guardduty findings automation
 - When building detection rules or threat hunting queries for this domain

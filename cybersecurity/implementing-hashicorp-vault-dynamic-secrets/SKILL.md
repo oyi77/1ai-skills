@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for implementing hashicorp vault dynamic secrets. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing hashicorp vault dynamic secrets"
+- "Implements HashiCorp Vault dynamic secrets engines for database credentials, AWS"
+
 
 - Applications use static database credentials stored in configuration files or environment variables
 - AWS IAM access keys are long-lived and shared across services

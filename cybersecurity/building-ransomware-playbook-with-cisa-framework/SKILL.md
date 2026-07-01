@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for building ransomware playbook with cisa framework. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "building ransomware playbook with cisa framework"
+- "Builds a structured ransomware incident response playbook aligned with the CISA "
+
 
 - An organization needs to create or update its ransomware incident response playbook following CISA guidelines
 - A security team is conducting a ransomware readiness assessment against the CISA StopRansomware framework

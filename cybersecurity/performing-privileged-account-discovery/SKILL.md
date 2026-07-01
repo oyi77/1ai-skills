@@ -27,6 +27,10 @@ Discover and inventory all privileged accounts across enterprise infrastructure 
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing privileged account discovery"
+- "Discover and inventory all privileged accounts across enterprise infrastructure "
+
 
 - When conducting security assessments that involve performing privileged account discovery
 - When following incident response procedures for related security events

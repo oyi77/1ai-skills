@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for analyzing bootkit and rootkit samples. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing bootkit and rootkit samples"
+- "Analyzes bootkit and advanced rootkit malware that infects the Master Boot Recor"
+
 
 - A system shows signs of compromise that persist through OS reinstallation
 - Antivirus and EDR are unable to detect malware despite clear evidence of compromise

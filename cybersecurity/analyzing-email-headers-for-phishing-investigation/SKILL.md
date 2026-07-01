@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for analyzing email headers for phishing investigation. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing email headers for phishing investigation"
+- "Parse and analyze email headers to trace the origin of phishing emails, verify s"
+
 - When investigating a suspected phishing email to determine its true origin
 - For verifying sender authenticity and detecting email spoofing
 - During incident response when a user has clicked a phishing link

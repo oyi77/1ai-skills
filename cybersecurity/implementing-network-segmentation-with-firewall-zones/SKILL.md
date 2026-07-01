@@ -32,6 +32,10 @@ Network segmentation divides a flat network into isolated security zones with fi
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing network segmentation with firewall zones"
+- "Design and implement network segmentation using firewall security zones, VLANs, "
+
 
 - When deploying or configuring implementing network segmentation with firewall zones capabilities in your environment
 - When establishing security controls aligned to compliance requirements

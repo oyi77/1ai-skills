@@ -39,6 +39,10 @@ nist_csf:
 Cybersecurity skill for detecting anomalies in industrial control systems. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting anomalies in industrial control systems"
+- "This skill covers deploying anomaly detection systems for industrial control env"
+
 
 - When deploying continuous monitoring for OT environments that lack intrusion detection
 - When building behavior-based detection to complement signature-based IDS in OT networks

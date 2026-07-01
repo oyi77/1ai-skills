@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for analyzing prefetch files for execution history. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing prefetch files for execution history"
+- "Parse Windows Prefetch files to determine program execution history including ru"
+
 - When determining which programs were executed on a Windows system and when
 - During malware investigations to confirm execution of suspicious binaries
 - For establishing a timeline of application usage during an incident

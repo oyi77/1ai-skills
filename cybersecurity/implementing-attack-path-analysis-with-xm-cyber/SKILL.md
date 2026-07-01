@@ -28,6 +28,10 @@ XM Cyber is a continuous exposure management platform that uses attack graph ana
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing attack path analysis with xm cyber"
+- "Deploy XM Cyber's continuous exposure management platform to map attack paths, i"
+
 
 - When deploying or configuring implementing attack path analysis with xm cyber capabilities in your environment
 - When establishing security controls aligned to compliance requirements

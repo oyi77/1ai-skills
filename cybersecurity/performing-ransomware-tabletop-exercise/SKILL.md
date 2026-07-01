@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing ransomware tabletop exercise. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing ransomware tabletop exercise"
+- "Plans and facilitates tabletop exercises simulating ransomware incidents to test"
+
 
 - Testing organizational ransomware response procedures annually or after major infrastructure changes
 - Validating decision-making processes for ransom payment, regulatory notification, and public disclosure

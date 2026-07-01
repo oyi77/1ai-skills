@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing content security policy bypass. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing content security policy bypass"
+- "Analyze and bypass Content Security Policy implementations to achieve cross-site"
+
 - When XSS is found but execution is blocked by Content Security Policy
 - During web application security assessments to evaluate CSP effectiveness
 - When testing the robustness of CSP against known bypass techniques

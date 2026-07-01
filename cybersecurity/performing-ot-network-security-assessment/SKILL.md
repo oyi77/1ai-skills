@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for performing ot network security assessment. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing ot network security assessment"
+- "This skill covers conducting comprehensive security assessments of Operational T"
+
 
 - When conducting an initial security baseline of an OT/ICS environment for a new client
 - When evaluating the security posture of a facility after an IT/OT convergence initiative

@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for analyzing tls certificate transparency logs. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing tls certificate transparency logs"
+- "Queries Certificate Transparency logs via crt"
+
 
 - When investigating security incidents that require analyzing tls certificate transparency logs
 - When building detection rules or threat hunting queries for this domain

@@ -25,6 +25,10 @@ LakeFS brings Git-like version control to data lakes. It enables branching, comm
 - Compatible with Spark, Presto, Trino, Hive, dbt
 
 ## When to Use
+**Trigger phrases:**
+- "lakefs versioning"
+- "LakeFS data versioning — Git-like branching for data lakes, atomic commits, time"
+
 
 - Needing reproducible data pipelines
 - Experimenting with data changes without risk

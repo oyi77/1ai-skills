@@ -23,6 +23,10 @@ allowed-tools:
 Orchestrate the full trading pipeline from research → strategy → risk → execution with state management. The Orchestrator serves as the central nervous system of autonomous trading, coordinating all team members (Researcher, Strategist, Risk Manager, Executor) to execute complete trading workflows while maintaining state checkpoints, handling failures gracefully, and implementing safe abort procedures when anomalies are detected.
 
 ## When to Use
+**Trigger phrases:**
+- "trading orchestrator"
+- "Coordinate multi-strategy trading workflows by routing signals to the right exec"
+
 
 - Coordinating multiple trading team members in autonomous operation mode
 - Implementing complete trading pipelines with state persistence

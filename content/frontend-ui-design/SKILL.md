@@ -15,6 +15,10 @@ tags:
 # Frontend Ui Design
 
 ## When to Use
+**Trigger phrases:**
+- "frontend ui design"
+- "Design and build production-grade UI components using React, Vue, or vanilla HTM"
+
 
 - When building UI components or pages from scratch
 - When creating a design system or component library

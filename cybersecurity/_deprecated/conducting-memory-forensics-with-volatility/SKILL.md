@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for conducting memory forensics with volatility. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "conducting memory forensics with volatility"
+- "Performs memory forensics analysis using Volatility 3 to extract evidence of mal"
+
 
 - An endpoint has been contained during an active incident and volatile evidence must be preserved
 - EDR alerts suggest process injection or fileless malware that only exists in memory

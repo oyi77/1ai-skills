@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for hunting for living off the land binaries. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for living off the land binaries"
+- "Proactively hunt for adversary abuse of legitimate system binaries (LOLBins) to "
+
 
 - When investigating fileless malware campaigns that bypass traditional AV
 - During proactive threat hunts targeting defense evasion techniques

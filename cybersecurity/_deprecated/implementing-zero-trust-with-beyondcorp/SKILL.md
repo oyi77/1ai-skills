@@ -30,6 +30,10 @@ Google BeyondCorp Enterprise implements the zero trust security model by elimina
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing zero trust with beyondcorp"
+- "Deploy Google BeyondCorp Enterprise zero trust access controls using Identity-Aw"
+
 
 - When deploying or configuring implementing zero trust with beyondcorp capabilities in your environment
 - When establishing security controls aligned to compliance requirements

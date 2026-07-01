@@ -29,6 +29,10 @@ Assess SSL/TLS server configurations using sslyze, a fast Python-based scanning 
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing ssl tls security assessment"
+- "Assess SSL/TLS server configurations using the sslyze Python library to evaluate"
+
 
 - When conducting security assessments that involve performing ssl tls security assessment
 - When following incident response procedures for related security events

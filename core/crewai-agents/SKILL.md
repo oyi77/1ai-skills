@@ -25,6 +25,10 @@ CrewAI is a framework for orchestrating role-playing AI agents that collaborate 
 - Use delegation for agent-to-agent communication
 
 ## When to Use
+**Trigger phrases:**
+- "crewai agents"
+- "CrewAI multi-agent orchestration — agents, tasks, crews, tools, memory, delegati"
+
 
 - Building multi-agent systems for research, writing, or analysis
 - Needing role-specialized agents collaborating on tasks

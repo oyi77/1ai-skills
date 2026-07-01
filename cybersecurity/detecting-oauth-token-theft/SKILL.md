@@ -33,6 +33,10 @@ nist_csf:
 Cybersecurity skill for detecting oauth token theft. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting oauth token theft"
+- "Detects and responds to OAuth token theft and replay attacks in cloud environmen"
+
 
 - Investigating alerts for impossible travel or anomalous token usage in Microsoft Entra ID
 - Responding to a suspected session hijacking or pass-the-cookie attack

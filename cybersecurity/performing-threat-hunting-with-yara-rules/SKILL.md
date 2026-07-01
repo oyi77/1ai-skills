@@ -33,6 +33,10 @@ nist_csf:
 Cybersecurity skill for performing threat hunting with yara rules. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing threat hunting with yara rules"
+- "Use YARA pattern-matching rules to hunt for malware, suspicious files, and indic"
+
 
 - Proactively hunting for unknown malware variants across network shares, endpoints, and email attachments
 - Scanning quarantine directories or sandbox outputs for malware family classification

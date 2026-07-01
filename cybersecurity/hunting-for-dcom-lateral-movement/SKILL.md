@@ -44,6 +44,10 @@ nist_csf:
 Distributed Component Object Model (DCOM) enables remote execution of COM objects across a network using RPC. Adversaries abuse specific DCOM objects -- MMC20.Application (CLSID {49B2791A-B1AE-4C90-9B8E-E860BA07F889}), ShellBrowserWindow (CLSID {C08AFD90-F2A1-11D1-8455-00A0C91F3880}), and ShellWindows (CLSID {9BA05972-F6A8-11CF-A442-00A0C90A8F39}) -- to execute commands on remote hosts without dropping files, making this a stealthy lateral movement technique mapped to MITRE ATT&CK T1021.003. This skill provides detection strategies using Sysmon telemetry, Windows Security Event correlation, network monitoring, and SIEM detection rules to identify DCOM abuse in enterprise environments.
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for dcom lateral movement"
+- "Hunt for DCOM-based lateral movement by detecting abuse of MMC20"
+
 
 - Proactively hunting for lateral movement in Active Directory environments where DCOM is enabled
 - Investigating alerts for suspicious mmc.exe, dllhost.exe, or explorer.exe child process creation on servers

@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing dns enumeration and zone transfer. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing dns enumeration and zone transfer"
+- "Enumerates DNS records, attempts zone transfers, brute-forces subdomains, and ma"
+
 
 - Mapping the external attack surface of a target organization during authorized penetration tests
 - Discovering hidden subdomains, internal hostnames, and IP addresses exposed via DNS records

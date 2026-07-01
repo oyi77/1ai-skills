@@ -42,6 +42,10 @@ Velociraptor is an advanced open-source endpoint monitoring, digital forensics, 
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing velociraptor for ir collection"
+- "Deploy and configure Velociraptor for scalable endpoint forensic artifact collec"
+
 
 - When deploying or configuring implementing velociraptor for ir collection capabilities in your environment
 - When establishing security controls aligned to compliance requirements

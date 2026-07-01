@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for testing cors misconfiguration. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing cors misconfiguration"
+- "Identifying and exploiting Cross-Origin Resource Sharing misconfigurations that "
+
 
 - During authorized penetration tests when assessing API endpoints for cross-origin access controls
 - When testing single-page applications that make cross-origin API requests

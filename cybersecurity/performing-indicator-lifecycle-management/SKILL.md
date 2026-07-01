@@ -29,6 +29,10 @@ Indicator lifecycle management tracks IOCs from initial discovery through valida
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing indicator lifecycle management"
+- "Indicator lifecycle management tracks IOCs from initial discovery through valida"
+
 
 - When conducting security assessments that involve performing indicator lifecycle management
 - When following incident response procedures for related security events

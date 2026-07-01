@@ -26,6 +26,10 @@ Serverless architecture patterns using AWS Lambda, Cloudflare Workers, and Verce
 - Event-driven patterns
 
 ## When to Use
+**Trigger phrases:**
+- "serverless"
+- "Serverless architecture — AWS Lambda, Cloudflare Workers, Vercel Edge"
+
 
 - API backends without servers
 - Event-driven processing

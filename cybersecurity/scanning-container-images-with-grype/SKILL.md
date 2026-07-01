@@ -29,6 +29,10 @@ Grype is an open-source vulnerability scanner from Anchore that inspects contain
 
 
 ## When to Use
+**Trigger phrases:**
+- "scanning container images with grype"
+- "Scan container images for known vulnerabilities using Anchore Grype with SBOM-ba"
+
 
 - When conducting security assessments that involve scanning container images with grype
 - When following incident response procedures for related security events

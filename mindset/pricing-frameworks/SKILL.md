@@ -17,6 +17,10 @@ tags:
 Mindset skill for pricing frameworks. Builds capability through deliberate practice and structured frameworks.
 
 ## When to Use
+**Trigger phrases:**
+- "pricing frameworks"
+- "Set prices using value-based, cost-plus, competitive, and subscription models"
+
 
 - Setting initial prices for a new product
 - Optimizing existing pricing (increasing revenue per customer)

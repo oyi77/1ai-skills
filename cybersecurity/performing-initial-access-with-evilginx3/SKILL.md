@@ -34,6 +34,10 @@ EvilGinx3 is a man-in-the-middle attack framework used for phishing login creden
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing initial access with evilginx3"
+- "Perform authorized initial access using EvilGinx3 adversary-in-the-middle phishi"
+
 
 - When conducting security assessments that involve performing initial access with evilginx3
 - When following incident response procedures for related security events

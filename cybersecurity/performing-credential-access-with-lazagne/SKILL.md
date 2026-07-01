@@ -34,6 +34,10 @@ LaZagne is an open-source post-exploitation tool designed to retrieve credential
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing credential access with lazagne"
+- "Extract stored credentials from compromised endpoints using the LaZagne post-exp"
+
 
 - When conducting security assessments that involve performing credential access with lazagne
 - When following incident response procedures for related security events

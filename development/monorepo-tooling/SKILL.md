@@ -26,6 +26,10 @@ Manage monorepos with Turborepo/Nx — shared packages, task pipelines, caching,
 - Versioning and publishing strategies
 
 ## When to Use
+**Trigger phrases:**
+- "monorepo tooling"
+- "Monorepo management — Turborepo, Nx, pnpm workspaces, shared packages, CI optimi"
+
 
 - Multiple packages/apps sharing common code
 - Microservices or micro-frontends in one repo

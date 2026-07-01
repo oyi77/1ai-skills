@@ -25,6 +25,10 @@ Firebase-specific patterns for building scalable applications. Covers Firestore 
 - Use Firebase Storage for file uploads
 
 ## When to Use
+**Trigger phrases:**
+- "firebase patterns"
+- "Firebase patterns — Firestore queries, auth flows, cloud functions, and security"
+
 
 - Building real-time apps with Firebase
 - Need offline-first mobile/web app

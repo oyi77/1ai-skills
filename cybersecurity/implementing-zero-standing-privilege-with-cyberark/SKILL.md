@@ -29,6 +29,10 @@ Zero Standing Privileges (ZSP) is a security model where no user or identity ret
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing zero standing privilege with cyberark"
+- "Deploy CyberArk Secure Cloud Access to eliminate standing privileges in hybrid a"
+
 
 - When deploying or configuring implementing zero standing privilege with cyberark capabilities in your environment
 - When establishing security controls aligned to compliance requirements

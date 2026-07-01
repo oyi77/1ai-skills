@@ -26,6 +26,10 @@ GraphQL provides a flexible query language for APIs that lets clients request ex
 - Test GraphQL APIs with operation-level assertions
 
 ## When to Use
+**Trigger phrases:**
+- "graphql api"
+- "GraphQL API development — schema design, resolvers, subscriptions, federation"
+
 
 - Building APIs where clients need flexible data fetching
 - Mobile apps requiring bandwidth-efficient queries

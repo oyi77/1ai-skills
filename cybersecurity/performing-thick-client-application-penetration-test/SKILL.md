@@ -39,6 +39,10 @@ Thick client (fat client) penetration testing assesses the security of desktop a
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing thick client application penetration test"
+- "Conduct a thick client application penetration test to identify insecure local s"
+
 
 - When conducting security assessments that involve performing thick client application penetration test
 - When following incident response procedures for related security events

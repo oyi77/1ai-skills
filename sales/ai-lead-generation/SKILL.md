@@ -35,6 +35,10 @@ Use AI to automate the entire lead generation process - from finding prospects t
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "ai lead generation"
+- "Automated AI-powered lead generation and prospecting"
+
 
 - Need consistent leads for sales
 - Outbound sales focus
@@ -415,7 +419,7 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [sales](../sales/) - Close deals
+- sales - Close deals
 - [voice-ai-agent](../../automation/voice-ai-agent/SKILL.md) - Handle calls
 - [ai-consulting](../ai-consulting/SKILL.md) - Convert to projects
 

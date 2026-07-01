@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for performing web application penetration test. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing web application penetration test"
+- "Performs systematic security testing of web applications following the OWASP Web"
+
 
 - Testing web applications before production deployment to identify exploitable vulnerabilities
 - Conducting compliance-driven security assessments (PCI-DSS requirement 6.6, SOC 2 Type II)

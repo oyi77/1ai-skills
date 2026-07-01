@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for performing network forensics with wireshark. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing network forensics with wireshark"
+- "Capture and analyze network traffic using Wireshark and tshark to reconstruct ne"
+
 - When analyzing captured network traffic (PCAP files) from a security incident
 - For identifying command-and-control (C2) communications in captured traffic
 - When reconstructing data exfiltration activities from packet captures

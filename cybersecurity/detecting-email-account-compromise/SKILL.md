@@ -34,6 +34,10 @@ Email account compromise (EAC) is a prevalent attack vector where adversaries ga
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting email account compromise"
+- "Detect compromised O365 and Google Workspace email accounts by analyzing inbox r"
+
 
 - When investigating security incidents that require detecting email account compromise
 - When building detection rules or threat hunting queries for this domain

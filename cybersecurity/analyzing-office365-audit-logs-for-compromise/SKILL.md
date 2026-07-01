@@ -30,6 +30,10 @@ Business Email Compromise (BEC) attacks often leave traces in Office 365 audit l
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing office365 audit logs for compromise"
+- "Parse Office 365 Unified Audit Logs via Microsoft Graph API to detect email forw"
+
 
 - When investigating security incidents that require analyzing office365 audit logs for compromise
 - When building detection rules or threat hunting queries for this domain

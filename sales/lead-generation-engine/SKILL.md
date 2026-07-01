@@ -38,6 +38,10 @@ Automated lead generation pipeline that detects buying intent signals from multi
 - Generate weekly pipeline reports with conversion metrics
 
 ## When to Use
+**Trigger phrases:**
+- "lead generation engine"
+- "AI-powered lead generation that scrapes intent signals, scores leads, generates "
+
 
 - Building a consistent pipeline of qualified prospects
 - Scaling outreach beyond manual capacity

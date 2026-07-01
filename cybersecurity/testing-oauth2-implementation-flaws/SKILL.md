@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for testing oauth2 implementation flaws. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing oauth2 implementation flaws"
+- "Tests OAuth 2"
+
 
 - Assessing OAuth 2.0 authorization code flow for redirect URI validation weaknesses
 - Testing OAuth client applications for CSRF protection (state parameter usage) and PKCE enforcement

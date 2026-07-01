@@ -14,6 +14,10 @@ tags:
 # Buzzer Engagement Army
 
 ## When to Use
+**Trigger phrases:**
+- "buzzer engagement army"
+- "Multi-account engagement booster across TikTok, Instagram, and Facebook — automa"
+
 
 - New post just went live → needs initial engagement in first 30 min
 - Posts getting buried with zero reach → emergency boost

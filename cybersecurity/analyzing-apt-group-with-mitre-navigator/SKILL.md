@@ -36,6 +36,10 @@ MITRE ATT&CK Navigator is a web-based tool for annotating and exploring ATT&CK m
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing apt group with mitre navigator"
+- "Analyze advanced persistent threat (APT) group techniques using MITRE ATT&CK Nav"
+
 
 - When investigating security incidents that require analyzing apt group with mitre navigator
 - When building detection rules or threat hunting queries for this domain

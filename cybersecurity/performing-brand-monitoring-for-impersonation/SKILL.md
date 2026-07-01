@@ -29,6 +29,10 @@ Brand impersonation attacks exploit consumer trust through lookalike domains, fa
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing brand monitoring for impersonation"
+- "Monitor for brand impersonation attacks across domains, social media, mobile app"
+
 
 - When conducting security assessments that involve performing brand monitoring for impersonation
 - When following incident response procedures for related security events

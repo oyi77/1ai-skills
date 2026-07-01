@@ -28,6 +28,10 @@ Windows Management Instrumentation (WMI) is commonly abused for lateral movement
 
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for lateral movement via wmi"
+- "Detect WMI-based lateral movement by analyzing Windows Event ID 4688 process cre"
+
 
 - When investigating security incidents that require hunting for lateral movement via wmi
 - When building detection rules or threat hunting queries for this domain

@@ -26,6 +26,10 @@ Drone is a container-native CI/CD platform where each pipeline step runs in a Do
 - Matrix builds for testing across environments
 
 ## When to Use
+**Trigger phrases:**
+- "drone ci"
+- "Drone CI — container-native CI/CD, YAML pipelines, plugins, secrets, multi-machi"
+
 
 - Want simple, container-based CI/CD
 - Need lightweight CI that runs anywhere Docker runs

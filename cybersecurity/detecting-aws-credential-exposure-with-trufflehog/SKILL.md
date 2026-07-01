@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for detecting aws credential exposure with trufflehog. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting aws credential exposure with trufflehog"
+- "Detecting exposed AWS credentials in source code repositories, CI/CD pipelines, "
+
 
 - When integrating secrets detection into CI/CD pipelines to prevent credential commits reaching production
 - When performing a security audit of existing repositories for historically committed AWS credentials

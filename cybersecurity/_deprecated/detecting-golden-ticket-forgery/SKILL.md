@@ -36,6 +36,10 @@ A Golden Ticket attack (MITRE ATT&CK T1558.001) involves forging a Kerberos Tick
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting golden ticket forgery"
+- "Detect Kerberos Golden Ticket forgery by analyzing Windows Event ID 4769 for RC4"
+
 
 - When investigating security incidents that require detecting golden ticket forgery
 - When building detection rules or threat hunting queries for this domain

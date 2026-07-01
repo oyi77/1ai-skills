@@ -26,6 +26,10 @@ Browser automation enables AI agents to interact with web pages like humans — 
 - Capture network requests and responses
 
 ## When to Use
+**Trigger phrases:**
+- "browser use"
+- "Browser automation with AI — Playwright, Puppeteer, browser-use library"
+
 
 - Web scraping where APIs aren't available
 - Automating repetitive web tasks (form filling, data entry)

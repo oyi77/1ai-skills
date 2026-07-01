@@ -25,6 +25,10 @@ HashiCorp Vault PKI secrets engine acts as a certificate authority (CA), issuing
 - Cross-signed intermediate CAs
 
 ## When to Use
+**Trigger phrases:**
+- "vault pki"
+- "Vault PKI secrets engine — certificate authority, dynamic certificates, certific"
+
 
 - Need internal PKI without managing a traditional CA
 - Want short-lived certificates (hours, not years)

@@ -37,6 +37,10 @@ Alert triage in Elastic Security is the systematic process of reviewing, classif
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing alert triage with elastic siem"
+- "Perform systematic alert triage in Elastic Security SIEM to rapidly classify, pr"
+
 
 - When conducting security assessments that involve performing alert triage with elastic siem
 - When following incident response procedures for related security events

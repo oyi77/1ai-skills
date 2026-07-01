@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for analyzing memory dumps with volatility. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing memory dumps with volatility"
+- "Analyzes RAM memory dumps from compromised systems using the Volatility framewor"
+
 
 - A compromised system's RAM has been captured and needs forensic analysis for malware artifacts
 - Detecting fileless malware that exists only in memory without persistent disk artifacts

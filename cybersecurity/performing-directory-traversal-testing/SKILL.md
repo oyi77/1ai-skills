@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for performing directory traversal testing. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing directory traversal testing"
+- "Testing web applications for path traversal vulnerabilities that allow reading o"
+
 
 - During authorized penetration tests when the application handles file paths in URL parameters or request bodies
 - When testing file download, file view, or file include functionality

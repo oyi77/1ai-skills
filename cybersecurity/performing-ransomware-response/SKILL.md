@@ -36,6 +36,10 @@ nist_csf:
 Cybersecurity skill for performing ransomware response. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing ransomware response"
+- "Executes a structured ransomware incident response from initial detection throug"
+
 
 - Ransomware has been detected executing or file encryption is actively occurring
 - Users report inability to open files with unfamiliar extensions appended

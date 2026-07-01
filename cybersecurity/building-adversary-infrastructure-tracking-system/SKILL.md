@@ -30,6 +30,10 @@ Adversary infrastructure tracking uses passive DNS records, certificate transpar
 
 
 ## When to Use
+**Trigger phrases:**
+- "building adversary infrastructure tracking system"
+- "Build an automated system to track adversary infrastructure using passive DNS, c"
+
 
 - When deploying or configuring building adversary infrastructure tracking system capabilities in your environment
 - When establishing security controls aligned to compliance requirements

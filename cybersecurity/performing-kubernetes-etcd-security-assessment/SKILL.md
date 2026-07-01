@@ -31,6 +31,10 @@ etcd is the distributed key-value store that serves as Kubernetes' backing store
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing kubernetes etcd security assessment"
+- "Assess the security posture of Kubernetes etcd clusters by evaluating encryption"
+
 
 - When conducting security assessments that involve performing kubernetes etcd security assessment
 - When following incident response procedures for related security events

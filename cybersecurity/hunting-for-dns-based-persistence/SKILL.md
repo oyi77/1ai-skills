@@ -30,6 +30,10 @@ Attackers establish DNS-based persistence by hijacking DNS records, creating una
 
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for dns based persistence"
+- "Hunt for DNS-based persistence mechanisms including DNS hijacking, dangling CNAM"
+
 
 - When investigating security incidents that require hunting for dns based persistence
 - When building detection rules or threat hunting queries for this domain

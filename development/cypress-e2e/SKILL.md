@@ -30,6 +30,10 @@ Cypress is a JavaScript end-to-end testing framework that runs in the browser. I
 - Accessibility testing integration
 
 ## When to Use
+**Trigger phrases:**
+- "cypress e2e"
+- "Cypress E2E testing — component testing, API testing, fixtures, custom commands,"
+
 
 - Testing critical user flows (login, checkout, forms)
 - Need visual debugging of test failures

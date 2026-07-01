@@ -32,6 +32,10 @@ Cisco Identity Services Engine (ISE) provides centralized network access control
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing network access control with cisco ise"
+- "Deploy Cisco Identity Services Engine for 802"
+
 
 - When deploying or configuring implementing network access control with cisco ise capabilities in your environment
 - When establishing security controls aligned to compliance requirements

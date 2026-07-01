@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for securing aws iam permissions. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "securing aws iam permissions"
+- "This skill guides practitioners through hardening AWS Identity and Access Manage"
+
 
 - When onboarding new AWS accounts or workloads that require scoped IAM policies
 - When IAM Access Analyzer reports overly permissive policies or unused permissions

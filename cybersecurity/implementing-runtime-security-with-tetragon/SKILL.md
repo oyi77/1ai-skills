@@ -40,6 +40,10 @@ Tetragon is a CNCF project under Cilium that provides flexible Kubernetes-aware 
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing runtime security with tetragon"
+- "Implement eBPF-based runtime security observability and enforcement in Kubernete"
+
 
 - When deploying or configuring implementing runtime security with tetragon capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for testing for xxe injection vulnerabilities. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing for xxe injection vulnerabilities"
+- "Discovering and exploiting XML External Entity injection vulnerabilities to read"
+
 
 - During authorized penetration tests when the application processes XML input (SOAP APIs, file uploads, RSS feeds)
 - When testing APIs that accept `Content-Type: application/xml` or text > xml

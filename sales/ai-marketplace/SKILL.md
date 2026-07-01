@@ -33,6 +33,10 @@ Offer AI-powered services on freelance marketplaces. Build automated service del
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "ai marketplace"
+- "Sell AI-powered services on Fiverr, Upwork, and Toptal"
+
 
 - Start with no audience
 - Want marketplace credibility
@@ -366,7 +370,7 @@ After completing this skill, confirm:
 ## Related Skills
 
 - [ai-agent-development](../ai-agent-development/SKILL.md) - Deliver AI services
-- [automation](../automation/) - Build systems
+- automation - Build systems
 - [ai-lead-generation](../ai-lead-generation/SKILL.md) - Find clients
 
 ## Process

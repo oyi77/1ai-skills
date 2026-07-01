@@ -30,6 +30,10 @@ This skill uses boto3 and Cloudsplaining-style analysis to identify IAM privileg
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting aws iam privilege escalation"
+- "Detect AWS IAM privilege escalation paths using boto3 and Cloudsplaining policy "
+
 
 - When investigating security incidents that require detecting aws iam privilege escalation
 - When building detection rules or threat hunting queries for this domain

@@ -31,6 +31,10 @@ Lateral movement in Azure AD/Entra ID differs from on-premises environments. Att
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting azure lateral movement"
+- "Detect lateral movement in Azure AD/Entra ID environments using Microsoft Graph "
+
 
 - When investigating security incidents that require detecting azure lateral movement
 - When building detection rules or threat hunting queries for this domain

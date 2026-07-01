@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for analyzing ransomware encryption mechanisms. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing ransomware encryption mechanisms"
+- "Analyzes encryption algorithms, key management, and file encryption routines use"
+
 
 - A ransomware infection has occurred and recovery requires understanding the encryption scheme used
 - Assessing whether decryption is possible without paying the ransom (implementation flaws, known decryptors)

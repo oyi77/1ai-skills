@@ -12,6 +12,10 @@ tags:
 # Finance Tracker
 
 ## When to Use
+**Trigger phrases:**
+- "finance tracker"
+- "Track real-time revenue across 5 income streams, monitor cashflow and runway, de"
+
 
 - Real-time P&L tracking needed for multi-stream revenue business
 - Cashflow monitoring with automated revenue gap detection

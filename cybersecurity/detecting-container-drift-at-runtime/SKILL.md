@@ -31,6 +31,10 @@ Container drift occurs when running containers deviate from their original image
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting container drift at runtime"
+- "Detect unauthorized modifications to running containers by monitoring for binary"
+
 
 - When investigating security incidents that require detecting container drift at runtime
 - When building detection rules or threat hunting queries for this domain

@@ -31,6 +31,10 @@ Trivy is an open-source security scanner by Aqua Security that detects vulnerabi
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing container security scanning with trivy"
+- "Scan container images, filesystems, and Kubernetes manifests for vulnerabilities"
+
 
 - When conducting security assessments that involve performing container security scanning with trivy
 - When following incident response procedures for related security events

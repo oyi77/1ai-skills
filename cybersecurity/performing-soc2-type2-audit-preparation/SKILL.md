@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for performing soc2 type2 audit preparation. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing soc2 type2 audit preparation"
+- "Automates SOC 2 Type II audit preparation including gap assessment against AICPA"
+
 
 - When preparing for a SOC 2 Type II audit engagement with a CPA firm
 - When conducting a gap assessment against AICPA Trust Services Criteria

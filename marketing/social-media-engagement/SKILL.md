@@ -74,6 +74,10 @@ Automate audience growth and engagement activities across major social media pla
 - Repost/Share content
 
 ## When to Use
+**Trigger phrases:**
+- "social media engagement"
+- "Automate social media engagement activities including liking, commenting, follow"
+
 
 - Build audience organically
 - Increase engagement rate

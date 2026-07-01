@@ -28,6 +28,10 @@ Conduct systematic access reviews and certifications to ensure users have approp
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing access review and certification"
+- "Conduct systematic access reviews and certifications to ensure users have approp"
+
 
 - When conducting security assessments that involve performing access review and certification
 - When following incident response procedures for related security events

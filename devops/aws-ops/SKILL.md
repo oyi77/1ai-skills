@@ -26,6 +26,10 @@ AWS infrastructure management covering core services (EC2, S3, Lambda, RDS), IAM
 - CloudWatch monitoring
 
 ## When to Use
+**Trigger phrases:**
+- "aws ops"
+- "AWS operations — EC2, S3, Lambda, RDS, ECS, IAM, CloudFormation"
+
 
 - Cloud infrastructure management
 - Web application hosting

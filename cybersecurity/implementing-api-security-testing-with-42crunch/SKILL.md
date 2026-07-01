@@ -32,6 +32,10 @@ nist_csf:
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing api security testing with 42crunch"
+- "Implement comprehensive API security testing using the 42Crunch platform to perf"
+
 
 - When deploying or configuring implementing api security testing with 42crunch capabilities in your environment
 - When establishing security controls aligned to compliance requirements

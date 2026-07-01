@@ -35,6 +35,10 @@ A sector-specific threat landscape assessment analyzes the cyber threat environm
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing threat landscape assessment for sector"
+- "Conduct a sector-specific threat landscape assessment by analyzing threat actor "
+
 
 - When conducting security assessments that involve performing threat landscape assessment for sector
 - When following incident response procedures for related security events

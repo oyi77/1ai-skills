@@ -35,6 +35,10 @@ Falco is a CNCF-graduated runtime security tool that monitors Linux syscalls to 
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting container escape with falco rules"
+- "Detect container escape attempts in real-time using Falco runtime security rules"
+
 
 - When investigating security incidents that require detecting container escape with falco rules
 - When building detection rules or threat hunting queries for this domain

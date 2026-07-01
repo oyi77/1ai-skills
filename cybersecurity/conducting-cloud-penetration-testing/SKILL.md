@@ -44,6 +44,10 @@ nist_csf:
 Cybersecurity skill for conducting cloud penetration testing. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "conducting cloud penetration testing"
+- "This skill outlines methodologies for performing authorized penetration testing "
+
 
 - When performing authorized security assessments of cloud environments before production deployment
 - When validating cloud security controls after a major architectural change or migration

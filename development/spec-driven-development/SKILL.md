@@ -14,6 +14,10 @@ tags:
 # Spec Driven Development
 
 ## When to Use
+**Trigger phrases:**
+- "spec driven development"
+- "Write a PRD covering objectives, commands, structure, code style, testing, and b"
+
 
 - When starting a new project, feature, or significant change
 - When the requirements are unclear or underspecified

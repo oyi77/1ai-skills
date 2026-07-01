@@ -30,6 +30,10 @@ Microsoft Entra Privileged Identity Management (PIM) provides time-based and app
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing azure ad privileged identity management"
+- "Configure Microsoft Entra Privileged Identity Management to enforce just-in-time"
+
 
 - When deploying or configuring implementing azure ad privileged identity management capabilities in your environment
 - When establishing security controls aligned to compliance requirements

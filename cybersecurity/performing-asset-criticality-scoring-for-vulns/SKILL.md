@@ -28,6 +28,10 @@ Asset criticality scoring assigns a business impact rating to each IT asset so t
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing asset criticality scoring for vulns"
+- "Develop and apply a multi-factor asset criticality scoring model to weight vulne"
+
 
 - When conducting security assessments that involve performing asset criticality scoring for vulns
 - When following incident response procedures for related security events

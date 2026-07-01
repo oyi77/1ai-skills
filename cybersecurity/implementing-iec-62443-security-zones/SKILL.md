@@ -32,6 +32,10 @@ nist_csf:
 Cybersecurity skill for implementing iec 62443 security zones. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing iec 62443 security zones"
+- "This skill covers designing and implementing security zones and conduits for ind"
+
 
 - When designing a greenfield OT network architecture for a new industrial facility
 - When retrofitting security zones into an existing flat OT network after an assessment finding

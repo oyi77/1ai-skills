@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for performing serverless function security review. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing serverless function security review"
+- "Performing security reviews of serverless functions across AWS Lambda, Azure Fun"
+
 
 - When auditing serverless applications before production deployment
 - When investigating potential data exposure through function environment variables or logs

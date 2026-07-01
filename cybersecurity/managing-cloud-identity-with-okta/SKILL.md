@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for managing cloud identity with okta. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "managing cloud identity with okta"
+- "This skill covers implementing Okta as a centralized identity provider for cloud"
+
 
 - When centralizing authentication across AWS, Azure, and GCP console access through a single identity provider
 - When implementing phishing-resistant MFA to replace SMS or TOTP-based authentication

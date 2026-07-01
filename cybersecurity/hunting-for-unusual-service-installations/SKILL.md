@@ -36,6 +36,10 @@ Attackers frequently install malicious Windows services for persistence and priv
 
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for unusual service installations"
+- "Detect suspicious Windows service installations (MITRE ATT&CK T1543"
+
 
 - When investigating security incidents that require hunting for unusual service installations
 - When building detection rules or threat hunting queries for this domain

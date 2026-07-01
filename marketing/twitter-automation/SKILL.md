@@ -61,6 +61,10 @@ Automate your Twitter/X presence with AI-powered tools for content posting, enga
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "twitter automation"
+- "Automate Twitter/X presence with AI-powered posting, engagement, and growth"
+
 
 - Schedule and automate tweet posting
 - Auto-engage with followers and mentions
@@ -344,8 +348,8 @@ Use social-intelligence skill (`skill://social-intelligence`) for cross-platform
 - [larry-playbook](../../content/larry-playbook/SKILL.md) - Viral TikTok content
 - [content-creator](../content-creator/SKILL.md) - Multi-platform content
 - [social-intelligence](../../research/social-intelligence/SKILL.md) - Cross-platform research
-- [marketing](../marketing/) - Broader marketing strategy
-- [sales](../sales/) - Convert engagement to revenue
+- marketing - Broader marketing strategy
+- sales - Convert engagement to revenue
 
 ## Process
 

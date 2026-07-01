@@ -43,6 +43,10 @@ MITRE ATT&CK coverage mapping gives SOC teams a structured, adversary-centric le
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing mitre attack coverage mapping"
+- "Implement MITRE ATT&CK coverage mapping to identify detection gaps, prioritize r"
+
 
 - When deploying or configuring implementing mitre attack coverage mapping capabilities in your environment
 - When establishing security controls aligned to compliance requirements

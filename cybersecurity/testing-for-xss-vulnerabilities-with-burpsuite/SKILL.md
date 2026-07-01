@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for testing for xss vulnerabilities with burpsuite. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing for xss vulnerabilities with burpsuite"
+- "Identifying and validating cross-site scripting vulnerabilities using Burp Suite"
+
 
 - During authorized web application penetration testing to find reflected, stored, and DOM-based XSS
 - When validating XSS findings reported by automated vulnerability scanners

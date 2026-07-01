@@ -32,6 +32,10 @@ Network scanning is typically the first phase of an attack, where adversaries en
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting network scanning with ids signatures"
+- "Detect network reconnaissance and port scanning using Suricata and Snort IDS sig"
+
 
 - When investigating security incidents that require detecting network scanning with ids signatures
 - When building detection rules or threat hunting queries for this domain

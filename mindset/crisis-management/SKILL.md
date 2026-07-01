@@ -16,6 +16,10 @@ tags:
 Mindset skill for crisis management. Builds capability through deliberate practice and structured frameworks.
 
 ## When to Use
+**Trigger phrases:**
+- "crisis management"
+- "Respond to crises using incident command structure, stakeholder communication, a"
+
 
 - Security breaches or data leaks
 - PR disasters or reputation threats

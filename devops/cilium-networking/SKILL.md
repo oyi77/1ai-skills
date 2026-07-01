@@ -26,6 +26,10 @@ Cilium provides eBPF-based networking, security, and observability for Kubernete
 - Service mesh without sidecars
 
 ## When to Use
+**Trigger phrases:**
+- "cilium networking"
+- "Cilium eBPF networking — Kubernetes CNI, network policies, load balancing, obser"
+
 
 - Kubernetes networking at scale
 - Need L7 network policies (HTTP-aware)

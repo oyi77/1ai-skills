@@ -39,6 +39,10 @@ End-to-end affiliate and partnership management system for a one-person company.
 - Identify cross-promotion and co-marketing opportunities with complementary products
 
 ## When to Use
+**Trigger phrases:**
+- "affiliate manager"
+- "Automated discovery of affiliate programs, partnership opportunities, and cross-"
+
 
 - Monetizing a content site, newsletter, or YouTube channel with affiliate offers
 - Switching from ad-based revenue to higher-value affiliate partnerships

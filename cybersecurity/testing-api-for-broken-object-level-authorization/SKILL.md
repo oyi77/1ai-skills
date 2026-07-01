@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for testing api for broken object level authorization. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "testing api for broken object level authorization"
+- "Tests REST and GraphQL APIs for Broken Object Level Authorization (BOLA/IDOR) vu"
+
 
 - Assessing REST or GraphQL APIs that use object identifiers in URL paths, query parameters, or request bodies
 - Performing OWASP API Security Top 10 assessments where API1:2023 (BOLA) must be tested

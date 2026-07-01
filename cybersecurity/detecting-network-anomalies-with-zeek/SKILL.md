@@ -28,6 +28,10 @@ nist_csf:
 Cybersecurity skill for detecting network anomalies with zeek. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting network anomalies with zeek"
+- "Deploys and configures Zeek (formerly Bro) network security monitor to passively"
+
 
 - Deploying passive network security monitoring at key network choke points for continuous visibility
 - Generating structured connection, DNS, HTTP, SSL, and file transfer logs for SIEM ingestion and threat hunting

@@ -36,6 +36,10 @@ nist_csf:
 Cybersecurity skill for conducting mobile app penetration test. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "conducting mobile app penetration test"
+- "Conducts penetration testing of iOS and Android mobile applications following th"
+
 
 - Testing mobile applications before release to identify security vulnerabilities and data protection issues
 - Conducting compliance assessments against OWASP MASVS (Mobile Application Security Verification Standard) levels L1 and L2

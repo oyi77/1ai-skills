@@ -32,6 +32,10 @@ A phishing reporting button empowers users to flag suspicious emails directly fr
 
 
 ## When to Use
+**Trigger phrases:**
+- "building phishing reporting button workflow"
+- "Implement a phishing report button in email clients with automated triage workfl"
+
 
 - When deploying or configuring building phishing reporting button workflow capabilities in your environment
 - When establishing security controls aligned to compliance requirements

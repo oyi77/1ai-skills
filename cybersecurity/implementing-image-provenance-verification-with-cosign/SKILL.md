@@ -30,6 +30,10 @@ Cosign is a Sigstore tool for signing, verifying, and attaching metadata to cont
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing image provenance verification with cosign"
+- "Sign and verify container image provenance using Sigstore Cosign with keyless OI"
+
 
 - When deploying or configuring implementing image provenance verification with cosign capabilities in your environment
 - When establishing security controls aligned to compliance requirements

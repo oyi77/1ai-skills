@@ -27,6 +27,10 @@ Temporal is a durable execution platform for building reliable, fault-tolerant w
 - Version workflows for safe deployments
 
 ## When to Use
+**Trigger phrases:**
+- "temporal workflows"
+- "Temporal durable workflows — workflow/activity definitions, retries, signals, qu"
+
 
 - Building reliable multi-step business processes
 - Needing workflows that survive failures and restarts

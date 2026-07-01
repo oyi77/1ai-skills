@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for implementing cloud waf rules. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing cloud waf rules"
+- "This skill covers deploying and tuning Web Application Firewall rules on AWS WAF"
+
 
 - When deploying new web applications or APIs behind cloud load balancers requiring OWASP protection
 - When application penetration testing reveals SQL injection, XSS, or other injection vulnerabilities

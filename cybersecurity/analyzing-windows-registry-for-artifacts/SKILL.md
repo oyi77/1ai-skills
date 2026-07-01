@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for analyzing windows registry for artifacts. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing windows registry for artifacts"
+- "Extract and analyze Windows Registry hives to uncover user activity, installed s"
+
 - When investigating user activity on a Windows system during an incident
 - For identifying autorun/persistence mechanisms used by malware
 - When tracing installed software, USB devices, and network connections

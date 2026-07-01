@@ -26,6 +26,10 @@ Ed25519 is a high-performance digital signature algorithm using the Edwards curv
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing digital signatures with ed25519"
+- "Ed25519 is a high-performance digital signature algorithm using the Edwards curv"
+
 
 - When deploying or configuring implementing digital signatures with ed25519 capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -26,6 +26,10 @@ Design event-driven systems — event sourcing for audit trails, CQRS for read/w
 - Eventual consistency patterns
 
 ## When to Use
+**Trigger phrases:**
+- "event driven"
+- "Event-driven architecture — event sourcing, CQRS, saga pattern, event buses, pub"
+
 
 - Need complete audit trail of all state changes
 - High read/write ratio with different optimization needs

@@ -31,6 +31,10 @@ Open Source Intelligence (OSINT) gathering is the first active phase of a red te
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing open source intelligence gathering"
+- "Open Source Intelligence (OSINT) gathering is the first active phase of a red te"
+
 
 - When conducting security assessments that involve performing open source intelligence gathering
 - When following incident response procedures for related security events

@@ -28,6 +28,10 @@ Accessibility (a11y) audit framework for WCAG 2.1 compliance. Covers semantic HT
 - Validate ARIA attributes and screen reader experience
 
 ## When to Use
+**Trigger phrases:**
+- "accessibility audit"
+- "WCAG compliance audit — semantic HTML, ARIA, keyboard navigation, color contrast"
+
 
 - Before launching any public-facing UI
 - Legal compliance requirements (ADA, EAA)

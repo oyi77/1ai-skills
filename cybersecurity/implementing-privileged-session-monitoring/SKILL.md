@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for implementing privileged session monitoring. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing privileged session monitoring"
+- "Implements privileged session monitoring and recording using Privileged Access M"
+
 
 - Deploying or configuring session recording for all privileged access to critical servers and databases
 - Meeting compliance requirements (PCI-DSS 10.2, SOX, HIPAA, ISO 27001) that mandate privileged activity monitoring

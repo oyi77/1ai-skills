@@ -26,6 +26,10 @@ Hash cracking is an essential skill for penetration testers and security auditor
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing hash cracking with hashcat"
+- "Hash cracking is an essential skill for penetration testers and security auditor"
+
 
 - When conducting security assessments that involve performing hash cracking with hashcat
 - When following incident response procedures for related security events

@@ -33,6 +33,10 @@ Hindsight is an open-source browser forensics tool designed to parse artifacts f
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing browser forensics with hindsight"
+- "Analyze Chromium-based browser artifacts using Hindsight to extract browsing his"
+
 
 - When investigating security incidents that require analyzing browser forensics with hindsight
 - When building detection rules or threat hunting queries for this domain

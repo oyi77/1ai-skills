@@ -13,6 +13,10 @@ tags:
 # Planning Agent
 
 ## When to Use
+**Trigger phrases:**
+- "planning agent"
+- "Decompose complex tasks into executable, ordered steps with dependencies, risk a"
+
 
 - Before implementing any feature that touches 3+ files
 - Before refactoring that affects multiple modules

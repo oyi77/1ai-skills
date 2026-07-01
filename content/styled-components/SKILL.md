@@ -27,6 +27,10 @@ styled-components enables CSS-in-JS with tagged template literals. Components ar
 - Transient props ($prefix) to avoid DOM forwarding
 
 ## When to Use
+**Trigger phrases:**
+- "styled components"
+- "styled-components CSS-in-JS — tagged templates, theming, props, animations, SSR,"
+
 
 - React projects needing scoped, dynamic CSS
 - Component libraries with prop-driven styles

@@ -31,6 +31,10 @@ ScoutSuite is an open-source multi-cloud security auditing tool developed by NCC
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing aws account enumeration with scout suite"
+- "Perform comprehensive security posture assessment of AWS accounts using ScoutSui"
+
 
 - When conducting security assessments that involve performing aws account enumeration with scout suite
 - When following incident response procedures for related security events

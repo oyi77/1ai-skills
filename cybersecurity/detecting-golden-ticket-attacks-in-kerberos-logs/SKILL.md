@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for detecting golden ticket attacks in kerberos logs. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting golden ticket attacks in kerberos logs"
+- "Detect Golden Ticket attacks in Active Directory by analyzing Kerberos TGT anoma"
+
 
 - When KRBTGT account hash may have been compromised via DCSync or NTDS.dit extraction
 - When hunting for forged Kerberos tickets used for persistent domain access

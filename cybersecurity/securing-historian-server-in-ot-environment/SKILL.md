@@ -33,6 +33,10 @@ nist_csf:
 Cybersecurity skill for securing historian server in ot environment. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "securing historian server in ot environment"
+- "This skill covers hardening and securing process historian servers (OSIsoft PI, "
+
 
 - When deploying a new historian server in an OT environment and configuring it securely from the start
 - When hardening an existing historian after a security assessment identified it as a high-risk target

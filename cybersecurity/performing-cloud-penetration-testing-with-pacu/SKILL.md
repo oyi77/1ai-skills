@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for performing cloud penetration testing with pacu. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing cloud penetration testing with pacu"
+- "Performing authorized AWS penetration testing using Pacu, the open-source AWS ex"
+
 
 - When conducting authorized penetration testing of AWS environments
 - When validating the effectiveness of IAM policies, SCPs, and permission boundaries

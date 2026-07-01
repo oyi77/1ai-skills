@@ -35,6 +35,10 @@ MITRE ATT&CK is a globally-accessible knowledge base of adversary tactics, techn
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing threat actor ttps with mitre attack"
+- "MITRE ATT&CK is a globally-accessible knowledge base of adversary tactics, techn"
+
 
 - When investigating security incidents that require analyzing threat actor ttps with mitre attack
 - When building detection rules or threat hunting queries for this domain

@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for remediating s3 bucket misconfiguration. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "remediating s3 bucket misconfiguration"
+- "This skill provides step-by-step procedures for identifying and remediating Amaz"
+
 
 - When AWS Config or Security Hub reports S3 buckets with public access or missing encryption
 - When a security scan reveals S3 bucket policies granting access to Principal "*" (everyone)

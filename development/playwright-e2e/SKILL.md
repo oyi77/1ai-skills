@@ -24,6 +24,10 @@ Playwright-based E2E testing for reliable, fast, cross-browser test automation. 
 - Generate test reports and trace files for debugging
 
 ## When to Use
+**Trigger phrases:**
+- "playwright e2e"
+- "End-to-end test automation with Playwright — cross-browser testing, page objects"
+
 
 - Need reliable E2E tests for critical user flows
 - Existing Selenium tests are slow and flaky

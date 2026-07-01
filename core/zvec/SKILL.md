@@ -36,6 +36,10 @@ persona:
 ZVec is an open-source, in-process vector database from Alibaba's Tongyi Lab. It's lightweight, blazing fast, and embeds directly into your application - no server needed. Built on Proxima (Alibaba's battle-tested vector search engine used in production across Taobao, Ele.me, and more).
 
 ## When to Use
+**Trigger phrases:**
+- "Mikolov et al."
+- "Zero-copy vector operations for efficient similarity search and embedding storag"
+
 
 Use this skill when you need:
 - **Lightweight vector storage** with minimal setup

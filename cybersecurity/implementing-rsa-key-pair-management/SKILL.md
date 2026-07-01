@@ -26,6 +26,10 @@ RSA (Rivest-Shamir-Adleman) is the most widely deployed asymmetric cryptographic
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing rsa key pair management"
+- "RSA (Rivest-Shamir-Adleman) is the most widely deployed asymmetric cryptographic"
+
 
 - When deploying or configuring implementing rsa key pair management capabilities in your environment
 - When establishing security controls aligned to compliance requirements

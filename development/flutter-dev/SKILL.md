@@ -27,6 +27,10 @@ Flutter is Google's UI toolkit for building natively compiled applications for m
 - Build and deploy to iOS, Android, Web, macOS, Windows, Linux
 
 ## When to Use
+**Trigger phrases:**
+- "flutter dev"
+- "Flutter cross-platform development — Dart, widgets, state management, platform c"
+
 
 - Building mobile apps that target both iOS and Android
 - Need native performance with cross-platform code sharing

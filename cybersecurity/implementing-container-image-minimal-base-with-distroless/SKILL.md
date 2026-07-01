@@ -31,6 +31,10 @@ Google distroless images contain only your application and its runtime dependenc
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing container image minimal base with distroless"
+- "Reduce container attack surface by building application images on Google distrol"
+
 
 - When deploying or configuring implementing container image minimal base with distroless capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -36,6 +36,10 @@ Domain fronting (MITRE ATT&CK T1090.004) is a technique where attackers use diff
 
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for domain fronting c2 traffic"
+- "Detect domain fronting C2 traffic by analyzing SNI vs HTTP Host header mismatche"
+
 
 - When investigating security incidents that require hunting for domain fronting c2 traffic
 - When building detection rules or threat hunting queries for this domain

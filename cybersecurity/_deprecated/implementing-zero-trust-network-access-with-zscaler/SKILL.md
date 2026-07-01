@@ -37,6 +37,10 @@ This skill covers end-to-end deployment of ZPA including connector setup, applic
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing zero trust network access with zscaler"
+- "Implement Zero Trust Network Access using Zscaler Private Access (ZPA) to replac"
+
 
 - When deploying or configuring implementing zero trust network access with zscaler capabilities in your environment
 - When establishing security controls aligned to compliance requirements

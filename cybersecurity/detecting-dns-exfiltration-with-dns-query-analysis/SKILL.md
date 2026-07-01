@@ -32,6 +32,10 @@ DNS exfiltration exploits the Domain Name System as a covert channel to extract 
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting dns exfiltration with dns query analysis"
+- "Detect data exfiltration through DNS tunneling by analyzing query entropy, subdo"
+
 
 - When investigating security incidents that require detecting dns exfiltration with dns query analysis
 - When building detection rules or threat hunting queries for this domain

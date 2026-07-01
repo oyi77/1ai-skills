@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for securing aws lambda execution roles. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "securing aws lambda execution roles"
+- "Securing AWS Lambda execution roles by implementing least-privilege IAM policies"
+
 
 - When deploying new Lambda functions and defining their IAM execution roles
 - When remediating overly permissive Lambda roles discovered during security audits

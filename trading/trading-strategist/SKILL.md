@@ -21,6 +21,10 @@ allowed-tools:
 Build and optimize trading strategies with clear entry/exit rules and risk parameters. The Strategist serves as the design arm of the trading team, responsible for creating systematic trading strategies that can be consistently replicated and optimized. It focuses on turning market insights into executable strategies with defined rules, parameters, and risk controls that can be backtested and deployed.
 
 ## When to Use
+**Trigger phrases:**
+- "trading strategist"
+- "Design and backtest trading strategies using technical indicators, fundamental a"
+
 
 - Creating new trading strategies based on market analysis or hypotheses
 - Defining precise entry and exit conditions for strategy trading

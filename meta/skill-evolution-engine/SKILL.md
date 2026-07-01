@@ -21,6 +21,10 @@ persona:
 The Skill Evolution Engine turns raw session activity into refined, reusable skills through a continuous improvement loop: observe, extract, score, evolve, and deploy. Instead of manually writing skills from scratch, the engine identifies repeated successful patterns in agent sessions, promotes them to instincts (atomic learned behaviors), clusters related instincts into coherent skills, and version-tracks them through their lifecycle. This creates a system that gets measurably better with every session.
 
 ## When to Use
+**Trigger phrases:**
+- "Lamarck"
+- "Self-improving skill system that auto-extracts patterns from sessions into reusa"
+
 
 - Extracting reusable patterns from successful agent sessions
 - Promoting high-confidence instincts into full skills, commands, or agents

@@ -41,6 +41,10 @@ nist_csf:
 Cybersecurity skill for detecting attacks on scada systems. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting attacks on scada systems"
+- "This skill covers detecting cyber attacks targeting Supervisory Control and Data"
+
 
 - When deploying intrusion detection capabilities in a SCADA environment for the first time
 - When investigating suspected cyber attacks against industrial control systems

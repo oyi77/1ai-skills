@@ -38,6 +38,10 @@ nist_csf:
 Cybersecurity skill for detecting misconfigured azure storage. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "detecting misconfigured azure storage"
+- "Detecting misconfigured Azure Storage accounts including publicly accessible blo"
+
 
 - When performing a security audit of Azure Storage accounts across subscriptions
 - When responding to Microsoft Defender for Storage alerts about anonymous access or data exfiltration

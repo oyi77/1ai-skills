@@ -27,6 +27,10 @@ DynamoDB is a fully managed NoSQL key-value and document database by AWS. It del
 - Transactions for multi-item operations
 
 ## When to Use
+**Trigger phrases:**
+- "dynamodb patterns"
+- "Amazon DynamoDB patterns — single table design, GSI/LSI, DynamoDB Streams, Parti"
+
 
 - Serverless applications on AWS
 - Need predictable single-digit millisecond latency

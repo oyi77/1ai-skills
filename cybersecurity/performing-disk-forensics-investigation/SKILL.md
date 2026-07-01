@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for performing disk forensics investigation. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing disk forensics investigation"
+- "Conducts disk forensics investigations using forensic imaging, file system analy"
+
 
 - A security incident requires forensic analysis of a system's persistent storage
 - Evidence preservation is needed for potential legal proceedings or HR investigations

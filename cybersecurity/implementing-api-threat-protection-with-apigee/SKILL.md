@@ -32,6 +32,10 @@ Google Apigee is an enterprise API management platform that provides native secu
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing api threat protection with apigee"
+- "Implement API threat protection using Google Apigee policies including JSON/XML "
+
 
 - When deploying or configuring implementing api threat protection with apigee capabilities in your environment
 - When establishing security controls aligned to compliance requirements

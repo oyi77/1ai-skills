@@ -36,6 +36,11 @@ Modern ransomware uses hybrid encryption combining symmetric algorithms (AES-256
 
 
 ## When to Use
+**Trigger phrases:**
+- "reverse engineering ransomware encryption routine"
+- "reverseing engineering ransomware encryption routine"
+- "Reverse engineer ransomware encryption routines to identify cryptographic algori"
+
 
 - When performing authorized security testing that involves reverse engineering ransomware encryption routine
 - When analyzing malware samples or attack artifacts in a controlled environment

@@ -26,6 +26,10 @@ daisyUI adds component classes to Tailwind CSS — buttons, cards, modals, dropd
 - Color utilities (primary, secondary, accent, etc.)
 
 ## When to Use
+**Trigger phrases:**
+- "daisyui components"
+- "daisyUI component library for Tailwind — themed components, colors, responsive, "
+
 
 - Want pre-built UI components with Tailwind workflow
 - Need themed components without writing custom CSS

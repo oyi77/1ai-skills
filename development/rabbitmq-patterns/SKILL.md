@@ -26,6 +26,10 @@ Design and operate RabbitMQ — exchange types, queue bindings, dead letter hand
 - Clustering and high availability
 
 ## When to Use
+**Trigger phrases:**
+- "rabbitmq patterns"
+- "RabbitMQ patterns — exchanges, queues, routing, dead letter queues, priority que"
+
 
 - Task queue / background job processing
 - Request-reply patterns

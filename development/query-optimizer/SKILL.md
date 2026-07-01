@@ -24,6 +24,10 @@ Systematic approach to finding and fixing slow queries. Covers EXPLAIN plan inte
 - Monitor and alert on slow queries
 
 ## When to Use
+**Trigger phrases:**
+- "query optimizer"
+- "Slow query analysis — EXPLAIN plans, index recommendations, N+1 detection, and c"
+
 
 - Application response time is degraded
 - Database CPU/IO is consistently high

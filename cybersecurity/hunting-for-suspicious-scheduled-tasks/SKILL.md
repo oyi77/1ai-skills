@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for hunting for suspicious scheduled tasks. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for suspicious scheduled tasks"
+- "Hunt for adversary persistence and execution via Windows scheduled tasks by anal"
+
 
 - When proactively hunting for persistence mechanisms in Windows environments
 - After detecting schtasks.exe or at.exe usage in process creation logs

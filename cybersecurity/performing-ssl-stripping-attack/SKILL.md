@@ -29,6 +29,10 @@ nist_csf:
 Cybersecurity skill for performing ssl stripping attack. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing ssl stripping attack"
+- "Simulates SSL stripping attacks using sslstrip, Bettercap, and mitmproxy in auth"
+
 
 - Testing whether web applications properly enforce HTTPS through HSTS headers and redirect chains
 - Validating that HSTS preloading is correctly configured and registered in browser preload lists

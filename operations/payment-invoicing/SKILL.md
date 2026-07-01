@@ -55,6 +55,10 @@ Complete payment processing and invoicing solution for Indonesian businesses. In
 - **Midtrans** - Credit cards, QRIS, comprehensive payment methods
 
 ## When to Use
+**Trigger phrases:**
+- "payment invoicing"
+- "Process payments and generate invoices using Indonesian payment gateways (TriPay"
+
 
 - Accept payments from customers
 - Generate and send invoices

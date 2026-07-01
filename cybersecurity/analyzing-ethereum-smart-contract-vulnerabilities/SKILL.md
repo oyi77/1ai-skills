@@ -30,6 +30,10 @@ Smart contract vulnerabilities have led to billions of dollars in losses across 
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing ethereum smart contract vulnerabilities"
+- "Perform static and symbolic analysis of Solidity smart contracts using Slither a"
+
 
 - When investigating security incidents that require analyzing ethereum smart contract vulnerabilities
 - When building detection rules or threat hunting queries for this domain

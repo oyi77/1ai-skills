@@ -26,6 +26,10 @@ JSON Web Tokens (JWT) defined in RFC 7519 are compact, URL-safe tokens used for 
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing jwt signing and verification"
+- "JSON Web Tokens (JWT) defined in RFC 7519 are compact, URL-safe tokens used for "
+
 
 - When deploying or configuring implementing jwt signing and verification capabilities in your environment
 - When establishing security controls aligned to compliance requirements

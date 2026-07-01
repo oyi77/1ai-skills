@@ -27,6 +27,10 @@ The NIST Cybersecurity Framework (CSF) 2.0, released in February 2024, provides 
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing nist csf maturity assessment"
+- "Assess organizational cybersecurity maturity against NIST CSF framework"
+
 
 - When conducting security assessments that involve performing nist csf maturity assessment
 - When following incident response procedures for related security events

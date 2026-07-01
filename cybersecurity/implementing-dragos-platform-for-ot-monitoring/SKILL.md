@@ -40,6 +40,10 @@ nist_csf:
 Cybersecurity skill for implementing dragos platform for ot monitoring. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing dragos platform for ot monitoring"
+- "Deploy and configure the Dragos Platform for OT network monitoring, leveraging i"
+
 
 - When deploying an OT-specific network detection and response (NDR) solution for industrial environments
 - When needing threat intelligence-driven detection against known ICS threat groups (VOLTZITE, CHERNOVITE, KAMACITE)

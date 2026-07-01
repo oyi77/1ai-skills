@@ -34,6 +34,10 @@ nist_csf:
 Cybersecurity skill for evaluating threat intelligence platforms. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "evaluating threat intelligence platforms"
+- "Evaluates and selects Threat Intelligence Platform (TIP) products based on organ"
+
 
 Use this skill when:
 - Conducting a formal RFP or vendor evaluation for a TIP solution

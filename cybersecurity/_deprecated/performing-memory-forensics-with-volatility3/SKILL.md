@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for performing memory forensics with volatility3. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing memory forensics with volatility3"
+- "Analyze volatile memory dumps using Volatility 3 to extract running processes, n"
+
 - When analyzing a RAM dump from a compromised or suspect system
 - During incident response to identify running malware, injected code, or rootkits
 - When you need to extract credentials, encryption keys, or network connections from memory

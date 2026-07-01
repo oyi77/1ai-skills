@@ -25,6 +25,10 @@ Integrate with Linear for modern project management — create/update issues, ma
 - Automation with Linear workflows
 
 ## When to Use
+**Trigger phrases:**
+- "linear api"
+- "Linear API integration — issue tracking, project management, cycle planning, tea"
+
 
 - Building custom project management tools
 - Syncing Linear with external systems (GitHub, Slack, Jira)

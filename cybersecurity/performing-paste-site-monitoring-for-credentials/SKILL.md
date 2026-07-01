@@ -29,6 +29,10 @@ Paste sites (Pastebin, GitHub Gists, Ghostbin, Dpaste, Hastebin) are frequently 
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing paste site monitoring for credentials"
+- "Monitor paste sites like Pastebin and GitHub Gists for leaked credentials, API k"
+
 
 - When conducting security assessments that involve performing paste site monitoring for credentials
 - When following incident response procedures for related security events

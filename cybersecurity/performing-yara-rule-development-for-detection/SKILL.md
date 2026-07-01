@@ -29,6 +29,10 @@ YARA is the pattern matching swiss knife for malware researchers, enabling ident
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing yara rule development for detection"
+- "Develop precise YARA rules for malware detection by identifying unique byte patt"
+
 
 - When conducting security assessments that involve performing yara rule development for detection
 - When following incident response procedures for related security events

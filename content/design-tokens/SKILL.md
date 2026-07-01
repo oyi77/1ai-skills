@@ -25,6 +25,11 @@ Design tokens are the single source of truth for design decisions. This skill co
 - Export tokens to CSS custom properties, Tailwind, and Figma
 
 ## When to Use
+**Trigger phrases:**
+- "design tokens"
+- "designing tokens"
+- "Design token systems — color, typography, spacing, and theme architecture for co"
+
 
 - Starting a new design system from scratch
 - Inconsistencies in colors, fonts, or spacing across the app

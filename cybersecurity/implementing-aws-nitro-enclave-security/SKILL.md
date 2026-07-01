@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for implementing aws nitro enclave security. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing aws nitro enclave security"
+- "Implements AWS Nitro Enclave-based confidential computing environments with cryp"
+
 
 - Processing sensitive data (PII, PHI, financial records, cryptographic secrets) that must be isolated from EC2 instance operators and administrators
 - Building confidential computing pipelines where even root-level access on the parent instance cannot read enclave memory or state

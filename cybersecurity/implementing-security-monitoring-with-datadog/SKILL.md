@@ -45,6 +45,10 @@ nist_csf:
 Cybersecurity skill for implementing security monitoring with datadog. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing security monitoring with datadog"
+- "Implements security monitoring using Datadog Cloud SIEM, Cloud Security Manageme"
+
 
 - Deploying Cloud SIEM to detect real-time threats across cloud infrastructure (AWS, Azure, GCP)
 - Creating custom detection rules for attacker techniques, credential abuse, or anomalous behavior

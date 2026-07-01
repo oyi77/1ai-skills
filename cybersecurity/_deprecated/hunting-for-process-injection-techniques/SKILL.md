@@ -36,6 +36,10 @@ Process injection (MITRE ATT&CK T1055) allows adversaries to execute code in the
 
 
 ## When to Use
+**Trigger phrases:**
+- "hunting for process injection techniques"
+- "Detect process injection techniques (T1055) including CreateRemoteThread, proces"
+
 
 - When investigating security incidents that require hunting for process injection techniques
 - When building detection rules or threat hunting queries for this domain

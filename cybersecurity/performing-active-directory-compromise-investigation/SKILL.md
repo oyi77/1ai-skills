@@ -43,6 +43,10 @@ Active Directory (AD) compromise investigation is a critical incident response c
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing active directory compromise investigation"
+- "Investigate Active Directory compromise by analyzing authentication logs, replic"
+
 
 - When conducting security assessments that involve performing active directory compromise investigation
 - When following incident response procedures for related security events

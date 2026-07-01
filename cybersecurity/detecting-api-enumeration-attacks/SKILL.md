@@ -31,6 +31,10 @@ API enumeration attacks occur when attackers systematically probe API endpoints 
 
 
 ## When to Use
+**Trigger phrases:**
+- "detecting api enumeration attacks"
+- "Detect and prevent API enumeration attacks including BOLA and IDOR exploitation "
+
 
 - When investigating security incidents that require detecting api enumeration attacks
 - When building detection rules or threat hunting queries for this domain

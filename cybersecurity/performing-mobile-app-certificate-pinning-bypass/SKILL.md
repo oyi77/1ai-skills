@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for performing mobile app certificate pinning bypass. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "performing mobile app certificate pinning bypass"
+- "Bypasses SSL/TLS certificate pinning implementations in Android and iOS applicat"
+
 
 Use this skill when:
 - Mobile app refuses connections through a proxy due to certificate pinning

@@ -31,6 +31,10 @@ nist_csf:
 Cybersecurity skill for implementing microsegmentation with guardicore. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing microsegmentation with guardicore"
+- "Implementing microsegmentation using Akamai Guardicore Segmentation to map appli"
+
 
 - When implementing east-west traffic controls to prevent lateral movement within data centers
 - When needing application-level visibility into network communication patterns before writing segmentation policies

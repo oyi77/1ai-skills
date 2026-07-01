@@ -29,6 +29,10 @@ This skill uses the ldap3 Python library to connect to a Domain Controller, quer
 
 
 ## When to Use
+**Trigger phrases:**
+- "analyzing active directory acl abuse"
+- "Detect dangerous ACL misconfigurations in Active Directory using ldap3 to identi"
+
 
 - When investigating security incidents that require analyzing active directory acl abuse
 - When building detection rules or threat hunting queries for this domain

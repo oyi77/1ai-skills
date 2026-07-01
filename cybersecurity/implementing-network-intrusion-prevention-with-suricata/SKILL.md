@@ -32,6 +32,10 @@ Suricata is a high-performance, open-source network threat detection engine deve
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing network intrusion prevention with suricata"
+- "Deploy and configure Suricata as a network intrusion prevention system with cust"
+
 
 - When deploying or configuring implementing network intrusion prevention with suricata capabilities in your environment
 - When establishing security controls aligned to compliance requirements

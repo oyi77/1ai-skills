@@ -35,6 +35,10 @@ MCP server for SQL databases enabling AI agents to interact with PostgreSQL, MyS
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "database mcp"
+- "MCP server for SQL databases"
+
 
 - Query databases with natural language
 - Inspect and explore database schemas
@@ -309,7 +313,7 @@ Refer to the skill overview for detailed usage instructions.
 
 - [code-reviewer](../../development/code-reviewer/SKILL.md) - Code review
 - [analytics-dashboard](../../marketing/analytics-dashboard/SKILL.md) - Data visualization
-- [automation](../automation/) - Workflow automation
+- automation - Workflow automation
 
 ## How to Use
 

@@ -40,6 +40,10 @@ nist_csf:
 Cybersecurity skill for implementing ot network traffic analysis with nozomi. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing ot network traffic analysis with nozomi"
+- "Deploy Nozomi Networks Guardian sensors for passive OT network traffic analysis "
+
 
 - When deploying passive OT network monitoring using Nozomi Networks Guardian sensors
 - When requiring asset visibility without active scanning in sensitive ICS environments

@@ -20,6 +20,10 @@ requires: []
 # Legal Assistant
 
 ## When to Use
+**Trigger phrases:**
+- "legal assistant"
+- "Legal assistant for BerkahKarya — contract review checklists, IP protection, Ind"
+
 
 - Drafting legal documents (contracts, NDAs, agreements)
 - Managing legal document templates

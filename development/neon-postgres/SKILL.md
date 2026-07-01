@@ -26,6 +26,10 @@ Neon is a serverless Postgres platform that separates storage and compute. It of
 - GitHub integration for preview deployments
 
 ## When to Use
+**Trigger phrases:**
+- "neon postgres"
+- "Neon serverless Postgres — branching, autoscaling, connection pooling, edge-comp"
+
 
 - Serverless/edge deployments (Vercel, Cloudflare, Deno)
 - Need database branching for PR previews

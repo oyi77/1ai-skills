@@ -34,6 +34,10 @@ Evolve instinct-based insights from sessions into actionable skills with confide
 ---
 
 ## When to Use
+**Trigger phrases:**
+- "continuous learning"
+- "Transform session insights into actionable skills with confidence-weighted scori"
+
 
 - After successful task completion
 - When encountering recurring patterns

@@ -115,6 +115,10 @@ Vilona is now ready with:
 This command can be called anytime in any session to activate Vilona persona without needing to restart session.
 
 ## When to Use
+**Trigger phrases:**
+- "vilona activate"
+- "Activate Vilona persona with forced SOUL"
+
 
 - When the task falls within this skill's domain expertise
 - When automated execution saves time over manual work

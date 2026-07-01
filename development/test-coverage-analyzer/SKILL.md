@@ -25,6 +25,11 @@ Analyze test coverage to find untested code paths, prioritize testing efforts, a
 - Set coverage thresholds and gates
 
 ## When to Use
+**Trigger phrases:**
+- "test coverage analyzer"
+- "testing coverage analyzer"
+- "Identify untested code paths — coverage reports, gap analysis, and test prioriti"
+
 
 - Before major refactoring — need to know what's tested
 - Setting up coverage gates in CI

@@ -30,6 +30,10 @@ nist_csf:
 Cybersecurity skill for implementing cloud trail log analysis. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing cloud trail log analysis"
+- "Implementing AWS CloudTrail log analysis for security monitoring, threat detecti"
+
 
 - When building security monitoring pipelines for AWS API activity
 - When investigating security incidents to trace attacker actions across AWS services

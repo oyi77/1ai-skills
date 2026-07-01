@@ -34,6 +34,10 @@ Linux systems maintain extensive logs that serve as primary evidence sources in 
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing linux log forensics investigation"
+- "Perform forensic investigation of Linux system logs including syslog, auth"
+
 
 - When conducting security assessments that involve performing linux log forensics investigation
 - When following incident response procedures for related security events

@@ -38,6 +38,10 @@ nist_csf:
 Cybersecurity skill for implementing hardware security key authentication. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "implementing hardware security key authentication"
+- "Implements FIDO2/WebAuthn hardware security key authentication including registr"
+
 
 - Deploying phishing-resistant multi-factor authentication (MFA) using FIDO2 hardware security keys for high-value accounts (administrators, developers, privileged users)
 - Building a WebAuthn relying party server that supports both roaming authenticators (USB/NFC security keys) and platform authenticators (Windows Hello, Touch ID, Android biometrics)

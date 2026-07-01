@@ -28,6 +28,10 @@ Implement SAML 2.0 Single Sign-On (SSO) using Okta as the Identity Provider (IdP
 
 
 ## When to Use
+**Trigger phrases:**
+- "implementing saml sso with okta"
+- "Implement SAML 2"
+
 
 - When deploying or configuring implementing saml sso with okta capabilities in your environment
 - When establishing security controls aligned to compliance requirements

@@ -27,6 +27,10 @@ nist_csf:
 Cybersecurity skill for validating backup integrity for recovery. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "validating backup integrity for recovery"
+- "Validate backup integrity through cryptographic hash verification, automated res"
+
 
 Use this skill when:
 - Verifying backup integrity before relying on backups for ransomware recovery

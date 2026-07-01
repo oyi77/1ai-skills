@@ -37,6 +37,10 @@ This skill covers Google Cloud Platform security testing using GCPBucketBrute fo
 
 
 ## When to Use
+**Trigger phrases:**
+- "performing gcp penetration testing with gcpbucketbrute"
+- "Perform GCP security testing using GCPBucketBrute for storage bucket enumeration"
+
 
 - When conducting security assessments that involve performing gcp penetration testing with gcpbucketbrute
 - When following incident response procedures for related security events

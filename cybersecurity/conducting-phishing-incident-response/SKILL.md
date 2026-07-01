@@ -35,6 +35,10 @@ nist_csf:
 Cybersecurity skill for conducting phishing incident response. Follows industry best practices and security standards.
 
 ## When to Use
+**Trigger phrases:**
+- "conducting phishing incident response"
+- "Responds to phishing incidents by analyzing reported emails, extracting indicato"
+
 
 - A user reports receiving a suspicious email via the phishing report button or abuse mailbox
 - Email gateway detects a malicious email that bypassed initial filtering
