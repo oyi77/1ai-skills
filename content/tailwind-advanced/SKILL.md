@@ -204,3 +204,7 @@ module.exports = {
 | "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
 | "I will optimize later" | SEO and distribution need optimization from the start. |
 | "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
+
+## Video / Motion Graphics
+
+Tailwind works in [Remotion](../video/remotion/SKILL.md) compositions. Install per the official [tailwind rule](https://github.com/remotion-dev/skills/blob/main/skills/remotion/rules/tailwind.md). Use for rapid styling of cards, badges, and layouts in video frames. Note: video uses fixed dimensions (1920×1080) — responsive breakpoints do not apply.

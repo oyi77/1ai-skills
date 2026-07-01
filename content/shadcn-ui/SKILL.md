@@ -199,3 +199,7 @@ export function LoginForm() {
 | "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
 | "I will optimize later" | SEO and distribution need optimization from the start. |
 | "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
+
+## Video / Motion Graphics
+
+shadcn-ui components (Card, Badge, Button) work as visual building blocks in [Remotion](../video/remotion/SKILL.md) compositions. Use for product demo mockups, dashboard showcases, and feature highlight videos. Style with inline CSS for animation compatibility — Tailwind animation classes are forbidden in Remotion; use `interpolate()` instead.

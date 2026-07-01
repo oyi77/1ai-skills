@@ -154,3 +154,7 @@ const Button = ({ variant = 'primary', size = 'md', children, ...props }) => {
 | "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
 | "I will optimize later" | SEO and distribution need optimization from the start. |
 | "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
+
+## Video / Motion Graphics
+
+Typography hierarchy, spacing rhythm, and visual hierarchy apply directly to [Remotion](../video/remotion/SKILL.md) video frames. Key difference: video has fixed dimensions (1920×1080), no responsive design. Text must be larger — main headline ≥84px, supporting ≥44px at 1080p.

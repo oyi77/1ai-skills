@@ -1,33 +1,33 @@
----
-name: auto-clipper
-description: AI-powered video clipper - Convert long videos into viral Shorts/TikToks/Reels automatically
+description: >
+  Generate viral short-form videos with clay art/plasticine stop-motion diorama visuals for TikTok,
+  Reels, and Shorts. Use when creating clay animation, plasticine-style, or stop-motion diorama videos.
 domain: content
 tags:
-- auto
-- clipper
+- art
+- clay
 - content-creation
 - digital-content
+- generator
 - media
 - video
-dependencies: "- faster-whisper\n  - textblob\n  - vadersentiment\n  - moviepy\n  - opencv-python\n  - ffmpeg-python\n  -\
-  \ customtkinter\n"
 ---
-# Auto Clipper
+# Clay Art Video Generator
 
 ## When to Use
 
 **Trigger phrases:**
-- "auto clipper"
-- "Help me with auto clipper"
+- "clay art video" · "plasticine animation" · "stop motion diorama"
+- "claymation" · "clay style video" · "plasticine video"
+- "3D clay look" · "stop motion style" · "diorama video"
 
 **Use cases:**
-- When the task matches this skill's domain expertise
+- Create viral TikTok/Reels with clay art aesthetics
+- Generate product showcases in plasticine style
+- Make story-mode videos with stop-motion diorama visuals
+- Create educational content with clay animation look
 
 **When NOT to use:**
 - For tasks outside this skill's scope
-
-
-**Production-ready** AI-powered video clipper untuk content creator Indonesia.
 
 
 ## When NOT to Use
@@ -39,7 +39,7 @@ dependencies: "- faster-whisper\n  - textblob\n  - vadersentiment\n  - moviepy\n
 
 ## Overview
 
-Auto Clipper enables content production with professional quality and consistency.
+Clay Art Video Generator enables content production with professional quality and consistency.
 
 ## Workflow
 

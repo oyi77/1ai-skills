@@ -149,3 +149,7 @@ on error:
 | "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
 | "I will optimize later" | SEO and distribution need optimization from the start. |
 | "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
+
+## Video / Motion Graphics
+
+Design tokens ensure brand consistency across [Remotion](../video/remotion/SKILL.md) video compositions. Define brand colors, spacing, and typography tokens once, use across all video scenes. Tokens map directly to CSS custom properties in Remotion components.

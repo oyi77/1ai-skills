@@ -1,43 +1,39 @@
----
-name: content-generator
-description: Multi-provider automated video content generation platform. Generates TikTok 9:16 vertical videos (1 minute)
-  from text prompts using NVIDIA NIM + BytePlus Seedance + FFmpeg. Implements Larry Playbook viral formula. Use when creating
-  TikTok content, product videos, or any AI-generated video.
+description: >
+  Convert long videos into viral Shorts, TikToks, and Reels automatically. AI-powered scene detection,
+  highlight extraction, and smart clipping. Use when repurposing long-form content into short-form,
+  clipping highlights, or creating shorts from existing videos.
 domain: content
 tags:
-- content
+- auto
+- clipper
 - content-creation
 - digital-content
-- generator
 - media
 - video
-persona: "|\n  name: \"MrBeast (Jimmy Donaldson)\"\n    title: \"Master of Viral Content\"\n    expertise: [\"retention optimization\"\
-  , \"thumbnail psychology\", \"pacing mastery\", \"audience psychology\"]\n    philosophy: \"Every second matters. If they're\
-  \ not entertained, they leave. Make every frame count.\"\n    credentials:\n      - \"300+ million YouTube subscribers across\
-  \ channels\"\n      - \"Pioneered high-production challenge videos with massive budgets\"\n      - \"Average 100M+ views\
-  \ per video through retention optimization\"\n      - \"Built Feastables to $100M+ revenue through content-driven marketing\"\
-  \n    principles:\n      - \"Hook in 3 seconds - grab attention immediately or lose them forever\"\n      - \"Pacing is\
-  \ everything - cut dead air, maintain momentum relentlessly\"\n      - \"Thumbnails sell clicks - invest in visual psychology,\
-  \ test everything\"\n      - \"Retention over length - 8 minutes at 80% beats 20 minutes at 40%\"\n      - \"Scale creates\
-  \ spectacle - bigger stakes, bigger emotions, bigger views\"\n      - \"Data drives decisions - A/B test titles, thumbnails,\
-  \ hooks constantly\"\n      - \"Reinvest everything - compound growth by putting revenue back into content\"\n"
+dependencies: "- faster-whisper\n  - textblob\n  - vadersentiment\n  - moviepy\n  - opencv-python\n  - ffmpeg-python\n  -\
+  \ customtkinter\n"
 ---
-# Content Generator
+# Auto Clipper
 
 ## When to Use
 
 **Trigger phrases:**
-- "content generator"
-- "Help me with content generator"
+- "clip this video" · "make shorts from this" · "turn this into TikTok"
+- "auto clip" · "extract highlights" · "repurpose long video"
+- "create Reels from" · "viral clips from" · "short-form from long-form"
 
 **Use cases:**
-- When the task matches this skill's domain expertise
+- Convert a podcast/webinar into multiple short clips
+- Extract highlights from long YouTube videos
+- Create TikTok/Reels from existing content
+- Auto-detect engaging moments via sentiment analysis
+- Batch process multiple long videos into shorts
 
 **When NOT to use:**
 - For tasks outside this skill's scope
 
 
-End-to-end AI video pipeline: LLM hook → NVIDIA image → BytePlus Seedance video → FFmpeg loop/compress.
+**Production-ready** AI-powered video clipper untuk content creator Indonesia.
 
 
 ## When NOT to Use
@@ -49,7 +45,7 @@ End-to-end AI video pipeline: LLM hook → NVIDIA image → BytePlus Seedance vi
 
 ## Overview
 
-Content Generator enables content production with professional quality and consistency.
+Auto Clipper enables content production with professional quality and consistency.
 
 ## Workflow
 
