@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-01T16:27:54.214740+00:00",
-  "total": 1334,
+  "generated": "2026-07-01T23:42:53.024266+00:00",
+  "total": 1335,
   "categories": [
     {
       "name": "cybersecurity",
@@ -55,11 +55,11 @@
       "count": 15
     },
     {
-      "name": "sales",
-      "count": 14
+      "name": "agents",
+      "count": 15
     },
     {
-      "name": "agents",
+      "name": "sales",
       "count": 14
     },
     {
@@ -2212,6 +2212,10 @@
     {
       "name": "extracting-windows-event-logs-artifacts",
       "category": "cybersecurity"
+    },
+    {
+      "name": "fable-mode",
+      "category": "agents"
     },
     {
       "name": "faceless-youtube",
