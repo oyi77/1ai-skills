@@ -1,7 +1,8 @@
----
-name: faceless-youtube
-description: Build automated faceless YouTube channels with AI. Create engaging videos without showing your face and monetize
-  through ads, sponsorships, and affiliates.
+description: >
+  Build automated faceless YouTube channels with AI. Create videos from a single prompt using free tools
+  (edge-tts + Pexels stock footage + FFmpeg), or build full channel pipelines with monetization. Use when
+  creating YouTube content without showing your face, building passive income channels, or generating
+  complete videos from a topic.
 domain: content
 tags:
 - content-creation
@@ -38,11 +39,19 @@ Build profitable faceless YouTube channels using AI automation. Create content i
 
 ## When to Use
 
+**Trigger phrases:**
+- "faceless youtube" · "youtube automation" · "build a youtube channel"
+- "youtube video from topic" · "generate youtube video" · "make a video without showing my face"
+- "passive income youtube" · "youtube factory" · "auto generate youtube video"
+- "script + voiceover + stock footage" · "complete youtube video from prompt"
+
+**Use cases:**
 - Build YouTube presence anonymously
 - Create content at scale
 - Generate passive ad revenue
 - Build authority in niche
 - Test multiple niches quickly
+- Generate complete videos from a single topic/prompt
 
 ---
 
@@ -129,6 +138,45 @@ Build profitable faceless YouTube channels using AI automation. Create content i
 | Epidemic Sound | Music | $15/mo |
 | Artlist | Music | $15/mo |
 | YouTube Audio Library | Music | Free |
+
+### Free Tools Stack (100% No Paid APIs)
+| Tool | Use | Price |
+|------|-----|-------|
+| edge-tts | Voice generation (20+ languages) | Free |
+| Pexels API | Stock footage search | Free |
+| FFmpeg | Video assembly, captions, transitions | Free |
+| YouTube Audio Library | Background music | Free |
+
+**Required:** `edge-tts` (`pip install edge-tts`), `ffmpeg`, `PEXELS_API_KEY` (free at pexels.com/api)
+
+---
+
+## Single-Prompt Pipeline (Free)
+
+Generate a complete YouTube video from one topic — script, voiceover, stock footage, captions, thumbnail. No paid APIs.
+
+```bash
+# 1. Generate script from topic (use LLM)
+# 2. Generate voiceover with edge-tts
+edge-tts --voice "en-US-GuyNeural" --text "Your script here" --write-media voiceover.mp3
+
+# 3. Search stock footage per section
+curl "https://api.pexels.com/videos/search?query=AI+technology&per_page=5" \
+  -H "Authorization: $PEXELS_API_KEY" | jq '.videos[].video_files[].link'
+
+# 4. Download and trim clips
+ffmpeg -i stock_clip.mp4 -ss 0 -t 5 -c copy clip_01.mp4
+
+# 5. Assemble with captions
+ffmpeg -f concat -safe 0 -i clips.txt -i voiceover.mp3 \
+  -vf "subtitles=captions.srt:force_style='FontSize=24,PrimaryColour=&H00FFFFFF'" \
+  -c:v libx264 -crf 22 -c:a aac -shortest output.mp4
+
+# 6. Extract thumbnail
+ffmpeg -i output.mp4 -ss 00:00:03 -vframes 1 thumbnail.jpg
+```
+
+**Full automation:** See the [Single-Prompt Pipeline](#single-prompt-pipeline-free) section above.
 
 ---
 
@@ -302,7 +350,7 @@ Combine faceless-youtube with related skills in the 1ai-skills ecosystem:
 Research: ai-research-agent (find topics)
 Script: writing-skills (write scripts)
 Voice: voice-ai-agent (optional narration)
-Video: seedance, grok-video-generation
+Video: video-gen (Seedance, Kling, Runway, Grok)
 Publish: youtube-automation
 Monetize: affiliate-marketing
 ```
@@ -313,7 +361,7 @@ Monetize: affiliate-marketing
 |-------|----------|
 | larry-playbook | Viral hooks |
 | content-creator | Multi-platform |
-| seedance | Video generation |
+| video-gen | AI video generation |
 | affiliate-marketing | Monetization |
 | seo-auditor | Optimization |
 
@@ -404,10 +452,10 @@ After completing this skill, confirm:
 
 ## Related Skills
 
-- [larry-playbook](../larry-playbook/SKILL.md) - Viral content
-- [seedance](../seedance/SKILL.md) - Video generation
-- [affiliate-marketing](../../marketing/affiliate-marketing/SKILL.md) - Monetization
-- [seo-auditor](../../marketing/seo-auditor/SKILL.md) - YouTube SEO
+- [larry-playbook](../../larry-playbook/SKILL.md) - Viral content
+- [video-gen](../video-gen/SKILL.md) - AI video generation
+- [affiliate-marketing](../../../marketing/affiliate-marketing/SKILL.md) - Monetization
+- [seo-auditor](../../../marketing/seo-auditor/SKILL.md) - YouTube SEO
 
 ## Process
 
