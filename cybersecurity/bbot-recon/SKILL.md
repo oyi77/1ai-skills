@@ -29,6 +29,13 @@ BBOT (Bee·bot) is a multipurpose recursive internet scanner by Black Lantern Se
 
 ## When to Use
 
+**Trigger phrases:**
+- "bbot recon"
+- "Starting bug bounty reconnaissance on authorized targets"
+- "Enumerating subdomains for a target domain"
+- "Crawling/spidering web applications for endpoint discovery"
+
+
 - Starting bug bounty reconnaissance on authorized targets
 - Enumerating subdomains for a target domain
 - Crawling/spidering web applications for endpoint discovery

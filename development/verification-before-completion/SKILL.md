@@ -43,6 +43,13 @@ Claiming work is complete without verification is dishonesty, not efficiency.
 
 ## When to Use
 
+**Trigger phrases:**
+- "verification before completion"
+- "Before claiming any work is complete"
+- "Before committing code or creating PRs"
+- "When claiming tests pass"
+
+
 - Before claiming any work is complete
 - Before committing code or creating PRs
 - When claiming tests pass

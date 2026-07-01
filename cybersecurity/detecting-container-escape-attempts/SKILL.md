@@ -35,6 +35,13 @@ Container escape is a critical attack technique where an adversary breaks out of
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting container escape attempts"
+- "When investigating security incidents that require detecting container escape at"
+- "When building detection rules or threat hunting queries for this domain"
+- "When SOC analysts need structured procedures for this analysis type"
+
+
 - When investigating security incidents that require detecting container escape attempts
 - When building detection rules or threat hunting queries for this domain
 - When SOC analysts need structured procedures for this analysis type

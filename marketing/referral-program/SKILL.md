@@ -27,6 +27,13 @@ Referral program design and automation — incentive structures, tracking, viral
 
 ## When to Use
 
+**Trigger phrases:**
+- "referral program"
+- "Building marketing campaigns and funnels"
+- "Optimizing conversion and retention"
+- "Scaling acquisition channels"
+
+
 - Building marketing campaigns and funnels
 - Optimizing conversion and retention
 - Scaling acquisition channels

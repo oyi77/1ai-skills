@@ -29,6 +29,13 @@ Cybersecurity skill for implementing cloud workload protection. Follows industry
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing cloud workload protection"
+- "When deploying or configuring implementing cloud workload protection capabilitie"
+- "When establishing security controls aligned to compliance requirements"
+- "When building or improving security architecture for this domain"
+
+
 - When deploying or configuring implementing cloud workload protection capabilities in your environment
 - When establishing security controls aligned to compliance requirements
 - When building or improving security architecture for this domain

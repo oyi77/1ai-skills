@@ -32,6 +32,13 @@ Source: [nextlevelbuilder/ui-ux-pro-max-skill](https://github.com/nextlevelbuild
 
 ## When to Use
 
+**Trigger phrases:**
+- "ui ux pro max"
+- "Building professional UI for a specific industry"
+- "Need color palette or font pairing recommendations"
+- "Creating or auditing a design system"
+
+
 - Building professional UI for a specific industry
 - Need color palette or font pairing recommendations
 - Creating or auditing a design system

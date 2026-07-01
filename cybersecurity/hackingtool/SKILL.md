@@ -32,6 +32,13 @@ Z4nzu/hackingtool is a Python-based terminal aggregator that provides a unified 
 
 ## When to Use
 
+**Trigger phrases:**
+- "hackingtool"
+- "Setting up a new pentest environment from scratch"
+- "Need a quick launcher for security tools across categories"
+- "Want to discover tools for a specific attack type"
+
+
 - Setting up a new pentest environment from scratch
 - Need a quick launcher for security tools across categories
 - Want to discover tools for a specific attack type

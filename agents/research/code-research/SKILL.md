@@ -16,6 +16,13 @@ Autonomous codebase analysis agent that produces structured understanding of unf
 
 ## When to Use
 
+**Trigger phrases:**
+- "code research"
+- "Joining a new project and need to understand the codebase"
+- "Investigating how a feature is implemented across multiple files"
+- "Tracing a data flow from input to output"
+
+
 - Joining a new project and need to understand the codebase
 - Investigating how a feature is implemented across multiple files
 - Tracing a data flow from input to output

@@ -25,6 +25,13 @@ Prepares comprehensive briefing packs before client/investor meetings. Handles t
 
 ## When to Use
 
+**Trigger phrases:**
+- "meeting prep"
+- "Client meeting (wealth management)"
+- "Investor pitch (fundraising)"
+- "Management presentation (private equity)"
+
+
 - Client meeting (wealth management)
 - Investor pitch (fundraising)
 - Management presentation (private equity)

@@ -17,6 +17,13 @@ Mindset skill for resilience. Builds capability through deliberate practice and 
 
 ## When to Use
 
+**Trigger phrases:**
+- "resilience"
+- "After failure or rejection (fundraising, sales, product launch)"
+- "Navigating organizational change (layoffs, restructuring)"
+- "High-pressure or high-stakes environments"
+
+
 - After failure or rejection (fundraising, sales, product launch)
 - Navigating organizational change (layoffs, restructuring)
 - High-pressure or high-stakes environments

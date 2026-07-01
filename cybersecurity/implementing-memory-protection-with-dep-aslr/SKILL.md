@@ -32,6 +32,11 @@ Cybersecurity skill for implementing memory protection with dep aslr. Follows in
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing memory protection with dep aslr"
+- "Use when working with implementing memory protection with dep aslr"
+
+
 Use this skill when hardening endpoints against memory-based exploits by configuring DEP, ASLR, CFG, and Windows Exploit Protection system-wide and per-application mitigations.
 
 

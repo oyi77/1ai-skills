@@ -33,6 +33,13 @@ Cybersecurity skill for triaging security alerts in splunk. Follows industry bes
 
 ## When to Use
 
+**Trigger phrases:**
+- "triaging security alerts in splunk"
+- "SOC Tier 1 analysts need to process the Incident Review queue in Splunk Enterpri"
+- "Notable events require rapid severity classification and initial investigation b"
+- "Alert volume exceeds capacity and analysts need a systematic triage methodology"
+
+
 Use this skill when:
 - SOC Tier 1 analysts need to process the Incident Review queue in Splunk Enterprise Security (ES)
 - Notable events require rapid severity classification and initial investigation before escalation

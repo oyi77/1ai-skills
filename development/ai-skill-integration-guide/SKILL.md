@@ -158,6 +158,13 @@ Every imported skill must pass these gates before merge:
 
 ## When to Use
 
+**Trigger phrases:**
+- "ai skill integration guide"
+- "Integrating skills from an external GitHub repository"
+- "Bulk importing skills from a curated collection"
+- "Converting non-standard skill formats to 1ai-skills format"
+
+
 - Integrating skills from an external GitHub repository
 - Bulk importing skills from a curated collection
 - Converting non-standard skill formats to 1ai-skills format

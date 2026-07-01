@@ -14,6 +14,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "review agent"
+- "Reviewing pull requests before merge"
+- "Auditing code changes for security issues"
+- "Validating refactoring has not introduced regressions"
+
+
 - Reviewing pull requests before merge
 - Auditing code changes for security issues
 - Validating refactoring has not introduced regressions

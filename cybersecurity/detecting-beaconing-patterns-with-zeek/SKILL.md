@@ -29,6 +29,13 @@ Cybersecurity skill for detecting beaconing patterns with zeek. Follows industry
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting beaconing patterns with zeek"
+- "When investigating security incidents that require detecting beaconing patterns"
+- "When building detection rules or threat hunting queries for this domain"
+- "When SOC analysts need structured procedures for this analysis type"
+
+
 - When investigating security incidents that require detecting beaconing patterns with zeek
 - When building detection rules or threat hunting queries for this domain
 - When SOC analysts need structured procedures for this analysis type

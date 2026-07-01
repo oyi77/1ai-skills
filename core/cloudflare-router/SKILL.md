@@ -32,6 +32,13 @@ persona:
 
 ## When to Use
 
+**Trigger phrases:**
+- "cloudflare router"
+- "Adding new subdomains pointing to local services"
+- "Managing Cloudflare Tunnel ingress rules"
+- "Generating nginx reverse proxy configs"
+
+
 - Adding new subdomains pointing to local services
 - Managing Cloudflare Tunnel ingress rules
 - Generating nginx reverse proxy configs

@@ -37,6 +37,13 @@ False positive alerts are non-malicious events that trigger security rules, over
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing false positive reduction in siem"
+- "When conducting security assessments that involve performing false positive redu"
+- "When following incident response procedures for related security events"
+- "When performing scheduled security testing or auditing activities"
+
+
 - When conducting security assessments that involve performing false positive reduction in siem
 - When following incident response procedures for related security events
 - When performing scheduled security testing or auditing activities

@@ -19,6 +19,13 @@ Cybersecurity skill for continuous hunter. Follows industry best practices and s
 
 ## When to Use
 
+**Trigger phrases:**
+- "continuous hunter"
+- "Scaling from manual hunting to automated pipeline"
+- "Running overnight/weekend scans across target portfolio"
+- "Monitoring targets for new vulnerabilities"
+
+
 - Scaling from manual hunting to automated pipeline
 - Running overnight/weekend scans across target portfolio
 - Monitoring targets for new vulnerabilities

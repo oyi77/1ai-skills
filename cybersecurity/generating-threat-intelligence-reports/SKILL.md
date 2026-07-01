@@ -31,6 +31,13 @@ Cybersecurity skill for generating threat intelligence reports. Follows industry
 
 ## When to Use
 
+**Trigger phrases:**
+- "generating threat intelligence reports"
+- "Producing weekly, monthly, or quarterly threat intelligence summaries for securi"
+- "Creating a rapid intelligence assessment in response to a breaking threat (e"
+- "Generating sector-specific threat briefings for executive decision-making on sec"
+
+
 Use this skill when:
 - Producing weekly, monthly, or quarterly threat intelligence summaries for security leadership
 - Creating a rapid intelligence assessment in response to a breaking threat (e.g., new zero-day, active ransomware campaign)

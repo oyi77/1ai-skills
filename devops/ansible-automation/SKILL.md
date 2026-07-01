@@ -26,6 +26,13 @@ Ansible is an agentless automation tool using SSH for configuration management, 
 
 ## When to Use
 
+**Trigger phrases:**
+- "ansible automation"
+- "Server configuration management (10-10000+ nodes)"
+- "Application deployment automation"
+- "Infrastructure provisioning workflows"
+
+
 - Server configuration management (10-10000+ nodes)
 - Application deployment automation
 - Infrastructure provisioning workflows

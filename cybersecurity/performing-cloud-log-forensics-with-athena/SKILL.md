@@ -34,6 +34,13 @@ Cybersecurity skill for performing cloud log forensics with athena. Follows indu
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing cloud log forensics with athena"
+- "When investigating AWS security incidents that require querying massive volumes"
+- "When performing forensic analysis across CloudTrail, VPC Flow Logs, S3 access lo"
+- "When building reusable Athena tables with partition projection for ongoing incid"
+
+
 - When investigating AWS security incidents that require querying massive volumes of cloud logs
 - When performing forensic analysis across CloudTrail, VPC Flow Logs, S3 access logs, and ALB logs
 - When building reusable Athena tables with partition projection for ongoing incident response

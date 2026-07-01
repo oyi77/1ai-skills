@@ -27,6 +27,13 @@ Make.com (formerly Integromat) is a visual automation platform with 1500+ app in
 
 ## When to Use
 
+**Trigger phrases:**
+- "make scenarios"
+- "Automating workflows across SaaS applications"
+- "Needing visual automation with complex branching"
+- "Building customer-facing integrations"
+
+
 - Automating workflows across SaaS applications
 - Needing visual automation with complex branching
 - Building customer-facing integrations

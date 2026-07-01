@@ -33,6 +33,13 @@ Cybersecurity skill for performing ioc enrichment automation. Follows industry b
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing ioc enrichment automation"
+- "SOC analysts need to quickly enrich IOCs from multiple sources during alert tria"
+- "High alert volumes require automated enrichment to reduce manual lookup time"
+- "Incident investigations need comprehensive IOC context for scope assessment"
+
+
 Use this skill when:
 - SOC analysts need to quickly enrich IOCs from multiple sources during alert triage
 - High alert volumes require automated enrichment to reduce manual lookup time

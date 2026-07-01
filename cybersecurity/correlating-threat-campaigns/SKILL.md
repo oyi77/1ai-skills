@@ -32,6 +32,13 @@ Cybersecurity skill for correlating threat campaigns. Follows industry best prac
 
 ## When to Use
 
+**Trigger phrases:**
+- "correlating threat campaigns"
+- "Multiple unrelated-appearing incidents share IOCs (same C2 IP, same malware hash"
+- "An ISAC partner shares indicators from an incident that match your own historica"
+- "Building a campaign report linking adversary activity over weeks or months to a"
+
+
 Use this skill when:
 - Multiple unrelated-appearing incidents share IOCs (same C2 IP, same malware hash, similar TTPs)
 - An ISAC partner shares indicators from an incident that match your own historical events

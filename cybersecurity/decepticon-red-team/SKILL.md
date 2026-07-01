@@ -23,6 +23,13 @@ Decepticon is an autonomous red team agent that executes full attack chains end-
 
 ## When to Use
 
+**Trigger phrases:**
+- "decepticon red team"
+- "Autonomous red teaming of infrastructure"
+- "Full attack chain simulation from recon to post-exploitation"
+- "Engagement planning with structured packages (RoE, ConOps, OPPLAN)"
+
+
 - Autonomous red teaming of infrastructure
 - Full attack chain simulation from recon to post-exploitation
 - Engagement planning with structured packages (RoE, ConOps, OPPLAN)

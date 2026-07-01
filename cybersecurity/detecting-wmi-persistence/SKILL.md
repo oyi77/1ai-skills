@@ -36,6 +36,13 @@ Cybersecurity skill for detecting wmi persistence. Follows industry best practic
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting wmi persistence"
+- "When hunting for WMI event subscription persistence (MITRE ATT&CK T1546"
+- "After detecting suspicious WMI activity in endpoint telemetry"
+- "During incident response to identify attacker persistence mechanisms"
+
+
 - When hunting for WMI event subscription persistence (MITRE ATT&CK T1546.003)
 - After detecting suspicious WMI activity in endpoint telemetry
 - During incident response to identify attacker persistence mechanisms

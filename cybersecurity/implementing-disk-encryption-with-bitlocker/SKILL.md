@@ -32,6 +32,13 @@ Cybersecurity skill for implementing disk encryption with bitlocker. Follows ind
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing disk encryption with bitlocker"
+- "Encrypting Windows endpoints to protect data at rest for compliance (PCI DSS, HI"
+- "Deploying BitLocker across enterprise fleet via Intune, SCCM, or GPO"
+- "Configuring TPM-based encryption with PIN or USB startup key for enhanced securi"
+
+
 Use this skill when:
 - Encrypting Windows endpoints to protect data at rest for compliance (PCI DSS, HIPAA, GDPR)
 - Deploying BitLocker across enterprise fleet via Intune, SCCM, or GPO

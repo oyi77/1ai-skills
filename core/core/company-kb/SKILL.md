@@ -28,6 +28,13 @@ persona:
 # Company Kb
 
 ## When to Use
+
+**Trigger phrases:**
+- "company kb"
+- "User asks about company info, procedures, history, products, team"
+- "Agent needs to look up internal documentation"
+- "Storing new company knowledge for future recall"
+
 - User asks about company info, procedures, history, products, team
 - Agent needs to look up internal documentation
 - Storing new company knowledge for future recall

@@ -25,6 +25,13 @@ Identifies tax-loss harvesting opportunities, manages wash sale constraints, and
 
 ## When to Use
 
+**Trigger phrases:**
+- "tax loss harvesting"
+- "Year-end tax planning (November-December)"
+- "Portfolio down > 10% (harvest losses)"
+- "Wash sale risk management (30-day windows)"
+
+
 - Year-end tax planning (November-December)
 - Portfolio down > 10% (harvest losses)
 - Wash sale risk management (30-day windows)

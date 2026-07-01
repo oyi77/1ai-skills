@@ -27,6 +27,13 @@ Reference for free-tier SaaS tools across team collaboration, project management
 
 ## When to Use
 
+**Trigger phrases:**
+- "free saas toolkit"
+- "Setting up a new team's tool stack on zero budget"
+- "Evaluating alternatives to paid SaaS subscriptions"
+- "Building a startup's initial operational toolkit"
+
+
 - Setting up a new team's tool stack on zero budget
 - Evaluating alternatives to paid SaaS subscriptions
 - Building a startup's initial operational toolkit

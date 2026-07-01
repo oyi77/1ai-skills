@@ -41,6 +41,13 @@ persona:
 Write the test first. Watch it fail. Write minimal code to pass.
 
 ## When to Use
+
+**Trigger phrases:**
+- "test driven development"
+- "New features"
+- "Bug fixes"
+- "Refactoring"
+
 - New features
 - Bug fixes
 - Refactoring

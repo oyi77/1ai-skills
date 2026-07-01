@@ -30,6 +30,13 @@ Cybersecurity skill for managing intelligence lifecycle. Follows industry best p
 
 ## When to Use
 
+**Trigger phrases:**
+- "managing intelligence lifecycle"
+- "Establishing a formal CTI program and defining its operational model"
+- "Conducting quarterly intelligence requirements reviews with business stakeholder"
+- "Evaluating CTI program maturity against established frameworks (FIRST CTI-SIG ma"
+
+
 Use this skill when:
 - Establishing a formal CTI program and defining its operational model
 - Conducting quarterly intelligence requirements reviews with business stakeholders

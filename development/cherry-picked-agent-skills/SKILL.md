@@ -144,6 +144,13 @@ Six unique agent workflow skills cherry-picked from [addyosmani/agent-skills](ht
 
 ## When to Use
 
+**Trigger phrases:**
+- "cherry picked agent skills"
+- "Requirements gathering: **interview-me**"
+- "Turning vague ideas into specs: **idea-refine**"
+- "Validating architectural decisions: **doubt-driven-development**"
+
+
 - Requirements gathering: **interview-me**
 - Turning vague ideas into specs: **idea-refine**
 - Validating architectural decisions: **doubt-driven-development**

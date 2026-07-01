@@ -15,6 +15,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "model router"
+- "When managing multiple LLM providers (OpenAI, Anthropic, Google, etc"
+- "When optimizing for cost vs quality tradeoffs"
+- "When implementing fallback chains for reliability"
+
+
 - When managing multiple LLM providers (OpenAI, Anthropic, Google, etc.)
 - When optimizing for cost vs quality tradeoffs
 - When implementing fallback chains for reliability

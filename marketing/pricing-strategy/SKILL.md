@@ -14,6 +14,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "pricing strategy"
+- "Designing pricing for a new product"
+- "Optimizing existing pricing page conversion"
+- "Adding or restructuring pricing tiers"
+
+
 - Designing pricing for a new product
 - Optimizing existing pricing page conversion
 - Adding or restructuring pricing tiers

@@ -37,6 +37,13 @@ Cybersecurity skill for implementing security chaos engineering. Follows industr
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing security chaos engineering"
+- "When deploying or configuring implementing security chaos engineering capabiliti"
+- "When establishing security controls aligned to compliance requirements"
+- "When building or improving security architecture for this domain"
+
+
 - When deploying or configuring implementing security chaos engineering capabilities in your environment
 - When establishing security controls aligned to compliance requirements
 - When building or improving security architecture for this domain

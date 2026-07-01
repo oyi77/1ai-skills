@@ -18,6 +18,13 @@ Mindset skill for leadership essentials. Builds capability through deliberate pr
 
 ## When to Use
 
+**Trigger phrases:**
+- "leadership essentials"
+- "Stepping into a new leadership role (first-time manager or exec)"
+- "Improving team performance (velocity, morale, alignment)"
+- "Building team culture and accountability"
+
+
 - Stepping into a new leadership role (first-time manager or exec)
 - Improving team performance (velocity, morale, alignment)
 - Building team culture and accountability

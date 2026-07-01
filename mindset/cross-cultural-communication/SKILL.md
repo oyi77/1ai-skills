@@ -19,6 +19,13 @@ Mindset skill for cross cultural communication. Builds capability through delibe
 
 ## When to Use
 
+**Trigger phrases:**
+- "cross cultural communication"
+- "Leading or collaborating with globally distributed teams"
+- "Negotiating or selling to international clients"
+- "Managing async communication across timezones"
+
+
 - Leading or collaborating with globally distributed teams
 - Negotiating or selling to international clients
 - Managing async communication across timezones

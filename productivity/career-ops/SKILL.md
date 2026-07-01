@@ -40,6 +40,13 @@ Source: [santifer/career-ops](https://github.com/santifer/career-ops)
 
 ## When to Use
 
+**Trigger phrases:**
+- "career ops"
+- "Starting a job search and need strategy"
+- "Optimizing CV for ATS systems"
+- "Preparing for behavioral or technical interviews"
+
+
 - Starting a job search and need strategy
 - Optimizing CV for ATS systems
 - Preparing for behavioral or technical interviews

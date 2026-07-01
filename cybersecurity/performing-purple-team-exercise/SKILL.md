@@ -39,6 +39,13 @@ Cybersecurity skill for performing purple team exercise. Follows industry best p
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing purple team exercise"
+- "SOC teams need to validate that detection rules actually fire for the threats th"
+- "Red team assessments produced findings that need translation into detection impr"
+- "New detection tools or SIEM migrations require validation of detection coverage"
+
+
 Use this skill when:
 - SOC teams need to validate that detection rules actually fire for the threats they target
 - Red team assessments produced findings that need translation into detection improvements

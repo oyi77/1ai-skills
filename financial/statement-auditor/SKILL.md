@@ -25,6 +25,13 @@ Audits LP (Limited Partner) statements before distribution. Handles the full aud
 
 ## When to Use
 
+**Trigger phrases:**
+- "statement auditor"
+- "LP statements received (quarterly/monthly)"
+- "Distribution approval needed"
+- "Pre-audit preparation"
+
+
 - LP statements received (quarterly/monthly)
 - Distribution approval needed
 - Pre-audit preparation

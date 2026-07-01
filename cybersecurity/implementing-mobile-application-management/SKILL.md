@@ -30,6 +30,13 @@ Cybersecurity skill for implementing mobile application management. Follows indu
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing mobile application management"
+- "Deploying enterprise mobile app protection without full device management (MDM)"
+- "Implementing BYOD policies that protect corporate data while respecting personal"
+- "Configuring Microsoft Intune App Protection Policies for iOS and Android"
+
+
 Use this skill when:
 - Deploying enterprise mobile app protection without full device management (MDM)
 - Implementing BYOD policies that protect corporate data while respecting personal privacy

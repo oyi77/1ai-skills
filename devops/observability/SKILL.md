@@ -26,6 +26,13 @@ Observability provides visibility into system behavior through metrics, logs, an
 
 ## When to Use
 
+**Trigger phrases:**
+- "observability"
+- "Setting up monitoring for new services"
+- "Designing dashboards for operational visibility"
+- "Configuring alerting rules and escalation"
+
+
 - Setting up monitoring for new services
 - Designing dashboards for operational visibility
 - Configuring alerting rules and escalation

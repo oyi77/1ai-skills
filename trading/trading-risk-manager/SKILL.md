@@ -24,6 +24,13 @@ Calculate position sizes, validate trades against risk rules, and monitor portfo
 
 ## When to Use
 
+**Trigger phrases:**
+- "trading risk manager"
+- "Calculating optimal position sizes based on account risk percentage"
+- "Validating individual trades against risk parameters before execution"
+- "Monitoring total portfolio exposure and diversification"
+
+
 - Calculating optimal position sizes based on account risk percentage
 - Validating individual trades against risk parameters before execution
 - Monitoring total portfolio exposure and diversification

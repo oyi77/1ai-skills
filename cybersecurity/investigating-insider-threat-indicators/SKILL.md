@@ -33,6 +33,13 @@ Cybersecurity skill for investigating insider threat indicators. Follows industr
 
 ## When to Use
 
+**Trigger phrases:**
+- "investigating insider threat indicators"
+- "HR refers a departing employee for monitoring during their notice period"
+- "DLP alerts indicate bulk data downloads or transfers to personal storage"
+- "UEBA detects anomalous access patterns deviating significantly from peer baselin"
+
+
 Use this skill when:
 - HR refers a departing employee for monitoring during their notice period
 - DLP alerts indicate bulk data downloads or transfers to personal storage

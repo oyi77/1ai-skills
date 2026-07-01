@@ -38,6 +38,13 @@ WMI (Windows Management Instrumentation) is a legitimate Windows administration 
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing lateral movement with wmiexec"
+- "When conducting security assessments that involve performing lateral movement wi"
+- "When following incident response procedures for related security events"
+- "When performing scheduled security testing or auditing activities"
+
+
 - When conducting security assessments that involve performing lateral movement with wmiexec
 - When following incident response procedures for related security events
 - When performing scheduled security testing or auditing activities

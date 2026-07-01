@@ -18,6 +18,13 @@ Mindset skill for personal productivity. Builds capability through deliberate pr
 
 ## When to Use
 
+**Trigger phrases:**
+- "personal productivity"
+- "Feeling overwhelmed by tasks"
+- "Struggling with focus or procrastination"
+- "Optimizing daily/weekly routines"
+
+
 - Feeling overwhelmed by tasks
 - Struggling with focus or procrastination
 - Optimizing daily/weekly routines

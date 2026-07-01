@@ -22,6 +22,13 @@ Agent harness optimization is the practice of tuning the runtime environment tha
 
 ## When to Use
 
+**Trigger phrases:**
+- "agent harness optimizer"
+- "Token costs are rising faster than output quality"
+- "Agents lose context between sessions or after compaction"
+- "Hook scripts are slow, brittle, or produce noisy output"
+
+
 - Token costs are rising faster than output quality
 - Agents lose context between sessions or after compaction
 - Hook scripts are slow, brittle, or produce noisy output

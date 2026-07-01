@@ -34,6 +34,13 @@ Cybersecurity skill for hunting for persistence via wmi subscriptions. Follows i
 
 ## When to Use
 
+**Trigger phrases:**
+- "hunting for persistence via wmi subscriptions"
+- "When proactively searching for fileless persistence mechanisms in Windows enviro"
+- "After threat intelligence reports indicate WMI-based persistence by APT groups ("
+- "When investigating systems where malware persists across reboots despite cleanup"
+
+
 - When proactively searching for fileless persistence mechanisms in Windows environments
 - After threat intelligence reports indicate WMI-based persistence by APT groups (APT29, APT32, FIN8)
 - When investigating systems where malware persists across reboots despite cleanup attempts

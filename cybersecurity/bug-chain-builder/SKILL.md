@@ -19,6 +19,13 @@ Cybersecurity skill for bug chain builder. Follows industry best practices and s
 
 ## When to Use
 
+**Trigger phrases:**
+- "bug chain builder"
+- "Found a low-severity bug that feels "not impactful enough""
+- "Need to escalate impact for a higher bounty"
+- "Multiple findings on the same target that could combine"
+
+
 - Found a low-severity bug that feels "not impactful enough"
 - Need to escalate impact for a higher bounty
 - Multiple findings on the same target that could combine

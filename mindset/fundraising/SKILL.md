@@ -18,6 +18,13 @@ Mindset skill for fundraising. Builds capability through deliberate practice and
 
 ## When to Use
 
+**Trigger phrases:**
+- "fundraising"
+- "Raising seed, Series A, or later-stage capital"
+- "Preparing for investor meetings or pitch competitions"
+- "Evaluating term sheets or negotiating terms"
+
+
 - Raising seed, Series A, or later-stage capital
 - Preparing for investor meetings or pitch competitions
 - Evaluating term sheets or negotiating terms

@@ -18,6 +18,13 @@ Mindset skill for decision frameworks. Builds capability through deliberate prac
 
 ## When to Use
 
+**Trigger phrases:**
+- "decision frameworks"
+- "Prioritizing roadmap features or initiatives"
+- "Choosing between competing options (vendors, strategies, hires)"
+- "Making high-stakes decisions with multiple stakeholders"
+
+
 - Prioritizing roadmap features or initiatives
 - Choosing between competing options (vendors, strategies, hires)
 - Making high-stakes decisions with multiple stakeholders

@@ -34,6 +34,13 @@ Cybersecurity skill for detecting service account abuse. Follows industry best p
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting service account abuse"
+- "When proactively hunting for indicators of detecting service account abuse in th"
+- "After threat intelligence indicates active campaigns using these techniques"
+- "During incident response to scope compromise related to these techniques"
+
+
 - When proactively hunting for indicators of detecting service account abuse in the environment
 - After threat intelligence indicates active campaigns using these techniques
 - During incident response to scope compromise related to these techniques

@@ -24,6 +24,13 @@ NFT marketplace development with ERC-721/1155, lazy minting, auction logic, roya
 
 ## When to Use
 
+**Trigger phrases:**
+- "nft marketplace"
+- "NFT trading platforms"
+- "Digital art/gaming marketplaces"
+- "Creator royalty systems"
+
+
 - NFT trading platforms
 - Digital art/gaming marketplaces
 - Creator royalty systems

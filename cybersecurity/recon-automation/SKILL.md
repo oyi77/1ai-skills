@@ -19,6 +19,13 @@ Systematic reconnaissance workflow for security assessments. Covers passive OSIN
 
 ## When to Use
 
+**Trigger phrases:**
+- "recon automation"
+- "Pre-engagement reconnaissance for bug bounty or pentest"
+- "Attack surface mapping for a target domain or organization"
+- "Asset discovery: subdomains, live hosts, cloud buckets"
+
+
 - Pre-engagement reconnaissance for bug bounty or pentest
 - Attack surface mapping for a target domain or organization
 - Asset discovery: subdomains, live hosts, cloud buckets

@@ -34,6 +34,13 @@ Cybersecurity skill for hunting for supply chain compromise. Follows industry be
 
 ## When to Use
 
+**Trigger phrases:**
+- "hunting for supply chain compromise"
+- "When proactively hunting for indicators of hunting for supply chain compromise i"
+- "After threat intelligence indicates active campaigns using these techniques"
+- "During incident response to scope compromise related to these techniques"
+
+
 - When proactively hunting for indicators of hunting for supply chain compromise in the environment
 - After threat intelligence indicates active campaigns using these techniques
 - During incident response to scope compromise related to these techniques

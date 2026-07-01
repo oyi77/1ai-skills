@@ -35,6 +35,13 @@ Cybersecurity skill for detecting kerberoasting attacks. Follows industry best p
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting kerberoasting attacks"
+- "When proactively hunting for indicators of detecting kerberoasting attacks in th"
+- "After threat intelligence indicates active campaigns using these techniques"
+- "During incident response to scope compromise related to these techniques"
+
+
 - When proactively hunting for indicators of detecting kerberoasting attacks in the environment
 - After threat intelligence indicates active campaigns using these techniques
 - During incident response to scope compromise related to these techniques

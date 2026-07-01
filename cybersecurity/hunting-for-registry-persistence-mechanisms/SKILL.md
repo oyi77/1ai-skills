@@ -35,6 +35,13 @@ Cybersecurity skill for hunting for registry persistence mechanisms. Follows ind
 
 ## When to Use
 
+**Trigger phrases:**
+- "hunting for registry persistence mechanisms"
+- "When proactively hunting for indicators of hunting for registry persistence mech"
+- "After threat intelligence indicates active campaigns using these techniques"
+- "During incident response to scope compromise related to these techniques"
+
+
 - When proactively hunting for indicators of hunting for registry persistence mechanisms in the environment
 - After threat intelligence indicates active campaigns using these techniques
 - During incident response to scope compromise related to these techniques

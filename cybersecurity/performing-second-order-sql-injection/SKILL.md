@@ -28,6 +28,13 @@ nist_csf:
 Cybersecurity skill for performing second order sql injection. Follows industry best practices and security standards.
 
 ## When to Use
+
+**Trigger phrases:**
+- "performing second order sql injection"
+- "When first-order SQL injection testing reveals proper input sanitization at stor"
+- "During penetration testing of applications with user-generated content stored in"
+- "When testing multi-step workflows where stored data feeds subsequent database qu"
+
 - When first-order SQL injection testing reveals proper input sanitization at storage time
 - During penetration testing of applications with user-generated content stored in databases
 - When testing multi-step workflows where stored data feeds subsequent database queries

@@ -38,6 +38,13 @@ Design, build, and manage business process automations using no-code/low-code pl
 
 ## When to Use
 
+**Trigger phrases:**
+- "nocode orchestrator"
+- ""Automate our customer onboarding process""
+- ""When a support ticket comes in, triage it and assign to the right person""
+- ""Process invoices automatically when they arrive by email""
+
+
 - "Automate our customer onboarding process"
 - "When a support ticket comes in, triage it and assign to the right person"
 - "Process invoices automatically when they arrive by email"

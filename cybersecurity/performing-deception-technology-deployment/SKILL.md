@@ -33,6 +33,13 @@ Cybersecurity skill for performing deception technology deployment. Follows indu
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing deception technology deployment"
+- "SOC teams need high-fidelity detection of post-compromise lateral movement with"
+- "Existing detection tools miss advanced attackers who avoid triggering threshold-"
+- "The organization wants to detect credential abuse by planting fake credentials a"
+
+
 Use this skill when:
 - SOC teams need high-fidelity detection of post-compromise lateral movement with near-zero false positives
 - Existing detection tools miss advanced attackers who avoid triggering threshold-based alerts

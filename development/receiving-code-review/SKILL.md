@@ -249,6 +249,13 @@ No performative agreement. Technical rigor always.
 
 ## When to Use
 
+**Trigger phrases:**
+- "receiving code review"
+- "Receiving code review feedback"
+- "Before implementing review suggestions"
+- "When feedback seems unclear"
+
+
 - Receiving code review feedback
 - Before implementing review suggestions
 - When feedback seems unclear

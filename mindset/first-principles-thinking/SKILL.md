@@ -19,6 +19,13 @@ Mindset skill for first principles thinking. Builds capability through deliberat
 
 ## When to Use
 
+**Trigger phrases:**
+- "first principles thinking"
+- "Solving novel problems with no precedent"
+- "Challenging industry assumptions or "best practices""
+- "Innovating in constrained environments (cost, time, resources)"
+
+
 - Solving novel problems with no precedent
 - Challenging industry assumptions or "best practices"
 - Innovating in constrained environments (cost, time, resources)

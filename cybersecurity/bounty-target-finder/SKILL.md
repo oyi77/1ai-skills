@@ -20,6 +20,13 @@ Cybersecurity skill for bounty target finder. Follows industry best practices an
 
 ## When to Use
 
+**Trigger phrases:**
+- "bounty target finder"
+- "Starting a new bug bounty hunting cycle"
+- "Looking for fresh targets with less competition"
+- "Comparing payouts across platforms"
+
+
 - Starting a new bug bounty hunting cycle
 - Looking for fresh targets with less competition
 - Comparing payouts across platforms

@@ -27,6 +27,13 @@ n8n is a fair-code licensed workflow automation tool. It provides 400+ integrati
 
 ## When to Use
 
+**Trigger phrases:**
+- "n8n workflows"
+- "Automating business processes across multiple SaaS tools"
+- "Building API integrations without coding"
+- "Needing self-hosted automation (data sovereignty)"
+
+
 - Automating business processes across multiple SaaS tools
 - Building API integrations without coding
 - Needing self-hosted automation (data sovereignty)

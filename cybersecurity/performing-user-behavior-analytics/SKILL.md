@@ -33,6 +33,13 @@ Cybersecurity skill for performing user behavior analytics. Follows industry bes
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing user behavior analytics"
+- "SOC teams need to detect compromised accounts through abnormal authentication pa"
+- "Insider threat programs require behavioral monitoring beyond rule-based detectio"
+- "Impossible travel or geographic anomalies indicate credential compromise"
+
+
 Use this skill when:
 - SOC teams need to detect compromised accounts through abnormal authentication patterns
 - Insider threat programs require behavioral monitoring beyond rule-based detection

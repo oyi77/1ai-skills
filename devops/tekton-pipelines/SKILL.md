@@ -28,6 +28,13 @@ Tekton is a Kubernetes-native CI/CD framework. Tasks define individual steps, Pi
 
 ## When to Use
 
+**Trigger phrases:**
+- "tekton pipelines"
+- "Running CI/CD on Kubernetes clusters"
+- "Need cloud-native, vendor-neutral pipeline definitions"
+- "Want reusable, composable CI/CD building blocks"
+
+
 - Running CI/CD on Kubernetes clusters
 - Need cloud-native, vendor-neutral pipeline definitions
 - Want reusable, composable CI/CD building blocks

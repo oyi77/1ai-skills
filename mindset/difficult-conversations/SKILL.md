@@ -18,6 +18,13 @@ Mindset skill for difficult conversations. Builds capability through deliberate 
 
 ## When to Use
 
+**Trigger phrases:**
+- "difficult conversations"
+- "Delivering critical feedback or performance reviews"
+- "Addressing interpersonal conflict or disagreements"
+- "Having termination, demotion, or discipline conversations"
+
+
 - Delivering critical feedback or performance reviews
 - Addressing interpersonal conflict or disagreements
 - Having termination, demotion, or discipline conversations

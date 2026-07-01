@@ -32,6 +32,13 @@ Cybersecurity skill for performing endpoint forensics investigation. Follows ind
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing endpoint forensics investigation"
+- "Investigating a confirmed or suspected endpoint compromise requiring forensic an"
+- "Collecting volatile and non-volatile evidence for incident response or legal pro"
+- "Analyzing memory dumps for malware, injected code, or credential theft artifacts"
+
+
 Use this skill when:
 - Investigating a confirmed or suspected endpoint compromise requiring forensic analysis
 - Collecting volatile and non-volatile evidence for incident response or legal proceedings

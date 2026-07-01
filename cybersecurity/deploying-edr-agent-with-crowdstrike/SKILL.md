@@ -42,6 +42,13 @@ Cybersecurity skill for deploying edr agent with crowdstrike. Follows industry b
 
 ## When to Use
 
+**Trigger phrases:**
+- "deploying edr agent with crowdstrike"
+- "Deploying CrowdStrike Falcon sensors to Windows, macOS, or Linux endpoints"
+- "Configuring Falcon prevention and detection policies for different endpoint grou"
+- "Integrating CrowdStrike telemetry with SIEM (Splunk, Elastic, Sentinel) for corr"
+
+
 Use this skill when:
 - Deploying CrowdStrike Falcon sensors to Windows, macOS, or Linux endpoints
 - Configuring Falcon prevention and detection policies for different endpoint groups

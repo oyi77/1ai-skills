@@ -18,6 +18,13 @@ Mindset skill for probabilistic thinking. Builds capability through deliberate p
 
 ## When to Use
 
+**Trigger phrases:**
+- "probabilistic thinking"
+- "Evaluating risks or forecasting outcomes"
+- "Updating beliefs based on new evidence"
+- "Making decisions with incomplete information"
+
+
 - Evaluating risks or forecasting outcomes
 - Updating beliefs based on new evidence
 - Making decisions with incomplete information

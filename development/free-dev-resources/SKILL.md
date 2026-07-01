@@ -27,6 +27,13 @@ Comprehensive reference of free-tier SaaS, PaaS, and IaaS services for developer
 
 ## When to Use
 
+**Trigger phrases:**
+- "free dev resources"
+- "Starting a side project or MVP with zero budget"
+- "Comparing free tiers before committing to a provider"
+- "Recommending tools for bootstrapped startups"
+
+
 - Starting a side project or MVP with zero budget
 - Comparing free tiers before committing to a provider
 - Recommending tools for bootstrapped startups

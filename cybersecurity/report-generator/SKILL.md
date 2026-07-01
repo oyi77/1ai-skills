@@ -19,6 +19,13 @@ Impact-first report generation for bug bounty platforms and security assessments
 
 ## When to Use
 
+**Trigger phrases:**
+- "report generator"
+- "After validating a security finding and confirming it is not a false positive"
+- "Preparing bug bounty submissions for any platform"
+- "Creating penetration test reports for clients"
+
+
 - After validating a security finding and confirming it is not a false positive
 - Preparing bug bounty submissions for any platform
 - Creating penetration test reports for clients

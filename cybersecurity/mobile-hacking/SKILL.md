@@ -20,6 +20,13 @@ Android/mobile security testing workflow covering emulator setup, device rooting
 
 ## When to Use
 
+**Trigger phrases:**
+- "mobile hacking"
+- "Mobile app bug bounty programs (HackerOne, Bugcrowd mobile scope)"
+- "Android security assessments with explicit authorization"
+- "APK reverse engineering and static analysis"
+
+
 - Mobile app bug bounty programs (HackerOne, Bugcrowd mobile scope)
 - Android security assessments with explicit authorization
 - APK reverse engineering and static analysis

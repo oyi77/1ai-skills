@@ -47,6 +47,13 @@ Cybersecurity skill for implementing siem use cases for detection. Follows indus
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing siem use cases for detection"
+- "SOC teams need to build or expand their SIEM detection library from scratch"
+- "Threat assessments identify ATT&CK technique gaps requiring new detection rules"
+- "Detection engineers need a structured process for use case design, testing, and"
+
+
 Use this skill when:
 - SOC teams need to build or expand their SIEM detection library from scratch
 - Threat assessments identify ATT&CK technique gaps requiring new detection rules

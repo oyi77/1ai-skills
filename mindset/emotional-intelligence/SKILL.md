@@ -19,6 +19,13 @@ Mindset skill for emotional intelligence. Builds capability through deliberate p
 
 ## When to Use
 
+**Trigger phrases:**
+- "emotional intelligence"
+- "Improving relationships (work, personal, leadership)"
+- "Managing emotions under stress or conflict"
+- "Building trust and rapport with others"
+
+
 - Improving relationships (work, personal, leadership)
 - Managing emotions under stress or conflict
 - Building trust and rapport with others

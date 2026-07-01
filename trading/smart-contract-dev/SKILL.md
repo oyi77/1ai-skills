@@ -24,6 +24,13 @@ Smart contract development for EVM chains using Solidity. Hardhat and Foundry to
 
 ## When to Use
 
+**Trigger phrases:**
+- "smart contract dev"
+- "DeFi protocols (DEX, lending, staking)"
+- "NFT collections and marketplaces"
+- "DAOs and governance"
+
+
 - DeFi protocols (DEX, lending, staking)
 - NFT collections and marketplaces
 - DAOs and governance

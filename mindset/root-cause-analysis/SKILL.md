@@ -18,6 +18,13 @@ Mindset skill for root cause analysis. Builds capability through deliberate prac
 
 ## When to Use
 
+**Trigger phrases:**
+- "root cause analysis"
+- "Post-incident or post-mortem analysis"
+- "Troubleshooting recurring problems"
+- "Quality issues or defects"
+
+
 - Post-incident or post-mortem analysis
 - Troubleshooting recurring problems
 - Quality issues or defects

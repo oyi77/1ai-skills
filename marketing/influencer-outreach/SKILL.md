@@ -27,6 +27,13 @@ Influencer and creator partnership management — discovery, outreach, negotiati
 
 ## When to Use
 
+**Trigger phrases:**
+- "influencer outreach"
+- "Building marketing campaigns and funnels"
+- "Optimizing conversion and retention"
+- "Scaling acquisition channels"
+
+
 - Building marketing campaigns and funnels
 - Optimizing conversion and retention
 - Scaling acquisition channels

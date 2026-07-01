@@ -31,6 +31,13 @@ Cybersecurity skill for analyzing memory forensics with lime and volatility. Fol
 
 ## When to Use
 
+**Trigger phrases:**
+- "analyzing memory forensics with lime and volatility"
+- "When investigating security incidents that require analyzing memory forensics wi"
+- "When building detection rules or threat hunting queries for this domain"
+- "When SOC analysts need structured procedures for this analysis type"
+
+
 - When investigating security incidents that require analyzing memory forensics with lime and volatility
 - When building detection rules or threat hunting queries for this domain
 - When SOC analysts need structured procedures for this analysis type

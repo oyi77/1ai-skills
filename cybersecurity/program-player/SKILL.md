@@ -18,6 +18,13 @@ Cybersecurity skill for program player. Follows industry best practices and secu
 
 ## When to Use
 
+**Trigger phrases:**
+- "program player"
+- "Starting from zero on a bug bounty platform"
+- "Want to get invited to private programs"
+- "Building long-term bug bounty career"
+
+
 - Starting from zero on a bug bounty platform
 - Want to get invited to private programs
 - Building long-term bug bounty career

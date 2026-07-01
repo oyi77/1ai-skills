@@ -14,6 +14,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "launch strategy"
+- "Planning a product launch"
+- "Building a go-to-market strategy"
+- "Coordinating multi-channel campaigns"
+
+
 - Planning a product launch
 - Building a go-to-market strategy
 - Coordinating multi-channel campaigns

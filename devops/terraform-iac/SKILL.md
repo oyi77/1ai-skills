@@ -26,6 +26,13 @@ Terraform enables declarative infrastructure management across AWS, GCP, Azure, 
 
 ## When to Use
 
+**Trigger phrases:**
+- "terraform iac"
+- "Provisioning new cloud infrastructure"
+- "Migrating from manual to IaC management"
+- "Enforcing infrastructure standards across teams"
+
+
 - Provisioning new cloud infrastructure
 - Migrating from manual to IaC management
 - Enforcing infrastructure standards across teams

@@ -14,6 +14,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "test agent"
+- "Writing tests for new features before or after implementation"
+- "Adding missing test coverage for existing code"
+- "Writing regression tests for reported bugs"
+
+
 - Writing tests for new features before or after implementation
 - Adding missing test coverage for existing code
 - Writing regression tests for reported bugs

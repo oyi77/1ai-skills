@@ -19,6 +19,13 @@ Delivers working changes in small, verifiable slices using a vertical slice appr
 
 ## When to Use
 
+**Trigger phrases:**
+- "incremental implementation"
+- "**Multi-file changes**: When implementing features that touch multiple files or"
+- "**Feature building**: When adding new functionality with multiple components"
+- "**Refactoring**: When restructuring code that affects multiple layers"
+
+
 - **Multi-file changes**: When implementing features that touch multiple files or modules
 - **Feature building**: When adding new functionality with multiple components
 - **Refactoring**: When restructuring code that affects multiple layers

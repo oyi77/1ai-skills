@@ -26,6 +26,13 @@ Nomad is a flexible workload orchestrator for deploying containers, VMs, and sta
 
 ## When to Use
 
+**Trigger phrases:**
+- "nomad scheduler"
+- "Mixed workloads (containers + non-containerized)"
+- "Simple alternative to Kubernetes"
+- "Multi-region deployments"
+
+
 - Mixed workloads (containers + non-containerized)
 - Simple alternative to Kubernetes
 - Multi-region deployments

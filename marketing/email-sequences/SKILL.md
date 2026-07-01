@@ -27,6 +27,13 @@ Automated email sequence design — welcome series, nurture funnels, re-engageme
 
 ## When to Use
 
+**Trigger phrases:**
+- "email sequences"
+- "Building marketing campaigns and funnels"
+- "Optimizing conversion and retention"
+- "Scaling acquisition channels"
+
+
 - Building marketing campaigns and funnels
 - Optimizing conversion and retention
 - Scaling acquisition channels

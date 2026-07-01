@@ -31,6 +31,13 @@ Cybersecurity skill for detecting fileless attacks on endpoints. Follows industr
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting fileless attacks on endpoints"
+- "Building detection rules for fileless malware that operates entirely in memory"
+- "Hunting for PowerShell-based attacks, reflective DLL injection, and WMI abuse"
+- "Configuring endpoint telemetry (Sysmon, AMSI, PowerShell logging) to capture fil"
+
+
 Use this skill when:
 - Building detection rules for fileless malware that operates entirely in memory
 - Hunting for PowerShell-based attacks, reflective DLL injection, and WMI abuse

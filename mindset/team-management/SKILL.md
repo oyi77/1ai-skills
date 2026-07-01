@@ -18,6 +18,13 @@ Mindset skill for team management. Builds capability through deliberate practice
 
 ## When to Use
 
+**Trigger phrases:**
+- "team management"
+- "Managing individual contributors or managers"
+- "Giving feedback (positive or critical)"
+- "Delegating work effectively"
+
+
 - Managing individual contributors or managers
 - Giving feedback (positive or critical)
 - Delegating work effectively

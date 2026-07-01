@@ -27,6 +27,13 @@ Lead magnet design and creation — ebooks, templates, calculators, quizzes matc
 
 ## When to Use
 
+**Trigger phrases:**
+- "lead magnets"
+- "Building marketing campaigns and funnels"
+- "Optimizing conversion and retention"
+- "Scaling acquisition channels"
+
+
 - Building marketing campaigns and funnels
 - Optimizing conversion and retention
 - Scaling acquisition channels

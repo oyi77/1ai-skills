@@ -27,6 +27,13 @@ Transform AI into a full strategy consulting team using 12 specialized prompts t
 
 ## When to Use
 
+**Trigger phrases:**
+- "mckinsey research"
+- "When you need market research and competitive analysis"
+- "When you need TAM analysis and pricing strategy"
+- "When building go-to-market plans"
+
+
 - When you need market research and competitive analysis
 - When you need TAM analysis and pricing strategy
 - When building go-to-market plans

@@ -31,6 +31,13 @@ Cybersecurity skill for implementing application whitelisting with applocker. Fo
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing application whitelisting with applocker"
+- "Implementing application control to prevent unauthorized software execution on W"
+- "Meeting compliance requirements (PCI DSS 6"
+- "Blocking common attack vectors: living-off-the-land binaries (LOLBins), script-b"
+
+
 Use this skill when:
 - Implementing application control to prevent unauthorized software execution on Windows endpoints
 - Meeting compliance requirements (PCI DSS 6.4.3, NIST 800-53 CM-7, ACSC Essential Eight)

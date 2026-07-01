@@ -27,6 +27,13 @@ Zapier is the most popular no-code automation platform with 7000+ app integratio
 
 ## When to Use
 
+**Trigger phrases:**
+- "zapier patterns"
+- "Automating repetitive business tasks"
+- "Connecting SaaS tools without coding"
+- "Building simple data pipelines"
+
+
 - Automating repetitive business tasks
 - Connecting SaaS tools without coding
 - Building simple data pipelines

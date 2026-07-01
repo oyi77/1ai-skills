@@ -21,6 +21,13 @@ Cybersecurity skill for supply chain attacker. Follows industry best practices a
 
 ## When to Use
 
+**Trigger phrases:**
+- "supply chain attacker"
+- "Testing dependency management security"
+- "Assessing CI/CD pipeline security"
+- "Finding dependency confusion vulnerabilities"
+
+
 - Testing dependency management security
 - Assessing CI/CD pipeline security
 - Finding dependency confusion vulnerabilities

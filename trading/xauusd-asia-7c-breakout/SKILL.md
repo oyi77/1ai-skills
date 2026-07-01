@@ -25,6 +25,13 @@ Breakout strategy using 7-candle window (3 before + COA + 3 after) for XAUUSD du
 
 ## When to Use
 
+**Trigger phrases:**
+- "xauusd asia 7c breakout"
+- "Trading XAUUSD (Gold) during Asia session hours (07:00 Jakarta time = 00:00 UTC)"
+- "Running historical backtests to validate strategy performance"
+- "Setting up paper trading to test signals before live execution"
+
+
 - Trading XAUUSD (Gold) during Asia session hours (07:00 Jakarta time = 00:00 UTC)
 - Running historical backtests to validate strategy performance
 - Setting up paper trading to test signals before live execution

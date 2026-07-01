@@ -42,6 +42,13 @@ Cybersecurity skill for implementing ebpf security monitoring. Follows industry 
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing ebpf security monitoring"
+- "When deploying kernel-level runtime security monitoring on Linux hosts or Kubern"
+- "When you need sub-millisecond visibility into process execution, network connect"
+- "When traditional userspace monitoring tools introduce unacceptable performance o"
+
+
 - When deploying kernel-level runtime security monitoring on Linux hosts or Kubernetes clusters
 - When you need sub-millisecond visibility into process execution, network connections, and file access
 - When traditional userspace monitoring tools introduce unacceptable performance overhead

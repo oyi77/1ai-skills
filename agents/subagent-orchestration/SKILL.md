@@ -15,6 +15,13 @@ Subagent orchestration solves the fundamental challenge of multi-agent systems: 
 
 ## When to Use
 
+**Trigger phrases:**
+- "subagent orchestration"
+- "Spawning subagents that need codebase context they cannot predict upfront"
+- "Building multi-agent workflows where context is progressively refined"
+- "Encountering "context too large" or "missing context" failures in agent tasks"
+
+
 - Spawning subagents that need codebase context they cannot predict upfront
 - Building multi-agent workflows where context is progressively refined
 - Encountering "context too large" or "missing context" failures in agent tasks

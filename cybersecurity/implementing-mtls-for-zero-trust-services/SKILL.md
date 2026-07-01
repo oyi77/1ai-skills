@@ -29,6 +29,13 @@ Cybersecurity skill for implementing mtls for zero trust services. Follows indus
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing mtls for zero trust services"
+- "When deploying or configuring implementing mtls for zero trust services capabili"
+- "When establishing security controls aligned to compliance requirements"
+- "When building or improving security architecture for this domain"
+
+
 - When deploying or configuring implementing mtls for zero trust services capabilities in your environment
 - When establishing security controls aligned to compliance requirements
 - When building or improving security architecture for this domain

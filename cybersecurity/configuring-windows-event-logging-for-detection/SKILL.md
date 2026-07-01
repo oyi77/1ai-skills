@@ -31,6 +31,13 @@ Cybersecurity skill for configuring windows event logging for detection. Follows
 
 ## When to Use
 
+**Trigger phrases:**
+- "configuring windows event logging for detection"
+- "Configuring Windows Advanced Audit Policy for security monitoring"
+- "Enabling process creation auditing with command line logging (Event 4688)"
+- "Setting up logon/logoff auditing for authentication monitoring"
+
+
 Use this skill when:
 - Configuring Windows Advanced Audit Policy for security monitoring
 - Enabling process creation auditing with command line logging (Event 4688)

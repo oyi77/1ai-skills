@@ -130,6 +130,13 @@ npx skills add Leonxlnx/taste-skill
 
 ## When to Use
 
+**Trigger phrases:**
+- "anti slop frontend"
+- "Building any frontend UI from scratch"
+- "Countering generic AI-generated boilerplate designs"
+- "Need distinctive, production-grade visual design"
+
+
 - Building any frontend UI from scratch
 - Countering generic AI-generated boilerplate designs
 - Need distinctive, production-grade visual design

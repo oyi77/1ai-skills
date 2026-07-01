@@ -27,6 +27,13 @@ Radix UI provides unstyled, accessible React primitives (Dialog, Dropdown, Popov
 
 ## When to Use
 
+**Trigger phrases:**
+- "radix primitives"
+- "Building a custom design system from scratch"
+- "Need accessible components without Material/Chakra styling"
+- "Using shadcn/ui (built on Radix primitives)"
+
+
 - Building a custom design system from scratch
 - Need accessible components without Material/Chakra styling
 - Using shadcn/ui (built on Radix primitives)

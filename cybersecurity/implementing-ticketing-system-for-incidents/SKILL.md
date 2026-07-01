@@ -33,6 +33,13 @@ Cybersecurity skill for implementing ticketing system for incidents. Follows ind
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing ticketing system for incidents"
+- "SOC teams need to formalize incident tracking beyond SIEM notable event manageme"
+- "Compliance requirements mandate documented incident lifecycle with timestamps an"
+- "Multi-team coordination requires ticket-based workflows with assignment and esca"
+
+
 Use this skill when:
 - SOC teams need to formalize incident tracking beyond SIEM notable event management
 - Compliance requirements mandate documented incident lifecycle with timestamps and audit trails

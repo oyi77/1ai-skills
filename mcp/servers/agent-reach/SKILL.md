@@ -18,6 +18,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "agent reach"
+- "Scrape Twitter tweets, threads, search results without API keys"
+- "Read Reddit posts, comments, subreddit feeds"
+- "Get YouTube video transcripts and metadata"
+
+
 - Scrape Twitter tweets, threads, search results without API keys
 - Read Reddit posts, comments, subreddit feeds
 - Get YouTube video transcripts and metadata

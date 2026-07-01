@@ -27,6 +27,13 @@ Competitive comparison page strategy — alternative to pages, positioning, diff
 
 ## When to Use
 
+**Trigger phrases:**
+- "competitor alternatives"
+- "Building marketing campaigns and funnels"
+- "Optimizing conversion and retention"
+- "Scaling acquisition channels"
+
+
 - Building marketing campaigns and funnels
 - Optimizing conversion and retention
 - Scaling acquisition channels

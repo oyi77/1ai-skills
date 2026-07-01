@@ -40,6 +40,13 @@ Cybersecurity skill for building detection rules with sigma. Follows industry be
 
 ## When to Use
 
+**Trigger phrases:**
+- "building detection rules with sigma"
+- "SOC engineers need to create detection rules portable across multiple SIEM platf"
+- "Threat intelligence reports describe TTPs requiring new detection coverage"
+- "Existing vendor-specific rules need standardization into a shareable format"
+
+
 Use this skill when:
 - SOC engineers need to create detection rules portable across multiple SIEM platforms
 - Threat intelligence reports describe TTPs requiring new detection coverage

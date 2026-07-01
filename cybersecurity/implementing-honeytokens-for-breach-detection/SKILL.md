@@ -29,6 +29,13 @@ Cybersecurity skill for implementing honeytokens for breach detection. Follows i
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing honeytokens for breach detection"
+- "When deploying or configuring implementing honeytokens for breach detection capa"
+- "When establishing security controls aligned to compliance requirements"
+- "When building or improving security architecture for this domain"
+
+
 - When deploying or configuring implementing honeytokens for breach detection capabilities in your environment
 - When establishing security controls aligned to compliance requirements
 - When building or improving security architecture for this domain

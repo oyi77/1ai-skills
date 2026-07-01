@@ -27,6 +27,13 @@ Structured meeting management system that helps plan agendas, capture notes in r
 
 ## When to Use
 
+**Trigger phrases:**
+- "meeting management"
+- "Planning a meeting and need a structured agenda"
+- "Capturing notes and decisions during a meeting"
+- "Extracting action items from meeting transcripts"
+
+
 - Planning a meeting and need a structured agenda
 - Capturing notes and decisions during a meeting
 - Extracting action items from meeting transcripts

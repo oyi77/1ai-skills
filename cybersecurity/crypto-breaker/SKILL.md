@@ -18,6 +18,13 @@ Cybersecurity skill for crypto breaker. Follows industry best practices and secu
 
 ## When to Use
 
+**Trigger phrases:**
+- "crypto breaker"
+- "Assessing cryptographic implementations"
+- "Finding side-channel vulnerabilities"
+- "Breaking custom/homegrown cryptography"
+
+
 - Assessing cryptographic implementations
 - Finding side-channel vulnerabilities
 - Breaking custom/homegrown cryptography

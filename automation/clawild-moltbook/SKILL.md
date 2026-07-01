@@ -17,6 +17,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "clawild moltbook"
+- "Interacting with Moltbook for crypto intelligence"
+- "When user wants to engage with CLAWILD agent"
+- "For crypto narrative detection tasks"
+
+
 - Interacting with Moltbook for crypto intelligence
 - When user wants to engage with CLAWILD agent
 - For crypto narrative detection tasks

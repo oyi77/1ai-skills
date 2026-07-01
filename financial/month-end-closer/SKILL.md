@@ -25,6 +25,13 @@ Automates the month-end close process: accruals, roll-forwards, variance comment
 
 ## When to Use
 
+**Trigger phrases:**
+- "month end closer"
+- "Month-end close (every month, 3-5 day cycle)"
+- "Quarter-end close (extended review)"
+- "Year-end close (audit preparation)"
+
+
 - Month-end close (every month, 3-5 day cycle)
 - Quarter-end close (extended review)
 - Year-end close (audit preparation)

@@ -19,6 +19,13 @@ Cybersecurity skill for web3 auditor. Follows industry best practices and securi
 
 ## When to Use
 
+**Trigger phrases:**
+- "web3 auditor"
+- "Auditing smart contracts for bug bounty programs"
+- "Testing DeFi protocols for economic exploits"
+- "Hunting on Immunefi, HackenProof, Code4rena"
+
+
 - Auditing smart contracts for bug bounty programs
 - Testing DeFi protocols for economic exploits
 - Hunting on Immunefi, HackenProof, Code4rena

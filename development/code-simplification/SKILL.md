@@ -22,6 +22,13 @@ This skill helps you refactor complex code into simpler, more understandable ver
 
 ## When to Use
 
+**Trigger phrases:**
+- "code simplification"
+- "When code has overly complex logic that's hard to understand"
+- "When there are unnecessary abstractions or layers"
+- "When refactoring for readability during code review"
+
+
 - When code has overly complex logic that's hard to understand
 - When there are unnecessary abstractions or layers
 - When refactoring for readability during code review

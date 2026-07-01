@@ -23,6 +23,13 @@ Shopee Optimizer provides comprehensive automation for managing Shopee store ope
 
 ## When to Use
 
+**Trigger phrases:**
+- "shopee optimizer"
+- "**Product listing automation**: Creating and editing listings in bulk via CSV up"
+- "**Price monitoring**: Tracking competitor prices and auto-adjusting your own pri"
+- "**Inventory management**: Syncing stock levels across product variants"
+
+
 - **Product listing automation**: Creating and editing listings in bulk via CSV upload
 - **Price monitoring**: Tracking competitor prices and auto-adjusting your own prices
 - **Inventory management**: Syncing stock levels across product variants

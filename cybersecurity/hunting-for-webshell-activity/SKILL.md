@@ -35,6 +35,13 @@ Cybersecurity skill for hunting for webshell activity. Follows industry best pra
 
 ## When to Use
 
+**Trigger phrases:**
+- "hunting for webshell activity"
+- "When proactively hunting for indicators of hunting for webshell activity in the"
+- "After threat intelligence indicates active campaigns using these techniques"
+- "During incident response to scope compromise related to these techniques"
+
+
 - When proactively hunting for indicators of hunting for webshell activity in the environment
 - After threat intelligence indicates active campaigns using these techniques
 - During incident response to scope compromise related to these techniques

@@ -29,6 +29,13 @@ Cybersecurity skill for analyzing kubernetes audit logs. Follows industry best p
 
 ## When to Use
 
+**Trigger phrases:**
+- "analyzing kubernetes audit logs"
+- "When investigating security incidents that require analyzing kubernetes audit lo"
+- "When building detection rules or threat hunting queries for this domain"
+- "When SOC analysts need structured procedures for this analysis type"
+
+
 - When investigating security incidents that require analyzing kubernetes audit logs
 - When building detection rules or threat hunting queries for this domain
 - When SOC analysts need structured procedures for this analysis type

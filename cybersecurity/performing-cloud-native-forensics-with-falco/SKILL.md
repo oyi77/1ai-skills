@@ -29,6 +29,13 @@ Cybersecurity skill for performing cloud native forensics with falco. Follows in
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing cloud native forensics with falco"
+- "When conducting security assessments that involve performing cloud native forens"
+- "When following incident response procedures for related security events"
+- "When performing scheduled security testing or auditing activities"
+
+
 - When conducting security assessments that involve performing cloud native forensics with falco
 - When following incident response procedures for related security events
 - When performing scheduled security testing or auditing activities

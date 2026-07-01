@@ -143,6 +143,13 @@ Request code review to catch issues before they cascade. Dispatch superpowers:co
 
 ## When to Use
 
+**Trigger phrases:**
+- "requesting code review"
+- "Completing tasks"
+- "Implementing major features"
+- "Before merging"
+
+
 - Completing tasks
 - Implementing major features
 - Before merging

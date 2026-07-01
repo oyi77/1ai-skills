@@ -32,6 +32,13 @@ Full lifecycle Google Canvas and Gemini Canvas automation — create new documen
 
 ## When to Use
 
+**Trigger phrases:**
+- "google canvas"
+- "Create new Google Canvas documents (doc, sheet, code, data)"
+- "Open and interact with Gemini Canvas shared applications"
+- "Read content from Canvas documents or embedded apps"
+
+
 - Create new Google Canvas documents (doc, sheet, code, data)
 - Open and interact with Gemini Canvas shared applications
 - Read content from Canvas documents or embedded apps

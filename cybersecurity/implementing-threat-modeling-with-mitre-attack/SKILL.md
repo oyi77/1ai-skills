@@ -46,6 +46,13 @@ Cybersecurity skill for implementing threat modeling with mitre attack. Follows 
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing threat modeling with mitre attack"
+- "SOC teams need to assess detection coverage against relevant threat actors and t"
+- "Security leadership requires threat-informed defense prioritization"
+- "New environments (cloud migration, OT integration) need detection strategy plann"
+
+
 Use this skill when:
 - SOC teams need to assess detection coverage against relevant threat actors and their TTPs
 - Security leadership requires threat-informed defense prioritization

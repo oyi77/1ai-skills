@@ -32,6 +32,13 @@ Cybersecurity skill for collecting open source intelligence. Follows industry be
 
 ## When to Use
 
+**Trigger phrases:**
+- "collecting open source intelligence"
+- "Investigating external infrastructure associated with a phishing campaign target"
+- "Enriching threat actor profiles with publicly observable indicators (WHOIS, ASN"
+- "Conducting authorized attack surface discovery to understand your organization's"
+
+
 Use this skill when:
 - Investigating external infrastructure associated with a phishing campaign targeting your organization
 - Enriching threat actor profiles with publicly observable indicators (WHOIS, ASN data, SSL certificates)

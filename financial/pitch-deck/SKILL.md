@@ -25,6 +25,13 @@ Creates institutional-quality pitch decks for fundraising, M&A, and strategic in
 
 ## When to Use
 
+**Trigger phrases:**
+- "pitch deck"
+- "Raising Series A/B/C or late-stage round"
+- "Pitching to VCs or PE firms"
+- "Creating CIM (Confidential Information Memorandum)"
+
+
 - Raising Series A/B/C or late-stage round
 - Pitching to VCs or PE firms
 - Creating CIM (Confidential Information Memorandum)

@@ -37,6 +37,13 @@ Cybersecurity skill for performing soc tabletop exercise. Follows industry best 
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing soc tabletop exercise"
+- "Annual or semi-annual incident response testing is required (NIST, ISO 27001, PC"
+- "New SOC analysts need exposure to major incident scenarios in a controlled envir"
+- "Updated playbooks need validation before next real incident"
+
+
 Use this skill when:
 - Annual or semi-annual incident response testing is required (NIST, ISO 27001, PCI DSS compliance)
 - New SOC analysts need exposure to major incident scenarios in a controlled environment

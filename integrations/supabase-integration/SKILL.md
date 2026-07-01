@@ -15,6 +15,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "supabase integration"
+- "When building apps with Supabase as backend (auth + DB + storage)"
+- "When implementing Row Level Security (RLS) policies"
+- "When using real-time subscriptions for live data"
+
+
 - When building apps with Supabase as backend (auth + DB + storage)
 - When implementing Row Level Security (RLS) policies
 - When using real-time subscriptions for live data

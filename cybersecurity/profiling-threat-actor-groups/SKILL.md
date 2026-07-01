@@ -32,6 +32,13 @@ Cybersecurity skill for profiling threat actor groups. Follows industry best pra
 
 ## When to Use
 
+**Trigger phrases:**
+- "profiling threat actor groups"
+- "Updating the organization's threat model with profiles of adversary groups recen"
+- "Preparing an executive briefing on APT groups that align with geopolitical event"
+- "Enabling SOC analysts to understand attacker objectives and TTPs to improve dete"
+
+
 Use this skill when:
 - Updating the organization's threat model with profiles of adversary groups recently observed targeting your sector
 - Preparing an executive briefing on APT groups that align with geopolitical events affecting your business

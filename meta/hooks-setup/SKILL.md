@@ -29,6 +29,13 @@ Installs and configures 1ai-skills auto-evolve hooks. Tracks skill usage, captur
 
 ## When to Use
 
+**Trigger phrases:**
+- "hooks setup"
+- "User says "install hooks", "setup hooks", "hooks setup""
+- "User says "configure hooks", "hook installation""
+- "User types "/hooks-setup""
+
+
 **Activate when:**
 - User says "install hooks", "setup hooks", "hooks setup"
 - User says "configure hooks", "hook installation"

@@ -25,6 +25,13 @@ Automatically processes earnings calls and SEC filings to update financial model
 
 ## When to Use
 
+**Trigger phrases:**
+- "earnings viewer"
+- "Earnings call just concluded (same day analysis)"
+- "10-Q/10-K filing published"
+- "Need to update DCF/LBO models with new data"
+
+
 - Earnings call just concluded (same day analysis)
 - 10-Q/10-K filing published
 - Need to update DCF/LBO models with new data

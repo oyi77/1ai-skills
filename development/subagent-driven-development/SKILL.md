@@ -40,6 +40,13 @@ persona:
 Execute plan by dispatching fresh subagent per task, with two-stage review after each: spec compliance review first, then code quality review.
 
 ## When to Use
+
+**Trigger phrases:**
+- "subagent driven development"
+- "Implementation plan with independent tasks"
+- "Stay in same session preferred"
+- "Fresh subagent per task (no context pollution)"
+
 - Implementation plan with independent tasks
 - Stay in same session preferred
 - Fresh subagent per task (no context pollution)

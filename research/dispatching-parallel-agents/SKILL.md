@@ -30,6 +30,13 @@ When you have multiple unrelated failures (different test files, different subsy
 
 ## When to Use
 
+**Trigger phrases:**
+- "dispatching parallel agents"
+- "3+ test files failing with different root causes"
+- "Multiple subsystems broken independently"
+- "Each problem can be understood without context from others"
+
+
 ```dot
 digraph when_to_use {
     "Multiple failures?" [shape=diamond];

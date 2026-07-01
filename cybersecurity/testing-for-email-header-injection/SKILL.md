@@ -28,6 +28,13 @@ nist_csf:
 Cybersecurity skill for testing for email header injection. Follows industry best practices and security standards.
 
 ## When to Use
+
+**Trigger phrases:**
+- "testing for email header injection"
+- "When testing contact forms, feedback forms, or "email a friend" functionality"
+- "During assessment of password reset email functionality"
+- "When testing newsletter subscription or notification email systems"
+
 - When testing contact forms, feedback forms, or "email a friend" functionality
 - During assessment of password reset email functionality
 - When testing newsletter subscription or notification email systems

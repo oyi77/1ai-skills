@@ -14,6 +14,13 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "churn prevention"
+- "Churn rate is increasing"
+- "Designing cancellation flows"
+- "Building win-back campaigns"
+
+
 - Churn rate is increasing
 - Designing cancellation flows
 - Building win-back campaigns

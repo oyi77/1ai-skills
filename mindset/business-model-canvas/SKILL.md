@@ -19,6 +19,13 @@ Mindset skill for business model canvas. Builds capability through deliberate pr
 
 ## When to Use
 
+**Trigger phrases:**
+- "business model canvas"
+- "Launching a new product or venture"
+- "Iterating on an existing business model"
+- "Evaluating a competitor's strategy"
+
+
 - Launching a new product or venture
 - Iterating on an existing business model
 - Evaluating a competitor's strategy

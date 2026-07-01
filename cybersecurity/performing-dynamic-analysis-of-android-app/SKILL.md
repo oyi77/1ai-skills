@@ -30,6 +30,13 @@ Cybersecurity skill for performing dynamic analysis of android app. Follows indu
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing dynamic analysis of android app"
+- "Static analysis results need runtime validation on an actual Android device"
+- "The target app uses obfuscation (DexGuard, custom packers) that prevents effecti"
+- "Testing requires observing actual API calls, decrypted data, or runtime-generate"
+
+
 Use this skill when:
 - Static analysis results need runtime validation on an actual Android device
 - The target app uses obfuscation (DexGuard, custom packers) that prevents effective static analysis

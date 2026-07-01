@@ -29,6 +29,13 @@ Cybersecurity skill for detecting insider data exfiltration via dlp. Follows ind
 
 ## When to Use
 
+**Trigger phrases:**
+- "detecting insider data exfiltration via dlp"
+- "When investigating security incidents that require detecting insider data exfilt"
+- "When building detection rules or threat hunting queries for this domain"
+- "When SOC analysts need structured procedures for this analysis type"
+
+
 - When investigating security incidents that require detecting insider data exfiltration via dlp
 - When building detection rules or threat hunting queries for this domain
 - When SOC analysts need structured procedures for this analysis type

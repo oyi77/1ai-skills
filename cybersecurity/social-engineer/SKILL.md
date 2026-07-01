@@ -20,6 +20,13 @@ Cybersecurity skill for social engineer. Follows industry best practices and sec
 
 ## When to Use
 
+**Trigger phrases:**
+- "social engineer"
+- "Authorized phishing simulations"
+- "Social engineering assessments"
+- "Security awareness training"
+
+
 - Authorized phishing simulations
 - Social engineering assessments
 - Security awareness training

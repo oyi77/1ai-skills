@@ -31,6 +31,13 @@ Cybersecurity skill for implementing usb device control policy. Follows industry
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing usb device control policy"
+- "Restricting USB storage devices to prevent data exfiltration or malware introduc"
+- "Implementing device control policies via GPO, Intune, or EDR device control modu"
+- "Creating USB whitelists for authorized devices while blocking all others"
+
+
 Use this skill when:
 - Restricting USB storage devices to prevent data exfiltration or malware introduction
 - Implementing device control policies via GPO, Intune, or EDR device control modules
