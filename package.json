@@ -42,7 +42,7 @@
     "url": "https://github.com/oyi77/1ai-skills.git"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.com"
+    "registry": "https://registry.npmjs.org"
   },
   "files": [
     "agents/",
