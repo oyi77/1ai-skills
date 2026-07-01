@@ -41,6 +41,11 @@ Cybersecurity skill for performing purple team atomic testing. Follows industry 
 
 ## When to Use
 
+**Trigger phrases:**
+- "performing purple team atomic testing"
+- "Use when working with performing purple team atomic testing"
+
+
 - Validating detection coverage against specific MITRE ATT&CK techniques
 - Running purple team exercises using Atomic Red Team test library
 - Performing ATT&CK coverage gap analysis to identify blind spots in SIEM/EDR

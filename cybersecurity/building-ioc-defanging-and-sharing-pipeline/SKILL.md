@@ -31,6 +31,11 @@ IOC defanging modifies potentially malicious indicators (URLs, IP addresses, dom
 
 ## When to Use
 
+**Trigger phrases:**
+- "building ioc defanging and sharing pipeline"
+- "Use when working with building ioc defanging and sharing pipeline"
+
+
 - When deploying or configuring building ioc defanging and sharing pipeline capabilities in your environment
 - When establishing security controls aligned to compliance requirements
 - When building or improving security architecture for this domain

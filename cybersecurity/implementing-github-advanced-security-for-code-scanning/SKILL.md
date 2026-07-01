@@ -31,6 +31,11 @@ GitHub Advanced Security (GHAS) integrates CodeQL-powered static application sec
 
 ## When to Use
 
+**Trigger phrases:**
+- "implementing github advanced security for code scanning"
+- "Use when working with implementing github advanced security for code scanning"
+
+
 - When deploying or configuring implementing github advanced security for code scanning capabilities in your environment
 - When establishing security controls aligned to compliance requirements
 - When building or improving security architecture for this domain

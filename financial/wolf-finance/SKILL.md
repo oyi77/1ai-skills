@@ -19,6 +19,11 @@ tags:
 
 ## When to Use
 
+**Trigger phrases:**
+- "wolf finance"
+- "Use when working with wolf finance"
+
+
 - Analyzing any financial asset (equities, crypto, forex, commodities, derivatives)
 - Building investment theses with evidence-tiered backing (T1/T2/T3)
 - Running pre-trade risk gates before position entry
