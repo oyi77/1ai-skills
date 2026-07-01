@@ -1,7 +1,7 @@
 ---
 name: testing-for-xss-vulnerabilities-with-burpsuite
 description: Identifying and validating cross-site scripting vulnerabilities using Burp Suite's scanner, intruder, and repeater
-  tools during authorized security assessments.
+  tools during authorized security assessments. Use when working with testing for xss vulnerabilities with burpsuite.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 - **Vulnerability Scanner** — Automated weakness identification
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

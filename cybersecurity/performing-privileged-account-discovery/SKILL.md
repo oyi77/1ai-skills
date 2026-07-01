@@ -1,7 +1,7 @@
 ---
 name: performing-privileged-account-discovery
 description: Discover and inventory all privileged accounts across enterprise infrastructure including domain admins, local
-  admins, service accounts, database admins, cloud IAM roles, and application admin account
+  admins, service accounts, database admins, cloud IAM roles, and application admin account. Use when working with performing privileged account discovery.
 domain: cybersecurity
 subdomain: identity-access-management
 tags:

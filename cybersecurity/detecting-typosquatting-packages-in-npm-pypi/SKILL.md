@@ -3,7 +3,7 @@ name: detecting-typosquatting-packages-in-npm-pypi
 description: Detects typosquatting attacks in npm and PyPI package registries by analyzing package name similarity using Levenshtein
   distance and other string metrics, examining publish date heuristics to identify recently created packages mimicking established
   ones, and flagging download count anomalies where suspicious packages have disproportionately low usage compared to their
-  legitimate targets.
+  legitimate targets. Use when working with detecting typosquatting packages in npm pypi.
 domain: cybersecurity
 tags:
 - typosquatting
@@ -88,6 +88,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

@@ -1,7 +1,7 @@
 ---
 name: testing-for-json-web-token-vulnerabilities
 description: Test JWT implementations for critical vulnerabilities including algorithm confusion, none algorithm bypass, kid
-  parameter injection, and weak secret exploitation to achieve authentication bypass and privilege escalation.
+  parameter injection, and weak secret exploitation to achieve authentication bypass and privilege escalation. Use when testing jwt implementations for critical vulnerabilities including algorithm confusion, none.
 domain: cybersecurity
 tags:
 - jwt
@@ -88,6 +88,13 @@ def extract_iocs(text: str) -> dict:
 - **Vulnerability Scanner** — Automated weakness identification
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

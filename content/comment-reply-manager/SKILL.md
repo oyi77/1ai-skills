@@ -1,7 +1,7 @@
 ---
 name: comment-reply-manager
 description: Monitor TikTok/Instagram comments, classify sentiment, auto-reply with FAQ answers, and DM high-intent commenters
-  with LYNK affiliate links to convert engagement into sales.
+  with LYNK affiliate links to convert engagement into sales. Use when monitoring tiktok/instagram comments, classify sentiment, auto-reply with faq answers, and.
 domain: content
 tags:
 - comment
@@ -85,6 +85,13 @@ def generate_content(topic: str, format: str = "article"):
 | "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
 | "I will optimize later" | SEO and distribution need optimization from the start. |
 | "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run comment reply manager workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

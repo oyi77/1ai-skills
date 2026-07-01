@@ -4,7 +4,7 @@ description: 'Implementing Google''s BeyondCorp zero trust access model to elimi
   enforce identity-aware access controls using IAP, Access Context Manager, and Chrome Enterprise Premium for VPN-less secure
   application access.
 
-  '
+  '. Use when working with implementing beyondcorp zero trust access model.
 domain: cybersecurity
 tags:
 - beyondcorp
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing beyondcorp zero trust access model workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

@@ -1,7 +1,7 @@
 ---
 name: detecting-t1548-abuse-elevation-control-mechanism
 description: Detect abuse of elevation control mechanisms including UAC bypass, sudo exploitation, and setuid/setgid manipulation
-  by monitoring registry modifications, process elevation flags, and unusual parent-child process relationships.
+  by monitoring registry modifications, process elevation flags, and unusual parent-child process relationships. Use when detecting abuse of elevation control mechanisms including uac bypass, sudo.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

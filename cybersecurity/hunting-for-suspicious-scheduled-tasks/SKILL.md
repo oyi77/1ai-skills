@@ -1,7 +1,7 @@
 ---
 name: hunting-for-suspicious-scheduled-tasks
 description: Hunt for adversary persistence and execution via Windows scheduled tasks by analyzing task creation events, suspicious
-  task properties, and unusual execution patterns that indicate T1053.005 abuse.
+  task properties, and unusual execution patterns that indicate T1053.005 abuse. Use when hunting for adversary persistence and execution via windows scheduled tasks.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -84,6 +84,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

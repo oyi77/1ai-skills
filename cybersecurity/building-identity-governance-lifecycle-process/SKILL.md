@@ -5,7 +5,7 @@ description: 'Builds comprehensive identity governance and lifecycle management 
   for requests involving identity lifecycle management, JML processes, role-based access provisioning, or identity governance
   program design.
 
-  '
+  '. Use when working with building identity governance lifecycle process.
 domain: cybersecurity
 tags:
 - identity-governance
@@ -95,6 +95,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

@@ -1,7 +1,7 @@
 ---
 name: performing-web-cache-deception-attack
 description: Execute web cache deception attacks by exploiting path normalization discrepancies between CDN caching layers
-  and origin servers to cache and retrieve sensitive authenticated content.
+  and origin servers to cache and retrieve sensitive authenticated content. Use when working with performing web cache deception attack.
 domain: cybersecurity
 tags:
 - web-cache-deception
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

@@ -67,6 +67,13 @@ c.drawString(100, 660, 'Due: 2026-07-15')
 c.save()
 ```
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run pdf creator workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] PDF opens without errors in all readers

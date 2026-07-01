@@ -82,6 +82,13 @@ def extract_iocs(text: str) -> dict:
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
 
+
+## Process
+
+1. **Research** — Analyze target audience, competitors, and trending topics
+1. **Create** — Generate content following brand guidelines and best practices
+1. **Publish & Optimize** — Distribute to target platforms, track performance, iterate
+
 ## Verification
 
 - [ ] All threat campaigns procedures executed completely and documented

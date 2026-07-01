@@ -91,6 +91,13 @@ def evaluate_source(url: str) -> dict:
 | "I do not need to verify sources" | Unverified sources lead to wrong conclusions. Always cross-check. |
 | "Research is a one-time thing" | Markets change. Research needs to be continuous, not one-off. |
 
+
+## Process
+
+1. **Research** — Analyze target audience, competitors, and trending topics
+1. **Create** — Generate content following brand guidelines and best practices
+1. **Publish & Optimize** — Distribute to target platforms, track performance, iterate
+
 ## Verification
 
 - [ ] All steps executed successfully

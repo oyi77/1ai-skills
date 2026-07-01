@@ -1,7 +1,7 @@
 ---
 name: paperpod
 description: Isolated agent runtime for code execution, live preview URLs, browser automation, 50+ tools (ffmpeg, sqlite,
-  pandoc, imagemagick), LLM inference, and persistent memory — all via CLI or HTTP, no SDK or API keys required.
+  pandoc, imagemagick), LLM inference, and persistent memory — all via CLI or HTTP, no SDK or API keys required. Use when working with paperpod.
 domain: content
 tags:
 - ai-agent
@@ -82,6 +82,13 @@ def generate_content(topic: str, format: str = "article"):
 | "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
 | "I will optimize later" | SEO and distribution need optimization from the start. |
 | "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run paperpod workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

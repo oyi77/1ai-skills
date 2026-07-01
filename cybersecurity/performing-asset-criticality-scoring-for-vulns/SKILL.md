@@ -1,7 +1,7 @@
 ---
 name: performing-asset-criticality-scoring-for-vulns
 description: Develop and apply a multi-factor asset criticality scoring model to weight vulnerability prioritization based
-  on business impact, data sensitivity, and operational importance.
+  on business impact, data sensitivity, and operational importance. Use when developing and apply a multi-factor asset criticality scoring model to.
 domain: cybersecurity
 subdomain: vulnerability-management
 tags:

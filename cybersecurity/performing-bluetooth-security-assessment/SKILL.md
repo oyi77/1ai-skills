@@ -1,6 +1,6 @@
 ---
 name: performing-bluetooth-security-assessment
-description: Assess Bluetooth Low Energy device security by scanning, enumerating GATT services, and detecting vulnerabilities
+description: Assess Bluetooth Low Energy device security by scanning, enumerating GATT services, and detecting vulnerabilities. Use when working with performing bluetooth security assessment.
 domain: cybersecurity
 subdomain: wireless-security
 tags:
@@ -104,6 +104,13 @@ The agent uses bleak's asyncio API to discover nearby BLE devices, connect to ta
 - Testing against production systems without a defined scope and rules of engagement
 - Sharing sensitive findings or credentials in unencrypted communications
 - Failing to properly scope and contain the assessment before starting
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

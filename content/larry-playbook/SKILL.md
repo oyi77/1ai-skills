@@ -1,6 +1,6 @@
 ---
 name: larry-playbook
-description: Autonomous AI agent that learns and improves viral content over time using Oliver Henry's proven formula
+description: Autonomous AI agent that learns and improves viral content over time using Oliver Henry's proven formula. Use when working with larry playbook.
 domain: content
 tags:
 - ai-agent
@@ -101,6 +101,13 @@ def generate_content(topic: str, format: str = "article"):
 | "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
 | "I will optimize later" | SEO and distribution need optimization from the start. |
 | "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run larry playbook workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

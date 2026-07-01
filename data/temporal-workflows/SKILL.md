@@ -1,6 +1,6 @@
 ---
 name: temporal-workflows
-description: Temporal durable workflows — workflow/activity definitions, retries, signals, queries, versioning
+description: Temporal durable workflows — workflow/activity definitions, retries, signals, queries, versioning. Use when working with temporal workflows.
 domain: data
 tags:
 - analytics

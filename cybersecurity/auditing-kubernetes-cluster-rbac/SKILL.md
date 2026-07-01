@@ -3,7 +3,7 @@ name: auditing-kubernetes-cluster-rbac
 description: 'Auditing Kubernetes cluster RBAC configurations to identify overly permissive roles, wildcard permissions, dangerous
   ClusterRoleBindings, service account abuse, and privilege escalation paths using kubectl, rbac-tool, KubiScan, and Kubeaudit.
 
-  '
+  '. Use when working with auditing kubernetes cluster rbac.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Plan** — Define infrastructure requirements, security constraints, rollback strategy
+1. **Implement** — Configure resources, apply security best practices, test in staging
+1. **Deploy & Monitor** — Roll out to production, verify health checks, set up alerting
 
 ## Verification
 

@@ -4,7 +4,7 @@ description: 'Simulates SSL stripping attacks using sslstrip, Bettercap, and mit
   HSTS enforcement, certificate validation, and HTTPS upgrade mechanisms that protect users from downgrade attacks on encrypted
   connections.
 
-  '
+  '. Use when working with performing ssl stripping attack.
 domain: cybersecurity
 tags:
 - network-security
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

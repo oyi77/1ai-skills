@@ -1,11 +1,9 @@
 ---
 name: analyzing-windows-amcache-artifacts
-description: 'Parses and analyzes the Windows Amcache.hve registry hive to extract evidence of program execution, application
+description: >  'Parses and analyzes the Windows Amcache.hve registry hive to extract evidence of program execution, application
   installation, and driver loading for digital forensics investigations. Uses Eric Zimmerman''s AmcacheParser and Timeline
   Explorer for artifact extraction, SHA-1 hash correlation with threat intel, and timeline reconstruction. Activates for requests
   involving Amcache forensics, program execution evidence, Windows artifact analysis, or application compatibility cache investigation.
-
-  '
 domain: cybersecurity
 tags:
 - amcache
@@ -93,6 +91,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
 
 ## Verification
 

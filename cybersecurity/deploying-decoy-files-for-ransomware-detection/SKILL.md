@@ -1,11 +1,11 @@
 ---
 name: deploying-decoy-files-for-ransomware-detection
-description: 'Deploys canary files (honeytokens) across file systems to detect ransomware encryption activity in real time.
+description: >  'Deploys canary files (honeytokens) across file systems to detect ransomware encryption activity in real time.
   Uses strategically placed decoy documents monitored via file integrity monitoring or OS-level watchdogs to trigger alerts
   when ransomware modifies or encrypts them. Activates for requests involving ransomware canary deployment, honeyfile setup,
   deception-based ransomware detection, or file integrity monitoring for encryption.
 
-  '
+  '.
 domain: cybersecurity
 tags:
 - ransomware
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 - **ransomware detection** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

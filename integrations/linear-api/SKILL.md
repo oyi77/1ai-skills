@@ -1,6 +1,6 @@
 ---
 name: linear-api
-description: Linear API integration — issue tracking, project management, cycle planning, team workflows via GraphQL API
+description: Linear API integration — issue tracking, project management, cycle planning, team workflows via GraphQL API. Use when working with linear api.
 domain: integrations
 tags:
 - api

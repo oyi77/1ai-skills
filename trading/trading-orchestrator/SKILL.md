@@ -1,6 +1,6 @@
 ---
 name: trading-orchestrator
-description: Coordinate multi-strategy trading workflows by routing signals to the right executor and managing risk limits.
+description: Coordinate multi-strategy trading workflows by routing signals to the right executor and managing risk limits. Use when working with trading orchestrator.
 domain: trading
 tags:
 - algorithms

@@ -1,7 +1,7 @@
 ---
 name: implementing-gcp-organization-policy-constraints
 description: Implement GCP Organization Policy constraints to enforce security guardrails across the entire resource hierarchy,
-  restricting risky configurations and ensuring compliance at organization, folder, and project levels.
+  restricting risky configurations and ensuring compliance at organization, folder, and project levels. Use when implementing gcp organization policy constraints to enforce security guardrails across.
 domain: cybersecurity
 subdomain: cloud-security
 tags:

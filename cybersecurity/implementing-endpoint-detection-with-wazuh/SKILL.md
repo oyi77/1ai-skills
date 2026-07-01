@@ -105,6 +105,13 @@ JSON report with agent inventory, alert statistics, rule coverage, and logtest v
 - Acting on threat intelligence without validating source reliability
 - Sharing classified or sensitive indicators without proper handling procedures
 - Alerting threat actors to detection capabilities through visible response actions
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

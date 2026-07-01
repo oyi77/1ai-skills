@@ -1,7 +1,7 @@
 ---
 name: performing-subdomain-enumeration-with-subfinder
 description: Enumerate subdomains of target domains using ProjectDiscovery's Subfinder passive reconnaissance tool to map
-  the attack surface during security assessments.
+  the attack surface during security assessments. Use when working with performing subdomain enumeration with subfinder.
 domain: cybersecurity
 tags:
 - subdomain-enumeration
@@ -83,6 +83,13 @@ def extract_iocs(text: str) -> dict:
 - **subfinder** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

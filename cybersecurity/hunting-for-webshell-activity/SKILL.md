@@ -1,7 +1,7 @@
 ---
 name: hunting-for-webshell-activity
 description: Hunt for web shell deployments on internet-facing servers by analyzing file creation in web directories, suspicious
-  process spawning from web servers, and anomalous HTTP patterns.
+  process spawning from web servers, and anomalous HTTP patterns. Use when hunting for web shell deployments on internet-facing servers by analyzing.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

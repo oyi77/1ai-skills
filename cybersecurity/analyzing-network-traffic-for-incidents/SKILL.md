@@ -1,11 +1,11 @@
 ---
 name: analyzing-network-traffic-for-incidents
-description: 'Analyzes network traffic captures and flow data to identify adversary activity during security incidents, including
+description: >  'Analyzes network traffic captures and flow data to identify adversary activity during security incidents, including
   command-and-control communications, lateral movement, data exfiltration, and exploitation attempts. Uses Wireshark, Zeek,
   and NetFlow analysis techniques. Activates for requests involving network traffic analysis, packet capture investigation,
   PCAP analysis, network forensics, C2 traffic detection, or exfiltration detection.
 
-  '
+  '.
 domain: cybersecurity
 tags:
 - network-forensics
@@ -95,6 +95,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

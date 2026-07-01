@@ -1,7 +1,7 @@
 ---
 name: market-research-agent
 description: Analyze markets, competitors, user segments, and trends to produce evidence-based business intelligence. Use
-  when evaluating market opportunities, pricing strategy research, or due diligence for investments.
+  when evaluating market opportunities, pricing strategy research, or due diligence for investments. Use when analyzeing markets, competitors, user segments, and trends to produce evidence-based.
 domain: agents
 tags:
 - agent
@@ -85,6 +85,13 @@ def orchestrate(tasks: list[Task]) -> dict:
 | "I will just do it manually" | Agents automate repetitive tasks — manual work does not scale |
 | "The agent will figure it out" | Without clear instructions, agents hallucinate. Give explicit context. |
 | "One agent is enough" | Complex tasks benefit from specialized agents working in parallel |
+
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
 
 ## Verification
 

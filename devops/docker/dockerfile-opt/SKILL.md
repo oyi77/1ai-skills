@@ -86,6 +86,13 @@ jobs:
 | "We do not need monitoring" | Without monitoring, you are flying blind. Add observability from day one. |
 | "Infrastructure as code is overkill" | IaC enables reproducibility, version control, and disaster recovery. |
 
+
+## Process
+
+1. **Plan** — Define infrastructure requirements, security constraints, rollback strategy
+1. **Implement** — Configure resources, apply security best practices, test in staging
+1. **Deploy & Monitor** — Roll out to production, verify health checks, set up alerting
+
 ## Verification
 
 - [ ] All steps executed successfully

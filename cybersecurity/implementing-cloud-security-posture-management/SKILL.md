@@ -4,7 +4,7 @@ description: 'Implementing Cloud Security Posture Management (CSPM) to continuou
   compliance violations, and security risks using Prowler, ScoutSuite, AWS Security Hub, Azure Defender, and GCP Security
   Command Center.
 
-  '
+  '. Use when working with implementing cloud security posture management.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

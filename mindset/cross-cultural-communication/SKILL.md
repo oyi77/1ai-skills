@@ -84,6 +84,13 @@ Mindset skill for cross cultural communication. Builds capability through delibe
 - Log one lesson learned
 ```
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run cross cultural communication workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] All steps executed successfully

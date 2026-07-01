@@ -4,7 +4,7 @@ description: 'Deploy and configure Tofino industrial firewalls from Belden/Hirsc
   deep packet inspection for OT protocols including Modbus, EtherNet/IP, OPC, and S7comm, enforcing granular access control
   between ICS security zones.
 
-  '
+  '. Use when working with implementing ics firewall with tofino.
 domain: cybersecurity
 tags:
 - ot-security
@@ -91,6 +91,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing ics firewall with tofino workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

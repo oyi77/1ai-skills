@@ -1,7 +1,7 @@
 ---
 name: crypto-trading-bot
 description: 加密貨幣交易機器人開發 - 幫你整自動交易Bot，支持Pine Script、Python、CCXT API對接。適用於：(1)整TradingView信號Bot (2)CEX/DEX API自動化 (3)套利機器人
-  (4)止盈止損策略
+  (4)止盈止損策略. Use when working with crypto trading bot.
 domain: trading
 tags:
 - algorithms
@@ -89,6 +89,13 @@ def kelly_size(win_rate: float, avg_win: float, avg_loss: float) -> float:
 | "I will cut losses later" | Later never comes. Set stop-losses before entering any trade. |
 | "This time is different" | It never is. Follow your strategy, not your emotions. |
 | "I do not need to journal" | Journaling reveals patterns in your behavior. Track every trade. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run crypto trading bot workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

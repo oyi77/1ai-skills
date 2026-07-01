@@ -1,7 +1,7 @@
 ---
 name: hunting-for-process-injection-techniques
 description: Detect process injection techniques (T1055) including CreateRemoteThread, process hollowing, and DLL injection
-  via Sysmon Event IDs 8 and 10 and EDR process telemetry
+  via Sysmon Event IDs 8 and 10 and EDR process telemetry. Use when detecting process injection techniques (t1055) including createremotethread, process hollowing, and.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -99,6 +99,13 @@ def extract_iocs(text: str) -> dict:
 - Testing without rate limiting, potentially causing service degradation
 - Storing sensitive test data (credentials, tokens) in plain text logs
 - Using automated scanners blindly without reviewing results for false positives
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

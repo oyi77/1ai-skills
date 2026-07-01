@@ -1,7 +1,7 @@
 ---
 name: hunting-for-registry-run-key-persistence
 description: Detect MITRE ATT&CK T1547.001 registry Run key persistence by analyzing Sysmon Event ID 13 logs and registry
-  queries to identify malicious auto-start entries.
+  queries to identify malicious auto-start entries. Use when detecting mitre att&ck t1547.001 registry run key persistence by analyzing.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -99,6 +99,13 @@ A JSON report listing suspicious Run key entries with the registry path, value w
 - Acting on threat intelligence without validating source reliability
 - Sharing classified or sensitive indicators without proper handling procedures
 - Alerting threat actors to detection capabilities through visible response actions
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

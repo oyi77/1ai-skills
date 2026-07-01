@@ -1,6 +1,6 @@
 ---
 name: zapier-patterns
-description: Zapier automation patterns — triggers, actions, filters, formatters, paths, code steps
+description: Zapier automation patterns — triggers, actions, filters, formatters, paths, code steps. Use when working with zapier patterns.
 domain: automation
 tags:
 - api

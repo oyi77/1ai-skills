@@ -1,7 +1,7 @@
 ---
 name: detecting-email-account-compromise
 description: Detect compromised O365 and Google Workspace email accounts by analyzing inbox rule creation, suspicious sign-in
-  locations, mail forwarding rules, and unusual API access patterns via Microsoft Graph and audit logs.
+  locations, mail forwarding rules, and unusual API access patterns via Microsoft Graph and audit logs. Use when detecting compromised o365 and google workspace email accounts by analyzing.
 domain: cybersecurity
 subdomain: incident-response
 tags:
@@ -98,6 +98,13 @@ A JSON report listing compromised or suspicious accounts, malicious inbox rules 
 - Testing against production systems without a defined scope and rules of engagement
 - Sharing sensitive findings or credentials in unencrypted communications
 - Failing to properly scope and contain the assessment before starting
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

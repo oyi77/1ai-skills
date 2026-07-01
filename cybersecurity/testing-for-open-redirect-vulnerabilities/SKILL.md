@@ -1,7 +1,7 @@
 ---
 name: testing-for-open-redirect-vulnerabilities
 description: Identify and test open redirect vulnerabilities in web applications by analyzing URL redirection parameters,
-  bypass techniques, and exploitation chains for phishing and token theft.
+  bypass techniques, and exploitation chains for phishing and token theft. Use when working with testing for open redirect vulnerabilities.
 domain: cybersecurity
 tags:
 - open-redirect
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 - **Vulnerability Scanner** — Automated weakness identification
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

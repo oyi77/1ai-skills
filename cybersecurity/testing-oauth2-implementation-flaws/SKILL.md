@@ -3,7 +3,7 @@ name: testing-oauth2-implementation-flaws
 description: Tests OAuth 2.0 and OpenID Connect implementations for security flaws including authorization code interception,
   redirect URI manipulation, CSRF in OAuth flows, token leakage, scope escalation, and PKCE bypass. The tester evaluates the
   authorization server, client application, and token handling for common misconfigurations that enable account takeover or
-  unauthorized access.
+  unauthorized access. Use when working with testing oauth2 implementation flaws.
 domain: cybersecurity
 tags:
 - api-security
@@ -88,6 +88,13 @@ def extract_iocs(text: str) -> dict:
 - **Vulnerability Scanner** — Automated weakness identification
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

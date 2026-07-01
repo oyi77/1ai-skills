@@ -5,7 +5,7 @@ description: 'Performs OAuth 2.0 scope minimization review to identify over-perm
   Activates for requests involving OAuth scope audit, API permission review, third-party app risk assessment, or consent grant
   minimization.
 
-  '
+  '. Use when working with performing oauth scope minimization review.
 domain: cybersecurity
 tags:
 - OAuth
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

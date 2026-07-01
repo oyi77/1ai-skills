@@ -1,6 +1,6 @@
 ---
 name: decision-making
-description: Make sound decisions under uncertainty using frameworks like RICE, weighted matrix, decision trees, and pre-mortems.
+description: Make sound decisions under uncertainty using frameworks like RICE, weighted matrix, decision trees, and pre-mortems. Use when working with decision making.
 domain: mindset
 tags:
 - decision
@@ -85,6 +85,13 @@ Mindset skill for decision making. Builds capability through deliberate practice
 - Reflect: What worked? What did not?
 - Log one lesson learned
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run decision making workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

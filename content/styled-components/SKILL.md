@@ -1,6 +1,6 @@
 ---
 name: styled-components
-description: styled-components CSS-in-JS — tagged templates, theming, props, animations, SSR, performance
+description: styled-components CSS-in-JS — tagged templates, theming, props, animations, SSR, performance. Use when working with styled components.
 domain: content
 tags:
 - components

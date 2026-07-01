@@ -1,6 +1,6 @@
 ---
 name: payment-gateways
-description: Payment gateway integration — Stripe, Paddle, Lemon Squeezy, dunning, subscription management
+description: Payment gateway integration — Stripe, Paddle, Lemon Squeezy, dunning, subscription management. Use when working with payment gateways.
 domain: operations
 tags:
 - business-ops

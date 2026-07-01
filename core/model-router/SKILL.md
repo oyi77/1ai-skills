@@ -1,6 +1,6 @@
 ---
 name: model-router
-description: Route AI model requests to the optimal provider based on task, cost, latency, and capability requirements. Manage multi-provider LLM deployments.
+description: Route AI model requests to the optimal provider based on task, cost, latency, and capability requirements. Manage multi-provider LLM deployments. Use when working with model router.
 domain: core
 tags:
 - ai
@@ -67,6 +67,13 @@ async function routeRequest(task: string, prompt: string) {
   throw new Error('All models failed');
 }
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run model router workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

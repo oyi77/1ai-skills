@@ -1,7 +1,7 @@
 ---
 name: implementing-network-deception-with-honeypots
 description: Deploy and manage network honeypots using OpenCanary, T-Pot, or Cowrie to detect unauthorized access, lateral
-  movement, and attacker reconnaissance.
+  movement, and attacker reconnaissance. Use when deploying and manage network honeypots using opencanary, t-pot, or cowrie.
 domain: cybersecurity
 tags:
 - deception
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing network deception with honeypots workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

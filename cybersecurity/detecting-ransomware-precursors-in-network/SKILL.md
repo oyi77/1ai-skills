@@ -1,6 +1,6 @@
 ---
 name: detecting-ransomware-precursors-in-network
-description: Detects early-stage ransomware indicators in network traffic before encryption begins, including initial access
+description: >  Detects early-stage ransomware indicators in network traffic before encryption begins, including initial access
   broker activity, command-and-control beaconing, credential harvesting, reconnaissance scanning, and staging behavior. Uses
   network detection tools (Zeek, Suricata, Arkime), SIEM correlation rules, and threat intelligence feeds to identify ransomware
   precursor patterns such as Cobalt Strike beacons, Mimikatz network signatures, and RDP brute-force attempts.
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

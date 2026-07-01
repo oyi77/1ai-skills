@@ -4,7 +4,7 @@ description: 'Detect lateral movement in network traffic using Zeek (formerly Br
   smb_files.log, dce_rpc.log, kerberos.log, and ntlm.log to identify SMB file transfers, NTLM account spray activity, remote
   service execution, and anomalous internal connections.
 
-  '
+  '. Use when working with detecting lateral movement with zeek.
 domain: cybersecurity
 tags:
 - zeek
@@ -92,6 +92,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

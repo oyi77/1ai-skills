@@ -1,7 +1,7 @@
 ---
 name: performing-hardware-security-module-integration
 description: Integrate Hardware Security Modules (HSMs) using PKCS#11 interface for cryptographic key management, signing
-  operations, and secure key storage with python-pkcs11, AWS CloudHSM, and YubiHSM2.
+  operations, and secure key storage with python-pkcs11, AWS CloudHSM, and YubiHSM2. Use when integrateing hardware security modules (hsms) using pkcs#11 interface for cryptographic.
 domain: cybersecurity
 subdomain: cryptography
 tags:
@@ -101,6 +101,13 @@ def extract_iocs(text: str) -> dict:
 - Testing against production systems without a defined scope and rules of engagement
 - Sharing sensitive findings or credentials in unencrypted communications
 - Failing to properly scope and contain the assessment before starting
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

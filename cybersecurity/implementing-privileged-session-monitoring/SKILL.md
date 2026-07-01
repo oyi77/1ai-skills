@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
 
+
+## Process
+
+1. **Plan** — Define infrastructure requirements, security constraints, rollback strategy
+1. **Implement** — Configure resources, apply security best practices, test in staging
+1. **Deploy & Monitor** — Roll out to production, verify health checks, set up alerting
+
 ## Verification
 
 - [ ] All privileged session monitoring procedures executed completely and documented

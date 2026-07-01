@@ -1,7 +1,7 @@
 ---
 name: detecting-pass-the-hash-attacks
 description: Detect Pass-the-Hash attacks by analyzing NTLM authentication patterns, identifying Type 3 logons with NTLM where
-  Kerberos is expected, and correlating with credential dumping.
+  Kerberos is expected, and correlating with credential dumping. Use when detecting pass-the-hash attacks by analyzing ntlm authentication patterns, identifying type.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

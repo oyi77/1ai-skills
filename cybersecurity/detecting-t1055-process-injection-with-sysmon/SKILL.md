@@ -1,7 +1,7 @@
 ---
 name: detecting-t1055-process-injection-with-sysmon
 description: Detect process injection techniques (T1055) including classic DLL injection, process hollowing, and APC injection
-  by analyzing Sysmon events for cross-process memory operations, remote thread creation, and anomalous DLL loading patterns.
+  by analyzing Sysmon events for cross-process memory operations, remote thread creation, and anomalous DLL loading patterns. Use when detecting process injection techniques (t1055) including classic dll injection, process.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -92,6 +92,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

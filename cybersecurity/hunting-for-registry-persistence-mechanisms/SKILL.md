@@ -1,7 +1,7 @@
 ---
 name: hunting-for-registry-persistence-mechanisms
 description: Hunt for registry-based persistence mechanisms including Run keys, Winlogon modifications, IFEO injection, and
-  COM hijacking in Windows environments.
+  COM hijacking in Windows environments. Use when hunting for registry-based persistence mechanisms including run keys, winlogon modifications,.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

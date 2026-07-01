@@ -1,7 +1,7 @@
 ---
 name: performing-second-order-sql-injection
 description: Detect and exploit second-order SQL injection vulnerabilities where malicious input is stored in a database and
-  later executed in an unsafe SQL query during a different application operation.
+  later executed in an unsafe SQL query during a different application operation. Use when detecting and exploit second-order sql injection vulnerabilities where malicious input.
 domain: cybersecurity
 tags:
 - second-order-sqli
@@ -78,6 +78,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

@@ -1,6 +1,6 @@
 ---
 name: supabase-mcp
-description: MCP server for Supabase databases. Query tables, manage auth, and handle storage through standardized protocol.
+description: MCP server for Supabase databases. Query tables, manage auth, and handle storage through standardized protocol. Use when working with supabase mcp.
 domain: mcp
 tags:
 - mcp
@@ -82,6 +82,13 @@ server.tool("search", { query: z.string() }, async ({ query }) => {
   return { content: [{ type: "text", text: JSON.stringify(results) }] };
 });
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run supabase mcp workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

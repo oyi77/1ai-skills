@@ -1,11 +1,10 @@
 ---
 name: performing-nist-csf-maturity-assessment
-description: Assess organizational cybersecurity maturity against NIST CSF framework. Evaluate identify, protect, detect, respond, and recover functions with actionable gap analysis.
+description: >  Assess organizational cybersecurity maturity against NIST CSF framework. Evaluate identify, protect, detect, respond, and recover functions with actionable gap analysis.
   The NIST Cybersecurity Framework (CSF) 2.0, released in February 2024, provides a
   comprehensive taxonomy for managing cybersecurity risk through six core Functions -
   Govern, Identify, Protect, Detect, Respond, and Recover. This skill covers conducting
-  a maturity assessment against the CSF using Implementation Tiers to measure organizational
-  cybersecurity posture and create improvement roadmaps.
+  a maturity assessment against the CSF using Implementation Tiers to me.
 domain: cybersecurity
 subdomain: compliance-governance
 tags: 

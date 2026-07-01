@@ -1,6 +1,6 @@
 ---
 name: surrealdb-patterns
-description: SurrealDB multi-model database — document, graph, key-value. SurrealQL, realtime subscriptions, embedded mode
+description: SurrealDB multi-model database — document, graph, key-value. SurrealQL, realtime subscriptions, embedded mode. Use when working with surrealdb patterns.
 domain: development
 tags:
 - coding

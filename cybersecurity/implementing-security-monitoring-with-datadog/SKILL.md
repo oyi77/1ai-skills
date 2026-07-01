@@ -1,11 +1,9 @@
 ---
 name: implementing-security-monitoring-with-datadog
-description: 'Implements security monitoring using Datadog Cloud SIEM, Cloud Security Management (CSM), and Workload Protection
+description: >  'Implements security monitoring using Datadog Cloud SIEM, Cloud Security Management (CSM), and Workload Protection
   to detect threats, enforce compliance, and respond to security events across cloud and hybrid infrastructure. Covers Agent
   deployment, log source ingestion, detection rule creation, security dashboards, and automated notification workflows. Activates
   for requests involving Datadog security setup, Cloud SIEM configuration, CSM threat detection, or security monitoring dashboards.
-
-  '
 domain: cybersecurity
 tags:
 - siem
@@ -105,6 +103,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

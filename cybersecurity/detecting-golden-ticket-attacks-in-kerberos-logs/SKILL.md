@@ -1,7 +1,7 @@
 ---
 name: detecting-golden-ticket-attacks-in-kerberos-logs
 description: Detect Golden Ticket attacks in Active Directory by analyzing Kerberos TGT anomalies including mismatched encryption
-  types, impossible ticket lifetimes, non-existent accounts, and forged PAC signatures in domain controller event logs.
+  types, impossible ticket lifetimes, non-existent accounts, and forged PAC signatures in domain controller event logs. Use when detecting golden ticket attacks in active directory by analyzing kerberos.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -82,6 +82,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

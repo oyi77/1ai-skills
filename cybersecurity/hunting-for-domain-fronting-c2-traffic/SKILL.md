@@ -1,7 +1,7 @@
 ---
 name: hunting-for-domain-fronting-c2-traffic
 description: Detect domain fronting C2 traffic by analyzing SNI vs HTTP Host header mismatches in proxy logs and TLS certificate
-  discrepancies using pyOpenSSL for certificate inspection
+  discrepancies using pyOpenSSL for certificate inspection. Use when detecting domain fronting c2 traffic by analyzing sni vs http.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -98,6 +98,13 @@ JSON report containing detected domain fronting indicators with SNI-Host pairs, 
 - Capturing traffic on networks without authorization or privacy considerations
 - Leaving packet captures containing sensitive data unencrypted on disk
 - Deploying inline blocking rules without testing for false positives first
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

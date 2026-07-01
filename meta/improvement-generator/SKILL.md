@@ -97,6 +97,13 @@ Improvement Generator is a foundational meta-skills skill that provides skill ma
 | "Manual skill management is fine" | With 1000+ skills, manual management is impossible. Automate. |
 | "Performance does not matter" | Skill performance directly impacts agent effectiveness. Track it. |
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run improvement generator workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] All steps executed successfully

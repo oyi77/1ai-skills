@@ -2,7 +2,7 @@
 name: conducting-network-penetration-test
 description: Conducts comprehensive network penetration tests against authorized target environments by performing host discovery,
   port scanning, service enumeration, vulnerability identification, and controlled exploitation to assess the security posture
-  of network infrastructure. The tester follows PTES methodology from reconnaissance through post-exploitation and reporting.
+  of network infrastructure. The tester follows PTES methodology from reconnaissance through post-exploitation and reporting. Use when working with conducting network penetration test.
 domain: cybersecurity
 tags:
 - network-pentest
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

@@ -1,7 +1,7 @@
 ---
 name: maybe-hft
 description: Hedging EA dengan sistem trailing stop dan pending order otomatis. Converted dari MQL5, cross-platform (Windows/Linux/Mac).
-  Compatible dengan mt5linux Docker.
+  Compatible dengan mt5linux Docker. Use when working with maybe hft.
 domain: research
 tags:
 - analysis
@@ -137,6 +137,13 @@ def evaluate_source(url: str) -> dict:
 | "First result is good enough" | Deep research finds better answers. Keep digging. |
 | "I do not need to verify sources" | Unverified sources lead to wrong conclusions. Always cross-check. |
 | "Research is a one-time thing" | Markets change. Research needs to be continuous, not one-off. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run maybe hft workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

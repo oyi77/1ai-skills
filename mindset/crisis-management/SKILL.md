@@ -1,7 +1,7 @@
 ---
 name: crisis-management
 description: Respond to crises using incident command structure, stakeholder communication, and recovery planning. Use during
-  security breaches, PR disasters, or operational failures.
+  security breaches, PR disasters, or operational failures. Use when working with crisis management.
 domain: mindset
 tags:
 - crisis
@@ -86,6 +86,13 @@ Mindset skill for crisis management. Builds capability through deliberate practi
 - Reflect: What worked? What did not?
 - Log one lesson learned
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run crisis management workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

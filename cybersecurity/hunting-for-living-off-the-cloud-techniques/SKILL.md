@@ -1,7 +1,7 @@
 ---
 name: hunting-for-living-off-the-cloud-techniques
 description: Hunt for adversary abuse of legitimate cloud services for C2, data staging, and exfiltration including abuse
-  of Azure, AWS, GCP services, and SaaS platforms.
+  of Azure, AWS, GCP services, and SaaS platforms. Use when hunting for adversary abuse of legitimate cloud services for c2,.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

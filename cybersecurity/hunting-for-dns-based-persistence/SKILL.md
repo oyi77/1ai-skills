@@ -1,7 +1,7 @@
 ---
 name: hunting-for-dns-based-persistence
 description: Hunt for DNS-based persistence mechanisms including DNS hijacking, dangling CNAME records, wildcard DNS abuse,
-  and unauthorized zone modifications using passive DNS databases, SecurityTrails API, and DNS audit log analysis.
+  and unauthorized zone modifications using passive DNS databases, SecurityTrails API, and DNS audit log analysis. Use when hunting for dns-based persistence mechanisms including dns hijacking, dangling cname.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -106,6 +106,13 @@ JSON report listing DNS anomalies with record type, historical changes, risk sev
 - Acting on threat intelligence without validating source reliability
 - Sharing classified or sensitive indicators without proper handling procedures
 - Alerting threat actors to detection capabilities through visible response actions
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

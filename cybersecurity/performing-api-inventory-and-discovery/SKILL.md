@@ -3,7 +3,7 @@ name: performing-api-inventory-and-discovery
 description: Performs API inventory and discovery to identify all API endpoints in an organization's environment including
   documented, undocumented, shadow, zombie, and deprecated APIs. The tester uses passive traffic analysis, active scanning,
   DNS enumeration, JavaScript analysis, and cloud resource inventory to build a comprehensive API catalog. Maps to OWASP API9:2023
-  Improper Inventory Management.
+  Improper Inventory Management. Use when working with performing api inventory and discovery.
 domain: cybersecurity
 tags:
 - api-security
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

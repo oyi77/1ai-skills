@@ -1,6 +1,6 @@
 ---
 name: prisma-orm
-description: Prisma ORM — schema modeling, migrations, client queries, middleware, performance optimization
+description: Prisma ORM — schema modeling, migrations, client queries, middleware, performance optimization. Use when working with prisma orm.
 domain: development
 tags:
 - coding

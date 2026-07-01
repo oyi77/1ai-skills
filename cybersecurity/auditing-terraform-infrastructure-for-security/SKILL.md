@@ -4,7 +4,7 @@ description: 'Auditing Terraform infrastructure-as-code for security misconfigur
   OPA/Rego policies to detect overly permissive IAM policies, public resource exposure, missing encryption, and insecure defaults
   before cloud deployment.
 
-  '
+  '. Use when working with auditing terraform infrastructure for security.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -88,6 +88,13 @@ def extract_iocs(text: str) -> dict:
 - **security** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

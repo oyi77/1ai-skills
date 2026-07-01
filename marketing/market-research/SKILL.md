@@ -1,6 +1,6 @@
 ---
 name: market-research
-description: Conduct market research, competitive analysis, and industry insights with Exa and Firecrawl
+description: Conduct market research, competitive analysis, and industry insights with Exa and Firecrawl. Use when conducting market research, competitive analysis, and industry insights with exa.
 domain: marketing
 tags:
 - growth
@@ -83,6 +83,13 @@ def analyze_keywords(keywords: list[str]) -> list[dict]:
 | "Good products sell themselves" | They do not. Marketing is how people discover your product. |
 | "I will start marketing after launch" | Build audience before launch. Pre-launch momentum is critical. |
 | "SEO is dead" | SEO evolves. GEO (Generative Engine Optimization) is the new frontier. |
+
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
 
 ## Verification
 

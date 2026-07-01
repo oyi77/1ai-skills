@@ -1,10 +1,10 @@
 ---
 name: wolf-finance
-description: 'ACTIVATE for ANY finance, investment, trading, or market query. Triggers: ticker symbols ($AAPL, BTC, EUR/USD),
+description: >  'ACTIVATE for ANY finance, investment, trading, or market query. Triggers: ticker symbols ($AAPL, BTC, EUR/USD),
   asset classes (stocks, crypto, forex, bonds, commodities, derivatives, PE, hedge funds), concepts (DCF, P/E, RSI, MACD,
   Kelly, VaR, Sharpe, Greeks, yield curve, carry trade, QE), actions ("should I buy/sell", "analyze this", "build a portfolio",
   "hedge my position", "size this trade"), modeling (valuation, forecasting, backtesting, Monte Carlo), corporate finance
-  (M&A, IPO, LBO, WAC...'
+  (M&A, IPO, LB.
 domain: financial
 tags:
 - analysis
@@ -77,6 +77,13 @@ def calculate_risk(returns: list[float]) -> dict:
 | "The market will recover" | Do not hope. Analyze. Set stop-losses and follow your strategy. |
 | "I do not need to track expenses" | What you do not measure, you cannot optimize. Track everything. |
 | "One spreadsheet is enough" | Financial models need version control and audit trails. Use proper tools. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run wolf finance workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

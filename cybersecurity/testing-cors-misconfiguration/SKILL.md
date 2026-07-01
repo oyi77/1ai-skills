@@ -1,7 +1,7 @@
 ---
 name: testing-cors-misconfiguration
 description: Identifying and exploiting Cross-Origin Resource Sharing misconfigurations that allow unauthorized cross-domain
-  data access and credential theft during security assessments.
+  data access and credential theft during security assessments. Use when working with testing cors misconfiguration.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -84,6 +84,13 @@ def extract_iocs(text: str) -> dict:
 - **Vulnerability Scanner** — Automated weakness identification
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

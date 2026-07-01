@@ -1,6 +1,6 @@
 ---
 name: spec-driven-development
-description: Write a PRD covering objectives, commands, structure, code style, testing, and boundaries before any code. Spec before code, always.
+description: Write a PRD covering objectives, commands, structure, code style, testing, and boundaries before any code. Spec before code, always. Use when writeing a prd covering objectives, commands, structure, code style, testing,.
 domain: development
 tags:
 - engineering
@@ -83,6 +83,13 @@ As a [role], I want [action] so that [benefit].
 - [ ] Criterion 1
 - [ ] Criterion 2
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run spec driven development workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

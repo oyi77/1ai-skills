@@ -1,6 +1,6 @@
 ---
 name: memory-knowledge-graph
-description: Knowledge graph-based persistent memory for AI agents — entities, relations, and semantic retrieval
+description: Knowledge graph-based persistent memory for AI agents — entities, relations, and semantic retrieval. Use when working with memory knowledge graph.
 domain: mcp
 tags:
 - ai-agent

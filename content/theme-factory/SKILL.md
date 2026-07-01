@@ -73,6 +73,13 @@ Generate professional design systems including color palettes, typography scales
 }
 ```
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run theme factory workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] Color palette passes WCAG contrast checks

@@ -1,10 +1,9 @@
 ---
 name: implementing-data-loss-prevention-with-microsoft-purview
-description: Implements data loss prevention policies using Microsoft Purview to protect sensitive information across Exchange
+description: >  Implements data loss prevention policies using Microsoft Purview to protect sensitive information across Exchange
   Online, SharePoint, OneDrive, Teams, endpoint devices, and Power BI. The analyst configures sensitivity labels with encryption
   and content marking, creates DLP policies using built-in and custom sensitive information types with regex patterns, deploys
-  endpoint DLP rules to control file operations on Windows and macOS devices, and monitors policy effectiveness through Activity
-  Expl...
+  endpoint DLP rules to control file operations on Windows and macOS devices, and monitors policy effectiveness through Activity.
 domain: cybersecurity
 tags:
 - DLP
@@ -90,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing data loss prevention with microsoft purview workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

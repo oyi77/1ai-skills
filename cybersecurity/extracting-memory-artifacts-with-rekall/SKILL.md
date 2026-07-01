@@ -4,7 +4,7 @@ description: 'Uses Rekall memory forensics framework to analyze memory dumps for
   anomalies, hidden processes, and rootkit detection. Applies plugins like pslist, psscan, vadinfo, malfind, and dlllist to
   extract forensic artifacts from Windows memory images. Use during incident response memory analysis.
 
-  '
+  '. Use when working with extracting memory artifacts with rekall.
 domain: cybersecurity
 tags:
 - extracting
@@ -81,6 +81,13 @@ def extract_iocs(text: str) -> dict:
 - **rekall** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run extracting memory artifacts with rekall workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

@@ -4,7 +4,7 @@ description: 'Configuring Zscaler Private Access (ZPA) to replace traditional VP
   App Connectors, defining application segments, configuring access policies based on user identity and device posture, and
   integrating with IdPs.
 
-  '
+  '. Use when working with configuring zscaler private access for ztna.
 domain: cybersecurity
 tags:
 - zscaler
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 - **ztna** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

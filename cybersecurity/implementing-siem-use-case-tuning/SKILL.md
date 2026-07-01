@@ -1,7 +1,7 @@
 ---
 name: implementing-siem-use-case-tuning
 description: Tune SIEM detection rules to reduce false positives by analyzing alert volumes, creating whitelists, adjusting
-  thresholds, and measuring detection efficacy metrics in Splunk and Elastic
+  thresholds, and measuring detection efficacy metrics in Splunk and Elastic. Use when working with implementing siem use case tuning.
 domain: cybersecurity
 subdomain: security-operations
 tags:
@@ -92,6 +92,13 @@ JSON report with per-rule tuning recommendations including current FP rate, sugg
 - Acting on threat intelligence without validating source reliability
 - Sharing classified or sensitive indicators without proper handling procedures
 - Alerting threat actors to detection capabilities through visible response actions
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing siem use case tuning workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

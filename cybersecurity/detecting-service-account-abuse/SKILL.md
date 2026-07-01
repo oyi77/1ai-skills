@@ -1,7 +1,7 @@
 ---
 name: detecting-service-account-abuse
 description: Detect abuse of service accounts through anomalous interactive logons, privilege escalation, lateral movement,
-  and unauthorized access patterns.
+  and unauthorized access patterns. Use when detecting abuse of service accounts through anomalous interactive logons, privilege.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

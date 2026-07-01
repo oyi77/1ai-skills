@@ -1,10 +1,10 @@
 ---
 name: detecting-serverless-function-injection
-description: Detects and prevents code injection attacks targeting serverless functions (AWS Lambda, Azure Functions, Google
+description: >  Detects and prevents code injection attacks targeting serverless functions (AWS Lambda, Azure Functions, Google
   Cloud Functions) through event source poisoning, malicious layer injection, runtime command execution, and IAM privilege
   escalation via function modification. The analyst combines static analysis of function code, CloudTrail event correlation,
   runtime behavior monitoring, and IAM policy auditing to identify injection vectors across the expanded serverless attack
-  surface including AP...
+  surface includi.
 domain: cybersecurity
 tags:
 - serverless-security
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

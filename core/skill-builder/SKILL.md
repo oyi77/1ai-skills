@@ -69,3 +69,9 @@ Automatically detect the source type from user input:
 - `build_how_to_guides` — Generate how-to guides from tests
 - `split_config` — Split large configs into focused skills
 - `export_to_weaviate`, `export_to_chroma`, `export_to_faiss`, `export_to_qdrant` — Vector DB export
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior

@@ -1,7 +1,7 @@
 ---
 name: analyzing-ethereum-smart-contract-vulnerabilities
 description: Perform static and symbolic analysis of Solidity smart contracts using Slither and Mythril to detect reentrancy,
-  integer overflow, access control, and other vulnerability classes before deployment to Ethereum mainnet.
+  integer overflow, access control, and other vulnerability classes before deployment to Ethereum mainnet. Use when performing static and symbolic analysis of solidity smart contracts using.
 domain: cybersecurity
 subdomain: blockchain-security
 tags:
@@ -105,6 +105,13 @@ JSON report listing vulnerabilities with SWC (Smart Contract Weakness Classifica
 - Testing against production systems without a defined scope and rules of engagement
 - Sharing sensitive findings or credentials in unencrypted communications
 - Failing to properly scope and contain the assessment before starting
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

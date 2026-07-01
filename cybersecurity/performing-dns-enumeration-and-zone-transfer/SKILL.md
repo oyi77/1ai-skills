@@ -3,7 +3,7 @@ name: performing-dns-enumeration-and-zone-transfer
 description: 'Enumerates DNS records, attempts zone transfers, brute-forces subdomains, and maps DNS infrastructure during
   authorized reconnaissance to identify attack surface, misconfigurations, and information disclosure in target domains.
 
-  '
+  '. Use when working with performing dns enumeration and zone transfer.
 domain: cybersecurity
 tags:
 - network-security
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

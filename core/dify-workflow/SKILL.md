@@ -1,6 +1,6 @@
 ---
 name: dify-workflow
-description: Dify AI workflow platform — LLM apps, knowledge bases, agents, workflow orchestration, API deployment
+description: Dify AI workflow platform — LLM apps, knowledge bases, agents, workflow orchestration, API deployment. Use when working with dify workflow.
 domain: core
 tags:
 - ai-agent

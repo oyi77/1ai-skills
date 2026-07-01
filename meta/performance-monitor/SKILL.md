@@ -1,7 +1,7 @@
 ---
 name: performance-monitor
 description: Track and analyze skill execution performance. Measure latency, success rates, accuracy, and resource usage for
-  continuous improvement.
+  continuous improvement. Use when tracking and analyze skill execution performance. measure latency, success rates,.
 domain: meta
 tags:
 - meta-learning
@@ -86,6 +86,13 @@ Performance Monitor is a foundational meta-skills skill that provides skill mana
 | "Skills do not need to evolve" | Static skills become outdated. Self-evolving skills improve continuously. |
 | "Manual skill management is fine" | With 1000+ skills, manual management is impossible. Automate. |
 | "Performance does not matter" | Skill performance directly impacts agent effectiveness. Track it. |
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

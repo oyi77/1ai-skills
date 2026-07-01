@@ -3,7 +3,7 @@ name: detecting-aws-credential-exposure-with-trufflehog
 description: 'Detecting exposed AWS credentials in source code repositories, CI/CD pipelines, and configuration files using
   TruffleHog, git-secrets, and AWS-native detection mechanisms to prevent credential theft and unauthorized account access.
 
-  '
+  '. Use when working with detecting aws credential exposure with trufflehog.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -88,6 +88,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

@@ -2,7 +2,7 @@
 name: performing-ai-driven-osint-correlation
 description: Use AI and LLM-based reasoning to correlate findings across multiple OSINT sources—username enumeration, email
   lookups, social media profiles, domain records, breach databases, and dark-web mentions—into unified intelligence profiles
-  with confidence scoring and link analysis.
+  with confidence scoring and link analysis. Use when working with performing ai driven osint correlation.
 domain: cybersecurity
 tags:
 - osint
@@ -103,6 +103,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

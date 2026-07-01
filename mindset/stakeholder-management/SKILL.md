@@ -1,7 +1,7 @@
 ---
 name: stakeholder-management
 description: Map, engage, and align stakeholders using the power-interest grid, RACI matrix, and communication plans. Use
-  when navigating complex projects or organizational politics.
+  when navigating complex projects or organizational politics. Use when working with stakeholder management.
 domain: mindset
 tags:
 - mindset
@@ -86,6 +86,13 @@ Mindset skill for stakeholder management. Builds capability through deliberate p
 - Reflect: What worked? What did not?
 - Log one lesson learned
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run stakeholder management workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

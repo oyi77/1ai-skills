@@ -3,7 +3,7 @@ name: executing-phishing-simulation-campaign
 description: Executes authorized phishing simulation campaigns to assess an organization's susceptibility to email-based social
   engineering attacks. The tester designs realistic phishing scenarios, builds credential harvesting infrastructure, sends
   targeted phishing emails, and tracks open rates, click-through rates, and credential submission rates to measure human security
-  awareness.
+  awareness. Use when working with executing phishing simulation campaign.
 domain: cybersecurity
 tags:
 - phishing-simulation
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

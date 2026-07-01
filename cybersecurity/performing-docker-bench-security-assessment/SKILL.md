@@ -1,7 +1,7 @@
 ---
 name: performing-docker-bench-security-assessment
 description: Docker Bench for Security is an open-source script that checks dozens of common best practices around deploying
-  Docker containers in production. Based on the CIS Docker Benchmark, it audits host confi
+  Docker containers in production. Based on the CIS Docker Benchmark, it audits host confi. Use when working with performing docker bench security assessment.
 domain: cybersecurity
 subdomain: container-security
 tags:

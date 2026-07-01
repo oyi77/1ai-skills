@@ -1,7 +1,7 @@
 ---
 name: detecting-exfiltration-over-dns-with-zeek
 description: Detect DNS-based data exfiltration by analyzing Zeek dns.log for high-entropy subdomains and anomalous query
-  patterns
+  patterns. Use when detecting dns-based data exfiltration by analyzing zeek dns.log for high-entropy.
 domain: cybersecurity
 subdomain: network-security
 tags:
@@ -103,6 +103,13 @@ This skill analyzes Zeek dns.log files (TSV format) to detect exfiltration indic
 - Capturing traffic on networks without authorization or privacy considerations
 - Leaving packet captures containing sensitive data unencrypted on disk
 - Deploying inline blocking rules without testing for false positives first
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

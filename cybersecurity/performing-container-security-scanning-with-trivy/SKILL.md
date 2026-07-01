@@ -1,7 +1,7 @@
 ---
 name: performing-container-security-scanning-with-trivy
 description: Scan container images, filesystems, and Kubernetes manifests for vulnerabilities, misconfigurations, exposed
-  secrets, and license compliance issues using Aqua Security Trivy with SBOM generation and CI/CD integration.
+  secrets, and license compliance issues using Aqua Security Trivy with SBOM generation and CI/CD integration. Use when scaning container images, filesystems, and kubernetes manifests for vulnerabilities, misconfigurations,.
 domain: cybersecurity
 subdomain: container-security
 tags:
@@ -108,6 +108,13 @@ JSON/table report listing CVEs with severity, CVSS scores, fixed versions, affec
 - Failing to use write-blockers when acquiring forensic evidence
 - Not verifying hash integrity before and after imaging
 - Modifying original evidence during analysis
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

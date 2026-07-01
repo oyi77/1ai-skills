@@ -1,7 +1,7 @@
 ---
 name: building-threat-hunt-hypothesis-framework
 description: Build a systematic threat hunt hypothesis framework that transforms threat intelligence, attack patterns, and
-  environmental data into testable hunting hypotheses.
+  environmental data into testable hunting hypotheses. Use when building a systematic threat hunt hypothesis framework that transforms threat.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -79,6 +79,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

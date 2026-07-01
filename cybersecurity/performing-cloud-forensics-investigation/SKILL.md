@@ -1,7 +1,7 @@
 ---
 name: performing-cloud-forensics-investigation
 description: Conduct forensic investigations in cloud environments by collecting and analyzing logs, snapshots, and metadata
-  from AWS, Azure, and GCP services.
+  from AWS, Azure, and GCP services. Use when conducting forensic investigations in cloud environments by collecting and analyzing.
 domain: cybersecurity
 tags:
 - forensics
@@ -82,6 +82,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

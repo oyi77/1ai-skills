@@ -1,7 +1,7 @@
 ---
 name: hunting-for-beaconing-with-frequency-analysis
 description: Identify command-and-control beaconing patterns in network traffic by applying statistical frequency analysis,
-  jitter calculation, and coefficient of variation scoring to detect periodic callbacks from compromised endpoints.
+  jitter calculation, and coefficient of variation scoring to detect periodic callbacks from compromised endpoints. Use when working with hunting for beaconing with frequency analysis.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -92,6 +92,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

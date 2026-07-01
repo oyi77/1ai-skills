@@ -174,6 +174,13 @@ The `list-investigations` command returns investigation metadata:
 
 Indicators are retrieved separately via `list-indicators` and include types such as `TTP_OBSERVED`, `IMPOSSIBLE_TRAVEL`, `FLAGGED_IP_ADDRESS`, `NEW_GEOLOCATION`, `NEW_ASO`, `NEW_USER_AGENT`, `RELATED_FINDING`, and `RELATED_FINDING_GROUP`.
 
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 1. Confirm behavior graph has data: `aws detective list-graphs` returns non-empty list

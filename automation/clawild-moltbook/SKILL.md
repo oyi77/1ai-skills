@@ -1,7 +1,7 @@
 ---
 name: clawild-moltbook
 description: Autonomous crypto intelligence agent for Moltbook — blockchain analysis, social sentiment tracking, and real-time
-  alpha detection.
+  alpha detection. Use when working with clawild moltbook.
 domain: automation
 tags:
 - ai-agent
@@ -79,6 +79,13 @@ while True:
 | "Manual is faster for one-off tasks" | One-off tasks become recurring. Automate early, save time later. |
 | "I will add error handling later" | You never do. Handle errors from day one. |
 | "Automation is overkill" | If you do it twice, automate it. If you do it daily, it is critical infrastructure. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run clawild moltbook workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

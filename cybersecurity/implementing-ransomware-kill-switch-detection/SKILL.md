@@ -1,11 +1,11 @@
 ---
 name: implementing-ransomware-kill-switch-detection
-description: 'Detects and exploits ransomware kill switch mechanisms including mutex-based execution guards, domain-based
+description: >  'Detects and exploits ransomware kill switch mechanisms including mutex-based execution guards, domain-based
   kill switches, and registry-based termination checks. Implements proactive mutex vaccination and kill switch domain monitoring
   to prevent ransomware from executing. Activates for requests involving ransomware kill switch analysis, mutex vaccination,
   WannaCry-style domain kill switches, or malware execution guard detection.
 
-  '
+  '.
 domain: cybersecurity
 tags:
 - ransomware
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

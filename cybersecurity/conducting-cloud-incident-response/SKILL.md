@@ -5,7 +5,7 @@ description: 'Responds to security incidents in cloud environments (AWS, Azure, 
   Activates for requests involving cloud incident response, AWS security incident, Azure compromise, GCP breach, cloud forensics,
   or cloud identity compromise.
 
-  '
+  '. Use when working with conducting cloud incident response.
 domain: cybersecurity
 tags:
 - cloud-IR
@@ -94,6 +94,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

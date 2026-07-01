@@ -82,6 +82,13 @@ def orchestrate(tasks: list[Task]) -> dict:
 | "The agent will figure it out" | Without clear instructions, agents hallucinate. Give explicit context. |
 | "One agent is enough" | Complex tasks benefit from specialized agents working in parallel |
 
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
+
 ## Verification
 
 - [ ] All steps executed successfully

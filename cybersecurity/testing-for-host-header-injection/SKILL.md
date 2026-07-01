@@ -1,7 +1,7 @@
 ---
 name: testing-for-host-header-injection
 description: Test web applications for HTTP Host header injection vulnerabilities to identify password reset poisoning, web
-  cache poisoning, SSRF, and virtual host routing manipulation risks.
+  cache poisoning, SSRF, and virtual host routing manipulation risks. Use when testing web applications for http host header injection vulnerabilities to.
 domain: cybersecurity
 tags:
 - host-header-injection
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 - **Vulnerability Scanner** — Automated weakness identification
 - **Exploitation Framework** — Controlled exploitation testing
 - **Reporting Tool** — Findings documentation and tracking
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

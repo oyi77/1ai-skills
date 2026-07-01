@@ -1,6 +1,6 @@
 ---
 name: vault-secrets
-description: HashiCorp Vault — secrets management, dynamic secrets, encryption, auth methods, policies
+description: HashiCorp Vault — secrets management, dynamic secrets, encryption, auth methods, policies. Use when working with vault secrets.
 domain: devops
 tags:
 - ci-cd

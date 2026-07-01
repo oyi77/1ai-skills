@@ -1,6 +1,6 @@
 ---
 name: frontend-ui-design
-description: Design and build production-grade UI components using React, Vue, or vanilla HTML/CSS. Create responsive layouts, design systems, and accessible interfaces.
+description: Design and build production-grade UI components using React, Vue, or vanilla HTML/CSS. Create responsive layouts, design systems, and accessible interfaces. Use when designing and build production-grade ui components using react, vue, or.
 domain: content
 tags:
 - design
@@ -76,6 +76,13 @@ export function Button({ variant, size, children, onClick, disabled }: ButtonPro
   );
 }
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run frontend ui design workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

@@ -1,6 +1,6 @@
 ---
 name: help
-description: Quick reference for ponytail's modes, skills, and commands. One-shot display.
+description: Quick reference for ponytail's modes, skills, and commands. One-shot display. Use when working with help.
 domain: mindset
 tags:
 - help
@@ -90,6 +90,13 @@ write flag files, or persist anything.
 - Reflect: What worked? What did not?
 - Log one lesson learned
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run help workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

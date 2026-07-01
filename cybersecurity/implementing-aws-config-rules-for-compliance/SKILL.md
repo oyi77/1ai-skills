@@ -4,7 +4,7 @@ description: 'Implementing AWS Config rules for continuous compliance monitoring
   rules aligned to CIS and PCI DSS frameworks, configuring automatic remediation with SSM Automation, and aggregating compliance
   data across accounts.
 
-  '
+  '. Use when working with implementing aws config rules for compliance.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

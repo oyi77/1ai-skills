@@ -3,7 +3,7 @@ name: implementing-api-key-security-controls
 description: Implements secure API key generation, storage, rotation, and revocation controls to protect API authentication
   credentials from leakage, brute force, and abuse. The engineer designs API key formats with sufficient entropy, implements
   secure hashing for storage, enforces per-key scoping and rate limiting, monitors for leaked keys in public repositories,
-  and builds key rotation workflows.
+  and builds key rotation workflows. Use when working with implementing api key security controls.
 domain: cybersecurity
 tags:
 - api-security
@@ -94,6 +94,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

@@ -1,7 +1,7 @@
 ---
 name: performing-cloud-forensics-with-aws-cloudtrail
 description: Perform forensic investigation of AWS environments using CloudTrail logs to reconstruct attacker activity, identify
-  compromised credentials, and analyze API call patterns.
+  compromised credentials, and analyze API call patterns. Use when performing forensic investigation of aws environments using cloudtrail logs to.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 - **aws cloudtrail** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

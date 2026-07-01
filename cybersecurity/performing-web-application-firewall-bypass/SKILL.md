@@ -1,7 +1,7 @@
 ---
 name: performing-web-application-firewall-bypass
 description: Bypass Web Application Firewall protections using encoding techniques, HTTP method manipulation, parameter pollution,
-  and payload obfuscation to deliver SQL injection, XSS, and other attack payloads past WAF detection rules.
+  and payload obfuscation to deliver SQL injection, XSS, and other attack payloads past WAF detection rules. Use when working with performing web application firewall bypass.
 domain: cybersecurity
 tags:
 - waf-bypass
@@ -82,6 +82,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

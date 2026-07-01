@@ -1,7 +1,7 @@
 ---
 name: analyzing-malicious-pdf-with-peepdf
 description: Perform static analysis of malicious PDF documents using peepdf, pdfid, and pdf-parser to extract embedded JavaScript,
-  shellcode, and suspicious objects.
+  shellcode, and suspicious objects. Use when performing static analysis of malicious pdf documents using peepdf, pdfid,.
 domain: cybersecurity
 tags:
 - malware-analysis
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
 
 ## Verification
 

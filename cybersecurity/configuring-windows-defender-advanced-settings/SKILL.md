@@ -1,12 +1,10 @@
 ---
 name: configuring-windows-defender-advanced-settings
-description: 'Configures Microsoft Defender for Endpoint (MDE) advanced protection settings including attack surface reduction
+description: >  'Configures Microsoft Defender for Endpoint (MDE) advanced protection settings including attack surface reduction
   rules, controlled folder access, network protection, and exploit protection. Use when hardening Windows endpoints beyond
   default Defender settings, deploying enterprise-grade endpoint protection, or meeting compliance requirements for advanced
   malware defense. Activates for requests involving Windows Defender configuration, ASR rules, MDE tuning, or Microsoft endpoint
-  security.
-
-  '
+  securit.
 domain: cybersecurity
 tags:
 - endpoint
@@ -85,6 +83,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

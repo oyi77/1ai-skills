@@ -1,6 +1,6 @@
 ---
 name: github-mcp
-description: MCP server for GitHub automation. Manage repos, issues, PRs, and workflows through the Model Context Protocol.
+description: MCP server for GitHub automation. Manage repos, issues, PRs, and workflows through the Model Context Protocol. Use when working with github mcp.
 domain: mcp
 tags:
 - github
@@ -82,6 +82,13 @@ server.tool("search", { query: z.string() }, async ({ query }) => {
   return { content: [{ type: "text", text: JSON.stringify(results) }] };
 });
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run github mcp workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

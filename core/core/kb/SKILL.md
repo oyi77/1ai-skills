@@ -1,7 +1,7 @@
 ---
 name: kb
 description: Query and maintain the knowledge base for project context, decisions, and architecture documentation. Use on
-  session start.
+  session start. Use when working with kb.
 domain: core
 tags:
 - infrastructure
@@ -97,6 +97,13 @@ def route_request(task: str, prompt: str):
             continue
     raise RuntimeError("All models failed")
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run kb workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

@@ -1,11 +1,11 @@
 ---
 name: containing-active-breach
-description: 'Executes containment strategies to stop active adversary operations and prevent lateral movement during a confirmed
+description: >  'Executes containment strategies to stop active adversary operations and prevent lateral movement during a confirmed
   security breach. Implements short-term and long-term containment using network segmentation, endpoint isolation, credential
   revocation, and access control modifications. Activates for requests involving breach containment, lateral movement prevention,
   network isolation, active threat containment, or live incident response.
 
-  '
+  '.
 domain: cybersecurity
 tags:
 - breach-containment
@@ -92,6 +92,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

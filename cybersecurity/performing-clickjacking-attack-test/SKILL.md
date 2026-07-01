@@ -1,7 +1,7 @@
 ---
 name: performing-clickjacking-attack-test
 description: Testing web applications for clickjacking vulnerabilities by assessing frame embedding controls and crafting
-  proof-of-concept overlay attacks during authorized security assessments.
+  proof-of-concept overlay attacks during authorized security assessments. Use when working with performing clickjacking attack test.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -92,6 +92,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

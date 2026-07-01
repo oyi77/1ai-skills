@@ -1,6 +1,6 @@
 ---
 name: skill-evolution-engine
-description: Self-improving skill system that auto-extracts patterns from sessions into reusable skills with confidence scoring, skill versioning, import/export, and continuous improvement loops. Use.
+description: Self-improving skill system that auto-extracts patterns from sessions into reusable skills with confidence scoring, skill versioning, import/export, and continuous improvement loops. Use. Use when working with skill evolution engine.
 domain: meta
 tags: 
 - [self-improvement

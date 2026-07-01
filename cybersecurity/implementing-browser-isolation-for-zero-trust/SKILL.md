@@ -1,6 +1,6 @@
 ---
 name: implementing-browser-isolation-for-zero-trust
-description: Deploys remote browser isolation (RBI) as a core component of a Zero Trust architecture. Implements isolation
+description: >  Deploys remote browser isolation (RBI) as a core component of a Zero Trust architecture. Implements isolation
   policies with URL categorization and risk-based routing, content disarming and reconstruction (CDR) for file sanitization,
   data loss prevention controls within isolated sessions, and integration with Secure Web Gateway and ZTNA platforms. Based
   on Cloudflare Browser Isolation, Menlo Security, and Zscaler RBI approaches.
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing browser isolation for zero trust workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

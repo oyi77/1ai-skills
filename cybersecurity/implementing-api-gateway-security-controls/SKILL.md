@@ -3,7 +3,7 @@ name: implementing-api-gateway-security-controls
 description: Implements security controls at the API gateway layer including authentication enforcement, rate limiting, request
   validation, IP allowlisting, TLS termination, and threat protection. The engineer configures API gateways (Kong, AWS API
   Gateway, Azure APIM, Apigee) to act as a centralized security enforcement point that validates, throttles, and monitors
-  all API traffic before it reaches backend services.
+  all API traffic before it reaches backend services. Use when working with implementing api gateway security controls.
 domain: cybersecurity
 tags:
 - api-security
@@ -88,6 +88,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

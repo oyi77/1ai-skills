@@ -1,7 +1,7 @@
 ---
 name: debt
 description: 'Harvest every ponytail: shortcut comment into one debt ledger, so deferrals get tracked instead of forgotten.
-  One-shot report.'
+  One-shot report.'. Use when working with debt.
 domain: mindset
 tags:
 - debt
@@ -92,6 +92,13 @@ can't quietly become permanent.
 - Reflect: What worked? What did not?
 - Log one lesson learned
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run debt workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

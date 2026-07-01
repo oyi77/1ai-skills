@@ -5,7 +5,7 @@ description: 'Implements passwordless authentication using Microsoft Entra ID wi
   for requests involving passwordless deployment, FIDO2 passkey configuration, phishing-resistant MFA, or Microsoft Entra
   authentication method policies.
 
-  '
+  '. Use when working with implementing passwordless auth with microsoft entra.
 domain: cybersecurity
 tags:
 - passwordless
@@ -92,6 +92,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing passwordless auth with microsoft entra workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

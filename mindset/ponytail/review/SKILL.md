@@ -1,7 +1,7 @@
 ---
 name: review
 description: 'Review a diff for over-engineering. Finds what to delete: reinvented stdlib, needless deps, speculative abstractions.
-  One line per finding.'
+  One line per finding.'. Use when working with review.
 domain: mindset
 tags:
 - mindset
@@ -91,6 +91,13 @@ to cut, what replaces it. The diff's best outcome is getting shorter.
 - Reflect: What worked? What did not?
 - Log one lesson learned
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run review workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

@@ -1,6 +1,6 @@
 ---
 name: google-workspace
-description: Integrate with Google Workspace (Docs, Sheets, Drive, Calendar) using MCP servers
+description: Integrate with Google Workspace (Docs, Sheets, Drive, Calendar) using MCP servers. Use when integrateing with google workspace (docs, sheets, drive, calendar) using mcp.
 domain: productivity
 tags:
 - google
@@ -103,6 +103,13 @@ def prioritize(tasks: list[dict]) -> dict:
 | "I am too busy to organize" | Disorganization costs more time than organizing. Invest upfront. |
 | "Multitasking is productive" | Context switching costs 25 minutes per switch. Focus on one thing. |
 | "I will remember this" | You will not. Write it down. Externalize your memory. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run google workspace workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

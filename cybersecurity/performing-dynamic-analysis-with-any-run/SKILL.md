@@ -4,7 +4,7 @@ description: 'Performs interactive dynamic malware analysis using the ANY.RUN cl
   behavior, interact with malware prompts, and capture process trees, network traffic, and system changes. Activates for requests
   involving interactive sandbox analysis, cloud-based malware detonation, real-time behavioral observation, or ANY.RUN usage.
 
-  '
+  '. Use when working with performing dynamic analysis with any run.
 domain: cybersecurity
 tags:
 - malware
@@ -93,6 +93,13 @@ def extract_iocs(text: str) -> dict:
 - **any run** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

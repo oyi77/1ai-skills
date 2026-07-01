@@ -4,7 +4,7 @@ description: 'Perform security analysis of Siemens S7comm and S7CommPlus protoco
   including replay attacks, integrity bypass, unauthorized CPU stop commands, and program download manipulation exploiting
   weaknesses in S7-300, S7-400, S7-1200, and S7-1500 controllers.
 
-  '
+  '. Use when working with performing s7comm protocol security analysis.
 domain: cybersecurity
 tags:
 - ot-security
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

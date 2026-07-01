@@ -1,7 +1,7 @@
 ---
 name: implementing-deception-based-detection-with-canarytoken
 description: Deploy and monitor Canary Tokens via the Thinkst Canary API for deception-based breach detection using web bug
-  tokens, DNS tokens, document tokens, and AWS key tokens.
+  tokens, DNS tokens, document tokens, and AWS key tokens. Use when deploying and monitor canary tokens via the thinkst canary api.
 domain: cybersecurity
 subdomain: deception-technology
 tags:
@@ -88,6 +88,13 @@ def extract_iocs(text: str) -> dict:
 - Testing without rate limiting, potentially causing service degradation
 - Storing sensitive test data (credentials, tokens) in plain text logs
 - Using automated scanners blindly without reviewing results for false positives
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

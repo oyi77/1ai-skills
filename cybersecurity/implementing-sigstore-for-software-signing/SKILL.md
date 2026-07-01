@@ -1,6 +1,6 @@
 ---
 name: implementing-sigstore-for-software-signing
-description: Implements Sigstore-based software signing and verification using Cosign keyless signing, Rekor transparency
+description: >  Implements Sigstore-based software signing and verification using Cosign keyless signing, Rekor transparency
   log verification, and Fulcio certificate authority integration to establish cryptographic provenance for container images,
   binaries, and software artifacts. The practitioner configures OIDC-based identity binding, verifies signing events against
   the Rekor transparency log, and integrates signing workflows into CI/CD pipelines.
@@ -91,6 +91,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing sigstore for software signing workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

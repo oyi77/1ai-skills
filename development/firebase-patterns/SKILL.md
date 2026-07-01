@@ -1,6 +1,6 @@
 ---
 name: firebase-patterns
-description: Firebase patterns — Firestore queries, auth flows, cloud functions, and security rules
+description: Firebase patterns — Firestore queries, auth flows, cloud functions, and security rules. Use when working with firebase patterns.
 domain: development
 tags:
 - coding

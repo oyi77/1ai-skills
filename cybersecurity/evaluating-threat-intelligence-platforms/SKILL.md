@@ -1,11 +1,9 @@
 ---
 name: evaluating-threat-intelligence-platforms
-description: 'Evaluates and selects Threat Intelligence Platform (TIP) products based on organizational requirements including
+description: >  'Evaluates and selects Threat Intelligence Platform (TIP) products based on organizational requirements including
   feed integration capability, STIX/TAXII support, workflow automation, analyst interface, and total cost of ownership. Use
   when conducting a TIP procurement, migrating between TIP solutions, or assessing whether the current TIP meets program maturity
   requirements. Activates for requests involving ThreatConnect, MISP, OpenCTI, Anomali, EclecticIQ, or TIP procurement decisions.
-
-  '
 domain: cybersecurity
 tags:
 - TIP
@@ -88,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

@@ -2,7 +2,7 @@
 name: hunting-for-cobalt-strike-beacons
 description: Detect Cobalt Strike beacon network activity using default TLS certificate signatures (serial 8BB00EE), JA3/JA3S/JARM
   fingerprints, HTTP C2 profile pattern matching, beacon jitter analysis, and named pipe detection via Zeek, Suricata, and
-  Python PCAP analysis.
+  Python PCAP analysis. Use when detecting cobalt strike beacon network activity using default tls certificate.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -104,6 +104,13 @@ JSON report containing detected beacon candidates with confidence scores, TLS fi
 - Capturing traffic on networks without authorization or privacy considerations
 - Leaving packet captures containing sensitive data unencrypted on disk
 - Deploying inline blocking rules without testing for false positives first
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

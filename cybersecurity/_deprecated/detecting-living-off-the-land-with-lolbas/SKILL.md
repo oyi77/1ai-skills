@@ -1,7 +1,7 @@
 ---
 name: detecting-living-off-the-land-with-lolbas
 description: Detect Living Off the Land Binaries (LOLBins/LOLBAS) abuse including certutil, regsvr32, mshta, and rundll32
-  via process telemetry, Sigma rules, and parent-child process analysis
+  via process telemetry, Sigma rules, and parent-child process analysis. Use when detecting living off the land binaries (lolbins/lolbas) abuse including certutil,.
 domain: cybersecurity
 subdomain: threat-detection
 tags:
@@ -98,6 +98,13 @@ def extract_iocs(text: str) -> dict:
 - Testing against production systems without a defined scope and rules of engagement
 - Sharing sensitive findings or credentials in unencrypted communications
 - Failing to properly scope and contain the assessment before starting
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

@@ -1,6 +1,6 @@
 ---
 name: nomad-scheduler
-description: HashiCorp Nomad — job scheduling, task drivers, allocations, scaling, federation
+description: HashiCorp Nomad — job scheduling, task drivers, allocations, scaling, federation. Use when working with nomad scheduler.
 domain: devops
 tags:
 - ci-cd

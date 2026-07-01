@@ -1,7 +1,7 @@
 ---
 name: recovering-deleted-files-with-photorec
 description: Recover deleted files from disk images and storage media using PhotoRec's file signature-based carving engine
-  regardless of file system damage.
+  regardless of file system damage. Use when working with recovering deleted files with photorec.
 domain: cybersecurity
 tags:
 - forensics
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 - **photorec** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run recovering deleted files with photorec workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

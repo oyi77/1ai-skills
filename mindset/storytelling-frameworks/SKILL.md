@@ -1,7 +1,7 @@
 ---
 name: storytelling-frameworks
 description: Structure narratives for pitches, content, and communication using Hero's Journey, Before-After-Bridge, and Pixar
-  pitch templates.
+  pitch templates. Use when working with storytelling frameworks.
 domain: mindset
 tags:
 - frameworks
@@ -86,6 +86,13 @@ Mindset skill for storytelling frameworks. Builds capability through deliberate 
 - Reflect: What worked? What did not?
 - Log one lesson learned
 ```
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

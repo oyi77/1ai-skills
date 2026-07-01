@@ -1,6 +1,6 @@
 ---
 name: stripe-mcp
-description: MCP server for Stripe payments. Process payments, manage subscriptions, and handle billing via standardized protocol.
+description: MCP server for Stripe payments. Process payments, manage subscriptions, and handle billing via standardized protocol. Use when working with stripe mcp.
 domain: mcp
 tags:
 - mcp
@@ -82,6 +82,13 @@ server.tool("search", { query: z.string() }, async ({ query }) => {
   return { content: [{ type: "text", text: JSON.stringify(results) }] };
 });
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run stripe mcp workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

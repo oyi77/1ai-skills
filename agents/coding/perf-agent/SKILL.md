@@ -82,6 +82,13 @@ def orchestrate(tasks: list[Task]) -> dict:
 | "The agent will figure it out" | Without clear instructions, agents hallucinate. Give explicit context. |
 | "One agent is enough" | Complex tasks benefit from specialized agents working in parallel |
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run perf agent workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] All steps executed successfully

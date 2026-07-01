@@ -1,7 +1,7 @@
 ---
 name: performing-security-headers-audit
 description: Auditing HTTP security headers including CSP, HSTS, X-Frame-Options, and cookie attributes to identify missing
-  or misconfigured browser-level protections.
+  or misconfigured browser-level protections. Use when working with performing security headers audit.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -84,6 +84,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

@@ -1,7 +1,7 @@
 ---
 name: performing-dmarc-policy-enforcement-rollout
 description: Execute a phased DMARC rollout from p=none monitoring through p=quarantine to p=reject enforcement, ensuring
-  all legitimate email sources are authenticated before blocking unauthorized senders.
+  all legitimate email sources are authenticated before blocking unauthorized senders. Use when working with performing dmarc policy enforcement rollout.
 domain: cybersecurity
 subdomain: phishing-defense
 tags:

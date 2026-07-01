@@ -72,6 +72,13 @@ body.text = '• Revenue: $2.4M (+23%)\n• Users: 150K (+45%)\n• NPS: 72 (+8)
 prs.save('presentation.pptx')
 ```
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run pptx creator workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] Presentation opens without errors

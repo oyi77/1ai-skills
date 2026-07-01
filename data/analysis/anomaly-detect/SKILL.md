@@ -79,6 +79,13 @@ def pipeline(source: str):
 | "I will add data validation later" | Bad data propagates silently. Validate at ingestion. |
 | "Small datasets do not need optimization" | Even small datasets benefit from proper indexing and schema design. |
 
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - [ ] All steps executed successfully

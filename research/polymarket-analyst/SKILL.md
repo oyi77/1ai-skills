@@ -1,6 +1,6 @@
 ---
 name: polymarket-analyst
-description: Analyze Polymarket prediction markets for expected value, market inefficiencies, and trading opportunities.
+description: Analyze Polymarket prediction markets for expected value, market inefficiencies, and trading opportunities. Use when analyzeing polymarket prediction markets for expected value, market inefficiencies, and.
 domain: research
 tags:
 - analysis
@@ -81,6 +81,13 @@ def evaluate_source(url: str) -> dict:
 | "First result is good enough" | Deep research finds better answers. Keep digging. |
 | "I do not need to verify sources" | Unverified sources lead to wrong conclusions. Always cross-check. |
 | "Research is a one-time thing" | Markets change. Research needs to be continuous, not one-off. |
+
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
 
 ## Verification
 

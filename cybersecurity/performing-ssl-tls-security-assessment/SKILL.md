@@ -1,7 +1,7 @@
 ---
 name: performing-ssl-tls-security-assessment
 description: Assess SSL/TLS server configurations using the sslyze Python library to evaluate cipher suites, certificate chains,
-  protocol versions, HSTS headers, and known vulnerabilities like Heartbleed and ROBOT.
+  protocol versions, HSTS headers, and known vulnerabilities like Heartbleed and ROBOT. Use when working with performing ssl tls security assessment.
 domain: cybersecurity
 subdomain: network-security
 tags:
@@ -99,6 +99,13 @@ JSON report with supported protocols, accepted cipher suites, certificate detail
 - Testing against production systems without a defined scope and rules of engagement
 - Sharing sensitive findings or credentials in unencrypted communications
 - Failing to properly scope and contain the assessment before starting
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

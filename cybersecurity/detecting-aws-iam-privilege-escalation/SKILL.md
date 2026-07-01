@@ -1,7 +1,7 @@
 ---
 name: detecting-aws-iam-privilege-escalation
 description: Detect AWS IAM privilege escalation paths using boto3 and Cloudsplaining policy analysis to identify overly permissive
-  policies, dangerous permission combinations, and least-privilege violations
+  policies, dangerous permission combinations, and least-privilege violations. Use when detecting aws iam privilege escalation paths using boto3 and cloudsplaining.
 domain: cybersecurity
 subdomain: cloud-security
 tags:
@@ -93,6 +93,13 @@ def extract_iocs(text: str) -> dict:
 - Modifying cloud IAM policies or security groups without approval
 - Exposing cloud credentials or secrets in logs or reports
 - Running scans that generate excessive API calls and trigger billing alerts
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

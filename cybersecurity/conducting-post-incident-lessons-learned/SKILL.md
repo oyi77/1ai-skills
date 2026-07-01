@@ -1,7 +1,7 @@
 ---
 name: conducting-post-incident-lessons-learned
 description: Facilitate structured post-incident reviews to identify root causes, document what worked and failed, and produce
-  actionable recommendations to improve future incident response.
+  actionable recommendations to improve future incident response. Use when working with conducting post incident lessons learned.
 domain: cybersecurity
 tags:
 - incident-response
@@ -84,6 +84,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

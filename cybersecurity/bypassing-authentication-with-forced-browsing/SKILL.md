@@ -1,7 +1,7 @@
 ---
 name: bypassing-authentication-with-forced-browsing
 description: Discovering and accessing unprotected pages, APIs, and administrative interfaces by enumerating URLs and bypassing
-  authentication controls during authorized security assessments.
+  authentication controls during authorized security assessments. Use when working with bypassing authentication with forced browsing.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -83,6 +83,13 @@ def extract_iocs(text: str) -> dict:
 - **forced browsing** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run bypassing authentication with forced browsing workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

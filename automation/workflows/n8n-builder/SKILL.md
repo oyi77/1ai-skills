@@ -1,6 +1,6 @@
 ---
 name: n8n-builder
-description: Build n8n automation workflows visually. Create complex multi-step automations with 400+ integrations.
+description: Build n8n automation workflows visually. Create complex multi-step automations with 400+ integrations. Use when building n8n automation workflows visually. create complex multi-step automations with.
 domain: automation
 tags:
 - automation
@@ -81,6 +81,13 @@ while True:
 | "Manual is faster for one-off tasks" | One-off tasks become recurring. Automate early, save time later. |
 | "I will add error handling later" | You never do. Handle errors from day one. |
 | "Automation is overkill" | If you do it twice, automate it. If you do it daily, it is critical infrastructure. |
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

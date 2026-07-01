@@ -1,7 +1,7 @@
 ---
 name: analyzing-active-directory-acl-abuse
 description: Detect dangerous ACL misconfigurations in Active Directory using ldap3 to identify GenericAll, WriteDACL, and
-  WriteOwner abuse paths
+  WriteOwner abuse paths. Use when detecting dangerous acl misconfigurations in active directory using ldap3 to.
 domain: cybersecurity
 subdomain: identity-security
 tags:
@@ -102,6 +102,13 @@ This skill uses the ldap3 Python library to connect to a Domain Controller, quer
 - Testing against production systems without a defined scope and rules of engagement
 - Sharing sensitive findings or credentials in unencrypted communications
 - Failing to properly scope and contain the assessment before starting
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

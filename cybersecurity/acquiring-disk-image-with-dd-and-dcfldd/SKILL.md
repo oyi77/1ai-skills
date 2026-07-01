@@ -1,7 +1,7 @@
 ---
 name: acquiring-disk-image-with-dd-and-dcfldd
 description: Create forensically sound bit-for-bit disk images using dd and dcfldd while preserving evidence integrity through
-  hash verification.
+  hash verification. Use when createing forensically sound bit-for-bit disk images using dd and dcfldd.
 domain: cybersecurity
 tags:
 - forensics
@@ -81,6 +81,13 @@ def extract_iocs(text: str) -> dict:
 - **dd and dcfldd** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run acquiring disk image with dd and dcfldd workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

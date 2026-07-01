@@ -1,7 +1,7 @@
 ---
 name: implementing-continuous-security-validation-with-bas
 description: Deploy Breach and Attack Simulation tools to continuously validate security control effectiveness by safely emulating
-  real-world attack techniques across the kill chain.
+  real-world attack techniques across the kill chain. Use when deploying breach and attack simulation tools to continuously validate security.
 domain: cybersecurity
 subdomain: vulnerability-management
 tags:

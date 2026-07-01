@@ -1,7 +1,7 @@
 ---
 name: analyzing-persistence-mechanisms-in-linux
 description: Detect and analyze Linux persistence mechanisms including crontab entries, systemd service units, LD_PRELOAD
-  hijacking, bashrc modifications, and authorized_keys backdoors using auditd and file integrity monitoring
+  hijacking, bashrc modifications, and authorized_keys backdoors using auditd and file integrity monitoring. Use when detecting and analyze linux persistence mechanisms including crontab entries, systemd.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -105,6 +105,13 @@ def extract_iocs(text: str) -> dict:
 - Testing against production systems without a defined scope and rules of engagement
 - Sharing sensitive findings or credentials in unencrypted communications
 - Failing to properly scope and contain the assessment before starting
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

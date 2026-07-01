@@ -1,7 +1,7 @@
 ---
 name: teamwork
 description: Dynamically creates and manages AI agent teams for complex tasks. Invoke when user requests multi-agent collaboration,
-  complex project execution, or when tasks require specialized roles and coordinated workflow.
+  complex project execution, or when tasks require specialized roles and coordinated workflow. Use when working with teamwork.
 domain: core
 tags:
 - ai-agent
@@ -86,6 +86,13 @@ def route_request(task: str, prompt: str):
             continue
     raise RuntimeError("All models failed")
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run teamwork workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

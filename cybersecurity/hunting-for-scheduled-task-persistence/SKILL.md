@@ -1,7 +1,7 @@
 ---
 name: hunting-for-scheduled-task-persistence
 description: Hunt for adversary persistence via Windows Scheduled Tasks by analyzing task creation events, suspicious task
-  actions, and unusual scheduling patterns.
+  actions, and unusual scheduling patterns. Use when hunting for adversary persistence via windows scheduled tasks by analyzing.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

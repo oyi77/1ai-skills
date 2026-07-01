@@ -3,7 +3,7 @@ name: implementing-hardware-security-key-authentication
 description: Implements FIDO2/WebAuthn hardware security key authentication including registration ceremonies, authentication
   flows, YubiKey enrollment, and passkey migration strategies. Builds a complete relying party server using the python-fido2
   library that supports cross-platform authenticators, resident key (discoverable credential) workflows, and user verification
-  policies.
+  policies. Use when working with implementing hardware security key authentication.
 domain: cybersecurity
 tags:
 - FIDO2
@@ -96,6 +96,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

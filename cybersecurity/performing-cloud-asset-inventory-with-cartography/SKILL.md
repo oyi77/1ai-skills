@@ -1,7 +1,7 @@
 ---
 name: performing-cloud-asset-inventory-with-cartography
 description: Perform comprehensive cloud asset inventory and relationship mapping using Cartography to build a Neo4j security
-  graph of infrastructure assets, IAM permissions, and attack paths across AWS, GCP, and Azure.
+  graph of infrastructure assets, IAM permissions, and attack paths across AWS, GCP, and Azure. Use when performing comprehensive cloud asset inventory and relationship mapping using cartography.
 domain: cybersecurity
 subdomain: cloud-security
 tags:

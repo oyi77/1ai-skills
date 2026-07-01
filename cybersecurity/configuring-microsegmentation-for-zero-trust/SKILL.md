@@ -1,7 +1,7 @@
 ---
 name: configuring-microsegmentation-for-zero-trust
 description: Configure microsegmentation policies to enforce least-privilege workload-to-workload access using tools like
-  VMware NSX, Illumio, and Calico, preventing lateral movement in zero trust architectures.
+  VMware NSX, Illumio, and Calico, preventing lateral movement in zero trust architectures. Use when configureing microsegmentation policies to enforce least-privilege workload-to-workload access using tools.
 domain: cybersecurity
 subdomain: zero-trust-architecture
 tags:

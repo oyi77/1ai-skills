@@ -1,7 +1,7 @@
 ---
 name: hunting-for-t1098-account-manipulation
 description: Hunt for MITRE ATT&CK T1098 account manipulation including shadow admin creation, SID history injection, group
-  membership changes, and credential modifications using Windows Security Event Logs.
+  membership changes, and credential modifications using Windows Security Event Logs. Use when hunting for mitre att&ck t1098 account manipulation including shadow admin.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -105,6 +105,13 @@ JSON report with detected account manipulation events, privileged group changes,
 - Testing without rate limiting, potentially causing service degradation
 - Storing sensitive test data (credentials, tokens) in plain text logs
 - Using automated scanners blindly without reviewing results for false positives
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

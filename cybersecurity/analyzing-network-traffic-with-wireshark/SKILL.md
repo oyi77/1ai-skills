@@ -3,7 +3,7 @@ name: analyzing-network-traffic-with-wireshark
 description: 'Captures and analyzes network packet data using Wireshark and tshark to identify malicious traffic patterns,
   diagnose protocol issues, extract artifacts, and support incident response investigations on authorized network segments.
 
-  '
+  '. Use when working with analyzing network traffic with wireshark.
 domain: cybersecurity
 tags:
 - network-security
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 - **Forensic Toolkit** — Evidence collection and analysis
 - **Timeline Tools** — Chronological event reconstruction
 - **Log Analysis Platform** — Centralized log parsing and search
+
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
 
 ## Verification
 

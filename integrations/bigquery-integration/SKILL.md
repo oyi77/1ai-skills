@@ -1,6 +1,6 @@
 ---
 name: bigquery-integration
-description: Integrate Google BigQuery for large-scale data analytics. Write SQL queries, manage datasets, export results, and build data pipelines.
+description: Integrate Google BigQuery for large-scale data analytics. Write SQL queries, manage datasets, export results, and build data pipelines. Use when integrateing google bigquery for large-scale data analytics. write sql queries,.
 domain: integrations
 tags:
 - bigquery
@@ -70,6 +70,13 @@ job_config = bigquery.QueryJobConfig(
 
 results = client.query(query, job_config=job_config).to_dataframe()
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run bigquery integration workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

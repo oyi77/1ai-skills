@@ -1,7 +1,7 @@
 ---
 name: analyzing-windows-prefetch-with-python
 description: Parse Windows Prefetch files using the windowsprefetch Python library to reconstruct application execution history,
-  detect renamed or masquerading binaries, and identify suspicious program execution patterns.
+  detect renamed or masquerading binaries, and identify suspicious program execution patterns. Use when working with analyzing windows prefetch with python.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:
@@ -135,6 +135,13 @@ Summary:
 - Testing against production systems without a defined scope and rules of engagement
 - Sharing sensitive findings or credentials in unencrypted communications
 - Failing to properly scope and contain the assessment before starting
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

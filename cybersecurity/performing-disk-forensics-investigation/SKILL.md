@@ -1,11 +1,11 @@
 ---
 name: performing-disk-forensics-investigation
-description: 'Conducts disk forensics investigations using forensic imaging, file system analysis, artifact recovery, and
+description: >  'Conducts disk forensics investigations using forensic imaging, file system analysis, artifact recovery, and
   timeline reconstruction to support incident response cases. Utilizes tools such as FTK Imager, Autopsy, and The Sleuth Kit
   for evidence acquisition, deleted file recovery, and artifact examination. Activates for requests involving disk forensics,
   hard drive analysis, forensic imaging, file recovery, evidence acquisition, or digital forensic investigation.
 
-  '
+  '.
 domain: cybersecurity
 tags:
 - disk-forensics
@@ -93,6 +93,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

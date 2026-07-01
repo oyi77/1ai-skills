@@ -1,7 +1,7 @@
 ---
 name: hunting-for-persistence-via-wmi-subscriptions
 description: Hunt for adversary persistence through Windows Management Instrumentation event subscriptions by monitoring WMI
-  consumer, filter, and binding creation events that execute malicious code triggered by system events.
+  consumer, filter, and binding creation events that execute malicious code triggered by system events. Use when hunting for adversary persistence through windows management instrumentation event subscriptions.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -86,6 +86,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

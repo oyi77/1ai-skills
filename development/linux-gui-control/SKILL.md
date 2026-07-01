@@ -90,6 +90,13 @@ def test_user_creation_invalid_email():
 | "I will refactor later" | Technical debt compounds. Refactor as you go. |
 | "It works on my machine" | If it is not in CI, it does not work. Ship proof, not claims. |
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run linux gui control workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] All steps executed successfully

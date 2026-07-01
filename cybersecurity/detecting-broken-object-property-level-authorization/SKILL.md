@@ -1,7 +1,7 @@
 ---
 name: detecting-broken-object-property-level-authorization
 description: Detect and test for OWASP API3:2023 Broken Object Property Level Authorization vulnerabilities including excessive
-  data exposure and mass assignment attacks.
+  data exposure and mass assignment attacks. Use when detecting and test for owasp api3:2023 broken object property level.
 domain: cybersecurity
 subdomain: api-security
 tags:

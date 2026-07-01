@@ -3,7 +3,7 @@ name: auditing-tls-certificate-transparency-logs
 description: Monitors Certificate Transparency (CT) logs to detect unauthorized certificate issuance, discover subdomains
   via CT data, and alert on suspicious certificate activity for owned domains. Uses the crt.sh API and direct CT log querying
   based on RFC 6962 to build continuous monitoring pipelines that catch rogue certificates, track CA behavior, and map the
-  external attack surface.
+  external attack surface. Use when working with auditing tls certificate transparency logs.
 domain: cybersecurity
 tags:
 - certificate-transparency
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run auditing tls certificate transparency logs workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

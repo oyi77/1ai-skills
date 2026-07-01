@@ -1,7 +1,7 @@
 ---
 name: hunting-for-data-staging-before-exfiltration
 description: Detect data staging activity before exfiltration by monitoring for archive creation with 7-Zip/RAR, unusual temp
-  folder access, large file consolidation, and staging directory patterns via EDR and process telemetry
+  folder access, large file consolidation, and staging directory patterns via EDR and process telemetry. Use when detecting data staging activity before exfiltration by monitoring for archive.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -101,6 +101,13 @@ def extract_iocs(text: str) -> dict:
 - Acting on threat intelligence without validating source reliability
 - Sharing classified or sensitive indicators without proper handling procedures
 - Alerting threat actors to detection capabilities through visible response actions
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

@@ -1,7 +1,7 @@
 ---
 name: detecting-privilege-escalation-attempts
 description: Detect privilege escalation attempts including token manipulation, UAC bypass, unquoted service paths, kernel
-  exploits, and sudo/doas abuse across Windows and Linux.
+  exploits, and sudo/doas abuse across Windows and Linux. Use when detecting privilege escalation attempts including token manipulation, uac bypass, unquoted.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -85,6 +85,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

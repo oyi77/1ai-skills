@@ -1,6 +1,6 @@
 ---
 name: black-edge
-description: Apply institutional trading edge using order flow analysis, market microstructure, and dark pool signals.
+description: Apply institutional trading edge using order flow analysis, market microstructure, and dark pool signals. Use when working with black edge.
 domain: trading
 tags:
 - algorithms
@@ -131,6 +131,13 @@ Black Edge provides market analysis capabilities with risk management.
 | "I will cut losses later" | Later never comes. Set stop-losses before entering any trade. |
 | "This time is different" | It never is. Follow your strategy, not your emotions. |
 | "I do not need to journal" | Journaling reveals patterns in your behavior. Track every trade. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run black edge workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

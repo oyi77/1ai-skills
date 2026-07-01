@@ -3,7 +3,7 @@ name: performing-arp-spoofing-attack-simulation
 description: 'Simulates ARP spoofing attacks in authorized lab or pentest environments using arpspoof, Ettercap, and Scapy
   to demonstrate man-in-the-middle risks, test network detection capabilities, and validate ARP inspection countermeasures.
 
-  '
+  '. Use when working with performing arp spoofing attack simulation.
 domain: cybersecurity
 tags:
 - network-security
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

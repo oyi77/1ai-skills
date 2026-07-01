@@ -1,7 +1,7 @@
 ---
 name: skill-performance-monitor
 description: Monitor and analyze skill effectiveness in real-time. Track usage, success rates, response quality, and user
-  satisfaction for continuous optimization.
+  satisfaction for continuous optimization. Use when monitoring and analyze skill effectiveness in real-time. track usage, success.
 domain: core
 tags:
 - infrastructure

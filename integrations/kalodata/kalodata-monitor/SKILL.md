@@ -2,7 +2,7 @@
 name: kalodata-monitor
 description: Scheduled research runs with auto-alerts for NEW viral products. Runs on configurable schedule (hourly/daily/weekly),
   detects new products by comparing with previous runs, alerts on revenue threshold crossings, and sends notifications via
-  Slack webhook.
+  Slack webhook. Use when working with kalodata monitor.
 domain: integrations
 tags:
 - api

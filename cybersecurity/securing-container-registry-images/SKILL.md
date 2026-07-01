@@ -4,7 +4,7 @@ description: 'Securing container registry images by implementing vulnerability s
   signing with Cosign and Sigstore, configuring registry access controls, and building CI/CD pipelines that prevent deploying
   unscanned or unsigned images.
 
-  '
+  '. Use when working with securing container registry images.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run securing container registry images workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

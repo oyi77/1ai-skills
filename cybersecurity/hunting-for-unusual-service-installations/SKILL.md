@@ -1,7 +1,7 @@
 ---
 name: hunting-for-unusual-service-installations
 description: Detect suspicious Windows service installations (MITRE ATT&CK T1543.003) by parsing System event logs for Event
-  ID 7045, analyzing service binary paths, and identifying indicators of persistence mechanisms.
+  ID 7045, analyzing service binary paths, and identifying indicators of persistence mechanisms. Use when detecting suspicious windows service installations (mitre att&ck t1543.003) by parsing.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -99,6 +99,13 @@ def extract_iocs(text: str) -> dict:
 - Acting on threat intelligence without validating source reliability
 - Sharing classified or sensitive indicators without proper handling procedures
 - Alerting threat actors to detection capabilities through visible response actions
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

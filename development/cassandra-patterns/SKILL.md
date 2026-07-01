@@ -1,6 +1,6 @@
 ---
 name: cassandra-patterns
-description: Apache Cassandra patterns — data modeling, CQL, partition keys, clustering, replication, performance tuning
+description: Apache Cassandra patterns — data modeling, CQL, partition keys, clustering, replication, performance tuning. Use when working with cassandra patterns.
 domain: development
 tags:
 - cassandra

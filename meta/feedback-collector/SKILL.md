@@ -1,6 +1,6 @@
 ---
 name: feedback-collector
-description: Collect, analyze, and route feedback from users and systems. Turn feedback into actionable improvement signals.
+description: Collect, analyze, and route feedback from users and systems. Turn feedback into actionable improvement signals. Use when working with feedback collector.
 domain: meta
 tags:
 - collector
@@ -101,6 +101,13 @@ Feedback Collector is a foundational meta-skills skill that provides skill manag
 | "Skills do not need to evolve" | Static skills become outdated. Self-evolving skills improve continuously. |
 | "Manual skill management is fine" | With 1000+ skills, manual management is impossible. Automate. |
 | "Performance does not matter" | Skill performance directly impacts agent effectiveness. Track it. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run feedback collector workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

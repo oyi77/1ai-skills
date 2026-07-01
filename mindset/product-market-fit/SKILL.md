@@ -84,6 +84,13 @@ Mindset skill for product market fit. Builds capability through deliberate pract
 - Log one lesson learned
 ```
 
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
+
 ## Verification
 
 - [ ] All steps executed successfully

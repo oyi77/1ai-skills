@@ -2,7 +2,7 @@
 name: detecting-insider-threat-with-ueba
 description: Implement User and Entity Behavior Analytics using Elasticsearch/OpenSearch to build behavioral baselines, calculate
   anomaly scores, perform peer group analysis, and detect insider threat indicators such as data exfiltration, privilege abuse,
-  and unauthorized access patterns.
+  and unauthorized access patterns. Use when implementing user and entity behavior analytics using elasticsearch/opensearch to build.
 domain: cybersecurity
 subdomain: threat-detection
 tags:
@@ -103,6 +103,13 @@ JSON report containing per-user risk scores, anomalous activity details, peer gr
 - Acting on threat intelligence without validating source reliability
 - Sharing classified or sensitive indicators without proper handling procedures
 - Alerting threat actors to detection capabilities through visible response actions
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

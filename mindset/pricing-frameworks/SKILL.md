@@ -1,7 +1,7 @@
 ---
 name: pricing-frameworks
 description: Set prices using value-based, cost-plus, competitive, and subscription models. Includes tiering, anchoring, discounts,
-  and pricing experiments.
+  and pricing experiments. Use when working with pricing frameworks.
 domain: mindset
 tags:
 - frameworks
@@ -86,6 +86,13 @@ Mindset skill for pricing frameworks. Builds capability through deliberate pract
 - Reflect: What worked? What did not?
 - Log one lesson learned
 ```
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

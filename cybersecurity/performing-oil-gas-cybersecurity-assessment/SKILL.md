@@ -1,10 +1,10 @@
 ---
 name: performing-oil-gas-cybersecurity-assessment
-description: This skill covers conducting cybersecurity assessments specific to oil and gas facilities including upstream
+description: >  This skill covers conducting cybersecurity assessments specific to oil and gas facilities including upstream
   (exploration/production), midstream (pipeline/transport), and downstream (refining/distribution) operations. It addresses
   SCADA systems controlling pipeline operations, DCS for refinery process control, safety instrumented systems for hazardous
   processes, remote terminal units at unmanned wellhead sites, and compliance with API 1164, TSA Pipeline Security Directives,
-  IEC 62443, and NIS...
+  IEC 62443, an.
 domain: cybersecurity
 tags:
 - ot-security
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

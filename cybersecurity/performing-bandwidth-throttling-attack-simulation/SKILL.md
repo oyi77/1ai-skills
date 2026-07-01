@@ -3,7 +3,7 @@ name: performing-bandwidth-throttling-attack-simulation
 description: 'Simulates bandwidth throttling and network degradation attacks using tc, iperf3, and Scapy in authorized environments
   to test quality-of-service controls, application resilience, and network monitoring detection of traffic manipulation attacks.
 
-  '
+  '. Use when working with performing bandwidth throttling attack simulation.
 domain: cybersecurity
 tags:
 - network-security
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

@@ -1,7 +1,7 @@
 ---
 name: detecting-credential-dumping-techniques
 description: Detect LSASS credential dumping, SAM database extraction, and NTDS.dit theft using Sysmon Event ID 10, Windows
-  Security logs, and SIEM correlation rules
+  Security logs, and SIEM correlation rules. Use when detecting lsass credential dumping, sam database extraction, and ntds.dit theft.
 domain: cybersecurity
 subdomain: threat-detection
 tags:
@@ -97,6 +97,13 @@ JSON report containing detected credential dumping indicators with technique cla
 - Testing against production systems without a defined scope and rules of engagement
 - Sharing sensitive findings or credentials in unencrypted communications
 - Failing to properly scope and contain the assessment before starting
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

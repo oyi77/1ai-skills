@@ -1,6 +1,6 @@
 ---
 name: esbuild-bundler
-description: esbuild bundler configuration — blazing fast JS/TS bundling, plugins, watch mode, minification
+description: esbuild bundler configuration — blazing fast JS/TS bundling, plugins, watch mode, minification. Use when working with esbuild bundler.
 domain: development
 tags:
 - bundler

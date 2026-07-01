@@ -1,6 +1,6 @@
 ---
 name: implementing-secrets-scanning-in-ci-cd
-description: Integrate gitleaks and trufflehog into CI/CD pipelines to detect leaked secrets before deployment
+description: Integrate gitleaks and trufflehog into CI/CD pipelines to detect leaked secrets before deployment. Use when integrateing gitleaks and trufflehog into ci/cd pipelines to detect leaked.
 domain: cybersecurity
 subdomain: devsecops
 tags:
@@ -105,6 +105,13 @@ The agent script produces a JSON report containing:
 - Testing against production systems without a defined scope and rules of engagement
 - Sharing sensitive findings or credentials in unencrypted communications
 - Failing to properly scope and contain the assessment before starting
+
+## Process
+
+1. **Plan** — Define infrastructure requirements, security constraints, rollback strategy
+1. **Implement** — Configure resources, apply security best practices, test in staging
+1. **Deploy & Monitor** — Roll out to production, verify health checks, set up alerting
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

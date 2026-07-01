@@ -65,6 +65,13 @@ test('user can login and see dashboard', async ({ page }) => {
 });
 ```
 
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
+
 ## Verification
 
 - [ ] Tests run in CI pipeline

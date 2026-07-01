@@ -1,6 +1,6 @@
 ---
 name: zvec
-description: Zero-copy vector operations for efficient similarity search and embedding storage in agent memory systems.
+description: Zero-copy vector operations for efficient similarity search and embedding storage in agent memory systems. Use when working with zvec.
 domain: core
 tags:
 - ai-agent

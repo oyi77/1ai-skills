@@ -1,7 +1,7 @@
 ---
 name: analyzing-office365-audit-logs-for-compromise
 description: Parse Office 365 Unified Audit Logs via Microsoft Graph API to detect email forwarding rule creation, inbox delegation,
-  suspicious OAuth app grants, and other indicators of account compromise.
+  suspicious OAuth app grants, and other indicators of account compromise. Use when working with analyzing office365 audit logs for compromise.
 domain: cybersecurity
 subdomain: cloud-security
 tags:
@@ -93,6 +93,13 @@ def extract_iocs(text: str) -> dict:
 - Treating compliance checklists as security guarantees rather than minimum baselines
 - Failing to document exceptions and risk acceptance decisions
 - Relying on point-in-time audits instead of continuous monitoring
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

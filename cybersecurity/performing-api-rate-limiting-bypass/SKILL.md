@@ -1,6 +1,6 @@
 ---
 name: performing-api-rate-limiting-bypass
-description: Tests API rate limiting implementations for bypass vulnerabilities by manipulating request headers, IP addresses,
+description: >  Tests API rate limiting implementations for bypass vulnerabilities by manipulating request headers, IP addresses,
   HTTP methods, API versions, and encoding schemes to circumvent request throttling controls. The tester identifies rate limit
   headers, determines enforcement mechanisms, and attempts bypasses including X-Forwarded-For spoofing, parameter pollution,
   case variation, and endpoint path manipulation. Maps to OWASP API4:2023 Unrestricted Resource Consumption.
@@ -87,6 +87,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

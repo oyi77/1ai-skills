@@ -1,6 +1,6 @@
 ---
 name: fluxcd-gitops
-description: Flux CD GitOps — source controllers, kustomize/helm controllers, image automation, notifications
+description: Flux CD GitOps — source controllers, kustomize/helm controllers, image automation, notifications. Use when working with fluxcd gitops.
 domain: devops
 tags:
 - ci-cd

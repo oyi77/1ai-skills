@@ -1,7 +1,7 @@
 ---
 name: presentation-design
 description: Design persuasive presentations using the 10/20/30 rule, slide anatomy principles, and storytelling arcs. Use
-  when creating decks or keynotes.
+  when creating decks or keynotes. Use when designing persuasive presentations using the 10/20/30 rule, slide anatomy principles,.
 domain: mindset
 tags:
 - design
@@ -85,6 +85,13 @@ Mindset skill for presentation design. Builds capability through deliberate prac
 - Reflect: What worked? What did not?
 - Log one lesson learned
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run presentation design workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

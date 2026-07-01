@@ -1,6 +1,6 @@
 ---
 name: gateway-doctor
-description: Diagnose and fix MCP gateway routing issues, health checks, and server connectivity problems.
+description: Diagnose and fix MCP gateway routing issues, health checks, and server connectivity problems. Use when working with gateway doctor.
 domain: core
 tags:
 - doctor
@@ -98,6 +98,13 @@ def route_request(task: str, prompt: str):
             continue
     raise RuntimeError("All models failed")
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run gateway doctor workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

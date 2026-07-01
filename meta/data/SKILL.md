@@ -1,7 +1,7 @@
 ---
 name: data
 description: Raw data storage layer for 1ai-skills. Provides structured data persistence, query interface, and data pipeline support for skill operations.
-  history.
+  history. Use when working with data.
 domain: meta
 tags:
 - data
@@ -84,6 +84,13 @@ Data is a foundational meta-skills skill that provides skill management capabili
 | "Skills do not need to evolve" | Static skills become outdated. Self-evolving skills improve continuously. |
 | "Manual skill management is fine" | With 1000+ skills, manual management is impossible. Automate. |
 | "Performance does not matter" | Skill performance directly impacts agent effectiveness. Track it. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run data workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

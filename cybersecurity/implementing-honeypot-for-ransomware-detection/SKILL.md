@@ -3,7 +3,7 @@ name: implementing-honeypot-for-ransomware-detection
 description: Deploys canary files, honeypot shares, and decoy systems to detect ransomware activity at the earliest possible
   stage. Configures canary tokens embedded in strategic file locations that trigger alerts when ransomware attempts encryption,
   uses honeypot network shares that mimic high-value targets, and deploys Thinkst Canary appliances for comprehensive deception-based
-  detection.
+  detection. Use when working with implementing honeypot for ransomware detection.
 domain: cybersecurity
 tags:
 - ransomware
@@ -91,6 +91,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

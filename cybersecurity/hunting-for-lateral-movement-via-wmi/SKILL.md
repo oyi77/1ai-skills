@@ -1,7 +1,7 @@
 ---
 name: hunting-for-lateral-movement-via-wmi
 description: Detect WMI-based lateral movement by analyzing Windows Event ID 4688 process creation and Sysmon Event ID 1 for
-  WmiPrvSE.exe child process patterns, remote process execution, and WMI event subscription persistence.
+  WmiPrvSE.exe child process patterns, remote process execution, and WMI event subscription persistence. Use when detecting wmi-based lateral movement by analyzing windows event id 4688.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -99,6 +99,13 @@ JSON report with WMI-spawned processes, suspicious command lines, WMI event subs
 - Acting on threat intelligence without validating source reliability
 - Sharing classified or sensitive indicators without proper handling procedures
 - Alerting threat actors to detection capabilities through visible response actions
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+
 ## Verification
 
 - All steps executed successfully against a test environment before production use

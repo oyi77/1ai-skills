@@ -1,7 +1,7 @@
 ---
 name: shopee-review-downloader
 description: Download and analyze Shopee product reviews in bulk for competitive research, sentiment analysis, and market
-  intelligence.
+  intelligence. Use when working with shopee review downloader.
 domain: sales
 tags:
 - business-development
@@ -92,6 +92,13 @@ def score_lead(lead: dict) -> int:
 | "Cold outreach does not work" | It works when personalized and targeted. Generic spam does not. |
 | "I will follow up later" | 80% of sales require 5+ follow-ups. Follow up consistently. |
 | "Price is the only factor" | Value, trust, and timing matter more than price. Sell outcomes. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run shopee review downloader workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

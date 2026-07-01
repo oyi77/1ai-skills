@@ -1,6 +1,6 @@
 ---
 name: design-tokens
-description: Design token systems — color, typography, spacing, and theme architecture for consistent design
+description: Design token systems — color, typography, spacing, and theme architecture for consistent design. Use when designing token systems — color, typography, spacing, and theme architecture.
 domain: content
 tags:
 - content-creation

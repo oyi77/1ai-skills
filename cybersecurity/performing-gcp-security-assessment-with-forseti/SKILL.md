@@ -4,7 +4,7 @@ description: 'Performing comprehensive security assessments of Google Cloud Plat
   Security Command Center, and gcloud CLI to audit IAM policies, firewall rules, storage permissions, and compliance against
   CIS GCP Foundations Benchmark.
 
-  '
+  '. Use when working with performing gcp security assessment with forseti.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -98,6 +98,13 @@ def extract_iocs(text: str) -> dict:
 - **forseti** — Primary tool for this skill
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

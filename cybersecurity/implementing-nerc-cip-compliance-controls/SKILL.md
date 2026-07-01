@@ -1,12 +1,10 @@
 ---
 name: implementing-nerc-cip-compliance-controls
-description: 'This skill covers implementing North American Electric Reliability Corporation Critical Infrastructure Protection
+description: >  'This skill covers implementing North American Electric Reliability Corporation Critical Infrastructure Protection
   (NERC CIP) compliance controls for Bulk Electric System (BES) cyber systems. It addresses asset categorization (CIP-002),
   electronic security perimeters (CIP-005), system security management (CIP-007), configuration management (CIP-010), supply
   chain risk management (CIP-013), and the 2025 updates including mandatory MFA for remote access and expanded low-impact
-  asset requirements.
-
-  '
+  asset requir.
 domain: cybersecurity
 tags:
 - ot-security
@@ -92,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing nerc cip compliance controls workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

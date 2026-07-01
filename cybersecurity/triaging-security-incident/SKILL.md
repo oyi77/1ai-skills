@@ -5,7 +5,7 @@ description: 'Performs initial triage of security incidents to determine severit
   and routes to appropriate response teams. Activates for requests involving incident triage, security alert classification,
   severity assessment, incident prioritization, or initial incident analysis.
 
-  '
+  '. Use when working with triaging security incident.
 domain: cybersecurity
 tags:
 - incident-triage
@@ -96,6 +96,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

@@ -83,6 +83,13 @@ Mindset skill for systems thinking. Builds capability through deliberate practic
 - Log one lesson learned
 ```
 
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run systems thinking workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
+
 ## Verification
 
 - [ ] All steps executed successfully

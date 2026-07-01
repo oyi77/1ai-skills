@@ -1,6 +1,6 @@
 ---
 name: replicate-runner
-description: Run AI models on Replicate cloud API. Deploy image generation, video creation, audio processing, and custom models without managing infrastructure.
+description: Run AI models on Replicate cloud API. Deploy image generation, video creation, audio processing, and custom models without managing infrastructure. Use when working with replicate runner.
 domain: core
 tags:
 - ai
@@ -65,6 +65,13 @@ output = replicate.run(
 )
 print(output[0].url())
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run replicate runner workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

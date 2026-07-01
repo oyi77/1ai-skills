@@ -4,7 +4,7 @@ description: 'Develop and implement OT-specific incident response playbooks alig
   and NIST SP 800-82 that address unique ICS challenges including safety-critical systems, limited downtime tolerance, and
   coordination between IT SOC, OT engineering, and plant operations teams.
 
-  '
+  '. Use when working with implementing ot incident response playbook.
 domain: cybersecurity
 tags:
 - ot-security
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

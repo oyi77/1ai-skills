@@ -3,7 +3,7 @@ name: implementing-cloud-dlp-for-data-protection
 description: 'Implementing Cloud Data Loss Prevention (DLP) using Amazon Macie, Azure Information Protection, and Google Cloud
   DLP API to discover, classify, and protect sensitive data across cloud storage, databases, and data pipelines.
 
-  '
+  '. Use when working with implementing cloud dlp for data protection.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -98,6 +98,13 @@ def extract_iocs(text: str) -> dict:
 - **Configuration Management** — Infrastructure as code and automation
 - **Monitoring Stack** — Observability and alerting
 - **Documentation Platform** — Runbooks and architecture docs
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run implementing cloud dlp for data protection workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

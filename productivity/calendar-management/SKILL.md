@@ -1,6 +1,6 @@
 ---
 name: calendar-management
-description: Advanced calendar management, scheduling, and meeting automation with Google Calendar MCP
+description: Advanced calendar management, scheduling, and meeting automation with Google Calendar MCP. Use when working with calendar management.
 domain: productivity
 tags:
 - calendar
@@ -101,6 +101,13 @@ def prioritize(tasks: list[dict]) -> dict:
 | "I am too busy to organize" | Disorganization costs more time than organizing. Invest upfront. |
 | "Multitasking is productive" | Context switching costs 25 minutes per switch. Focus on one thing. |
 | "I will remember this" | You will not. Write it down. Externalize your memory. |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run calendar management workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

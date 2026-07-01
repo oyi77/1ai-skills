@@ -1,7 +1,7 @@
 ---
 name: planning-agent
 description: Decompose complex tasks into executable, ordered steps with dependencies, risk assessments, and verification
-  criteria. Use before implementing features touching 3+ files, coordinating multi-agent work, or migrating systems.
+  criteria. Use before implementing features touching 3+ files, coordinating multi-agent work, or migrating systems. Use when working with planning agent.
 domain: agents
 tags:
 - agent
@@ -84,6 +84,13 @@ def orchestrate(tasks: list[Task]) -> dict:
 | "I will just do it manually" | Agents automate repetitive tasks — manual work does not scale |
 | "The agent will figure it out" | Without clear instructions, agents hallucinate. Give explicit context. |
 | "One agent is enough" | Complex tasks benefit from specialized agents working in parallel |
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run planning agent workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

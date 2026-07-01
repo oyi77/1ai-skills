@@ -5,7 +5,7 @@ description: 'Detects rootkit presence on compromised systems by identifying hid
   checking techniques. Activates for requests involving rootkit detection, hidden process discovery, kernel integrity checking,
   or system call hook analysis.
 
-  '
+  '. Use when working with detecting rootkit activity.
 domain: cybersecurity
 tags:
 - malware
@@ -89,6 +89,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

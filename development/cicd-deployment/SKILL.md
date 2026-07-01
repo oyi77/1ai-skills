@@ -1,7 +1,7 @@
 ---
 name: cicd-deployment
 description: Build production CI/CD pipelines with GitHub Actions, Docker, zero-downtime blue/green deploys, rollback, and
-  Telegram alerts.
+  Telegram alerts. Use when building production ci/cd pipelines with github actions, docker, zero-downtime blue/green.
 domain: development
 tags:
 - cicd

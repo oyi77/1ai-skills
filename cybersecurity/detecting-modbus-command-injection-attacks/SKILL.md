@@ -4,7 +4,7 @@ description: 'Detect command injection attacks against Modbus TCP/RTU protocol i
   write operations, anomalous function codes, malformed frames, and deviations from established communication baselines using
   ICS-aware IDS and protocol deep packet inspection.
 
-  '
+  '. Use when working with detecting modbus command injection attacks.
 domain: cybersecurity
 tags:
 - ot-security
@@ -90,6 +90,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

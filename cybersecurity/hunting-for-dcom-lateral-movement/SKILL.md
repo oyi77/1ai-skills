@@ -4,7 +4,7 @@ description: 'Hunt for DCOM-based lateral movement by detecting abuse of MMC20.A
   COM objects through Sysmon Event ID 1 (process creation) and Event ID 3 (network connection) correlation, WMI event analysis,
   RPC endpoint mapper traffic on port 135, and DCOM-specific parent-child process relationships.
 
-  '
+  '. Use when working with hunting for dcom lateral movement.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:

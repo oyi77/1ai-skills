@@ -1,7 +1,7 @@
 ---
 name: remote-work
 description: Work effectively remotely including async communication, documentation, video meetings, and self-management in
-  distributed teams.
+  distributed teams. Use when working with remote work.
 domain: mindset
 tags:
 - mindset
@@ -87,6 +87,13 @@ Mindset skill for remote work. Builds capability through deliberate practice and
 - Reflect: What worked? What did not?
 - Log one lesson learned
 ```
+
+
+## Process
+
+1. **Prepare** — Gather requirements, verify prerequisites, set up environment
+1. **Execute** — Run remote work workflow with configured parameters
+1. **Verify** — Validate output meets requirements, document results
 
 ## Verification
 

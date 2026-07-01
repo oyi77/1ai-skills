@@ -1,7 +1,7 @@
 ---
 name: hunting-for-dns-tunneling-with-zeek
 description: Detect DNS tunneling and data exfiltration by analyzing Zeek dns.log for high-entropy subdomain queries, excessive
-  query volume, long query lengths, and unusual DNS record types indicating covert channel communication.
+  query volume, long query lengths, and unusual DNS record types indicating covert channel communication. Use when detecting dns tunneling and data exfiltration by analyzing zeek dns.log.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -91,6 +91,13 @@ def extract_iocs(text: str) -> dict:
 - **SIEM Platform** — Central log aggregation and query execution
 - **Sigma Rules** — Vendor-agnostic detection rule format
 - **MITRE ATT&CK Navigator** — Technique mapping and coverage analysis
+
+
+## Process
+
+1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
+1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
+1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
 
 ## Verification
 

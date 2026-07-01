@@ -3,7 +3,7 @@ name: deploying-palo-alto-prisma-access-zero-trust
 description: 'Deploying Palo Alto Networks Prisma Access for SASE-based zero trust network access using GlobalProtect agents,
   ZTNA Connectors, security policy enforcement, and integration with Strata Cloud Manager for unified security management.
 
-  '
+  '. Use when working with deploying palo alto prisma access zero trust.
 domain: cybersecurity
 tags:
 - prisma-access
@@ -91,6 +91,13 @@ def extract_iocs(text: str) -> dict:
 
 - **Analysis Platform** — Data processing and visualization
 - **Collaboration Tools** — Team coordination and knowledge sharing
+
+
+## Process
+
+1. **Design** — Define interface, identify patterns, plan implementation
+1. **Implement** — Write code following existing conventions, add tests
+1. **Verify** — Run tests, check integration, validate behavior
 
 ## Verification
 

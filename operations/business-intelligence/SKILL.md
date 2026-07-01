@@ -1,7 +1,7 @@
 ---
 name: business-intelligence
 description: Define and track KPIs across revenue, marketing, and content performance with weekly business reviews and data-driven
-  decisions.
+  decisions. Use when working with business intelligence.
 domain: operations
 tags:
 - business
@@ -81,6 +81,13 @@ def execute_sop(sop_name: str, steps: list[str]) -> dict:
 | "We do not need SOPs" | Without SOPs, quality depends on memory. Document everything. |
 | "Manual processes work fine" | Manual processes do not scale and are error-prone. Automate. |
 | "Compliance is optional" | Compliance protects you legally. Build it in from the start. |
+
+
+## Process
+
+1. **Scope** — Define research questions, identify data sources, set time boundaries
+1. **Gather** — Collect data from primary sources, APIs, and public records
+1. **Synthesize** — Analyze findings, identify patterns, produce actionable report
 
 ## Verification
 
