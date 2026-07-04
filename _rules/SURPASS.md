@@ -1,6 +1,6 @@
 ---
 name: surpass
-version: 3.0.0
+version: 3.1.0
 severity: recommended
 scope: [competitive, planning]
 pairs-with: [engineering]
@@ -54,7 +54,9 @@ STEP 3 — ANNOUNCE PLAN
   "SESSION PLAN: [what I will do this session and why, in 3-5 bullets]"
   Human-present mode: Wait for explicit approval ("go", "proceed", "ok") before executing.
   Autonomous mode: Output the plan, then proceed immediately without waiting.
-  How to detect: Human is present if running interactively. Autonomous if running unattended (cron, CI, background task).
+  How to detect mode: Human-present = TTY attached, interactive shell, user is watching.
+  Autonomous = no TTY, running via cron/CI/background script, or harness has auto-accept enabled.
+  When uncertain, default to HUMAN-PRESENT (safer — ask before acting).
 
 STEP 4 — EXECUTE (follow §1 → §2 → §3 → §4 in order, starting where docs left off)
   If this is the first session and no docs exist, run §1 → §2 → §3 in full before §4.
@@ -68,8 +70,8 @@ STEP 5 — UPDATE DOCS AND DELIVER QA REPORT (mandatory before ending any sessio
 ## Definitions & Disambiguation
   - **Major work block**: A focused unit of work that changes product behavior or architecture. Examples: adding a new feature, refactoring auth flow, running full competitor analysis. NOT a major work block: fixing a typo, updating a README, tweaking a CSS color, running `npm audit fix`.
   - **Confirm**: Verifiable by artifact. Examples of valid proof: terminal output showing test pass/fail, screenshot of UI behavior, git diff showing doc update, CI pipeline result. Examples of INVALID proof: "should work", "I think it's done", "tested mentally".
-  - **Gap**: Anything classified ❌ or 🚧 affecting parity or surpass goals. Gaps must have GAP-XXX IDs.
-  - **Research**: Links, notes, and decisions backing implementation choices. Research must precede coding for P0/P1 work.
+  - **Gap**: Anything classified ❌ or 🚧 affecting parity or surpass goals. Gaps must have GAP-XXX IDs. ID assignment: check `docs/research/GAP_ANALYSIS.md` for the highest existing ID and increment. If the file doesn't exist yet, start at GAP-001. Never reuse a closed gap's ID.
+  - **Research**: Links, notes, and decisions backing implementation choices. Research MUST precede coding for P0/P1 work. Time-box: max 30 min per gap before starting implementation. If research is blocked (paywall, dead links, no data), document "RESEARCH BLOCKED — reason" and proceed with best available info.
   - **Feature**: A user-visible capability or measurable improvement. Avoid calling internal refactors "features" unless they change user-facing behavior or performance.
   - **Announce plan**: Output a short, 3–5 bullet summary. Human-present mode: wait for approval ("go", "proceed", "ok"). Autonomous mode: proceed immediately.
   - **Standalone lines**: If a line looks like code or a title but is regular prose, treat it as Markdown text (do not assume template syntax).
@@ -274,6 +276,15 @@ Do not stop at parity. For every feature:
 | ⭐ Best-in-class | No competitor matches it | Always aim here |
 
 Ask before closing any feature: **"Is this ⭐, or did we stop at 🟡?"**
+
+**What "⭐ Best-in-class" means concretely — pick at least one:**
+- Speed/latency: measurably faster than every competitor benchmark you can find
+- UX: user can complete the task in fewer steps than any competitor
+- Coverage: handles an edge case or use-case no competitor documents
+- Reliability: error rate or uptime metric provably better than public competitor SLAs
+- DX: integration takes less code / fewer config steps than nearest alternative
+
+If you cannot point to a specific, measurable dimension where the feature beats all known competitors, it is **not ⭐**. Downgrade to 🟢 and open a new gap.
 
 ### 4.4 QA Scenarios
 
@@ -590,6 +601,17 @@ Until every box is checked — the loop continues.
 | Parity is a waypoint, not the destination | Yes |
 | Always verify competitor state — never assume | Yes |
 
+
+## FAILURE ESCALATION
+When a gap cannot be closed in the current session, do not silently leave it open.
+
+| Situation | Action |
+|-----------|--------|
+| Blocked by missing data / access | Document "BLOCKED: reason" in GAP_ANALYSIS.md, set status 🚧, tag `blocker:data` |
+| Blocked by upstream dependency | Split gap into two: unblocked sub-task + blocked parent. Work the sub-task. |
+| P0 gap, no path forward | STOP, output STATUS REPORT with "🚨 ESCALATION NEEDED" header, list exactly what human must unblock |
+| Research exhausted, still uncertain | Mark gap as `confidence:low`, implement best-available option, note assumptions explicitly in code |
+| Time budget exceeded (>2h on one gap) | Timebox output: ship partial work, create follow-up gap GAP-XXX-b, note in STATUS REPORT |
 ---
 
 ## STATUS REPORT FORMAT
@@ -631,3 +653,39 @@ Until every box is checked — the loop continues.
 > 💡 *"Parity is not victory. Victory is when a competitor's user tries us and never goes back."*  
 > 💡 *"Every ❌ in the matrix is a user we're losing right now."*  
 > ⚠️ *If you're unsure what to work on — open GAP_ANALYSIS.md, find the top open P0, and close it.*
+
+---
+
+## SESSION END SIGNAL
+Every session MUST close with one of these terminal outputs — no exceptions:
+
+```
+SURPASS SESSION END
+Status: [COMPLETE | BLOCKED | PARTIAL]
+Gaps closed this session: [list GAP-IDs or "none"]
+Gaps opened this session: [list GAP-IDs or "none"]
+Next priority: [GAP-XXX — name, or "none open"]
+Handoff note: [1-2 sentences for the next agent/human picking this up]
+```
+
+If ending BLOCKED or PARTIAL, also output a STATUS REPORT (see above).
+
+---
+
+## OPEN-SOURCE REFERENCES
+These repos encode hard-won agent OS knowledge. Read them when improving this framework.
+
+| Repo | What to borrow |
+|------|---------------|
+| [anthropics/anthropic-cookbook](https://github.com/anthropics/anthropic-cookbook) | Prompt patterns, tool-use examples, context window management |
+| [x1xhlol/system-prompts-and-models-of-ai-tools](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools) | Real system prompts from Cursor, Devin, v0 — study their startup sequences |
+| [agentsmd/agents.md](https://github.com/agentsmd/agents.md) | AGENTS.md standard — canonical format for agent context files |
+| [multica-ai/andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills) | Karpathy's 4 principles: think-before-coding, simplicity, surgical changes, goal-driven |
+| [businessascode/company-os](https://businessascode.ai) | Company-as-code pattern: structured knowledge for people + AI agents |
+| [run-llama/llama_index](https://github.com/run-llama/llama_index) | RAG pipeline patterns for grounding research steps |
+| [BerriAI/litellm](https://github.com/BerriAI/litellm) | Multi-provider LLM routing — useful when competitor analysis requires diverse model calls |
+
+**How to use these references:**
+- When updating SURPASS.md, check if any of the above have published improvements since your knowledge cutoff.
+- When stuck on a pattern (gap analysis, QA format, research depth), read the relevant repo's README/docs first.
+- Do NOT blindly copy — adapt to the 1ai-rules context and document what you borrowed and why in the commit message.
