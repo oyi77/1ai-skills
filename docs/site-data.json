@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-01T23:42:53.024266+00:00",
-  "total": 1335,
+  "generated": "2026-07-04T20:31:03.981458+00:00",
+  "total": 1336,
   "categories": [
     {
       "name": "cybersecurity",
@@ -36,7 +36,7 @@
     },
     {
       "name": "automation",
-      "count": 28
+      "count": 29
     },
     {
       "name": "research",
@@ -312,6 +312,10 @@
     {
       "name": "agent-reach",
       "category": "mcp"
+    },
+    {
+      "name": "agent-reach-channels",
+      "category": "automation"
     },
     {
       "name": "agent-self-improvement",
