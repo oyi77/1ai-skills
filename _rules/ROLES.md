@@ -1,6 +1,6 @@
 ---
 name: roles
-version: 1.0.0
+version: 1.1.0
 severity: mandatory
 scope: [all]
 pairs-with: [decision, hiring, onboarding, comms]
@@ -23,6 +23,9 @@ description: Every role, authority level, and responsibility
 | Domain Agent | Agent | L3 | Assigned domain (see §4) | Orchestrator Agent |
 | Worker Agent | Agent | L2 | Assigned task | Domain Agent |
 | Review Agent | Agent | L2 | Quality assurance | Domain Agent or Orchestrator |
+| Debate Agent — Advocate | Agent | L2 | Brainstorming (COMPLEX tasks only) | Domain Agent or Orchestrator |
+| Debate Agent — Skeptic | Agent | L2 | Brainstorming (COMPLEX tasks only) | Domain Agent or Orchestrator |
+| Debate Agent — Synthesizer | Agent | L2 | Brainstorming (COMPLEX tasks only) | Domain Agent or Orchestrator |
 | Monitoring Agent | Agent | L1 | Observability, alerting | Orchestrator Agent |
 
 **Type definitions:**
