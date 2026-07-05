@@ -181,7 +181,7 @@ Ready?        [YES/NO — if NO, what's missing?]
 - Schema change + code using it → PR 1: schema+migration. PR 2: code.
 - API + frontend → PR 1: API. PR 2: frontend (behind feature flag)
 - Bug fix + test → same PR (inseparable)
-- Config change + reader → PR 1: code reads old+new. PR 2: switch config. PR 3: remove old.
+- Config change + reader → PR 1: code reads old+new (backward-compat: existing envs still work during rollout). PR 2: switch config. PR 3: remove old-format support.
 
 **Anti-patterns:**
 - "Add payment system" in one PR → schema/API/frontend in separate PRs
@@ -213,7 +213,7 @@ PR 2: [desc] → ~[N] files, ~[N] hours
 Total: ~[N] PRs, ~[N] hours. Confidence: HIGH/MEDIUM/LOW.
 ```
 
-Rules: Never promise unverifiable timelines. "I don't know" is honest. Multiply first estimate ×2. If >1 day, break down further.
+Rules: Never promise unverifiable timelines. "I don't know" is honest. For STANDARD/COMPLEX tasks: multiply first estimate ×2 (TRIVIAL: no adjustment needed — if a TRIVIAL task takes longer than ×2 it should have been re-classified). If >1 day, break down further.
 
 ---
 

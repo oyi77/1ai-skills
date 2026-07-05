@@ -1,6 +1,6 @@
 ---
 name: comms
-version: 1.0.0
+version: 1.1.0
 severity: mandatory
 scope: [all]
 pairs-with: [roles, decision, incident, onboarding]
@@ -65,6 +65,13 @@ description: Communication rules, channels, cadence, and escalation
   - `logs/deploys/YYYY-MM-DD-NNN.md` — Deploy log
   - `logs/agent-activity/YYYY-MM-DD.md` — Daily standup entries
 - **Rule:** Log entries are append-only. Never delete or edit a prior log entry.
+
+### local:// Files — Internal Ephemeral Channel
+- **Purpose:** Short-lived shared state between sub-agents within a single task session (brainstorm outputs, debate verdicts, intermediate plans).
+- **Who uses it:** Worker Agents, Debate Agents, and Orchestrator passing context across parallel sub-agent spawns.
+- **Format:** `local://<task-slug>-<role>.md` — e.g., `local://feature-auth-skeptic.md`. One file per role per task.
+- **Lifecycle:** Created at sub-agent spawn. MUST be deleted by the spawning agent after the Synthesizer produces its verdict and the result is logged per DECISION.md §4. Do not persist beyond the task session.
+- **Rule:** `local://` files are NOT audit trail. The logged Synthesizer verdict in `logs/decisions/` is the canonical record. Never commit `local://` files to the repository.
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: decision
-version: 1.0.0
+version: 1.1.0
 severity: mandatory
 scope: [all]
 pairs-with: [roles, gate, plan, ethics]
@@ -27,6 +27,17 @@ Examples:
 - Draft content / internal doc update
 
 Treatment: Log it. L2+ can execute. No approval gate required.
+
+### Type 1 — Multi-Agent Synthesizer Output (COMPLEX tasks)
+When a COMPLEX task's BRAINSTORM step uses the §MULTI-AGENT debate protocol (PROCESS.md Step 3 / SURPASS.md §MULTI-AGENT), the Synthesizer sub-agent's final verdict is a **Type 1 decision** and MUST be logged in `logs/decisions/YYYY-MM-DD.md` before PLAN (Step 4) begins.
+
+Log entry MUST include:
+- Approaches debated (Advocate position, Skeptic objections)
+- Synthesizer's chosen approach and rationale
+- Dissenting points that were overruled and why
+- GitHub Issue ref for the task
+
+Rationale: The debate collapses multiple perspectives into one path. Without a log, the reasoning is lost and future agents cannot audit the choice.
 
 ### Type 2 — Irreversible (or Hard-to-Reverse)
 Cannot be undone, or reversal costs >1h effort or risks data loss.

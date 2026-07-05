@@ -181,8 +181,8 @@ Reviewer verifikasi:
 
 [ ] Apakah receipt konsisten secara internal?
     Jumlah test diklaim vs jumlah test di output: [match/mismatch]
-    Timestamp receipt masuk akal: [yes/suspicious]
-    Durasi test masuk akal (bukan semua 0ms): [yes/suspicious]
+    Timestamp receipt masuk akal (reasonable/plausible — not in the future, not before task started): [yes/suspicious]
+    Durasi test masuk akal (reasonable — bukan semua 0ms): [yes/suspicious]
     Error message dalam receipt spesifik (bukan generic): [yes/suspicious]
 
 [ ] Apakah ada kode path di diff yang TIDAK mungkin ter-cover oleh test yang diklaim?
@@ -360,7 +360,14 @@ Setelah builder fix BLOCK findings dan push commit baru:
 [ ] Jika masih ada BLOCK: CHANGES REQUIRED lagi
 ```
 
-Maximum 3 round review. Jika setelah 3 round masih ada BLOCK finding — escalate ke human. Agent tidak capable resolve masalah ini sendiri.
+Maximum 3 round review. Jika setelah 3 round masih ada BLOCK finding — escalate ke human. Agent tidak capable resolve masalah ini sendiri. Escalation message format:
+
+```
+ESCALATION — PR #[N] — Round [3/3]
+Unresolved BLOCK findings: [N]
+Root cause (best guess): [1-2 sentences]
+Recommended human action: [specific — e.g. "review auth.js line 47 manually", "pair with security engineer"]
+```
 
 ---
 ## §8 — HOW TO INVOKE A FRESH-CONTEXT REVIEWER
@@ -372,7 +379,7 @@ Maximum 3 round review. Jika setelah 3 round masih ada BLOCK finding — escalat
 1. Open a NEW chat session (Claude Code: /new, OpenCode: new window, OMP: new invocation)
 2. Do NOT carry over conversation history
 3. Paste ONLY:
-   a. The git diff:   git diff main..HEAD  (or the PR diff URL)
+   a. The git diff:   git diff $(git merge-base HEAD origin/HEAD)..HEAD  (replace origin/HEAD with your default branch if different; or use the PR diff URL)
    b. The task spec:  [original issue or task description]
    c. This file:      REVIEWER.md (or: "Follow REVIEWER.md from ~/.1ai/core/REVIEWER.md")
 4. First message to reviewer: "You are a Reviewer Agent. Follow REVIEWER.md §1-§4 exactly.
@@ -388,7 +395,7 @@ Follow ~/.1ai/core/REVIEWER.md exactly. Output REVIEWER.md §4 verdict.
 SPEC: [paste original issue/task]
 
 DIFF:
-$(git diff main..HEAD)
+$(git diff $(git merge-base HEAD origin/HEAD)..HEAD)
 "
 ```
 

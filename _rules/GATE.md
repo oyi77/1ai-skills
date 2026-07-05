@@ -8,8 +8,8 @@ description: Pre-ship compliance gate checklist (15 gates)
 ---
 
 # GATE.md — Pre-Ship Checklist
-> **BACA INI SEBELUM COMMIT.** Setiap checklist WAJIB diisi bukti NYATA (terminal output, screenshot, response).
-> Kalau ada yang kosong = JANGAN COMMIT. Isi dulu.
+> **READ THIS BEFORE COMMITTING.** Every checklist item REQUIRES real evidence (terminal output, screenshot, response).
+> `Bukti` = Evidence. If any field is empty → DO NOT COMMIT. Fill it first.
 
 ---
 
@@ -72,9 +72,8 @@ GATE 10: TULIS ROLLBACK PLAN
   - DB: down script. API: revert steps. Config: restore. Flag: toggle off.
   Bukti: [Kalau X rusak, rollback: langkah-langkah]
 
-GATE 11: FEATURE FLAG (HIGH-RISK only)
+GATE 11: FEATURE FLAG (HIGH-RISK only — HIGH-RISK = auth changes, data migrations, external API integrations, or any change that cannot be rolled back by reverting a single file)
   - Flag SEBELUM implementasi. Default OFF. Test OFF: no change. Test ON: works.
-  Bukti: [flag name, OFF: OK, ON: OK]
 
 GATE 12: MONITORING BERGUNA
   - Error logging: ada? tangkap error penting? Alerting: ada? channel benar?
@@ -90,7 +89,7 @@ GATE 14: UPDATE DOKUMENTASI
   Bukti: [docs updated: YA — file: X]
 
 GATE 15: AGENT REVIEW — MANDATORY FOR COMPLEX, RECOMMENDED FOR STANDARD
-  - PR description uses core/PRD.md §4 template (Summary, Changes, How to Test, QA Results, Checklist)
+  - PR description uses ~/.1ai/core/PRD.md §4 template (Summary, Changes, How to Test, QA Results, Checklist)
   - PR references its issue (Closes #NNN) — no issue reference = BLOCK
   - COMPLEX: fresh-context Reviewer Agent runs core/REVIEWER.md protocol in full
     → No self-approval. No merge without APPROVED or APPROVED WITH CONDITIONS verdict.

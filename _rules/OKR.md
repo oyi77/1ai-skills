@@ -1,6 +1,6 @@
 ---
 name: okr
-version: 1.0.0
+version: 1.1.0
 severity: mandatory
 scope: [all]
 pairs-with: [mission, roles, decision, comms]
@@ -233,6 +233,13 @@ COMMS.md (weekly check-in §4, blockers escalated)
     ↓
 OKR.md §6 (end-of-quarter review → feeds next quarter)
 ```
+
+**Competitive Research Requirement:**
+Any Objective that touches product strategy, pricing, positioning, or market expansion MUST include a quarterly SURPASS.md run as a non-negotiable input before KRs are finalized.
+- SURPASS.md defines the competitive research protocol (feature matrix delta, gap scoring, strategic recommendation).
+- Run at OKR-setting time, before committing product-direction KRs.
+- Output feeds into KR targets — do not set market-facing KRs blind.
+- Ref: `~/.1ai/core/SURPASS.md §STARTUP` → Step 2 (Competitive Research).
 
 > 🚫 *"This is urgent" is not a KR. Urgency without alignment is just noise.*
 > ✓ *"Does this move a KR?" — ask before every STANDARD/COMPLEX task.*

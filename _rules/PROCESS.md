@@ -1,7 +1,6 @@
 ---
 name: process
-version: 1.0.0
-severity: mandatory
+version: 1.1.0
 scope: [all]
 pairs-with: [rules, engineering, gate]
 description: 8-step mandatory process for every task — no step may be skipped
@@ -54,6 +53,9 @@ description: 8-step mandatory process for every task — no step may be skipped
 - Score each on: risk, complexity, reversibility, time
 - Identify blast radius of each approach
 - Pick the one that is simplest and correct (KISS)
+- **COMPLEX tasks only:** run multi-agent debate before committing to an approach.
+  Invoke §MULTI-AGENT in SURPASS.md: spawn Advocate + Skeptic + Synthesizer sub-agents.
+  The Synthesizer's verdict replaces solo judgment. Log result per DECISION.md §4.
 
 ### 4. PLAN — Design Before You Build
 - Decompose into concrete steps (PLAN.md for COMPLEX)
