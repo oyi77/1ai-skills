@@ -29,6 +29,7 @@
 | `DECISION.md` | Who decides what, approval thresholds, decision log, forbidden decisions | mandatory |
 | `COMMS.md` | Communication channels, cadence, escalation path, human notification triggers | mandatory |
 | `FINANCE.md` | Budget approval, spending limits per authority level, revenue tracking, invoicing | mandatory |
+| `RUNBOOK.md` | Daily health checks, deploy failure procedures, rotation, steady-state ops | mandatory |
 
 ### Safety & Governance
 
@@ -89,6 +90,9 @@ Every PR
 
 Production deploy
     └── RELEASE.md          (10-gate release checklist + rollback plan)
+
+Daily ops
+    └── RUNBOOK.md          (health checks, failure procedures, rotation)
 
 Incident
     ├── INCIDENT.md         (severity → response → war room → postmortem)

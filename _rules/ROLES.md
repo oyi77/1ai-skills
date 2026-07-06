@@ -1,6 +1,6 @@
 ---
 name: roles
-version: 1.1.0
+version: 1.2.0
 severity: mandatory
 scope: [all]
 pairs-with: [decision, hiring, onboarding, comms]
@@ -183,6 +183,23 @@ Each domain has one owning Domain Agent (L3). The owner is accountable for every
 - L3 → L4: within 1 hour
 - L4 → Owner (L5): within 4 hours for non-urgent; immediate for §6 violations or production incidents
 
+
+### Absent Role Owner Protocol
+
+When an agent needs a decision from a role whose owner is unavailable (no response within SLA):
+
+| Absent role | SLA elapsed | Escalate to | Action if also unavailable |
+|---|---|---|---|
+| L2 Worker Agent | N/A | L3 Domain Agent (direct re-assign) | L4 Orchestrator re-assigns |
+| L3 Domain Agent | 1h no response | L4 Orchestrator Agent | L5 Owner via Telegram |
+| L4 Orchestrator Agent | 4h no response | L5 Owner via Telegram | Log in DECISION.md, halt work |
+| L5 Owner | 24h no response | Log in DECISION.md, continue with lowest-risk option only | Never proceed with irreversible or high-spend actions |
+
+**Rules for absent owner decisions:**
+1. Document the absence: log timestamp, what was needed, what SLA was missed, in `logs/decisions/YYYY-MM-DD.md`.
+2. Only proceed autonomously if the action is fully reversible AND within authority level.
+3. Irreversible actions (deploys, spend, data deletion, external comms) MUST halt — do not substitute judgment for an absent owner.
+4. If L5 is absent and a P0 incident is active: follow INCIDENT.md containment steps. Do not wait for approval to contain; wait for approval to remediate.
 ---
 
 ## §6 ROLE CHANGE PROTOCOL

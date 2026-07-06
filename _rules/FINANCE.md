@@ -1,6 +1,6 @@
 ---
 name: finance
-version: 1.0.0
+version: 1.1.0
 severity: mandatory
 scope: [all]
 pairs-with: [decision, roles, okr, security]
@@ -216,6 +216,41 @@ Every alert is also logged in DECISION.md.
 - Finance Agent does not have authority to approve its own spend proposals.
 - No agent may read another agent's API keys or payment credentials unless explicitly granted in ROLES.md.
 
-Current version: 1.0.0
-Last reviewed: 2026-07-04
-Next scheduled review: 2027-01-04 (semi-annual)
+
+---
+
+## §9 FRAUD DETECTION & ANOMALY THRESHOLDS
+
+> Finance Agent and Monitoring Agent both run these checks. Either may trigger an alert.
+
+### Automatic Alert Triggers
+
+The following conditions MUST trigger an immediate Telegram alert to L5 Owner, regardless of business hours:
+
+| Condition | Threshold | Alert severity | Action before alerting |
+|---|---|---|---|
+| Single outbound transaction | > $200 | P0 | Log in DECISION.md, halt transaction if not yet executed |
+| Daily outbound spend total | > $300 | P0 | Log all transactions in DECISION.md |
+| Monthly spend run-rate | > 80% of monthly budget before month midpoint | P1 | Generate spend breakdown |
+| Unrecognized vendor | Any spend to a vendor not in approved vendor list | P1 | Flag transaction, do not pay until approved |
+| MRR drop | > 15% in a single day | P0 | Pull churn/failed-charge report from Stripe |
+| Failed charge volume | > 5 failed charges in 24h | P1 | Pull Stripe failed_payment_intent list |
+| Duplicate transaction | Same vendor + same amount within 48h | P1 | Cross-check against DECISION.md log |
+| New subscription added | Any recurring charge not in approved vendor list | P1 | Identify source, flag for approval |
+| API key spend spike | Any single API provider bill > 2× prior month | P1 | Pull usage breakdown before alerting |
+
+### Approved Vendor List
+Maintained in `finance/approved-vendors.csv`. Format: `vendor_name, category, max_monthly_usd, approved_by, approved_date`.
+New vendors require L4 approval (≤ $50/month) or L5 approval (> $50/month) before first payment.
+
+### Anomaly Response Protocol
+1. **Detect** — Monitoring Agent or Finance Agent identifies threshold breach.
+2. **Halt** — If transaction is pending: do not execute until reviewed. If already executed: flag in log.
+3. **Log** — Append entry to `logs/finance/anomalies/YYYY-MM-DD.md` with: what, amount, vendor, timestamp, trigger rule.
+4. **Alert** — Telegram to L5 with full context (see §5 alert format).
+5. **Await** — Do not resume affected spend category until L5 responds.
+6. **Resolve** — L5 approves (proceed) or rejects (reverse if possible, document if not).
+
+Current version: 1.1.0
+Last reviewed: 2026-07-06
+Next scheduled review: 2027-01-06 (semi-annual)

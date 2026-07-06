@@ -1,6 +1,6 @@
 ---
 name: comms
-version: 1.1.0
+version: 1.2.0
 severity: mandatory
 scope: [all]
 pairs-with: [roles, decision, incident, onboarding]
@@ -22,6 +22,33 @@ description: Communication rules, channels, cadence, and escalation
 4. **Specific over vague.** Every message includes: file name, line number, issue ID, commit hash, or URL. "Something in the auth module" is not specific.
 5. **Actionable over informational.** Every message ends with: what needs to happen next, who is responsible, and by when.
 6. **Minimal broadcast.** Address the smallest audience needed. Noise in shared channels degrades signal for all agents.
+
+### §1.5 ASYNC-FIRST DEFINITION & RESPONSE SLAs
+
+**Async-first** means: post your message or update and continue other work immediately. Do not idle waiting for a reply. Check the channel at your next natural pause.
+
+This is not optional — blocking on a reply is a process violation unless the dependency is explicitly marked `BLOCKING` (see format below).
+
+**Marking a blocking dependency:**
+```
+BLOCKING: [agent name] needs [specific answer] before [specific next step] can proceed.
+Deadline: [timestamp or condition]
+Fallback: [what happens if no response by deadline — per DECISION.md §3 timeout rules]
+```
+
+**Response SLA table — all channels:**
+
+| Message type | Sender | Expected response from recipient | Hard deadline |
+|---|---|---|---|
+| GitHub Issue assignment | Any | Assignee acknowledges (comment: "taking this") | 4h of assignment |
+| GitHub PR review request | Any | Reviewer posts first comment or verdict | 8h of PR opened |
+| Telegram ALERT P0/P1 | Any agent | L5 Owner acknowledges or acts | 24h |
+| Telegram ALERT P2/INFO | Any agent | L5 Owner reads (no reply required unless action needed) | 48h |
+| Escalation in GitHub Issue | Any | Named escalation target responds | Per §4 escalation table |
+| Standup log posted | Any agent | No response required unless BLOCKERS listed | — |
+| BLOCKERS item in standup | Any agent | L3+ responds with unblock path or re-escalates | 2h |
+
+**SLA breach:** If response SLA passes with no reply, escalate one level up per §4. Log the breach in `logs/decisions/YYYY-MM-DD.md` with: message link, SLA, time elapsed, escalation action taken.
 
 ---
 
