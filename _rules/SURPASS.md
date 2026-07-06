@@ -1,6 +1,6 @@
 ---
 name: surpass
-version: 3.5.0
+version: 3.6.0
 severity: recommended
 scope: [competitive, planning, org-wide, strategy, implementation, research]
 pairs-with: [engineering, verification, plan, anti-patterns, roles, mission, gate]
@@ -190,8 +190,10 @@ If the file already exists, add any new competitors as columns and fill in 🔍 
 
 
 **Status symbols:**
-- ✅ Fully implemented
-- 🚧 Partial / WIP
+- ✅ Fully implemented — feature works end-to-end, tested, shipped
+- 🚧 Partial / WIP — exists but incomplete, broken, or not production-ready
+- ❌ Missing — feature does not exist in this product
+- ⭐ Best-in-class — measurably better than every known competitor on ≥1 dimension
 - 🔍 Not yet researched — use this as the initial state; replace with ✅/🚧/❌/⭐ once researched.
 Every competitor's unique differentiator gets marked ⭐ in their column.
 These automatically become P0 or P1 targets (see §1.3).
@@ -334,9 +336,11 @@ Run this at the start of every major work block (see **Definitions & Disambiguat
 
 ## §4 — IMPLEMENTATION PROTOCOL
 > **PLAN.md integration (mandatory for P0/P1):** Any gap classified COMPLEX (touches >2 files, >1 subsystem,
-> or has unclear scope — note: SURPASS uses a stricter threshold than PLAN.md's >5 files because competitive
-> gaps carry higher risk of scope creep) MUST go through **PLAN.md §2 decomposition** before any code is written.
-> TRIVIAL gaps (single file, clear scope, <30 min): 5-second mental check is sufficient.
+> or has unclear scope — "unclear scope" means: you cannot list all affected files before starting, the feature
+> touches auth/billing/data-schema, or the gap description contains "refactor", "migrate", or "rearchitect".
+> Note: SURPASS uses a stricter threshold than PLAN.md's >5 files because competitive gaps carry higher risk of
+> scope creep) MUST go through **PLAN.md §2 decomposition** before any code is written.
+> TRIVIAL gaps (single file, clear scope, <30 min, no schema/auth changes): 5-second mental check is sufficient.
 > When uncertain about complexity: treat as COMPLEX.
 
 
@@ -522,7 +526,7 @@ Create parent directories if missing.
 - ≥3 PRs merged this session, OR
 - Any single PR that closes a P0 gap
 
-After a sprint trigger fires, write to `docs/sprints/SPRINT_[N].md` where N is an incrementing integer starting at 1. If unsure of the next number, check `docs/sprints/` for the highest existing `[N]` and increment.
+After a sprint trigger fires, write to `docs/sprints/SPRINT_[N].md` where N is an incrementing integer starting at 1. If unsure of the next number, check `docs/sprints/` for the highest existing `[N]` and increment. If the directory is empty or does not exist, start at N=1 and create the directory.
 
 **Repo-less / no-git runs:** If working in an environment without git (no `.git` dir), treat "sprint" as a
 time-bounded session: write a sprint doc after every session where ≥1 gap was closed or ≥3 research files
@@ -739,7 +743,7 @@ Until every box is checked — the loop continues.
 | Blocked by upstream dependency | Split gap into two: unblocked sub-task + blocked parent. Work the sub-task. |
 | P0 gap, no path forward | STOP, output STATUS REPORT with "🚨 ESCALATION NEEDED" header, list exactly what human must unblock |
 | Research exhausted, still uncertain | Mark gap as `confidence:low`, implement best-available option, note assumptions explicitly in code |
-| Time budget exceeded | Primary: >2h wall-clock on one gap. Secondary (only if harness shows token count): >50k tokens on one gap. Action: ship partial work, create follow-up gap GAP-XXX-b, note in STATUS REPORT |
+| Time budget exceeded | Primary: >2h wall-clock on one gap. Secondary (only if harness shows token count): >50k tokens on one gap. Action: ship partial work, create follow-up gap GAP-XXX-b with the same priority as the parent gap (inherit P0→P0, P1→P1, P2→P2), note in STATUS REPORT. Do NOT close the parent gap — mark it 🚧. |
 | Same fix approach tried 2+ times with no progress (anti-thrash, AP-012) | STOP. Do not try a third variation. Re-read the gap definition — is the problem statement correct? Try a fundamentally different approach or escalate. Document what was tried and why it failed in GAP_ANALYSIS.md. |
 ---
 
@@ -790,7 +794,7 @@ Every session MUST close with one of these terminal outputs — no exceptions. P
 
 **Receipt requirement (per VERIFICATION.md §1):** Before printing this block, confirm each item is verifiable:
 - "Gaps closed" → each listed GAP-ID must have `Closed: [x]` in GAP_ANALYSIS.md on disk.
-- "Docs updated" → each listed file must have been written or appended during this invocation. Concrete check: read the first 5 lines of the file's newest section and confirm they contain content written this session. Do not rely on OS mtime alone (unreliable in CI/autonomous mode).
+- "Docs updated" → each listed file must have been written or appended during this invocation. Concrete check: read the first 5 lines of the file's newest section and confirm they contain content written this session. Do not rely on OS mtime alone (unreliable in CI/autonomous mode). Alternative when file read is unavailable: use a write-hash — hash the content you wrote and store it in the STATUS REPORT; re-read the file and confirm the hash matches.
 - A session ending COMPLETE with zero verifiable receipts is invalid — downgrade to PARTIAL.
 
 ```
