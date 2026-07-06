@@ -1,7 +1,7 @@
 ---
 name: surpass
-version: 3.6.0
-severity: recommended
+version: 3.7.0
+severity: mandatory
 scope: [competitive, planning, org-wide, strategy, implementation, research]
 pairs-with: [engineering, verification, plan, anti-patterns, roles, mission, gate]
 description: Org-wide agent OS — competitive research, strategic planning, implementation, and continuous surpass across every domain the organization operates in
@@ -360,8 +360,8 @@ Before touching code for any P0 or P1 feature, confirm:
 [ ] Research is written in docs/decisions/[feature].md
 [ ] At least 3 implementation options were evaluated (or fewer documented with rationale)
 [ ] Selected approach is documented with rationale
-[ ] [MULTI-AGENT] Research debate completed (Advocate + Skeptic + Synthesizer outputs exist in local:// or docs/)
-[ ] [MULTI-AGENT] Brainstorm completed (Explorer + Filter outputs exist) — REQUIRED for P0/P1, optional for P2
+[ ] [MULTI-AGENT] Research debate completed (Advocate + Skeptic + Synthesizer outputs exist in local:// or docs/). Solo fallback: simulate roles sequentially — label each block [ADVOCATE] / [SKEPTIC] / [SYNTHESIZER]. Skipping the structure entirely is not valid.
+[ ] [MULTI-AGENT] Brainstorm completed (Explorer + Filter outputs exist) — REQUIRED for P0/P1, optional for P2. Solo fallback: run Explorer then Filter sequentially in one session, labeled blocks. See §MULTI-AGENT for the full solo simulation protocol.
 [ ] All Skeptic objections resolved or explicitly accepted in the decision file
 
 P2 features: research is optional but recommended. If skipped, document why in the sprint notes (`docs/sprints/SPRINT_[N].md` — see §5 for sprint definition and numbering).
@@ -370,7 +370,7 @@ After implementation, confirm:
 
 ```
 [ ] Passes ENGINEERING.md §2 DoD (tests written, no regression, inline docs, perf neutral or better)
-[ ] QA scenarios generated (happy + sad flows — see §4.4) and executed with PASS verdict
+[ ] QA scenarios generated (happy + sad flows — see §4.4), all executed, and QA report verdict is ALL PASS (not PARTIAL or FAIL)
 [ ] QA report delivered to user
 [ ] FEATURE_MATRIX.md updated (cell moved: ❌→✅, 🚧→✅, or any→⭐)
 [ ] GAP_ANALYSIS.md updated (gap marked closed)
@@ -710,8 +710,8 @@ docs/
       3. Document results in docs/qa/UX_AUDIT.md.
       4. ✅ only if our step count ≤ competitor's AND no dead-ends observed.
     A verbal claim "our UX is better" with no audit file = ❌ not met.
-[ ] Reliability: uptime SLA ≥ industry standard
-[ ] Time-to-value: ≤ fastest competitor's onboarding
+[ ] Reliability: uptime SLA ≥ industry standard. Definition: "industry standard" = 99.9% for SaaS (three nines). If a competitor publishes a higher SLA, use that as the bar instead. Proof: link to status page or published SLA doc.
+[ ] Time-to-value: ≤ fastest competitor's onboarding. Definition: "time-to-value" = wall-clock minutes from account creation to completing the product's primary use-case for the first time. Measure both ours and the fastest competitor's. Document results in docs/qa/UX_AUDIT.md.
 [ ] Moats: ≥ 3 features where we are ⭐ with no competitor match
 [ ] Traction: active user/revenue metric trending up vs. competitors
 ```
@@ -724,7 +724,7 @@ Until every box is checked — the loop continues.
 
 | Rule | No exception |
 |------|-------------|
-| Read SURPASS.md fully before every session | Yes |
+| Read SURPASS.md fully at the start of every session — before touching docs or code (you are reading it now; this rule means do not skip re-reading it in future sessions) | Yes |
 | Read existing docs before writing new code | Yes |
 | No code without a documented gap to close | Yes |
 | No P1 work while P0 gaps are open — unless P0 is formally escalated (status 🚨 ESCALATION NEEDED) | Yes — except when P0 is blocked and escalated |
