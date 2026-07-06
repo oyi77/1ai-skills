@@ -1,6 +1,6 @@
 ---
 name: learn
-version: 3.1.0
+version: 3.2.0
 severity: recommended
 scope: [post-incident, improvement]
 pairs-with: [anti-patterns, engineering]
@@ -154,3 +154,43 @@ The goal: **the framework gets smarter with every incident.** Each failure makes
 > ⚠️ *"If the same anti-pattern appears twice, the enforcement is broken — not the agent."*
 >
 > 🚫 *"Closing a retrospective without a rule update is closing a wound without stitches."*
+
+---
+
+## §7 — PROACTIVE LEARNING (no incident required)
+
+The LEARN protocol is not only reactive. Agents MUST also run proactive learning when:
+
+| Trigger | Frequency | Output |
+|---|---|---|
+| Weekly synthesis of all retrospectives | Every Monday | Append to `logs/learn/weekly-YYYY-WNN.md` |
+| Any pattern repeats ≥ 2× in ANTI-PATTERNS.md | On detection | File a rule-update proposal in GitHub Issues with label `rule-improvement` |
+| A dependency or tool is replaced or upgraded | On upgrade | Update relevant rule files to reflect new behavior; add migration note |
+| An agent produces a PARTIAL or FAIL result 2× in a row on the same task type | On detection | File retrospective, propose enforcement change |
+| New technique or pattern proves more effective than the documented approach | On first confirmation | Propose rule update; do not change rules unilaterally — file the issue |
+
+**Proactive retrospective format:** Same template as §2, but set `Severity: INFO` and `What happened:` to "Proactive review — no incident." Fill in `What we learned` and `Action items` normally.
+
+---
+
+## §8 — EXTERNAL SIGNAL INTAKE
+
+Agents learn from the outside world, not just internal failures. External signals MUST be monitored and processed.
+
+### Signal Sources
+
+| Source | What to watch for | Check cadence | Action on signal |
+|---|---|---|---|
+| Competitor product updates (SURPASS.md §2) | New features, pricing changes, deprecations | Weekly (SURPASS research cycle) | Update FEATURE_MATRIX.md; flag P1 gaps |
+| Dependency changelogs (npm/pip/cargo release notes) | Breaking changes, security patches, deprecations | On dependency update or weekly scan | File GitHub Issue: upgrade or mitigate |
+| CVE feeds (NIST NVD, GitHub Security Advisories) | Any CVE affecting a dependency in the stack | Daily (Monitoring Agent) | File P0 Issue if CVSS ≥ 7.0; P1 if 4.0–6.9 |
+| User feedback (support emails, reviews, social) | Recurring pain points, feature requests, confusion | Weekly | Triage into GitHub Issues; tag `user-feedback` |
+| Industry pattern shifts (LLM model updates, platform policy changes) | Anything that changes how a core tool or platform works | Monthly | File a review issue; update relevant rules if behavior changes |
+
+### Intake Protocol
+1. **Capture** — Log signal in `logs/learn/external-signals/YYYY-MM-DD.md`: source, date, summary, relevance.
+2. **Triage** — Classify: Urgent (act within 24h), Important (act this sprint), Monitor (track, no action yet).
+3. **Act** — For Urgent/Important: file a GitHub Issue. For Monitor: add to weekly synthesis.
+4. **Close** — Once acted on, mark the signal entry `[PROCESSED]` with a link to the GitHub Issue.
+
+**Do not let signals expire unprocessed.** A signal not triaged within 7 days of capture is an SLA breach — file a LEARN retrospective on the signal itself.
