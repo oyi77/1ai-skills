@@ -64,10 +64,10 @@ STEP 3 — ANNOUNCE PLAN
 
 STEP 4 — EXECUTE (follow §1 → §2 → §3 → §4 in order, starting where docs left off)
   If this is the first session and no docs exist, run §1 → §2 → §3 in full before §4.
-  If docs exist, open docs/research/GAP_ANALYSIS.md and find the first entry where `- **Closed:** [ ]` (unchecked — this is the exact string in the template; do NOT search for `Closed: [ ]` without the bold markers)
-  with the highest priority (P0 > P1 > P2). Resume from that gap. If no open gaps remain, run §1 again to
-  discover new competitors or re-evaluate the matrix.
-  Tie-break within same priority: lowest GAP-XXX number goes first (oldest unresolved gap).
+  If docs exist, open docs/research/GAP_ANALYSIS.md and find the highest-priority open gap.
+  Search for the exact string `- **Closed:** [ ]` (with the bold markers — `**Closed:**`, not plain `Closed:`).
+  Priority order: P0 > P1 > P2. Tie-break within same priority: lowest GAP-XXX number first (oldest unresolved).
+  If no open gaps remain, run §1 again to discover new competitors or re-evaluate the matrix.
 
 STEP 5 — UPDATE DOCS AND DELIVER QA REPORT (mandatory before ending any session — see §DOC-GEN)
    Include all work completed this session; write "(none)" if no implementation occurred.
@@ -287,13 +287,9 @@ The Filter output feeds directly into §2.1 Options Evaluated table. Do not skip
 
 ## §3 — CODEBASE EXPLORATION
 
-Run this at the start of every major work block (see Definitions § for what counts as a major work block), before implementation begins. If already run this session and no major structural changes occurred, skip re-run. **Major structural change = new directory added, dependency added/removed, module renamed/moved.** Quick check: `git diff HEAD~1 --stat`; if only logic/content files changed, skip is valid. Write findings to `docs/exploration/CODEBASE_AUDIT.md`. If the file exists, append a new dated section rather than overwriting.
+Run this at the start of every major work block (see **Definitions & Disambiguation** above for what counts), before implementation begins. If already run this session and no major structural changes occurred, skip re-run. **Major structural change = new directory added, dependency added/removed, module renamed/moved.** Quick check: `git diff HEAD~1 --stat`; if only logic/content files changed, skip is valid. Write findings to `docs/exploration/CODEBASE_AUDIT.md`. If the file exists, append a new dated section rather than overwriting.
 
-**Required tool sequence (per ENGINEERING.md §1):**
-1. `list_projects` — confirm repo is indexed in codebase-memory-mcp. If not indexed, run `index_repository` first.
-2. `search_graph` — query the relevant area before any manual grep/file reading.
-3. Manual grep/read is a fallback ONLY when the MCP is unavailable or returns nothing useful.
-Hard NO: writing or editing code in an indexed repo without first querying the graph for the affected area.
+**Required tool sequence:** Follow ENGINEERING.md §1 (mandatory read layer) — `list_projects` → `search_graph` → manual grep/read as fallback only.
 
 ```markdown
 # Codebase Audit — [Date]
@@ -339,10 +335,9 @@ Hard NO: writing or editing code in an indexed repo without first querying the g
 ## §4 — IMPLEMENTATION PROTOCOL
 > **PLAN.md integration (mandatory for P0/P1):** Any gap classified COMPLEX (touches >2 files, >1 subsystem,
 > or has unclear scope — note: SURPASS uses a stricter threshold than PLAN.md's >5 files because competitive
-> gaps carry higher risk of scope creep) MUST go through PLAN.md decomposition before any code is written. Steps:
-> 1. Restate the gap in 1 sentence. 2. Define data shapes. 3. Break into ≤3 PRs. 4. Identify rollback path.
+> gaps carry higher risk of scope creep) MUST go through **PLAN.md §2 decomposition** before any code is written.
 > TRIVIAL gaps (single file, clear scope, <30 min): 5-second mental check is sufficient.
-> When uncertain about complexity: treat as COMPLEX. See PLAN.md §2 for the full protocol.
+> When uncertain about complexity: treat as COMPLEX.
 
 
 ### 4.1 Priority Order — Non-Negotiable
@@ -370,16 +365,12 @@ P2 features: research is optional but recommended. If skipped, document why in t
 After implementation, confirm:
 
 ```
-[ ] Does not regress any existing tests
-[ ] New tests written covering the new behavior
-[ ] QA scenarios generated (happy + sad flows) — see §4.4
-[ ] QA scenarios executed and passed
-[ ] Inline documentation added
-[ ] Performance is neutral or better vs. baseline
+[ ] Passes ENGINEERING.md §2 DoD (tests written, no regression, inline docs, perf neutral or better)
+[ ] QA scenarios generated (happy + sad flows — see §4.4) and executed with PASS verdict
+[ ] QA report delivered to user
 [ ] FEATURE_MATRIX.md updated (cell moved: ❌→✅, 🚧→✅, or any→⭐)
 [ ] GAP_ANALYSIS.md updated (gap marked closed)
 [ ] Passes "would a competitor's user switch for this?" test
-[ ] QA report delivered to user
 ```
 
 ### 4.3 The Surpass Standard
@@ -527,7 +518,12 @@ Create parent directories if missing.
 
 ## §5 — SPRINT LOOP
 
-After every sprint (or major PR batch — defined as ≥3 merged PRs or any single PR closing a P0 gap; for repo-less runs, see note below), write to `docs/sprints/SPRINT_[N].md` where N is an incrementing integer starting at 1. If unsure of the next number, check `docs/sprints/` for the highest existing `[N]` and increment.
+**Sprint trigger** (one of these must be true to write a sprint doc):
+- ≥3 PRs merged this session, OR
+- Any single PR that closes a P0 gap
+
+After a sprint trigger fires, write to `docs/sprints/SPRINT_[N].md` where N is an incrementing integer starting at 1. If unsure of the next number, check `docs/sprints/` for the highest existing `[N]` and increment.
+
 **Repo-less / no-git runs:** If working in an environment without git (no `.git` dir), treat "sprint" as a
 time-bounded session: write a sprint doc after every session where ≥1 gap was closed or ≥3 research files
 were written. Use wall-clock date as the sprint ID (e.g., `SPRINT_2026-07-05.md`). Do not block on git.
@@ -743,7 +739,7 @@ Until every box is checked — the loop continues.
 | Blocked by upstream dependency | Split gap into two: unblocked sub-task + blocked parent. Work the sub-task. |
 | P0 gap, no path forward | STOP, output STATUS REPORT with "🚨 ESCALATION NEEDED" header, list exactly what human must unblock |
 | Research exhausted, still uncertain | Mark gap as `confidence:low`, implement best-available option, note assumptions explicitly in code |
-| Time budget exceeded (>2h wall-clock — primary check; or >50k tokens on one gap, secondary and only applicable when token count is visible in your harness) | Timebox output: ship partial work, create follow-up gap GAP-XXX-b, note in STATUS REPORT |
+| Time budget exceeded | Primary: >2h wall-clock on one gap. Secondary (only if harness shows token count): >50k tokens on one gap. Action: ship partial work, create follow-up gap GAP-XXX-b, note in STATUS REPORT |
 | Same fix approach tried 2+ times with no progress (anti-thrash, AP-012) | STOP. Do not try a third variation. Re-read the gap definition — is the problem statement correct? Try a fundamentally different approach or escalate. Document what was tried and why it failed in GAP_ANALYSIS.md. |
 ---
 
@@ -794,7 +790,7 @@ Every session MUST close with one of these terminal outputs — no exceptions. P
 
 **Receipt requirement (per VERIFICATION.md §1):** Before printing this block, confirm each item is verifiable:
 - "Gaps closed" → each listed GAP-ID must have `Closed: [x]` in GAP_ANALYSIS.md on disk.
-- "Docs updated" → each listed file must have been written or appended during this invocation — verify by confirming new content is present (e.g., a new dated section), not by OS mtime alone (unreliable in CI/autonomous mode).
+- "Docs updated" → each listed file must have been written or appended during this invocation. Concrete check: read the first 5 lines of the file's newest section and confirm they contain content written this session. Do not rely on OS mtime alone (unreliable in CI/autonomous mode).
 - A session ending COMPLETE with zero verifiable receipts is invalid — downgrade to PARTIAL.
 
 ```
