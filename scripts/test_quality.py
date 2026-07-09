@@ -91,39 +91,40 @@ def parse_frontmatter(text: str) -> tuple[dict | None, str | None, str]:
     if not text.startswith("---"):
         return None, "missing leading ---", text
 
-    # Find closing ---
-    lines = text.split("\n")
-    close_idx = None
-    for i in range(1, len(lines)):
-        if lines[i].rstrip() == "---":
-            close_idx = i
-            break
-
-    if close_idx is None:
+    end_idx = text.find("\n---", 3)
+    if end_idx == -1:
         return None, "missing closing ---", text
 
-    fm_text = "\n".join(lines[1:close_idx])
-    body = "\n".join(lines[close_idx + 1 :])
+    fm_text = text[4:end_idx]
+
+    body_start = text.find("\n", end_idx + 1)
+    if body_start == -1:
+        body = ""
+    else:
+        body = text[body_start + 1:]
 
     # Simple YAML parser (no PyYAML dependency) — handles flat key: value
     meta: dict[str, str] = {}
     current_key = None
     current_value_lines: list[str] = []
 
-    for line in fm_text.split("\n"):
+    for line in fm_text.splitlines():
         # Detect top-level key: value
-        m = re.match(r"^([a-zA-Z_][\w-]*):\s*(.*)", line)
-        if m and not line.startswith(("  ", "\t")):
-            # Save previous key
-            if current_key is not None:
-                meta[current_key] = "\n".join(current_value_lines).strip()
-            current_key = m.group(1)
-            val = m.group(2).strip()
-            # Strip surrounding quotes
-            if len(val) >= 2 and val[0] in ('"', "'") and val[-1] == val[0]:
-                val = val[1:-1]
-            current_value_lines = [val] if val else []
-        elif current_key is not None:
+        if line and not line.startswith(("  ", "\t", "- ")):
+            idx = line.find(":")
+            if idx > 0 and all(c.isalnum() or c in '_-' for c in line[:idx]):
+                # Save previous key
+                if current_key is not None:
+                    meta[current_key] = "\n".join(current_value_lines).strip()
+                current_key = line[:idx]
+                val = line[idx+1:].strip()
+                # Strip surrounding quotes
+                if len(val) >= 2 and val[0] in ('"', "'") and val[-1] == val[0]:
+                    val = val[1:-1]
+                current_value_lines = [val] if val else []
+                continue
+
+        if current_key is not None:
             # Continuation line (list item, multi-line value)
             current_value_lines.append(line)
 
@@ -135,31 +136,36 @@ def parse_frontmatter(text: str) -> tuple[dict | None, str | None, str]:
 
 def count_lines(text: str) -> int:
     """Count non-empty lines."""
-    return sum(1 for line in text.split("\n") if line.strip())
+    count = 0
+    for line in text.splitlines():
+        if line.strip():
+            count += 1
+    return count
 
 
 def find_sections(body: str) -> list[str]:
     """Extract all ## section headers from body."""
     sections = []
-    for m in re.finditer(r"^##\s+(.+?)\s*$", body, re.MULTILINE):
-        sections.append(m.group(1).strip())
+    for line in body.splitlines():
+        if line.startswith("## ") and not line.startswith("### "):
+            sections.append(line[3:].strip())
     return sections
 
 
 def find_empty_sections(body: str) -> list[str]:
     """Find section headers immediately followed by another header (empty section)."""
-    empty = []
-    lines = body.split("\n")
+    lines = body.splitlines()
+    empty: list[str] = []
+
     for i, line in enumerate(lines):
-        hdr = re.match(r"^##\s+(.+?)\s*$", line)
-        if not hdr:
-            continue
-        # Look at next non-empty line
-        for j in range(i + 1, len(lines)):
-            if lines[j].strip():
-                if re.match(r"^#{1,6}\s+", lines[j]):
-                    empty.append(hdr.group(1).strip())
-                break
+        if line.startswith("## ") and not line.startswith("### "):
+            # Look at next non-empty line
+            for j in range(i + 1, len(lines)):
+                next_line = lines[j].strip()
+                if next_line:
+                    if next_line.startswith("#"):
+                        empty.append(line[3:].strip())
+                    break
     return empty
 
 
