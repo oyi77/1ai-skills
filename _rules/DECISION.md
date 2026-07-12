@@ -29,7 +29,7 @@ Examples:
 Treatment: Log it. L2+ can execute. No approval gate required.
 
 ### Type 1 — Multi-Agent Synthesizer Output (COMPLEX tasks)
-When a COMPLEX task's BRAINSTORM step uses the §MULTI-AGENT debate protocol (PROCESS.md Step 3 / SURPASS.md §MULTI-AGENT), the Synthesizer sub-agent's final verdict is a **Type 1 decision** and MUST be logged in `logs/decisions/YYYY-MM-DD.md` before PLAN (Step 4) begins.
+When a COMPLEX task's BRAINSTORM step uses the §MULTI-AGENT debate protocol (ENGINEERING.md §6 Step 3 / SURPASS.md §MULTI-AGENT), the Synthesizer sub-agent's final verdict is a **Type 1 decision** and MUST be logged in `logs/decisions/YYYY-MM-DD.md` before PLAN (Step 4) begins.
 
 Log entry MUST include:
 - Approaches debated (Advocate position, Skeptic objections)

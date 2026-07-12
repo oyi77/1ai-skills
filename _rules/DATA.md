@@ -39,7 +39,7 @@ Data created for company use; not secret, but not for external distribution.
 Examples:
 - Internal roadmaps, OKR drafts before publishing
 - Agent system prompts and configurations
-- Operational runbooks, SOPs, PROCESS.md contents
+- Operational runbooks, SOPs, ENGINEERING.md contents
 - Supplier names, vendor contracts, tool stack details
 - Performance metrics, OKR scores not published externally
 - Agent-to-agent communication logs

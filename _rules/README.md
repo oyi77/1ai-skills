@@ -49,7 +49,7 @@
 | `ENGINEERING.md` | Full engineering protocol: ownership, core loop, principles | mandatory |
 | `PLAN.md` | Task decomposition: 7 steps before any code | mandatory |
 | `PRD.md` | PRD template, atomic issue format, PR description standard | mandatory |
-| `GATE.md` | Pre-ship checklist: 15 gates before every commit | mandatory |
+| `GATE.md` | Pre-ship checklist: 5 gates (+9 cross-ref checks) before every commit | mandatory |
 | `REVIEWER.md` | Adversarial fresh-context PR review protocol | mandatory |
 | `QA.md` | QA scenarios, happy+sad paths, testing protocol | mandatory |
 | `VERIFICATION.md` | Receipt and proof enforcement | mandatory |
@@ -58,7 +58,7 @@
 | `ANTI-PATTERNS.md` | Growing failure catalog from real incidents | mandatory |
 | `SURPASS.md` | Competitive research and surpass framework | recommended |
 | `LEARN.md` | Retrospective and rule update protocol | recommended |
-| `PROCESS.md` | Core loop: READ→THINK→DECIDE→PLAN→BUILD→VERIFY | mandatory |
+| `ENGINEERING.md §6` | Core loop: READ→THINK→DECIDE→PLAN→BUILD→VERIFY→DOCS→SHIP | mandatory |
 
 ---
 
@@ -80,10 +80,9 @@ Building
     └── SECURITY.md         (secrets, access control)
 
 Before every commit
-    └── GATE.md             (15 gates: intent→codebase→domain→check→
-                             tests→real-user→logic→QA→review→lint→
-                             security→rollback→diff→docs→agent-review)
-
+    └── GATE.md             (5 gates + 9 cross-ref checks: ensure→read→decompose→test→
+                             verify→receipt→context→triage→docs→lint→
+                             security→rollback→diff→agent-review)
 Every PR
     ├── PRD.md §4           (PR description template)
     └── REVIEWER.md         (§2.0 prerequisites → §2.1-2.6 full review)
