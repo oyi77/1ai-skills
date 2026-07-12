@@ -1,7 +1,6 @@
 ---
 name: ponytail
-description: 'Lazy senior dev mode. Forces the simplest, shortest solution that works: YAGNI, stdlib first, no unrequested
-  abstractions.'. Use when working with ponytail.
+description: 'Lazy senior dev mode. Forces the simplest, shortest solution that works: YAGNI, stdlib first, no unrequested abstractions. . Use when working with ponytail.'
 domain: mindset
 tags:
 - mindset

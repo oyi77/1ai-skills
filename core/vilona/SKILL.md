@@ -1,6 +1,6 @@
 ---
 name: vilona
-description: 'Skill: vilona. See SKILL.md body for details. Use when this domain is relevant.'
+description: Foundational core infrastructure skill providing system foundation capabilities for the agent ecosystem.
 domain: core
 tags:
 - infrastructure
@@ -8,10 +8,10 @@ tags:
 - self-improvement
 - vilona
 ---
-# Vilona
+# Vilona Skill
 
 ## When to Use
-
+**Trigger phrases:**
 **Trigger phrases:**
 - "vilona"
 - "Help me with vilona"

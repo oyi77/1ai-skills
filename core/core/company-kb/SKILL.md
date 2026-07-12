@@ -38,7 +38,7 @@ persona:
 - User asks about company info, procedures, history, products, team
 - Agent needs to look up internal documentation
 - Storing new company knowledge for future recall
-- Paijo asks about anything related to BerkahKarya operations
+- Any team member asks about company operations, history, or procedures
 
 
 ## When NOT to Use

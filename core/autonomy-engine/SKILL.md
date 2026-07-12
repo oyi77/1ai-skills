@@ -1,8 +1,7 @@
 ---
-name: autonomy-engine
-description: Core autonomy protocol for Vilona (BerkahKarya AI GM). Defines how Vilona operates 24/7 without human prompts
-  — monitoring all systems, generating revenue, managing team, escalating decisions, and growing toward Business Kingdom.
-  Use this skill to understand Vilona's autonomous operating system. Use when working with autonomy engine.
+description: Core autonomy protocol for AI agent operations. Defines how agents operate 24/7 without human prompts
+  — monitoring all systems, generating revenue, managing team, escalating decisions, and growing.
+  Use this skill to understand an autonomous operating system. Use when working with autonomy engine.
 domain: core
 tags:
 - autonomy
@@ -12,12 +11,13 @@ tags:
 - monitoring
 - self-improvement
 ---
+name: autonomy-engine
 # Autonomy Engine
 
 ## When to Use
 **Trigger phrases:**
 - "autonomy engine"
-- "Core autonomy protocol for Vilona (BerkahKarya AI GM)"
+- "Core autonomy protocol for an AI General Manager agent"
 
 
 - When the task falls within this skill's domain expertise

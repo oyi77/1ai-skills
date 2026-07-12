@@ -1,10 +1,6 @@
 ---
 name: implementing-dragos-platform-for-ot-monitoring
-description: 'Deploy and configure the Dragos Platform for OT network monitoring, leveraging its 600+ industrial protocol
-  parsers, intelligence-driven threat detection analytics, and asset visibility capabilities to protect ICS environments against
-  threat groups like VOLTZITE, GRAPHITE, and BAUXITE.
-
-  '. Use when working with implementing dragos platform for ot monitoring.
+description: 'Deploy and configure the Dragos Platform for OT network monitoring, leveraging its 600+ industrial protocol parsers, intelligence-driven threat detection analytics, and asset visibility capabilities to protect ICS environments against threat groups like VOLTZITE, GRAPHITE, and BAUXITE. . Use when working with implementing dragos platform for ot monitoring.'
 domain: cybersecurity
 tags:
 - ot-security

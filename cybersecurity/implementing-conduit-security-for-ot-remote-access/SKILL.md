@@ -1,10 +1,6 @@
 ---
 name: implementing-conduit-security-for-ot-remote-access
-description: 'Implement secure conduit architecture for OT remote access following IEC 62443 zones and conduits model, deploying
-  jump servers, MFA-enabled gateways, session recording, and approval-based workflows to control vendor and engineer access
-  to industrial control systems without exposing OT networks directly.
-
-  '. Use when working with implementing conduit security for ot remote access.
+description: 'Implement secure conduit architecture for OT remote access following IEC 62443 zones and conduits model, deploying jump servers, MFA-enabled gateways, session recording, and approval-based workflows to control vendor and engineer access to industrial control systems without exposing OT networks directly. . Use when working with implementing conduit security for ot remote access.'
 domain: cybersecurity
 tags:
 - ot-security

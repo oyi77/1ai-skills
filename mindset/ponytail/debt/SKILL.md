@@ -1,7 +1,6 @@
 ---
 name: debt
-description: 'Harvest every ponytail: shortcut comment into one debt ledger, so deferrals get tracked instead of forgotten.
-  One-shot report.'. Use when working with debt.
+description: 'Harvest every ponytail: shortcut comment into one debt ledger, so deferrals get tracked instead of forgotten. One-shot report. . Use when working with debt.'
 domain: mindset
 tags:
 - debt

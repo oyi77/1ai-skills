@@ -1,8 +1,8 @@
 ---
 name: b2b-sales-automation
-description: "|\n  >\n    Full B2B sales pipeline automation for BerkahKarya — from cold prospect to onboarded client.\n \
+description: "|\n  >\n    Full B2B sales pipeline automation — from cold prospect to onboarded client.\n \
   \   Covers ICP definition, lead sourcing, outreach sequences, proposal generation, CRM tracking,\n    and deal alerts via\
-  \ Telegram. Targets Indonesian SMEs needing AI automation, digital products,\n    and content services.\n"
+  \   Telegram. Targets SMEs needing AI automation, digital products,\n    and content services.\n"
 domain: sales
 tags:
 - sales
@@ -13,7 +13,7 @@ tags:
 - pipeline
 - indonesian
 version: 1.0.0
-author: Vilona / BerkahKarya
+
 language: id-ID / en
 scripts: "|\n  - scripts/lead_scorer.py\n    - scripts/proposal_gen.py\n    - scripts/outreach_sequencer.py\n"
 ---
