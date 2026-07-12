@@ -1,6 +1,7 @@
 ---
 name: implementing-api-rate-limiting-and-throttling
-description: >  Implements API rate limiting and throttling controls using token bucket, sliding window, and fixed window algorithms
+description: >
+  Implements API rate limiting and throttling controls using token bucket, sliding window, and fixed window algorithms
   to protect against brute force attacks, credential stuffing, resource exhaustion, and API abuse. The engineer configures
   per-user, per-IP, and per-endpoint rate limits using Redis-backed counters, API gateway plugins, or application middleware,
   and implements proper HTTP 429 responses with Retry-After headers.

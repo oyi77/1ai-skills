@@ -1,11 +1,11 @@
 ---
 name: contract-manager
 version: 1.0.0
-description: Contract lifecycle management for BerkahKarya — draft, review, negotiate,
+description: Contract lifecycle management — draft, review, negotiate,
   sign, track, archive. Covers talent agreements, client deals, vendor contracts,
   employment. Indonesian law compliant (PKS format). Telegram alerts for renewals
   and breaches.
-author: Vilona / BerkahKarya
+
 tags:
 - contracts
 - legal

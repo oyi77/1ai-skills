@@ -1,6 +1,7 @@
 ---
 name: evaluating-threat-intelligence-platforms
-description: >  'Evaluates and selects Threat Intelligence Platform (TIP) products based on organizational requirements including
+description: >
+  Evaluates and selects Threat Intelligence Platform (TIP) products based on organizational requirements including
   feed integration capability, STIX/TAXII support, workflow automation, analyst interface, and total cost of ownership. Use
   when conducting a TIP procurement, migrating between TIP solutions, or assessing whether the current TIP meets program maturity
   requirements. Activates for requests involving ThreatConnect, MISP, OpenCTI, Anomali, EclecticIQ, or TIP procurement decisions.

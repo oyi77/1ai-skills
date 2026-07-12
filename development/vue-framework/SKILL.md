@@ -1,13 +1,13 @@
 ---
 name: vue-framework
-description: Vue.js 3 development — Composition API, Pinia, Vue Router, Nuxt, SSR/SSG patterns. Use when working with vue framework.
+description: Vue.js 3 development patterns — Composition API, Pinia state management, Vue Router, Nuxt.js SSR/SSG, component architecture, performance optimization. Use when working with vue patterns or vue framework.
 domain: development
 tags:
 - api
 - coding
-- framework
+- patterns
 - software-engineering
-- testing
+- framework
 - vue
 ---
 
@@ -25,6 +25,7 @@ Build modern web applications with Vue.js 3 — Composition API reactivity, Pini
 - Component patterns (slots, provide/inject, composables)
 - Form handling and validation
 - Testing with Vitest + Vue Test Utils
+- Performance optimization (shallowRef, v-memo, lazy components)
 
 ## When to Use
 **Trigger phrases:**
@@ -100,6 +101,32 @@ onMounted(async () => {
 </template>
 ```
 
+### Composition API composable
+```typescript
+// composables/useApi.ts
+import { ref, watchEffect } from 'vue'
+
+export function useApi<T>(url: Ref<string>) {
+  const data = ref<T | null>(null)
+  const error = ref<Error | null>(null)
+  const loading = ref(false)
+
+  watchEffect(async () => {
+    loading.value = true
+    try {
+      const res = await fetch(url.value)
+      data.value = await res.json()
+    } catch (e) {
+      error.value = e as Error
+    } finally {
+      loading.value = false
+    }
+  })
+
+  return { data, error, loading }
+}
+```
+
 ### Pinia Store
 
 ```typescript
@@ -153,8 +180,41 @@ const { data: user } = await useFetch(`/api/users/${route.params.id}`)
 </template>
 ```
 
+### Nuxt server route
+```typescript
+// server/api/users/[id].ts
+export default defineEventHandler(async (event) => {
+  const id = getRouterParam(event, 'id')
+  return await db.users.findById(id)
+})
+```
+
+### Performance optimization
+```vue
+<script setup>
+import { shallowRef, defineAsyncComponent } from 'vue'
+
+// shallowRef for large objects (no deep reactivity)
+const largeList = shallowRef(hugeArray)
+
+// Lazy component loading
+const HeavyComponent = defineAsyncComponent(() =>
+  import('./HeavyComponent.vue')
+)
+</script>
+
+<template>
+  <!-- v-memo to skip re-renders -->
+  <div v-for="item in largeList" :key="item.id" v-memo="[item.selected]">
+    {{ item.name }}
+  </div>
+</template>
+```
+
 ## Common Patterns
 
+- **Template refs**: Access DOM elements with `ref()` in setup
+- **Route middleware**: Auth guards via `defineNuxtRouteMiddleware`
 - **Composables**: Extract reusable logic into `use*` functions
 - **Auto-imports**: Nuxt 3 auto-imports Vue APIs and components
 - **Dynamic imports**: Lazy-load routes with `() => import()`

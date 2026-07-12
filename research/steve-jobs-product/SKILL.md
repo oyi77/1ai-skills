@@ -1,7 +1,6 @@
 ---
 name: steve-jobs-product
-description: 'Design products using Steve Jobs'' philosophy: simplicity, user experience, intersection of technology and liberal
-  arts.'. Use when working with steve jobs product.
+description: 'Design products using Steve Jobs'' philosophy: simplicity, user experience, intersection of technology and liberal arts. . Use when working with steve jobs product.'
 domain: research
 tags:
 - analysis

@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-04T20:31:03.981458+00:00",
-  "total": 1336,
+  "generated": "2026-07-12T09:39:54.490982+00:00",
+  "total": 1341,
   "categories": [
     {
       "name": "cybersecurity",
@@ -77,9 +77,13 @@
     {
       "name": "productivity",
       "count": 10
+    },
+    {
+      "name": "other",
+      "count": 5
     }
   ],
-  "categoryCount": 19,
+  "categoryCount": 20,
   "featured": [
     {
       "name": "AgentShield",
@@ -3308,6 +3312,26 @@
     {
       "name": "investing-algorithm-framework",
       "category": "trading"
+    },
+    {
+      "name": "investment-bottleneck",
+      "category": "other"
+    },
+    {
+      "name": "investment-earnings",
+      "category": "other"
+    },
+    {
+      "name": "investment-industry",
+      "category": "other"
+    },
+    {
+      "name": "investment-portfolio",
+      "category": "other"
+    },
+    {
+      "name": "investment-research",
+      "category": "other"
     },
     {
       "name": "ionic-capacitor",
