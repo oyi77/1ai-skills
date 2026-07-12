@@ -1,17 +1,21 @@
 ---
 name: gate
-version: 2.5.0
+version: 3.0.0
 severity: mandatory
 scope: [ship, commit]
-pairs-with: [engineering, verification]
-description: Pre-ship compliance gate checklist (15 gates)
+pairs-with: [engineering, verification, qa, docs]
+description: Pre-ship compliance gate checklist (5 unique gates + cross-refs)
 ---
 
 # GATE.md — Pre-Ship Checklist
 > **READ THIS BEFORE COMMITTING.** Every checklist item REQUIRES real evidence (terminal output, screenshot, response).
 > `Bukti` = Evidence. If any field is empty → DO NOT COMMIT. Fill it first.
 
+After these 5 gates, proceed through the per‑file checklists below:
+
 ---
+
+## Gates Unique to GATE.md
 
 ```
 GATE 0: UNDERSTAND INTENT, VERIFY CLAIMS
@@ -23,90 +27,51 @@ GATE 0: UNDERSTAND INTENT, VERIFY CLAIMS
   - Verifikasi klaim user: API jalan? curl. Test pass? run. DB ada? check.
   Bukti: [SAID → WANTS → solution → WHY] + [verified claim: Y/T]
 
-GATE 1: BACA CODEBASE
-  - Baca file yg akan diubah. Pahami cara kerja yg sudah ada.
-  Bukti: [apa yg dibaca + apa yg dipahami]
-
-GATE 2: CEK DOMAIN REPO
+GATE 1: CEK DOMAIN REPO
   - Tugas sesuai repo ini? Kalau tidak → STOP.
   Bukti: [domain repo + apakah task sesuai]
 
-GATE 3: CEK SEBELUM PAKAI
-  - Sebelum pakai API/function/config, BUKTIKAN ada. Kalau ragu → grep/read/curl.
+GATE 2: CEK SEBELUM PAKAI
+  - Before using any API, function, or config: PROVE it exists. Grep/read/curl if unsure.
   Bukti: [apa yg dipakai + bukti ada]
 
-GATE 4: COMPILE
-  - Jalankan compiler/type-checker. Output: zero errors.
-  Bukti: [paste output]
-
-GATE 5: TEST SAAT BUILD
-  - Saat nulis kode, langsung jalankan test. Gagal → langsung fix.
-  Bukti: [paste output]
-
-GATE 6: SEMUA TEST LULUS
-  - Jalankan SEMUA test (unit+integration). N/N pass, zero failures.
-  Bukti: [paste output dgn jumlah pass/fail]
-
-GATE 7: QA SCENARIOS — HAPPY + SAD PATH
-  - Tulis skenario QA: minimal 2 happy path + 2 sad path per fitur.
-  - Happy: input valid, flow normal, edge case yg HARUS jalan.
-  - Sad: input invalid, data null/kosong, auth gagal, dependency mati.
-  - Setiap skenario HARUS punya: precondition, steps, expected, actual, PASS/FAIL.
-  - Jalankan semua skenario. Paste hasil NYATA — bukan expected.
-  - Deliver QA report INLINE di chat. Simpan ke docs/qa/QA_REPORT_[feature].md juga.
-  - Gap/fitur TIDAK BOLEH ditutup sampai semua skenario = PASS.
-  Bukti: [QA report inline — N happy PASS, N sad PASS, verdict: ALL PASS]
-
-GATE 8: PAKAI SEPERTI USER NYATA
-  - Buka browser / kirim pesan / panggil API — seperti user sungguhan.
-  - UI: browser, klik semua tombol. Bot: kirim pesan NYATA. API: curl data NYATA.
-  - MCP: test semua tool dgn data benar+salah. Screenshot/record.
-  Bukti: [screenshot / curl response / terminal output]
-
-GATE 9: VERIFIKASI LOGIKA BISNIS
-  - Hitung expected result MANUAL. Jalankan sistem. Bandingkan.
-  - Beda → BUG. Fix sebelum commit.
-  Bukti: [Skenario: X. Manual: Y. System: Z. Match: YES/NO]
-
-GATE 10: TULIS ROLLBACK PLAN
-  - DB: down script. API: revert steps. Config: restore. Flag: toggle off.
-  Bukti: [Kalau X rusak, rollback: langkah-langkah]
-
-GATE 11: FEATURE FLAG (HIGH-RISK only — HIGH-RISK = auth changes, data migrations, external API integrations, or any change that cannot be rolled back by reverting a single file)
-  - Flag SEBELUM implementasi. Default OFF. Test OFF: no change. Test ON: works.
-
-GATE 12: MONITORING BERGUNA
-  - Error logging: ada? tangkap error penting? Alerting: ada? channel benar?
-  - Metrics: ada? track latency, error rate? Dashboard: bisa lihat manusia?
-  Bukti: [logging: Y/T, alerting: Y/T (where), metrics: Y/T (what)]
-
-GATE 13: REVIEW SENDIRI
-  - Baca ulang diff. Ada kode tdk perlu? Asumsi belum terbukti? Bisa hapus tanpa ubah behavior?
+GATE 3: REVIEW SENDIRI
+  - Read own diff. Unnecessary code? Unverified assumptions? Can delete without behavior change?
   Bukti: [review OK / perlu diperbaiki: X]
 
-GATE 14: UPDATE DOKUMENTASI
-  - Ubah kode → update docs. Code ≠ Docs → STOP.
-  Bukti: [docs updated: YA — file: X]
-
-GATE 15: AGENT REVIEW — MANDATORY FOR COMPLEX, RECOMMENDED FOR STANDARD
-  - PR description uses ~/.1ai/core/PRD.md §4 template (Summary, Changes, How to Test, QA Results, Checklist)
-  - PR references its issue (Closes #NNN) — no issue reference = BLOCK
-  - COMPLEX: fresh-context Reviewer Agent runs core/REVIEWER.md protocol in full
-    → No self-approval. No merge without APPROVED or APPROVED WITH CONDITIONS verdict.
-    → CHANGES REQUIRED = fix all BLOCK findings, then re-review before merge.
-  - STANDARD: peer review or self-review with REVIEWER.md §2 checklist documented
-  - TRIVIAL: self-review, no reviewer agent required
-  Bukti: [TRIVIAL — self-review OK] OR [STANDARD — checklist done] OR [COMPLEX — verdict: APPROVED, PR #X]
+GATE 4: AGENT REVIEW — COMPLEX only (STANDARD optional)
+  - PR uses PRD.md §4 template (Summary, Changes, How to Test, QA Results, Checklist)
+  - PR references its issue (Closes #NNN) — no issue ref = BLOCK
+  - COMPLEX: fresh-context Reviewer Agent runs REVIEWER.md protocol.
+    No self-approval. No merge without APPROVED / APPROVED WITH CONDITIONS.
+    CHANGES REQUIRED = fix all BLOCK findings, re-review.
+  - STANDARD: peer/self-review with checklist documented
+  - TRIVIAL: self-review only
+  Bukti: [TRIVIAL] / [STANDARD — checklist done] / [COMPLEX — verdict: APPROVED, PR #X]
 ```
+
+---
+
+## Standard Checklist (cross‑refs to core files)
+
+| # | Check | Source |
+|---|-------|--------|
+| C1 | Compile — zero errors | ENGINEERING.md §6 Step 5 |
+| C2 | All tests pass — N/N pass, zero failures | VERIFICATION.md §1 |
+| C3 | QA scenarios — ≥2 happy + 2 sad paths per feature | QA.md |
+| C4 | Use like real user — browser/send/curl/screenshot | ENGINEERING.md §6.1 |
+| C5 | Business logic verification — manual calc vs system | ENGINEERING.md §6.2 |
+| C6 | Rollback plan — down script / revert steps / toggle | ENGINEERING.md §6.3 |
+| C7 | Feature flag (HIGH‑RISK only) — default OFF | ENGINEERING.md §6.4 |
+| C8 | Monitoring verification — logging / alerting / metrics | ENGINEERING.md §6.5 |
+| C9 | Update docs — Code ≠ Docs → STOP | DOCS.md |
 
 ---
 
 ## Status
 ```
-[ ] SEMUA GATE LULUS — boleh commit
+[ ] ALL GATES PASSED — boleh commit
 [ ] ADA YANG GAGAL — gate yg belum: _________________________________
 ```
-
----
 
 *GATE.md ini WAJIB dijalankan sebelum setiap commit. Tidak ada pengecualian.*
