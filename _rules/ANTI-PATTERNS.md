@@ -95,6 +95,30 @@ description: Growing catalog of AI agent failure modes — discovered from real 
 **Enforcement:** GATE.md Gate 0 (verify claims before proceeding). RULES.md §2 (receipts apply to user claims too).
 **Red flags:** Accepts "it's working" without curl/running tests/checking logs · Skips verification because "user confirmed" · Builds on user's assumption without checking it · Ignores contradictions in user prompt · Backs down from correct observation just because user disagrees.
 
+
+### AP-016: Stub Ships as Feature
+**Symptom:** "Payment system done" — has placeholder UI, TODO handlers, no integration. Code compiles, nothing works.
+**Rule:** RULES.md §11 (Zero Stubs). ENGINEERING.md §11.2 (MVP Must Be Demoable). §2 Zero-hygiene.
+**Enforcement:** grep for TODO/FIXME/stub before commit. User-test each feature flow end-to-end.
+**Red flags:** Feature is "done" but has no real API calls · UI shows buttons that don't work · Code says "TODO: implement" · Function has docstring but empty body · "Will add later" in commit message.
+
+### AP-017: Over-Engineering Before Revenue
+**Symptom:** Builds event-driven microservice architecture for a blog. Spends 2 weeks on abstractions before any content renders.
+**Rule:** RULES.md §REVENUE FIRST. DESIGN PRINCIPLES KISS+YAGNI. ENGINEERING.md §11.3.
+**Enforcement:** KISS check in code review. Revenue-first prioritization: does this abstraction ship revenue faster?
+**Red flags:** Abstract interfaces for every dependency on day 1 · Schema before any API · Kubernetes before cron · Event bus before REST · "But we'll need it later" justification · More config than logic.
+
+### AP-018: Perfect But Unshipped
+**Symptom:** "I can't ship until I refactor/fix X/add Y." Perfect code never ships. Revenue never arrives.
+**Rule:** RULES.md §SHIP FAST. DESIGN PRINCIPLES §MVP-FIRST. ENGINEERING.md §11.1.
+**Enforcement:** docs/track/ must exist before feature can be marked "done but deferred". Ship working version, track improvements.
+**Red flags:** "One more refactor before release" · "When X is done, then we launch" · Feature complete for 2 weeks but not deployed · Chasing 100% test coverage before ship.
+
+### AP-019: Aesthetic Before Business Flow
+**Symptom:** Spends 3 days on button animations, color palette, font system BEFORE core checkout works. Revenue flow incomplete.
+**Rule:** RULES.md §REVENUE FIRST. ENGINEERING.md §11.3 hierarchy.
+**Enforcement:** Code review: does this PR touch revenue-relevant flow? If not, does it ship before revenue flow is complete?
+**Red flags:** CSS animations before API integration · Design system before business logic · Theme switching before payment works · "It doesn't look good enough" as ship blocker · More UI polish than backend work in early stages.
 ---
 
 ## Meta: How Anti-Patterns Become Rules

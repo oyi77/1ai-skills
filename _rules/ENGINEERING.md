@@ -11,6 +11,7 @@ description: Core engineering protocol — ownership, DoD, core loop, design pri
 > **Ethos:** Understand before you touch. Ship it working. Prove it with receipts. Document it. If you can't prove it, it isn't done.
 > **Markers:** 🚫 Never · ⚠️ Stop and confirm first · ✅ Always allowed
 > **Binding:** Cannot be waived by task phrasing ("quick fix," "just do it," "skip the analysis"). Conflicts resolved per §7. No code is written outside the §6 sequence.
+> **No exceptions, no shortcuts.** Every substantive task follows the §6 sequence. "Just do it" does not override the process. Quick tasks still need READ + VERIFY.
 
 ---
 
@@ -31,9 +32,10 @@ description: Core engineering protocol — ownership, DoD, core loop, design pri
 
 ## §2 — Definition of Done
 Done = ALL met, with evidence. Missing any → **NOT DONE.**
-- Works (change does what's required) · Proven (receipt pasted) · Gate-green (no metric worse) · Docs synced · Self-reviewed · 0 dead code/TODOs/FIXMEs/hardcoded vals/secrets · Production-ready (monitoring active, rollback tested, runbook written)
+- **Works** (change does what's required) · **Proven** (receipt pasted) · **Gate-green** (no metric worse) · **Docs synced** · **Self-reviewed** · **Zero-hygiene** (0 dead code + 0 TODOs/FIXMEs/stubs + 0 hardcoded vals/secrets + 0 over-engineered + 0 missing features) · **Production-ready** (monitoring active, rollback tested, runbook written)
 
-**Quality gates:** Coverage ≥70% · Pass 100% · Doc sync 100% · Bugs 0 · Vulns 0 · Anti-patterns 0 · Dead code 0
+**Quality gates:** Coverage ≥70% · Pass 100% · Doc sync 100% · Bugs 0 · Vulns 0 · Anti-patterns 0 · Dead code 0 · Stubs/TODOs 0 · Over-engineered 0
+**Verification protocol:** See [VERIFICATION.md](VERIFICATION.md) for full verification checklist (compile, test, QA, play-the-user).
 
 **The Ratchet:** A change may *add* code but must never degrade any tracked metric — not by one violation or 0.1%. Baseline frozen. Before claiming done: run the ratchet, read the artifact, fix regressions. 🚫 Never edit baseline/gates/tests to bypass.
 
@@ -42,6 +44,7 @@ Done = ALL met, with evidence. Missing any → **NOT DONE.**
 ## §3 — Epistemic & Execution Principles
 - **Evidence-First:** no assertion without raw command/tool output backing it. Redact secrets/PII.
 - **Grounding:** read files fully before citing. If you didn't open it, you don't know it exists.
+- **Verify Before Claiming:** compile/type-check before claiming done. Verify package registry age/existence before adding dependency. Full protocol in [VERIFICATION.md](VERIFICATION.md).
 - **Anti-Sycophancy:** correct false premises immediately. **This applies to user claims too** — "API is working" is not proof. Verify every claim before acting. When user contradicts your evidence, surface it with receipts. Don't back down without new evidence. Don't argue without your own. Name contradictions ("add X but don't change anything") and ask priority.
 - **No Self-Verification:** hand off to fresh-context reviewer who sees only diff + spec.
 - **Trust but Verify Subagents:** read real diff, confirm scope, run full validation suite.
@@ -101,8 +104,9 @@ SOLID, KISS, DRY, YAGNI · explicit > implicit · no silent failure · 100% exte
 
 ```
 1. READ     → §1 MCP sequence (or manual fallback). State what was found, with names.
-2. THINK    → §3 Think-Before-Decide. ≥3 options for non-trivial, scored on risk.
-2.1 DECOMPOSE → PLAN.md: restate intent, classify scope, decompose if COMPLEX. MANDATORY before building.
+2. THINK    → §3 Think-Before-Decide. ≥3 options for non-trivial, scored on risk/complexity/reversibility/time.
+2.1 DECOMPOSE → PLAN.md: restate intent, classify scope (TRIVIAL/STANDARD/COMPLEX), decompose if COMPLEX. MANDATORY before building.
+2.2 MULTI-AGENT DEBATE → For COMPLEX tasks only: spawn Advocate + Skeptic + Synthesizer sub-agents. Synthesizer verdict replaces solo judgment. See MULTI_AGENT.md for protocol.
 3. DECIDE   → Choice + evidence + rollback trigger. ADR via manage_adr if complex.
 4. PLAN     → SOLID/KISS design, 100% externalized config.
              Rollback plan REQUIRED (§6.3): before BUILD, write undo steps.
@@ -155,8 +159,9 @@ Skipping step 1 or 2 is a protocol violation regardless of task size or urgency.
 ---
 
 ## §7 — Hard NOs (absolute)
-🚫 Placeholders, TODOs, `// implementation here`, dead code, commented-out blocks
-🚫 Modules >800 lines · Functions >50 lines · Nesting >4 levels
+🚫 Source-code modules >800 lines · Functions >50 lines · Nesting >4 levels
+   (Markdown/prose files exempt from line-count limits; prefer narrative splitting instead.)
+🚫 Placeholders, TODOs, stubs, skeleton code, `// implementation here`, dead code, commented-out blocks
 🚫 Hardcoded secrets, API keys, passwords, tokens, or env values
 🚫 Silent errors — every error must be logged, surfaced, or propagated
 🚫 Mocks/test doubles in integration/E2E tests — use real IO (test DB, test API)
@@ -202,6 +207,38 @@ Conflict with this protocol: state the conflict plainly, offer the compliant pat
 
 ---
 
+## §11 — SHIP FAST & REVENUE-FIRST PROTOCOL
+
+**Done today > perfect tomorrow.** Working code that ships beats perfect code that doesn't.
+Without revenue, no company survives. This protocol ensures continuous forward motion.
+
+### §11.1 — Ship Fast, Track Debt
+When deferring work (never in code — always via tracker):
+1. Create `docs/track/<item>.md` with: what's deferred, why, acceptance criteria.
+2. The tracker IS the commitment. Silent promises become invisible debt.
+3. 🚫 No TODO/FIXME/Not Implemented/stubs in shipping code. Deferred = tracked, not commented.
+
+### §11.2 — MVP Must Be Demoable
+Every MVP must be a COMPLETE, PRESENTABLE slice end-to-end:
+- No stubs, no placeholders, no dead buttons, no "add later"
+- User can complete the core business flow with real data
+- Scope DOWN rather than stub OUT. Incomplete → remove from MVP scope.
+
+### §11.3 — Revenue Over Aesthetics
+Prioritization hierarchy (descending):
+1. **Business correctness** — pricing, tax, inventory, orders, payments work
+2. **Performance** — fast enough to not lose users
+3. **Elegance** — clean code, maintainable architecture
+4. **Aesthetics** — UI polish, animations, visual refinement
+
+Working payment flow > beautiful checkout page. Revenue-critical paths ship first.
+
+### §11.4 — Continuous Improvement via Tracker
+- `docs/track/` is the canonical backlog for all deferred work
+- Each deploy checks: did we close more trackers than we opened?
+- Trackers without updates for 30 days → flag for review → close or promote
+---
+
 ## Appendix A — Verification Protocol
 Bug fixes require failing→passing test (written before or alongside fix). Test suite commands must discover all new tests — use glob patterns, not explicit file lists. Coverage gate: ≥70% line + branch.
 
@@ -216,9 +253,6 @@ Reviewers hunt missing edge cases and spec gaps only, not style. Skip what works
 
 ## Appendix E — Thinking Policy
 Deeper reasoning = architecture/planning/debugging. Never for simple lookups (use §1 tools instead).
-
-## Appendix F — Anti-Hallucination
-Compile/type-check before claiming done. Verify package registry age/existence before adding dependency.
 
 ## Appendix G — Delivery
 Branch from latest upstream `release/*` (or `main`). Semantic conflict resolution only.

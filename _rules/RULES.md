@@ -1,6 +1,6 @@
 ---
 name: rules
-version: 2.5.0
+version: 2.6.0
 severity: mandatory
 scope: [all]
 pairs-with: [engineering, verification]
@@ -13,7 +13,7 @@ description: Universal compact rules — one file for all models
 
 ---
 
-## 10 RULES (do not break)
+## RULES (do not break)
 
 ### 1. READ FIRST, THEN WRITE
 Read file before changing. Understand how it works. Don't write code you don't understand.
@@ -45,9 +45,19 @@ Re-read your own diff. Delete unnecessary code. Check unproven assumptions.
 ### 10. UPDATE DOCUMENTATION
 Change code → update docs. Code ≠ Docs → STOP. Don't commit outdated docs.
 
+### 11. ZERO STUBS, ZERO DEBT
+No TODO, FIXME, "Not Implemented", placeholder, stub, skeleton, or pass/throw without real logic.
+Deferment protocol: create `docs/track/<item>.md` with acceptance criteria.
+Deferred is tracked, not forgotten. Silent promises = invisible debt.
+
+### 12. REVENUE FIRST
+Business flow before UI polish. Working payment > beautiful button.
+Every MVP must be a COMPLETE demoable slice — scope down, don't stub out.
+Without revenue, company dies. Ship revenue-critical paths first.
+
 ---
 
-## 5 DESIGN PRINCIPLES (must follow)
+## DESIGN PRINCIPLES (must follow)
 
 **SOLID:** S = one function one job. O = open for extension, closed for modification. L = subclass can replace parent. I = small specific interfaces. D = depend on abstractions, not implementations.
 
@@ -58,6 +68,15 @@ Change code → update docs. Code ≠ Docs → STOP. Don't commit outdated docs.
 **YAGNI:** No code for "possible later". No features not requested. No abstractions for use cases that don't exist.
 
 **PROVIDER/PLUGIN:** All external integrations MUST use interface + implementation. `PaymentProvider` → `StripeProvider`. Inject via config, not `if provider=="stripe"` everywhere.
+
+**MVP-FIRST:** Every MVP must be a complete, demoable slice. Incomplete = not an MVP.
+Scope down, don't stub out. If it can't be presented end-to-end, it's not ready.
+
+**SHIP FAST, IMPROVE LATER:** Code that ships beats perfect code that doesn't.
+Deferred improvements go in `docs/track/`. The tracker IS the commitment.
+
+**REVENUE FIRST, AESTHETIC LATER:** Business logic before UI polish.
+Without revenue, no company survives. Priority: business correctness > perf > elegance > aesthetics.
 
 ---
 
@@ -99,6 +118,8 @@ When asked "can we do X?", NEVER just "yes" or "no":
 
 ```
 [ ] Read existing code?
+[ ] Zero-hygiene: 0 hardcoded values, 0 TODO/FIXME/stubs, 0 over-engineered?
+[ ] SOLID, KISS, DRY, YAGNI verified?
 [ ] Code compiles (zero errors)?
 [ ] All tests pass (N/N pass)?
 [ ] Used feature like a real user?
@@ -118,6 +139,10 @@ When asked "can we do X?", NEVER just "yes" or "no":
 - Use unchecked API → grep/read/curl first
 - "Should work" → Use like real user
 - "Can't" without reason → Explain what exists, missing, needed
+- Stub/TODO left in code → Track in docs/track/ instead
+- Over-engineered → Apply KISS + YAGNI before commit
+- Perfect but unscoped MVP → Ship demoable slice, not full system
+- Polish before revenue → Business flow first, aesthetics later
 - Skip tests → Run tests, paste results
 - No self-review → Read own diff
 - Hardcode provider → Interface + implementation
