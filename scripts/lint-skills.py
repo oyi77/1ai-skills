@@ -51,6 +51,17 @@ SIMILARITY_THRESHOLD = 0.99   # for near-duplicate detection
 REQUIRED_SECTIONS = {"## When to Use"}
 RECOMMENDED_SECTIONS = {"## Overview", "## Process", "## Verification"}
 
+# ── Frontmatter Schema ──────────────────────────────────────────────────
+REQUIRED_FRONTMATTER = {"name", "description", "domain"}
+RECOMMENDED_FRONTMATTER = {"tags", "version", "author", "license", "subdomain"}
+ALLOWED_VERSIONS = re.compile(r"^\d+\.\d+(\.\d+)?$")
+
+# Trigger phrases for automatic skill discovery (lowercase check)
+TRIGGER_PHRASES = {
+    "use when", "triggers on", "covers", "activates for", "use for",
+    "automated", "generates",
+}
+
 GENERIC_DESCS = {
     "ai agent skill", "skill for agents", "automation skill",
     "use this skill when", "agent skill",
@@ -196,7 +207,7 @@ def check_description_quality(meta: dict, result: LintResult):
     ]
     has_trigger = any(re.search(p, desc_lower) for p in trigger_patterns)
     if not has_trigger:
-        result.add("info", skill, "desc-no-trigger",
+        result.add("warnings", skill, "desc-no-trigger",
                     "Description lacks trigger phrase (e.g., 'Use when...')")
 
 
@@ -206,10 +217,50 @@ def check_tags(meta: dict, result: LintResult):
     tags = meta.get("tags")
 
     if tags is None:
-        result.add("info", skill, "missing-tags", "No tags in frontmatter")
+        result.add("warnings", skill, "missing-tags", "No tags in frontmatter")
     elif isinstance(tags, list) and len(tags) == 0:
-        result.add("info", skill, "empty-tags", "Tags list is empty")
+        result.add("warnings", skill, "empty-tags", "Tags list is empty")
+    elif len(tags) < 2:
+        result.add("info", skill, "few-tags", f"Only 1 tag: {tags[0]}")
 
+
+def check_frontmatter_schema(meta: dict, result: LintResult):
+    """Validate required and recommended frontmatter fields."""
+    skill = meta.get("name", meta["_path"])
+    present = {k for k in meta if k not in ("_body", "_path")}
+
+    for field in sorted(REQUIRED_FRONTMATTER):
+        if field not in present:
+            result.add("errors", skill, "missing-field",
+                       f"Missing required field: '{field}'")
+
+    for field in sorted(RECOMMENDED_FRONTMATTER):
+        if field not in present:
+            result.add("info", skill, "missing-recommended-field",
+                       f"Missing recommended field: '{field}'")
+
+
+def check_version(meta: dict, result: LintResult):
+    """Validate version field format if present."""
+    skill = meta.get("name", meta["_path"])
+    version = meta.get("version")
+    if version is not None and not ALLOWED_VERSIONS.match(str(version)):
+        result.add("warnings", skill, "bad-version",
+                   f"Invalid version format: '{version}' (expect semver)")
+
+
+def check_author(meta: dict, result: LintResult):
+    """Check author is present."""
+    skill = meta.get("name", meta["_path"])
+    if not meta.get("author"):
+        result.add("info", skill, "missing-author",
+                   "No author field in frontmatter")
+
+
+def check_see_also(meta: dict, result: LintResult):
+    """Validate see_also references exist."""
+    # Done cross-skill; this function is a placeholder.
+    pass
 
 def check_sections(body: str, skill: str, result: LintResult):
     """Check for required and recommended sections."""
@@ -315,21 +366,50 @@ def build_search_index(skills_meta: list[dict]) -> dict:
         parts = Path(meta["_path"]).parts
         category = parts[0] if parts else "unknown"
 
+        # Derive trigger hint from description
+        desc = meta.get("description", "")
+        desc_lower = desc.lower()
+        # Synthesise a one-line trigger from known patterns
+        trigger = ""
+        trigger_pats = [
+            r"\buse when\b\s*(.+)$", r"\btriggers? on\b\s*(.+)$",
+            r"\bactivates for\b\s*(.+)$",
+        ]
+        for pat in trigger_pats:
+            m = re.search(pat, desc)
+            if m:
+                trigger = m.group(1).strip().rstrip(".,")
+                break
+
         entry = {
             "name": name,
             "category": category,
-            "description": meta.get("description", ""),
+            "description": desc,
             "domain": meta.get("domain", category),
             "tags": meta.get("tags", []),
+            "version": meta.get("version", ""),
+            "author": meta.get("author", ""),
+            "subdomain": meta.get("subdomain", ""),
         }
 
-        # Add persona if present
-        persona = meta.get("persona")
-        if isinstance(persona, dict):
-            entry["persona"] = persona.get("name", "")
+        # Add trigger hint when found
+        if trigger:
+            entry["trigger_hint"] = trigger
 
-        all_skills.append(entry)
+        # Derive "type" from category
+        type_map = {
+            "cybersecurity": "security",
+            "development": "dev",
+            "devops": "devops",
+            "content": "content",
+            "marketing": "marketing",
+            "trading": "trading",
+            "finance": "finance",
+            "financial": "finance",
+        }
+        entry["type"] = type_map.get(entry["domain"], entry["domain"])
         categories[category].append(entry)
+        all_skills.append(entry)
 
     # Sort for deterministic output
     all_skills.sort(key=lambda s: (s["category"], s["name"]))
@@ -377,10 +457,12 @@ def main() -> int:
     # Individual checks
     for meta in skills_meta:
         skill = meta.get("name", meta["_path"])
+        check_frontmatter_schema(meta, result)
         check_description_quality(meta, result)
         check_tags(meta, result)
+        check_version(meta, result)
+        check_author(meta, result)
         check_sections(meta.get("_body", ""), skill, result)
-
     # Cross-skill checks
     check_duplicates(skills_meta, result)
     check_cross_references(skills_meta, result)
