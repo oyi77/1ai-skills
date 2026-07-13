@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-04T20:31:03.981458+00:00",
-  "total": 1336,
+  "generated": "2026-07-13T09:42:14.825087+00:00",
+  "total": 1334,
   "categories": [
     {
       "name": "cybersecurity",
@@ -8,7 +8,7 @@
     },
     {
       "name": "development",
-      "count": 92
+      "count": 90
     },
     {
       "name": "content",
@@ -28,7 +28,7 @@
     },
     {
       "name": "integrations",
-      "count": 36
+      "count": 34
     },
     {
       "name": "devops",
@@ -44,7 +44,7 @@
     },
     {
       "name": "trading",
-      "count": 20
+      "count": 19
     },
     {
       "name": "operations",
@@ -77,9 +77,13 @@
     {
       "name": "productivity",
       "count": 10
+    },
+    {
+      "name": "other",
+      "count": 3
     }
   ],
-  "categoryCount": 19,
+  "categoryCount": 20,
   "featured": [
     {
       "name": "AgentShield",
@@ -2258,10 +2262,6 @@
       "category": "development"
     },
     {
-      "name": "firebase-integration",
-      "category": "integrations"
-    },
-    {
       "name": "firebase-patterns",
       "category": "development"
     },
@@ -3308,6 +3308,18 @@
     {
       "name": "investing-algorithm-framework",
       "category": "trading"
+    },
+    {
+      "name": "investment-bottleneck",
+      "category": "other"
+    },
+    {
+      "name": "investment-earnings",
+      "category": "other"
+    },
+    {
+      "name": "investment-industry",
+      "category": "other"
     },
     {
       "name": "ionic-capacitor",
@@ -4506,10 +4518,6 @@
       "category": "research"
     },
     {
-      "name": "polymarket-api",
-      "category": "trading"
-    },
-    {
       "name": "polymarket-fast-loop",
       "category": "trading"
     },
@@ -5054,10 +5062,6 @@
       "category": "agents"
     },
     {
-      "name": "supabase-integration",
-      "category": "integrations"
-    },
-    {
       "name": "supabase-mcp",
       "category": "mcp"
     },
@@ -5079,10 +5083,6 @@
     },
     {
       "name": "svelte-framework",
-      "category": "development"
-    },
-    {
-      "name": "svelte-patterns",
       "category": "development"
     },
     {
@@ -5443,10 +5443,6 @@
     },
     {
       "name": "vue-framework",
-      "category": "development"
-    },
-    {
-      "name": "vue-patterns",
       "category": "development"
     },
     {

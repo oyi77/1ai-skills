@@ -1,6 +1,6 @@
 ---
 name: portfolio-manager
-description: Portfolio Manager — BerkahKarya Quant Fund. Use when relevant to this domain.
+description: Portfolio manager — capital allocation, risk management, and performance metrics tracking for trading strategies.
 domain: trading
 tags:
 - algorithms
@@ -14,7 +14,7 @@ tags:
 ## When to Use
 
 **Trigger phrases:**
-- "portfolio manager"
+
 - "Managing capital allocation across multiple trading strategies"
 - "Tracking performance metrics (IRR, MOIC, Sharpe, win rate) for a quant fund"
 - "Implementing phase gates for progression from paper to live to scaled trading"

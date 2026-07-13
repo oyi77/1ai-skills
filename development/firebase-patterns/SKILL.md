@@ -1,10 +1,14 @@
 ---
 name: firebase-patterns
-description: Firebase patterns — Firestore queries, auth flows, cloud functions, and security rules. Use when working with firebase patterns.
+description: Firebase patterns and integration — Firestore queries, auth flows, cloud functions, security rules, SDK setup, and real-time data. Use when working with firebase patterns, integrating firebase.
 domain: development
 tags:
 - coding
 - firebase
+- firestore
+- auth
+- cloud-functions
+- realtime
 - patterns
 - rest-api
 - software-engineering
@@ -26,6 +30,8 @@ Firebase-specific patterns for building scalable applications. Covers Firestore 
 
 ## When to Use
 **Trigger phrases:**
+- "firebase integration"
+- "Integrate Firebase for authentication, Firestore database, Cloud Functions, host"
 - "firebase patterns"
 - "Firebase patterns — Firestore queries, auth flows, cloud functions, and security"
 
@@ -34,6 +40,36 @@ Firebase-specific patterns for building scalable applications. Covers Firestore 
 - Need offline-first mobile/web app
 - Serverless backend with Cloud Functions
 - Social auth integration (Google, Apple, GitHub)
+
+## Workflow
+
+1. **Set up project** - Create Firebase project, add apps
+2. **Install SDK** - `npm install firebase` or use modular SDK
+3. **Configure auth** - Enable providers, set up sign-in flows
+4. **Design data model** - Firestore collections, documents, subcollections
+5. **Build queries** - Real-time listeners, compound queries, pagination
+6. **Deploy functions** - Cloud Functions for backend logic
+
+## Code Example (JavaScript)
+
+```javascript
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, onSnapshot, query, where } from 'firebase/firestore';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+const { user } = await signInWithPopup(auth, new GoogleAuthProvider());
+
+const q = query(collection(db, 'messages'), where('channel', '==', 'general'));
+const unsubscribe = onSnapshot(q, (snapshot) => {
+  snapshot.docChanges().forEach((change) => {
+    if (change.type === 'added') console.log('New message:', change.doc.data());
+  });
+});
+```
 
 ## When NOT to Use
 
@@ -44,6 +80,9 @@ Firebase-specific patterns for building scalable applications. Covers Firestore 
 - Requirements are unclear (clarify first)
 - Task is trivially simple (single line fix)
 
+
+- For relational data (use PostgreSQL/Supabase)
+- For complex queries (Firestore has limited query capabilities)
 
 ## Pseudo Code
 
@@ -122,6 +161,10 @@ service cloud.firestore {
 ## Verification
 
 - [ ] Skill output matches expected behavior
+- [ ] Authentication works with configured providers
+- [ ] Firestore queries return correct data
+- [ ] Real-time listeners fire on data changes
+- [ ] Security rules enforce access control
 
 ## Process
 
@@ -136,3 +179,5 @@ service cloud.firestore {
 | "Tests slow me down" | Bugs slow you down 10x more. Tests are speed, not overhead. |
 | "I will refactor later" | Technical debt compounds. Refactor as you go. |
 | "It works on my machine" | If it is not in CI, it does not work. Ship proof, not claims. |
+| "Firestore is just JSON" | Document/subcollection model requires specific data modeling patterns |
+| "I will skip security rules" | Without rules, any client can read/write any document |

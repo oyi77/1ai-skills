@@ -1,10 +1,6 @@
 ---
 name: implementing-network-access-control
-description: 'Implements 802.1X port-based network access control using RADIUS authentication, PacketFence NAC, and switch
-  configurations to enforce identity-based access policies, posture assessment, and automatic VLAN assignment for authorized
-  devices.
-
-  '. Use when working with implementing network access control.
+description: 'Implements 802.1X port-based network access control using RADIUS authentication, PacketFence NAC, and switch configurations to enforce identity-based access policies, posture assessment, and automatic VLAN assignment for authorized devices. . Use when working with implementing network access control.'
 domain: cybersecurity
 tags:
 - network-security

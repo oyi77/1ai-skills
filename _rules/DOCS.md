@@ -1,3 +1,12 @@
+---
+name: docs
+version: 2.5.0
+severity: recommended
+scope: [docs, research]
+pairs-with: [engineering]
+description: Full-stack codebase documentation template (AI & human readable)
+---
+
 # Prompt: Full-Stack Codebase Documentation (AI- & Human-Readable)
 
 > Reusable prompt template. Works on any full-stack repo (web app, mobile backend,

@@ -1,6 +1,7 @@
 ---
 name: analyzing-windows-amcache-artifacts
-description: >  'Parses and analyzes the Windows Amcache.hve registry hive to extract evidence of program execution, application
+description: >
+  Parses and analyzes the Windows Amcache.hve registry hive to extract evidence of program execution, application
   installation, and driver loading for digital forensics investigations. Uses Eric Zimmerman''s AmcacheParser and Timeline
   Explorer for artifact extraction, SHA-1 hash correlation with threat intel, and timeline reconstruction. Activates for requests
   involving Amcache forensics, program execution evidence, Windows artifact analysis, or application compatibility cache investigation.

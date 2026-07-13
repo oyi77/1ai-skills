@@ -1,6 +1,6 @@
 ---
 name: sherlock-research
-description: 'Investigate problems systematically using Sherlock Holmes'' method: observe, deduce, hypothesize, and verify.'. Use when working with sherlock research.
+description: 'Investigate problems systematically using Sherlock Holmes'' method: observe, deduce, hypothesize, and verify. . Use when working with sherlock research.'
 domain: research
 tags:
 - analysis

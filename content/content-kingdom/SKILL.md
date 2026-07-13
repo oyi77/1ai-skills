@@ -1,24 +1,16 @@
 ---
 name: content-kingdom
-description: >  ">\n  Content Kingdom Orchestrator — the BRAIN that coordinates all 12 content phases\n  for BerkahKarya / JENDRALBOT.\
-  \ Sequences research → plan → script → create →\n  review → schedule → post → engage → analyze → optimize → repurpose →\
-  \ scale.\n  Thin coordinator: imports existing autopilot_affiliate_engine and content-generator\n  scripts; only builds\
-  \ truly new modules (comment_manager, engagement_engine).\n  v2.
-domain: content
+description: >
+  Content Kingdom Orchestrator — the BRAIN that coordinates all 12 content phases.
+  Sequences research → plan → script → create → review → schedule → post → engage → analyze → optimize → repurpose → scale.
 tags:
 - content
 - automation
 - tiktok
 - instagram
 - postbridge
-- jendralbot
-- berkahkarya
 - geminigen
-- veris
-version: 2.0.0
-author: Vilona / BerkahKarya AI
-skill_dir: skills/1ai-skills/content/content-kingdom
-symlink: skills/content-kingdom
+domain: content
 ---
 
 
@@ -280,7 +272,7 @@ Edit `config.json` to change:
 | Key | Purpose | Example |
 |-----|---------|---------|
 | `products` | Products to promote (hooks, prices) | Add new LYNK product |
-| `personas` | Brand voices (JENDRALBOT, BerkahKarya) | Add new persona |
+| `personas` | Brand voices (e.g., brands, styles) | Add new persona |
 | `platforms` | Enable/disable platforms | `"youtube": {"enabled": true}` |
 | `schedule` | Posting times per platform | `"tiktok": ["07:00", "19:00"]` |
 | `quality_gates` | Review pass/fail thresholds | `"min_caption_length": 80` |

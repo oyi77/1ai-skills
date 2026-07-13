@@ -309,11 +309,15 @@ def test_sdk_availability(text):
     imports = set()
     for match in re.findall(r'(?:from|import)\s+([\w.]+)', text):
         top = match.split('.')[0]
+        if not top:
+            continue
         imports.add(top)
 
     # Extract npm packages
     for match in re.findall(r'npm install\s+([\w@/-]+)', text):
-        imports.add(match.split('/')[-1].replace('@', ''))
+        path_part = match.split('/')[-1].replace('@', '')
+        if path_part:
+            imports.add(path_part)
 
     # Check availability
     available = 0

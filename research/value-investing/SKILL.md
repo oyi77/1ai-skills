@@ -1,6 +1,6 @@
 ---
 name: value-investing
-description: 'Evaluate stocks using Warren Buffett''s value investing: intrinsic value, margin of safety, and long-term moats.'. Use when working with value investing.
+description: 'Evaluate stocks using Warren Buffett''s value investing: intrinsic value, margin of safety, and long-term moats. . Use when working with value investing.'
 domain: research
 tags:
 - analysis
