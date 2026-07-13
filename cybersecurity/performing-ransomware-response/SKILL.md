@@ -1,6 +1,7 @@
 ---
 name: performing-ransomware-response
-description: >  'Executes a structured ransomware incident response from initial detection through containment, forensic analysis,
+description: >
+  Executes a structured ransomware incident response from initial detection through containment, forensic analysis,
   decryption assessment, recovery, and post-incident hardening. Addresses ransom negotiation considerations, backup integrity
   verification, and regulatory notification requirements. Activates for requests involving ransomware response, ransomware
   recovery, crypto-ransomware, data encryption attack, ransom payment decision, or ransomware containment.

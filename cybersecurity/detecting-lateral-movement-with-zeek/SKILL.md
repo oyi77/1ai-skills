@@ -1,10 +1,6 @@
 ---
 name: detecting-lateral-movement-with-zeek
-description: 'Detect lateral movement in network traffic using Zeek (formerly Bro) log analysis. Parses conn.log, smb_mapping.log,
-  smb_files.log, dce_rpc.log, kerberos.log, and ntlm.log to identify SMB file transfers, NTLM account spray activity, remote
-  service execution, and anomalous internal connections.
-
-  '. Use when working with detecting lateral movement with zeek.
+description: 'Detect lateral movement in network traffic using Zeek (formerly Bro) log analysis. Parses conn.log, smb_mapping.log, smb_files.log, dce_rpc.log, kerberos.log, and ntlm.log to identify SMB file transfers, NTLM account spray activity, remote service execution, and anomalous internal connections. . Use when working with detecting lateral movement with zeek.'
 domain: cybersecurity
 tags:
 - zeek

@@ -1,6 +1,7 @@
 ---
 name: performing-api-fuzzing-with-restler
-description: >  Uses Microsoft RESTler to perform stateful REST API fuzzing by automatically generating and executing test sequences
+description: >
+  Uses Microsoft RESTler to perform stateful REST API fuzzing by automatically generating and executing test sequences
   that exercise API endpoints, discover producer-consumer dependencies between requests, and find security and reliability
   bugs. The tester compiles an OpenAPI specification into a RESTler fuzzing grammar, configures authentication, runs test/fuzz-lean/fuzz
   modes, and analyzes results for 500 errors, authentication bypasses, resource leaks, and payload injection vulnerabilitie.

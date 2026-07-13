@@ -26,7 +26,7 @@ tags:
 - For tasks outside this skill's scope
 
 
-**Auto-generate 30-day content calendars for BerkahKarya. Revenue survival tool.**
+**Auto-generate 30-day content calendars for your brand. Revenue survival tool.**
 
 
 ## When NOT to Use

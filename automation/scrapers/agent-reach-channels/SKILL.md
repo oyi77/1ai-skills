@@ -5,6 +5,13 @@ category: automation/scrapers
 domain: social-commerce
 description: Multi-platform e-commerce and messaging channel extraction (Shopee, TikTok Shop, WeChat)
 keywords: [shopee, tiktok-shop, wechat, scraping, commerce, messaging, southeast-asia, indonesia]
+tags:
+- ecommerce
+- scraping
+- agent-reach
+- shopee
+- tiktok
+- wechat
 source: Panniantong/Agent-Reach
 ---
 
@@ -12,8 +19,7 @@ source: Panniantong/Agent-Reach
 
 Unified channel extraction framework for Southeast Asian e-commerce (Shopee, TikTok Shop) and Chinese messaging (WeChat).
 
-## When to use
-
+## When to Use
 - **Shopee:** Extract products, reviews, seller info from Indonesia/Malaysia/Philippines/Thailand/Singapore/Vietnam
 - **TikTok Shop:** Extract TikTok Shop products, live streams, seller metrics
 - **WeChat:** Extract Official Account articles, mini-programs, Moments, user profiles

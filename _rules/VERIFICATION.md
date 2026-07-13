@@ -1,3 +1,12 @@
+---
+name: verification
+version: 2.5.0
+severity: mandatory
+scope: [all]
+pairs-with: [engineering, qa]
+description: Receipt enforcement — show output or not done
+---
+
 # RULE_VERIFICATION_PROTOCOL.md
 > **Anti-Hallucination Execution Standard — "Receipt or Not Done"**
 > Version 1.0 | Pair this with RULE_QA_MASTER.md, RULE_CODING_AGENT.md, SURPASS.md
@@ -129,14 +138,19 @@ Each item must either:
 
 **The agent is forbidden from optimistic reporting. It must report what is observed, not what is hoped.**
 
-| Optimistic (BANNED) | Honest (REQUIRED) |
-|---------------------|-------------------|
+| Optimistic / Dismissive (BANNED) | Honest (REQUIRED) |
+|----------------------------------|-------------------|
 | "The tests pass" | "Tests pass: 14/14. See output below." |
 | "It should handle errors correctly" | "Error path: tested with X input, received Y response. Screenshot below." |
 | "The integration is complete" | "Integration tested: sent X to endpoint, received Y, DB row confirmed via query." |
 | "Performance looks good" | "p95 latency: 187ms under 50 concurrent requests. See load test output." |
 | "Security is handled" | "Auth test: unauthenticated request to /api/admin returned 401. Token-expired request returned 401. See curl outputs." |
 | "Done" | "Done: all 4 acceptance criteria verified with receipts in §6 below." |
+| "Tidak bisa" / "Impossible" | "Current state: [what exists]. Missing: [what's needed]. Effort: [estimate]. Evidence: [source]." |
+| "Bisa, pasti berhasil" | "Current capabilities: [list]. Requirements: [list]. Gaps: [what's missing]. Confidence: [evidence-based level]." |
+| "Kita bisa email institusi besar untuk $1B" | **Technical:** "We have email sending capability (code verified). **Business:** No — requires legal compliance, relationship building, proposal writing, due diligence. **Current gaps:** [list]. **What's needed:** [list]." |
+| "Kita sudah production grade" | **Technical:** "Code compiles, tests pass, CI green. **Business:** Not proven — no production deployment, no load testing, no real users. **Evidence:** [list what's proven vs unproven]." |
+| "Kita sudah surpass competitor" | **Technical:** "Feature X implemented (code verified). **Business:** Not measured — no user metrics, no market validation, no production data. **Evidence:** [list what's proven vs unproven]."
 
 ---
 

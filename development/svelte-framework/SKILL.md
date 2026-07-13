@@ -1,12 +1,13 @@
 ---
 name: svelte-framework
-description: Svelte and SvelteKit development — runes, stores, server-side rendering, form actions, streaming. Use when working with svelte framework.
+description: Svelte and SvelteKit development — runes, stores, server-side rendering, form actions, streaming, edge deployment, and patterns. Use when working with svelte framework.
 domain: development
 tags:
 - coding
 - framework
 - software-engineering
 - svelte
+- patterns
 - testing
 ---
 
@@ -29,9 +30,11 @@ Build high-performance web apps with Svelte 5 (runes reactivity) and SvelteKit (
 **Trigger phrases:**
 - "svelte framework"
 - "Svelte and SvelteKit development — runes, stores, server-side rendering, form ac"
+- "svelte patterns"
 
 
 - Building fast, lightweight web applications
+- Building reactive UIs with minimal boilerplate
 - SSR/SSG with minimal JavaScript
 - Form-heavy applications with progressive enhancement
 - Real-time apps with efficient reactivity
@@ -164,6 +167,22 @@ export const load = async ({ fetch }) => {
 {/await}
 ```
 
+### Component with Children Slots
+
+```svelte
+<!-- Card.svelte -->
+<script>
+  let { title, children } = $props();
+</script>
+
+<div class="card">
+  <h2>{title}</h2>
+  <div class="content">
+    {@render children()}
+  </div>
+</div>
+```
+
 ## Common Patterns
 
 - **Form actions**: Progressive enhancement, works without JS
@@ -171,6 +190,9 @@ export const load = async ({ fetch }) => {
 - **Runes**: Fine-grained reactivity without virtual DOM overhead
 - **Adapter deployment**: Swap adapters for different hosts
 - **Layout groups**: Shared layouts with `(group)` directories
+- **$state.raw**: Non-deep-reactive state for large arrays/objects
+- **$effect.cleanup**: Cleanup side effects when component unmounts
+- **Hooks**: `handle` for middleware, `handleError` for error reporting
 
 ## How to Use
 

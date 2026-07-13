@@ -29,13 +29,13 @@ tags:
 
 
 **name:** cicd-deployment  
-**description:** Production-ready CI/CD pipeline and deployment skill for BerkahKarya Software House. Covers GitHub Actions workflows, systemd user services, Docker, VPS deployment, zero-downtime blue/green strategy, rollback, health checks, and Telegram notifications. Stack: Python/Node.js on Kali Linux (kali-openclaw). AI GM: Vilona.
+**description:** Production-ready CI/CD pipeline and deployment skill. Covers GitHub Actions workflows, systemd user services, Docker, VPS deployment, zero-downtime blue/green strategy, rollback, health checks, and Telegram notifications. Stack: Python/Node.js.
 
 ---
 
 ## Overview
 
-This skill provides opinionated, fast-to-implement CI/CD patterns for BerkahKarya services. The pipeline follows a strict flow:
+This skill provides opinionated, fast-to-implement CI/CD patterns for your services. The pipeline follows a strict flow:
 
 ```
 lint → test → build → deploy → health-check → notify
@@ -63,10 +63,9 @@ Every deployment is automated, auditable, and reversible. Secrets never touch gi
 
 ```bash
 # On the server, create env file manually:
-nano ~/.config/berkahkarya/<service-name>/.env
-
+nano ~/.config/myapp/<service-name>/.env
 # Set strict permissions:
-chmod 600 ~/.config/berkahkarya/<service-name>/.env
+chmod 600 ~/.config/myapp/<service-name>/.env
 
 # Add to .gitignore (non-negotiable):
 echo ".env" >> .gitignore
@@ -78,7 +77,7 @@ echo "!.env.example" >> .gitignore
 
 ```env
 # .env.example — copy to .env and fill values
-APP_NAME=berkahkarya-service
+APP_NAME=my-service
 APP_ENV=production
 APP_PORT=8000
 
@@ -127,7 +126,7 @@ on:
       - staging
 
 env:
-  SERVICE_NAME: berkahkarya-service    # change per repo
+  SERVICE_NAME: my-service    # change per repo
   SERVER_USER: openclaw
   DEPLOY_PATH: /home/openclaw/services/${{ env.SERVICE_NAME }}
 
@@ -367,7 +366,7 @@ jobs:
 # Usage: ./scripts/deploy.sh <service-name> <git-sha> <env> <port>
 set -euo pipefail
 
-SERVICE_NAME="${1:-berkahkarya-service}"
+SERVICE_NAME="${1:-my-service}"
 GIT_SHA="${2:-unknown}"
 ENV="${3:-production}"
 PORT="${4:-8000}"
@@ -405,7 +404,7 @@ tar -xzf "$ARTIFACT" -C "$INACTIVE_DIR"
 rm -f "$ARTIFACT"
 
 # ── Copy .env from secure location ──────────────────────────────
-ENV_FILE="$HOME/.config/berkahkarya/$SERVICE_NAME/.env"
+ENV_FILE="$HOME/.config/myapp/$SERVICE_NAME/.env"
 if [[ -f "$ENV_FILE" ]]; then
     cp "$ENV_FILE" "$INACTIVE_DIR/.env"
     log ".env copied from secure location"
@@ -470,7 +469,7 @@ echo "$INACTIVE_SERVICE" > "$DEPLOY_BASE/ACTIVE_SLOT"
 # Usage: ./scripts/rollback.sh <service-name>
 set -euo pipefail
 
-SERVICE_NAME="${1:-berkahkarya-service}"
+SERVICE_NAME="${1:-my-service}"
 DEPLOY_BASE="$HOME/services/$SERVICE_NAME"
 LOG_FILE="$DEPLOY_BASE/logs/deploy.log"
 
@@ -545,7 +544,7 @@ fi
 # Usage: ./scripts/health_check.sh <service-name> [port]
 set -euo pipefail
 
-SERVICE_NAME="${1:-berkahkarya-service}"
+SERVICE_NAME="${1:-my-service}"
 PORT="${2:-8000}"
 DEPLOY_BASE="$HOME/services/$SERVICE_NAME"
 LOG_FILE="$DEPLOY_BASE/logs/health.log"
@@ -630,14 +629,14 @@ verbose: true
 
 ```ini
 [Unit]
-Description=BerkahKarya FastAPI Service — <service-name>
+Description=My FastAPI Service — <service-name>
 After=network.target
 Wants=network.target
 
 [Service]
 Type=simple
 WorkingDirectory=/home/openclaw/services/<service-name>/active
-EnvironmentFile=/home/openclaw/.config/berkahkarya/<service-name>/.env
+EnvironmentFile=/home/openclaw/.config/myapp/<service-name>/.env
 ExecStart=/home/openclaw/services/<service-name>/active/.venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000 --workers 2
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=always
@@ -654,13 +653,13 @@ WantedBy=default.target
 ```ini
 # <service-name>-blue.service
 [Unit]
-Description=BerkahKarya <service-name> (Blue Slot)
+Description=My <service-name> (Blue Slot)
 After=network.target
 
 [Service]
 Type=simple
 WorkingDirectory=/home/openclaw/services/<service-name>/blue
-EnvironmentFile=/home/openclaw/.config/berkahkarya/<service-name>/.env
+EnvironmentFile=/home/openclaw/.config/myapp/<service-name>/.env
 ExecStart=/home/openclaw/services/<service-name>/blue/.venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000 --workers 2
 Restart=on-failure
 RestartSec=5
@@ -770,7 +769,7 @@ version: '3.8'
 services:
   app:
     build: .
-    container_name: berkahkarya-${SERVICE_NAME}
+    container_name: myapp-${SERVICE_NAME}
     restart: unless-stopped
     ports:
       - "${APP_PORT:-8000}:8000"
@@ -785,8 +784,8 @@ services:
       retries: 3
       start_period: 10s
     labels:
-      - "com.berkahkarya.service=${SERVICE_NAME}"
-      - "com.berkahkarya.env=${APP_ENV}"
+      - "com.myapp.service=${SERVICE_NAME}"
+      - "com.myapp.env=${APP_ENV}"
 
   # Optional: nginx reverse proxy
   nginx:
@@ -803,12 +802,12 @@ services:
 
 networks:
   default:
-    name: berkahkarya-network
+    name: myapp-network
 ```
 
 ---
 
-## BerkahKarya Service Patterns
+## Service Patterns
 
 - Configure cicd, deployment, domain, relevant, this settings before first use
 
@@ -891,15 +890,15 @@ app.listen(PORT, () => console.log(`Listening on :${PORT}`));
 For non-HTTP workers (e.g., automation scripts, cron workers):
 
 ```ini
-# ~/.config/systemd/user/berkahkarya-worker.service
+# ~/.config/systemd/user/worker.service
 [Unit]
-Description=BerkahKarya Background Worker
+Description=Background Worker
 After=network.target
 
 [Service]
 Type=simple
 WorkingDirectory=/home/openclaw/services/my-worker/active
-EnvironmentFile=/home/openclaw/.config/berkahkarya/my-worker/.env
+EnvironmentFile=/home/openclaw/.config/myapp/my-worker/.env
 ExecStart=/home/openclaw/services/my-worker/active/.venv/bin/python worker.py
 Restart=always
 RestartSec=10
@@ -914,7 +913,7 @@ WantedBy=default.target
 
 ```bash
 # In health_check.sh, skip HTTP check:
-if systemctl --user is-active --quiet "berkahkarya-worker"; then
+if systemctl --user is-active --quiet "my-worker"; then
     pass "Worker process is running"
 else
     fail "Worker process is NOT running"
@@ -1019,16 +1018,16 @@ git push origin main
 
 ## Quick Setup Checklist
 
-For a new BerkahKarya service:
+For a new service:
 
 ```bash
 # 1. On server — create directory structure:
 mkdir -p ~/services/<service-name>/{blue,green,logs}
-mkdir -p ~/.config/berkahkarya/<service-name>
+mkdir -p ~/.config/myapp/<service-name>
 
 # 2. Create and secure .env:
-nano ~/.config/berkahkarya/<service-name>/.env
-chmod 600 ~/.config/berkahkarya/<service-name>/.env
+nano ~/.config/myapp/<service-name>/.env
+chmod 600 ~/.config/myapp/<service-name>/.env
 
 # 3. Copy systemd service files:
 cp *.service ~/.config/systemd/user/
@@ -1115,8 +1114,7 @@ telegram_notify "🚨 *Deploy FAILED* — \`my-service\` — manual action requi
 
 ---
 
-*Skill maintained by Vilona — BerkahKarya AI GM | Software House Division*  
-*Stack: Python/Node.js | Server: kali-openclaw | Updated: 2026-03*
+*Skill for production CI/CD pipelines and blue/green deployment automation. Generic stack examples.*
 
 ## How to Use
 

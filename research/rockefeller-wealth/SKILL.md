@@ -1,7 +1,6 @@
 ---
 name: rockefeller-wealth
-description: 'Apply Rockefeller''s systematic wealth-building strategies: vertical integration, capital allocation, and monopoly
-  thinking.'. Use when working with rockefeller wealth.
+description: 'Apply Rockefeller''s systematic wealth-building strategies: vertical integration, capital allocation, and monopoly thinking. . Use when working with rockefeller wealth.'
 domain: research
 tags:
 - analysis

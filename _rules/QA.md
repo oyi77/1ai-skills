@@ -1,3 +1,12 @@
+---
+name: qa
+version: 2.5.0
+severity: mandatory
+scope: [qa, testing]
+pairs-with: [verification]
+description: Universal QA → Review → Fix protocol
+---
+
 # RULE_QA_MASTER — Universal QA → Review → Fix Protocol
 **Version 2.0 | Consolidated from industry best practices + DevTools + OWASP + Exploratory + AI-era standards**
 
@@ -281,19 +290,73 @@ Berdasarkan **OWASP API Security Top 10** — setiap item harus di-test dengan e
 
 ### 4.11 Business Flows & User Journeys (wajib, terpisah dari per-layer)
 
-Test seluruh journey dari perspektif pengguna, bukan perspektif developer:
+> **"Play the User" — actually USE the feature like a real user, don't just run unit tests.**
 
+**WAJIB:** Setiap fitur baru HARUS di-test dengan cara yang sesuai dengan interface yang ada di codebase:
+
+#### Interface-Specific Testing Protocol:
+
+**1. UI/Web Apps (multi-role):**
+- Browser automation (Playwright/Puppeteer) untuk SETIAP role
+- Admin, User, Viewer, Guest — test SEMUA role yang ada
+- Buka browser → navigasi → klik → isi form → submit → screenshot
+- Cek DevTools: zero console error, Network tab OK
+- **WAJIB:** Test role yang TIDAK BOLEH akses sesuatu → verifikasi ditolak
+
+**2. Telegram Bot:**
+- **WAJIB pakai Telethon** (bukan mock, bukan unit test)
+- Kirim pesan NYATA ke bot → verifikasi response
+- Test semua command/trigger phrase
+- Test error handling: invalid input, expired session, duplicate message
+- Receipt: Telethon session logs
+
+**3. MCP Server:**
+- Test SETIAP tool dengan valid args → verify output match schema
+- Test SETIAP tool dengan invalid args → verify error message informatif
+- Test SETIAP tool dengan missing required args → verify rejection
+- **WAJIB:** Test tool descriptions match actual behavior
+- Receipt: MCP tool call logs
+
+**4. REST/GraphQL/gRPC API:**
+- curl/httpie dengan data NYATA (bukan placeholder)
+- Test semua HTTP methods yang di-expose
+- Test auth boundaries: no auth → 401, wrong role → 403
+- Test input validation: valid → success, invalid → 400
+- Test edge cases: empty body, max length, special chars
+- **WAJIB:** Verifikasi DB state setelah request
+- Receipt: curl output + DB query
+
+**5. A2A (Agent-to-Agent):**
+- Test agent communication end-to-end
+- Test task delegation: Agent A → Agent B → result
+- Test error handling: Agent B fails → Agent A handles gracefully
+- Test timeout: Agent B slow → Agent A timeout
+- Receipt: agent communication logs
+
+**6. CLI:**
+- Jalankan perintah NYATA dari terminal
+- Test semua flags/options
+- Test error handling: invalid args, missing files
+- Receipt: terminal output
+
+#### Test Cases WAJIB (untuk semua interface):
 - **Happy path**: alur ideal dari awal ke akhir tanpa hambatan
-- **Sad path / Error path**: apa yang terjadi ketika setiap step gagal? User tahu apa yang harus dilakukan?
+- **Sad path / Error path**: setiap step gagal → user tahu apa yang harus dilakukan
 - **Edge path**: user melakukan sesuatu yang tidak diharapkan (double-click, back button, refresh mid-flow, session expired mid-flow)
-- **Permission boundary path**: user dengan role berbeda mencoba aksi yang tidak boleh dilakukan
+- **Permission boundary**: user/agent dengan role berbeda mencoba aksi yang tidak boleh dilakukan
 
-Contoh journeys yang harus di-map:
-- Registrasi → Verifikasi → Login → Onboarding → Core Action → Logout
-- Buat data → Edit data → Hapus data → Konfirmasi
-- Upload file → Proses → Tampilkan hasil → Download
-- Pembayaran/transaksi end-to-end termasuk failure handling
-- Error recovery: session timeout di tengah flow → user bisa lanjut setelah login ulang?
+#### Receipt WAJIB (bukan "it should work"):
+```
+HAPPY PATH: Registrasi → Login → Dashboard
+1. Navigate to /register
+   Screenshot: register-form.png
+2. Fill form: email=test@example.com, password=Test123!
+   Screenshot: register-form-filled.png
+3. Submit → redirects to /verify-email
+   Screenshot: verify-email-page.png
+...
+CONCLUSION: User flow works end-to-end. All screenshots attached.
+```
 
 ---
 

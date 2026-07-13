@@ -1,6 +1,6 @@
 ---
 name: supabase-patterns
-description: Supabase patterns — Row Level Security, edge functions, real-time subscriptions, and auth integration. Use when working with supabase patterns.
+description: Supabase patterns — Row Level Security, edge functions, real-time subscriptions, auth integration, setup, and configuration. Use when working with supabase patterns.
 domain: development
 tags:
 - coding
@@ -8,6 +8,11 @@ tags:
 - software-engineering
 - supabase
 - testing
+- database
+- postgres
+- auth
+- realtime
+- storage
 ---
 
 
@@ -107,6 +112,45 @@ const channel = supabase
 - **Edge Functions for webhooks**: Process Stripe, email events serverlessly
 - **Real-time for collaboration**: Use presence and broadcast for multi-user features
 
+
+## Setup and Configuration
+
+### Project Setup
+
+1. **Create a Supabase project** — Start a new project in the Supabase dashboard, then copy the project URL and anon key.
+2. **Install the SDK** — `npm install @supabase/supabase-js`
+3. **Configure auth** — Enable email/password, OAuth providers (Google, GitHub), or magic links in the Supabase dashboard.
+4. **Define schema** — Create tables, enable Row Level Security, write RLS policies, set up triggers.
+5. **Build queries** — Use the Supabase client for select, insert, update, delete with chained filters.
+6. **Add real-time** — Subscribe to table changes with Supabase Realtime channels.
+
+### Client Initialization
+
+```typescript
+import { createClient } from '@supabase/supabase-js';
+
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
+```
+
+### Auth Example
+
+```typescript
+const { data: { user } } = await supabase.auth.signUp({
+  email: 'user@example.com',
+  password: 'password123',
+});
+```
+
+### Query with Joins
+
+```typescript
+const { data: posts } = await supabase
+  .from('posts')
+  .select('*, author:profiles(*)')
+  .eq('status', 'published')
+  .order('created_at', { ascending: false });
+```
+
 ## How to Use
 
 1. Understand the requirement and existing codebase patterns
@@ -127,6 +171,10 @@ const channel = supabase
 ## Verification
 
 - [ ] Skill output matches expected behavior
+- [ ] Auth flow works (signup, login, logout)
+- [ ] RLS policies enforce access control
+- [ ] Queries return correct data
+- [ ] Real-time subscriptions fire on changes
 
 ## Process
 
@@ -141,3 +189,5 @@ const channel = supabase
 | "Tests slow me down" | Bugs slow you down 10x more. Tests are speed, not overhead. |
 | "I will refactor later" | Technical debt compounds. Refactor as you go. |
 | "It works on my machine" | If it is not in CI, it does not work. Ship proof, not claims. |
+| "RLS is optional" | Without RLS, any authenticated user can access any data. |
+| "I will add auth later" | Retrofitting auth is 10x harder than building with it from day one. |

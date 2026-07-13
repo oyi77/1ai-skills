@@ -1,7 +1,6 @@
 ---
 name: berkahkarya-orchestrator
-description: Orchestrate BerkahKarya multi-skill workflows by routing tasks to the right agents and coordinating cross-platform
-  operations. Use when working with berkahkarya orchestrator.
+description: Orchestrate multi-skill workflows by routing tasks to the right agents and coordinating cross-platform operations.
 domain: core
 tags:
 - ai-agent
@@ -17,7 +16,7 @@ tags:
 ## When to Use
 **Trigger phrases:**
 - "berkahkarya orchestrator"
-- "Orchestrate BerkahKarya multi-skill workflows by routing tasks to the right agen"
+- "Orchestrate multi-skill workflows by routing tasks to the right agents and coordinating cross-platform operations"
 
 
 - When the task falls within this skill's domain expertise
@@ -34,7 +33,7 @@ tags:
 
 ## Overview
 
-Berkahkarya Orchestrator is a foundational core infrastructure skill that provides system foundation capabilities for the agent ecosystem.
+Orchestrator is a foundational core infrastructure skill that provides system coordination capabilities for the agent ecosystem.
 
 ## Architecture
 
@@ -87,7 +86,7 @@ def route_request(task: str, prompt: str):
 ## Process
 
 1. **Prepare** — Gather requirements, verify prerequisites, set up environment
-1. **Execute** — Run berkahkarya orchestrator workflow with configured parameters
+1. **Execute** — Run orchestrator workflow with configured parameters
 1. **Verify** — Validate output meets requirements, document results
 
 ## Verification

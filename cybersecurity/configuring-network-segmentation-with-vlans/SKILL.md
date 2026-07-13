@@ -1,10 +1,6 @@
 ---
 name: configuring-network-segmentation-with-vlans
-description: 'Designs and implements VLAN-based network segmentation on managed switches to isolate network zones, enforce
-  access control between segments, and reduce the attack surface by limiting lateral movement paths in enterprise network
-  environments.
-
-  '. Use when working with configuring network segmentation with vlans.
+description: 'Designs and implements VLAN-based network segmentation on managed switches to isolate network zones, enforce access control between segments, and reduce the attack surface by limiting lateral movement paths in enterprise network environments. . Use when working with configuring network segmentation with vlans.'
 domain: cybersecurity
 tags:
 - network-security
