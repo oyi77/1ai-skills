@@ -25,3 +25,6 @@
 ## 2024-05-18 - SequenceMatcher O(N^2) Optimization via Length Pre-check
 **Learning:** `difflib.SequenceMatcher.ratio()` calculates similarity as `2.0 * matches / total_length`, meaning the maximum possible ratio is inherently bound by `2.0 * min(len(a), len(b)) / (len(a) + len(b))`. In `scripts/lint-skills.py`, this was being called in a hot N^2 loop over 1300+ strings to find duplicates, taking ~47 seconds.
 **Action:** When using `difflib.SequenceMatcher(None, a, b).ratio()` to check against a strict threshold (e.g. 0.99), always implement a fast upper-bound pre-check (`if 2.0 * min(len(a), len(b)) < threshold * (len(a) + len(b)): return 0.0`) to avoid the expensive sequence matching for strings that are mathematically impossible to match. This dropped execution time from 47s to 3s (14x speedup).
+## 2024-07-13 - Optimize PyYAML Batch Serialization Performance
+**Learning:** Writing hundreds or thousands of YAML files during batch operations using pure Python `yaml.safe_dump()` creates a significant performance bottleneck.
+**Action:** Use `yaml.dump(..., Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))` to utilize the PyYAML C-extension (`libyaml`) when available for ~4-5x speedups, safely falling back to pure Python otherwise.
