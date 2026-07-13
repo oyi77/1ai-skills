@@ -7,6 +7,8 @@ pairs-with: [roles, hiring, rules, bootstrap]
 description: First session checklist for any new agent or human — must complete before first task
 ---
 
+> **Tier notice:** This file is part of the Advanced tier. If you are on Starter or Standard tier, refer to `docs/GETTING_STARTED.md` for your entry path.
+
 # ONBOARDING.md — First Session Protocol
 > **No agent or human collaborator operates without completing this checklist.**
 > An unboarded agent is a liability: wrong authority assumptions, ethics violations, scope creep.
