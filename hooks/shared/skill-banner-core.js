@@ -156,38 +156,23 @@ exports.skillNameFromUri = function (uri) {
 
 // ── Filesystem path detection (hooks receive resolved paths) ───────────
 
-var SKILL_BASES = null;
-
-function findSkillBase() {
-  if (SKILL_BASES) return SKILL_BASES;
-  var candidates = [
-    path.join(HOME, '.agents', 'skills'),
-    path.join(HOME, '.opencode', 'skills'),
-    path.join(HOME, '.claude', 'skills'),
-    path.join(HOME, '.claude', 'plugins', 'marketplaces', 'omc', 'skills'),
-  ];
-  SKILL_BASES = [];
-  for (var i = 0; i < candidates.length; i++) {
-    if (fs.existsSync(candidates[i])) SKILL_BASES.push(candidates[i]);
-  }
-  return SKILL_BASES;
-}
-
 exports.skillNameFromPath = function (inputPath) {
   if (typeof inputPath !== 'string') return null;
-  // Handle skill:// URIs too (belt-and-suspenders)
   if (inputPath.startsWith('skill://')) {
     return exports.skillNameFromUri(inputPath);
   }
-  var bases = findSkillBase();
-  for (var i = 0; i < bases.length; i++) {
-    var base = bases[i];
-    var prefix = base + '/';
-    if (inputPath.startsWith(prefix)) {
-      var rel = inputPath.slice(prefix.length).split('/')[0];
-      if (rel && rel.length > 0 && !rel.startsWith('.')) return rel;
+  // Strip trailing slashes for consistent matching
+  var p = inputPath.replace(/[/\\]+$/, '');
+  // Case 1: path includes /SKILL.md -> parent directory name
+  var match = p.match(/([^/\\]+)\/SKILL\.md$/);
+  if (match) return match[1];
+  // Case 2: directory path with SKILL.md inside -> directory name
+  try {
+    if (fs.statSync(p + '/SKILL.md').isFile()) {
+      var parts = p.replace(/\\/g, '/').split('/');
+      return parts[parts.length - 1];
     }
-  }
+  } catch (e) { /* not a valid path */ }
   return null;
 };
 
