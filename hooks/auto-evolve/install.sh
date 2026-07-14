@@ -19,6 +19,16 @@ echo "===================================="
 mkdir -p "$HOOKS_DIR" "$METRICS_DIR"
 echo "✅ Directories created"
 
+# 1b. Deploy shared core to all harness destinations
+SHARED_SRC="$SCRIPT_DIR/../shared/skill-banner-core.js"
+for dest in "$HOOKS_DIR/shared" "$HOME/.omp/agent/hooks/post/shared" "$HOME/.opencode/plugins/shared"; do
+  if [ -d "$(dirname "$dest")" ]; then
+    mkdir -p "$dest"
+    cp "$SHARED_SRC" "$dest/skill-banner-core.js"
+    echo "✅ Core deployed to $dest"
+  fi
+done
+
 # 2. Copy hook scripts
 for hook in skill-tracker.js skill-evolver.js skill-committer.js skill-feedback-capture.js; do
   src="$SCRIPT_DIR/$hook"
@@ -29,6 +39,65 @@ for hook in skill-tracker.js skill-evolver.js skill-committer.js skill-feedback-
     echo "⚠️  $hook not found in $SCRIPT_DIR, skipping"
   fi
 done
+
+# 2a. Install skill-banner hook (Claude Code)
+src="$SCRIPT_DIR/skill-banner.js"
+if [ -f "$src" ]; then
+  cp "$src" "$HOOKS_DIR/skill-banner.js"
+  echo "✅ Installed skill-banner.js"
+fi
+
+# 2b. Install OMP-native hook if OMP is present
+OMP_HOOK_DIR="$HOME/.omp/agent/hooks/post"
+if [ -d "$HOME/.omp" ]; then
+  mkdir -p "$OMP_HOOK_DIR"
+  src="$SCRIPT_DIR/skill-banner-omp.js"
+  if [ -f "$src" ]; then
+    cp "$src" "$OMP_HOOK_DIR/skill-banner.js"
+    echo "✅ Installed skill-banner OMP hook"
+  fi
+else
+  echo "ℹ️  OMP not detected (no ~/.omp), skipping OMP hook install"
+fi
+
+# 2c. Install skill-banner OpenCode plugin if OpenCode is present
+OPENCODE_PLUGIN_DIR="$HOME/.opencode/plugins"
+if [ -d "$OPENCODE_PLUGIN_DIR" ]; then
+  src="$SCRIPT_DIR/skill-banner-opencode.ts"
+  if [ -f "$src" ]; then
+    cp "$src" "$OPENCODE_PLUGIN_DIR/skill-banner-opencode.ts"
+    echo "✅ Installed skill-banner-opencode.ts"
+  fi
+else
+  echo "ℹ️  OpenCode not detected (no ~/.opencode), skipping plugin install"
+fi
+
+# 2d. Register banner plugin as separate OpenCode entry (avoids patching index.ts)
+if [ -d "$OPENCODE_PLUGIN_DIR" ] && [ -f "$OPENCODE_PLUGIN_DIR/index.ts" ]; then
+  if grep -q 'skill-banner-opencode' "$OPENCODE_PLUGIN_DIR/index.ts" 2>/dev/null; then
+    echo "✅ skill-banner-opencode already integrated in index.ts"
+  else
+    echo "📝 Registering skill-banner-opencode in opencode.json..."
+    python3 << 'PYEOF2'
+import json, os
+
+config_path = os.path.expanduser("~/.opencode/opencode.json")
+with open(config_path) as f:
+    cfg = json.load(f)
+
+plugins = cfg.setdefault("plugin", [])
+banner_ref = "./plugins/skill-banner-opencode.ts"
+
+if banner_ref not in plugins:
+    plugins.append(banner_ref)
+
+with open(config_path, "w") as f:
+    json.dump(cfg, f, indent=2)
+    f.write("\n")
+PYEOF2
+    echo "✅ skill-banner-opencode registered in opencode.json plugin list"
+  fi
+fi
 
 # 3. Create default config if not exists
 if [ ! -f "$METRICS_DIR/evolve-config.json" ]; then
@@ -85,6 +154,21 @@ tracker_entry = {
 }
 if not any(h.get("matcher") == "Skill" for h in post_tool):
     post_tool.append(tracker_entry)
+
+banner_entry = {
+    "matcher": "Skill",
+    "hooks": [{"type": "command", "command": f'node "{hooks_dir}/skill-banner.js"', "timeout": 5}]
+}
+# Add/update skill-banner
+found = False
+for h in post_tool:
+    if "skill-banner" in str(h).lower():
+        h["matcher"] = "Skill"
+        h["hooks"] = [{"type": "command", "command": banner_entry["hooks"][0]["command"], "timeout": 5}]
+        found = True
+        break
+if not found:
+    post_tool.append(banner_entry)
 
 # Add skill-committer (matcher: Write|Edit)
 committer_entry = {
