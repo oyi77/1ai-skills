@@ -194,6 +194,10 @@ function vw(s) {
   return w;
 }
 
+exports.stripAnsi = function (text) {
+  return text.replace(/\x1b\[[0-9;]*m/g, '');
+};
+
 function pad(s, n) { return s + ' '.repeat(Math.max(0, n - vw(s))); }
 
 function center(s, width) {
