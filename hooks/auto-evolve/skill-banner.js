@@ -4,7 +4,8 @@
 /**
  * skill-banner.js — Claude Code PostToolUse hook.
  *
- * Detects Skill tool invocations and prints an activation banner.
+ * Detects Skill tool invocations AND Read tool calls with skill:// URIs.
+ * Prints an activation banner when a skill is loaded.
  * Depends on the shared core at hooks/shared/skill-banner-core.js.
  */
 
@@ -15,11 +16,24 @@ process.stdin.on('data', function (chunk) { input += chunk; });
 process.stdin.on('end', function () {
   try {
     var data = JSON.parse(input);
-    if (data.tool_name !== 'Skill') return;
+    var toolName = data.tool_name;
+    var params = data.tool_input || {};
+    var skillName = null;
 
-    var skillName = data.tool_input && (data.tool_input.skill || data.tool_input.name);
+    // Case 1: Skill tool — name from params
+    if (toolName === 'Skill') {
+      skillName = params.skill || params.name;
+    }
+
+    // Case 2: Read tool — extract skill from path
+    if (toolName === 'Read') {
+      var pathVal = params.path;
+      if (typeof pathVal === 'string') {
+        skillName = core.skillNameFromPath(pathVal);
+      }
+    }
+
     if (!skillName) return;
-
     if (core.isAlreadyWelcomed(skillName)) return;
 
     var meta = core.resolveSkillMeta(skillName);
