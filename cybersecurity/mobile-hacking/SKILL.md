@@ -10,6 +10,9 @@ tags:
 - security
 - testing
 - threat-defense
+- money
+
+
 ---
 
 # Mobile Hacking Skill
@@ -26,22 +29,34 @@ Android/mobile security testing workflow covering emulator setup, device rooting
 - "Android security assessments with explicit authorization"
 - "APK reverse engineering and static analysis"
 
+## Money-Making Overview
 
-- Mobile app bug bounty programs (HackerOne, Bugcrowd mobile scope)
-- Android security assessments with explicit authorization
-- APK reverse engineering and static analysis
-- Mobile API testing behind app-specific auth flows
-- Bypassing SSL pinning to inspect encrypted traffic
-- Testing root/emulator detection mechanisms
-- Dynamic instrumentation of running Android applications
+Mobile application pentesting commands premium rates because every company with an app store presence needs it before launch or after major updates. Fintech, crypto, healthcare, and e-commerce are the highest-paying verticals.
 
-## The Process
+### Buyer Personas
+- **Fintech & Banking Apps**: Payment apps, digital wallets, neobanks. Compliance-driven (PCI DSS, PSD2). $5K-8K per engagement.
+- **Crypto & DeFi Apps**: Wallet apps, exchange apps, DEX frontends. High attack surface, high budget. $5K-10K.
+- **Health & MedTech**: HIPAA-sensitive. Telehealth, fitness tracking, medical data protection. $4K-7K.
+- **Startup Mobile Apps**: Pre-launch security review. Budget-conscious but motivated by investor due diligence. $2K-4K.
 
-1. **Scope the task** — define objectives, boundaries, and success criteria
-2. **Gather information** — collect all necessary data and context before proceeding
-3. **Execute the core workflow** — follow the domain-specific steps methodically
-4. **Validate results** — verify outputs against expected outcomes or baselines
-5. **Document findings** — record results, anomalies, and recommendations
+### Pricing Tiers
+
+| Tier | Scope | Price | Typical Clients |
+|------|-------|-------|-----------------|
+| **Quick Scan** | Automated static analysis (MobSF) + basic dynamic testing, 4-5 hours | $2K-3K | Pre-seed startups, solo developers |
+| **Standard Assessment** | Full static + dynamic analysis, Frida instrumentation, API testing, report | $4K-6K | Series A/B startups, mid-market |
+| **Premium** | Full reverse engineering, source-assisted audit, compliance mapping (OWASP MASTG), retest | $7K-10K | Fintech, crypto, regulated industries |
+
+### First-Dollar Timeline
+- **Day 1-2**: Client qualification, scope agreement, NDA/SOW signed
+- **Day 3**: Environment setup, automated static analysis begins
+- **Day 4-10**: Dynamic testing, API reverse engineering, bypass testing
+- **Day 11-12**: Report drafting, finding validation, peer review
+- **Day 13**: Delivery + debrief call. Payment due Net-15.
+
+
+## Workflow
+
 ### Step 1: Environment Setup
 
 Choose between emulator or physical device based on your target:
@@ -228,16 +243,117 @@ Before claiming a mobile security assessment is complete:
 - Magisk Releases: https://github.com/topjohnwu/Magisk/releases
 - scrcpy (device mirroring): https://github.com/Genymobile/scrcpy
 
-## Process
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+## First Action in 60 Minutes
+
+Create a file called `mobile-pentest-quickstart.sh` with this content:
+
+```bash
+#!/bin/bash
+# mobile-pentest-quickstart.sh
+# Prerequisites: adb, java, apktool, jadx
+TARGET_APK="$1"
+WORK_DIR="$PWD/mobile-test-$(date +%Y%m%d)"
+mkdir -p "$WORK_DIR/reports" "$WORK_DIR/decompiled"
+cd "$WORK_DIR" || exit 1
+
+echo "[+] Checking environment..."
+command -v adb >/dev/null || { echo "adb not found"; exit 1; }
+command -v apktool >/dev/null || { echo "apktool not found"; exit 1; }
+
+echo "[+] Decompiling with apktool..."
+apktool d -f "$TARGET_APK" -o "decompiled/apktool-out" 2>&1 | tail -3
+
+echo "[+] Converting to Java with jadx..."
+if command -v jadx >/dev/null; then
+    jadx -d "decompiled/jadx-out" "$TARGET_APK" 2>&1 | tail -3
+else
+    echo "[!] jadx not installed — skipping Java decompilation"
+fi
+
+echo "[+] Extracting manifest..."
+cp "decompiled/apktool-out/AndroidManifest.xml" "reports/manifest.xml"
+
+echo "[+] Checking for common issues..."
+grep -E 'android\.permission\.(READ_SMS|RECORD_AUDIO|CAMERA|ACCESS_FINE_LOCATION|READ_CONTACTS|READ_CALL_LOG)' \
+  "reports/manifest.xml" > "reports/dangerous-permissions.txt" 2>/dev/null
+grep -E 'android:exported="true"' "reports/manifest.xml" > "reports/exported-components.txt" 2>/dev/null
+grep -E 'android:debuggable="true"' "reports/manifest.xml" > "reports/debuggable.txt" 2>/dev/null
+grep -E 'android:allowBackup="true"' "reports/manifest.xml" > "reports/backup-enabled.txt" 2>/dev/null
+
+echo ""
+echo "=== Quick Wins ==="
+echo "1. Dangerous permissions:   $(wc -l < reports/dangerous-permissions.txt) found"
+echo "2. Exported components:     $(wc -l < reports/exported-components.txt)"
+echo "3. Debuggable:              $(grep -c . reports/debuggable.txt 2>/dev/null || echo 0)"
+echo "4. Backup enabled:          $(grep -c . reports/backup-enabled.txt 2>/dev/null || echo 0)"
+echo ""
+echo "NEXT: frida -U -f com.target.app -l frida-ssl-unpinning.js --no-pause"
+```
+
+Run it: `bash mobile-pentest-quickstart.sh target.apk`
+
+In 60 minutes you'll have a `reports/` directory with the extracted AndroidManifest.xml, dangerous permissions listing, exported components inventory, debuggable flag check, and backup status analysis.
+
+## Deliverable Format
+
+Use this template for every mobile pentest engagement deliverable:
+
+````
+MOBILE APPLICATION SECURITY ASSESSMENT REPORT
+
+Client: [Name]
+Application: [Package name] v[Version]
+Platform: Android / iOS / Both
+Date: [Start] - [End]
+Tester: [Name]
+Classification: CONFIDENTIAL
+
+1. EXECUTIVE SUMMARY
+   - Scope: [tested features, endpoints, API versions]
+   - Risk Level: Critical / High / Medium / Low
+   - Total Findings: X (Y Critical, Z High, ...)
+   - One-paragraph bottom line for non-technical stakeholders
+
+2. METHODOLOGY
+   - Static analysis (jadx, apktool, MobSF)
+   - Dynamic analysis (Frida, Objection)
+   - Network traffic analysis (Burp Suite, mitmproxy)
+   - Storage analysis (shared_prefs, SQLite, internal storage dump)
+   - API testing (authentication, authorization, rate limiting)
+
+3. FINDINGS (per finding)
+   - ID, Title, OWASP MASTG reference, CVSS v3 score
+   - Affected component / endpoint
+   - Steps to reproduce (numbered, exact commands)
+   - Screenshot or screen recording
+   - Remediation guidance with code example
+
+4. SECURITY CONTROLS ASSESSED
+   - Authentication & session management
+   - Authorization (IDOR / BOLA checks)
+   - Local data storage (SharedPreferences, SQLite, Keystore)
+   - Network communication (TLS version, ciphers, pinning)
+   - Code hardening (ProGuard, obfuscation, debug flags)
+   - Reverse engineering resistance (root/jailbreak detection, tamper detection)
+
+5. APPENDIX
+   - Environment and device specs
+   - Tool versions
+   - Test accounts and data (redacted)
+   - Screenshot index
+````
+
+Billable deliverable: branded PDF report + CSV findings tracker. Include 30-day retest window in the SOW.
 
 ## Anti-Rationalization
 
 | Rationalization | Reality |
 |---|---|
-| "We are too small to be targeted" | Automated attacks target everyone. Size does not matter. |
-| "Security slows us down" | A breach slows you down 100x more. Build security in from the start. |
-| "We will fix it after launch" | Vulnerabilities in production are exploited within hours. Fix before deploy. |
+| "It's just a v1 MVP, security can wait" | V1 is when architecture decisions freeze. Patching auth in v3 costs 50x more and requires a rewrite. |
+| "We use HTTPS so our app is secure" | 90% of mobile vulns are client-side — insecure storage, hardcoded keys, rooted device bypass. HTTPS is table stakes. |
+| "Users will not reverse engineer our APK" | Automated repackaging tools can inject malware into your APK in under a minute. ProGuard is trivially reversible. |
+| "Our API has rate limiting" | Rate limiting does not stop a Frida hook from dumping encryption keys or intercepting websocket traffic. |
+| "We are not a bank, who would attack us?" | Mobile apps get attacked for user data, API credits, business logic abuse, and competitive intelligence. |
+| "We will fix it after the app store review" | Once an APK is in the wild, attackers have it permanently. There is no recall button. |
+| "Our app does not store sensitive data" | SharedPreferences, SQLite databases, and NSUserDefaults are all readable on any rooted/jailbroken device. |
