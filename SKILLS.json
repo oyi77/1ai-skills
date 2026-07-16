@@ -5122,17 +5122,12 @@
     {
       "name": "collecting-open-source-intelligence",
       "category": "cybersecurity",
-      "description": "Collects and synthesizes open-source intelligence (OSINT) about threat actors, malicious infrastructure, and attack campaigns using publicly available data sources, passive reconnaissance tools, and dark web monitoring. Use when investigating external threat actor infrastructure, performing pre-engagement reconnaissance for authorized red team assessments, or enriching CTI reports with publicly available adversary context.",
+      "description": "Stub — merged into performing-open-source-intelligence-gathering. See the parent skill for both offensive and defensive OSINT workflows.",
       "domain": "cybersecurity",
       "tags": [
         "OSINT",
-        "Maltego",
-        "Shodan",
-        "Recon-ng",
-        "SpiderFoot",
-        "threat-intelligence",
-        "ATT&CK-T1591",
-        "NIST-CSF"
+        "stub",
+        "merged"
       ],
       "version": "1.0.0",
       "author": "mahipal",
@@ -6520,17 +6515,12 @@
     {
       "name": "detecting-business-email-compromise-with-ai",
       "category": "cybersecurity",
-      "description": "Deploy AI and NLP-powered detection systems to identify business email compromise attacks by analyzing writing style, behavioral patterns, and contextual anomalies that evade traditional rule-based filters. Use when deploying ai and nlp-powered detection systems to identify business email.",
+      "description": "Stub — merged into detecting-business-email-compromise. See the parent skill for rule-based, behavioral, and AI/ML-powered BEC detection workflows.",
       "domain": "cybersecurity",
       "tags": [
         "bec",
-        "ai",
-        "nlp",
-        "machine-learning",
-        "email-security",
-        "behavioral-analytics",
-        "impersonation",
-        "fraud-detection"
+        "stub",
+        "merged"
       ],
       "version": "1.0",
       "author": "mahipal",
@@ -20659,16 +20649,12 @@
     {
       "name": "analytics-reporting",
       "category": "marketing",
-      "description": "Generate analytics reports, dashboards, and business metrics with Notion and Slack",
+      "description": "Stub — merged into analytics-dashboard. See the parent skill for both tactical implementation and strategic growth frameworks.",
       "domain": "marketing",
       "tags": [
         "analytics",
-        "growth",
-        "marketing",
-        "notion",
-        "reporting",
-        "seo",
-        "slack"
+        "stub",
+        "merged"
       ],
       "version": "",
       "author": "",
@@ -23800,18 +23786,12 @@
     {
       "name": "lead-generation-engine",
       "category": "sales",
-      "description": "AI-powered lead generation that scrapes intent signals, scores leads, generates personalized multi-channel outreach, and manages the full CRM pipeline. Use when building automated lead generation systems.",
+      "description": "Stub — merged into ai-lead-generation. See the parent skill for both service templates and technical implementation code.",
       "domain": "sales",
       "tags": [
-        "business-development",
-        "engine",
-        "generation",
-        "lead",
-        "pipeline",
-        "revenue",
         "sales",
-        "money",
-        "automation"
+        "stub",
+        "merged"
       ],
       "version": "2.0.0",
       "author": "",
