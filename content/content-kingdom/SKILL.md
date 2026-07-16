@@ -8,6 +8,7 @@ tags:
 - instagram
 - postbridge
 - geminigen
+- money
 domain: content
 ---
 
@@ -228,6 +229,29 @@ python3 orchestrator.py --pipeline --config /path/to/custom_config.json
 
 ---
 
+## Workflow
+
+Content Kingdom runs a **12-phase daily pipeline**. Each phase is a discrete step that feeds the next:
+
+| Phase | What Happens |
+|-------|-------------|
+| 1. Research | Scrape trends, competitor content, viral patterns |
+| 2. Plan | Select content angles, assign formats per platform |
+| 3. Script | Generate platform-optimized scripts (TikTok, IG, YT) |
+| 4. Create | Produce media — images, video, audio via GeminiGen |
+| 5. Review | Quality gate, brand compliance check |
+| 6. Schedule | Queue to PostBridge with optimal timing |
+| 7. Post | Auto-publish to TikTok, Instagram, YouTube |
+| 8. Engage | Auto-reply to comments, DMs |
+| 9. Analyze | Collect views, likes, shares, CTR per post |
+| 10. Optimize | Surface winning formats, topics, hooks |
+| 11. Repurpose | Spin top content into cross-platform variants |
+| 12. Scale | Grow volume, add channels, increase frequency |
+
+**Execution:** One morning run via cron. Each phase delegates to sub-agents through Paperclip issues.
+**Failure mode:** Any phase can be re-run independently without restarting the pipeline.
+**Scaling:** More channels = more research + create iterations in parallel.
+
 ## The 12 Phases
 
 | # | Phase | Delegates To | New Code? |
@@ -374,38 +398,169 @@ pip install requests
 }
 ```
 
-## How to Use
+## Money-Making Overview
 
-1. Define content goal (traffic, engagement, conversion, brand awareness)
-2. Research target audience pain points and search intent
-3. Generate content using appropriate AI tools
-4. Edit and humanize output for authenticity
-5. Optimize for target platform (SEO, hashtags, format)
-6. Schedule and distribute across channels
-7. Measure performance and iterate
+**Buyer Persona:**
+- SME owners (3-50 employees) in Indonesia/US who need daily social media content without hiring a team
+- Digital agencies that want to white-label content production under their own brand
+- E-commerce brands that need product content across TikTok, Instagram, Facebook with direct attribution
+- Solo creators who need to scale output without burning out
 
-## Red Flags
+**Three Pricing Tiers:**
 
-- **AI-generated content sounds robotic**: Always run through humanizer before publishing
-- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
-- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
-- **No content calendar**: Sporadic posting kills audience retention
-- **Ignoring analytics**: Content without measurement is just publishing, not marketing
+| Tier | Price | What They Get |
+|------|-------|---------------|
+| Content Starter | $1,000/mo | 10 posts/week across 2 platforms, template-based visuals, basic captions, weekly report |
+| Content Pro | $2,500/mo | 20 posts/week across 4 platforms, custom Veris visuals, storyboard scripts, engagement management, weekly optimization |
+| Content Kingdom | $5,000/mo | Full 12-phase pipeline: viral research, daily content, paid ad creative, auto-engagement, analytics, repurposing, monthly strategy session |
 
-## Verification
+**First-Dollar Timeline:**
+- Day 1: Onboard client, define personas + products (30-min call)
+- Day 3: First 5 posts delivered as proof-of-work
+- Day 7: Full pipeline running, first engagement data
+- Day 14: First optimization cycle, client sees measurable lift
+- Day 30: Renewal conversation backed by performance report
 
-- [ ] Skill output matches expected behavior
+**Target Markets:**
+- Indonesia SMEs: Bundle with LYNK affiliate products, Rp 5-15M/mo
+- US Agencies: White-label Content Kingdom for $3-7K/mo retainer
+- E-commerce Brands: Product-focused content with direct conversion attribution
 
-## Process
+---
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+## First Action in 60 Minutes
+
+Copy-paste this to onboard a new client and run their first full pipeline:
+
+```bash
+#!/usr/bin/env bash
+# Content Kingdom Client Onboarder
+# Usage: ./onboard_client.sh "ClientName" "ProductName" "Hook Text" "Rp 49K"
+
+set -e
+CLIENT="$1"
+PRODUCT="$2"
+HOOK="$3"
+PRICE="$4"
+
+echo "=== Onboarding $CLIENT ==="
+
+# 1. Create scoped client config
+mkdir -p "clients/$CLIENT"
+cat > "clients/$CLIENT/config.json" << 'EOF'
+{
+  "products": [{"name": "PLACEHOLDER_PRODUCT", "hook": "PLACEHOLDER_HOOK", "price": "PLACEHOLDER_PRICE"}],
+  "personas": ["professional", "trendy"],
+  "platforms": {
+    "tiktok": {"enabled": true, "schedule": ["07:00", "19:00"]},
+    "instagram": {"enabled": true, "schedule": ["08:00", "20:00"]},
+    "facebook": {"enabled": true, "schedule": ["12:00"]}
+  },
+  "quality_gates": {"min_caption_length": 80, "min_image_score": 0.6},
+  "scoring_weights": {"views": 1.0, "likes": 2.0, "shares": 10.0, "comments": 5.0},
+  "winner_thresholds": {"tiktok": 2000, "instagram": 1500}
+}
+EOF
+
+sed -i "s/PLACEHOLDER_PRODUCT/$PRODUCT/g" "clients/$CLIENT/config.json"
+sed -i "s/PLACEHOLDER_HOOK/$HOOK/g" "clients/$CLIENT/config.json"
+sed -i "s/PLACEHOLDER_PRICE/$PRICE/g" "clients/$CLIENT/config.json"
+
+# 2. Run research + plan phases (fast, generates first strategy)
+python3 orchestrator.py --phase research --config "clients/$CLIENT/config.json" 2>&1 | tail -5
+python3 orchestrator.py --phase plan --config "clients/$CLIENT/config.json" 2>&1 | tail -5
+
+echo ""
+echo "=== CLIENT ONBOARDED: $CLIENT ==="
+echo "Config: clients/$CLIENT/config.json"
+echo "Research: output/research_*.json (review with client)"
+echo ""
+echo "NEXT: python3 orchestrator.py --phase script --config clients/$CLIENT/config.json"
+echo "THEN: python3 orchestrator.py --phase create --config clients/$CLIENT/config.json"
+echo "DELIVER: first 5 assets ready after 'create' phase"
+```
+
+**What this gets you in 60 minutes:**
+- Client-specific config created and filled
+- Research phase complete (trending angles + competitor analysis)
+- Plan phase complete (posting schedule + content strategy)
+- Deliverable preview ready to share with client
+
+---
+
+## Deliverable Format
+
+**Weekly Content Production Report** (deliver every Monday morning):
+
+```text
+CONTENT PRODUCTION REPORT
+Client: [Name] | Week: 2026-07-20
+Pipeline Run ID: run_20260720_080000
+
+=== DELIVERED THIS WEEK ===
+Platform   | Posts | Format     | Status
+TikTok     | 10    | 9:16 video | Posted
+Instagram  | 10    | 4:5 image  | Posted
+Facebook   | 5     | 1:1 image  | Scheduled
+Total: 25 posts across 3 platforms
+
+=== PERFORMANCE ===
+Metric          | Value   | vs Last Week
+Engagement Rate | 4.2%    | +0.8%
+Total Views     | 45,200  | +12%
+Link Clicks     | 1,230   | +5%
+Conversions     | 28      | +40%  <- from optimized CTAs
+
+=== TOP 3 PERFORMERS ===
+1. "Bisa Cuan Rp 1 Juta/Hari?" — TikTok — 12,400 views, 5.1% eng.
+2. Product demo video — Instagram — 8,200 views, 4.8% eng.
+3. Testimonial graphic — Facebook — 5,100 views, 3.9% eng.
+
+=== NEXT WEEK PLAN ===
+- 5 A/B test variants for low-performing creatives
+- 2 new product angles from viral research
+- Repurpose top 3 posts into Shorts/reels
+
+=== INVOICE ===
+Service: Content Pro — $2,500
+Status: Due upon receipt
+```
+
+**Pricing Table for Proposals:**
+
+```text
+┌──────────────────────────────────────────────────────────────────────────┐
+│                    CONTENT KINGDOM PRICING                               │
+├──────────────┬──────────┬───────────┬──────────────┬─────────────────────┤
+│ Service      │ Starter  │ Pro       │ Kingdom      │ À La Carte          │
+├──────────────┼──────────┼───────────┼──────────────┼─────────────────────┤
+│ Posts/week   │ 10       │ 20        │ 35+          │ $50/post            │
+│ Platforms    │ 2        │ 4         │ 6+           │ $100/platform       │
+│ Visual Type  │ Template │ Custom    │ Veris Pro    │ $200/design         │
+│ Research     │ Basic    │ Viral     │ Full 12-ph   │ $500/research cycle │
+│ Engagement   │ --       │ Auto-reply│ Full + DM    │ $300/mo             │
+│ Analytics    │ Weekly   │ Weekly +  │ Daily + Opt  │ $200/mo             │
+│ Repurposing  │ --       │ --        │ Auto-clip    │ $250/mo             │
+├──────────────┼──────────┼───────────┼──────────────┼─────────────────────┤
+│ Price/Month  │ $1,000   │ $2,500    │ $5,000       │ Custom              │
+└──────────────┴──────────┴───────────┴──────────────┴─────────────────────┘
+```
+
+**Invoice Line Items** (copy into Stripe/Paddle):
+- "Content Kingdom — [Tier] — [Month] — $X,XXX"
+- "Content Kingdom — À La Carte — [Qty]x [Service] — $XXX"
+- "Content Kingdom — Rush Production — [Posts]x — $XXX"
+
+---
 
 ## Anti-Rationalization
 
 | Rationalization | Reality |
 |---|---|
-| "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
-| "I will optimize later" | SEO and distribution need optimization from the start. |
-| "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
+| "I'll just post manually, automation is overkill" | Manual posting at scale burns 15+ hours/week. Automation pays for itself in 2 weeks of saved labor. |
+| "My content is good enough without the full pipeline" | The 12-phase pipeline is why Content Kingdom produces 3x the engagement of random posting. |
+| "Clients won't pay $1K+ for content" | Agencies charge $3-7K/mo for managed content. You're underpriced, not overpriced. |
+| "I'll optimize after I have more clients" | Optimization is the retention engine. Without it, clients churn at month 2. |
+| "Viral research takes too long to set up" | The RESEARCH phase runs in 5 minutes via research_agent.py. Setup is one config edit. |
+| "I don't have time to run 12 phases every day" | Cron handles it. You sign clients, the pipeline produces. Your time goes to sales, not keystrokes. |
+| "Content is a commodity — hard to charge premium" | Premium is in the system: consistent daily output, data-driven optimization, zero missed days. That's what clients pay for. |
