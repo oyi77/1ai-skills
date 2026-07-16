@@ -4129,7 +4129,7 @@
     {
       "name": "api-destroyer",
       "category": "cybersecurity",
-      "description": "Aggressive API security testing for REST, GraphQL, gRPC, and WebSocket endpoints. Use when testing APIs for authorization flaws, injection, rate limiting bypass, or business logic abuse.",
+      "description": "Aggressive API security testing for REST, GraphQL, gRPC, WebSocket with money protocol \u2014 billable $2000-6000/engagement service targeting API-first startups and fintechs. Use when billing clients for API security assessments.",
       "domain": "cybersecurity",
       "tags": [
         "api",
@@ -4139,7 +4139,8 @@
         "graphql",
         "rest-api",
         "security",
-        "testing"
+        "testing",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -4353,7 +4354,7 @@
     {
       "name": "bounty-target-finder",
       "category": "cybersecurity",
-      "description": "Find and prioritize high-paying bug bounty programs. Use when discovering new targets, comparing bounty payouts, filtering programs by scope, or building a target pipeline for continuous hunting.",
+      "description": "Find and prioritize high-paying bug bounty programs with money protocol \u2014 maximize payout/hour with automated target scoring. Use when optimizing bug bounty income or building a target pipeline.",
       "domain": "cybersecurity",
       "tags": [
         "bounty",
@@ -4362,7 +4363,8 @@
         "pipeline",
         "security",
         "target",
-        "threat-defense"
+        "threat-defense",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -4390,7 +4392,7 @@
     {
       "name": "bug-hunting",
       "category": "cybersecurity",
-      "description": "Automated bug bounty hunting workflow \u2014 recon, hunt, validate, report. Use when testing web applications for vulnerabilities, running security assessments, or preparing bug bounty submissions.",
+      "description": "Automated bug bounty hunting with money protocol \u2014 recon-to-report pipeline, sellable recon service, bounty report templates. Use when generating income through bug bounties or selling recon-as-service.",
       "domain": "cybersecurity",
       "tags": [
         "bug",
@@ -4399,7 +4401,8 @@
         "security",
         "testing",
         "threat-defense",
-        "workflow"
+        "workflow",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -5385,14 +5388,15 @@
     {
       "name": "conducting-network-penetration-test",
       "category": "cybersecurity",
-      "description": "Conducts comprehensive network penetration tests against authorized target environments by performing host discovery, port scanning, service enumeration, vulnerability identification, and controlled exploitation to assess the security posture of network infrastructure. The tester follows PTES methodology from reconnaissance through post-exploitation and reporting. Use when working with conducting network penetration test.",
+      "description": "PTES-based network penetration testing with money protocol \u2014 internal/external assessment service, Kali-optimized, compliance-driven (PCI/SOC2). Use when billing clients for network pentests at $2000-8000/engagement.",
       "domain": "cybersecurity",
       "tags": [
         "network-pentest",
         "Nmap",
         "Metasploit",
         "vulnerability-exploitation",
-        "infrastructure-security"
+        "infrastructure-security",
+        "money"
       ],
       "version": "1.0.0",
       "author": "mahipal",
@@ -5873,7 +5877,7 @@
     {
       "name": "continuous-hunter",
       "category": "cybersecurity",
-      "description": "Automated continuous bug hunting pipeline that runs 24/7 across multiple targets. Use when setting up persistent hunting, automating the find-report cycle, or scaling bug bounty income through automation.",
+      "description": "Automated 24/7 bug hunting pipeline with money protocol \u2014 sell as managed vulnerability discovery service at $1000-4000/month retainer. Use when generating recurring income through continuous security monitoring.",
       "domain": "cybersecurity",
       "tags": [
         "continuous",
@@ -5881,7 +5885,8 @@
         "hunter",
         "pipeline",
         "security",
-        "threat-defense"
+        "threat-defense",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -12689,7 +12694,7 @@
     {
       "name": "mobile-hacking",
       "category": "cybersecurity",
-      "description": "Android and mobile application security testing \u2014 emulators, rooting, traffic interception, dynamic instrumentation. Use when testing mobile apps for vulnerabilities, reversing APKs, or bypassing security controls on Android.",
+      "description": "Android/iOS mobile app security testing with money protocol \u2014 premium $3000-8000/engagement pentesting service for app startups and fintechs. Use when billing clients for mobile security assessments.",
       "domain": "cybersecurity",
       "tags": [
         "cybersecurity",
@@ -12697,7 +12702,8 @@
         "mobile",
         "security",
         "testing",
-        "threat-defense"
+        "threat-defense",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -15799,14 +15805,15 @@
     {
       "name": "performing-web-application-penetration-test",
       "category": "cybersecurity",
-      "description": "Performs systematic security testing of web applications following the OWASP Web Security Testing Guide (WSTG) methodology to identify vulnerabilities in authentication, authorization, input validation, session management, and business logic. The tester uses Burp Suite as the primary interception proxy alongside manual testing techniques to find flaws that automated scanners miss.",
+      "description": "Full OWASP WSTG web application pentest with money protocol \u2014 billable $1500-5000/engagement service, client-ready reports, compliance-ready deliverables. Use when billing clients for web pentests.",
       "domain": "cybersecurity",
       "tags": [
         "web-application-pentest",
         "OWASP",
         "Burp-Suite",
         "WSTG",
-        "application-security"
+        "application-security",
+        "money"
       ],
       "version": "1.0.0",
       "author": "mahipal",
@@ -16069,14 +16076,15 @@
     {
       "name": "recon-automation",
       "category": "cybersecurity",
-      "description": "Automated reconnaissance and attack surface mapping. Use when mapping a target's infrastructure, discovering subdomains, or enumerating attack surface before security testing.",
+      "description": "Automated attack surface mapping with money protocol \u2014 sell reconnaissance reports to CISOs and security teams at $500-2000/report. Use when generating income through recon-as-service.",
       "domain": "cybersecurity",
       "tags": [
         "cybersecurity",
         "recon",
         "security",
         "testing",
-        "threat-defense"
+        "threat-defense",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -17205,14 +17213,15 @@
     {
       "name": "vulnerability-scanner",
       "category": "cybersecurity",
-      "description": "AI-powered vulnerability scanning with intelligent payload generation. Use when scanning web applications for specific vulnerability types, generating exploit payloads, or running automated security tests.",
+      "description": "AI-powered vulnerability scanning with 45+ attack methods and money protocol \u2014 sell automated scanning at $500-3000/scan with professional PDF/HTML reports. Use when generating income through vulnerability assessment services.",
       "domain": "cybersecurity",
       "tags": [
         "cybersecurity",
         "scanner",
         "security",
         "threat-defense",
-        "vulnerability"
+        "vulnerability",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -17240,14 +17249,15 @@
     {
       "name": "writeup-cash",
       "category": "cybersecurity",
-      "description": "Monetize bug bounty findings through writeups, tools, and consulting. Use when turning security research into income streams, writing paid writeups, or building a security brand.",
+      "description": "Monetize bug bounty findings through writeups, tools, and consulting with money protocol \u2014 SEO-optimized writeup templates, consulting rate cards, tool licensing. Use when turning security research into passive income streams.",
       "domain": "cybersecurity",
       "tags": [
         "cash",
         "cybersecurity",
         "security",
         "threat-defense",
-        "writeup"
+        "writeup",
+        "money"
       ],
       "version": "",
       "author": "",
