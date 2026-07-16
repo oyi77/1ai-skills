@@ -44,7 +44,7 @@
     {
       "name": "browser-use",
       "category": "agents",
-      "description": "Browser automation with AI — Playwright, Puppeteer, browser-use library. Navigate, extract, interact with web pages autonomously. Use when working with browser use.",
+      "description": "Browser automation with AI \u2014 Playwright, Puppeteer, browser-use library. Navigate, extract, interact with web pages autonomously. Use when working with browser use.",
       "domain": "agents",
       "tags": [
         "ai-agent",
@@ -61,7 +61,7 @@
     {
       "name": "code-agent",
       "category": "agents",
-      "description": "Write production-quality code from specs — reads requirements, researches patterns, implements with tests, and iterates until verification passes. Use when implementing features, fixing bugs with known root causes, or building new modules.",
+      "description": "Write production-quality code from specs \u2014 reads requirements, researches patterns, implements with tests, and iterates until verification passes. Use when implementing features, fixing bugs with known root causes, or building new modules.",
       "domain": "agents",
       "tags": [
         "agent",
@@ -79,7 +79,7 @@
     {
       "name": "code-research",
       "category": "agents",
-      "description": "Produce structured understanding of unfamiliar codebases — architecture, data flows, dependencies, and conventions. Use when joining a new project, tracing feature implementations, or mapping system architecture.",
+      "description": "Produce structured understanding of unfamiliar codebases \u2014 architecture, data flows, dependencies, and conventions. Use when joining a new project, tracing feature implementations, or mapping system architecture.",
       "domain": "agents",
       "tags": [
         "ai-agent",
@@ -96,7 +96,7 @@
     {
       "name": "computer-use",
       "category": "agents",
-      "description": "Computer use agents — desktop automation, screen reading, mouse/keyboard control, GUI interaction for AI agents. Use when working with computer use.",
+      "description": "Computer use agents \u2014 desktop automation, screen reading, mouse/keyboard control, GUI interaction for AI agents. Use when working with computer use.",
       "domain": "agents",
       "tags": [
         "ai-agent",
@@ -348,7 +348,7 @@
     {
       "name": "clawild-moltbook",
       "category": "automation",
-      "description": "Autonomous crypto intelligence agent for Moltbook — blockchain analysis, social sentiment tracking, and real-time alpha detection. Use when working with clawild moltbook.",
+      "description": "Autonomous crypto intelligence agent for Moltbook \u2014 blockchain analysis, social sentiment tracking, and real-time alpha detection. Use when working with clawild moltbook.",
       "domain": "automation",
       "tags": [
         "ai-agent",
@@ -422,7 +422,7 @@
     {
       "name": "flowise-builder",
       "category": "automation",
-      "description": "Flowise visual LLM workflow builder — drag-drop chatflows, API endpoints, document loaders, tools. Use when working with flowise builder.",
+      "description": "Flowise visual LLM workflow builder \u2014 drag-drop chatflows, API endpoints, document loaders, tools. Use when working with flowise builder.",
       "domain": "automation",
       "tags": [
         "api",
@@ -495,7 +495,7 @@
     {
       "name": "lakefs-versioning",
       "category": "automation",
-      "description": "LakeFS data versioning — Git-like branching for data lakes, atomic commits, time travel, CI/CD. Use when working with lakefs versioning.",
+      "description": "LakeFS data versioning \u2014 Git-like branching for data lakes, atomic commits, time travel, CI/CD. Use when working with lakefs versioning.",
       "domain": "automation",
       "tags": [
         "automation",
@@ -512,7 +512,7 @@
     {
       "name": "make-scenarios",
       "category": "automation",
-      "description": "Make.com scenario automation — modules, routes, filters, error handlers, data stores, webhooks. Use when working with make scenarios.",
+      "description": "Make.com scenario automation \u2014 modules, routes, filters, error handlers, data stores, webhooks. Use when working with make scenarios.",
       "domain": "automation",
       "tags": [
         "automation",
@@ -530,7 +530,7 @@
     {
       "name": "moltbook-interact",
       "category": "automation",
-      "description": "Automate Moltbook engagement — content posting, community management, sentiment-aware replies, and account growth at scale.",
+      "description": "Automate Moltbook engagement \u2014 content posting, community management, sentiment-aware replies, and account growth at scale.",
       "domain": "automation",
       "tags": [
         "automation",
@@ -565,7 +565,7 @@
     {
       "name": "n8n-workflows",
       "category": "automation",
-      "description": "n8n workflow automation — nodes, triggers, expressions, credentials, webhooks, error handling. Use when working with n8n workflows.",
+      "description": "n8n workflow automation \u2014 nodes, triggers, expressions, credentials, webhooks, error handling. Use when working with n8n workflows.",
       "domain": "automation",
       "tags": [
         "automation",
@@ -583,7 +583,7 @@
     {
       "name": "pipedream-workflows",
       "category": "automation",
-      "description": "Pipedream serverless workflows — triggers, code steps, pre-built actions, data stores, HTTP. Use when working with pipedream workflows.",
+      "description": "Pipedream serverless workflows \u2014 triggers, code steps, pre-built actions, data stores, HTTP. Use when working with pipedream workflows.",
       "domain": "automation",
       "tags": [
         "automation",
@@ -600,7 +600,7 @@
     {
       "name": "postai-automation",
       "category": "automation",
-      "description": "Automate TikTok and Instagram video creation from product images using POST AI — generates dozens of captioned, voiced-over variants for affiliate and e-commerce marketing.",
+      "description": "Automate TikTok and Instagram video creation from product images using POST AI \u2014 generates dozens of captioned, voiced-over variants for affiliate and e-commerce marketing.",
       "domain": "automation",
       "tags": [
         "automation",
@@ -843,7 +843,7 @@
     {
       "name": "zapier-patterns",
       "category": "automation",
-      "description": "Zapier automation patterns — triggers, actions, filters, formatters, paths, code steps. Use when working with zapier patterns.",
+      "description": "Zapier automation patterns \u2014 triggers, actions, filters, formatters, paths, code steps. Use when working with zapier patterns.",
       "domain": "automation",
       "tags": [
         "api",
@@ -861,7 +861,7 @@
     {
       "name": "accessibility-audit",
       "category": "content",
-      "description": "WCAG compliance audit — semantic HTML, ARIA, keyboard navigation, color contrast, and screen reader testing. Use when working with accessibility audit.",
+      "description": "WCAG compliance audit \u2014 semantic HTML, ARIA, keyboard navigation, color contrast, and screen reader testing. Use when working with accessibility audit.",
       "domain": "content",
       "tags": [
         "accessibility",
@@ -931,7 +931,7 @@
     {
       "name": "ant-design",
       "category": "content",
-      "description": "Ant Design React component library — enterprise UI, forms, tables, charts, theming, ProComponents. Use when working with ant design.",
+      "description": "Ant Design React component library \u2014 enterprise UI, forms, tables, charts, theming, ProComponents. Use when working with ant design.",
       "domain": "content",
       "tags": [
         "ant",
@@ -1003,7 +1003,7 @@
     {
       "name": "chakra-ui",
       "category": "content",
-      "description": "Chakra UI React component library — theming, responsive styles, color mode, component composition. Use when working with chakra ui.",
+      "description": "Chakra UI React component library \u2014 theming, responsive styles, color mode, component composition. Use when working with chakra ui.",
       "domain": "content",
       "tags": [
         "chakra",
@@ -1059,7 +1059,7 @@
     {
       "name": "content-kingdom",
       "category": "content",
-      "description": "End-to-end content production orchestrator across 12 phases — sell managed content services to SMEs.",
+      "description": "End-to-end content production orchestrator across 12 phases \u2014 sell managed content services to SMEs.",
       "domain": "content",
       "tags": [
         "content",
@@ -1078,7 +1078,7 @@
     {
       "name": "content-planner-auto",
       "category": "content",
-      "description": "Auto-generate 30-day content calendars — sell content planning as a standalone service with pillar rotation and multi-platform timing.",
+      "description": "Auto-generate 30-day content calendars \u2014 sell content planning as a standalone service with pillar rotation and multi-platform timing.",
       "domain": "content",
       "tags": [
         "auto",
@@ -1099,7 +1099,7 @@
     {
       "name": "daisyui-components",
       "category": "content",
-      "description": "daisyUI component library for Tailwind — themed components, colors, responsive, dark mode. Use when working with daisyui components.",
+      "description": "daisyUI component library for Tailwind \u2014 themed components, colors, responsive, dark mode. Use when working with daisyui components.",
       "domain": "content",
       "tags": [
         "components",
@@ -1116,7 +1116,7 @@
     {
       "name": "design-tokens",
       "category": "content",
-      "description": "Design token systems — color, typography, spacing, and theme architecture for consistent design. Use when designing token systems — color, typography, spacing, and theme architecture.",
+      "description": "Design token systems \u2014 color, typography, spacing, and theme architecture for consistent design. Use when designing token systems \u2014 color, typography, spacing, and theme architecture.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1190,7 +1190,7 @@
     {
       "name": "frontend-design",
       "category": "content",
-      "description": "Design system patterns — component architecture, Tailwind mastery, visual hierarchy, and responsive layouts. Use when designing system patterns — component architecture, tailwind mastery, visual hierarchy,.",
+      "description": "Design system patterns \u2014 component architecture, Tailwind mastery, visual hierarchy, and responsive layouts. Use when designing system patterns \u2014 component architecture, tailwind mastery, visual hierarchy,.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1278,7 +1278,7 @@
     {
       "name": "humanizer-zh",
       "category": "content",
-      "description": "Use when removing AI writing痕迹 from Chinese text to make it sound more natural and human-written.",
+      "description": "Use when removing AI writing\u75d5\u8ff9 from Chinese text to make it sound more natural and human-written.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1294,7 +1294,7 @@
     {
       "name": "image-gen",
       "category": "content",
-      "description": "AI image generation — Stable Diffusion, Midjourney, DALL-E, ComfyUI. Prompt engineering for images, inpainting, outpainting, ControlNet. Use when working with image gen.",
+      "description": "AI image generation \u2014 Stable Diffusion, Midjourney, DALL-E, ComfyUI. Prompt engineering for images, inpainting, outpainting, ControlNet. Use when working with image gen.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1347,7 +1347,7 @@
     {
       "name": "material-ui",
       "category": "content",
-      "description": "Material UI (MUI) React components — theming, styled engine, data grid, date pickers, icons. Use when working with material ui.",
+      "description": "Material UI (MUI) React components \u2014 theming, styled engine, data grid, date pickers, icons. Use when working with material ui.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1380,7 +1380,7 @@
     {
       "name": "monetization-strategist",
       "category": "content",
-      "description": "Turn content into revenue — newsletter businesses, YouTube automation, affiliate sites, digital product creation, funnel design, audience building. Use when building content-based revenue streams.",
+      "description": "Turn content into revenue \u2014 newsletter businesses, YouTube automation, affiliate sites, digital product creation, funnel design, audience building. Use when building content-based revenue streams.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1399,7 +1399,7 @@
     {
       "name": "multi-platform-distribution",
       "category": "content",
-      "description": "One piece of content becomes 10 — blog to Twitter thread, LinkedIn article, YouTube script, newsletter, TikTok script, podcast outline, Reddit post. Use when working with multi platform distribution.",
+      "description": "One piece of content becomes 10 \u2014 blog to Twitter thread, LinkedIn article, YouTube script, newsletter, TikTok script, podcast outline, Reddit post. Use when working with multi platform distribution.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1418,7 +1418,7 @@
     {
       "name": "pandacss-styling",
       "category": "content",
-      "description": "Panda CSS zero-runtime styling — token system, patterns, recipes, conditions, JSX styles. Use when working with pandacss styling.",
+      "description": "Panda CSS zero-runtime styling \u2014 token system, patterns, recipes, conditions, JSX styles. Use when working with pandacss styling.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1435,7 +1435,7 @@
     {
       "name": "paperpod",
       "category": "content",
-      "description": "Isolated agent runtime for code execution, live preview URLs, browser automation, 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), LLM inference, and persistent memory — all via CLI or HTTP, no SDK or API keys required. Use when working with paperpod.",
+      "description": "Isolated agent runtime for code execution, live preview URLs, browser automation, 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), LLM inference, and persistent memory \u2014 all via CLI or HTTP, no SDK or API keys required. Use when working with paperpod.",
       "domain": "content",
       "tags": [
         "ai-agent",
@@ -1470,7 +1470,7 @@
     {
       "name": "postcss-plugins",
       "category": "content",
-      "description": "PostCSS plugin ecosystem — Autoprefixer, cssnano, nesting, custom plugins, preset configuration. Use when working with postcss plugins.",
+      "description": "PostCSS plugin ecosystem \u2014 Autoprefixer, cssnano, nesting, custom plugins, preset configuration. Use when working with postcss plugins.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1522,7 +1522,7 @@
     {
       "name": "radix-primitives",
       "category": "content",
-      "description": "Radix UI headless primitives — accessible, unstyled React components for dialogs, dropdowns, tooltips. Use when working with radix primitives.",
+      "description": "Radix UI headless primitives \u2014 accessible, unstyled React components for dialogs, dropdowns, tooltips. Use when working with radix primitives.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1560,7 +1560,7 @@
     {
       "name": "responsive-design",
       "category": "content",
-      "description": "Mobile-first responsive design — breakpoints, fluid typography, container queries, and touch optimization. Use when working with responsive design.",
+      "description": "Mobile-first responsive design \u2014 breakpoints, fluid typography, container queries, and touch optimization. Use when working with responsive design.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1577,7 +1577,7 @@
     {
       "name": "shadcn-ui",
       "category": "content",
-      "description": "shadcn/ui component library — copy-paste React components, Tailwind CSS, Radix primitives, theming. Use when working with shadcn ui.",
+      "description": "shadcn/ui component library \u2014 copy-paste React components, Tailwind CSS, Radix primitives, theming. Use when working with shadcn ui.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1593,7 +1593,7 @@
     {
       "name": "storybook-ui",
       "category": "content",
-      "description": "Storybook for UI component development — stories, addons, controls, a11y testing, visual regression. Use when working with storybook ui.",
+      "description": "Storybook for UI component development \u2014 stories, addons, controls, a11y testing, visual regression. Use when working with storybook ui.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1610,7 +1610,7 @@
     {
       "name": "styled-components",
       "category": "content",
-      "description": "styled-components CSS-in-JS — tagged templates, theming, props, animations, SSR, performance. Use when working with styled components.",
+      "description": "styled-components CSS-in-JS \u2014 tagged templates, theming, props, animations, SSR, performance. Use when working with styled components.",
       "domain": "content",
       "tags": [
         "components",
@@ -1627,7 +1627,7 @@
     {
       "name": "tailwind-advanced",
       "category": "content",
-      "description": "Advanced Tailwind CSS — custom plugins, JIT, container queries, animations, dark mode, design systems. Use when working with tailwind advanced.",
+      "description": "Advanced Tailwind CSS \u2014 custom plugins, JIT, container queries, animations, dark mode, design systems. Use when working with tailwind advanced.",
       "domain": "content",
       "tags": [
         "advanced",
@@ -1662,7 +1662,7 @@
     {
       "name": "ui-critique",
       "category": "content",
-      "description": "Structured UI review — visual hierarchy, consistency, accessibility, and actionable improvement feedback. Use when working with ui critique.",
+      "description": "Structured UI review \u2014 visual hierarchy, consistency, accessibility, and actionable improvement feedback. Use when working with ui critique.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1678,7 +1678,7 @@
     {
       "name": "ui-ux-pro-max",
       "category": "content",
-      "description": "Industry-specific design intelligence — 161 reasoning rules, 99 UX guidelines, 161 color palettes, 57 font pairings, 49 UI styles. Use when building professional UI, need industry-specific design, generating design systems, choosing colors or typography.",
+      "description": "Industry-specific design intelligence \u2014 161 reasoning rules, 99 UX guidelines, 161 color palettes, 57 font pairings, 49 UI styles. Use when building professional UI, need industry-specific design, generating design systems, choosing colors or typography.",
       "domain": "content",
       "tags": [
         "ui",
@@ -1714,7 +1714,7 @@
     {
       "name": "vanilla-extract",
       "category": "content",
-      "description": "Vanilla Extract zero-runtime CSS-in-JS — type-safe styles, Sprinkles, Recipes, themes. Use when working with vanilla extract.",
+      "description": "Vanilla Extract zero-runtime CSS-in-JS \u2014 type-safe styles, Sprinkles, Recipes, themes. Use when working with vanilla extract.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1731,7 +1731,7 @@
     {
       "name": "video-editor",
       "category": "content",
-      "description": "Professional video post-production using FFmpeg — color grading, audio design, kinetic typography, transitions, motion effects, captions, brand overlays, and platform-optimized export for promotional and marketing videos. Use when editing videos, adding captions, color grading, or creating promo content.\n",
+      "description": "Professional video post-production using FFmpeg \u2014 color grading, audio design, kinetic typography, transitions, motion effects, captions, brand overlays, and platform-optimized export for promotional and marketing videos. Use when editing videos, adding captions, color grading, or creating promo content.\n",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1751,7 +1751,7 @@
     {
       "name": "video-gen",
       "category": "content",
-      "description": "Generate videos with AI models — Runway, Kling, Sora, Pika, Seedance 2.0, Grok Imagine, Veo. Text-to-video, image-to-video, video extension, multi-modal references. Use when generating video from text prompts, animating images, or creating AI video content.\n",
+      "description": "Generate videos with AI models \u2014 Runway, Kling, Sora, Pika, Seedance 2.0, Grok Imagine, Veo. Text-to-video, image-to-video, video extension, multi-modal references. Use when generating video from text prompts, animating images, or creating AI video content.\n",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1812,7 +1812,7 @@
     {
       "name": "voice-ai",
       "category": "content",
-      "description": "Voice AI — text-to-speech (ElevenLabs, OpenAI TTS), speech-to-text (Whisper), voice cloning, real-time voice agents. Use when working with voice ai.",
+      "description": "Voice AI \u2014 text-to-speech (ElevenLabs, OpenAI TTS), speech-to-text (Whisper), voice cloning, real-time voice agents. Use when working with voice ai.",
       "domain": "content",
       "tags": [
         "ai-agent",
@@ -1950,7 +1950,7 @@
     {
       "name": "ai-engineering-curriculum",
       "category": "core",
-      "description": "Structured AI engineering curriculum — 382 skills + 99 prompts across 20 phases covering ML, deep learning, LLMs, agents, and production systems. Use when learning AI, building AI skills,.",
+      "description": "Structured AI engineering curriculum \u2014 382 skills + 99 prompts across 20 phases covering ML, deep learning, LLMs, agents, and production systems. Use when learning AI, building AI skills,.",
       "domain": "core",
       "tags": [
         [
@@ -1984,7 +1984,7 @@
     {
       "name": "autogen-agents",
       "category": "core",
-      "description": "AutoGen multi-agent conversations — AssistantAgent, UserProxyAgent, group chat, code execution. Use when working with autogen agents.",
+      "description": "AutoGen multi-agent conversations \u2014 AssistantAgent, UserProxyAgent, group chat, code execution. Use when working with autogen agents.",
       "domain": "core",
       "tags": [
         "agents",
@@ -2002,7 +2002,7 @@
     {
       "name": "autonomy-engine",
       "category": "core",
-      "description": "Core autonomy protocol for AI agent operations. Defines how agents operate 24/7 without human prompts — monitoring all systems, generating revenue, managing team, escalating decisions, and growing. Use this skill to understand an autonomous operating system. Use when working with autonomy engine.",
+      "description": "Core autonomy protocol for AI agent operations. Defines how agents operate 24/7 without human prompts \u2014 monitoring all systems, generating revenue, managing team, escalating decisions, and growing. Use this skill to understand an autonomous operating system. Use when working with autonomy engine.",
       "domain": "core",
       "tags": [
         "autonomy",
@@ -2057,7 +2057,7 @@
     {
       "name": "company-kb",
       "category": "core",
-      "description": "company-kb — Company Knowledge Base Skill. Use when relevant to this domain.",
+      "description": "company-kb \u2014 Company Knowledge Base Skill. Use when relevant to this domain.",
       "domain": "core",
       "tags": [
         "company",
@@ -2074,7 +2074,7 @@
     {
       "name": "crewai-agents",
       "category": "core",
-      "description": "CrewAI multi-agent orchestration — agents, tasks, crews, tools, memory, delegation. Use when working with crewai agents.",
+      "description": "CrewAI multi-agent orchestration \u2014 agents, tasks, crews, tools, memory, delegation. Use when working with crewai agents.",
       "domain": "core",
       "tags": [
         "agents",
@@ -2092,7 +2092,7 @@
     {
       "name": "dify-workflow",
       "category": "core",
-      "description": "Dify AI workflow platform — LLM apps, knowledge bases, agents, workflow orchestration, API deployment. Use when working with dify workflow.",
+      "description": "Dify AI workflow platform \u2014 LLM apps, knowledge bases, agents, workflow orchestration, API deployment. Use when working with dify workflow.",
       "domain": "core",
       "tags": [
         "ai-agent",
@@ -2218,7 +2218,7 @@
     {
       "name": "karpathy-coding-principles",
       "category": "core",
-      "description": "Andrej Karpathy's 4 coding principles — think before coding, simplicity first, surgical changes, goal-driven execution. Use when coding, reviewing code quality, reducing overengineering,.",
+      "description": "Andrej Karpathy's 4 coding principles \u2014 think before coding, simplicity first, surgical changes, goal-driven execution. Use when coding, reviewing code quality, reducing overengineering,.",
       "domain": "core",
       "tags": [
         [
@@ -2249,7 +2249,7 @@
     {
       "name": "langchain-patterns",
       "category": "core",
-      "description": "LangChain/LangGraph patterns — chains, agents, tools, memory, retrieval, graph workflows. Use when working with langchain patterns.",
+      "description": "LangChain/LangGraph patterns \u2014 chains, agents, tools, memory, retrieval, graph workflows. Use when working with langchain patterns.",
       "domain": "core",
       "tags": [
         "ai-agent",
@@ -2268,7 +2268,7 @@
     {
       "name": "llamaindex-patterns",
       "category": "core",
-      "description": "LlamaIndex data framework — ingestion, indexing, query engines, chat engines, agents. Use when working with llamaindex patterns.",
+      "description": "LlamaIndex data framework \u2014 ingestion, indexing, query engines, chat engines, agents. Use when working with llamaindex patterns.",
       "domain": "core",
       "tags": [
         "ai-agent",
@@ -2286,7 +2286,7 @@
     {
       "name": "llm-deployment",
       "category": "core",
-      "description": "LLM deployment and serving — vLLM, Ollama, TGI, llama.cpp. Model quantization, GPU optimization, API serving. Use when working with llm deployment.",
+      "description": "LLM deployment and serving \u2014 vLLM, Ollama, TGI, llama.cpp. Model quantization, GPU optimization, API serving. Use when working with llm deployment.",
       "domain": "core",
       "tags": [
         "api",
@@ -2320,7 +2320,7 @@
     {
       "name": "model-fine-tuning",
       "category": "core",
-      "description": "Fine-tune LLMs and ML models — LoRA, QLoRA, PEFT, Hugging Face. Dataset prep, training, evaluation, deployment. Use when working with model fine tuning.",
+      "description": "Fine-tune LLMs and ML models \u2014 LoRA, QLoRA, PEFT, Hugging Face. Dataset prep, training, evaluation, deployment. Use when working with model fine tuning.",
       "domain": "core",
       "tags": [
         "fine",
@@ -2375,7 +2375,7 @@
     {
       "name": "prompt-engineering",
       "category": "core",
-      "description": "Advanced prompt engineering — chain-of-thought, few-shot, tree-of-thought, self-consistency, meta-prompting, system design, debugging, and optimization for production AI systems. Use when working with prompt engineering.",
+      "description": "Advanced prompt engineering \u2014 chain-of-thought, few-shot, tree-of-thought, self-consistency, meta-prompting, system design, debugging, and optimization for production AI systems. Use when working with prompt engineering.",
       "domain": "core",
       "tags": [
         "engineering",
@@ -2392,7 +2392,7 @@
     {
       "name": "rag-builder",
       "category": "core",
-      "description": "RAG pipeline design — document chunking, embedding strategies, retrieval optimization, and answer generation. Use when working with rag builder.",
+      "description": "RAG pipeline design \u2014 document chunking, embedding strategies, retrieval optimization, and answer generation. Use when working with rag builder.",
       "domain": "core",
       "tags": [
         "builder",
@@ -2500,7 +2500,7 @@
     {
       "name": "semantic-kernel",
       "category": "core",
-      "description": "Microsoft Semantic Kernel — AI orchestration, plugins, planners, memory, prompt templates. Use when working with semantic kernel.",
+      "description": "Microsoft Semantic Kernel \u2014 AI orchestration, plugins, planners, memory, prompt templates. Use when working with semantic kernel.",
       "domain": "core",
       "tags": [
         "infrastructure",
@@ -2604,7 +2604,7 @@
     {
       "name": "vector-db-ops",
       "category": "core",
-      "description": "Vector database operations — Pinecone, Weaviate, Qdrant, ChromaDB. Indexing, querying, filtering, and managing vector embeddings for RAG and similarity search. Use when working with vector db ops.",
+      "description": "Vector database operations \u2014 Pinecone, Weaviate, Qdrant, ChromaDB. Indexing, querying, filtering, and managing vector embeddings for RAG and similarity search. Use when working with vector db ops.",
       "domain": "core",
       "tags": [
         "infrastructure",
@@ -2696,7 +2696,8 @@
         "penetration-testing",
         "security",
         "testing",
-        "threat-defense"
+        "threat-defense",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -2706,14 +2707,15 @@
     {
       "name": "ai-hacker",
       "category": "cybersecurity",
-      "description": "AI and LLM security testing — prompt injection, model manipulation, data exfiltration via AI. Use when testing AI-powered applications, finding prompt injection vulnerabilities, or assessing LLM-integrated systems.",
+      "description": "AI and LLM security testing \u2014 prompt injection, model manipulation, data exfiltration via AI. Use when testing AI-powered applications, finding prompt injection vulnerabilities, or assessing LLM-integrated systems.",
       "domain": "cybersecurity",
       "tags": [
         "cybersecurity",
         "hacker",
         "security",
         "testing",
-        "threat-defense"
+        "threat-defense",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -4133,7 +4135,7 @@
     {
       "name": "api-destroyer",
       "category": "cybersecurity",
-      "description": "Aggressive API security testing for REST, GraphQL, gRPC, WebSocket with money protocol — billable $2000-6000/engagement service targeting API-first startups and fintechs. Use when billing clients for API security assessments.",
+      "description": "Aggressive API security testing for REST, GraphQL, gRPC, WebSocket with money protocol \u2014 billable $2000-6000/engagement service targeting API-first startups and fintechs. Use when billing clients for API security assessments.",
       "domain": "cybersecurity",
       "tags": [
         "api",
@@ -4280,7 +4282,7 @@
     {
       "name": "auth-killer",
       "category": "cybersecurity",
-      "description": "Authentication and authorization bypass specialist — OAuth, SAML, JWT, SSO, MFA bypass. Use when testing login flows, breaking authentication mechanisms, or finding auth bypass vulnerabilities.",
+      "description": "Authentication and authorization bypass specialist \u2014 OAuth, SAML, JWT, SSO, MFA bypass. Use when testing login flows, breaking authentication mechanisms, or finding auth bypass vulnerabilities.",
       "domain": "cybersecurity",
       "tags": [
         "auth",
@@ -4289,7 +4291,8 @@
         "machine-learning",
         "security",
         "testing",
-        "threat-defense"
+        "threat-defense",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -4348,7 +4351,8 @@
         "breaker",
         "cybersecurity",
         "security",
-        "threat-defense"
+        "threat-defense",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -4358,7 +4362,7 @@
     {
       "name": "bounty-target-finder",
       "category": "cybersecurity",
-      "description": "Find and prioritize high-paying bug bounty programs with money protocol — maximize payout/hour with automated target scoring. Use when optimizing bug bounty income or building a target pipeline.",
+      "description": "Find and prioritize high-paying bug bounty programs with money protocol \u2014 maximize payout/hour with automated target scoring. Use when optimizing bug bounty income or building a target pipeline.",
       "domain": "cybersecurity",
       "tags": [
         "bounty",
@@ -4386,7 +4390,8 @@
         "chain",
         "cybersecurity",
         "security",
-        "threat-defense"
+        "threat-defense",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -4396,7 +4401,7 @@
     {
       "name": "bug-hunting",
       "category": "cybersecurity",
-      "description": "Automated bug bounty hunting with money protocol — recon-to-report pipeline, sellable recon service, bounty report templates. Use when generating income through bug bounties or selling recon-as-service.",
+      "description": "Automated bug bounty hunting with money protocol \u2014 recon-to-report pipeline, sellable recon service, bounty report templates. Use when generating income through bug bounties or selling recon-as-service.",
       "domain": "cybersecurity",
       "tags": [
         "bug",
@@ -5095,7 +5100,8 @@
         "gcp",
         "hunter",
         "security",
-        "testing"
+        "testing",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -5122,7 +5128,7 @@
     {
       "name": "collecting-open-source-intelligence",
       "category": "cybersecurity",
-      "description": "Stub — merged into performing-open-source-intelligence-gathering. See the parent skill for both offensive and defensive OSINT workflows.",
+      "description": "Stub \u2014 merged into performing-open-source-intelligence-gathering. See the parent skill for both offensive and defensive OSINT workflows.",
       "domain": "cybersecurity",
       "tags": [
         "OSINT",
@@ -5387,7 +5393,7 @@
     {
       "name": "conducting-network-penetration-test",
       "category": "cybersecurity",
-      "description": "PTES-based network penetration testing with money protocol — internal/external assessment service, Kali-optimized, compliance-driven (PCI/SOC2). Use when billing clients for network pentests at $2000-8000/engagement.",
+      "description": "PTES-based network penetration testing with money protocol \u2014 internal/external assessment service, Kali-optimized, compliance-driven (PCI/SOC2). Use when billing clients for network pentests at $2000-8000/engagement.",
       "domain": "cybersecurity",
       "tags": [
         "network-pentest",
@@ -5876,7 +5882,7 @@
     {
       "name": "continuous-hunter",
       "category": "cybersecurity",
-      "description": "Automated 24/7 bug hunting pipeline with money protocol — sell as managed vulnerability discovery service at $1000-4000/month retainer. Use when generating recurring income through continuous security monitoring.",
+      "description": "Automated 24/7 bug hunting pipeline with money protocol \u2014 sell as managed vulnerability discovery service at $1000-4000/month retainer. Use when generating recurring income through continuous security monitoring.",
       "domain": "cybersecurity",
       "tags": [
         "continuous",
@@ -5941,7 +5947,8 @@
         "crypto",
         "cybersecurity",
         "security",
-        "threat-defense"
+        "threat-defense",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -6515,7 +6522,7 @@
     {
       "name": "detecting-business-email-compromise-with-ai",
       "category": "cybersecurity",
-      "description": "Stub — merged into detecting-business-email-compromise. See the parent skill for rule-based, behavioral, and AI/ML-powered BEC detection workflows.",
+      "description": "Stub \u2014 merged into detecting-business-email-compromise. See the parent skill for rule-based, behavioral, and AI/ML-powered BEC detection workflows.",
       "domain": "cybersecurity",
       "tags": [
         "bec",
@@ -8595,7 +8602,8 @@
         "master",
         "security",
         "testing",
-        "threat-defense"
+        "threat-defense",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -8624,7 +8632,7 @@
     {
       "name": "hackingtool",
       "category": "cybersecurity",
-      "description": "All-in-one terminal hacking toolkit — 185+ security tools across 20 categories with unified menu, search, and batch install. Use when setting up a pentest environment, launching security tools, or managing a hacking toolkit.",
+      "description": "All-in-one terminal hacking toolkit \u2014 185+ security tools across 20 categories with unified menu, search, and batch install. Use when setting up a pentest environment, launching security tools, or managing a hacking toolkit.",
       "domain": "cybersecurity",
       "tags": [
         "cybersecurity",
@@ -12507,7 +12515,7 @@
     {
       "name": "integrating-sast-into-github-actions-pipeline",
       "category": "cybersecurity",
-      "description": "This skill covers integrating Static Application Security Testing (SAST) tools—CodeQL and Semgrep—into GitHub Actions CI/CD pipelines. It addresses configuring automated code scanning on pull requests and pushes, tuning rules to reduce false positives, uploading SARIF results to GitHub Advanced Security, and establishing quality gates that block merges when high-severity vulnerabilities are detected.\n",
+      "description": "This skill covers integrating Static Application Security Testing (SAST) tools\u2014CodeQL and Semgrep\u2014into GitHub Actions CI/CD pipelines. It addresses configuring automated code scanning on pull requests and pushes, tuning rules to reduce false positives, uploading SARIF results to GitHub Advanced Security, and establishing quality gates that block merges when high-severity vulnerabilities are detected.\n",
       "domain": "cybersecurity",
       "tags": [
         "devsecops",
@@ -12599,7 +12607,7 @@
     {
       "name": "iot-hunter",
       "category": "cybersecurity",
-      "description": "IoT and embedded device security testing — firmware analysis, hardware interfaces, protocol exploitation. Use when testing IoT devices, extracting firmware, analyzing embedded systems, or finding hardware vulnerabilities. Use when working with iot hunter.",
+      "description": "IoT and embedded device security testing \u2014 firmware analysis, hardware interfaces, protocol exploitation. Use when testing IoT devices, extracting firmware, analyzing embedded systems, or finding hardware vulnerabilities. Use when working with iot hunter.",
       "domain": "cybersecurity",
       "tags": [
         "cybersecurity",
@@ -12607,7 +12615,8 @@
         "iot",
         "security",
         "testing",
-        "threat-defense"
+        "threat-defense",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -12688,7 +12697,7 @@
     {
       "name": "mobile-hacking",
       "category": "cybersecurity",
-      "description": "Android/iOS mobile app security testing with money protocol — premium $3000-8000/engagement pentesting service for app startups and fintechs. Use when billing clients for mobile security assessments.",
+      "description": "Android/iOS mobile app security testing with money protocol \u2014 premium $3000-8000/engagement pentesting service for app startups and fintechs. Use when billing clients for mobile security assessments.",
       "domain": "cybersecurity",
       "tags": [
         "cybersecurity",
@@ -12954,7 +12963,7 @@
     {
       "name": "performing-ai-driven-osint-correlation",
       "category": "cybersecurity",
-      "description": "Use AI and LLM-based reasoning to correlate findings across multiple OSINT sources—username enumeration, email lookups, social media profiles, domain records, breach databases, and dark-web mentions—into unified intelligence profiles with confidence scoring and link analysis. Use when working with performing ai driven osint correlation.",
+      "description": "Use AI and LLM-based reasoning to correlate findings across multiple OSINT sources\u2014username enumeration, email lookups, social media profiles, domain records, breach databases, and dark-web mentions\u2014into unified intelligence profiles with confidence scoring and link analysis. Use when working with performing ai driven osint correlation.",
       "domain": "cybersecurity",
       "tags": [
         "osint",
@@ -15799,7 +15808,7 @@
     {
       "name": "performing-web-application-penetration-test",
       "category": "cybersecurity",
-      "description": "Full OWASP WSTG web application pentest with money protocol — billable $1500-5000/engagement service, client-ready reports, compliance-ready deliverables. Use when billing clients for web pentests.",
+      "description": "Full OWASP WSTG web application pentest with money protocol \u2014 billable $1500-5000/engagement service, client-ready reports, compliance-ready deliverables. Use when billing clients for web pentests.",
       "domain": "cybersecurity",
       "tags": [
         "web-application-pentest",
@@ -16070,7 +16079,7 @@
     {
       "name": "recon-automation",
       "category": "cybersecurity",
-      "description": "Automated attack surface mapping with money protocol — sell reconnaissance reports to CISOs and security teams at $500-2000/report. Use when generating income through recon-as-service.",
+      "description": "Automated attack surface mapping with money protocol \u2014 sell reconnaissance reports to CISOs and security teams at $500-2000/report. Use when generating income through recon-as-service.",
       "domain": "cybersecurity",
       "tags": [
         "cybersecurity",
@@ -16265,7 +16274,7 @@
     {
       "name": "saas-orchestrator",
       "category": "cybersecurity",
-      "description": "Wraps the existing 23 security skills into a sellable security-as-a-Service offering — automated pentest reports, compliance checking, client management",
+      "description": "Wraps the existing 23 security skills into a sellable security-as-a-Service offering \u2014 automated pentest reports, compliance checking, client management",
       "domain": "cybersecurity",
       "tags": [
         "compliance",
@@ -16673,7 +16682,7 @@
     {
       "name": "supply-chain-attacker",
       "category": "cybersecurity",
-      "description": "Software supply chain attack testing — dependency confusion, typosquatting, malicious packages, CI/CD pipeline exploitation. Use when assessing supply chain security, testing package managers, or finding supply chain vulnerabilities.",
+      "description": "Software supply chain attack testing \u2014 dependency confusion, typosquatting, malicious packages, CI/CD pipeline exploitation. Use when assessing supply chain security, testing package managers, or finding supply chain vulnerabilities.",
       "domain": "cybersecurity",
       "tags": [
         "attacker",
@@ -16683,7 +16692,8 @@
         "security",
         "supply",
         "testing",
-        "threat-defense"
+        "threat-defense",
+        "money"
       ],
       "version": "",
       "author": "",
@@ -17207,7 +17217,7 @@
     {
       "name": "vulnerability-scanner",
       "category": "cybersecurity",
-      "description": "AI-powered vulnerability scanning with 45+ attack methods and money protocol — sell automated scanning at $500-3000/scan with professional PDF/HTML reports. Use when generating income through vulnerability assessment services.",
+      "description": "AI-powered vulnerability scanning with 45+ attack methods and money protocol \u2014 sell automated scanning at $500-3000/scan with professional PDF/HTML reports. Use when generating income through vulnerability assessment services.",
       "domain": "cybersecurity",
       "tags": [
         "cybersecurity",
@@ -17243,7 +17253,7 @@
     {
       "name": "writeup-cash",
       "category": "cybersecurity",
-      "description": "Monetize bug bounty findings through writeups, tools, and consulting with money protocol — SEO-optimized writeup templates, consulting rate cards, tool licensing. Use when turning security research into passive income streams.",
+      "description": "Monetize bug bounty findings through writeups, tools, and consulting with money protocol \u2014 SEO-optimized writeup templates, consulting rate cards, tool licensing. Use when turning security research into passive income streams.",
       "domain": "cybersecurity",
       "tags": [
         "cash",
@@ -17261,7 +17271,7 @@
     {
       "name": "airflow-pipelines",
       "category": "data",
-      "description": "Apache Airflow workflow orchestration — DAGs, operators, sensors, XComs, pools, scheduling. Use when working with airflow pipelines.",
+      "description": "Apache Airflow workflow orchestration \u2014 DAGs, operators, sensors, XComs, pools, scheduling. Use when working with airflow pipelines.",
       "domain": "data",
       "tags": [
         "airflow",
@@ -17297,7 +17307,7 @@
     {
       "name": "dagster-pipelines",
       "category": "data",
-      "description": "Dagster data orchestration — software-defined assets, ops, jobs, schedules, sensors, IO managers. Use when working with dagster pipelines.",
+      "description": "Dagster data orchestration \u2014 software-defined assets, ops, jobs, schedules, sensors, IO managers. Use when working with dagster pipelines.",
       "domain": "data",
       "tags": [
         "analytics",
@@ -17334,7 +17344,7 @@
     {
       "name": "dbt-transform",
       "category": "data",
-      "description": "dbt data transformation — models, tests, macros, sources, snapshots, documentation, packages. Use when working with dbt transform.",
+      "description": "dbt data transformation \u2014 models, tests, macros, sources, snapshots, documentation, packages. Use when working with dbt transform.",
       "domain": "data",
       "tags": [
         "analytics",
@@ -17351,7 +17361,7 @@
     {
       "name": "prefect-flows",
       "category": "data",
-      "description": "Prefect workflow orchestration — flows, tasks, deployments, work pools, schedules, retries. Use when working with prefect flows.",
+      "description": "Prefect workflow orchestration \u2014 flows, tasks, deployments, work pools, schedules, retries. Use when working with prefect flows.",
       "domain": "data",
       "tags": [
         "analytics",
@@ -17387,7 +17397,7 @@
     {
       "name": "spark-processing",
       "category": "data",
-      "description": "Apache Spark distributed processing — DataFrames, SQL, streaming, MLlib, cluster management. Use when working with spark processing.",
+      "description": "Apache Spark distributed processing \u2014 DataFrames, SQL, streaming, MLlib, cluster management. Use when working with spark processing.",
       "domain": "data",
       "tags": [
         "analytics",
@@ -17405,7 +17415,7 @@
     {
       "name": "temporal-workflows",
       "category": "data",
-      "description": "Temporal durable workflows — workflow/activity definitions, retries, signals, queries, versioning. Use when working with temporal workflows.",
+      "description": "Temporal durable workflows \u2014 workflow/activity definitions, retries, signals, queries, versioning. Use when working with temporal workflows.",
       "domain": "data",
       "tags": [
         "analytics",
@@ -17493,7 +17503,7 @@
     {
       "name": "ai-saas-builder",
       "category": "development",
-      "description": "Takes a problem statement and produces a deployable micro-SaaS product — landing page, auth, payments, database, API, and billing. Use when building micro-SaaS products solo.",
+      "description": "Takes a problem statement and produces a deployable micro-SaaS product \u2014 landing page, auth, payments, database, API, and billing. Use when building micro-SaaS products solo.",
       "domain": "development",
       "tags": [
         "api",
@@ -17532,7 +17542,7 @@
     {
       "name": "android-jetpack",
       "category": "development",
-      "description": "Android Jetpack Compose — declarative UI, state management, Material Design, and Play Store deployment. Use when working with android jetpack.",
+      "description": "Android Jetpack Compose \u2014 declarative UI, state management, Material Design, and Play Store deployment. Use when working with android jetpack.",
       "domain": "development",
       "tags": [
         "android",
@@ -17549,7 +17559,7 @@
     {
       "name": "api-design",
       "category": "development",
-      "description": "REST API design — resource modeling, versioning, pagination, error handling, OpenAPI/Swagger documentation. Use when working with api design.",
+      "description": "REST API design \u2014 resource modeling, versioning, pagination, error handling, OpenAPI/Swagger documentation. Use when working with api design.",
       "domain": "development",
       "tags": [
         "api",
@@ -17567,7 +17577,7 @@
     {
       "name": "api-gateway",
       "category": "development",
-      "description": "API gateway design — rate limiting, authentication, routing, caching, request transformation. Kong, Traefik, custom gateways. Use when working with api gateway.",
+      "description": "API gateway design \u2014 rate limiting, authentication, routing, caching, request transformation. Kong, Traefik, custom gateways. Use when working with api gateway.",
       "domain": "development",
       "tags": [
         "api",
@@ -17584,7 +17594,7 @@
     {
       "name": "api-testing",
       "category": "development",
-      "description": "REST and GraphQL API testing — contract testing, schema validation, and integration test automation. Use when working with api testing.",
+      "description": "REST and GraphQL API testing \u2014 contract testing, schema validation, and integration test automation. Use when working with api testing.",
       "domain": "development",
       "tags": [
         "api",
@@ -17602,7 +17612,7 @@
     {
       "name": "app-store-optimization",
       "category": "development",
-      "description": "App Store and Play Store optimization — keywords, screenshots, reviews, and conversion rate optimization. Use when working with app store optimization.",
+      "description": "App Store and Play Store optimization \u2014 keywords, screenshots, reviews, and conversion rate optimization. Use when working with app store optimization.",
       "domain": "development",
       "tags": [
         "app",
@@ -17620,7 +17630,7 @@
     {
       "name": "appwrite-patterns",
       "category": "development",
-      "description": "Appwrite backend-as-a-service — auth, database, storage, functions, realtime for web/mobile/desktop. Use when working with appwrite patterns.",
+      "description": "Appwrite backend-as-a-service \u2014 auth, database, storage, functions, realtime for web/mobile/desktop. Use when working with appwrite patterns.",
       "domain": "development",
       "tags": [
         "appwrite",
@@ -17686,7 +17696,7 @@
     {
       "name": "cassandra-patterns",
       "category": "development",
-      "description": "Apache Cassandra patterns — data modeling, CQL, partition keys, clustering, replication, performance tuning. Use when working with cassandra patterns.",
+      "description": "Apache Cassandra patterns \u2014 data modeling, CQL, partition keys, clustering, replication, performance tuning. Use when working with cassandra patterns.",
       "domain": "development",
       "tags": [
         "cassandra",
@@ -17703,7 +17713,7 @@
     {
       "name": "cherry-picked-agent-skills",
       "category": "development",
-      "description": "6 unique agent skills cherry-picked from Addy Osmani's agent-skills — interview extraction, idea refinement, adversarial review, source-driven development, context engineering, and deprecation workflows. Use when requirements gathering, idea refinement, adversarial review, documentation-driven dev, context optimization, code deprecation.",
+      "description": "6 unique agent skills cherry-picked from Addy Osmani's agent-skills \u2014 interview extraction, idea refinement, adversarial review, source-driven development, context engineering, and deprecation workflows. Use when requirements gathering, idea refinement, adversarial review, documentation-driven dev, context optimization, code deprecation.",
       "domain": "development",
       "tags": [
         "agent-skills",
@@ -17741,7 +17751,7 @@
     {
       "name": "cockroachdb-patterns",
       "category": "development",
-      "description": "CockroachDB distributed SQL — PostgreSQL compatible, serializable isolation, geo-partitioning, multi-region. Use when working with cockroachdb patterns.",
+      "description": "CockroachDB distributed SQL \u2014 PostgreSQL compatible, serializable isolation, geo-partitioning, multi-region. Use when working with cockroachdb patterns.",
       "domain": "development",
       "tags": [
         "cockroachdb",
@@ -17827,7 +17837,7 @@
     {
       "name": "css-frameworks",
       "category": "development",
-      "description": "CSS framework patterns — Tailwind CSS, Bootstrap, PostCSS, Sass, CSS Modules, CSS-in-JS. Use when working with css frameworks.",
+      "description": "CSS framework patterns \u2014 Tailwind CSS, Bootstrap, PostCSS, Sass, CSS Modules, CSS-in-JS. Use when working with css frameworks.",
       "domain": "development",
       "tags": [
         "coding",
@@ -17844,7 +17854,7 @@
     {
       "name": "cypress-e2e",
       "category": "development",
-      "description": "Cypress E2E testing — component testing, API testing, fixtures, custom commands, CI integration. Use when working with cypress e2e.",
+      "description": "Cypress E2E testing \u2014 component testing, API testing, fixtures, custom commands, CI integration. Use when working with cypress e2e.",
       "domain": "development",
       "tags": [
         "api",
@@ -17881,7 +17891,7 @@
     {
       "name": "database-migration",
       "category": "development",
-      "description": "Safe database migrations — schema changes, data migrations, rollback strategies, and zero-downtime deploys. Use when working with database migration.",
+      "description": "Safe database migrations \u2014 schema changes, data migrations, rollback strategies, and zero-downtime deploys. Use when working with database migration.",
       "domain": "development",
       "tags": [
         "coding",
@@ -17916,7 +17926,7 @@
     {
       "name": "drizzle-orm",
       "category": "development",
-      "description": "Drizzle ORM — type-safe SQL, schema definitions, migrations, queries, relations for TypeScript/Node.js. Use when working with drizzle orm.",
+      "description": "Drizzle ORM \u2014 type-safe SQL, schema definitions, migrations, queries, relations for TypeScript/Node.js. Use when working with drizzle orm.",
       "domain": "development",
       "tags": [
         "coding",
@@ -17933,7 +17943,7 @@
     {
       "name": "dynamodb-patterns",
       "category": "development",
-      "description": "Amazon DynamoDB patterns — single table design, GSI/LSI, DynamoDB Streams, PartiQL, performance optimization. Use when working with dynamodb patterns.",
+      "description": "Amazon DynamoDB patterns \u2014 single table design, GSI/LSI, DynamoDB Streams, PartiQL, performance optimization. Use when working with dynamodb patterns.",
       "domain": "development",
       "tags": [
         "coding",
@@ -17950,7 +17960,7 @@
     {
       "name": "electron-apps",
       "category": "development",
-      "description": "Electron desktop app development — main/renderer process, IPC, native menus, auto-update, packaging. Use when working with electron apps.",
+      "description": "Electron desktop app development \u2014 main/renderer process, IPC, native menus, auto-update, packaging. Use when working with electron apps.",
       "domain": "development",
       "tags": [
         "apps",
@@ -17967,7 +17977,7 @@
     {
       "name": "engineering-hard-rules",
       "category": "development",
-      "description": "Non-negotiable engineering protocol for AI agents. Enforces READ→THINK→DECIDE→PLAN→BUILD→VERIFY→DOCS→REVIEW loop. Use when any code change requires evidence-first execution, blast radius.",
+      "description": "Non-negotiable engineering protocol for AI agents. Enforces READ\u2192THINK\u2192DECIDE\u2192PLAN\u2192BUILD\u2192VERIFY\u2192DOCS\u2192REVIEW loop. Use when any code change requires evidence-first execution, blast radius.",
       "domain": "development",
       "tags": [
         [
@@ -17982,7 +17992,7 @@
     {
       "name": "esbuild-bundler",
       "category": "development",
-      "description": "esbuild bundler configuration — blazing fast JS/TS bundling, plugins, watch mode, minification. Use when working with esbuild bundler.",
+      "description": "esbuild bundler configuration \u2014 blazing fast JS/TS bundling, plugins, watch mode, minification. Use when working with esbuild bundler.",
       "domain": "development",
       "tags": [
         "bundler",
@@ -17999,7 +18009,7 @@
     {
       "name": "event-driven",
       "category": "development",
-      "description": "Event-driven architecture — event sourcing, CQRS, saga pattern, event buses, pub/sub patterns. Use when working with event driven.",
+      "description": "Event-driven architecture \u2014 event sourcing, CQRS, saga pattern, event buses, pub/sub patterns. Use when working with event driven.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18050,7 +18060,7 @@
     {
       "name": "firebase-patterns",
       "category": "development",
-      "description": "Firebase patterns and integration — Firestore queries, auth flows, cloud functions, security rules, SDK setup, and real-time data. Use when working with firebase patterns, integrating firebase.",
+      "description": "Firebase patterns and integration \u2014 Firestore queries, auth flows, cloud functions, security rules, SDK setup, and real-time data. Use when working with firebase patterns, integrating firebase.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18072,7 +18082,7 @@
     {
       "name": "flutter-dev",
       "category": "development",
-      "description": "Flutter cross-platform development — Dart, widgets, state management, platform channels, Firebase integration. Use when working with flutter dev.",
+      "description": "Flutter cross-platform development \u2014 Dart, widgets, state management, platform channels, Firebase integration. Use when working with flutter dev.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18140,7 +18150,7 @@
     {
       "name": "graphql-api",
       "category": "development",
-      "description": "GraphQL API development — schema design, resolvers, subscriptions, federation. Apollo, Relay, performance optimization. Use when working with graphql api.",
+      "description": "GraphQL API development \u2014 schema design, resolvers, subscriptions, federation. Apollo, Relay, performance optimization. Use when working with graphql api.",
       "domain": "development",
       "tags": [
         "api",
@@ -18157,7 +18167,7 @@
     {
       "name": "grpc",
       "category": "development",
-      "description": "gRPC development — Protocol Buffers, service definitions, streaming, interceptors, load balancing. Use when working with grpc.",
+      "description": "gRPC development \u2014 Protocol Buffers, service definitions, streaming, interceptors, load balancing. Use when working with grpc.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18190,7 +18200,7 @@
     {
       "name": "ionic-capacitor",
       "category": "development",
-      "description": "Ionic + Capacitor hybrid mobile apps — Angular/React/Vue, native plugins, PWA, App Store deployment. Use when working with ionic capacitor.",
+      "description": "Ionic + Capacitor hybrid mobile apps \u2014 Angular/React/Vue, native plugins, PWA, App Store deployment. Use when working with ionic capacitor.",
       "domain": "development",
       "tags": [
         "capacitor",
@@ -18207,7 +18217,7 @@
     {
       "name": "ios-swiftui",
       "category": "development",
-      "description": "SwiftUI development — declarative UI, state management, navigation, and Apple ecosystem integration. Use when working with ios swiftui.",
+      "description": "SwiftUI development \u2014 declarative UI, state management, navigation, and Apple ecosystem integration. Use when working with ios swiftui.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18224,7 +18234,7 @@
     {
       "name": "job-queues",
       "category": "development",
-      "description": "Background job processing — Bull/BullMQ, agenda, delayed jobs, retries, rate limiting, scheduled tasks. Use when working with job queues.",
+      "description": "Background job processing \u2014 Bull/BullMQ, agenda, delayed jobs, retries, rate limiting, scheduled tasks. Use when working with job queues.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18241,7 +18251,7 @@
     {
       "name": "kafka-patterns",
       "category": "development",
-      "description": "Apache Kafka patterns — producers, consumers, topics, consumer groups, exactly-once semantics, event sourcing. Use when working with kafka patterns.",
+      "description": "Apache Kafka patterns \u2014 producers, consumers, topics, consumer groups, exactly-once semantics, event sourcing. Use when working with kafka patterns.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18276,7 +18286,7 @@
     {
       "name": "message-queue",
       "category": "development",
-      "description": "Message queue patterns — RabbitMQ, Redis Streams, SQS. Task queues, pub/sub, dead letter queues, retry logic. Use when working with message queue.",
+      "description": "Message queue patterns \u2014 RabbitMQ, Redis Streams, SQS. Task queues, pub/sub, dead letter queues, retry logic. Use when working with message queue.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18293,7 +18303,7 @@
     {
       "name": "monorepo-tooling",
       "category": "development",
-      "description": "Monorepo management — Turborepo, Nx, pnpm workspaces, shared packages, CI optimization. Use when working with monorepo tooling.",
+      "description": "Monorepo management \u2014 Turborepo, Nx, pnpm workspaces, shared packages, CI optimization. Use when working with monorepo tooling.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18310,7 +18320,7 @@
     {
       "name": "neon-postgres",
       "category": "development",
-      "description": "Neon serverless Postgres — branching, autoscaling, connection pooling, edge-compatible Postgres. Use when working with neon postgres.",
+      "description": "Neon serverless Postgres \u2014 branching, autoscaling, connection pooling, edge-compatible Postgres. Use when working with neon postgres.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18327,7 +18337,7 @@
     {
       "name": "nodejs-patterns",
       "category": "development",
-      "description": "Node.js patterns — Express, Fastify, streams, worker threads, clustering, performance optimization. Use when working with nodejs patterns.",
+      "description": "Node.js patterns \u2014 Express, Fastify, streams, worker threads, clustering, performance optimization. Use when working with nodejs patterns.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18344,7 +18354,7 @@
     {
       "name": "payment-integration",
       "category": "development",
-      "description": "Payment platform integration — Stripe, Paddle, Lemon Squeezy. Checkout flows, subscriptions, webhooks, billing management. Use when working with payment integration.",
+      "description": "Payment platform integration \u2014 Stripe, Paddle, Lemon Squeezy. Checkout flows, subscriptions, webhooks, billing management. Use when working with payment integration.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18362,7 +18372,7 @@
     {
       "name": "planetscale-patterns",
       "category": "development",
-      "description": "PlanetScale MySQL — branching, deploy requests, Vitess sharding, connection handling, schema management. Use when working with planetscale patterns.",
+      "description": "PlanetScale MySQL \u2014 branching, deploy requests, Vitess sharding, connection handling, schema management. Use when working with planetscale patterns.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18379,7 +18389,7 @@
     {
       "name": "playwright-e2e",
       "category": "development",
-      "description": "End-to-end test automation with Playwright — cross-browser testing, page objects, and CI integration. Use when working with playwright e2e.",
+      "description": "End-to-end test automation with Playwright \u2014 cross-browser testing, page objects, and CI integration. Use when working with playwright e2e.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18396,7 +18406,7 @@
     {
       "name": "pocketbase-patterns",
       "category": "development",
-      "description": "PocketBase — single-file backend with SQLite, realtime subscriptions, auth, file storage, custom JS extensions. Use when working with pocketbase patterns.",
+      "description": "PocketBase \u2014 single-file backend with SQLite, realtime subscriptions, auth, file storage, custom JS extensions. Use when working with pocketbase patterns.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18413,7 +18423,7 @@
     {
       "name": "postgres-queries",
       "category": "development",
-      "description": "PostgreSQL optimization — query tuning, schema design, indexing strategies, and performance analysis. Use when working with postgres queries.",
+      "description": "PostgreSQL optimization \u2014 query tuning, schema design, indexing strategies, and performance analysis. Use when working with postgres queries.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18447,7 +18457,7 @@
     {
       "name": "prisma-orm",
       "category": "development",
-      "description": "Prisma ORM — schema modeling, migrations, client queries, middleware, performance optimization. Use when working with prisma orm.",
+      "description": "Prisma ORM \u2014 schema modeling, migrations, client queries, middleware, performance optimization. Use when working with prisma orm.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18464,7 +18474,7 @@
     {
       "name": "qa-review-fix-loop",
       "category": "development",
-      "description": "Comprehensive QA→Review→Fix loop protocol for any codebase. Layer-based testing with evidence requirements. Use when performing full QA cycles, codebase audits, pre-release testing, or.",
+      "description": "Comprehensive QA\u2192Review\u2192Fix loop protocol for any codebase. Layer-based testing with evidence requirements. Use when performing full QA cycles, codebase audits, pre-release testing, or.",
       "domain": "development",
       "tags": [
         [
@@ -18479,7 +18489,7 @@
     {
       "name": "query-optimizer",
       "category": "development",
-      "description": "Slow query analysis — EXPLAIN plans, index recommendations, N+1 detection, and caching strategies. Use when working with query optimizer.",
+      "description": "Slow query analysis \u2014 EXPLAIN plans, index recommendations, N+1 detection, and caching strategies. Use when working with query optimizer.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18496,7 +18506,7 @@
     {
       "name": "rabbitmq-patterns",
       "category": "development",
-      "description": "RabbitMQ patterns — exchanges, queues, routing, dead letter queues, priority queues, clustering. Use when working with rabbitmq patterns.",
+      "description": "RabbitMQ patterns \u2014 exchanges, queues, routing, dead letter queues, priority queues, clustering. Use when working with rabbitmq patterns.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18513,7 +18523,7 @@
     {
       "name": "react-native-expo",
       "category": "development",
-      "description": "React Native with Expo — managed workflow, native modules, navigation, and app store deployment. Use when working with react native expo.",
+      "description": "React Native with Expo \u2014 managed workflow, native modules, navigation, and app store deployment. Use when working with react native expo.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18568,7 +18578,7 @@
     {
       "name": "security-headers",
       "category": "development",
-      "description": "Web security headers — CSP, CORS, HSTS, X-Frame-Options. Configure, audit, and harden HTTP security headers. Use when working with security headers.",
+      "description": "Web security headers \u2014 CSP, CORS, HSTS, X-Frame-Options. Configure, audit, and harden HTTP security headers. Use when working with security headers.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18585,7 +18595,7 @@
     {
       "name": "sequelize-patterns",
       "category": "development",
-      "description": "Sequelize ORM patterns — models, associations, migrations, transactions, hooks, TypeScript support. Use when working with sequelize patterns.",
+      "description": "Sequelize ORM patterns \u2014 models, associations, migrations, transactions, hooks, TypeScript support. Use when working with sequelize patterns.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18620,7 +18630,7 @@
     {
       "name": "storybook-dev",
       "category": "development",
-      "description": "Storybook component development — stories, addons, controls, accessibility testing, visual regression. Use when working with storybook dev.",
+      "description": "Storybook component development \u2014 stories, addons, controls, accessibility testing, visual regression. Use when working with storybook dev.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18654,7 +18664,7 @@
     {
       "name": "supabase-patterns",
       "category": "development",
-      "description": "Supabase patterns — Row Level Security, edge functions, real-time subscriptions, auth integration, setup, and configuration. Use when working with supabase patterns.",
+      "description": "Supabase patterns \u2014 Row Level Security, edge functions, real-time subscriptions, auth integration, setup, and configuration. Use when working with supabase patterns.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18676,7 +18686,7 @@
     {
       "name": "surrealdb-patterns",
       "category": "development",
-      "description": "SurrealDB multi-model database — document, graph, key-value. SurrealQL, realtime subscriptions, embedded mode. Use when working with surrealdb patterns.",
+      "description": "SurrealDB multi-model database \u2014 document, graph, key-value. SurrealQL, realtime subscriptions, embedded mode. Use when working with surrealdb patterns.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18693,7 +18703,7 @@
     {
       "name": "svelte-framework",
       "category": "development",
-      "description": "Svelte and SvelteKit development — runes, stores, server-side rendering, form actions, streaming, edge deployment, and patterns. Use when working with svelte framework.",
+      "description": "Svelte and SvelteKit development \u2014 runes, stores, server-side rendering, form actions, streaming, edge deployment, and patterns. Use when working with svelte framework.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18711,7 +18721,7 @@
     {
       "name": "swiftui-patterns",
       "category": "development",
-      "description": "SwiftUI native iOS/macOS development — declarative UI, Combine, Core Data, widgets, App Clips. Use when working with swiftui patterns.",
+      "description": "SwiftUI native iOS/macOS development \u2014 declarative UI, Combine, Core Data, widgets, App Clips. Use when working with swiftui patterns.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18745,7 +18755,7 @@
     {
       "name": "task-scheduler",
       "category": "development",
-      "description": "Task scheduling and cron patterns — node-cron, BullMQ, Celery, systemd timers. Recurring jobs, distributed scheduling. Use when working with task scheduler.",
+      "description": "Task scheduling and cron patterns \u2014 node-cron, BullMQ, Celery, systemd timers. Recurring jobs, distributed scheduling. Use when working with task scheduler.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18763,7 +18773,7 @@
     {
       "name": "tauri-apps",
       "category": "development",
-      "description": "Tauri desktop app development — Rust backend, web frontend, native APIs, small binary size, cross-platform. Use when working with tauri apps.",
+      "description": "Tauri desktop app development \u2014 Rust backend, web frontend, native APIs, small binary size, cross-platform. Use when working with tauri apps.",
       "domain": "development",
       "tags": [
         "api",
@@ -18781,7 +18791,7 @@
     {
       "name": "test-coverage-analyzer",
       "category": "development",
-      "description": "Identify untested code paths — coverage reports, gap analysis, and test prioritization. Use when working with test coverage analyzer.",
+      "description": "Identify untested code paths \u2014 coverage reports, gap analysis, and test prioritization. Use when working with test coverage analyzer.",
       "domain": "development",
       "tags": [
         "analyzer",
@@ -18816,7 +18826,7 @@
     {
       "name": "typeorm-patterns",
       "category": "development",
-      "description": "TypeORM patterns — entities, repositories, migrations, relations, query builder, active record vs data mapper. Use when working with typeorm patterns.",
+      "description": "TypeORM patterns \u2014 entities, repositories, migrations, relations, query builder, active record vs data mapper. Use when working with typeorm patterns.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18869,7 +18879,7 @@
     {
       "name": "visual-regression",
       "category": "development",
-      "description": "Visual regression testing — screenshot comparison, baseline management, and UI change detection. Use when working with visual regression.",
+      "description": "Visual regression testing \u2014 screenshot comparison, baseline management, and UI change detection. Use when working with visual regression.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18886,7 +18896,7 @@
     {
       "name": "vite-config",
       "category": "development",
-      "description": "Vite build tool configuration — plugins, SSR, library mode, environment variables, dev server proxy. Use when working with vite config.",
+      "description": "Vite build tool configuration \u2014 plugins, SSR, library mode, environment variables, dev server proxy. Use when working with vite config.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18922,7 +18932,7 @@
     {
       "name": "vue-framework",
       "category": "development",
-      "description": "Vue.js 3 development patterns — Composition API, Pinia state management, Vue Router, Nuxt.js SSR/SSG, component architecture, performance optimization. Use when working with vue patterns or vue framework.",
+      "description": "Vue.js 3 development patterns \u2014 Composition API, Pinia state management, Vue Router, Nuxt.js SSR/SSG, component architecture, performance optimization. Use when working with vue patterns or vue framework.",
       "domain": "development",
       "tags": [
         "api",
@@ -18940,7 +18950,7 @@
     {
       "name": "wails-apps",
       "category": "development",
-      "description": "Wails desktop app development — Go backend, web frontend, native bindings, small binary, cross-platform. Use when working with wails apps.",
+      "description": "Wails desktop app development \u2014 Go backend, web frontend, native bindings, small binary, cross-platform. Use when working with wails apps.",
       "domain": "development",
       "tags": [
         "apps",
@@ -18957,7 +18967,7 @@
     {
       "name": "webpack-config",
       "category": "development",
-      "description": "Webpack 5 configuration — loaders, plugins, code splitting, tree shaking, module federation, dev server. Use when working with webpack config.",
+      "description": "Webpack 5 configuration \u2014 loaders, plugins, code splitting, tree shaking, module federation, dev server. Use when working with webpack config.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18974,7 +18984,7 @@
     {
       "name": "websocket",
       "category": "development",
-      "description": "WebSocket development — real-time bidirectional communication, Socket.IO, native WebSocket API, scaling patterns. Use when working with websocket.",
+      "description": "WebSocket development \u2014 real-time bidirectional communication, Socket.IO, native WebSocket API, scaling patterns. Use when working with websocket.",
       "domain": "development",
       "tags": [
         "api",
@@ -19008,7 +19018,7 @@
     {
       "name": "ansible-automation",
       "category": "devops",
-      "description": "Ansible automation — playbooks, roles, inventory, variables, handlers, Galaxy, AWX. Use when working with ansible automation.",
+      "description": "Ansible automation \u2014 playbooks, roles, inventory, variables, handlers, Galaxy, AWX. Use when working with ansible automation.",
       "domain": "devops",
       "tags": [
         "ansible",
@@ -19025,7 +19035,7 @@
     {
       "name": "argocd-gitops",
       "category": "devops",
-      "description": "ArgoCD GitOps — declarative continuous delivery, application sync, drift detection, multi-cluster. Use when working with argocd gitops.",
+      "description": "ArgoCD GitOps \u2014 declarative continuous delivery, application sync, drift detection, multi-cluster. Use when working with argocd gitops.",
       "domain": "devops",
       "tags": [
         "argocd",
@@ -19042,7 +19052,7 @@
     {
       "name": "aws-ops",
       "category": "devops",
-      "description": "AWS operations — EC2, S3, Lambda, RDS, ECS, IAM, CloudFormation. Infrastructure and cost optimization. Use when working with aws ops.",
+      "description": "AWS operations \u2014 EC2, S3, Lambda, RDS, ECS, IAM, CloudFormation. Infrastructure and cost optimization. Use when working with aws ops.",
       "domain": "devops",
       "tags": [
         "aws",
@@ -19059,7 +19069,7 @@
     {
       "name": "azure-ops",
       "category": "devops",
-      "description": "Azure operations — Virtual Machines, App Service, Azure Functions, AKS, Cosmos DB, Azure AD. Use when working with azure ops.",
+      "description": "Azure operations \u2014 Virtual Machines, App Service, Azure Functions, AKS, Cosmos DB, Azure AD. Use when working with azure ops.",
       "domain": "devops",
       "tags": [
         "azure",
@@ -19076,7 +19086,7 @@
     {
       "name": "buildkite-pipelines",
       "category": "devops",
-      "description": "Buildkite CI pipelines — pipeline YAML, steps, agents, artifacts, test splitting, dynamic pipelines. Use when working with buildkite pipelines.",
+      "description": "Buildkite CI pipelines \u2014 pipeline YAML, steps, agents, artifacts, test splitting, dynamic pipelines. Use when working with buildkite pipelines.",
       "domain": "devops",
       "tags": [
         "ai-agent",
@@ -19096,7 +19106,7 @@
     {
       "name": "ci-cd-pipeline",
       "category": "devops",
-      "description": "CI/CD pipeline design with GitHub Actions, GitLab CI — build, test, deploy automation. Use when setting up CI/CD pipelines or automating deployments.",
+      "description": "CI/CD pipeline design with GitHub Actions, GitLab CI \u2014 build, test, deploy automation. Use when setting up CI/CD pipelines or automating deployments.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19113,7 +19123,7 @@
     {
       "name": "cilium-networking",
       "category": "devops",
-      "description": "Cilium eBPF networking — Kubernetes CNI, network policies, load balancing, observability with Hubble. Use when working with cilium networking.",
+      "description": "Cilium eBPF networking \u2014 Kubernetes CNI, network policies, load balancing, observability with Hubble. Use when working with cilium networking.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19131,7 +19141,7 @@
     {
       "name": "circleci-config",
       "category": "devops",
-      "description": "CircleCI configuration — workflows, jobs, orbs, caching, contexts, dynamic config. Use when working with circleci config.",
+      "description": "CircleCI configuration \u2014 workflows, jobs, orbs, caching, contexts, dynamic config. Use when working with circleci config.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19149,7 +19159,7 @@
     {
       "name": "consul-service-mesh",
       "category": "devops",
-      "description": "HashiCorp Consul — service discovery, health checking, KV store, service mesh, intentions. Use when working with consul service mesh.",
+      "description": "HashiCorp Consul \u2014 service discovery, health checking, KV store, service mesh, intentions. Use when working with consul service mesh.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19206,7 +19216,7 @@
     {
       "name": "dockerfile-optimize",
       "category": "devops",
-      "description": "Dockerfile optimization — multi-stage builds, layer caching, security hardening, minimal images. Use when optimizing Docker builds or hardening container security.",
+      "description": "Dockerfile optimization \u2014 multi-stage builds, layer caching, security hardening, minimal images. Use when optimizing Docker builds or hardening container security.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19224,7 +19234,7 @@
     {
       "name": "drone-ci",
       "category": "devops",
-      "description": "Drone CI — container-native CI/CD, YAML pipelines, plugins, secrets, multi-machine builds. Use when working with drone ci.",
+      "description": "Drone CI \u2014 container-native CI/CD, YAML pipelines, plugins, secrets, multi-machine builds. Use when working with drone ci.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19242,7 +19252,7 @@
     {
       "name": "edge-computing",
       "category": "devops",
-      "description": "Edge computing — Cloudflare Workers, Vercel Edge, Deno Deploy. Edge rendering, caching, edge databases. Use when working with edge computing.",
+      "description": "Edge computing \u2014 Cloudflare Workers, Vercel Edge, Deno Deploy. Edge rendering, caching, edge databases. Use when working with edge computing.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19259,7 +19269,7 @@
     {
       "name": "envoy-proxy",
       "category": "devops",
-      "description": "Envoy proxy — L4/L7 filtering, load balancing, circuit breaking, observability, extensibility. Use when working with envoy proxy.",
+      "description": "Envoy proxy \u2014 L4/L7 filtering, load balancing, circuit breaking, observability, extensibility. Use when working with envoy proxy.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19276,7 +19286,7 @@
     {
       "name": "fluxcd-gitops",
       "category": "devops",
-      "description": "Flux CD GitOps — source controllers, kustomize/helm controllers, image automation, notifications. Use when working with fluxcd gitops.",
+      "description": "Flux CD GitOps \u2014 source controllers, kustomize/helm controllers, image automation, notifications. Use when working with fluxcd gitops.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19308,7 +19318,7 @@
     {
       "name": "gcp-ops",
       "category": "devops",
-      "description": "Google Cloud operations — Compute Engine, Cloud Run, BigQuery, Cloud Functions, GKE, IAM. Use when working with gcp ops.",
+      "description": "Google Cloud operations \u2014 Compute Engine, Cloud Run, BigQuery, Cloud Functions, GKE, IAM. Use when working with gcp ops.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19325,7 +19335,7 @@
     {
       "name": "helm-charts",
       "category": "devops",
-      "description": "Helm chart development — templates, values, hooks, dependencies, chart testing, repository management. Use when working with helm charts.",
+      "description": "Helm chart development \u2014 templates, values, hooks, dependencies, chart testing, repository management. Use when working with helm charts.",
       "domain": "devops",
       "tags": [
         "charts",
@@ -19343,7 +19353,7 @@
     {
       "name": "istio-mesh",
       "category": "devops",
-      "description": "Istio service mesh — traffic management, security, observability for Kubernetes microservices. Use when working with istio mesh.",
+      "description": "Istio service mesh \u2014 traffic management, security, observability for Kubernetes microservices. Use when working with istio mesh.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19361,7 +19371,7 @@
     {
       "name": "jenkins-pipelines",
       "category": "devops",
-      "description": "Jenkins pipeline as code — Declarative/Scripted pipelines, shared libraries, agents, stages, credentials. Use when working with jenkins pipelines.",
+      "description": "Jenkins pipeline as code \u2014 Declarative/Scripted pipelines, shared libraries, agents, stages, credentials. Use when working with jenkins pipelines.",
       "domain": "devops",
       "tags": [
         "ai-agent",
@@ -19380,7 +19390,7 @@
     {
       "name": "jenkins-shared-libs",
       "category": "devops",
-      "description": "Jenkins shared libraries — reusable pipeline code, Groovy vars, resources, global pipeline libraries. Use when working with jenkins shared libs.",
+      "description": "Jenkins shared libraries \u2014 reusable pipeline code, Groovy vars, resources, global pipeline libraries. Use when working with jenkins shared libs.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19418,7 +19428,7 @@
     {
       "name": "kustomize-config",
       "category": "devops",
-      "description": "Kustomize Kubernetes configuration — bases, overlays, patches, generators, transformers. Use when working with kustomize config.",
+      "description": "Kustomize Kubernetes configuration \u2014 bases, overlays, patches, generators, transformers. Use when working with kustomize config.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19436,7 +19446,7 @@
     {
       "name": "linkerd-mesh",
       "category": "devops",
-      "description": "Linkerd service mesh — lightweight Kubernetes mesh, mTLS, traffic splitting, observability. Use when working with linkerd mesh.",
+      "description": "Linkerd service mesh \u2014 lightweight Kubernetes mesh, mTLS, traffic splitting, observability. Use when working with linkerd mesh.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19454,7 +19464,7 @@
     {
       "name": "nomad-scheduler",
       "category": "devops",
-      "description": "HashiCorp Nomad — job scheduling, task drivers, allocations, scaling, federation. Use when working with nomad scheduler.",
+      "description": "HashiCorp Nomad \u2014 job scheduling, task drivers, allocations, scaling, federation. Use when working with nomad scheduler.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19471,7 +19481,7 @@
     {
       "name": "observability",
       "category": "devops",
-      "description": "Observability stack — Prometheus, Grafana, Loki, OpenTelemetry. Metrics, logs, traces, alerting, SLO monitoring. Use when working with observability.",
+      "description": "Observability stack \u2014 Prometheus, Grafana, Loki, OpenTelemetry. Metrics, logs, traces, alerting, SLO monitoring. Use when working with observability.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19488,7 +19498,7 @@
     {
       "name": "packer-images",
       "category": "devops",
-      "description": "HashiCorp Packer — machine image building, builders, provisioners, post-processors for AWS/GCP/Azure. Use when working with packer images.",
+      "description": "HashiCorp Packer \u2014 machine image building, builders, provisioners, post-processors for AWS/GCP/Azure. Use when working with packer images.",
       "domain": "devops",
       "tags": [
         "aws",
@@ -19508,7 +19518,7 @@
     {
       "name": "serverless",
       "category": "devops",
-      "description": "Serverless architecture — AWS Lambda, Cloudflare Workers, Vercel Edge. Event-driven design, cold start optimization. Use when working with serverless.",
+      "description": "Serverless architecture \u2014 AWS Lambda, Cloudflare Workers, Vercel Edge. Event-driven design, cold start optimization. Use when working with serverless.",
       "domain": "devops",
       "tags": [
         "aws",
@@ -19525,7 +19535,7 @@
     {
       "name": "tekton-pipelines",
       "category": "devops",
-      "description": "Tekton CI/CD pipelines — Tasks, Pipelines, Triggers, Workspaces for Kubernetes-native CI. Use when working with tekton pipelines.",
+      "description": "Tekton CI/CD pipelines \u2014 Tasks, Pipelines, Triggers, Workspaces for Kubernetes-native CI. Use when working with tekton pipelines.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19544,7 +19554,7 @@
     {
       "name": "terraform-iac",
       "category": "devops",
-      "description": "Infrastructure as Code with Terraform — providers, modules, state management, workspaces, multi-cloud deployments. Use when working with terraform iac.",
+      "description": "Infrastructure as Code with Terraform \u2014 providers, modules, state management, workspaces, multi-cloud deployments. Use when working with terraform iac.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19561,7 +19571,7 @@
     {
       "name": "vault-pki",
       "category": "devops",
-      "description": "Vault PKI secrets engine — certificate authority, dynamic certificates, certificate rotation. Use when working with vault pki.",
+      "description": "Vault PKI secrets engine \u2014 certificate authority, dynamic certificates, certificate rotation. Use when working with vault pki.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -19578,7 +19588,7 @@
     {
       "name": "vault-secrets",
       "category": "devops",
-      "description": "HashiCorp Vault — secrets management, dynamic secrets, encryption, auth methods, policies. Use when working with vault secrets.",
+      "description": "HashiCorp Vault \u2014 secrets management, dynamic secrets, encryption, auth methods, policies. Use when working with vault secrets.",
       "domain": "devops",
       "tags": [
         "ci-cd",
@@ -20050,7 +20060,7 @@
     {
       "name": "jira-api",
       "category": "integrations",
-      "description": "Jira API integration — issue management, sprint planning, workflow automation, custom fields, JQL queries. Use when working with jira api.",
+      "description": "Jira API integration \u2014 issue management, sprint planning, workflow automation, custom fields, JQL queries. Use when working with jira api.",
       "domain": "integrations",
       "tags": [
         "api",
@@ -20194,7 +20204,7 @@
     {
       "name": "linear-api",
       "category": "integrations",
-      "description": "Linear API integration — issue tracking, project management, cycle planning, team workflows via GraphQL API. Use when working with linear api.",
+      "description": "Linear API integration \u2014 issue tracking, project management, cycle planning, team workflows via GraphQL API. Use when working with linear api.",
       "domain": "integrations",
       "tags": [
         "api",
@@ -20463,7 +20473,7 @@
     {
       "name": "webhook-patterns",
       "category": "integrations",
-      "description": "Webhook design and handling — signature verification, retry logic, idempotency, event routing, testing. Use when working with webhook patterns.",
+      "description": "Webhook design and handling \u2014 signature verification, retry logic, idempotency, event routing, testing. Use when working with webhook patterns.",
       "domain": "integrations",
       "tags": [
         "api",
@@ -20481,7 +20491,7 @@
     {
       "name": "ad-creative",
       "category": "marketing",
-      "description": "Ad creative production — visual briefs, copy variations, and A/B testing frameworks for performance advertising. Use when working with ad creative.",
+      "description": "Ad creative production \u2014 visual briefs, copy variations, and A/B testing frameworks for performance advertising. Use when working with ad creative.",
       "domain": "marketing",
       "tags": [
         "creative",
@@ -20499,7 +20509,7 @@
     {
       "name": "adcp-advertising",
       "category": "marketing",
-      "description": "Automate ad campaigns via AdCP protocol — create ads, buy media, manage budgets, and optimize performance across display, video, CTV, and social channels.",
+      "description": "Automate ad campaigns via AdCP protocol \u2014 create ads, buy media, manage budgets, and optimize performance across display, video, CTV, and social channels.",
       "domain": "marketing",
       "tags": [
         "adcp",
@@ -20574,7 +20584,7 @@
     {
       "name": "ai-content-agency-v2",
       "category": "marketing",
-      "description": "Full-stack content agency with 9 workflows and 6 phases — sell integrated content production as a managed service (K-0K/mo retainer).",
+      "description": "Full-stack content agency with 9 workflows and 6 phases \u2014 sell integrated content production as a managed service (K-0K/mo retainer).",
       "domain": "marketing",
       "tags": [
         "agency",
@@ -20613,7 +20623,7 @@
     {
       "name": "ai-seo",
       "category": "marketing",
-      "description": "Optimize content for AI search engines (Perplexity, ChatGPT Search, Google AI Overviews) — sell AI SEO audits and optimization services.",
+      "description": "Optimize content for AI search engines (Perplexity, ChatGPT Search, Google AI Overviews) \u2014 sell AI SEO audits and optimization services.",
       "domain": "marketing",
       "tags": [
         "growth",
@@ -20649,7 +20659,7 @@
     {
       "name": "analytics-reporting",
       "category": "marketing",
-      "description": "Stub — merged into analytics-dashboard. See the parent skill for both tactical implementation and strategic growth frameworks.",
+      "description": "Stub \u2014 merged into analytics-dashboard. See the parent skill for both tactical implementation and strategic growth frameworks.",
       "domain": "marketing",
       "tags": [
         "analytics",
@@ -20682,7 +20692,7 @@
     {
       "name": "buzzer-engagement-army",
       "category": "marketing",
-      "description": "Multi-account engagement booster across TikTok, Instagram, and Facebook — automates likes, comments, and warmup schedules to beat algorithm suppression on new posts.",
+      "description": "Multi-account engagement booster across TikTok, Instagram, and Facebook \u2014 automates likes, comments, and warmup schedules to beat algorithm suppression on new posts.",
       "domain": "marketing",
       "tags": [
         "army",
@@ -20756,7 +20766,7 @@
     {
       "name": "competitor-alternatives",
       "category": "marketing",
-      "description": "Competitive comparison page strategy — alternative to pages, positioning, differentiation messaging. Use when creating competitive positioning content.",
+      "description": "Competitive comparison page strategy \u2014 alternative to pages, positioning, differentiation messaging. Use when creating competitive positioning content.",
       "domain": "marketing",
       "tags": [
         "alternatives",
@@ -20773,7 +20783,7 @@
     {
       "name": "content-analytics-engine",
       "category": "marketing",
-      "description": "Collect content performance data from PostBridge API and generate daily/weekly reports tracking the full revenue funnel — views, engagement, clicks, and sales.",
+      "description": "Collect content performance data from PostBridge API and generate daily/weekly reports tracking the full revenue funnel \u2014 views, engagement, clicks, and sales.",
       "domain": "marketing",
       "tags": [
         "analytics",
@@ -20792,7 +20802,7 @@
     {
       "name": "content-creator",
       "category": "marketing",
-      "description": "Multi-platform content generation service — sell content production packages to SMEs with defined KPIs and deliverables.",
+      "description": "Multi-platform content generation service \u2014 sell content production packages to SMEs with defined KPIs and deliverables.",
       "domain": "marketing",
       "tags": [
         "content",
@@ -20847,7 +20857,7 @@
     {
       "name": "email-sequences",
       "category": "marketing",
-      "description": "Automated email sequence design — welcome series, nurture funnels, re-engagement, transactional flows. Use when building email automation systems.",
+      "description": "Automated email sequence design \u2014 welcome series, nurture funnels, re-engagement, transactional flows. Use when building email automation systems.",
       "domain": "marketing",
       "tags": [
         "email",
@@ -20867,7 +20877,7 @@
     {
       "name": "growth-engine",
       "category": "marketing",
-      "description": "Autonomous marketing experiment framework — design A/B tests, score hypotheses with ICE, validate results with statistical significance, and run automated optimization loops.",
+      "description": "Autonomous marketing experiment framework \u2014 design A/B tests, score hypotheses with ICE, validate results with statistical significance, and run automated optimization loops.",
       "domain": "marketing",
       "tags": [
         "engine",
@@ -20884,7 +20894,7 @@
     {
       "name": "influencer-outreach",
       "category": "marketing",
-      "description": "Influencer and creator partnership management — discovery, outreach, negotiation, campaign tracking. Use when running influencer marketing campaigns.",
+      "description": "Influencer and creator partnership management \u2014 discovery, outreach, negotiation, campaign tracking. Use when running influencer marketing campaigns.",
       "domain": "marketing",
       "tags": [
         "growth",
@@ -20901,7 +20911,7 @@
     {
       "name": "launch-strategy",
       "category": "marketing",
-      "description": "Go-to-market planning — launch sequencing, channel strategy, audience building, PR outreach. Use when planning product launches, building launch checklists, or coordinating multi-channel campaigns.",
+      "description": "Go-to-market planning \u2014 launch sequencing, channel strategy, audience building, PR outreach. Use when planning product launches, building launch checklists, or coordinating multi-channel campaigns.",
       "domain": "marketing",
       "tags": [
         "growth",
@@ -20918,7 +20928,7 @@
     {
       "name": "lead-magnets",
       "category": "marketing",
-      "description": "Lead magnet design and creation — ebooks, templates, calculators, quizzes matched to audience intent. Use when building lead generation funnels.",
+      "description": "Lead magnet design and creation \u2014 ebooks, templates, calculators, quizzes matched to audience intent. Use when building lead generation funnels.",
       "domain": "marketing",
       "tags": [
         "growth",
@@ -20971,7 +20981,7 @@
     {
       "name": "marketing-ops",
       "category": "marketing",
-      "description": "Complete AI-powered marketing OS for solo founders — sell marketing automation setup and management as a service (K-K/mo).",
+      "description": "Complete AI-powered marketing OS for solo founders \u2014 sell marketing automation setup and management as a service (K-K/mo).",
       "domain": "marketing",
       "tags": [
         "ai-agent",
@@ -21008,7 +21018,7 @@
     {
       "name": "paid-ads",
       "category": "marketing",
-      "description": "Paid advertising for Google, Meta, LinkedIn — ad copy, audience targeting, budget optimization, conversion tracking. Use when setting up ad campaigns, optimizing ad spend, or designing ad creative.",
+      "description": "Paid advertising for Google, Meta, LinkedIn \u2014 ad copy, audience targeting, budget optimization, conversion tracking. Use when setting up ad campaigns, optimizing ad spend, or designing ad creative.",
       "domain": "marketing",
       "tags": [
         "ads",
@@ -21043,7 +21053,7 @@
     {
       "name": "referral-program",
       "category": "marketing",
-      "description": "Referral program design and automation — incentive structures, tracking, viral loops, reward fulfillment. Use when building referral or affiliate programs. Use when working with referral program.",
+      "description": "Referral program design and automation \u2014 incentive structures, tracking, viral loops, reward fulfillment. Use when building referral or affiliate programs. Use when working with referral program.",
       "domain": "marketing",
       "tags": [
         "growth",
@@ -21060,7 +21070,7 @@
     {
       "name": "schema-markup",
       "category": "marketing",
-      "description": "Structured data markup for rich results and AI search visibility — JSON-LD, FAQ, HowTo, Product schemas. Use when implementing structured data for SEO. Use when working with schema markup.",
+      "description": "Structured data markup for rich results and AI search visibility \u2014 JSON-LD, FAQ, HowTo, Product schemas. Use when implementing structured data for SEO. Use when working with schema markup.",
       "domain": "marketing",
       "tags": [
         "growth",
@@ -21077,7 +21087,7 @@
     {
       "name": "seo-auditor",
       "category": "marketing",
-      "description": "Comprehensive SEO audits and monitoring — sell one-off audits (00-K) or ongoing monitoring retainers (00-500/mo).",
+      "description": "Comprehensive SEO audits and monitoring \u2014 sell one-off audits (00-K) or ongoing monitoring retainers (00-500/mo).",
       "domain": "marketing",
       "tags": [
         "auditor",
@@ -21096,7 +21106,7 @@
     {
       "name": "seo-optimizer",
       "category": "marketing",
-      "description": "Optimize content for search engines — sell SEO as a managed service with keyword research, technical audits, and ranking tracking.",
+      "description": "Optimize content for search engines \u2014 sell SEO as a managed service with keyword research, technical audits, and ranking tracking.",
       "domain": "marketing",
       "tags": [
         "growth",
@@ -21206,7 +21216,7 @@
     {
       "name": "tiktok-automation",
       "category": "marketing",
-      "description": "Production-ready TikTok posting automation — handles login session persistence, dynamic UI selector learning, fallback retries, and bulk video uploads. Use when working with tiktok automation.",
+      "description": "Production-ready TikTok posting automation \u2014 handles login session persistence, dynamic UI selector learning, fallback retries, and bulk video uploads. Use when working with tiktok automation.",
       "domain": "marketing",
       "tags": [
         "growth",
@@ -21243,7 +21253,7 @@
     {
       "name": "tiktok-terintegrasi",
       "category": "marketing",
-      "description": "Integrated TikTok content suite with 9 specialized workflows — sell TikTok content production as a managed service.",
+      "description": "Integrated TikTok content suite with 9 specialized workflows \u2014 sell TikTok content production as a managed service.",
       "domain": "marketing",
       "tags": [
         "growth",
@@ -21426,7 +21436,7 @@
     {
       "name": "memory-knowledge-graph",
       "category": "mcp",
-      "description": "Knowledge graph-based persistent memory for AI agents — entities, relations, and semantic retrieval. Use when working with memory knowledge graph.",
+      "description": "Knowledge graph-based persistent memory for AI agents \u2014 entities, relations, and semantic retrieval. Use when working with memory knowledge graph.",
       "domain": "mcp",
       "tags": [
         "ai-agent",
@@ -21479,7 +21489,7 @@
     {
       "name": "sequential-thinking",
       "category": "mcp",
-      "description": "Dynamic problem-solving through thought sequences — iterative reasoning, hypothesis testing, and solution refinement. Use when working with sequential thinking.",
+      "description": "Dynamic problem-solving through thought sequences \u2014 iterative reasoning, hypothesis testing, and solution refinement. Use when working with sequential thinking.",
       "domain": "mcp",
       "tags": [
         "mcp-server",
@@ -21886,7 +21896,7 @@
     {
       "name": "critical-thinking",
       "category": "mindset",
-      "description": "Critical thinking applied to money-making — diagnose starting position, evaluate opportunities by expected value, and execute proven income-generating strategies without asking permission. Embeds economic reasoning and opportunity evaluation into every critical thought.",
+      "description": "Critical thinking applied to money-making \u2014 diagnose starting position, evaluate opportunities by expected value, and execute proven income-generating strategies without asking permission. Embeds economic reasoning and opportunity evaluation into every critical thought.",
       "domain": "mindset",
       "tags": [
         "critical",
@@ -22355,7 +22365,7 @@
     {
       "name": "ponytail",
       "category": "mindset",
-      "description": "Lazy senior dev mindset — YAGNI, stdlib-first, simplest solution. Unified hub for audit, debt tracking, help, and review sub-skills. Money protocol: code review service, simplicity consulting.",
+      "description": "Lazy senior dev mindset \u2014 YAGNI, stdlib-first, simplest solution. Unified hub for audit, debt tracking, help, and review sub-skills. Money protocol: code review service, simplicity consulting.",
       "domain": "mindset",
       "tags": [
         "mindset",
@@ -22714,7 +22724,7 @@
     {
       "name": "auth-patterns",
       "category": "operations",
-      "description": "Authentication patterns — OAuth 2.0, JWT, session management, MFA, RBAC, API key management. Use when working with auth patterns.",
+      "description": "Authentication patterns \u2014 OAuth 2.0, JWT, session management, MFA, RBAC, API key management. Use when working with auth patterns.",
       "domain": "operations",
       "tags": [
         "api",
@@ -22765,7 +22775,7 @@
     {
       "name": "contract-manager",
       "category": "operations",
-      "description": "Contract lifecycle management — draft, review, negotiate, sign, track, archive. Covers talent agreements, client deals, vendor contracts, employment. Indonesian law compliant (PKS format). Telegram alerts for renewals and breaches.",
+      "description": "Contract lifecycle management \u2014 draft, review, negotiate, sign, track, archive. Covers talent agreements, client deals, vendor contracts, employment. Indonesian law compliant (PKS format). Telegram alerts for renewals and breaches.",
       "domain": "operations",
       "tags": [
         "contracts",
@@ -22817,7 +22827,7 @@
     {
       "name": "financial-automation",
       "category": "operations",
-      "description": "AI CFO for solo businesses — invoicing, expense categorization, tax optimization, cash flow forecasting, multi-currency management. Use when working with financial automation.",
+      "description": "AI CFO for solo businesses \u2014 invoicing, expense categorization, tax optimization, cash flow forecasting, multi-currency management. Use when working with financial automation.",
       "domain": "operations",
       "tags": [
         "automation",
@@ -22884,7 +22894,7 @@
     {
       "name": "legal-assistant",
       "category": "operations",
-      "description": "Legal assistant — contract review checklists, IP protection, business compliance, GDPR/privacy for digital products, DMCA, software licensing, employment law, and dispute resolution. Built for 1-person companies scaling to team.",
+      "description": "Legal assistant \u2014 contract review checklists, IP protection, business compliance, GDPR/privacy for digital products, DMCA, software licensing, employment law, and dispute resolution. Built for 1-person companies scaling to team.",
       "domain": "operations",
       "tags": [
         "legal",
@@ -22956,7 +22966,7 @@
     {
       "name": "payment-gateways",
       "category": "operations",
-      "description": "Payment gateway integration — Stripe, Paddle, Lemon Squeezy, dunning, subscription management. Use when working with payment gateways.",
+      "description": "Payment gateway integration \u2014 Stripe, Paddle, Lemon Squeezy, dunning, subscription management. Use when working with payment gateways.",
       "domain": "operations",
       "tags": [
         "business-ops",
@@ -23063,7 +23073,7 @@
     {
       "name": "career-ops",
       "category": "productivity",
-      "description": "AI-powered job search system — CV optimization, ATS scanning, interview prep, application tracking. Use when job searching, writing CVs, preparing for interviews, tracking applications,.",
+      "description": "AI-powered job search system \u2014 CV optimization, ATS scanning, interview prep, application tracking. Use when job searching, writing CVs, preparing for interviews, tracking applications,.",
       "domain": "productivity",
       "tags": [
         [
@@ -23163,7 +23173,7 @@
     {
       "name": "meeting-management",
       "category": "productivity",
-      "description": "AI-powered meeting management — agenda creation, note-taking, action item extraction, follow-up tracking. Use when planning meetings, capturing decisions, or tracking meeting outcomes.",
+      "description": "AI-powered meeting management \u2014 agenda creation, note-taking, action item extraction, follow-up tracking. Use when planning meetings, capturing decisions, or tracking meeting outcomes.",
       "domain": "productivity",
       "tags": [
         [
@@ -23178,7 +23188,7 @@
     {
       "name": "nocode-orchestrator",
       "category": "productivity",
-      "description": "Build and manage automations across Make.com, n8n, Zapier, and Pipedream — onboarding, support tickets, content approval, invoice processing. Use when building and manage automations across make.com, n8n, zapier, and pipedream.",
+      "description": "Build and manage automations across Make.com, n8n, Zapier, and Pipedream \u2014 onboarding, support tickets, content approval, invoice processing. Use when building and manage automations across make.com, n8n, zapier, and pipedream.",
       "domain": "productivity",
       "tags": [
         "api",
@@ -23215,7 +23225,7 @@
     {
       "name": "ai-research-agent",
       "category": "research",
-      "description": "Autonomous research agent that monitors trends, discovers income opportunities, and creates new skills — runs daily research cycles to keep the one-man-company evolving. Use when working with ai research agent.",
+      "description": "Autonomous research agent that monitors trends, discovers income opportunities, and creates new skills \u2014 runs daily research cycles to keep the one-man-company evolving. Use when working with ai research agent.",
       "domain": "research",
       "tags": [
         "agent",
@@ -23249,7 +23259,7 @@
     {
       "name": "competitive-intelligence",
       "category": "research",
-      "description": "Continuous competitor monitoring — pricing changes, feature launches, job postings, ad spend, SEO rankings, social media activity — with weekly intelligence briefs and strategic recommendations. Use when working with competitive intelligence.",
+      "description": "Continuous competitor monitoring \u2014 pricing changes, feature launches, job postings, ad spend, SEO rankings, social media activity \u2014 with weekly intelligence briefs and strategic recommendations. Use when working with competitive intelligence.",
       "domain": "research",
       "tags": [
         "analysis",
@@ -23269,7 +23279,7 @@
     {
       "name": "continuous-learning",
       "category": "research",
-      "description": "Transform session insights into actionable skills with confidence-weighted scoring — captures patterns, analyzes outcomes, and integrates learnings to improve agent performance. Use when working with continuous learning.",
+      "description": "Transform session insights into actionable skills with confidence-weighted scoring \u2014 captures patterns, analyzes outcomes, and integrates learnings to improve agent performance. Use when working with continuous learning.",
       "domain": "research",
       "tags": [
         "ai-agent",
@@ -23689,7 +23699,7 @@
     {
       "name": "b2b-sales-automation",
       "category": "sales",
-      "description": "|\n  >\n    Full B2B sales pipeline automation — from cold prospect to onboarded client.\n    Covers ICP definition, lead sourcing, outreach sequences, proposal generation, CRM tracking,\n    and deal alerts via   Telegram. Targets SMEs needing AI automation, digital products,\n    and content services.\n",
+      "description": "|\n  >\n    Full B2B sales pipeline automation \u2014 from cold prospect to onboarded client.\n    Covers ICP definition, lead sourcing, outreach sequences, proposal generation, CRM tracking,\n    and deal alerts via   Telegram. Targets SMEs needing AI automation, digital products,\n    and content services.\n",
       "domain": "sales",
       "tags": [
         "sales",
@@ -23786,7 +23796,7 @@
     {
       "name": "lead-generation-engine",
       "category": "sales",
-      "description": "Stub — merged into ai-lead-generation. See the parent skill for both service templates and technical implementation code.",
+      "description": "Stub \u2014 merged into ai-lead-generation. See the parent skill for both service templates and technical implementation code.",
       "domain": "sales",
       "tags": [
         "sales",
@@ -23913,7 +23923,7 @@
     {
       "name": "crypto-trading-bot",
       "category": "trading",
-      "description": "加密貨幣交易機器人開發 - 幫你整自動交易Bot，支持Pine Script、Python、CCXT API對接。適用於：(1)整TradingView信號Bot (2)CEX/DEX API自動化 (3)套利機器人 (4)止盈止損策略. Use when working with crypto trading bot.",
+      "description": "\u52a0\u5bc6\u8ca8\u5e63\u4ea4\u6613\u6a5f\u5668\u4eba\u958b\u767c - \u5e6b\u4f60\u6574\u81ea\u52d5\u4ea4\u6613Bot\uff0c\u652f\u6301Pine Script\u3001Python\u3001CCXT API\u5c0d\u63a5\u3002\u9069\u7528\u65bc\uff1a(1)\u6574TradingView\u4fe1\u865fBot (2)CEX/DEX API\u81ea\u52d5\u5316 (3)\u5957\u5229\u6a5f\u5668\u4eba (4)\u6b62\u76c8\u6b62\u640d\u7b56\u7565. Use when working with crypto trading bot.",
       "domain": "trading",
       "tags": [
         "algorithms",
@@ -24059,7 +24069,7 @@
     {
       "name": "portfolio-manager",
       "category": "trading",
-      "description": "Portfolio manager — capital allocation, risk management, and performance metrics tracking for trading strategies.",
+      "description": "Portfolio manager \u2014 capital allocation, risk management, and performance metrics tracking for trading strategies.",
       "domain": "trading",
       "tags": [
         "algorithms",
@@ -24180,7 +24190,7 @@
     {
       "name": "tushare-finance",
       "category": "trading",
-      "description": "获取中国金融市场数据（A股、港股、美股、基金、期货、债券）。支持220+个Tushare Pro接口：股票行情、财务报表、宏观经济指标。当用户请求股价数据、财务分析、指数行情、GDP/CPI等宏观数据时使用。. Use when working with tushare finance.",
+      "description": "\u83b7\u53d6\u4e2d\u56fd\u91d1\u878d\u5e02\u573a\u6570\u636e\uff08A\u80a1\u3001\u6e2f\u80a1\u3001\u7f8e\u80a1\u3001\u57fa\u91d1\u3001\u671f\u8d27\u3001\u503a\u5238\uff09\u3002\u652f\u6301220+\u4e2aTushare Pro\u63a5\u53e3\uff1a\u80a1\u7968\u884c\u60c5\u3001\u8d22\u52a1\u62a5\u8868\u3001\u5b8f\u89c2\u7ecf\u6d4e\u6307\u6807\u3002\u5f53\u7528\u6237\u8bf7\u6c42\u80a1\u4ef7\u6570\u636e\u3001\u8d22\u52a1\u5206\u6790\u3001\u6307\u6570\u884c\u60c5\u3001GDP/CPI\u7b49\u5b8f\u89c2\u6570\u636e\u65f6\u4f7f\u7528\u3002. Use when working with tushare finance.",
       "domain": "trading",
       "tags": [
         "algorithms",
@@ -24216,7 +24226,7 @@
     {
       "name": "investment-bottleneck",
       "category": "finance",
-      "description": "Bottleneck investing — find companies with pricing power and monopoly returns. Money protocol: concentrated value portfolio, research newsletter. [Merged into finance/investment-bottleneck/SKILL.md]",
+      "description": "Bottleneck investing \u2014 find companies with pricing power and monopoly returns. Money protocol: concentrated value portfolio, research newsletter. [Merged into finance/investment-bottleneck/SKILL.md]",
       "domain": "finance",
       "tags": [
         "finance",
@@ -24232,7 +24242,7 @@
     {
       "name": "investment-earnings",
       "category": "finance",
-      "description": "Earnings season trading — pre-earnings positioning, post-earnings drift, management quality scoring. Money protocol: earnings trade alerts, research reports. [Merged into finance/investment-earnings/SKILL.md]",
+      "description": "Earnings season trading \u2014 pre-earnings positioning, post-earnings drift, management quality scoring. Money protocol: earnings trade alerts, research reports. [Merged into finance/investment-earnings/SKILL.md]",
       "domain": "finance",
       "tags": [
         "finance",
@@ -24248,7 +24258,7 @@
     {
       "name": "investment-industry",
       "category": "finance",
-      "description": "Industry research and sector rotation — TAM/SAM/SOM analysis, competitive dynamics, macro-aligned positioning. Money protocol: sector rotation strategy, consulting reports. [Merged into finance/investment-industry/SKILL.md]",
+      "description": "Industry research and sector rotation \u2014 TAM/SAM/SOM analysis, competitive dynamics, macro-aligned positioning. Money protocol: sector rotation strategy, consulting reports. [Merged into finance/investment-industry/SKILL.md]",
       "domain": "finance",
       "tags": [
         "finance",
@@ -24264,7 +24274,7 @@
     {
       "name": "autonomous-agents",
       "category": "agents",
-      "description": "Five specialized autonomous agents — code, deploy, planning, research, review — unified into one orchestration hub. Money protocol: build agent-as-a-service, automate dev workflows, sell agent templates.",
+      "description": "Five specialized autonomous agents \u2014 code, deploy, planning, research, review \u2014 unified into one orchestration hub. Money protocol: build agent-as-a-service, automate dev workflows, sell agent templates.",
       "domain": "agents",
       "tags": [
         "agent",
@@ -24281,7 +24291,7 @@
     {
       "name": "coding-agents",
       "category": "agents",
-      "description": "Five specialized coding agents — linter, perf, refactor, security, test — unified into one code quality hub. Money protocol: code review as a service, CI/CD pipeline consulting.",
+      "description": "Five specialized coding agents \u2014 linter, perf, refactor, security, test \u2014 unified into one code quality hub. Money protocol: code review as a service, CI/CD pipeline consulting.",
       "domain": "agents",
       "tags": [
         "agent",
@@ -24299,7 +24309,7 @@
     {
       "name": "bot-automation",
       "category": "automation",
-      "description": "Multi-platform bot automation — Telegram, Twitter/X, WhatsApp — unified hub for messaging automation. Money protocol: bot-as-a-service, engagement automation, lead nurturing.",
+      "description": "Multi-platform bot automation \u2014 Telegram, Twitter/X, WhatsApp \u2014 unified hub for messaging automation. Money protocol: bot-as-a-service, engagement automation, lead nurturing.",
       "domain": "automation",
       "tags": [
         "automation",
@@ -24317,7 +24327,7 @@
     {
       "name": "workflow-automation",
       "category": "automation",
-      "description": "Workflow automation hub — cron scheduling, IFTTT-style triggers, n8n visual builder, webhook routing, and Zapier-alt self-hosted. Money protocol: automate client workflows, sell automations.",
+      "description": "Workflow automation hub \u2014 cron scheduling, IFTTT-style triggers, n8n visual builder, webhook routing, and Zapier-alt self-hosted. Money protocol: automate client workflows, sell automations.",
       "domain": "automation",
       "tags": [
         "automation",
@@ -24336,7 +24346,7 @@
     {
       "name": "web-scraping",
       "category": "automation",
-      "description": "Web scraping and monitoring hub — content monitoring, price tracking, social listening, smart scraping. Money protocol: competitor intelligence service, price alert business.",
+      "description": "Web scraping and monitoring hub \u2014 content monitoring, price tracking, social listening, smart scraping. Money protocol: competitor intelligence service, price alert business.",
       "domain": "automation",
       "tags": [
         "automation",
@@ -24354,7 +24364,7 @@
     {
       "name": "data-analysis",
       "category": "data",
-      "description": "Full data analysis pipeline — anomaly detection, data cleaning, report generation, visualization. Money protocol: data analytics consulting, dashboard-as-a-service.",
+      "description": "Full data analysis pipeline \u2014 anomaly detection, data cleaning, report generation, visualization. Money protocol: data analytics consulting, dashboard-as-a-service.",
       "domain": "data",
       "tags": [
         "data",
@@ -24373,7 +24383,7 @@
     {
       "name": "content-writing",
       "category": "content",
-      "description": "Content production factory — ad copy, emails, long-form articles, product descriptions. Money protocol: content agency, newsletter business, copywriting service.",
+      "description": "Content production factory \u2014 ad copy, emails, long-form articles, product descriptions. Money protocol: content agency, newsletter business, copywriting service.",
       "domain": "content",
       "tags": [
         "content",
@@ -24392,7 +24402,7 @@
     {
       "name": "github-integration",
       "category": "integrations",
-      "description": "GitHub automation hub — Actions, Issues, PRs. Money protocol: CI/CD consulting, GitHub automation services, bot-as-a-service.",
+      "description": "GitHub automation hub \u2014 Actions, Issues, PRs. Money protocol: CI/CD consulting, GitHub automation services, bot-as-a-service.",
       "domain": "integrations",
       "tags": [
         "github",
@@ -24409,7 +24419,7 @@
     {
       "name": "notion-integration",
       "category": "integrations",
-      "description": "Notion automation hub — API queries, database management, page creation. Money protocol: Notion template business, workspace automation consulting.",
+      "description": "Notion automation hub \u2014 API queries, database management, page creation. Money protocol: Notion template business, workspace automation consulting.",
       "domain": "integrations",
       "tags": [
         "notion",
@@ -24426,7 +24436,7 @@
     {
       "name": "slack-integration",
       "category": "integrations",
-      "description": "Slack automation hub — bots, notifications, slash commands. Money protocol: Slack app development, team automation consulting.",
+      "description": "Slack automation hub \u2014 bots, notifications, slash commands. Money protocol: Slack app development, team automation consulting.",
       "domain": "integrations",
       "tags": [
         "slack",
@@ -24444,7 +24454,7 @@
     {
       "name": "discord-integration",
       "category": "integrations",
-      "description": "Discord automation hub — bots and webhooks for community management. Money protocol: Discord bot development, community automation services.",
+      "description": "Discord automation hub \u2014 bots and webhooks for community management. Money protocol: Discord bot development, community automation services.",
       "domain": "integrations",
       "tags": [
         "discord",
@@ -24462,7 +24472,7 @@
     {
       "name": "mcp-clients",
       "category": "mcp",
-      "description": "Model Context Protocol client hub — connect, discover, and use MCP servers. Money protocol: MCP server development, custom tool integration.",
+      "description": "Model Context Protocol client hub \u2014 connect, discover, and use MCP servers. Money protocol: MCP server development, custom tool integration.",
       "domain": "mcp",
       "tags": [
         "mcp",
@@ -24480,7 +24490,7 @@
     {
       "name": "knowledge-base",
       "category": "core",
-      "description": "Unified knowledge base — company docs and project context in one hub. Money protocol: knowledge management consulting, team wiki setup.",
+      "description": "Unified knowledge base \u2014 company docs and project context in one hub. Money protocol: knowledge management consulting, team wiki setup.",
       "domain": "core",
       "tags": [
         "core",
@@ -24497,7 +24507,7 @@
     {
       "name": "docker-devops",
       "category": "devops",
-      "description": "Docker DevOps hub — Compose, Dockerfile optimization, K8s deployment. Money protocol: containerization consulting, DevOps-as-a-service.",
+      "description": "Docker DevOps hub \u2014 Compose, Dockerfile optimization, K8s deployment. Money protocol: containerization consulting, DevOps-as-a-service.",
       "domain": "devops",
       "tags": [
         "devops",
@@ -24514,7 +24524,7 @@
     },
     {
       "name": "faceless-youtube",
-      "description": "Build and monetize faceless YouTube channels with AI — generate videos from a prompt, auto-publish, and scale ad/promo revenue.",
+      "description": "Build and monetize faceless YouTube channels with AI \u2014 generate videos from a prompt, auto-publish, and scale ad/promo revenue.",
       "tags": [
         "content",
         "video",
