@@ -1,6 +1,9 @@
-description: >
-  Generate viral short-form videos with clay art/plasticine stop-motion diorama visuals for TikTok,
-  Reels, and Shorts. Use when creating clay animation, plasticine-style, or stop-motion diorama videos.
+---
+name: clay-art-video-generator
+description: clay art video generator skill.
+domain: video
+---
+description: Generate viral short-form videos with clay art/plasticine stop-motion diorama visuals for TikTok, Reels, and Shorts. Use when creating clay animation, plasticine-style, or stop-motion diorama videos.
 domain: content
 tags:
 - art

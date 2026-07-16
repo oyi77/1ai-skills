@@ -1,18 +1,45 @@
 ---
 name: trading-strategist
-description: Design and backtest trading strategies using technical indicators, fundamental analysis, and statistical models. Use when designing and backtest trading strategies using technical indicators, fundamental analysis,.
+description: "Design and backtest trading strategies using technical indicators, fundamental analysis, and statistical models. Use when designing and backtesting trading strategies."
 domain: trading
-tags:
-- algorithms
-- markets
-- strategist
-- trading
-allowed-tools:
-- Bash(trading:*)
-- MCP(notion:*)
-- fs
-- network
+tags: [algorithms, markets, strategist, trading, money, backtesting]
+version: "2.0.0"
+author: ""
+subdomain: ""
+type: trading
 ---
+# Money-Making Overview
+
+A validated strategy with Sharpe >1.5 and profit factor >1.3 compounds capital at 20-50%+/year. One good strategy can generate $500-5K/month on a $25K account. Multiple uncorrelated strategies scale exponentially.
+
+## Revenue Streams
+1. Personal Trading — run your own capital
+2. Strategy Subscriptions ($97-497/mo) — sell signal access
+3. Strategy Development ($2K-10K) — build for prop firms/hedge funds
+4. Backtesting Service ($500-2K) — validate client strategies
+
+## First Action in 60 Minutes
+```bash
+#!/usr/bin/env bash
+# Quick strategy screen: test a simple moving average crossover
+mkdir -p ~/trading-strategies/{backtests,reports,optimization}
+
+echo "=== Quick Strategy Screen ==="
+echo "Strategy: SMA crossover (50/200)"
+echo "Pair: SPY (daily)"
+echo "Timeframe: 5 years"
+echo ""
+echo "Calculate:"
+echo "  - Total return vs buy-hold"
+echo "  - Max drawdown"
+echo "  - Sharpe ratio"
+echo "  - Win rate"
+echo "  - Profit factor"
+echo ""
+echo "Gate: Pass only if Sharpe >1.3 AND profit factor >1.5"
+echo "If passes → add to optimization queue"
+echo "If fails → discard or modify"
+```
 
 # Trading Strategist
 
@@ -21,10 +48,10 @@ allowed-tools:
 Build and optimize trading strategies with clear entry/exit rules and risk parameters. The Strategist serves as the design arm of the trading team, responsible for creating systematic trading strategies that can be consistently replicated and optimized. It focuses on turning market insights into executable strategies with defined rules, parameters, and risk controls that can be backtested and deployed.
 
 ## When to Use
+
 **Trigger phrases:**
 - "trading strategist"
 - "Design and backtest trading strategies using technical indicators, fundamental a"
-
 
 - Creating new trading strategies based on market analysis or hypotheses
 - Defining precise entry and exit conditions for strategy trading
@@ -34,10 +61,9 @@ Build and optimize trading strategies with clear entry/exit rules and risk param
 - Generating strategy performance metrics and Sharpe ratios
 - Maintaining strategy version history and change tracking
 
-## The Process
+## Strategy Design Pipeline
 
 The strategy design pipeline defines entry/exit rules, runs scenario analysis, optimizes parameters, and documents strategies in Notion.
-
 
 ### 1. Define Entry Rules
 
@@ -161,8 +187,9 @@ console.table({
 - You don't have trading capital
 - Task requires financial advice (consult advisors)
 
+## Risk Controls & Verification
 
-## Red Flags
+### Red Flags
 
 - **Strategy parameters produce overfitting**: Strategy too closely tuned to specific historical data; test on out-of-sample data and reduce parameter complexity
 - **Entry rules too complex or contradictory**: Strategy may be too complicated to execute reliably; simplify to essential rules
@@ -172,51 +199,50 @@ console.table({
 - **Drawdown exceeds acceptable threshold (>20%)**: Position sizing or risk management may need adjustment; reduce position sizes or tighten stop losses
 - **Strategy parameters frequently need adjustment**: Market regime dependency too high; implement dynamic parameter adaptation
 
-## Verification
+### Verification Checklist
 
-Verification covers strategy design clarity, backtest accuracy, optimization robustness, scenario coverage, and documentation completeness.
-
-
-### Strategy Design Verification
+#### Strategy Design Verification
 - [ ] Entry rules clearly defined and executable
 - [ ] Exit rules properly implemented with stop loss and take profit
 - [ ] Parameters quantified with specific values
 - [ ] Risk controls documented and configured
 
-### Backtest Verification
+#### Backtest Verification
 - [ ] Historical data quality validated for backtest period
 - [ ] Backtest includes realistic slippage and commission
 - [ ] All trades in backtest execute as expected
 - [ ] Metrics match expected performance ranges
 
-### Optimization Verification
+#### Optimization Verification
 - [ ] Grid search covers reasonable parameter range
 - [ ] Optimization tested on out-of-sample data
 - [ ] Best parameters validated with walk-forward analysis
 - [ ] No data snooping bias in optimization process
 
-### Scenario Testing Verification
+#### Scenario Testing Verification
 - [ ] Strategy tested across bull, bear, and sideways markets
 - [ ] Scenario results documented and compared
 - [ ] Strategy weaknesses identified for specific scenarios
 - [ ] Adjustments made for scenario-specific performance
 
-### Documentation Verification
+#### Documentation Verification
 - [ ] Notion strategy page includes all rules and parameters
 - [ ] Backtest results documented with full metrics
 - [ ] Risk controls clearly specified
 - [ ] Documentation reviewed and approved by trading team
 
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
-
 ## Anti-Rationalization
 
-| Rationalization | Reality |
+|Excuse|Truth|
 |---|---|
-| "I will cut losses later" | Later never comes. Set stop-losses before entering any trade. |
-| "This time is different" | It never is. Follow your strategy, not your emotions. |
-| "I do not need to journal" | Journaling reveals patterns in your behavior. Track every trade. |
+|"I need more data first"|5 years of daily data is enough to start|
+|"Backtesting is just curve-fitting"|Walk-forward + out-of-sample validation prevents this|
+|"I'll trade when the strategy is perfect"|No strategy survives first contact with live markets|
+
+## Output Format
+
+On completion: "Strategy [name] - Sharpe: [N], PF: [N], Win%: [N]%, MaxDD: [N]%, Status: [PASS/FAIL]"
+
+
+## Workflow
+See the parent skill for authoritative workflow documentation.

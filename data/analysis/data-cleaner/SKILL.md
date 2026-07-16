@@ -1,97 +1,25 @@
 ---
 name: data-cleaner
-description: Data Cleaner skill for automated data workflows. Provides tools and templates for clean, cleaner, data operations,
-  integration with AI pipelines, and performance optimization.
+description: Data cleaning — merged into data-analysis parent. See ../SKILL.md for money protocol.
 domain: data
-tags:
-- analytics
-- cleaner
-- data
-- data-analysis
-- pipeline
-- visualization
-- workflow
+tags: [analytics, data, cleaning]
 ---
+
 # Data Cleaner
 
+This skill has been merged into the parent data-analysis skill.
+
+See the comprehensive merged skill at [../SKILL.md](../SKILL.md) for full documentation including money-making protocol, real pandas examples, and orchestration flow.
+
+Key capabilities moved:
+- Config-driven cleaning pipeline (`clean_dataset`) with drop duplicates, fill strategies, type coersion
+- Cleaning report generation (`cleaning_report`)
+- Dataset profiling (`profile_dataset`) with missing values, duplicates, stats
+
+
 ## When to Use
+Use this skill when working with data cleaner.
 
-**Trigger phrases:**
-- "data cleaner"
-- "Help me with data cleaner"
-
-**Use cases:**
-- When the task matches this skill's domain expertise
-
-**When NOT to use:**
-- For tasks outside this skill's scope
-
-
-## When NOT to Use
-
-- For real-time transactional workloads (use OLTP databases)
-- When the dataset fits in a spreadsheet (use simpler tools)
-- When data privacy regulations prohibit cloud processing
-
-
-## Overview
-
-Data Cleaner handles data analysis with support for multiple data formats and sources.
 
 ## Workflow
-
-```python
-# Example: Data pipeline
-import pandas as pd
-
-def pipeline(source: str):
-    df = pd.read_csv(source)
-    df = df.dropna()
-    df = df.drop_duplicates()
-    df["processed_at"] = pd.Timestamp.now()
-    return df.to_parquet("output.parquet")
-```
-
-1. **Connect** — Establish connection to data sources
-2. **Extract** — Pull data from source systems
-3. **Transform** — Apply cleaning, normalization, and enrichment
-4. **Load** — Write processed data to target destinations
-5. **Validate** — Verify data quality and completeness
-6. **Document** — Record schema changes and data lineage
-
-## Data Quality Checks
-
-- [ ] No null values in required fields
-- [ ] Data types match schema definitions
-- [ ] Referential integrity maintained
-- [ ] Duplicate detection applied
-- [ ] Outlier handling documented
-
-## Supported Formats
-
-- JSON, CSV, Parquet, Avro
-- SQL databases (PostgreSQL, MySQL, SQLite)
-- REST APIs and webhooks
-- File systems (local, S3, GCS)
-
-## Anti-Rationalization
-
-| Rationalization | Reality |
-|---|---|
-| "CSV is fine for everything" | Structured databases enable queries, integrity, and scale. |
-| "I will add data validation later" | Bad data propagates silently. Validate at ingestion. |
-| "Small datasets do not need optimization" | Even small datasets benefit from proper indexing and schema design. |
-
-
-## Process
-
-1. **Prepare** — Gather requirements, verify prerequisites, set up environment
-1. **Execute** — Run data cleaner workflow with configured parameters
-1. **Verify** — Validate output meets requirements, document results
-
-## Verification
-
-- [ ] All steps executed successfully
-- [ ] Results validated against acceptance criteria
-- [ ] Error handling tested with edge cases
-- [ ] Documentation updated with findings
+See the parent skill for authoritative workflow documentation.

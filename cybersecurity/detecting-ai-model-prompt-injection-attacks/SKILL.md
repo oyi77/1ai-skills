@@ -1,11 +1,6 @@
 ---
 name: detecting-ai-model-prompt-injection-attacks
-description: >
-  Detects prompt injection attacks targeting LLM-based applications using a multi-layered defense combining regex
-  pattern matching for known attack signatures, heuristic scoring for structural anomalies, and transformer-based classification
-  with DeBERTa models. The detector analyzes user inputs before they reach the LLM, flagging direct injections (system prompt
-  overrides, role-play escapes, instruction hijacking) and indirect injections (encoded payloads, multi-language obfuscation,
-  delim.
+description: Detects prompt injection attacks targeting LLM-based applications using a multi-layered defense combining regex pattern matching for known attack signatures, heuristic scoring for structural anomalies, and transformer-based classification with DeBERTa models. The detector analyzes user inputs before they reach the LLM, flagging direct injections (system prompt overrides, role-play escapes, instruction hijacking) and indirect injections (encoded payloads, multi-language obfuscation, delim.
 domain: cybersecurity
 tags:
 - prompt-injection

@@ -1,10 +1,6 @@
 ---
 name: fable-mode
-description: >
-  Enforce staged execution discipline on large tasks: written stage plan, parallel sub-agent
-  delegation, failable verification at each stage, and skeptical self-review before delivery.
-  Use when tasks span multiple files, multiple sources, or multiple sessions. Also triggers
-  on "do this thoroughly", "be systematic", "deep work mode", "be thorough".
+description: Enforce staged execution discipline on large tasks: written stage plan, parallel sub-agent delegation, failable verification at each stage, and skeptical self-review before delivery. Use when tasks span multiple files, multiple sources, or multiple sessions. Also triggers on "do this thoroughly", "be systematic", "deep work mode", "be thorough".
 domain: agents
 tags:
   - agent-orchestration

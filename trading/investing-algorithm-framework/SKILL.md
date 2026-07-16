@@ -1,5 +1,6 @@
 ---
 name: investing-algorithm-framework
+version: "2.0.0"
 description: Build algorithmic investing strategies with backtesting, signal generation, and portfolio optimization frameworks. Use when building algorithmic investing strategies with backtesting, signal generation, and portfolio.
 domain: trading
 tags:
@@ -10,6 +11,7 @@ tags:
 - markets
 - testing
 - trading
+- money
 ---
 ## Overview
 
@@ -265,3 +267,144 @@ After completing strategy development, confirm:
 | "I will cut losses later" | Later never comes. Set stop-losses before entering any trade. |
 | "This time is different" | It never is. Follow your strategy, not your emotions. |
 | "I do not need to journal" | Journaling reveals patterns in your behavior. Track every trade. |
+
+## Money-Making Overview
+
+Deploy quantitative strategies that generate consistent alpha. This framework enables algorithmic trading with $100K-$10M AUM targeting 15-30% annualized returns through systematic backtesting, Monte Carlo robustness validation, and live execution. The same engine powers a consulting revenue stream via strategy development, backtesting audits, and signal subscriptions — turning quantitative skill into a diversified income portfolio.
+
+## Revenue Streams
+
+| Stream | Description | Target Income |
+|--------|-------------|---------------|
+| **Live Algo Trading** | Deploy verified strategies to CCXT exchanges. Capital at risk; requires dry-run validation first. | 15-30% annualized on $100K-$10M AUM |
+| **Strategy-as-a-Service** | Build and manage custom strategies for hedge funds, family offices, or crypto funds. Includes parameter optimization, walk-forward analysis, and monthly rebalancing. | $500-$5,000/month per client |
+| **Backtesting Audits** | Audit existing strategies for lookahead bias, overfitting, survivorship bias, and realistic slippage/commission modeling. Deliver HTML report with Monte Carlo results. | $200-$2,000 per project |
+| **Signal Subscription** | Run strategies serverless (AWS Lambda, scheduled triggers), push BUY/SELL signals via webhook or Telegram. Tiered by number of pairs and update frequency. | $50-$500/month per subscriber |
+| **Education & Courses** | Sell the backtesting framework as a course or workshop — strategy definition, parameter optimization, walk-forward analysis, live deployment. | $500-$2,000 per student |
+
+## First Action in 60 Minutes
+
+Run this script to implement a simple SMA crossover strategy, backtest on SPY data, and get a trade-ready signal in under 60 minutes. It validates the full pipeline: data acquisition, signal generation, backtesting, and performance reporting.
+
+```python
+"""
+sma_crossover_backtest.py — SMA Crossover strategy that generates cash.
+
+What this does:
+1. Downloads 3 years of daily SPY data via yfinance
+2. Computes 50/200 SMA crossover signals
+3. Backtests with 0.1% slippage + commission
+4. Prints equity curve, Sharpe ratio, max drawdown
+5. Outputs a trade-ready signal for TOMORROW
+6. Saves HTML report to sma_crossover_report.html
+
+Run:  pip install yfinance pandas investing-algorithm-framework && python sma_crossover_backtest.py
+Exit: $5-$10 potential on first trade if signal is BUY and price moves 0.1%
+"""
+
+import yfinance as yf
+import pandas as pd
+from investing_algorithm_framework import Backtest, TradingStrategy, OrderSide
+
+
+class SmaCrossoverStrategy(TradingStrategy):
+    """Classic 50/200 SMA crossover — the 'hello world' of quant trading."""
+
+    symbols = ["SPY"]
+    data_sources = ["ohlcv:1d"]
+
+    def buy_signal(self, symbol, data):
+        fast = data["close"].rolling(50).mean()
+        slow = data["close"].rolling(200).mean()
+        return fast.iloc[-2] <= slow.iloc[-2] and fast.iloc[-1] > slow.iloc[-1]
+
+    def sell_signal(self, symbol, data):
+        fast = data["close"].rolling(50).mean()
+        slow = data["close"].rolling(200).mean()
+        return fast.iloc[-2] >= slow.iloc[-2] and fast.iloc[-1] < slow.iloc[-1]
+
+    def position_size(self, symbol, portfolio):
+        return portfolio.available_capital * 0.95  # 95% allocation per signal
+
+    def stop_loss(self, symbol, entry_price):
+        return entry_price * 0.93  # 7% stop loss
+
+    def take_profit(self, symbol, entry_price):
+        return entry_price * 1.20  # 20% take profit
+
+
+if __name__ == "__main__":
+    print("=" * 60)
+    print("SMA CROSSOVER BACKTEST — 3 Years SPY Data")
+    print("=" * 60)
+
+    backtest = Backtest(
+        strategy=SmaCrossoverStrategy,
+        start_date="2023-01-01",
+        end_date="2026-01-01",
+        initial_capital=100_000,
+        mode="event_driven",
+        slippage_model="percentage",
+        slippage_pct=0.001,
+        commission_pct=0.001,
+    )
+
+    report = backtest.run()
+
+    print(f"\n{'RESULTS':-^60}")
+    print(f"CAGR:                {report.metrics.cagr:>8.2%}")
+    print(f"Total Return:        {report.metrics.total_return:>8.2%}")
+    print(f"Sharpe Ratio:        {report.metrics.sharpe_ratio:>8.2f}")
+    print(f"Sortino Ratio:       {report.metrics.sortino_ratio:>8.2f}")
+    print(f"Max Drawdown:        {report.metrics.max_drawdown:>8.2%}")
+    print(f"Win Rate:            {report.metrics.win_rate:>8.2%}")
+    print(f"Profit Factor:       {report.metrics.profit_factor:>8.2f}")
+    print(f"Total Trades:        {report.metrics.total_trades:>8d}")
+
+    # Monte Carlo robustness check
+    mc = backtest.monte_carlo(simulations=500, confidence_interval=0.95)
+    print(f"\n{'MONTE CARLO (500 sims)':-^60}")
+    print(f"5th Percentile:       ${mc.percentile_5:>8,.2f}")
+    print(f"95th Percentile:      ${mc.percentile_95:>8,.2f}")
+    print(f"Prob of Ruin:         {mc.probability_of_ruin:>8.2%}")
+
+    # Trade-ready signal for next day
+    data = yf.download("SPY", period="1y", interval="1d")["Close"]
+    fast = data.rolling(50).mean()
+    slow = data.rolling(200).mean()
+    signal = "BUY" if fast.iloc[-1] > slow.iloc[-1] else "SELL"
+    print(f"\n{'NEXT SIGNAL':-^60}")
+    print(f"  50 SMA: {fast.iloc[-1]:>8.2f}  |  200 SMA: {slow.iloc[-1]:>8.2f}")
+    print(f"  >>> {signal} SPY at next market open <<<")
+
+    report.save_html("sma_crossover_report.html")
+    print(f"\nHTML report saved to sma_crossover_report.html")
+    print("=" * 60)
+```
+
+## Output Format
+
+Every strategy run — whether backtest or live — MUST produce this standardized output:
+
+```yaml
+strategy_name: "<Python class name>"
+status: "backtested" | "live" | "paper"
+timeframe: "<start_date> → <end_date>"
+metrics:
+  cagr: "<percent>"
+  sharpe_ratio: "<float>"
+  sortino_ratio: "<float>"
+  max_drawdown: "<percent>"
+  win_rate: "<percent>"
+  profit_factor: "<float>"
+  total_trades: "<int>"
+  monte_carlo_5th_pct: "<dollar>"
+  monte_carlo_95th_pct: "<dollar>"
+  prob_of_ruin: "<percent>"
+next_signal:
+  symbol: "<ticker>"
+  direction: "BUY" | "SELL" | "HOLD"
+  entry_price: "<dollar>"
+  conviction: "<low | medium | high>"
+target_allocation: "<percent of portfolio>"
+```

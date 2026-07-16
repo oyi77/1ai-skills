@@ -1,113 +1,21 @@
 ---
 name: kb
-description: Query and maintain the knowledge base for project context, decisions, and architecture documentation. Use on
-  session start. Use when working with kb.
+description: Query and maintain the knowledge base for project context, decisions, and architecture documentation. Use on session start. Use when working with kb.
 domain: core
 tags:
 - infrastructure
 - memory
 - self-improvement
-persona:
-  name: Domain Expert
-  title: Master of Kb
-  expertise:
-  - Core Excellence
-  - Best Practices
-  - Professional Standards
-  philosophy: Excellence is not a skill, it's an attitude.
-  credentials:
-  - Industry leader
-  - Practiced professional
-  - Thought leader
-  principles:
-  - Quality first
-  - Continuous improvement
-  - Evidence-based
-  - Customer focused
 ---
-# Kb
+
+# KB
+
+See [parent skill](../SKILL.md) for complete knowledge base usage, PARA structure, daily notes, fact storage, and retrieval workflows.
+
 
 ## When to Use
-**Trigger phrases:**
-- "Domain Expert"
-- "Query and maintain the knowledge base for project context, decisions, and archit"
+Use this skill when working with kb.
 
 
-Use this skill when:
-- Searching company knowledge (strategies, playbooks, finance, trading, marketing)
-- Reading specific knowledge files (e.g. `areas/finance/cashflow-tracker.md`)
-- Writing new or updated knowledge entries to the KB with PARA structure
-- Any agent (Vilona, Paijo via Telegram) needs to query or update company context
-
-
-## When NOT to Use
-
-- When the task can be solved with existing standard libraries
-- When the infrastructure is already in place and working
-- When the added complexity does not provide measurable benefit
-
-
-## Overview
-
-Kb is a foundational core infrastructure skill that provides system foundation capabilities for the agent ecosystem.
-
-## Architecture
-
-- **Input layer** — Receives and validates incoming requests
-- **Processing layer** — Core logic for system foundation
-- **Output layer** — Formats and delivers results
-- **State management** — Maintains context across invocations
-
-## Configuration
-
-- Set up required environment variables and paths
-- Configure logging level and output format
-- Define resource limits (memory, time, API calls)
-- Enable/disable features via configuration flags
-
-## Integration
-
-- Exposes standard interfaces for other skills to consume
-- Supports event-driven and request-response patterns
-- Compatible with the 1ai-skills hook system
-- Logs metrics for the skill performance monitor
-
-## Anti-Rationalization
-
-| Rationalization | Reality |
-|---|---|
-| "I will add monitoring later" | Without monitoring, you cannot detect failures. Add it from day one. |
-| "One model is enough" | Different tasks need different models. Route intelligently. |
-| "Premature optimization" | Infrastructure decisions are hard to change later. Design for scale early. |
-
-```python
-# Example: Model routing
-ROUTES = {
-    "code": ["claude-sonnet-4-20250514", "gpt-4o"],
-    "vision": ["gemini-2.5-pro", "gpt-4o"],
-    "fast": ["gemini-2.5-flash", "gpt-4o-mini"],
-}
-
-def route_request(task: str, prompt: str):
-    models = ROUTES.get(task, ROUTES["fast"])
-    for model in models:
-        try:
-            return call_model(model, prompt)
-        except Exception:
-            continue
-    raise RuntimeError("All models failed")
-```
-
-
-## Process
-
-1. **Prepare** — Gather requirements, verify prerequisites, set up environment
-1. **Execute** — Run kb workflow with configured parameters
-1. **Verify** — Validate output meets requirements, document results
-
-## Verification
-
-- [ ] All steps executed successfully
-- [ ] Results validated against acceptance criteria
-- [ ] Error handling tested with edge cases
-- [ ] Documentation updated with findings
+## Workflow
+See the parent skill for authoritative workflow documentation.

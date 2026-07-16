@@ -1,7 +1,9 @@
-description: >
-  Convert long videos into viral Shorts, TikToks, and Reels automatically. AI-powered scene detection,
-  highlight extraction, and smart clipping. Use when repurposing long-form content into short-form,
-  clipping highlights, or creating shorts from existing videos.
+---
+name: auto-clipper
+description: Automatically clip long videos into short, engaging highlights for TikTok, Reels, and YouTube Shorts using FFmpeg and AI scene detection.
+domain: video
+---
+description: Convert long videos into viral Shorts, TikToks, and Reels automatically. AI-powered scene detection, highlight extraction, and smart clipping. Use when repurposing long-form content into short-form, clipping highlights, or creating shorts from existing videos.
 domain: content
 tags:
 - auto

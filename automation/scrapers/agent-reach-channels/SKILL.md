@@ -114,3 +114,7 @@ pytest tests/test_new_channels.py -v  # 26 passed
 - social-listener: Cross-platform social media monitoring
 - content-monitor: Track content performance
 - price-tracker: Price monitoring (can use Shopee extraction)
+
+
+## Workflow
+See the parent skill for authoritative workflow documentation.

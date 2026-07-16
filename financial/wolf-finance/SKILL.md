@@ -1,21 +1,60 @@
 ---
 name: wolf-finance
-description: >
-  ACTIVATE for ANY finance, investment, trading, or market query. Triggers: ticker symbols ($AAPL, BTC, EUR/USD),
-  asset classes (stocks, crypto, forex, bonds, commodities, derivatives, PE, hedge funds), concepts (DCF, P/E, RSI, MACD,
-  Kelly, VaR, Sharpe, Greeks, yield curve, carry trade, QE), actions ("should I buy/sell", "analyze this", "build a portfolio",
-  "hedge my position", "size this trade"), modeling (valuation, forecasting, backtesting, Monte Carlo), corporate finance
-  (M&A, IPO, LB.
+description: "ACTIVATE for ANY finance, investment, trading, or market query. Comprehensive value investing framework combining Buffett, Munger, Duan Yongping, and Li Lu methodologies. Use when making investment decisions."
 domain: financial
-tags:
-- analysis
-- crypto
-- finance
-- investment
-- testing
-- trading
-- wolf
+tags: [analysis, crypto, finance, investment, testing, trading, wolf, money, value-investing]
+version: "2.0.0"
+author: ""
+subdomain: ""
+type: finance
 ---
+# Money-Making Overview
+
+Systematic value investing compounds at 15-25% annually. A $50K portfolio following this framework generates $7.5K-12.5K/year. With position sizing and margin of safety, drawdowns stay under 20%. One good investment thesis can return 2-10x over 3-5 years.
+
+## Revenue Streams
+
+1. Personal Portfolio — compound your own capital
+2. Investment Research ($2K-10K/report) — sell theses to funds/family offices
+3. Portfolio Management (0.5-1.5% AUM) — manage for others
+4. Newsletter/Picks ($19-97/mo) — publish investment ideas
+
+## First Action in 60 Minutes
+
+```bash
+#!/usr/bin/env bash
+# Portfolio health check
+mkdir -p ~/wolf-finance/{holdings,research,theses,reviews}
+
+echo "=== Portfolio Health Check ==="
+echo "1. List ALL current holdings with cost basis"
+echo "2. Run 7-factor Quality Screen (eliminate weak positions):"
+echo "   - Declining revenue (3yr) -> RED FLAG"
+echo "   - Increasing debt/equity -> RED FLAG"
+echo "   - Negative free cash flow -> RED FLAG"
+echo "   - Insider selling >50% -> RED FLAG"
+echo "   - Losing market share -> RED FLAG"
+echo "   - Regulatory risk -> RED FLAG"
+echo "   - Overvalued (P/E > 3x industry) -> RED FLAG"
+echo "3. Flag any position with 3+ red flags for review"
+echo "4. Check thesis: has anything fundamentally changed?"
+echo "5. Decision: HOLD, INCREASE, or EXIT each position"
+```
+
+## Anti-Rationalization
+
+| Excuse | Truth |
+|---|---|
+| "I need more information before deciding" | You have enough to decide. More info = more noise. |
+| "The market is too volatile right now" | Volatility is when value investors buy |
+| "I should wait for a better entry" | DCA in. Time in market > timing the market |
+
+## Output Format
+
+On completion: "Portfolio: [N] positions, $[N] value, [N] red flags, [N] thesis updates needed, [N] actions taken"
+
+---
+
 # Wolf Finance
 
 ## When to Use
@@ -101,13 +140,13 @@ Every key financial data point MUST come from two independent sources. Flag disc
 
 **Error calculation**:
 ```
-Error rate = |source1 - source2| / source1 × 100%
+Error rate = |source1 - source2| / source1 x 100%
 ```
 
 | Error | Action |
 |-------|--------|
-| ≤ 1% | Use source1 value, cite both |
-| 1–5% | Flag discrepancy, note possible cause (exchange rate, accounting method) |
+| <= 1% | Use source1 value, cite both |
+| 1-5% | Flag discrepancy, note possible cause (exchange rate, accounting method) |
 | > 5% | Must check original filing — do not use |
 
 **Common discrepancy causes**: GAAP vs Non-GAAP, exchange rate timing, fiscal year definitions, consolidation scope, data lag.
@@ -159,7 +198,7 @@ Collect using parallel research agents:
 - Market cap unit: HKD bn vs RMB bn vs USD bn — easy to misplace a zero
 - FCF definition: capex scope varies (leases, acquisitions)
 - Debt scope: whether operating lease liabilities are included
-- Ownership: AB-share companies — economic interest ≠ voting rights
+- Ownership: AB-share companies — economic interest != voting rights
 
 ### Step 2: Business Essence Analysis (Duan Yongping "Right Business")
 
@@ -255,7 +294,7 @@ Decision table:
 
 ## Value Investing Pre-Buy Checklist
 
-A 6-gate checklist adapted from the Buffett-Munger framework. Each gate scored ★1-5.
+A 6-gate checklist adapted from the Buffett-Munger framework. Each gate scored *1-5.
 
 ### Gate 1: Can I Understand This Business? (Circle of Competence)
 
@@ -276,7 +315,7 @@ A 6-gate checklist adapted from the Buffett-Munger framework. Each gate scored �
 | Capex intensity | | Asset-light > asset-heavy | |
 | Debt level | | Interest-bearing debt / net profit < 3yr | |
 
-Scoring: ★1-5 based on how many standards are met and whether trends are improving or deteriorating.
+Scoring: *1-5 based on how many standards are met and whether trends are improving or deteriorating.
 
 ### Gate 3: Is the Moat Deep Enough? (Competitive Advantage)
 
@@ -399,7 +438,7 @@ Quickly filter out non-first-class companies using 7 hard criteria with 3 exempt
 
 ## Management Deep Dive
 
-Deep management quality assessment when standard management scoring is uncertain (★★★ or below) or management is the core investment thesis.
+Deep management quality assessment when standard management scoring is uncertain (*** or below) or management is the core investment thesis.
 
 ### Framework
 
@@ -533,14 +572,14 @@ Portfolio-level investment thesis tracking, drift analysis, and structured portf
 
 The thesis tracker is a buy-and-hold discipline system that enforces documented reasoning before entry and systematic re-validation through quarterly check-ins.
 
-**Design principle:** Most investors stop at research → buy → pray. Missing post-entry tracking causes reluctance to sell, panic-selling on drawdowns, and forgetting why you bought. The system answers one question at every check: *Would you still buy this today if you did not own it?*
+**Design principle:** Most investors stop at research -> buy -> pray. Missing post-entry tracking causes reluctance to sell, panic-selling on drawdowns, and forgetting why you bought. The system answers one question at every check: *Would you still buy this today if you did not own it?*
 
 **Two modes:**
 
 **Mode A — Build Thesis:**
 1. Collect current price, valuation (PE/PB/dividend yield), latest financial data via WebSearch
 2. Validate valuation using `tools/financial_rigor.py verify-valuation`
-3. Core thesis — answers these 5 questions in ≤200 characters:
+3. Core thesis — answers these 5 questions in <=200 characters:
    - What is the business and how does it make money?
    - What is the moat and is it widening or stable?
    - Why is management trustworthy?
@@ -557,14 +596,14 @@ The thesis tracker is a buy-and-hold discipline system that enforces documented 
 3. Check each assumption against latest evidence — mark Green (valid), Yellow (weakening), Red (damaged), Black (broken)
 4. Check red-line list — any triggered red-line gets flagged in report with action recommendation
 5. Update valuation anchor
-6. Compute thesis health score: `10 - (black_count×3) - (red_count×2) - (yellow_count×1) - (redline_triggers×5)`, min 1 max 10
+6. Compute thesis health score: `10 - (black_countx3) - (red_countx2) - (yellow_countx1) - (redline_triggersx5)`, min 1 max 10
 7. Append check record to thesis file tracking table
 
 **Key principles for thesis tracking:**
 - Write sell conditions before buying — decisions made when calm are better than those made in panic
 - Theses must be verifiable — "great company" is not a thesis, "ROE > 25% and trending up" is
 - When a red-line triggers, act — "let us wait and see" is how large losses start
-- Thesis broken ≠ price down — a 30% price drop does not automatically mean sell; a broken thesis does
+- Thesis broken != price down — a 30% price drop does not automatically mean sell; a broken thesis does
 - Be honest about mistakes — admit when the thesis was wrong, do not hold out of ego
 
 ### Thesis Drift Detection
@@ -623,7 +662,7 @@ A structured 7-step portfolio review process that treats portfolio management as
 **Step 4: Portfolio-level analysis:**
 - **Concentration**: largest position (<40%), top 3 (50-80%), total holdings (5-15), cash (10-30%)
 - **Correlation**: identify hidden risk resonance — same industry, same country/currency, same macro exposure, supply chain adjacency
-- **Opportunity cost**: rank all positions by expected annual return × certainty. The lowest-ranked should beat cash (risk-free rate ~4%). If not, sell and hold cash
+- **Opportunity cost**: rank all positions by expected annual return x certainty. The lowest-ranked should beat cash (risk-free rate ~4%). If not, sell and hold cash
 - **Stress test**: global recession, US-China escalation, interest rate spike, tech bubble burst — directional + rough magnitude per position
 
 **Step 5: Optimization suggestions:**

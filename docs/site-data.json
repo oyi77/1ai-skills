@@ -1,6 +1,6 @@
 {
-  "generated": "2026-07-14T05:29:06.369515+00:00",
-  "total": 1334,
+  "generated": "2026-07-16T09:27:27.875037+00:00",
+  "total": 1348,
   "categories": [
     {
       "name": "cybersecurity",
@@ -12,7 +12,7 @@
     },
     {
       "name": "content",
-      "count": 60
+      "count": 61
     },
     {
       "name": "mindset",
@@ -20,7 +20,7 @@
     },
     {
       "name": "core",
-      "count": 45
+      "count": 46
     },
     {
       "name": "marketing",
@@ -28,15 +28,15 @@
     },
     {
       "name": "integrations",
-      "count": 34
+      "count": 38
     },
     {
       "name": "devops",
-      "count": 33
+      "count": 34
     },
     {
       "name": "automation",
-      "count": 29
+      "count": 32
     },
     {
       "name": "research",
@@ -51,19 +51,19 @@
       "count": 19
     },
     {
+      "name": "agents",
+      "count": 17
+    },
+    {
       "name": "financial",
       "count": 15
     },
     {
-      "name": "agents",
+      "name": "mcp",
       "count": 15
     },
     {
       "name": "sales",
-      "count": 14
-    },
-    {
-      "name": "mcp",
       "count": 14
     },
     {
@@ -72,7 +72,7 @@
     },
     {
       "name": "data",
-      "count": 10
+      "count": 11
     },
     {
       "name": "productivity",
@@ -131,16 +131,6 @@
       "category": "development"
     },
     {
-      "name": "Domain Expert",
-      "description": "company-kb \u2014 Company Knowledge Base Skill. Use when relevant to this domain.",
-      "category": "core"
-    },
-    {
-      "name": "Domain Expert",
-      "description": "Query and maintain the knowledge base for project context, decisions, and architecture documentation. Use on",
-      "category": "core"
-    },
-    {
       "name": "Edo Liberty",
       "description": "Generate and manage vector embeddings for semantic search and RAG retrieval across knowledge bases.",
       "category": "core"
@@ -161,9 +151,19 @@
       "category": "research"
     },
     {
+      "name": "Knowledge Base Steward",
+      "description": "Knowledge base hub \u2014 PARA-structured company memory combining company-kb and kb for persistent context, project documentation, and agent recall across sessions.",
+      "category": "core"
+    },
+    {
       "name": "Lamarck",
       "description": "Self-improving skill system that auto-extracts patterns from sessions into reusable skills with confidence scoring, skill versioning, import/export, and continu",
       "category": "meta"
+    },
+    {
+      "name": "MCP Hub Operator",
+      "description": "Model Context Protocol client hub \u2014 connect AI agents to any MCP server for tool discovery, invocation, and ecosystem management. Use when working with MCP clie",
+      "category": "mcp"
     },
     {
       "name": "Matthew Prince",
@@ -214,14 +214,6 @@
       "category": "development"
     },
     {
-      "name": "Domain Expert",
-      "category": "core"
-    },
-    {
-      "name": "Domain Expert",
-      "category": "core"
-    },
-    {
       "name": "Edo Liberty",
       "category": "core"
     },
@@ -238,8 +230,16 @@
       "category": "research"
     },
     {
+      "name": "Knowledge Base Steward",
+      "category": "core"
+    },
+    {
       "name": "Lamarck",
       "category": "meta"
+    },
+    {
+      "name": "MCP Hub Operator",
+      "category": "mcp"
     },
     {
       "name": "Matthew Prince",
@@ -400,6 +400,10 @@
     {
       "name": "alphaear-strategy",
       "category": "trading"
+    },
+    {
+      "name": "analysis",
+      "category": "data"
     },
     {
       "name": "analytics-dashboard",
@@ -826,6 +830,10 @@
       "category": "cybersecurity"
     },
     {
+      "name": "autonomous",
+      "category": "agents"
+    },
+    {
       "name": "autonomy-engine",
       "category": "core"
     },
@@ -868,6 +876,10 @@
     {
       "name": "black-edge",
       "category": "trading"
+    },
+    {
+      "name": "bots",
+      "category": "automation"
     },
     {
       "name": "bounty-target-finder",
@@ -1154,6 +1166,10 @@
       "category": "mcp"
     },
     {
+      "name": "coding",
+      "category": "agents"
+    },
+    {
       "name": "cold-email",
       "category": "marketing"
     },
@@ -1180,6 +1196,10 @@
     {
       "name": "communication-mcp",
       "category": "integrations"
+    },
+    {
+      "name": "company-kb",
+      "category": "core"
     },
     {
       "name": "competitive-intelligence",
@@ -1942,6 +1962,10 @@
       "category": "content"
     },
     {
+      "name": "discord",
+      "category": "integrations"
+    },
+    {
       "name": "discord-bot",
       "category": "integrations"
     },
@@ -1952,6 +1976,10 @@
     {
       "name": "dispatching-parallel-agents",
       "category": "research"
+    },
+    {
+      "name": "docker",
+      "category": "devops"
     },
     {
       "name": "docker-compose",
@@ -2340,6 +2368,10 @@
     {
       "name": "git-workflow-mastery",
       "category": "development"
+    },
+    {
+      "name": "github",
+      "category": "integrations"
     },
     {
       "name": "github-actions",
@@ -3414,6 +3446,10 @@
       "category": "core"
     },
     {
+      "name": "kb",
+      "category": "core"
+    },
+    {
       "name": "kernel-killer",
       "category": "cybersecurity"
     },
@@ -3691,6 +3727,10 @@
     },
     {
       "name": "notion-db",
+      "category": "integrations"
+    },
+    {
+      "name": "notion-integration",
       "category": "integrations"
     },
     {
@@ -4822,6 +4862,10 @@
       "category": "marketing"
     },
     {
+      "name": "scrapers",
+      "category": "automation"
+    },
+    {
       "name": "securing-api-gateway-with-aws-waf",
       "category": "cybersecurity"
     },
@@ -4940,6 +4984,10 @@
     {
       "name": "skill-performance-monitor",
       "category": "core"
+    },
+    {
+      "name": "slack",
+      "category": "integrations"
     },
     {
       "name": "slack-bot",
@@ -5486,8 +5534,16 @@
       "category": "automation"
     },
     {
+      "name": "workflows",
+      "category": "automation"
+    },
+    {
       "name": "writeup-cash",
       "category": "cybersecurity"
+    },
+    {
+      "name": "writing",
+      "category": "content"
     },
     {
       "name": "writing-plans",
