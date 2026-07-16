@@ -211,4 +211,4 @@ module.exports = {
 
 ## Video / Motion Graphics
 
-Tailwind works in [Remotion](../video/remotion/SKILL.md) compositions. Install per the official [tailwind rule](https://github.com/remotion-dev/skills/blob/main/skills/remotion/rules/tailwind.md). Use for rapid styling of cards, badges, and layouts in video frames. Note: video uses fixed dimensions (1920×1080) — responsive breakpoints do not apply.
+Tailwind works in [Remotion](../video/remotion/SKILL.md) compositions (the `@remotion-dev/tailwind` package). Use for rapid styling of cards, badges, and layouts in video frames. Note: video uses fixed dimensions (1920×1080) — responsive breakpoints do not apply.

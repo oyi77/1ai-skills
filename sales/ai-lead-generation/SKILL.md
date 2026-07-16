@@ -1,65 +1,40 @@
 ---
 name: ai-lead-generation
-description: Automated AI-powered lead generation and prospecting. Find ideal customers, enrich data, personalize outreach,
-  and book meetings without manual effort.
+description: "Automated AI-powered lead generation and prospecting. Find ideal customers, enrich data, personalize outreach, and book meetings without manual effort. Use when generating B2B leads at scale."
 domain: sales
-tags:
-- business-development
-- generation
-- lead
-- revenue
-- sales
+tags: [business-development, generation, lead, revenue, sales, money, outreach, b2b]
+version: "2.0.0"
+author: ""
+subdomain: ""
+type: sales
 ---
 
+# Money-Making Overview
 
-persona:
-  name: "Grant Cardone"
-  title: "The 10X Sales Expert - Master of Lead Generation"
-  expertise: ['Lead Generation', 'Sales Funnels', 'Outbound Prospecting', 'CRM Automation']
-  philosophy: "Massive action creates massive results."
-  credentials: ["Author of 'The 10X Rule'", 'Built $1B+ real estate portfolio', 'Sales training empire']
-  principles: ['Always be prospecting', 'Follow up relentlessly', 'Quantify everything', 'Scale what works']
+AI lead generation is a $500-5K/month service you can sell to B2B companies. Each booked meeting is worth $50-500 in service revenue. At 3-15% conversion from outreach to meeting, with 500 prospects/month at $0.50-5/lead cost, you generate $2.5K-25K pipeline value per month.
 
+## Revenue Streams
 
+1. **Lead Gen Service ($2K-10K/client/month)** — Run full pipeline for clients: prospect, enrich, personalize, and book meetings.
+2. **Lead Lists ($500-2K/list)** — Sell pre-enriched prospect lists with verified contacts and intent data.
+3. **Done-With-You ($5K-20K/project)** — Set up their outbound systems: CRM, enrichment, sequences, and warm-up.
 
-# AI Lead Generation Skill
+## First Action in 60 Minutes
 
-## Overview
-
-Use AI to automate the entire lead generation process - from finding prospects to booking meetings. Build automated systems that find leads, enrich data, personalize outreach, and convert interest into booked meetings.
-
-**Conversion Rate**: 3-15%  
-**Cost per Lead**: $0.50-5  
-**Revenue**: Generate $5K-50K pipeline/month
-
----
-
-## When to Use
-**Trigger phrases:**
-- "ai lead generation"
-- "Automated AI-powered lead generation and prospecting"
-
-
-- Need consistent leads for sales
-- Outbound sales focus
-- Limited prospecting team
-- Want to scale outreach
-
----
-
-## When NOT to Use
-
-- Inbound leads sufficient
-- Very niche B2B (<100 prospects)
-- Low-ticket products
-- No sales process
+```bash
+#!/usr/bin/env bash
+# 60-minute lead gen setup: pick niche, install tools, generate 100 leads
+mkdir -p ~/leadgen/{prospects,enriched,outreach}
+echo "1. Define ICP (use ~/leadgen/icp.md template)"
+echo "2. Source 500 prospects via Apollo/LinkedIn Sales Nav"
+echo "3. Enrich with Clearbit/Clay ($100-500/mo)"
+echo "4. Warm up sending domain (Instantly/Smartlead $39-49/mo)"
+echo "5. Launch 5-touch sequence"
+```
 
 ---
 
 ## The AI Lead Gen Pipeline
-
-- Configure automated, book, customers, data, effort settings before first use
-
 
 ### Stage 1: Prospecting (Automated)
 ```
@@ -101,9 +76,6 @@ Output: Booked meetings
 
 ## Best Tools
 
-- Configure automated, book, customers, data, effort settings before first use
-
-
 ### Prospecting
 | Tool | Use | Price |
 |------|-----|-------|
@@ -139,9 +111,6 @@ Output: Booked meetings
 
 ## ICP Framework
 
-- Configure automated, book, customers, data, effort settings before first use
-
-
 ### Define by:
 
 1. **Firmographics**
@@ -168,42 +137,6 @@ Output: Booked meetings
 ---
 
 ## Outreach Templates
-
-Reusable templates for ai-lead-generation.
-
-Standard config:
-```yaml
-name: ai-lead-generation_standard
-mode: production
-output: results/
-format: json
-```
-
-Test config:
-```yaml
-name: ai-lead-generation_test
-mode: development
-dry_run: true
-verbose: true
-```
-
-
-### Template 1: Standard ai-lead-generation
-```yaml
-name: ai-lead-generation_standard
-mode: production
-output: results/
-format: json
-```
-
-### Template 2: Quick Test
-```yaml
-name: ai-lead-generation_test
-mode: development
-dry_run: true
-verbose: true
-```
-
 
 ### Cold Email V1
 ```
@@ -251,9 +184,6 @@ Day 21: Remove from sequence
 
 ## AI Personalization
 
-- Configure automated, book, customers, data, effort settings before first use
-
-
 ### Use AI To:
 - Analyze prospect's recent posts
 - Find common connections
@@ -276,91 +206,7 @@ Keep under 50 words each.
 
 ---
 
-## Integration with 1ai-skills
-
-Combine ai-lead-generation with related skills in the 1ai-skills ecosystem:
-- Chain with content/marketing automation skills
-- Feed results into analytics and reporting pipelines
-- Use with orchestration skills for multi-step workflows
-
-
-### Sales Pipeline
-
-```
-AI Lead Gen → Outbound → Qualify → Demo → Close
-```
-
-### Skill Synergies
-
-| Skill | Use Case |
-|-------|----------|
-| voice-ai-agent | Handle inbound calls |
-| sales | Close deals |
-| ai-consulting | Convert to projects |
-| marketing | Nurture leads |
-
----
-
-## Metrics & Benchmarks
-
-- Configure automated, book, customers, data, effort settings before first use
-
-
-### Lead Gen Metrics
-| Metric | Benchmark | Target |
-|--------|-----------|--------|
-| Open rate | 20-30% | 35%+ |
-| Reply rate | 3-8% | 10%+ |
-| Meeting rate | 1-3% | 5%+ |
-| Cost per meeting | $20-50 | <$30 |
-
-### Conversion Pipeline
-| Stage | Benchmark |
-|-------|-----------|
-| Leads → Open | 30% |
-| Open → Reply | 8% |
-| Reply → Meeting | 40% |
-| Meeting → Close | 25% |
-
-### ROI Calculation
-```
-Revenue: 10 meetings × $2K deal = $20K
-Cost: 1000 leads × $1 = $1,000
-ROI: 1900%
-```
-
----
-
-## Best Practices
-
-- Always test with a small dataset before full-scale runs
-- Monitor resource usage (memory, API quotas) during execution
-- Keep configuration in version control
-- Document custom parameters and their effects
-- Set up alerts for failure conditions
-
-
-### Do's
-✅ Personalize at scale  
-✅ Test different angles  
-✅ Follow up consistently  
-✅ Track everything  
-✅ A/B test subject lines  
-✅ Clean data regularly  
-
-### Don'ts
-❌ Don't spam  
-❌ Don't ignore unsubscribe  
-❌ Don't sound salesy  
-❌ Don't skip warm-up  
-❌ Don't neglect deliverability  
-
----
-
 ## Cold Email Warm-up
-
-- Configure automated, book, customers, data, effort settings before first use
-
 
 ### Day 1-3: 5 emails
 ```
@@ -385,22 +231,82 @@ Mark as important
 
 ---
 
-## Version History
+## Metrics & Benchmarks
 
-- **v1.0** (2026-02-27) - Initial creation
-  - Complete pipeline
-  - Tools and pricing
-  - Templates and metrics
+### Lead Gen Metrics
+| Metric | Benchmark | Target |
+|--------|-----------|--------|
+| Open rate | 20-30% | 35%+ |
+| Reply rate | 3-8% | 10%+ |
+| Meeting rate | 1-3% | 5%+ |
+| Cost per meeting | $20-50 | <$30 |
+
+### Conversion Pipeline
+| Stage | Benchmark |
+|-------|-----------|
+| Leads to Open | 30% |
+| Open to Reply | 8% |
+| Reply to Meeting | 40% |
+| Meeting to Close | 25% |
+
+### ROI Calculation
+```
+Revenue: 10 meetings x $2K deal = $20K
+Cost: 1000 leads x $1 = $1,000
+ROI: 1900%
+```
 
 ---
 
+## Integration with 1ai-skills
 
-## Common Rationalizations
+Combine ai-lead-generation with related skills:
 
-| Rationalization | Reality |
-|---|---|
-| "I'll do this later" | Explain why this excuse is wrong for this skill |
-| "This is simple, skip steps" | Even simple tasks benefit from process |
+### Sales Pipeline
+```
+AI Lead Gen -> Outbound -> Qualify -> Demo -> Close
+```
+
+### Skill Synergies
+| Skill | Use Case |
+|-------|----------|
+| voice-ai-agent | Handle inbound calls |
+| sales | Close deals |
+| ai-consulting | Convert to projects |
+| marketing | Nurture leads |
+
+---
+
+## Best Practices
+
+### Do's
+- Personalize at scale
+- Test different angles
+- Follow up consistently
+- Track everything
+- A/B test subject lines
+- Clean data regularly
+
+### Don'ts
+- Don't spam
+- Don't ignore unsubscribe
+- Don't sound salesy
+- Don't skip warm-up
+- Don't neglect deliverability
+
+---
+
+## Anti-Rationalization
+
+| Excuse | Truth |
+|--------|-------|
+| "I need a perfect list first" | Start with 100 bad leads, iterate |
+| "I'll automate later" | Manual first, automate what works |
+| "Outbound doesn't work" | 3-15% reply rate is real with personalization |
+
+## Output Format
+
+On completion: "[N] prospects sourced, [N] enriched, [N] sequence launched, $[N] pipeline value generated"
 
 ## Red Flags
 
@@ -420,11 +326,18 @@ After completing this skill, confirm:
 ## Related Skills
 
 - sales - Close deals
-- [voice-ai-agent](../../automation/voice-ai-agent/SKILL.md) - Handle calls
-- [ai-consulting](../ai-consulting/SKILL.md) - Convert to projects
+- voice-ai-agent - Handle calls
+- ai-consulting - Convert to projects
 
-## Process
+## Version History
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- **v1.0** (2026-02-27) - Initial creation
+- **v2.0.0** (2026-07-16) - Money protocol rewrite: added revenue streams, anti-rationalization, output format
+
+
+## When to Use
+Use this skill when working with ai lead generation.
+
+
+## Workflow
+See the parent skill for authoritative workflow documentation.

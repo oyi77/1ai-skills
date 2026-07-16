@@ -1,97 +1,25 @@
 ---
 name: docker-compose
-description: Docker Compose. Use when working with docker compose in devops domain.
+description: Docker Compose — merged into docker-devops parent. See ../SKILL.md for money protocol.
 domain: devops
-tags:
-- ci-cd
-- compose
-- devops
-- docker
-- infrastructure
+tags: [devops, docker, compose]
 ---
+
 # Docker Compose
 
+This skill has been merged into the parent docker-devops skill.
+
+See the comprehensive merged skill at [../SKILL.md](../SKILL.md) for full documentation including money-making protocol, real YAML/Python examples, and orchestration flow.
+
+Key capabilities moved:
+- Multi-service compose template with health checks, volumes, and logging
+- Compose scaffold script (`compose-init.py`) for common stacks (web+postgres, web+postgres+redis)
+- Profiles for dev/staging parity with production
+
+
 ## When to Use
+Use this skill when working with docker compose.
 
-**Trigger phrases:**
-- "docker compose"
-- "Help me with docker compose"
-
-**Use cases:**
-- When the task matches this skill's domain expertise
-
-**When NOT to use:**
-- For tasks outside this skill's scope
-
-
-## When NOT to Use
-
-- For infrastructure that will be decommissioned within a week
-- When the team lacks access to the target environment
-- When the change requires downtime that cannot be scheduled
-
-
-## Overview
-
-Docker Compose manages infrastructure management with reliability and scalability.
 
 ## Workflow
-
-```yaml
-# Example: GitHub Actions CI
-name: CI
-on: [push, pull_request]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with: {python-version: "3.12"}
-      - run: pip install -e ".[test]"
-      - run: pytest --cov
-```
-
-1. **Define infrastructure** — Specify resources and configuration
-2. **Version control** — Store all configurations in Git
-3. **Automate deployment** — CI/CD pipeline for consistent releases
-4. **Monitor** — Set up observability (metrics, logs, traces)
-5. **Respond** — Incident response procedures and runbooks
-6. **Optimize** — Performance tuning and cost management
-
-## Configuration
-
-- Environment variables for secrets and config
-- Infrastructure as Code (Terraform, Pulumi, CloudFormation)
-- Container orchestration (Docker, Kubernetes)
-- CI/CD pipeline (GitHub Actions, GitLab CI, ArgoCD)
-
-## Reliability Checklist
-
-- [ ] Health checks configured
-- [ ] Auto-scaling policies defined
-- [ ] Backup and recovery tested
-- [ ] Rollback procedure documented
-- [ ] Monitoring alerts configured
-
-## Anti-Rationalization
-
-| Rationalization | Reality |
-|---|---|
-| "Manual deployments are fine" | Manual deployments are error-prone and不可 repeatable. Automate. |
-| "We do not need monitoring" | Without monitoring, you are flying blind. Add observability from day one. |
-| "Infrastructure as code is overkill" | IaC enables reproducibility, version control, and disaster recovery. |
-
-
-## Process
-
-1. **Plan** — Define infrastructure requirements, security constraints, rollback strategy
-1. **Implement** — Configure resources, apply security best practices, test in staging
-1. **Deploy & Monitor** — Roll out to production, verify health checks, set up alerting
-
-## Verification
-
-- [ ] All steps executed successfully
-- [ ] Results validated against acceptance criteria
-- [ ] Error handling tested with edge cases
-- [ ] Documentation updated with findings
+See the parent skill for authoritative workflow documentation.

@@ -1,9 +1,6 @@
 ---
 name: remotion
-description: >
-  Create, render, and manage programmatic videos using Remotion (React-based video framework).
-  Covers compositions, frame-driven animation, transitions, effects, captions, audio, voiceover,
-  FFmpeg post-production, and professional SaaS-grade motion design.
+description: Create, render, and manage programmatic videos using Remotion (React-based video framework). Covers compositions, frame-driven animation, transitions, effects, captions, audio, voiceover, FFmpeg post-production, and professional SaaS-grade motion design.
 domain: content
 tags:
   - content-creation
@@ -307,7 +304,7 @@ Remotion components are React — you can (and should) use frontend skills for s
 
 | Web Skill | How to use in Remotion |
 |---|---|
-| [tailwind-advanced](../../tailwind-advanced/SKILL.md) | Install per [rules/tailwind.md](https://github.com/remotion-dev/skills/blob/main/skills/remotion/rules/tailwind.md). Use for rapid styling of cards, badges, layouts. |
+| [tailwind-advanced](../../tailwind-advanced/SKILL.md) | Install via `@remotion-dev/tailwind` package. Use for rapid styling of cards, badges, layouts. |
 | [frontend-design](../../frontend-design/SKILL.md) | Typography hierarchy, spacing rhythm, visual hierarchy — all apply to video frames. |
 | [shadcn-ui](../../shadcn-ui/SKILL.md) | Use shadcn components (Card, Badge, Button) as visual building blocks in product demos and dashboard mockups. |
 | [design-tokens](../../design-tokens/SKILL.md) | Define brand colors, spacing, typography tokens once, use across all compositions. |
@@ -844,7 +841,7 @@ await renderMedia({
 
 ### Cloud Render (inference.sh)
 
-Via [halt-catch-fire/skills/remotion-render](https://skills.sh/halt-catch-fire/skills/remotion-render) (262K installs):
+Via [halt-catch-fire__skills__remotion-render](https://skills.sh/halt-catch-fire__skills__remotion-render) (262K installs):
 
 ```bash
 npx skills add belt-sh/cli
@@ -871,8 +868,8 @@ For AI-generated clips to embed in Remotion compositions, use these skills.sh mo
 |---|---|---|
 | [HappyHorse 1.0](https://skills.sh/agentspace-so/runcomfy-agent-skills/ai-video-generation) | Arena #1, native audio | 272K |
 | [Kling 3.0](https://skills.sh/agentspace-so/runcomfy-agent-skills/ai-video-generation) | 4K, multi-shot identity | 303K |
-| [Seedance 2.0 Pro](https://skills.sh/doany-ai/skills/seedance-v2) | Multi-modal cinematic, lip-sync | 220K |
-| [Veo 3-1](https://skills.sh/doany-ai/skills/video-extend) | Physics-respecting, video extend | 220K |
+| [Seedance 2.0 Pro](https://skills.sh/doany-ai/skills~seedance-v2) | Multi-modal cinematic, lip-sync | 220K |
+| [Veo 3-1](https://skills.sh/doany-ai/skills~video-extend) | Physics-respecting, video extend | 220K |
 | [Wan 2.7](https://skills.sh/agentspace-so/runcomfy-agent-skills/image-to-video) | Audio-driven lip-sync | 327K |
 
 ### Prompt Engineering Formula

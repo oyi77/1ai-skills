@@ -1,17 +1,46 @@
 ---
 name: ai-saas-builder
-description: Takes a problem statement and produces a deployable micro-SaaS product — landing page, auth, payments, database,
-  API, and billing. Use when working with ai saas builder.
+description: "Takes a problem statement and produces a deployable micro-SaaS product — landing page, auth, payments, database, API, and billing. Use when building micro-SaaS products solo."
 domain: development
-tags:
-- api
-- builder
-- coding
-- saas
-- software-engineering
-- testing
+tags: [api, builder, coding, saas, software-engineering, testing, money, passive-income]
+version: "2.0.0"
+author: ""
+subdomain: ""
+type: dev
 ---
 
+# Money-Making Overview
+
+This skill ships micro-SaaS products that generate recurring revenue. Each product targets $50-500/mo MRR. At 2-4 products/month × $200 avg MRR = $400-800/mo new MRR. Products compound: 12 months at 3/month with 80% retention = ~$6K/mo portfolio.
+
+## Revenue Streams
+
+1. **Your Own SaaS ($50-5K/mo/product)** — build and launch your own
+2. **SaaS Building Service ($5K-15K/build)** — build for clients
+3. **SaaS Templates/Source Code ($97-497/sale)** — sell the boilerplate
+
+## First Action in 60 Minutes
+
+```bash
+#!/usr/bin/env bash
+PROBLEM="$1"
+[[ -z "$PROBLEM" ]] && echo "Usage: $0 'problem statement'" && exit 1
+
+echo "=== Micro-SaaS Generator ==="
+echo "Problem: $PROBLEM"
+echo ""
+echo "Phase 1: Spec Generation"
+echo "Phase 2: Tech Stack (Next.js + Stripe + Supabase)"
+echo "Phase 3: Scaffold (npx create-t3-app)"
+echo "Phase 4: Payment Integration"
+echo "Phase 5: Deploy (Vercel)"
+echo "Phase 6: Launch Checklist"
+echo ""
+echo "Target: Ship in 7 days"
+echo "Pricing: $19-49/mo for individuals, $99-199/mo for teams"
+```
+
+---
 
 ## Overview
 
@@ -37,10 +66,10 @@ An end-to-end pipeline for shipping micro-SaaS products as a solo operator. Take
 - Generate launch checklist (Product Hunt, Twitter, IndieHackers)
 
 ## When to Use
+
 **Trigger phrases:**
 - "ai saas builder"
 - "Takes a problem statement and produces a deployable micro-SaaS product — landing"
-
 
 - You have a business idea and want to ship a working product fast
 - You need to validate a market before investing weeks of development
@@ -56,6 +85,7 @@ An end-to-end pipeline for shipping micro-SaaS products as a solo operator. Take
 - Requirements are unclear (clarify first)
 - Task is trivially simple (single line fix)
 
+---
 
 ## Pseudo Code
 
@@ -78,6 +108,7 @@ on error:
   if still_failing: alert_and_escalate()
 ```
 
+---
 
 ### Phase 1: Spec Generation
 
@@ -299,6 +330,8 @@ flyctl deploy
 - [ ] Set up customer support (Crisp/Intercom)
 ```
 
+---
+
 ## Error Handling
 
 | Error | Cause | Fix |
@@ -311,15 +344,8 @@ flyctl deploy
 
 ## Common Patterns
 
-Proven patterns for ai-saas-builder usage.
-
-- **Batch processing**: Process multiple items in parallel for throughput
-- **Retry with backoff**: Handle transient failures gracefully
-- **Rate limiting**: Respect API limits with configurable delays
-- **Logging**: Structured logging for debugging and audit trails
-
-
 ### Freemium with Usage Limits
+
 ```typescript
 // Check usage before allowing action
 const usage = await db.usage.findUnique({ where: { userId } });
@@ -329,6 +355,7 @@ if (usage.count >= FREE_TIER_LIMIT) {
 ```
 
 ### Multi-Tenant SaaS
+
 ```typescript
 // Organization-based access control
 const org = await db.organization.findUnique({
@@ -339,12 +366,15 @@ if (!org.members.length) throw new TRPCError({ code: 'FORBIDDEN' });
 ```
 
 ### Landing Page Template
+
 - Hero section with problem/solution
 - Feature grid (3-6 features)
 - Pricing table (Free/Pro/Enterprise)
 - Social proof (testimonials, logos)
 - CTA with email capture
 - FAQ section
+
+---
 
 ## How to Use
 
@@ -375,8 +405,12 @@ if (!org.members.length) throw new TRPCError({ code: 'FORBIDDEN' });
 
 ## Anti-Rationalization
 
-| Rationalization | Reality |
+| Excuse | Truth |
 |---|---|
-| "Tests slow me down" | Bugs slow you down 10x more. Tests are speed, not overhead. |
-| "I will refactor later" | Technical debt compounds. Refactor as you go. |
-| "It works on my machine" | If it is not in CI, it does not work. Ship proof, not claims. |
+| "The market is saturated" | 99% of SaaS products have <100 customers |
+| "I need a co-founder" | Solo founders ship 2x faster |
+| "It needs more features first" | Your first 10 customers will tell you what to build |
+
+## Output Format
+
+On completion: "[Product name] shipped in [N] days, $[N]/mo pricing, $[N] projected MRR at 50 customers"

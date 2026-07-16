@@ -8,6 +8,8 @@ tags:
 - growth
 - marketing
 - seo
+- money
+version: 2.0.0
 ---
 # Growth Engine
 
@@ -163,6 +165,113 @@ Growth Engine drives growth marketing with data-driven strategies.
 | "I will start marketing after launch" | Build audience before launch. Pre-launch momentum is critical. |
 | "SEO is dead" | SEO evolves. GEO (Generative Engine Optimization) is the new frontier. |
 
+
+
+## Money-Making Overview
+
+Run automated growth experiments that compound revenue. Each completed experiment with statistically significant winner generates 10-50% lift on the tested metric.
+
+## Revenue Streams
+
+- **Conversion optimization** — $1,000-$10,000/month per client
+- **Growth consulting** — $200-$500/hour
+- **Experiment-as-a-Service** — $2,000-$10,000/month
+- **Own product experiments** — $5,000-$50,000/month
+
+## First Action in 60 Minutes
+
+```python
+#!/usr/bin/env python3
+"""ICE hypothesis scoring framework — analyze metrics and rank experiment backlog."""
+
+import json
+import sys
+from dataclasses import dataclass, field
+from typing import List, Optional
+
+
+@dataclass
+class ExperimentHypothesis:
+    name: str
+    description: str
+    impact: int      # 1-10
+    confidence: int  # 1-10
+    ease: int        # 1-10
+
+    def ice_score(self) -> float:
+        return (self.impact + self.confidence + self.ease) / 3.0
+
+    def expected_revenue_impact(self, monthly_revenue: float, metric_share: float = 0.1) -> float:
+        lift = self.impact * 0.05  # Each impact point ≈ 5% estimated lift
+        return monthly_revenue * metric_share * lift
+
+
+def load_hypotheses(path: str) -> List[ExperimentHypothesis]:
+    with open(path) as f:
+        data = json.load(f)
+    return [ExperimentHypothesis(**h) for h in data]
+
+
+def rank_experiments(hypotheses: List[ExperimentHypothesis], monthly_revenue: float) -> List[dict]:
+    scored = []
+    for h in hypotheses:
+        scored.append({
+            "name": h.name,
+            "description": h.description,
+            "ice_score": round(h.ice_score(), 2),
+            "impact": h.impact,
+            "confidence": h.confidence,
+            "ease": h.ease,
+            "expected_monthly_revenue_impact": round(h.expected_revenue_impact(monthly_revenue), 2)
+        })
+    scored.sort(key=lambda x: x["ice_score"], reverse=True)
+    return scored
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Usage: python ice_scorer.py <hypotheses.json> [monthly_revenue]")
+        sys.exit(1)
+
+    revenue = float(sys.argv[2]) if len(sys.argv) > 2 else 50000.0
+    hypotheses = load_hypotheses(sys.argv[1])
+    ranked = rank_experiments(hypotheses, revenue)
+
+    print("=" * 72)
+    print("ICE SCORE RANKING — Experiment Backlog (by priority)")
+    print("=" * 72)
+    for i, exp in enumerate(ranked, 1):
+        print(f"\n  {i}. {exp['name']}")
+        print(f"     ICE: {exp['ice_score']:.1f}  (Impact={exp['impact']}  Confidence={exp['confidence']}  Ease={exp['ease']})")
+        print(f"     Expected monthly impact: ${exp['expected_monthly_revenue_impact']:,.2f}")
+        print(f"     {exp['description']}")
+
+    total = sum(e['expected_monthly_revenue_impact'] for e in ranked)
+    print(f"\n{'─' * 72}")
+    print(f"  Total expected lift from backlog: ${total:,.2f}/month")
+    print(f"{'─' * 72}")
+    print("\nRun order: top ICE score first. Re-score weekly as data accumulates.")
+```
+
+## Output Format
+
+```yaml
+experiment_backlog:
+  total_hypotheses: 12
+  top_ice_score: 8.3
+  total_expected_lift_monthly: "$12,500"
+  top_3:
+    - name: "Homepage demo CTA"
+      ice: 8.3
+      expected_impact: "$3,750/mo"
+    - name: "Email subject line A/B"
+      ice: 7.7
+      expected_impact: "$2,500/mo"
+    - name: "Pricing page redesign"
+      ice: 7.0
+      expected_impact: "$1,875/mo"
+  money_metric: "lift_on_target_kpi"
+```
 
 ## Process
 

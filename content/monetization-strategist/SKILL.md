@@ -1,21 +1,42 @@
 ---
 name: monetization-strategist
-description: Turn content into revenue — newsletter businesses, YouTube automation, affiliate sites, digital product creation,
-  funnel design, audience building. Use when working with monetization strategist.
+description: "Turn content into revenue — newsletter businesses, YouTube automation, affiliate sites, digital product creation, funnel design, audience building. Use when building content-based revenue streams."
 domain: content
-tags:
-- content-creation
-- digital-content
-- media
-- monetization
-- strategist
+tags: [content-creation, digital-content, media, monetization, strategist, money, passive-income]
+version: "2.0.0"
+author: ""
+subdomain: ""
+type: content
 ---
 
+# Money-Making Overview
 
-
-## Overview
+This skill orchestrates 5+ revenue streams from a single content engine. Newsletter ($500-10K/mo from paid subs + sponsors), YouTube ($1K-20K/mo ads + affiliate), digital products ($500-50K/mo), affiliate commissions ($200-5K/mo), community ($500-5K/mo memberships). Combined: $3K-90K/mo potential.
 
 Monetization orchestration layer that turns content creation skills into revenue-generating businesses. Covers newsletter businesses (Beehiiv/Substack), YouTube automation channels, affiliate content sites, digital product creation, and full funnel design. The content skills handle creation — this skill handles the money.
+
+## Revenue Streams
+1. **Newsletter** — free + paid tiers + sponsors ($500-10K/mo)
+2. **YouTube** — ads + affiliate + sponsors ($1K-20K/mo)
+3. **Digital Products** — Gumroad/Lemon Squeezy ($500-50K/mo)
+4. **Affiliate Programs** — Amazon, ShareASale, CJ ($200-5K/mo)
+5. **Community Memberships** — recurring ($500-5K/mo)
+
+## First Action in 60 Minutes
+```bash
+#!/usr/bin/env bash
+# Niche validation + first revenue stream setup
+mkdir -p ~/monetization/{newsletter,youtube,products,affiliate,community}
+echo "=== 60-Min Revenue Setup ==="
+echo "Step 1 (10m): Pick niche — 3 interests, check search volume"
+echo "Step 2 (10m): Validate — exist. communities? people paying?"
+echo "Step 3 (15m): Pick first stream — newsletter (fastest) or products"
+echo "Step 4 (15m): Create one piece of content for chosen stream"
+echo "Step 5 (10m): Publish + share on 2 platforms"
+echo ""
+echo "First dollar target: This week"
+echo "First $1K/mo target: 90 days"
+```
 
 ## Required Tools
 
@@ -37,10 +58,6 @@ Monetization orchestration layer that turns content creation skills into revenue
 - Track revenue across all channels with unified reporting
 
 ## When to Use
-**Trigger phrases:**
-- "monetization strategist"
-- "Turn content into revenue — newsletter businesses, YouTube automation, affiliate"
-
 
 - You have content creation skills but no monetization strategy
 - Want to turn a newsletter into a revenue stream
@@ -58,48 +75,7 @@ Monetization orchestration layer that turns content creation skills into revenue
 - You don't have content guidelines
 - Task requires domain expertise (consult experts)
 
-
-## Pseudo Code
-
-The monetization-strategist workflow follows a standard pipeline pattern.
-
-Core flow:
-```
-# monetization-strategist primary flow
-input = prepare(raw_data)
-result = process(input, config={affiliate, audience, automation, building, businesses})
-validate(result)
-deliver(result)
-```
-
-Error handling:
-```
-on error:
-  log(error_details)
-  retry_with_backoff(max=3)
-  if still_failing: alert_and_escalate()
-```
-
-
-### Core Workflow
-```
-# monetization-strategist primary flow
-input = prepare(raw_data)
-result = process(input, config={affiliate, audience, automation, building, businesses})
-validate(result)
-deliver(result)
-```
-
-### Error Handling
-```
-on error:
-  log(error_details)
-  retry_with_backoff(max=3)
-  if still_failing: alert_and_escalate()
-```
-
-
-### Niche Selection & Validation
+## Niche Selection & Validation (Money-First Approach)
 
 ```python
 import requests
@@ -133,7 +109,7 @@ def validate_niche(niche_keyword):
     }
 ```
 
-### Newsletter Business Setup (Beehiiv)
+## Newsletter Business Setup (Direct-to-Inbox Revenue)
 
 ```bash
 # Create newsletter on Beehiiv
@@ -180,7 +156,7 @@ publication.create_post(
 PY
 ```
 
-### YouTube Automation Channel
+## YouTube Automation Channel (Ad + Affiliate Revenue)
 
 ```python
 def create_automated_video(topic, niche):
@@ -242,7 +218,7 @@ def create_automated_video(topic, niche):
     return {"video_id": video_id, "scheduled_for": schedule_time}
 ```
 
-### Digital Product Creation
+## Digital Product Creation (Scalable Revenue)
 
 ```python
 def create_digital_product(product_type, topic, audience):
@@ -307,7 +283,7 @@ def create_digital_product(product_type, topic, audience):
     }
 ```
 
-### Funnel Design & Optimization
+## Funnel Design & Optimization (Conversion Engineering)
 
 ```
 Content Funnel Architecture:
@@ -368,7 +344,7 @@ def optimize_funnel(funnel_id):
             print(f"Stage {stage}: {conversion:.1f}% → testing: {suggestions[0]}")
 ```
 
-### Revenue Dashboard
+## Revenue Dashboard (Track the Money)
 
 ```bash
 #!/bin/bash
@@ -413,48 +389,7 @@ for product, revenue in db.execute("""
 PY
 ```
 
-## Error Handling
-
-| Error | Cause | Recovery |
-|-------|-------|----------|
-| Platform API rate limit | Too many API calls to Beehiiv/YouTube/Gumroad | Implement request queuing with backoff, batch operations |
-| Content rejection | Platform policy violation (YouTube, Substack) | Review guidelines before publishing, have backup content ready |
-| Low conversion rate | Poor funnel design or weak offer | A/B test landing pages, survey audience for feedback |
-| Payment failure | Stripe/Gumroad webhook issues | Implement idempotent payment processing, retry logic |
-| Email deliverability | Cold domain, spam triggers | Warm up domain gradually, authenticate SPF/DKIM/DMARC |
-| Affiliate link expiration | Programs change terms or expire | Monitor link health weekly, have backup programs ready |
-
-## Common Patterns
-
-- **Batch processing**: Process multiple items in parallel for throughput
-- **Retry with backoff**: Handle transient failures gracefully
-- **Rate limiting**: Respect API limits with configurable delays
-- **Logging**: Structured logging for debugging and audit trails
-
-
-### Content-to-Revenue Pipeline
-
-```bash
-#!/bin/bash
-# Weekly content monetization pipeline
-
-# 1. Create content
-python3 create_content.py --type newsletter --topic "weekly_roundup"
-
-# 2. Cross-post to platforms
-python3 distribute.py --source newsletter --targets "twitter,linkedin,blog"
-
-# 3. Add affiliate links where relevant
-python3 inject_affiliates.py --content newsletter --niche "saas_tools"
-
-# 4. Schedule social promotion
-python3 schedule_social.py --promote newsletter --platforms "twitter,linkedin"
-
-# 5. Track revenue attribution
-python3 track_revenue.py --source newsletter --period weekly
-```
-
-### Multi-Revenue Stream Setup
+## Multi-Revenue Stream Setup
 
 ```yaml
 revenue_streams:
@@ -488,6 +423,54 @@ revenue_streams:
     tracking: utm_parameters
 ```
 
+## Content-to-Revenue Pipeline
+
+```bash
+#!/bin/bash
+# Weekly content monetization pipeline
+
+# 1. Create content
+python3 create_content.py --type newsletter --topic "weekly_roundup"
+
+# 2. Cross-post to platforms
+python3 distribute.py --source newsletter --targets "twitter,linkedin,blog"
+
+# 3. Add affiliate links where relevant
+python3 inject_affiliates.py --content newsletter --niche "saas_tools"
+
+# 4. Schedule social promotion
+python3 schedule_social.py --promote newsletter --platforms "twitter,linkedin"
+
+# 5. Track revenue attribution
+python3 track_revenue.py --source newsletter --period weekly
+```
+
+## Anti-Rationalization
+
+| Excuse | Truth |
+|---|---|
+| "I need more audience first" | Start monetizing at 0 subscribers today |
+| "Free content should come first" | Charging filters to people who actually value it |
+| "I need the perfect niche" | Your first 3 niches will fail. Iterate. |
+
+## Error Handling
+
+| Error | Cause | Recovery |
+|---|---|---|
+| Platform API rate limit | Too many API calls to Beehiiv/YouTube/Gumroad | Implement request queuing with backoff, batch operations |
+| Content rejection | Platform policy violation (YouTube, Substack) | Review guidelines before publishing, have backup content ready |
+| Low conversion rate | Poor funnel design or weak offer | A/B test landing pages, survey audience for feedback |
+| Payment failure | Stripe/Gumroad webhook issues | Implement idempotent payment processing, retry logic |
+| Email deliverability | Cold domain, spam triggers | Warm up domain gradually, authenticate SPF/DKIM/DMARC |
+| Affiliate link expiration | Programs change terms or expire | Monitor link health weekly, have backup programs ready |
+
+## Common Patterns
+
+- **Batch processing**: Process multiple items in parallel for throughput
+- **Retry with backoff**: Handle transient failures gracefully
+- **Rate limiting**: Respect API limits with configurable delays
+- **Logging**: Structured logging for debugging and audit trails
+
 ## How to Use
 
 1. Define content goal (traffic, engagement, conversion, brand awareness)
@@ -516,10 +499,6 @@ revenue_streams:
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Output Format
 
-| Rationalization | Reality |
-|---|---|
-| "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
-| "I will optimize later" | SEO and distribution need optimization from the start. |
-| "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
+On completion: "[N] revenue streams activated, first dollar earned in [N] days, $[N]/mo projected at scale"

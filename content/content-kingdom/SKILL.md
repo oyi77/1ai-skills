@@ -1,8 +1,6 @@
 ---
 name: content-kingdom
-description: >
-  Content Kingdom Orchestrator — the BRAIN that coordinates all 12 content phases.
-  Sequences research → plan → script → create → review → schedule → post → engage → analyze → optimize → repurpose → scale.
+description: Content Kingdom Orchestrator — the BRAIN that coordinates all 12 content phases. Sequences research → plan → script → create → review → schedule → post → engage → analyze → optimize → repurpose → scale.
 tags:
 - content
 - automation

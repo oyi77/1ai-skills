@@ -1,92 +1,25 @@
 ---
 name: product-desc
-description: Product Desc. Use when working with product desc in content domain.
+description: Product descriptions — merged into content-writing parent. See ../SKILL.md for money protocol.
 domain: content
-tags:
-- content-creation
-- desc
-- digital-content
-- media
-- product
+tags: [content-creation, product]
 ---
+
 # Product Desc
 
+This skill has been merged into the parent content-writing skill.
+
+See the comprehensive merged skill at [../SKILL.md](../SKILL.md) for full documentation including money-making protocol, real Python examples, and orchestration flow.
+
+Key capabilities moved:
+- 3-length description generation (`generate_product_description`: short, medium, long)
+- Bulk product description generation (`generate_bulk_descriptions`) from structured data
+- SEO keyword integration and feature-benefit mapping
+
+
 ## When to Use
+Use this skill when working with product desc.
 
-**Trigger phrases:**
-- "product desc"
-- "Help me with product desc"
-
-**Use cases:**
-- When the task matches this skill's domain expertise
-
-**When NOT to use:**
-- For tasks outside this skill's scope
-
-
-## When NOT to Use
-
-- When the content requires deep domain expertise you do not have
-- For legal, medical, or financial advice content
-- When real-time data is required (use live data feeds)
-
-
-## Overview
-
-Product Desc enables content production with professional quality and consistency.
 
 ## Workflow
-
-```python
-# Example: Content generation pipeline
-def generate_content(topic: str, format: str = "article"):
-    outline = create_outline(topic)
-    draft = write_draft(outline, format)
-    edited = edit_for_quality(draft)
-    optimized = optimize_for_seo(edited)
-    return publish(optimized)
-```
-
-1. **Define brief** — Set objectives, audience, and style guidelines
-2. **Research and gather** — Collect source material and reference content
-3. **Create draft** — Generate initial content following the brief
-4. **Refine and edit** — Polish for quality, accuracy, and engagement
-5. **Publish and distribute** — Deploy to target platforms
-6. **Track performance** — Monitor engagement and iterate
-
-## Quality Checklist
-
-- [ ] Content matches the defined brief and audience
-- [ ] All facts verified against authoritative sources
-- [ ] Formatting consistent with style guidelines
-- [ ] SEO/distribution optimization applied
-- [ ] Call-to-action clear and compelling
-
-## Tools
-
-- Content management system for publishing
-- Analytics platform for performance tracking
-- Design tools for visual assets
-- Collaboration tools for review cycles
-
-## Anti-Rationalization
-
-| Rationalization | Reality |
-|---|---|
-| "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
-| "I will optimize later" | SEO and distribution need optimization from the start. |
-| "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
-
-
-## Process
-
-1. **Prepare** — Gather requirements, verify prerequisites, set up environment
-1. **Execute** — Run product desc workflow with configured parameters
-1. **Verify** — Validate output meets requirements, document results
-
-## Verification
-
-- [ ] Content meets quality standards and brief requirements
-- [ ] Output is properly formatted for target platform
-- [ ] All facts and references verified
-- [ ] SEO/distribution optimization applied where applicable
+See the parent skill for authoritative workflow documentation.

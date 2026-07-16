@@ -1,23 +1,34 @@
 ---
 name: lead-generation-engine
-description: AI-powered lead generation that scrapes intent signals, scores leads, generates personalized multi-channel outreach,
-  and manages the full CRM pipeline
+description: "AI-powered lead generation that scrapes intent signals, scores leads, generates personalized multi-channel outreach, and manages the full CRM pipeline. Use when building automated lead generation systems."
 domain: sales
-tags:
-- business-development
-- engine
-- generation
-- lead
-- pipeline
-- revenue
-- sales
+tags: [business-development, engine, generation, lead, pipeline, revenue, sales, money, automation]
+version: "2.0.0"
+author: ""
+subdomain: ""
+type: sales
 ---
 
+# Money-Making Overview
 
+This engine turns raw prospect data into booked meetings. Each A-grade lead (fit + intent score >70) has 15-25% meeting rate. At $50-500/meeting value, a daily scan of 100 leads produces $750-12,500/week in pipeline value.
 
-## Overview
+## Revenue Streams
+1. Lead Gen Service ($2K-10K/mo) — run engine for clients
+2. Lead Scoring API ($0.10-0.50/lead) — sell scoring as service
+3. Agency Add-on ($1K-5K/mo) — add as upsell to existing services
 
-Automated lead generation pipeline that detects buying intent signals from multiple sources, scores leads using AI, generates personalized outreach sequences across email/LinkedIn/Twitter, and manages the full sales pipeline. Replaces manual prospecting with a continuous, data-driven engine.
+## First Action in 60 Minutes
+```bash
+#!/usr/bin/env bash
+mkdir -p ~/lead-engine/{signals,scored,outreach,reports}
+echo "ICP defined? Yes/No" > ~/lead-engine/checklist.md
+echo "1. Define target ICP (industry, role, company size)"
+echo "2. Set up signal sources (LinkedIn jobs, Crunchbase funding, BuiltWith tech)"
+echo "3. Configure scoring weights: 0-50 fit + 0-50 intent = 0-100 grade"
+echo "4. Generate first outreach batch (10 leads, manual)"
+echo "5. Measure: reply rate >10%? Automate"
+```
 
 ## Required Tools
 
@@ -38,10 +49,10 @@ Automated lead generation pipeline that detects buying intent signals from multi
 - Generate weekly pipeline reports with conversion metrics
 
 ## When to Use
+
 **Trigger phrases:**
 - "lead generation engine"
-- "AI-powered lead generation that scrapes intent signals, scores leads, generates "
-
+- "AI-powered lead generation that scrapes intent signals, scores leads, generates"
 
 - Building a consistent pipeline of qualified prospects
 - Scaling outreach beyond manual capacity
@@ -58,48 +69,11 @@ Automated lead generation pipeline that detects buying intent signals from multi
 - Task requires compliance expertise (consult professionals)
 - Task is about defense, not offense (use defensive skills)
 
+## Core Components
 
-## Pseudo Code
+### 1. Intent Signal Detection
 
-The lead-generation-engine workflow follows a standard pipeline pattern.
-
-Core flow:
-```
-# lead-generation-engine primary flow
-input = prepare(raw_data)
-result = process(input, config={channel, engine, full, generates, generation})
-validate(result)
-deliver(result)
-```
-
-Error handling:
-```
-on error:
-  log(error_details)
-  retry_with_backoff(max=3)
-  if still_failing: alert_and_escalate()
-```
-
-
-### Core Workflow
-```
-# lead-generation-engine primary flow
-input = prepare(raw_data)
-result = process(input, config={channel, engine, full, generates, generation})
-validate(result)
-deliver(result)
-```
-
-### Error Handling
-```
-on error:
-  log(error_details)
-  retry_with_backoff(max=3)
-  if still_failing: alert_and_escalate()
-```
-
-
-### Intent Signal Detection
+Monitor multiple data sources for buying signals — job postings, funding rounds, tech stack migrations, and social activity.
 
 ```bash
 # Monitor job postings for target companies
@@ -117,7 +91,9 @@ curl -s "https://api.builtwith.com/free1/api.json?KEY=$BW_KEY&LOOKUP=example.com
   | jq '.Results[] | .Technologies[] | .Name'
 ```
 
-### Lead Scoring
+### 2. AI Lead Scoring
+
+Score leads 0-100 using Claude API: 0-50 fit score (ICP alignment) + 0-50 intent score (signal strength). Grade A (>80), B (60-80), or C (<60).
 
 ```python
 import sqlite3
@@ -176,7 +152,9 @@ for lead in db.execute("SELECT * FROM leads WHERE scored = 0"):
 db.commit()
 ```
 
-### Personalized Outreach Generation
+### 3. Personalized Outreach Generation
+
+Generate 3-touch multi-channel sequences per lead using Claude for personalization.
 
 ```python
 def generate_outreach_sequence(lead, sequence_type="cold"):
@@ -209,7 +187,9 @@ def generate_outreach_sequence(lead, sequence_type="cold"):
     return json.loads(response.content[0].text)
 ```
 
-### Pipeline Tracking & Reporting
+### 4. Pipeline Management & Reporting
+
+Track leads through stages with weekly SQLite reports showing conversion by grade.
 
 ```bash
 # Weekly pipeline report
@@ -229,7 +209,9 @@ ORDER BY grade;
 SQL
 ```
 
-### A/B Testing Outreach
+### 5. A/B Testing Outreach
+
+Split-test subject lines, messaging, and timing to optimize conversion rates.
 
 ```python
 def ab_test_subject_lines(lead_group_a, lead_group_b, subject_a, subject_b):
@@ -255,10 +237,21 @@ def ab_test_subject_lines(lead_group_a, lead_group_b, subject_a, subject_b):
         print(f"Variant {r[0]}: {r[2]}/{r[1]} opened ({r[2]/r[1]*100:.1f}%)")
 ```
 
+## Anti-Rationalization
+
+| Excuse | Truth |
+|---|---|
+| "I need more data sources" | 3 sources are enough to start |
+| "AI scoring is too expensive" | $0.01-0.10/lead is cheaper than manual |
+| "Clients won't pay for leads" | Every B2B company already pays for lists |
+| "Cold outreach does not work" | It works when personalized and targeted. Generic spam does not. |
+| "I will follow up later" | 80% of sales require 5+ follow-ups. Follow up consistently. |
+| "Price is the only factor" | Value, trust, and timing matter more than price. Sell outcomes. |
+
 ## Error Handling
 
 | Error | Cause | Recovery |
-|-------|-------|----------|
+|---|---|---|
 | API rate limit (429) | Too many requests to LinkedIn/Twitter/Hunter | Implement exponential backoff, spread requests across time |
 | Invalid email (bounce) | Bad email from scraping | Verify with Hunter.io email verification before sending |
 | Low open rates (<5%) | Poor subject lines or spam filters | A/B test subjects, check SPF/DKIM/DMARC, warm up domain |
@@ -273,8 +266,7 @@ def ab_test_subject_lines(lead_group_a, lead_group_b, subject_a, subject_b):
 - **Rate limiting**: Respect API limits with configurable delays
 - **Logging**: Structured logging for debugging and audit trails
 
-
-### Daily Signal Scan → Score → Outreach Pipeline
+## Daily Pipeline (Cron)
 
 ```bash
 #!/bin/bash
@@ -296,7 +288,7 @@ python3 send_outreach.py --today --respect-quiet-hours
 python3 pipeline_report.py --period daily | mail -s "Daily Lead Gen Report" you@email.com
 ```
 
-### ICP Definition Template
+## ICP Definition Template
 
 ```json
 {
@@ -316,6 +308,14 @@ python3 pipeline_report.py --period daily | mail -s "Daily Lead Gen Report" you@
 }
 ```
 
+## Red Flags
+
+- **Lead response time > 5 minutes**: Conversion drops 80% after 5 min. Automate instant response.
+- **Pipeline has stale deals**: Deals stuck 30+ days need re-qualification or disqualification.
+- **Low email reply rates (<3%)**: Messaging is too generic. Personalize with research.
+- **High churn in first 90 days**: Onboarding gap. Fix handoff from sales to success.
+- **Discounting above 20%**: Value perception problem. Reframe ROI, don't cut price.
+
 ## How to Use
 
 1. Define ideal customer profile (ICP) and buyer personas
@@ -327,28 +327,6 @@ python3 pipeline_report.py --period daily | mail -s "Daily Lead Gen Report" you@
 7. Handle objections with value reframing
 8. Close and hand off to onboarding
 
-## Red Flags
+## Output Format
 
-- **Lead response time > 5 minutes**: Conversion drops 80% after 5 min. Automate instant response.
-- **Pipeline has stale deals**: Deals stuck 30+ days need re-qualification or disqualification.
-- **Low email reply rates (<3%)**: Messaging is too generic. Personalize with research.
-- **High churn in first 90 days**: Onboarding gap. Fix handoff from sales to success.
-- **Discounting above 20%**: Value perception problem. Reframe ROI, don't cut price.
-
-## Verification
-
-- [ ] Skill output matches expected behavior
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
-
-## Anti-Rationalization
-
-| Rationalization | Reality |
-|---|---|
-| "Cold outreach does not work" | It works when personalized and targeted. Generic spam does not. |
-| "I will follow up later" | 80% of sales require 5+ follow-ups. Follow up consistently. |
-| "Price is the only factor" | Value, trust, and timing matter more than price. Sell outcomes. |
+On completion: "[N] signals scanned, [N] leads scored (grade A/B/C), [N] sequences launched, [N]% conversion rate"
