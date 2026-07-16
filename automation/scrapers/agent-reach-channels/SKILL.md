@@ -1,10 +1,7 @@
 ---
 name: agent-reach-channels
-version: 1.0.0
-category: automation/scrapers
-domain: social-commerce
 description: Multi-platform e-commerce and messaging channel extraction (Shopee, TikTok Shop, WeChat)
-keywords: [shopee, tiktok-shop, wechat, scraping, commerce, messaging, southeast-asia, indonesia]
+domain: social-commerce
 tags:
 - ecommerce
 - scraping
@@ -12,6 +9,17 @@ tags:
 - shopee
 - tiktok
 - wechat
+version: 1.0.0
+category: automation/scrapers
+keywords:
+- shopee
+- tiktok-shop
+- wechat
+- scraping
+- commerce
+- messaging
+- southeast-asia
+- indonesia
 source: Panniantong/Agent-Reach
 ---
 
@@ -114,3 +122,11 @@ pytest tests/test_new_channels.py -v  # 26 passed
 - social-listener: Cross-platform social media monitoring
 - content-monitor: Track content performance
 - price-tracker: Price monitoring (can use Shopee extraction)
+
+## Overview
+
+> Section content — see SKILL.md body for full details.
+
+## Verification
+
+- [ ] Skill output matches expected behavior
