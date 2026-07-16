@@ -124,6 +124,15 @@ def extract_iocs(text: str) -> dict:
 - Monitor for mailbox delegation changes
 - Check for inbox rules hiding BEC-related emails
 
+### Step 5: Deploy AI/ML Detection
+
+AI-powered BEC detection uses transformer models (BERT, GPT) and NLP to identify sophisticated impersonation attacks that contain no malicious links or attachments. BERT-based models achieve 98.65% accuracy in BEC detection, with a 25%+ improvement over keyword-based rules.
+
+- **Train NLP Models**: Deploy transformer-based models for email content analysis. Detect urgency/manipulation language patterns, identify mismatches between sender identity and writing style, analyze sentiment shifts indicating social engineering pressure.
+- **Configure Behavioral Baselines**: AI learns normal communication patterns (who emails whom, frequency, tone). Establish writing style profiles per user (vocabulary, sentence structure). Map typical request types per role (finance processes payments, HR handles PII). Allow 48-hour baseline learning period on historical data.
+- **Set Detection Policies**: VIP impersonation (compare against known executive patterns), vendor impersonation (detect payment change requests from lookalike domains), account compromise (sudden behavior changes), supply chain BEC (trusted partner impersonation). Configure confidence thresholds for auto-block vs. warning vs. analyst review.
+- **Integrate Response**: Auto-quarantine high-confidence detections, add warning banners for moderate confidence, route suspicious emails to SOC queue, feed verdicts back into training data for improvement.
+
 ## When NOT to Use
 
 - You need to perform the attack to test detection (use performing-* skills)
@@ -151,9 +160,11 @@ def extract_iocs(text: str) -> dict:
 - Remediation recommendations included for every finding
 
 ## Tools & Resources
-- **Microsoft Defender for O365 Anti-BEC**: Built-in BEC detection
-- **Proofpoint Email Fraud Defense**: BEC-specific solution
-- **Abnormal Security**: AI-driven BEC detection
+- **Microsoft Defender for O365**: Built-in BEC detection + AI Impostor Classifier
+- **Proofpoint Email Fraud Defense / Tessian**: AI-powered email security with human layer protection
+- **Abnormal Security**: API-based AI email security with behavioral analysis
+- **Ironscales**: AI + human-in-the-loop BEC detection
+- **Darktrace Email**: Self-learning AI for email threat detection
 - **FBI IC3 BEC Advisory**: https://www.ic3.gov/
 - **FinCEN BEC Advisory**: Financial institution guidance
 
@@ -162,6 +173,10 @@ def extract_iocs(text: str) -> dict:
 - Financial controls prevent unauthorized transfers in drills
 - Account compromise detection catches simulated attacks
 - Reduced BEC susceptibility in awareness assessments
+- AI detects BEC test email with no malicious indicators (pure social engineering)
+- Writing style analysis identifies impersonation of known executive
+- Behavioral baseline flags unusual payment request from compromised account
+- Detection rate exceeds traditional rule-based filters by 25%+
 
 ## Process
 

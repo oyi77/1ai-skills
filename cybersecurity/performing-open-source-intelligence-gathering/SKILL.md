@@ -139,6 +139,20 @@ def extract_iocs(text: str) -> dict:
 4. Identify VPN and remote access technologies
 5. Map cloud services and SaaS applications
 
+### Defensive OSINT (Threat Intelligence)
+
+When investigating external threat actors rather than preparing for red team operations, OSINT collection must remain strictly passive (no packets sent to target systems). Use this parallel workflow:
+
+1. **Scope** — Define research questions (e.g., "which threat actor targets our sector?"), identify data sources, set time boundaries
+2. **Gather** — Collect data from passive sources only: WHOIS records, passive DNS (SecurityTrails), certificate transparency logs (crt.sh), breach databases (Have I Been Pwned), dark web monitoring, Shodan historical data
+3. **Synthesize** — Enrich threat actor profiles with publicly observable indicators (IPs, domains, SSL certs, ASN data). Cross-reference findings with MITRE ATT&CK and known campaign indicators. Produce actionable threat intelligence reports
+
+**Key differences from offensive OSINT:**
+- No active scanning (no Nmap, no direct DNS queries to target)
+- Focus on attribution and campaign tracking, not attack surface mapping
+- Output is threat intelligence report, not red team recon report
+- Emphasis on IOC extraction and enrichment, not exploitation planning
+
 ## When NOT to Use
 
 - You don't have explicit written authorization to test
@@ -178,6 +192,10 @@ def extract_iocs(text: str) -> dict:
 | Shodan | Internet-connected device search | Commercial |
 | Censys | Internet asset discovery | Commercial |
 | Recon-ng | Web reconnaissance framework | Open Source |
+| SecurityTrails | Passive DNS historical data | Commercial |
+| crt.sh | Certificate transparency log search | Free |
+| Have I Been Pwned | Breached credential search | Free |
+| DomainTools | WHOIS history and domain intelligence | Commercial |
 | GitDorker | GitHub secret scanning | Open Source |
 | Photon | Web crawler for OSINT | Open Source |
 

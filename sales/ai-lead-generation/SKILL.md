@@ -296,6 +296,89 @@ AI Lead Gen -> Outbound -> Qualify -> Demo -> Close
 
 ---
 
+
+## Technical Implementation
+
+### Required Tools
+- Web Scraping: curl, jq, BeautifulSoup (Python), Puppeteer (JS)
+- APIs: LinkedIn Sales Navigator, Twitter/X, Hunter.io, Apollo.io, Clearbit
+- CRM: HubSpot API, Pipedrive, or Airtable as lightweight CRM
+- Email: SendGrid API, Mailgun, or AWS SES
+- AI/LLM: Claude API for personalization, GPT for batch processing
+- Storage: SQLite or PostgreSQL, pandas for analysis
+
+### Daily Pipeline (Cron)
+
+```bash
+#!/bin/bash
+# Run daily via cron: 0 9 * * 1-5
+
+# 1. Scan for new signals
+python3 scan_signals.py --sources linkedin,crunchbase,builtwith
+
+# 2. Score new leads
+python3 score_leads.py --new-only --icp icp_v2.json
+
+# 3. Generate outreach for A/B grade leads
+python3 generate_outreach.py --min-grade B --sequence cold
+
+# 4. Send scheduled outreach (respects rate limits)
+python3 send_outreach.py --today --respect-quiet-hours
+
+# 5. Generate daily report
+python3 pipeline_report.py --period daily | mail -s "Daily Lead Gen Report" you@email.com
+```
+
+### Error Handling
+
+| Error | Cause | Recovery |
+|---|---|---|
+| API rate limit (429) | Too many requests | Implement exponential backoff, spread requests across time |
+| Invalid email (bounce) | Bad email from scraping | Verify with Hunter.io email verification before sending |
+| Low open rates (<5%) | Poor subjects or spam filters | A/B test subjects, check SPF/DKIM/DMARC, warm up domain |
+| CRM sync failure | API timeout or auth expired | Retry with backoff, refresh OAuth tokens, log failures |
+| Scraping blocked | IP blocked | Rotate user agents, use proxy pool, respect robots.txt |
+| Score drift | ICP changed | Re-score all leads when ICP changes, version the criteria |
+
+### ICP Definition Schema
+
+```json
+{
+  "version": "v2",
+  "industry": ["SaaS", "FinTech", "E-commerce"],
+  "company_size": {"min": 10, "max": 500},
+  "revenue": {"min": 1000000},
+  "roles": ["CTO", "VP Engineering", "Head of Product"],
+  "geography": ["US", "UK", "EU"],
+  "signals": {
+    "job_posting": 15,
+    "recent_funding": 20,
+    "tech_migration": 10,
+    "social_activity": 5
+  }
+}
+```
+
+### Pipeline Management SQL
+
+```bash
+# Weekly pipeline report
+sqlite3 leads.db <<'SQL'
+SELECT
+  grade,
+  COUNT(*) as total,
+  SUM(CASE WHEN stage='contacted' THEN 1 ELSE 0 END) as contacted,
+  SUM(CASE WHEN stage='engaged' THEN 1 ELSE 0 END) as engaged,
+  SUM(CASE WHEN stage='qualified' THEN 1 ELSE 0 END) as qualified,
+  SUM(CASE WHEN stage='proposal' THEN 1 ELSE 0 END) as proposal,
+  ROUND(AVG(score), 1) as avg_score
+FROM leads
+WHERE created_at > datetime('now', '-7 days')
+GROUP BY grade
+ORDER BY grade;
+SQL
+```
+
 ## Anti-Rationalization
 
 | Excuse | Truth |
