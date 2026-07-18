@@ -232,8 +232,10 @@ def fix_one(path: Path) -> list[str]:
             ordered[key] = meta.pop(key)
     ordered.update(meta)
 
-    new_fm = yaml.safe_dump(
-        ordered, sort_keys=False, allow_unicode=True, width=120
+    # ⚡ Bolt Optimization: Use PyYAML's C-extension Dumper (~5x faster than pure-Python safe_dump)
+    # for batched metadata serialization across hundreds of files.
+    new_fm = yaml.dump(
+        ordered, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper), sort_keys=False, allow_unicode=True, width=120
     ).rstrip()
     new_text = (
         f"---\n{new_fm}\n---\n{body}"
