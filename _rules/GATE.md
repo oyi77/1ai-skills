@@ -48,6 +48,13 @@ GATE 4: AGENT REVIEW — COMPLEX only (STANDARD optional)
   - STANDARD: peer/self-review with checklist documented
   - TRIVIAL: self-review only
   Bukti: [TRIVIAL] / [STANDARD — checklist done] / [COMPLEX — verdict: APPROVED, PR #X]
+GATE 5: PLAYBOOK UPDATE CHECK
+  - Did this task change systems, code, or company processes?
+    No → skip this gate (explain why in bukti)
+    Yes → PLAYBOOK PROTOCOL in RULES.md requires a timeline entry
+  - Timeline updated in `~/projects/1ai-playbook/content/playbook/timeline/index.mdx`?
+  - Format: date, what, sections affected, files changed, status, why it matters
+  Bukti: [skip — no impact] / [updated YYYY-MM-DD — entry content]
 ```
 
 ---
@@ -65,6 +72,7 @@ GATE 4: AGENT REVIEW — COMPLEX only (STANDARD optional)
 | C7 | Feature flag (HIGH‑RISK only) — default OFF | ENGINEERING.md §6.4 |
 | C8 | Monitoring verification — logging / alerting / metrics | ENGINEERING.md §6.5 |
 | C9 | Update docs — Code ≠ Docs → STOP | DOCS.md |
+| C10 | Timeline updated — playbook/timeline/ modified per RULES.md PLAYBOOK PROTOCOL | RULES.md PLAYBOOK PROTOCOL |
 
 ---
 
