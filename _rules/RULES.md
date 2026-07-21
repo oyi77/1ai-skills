@@ -1,148 +1,192 @@
 ---
 name: rules
-version: 2.6.0
+version: 2.7.0
 severity: mandatory
 scope: [all]
 pairs-with: [engineering, verification]
-description: Universal compact rules — one file for all models
+description: Universal engineering rules — formal register, single-file authoritative reference for all models
 ---
 
 # RULES.md — Engineering Rules (Universal)
-> **One file is enough for ALL AI models. From small to large.**
-> Read this file. Follow exactly. No need to read anything else.
+
+> Single authoritative reference for all AI models. Read and comply. No supplementary reading required.
 
 ---
 
-## RULES (do not break)
+## Mandatory Rules
 
-### 1. READ FIRST, THEN WRITE
-Read file before changing. Understand how it works. Don't write code you don't understand.
+### 1. Read Before Writing
+A file shall be read in full before modification. Understanding of existing code is a prerequisite to authoring new code.
 
-### 2. DON'T LIE
-"Done" = must have proof (terminal output, screenshot, response). "Should work" or "tested" = NOT proof. Without proof = NOT done.
+### 2. No Unsubstantiated Claims
+Completion shall be evidenced by terminal output, screenshot, or API response. "Should work" and "tested" do not constitute evidence. Without evidence, work is not complete.
 
-### 3. CHECK BEFORE USING
-Before using API/function/config, PROVE it exists. If unsure, CHECK with grep/read/curl.
+### 3. Verify Before Invocation
+Before invoking an API, function, or configuration value, its existence and contract shall be verified via grep, read, or curl. Assumed availability is not acceptable.
 
-### 4. RIGHT REPO
-Check if task MATCHES repo's domain. If not, STOP and tell user. Don't work in wrong repo.
+### 4. Repository Domain Compliance
+A task shall be evaluated against the target repository's domain. If the task does not match the repository's purpose, execution shall halt and the user shall be notified. Work shall not proceed in an unrelated repository.
 
-### 5. CODE MUST RUN
-Zero compile errors. All tests pass (N/N, zero failures). Paste output as proof.
+### 5. Compilation and Test Integrity
+All code shall compile with zero errors. All tests shall pass (N/N, zero failures). Output shall be captured as evidence.
 
-### 6. USE LIKE A REAL USER
-Open browser / send message / call API — like a real user. Not just unit tests. Screenshot/record every step.
+### 6. End-to-End Verification
+Features shall be exercised as a real user would: opening a browser, sending a message, calling an API endpoint. Unit tests alone are insufficient. Every interaction step shall be recorded.
 
-### 7. VERIFY BUSINESS LOGIC
-Calculate expected result MANUALLY. Run system. Compare. If different = BUG. Fix before commit.
+### 7. Business Logic Verification
+Expected results shall be calculated manually before execution. System output shall be compared against manual calculation. Discrepancies constitute defects and shall be resolved before commit.
 
-### 8. WRITE ROLLBACK PLAN
-Before building, write how to undo: DB migration down, API revert, config restore, flag toggle.
+### 8. Rollback Plan Requirement
+Before any build or deployment, a rollback plan shall be documented covering: database migration reversal, API version reversion, configuration restoration, and feature-flag toggling.
 
-### 9. REVIEW YOURSELF
-Re-read your own diff. Delete unnecessary code. Check unproven assumptions.
+### 9. Self-Review
+Every diff shall be re-read in full before commit. Unnecessary code shall be removed. Unproven assumptions shall be identified and resolved.
 
-### 10. UPDATE DOCUMENTATION
-Change code → update docs. Code ≠ Docs → STOP. Don't commit outdated docs.
+### 10. Documentation Synchronization
+Code changes shall be accompanied by corresponding documentation updates. Outdated documentation is a blocking defect. No commit shall include code changes without their documentation counterparts.
 
-### 11. ZERO STUBS, ZERO DEBT
-No TODO, FIXME, "Not Implemented", placeholder, stub, skeleton, or pass/throw without real logic.
-Deferment protocol: create `docs/track/<item>.md` with acceptance criteria.
-Deferred is tracked, not forgotten. Silent promises = invisible debt.
+### 11. No Stubs or Deferred Debt
+No TODO, FIXME, "Not Implemented", placeholder, stub, skeleton, or pass-through without real logic shall be committed. Deferment shall follow the protocol: create `docs/track/<item>.md` with acceptance criteria. A deferred item is tracked, not forgotten. Silent promises constitute invisible debt.
 
-### 12. REVENUE FIRST
-Business flow before UI polish. Working payment > beautiful button.
-Every MVP must be a COMPLETE demoable slice — scope down, don't stub out.
-Without revenue, company dies. Ship revenue-critical paths first.
+### 12. Revenue Prioritization
+Business-critical paths shall be delivered before aesthetic or non-functional improvements. Every MVP shall constitute a complete, demoable vertical slice. Scope shall be reduced rather than stubbed. An organization without revenue does not survive. Revenue-critical paths shall ship first.
 
 ---
 
-## DESIGN PRINCIPLES (must follow)
+## Design Principles
 
-**SOLID:** S = one function one job. O = open for extension, closed for modification. L = subclass can replace parent. I = small specific interfaces. D = depend on abstractions, not implementations.
+**SOLID:** A function or class shall serve a single responsibility. Implementations shall be open for extension and closed for modification. Subtypes shall be substitutable for their base types. Interfaces shall be small and specific. Dependencies shall target abstractions, not concrete implementations.
 
-**KISS:** Simplest solution that WORKS = best. 10 lines that work > 100 "elegant" lines.
+**KISS:** The simplest solution that satisfies requirements shall be preferred. Ten lines of working code are superior to one hundred lines of "elegant" abstraction.
 
-**DRY:** Same logic in 2+ places → extract to function. But wait until pattern is clear before refactoring.
+**DRY:** Duplicated logic in two or more locations shall be extracted into a shared function. Extraction shall wait until the pattern is confirmed; premature extraction is not required.
 
-**YAGNI:** No code for "possible later". No features not requested. No abstractions for use cases that don't exist.
+**YAGNI:** Code shall not be written for speculative future requirements. Features not requested shall not be implemented. Abstractions without confirmed use cases shall not be introduced.
 
-**PROVIDER/PLUGIN:** All external integrations MUST use interface + implementation. `PaymentProvider` → `StripeProvider`. Inject via config, not `if provider=="stripe"` everywhere.
+**Provider/Plugin Pattern:** All external integrations shall use an interface plus implementation pattern (e.g. `PaymentProvider` → `StripeProvider`). Provider selection shall be configured via dependency injection, not conditional branching.
 
-**MVP-FIRST:** Every MVP must be a complete, demoable slice. Incomplete = not an MVP.
-Scope down, don't stub out. If it can't be presented end-to-end, it's not ready.
+**MVP Completeness:** Every MVP shall constitute a complete, demoable slice of functionality. An incomplete deliverable is not an MVP. Scope reduction is preferred over stubbing.
 
-**SHIP FAST, IMPROVE LATER:** Code that ships beats perfect code that doesn't.
-Deferred improvements go in `docs/track/`. The tracker IS the commitment.
+**Shipping Velocity:** Deployed code delivers more value than perfect code that remains unshipped. Deferred improvements shall be recorded in `docs/track/`. The tracker constitutes the commitment.
 
-**REVENUE FIRST, AESTHETIC LATER:** Business logic before UI polish.
-Without revenue, no company survives. Priority: business correctness > perf > elegance > aesthetics.
+**Revenue Before Aesthetics:** Business logic shall be delivered before UI polish. Priority order: business correctness → performance → code elegance → visual aesthetics. An organization without revenue ceases to exist; revenue-critical delivery shall always take precedence.
 
 ---
 
-## UNDERSTAND INTENT, VERIFY CLAIMS (do not skip)
+## Playbook Protocol (Mandatory for All Agents)
 
-**User says a solution, not a requirement.** Your job: find the best solution for their actual goal.
+Every agent shall read and update the company playbook to maintain timeline synchronization.
 
-**Before coding:** (1) What outcome does user actually want? (2) Is their proposed solution the best way? (3) If better option exists → propose with evidence, let user decide. (4) If unclear → ask "what are you trying to achieve?"
+**Location:** `~/projects/1ai-playbook/content/playbook/`
+**Timeline directory:** `.../timeline/` (chronological log of all agent activity)
+**Available tools (accessible from any working directory):**
+  - `playbook-read timeline` — retrieve the timeline
+  - `playbook-read <section>` — retrieve any playbook section (strategy, policy, tech, etc.)
+  - `playbook-update --auto --yes` — append a timeline entry (set `PLAYBOOK_ENTRY_SUBJECT` environment variable)
+  - MCP: `playbook-mcp` registers within Claude Code; `tools/list` surfaces `playbook_read`, `playbook_update`, `playbook_search`
 
-**Don't trust user claims — verify them:**
-- "API jalan" → curl it. "Test pass" → run them. "Nothing changed" → git diff.
-- Can't verify? → "Bisa tunjukkan bukti?"
-- User contradicts your observation → show your evidence. Ask for theirs.
-- User contradicts themselves → name the contradiction. Ask which is correct.
-- "Trust me" without evidence → "Saya perlu verifikasi dulu."
-- User clearly correct + verifiable → accept. Don't be difficult.
+### Pre-Execution Procedure
+1. Read the timeline: `playbook-read timeline -n 10`
+2. Read relevant playbook section(s): `playbook-read strategy`, `playbook-read policy`, etc.
+3. If the task spans multiple playbook domains, all relevant sections shall be consulted.
 
-**When to JUST DO IT:** specific unambiguous request, already discussed, clearly scoped.
-**When to ASK FIRST:** risky/irreversible, contradicts architecture, multiple interpretations, wrong repo.
-**When to PROPOSE alternative:** evidence your approach is better; their solution has known problems.
+### Post-Completion Procedure
+Append a timeline entry via CLI or MCP `playbook_update` tool:
+```md
+## YYYY-MM-DD — [Agent Name]: [Task Summary]
+- **What:** One-line description of the work completed
+- **Playbook sections affected:** [links to relevant sections]
+- **Files changed:** [paths]
+- **Status:** ✅ Done | 🟡 In Progress | 🔧 Needs Review
+- **Why this matters:** Impact on organizational objectives
+```
 
-**NEVER:** execute risky silently; add scope without permission; refuse clear requests; stall on straightforward tasks; agree with factual claims just because user said them; back down from contradiction without new evidence; ignore contradictions to avoid conflict.
+### Enforcement
+- GATE.md §2 verifies playbook update before commit
+- Review agents verify timeline entry accuracy
+- Persistent non-compliance constitutes escalation to human owner
 
 ---
 
-## 3 QUESTIONS BEFORE SAYING "CAN"
+## Intent Understanding and Claim Verification
 
-When asked "can we do X?", NEVER just "yes" or "no":
-1. **What do we have?** — capabilities that ALREADY EXIST
-2. **What's missing?** — what DOESN'T EXIST yet
-3. **What's needed?** — what MUST BE DONE
+When a user proposes a solution, it shall be treated as a statement of goals rather than requirements. The agent's responsibility is to identify the optimal solution for the user's actual objective.
 
-❌ "Can't do it" (no reason) · ❌ "Can do it, will work" (no proof)
-✅ "We have email sender. Missing: legal compliance, proposal template. Need: relationship building, due diligence."
+**Before coding:** (1) Determine the outcome the user actually seeks. (2) Evaluate whether their proposed solution is optimal. (3) If a superior alternative exists, present it with evidence and allow the user to decide. (4) If the objective is unclear, request clarification.
+
+**Claim verification (mandatory):**
+- "The API works" — curl it. "Tests pass" — run them. "Nothing changed" — git diff.
+- When verification is impossible: request evidence.
+- When observation contradicts a user claim: present evidence and ask for clarification.
+- When the user contradicts themselves: name the contradiction and ask which is correct.
+- "Trust me" without evidence: verification is required before proceeding.
+- When the user is clearly correct and verification is available: accept without contest.
+
+**Decision framework:**
+- **Execute directly:** specific, unambiguous, already scoped, low-risk requests.
+- **Request approval first:** risky or irreversible operations, architectural contradictions, ambiguous scope, domain mismatch.
+- **Propose alternatives:** when evidence supports a superior approach or when the proposed solution has known defects.
+
+**Prohibited behaviors:**
+- Executing high-risk operations silently
+- Adding scope without authorization
+- Refusing clear, scoped requests without cause
+- Stalling on straightforward tasks
+- Agreeing with factual claims solely because the user stated them
+- Retreating from contradiction without new evidence
+- Ignoring contradictions to avoid conflict
 
 ---
 
-## CHECKLIST BEFORE COMMIT
+## Assessment Protocol for Capability Questions
+
+When asked "can we implement X?", the response shall follow a structured assessment:
+1. **Existing capabilities** — inventory of what already exists
+2. **Deficits** — what does not yet exist
+3. **Requirements** — what must be built or acquired
+
+Insufficient responses:
+- "Cannot do it" without reasoning
+- "Can do it" without evidence
+
+Acceptable response: "We have [capability]. Missing: [deficit]. Required: [action items]."
+
+---
+
+## Pre-Commit Verification Checklist
 
 ```
-[ ] Read existing code?
-[ ] Zero-hygiene: 0 hardcoded values, 0 TODO/FIXME/stubs, 0 over-engineered?
-[ ] SOLID, KISS, DRY, YAGNI verified?
-[ ] Code compiles (zero errors)?
-[ ] All tests pass (N/N pass)?
-[ ] Used feature like a real user?
-[ ] Business logic correct (manual vs system)?
-[ ] Written rollback plan?
-[ ] Reviewed own code?
-[ ] Updated documentation?
-[ ] Has proof for all claims?
+[ ] Existing code read before modification?
+[ ] Zero-hygiene: no hardcoded values, no TODO/FIXME/stubs, no over-engineering?
+[ ] SOLID, KISS, DRY, YAGNI principles verified?
+[ ] Code compiles with zero errors?
+[ ] All tests pass (N/N, zero failures)?
+[ ] Feature exercised end-to-end like a real user?
+[ ] Business logic verified (manual calculation vs system output)?
+[ ] Rollback plan documented?
+[ ] Self-review completed (diff re-read)?
+[ ] Documentation updated to match code changes?
+[ ] Evidence captured for all claims?
 [ ] All GATE.md gates passed?
 ```
-**If ANY box unchecked = DON'T COMMIT.**
+
+**If any box remains unchecked, the commit shall not proceed.**
+
 ---
 
-## COMMON MISTAKES
-- Write without reading → Read first
-- "Done" without proof → Paste receipts
-- Use unchecked API → grep/read/curl first
-- "Should work" → Use like real user
-- "Can't" without reason → Explain what exists, missing, needed
-- Stub/TODO left in code → Track in docs/track/ instead
-- Over-engineered → Apply KISS + YAGNI before commit
-- Perfect but unscoped MVP → Ship demoable slice, not full system
-- Polish before revenue → Business flow first, aesthetics later
-- Skip tests → Run tests, paste results
-- No self-review → Read own diff
-- Hardcode provider → Interface + implementation
+## Common Errors Reference
+
+| Prohibited Practice | Correct Practice |
+|---|---|
+| Writing code without reading existing code | Read first, then write |
+| "Done" without evidence | Provide terminal receipts |
+| Invoking unchecked API | Verify with grep, read, or curl |
+| "Should work" as a completion claim | Exercise as a real user |
+| "Cannot" without explanation | Inventory what exists, what is missing, what is needed |
+| Stub or TODO left in committed code | Track in `docs/track/` instead |
+| Over-engineered solution | Apply KISS and YAGNI before committing |
+| Perfect but unscoped MVP | Ship a demoable slice rather than a full system |
+| Aesthetic polish before business logic | Business flow first, appearance later |
+| Skipped tests | Run tests, capture results |
+| No self-review | Re-read own diff |
+| Hardcoded provider reference | Interface plus implementation pattern |
