@@ -16,7 +16,7 @@ Every task follows this sequence. No exceptions.
 Full details: `~/.1ai/core/PROCESS.md` (auto-injected by hooks)
 
 ## This repo
-Production-ready AI agent skill library — 1337 skills across 19 categories with anti-rationalization tables, code examples, and verification checklists.
+Production-ready AI agent skill library — 1329 skills across 19 categories with anti-rationalization tables, code examples, and verification checklists.
 Stack: Node.js / Python / YAML skills
 Domain: Agent skill library — NOT a product repo. Do not add features here unless adding new skills.
 
@@ -77,24 +77,25 @@ cat ~/projects/1ai-skills/integrations/stripe-integration/SKILL.md
 | Category | Count | What it covers |
 |----------|------:|----------------|
 | cybersecurity | 786 | Threat hunting, forensics, pen testing, SOC, incident response |
-| development | 92 | TDD, debugging, code review, PRD, engineering workflows |
-| content | 64 | Video, audio, design, writing, docs |
+| development | 90 | TDD, debugging, code review, PRD, engineering workflows |
+| content | 58 | Video, audio, design, writing, docs |
 | mindset | 55 | Negotiation, leadership, critical thinking |
 | marketing | 45 | SEO, viral content, email, ads, growth |
-| core | 44 | AI infrastructure, memory, self-improvement, model routing |
-| integrations | 36 | GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase |
+| core | 45 | AI infrastructure, memory, self-improvement, model routing |
+| integrations | 34 | GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase |
 | devops | 33 | Docker, Kubernetes, CI/CD, cloud ops, GitOps |
-| automation | 28 | Bots, workflows, scrapers, process automation |
+| automation | 29 | Bots, workflows, scrapers, process automation |
 | research | 23 | Deep research, market analysis, competitive intelligence |
-| trading | 20 | Crypto, DeFi, Polymarket, trading strategies |
+| trading | 19 | Crypto, DeFi, Polymarket, trading strategies |
 | operations | 19 | Business ops, governance, HR, legal, project management |
-| agents | 16 | AI agent orchestration, coding, research, autonomous execution |
+| agents | 17 | AI agent orchestration, coding, research, autonomous execution |
 | mcp | 14 | Model Context Protocol servers and tool integrations |
+| meta | 13 | Self-evolving meta-skills, performance monitoring |
 | financial | 15 | Finance analysis, valuation, tax, portfolio management |
 | sales | 14 | Lead gen, CRM, outreach, sales automation |
 | data | 10 | Data pipelines, analysis, visualization, ETL |
 | productivity | 10 | Calendars, email, meetings, workspace management |
-| meta | 13 | Self-evolving meta-skills, performance monitoring |
+
 
 ## Hard rules
 1. Read code before writing code.
