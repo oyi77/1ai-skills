@@ -1,10 +1,10 @@
 {
-  "total_skills": 1328,
+  "total_skills": 1329,
   "category_count": 19,
   "categories": {
     "agents": 17,
     "automation": 29,
-    "content": 57,
+    "content": 58,
     "core": 45,
     "cybersecurity": 786,
     "data": 10,
@@ -24537,6 +24537,28 @@
       "dir": "content/video/faceless-youtube",
       "category": "content",
       "subcategory": "video"
+    },
+    {
+      "name": "novel-writing",
+      "category": "content",
+      "description": "Complete novel and fiction writing skill \u2014 story structure, character creation, world-building, dialogue, pacing, and chapter craft. Adopts proven patterns from the Chinese novelist skill and expands with Western novel craft frameworks. Use when writing novels, short stories, or any fiction.",
+      "domain": "content",
+      "tags": [
+        "content",
+        "writing",
+        "fiction",
+        "novel",
+        "character",
+        "plot",
+        "worldbuilding",
+        "story",
+        "creative-writing",
+        "money"
+      ],
+      "version": "2.0.0",
+      "author": "",
+      "subdomain": "",
+      "type": "content"
     }
   ],
   "tooling_dirs": [
@@ -24546,5 +24568,5 @@
     "references",
     "scripts"
   ],
-  "count": 1346
+  "count": 1347
 }
