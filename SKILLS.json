@@ -1,5 +1,5 @@
 {
-  "total_skills": 1278,
+  "total_skills": 1277,
   "category_count": 20,
   "categories": {
     "agents": 12,
@@ -19,7 +19,7 @@
     "mindset": 55,
     "operations": 19,
     "productivity": 10,
-    "research": 22,
+    "research": 21,
     "sales": 13,
     "trading": 14
   },
@@ -22532,25 +22532,6 @@
         "continuous",
         "investigation",
         "learning",
-        "research"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "research"
-    },
-    {
-      "name": "data-pipeline-engine",
-      "category": "research",
-      "description": "ETL pipelines that pull data from multiple sources (APIs, databases, web scraping), transform it, and produce actionable dashboards and reports. Use when working with data pipeline engine.",
-      "domain": "research",
-      "tags": [
-        "analysis",
-        "api",
-        "data",
-        "engine",
-        "investigation",
-        "pipeline",
         "research"
       ],
       "version": "",
