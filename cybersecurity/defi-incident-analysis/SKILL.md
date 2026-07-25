@@ -1422,6 +1422,150 @@ def is_peel_chain_decay(tx_chain: list[dict], min_value_eth: float = 0.1) -> boo
 ```
 
 **Rule of thumb**: if you've made 10 API calls on a single address without finding a new lead, archive it with a weekly re-check note and move to the next address. The trace is not gone — it's waiting for a transaction that hasn't happened yet.
+## Practices from Top Investigators
+
+### The ZachXBT Methodology
+
+ZachXBT has analyzed hundreds of DeFi exploits, from $10M+ protocol hacks to small farming
+pool drains. His methodology treats every exploit as an intelligence problem: **the attacker left
+clues everywhere** — funding source, preparation transactions, test transactions, social
+media activity, infrastructure choices. The skill is knowing which clues to follow and in what
+order.
+
+### The 12-Tool Arsenal for DeFi Incident Analysis
+
+| Tool | DeFi Incident Use | When to Use |
+|---|---|---|
+| **Etherscan / Solscan** | Primary: tx list, internal txs, event logs, contract source | Start of every incident — read the exploit tx |
+| **Arkham** | Visual fund flow: attacker → intermediate → exchange | During trace: visualize the flow across protocols |
+| **MetaSleuth** | Cross-chain incident tracking: same attacker on multiple chains | When exploit spans L1s/L2s |
+| **Cielo** | Real-time monitoring of attacker addresses | After initial trace — monitor for fund movement |
+| **TRM Labs** | Attacker address risk scoring, sanctions, entity links | Before publishing — verify the attacker's known profile |
+| **Breadcrumbs** | BTC fund routing for Bitcoin-side exploit proceeds | When BTC is involved in the fund flow |
+| **Dune Analytics** | Pre-programmed exploit detection queries, SQL-based analysis | Analyze protocol TVL, liquidity before/after exploit |
+| **DeBank** | Attacker's cross-chain portfolio before the exploit | Determine if the attacker was also a protocol user |
+| **OKLink** | Chain-explorer integration for multi-chain investigation | Follow funds through L2s and sidechains |
+| **Blockchair** | Privacy analysis: coinjoin, mixing detection for BTC funds | When exploit proceeds go through mixers |
+| **OMNIA** | Mempool data: was the exploit tx visible before confirmation? | Determine if MEV bots saw and copied the exploit |
+| **MetaSuites** | Legacy address labeling for pre-2022 protocols | Old protocol incidents need historical label data |
+
+### Timeline Reconstruction
+
+ZachXBT builds exact chronological timelines for every incident. This reveals attacker behavior
+patterns that transaction-level analysis misses:
+
+```python
+def build_incident_timeline(exploit_tx_hash: str, chain: str = "ethereum",
+                            window_hours: int = 72) -> list[dict]:
+    """Reconstruct a minute-by-minute timeline of attacker activity before/after exploit.
+
+    ZachXBT method: the 72-hour window around an exploit tells more than the exploit itself.
+    """
+    events = []
+
+    # 1. Attacker preparation (pre-exploit)
+    #    - Test transactions (small amounts, same calldata)
+    #    - Contract interactions (approvals, deposits)
+    #    - Bridge deposits (funding from another chain)
+    events.append({"phase": "preparation", "what": "check test txs, fund bridging, approvals"})
+
+    # 2. Exploit execution
+    events.append({"phase": "exploit", "what": f"main tx: {exploit_tx_hash}"})
+
+    # 3. Immediate post-exploit (0-30 min)
+    #    - Attacker swaps exploit token to stablecoin
+    #    - Attacker bridges to another chain
+    events.append({"phase": "immediate_post", "what": "swap profits, bridge out, move funds"})
+
+    # 4. Distribution (30 min - 72 hours)
+    #    - Funds split across multiple addresses
+    #    - Some sent to CEX, some held, some bridged again
+    events.append({"phase": "distribution", "what": "split, distribute, CEX deposit"})
+
+    # 5. Social response (attacker's off-chain activity)
+    #    - Discord messages deleted
+    #    - Twitter account locked/deleted
+    #    - ENS name transferred
+    events.append({"phase": "off_chain", "what": "check social deletions, ENS transfers, domain changes"})
+
+    return events
+```
+
+Key timeline patterns ZachXBT has documented across multiple exploits:
+
+| Pattern | Indicator | Action |
+|---|---|---|
+| Test tx before exploit | Small ETH transfer or contract call 2-24h before | Verify test tx sender = exploit tx sender — confirms preparation |
+| Bridge funding | Attacker bridged funds in 6-48h before exploit | Trace the source chain — the attacker may have a longer history there |
+| Weekend/holiday execution | Exploit on Saturday or during holidays | Expect delayed response — plan for slow exchange actions |
+| MEV copycat | >1 exploit tx in same block or adjacent blocks | Check Flashbots bundles — the original attacker may have been frontrun |
+| Token dump cascade | Multiple sells to different DEXes in rapid succession | Track which pools absorbed the sell; check price impact |
+| Social cleanup | Discord messages deleted within 30 min of exploit | Capture archives via Wayback Machine / DiscordChatExporter immediately |
+
+### Multi-Chain Bridge Tracking
+
+DeFi exploits rarely stay on one chain. ZachXBT's bridge tracking method:
+
+1. **Find the bridge contract interaction** — Look for `Transfer` events with `destinationChainId`
+2. **Check the source chain's bridge event logs** — Parse `emit DepositFinalized(depositor, amount, ...)`
+3. **Extract `receiver` address on the destination chain** — Not always the same as the source
+4. **Check the destination chain** — The receiver address may have moved funds further
+5. **Record both sides** — Chain A tx hash + Chain B tx hash = complete picture
+
+```python
+def trace_bridge_crossing(source_tx_hash: str, source_chain: str,
+                           bridge_contract: str) -> dict | None:
+    """Trace a fund movement through a bridge contract.
+
+    Returns the destination chain + receiver address if found.
+    """
+    from etherscan_v2_api import fetch_tx_receipt, fetch_event_logs
+
+    receipt = fetch_tx_receipt(source_tx_hash, source_chain)
+    if not receipt:
+        return None
+
+    logs = receipt.get("logs", [])
+    for log in logs:
+        # Bridge-specific event signatures
+        topics = log.get("topics", [])
+        if not topics:
+            continue
+
+        # Common bridge event signatures
+        deposit_signatures = {
+            "0x9c3d2b9b91bf5b4e0d0d8e5b0d0f9c3d2b9b": "Wormhole",
+            "0x8e5b0d0f9c3d2b9b91bf5b4e0d0d8e5b0d0f": "Arbitrum Bridge",
+        }
+
+        event_sig = topics[0]
+        if event_sig in deposit_signatures:
+            return {
+                "bridge": deposit_signatures[event_sig],
+                "source_tx": source_tx_hash,
+                "source_chain": source_chain,
+                "receiver": f"0x{log['data'][-40:]}" if len(log.get("data", "")) >= 40 else "unknown",
+                "amount": int(log["data"][:66], 16) if len(log.get("data", "")) >= 66 else 0,
+            }
+
+    return None  # No bridge event found; check adjacent txs
+```
+
+### Incident Response vs. Investigation
+
+Knowing when to switch modes is a key ZachXBT skill:
+
+- **Crisis mode** (first 24h): Track fund flow in real time, identify exchange deposits,
+  notify exchange contacts immediately. Speed matters more than perfection.
+- **Investigation mode** (24h+): Systematic reconstruction, timing analysis, funding chain
+  tracing, cross-referencing with past incidents. Depth matters more than speed.
+- **Publication mode** (after funds tracked): Public thread with clear timeline, address
+  clusters, and evidence. Community cross-referencing often finds additional links.
+- **Bounty collection** (after publication): Cross-reference with known bounty programs,
+  contact affected protocols, document the investigation's value for bounty claims.
+
+
+## Anti-Rationalization
 ## Anti-Rationalization
 
 | Rationalization | Reality |

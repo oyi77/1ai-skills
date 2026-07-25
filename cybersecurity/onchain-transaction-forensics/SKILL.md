@@ -1424,6 +1424,156 @@ def archive_cold_trail(address: str, chain: str, last_tx: str, notes: str):
 ```
 
 **Do not delete cold trails.** The trace is not dead — it's waiting for the next transaction that hasn't happened. Archive with a weekly re-check window and move to higher-signal addresses.
+## Practices from Top Investigators
+
+### The ZachXBT Methodology
+
+ZachXBT is the most recognized on-chain investigator, having traced over $243M in stolen crypto
+funds. His methodology combines on-chain analysis with extensive cross-platform OSINT, turning
+blockchain pseudonymity into identity evidence. This section codifies his proven techniques.
+
+### The 12-Tool Arsenal
+
+| Tool | Purpose | When to Use |
+|---|---|---|
+| **Etherscan / Solscan** | Primary chain explorer (tx list, internal txs, token transfers) | Every trace — start here |
+| **Arkham Intelligence** | Visual fund flow graphs, entity tags, exchange hot wallets | Mid-trace: visualize complex hop chains |
+| **MetaSleuth** | Cross-chain fund flow visualization with one-click explorer links | When traces span 3+ chains |
+| **Cielo** | Real-time wallet monitoring, push alerts on target addresses | After identifying key addresses — set alerts before sleeping |
+| **TRM Labs** | Sanctions screening, risk scoring, entity attribution | Every address before publishing results |
+| **Breadcrumbs** | Bitcoin UTXO clustering, peel chain detection | BTC traces — clusters by co-spend heuristic |
+| **Blockchair** | BTC/ETH privacy analysis, entity tags, mixing detection | When mixers or privacy tools are suspected |
+| **Dune Analytics** | Custom SQL queries on decoded event data | When you need to aggregate thousands of events |
+| **DeBank** | Cross-chain portfolio view — balance history over time | Quick assessment of a wallet's activity pattern |
+| **OKLink** | Multi-chain explorer with cross-chain bridge tracking | Following funds across L1s and L2s |
+| **OMNIA** | Mempool monitoring, pending tx capture | Catching transactions before they confirm |
+| **MetaSuites** | Batch address lookups, legacy labeling data | De-anonymizing old addresses with pre-2020 data |
+
+### Funding Chain Tracing (His Signature Method)
+
+The core insight: **trace the attacker's funding, not just the stolen funds.** Attackers almost
+always fund their operations from an earlier hack or a tied wallet. Tracing backward from the
+attack transaction to the original source of the ETH used for gas fees often reveals:
+
+- The same attacker's previous hacks (same funding source → same person)
+- Exchange deposit patterns that reveal identity
+- Timing links between multiple attacks
+
+```python
+def trace_funding_chain(attacker_address: str, chain: str = "ethereum") -> list[dict]:
+    """Trace attacker's funding chain backward from attack tx.
+
+    ZachXBT technique: find where the ATTACKER got their gas money.
+    The funding source often ties multiple hacks to the same person.
+    """
+    from etherscan_v2_api import fetch_txlist, fetch_internal_txlist
+    from collections import deque
+
+    visited = {attacker_address}
+    queue = deque([attacker_address])
+    funding_chain = []
+    max_depth = 5  # attackers rarely fund more than 5 hops deep
+
+    while queue and len(funding_chain) < max_depth:
+        addr = queue.popleft()
+        # Get the FIRST transaction the address ever received (its funding)
+        txs = fetch_txlist(addr, chain, sort="asc", limit=1) or []
+        internal_txs = fetch_internal_txlist(addr, chain, sort="asc", limit=1) or []
+
+        earliest = (txs or internal_txs)[0] if (txs or internal_txs) else None
+        if not earliest:
+            funding_chain.append({"address": addr, "funding_source": "unknown", "depth": len(funding_chain)})
+            continue
+
+        sender = earliest.get("from", "")
+        funding_chain.append({
+            "address": addr,
+            "funded_by": sender,
+            "value_eth": earliest.get("value_eth", earliest.get("value", 0)),
+            "block": earliest.get("blockNumber"),
+            "tx_hash": earliest.get("hash") or earliest.get("transactionHash"),
+        })
+
+        if sender and sender not in visited:
+            visited.add(sender)
+            queue.append(sender)
+
+    # Check: do any funding sources overlap with known hacker addresses?
+    # This is the key pattern — same funder = same attacker across exploits
+    return funding_chain
+```
+
+### Cross-Platform OSINT Integration
+
+ZachXBT never stops at the blockchain. Every address is cross-referenced with:
+
+1. **Twitter/X** — Deleted tweets, handle changes, engagement patterns
+2. **Discord/Telegram** — Invite links from scam websites, group memberships
+3. **GitHub** — Repository contributions, commit timestamps matching attack blocks
+4. **ENS/Unstoppable Domains** — Metadata that links to real-world identities
+5. **Forum posts** (BitcoinTalk, Reddit) — Historical posts with wallet mentions
+
+```python
+def cross_platform_lookup(address: str, identity_hints: dict[str, str] = None) -> dict:
+    """Cross-reference an address across OSINT sources.
+
+    identity_hints: {"twitter": "handle", "github": "username", "ens": "name.eth"}
+    """
+    results = {"address": address, "platforms": {}}
+
+    # 1. ENS reverse lookup
+    try:
+        resp = requests.get(f"https://api.ensideas.com/ens/resolve/{address}", timeout=10)
+        if resp.ok:
+            data = resp.json()
+            results["platforms"]["ens"] = {"name": data.get("ens"), "avatar": data.get("avatar")}
+    except Exception:
+        pass
+
+    # 2. Check known exploit databases for this address
+    try:
+        resp = requests.get(
+            "https://raw.githubusercontent.com/The-Blockchain-Repository/Hack-Transactions/main/data/latest.json",
+            timeout=10)
+        if resp.ok:
+            exploits = [e for e in resp.json() if address.lower() in str(e).lower()]
+            if exploits:
+                results["platforms"]["exploit_db"] = {"matches": len(exploits)}
+    except Exception:
+        pass
+
+    # 3. If we have social media hints, search for them (pseudocode — API keys vary)
+    if identity_hints:
+        results["platforms"]["hints_provided"] = identity_hints
+        results["note"] = "Cross-reference identity hints against on-chain activity timestamps"
+
+    return results
+```
+
+### Address Cluster Publication
+
+ZachXBT publicly releases address clusters on Twitter/X after investigations. This creates a
+positive feedback loop: the community cross-references new scams against published clusters,
+identifying repeat offenders across projects.
+
+**Publishing strategy:**
+- **Include all identified addresses** (EOAs, contracts, intermediate wallets)
+- **Label each address** with its role (deployer, funder, intermediate, exchange deposit)
+- **Chain + tx hash evidence** for every link — no unsupported claims
+- **Timestamp the publication** to establish timeline priority
+
+### The Bounty Model
+
+ZachXBT demonstrates that on-chain investigation is a viable career. Revenue sources:
+
+- **Community-funded bounties** — Twitter/X tip jar, Gitcoin grants, mirror.xyz articles
+- **Exchange bug bounties** — Exchanges pay for intelligence that helps them freeze stolen funds
+- **Project recovery bounties** — 5-15% of recovered funds for tracing assistance
+- **Media consulting** — Journalists pay for investigation reports on high-profile incidents
+- **Private investigations** — Law firms and insurance companies contract for court-ready reports
+
+
+## Anti-Rationalization
 ## Anti-Rationalization
 
 | Rationalization | Reality |
