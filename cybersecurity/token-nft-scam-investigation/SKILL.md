@@ -131,6 +131,7 @@ def run_scam_check(address: str, rpc_url: str = RPC_URL) -> dict:
     }
     return checks
 
+```
 
 ### Step 1: Token Contract Analysis
 
