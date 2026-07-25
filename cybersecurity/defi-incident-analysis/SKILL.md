@@ -1305,6 +1305,123 @@ A structured DeFi incident post-mortem containing: attack transaction hash, step
 - Event log parsing verified by comparing decoded values against raw hex data
 - For multi-transaction attacks: all related transactions identified and linked in the report
 
+
+## Pre-Investigation Checklist
+
+Before committing to a full attack-chain reconstruction, verify the incident is worth the effort:
+
+- [ ] Transaction is not a failed attempt (check `status` field — 0 = reverted)
+- [ ] Flash loan profit > 0.5 ETH — smaller amounts are typically MEV extraction, not an exploit
+- [ ] Protocol did not pause or self-destruct pre-attack (may be a white-hat rescue or planned migration)
+- [ ] Affected contract is not a testnet/mock deployment (verify against mainnet-verified source)
+- [ ] Multiple transactions from the same address in the same block — indicates batched attack, not a single atomic exploit
+- [ ] Oracle price deviation > 5% from independent feeds — check against Chainlink, Maker, and Uniswap TWAP
+- [ ] Transaction has at least one verified independent source (block explorer + Dune + Tenderly)
+- [ ] Attacker address is not a known white-hat or MEV bot (check etherscan labels, eigenphi, failed-tx datasets)
+
+**Exit criteria**: If 3+ items fail the check, deprioritize this analysis. The "attack" is likely a false positive, MEV extraction, or an internal action. Log the address + chain to a watchlist and re-check weekly.
+
+## RPC & API Endpoint Management
+
+Every chain-forensics investigation depends on reliable API access. Plan for failure at every layer.
+
+### Etherscan-Style API Rate Limits
+
+| Provider | Free Tier Limit | Paid Tier | Notes |
+|---|---|---|---|
+| Etherscan | 5 calls/sec | 1,000 calls/min ($165/mo) | `api.etherscan.io` |
+| BscScan | 5 calls/sec | 1,000 calls/min ($99/mo) | Same API shape |
+| Polygonscan | 5 calls/sec | 500 calls/min ($49/mo) | Same API shape |
+| Arbiscan | 10 calls/sec | 1,000 calls/min ($99/mo) | Same API shape |
+
+### Fallback Provider Chain
+
+```python
+import time
+import requests
+from typing import Any
+
+PROVIDER_CHAIN = [
+    {"name": "etherscan", "base": "https://api.etherscan.io/api", "key_env": "ETHERSCAN_KEY"},
+    {"name": "etherscan-backup", "base": "https://api.etherscan.io/api", "key_env": "ETHERSCAN_KEY_2"},
+]
+
+def api_call_with_fallback(action: str, params: dict) -> dict:
+    """Call block explorer API with automatic failover and rate-limit backoff."""
+    for provider in PROVIDER_CHAIN:
+        api_key = __import__("os").environ.get(provider["key_env"])
+        if not api_key:
+            continue
+        params["apikey"] = api_key
+        try:
+            resp = requests.get(provider["base"], params=params, timeout=30)
+            data = resp.json()
+            if data.get("status") == "1":  # success
+                return data
+            if "rate limit" in str(data).lower():
+                time.sleep(1.5)
+                continue
+        except (requests.ConnectionError, requests.Timeout):
+            time.sleep(2)
+            continue
+    raise RuntimeError(f"All providers failed for action={action}")
+```
+
+### API Key Hygiene Rules
+
+1. **Never hardcode keys** — load from environment variables (`ETHERSCAN_KEY`, `INFURA_KEY`)
+2. **Rotate exposed keys immediately** — if a key appears in logs, stdout, or a screenshot, rotate before continuing
+3. **Separate read keys from write keys** — use read-only API keys for investigation to prevent accidental state changes
+4. **Use a dedicated key for each chain** — don't share a single key across Etherscan, BscScan, Polygonscan; each scan family tracks its own rate limit
+5. **Check key validity at start** — make one `?action=balance&address=0x0&tag=latest` call; if it returns an error key, fail fast before beginning analysis
+
+### When You Have No API Key
+
+**Free alternatives** for emergency investigation:
+
+- **Etherscan read function** (web UI): curl-able, no key needed for individual lookups
+- **Blocknative mempool API**: free tier for pending tx monitoring
+- **Covalent unified API**: 5 req/s free tier, one key covers 30+ chains
+- **Dune Analytics**: free tier for querying decoded event data (SQL interface)
+
+## When the Trace Goes Cold
+
+Every investigator hits dead ends. The skill is not in avoiding them — it's in knowing which are real dead ends and which are puzzles with one more piece missing.
+
+### Dead-End Decision Matrix
+
+| Situation | Most Likely Cause | Action |
+|---|---|---|
+| EOA receives funds, no outgoing txs for 48h+ | Sleeping address / cold storage | Set webhook alert on `txlist` for this address; return when it moves |
+| Funds enter a Tornado Cash pool | Privacy mixer | Note the deposit amount + block. Check all withdrawals from the same pool within ±100 blocks for matching amounts |
+| Trace reaches a CEX deposit address | Exchange — last on-chain point | Document destination + tx hash. This is a subpoena boundary, not a tracing failure |
+| Trace reaches a bridge contract | Cross-chain transfer | Search the source chain exits → destination chain entry (event logs on both sides) |
+| Target is a proxy contract (ERC-1967) | Implementation upgrade | Find the `_implementation()` slot value and investigate the logic contract |
+| Transaction reverted but gas was paid | Failed attempt, not a real transfer | Ignore for fund flow; check adjacent transactions from the same sender |
+| Destination is a burn address (0x00...dead) | Token burn, intentional | This IS the end. Funds are irretrievable. Report as final destination |
+| Attacker used create2 with salt | Counterfactual deployment | Search for the contract at the predicted address or check deployer history |
+
+### When to Stop Tracing
+
+Apply the 80/20 rule: the last 5% of trace hops cost 50% of your time. Stop when:
+
+1. Funds enter a regulated exchange (CEX) — document and close
+2. Funds are burned or sent to a dead address — final state
+3. You have identified the attacker's identity with high confidence (ENS, social media, Git repo)
+4. The trace enters a privacy chain (Monero, Zcash shielded) — explicit stop: these are not analyzable without specialized tools
+5. Three consecutive hops show value dissipation (peel chain decay formula below) — the remaining amount is below your investigation threshold
+
+```python
+def is_peel_chain_decay(tx_chain: list[dict], min_value_eth: float = 0.1) -> bool:
+    """Detect if a transaction chain shows peel-chain decay pattern."""
+    if len(tx_chain) < 3:
+        return False
+    values = [tx["value_eth"] for tx in tx_chain[-3:]]
+    # Peel chains show strictly decreasing value per hop
+    return all(v < values[i] for i, v in enumerate(values[1:])) and values[-1] < min_value_eth
+```
+
+**Rule of thumb**: if you've made 10 API calls on a single address without finding a new lead, archive it with a weekly re-check note and move to the next address. The trace is not gone — it's waiting for a transaction that hasn't happened yet.
 ## Anti-Rationalization
 
 | Rationalization | Reality |

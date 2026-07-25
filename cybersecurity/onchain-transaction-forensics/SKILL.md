@@ -1351,6 +1351,79 @@ A forensic trace report containing:
 - Sankey diagram total inflow matches total outflow (conservation of value)
 - Report includes raw data exports so findings can be independently verified
 
+
+## RPC & API Endpoint Management
+
+### Multi-Provider Fallback Strategy
+
+```python
+import os, time, requests
+
+BLOCK_EXPLORERS = {
+    "ethereum": [{"name": "etherscan",  "base": "https://api.etherscan.io/api",       "key_env": "ETHERSCAN_API_KEY"},
+                 {"name": "etherscan-2","base": "https://api.etherscan.io/api",       "key_env": "ETHERSCAN_API_KEY_2"}],
+    "bsc":      [{"name": "bscscan",    "base": "https://api.bscscan.com/api",        "key_env": "BSCSCAN_API_KEY"}],
+    "polygon":  [{"name": "polygonscan","base": "https://api.polygonscan.com/api",    "key_env": "POLYGONSCAN_API_KEY"}],
+}
+
+def robust_explorer_call(chain: str, params: dict, retries: int = 3) -> dict | None:
+    """Call block explorer API with per-chain fallback and rate-limit backoff."""
+    providers = BLOCK_EXPLORERS.get(chain, [])
+    for provider in providers:
+        api_key = os.environ.get(provider["key_env"])
+        if not api_key:
+            continue
+        params["apikey"] = api_key
+        for attempt in range(retries):
+            try:
+                resp = requests.get(provider["base"], params=params, timeout=30)
+                data = resp.json()
+                if data.get("status") == "1":
+                    return data
+                if "rate limit" in str(data).lower():
+                    time.sleep(2 ** attempt)  # exponential backoff
+                    continue
+                return data  # non-rate-limit error, return anyway
+            except (requests.ConnectionError, requests.Timeout):
+                time.sleep(2 ** attempt)
+    return None
+```
+
+### Key Hygiene
+
+- Store keys in `.env` with per-chain names (`ETHERSCAN_API_KEY`, `BSCSCAN_API_KEY`).
+- Add a second Etherscan key (`ETHERSCAN_API_KEY_2`) for high-volume traces — the rate limit is per-key.
+- **No key?** Use the Covalent free tier (1 key, 30+ chains, 5 req/s) or the block explorer web UI (curl-able, no key for individual lookups).
+
+## When the Trace Goes Cold
+
+### Common Dead Ends and Real Resolutions
+
+| On-Chain Signal | Interpretation | Action |
+|---|---|---|
+| Funds hit a CEX deposit address | Last on-chain point — exchange owns the address | Document tx hash + timestamp. This is a subpoena/subpoena-ready endpoint. |
+| Funds enter a privacy mixer (Tornado Cash, RAILGUN) | Intentional obfuscation | Record deposit amount + block. Scan ±200 blocks for matching withdrawal amounts. |
+| Transaction is a `create2` deployment | Counterfactual contract — may not exist yet | Compute predicted address from deployer + salt. Monitor for creation tx. |
+| Target address has zero outgoing txs for 72h+ | Sleeping address or intentional hold | Set up a cron job (`crontab -e`, check every 6h via `txlist`) to detect future movement. |
+| Funds bridged to another chain | Cross-chain escape | Parse the `Transfer`/`Swap` event on the source bridge contract. Extract `destinationChainId` and `receiver`. Re-query on the target chain. |
+| Contract self-destructed | Intentional state destruction | Investigate deployer address. The `SELFDESTRUCT` opcode sends remaining ETH to a target — follow that. |
+| UTXO chain — single input, single output | Normal spend | Check for address reuse patterns; if none, this branch is cold. |
+
+### The 10/3 Rule
+
+If you have made 10 API lookups on a single address and found 0 new leads in the last 3, **stop**. Archive the investigation with:
+
+```python
+def archive_cold_trail(address: str, chain: str, last_tx: str, notes: str):
+    """Log a cold trail for periodic re-check."""
+    record = {"address": address, "chain": chain, "last_tx_hash": last_tx,
+              "archived_at": time.time(), "notes": notes, "next_check": time.time() + 604800}
+    # Append to cold_trails.jsonl — re-check weekly
+    with open("cold_trails.jsonl", "a") as f:
+        f.write(json.dumps(record) + "\n")
+```
+
+**Do not delete cold trails.** The trace is not dead — it's waiting for the next transaction that hasn't happened. Archive with a weekly re-check window and move to higher-signal addresses.
 ## Anti-Rationalization
 
 | Rationalization | Reality |
