@@ -1,11 +1,11 @@
 {
-  "total_skills": 1277,
+  "total_skills": 1261,
   "category_count": 20,
   "categories": {
-    "agents": 12,
+    "agents": 4,
     "automation": 18,
     "content": 56,
-    "core": 45,
+    "core": 43,
     "cybersecurity": 781,
     "data": 7,
     "development": 88,
@@ -14,9 +14,9 @@
     "financial": 15,
     "integrations": 20,
     "marketing": 44,
-    "mcp": 12,
+    "mcp": 10,
     "meta": 13,
-    "mindset": 55,
+    "mindset": 51,
     "operations": 19,
     "productivity": 10,
     "research": 21,
@@ -99,142 +99,6 @@
         "test",
         "quality",
         "money"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "agents"
-    },
-    {
-      "name": "deploy-agent",
-      "category": "agents",
-      "description": "Ship code through controlled pipeline with verification gates and rollback plans.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "deploy",
-        "autonomous"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "agents"
-    },
-    {
-      "name": "linter-agent",
-      "category": "agents",
-      "description": "Detect and fix code style violations, enforce project conventions, ensure consistent formatting.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "linter",
-        "coding"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "agents"
-    },
-    {
-      "name": "perf-agent",
-      "category": "agents",
-      "description": "Measure before optimizing, target actual bottlenecks proven by profiling, verify with benchmarks.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "perf",
-        "coding"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "agents"
-    },
-    {
-      "name": "planning-agent",
-      "category": "agents",
-      "description": "Decompose complex tasks into executable steps with dependencies, risk assessment, and verification criteria.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "planning",
-        "autonomous"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "agents"
-    },
-    {
-      "name": "refactor-agent",
-      "category": "agents",
-      "description": "Restructure code to improve readability, maintainability, extensibility without changing external behavior.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "refactor",
-        "coding"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "agents"
-    },
-    {
-      "name": "research-agent",
-      "category": "agents",
-      "description": "Investigate topics deeply with cross-referenced sources and produce evidence-backed findings.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "research",
-        "autonomous"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "agents"
-    },
-    {
-      "name": "security-agent",
-      "category": "agents",
-      "description": "Bug bounty hunter and security auditor. Finds vulnerabilities before they find production.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "security",
-        "coding"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "agents"
-    },
-    {
-      "name": "test-agent",
-      "category": "agents",
-      "description": "Write comprehensive test suites covering happy paths, error paths, edge cases, and integration points.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "test",
-        "coding"
       ],
       "version": "",
       "author": "",
@@ -1749,22 +1613,6 @@
       "type": "core"
     },
     {
-      "name": "company-kb",
-      "category": "core",
-      "description": "company-kb \u2014 Company Knowledge Base Skill. Use when relevant to this domain.",
-      "domain": "core",
-      "tags": [
-        "company",
-        "infrastructure",
-        "memory",
-        "self-improvement"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "core"
-    },
-    {
       "name": "core",
       "category": "core",
       "description": "Knowledge base hub \u2014 PARA-structured company memory combining company-kb and kb for persistent context, project documentation, and agent recall across sessions. Use when working with knowledge base, company knowledge, or persistent memory.",
@@ -1936,21 +1784,6 @@
         [
           "coding-principles - code-quality - best-practices - karpathy - simplicity - clean-code"
         ]
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "core"
-    },
-    {
-      "name": "kb",
-      "category": "core",
-      "description": "Query and maintain the knowledge base for project context, decisions, and architecture documentation. Use on session start. Use when working with kb.",
-      "domain": "core",
-      "tags": [
-        "infrastructure",
-        "memory",
-        "self-improvement"
       ],
       "version": "",
       "author": "",
@@ -20654,40 +20487,6 @@
       "type": "mcp"
     },
     {
-      "name": "mcp-client",
-      "category": "mcp",
-      "description": "Generic MCP client implementation for connecting to any Model Context Protocol server with standardized tool access. Use when working with mcp client.",
-      "domain": "mcp",
-      "tags": [
-        "client",
-        "mcp",
-        "mcp-server",
-        "model-context-protocol",
-        "tool-integration"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "mcp"
-    },
-    {
-      "name": "mcp-discover",
-      "category": "mcp",
-      "description": "Discover and connect to MCP servers automatically. Browse available tools and register new server endpoints. Use when working with mcp discover.",
-      "domain": "mcp",
-      "tags": [
-        "discover",
-        "mcp",
-        "mcp-server",
-        "model-context-protocol",
-        "tool-integration"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "mcp"
-    },
-    {
       "name": "mcp-server-builder",
       "category": "mcp",
       "description": "Create MCP (Model Context Protocol) servers for any API or service. Auto-generate tools, resources, and prompts that any AI agent can use.",
@@ -21033,22 +20832,6 @@
       "type": "mindset"
     },
     {
-      "name": "audit",
-      "category": "mindset",
-      "description": "Audit repo for over-engineering. Ranked list of what to delete, simplify, or replace with stdlib or native features.",
-      "domain": "mindset",
-      "tags": [
-        "audit",
-        "mindset",
-        "ponytail",
-        "simplification"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "mindset"
-    },
-    {
       "name": "business-model-canvas",
       "category": "mindset",
       "description": "Design and analyze business models using the 9 building blocks of the Business Model Canvas. Use when launching, pivoting, or evaluating a business.",
@@ -21172,22 +20955,6 @@
         "mindset",
         "personal-development",
         "soft-skills"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "mindset"
-    },
-    {
-      "name": "debt",
-      "category": "mindset",
-      "description": "Harvest ponytail shortcut comments into one debt ledger so deferrals get tracked instead of forgotten.",
-      "domain": "mindset",
-      "tags": [
-        "debt",
-        "mindset",
-        "ponytail",
-        "tracking"
       ],
       "version": "",
       "author": "",
@@ -21394,22 +21161,6 @@
         "mindset",
         "personal-development",
         "soft-skills"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "mindset"
-    },
-    {
-      "name": "help",
-      "category": "mindset",
-      "description": "Quick reference for ponytail modes, skills, and commands. One-shot display.",
-      "domain": "mindset",
-      "tags": [
-        "help",
-        "mindset",
-        "ponytail",
-        "reference"
       ],
       "version": "",
       "author": "",
@@ -21740,22 +21491,6 @@
         "personal-development",
         "resilience",
         "soft-skills"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "mindset"
-    },
-    {
-      "name": "review",
-      "category": "mindset",
-      "description": "Review a diff for over-engineering. Finds what to delete \u2014 reinvented stdlib, needless deps, speculative abstractions.",
-      "domain": "mindset",
-      "tags": [
-        "review",
-        "mindset",
-        "ponytail",
-        "simplification"
       ],
       "version": "",
       "author": "",
