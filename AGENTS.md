@@ -16,7 +16,7 @@ Every task follows this sequence. No exceptions.
 Full details: `~/.1ai/core/PROCESS.md` (auto-injected by hooks)
 
 ## This repo
-Production-ready AI agent skill library — 1351 skills across 18 categories with anti-rationalization tables, code examples, and verification checklists.
+Production-ready AI agent skill library — 1348 skills across 20 categories with anti-rationalization tables, code examples, and verification checklists.
 Stack: Node.js / Python / YAML skills
 Domain: Agent skill library — NOT a product repo. Do not add features here unless adding new skills.
 
@@ -77,10 +77,10 @@ cat ~/projects/1ai-skills/integrations/stripe-integration/SKILL.md
 | Category | Count | What it covers |
 |----------|------:|----------------|
 | cybersecurity | 790 | Threat hunting, forensics, pen testing, SOC, incident response |
-| development | 0 | TDD, debugging, code review, PRD, engineering workflows |
-| content | 60 | Video, audio, design, writing, docs |
+| development | 90 | TDD, debugging, code review, PRD, engineering workflows |
+| content | 62 | Video, audio, design, writing, docs |
 | mindset | 55 | Negotiation, leadership, critical thinking |
-| marketing | 0 | SEO, viral content, email, ads, growth |
+| marketing | 45 | SEO, viral content, email, ads, growth |
 | core | 46 | AI infrastructure, memory, self-improvement, model routing |
 | integrations | 38 | GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase |
 | devops | 34 | Docker, Kubernetes, CI/CD, cloud ops, GitOps |
@@ -88,13 +88,14 @@ cat ~/projects/1ai-skills/integrations/stripe-integration/SKILL.md
 | research | 23 | Deep research, market analysis, competitive intelligence |
 | trading | 19 | Crypto, DeFi, Polymarket, trading strategies |
 | operations | 19 | Business ops, governance, HR, legal, project management |
-| agents | 19 | AI agent orchestration, coding, research, autonomous execution |
+| agents | 14 | AI agent orchestration, coding, research, autonomous execution |
 | mcp | 15 | Model Context Protocol servers and tool integrations |
 | meta | 13 | Self-evolving meta-skills, performance monitoring |
 | financial | 15 | Finance analysis, valuation, tax, portfolio management |
 | sales | 14 | Lead gen, CRM, outreach, sales automation |
 | data | 11 | Data pipelines, analysis, visualization, ETL |
 | productivity | 10 | Calendars, email, meetings, workspace management |
+
 
 
 

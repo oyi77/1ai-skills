@@ -39,9 +39,9 @@ ROOT = Path(__file__).resolve().parent.parent
 
 SKILL_DIRS = [
     "agents", "automation", "content", "core", "cybersecurity", "data",
-    "development", "devops", "financial", "integrations", "marketing",
-    "mcp", "meta", "mindset", "operations", "productivity", "research",
-    "sales", "trading",
+    "development", "devops", "finance", "financial", "integrations",
+    "marketing", "mcp", "meta", "mindset", "operations", "productivity",
+    "research", "sales", "trading",
 ]
 
 # ── Thresholds ──────────────────────────────────────────────────────────
