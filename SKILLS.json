@@ -1,5 +1,5 @@
 {
-  "total_skills": 1348,
+  "total_skills": 1343,
   "category_count": 20,
   "categories": {
     "agents": 14,
@@ -21,7 +21,7 @@
     "productivity": 10,
     "research": 23,
     "sales": 14,
-    "trading": 19
+    "trading": 14
   },
   "skills": [
     {
@@ -24154,24 +24154,6 @@
       "type": "sales"
     },
     {
-      "name": "alphaear-strategy",
-      "category": "trading",
-      "description": "Score trading setups using AlphaEar multi-factor analysis (momentum, volume, sentiment). Use when evaluating entry/exit signals.",
-      "domain": "trading",
-      "tags": [
-        "algorithms",
-        "alphaear",
-        "markets",
-        "money",
-        "strategy",
-        "trading"
-      ],
-      "version": "2.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "trading"
-    },
-    {
       "name": "black-edge",
       "category": "trading",
       "description": "Apply institutional trading edge using order flow analysis, market microstructure, and dark pool signals. Use when working with black edge.",
@@ -24242,26 +24224,6 @@
       "type": "trading"
     },
     {
-      "name": "investing-algorithm-framework",
-      "category": "trading",
-      "description": "Build algorithmic investing strategies with backtesting, signal generation, and portfolio optimization frameworks. Use when building algorithmic investing strategies with backtesting, signal generation, and portfolio.",
-      "domain": "trading",
-      "tags": [
-        "algorithm",
-        "algorithms",
-        "framework",
-        "investing",
-        "markets",
-        "testing",
-        "trading",
-        "money"
-      ],
-      "version": "2.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "trading"
-    },
-    {
       "name": "nft-marketplace",
       "category": "trading",
       "description": "Skill: nft-marketplace. See SKILL.md body for details. Use when this domain is relevant.",
@@ -24288,47 +24250,6 @@
         "markets",
         "polymarket",
         "trading"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "trading"
-    },
-    {
-      "name": "polymarket-fast-loop",
-      "category": "trading",
-      "description": "Trade Polymarket BTC 5-minute and 15-minute fast markets using CEX price momentum signals via Simmer API. Default signal is Binance BTC/USDT klines. Use when user wants to trade sprint/fast markets, automate short-term crypto trading, or use CEX momentum as a Polymarket signal.",
-      "domain": "trading",
-      "tags": [
-        "algorithms",
-        "api",
-        "crypto",
-        "fast",
-        "loop",
-        "markets",
-        "polymarket",
-        "trading",
-        "money"
-      ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "trading"
-    },
-    {
-      "name": "polymarket-weather-trader",
-      "category": "trading",
-      "description": "Trade Polymarket weather markets using NOAA forecasts via Simmer API. Inspired by gopfan2's $2M+ strategy. Use when user wants to trade temperature markets, automate weather bets, check NOAA forecasts, or run gopfan2-style trading.",
-      "domain": "trading",
-      "tags": [
-        "algorithms",
-        "api",
-        "markets",
-        "polymarket",
-        "trader",
-        "trading",
-        "money",
-        "weather"
       ],
       "version": "",
       "author": "",
@@ -24469,25 +24390,6 @@
         "tushare"
       ],
       "version": "",
-      "author": "",
-      "subdomain": "",
-      "type": "trading"
-    },
-    {
-      "name": "xauusd-asia-7c-breakout",
-      "category": "trading",
-      "description": "XAUUSD Asia 7-Candle Breakout strategy with backtest, paper trade, and real trade modes. Use when trading gold on the Asia session breakout strategy, running historical backtests, setting up paper trading simulations, or executing live trades with the 7-candle breakout system.",
-      "domain": "trading",
-      "tags": [
-        "algorithms",
-        "asia",
-        "breakout",
-        "markets",
-        "money",
-        "xauusd",
-        "network"
-      ],
-      "version": "2.0.0",
       "author": "",
       "subdomain": "",
       "type": "trading"
