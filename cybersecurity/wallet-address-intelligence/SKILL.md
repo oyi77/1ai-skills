@@ -1654,6 +1654,145 @@ After querying all chains and data sources, you may have an address that shows n
 | Frequent contract interactions but no DEX/CEX | Bot/contract operator | Reverse-lookup the contract interactions to identify the primary contract |
 | Known ENS but no on-chain activity | Off-chain identity holder | ENS registration costs ~$5 — not all registrants are active users |
 
+## Practices from Top Investigators
+
+### The ZachXBT Methodology
+
+ZachXBT is the most prolific on-chain wallet investigator, having identified thousands of scammer
+wallets and published comprehensive address clusters. His core insight: **wallet intelligence is
+about patterns, not single addresses.** A wallet's value comes from its connections — both
+on-chain (transactions, interactions) and off-chain (social media, forum posts, exchange accounts).
+
+### The 12-Tool Arsenal for Wallet Intelligence
+
+| Tool | Wallet Intelligence Use | When to Apply |
+|---|---|---|
+| **Cielo** | Real-time tracking: monitor target wallets for any new activity | After identifying suspect wallets — maintain surveillance |
+| **Arkham** | Visual entity clusters: swap, bridge, and CEX deposit patterns | Mid-investigation: map wallet relationships |
+| **MetaSleuth** | Cross-chain address linking: find same-owner wallets on different chains | When wallets span L1s and L2s |
+| **Etherscan/Solscan** | Primary data: tx history, token holdings, internal transactions | Every wallet — always start here |
+| **TRM Labs** | Sanctions screening: check wallets against OFAC and proprietary lists | Before publishing any wallet intelligence |
+| **Breadcrumbs** | Bitcoin clustering: co-spend heuristic for UTXO wallet grouping | BTC wallet sets — cluster by common inputs |
+| **DeBank** | Cross-chain portfolio snapshot: what a wallet holds everywhere | Quick reconnaissance — assess wallet type in 10 seconds |
+| **OKLink** | Address labeling: known tags, entity tags, risk flags | Determine if wallet has been previously identified |
+| **Blockchair** | Privacy analysis: mixing detection, entity tag linking, privacy score | Identify wallets that deliberately obscure activity |
+| **Dune** | Bulk wallet analysis: SQL queries on wallet sets | Compare 100+ wallets in batch |
+| **OMNIA** | Mempool monitoring: see pending outbound tx from target wallets | Catch the moment funds move — before they confirm |
+| **MetaSuites** | Legacy labeling for historical address lookups | Old addresses (pre-2022) may only have labels here |
+
+### Address Cluster Publication
+
+Publishing wallet clusters publicly serves two purposes:
+1. **Community defense** — enables anyone to check if they're interacting with a known scammer
+2. **New signal discovery** — community cross-referencing finds connections the original
+   investigation missed
+
+```python
+def format_cluster_for_publication(cluster: dict) -> str:
+    """Format wallet intelligence for public release (ZachXBT-style)."""
+    lines = ["## Wallet Cluster: " + cluster.get("label", "Unnamed Cluster")]
+    lines.append(f"_Published: {cluster.get('date', 'unknown')}_\n")
+    lines.append("### Addresses")
+
+    for addr_group in cluster.get("addresses", []):
+        lines.append(f"- **{addr_group['role']}**: {addr_group['address']}")
+        if "tx_evidence" in addr_group:
+            lines.append(f"  - Evidence: {addr_group['tx_evidence']}")
+        if "tag" in addr_group:
+            lines.append(f"  - Tag: {addr_group['tag']}")
+
+    lines.append("\n### Connections")
+    for conn in cluster.get("connections", []):
+        lines.append(f"- {conn['type']}: {conn['address_a']} → {conn['address_b']}")
+        lines.append(f"  (Tx: {conn['tx_hash']}, Chain: {conn['chain']})")
+
+    lines.append("\n### Cross-References")
+    for ref in cluster.get("cross_references", []):
+        lines.append(f"- Appears in: {ref['investigation']} (Role: {ref['role']})")
+
+    return "\n".join(lines)
+```
+
+### Exchange Coordination Protocol
+
+When wallet intelligence identifies a CEX address holding stolen funds, ZachXBT's approach:
+
+1. **Document everything** before contacting anyone — tx hashes, amounts, timestamps, chain
+2. **Identify the right contact** — exchange legal/compliance team, not support
+3. **One clear ask** — "Freeze address X holding Y $ETH from hack Z" with evidence links
+4. **Follow up within 24h** — exchanges handle hundreds of requests; persistence matters
+5. **Public pressure when needed** — Twitter threads naming the exchange+tx hash if no response
+
+```python
+def generate_exchange_report(cex_address: str, stolen_assets: float,
+                              hack_tx_hash: str, victim: str) -> dict:
+    """Generate a structured report for exchange compliance teams."""
+    return {
+        "subject": f"URGENT: Stolen funds deposit at {cex_address}",
+        "body": {
+            "incident": {"victim": victim, "hack_tx": hack_tx_hash, "date": ""},
+            "stolen_assets": {"amount": stolen_assets, "token": "ETH", "current_value_usd": 0},
+            "destination": {"address": cex_address, "chain": "ethereum", "tx_hash": ""},
+            "evidence_links": [],  # Block explorer URLs
+            "request": "Freeze address and notify sender for identity verification",
+            "contact": {"email": "", "role": "Legal/Compliance"},
+        },
+        "protocol": "1. Verify addresses 2. Confirm chain 3. Review evidence 4. Execute freeze",
+    }
+```
+
+### Cross-Case Pattern Recognition
+
+ZachXBT's most powerful technique: **identifying the same wallet appearing across multiple
+seemingly unrelated scams.** A wallet that funded an NFT mint in January and a DeFi rug pull
+in June is the same person — even if the scams look completely different.
+
+```python
+def cross_case_wallet_search(wallet_clusters: list[dict], db_path: str = "known_scams.sqlite") -> list:
+    """Search across multiple investigations for overlapping wallets.
+
+    Returns connections between cases — the hallmark of serial scammers.
+    """
+    import sqlite3, json
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+
+    # Collect all distinct addresses from the input clusters
+    all_addresses = set()
+    for cluster in wallet_clusters:
+        for entry in cluster.get("addresses", []):
+            all_addresses.add(entry["address"].lower())
+
+    # Query known scam database for matches
+    placeholders = ",".join("?" * len(all_addresses))
+    cursor.execute(
+        f"SELECT investigation_id, address, role, date FROM wallet_references "
+        f"WHERE LOWER(address) IN ({placeholders})",
+        list(all_addresses)
+    )
+    cross_refs = cursor.fetchall()
+
+    # Group by investigation
+    from collections import defaultdict
+    by_investigation = defaultdict(list)
+    for inv_id, addr, role, date in cross_refs:
+        by_investigation[inv_id].append({"address": addr, "role": role, "date": date})
+
+    return dict(by_investigation)
+```
+
+### Getting Paid: The Investigation-to-Bounty Pipeline
+
+ZachXBT's model shows wallet intelligence is monetizable:
+
+- **Cluster publication** — Community donations and tips for useful intel
+- **Exchange referrals** — Some exchanges pay for intelligence that leads to frozen funds
+- **Private client work** — Token projects pay $200-$2,000+ to identify wallets behind FUD/smear campaigns
+- **Law enforcement** — Contracted tracing services for court cases
+- **Media** — Journalists purchase wallet intelligence for investigative pieces
+
+
+## Anti-Rationalization
 ## Anti-Rationalization
 
 | Rationalization | Reality |

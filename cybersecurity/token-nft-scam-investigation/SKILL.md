@@ -1519,6 +1519,142 @@ Sell token/NFT scam investigation services through the following channels:
 5. Deliver with a live walkthrough (Zoom, Google Meet) for Premium tier clients
 6. Follow up after 30 days — if the project rugged, the client is motivated to buy the deep trace
 
+## Practices from Top Investigators
+
+### The ZachXBT Methodology
+
+ZachXBT has investigated hundreds of token and NFT scams, identifying the same serial scammers
+operating across multiple projects. His key insight: **scammers reuse everything** — wallet addresses,
+funding sources, website templates, Telegram handles. The first step in any token investigation
+is checking if the deployer or any related wallet has been seen before.
+
+### The 12-Tool Arsenal for Token/NFT Investigations
+
+| Tool | Token/NFT Use | When to Use |
+|---|---|---|
+| **Etherscan / Solscan** | Token holder analysis, deployer tx history, honeypot code | Every token — start here |
+| **Arkham** | Visual fund flow: deployer → LP → dump | Tracking rug pull proceeds |
+| **MetaSleuth** | Cross-chain deployer search: same address on multiple chains | After finding deployer — check if active elsewhere |
+| **Cielo** | Monitor deployer wallets for new token creations | After investigation — catch the next scam early |
+| **TRM Labs** | Check deployer address against sanctions and known bad actors | Before publishing any findings |
+| **Breadcrumbs** | BTC-based scams (e.g., fake BTC mining tokens) | Tracing Bitcoin-side scam proceeds |
+| **Dune** | SQL-based holder analysis: concentration, wash trading detection | Analyzing large datasets (10K+ holders) |
+| **DeBank** | Deployer wallet portfolio: what else they hold | Understanding the scammer's full operation |
+| **OKLink** | Address labeling and cross-chain identity | Identifying if the deployer has been tagged before |
+| **Blockchair** | BTC privacy analysis for crypto ransom tokens | BTC-based scam tracing |
+| **OMNIA** | Mempool monitoring: catch deployer's next tx before it confirms | Counter-party surveillance |
+| **MetaSuites** | Legacy labeling for historical address lookups | Old addresses (pre-2022) may only have labels here |
+
+### Pattern Recognition Across Multiple Scams
+
+Serial scammers exhibit consistent patterns. When investigating a new token/NFT, cross-reference:
+
+```python
+PATTERN_SIGNATURES = {
+    "same_deployer": {
+        "check": "Deployer address used in >1 token launch",
+        "severity": "CRITICAL — confirmed serial deployer",
+        "action": "Flag all tokens from this deployer as high-risk immediately",
+    },
+    "same_funding_source": {
+        "check": "Deployer funded from an address linked to a known scam",
+        "severity": "HIGH — strong serial scammer signal",
+        "action": "Trace the funding address for additional scam tokens",
+    },
+    "same_website_domain": {
+        "check": "Token website = registered by same email / same IP as known scam",
+        "severity": "CRITICAL — direct identity link",
+        "action": "WHOIS lookup the domain; check registrar history",
+    },
+    "same_telegram_discord": {
+        "check": "Same social handles used in previous scam projects",
+        "severity": "HIGH — the scammers are running it back",
+        "action": "Archive the prior scam thread for evidence chain",
+    },
+    "same_twitter_handle": {
+        "check": "Twitter account reused across projects",
+        "severity": "HIGH — identity link, handle may be deleted",
+        "action": "Capture via archive.org / screenshot immediately",
+    },
+    "same_bytecode_hash": {
+        "check": "Contract bytecode matches a known scam contract exactly",
+        "severity": "HIGH — copy-paste scam",
+        "action": "No need to analyze the code; reference the prior analysis",
+    },
+    "same_liquidity_pattern": {
+        "check": "LP added then removed in identical timing to previous scam",
+        "severity": "MEDIUM — behavioral match",
+        "action": "Correlate with other signatures before confirming",
+    },
+}
+```
+
+### Social Engineering Deconstruction
+
+ZachXBT documents how scammers manipulate victims. Understanding these patterns helps you
+predict where to find evidence:
+
+Common scammer playbooks in token/NFT fraud:
+
+- **The Fake Influencer**: Impersonation accounts DM victims with "exclusive token" → fake website → malicious approve() → wallet drained
+  - *Evidence trail*: The impersonated account's followers; the real handle's report; common scam contract deployer
+- **The Discord "Admin"**: Hacked Discord server → admin DMs victims with "mint now" link → website wallet drain
+  - *Evidence trail*: Discord audit logs (if accessible); scam domain registration IP; deployer funding source
+- **The Liquidity Trap**: New token → high APY farming → deployer drains LP when TVL is high enough
+  - *Evidence trail*: Deployer withdrawing LP tokens from staking contract; deployer selling on DEX in batches
+- **The Airdrop Phishing**: "Claim your token airdrop" site → approve() spends your existing tokens
+  - *Evidence trail*: The phishing domain (check Certificate Transparency logs); deployer address funding; drain tx patterns
+- **The NFT "Rug"**: Generative art project → hyped mint → floor starts at 0.01 ETH → team stops responding after mint sell
+  - *Evidence trail*: Team wallet minting multiple NFTs to self; immediate listings at above floor; Discord/Twitter deletion
+
+```python
+def classify_scammer_playbook(deployer_tx_history: list[dict]) -> list[str]:
+    """Classify which playbook(s) a scammer is using based on deployer behavior."""
+    playbooks = []
+    tx_types = [tx.get("functionName", "") for tx in deployer_tx_history]
+    tx_count = len(tx_types)
+
+    # Check for liquidity trap pattern
+    approve_txs = [t for t in tx_types if "approve" in t.lower()]
+    lp_txs = [t for t in tx_types if "addLiquidity" in t.lower() or "add_liquidity" in t.lower()]
+    if len(lp_txs) >= 2 and len(approve_txs) > len(lp_txs):
+        playbooks.append("liquidity_trap")
+
+    # Check for multi-token deployer (serial deployer)
+    from collections import Counter
+    contract_creations = [t for t in tx_types if "create" in t.lower()]
+    if len(contract_creations) >= 3:
+        playbooks.append("serial_deployer")
+
+    # Check for approve-drain pattern (phishing)
+    if tx_count < 20 and len(approve_txs) >= 3:
+        playbooks.append("approve_drain_phishing")
+
+    return playbooks or ["unknown"]
+```
+
+### Funding Chain Tracing for Token Scams
+
+Apply the funding chain method specifically to token deployers:
+
+1. **Find deployer address** — Get `from` address of token creation transaction
+2. **Trace deployer's first funding** — Where did the deployer get ETH for gas?
+3. **Cross-check funding source** against known scam databases (check each prior hop)
+4. **If the funder is a known scammer**, all tokens from this deployer are high-risk
+5. **If the funder is a CEX** — note the exchange; this is a potential KYC link
+
+### The Investigation-to-Bounty Pipeline
+
+Modeled on ZachXBT's proven approach:
+
+1. **Beta token check** (free, public) — Post a thread on Twitter/X with your initial analysis
+2. **If scam confirmed** — Publish the full wallet cluster thread with evidence
+3. **Tag relevant parties** — The project's accounts, the chain's security team, exchange accounts
+4. **Bounty collection** — Some projects and DAOs offer bounties for scam identification
+5. **Private client referrals** — Each investigation builds reputation for paid work
+
+
+## Anti-Rationalization
 ## Anti-Rationalization
 
 | Rationalization | Reality |
