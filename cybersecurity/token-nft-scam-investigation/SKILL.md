@@ -1389,6 +1389,97 @@ A scam investigation report containing:
 - Sniper detection verified by checking actual gas prices and block positions at launch
 - Funding chain verified by checking at least two hops before classifying the source
 
+
+## RPC & API Endpoint Management
+
+Token investigations span multiple chains. A scam token on Ethereum often has a matching token on BSC
+or Polygon via cross-chain deployment. You need reliable RPC access on all relevant chains.
+
+### Per-Chain Rate Limits
+
+| Chain | Explorer API | Free Limit | Key Env Var |
+|---|---|---|---|
+| Ethereum | Etherscan | 5 calls/sec | `ETHERSCAN_KEY` |
+| BSC | BscScan | 5 calls/sec | `BSCSCAN_KEY` |
+| Polygon | Polygonscan | 5 calls/sec | `POLYGONSCAN_KEY` |
+| Arbitrum | Arbiscan | 10 calls/sec | `ARBISCAN_KEY` |
+| Optimism | Optimistic Etherscan | 5 calls/sec | `OPSCAN_KEY` |
+| Avalanche | Snowtrace | 5 calls/sec | `SNOWTRACE_KEY` |
+
+**Rule**: batch independent checks (holdership, LP lock, ownership, honeypot) into a single function
+that respects the slowest rate limit — queue at 4 calls/sec to be safe across all chains.
+
+### Contract Metadata via RPC (No Explorer Key)
+
+```python
+from web3 import Web3
+
+# Public RPC endpoints — no key needed
+PUBLIC_RPC = {
+    "ethereum": "https://eth.llamarpc.com",
+    "bsc":      "https://bsc-dataseed.binance.org",
+    "polygon":  "https://polygon-rpc.com",
+}
+
+def check_contract_metadata(chain: str, address: str) -> dict:
+    """Query contract metadata directly from RPC — useful when explorer API is rate-limited."""
+    w3 = Web3(Web3.HTTPProvider(PUBLIC_RPC[chain]))
+    checksum = w3.to_checksum_address(address)
+    code = w3.eth.get_code(checksum)
+    if code == b"":   # EOA or non-existent — no contract
+        return {"has_contract": False}
+    # Get bytecode hash for heuristic clone detection
+    import hashlib
+    code_hash = hashlib.sha256(code).hexdigest()
+    return {"has_contract": True, "code_hash": code_hash, "byte_size": len(code)}
+```
+
+### Cross-Chain Token Address Discovery
+
+When you find a scam token on one chain, the same deployer may have identical tokens on other chains.
+Use the deployer address to cross-reference:
+
+```python
+def find_cross_chain_tokens(deployer: str, chains: list[str] = None) -> dict:
+    """Search known deployers across chains for same-token patterns."""
+    results = {}
+    for chain in (chains or ["ethereum", "bsc", "polygon"]):
+        rpc = PUBLIC_RPC.get(chain)
+        if not rpc:
+            continue
+        w3 = Web3(Web3.HTTPProvider(rpc))
+        # Get deployer's nonce at deployment block to compute deployed addresses
+        # (Each deployment increments nonce, address = RLP(deployer, nonce))
+        # Simplified: check if the deployer has any token contract on this chain
+        tx_count = w3.eth.get_transaction_count(w3.to_checksum_address(deployer))
+        results[chain] = {"chain_active": True, "deployer_tx_count": tx_count}
+    return results
+```
+
+## Transaction Trace Decision Tree
+
+Not every suspicious transaction is a scam. Before committing to a full investigation, classify the
+transaction pattern:
+
+| Signal | Likely Type | Recommended Action |
+|---|---|---|
+| Deployer → addLiquidity → renounceOwnership | Classic rug pull | Full investigation (deployer history, LP lock, tx analysis) |
+| Deployer → multiSend (100+ addresses) | Airdrop / distribution | Check tokenomics; likely legitimate if paired with socials |
+| Flash loan → swap → deposit to contract | MEV or attack | Use `defi-incident-analysis` skill instead |
+| Small buys from 10+ fresh wallets in same block | Wash trading | Check for identical gas prices / same funding source |
+| Developer mints 100% supply → lock to vesting | Cautionary but might be legit | Verify the lock contract allows no early-withdraw |
+| Contract has `_beforeTokenTransfer` hook | Potential honeypot | Simulate sell with Tenderly before buying |
+
+### When to Stop
+
+Three hard exit criteria for token investigations:
+
+1. **The token is confirmed as a known scam variant** (same bytecode hash as a registry of known scam
+   contracts) → document and report; no need to reconstruct every detail
+2. **The deployer address has been blacklisted on 3+ chain explorers** → report is complete; the
+   scammer is known
+3. **The total scam value is under $1,000** → one-page summary, no deep trace
+
 ## Money Section
 
 Sell token/NFT scam investigation services through the following channels:

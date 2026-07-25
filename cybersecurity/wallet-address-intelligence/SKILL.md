@@ -1570,6 +1570,90 @@ def screening_pipeline(addresses: list[str], api_key: str, w3: Web3 = None, sanc
 - Cross-chain links double-checked: same address ≠ same entity across all chains
 - Generated reports reviewed with a minimum two-person review for compliance-critical findings
 
+
+## RPC & API Endpoint Management
+
+Wallet address intelligence requires querying multiple chains and APIs simultaneously.
+Without careful rate-limit management, your queries will fail mid-investigation.
+
+### API Key Inventory
+
+| Service | Purpose | Rate Limit | Key | Recommended Practice |
+|---|---|---|---|---|
+| Etherscan V2 | Core chain lookups (tx list, balance, internal txs) | 5 calls/sec | `ETHERSCAN_KEY` | Use 2 keys, round-robin for 10/sec burst |
+| Ethplorer | Token portfolio for any address (free, no key) | 1 call/sec | (none) | Use as fallback when Etherscan is rate-limited |
+| Chainalysis API | Sanctions / risk scoring | Varies by plan | `CHAINALYSIS_KEY` | Cache results with 24h TTL |
+| AnyBlock | Multi-chain in one RPC endpoint | 20 req/sec free | `ANYBLOCK_KEY` | Primary multi-chain RPC for wallet balance |
+| Alchemy | Archive node access for historical state | 300 req/sec free | `ALCHEMY_KEY` | Use for deep historical analysis only |
+| DeBank API | Cross-chain portfolio aggregation | 10 req/sec free | `DEBANK_KEY` | Quick wallet overview before deep dive |
+
+### Rate-Limiter Pattern
+
+```python
+import asyncio
+import time
+
+class RateLimiter:
+    """Token-bucket rate limiter for multi-API investigations."""
+    def __init__(self, rate: float, burst: int = 5):
+        self.rate = rate          # calls per second
+        self.burst = burst        # max burst size
+        self.tokens = burst
+        self.last_refill = time.monotonic()
+        self._lock = asyncio.Lock()
+
+    async def acquire(self):
+        async with self._lock:
+            now = time.monotonic()
+            self.tokens = min(self.burst, self.tokens + (now - self.last_refill) * self.rate)
+            self.last_refill = now
+            if self.tokens < 1:
+                wait = (1 - self.tokens) / self.rate
+                await asyncio.sleep(wait)
+                self.tokens = 0
+            self.tokens -= 1
+
+# Usage
+rate_limiter = RateLimiter(rate=4.0, burst=10)  # slightly conservative for 5/sec limit
+```
+
+### Key Rotation Strategy
+
+```python
+import os
+from itertools import cycle
+
+class MultiKeyRotator:
+    """Rotate through multiple API keys to maximize throughput."""
+    def __init__(self, prefix: str = "ETHERSCAN"):
+        self.keys = cycle([
+            os.environ.get(f"{prefix}_KEY_{i}")
+            for i in range(1, 4)
+            if os.environ.get(f"{prefix}_KEY_{i}")
+        ])
+        if not self.keys:
+            self.keys = cycle([os.environ.get(f"{prefix}_KEY", "")])
+
+    def next(self) -> str:
+        return next(self.keys)
+
+# Register fallback providers in your config
+# FREE_RPC_FALLBACK = ["https://eth.llamarpc.com", "https://rpc.ankr.com/eth"]
+```
+
+### When Address Intelligence Yields No Signal
+
+After querying all chains and data sources, you may have an address that shows nothing:
+
+| Scenario | Interpretation | Next Step |
+|---|---|---|
+| Zero tx on all mainnet chains | Address created but never used | Check if it's a counterfactual deployer (CREATE2) or unused gas token receiver |
+| Only dust transactions from mixers | Privacy-enhanced address | Attempt value-based clustering (all amounts ≤~0.01 ETH from same mixer batch) |
+| Single inbound, no outbound | Burner / one-time receive | Cross-reference with known donation addresses or airdrop contracts |
+| All activity on L2 with no L1 presence | L2-native wallet | Check if bridged from L1 via standard bridge contracts |
+| Frequent contract interactions but no DEX/CEX | Bot/contract operator | Reverse-lookup the contract interactions to identify the primary contract |
+| Known ENS but no on-chain activity | Off-chain identity holder | ENS registration costs ~$5 — not all registrants are active users |
+
 ## Anti-Rationalization
 
 | Rationalization | Reality |
