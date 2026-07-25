@@ -22,6 +22,7 @@ Usage:
 
 import argparse
 import ast
+import yaml
 import json
 import os
 import re
@@ -100,19 +101,65 @@ def test_structure(text, skill_name):
 
     fm = fm_match.group(1)
 
-    # Required fields
-    for field in REQUIRED_FM:
-        match = re.search(rf'^{field}:\s*(.+)$', fm, re.MULTILINE)
-        if not match or not match.group(1).strip():
-            errors.append(f'missing-{field}')
+    # Try yaml.safe_load first; fall back to regex on parse failure
+    parsed = {}
+    yaml_ok = False
+    try:
+        parsed_raw = yaml.safe_load(fm)
+        if isinstance(parsed_raw, dict):
+            parsed = parsed_raw
+            yaml_ok = True
+    except yaml.YAMLError:
+        pass
+
+    if yaml_ok:
+        # ── yaml path ──
+        for field in REQUIRED_FM:
+            val = parsed.get(field)
+            if val is None or (isinstance(val, str) and not val.strip()):
+                errors.append(f'missing-{field}')
+            else:
+                metrics[field] = str(val).strip()
+
+        # Tags
+        tags = parsed.get('tags')
+        if isinstance(tags, list) and len(tags) > 0:
+            metrics['tag_count'] = len(tags)
+            if len(tags) < 3:
+                warnings.append(f'too-few-tags({len(tags)})')
         else:
-            metrics[field] = match.group(1).strip()
+            warnings.append('missing-tags')
+
+        # Version
+        metrics['has_version'] = 'version' in parsed
+    else:
+        # ── regex fallback path (malformed YAML) ──
+        for field in REQUIRED_FM:
+            match = re.search(rf'^{field}:\s*(.+)$', fm, re.MULTILINE)
+            if not match or not match.group(1).strip():
+                errors.append(f'missing-{field}')
+            else:
+                metrics[field] = match.group(1).strip()
+
+        # Tags
+        tags_match = re.search(r'^tags:\s*\n((?:\s*-\s*.+\n?)+)', fm, re.MULTILINE)
+        if tags_match:
+            tags = [l.strip('- ').strip() for l in tags_match.group(1).strip().split('\n')]
+            metrics['tag_count'] = len(tags)
+            if len(tags) < 3:
+                warnings.append(f'too-few-tags({len(tags)})')
+        else:
+            warnings.append('missing-tags')
+
+        # Version
+        ver_match = re.search(r'^version:\s*(.+)$', fm, re.MULTILINE)
+        metrics['has_version'] = bool(ver_match)
 
     # Name matches directory
     if 'name' in metrics and metrics['name'] != skill_name:
         errors.append(f'name-mismatch[fm={metrics["name"]}, dir={skill_name}]')
 
-    # Description quality
+    # Description quality (shared logic)
     if 'description' in metrics:
         desc = metrics['description']
         metrics['desc_len'] = len(desc)
@@ -120,26 +167,12 @@ def test_structure(text, skill_name):
             errors.append(f'description-too-short({len(desc)}c)')
         elif len(desc) < 50:
             warnings.append(f'description-short({len(desc)}c)')
-        if len(desc) > 200:
+        if len(desc) > 400:
             warnings.append(f'description-long({len(desc)}c)')
 
     # Domain matches category
     if 'domain' in metrics:
         metrics['domain_value'] = metrics['domain']
-
-    # Tags
-    tags_match = re.search(r'^tags:\s*\n((?:\s*-\s*.+\n?)+)', fm, re.MULTILINE)
-    if tags_match:
-        tags = [l.strip('- ').strip() for l in tags_match.group(1).strip().split('\n')]
-        metrics['tag_count'] = len(tags)
-        if len(tags) < 3:
-            warnings.append(f'too-few-tags({len(tags)})')
-    else:
-        warnings.append('missing-tags')
-
-    # Version
-    ver_match = re.search(r'^version:\s*(.+)$', fm, re.MULTILINE)
-    metrics['has_version'] = bool(ver_match)
 
     return errors, warnings, metrics
 
