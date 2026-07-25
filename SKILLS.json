@@ -1,19 +1,18 @@
 {
-  "total_skills": 1329,
-  "category_count": 19,
+  "total_skills": 1351,
+  "category_count": 20,
   "categories": {
-    "agents": 17,
-    "automation": 29,
-    "content": 58,
-    "core": 45,
-    "cybersecurity": 786,
-    "data": 10,
-    "development": 90,
-    "devops": 33,
+    "agents": 19,
+    "automation": 32,
+    "content": 60,
+    "core": 46,
+    "cybersecurity": 790,
+    "data": 11,
+    "devops": 34,
+    "finance": 3,
     "financial": 15,
-    "integrations": 34,
-    "marketing": 45,
-    "mcp": 14,
+    "integrations": 38,
+    "mcp": 15,
     "meta": 13,
     "mindset": 55,
     "operations": 19,
@@ -24559,6 +24558,76 @@
       "author": "",
       "subdomain": "",
       "type": "content"
+    },
+    {
+      "name": "onchain-transaction-forensics",
+      "category": "cybersecurity",
+      "description": "Trace and analyze blockchain transactions to investigate illicit fund flows, identify wallet clusters, and map transaction graphs across multiple blockchains. Use when tracking stolen funds, analyzing suspicious transaction patterns, or building forensic evidence chains for blockchain-based financial crimes.",
+      "domain": "cybersecurity",
+      "tags": [
+        "blockchain",
+        "forensics",
+        "money",
+        "onchain",
+        "tracing"
+      ],
+      "version": "1.0.0",
+      "author": "1ai-skills",
+      "subdomain": "blockchain-security",
+      "type": "cybersecurity"
+    },
+    {
+      "name": "defi-incident-analysis",
+      "category": "cybersecurity",
+      "description": "Analyze DeFi security incidents including flash loan attacks, oracle manipulation, reentrancy exploits, bridge hacks, and governance attacks. Use when investigating DeFi protocol compromises, understanding attack mechanics, or building incident response playbooks for DeFi incidents.",
+      "domain": "cybersecurity",
+      "tags": [
+        "blockchain",
+        "defi",
+        "exploit",
+        "incident-response",
+        "money",
+        "security"
+      ],
+      "version": "1.0.0",
+      "author": "1ai-skills",
+      "subdomain": "blockchain-security",
+      "type": "cybersecurity"
+    },
+    {
+      "name": "token-nft-scam-investigation",
+      "category": "cybersecurity",
+      "description": "Investigate token and NFT scams including rug pulls, honeypots, pump-and-dump schemes, wash trading, and floor manipulation. Use when analyzing suspicious token contracts, tracing scam proceeds, or gathering evidence for bounty submissions.",
+      "domain": "cybersecurity",
+      "tags": [
+        "blockchain",
+        "money",
+        "nft",
+        "scam",
+        "security",
+        "token"
+      ],
+      "version": "1.0.0",
+      "author": "1ai-skills",
+      "subdomain": "blockchain-security",
+      "type": "cybersecurity"
+    },
+    {
+      "name": "wallet-address-intelligence",
+      "category": "cybersecurity",
+      "description": "Profile and cluster blockchain wallet addresses to identify entity associations, assess risk levels, and build address reputation databases. Use when tracing fund flows, identifying exchange wallets, detecting mixing/tumbling activity, or enriching address metadata for investigations.",
+      "domain": "cybersecurity",
+      "tags": [
+        "blockchain",
+        "intelligence",
+        "money",
+        "tracing",
+        "wallet"
+      ],
+      "version": "1.0.0",
+      "author": "1ai-skills",
+      "subdomain": "blockchain-security",
+      "type": "cybersecurity"
     }
   ],
   "tooling_dirs": [
@@ -24568,5 +24637,5 @@
     "references",
     "scripts"
   ],
-  "count": 1347
+  "count": 1351
 }

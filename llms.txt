@@ -1,31 +1,31 @@
 # 1ai-skills
 
-> 1329 production-ready AI agent skills with anti-rationalization tables, code examples, and verification checklists. The largest open-source skill library for Claude Code, Cursor, Gemini CLI, and more.
+> 1351 production-ready AI agent skills with anti-rationalization tables, code examples, and verification checklists. The largest open-source skill library for Claude Code, Cursor, Gemini CLI, and more.
 
 ## What
 
-1ai-skills is a library of 1329 SKILL.md files across 19 categories that force AI coding agents to follow real workflows instead of cutting corners. Every skill includes anti-rationalization tables, concrete code examples, step-by-step workflows, and verification checklists.
+1ai-skills is a library of 1351 SKILL.md files across 18 categories that force AI coding agents to follow real workflows instead of cutting corners. Every skill includes anti-rationalization tables, concrete code examples, step-by-step workflows, and verification checklists.
 
 ## Categories
 
-- **Cybersecurity** (786 skills) — Threat hunting, forensics, pen testing, SOC ops, incident response, zero trust, cloud security, API security, OT/ICS security
+- **Cybersecurity** (790 skills) — Threat hunting, forensics, pen testing, SOC ops, incident response, zero trust, cloud security, API security, OT/ICS security
 - **Development** (90 skills) — TDD, debugging, code review, PRD, spec-driven development, context engineering, browser testing, Git workflows
-- **Content** (58 skills) — Video generation, audio, design, writing, document creation (docx, pdf, pptx, xlsx), UI design, themes
+- **Content** (60 skills) — Video generation, audio, design, writing, document creation (docx, pdf, pptx, xlsx), UI design, themes
 - **Mindset** (55 skills) — Negotiation, leadership, critical thinking, emotional intelligence, productivity, habit formation
 - **Marketing** (45 skills) — SEO, viral content, email marketing, ads, growth hacking, social media automation
-- **Core** (45 skills) — AI infrastructure, memory systems, self-improvement, model routing, Gemini API, Replicate
-- **Integrations** (34 skills) — GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase, BigQuery
-- **DevOps** (33 skills) — Docker, Kubernetes, CI/CD, cloud ops, GitOps, Terraform, Ansible
-- **Automation** (29 skills) — Bots, workflows, scrapers, n8n, Zapier, process automation
+- **Core** (46 skills) — AI infrastructure, memory systems, self-improvement, model routing, Gemini API, Replicate
+- **Integrations** (38 skills) — GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase, BigQuery
+- **DevOps** (34 skills) — Docker, Kubernetes, CI/CD, cloud ops, GitOps, Terraform, Ansible
+- **Automation** (32 skills) — Bots, workflows, scrapers, n8n, Zapier, process automation
 - **Research** (23 skills) — Deep research, market analysis, competitive intelligence, McKinsey framework
 - **Trading** (19 skills) — Crypto, DeFi, Polymarket, trading strategies, risk management
 - **Operations** (19 skills) — Business ops, governance, HR, legal, project management
-- **Agents** (17 skills) — AI agent orchestration, coding agents, research agents, autonomous execution
-- **MCP** (14 skills) — Model Context Protocol servers for GitHub, Slack, Stripe, Supabase, Notion
+- **Agents** (19 skills) — AI agent orchestration, coding agents, research agents, autonomous execution
+- **MCP** (15 skills) — Model Context Protocol servers for GitHub, Slack, Stripe, Supabase, Notion
 - **Meta** (13 skills) — Self-evolving meta-skills, performance monitoring, skill creation
 - **Financial** (15 skills) — Finance analysis, valuation, tax, portfolio management
 - **Sales** (14 skills) — Lead generation, CRM, outreach, sales automation
-- **Data** (10 skills) — Data pipelines, analysis, visualization, ETL, Airflow, dbt
+- **Data** (11 skills) — Data pipelines, analysis, visualization, ETL, Airflow, dbt
 - **Productivity** (10 skills) — Calendars, email, meetings, workspace management
 
 ## Install
@@ -36,7 +36,7 @@ Gemini CLI: `gemini skills install https://github.com/oyi77/1ai-skills.git --pat
 
 ## Quality
 
-- 1329/1329 skills pass 8-dimension test suite
+- 1351/1351 skills pass 8-dimension test suite
 - 0 warnings, 0 failures
 - Every skill has anti-rationalization table
 - Every skill has code examples
