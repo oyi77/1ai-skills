@@ -273,7 +273,7 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
 '''
 
 def page(title, active_nav, body_content, extra_js=''):
-    og_desc = "1329 production-grade AI agent skills with anti-rationalization tables. Every skill tested, every skill verified."
+    og_desc = "1351 production-grade AI agent skills with anti-rationalization tables. Every skill tested, every skill verified."
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -752,7 +752,7 @@ python3 scripts/test-skills.py --skill my-skill-name</code></pre>
 | "I will refactor later" | Technical debt compounds |</code></pre>
 
         <h3>How is this different from addyosmani/agent-skills?</h3>
-        <p>Complementary. His 24 skills are engineering lifecycle commands (/spec, /build, /test). Our 1329 skills are domain-specific knowledge (cybersecurity, trading, marketing). Use both.</p>
+        <p>Complementary. His 24 skills are engineering lifecycle commands (/spec, /build, /test). Our 1351 skills are domain-specific knowledge (cybersecurity, trading, marketing). Use both.</p>
 
         <h3>Can I use skills from multiple categories?</h3>
         <p>Yes. Skills are independent and composable. Load the cybersecurity skill for security tasks, the development skill for coding tasks, etc.</p>
@@ -792,7 +792,7 @@ def gen_browse(data):
 <section class="page">
   <div class="container">
     <div class="page-header">
-      <h1>Browse <span class="grad">1329 Skills</span></h1>
+      <h1>Browse <span class="grad">1351 Skills</span></h1>
       <p>Search, filter, and explore every skill in the library.</p>
     </div>
 
@@ -1106,8 +1106,8 @@ tags:                       # 3-5 relevant tags
 python3 scripts/test-skills.py
 
 # Output:
-# Total:    1329
-# Passed:   1329 (100.0%)
+# Total:    1351
+# Passed:   1351 (100.0%)
 # Failed:   0
 # Warnings: 0
 # Time:     0.96s
