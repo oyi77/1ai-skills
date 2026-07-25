@@ -231,6 +231,19 @@ console.table({
 - [ ] Risk controls clearly specified
 - [ ] Documentation reviewed and approved by trading team
 
+
+## Referenced Strategies
+
+The following strategy-level skills are maintained alongside this skill as sub-references for specific strategy implementations:
+
+| Skill | Focus | Primary Signals |
+|---|---|---|
+| [AlphaEar Strategy](../alphaear-strategy/SKILL.md) | Multi-factor entry/exit scoring | Momentum, volume, sentiment |
+| [Investing Algorithm Framework](../investing-algorithm-framework/SKILL.md) | Algorithmic strategy development | Backtesting, signal gen, portfolio opt |
+| [Polymarket Fast Loop](../polymarket-fast-loop/SKILL.md) | BTC sprint/fast markets | CEX price momentum (Simmer) |
+| [Polymarket Weather Trader](../polymarket-weather-trader/SKILL.md) | Temperature prediction markets | NOAA forecasts (Simmer) |
+| [XAUUSD Asia 7-Candle](../xauusd-asia-7c-breakout/SKILL.md) | Gold Asia session breakout | 7-candle HH/LL breakout |
+
 ## Anti-Rationalization
 
 |Excuse|Truth|
