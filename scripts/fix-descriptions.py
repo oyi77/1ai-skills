@@ -1,107 +1,138 @@
-#!/usr/bin/env python3
+"""Bulk-fix description-long warnings in SKILL.md files.
+
+Scans all SKILL.md files, finds descriptions with yaml-parsed length >200 chars,
+and truncates them to ~197 chars while maintaining valid YAML.
+
+Usage: python3 scripts/fix-descriptions.py [--dry-run]
 """
-fix-descriptions.py — Add "Use when" trigger phrase to frontmatter descriptions.
+import os
+import re
+import sys
+import yaml
 
-The linter checks if descriptions contain trigger patterns like "Use when", "Use for",
-"triggers on", "covers", "automated", "generates". This script adds "Use when..." to
-descriptions that lack these patterns.
-
-Usage:
-    python3 scripts/fix-descriptions.py              # Dry run
-    python3 scripts/fix-descriptions.py --apply       # Apply changes
-"""
-
-import re, os, sys
-
-DRY_RUN = "--apply" not in sys.argv
-
-TRIGGER_PATTERNS = [
-    r"\buse when\b", r"\buse for\b", r"\btriggers? on\b",
-    r"\bcovers?\b", r"\bautomate[ds]?\b", r"\bgenerat[es]+\b",
+SKILL_DIRS = [
+    'core', 'development', 'devops', 'automation', 'content',
+    'marketing', 'mindset', 'integrations', 'trading', 'operations',
+    'research', 'data', 'agents', 'mcp', 'meta', 'financial',
+    'sales', 'productivity', 'cybersecurity',
 ]
 
-def has_trigger(desc: str) -> bool:
-    return any(re.search(p, desc.lower()) for p in TRIGGER_PATTERNS)
+MAX_DESC = 197
+MAX_WARN = 200
 
-def generate_use_when(name: str, desc: str) -> str:
-    """Generate a 'Use when...' clause from skill name and existing description."""
-    # Extract key action from description
-    clean_name = name.replace("-", " ").replace("_", " ")
-    
-    # If description starts with a verb, convert to "Use when..."
-    first_word = desc.split()[0].lower() if desc else ""
-    action_verbs = [
-        "create", "build", "generate", "design", "implement", "manage",
-        "analyze", "detect", "track", "automate", "optimize", "integrate",
-        "configure", "deploy", "develop", "write", "edit", "process",
-        "render", "schedule", "monitor", "audit", "test", "scan",
-        "hunt", "exploit", "reverse", "conduct", "perform",
-    ]
-    
-    if first_word in action_verbs:
-        # Convert "Create X from Y" → "Create X from Y. Use when creating X or working with Y."
-        # Simple: just append "Use when [verb]ing [rest]"
-        rest = " ".join(desc.split()[1:10]).rstrip(".")
-        return f"{desc.rstrip('.')}. Use when {first_word}ing {rest.lower()}."
-    else:
-        # Generic: "Use when working with [name]"
-        return f"{desc.rstrip('.')}. Use when working with {clean_name}."
+dry_run = '--dry-run' in sys.argv
 
-processed = 0
-skipped = 0
+fixed = 0
+skipped = []
+total_over_200 = 0
 
-for root, dirs, files in sorted(os.walk(".")):
-    if ".git" in root: continue
-    for f in sorted(files):
-        if f != "SKILL.md": continue
-        path = os.path.join(root, f)
-        
-        with open(path) as fh:
-            content = fh.read()
-        
+for cat in SKILL_DIRS:
+    base = os.path.join(cat)
+    if not os.path.isdir(base):
+        continue
+    for entry in os.listdir(base):
+        skill_path = os.path.join(base, entry, 'SKILL.md')
+        if not os.path.isfile(skill_path):
+            continue
+
+        text = open(skill_path).read()
+        if not text.startswith('---'):
+            continue
+
         # Extract frontmatter
-        fm_match = re.match(r'^(---\n.*?\n---\n)', content, re.DOTALL)
+        fm_match = re.match(r'^---\n(.*?)\n---', text, re.DOTALL)
         if not fm_match:
-            skipped += 1
             continue
-        
-        fm_block = fm_match.group(1)
-        
-        # Get description
-        desc_match = re.search(r'description:\s*(?:>\s*)?(.+?)(?:\n\w|\n---)', content, re.DOTALL)
-        if not desc_match:
-            skipped += 1
-            continue
-        
-        desc = desc_match.group(1).strip().strip(">").strip()
-        
-        if has_trigger(desc):
-            skipped += 1
-            continue
-        
-        # Get name
-        name_match = re.search(r'^name:\s*(.+)', fm_block, re.MULTILINE)
-        name = name_match.group(1).strip() if name_match else os.path.basename(os.path.dirname(path))
-        
-        # Generate new description
-        new_desc = generate_use_when(name, desc)
-        
-        # Replace in frontmatter
-        if desc in content:
-            new_content = content.replace(desc, new_desc, 1)
-            
-            if DRY_RUN:
-                print(f"  [DRY] {name}: ...{new_desc[-60:]}")
-            else:
-                with open(path, "w") as fh:
-                    fh.write(new_content)
-                print(f"  ✓ {name}")
-            
-            processed += 1
-        else:
-            skipped += 1
 
-print(f"\n{'Would process' if DRY_RUN else 'Processed'}: {processed}")
-print(f"Skipped: {skipped}")
-if DRY_RUN:
-    print("\nRun with --apply to make changes.")
+        fm = fm_match.group(1)
+        fm_span = fm_match.span()
+
+        # Parse with yaml
+        try:
+            parsed = yaml.safe_load(fm)
+        except yaml.YAMLError:
+            skipped.append(f'{cat}/{entry} (yaml error)')
+            continue
+
+        if not isinstance(parsed, dict):
+            skipped.append(f'{cat}/{entry} (non-dict)')
+            continue
+
+        desc = parsed.get('description')
+        if desc is None or not isinstance(desc, str):
+            continue
+
+        desc = desc.strip()
+        if len(desc) <= MAX_WARN:
+            continue
+
+        total_over_200 += 1
+
+        # Truncate
+        if len(desc) <= MAX_DESC:
+            continue  # already short enough after strip
+
+        short = desc[:MAX_DESC]
+        short = short.rstrip()
+        # Add ellipsis
+        short = short + '...'
+
+        # Need to write it back as a valid YAML single line
+        # If description contains special chars, quote it
+        if any(c in short for c in [':', '#', '{', '}', '[', ']', ',', '&', '*', '?', '|', '-', '<', '>', '=', '!', '%', '@', '`']):
+            # Use double quotes, escape any existing quotes or backslashes
+            escaped = short.replace('\\', '\\\\').replace('"', '\\"')
+            new_desc_line = f'description: "{escaped}"'
+        else:
+            new_desc_line = f'description: {short}'
+
+        # The old regex just captured one line. The yaml continuation lines
+        # are indented. We need to replace the description line AND remove
+        # any continuation lines.
+
+        # Split frontmatter into lines
+        fm_lines = fm.split('\n')
+
+        # Find the description line
+        desc_idx = None
+        for i, line in enumerate(fm_lines):
+            if line.startswith('description:'):
+                desc_idx = i
+                break
+
+        if desc_idx is None:
+            skipped.append(f'{cat}/{entry} (no desc line)')
+            continue
+
+        # Find the end of the description block (next non-indented line or end)
+        # Continuation lines are indented with 2 spaces
+        end_idx = desc_idx + 1
+        while end_idx < len(fm_lines) and (fm_lines[end_idx].startswith('  ') or fm_lines[end_idx] == ''):
+            end_idx += 1
+
+        # Replace lines desc_idx..end_idx-1 with the new single line
+        old_desc_block = '\n'.join(fm_lines[desc_idx:end_idx])
+        fm_lines[desc_idx:end_idx] = [new_desc_line]
+        new_fm = '\n'.join(fm_lines)
+
+        # Rebuild the file
+        before_fm = text[:fm_span[0]]
+        after_fm = text[fm_span[1]:]
+        new_text = before_fm + '---\n' + new_fm + '\n---' + after_fm
+
+        if dry_run:
+            print(f'  WOULD FIX {cat}/{entry}: {len(desc)}c -> {len(short)}c')
+        else:
+            with open(skill_path, 'w') as f:
+                f.write(new_text)
+            fixed += 1
+
+print(f'\nSummary:')
+print(f'  Descriptions >200 chars: {total_over_200}')
+print(f'  Fixed: {fixed}')
+print(f'  Skipped: {len(skipped)}')
+if skipped:
+    for s in skipped[:10]:
+        print(f'    {s}')
+    if len(skipped) > 10:
+        print(f'    ... and {len(skipped)-10} more')
