@@ -1,6 +1,6 @@
 ---
 name: notion-api
-description: Notion API — Full CRUD via REST, database queries, filtering, sorting, OAuth integration. See parent skill for all Notion automation capabilities.
+description: Use when notion API — Full CRUD via REST, database queries, filtering, sorting, OAuth integration. See parent skill for all Notion automation capabilities.
 domain: integrations
 tags:
 - api

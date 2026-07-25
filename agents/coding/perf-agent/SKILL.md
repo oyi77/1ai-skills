@@ -1,6 +1,6 @@
 ---
 name: perf-agent
-description: Measure before optimizing, target actual bottlenecks proven by profiling, verify with benchmarks.
+description: Use when measure before optimizing, target actual bottlenecks proven by profiling, verify with benchmarks.
 domain: agents
 tags:
   - agent

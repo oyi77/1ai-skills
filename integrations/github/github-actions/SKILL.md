@@ -1,6 +1,6 @@
 ---
 name: github-actions
-description: GitHub Actions — CI/CD pipelines, composite actions, matrix builds, self-hosted runners. See parent skill for all GitHub automation capabilities.
+description: Use when gitHub Actions — CI/CD pipelines, composite actions, matrix builds, self-hosted runners. See parent skill for all GitHub automation capabilities.
 domain: integrations
 tags:
 - actions

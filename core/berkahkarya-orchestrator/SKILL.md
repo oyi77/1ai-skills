@@ -1,6 +1,6 @@
 ---
 name: berkahkarya-orchestrator
-description: Orchestrate multi-skill workflows by routing tasks to the right agents and coordinating cross-platform operations.
+description: Use when orchestrate multi-skill workflows by routing tasks to the right agents and coordinating cross-platform operations.
 domain: core
 tags:
 - ai-agent

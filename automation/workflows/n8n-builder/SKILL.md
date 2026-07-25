@@ -1,6 +1,6 @@
 ---
 name: n8n-builder
-description: Visual workflow automation with 400+ integrations using n8n. See parent skill for full docs.
+description: Use when visual workflow automation with 400+ integrations using n8n. See parent skill for full docs.
 domain: automation
 tags:
 - automation

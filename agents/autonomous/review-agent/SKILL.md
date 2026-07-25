@@ -1,6 +1,6 @@
 ---
 name: review-agent
-description: Read code changes with adversarial intent to find bugs, security holes, logic errors, and performance traps.
+description: Use when read code changes with adversarial intent to find bugs, security holes, logic errors, and performance traps.
 domain: agents
 tags:
   - agent

@@ -1,6 +1,6 @@
 ---
 name: slack-bot
-description: Slack Bot — Event-driven messaging, app_mention handlers, interactive components, user lookup, channel management. See parent skill for all Slack automation capabilities.
+description: Use when slack Bot — Event-driven messaging, app_mention handlers, interactive components, user lookup, channel management. See parent skill for all Slack automation capabilities.
 domain: integrations
 tags:
 - api

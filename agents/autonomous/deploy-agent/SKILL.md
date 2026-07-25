@@ -1,6 +1,6 @@
 ---
 name: deploy-agent
-description: Ship code through controlled pipeline with verification gates and rollback plans.
+description: Use when ship code through controlled pipeline with verification gates and rollback plans.
 domain: agents
 tags:
   - agent

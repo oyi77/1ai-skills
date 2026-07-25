@@ -1,6 +1,6 @@
 ---
 name: report-gen
-description: Report generation — merged into data-analysis parent. See ../SKILL.md for money protocol.
+description: Use when report generation — merged into data-analysis parent. See ../SKILL.md for money protocol.
 domain: data
 tags: [analytics, report, data-analysis]
 ---

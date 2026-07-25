@@ -1,6 +1,6 @@
 ---
 name: webhook-router
-description: Lightweight HTTP server for receiving, validating, and routing webhooks. See parent skill for full docs.
+description: Use when lightweight HTTP server for receiving, validating, and routing webhooks. See parent skill for full docs.
 domain: automation
 tags:
 - automation

@@ -1,6 +1,6 @@
 ---
 name: dockerfile-opt
-description: Dockerfile optimization — merged into docker-devops parent. See ../SKILL.md for money protocol.
+description: Use when dockerfile optimization — merged into docker-devops parent. See ../SKILL.md for money protocol.
 domain: devops
 tags: [devops, docker, dockerfile]
 ---

@@ -1,6 +1,6 @@
 ---
 name: telegram-bot
-description: Telegram bot patterns for message handling and webhook integrations. See parent skill for full docs.
+description: Use when telegram bot patterns for message handling and webhook integrations. See parent skill for full docs.
 domain: automation
 tags:
 - automation

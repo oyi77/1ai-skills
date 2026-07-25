@@ -1,6 +1,6 @@
 ---
 name: zapier-alt
-description: Self-hosted Zapier alternative using n8n for zero-vendor-lock-in automation. See parent skill for full docs.
+description: Use when self-hosted Zapier alternative using n8n for zero-vendor-lock-in automation. See parent skill for full docs.
 domain: automation
 tags:
 - automation

@@ -1,6 +1,6 @@
 ---
 name: email-writer
-description: Email content creation — merged into content-writing parent. See ../SKILL.md for money protocol.
+description: Use when email content creation — merged into content-writing parent. See ../SKILL.md for money protocol.
 domain: content
 tags: [content-creation, email]
 ---

@@ -32,7 +32,7 @@ license: MIT
 
 ---
 
-## When to Use These Modes
+## When to Use
 
 **Audit** — repo-wide scan for over-engineering. Find every abstraction, dependency, and pattern that does not pull its weight. Rank findings biggest cut first.
 

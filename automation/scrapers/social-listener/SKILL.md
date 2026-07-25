@@ -1,6 +1,6 @@
 ---
 name: social-listener
-description: Multi-platform social media monitoring for brand mentions, sentiment, and trends. See parent skill for full docs.
+description: Use when multi-platform social media monitoring for brand mentions, sentiment, and trends. See parent skill for full docs.
 domain: automation
 tags:
 - automation

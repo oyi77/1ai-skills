@@ -1,6 +1,6 @@
 ---
 name: github-pr
-description: GitHub PR — Create, review, and merge pull requests via CLI and API, branch protection, auto-merge. See parent skill for all GitHub automation capabilities.
+description: Use when gitHub PR — Create, review, and merge pull requests via CLI and API, branch protection, auto-merge. See parent skill for all GitHub automation capabilities.
 domain: integrations
 tags:
 - api

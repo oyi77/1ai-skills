@@ -1,6 +1,6 @@
 ---
 name: github
-description: GitHub Automation Hub — Actions, Issues, and PR management for CI/CD, project tracking, and code review workflows. Monetize through automation-as-a-service.
+description: Use when gitHub Automation Hub — Actions, Issues, and PR management for CI/CD, project tracking, and code review workflows. Monetize through automation-as-a-service.
 domain: integrations
 tags:
 - api

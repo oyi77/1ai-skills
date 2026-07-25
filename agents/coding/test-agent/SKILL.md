@@ -1,6 +1,6 @@
 ---
 name: test-agent
-description: Write comprehensive test suites covering happy paths, error paths, edge cases, and integration points.
+description: Use when write comprehensive test suites covering happy paths, error paths, edge cases, and integration points.
 domain: agents
 tags:
   - agent

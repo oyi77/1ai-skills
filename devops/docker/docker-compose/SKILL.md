@@ -1,6 +1,6 @@
 ---
 name: docker-compose
-description: Docker Compose — merged into docker-devops parent. See ../SKILL.md for money protocol.
+description: Use when docker Compose — merged into docker-devops parent. See ../SKILL.md for money protocol.
 domain: devops
 tags: [devops, docker, compose]
 ---

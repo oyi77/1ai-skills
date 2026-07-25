@@ -1,6 +1,6 @@
 ---
 name: analytics-reporting
-description: "Stub — merged into analytics-dashboard. See the parent skill for both dashboard implementation and growth strategy."
+description: "Use when stub — merged into analytics-dashboard. See the parent skill for both dashboard implementation and growth strategy."
 domain: marketing
 tags: [stub, merged]
 ---

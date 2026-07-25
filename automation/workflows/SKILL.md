@@ -1,6 +1,6 @@
 ---
 name: workflows
-description: Workflow automation hub — cron scheduling, IFTTT triggers, n8n visual builder, webhook routing, and self-hosted Zapier alternatives for zero-vendor-lock-in automation.
+description: Use when workflow automation hub — cron scheduling, IFTTT triggers, n8n visual builder, webhook routing, and self-hosted Zapier alternatives for zero-vendor-lock-in automation.
 domain: automation
 tags:
 - automation

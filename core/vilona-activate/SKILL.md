@@ -1,5 +1,5 @@
 ---
-description: Activate an AI general manager persona with full context awareness and multi-user adaptation.
+description: Use when activate an AI general manager persona with full context awareness and multi-user adaptation.
 domain: core
 tags:
 - activate

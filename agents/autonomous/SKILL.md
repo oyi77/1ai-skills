@@ -33,7 +33,7 @@ tags:
 
 ---
 
-## When to Use These Agents
+## When to Use
 
 **Plan first** — before any feature touching 3+ files, ambiguous requirements, or multi-agent coordination.
 

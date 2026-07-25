@@ -1,6 +1,6 @@
 ---
 name: cron-designer
-description: Cron job scheduling for time-based automation. See parent skill for full docs.
+description: Use when cron job scheduling for time-based automation. See parent skill for full docs.
 domain: automation
 tags:
 - automation

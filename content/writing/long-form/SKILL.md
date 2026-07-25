@@ -1,6 +1,6 @@
 ---
 name: long-form
-description: Long-form content — merged into content-writing parent. See ../SKILL.md for money protocol.
+description: Use when long-form content — merged into content-writing parent. See ../SKILL.md for money protocol.
 domain: content
 tags: [content-creation, long-form]
 ---

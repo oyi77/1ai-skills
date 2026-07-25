@@ -1,6 +1,6 @@
 ---
 name: notion-pages
-description: Notion Pages — Create, read, update, append blocks, embed content, manage hierarchy, templates, archive/restore. See parent skill for all Notion automation capabilities.
+description: Use when notion Pages — Create, read, update, append blocks, embed content, manage hierarchy, templates, archive/restore. See parent skill for all Notion automation capabilities.
 domain: integrations
 tags:
 - api

@@ -1,6 +1,6 @@
 ---
 name: k8s-deploy
-description: Kubernetes deployment — merged into docker-devops parent. See ../SKILL.md for money protocol.
+description: Use when kubernetes deployment — merged into docker-devops parent. See ../SKILL.md for money protocol.
 domain: devops
 tags: [devops, k8s, kubernetes]
 ---

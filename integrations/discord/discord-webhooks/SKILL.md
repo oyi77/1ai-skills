@@ -1,6 +1,6 @@
 ---
 name: discord-webhooks
-description: Discord Webhooks — HTTP push notifications, rich embeds, custom usernames/avatars, file attachments, channel routing. See parent skill for all Discord automation capabilities.
+description: Use when discord Webhooks — HTTP push notifications, rich embeds, custom usernames/avatars, file attachments, channel routing. See parent skill for all Discord automation capabilities.
 domain: integrations
 tags:
 - api

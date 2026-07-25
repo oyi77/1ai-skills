@@ -1,6 +1,6 @@
 ---
 name: refactor-agent
-description: Restructure code to improve readability, maintainability, extensibility without changing external behavior.
+description: Use when restructure code to improve readability, maintainability, extensibility without changing external behavior.
 domain: agents
 tags:
   - agent

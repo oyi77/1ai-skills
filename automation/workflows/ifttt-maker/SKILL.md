@@ -1,6 +1,6 @@
 ---
 name: ifttt-maker
-description: IFTTT-style trigger-action automations for connecting apps and services. See parent skill for full docs.
+description: Use when iFTTT-style trigger-action automations for connecting apps and services. See parent skill for full docs.
 domain: automation
 tags:
 - automation

@@ -1,6 +1,6 @@
 ---
 name: implementing-sigstore-for-software-signing
-description: Implements Sigstore-based software signing and verification using Cosign keyless signing, Rekor transparency log verification, and Fulcio certificate authority integration to establish cryptographic provenance for container images, binaries, and software artifacts. The practitioner configures OIDC-based identity binding, verifies signing events against the Rekor transparency log, and integrates signing workflows into CI/CD pipelines.
+description: Use when implements Sigstore-based software signing and verification using Cosign keyless signing, Rekor transparency log verification, and Fulcio certificate authority integration to establish cryptographic provenance for container images, binaries, and software artifacts. The practitioner configures OIDC-based identity binding, verifies signing events against the Rekor transparency log, and integrates signing workflows into CI/CD pipelines.
 domain: cybersecurity
 tags:
 - sigstore

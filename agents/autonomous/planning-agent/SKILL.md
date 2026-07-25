@@ -1,6 +1,6 @@
 ---
 name: planning-agent
-description: Decompose complex tasks into executable steps with dependencies, risk assessment, and verification criteria.
+description: Use when decompose complex tasks into executable steps with dependencies, risk assessment, and verification criteria.
 domain: agents
 tags:
   - agent

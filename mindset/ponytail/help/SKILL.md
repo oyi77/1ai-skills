@@ -1,6 +1,6 @@
 ---
 name: help
-description: Quick reference for ponytail modes, skills, and commands. One-shot display.
+description: Use when quick reference for ponytail modes, skills, and commands. One-shot display.
 domain: mindset
 tags:
   - help

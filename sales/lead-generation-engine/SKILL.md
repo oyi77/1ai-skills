@@ -1,6 +1,6 @@
 ---
 name: lead-generation-engine
-description: "Stub — merged into ai-lead-generation. See the parent skill for both service templates and technical implementation."
+description: "Use when stub — merged into ai-lead-generation. See the parent skill for both service templates and technical implementation."
 domain: sales
 tags: [stub, merged]
 ---
