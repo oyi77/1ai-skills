@@ -116,6 +116,29 @@ git clone https://github.com/oyi77/1ai-skills.git
 | Category | Skills | What It Covers |
 |---|---:|---|
 | Cybersecurity | 790 |  |
+| Development | 90 |  |
+| Content | 62 |  |
+| Mindset | 55 |  |
+| Marketing | 45 |  |
+| Core | 46 |  |
+| Integrations | 38 |  |
+| DevOps | 34 |  |
+| Automation | 32 |  |
+| Research | 23 |  |
+| Trading | 19 |  |
+| Operations | 19 |  |
+| Agents | 14 |  |
+| MCP | 15 |  |
+| Meta | 13 |  |
+| Financial | 15 |  |
+| Sales | 14 |  |
+| Data | 11 |  |
+| Productivity | 10 |  |
+
+
+| Category | Skills | What It Covers |
+|---|---:|---|
+| Cybersecurity | 790 |  |
 | Development | 0 |  |
 | Content | 60 |  |
 | Mindset | 55 |  |
