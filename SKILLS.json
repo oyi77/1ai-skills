@@ -22171,18 +22171,28 @@
     {
       "name": "critical-thinking",
       "category": "mindset",
-      "description": "Analyze arguments, identify biases, evaluate evidence, and make sound conclusions. Use when reasoning through complex problems or evaluating claims.",
+      "description": "Critical thinking applied to money-making — diagnose starting position, evaluate opportunities by expected value, and execute proven income-generating strategies without asking permission.",
       "domain": "mindset",
       "tags": [
         "critical",
         "mindset",
+        "money",
+        "business",
+        "economics",
+        "strategy",
+        "income",
+        "wealth",
         "personal-development",
-        "soft-skills",
-        "thinking"
+        "thinking",
+        "financial",
+        "arbitrage",
+        "scaling",
+        "decision-making",
+        "execution"
       ],
-      "version": "",
-      "author": "",
-      "subdomain": "",
+      "version": "2.0",
+      "author": "1ai-org",
+      "subdomain": "money-mindset",
       "type": "mindset"
     },
     {
