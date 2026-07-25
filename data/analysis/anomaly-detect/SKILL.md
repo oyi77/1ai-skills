@@ -1,6 +1,6 @@
 ---
 name: anomaly-detect
-description: Anomaly detection — merged into data-analysis parent. See ../SKILL.md for money protocol.
+description: Use when anomaly detection — merged into data-analysis parent. See ../SKILL.md for money protocol.
 domain: data
 tags: [analytics, anomaly, data-analysis]
 ---

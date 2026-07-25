@@ -1,6 +1,6 @@
 ---
 name: code-agent
-description: Implement features from specs — reads requirements, writes code with tests, iterates until verification passes.
+description: Use when implement features from specs — reads requirements, writes code with tests, iterates until verification passes.
 domain: agents
 tags:
   - agent

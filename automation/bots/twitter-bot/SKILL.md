@@ -1,6 +1,6 @@
 ---
 name: twitter-bot
-description: Twitter/X bot automation for content posting, engagement, and lead generation. See parent skill for full docs.
+description: Use when twitter/X bot automation for content posting, engagement, and lead generation. See parent skill for full docs.
 domain: automation
 tags:
 - automation

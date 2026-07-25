@@ -1,6 +1,6 @@
 ---
 name: portfolio-manager
-description: Portfolio manager — capital allocation, risk management, and performance metrics tracking for trading strategies.
+description: Use when portfolio manager — capital allocation, risk management, and performance metrics tracking for trading strategies.
 domain: trading
 tags:
 - algorithms

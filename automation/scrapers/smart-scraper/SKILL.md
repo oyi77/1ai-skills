@@ -1,6 +1,6 @@
 ---
 name: smart-scraper
-description: Custom web scraping for structured data extraction from any website. See parent skill for full docs.
+description: Use when custom web scraping for structured data extraction from any website. See parent skill for full docs.
 domain: automation
 tags:
 - automation

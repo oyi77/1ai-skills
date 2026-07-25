@@ -1,6 +1,6 @@
 ---
 name: review
-description: Review a diff for over-engineering. Finds what to delete — reinvented stdlib, needless deps, speculative abstractions.
+description: Use when review a diff for over-engineering. Finds what to delete — reinvented stdlib, needless deps, speculative abstractions.
 domain: mindset
 tags:
   - review

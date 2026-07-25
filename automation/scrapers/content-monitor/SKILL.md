@@ -1,6 +1,6 @@
 ---
 name: content-monitor
-description: Monitor websites, blogs, and RSS feeds for content changes and updates. See parent skill for full docs.
+description: Use when monitor websites, blogs, and RSS feeds for content changes and updates. See parent skill for full docs.
 domain: automation
 tags:
 - automation

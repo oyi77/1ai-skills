@@ -1,6 +1,6 @@
 ---
 name: product-desc
-description: Product descriptions — merged into content-writing parent. See ../SKILL.md for money protocol.
+description: Use when product descriptions — merged into content-writing parent. See ../SKILL.md for money protocol.
 domain: content
 tags: [content-creation, product]
 ---

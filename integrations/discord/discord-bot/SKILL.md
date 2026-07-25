@@ -1,6 +1,6 @@
 ---
 name: discord-bot
-description: Discord Bot — Slash commands, modals, buttons, role management, event handlers, voice, threads, full Discord API integration. See parent skill for all Discord automation capabilities.
+description: Use when discord Bot — Slash commands, modals, buttons, role management, event handlers, voice, threads, full Discord API integration. See parent skill for all Discord automation capabilities.
 domain: integrations
 tags:
 - api

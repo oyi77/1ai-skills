@@ -1,6 +1,6 @@
 ---
 name: security-agent
-description: Bug bounty hunter and security auditor. Finds vulnerabilities before they find production.
+description: Use when bug bounty hunter and security auditor. Finds vulnerabilities before they find production.
 domain: agents
 tags:
   - agent

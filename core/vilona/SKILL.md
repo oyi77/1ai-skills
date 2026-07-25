@@ -1,6 +1,6 @@
 ---
 name: vilona
-description: Foundational core infrastructure skill providing system foundation capabilities for the agent ecosystem.
+description: Use when foundational core infrastructure skill providing system foundation capabilities for the agent ecosystem.
 domain: core
 tags:
 - infrastructure

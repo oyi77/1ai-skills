@@ -1,6 +1,6 @@
 ---
 name: ad-copy
-description: Ad copy creation — merged into content-writing parent. See ../SKILL.md for money protocol.
+description: Use when ad copy creation — merged into content-writing parent. See ../SKILL.md for money protocol.
 domain: content
 tags: [content-creation, copy]
 ---

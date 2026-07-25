@@ -1,6 +1,6 @@
 ---
 name: discord
-description: Discord Automation Hub — Bot and Webhooks for community management, DevOps notifications, and interactive servers. Monetize through community infrastructure-as-a-service.
+description: Use when discord Automation Hub — Bot and Webhooks for community management, DevOps notifications, and interactive servers. Monetize through community infrastructure-as-a-service.
 domain: integrations
 tags:
 - api

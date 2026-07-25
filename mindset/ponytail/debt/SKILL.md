@@ -1,6 +1,6 @@
 ---
 name: debt
-description: Harvest ponytail shortcut comments into one debt ledger so deferrals get tracked instead of forgotten.
+description: Use when harvest ponytail shortcut comments into one debt ledger so deferrals get tracked instead of forgotten.
 domain: mindset
 tags:
   - debt

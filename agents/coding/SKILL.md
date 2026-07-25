@@ -32,7 +32,7 @@ tags:
 
 ---
 
-## When to Use These Agents
+## When to Use
 
 **Linter first** — before every PR, after merge conflicts, when adopting new rules, migrating linters.
 

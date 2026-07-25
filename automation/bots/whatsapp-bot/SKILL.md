@@ -1,6 +1,6 @@
 ---
 name: whatsapp-bot
-description: WhatsApp bot automation for broadcast marketing, support, and lead qualification. See parent skill for full docs.
+description: Use when whatsApp bot automation for broadcast marketing, support, and lead qualification. See parent skill for full docs.
 domain: automation
 tags:
 - automation

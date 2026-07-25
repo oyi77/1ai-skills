@@ -1,6 +1,6 @@
 ---
 name: linter-agent
-description: Detect and fix code style violations, enforce project conventions, ensure consistent formatting.
+description: Use when detect and fix code style violations, enforce project conventions, ensure consistent formatting.
 domain: agents
 tags:
   - agent

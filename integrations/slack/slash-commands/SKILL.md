@@ -1,6 +1,6 @@
 ---
 name: slash-commands
-description: Slack Slash Commands — Custom /command handlers, parameter parsing, ephemeral responses, modals, interactive workflows. See parent skill for all Slack automation capabilities.
+description: Use when slack Slash Commands — Custom /command handlers, parameter parsing, ephemeral responses, modals, interactive workflows. See parent skill for all Slack automation capabilities.
 domain: integrations
 tags:
 - api

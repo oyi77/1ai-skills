@@ -1,6 +1,6 @@
 ---
 name: slack-notifier
-description: Slack Notifier — Webhook-based push notifications, rich message formatting (blocks, attachments), channel routing. See parent skill for all Slack automation capabilities.
+description: Use when slack Notifier — Webhook-based push notifications, rich message formatting (blocks, attachments), channel routing. See parent skill for all Slack automation capabilities.
 domain: integrations
 tags:
 - api

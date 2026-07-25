@@ -1,6 +1,6 @@
 ---
 name: legal-assistant
-description: Legal assistant — contract review checklists, IP protection, business compliance, GDPR/privacy for digital products,
+description: Use when legal assistant — contract review checklists, IP protection, business compliance, GDPR/privacy for digital products,
   DMCA, software licensing, employment law, and dispute resolution. Built for 1-person companies scaling to team.
 domain: operations
 tags:

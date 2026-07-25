@@ -1,6 +1,6 @@
 ---
 name: research-agent
-description: Investigate topics deeply with cross-referenced sources and produce evidence-backed findings.
+description: Use when investigate topics deeply with cross-referenced sources and produce evidence-backed findings.
 domain: agents
 tags:
   - agent

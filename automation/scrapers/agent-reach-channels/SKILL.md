@@ -3,7 +3,7 @@ name: agent-reach-channels
 version: 1.0.0
 category: automation/scrapers
 domain: social-commerce
-description: Multi-platform e-commerce and messaging channel extraction (Shopee, TikTok Shop, WeChat)
+description: Use when multi-platform e-commerce and messaging channel extraction (Shopee, TikTok Shop, WeChat)
 keywords: [shopee, tiktok-shop, wechat, scraping, commerce, messaging, southeast-asia, indonesia]
 tags:
 - ecommerce

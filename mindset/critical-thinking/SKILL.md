@@ -1,6 +1,6 @@
 ---
 name: critical-thinking
-description: Critical thinking applied to money-making — diagnose starting position, evaluate opportunities by expected value, and execute proven income-generating strategies without asking permission.
+description: Use when critical thinking applied to money-making — diagnose starting position, evaluate opportunities by expected value, and execute proven income-generating strategies without asking permission.
 domain: mindset
 tags:
 - critical

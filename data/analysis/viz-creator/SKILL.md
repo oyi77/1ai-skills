@@ -1,6 +1,6 @@
 ---
 name: viz-creator
-description: Data visualization — merged into data-analysis parent. See ../SKILL.md for money protocol.
+description: Use when data visualization — merged into data-analysis parent. See ../SKILL.md for money protocol.
 domain: data
 tags: [analytics, visualization, data-analysis]
 ---

@@ -1,6 +1,6 @@
 ---
 name: notion-db
-description: Notion Database — Schema management, query/filter/sort, relations, rollups, formula validation, bulk import/export. See parent skill for all Notion automation capabilities.
+description: Use when notion Database — Schema management, query/filter/sort, relations, rollups, formula validation, bulk import/export. See parent skill for all Notion automation capabilities.
 domain: integrations
 tags:
 - api

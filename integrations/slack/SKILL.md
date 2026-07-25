@@ -1,6 +1,6 @@
 ---
 name: slack
-description: Slack Automation Hub — Bot, Notifier, and Slash Commands for team communication, DevOps alerts, and workflow automation. Monetize through integration-as-a-service.
+description: Use when slack Automation Hub — Bot, Notifier, and Slash Commands for team communication, DevOps alerts, and workflow automation. Monetize through integration-as-a-service.
 domain: integrations
 tags:
 - api

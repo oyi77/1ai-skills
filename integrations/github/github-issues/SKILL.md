@@ -1,6 +1,6 @@
 ---
 name: github-issues
-description: GitHub Issues — CRUD operations, labels, milestones, comments, templates, webhooks, and automation. See parent skill for all GitHub automation capabilities.
+description: Use when gitHub Issues — CRUD operations, labels, milestones, comments, templates, webhooks, and automation. See parent skill for all GitHub automation capabilities.
 domain: integrations
 tags:
 - api
