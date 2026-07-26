@@ -1,26 +1,26 @@
 {
-  "total_skills": 1347,
+  "total_skills": 1309,
   "category_count": 20,
   "categories": {
     "agents": 14,
-    "automation": 32,
-    "content": 62,
+    "automation": 20,
+    "content": 58,
     "core": 46,
-    "cybersecurity": 790,
-    "data": 11,
+    "cybersecurity": 788,
+    "data": 7,
     "development": 90,
-    "devops": 34,
+    "devops": 31,
     "finance": 3,
     "financial": 15,
-    "integrations": 37,
-    "marketing": 45,
+    "integrations": 26,
+    "marketing": 44,
     "mcp": 15,
     "meta": 13,
     "mindset": 55,
     "operations": 19,
     "productivity": 10,
     "research": 23,
-    "sales": 14,
+    "sales": 13,
     "trading": 19
   },
   "skills": [
@@ -336,22 +336,6 @@
       "type": "automation"
     },
     {
-      "name": "content-monitor",
-      "category": "automation",
-      "description": "Use when monitor websites, blogs, and RSS feeds for content changes and updates. See parent skill for full docs.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "content",
-        "monitor",
-        "alerts"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "automation"
-    },
-    {
       "name": "content-publisher",
       "category": "automation",
       "description": "Automates drafting and publishing articles to Substack and Medium with SEO optimization, editorial calendars, and cross-platform distribution.",
@@ -370,21 +354,6 @@
       "type": "automation"
     },
     {
-      "name": "cron-designer",
-      "category": "automation",
-      "description": "Use when cron job scheduling for time-based automation. See parent skill for full docs.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "cron",
-        "scheduling"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "automation"
-    },
-    {
       "name": "flowise-builder",
       "category": "automation",
       "description": "Flowise visual LLM workflow builder — drag-drop chatflows, API endpoints, document loaders, tools. Use when working with flowise builder.",
@@ -396,22 +365,6 @@
         "flowise",
         "productivity",
         "workflow"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "automation"
-    },
-    {
-      "name": "ifttt-maker",
-      "category": "automation",
-      "description": "Use when iFTTT-style trigger-action automations for connecting apps and services. See parent skill for full docs.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "ifttt",
-        "triggers",
-        "workflows"
       ],
       "version": "1.0.0",
       "author": "",
@@ -508,22 +461,6 @@
       "type": "automation"
     },
     {
-      "name": "n8n-builder",
-      "category": "automation",
-      "description": "Use when visual workflow automation with 400+ integrations using n8n. See parent skill for full docs.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "n8n",
-        "workflows",
-        "visual-builder"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "automation"
-    },
-    {
       "name": "n8n-workflows",
       "category": "automation",
       "description": "n8n workflow automation — nodes, triggers, expressions, credentials, webhooks, error handling. Use when working with n8n workflows.",
@@ -597,22 +534,6 @@
       "type": "automation"
     },
     {
-      "name": "price-tracker",
-      "category": "automation",
-      "description": "Automated e-commerce price tracking with threshold alerts and history logging. See parent skill for full docs.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "price",
-        "tracker",
-        "ecommerce"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "automation"
-    },
-    {
       "name": "scrapers",
       "category": "automation",
       "description": "Data extraction hub — content monitoring, price tracking, web scraping, and social listening for competitive intelligence, market research, and automated revenue generation.",
@@ -626,54 +547,6 @@
         "social-listener",
         "data",
         "intelligence"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "automation"
-    },
-    {
-      "name": "smart-scraper",
-      "category": "automation",
-      "description": "Use when custom web scraping for structured data extraction from any website. See parent skill for full docs.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "scraper",
-        "data-extraction",
-        "web"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "automation"
-    },
-    {
-      "name": "social-listener",
-      "category": "automation",
-      "description": "Use when multi-platform social media monitoring for brand mentions, sentiment, and trends. See parent skill for full docs.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "social",
-        "listener",
-        "monitoring"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "automation"
-    },
-    {
-      "name": "telegram-bot",
-      "category": "automation",
-      "description": "Use when telegram bot patterns for message handling and webhook integrations. See parent skill for full docs.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "bot",
-        "telegram",
-        "webhook"
       ],
       "version": "1.0.0",
       "author": "",
@@ -701,22 +574,6 @@
       "type": "automation"
     },
     {
-      "name": "twitter-bot",
-      "category": "automation",
-      "description": "Use when twitter/X bot automation for content posting, engagement, and lead generation. See parent skill for full docs.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "bot",
-        "twitter",
-        "social-media"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "automation"
-    },
-    {
       "name": "voice-ai-agent",
       "category": "automation",
       "description": "AI voice agent for handling incoming calls, appointment scheduling, lead qualification, and 24/7 customer service without human intervention. Use when working with voice ai agent.",
@@ -728,38 +585,6 @@
         "productivity",
         "voice",
         "workflow"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "automation"
-    },
-    {
-      "name": "webhook-router",
-      "category": "automation",
-      "description": "Use when lightweight HTTP server for receiving, validating, and routing webhooks. See parent skill for full docs.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "webhook",
-        "router",
-        "api"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "automation"
-    },
-    {
-      "name": "whatsapp-bot",
-      "category": "automation",
-      "description": "Use when whatsApp bot automation for broadcast marketing, support, and lead qualification. See parent skill for full docs.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "bot",
-        "whatsapp",
-        "messaging"
       ],
       "version": "1.0.0",
       "author": "",
@@ -806,22 +631,6 @@
       "type": "automation"
     },
     {
-      "name": "zapier-alt",
-      "category": "automation",
-      "description": "Use when self-hosted Zapier alternative using n8n for zero-vendor-lock-in automation. See parent skill for full docs.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "zapier",
-        "alternative",
-        "self-hosted"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "automation"
-    },
-    {
       "name": "zapier-patterns",
       "category": "automation",
       "description": "Zapier automation patterns — triggers, actions, filters, formatters, paths, code steps. Use when working with zapier patterns.",
@@ -853,20 +662,6 @@
         "machine-learning",
         "media",
         "testing"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "content"
-    },
-    {
-      "name": "ad-copy",
-      "category": "content",
-      "description": "Use when ad copy creation — merged into content-writing parent. See ../SKILL.md for money protocol.",
-      "domain": "content",
-      "tags": [
-        "content-creation",
-        "copy"
       ],
       "version": "1.0.0",
       "author": "",
@@ -1172,20 +967,6 @@
       "type": "content"
     },
     {
-      "name": "email-writer",
-      "category": "content",
-      "description": "Use when email content creation — merged into content-writing parent. See ../SKILL.md for money protocol.",
-      "domain": "content",
-      "tags": [
-        "content-creation",
-        "email"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "content"
-    },
-    {
       "name": "faceless-youtube",
       "category": "content",
       "description": "Create and automate faceless YouTube channels using AI-generated scripts, TTS voiceovers, stock footage, and automated publishing workflows with zero on-camera presence.",
@@ -1336,20 +1117,6 @@
         "larry",
         "media",
         "playbook"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "content"
-    },
-    {
-      "name": "long-form",
-      "category": "content",
-      "description": "Use when long-form content — merged into content-writing parent. See ../SKILL.md for money protocol.",
-      "domain": "content",
-      "tags": [
-        "content-creation",
-        "long-form"
       ],
       "version": "1.0.0",
       "author": "",
@@ -1535,20 +1302,6 @@
         "pptx",
         "presentations",
         "slides"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "content"
-    },
-    {
-      "name": "product-desc",
-      "category": "content",
-      "description": "Use when product descriptions — merged into content-writing parent. See ../SKILL.md for money protocol.",
-      "domain": "content",
-      "tags": [
-        "content-creation",
-        "product"
       ],
       "version": "1.0.0",
       "author": "",
@@ -5219,20 +4972,6 @@
       "type": "security"
     },
     {
-      "name": "collecting-open-source-intelligence",
-      "category": "cybersecurity",
-      "description": "Use when stub — merged into performing-open-source-intelligence-gathering. See the parent skill for both offensive and defensive OSINT workflows.",
-      "domain": "cybersecurity",
-      "tags": [
-        "stub",
-        "merged"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "security"
-    },
-    {
       "name": "collecting-threat-intelligence-with-misp",
       "category": "cybersecurity",
       "description": "MISP (Malware Information Sharing Platform) is an open-source threat intelligence platform for gathering, sharing, storing, and correlating Indicators of Compromise (IOCs) of targeted attacks, threat. Use when working with collecting threat intelligence with misp.",
@@ -6635,20 +6374,6 @@
       "version": "1.0",
       "author": "mahipal",
       "subdomain": "phishing-defense",
-      "type": "security"
-    },
-    {
-      "name": "detecting-business-email-compromise-with-ai",
-      "category": "cybersecurity",
-      "description": "Use when stub — merged into detecting-business-email-compromise. See the parent skill for AI-powered BEC detection content.",
-      "domain": "cybersecurity",
-      "tags": [
-        "stub",
-        "merged"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
       "type": "security"
     },
     {
@@ -17502,21 +17227,6 @@
       "type": "data"
     },
     {
-      "name": "anomaly-detect",
-      "category": "data",
-      "description": "Use when anomaly detection — merged into data-analysis parent. See ../SKILL.md for money protocol.",
-      "domain": "data",
-      "tags": [
-        "analytics",
-        "anomaly",
-        "data-analysis"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "data"
-    },
-    {
       "name": "dagster-pipelines",
       "category": "data",
       "description": "Dagster data orchestration — software-defined assets, ops, jobs, schedules, sensors, IO managers. Use when working with dagster pipelines.",
@@ -17527,21 +17237,6 @@
         "data-analysis",
         "pipelines",
         "visualization"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "data"
-    },
-    {
-      "name": "data-cleaner",
-      "category": "data",
-      "description": "Use when data cleaning — merged into data-analysis parent. See ../SKILL.md for money protocol.",
-      "domain": "data",
-      "tags": [
-        "analytics",
-        "data",
-        "cleaning"
       ],
       "version": "1.0.0",
       "author": "",
@@ -17584,21 +17279,6 @@
       "type": "data"
     },
     {
-      "name": "report-gen",
-      "category": "data",
-      "description": "Use when report generation — merged into data-analysis parent. See ../SKILL.md for money protocol.",
-      "domain": "data",
-      "tags": [
-        "analytics",
-        "report",
-        "data-analysis"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "data"
-    },
-    {
       "name": "spark-processing",
       "category": "data",
       "description": "Apache Spark distributed processing — DataFrames, SQL, streaming, MLlib, cluster management. Use when working with spark processing.",
@@ -17628,21 +17308,6 @@
         "visualization",
         "workflow",
         "workflows"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "data"
-    },
-    {
-      "name": "viz-creator",
-      "category": "data",
-      "description": "Use when data visualization — merged into data-analysis parent. See ../SKILL.md for money protocol.",
-      "domain": "data",
-      "tags": [
-        "analytics",
-        "visualization",
-        "data-analysis"
       ],
       "version": "1.0.0",
       "author": "",
@@ -19413,36 +19078,6 @@
       "type": "devops"
     },
     {
-      "name": "docker-compose",
-      "category": "devops",
-      "description": "Use when docker Compose — merged into docker-devops parent. See ../SKILL.md for money protocol.",
-      "domain": "devops",
-      "tags": [
-        "devops",
-        "docker",
-        "compose"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "devops"
-    },
-    {
-      "name": "dockerfile-opt",
-      "category": "devops",
-      "description": "Optimize Dockerfiles with multi-stage builds, layer caching, image size reduction, and security hardening. Use when writing production Dockerfiles.",
-      "domain": "devops",
-      "tags": [
-        "devops",
-        "docker",
-        "dockerfile"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "devops"
-    },
-    {
       "name": "dockerfile-optimize",
       "category": "devops",
       "description": "Dockerfile optimization — multi-stage builds, layer caching, security hardening, minimal images. Use when optimizing Docker builds or hardening container security.",
@@ -19633,21 +19268,6 @@
         "libs",
         "pipeline",
         "shared"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "devops"
-    },
-    {
-      "name": "k8s-deploy",
-      "category": "devops",
-      "description": "Use when kubernetes deployment — merged into docker-devops parent. See ../SKILL.md for money protocol.",
-      "domain": "devops",
-      "tags": [
-        "devops",
-        "k8s",
-        "kubernetes"
       ],
       "version": "1.0.0",
       "author": "",
@@ -20246,38 +19866,6 @@
       "type": "integrations"
     },
     {
-      "name": "discord-bot",
-      "category": "integrations",
-      "description": "Use when discord Bot — Slash commands, modals, buttons, role management, event handlers, voice, threads, full Discord API integration. See parent skill for all Discord automation capabilities.",
-      "domain": "integrations",
-      "tags": [
-        "api",
-        "bot",
-        "discord",
-        "integrations"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "integrations"
-    },
-    {
-      "name": "discord-webhooks",
-      "category": "integrations",
-      "description": "Use when discord Webhooks — HTTP push notifications, rich embeds, custom usernames/avatars, file attachments, channel routing. See parent skill for all Discord automation capabilities.",
-      "domain": "integrations",
-      "tags": [
-        "api",
-        "discord",
-        "integrations",
-        "webhook"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "integrations"
-    },
-    {
       "name": "free-saas-toolkit",
       "category": "integrations",
       "description": "Recommend free-tier SaaS tools for teams -- collaboration, project management, analytics, forms, payments, and email marketing. Use when choosing free team tools, setting up a startup.",
@@ -20312,55 +19900,6 @@
         "github-issues",
         "github-pr",
         "devops"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "integrations"
-    },
-    {
-      "name": "github-actions",
-      "category": "integrations",
-      "description": "Use when gitHub Actions — CI/CD pipelines, composite actions, matrix builds, self-hosted runners. See parent skill for all GitHub automation capabilities.",
-      "domain": "integrations",
-      "tags": [
-        "actions",
-        "api",
-        "ci-cd",
-        "github",
-        "integrations"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "integrations"
-    },
-    {
-      "name": "github-issues",
-      "category": "integrations",
-      "description": "Use when gitHub Issues — CRUD operations, labels, milestones, comments, templates, webhooks, and automation. See parent skill for all GitHub automation capabilities.",
-      "domain": "integrations",
-      "tags": [
-        "api",
-        "github",
-        "integrations",
-        "issues"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "integrations"
-    },
-    {
-      "name": "github-pr",
-      "category": "integrations",
-      "description": "Use when gitHub PR — Create, review, and merge pull requests via CLI and API, branch protection, auto-merge. See parent skill for all GitHub automation capabilities.",
-      "domain": "integrations",
-      "tags": [
-        "api",
-        "github",
-        "integrations",
-        "pr"
       ],
       "version": "1.0.0",
       "author": "",
@@ -20513,37 +20052,6 @@
       "type": "integrations"
     },
     {
-      "name": "notion-api",
-      "category": "integrations",
-      "description": "Use when notion API — Full CRUD via REST, database queries, filtering, sorting, OAuth integration. See parent skill for all Notion automation capabilities.",
-      "domain": "integrations",
-      "tags": [
-        "api",
-        "integrations",
-        "notion"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "integrations"
-    },
-    {
-      "name": "notion-db",
-      "category": "integrations",
-      "description": "Use when notion Database — Schema management, query/filter/sort, relations, rollups, formula validation, bulk import/export. See parent skill for all Notion automation capabilities.",
-      "domain": "integrations",
-      "tags": [
-        "api",
-        "database",
-        "integrations",
-        "notion"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "integrations"
-    },
-    {
       "name": "notion-integration",
       "category": "integrations",
       "description": "Use when notion Automation Hub — API, Database, and Page management for knowledge bases, project trackers, and content systems. Monetize through workspace automation-as-a-service.",
@@ -20559,22 +20067,6 @@
         "notion-db",
         "notion-pages",
         "knowledge-management"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "integrations"
-    },
-    {
-      "name": "notion-pages",
-      "category": "integrations",
-      "description": "Use when notion Pages — Create, read, update, append blocks, embed content, manage hierarchy, templates, archive/restore. See parent skill for all Notion automation capabilities.",
-      "domain": "integrations",
-      "tags": [
-        "api",
-        "integrations",
-        "notion",
-        "pages"
       ],
       "version": "1.0.0",
       "author": "",
@@ -20705,54 +20197,6 @@
         "third-party",
         "workflow",
         "communication"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "integrations"
-    },
-    {
-      "name": "slack-bot",
-      "category": "integrations",
-      "description": "Use when slack Bot — Event-driven messaging, app_mention handlers, interactive components, user lookup, channel management. See parent skill for all Slack automation capabilities.",
-      "domain": "integrations",
-      "tags": [
-        "api",
-        "bot",
-        "integrations",
-        "slack"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "integrations"
-    },
-    {
-      "name": "slack-notifier",
-      "category": "integrations",
-      "description": "Use when slack Notifier — Webhook-based push notifications, rich message formatting (blocks, attachments), channel routing. See parent skill for all Slack automation capabilities.",
-      "domain": "integrations",
-      "tags": [
-        "api",
-        "integrations",
-        "notifications",
-        "slack"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "integrations"
-    },
-    {
-      "name": "slash-commands",
-      "category": "integrations",
-      "description": "Use when slack Slash Commands — Custom /command handlers, parameter parsing, ephemeral responses, modals, interactive workflows. See parent skill for all Slack automation capabilities.",
-      "domain": "integrations",
-      "tags": [
-        "api",
-        "commands",
-        "integrations",
-        "slack"
       ],
       "version": "1.0.0",
       "author": "",
@@ -20970,20 +20414,6 @@
         "marketing",
         "seo",
         "social-media"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "marketing"
-    },
-    {
-      "name": "analytics-reporting",
-      "category": "marketing",
-      "description": "Use when stub — merged into analytics-dashboard. See the parent skill for both dashboard implementation and growth strategy.",
-      "domain": "marketing",
-      "tags": [
-        "stub",
-        "merged"
       ],
       "version": "1.0.0",
       "author": "",
@@ -24124,20 +23554,6 @@
         "kol",
         "affiliate",
         "indonesia"
-      ],
-      "version": "1.0.0",
-      "author": "",
-      "subdomain": "",
-      "type": "sales"
-    },
-    {
-      "name": "lead-generation-engine",
-      "category": "sales",
-      "description": "Use when stub — merged into ai-lead-generation. See the parent skill for both service templates and technical implementation.",
-      "domain": "sales",
-      "tags": [
-        "stub",
-        "merged"
       ],
       "version": "1.0.0",
       "author": "",
