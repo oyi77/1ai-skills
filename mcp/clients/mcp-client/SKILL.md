@@ -11,24 +11,74 @@ tags:
 version: 1.0.0
 ---
 
-# MCP Client
 
-See [parent skill](../SKILL.md) for complete MCP client usage, tool invocation patterns, pipeline chaining, and revenue protocols.
+# MCP Client — Connect to Any MCP Server
 
+## Quick Reference
 
+Connect to any Model Context Protocol server, list its tools, invoke them with typed parameters, and handle results. The core building block for MCP-powered automation.
+
+## Overview
+
+The MCP client is your connection layer to MCP servers. It handles transports (stdio for local processes, HTTP/SSE for remote), tool schema resolution, type-safe invocation, error classification (protocol errors, connection failures, timeouts), and result handling. Every server interaction starts here: connect, list tools, call tool, disconnect.
+
+## Quick Start
+
+1. **Connect**: `client = MCPClient("server-name", transport={"type": "stdio", "command": "node", "args": ["server.js"]})`
+2. **Discover tools**: `tools = client.list_tools()` — returns typed schemas for every tool
+3. **Invoke**: `result = client.call_tool("tool_name", {"param": "value"})` — returns structured output
+
+## Key Pattern: Resilient Tool Invocation
+
+```python
+def safe_invoke(client, tool, params, retries=2):
+    errors = []
+    for attempt in range(retries + 1):
+        try:
+            result = client.call_tool(tool, params)
+            if result.is_error:
+                code = result.error.get("code", -1)
+                if code in (-32700, -32600, -32601):
+                    raise RuntimeError(f"Protocol error: {result.error['message']}")
+            return result
+        except (ConnectionError, TimeoutError) as e:
+            errors.append(f"Attempt {attempt + 1}: {e}")
+            if attempt < retries:
+                time.sleep(2 ** attempt)
+    raise RuntimeError(f"Failed: {'; '.join(errors)}")
+```
+
+## Transports
+
+| Transport | When | Example |
+|---|---|---|
+| stdio | Local process | `{"command": "node", "args": ["server.js"]}` |
+| HTTP/SSE | Remote server | `{"url": "https://mcp.example.com", "headers": {"Auth": "Bearer token"}}` |
+
+## Client Checklist
+
+- [ ] `ping()` succeeds before any tool invocation
+- [ ] `list_tools()` returns valid JSON Schema for each parameter
+- [ ] Error handling covers all 3 failure modes: protocol error, connection failure, timeout
+- [ ] Exponential backoff configured for transient failures
+- [ ] Disconnect/cleanup called after each session
+
+## When to Use
+
+Use when working with mcp client.
+
+## Workflow
+
+Execute these steps sequentially:
+
+1. **Connect**: `client = MCPClient("server-name", transport={"type": "stdio", "command": "node", "args": ["server.js"]})`
+2. **Discover tools**: `tools = client.list_tools()` — returns typed schemas for every tool
+3. **Invoke**: `result = client.call_tool("tool_name", {"param": "value"})` — returns structured output
 
 ## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|
-| "I'll figure it out as I go" | A structured approach saves time and reduces errors. Follow the workflow in this skill rather than improvising. |
-| "I already know this topic" | Familiarity breeds shortcuts. Use the checklist to verify you haven't missed critical steps. |
-| "This doesn't apply to my situation" | The patterns here generalize across contexts. Adapt, don't skip — the underlying principles hold. |
-| "One more tool will fix it" | Adding complexity rarely solves process gaps. Master the core workflow first. |
-
-## When to Use
-Use this skill when working with mcp client.
-
-
-## Workflow
-See the parent skill for authoritative workflow documentation.
+| "I'll just use curl/requests directly" | MCP handles auth, retries, streaming, and type-safe schemas — curl duplicates all of that manually |
+| "I only need one connection, no abstraction needed" | One connection today becomes three next month. The client abstraction pays for itself at server #2 |
+| "Synchronous calls are fine" | MCP pipelines need async for parallel tool execution. Plan for it from the start |
