@@ -1,6 +1,21 @@
 # Changelog
 All notable changes to 1ai-skills are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+
+## [3.22.0] — 2026-07-26
+### Added
+- `scripts/skill_router.py` — Skill Routing & Discovery Engine. Takes natural-language queries
+  and returns ranked skills from SKILLS.json using exact name match, name-part overlap, category
+  filter, tag overlap, domain match, and description ("Use when") trigger scoring.
+  Supports `--category`, `--top`, `--json`, `--suggest`, `--categories` modes.
+
+### Verified
+- Lint: 0 errors, 0 warnings, 2327 info
+- Tests: 1306/1306 pass
+- Schema: 1309/1309 pass (0 errors, 211 warnings)
+- Router tested with 5 diverse queries across domains (test-driven-development, docker, crypto,
+  social media, kubernetes security); all return relevant skills with plausible scores.
+  Category filtering, suggest mode, and category ranking verified.
 ## [3.21.0] — 2026-07-26
 ### Removed
 - 37 G1 stub sub-skill files deleted from disk and SKILLS.json (entries that redirect to parent
