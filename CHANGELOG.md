@@ -2,6 +2,30 @@
 All notable changes to 1ai-skills are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
 
+
+## [3.23.0] — 2026-07-26
+### Added
+- `schemas/skill.schema.json` — Optional `depends_on` frontmatter field (array of kebab-case skill
+  names) for skill-activation dependency ordering. Separate from existing `dependencies` field
+  (which tracks package/tool deps).
+- `scripts/skill-graph.py` — Composable Skill Dependency Graph Generator. Reads `depends_on` from
+  all SKILL.md frontmatter files, builds directed dependency graph, detects cycles via DFS
+  coloring, and computes topological order via Kahn's algorithm.
+  Supports `--json`, `--topo`, `--validate`, `--output` modes. Outputs `reports/skill-graph.json`.
+- `reports/skill-graph.json` — First dependency graph snapshot (1309 skills, 0 edges — field is
+  new, no skills use it yet). Acts as a baseline for future dependency additions.
+
+### Changed
+- `scripts/skill-graph.py` replaces hand-written `parse_frontmatter()` with `yaml.safe_load()`
+  (PyYAML already a project dependency) to correctly handle nested YAML keys.
+
+### Verified
+- Lint: 0 errors, 0 warnings, 2327 info
+- Tests: 1306/1306 pass
+- Schema: 1309/1309 (0 errors, 211 warnings)
+- skill-graph.py: 1309 skills scanned, 0 with depends_on, 0 cycles, report written
+- Fix: PyYAML-based parser eliminates 22 phantom nodes from nested frontmatter keys
+
 ## [3.22.0] — 2026-07-26
 ### Added
 - `scripts/skill_router.py` — Skill Routing & Discovery Engine. Takes natural-language queries
