@@ -3,13 +3,13 @@ name: free-saas-toolkit
 description: Recommend free-tier SaaS tools for teams -- collaboration, project management, analytics, forms, payments, and email marketing. Use when choosing free team tools, setting up a startup.
 domain: integrations
 tags: 
-- [free-tier
-- saas
-- team-tools
-- collaboration
-- analytics
-- startup
-- email-marketing]
+  - free-tier
+  - saas
+  - team-tools
+  - collaboration
+  - analytics
+  - startup
+  - email-marketing
 ---
 
 ## Overview

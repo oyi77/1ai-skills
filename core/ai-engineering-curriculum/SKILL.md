@@ -3,13 +3,13 @@ name: ai-engineering-curriculum
 description: Structured AI engineering curriculum — 382 skills + 99 prompts across 20 phases covering ML, deep learning, LLMs, agents, and production systems. Use when learning AI, building AI skills,.
 domain: core
 tags: 
-- [ai
-- curriculum
-- machine-learning
-- deep-learning
-- llm
-- agents
-- education]
+  - ai
+  - curriculum
+  - machine-learning
+  - deep-learning
+  - llm
+  - agents
+  - education
 ---
 
 ## When NOT to Use

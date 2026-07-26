@@ -1,10 +1,10 @@
 # 1ai-skills
 
-**Your AI agent is lazy. These 1348 skills fix that.**
+**Your AI agent is lazy. These 1347 skills fix that.**
 
 AI agents skip tests, ignore security, write placeholder code, and cut corners whenever they can. 1ai-skills forces them to follow real workflows with anti-rationalization tables, code examples, and verification checklists — across every domain.
 
-[![Skills](https://img.shields.io/badge/Skills-1348-blue?style=flat-square)](https://github.com/oyi77/1ai-skills)
+[![Skills](https://img.shields.io/badge/Skills-1347-blue?style=flat-square)](https://github.com/oyi77/1ai-skills)
 [![Tested](https://img.shields.io/badge/Tests-100%25%20Pass-brightgreen?style=flat-square)](https://github.com/oyi77/1ai-skills/blob/main/scripts/test-skills.py)
 [![Warnings](https://img.shields.io/badge/Warnings-0-brightgreen?style=flat-square)](https://github.com/oyi77/1ai-skills/blob/main/scripts/test-skills.py)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](https://github.com/oyi77/1ai-skills/blob/main/LICENSE)
@@ -302,11 +302,11 @@ git clone https://github.com/oyi77/1ai-skills.git
 
 | | Other repos | 1ai-skills |
 |---|---|---|
-| **Skills** | 24-100 curated | **1348 tested** |
+| **Skills** | 24-100 curated | **1347 tested** |
 | **Anti-rationalization** | Some | **Every skill** |
 | **Code examples** | Some | **Every skill** |
 | **Test suite** | None | **8-dimension, 100% pass** |
-| **Cybersecurity** | None | **786 skills** |
+| **Cybersecurity** | None | **790 skills** |
 | **Verification checklists** | Some | **Every skill** |
 | **Dynamic website** | Static | **Auto-generated from data** |
 | **Self-evolving** | No | **Meta-skills that improve** |

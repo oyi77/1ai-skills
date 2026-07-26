@@ -9,7 +9,7 @@ tags:
 - wireless-security
 - wifi-assessment
 - rogue-ap
-- 802.11
+- "802.11"
 - wardriving
 - wids
 - wireless-ids

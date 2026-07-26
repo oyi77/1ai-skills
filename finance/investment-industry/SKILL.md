@@ -1,7 +1,7 @@
 ---
 name: investment-industry
 version: 2.0.0
-category: investment
+category: finance
 domain: finance
 description: "Use when industry research and sector rotation for portfolio alpha — TAM/SAM/SOM analysis, competitive dynamics, regulatory tailwinds, and sector timing to beat the market by 5-15% annually."
 keywords: [industry, research, market analysis, sector rotation, TAM, competitive dynamics, top-down investing, macro, thematic]
