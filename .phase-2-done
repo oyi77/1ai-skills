@@ -1,0 +1,4 @@
+v3.37.0 Phase 2 — YAML Parser Fix verified 2026-07-26
+scripts/test-skills.py: yaml.safe_load() at line 108
+Regex fallback at line 104
+0 description-long lint warnings
