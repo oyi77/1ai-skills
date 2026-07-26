@@ -1,0 +1,5 @@
+v3.36.0 Verification Gate — 2026-07-26
+Tests: 1306/1306 PASS
+Lint: 0 errors, 0 warnings
+SKILLS.json: 1309 total, valid
+All 3 phases verified and committed sequentially with per-phase push.
