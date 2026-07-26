@@ -151,7 +151,7 @@ Use the `scripts/process.py` to automate URL scanning, extract IOCs, and cross-r
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

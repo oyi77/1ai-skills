@@ -402,7 +402,7 @@ if __name__ == "__main__":
 5. **Write product description** — `desc = generate_product_description("Widget Pro", ["API access", "team dashboards"], ["save 10 hrs/week", "reduce errors"], "engineers")`
 6. **Ship it** — Zip everything into a client folder. That's your $500–$2,000 deliverable.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

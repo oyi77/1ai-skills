@@ -571,7 +571,7 @@ Refer to the skill overview for detailed usage instructions.
 - Agent System: https://github.com/code-yeongyu/oh-my-opencode#for-those-who-want-to-read-meet-sisyphus
 - OpenCode Docs: https://opencode.ai/docs/
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

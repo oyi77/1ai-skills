@@ -771,7 +771,7 @@ function buyWithAllowlist(bytes32[] calldata proof) external payable {
 - [ ] IPFS CIDs use CIDv1 (not CIDv0 or HTTP gateway)
 - [ ] Arweave transaction confirmed (status 200/208)
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Excuse | Truth |
 |---|---|

@@ -320,7 +320,7 @@ strings process_dump.dmp | findstr -i "password\|token\|session\|bearer"
 - Ghidra: https://ghidra-sre.org/
 - Echo Mirage: https://sourceforge.net/projects/echomirage/
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

@@ -131,7 +131,7 @@ Alphaear Strategy provides market analysis capabilities with risk management.
 - Never revenge trade after a loss
 - Take breaks after consecutive losses
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

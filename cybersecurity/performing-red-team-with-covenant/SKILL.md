@@ -117,7 +117,7 @@ JSON report with listener configuration, active grunts, executed tasks, and task
 - Scope boundaries confirmed — only authorized targets were tested
 - Remediation recommendations included for every finding
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

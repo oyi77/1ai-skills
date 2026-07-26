@@ -107,7 +107,7 @@ gcloud run deploy my-service   --image gcr.io/project/image   --region us-centra
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

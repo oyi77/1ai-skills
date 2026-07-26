@@ -41,7 +41,7 @@ Full PDF lifecycle support — creation, editing, extraction, and form filling. 
 4. **Add metadata** — Title, author, keywords, encryption
 5. **Export/Extract** — Save PDF or parse existing one
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

@@ -548,7 +548,7 @@ def check_alerts():
 
 ---
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

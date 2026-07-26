@@ -220,7 +220,7 @@ This skill guides you through hunt for threats in aws environments using detecti
 - Set up billing alerts before running resource-intensive scans
 - Review and revert any IAM or security group changes after testing
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

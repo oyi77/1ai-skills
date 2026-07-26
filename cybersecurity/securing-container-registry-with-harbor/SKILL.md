@@ -278,7 +278,7 @@ curl -k "https://harbor.example.com/api/v2.0/audit-logs?page=1&page_size=10" \
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

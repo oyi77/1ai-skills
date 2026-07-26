@@ -576,7 +576,7 @@ echo "Deploy complete: https://$APP.$ENV.example.com"
 5. **Build & measure** — `docker build -t test . && docker image ls | grep test` — target <200 MB
 6. **Scaffold K8s manifests** — `deployment.yaml`, `service.yaml`, `hpa.yaml` for the service
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

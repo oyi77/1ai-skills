@@ -472,7 +472,7 @@ client.chat_postMessage(
 - Interactive approval workflow functional
 - Reusable bot architecture to sell as a communication automation product
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---------------|---------|

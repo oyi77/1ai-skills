@@ -94,7 +94,7 @@ Feedback Collector is a foundational meta-skills skill that provides skill manag
 - Compatible with the 1ai-skills hook system
 - Logs metrics for the skill performance monitor
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

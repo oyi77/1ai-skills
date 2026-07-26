@@ -102,7 +102,7 @@ def route_request(task: str, prompt: str):
 - [ ] Error handling tested with edge cases
 - [ ] Documentation updated with findings
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Excuse | Truth |
 |---|---|

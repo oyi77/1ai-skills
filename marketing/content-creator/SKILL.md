@@ -298,7 +298,7 @@ def analyze_keywords(keywords: list[str]) -> list[dict]:
 - Always include a CTA in every piece of content
 - Keep a swipe file of proven hooks and formats
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

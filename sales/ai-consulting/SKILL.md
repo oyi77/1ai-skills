@@ -363,7 +363,7 @@ Say: "$3,000 project that typically saves $50K/year"
 
 ---
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

@@ -306,7 +306,7 @@ Authorized by [Client Rep] under [Agreement].*
 > **Deliverables:** Assessment report with 35+ injection payloads, OWASP mapping, evidence package, remediation
 > **Price:** $4,000  **Terms:** 50% upfront, 50% on delivery. 30-day retest window.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

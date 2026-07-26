@@ -442,7 +442,7 @@ for t in old_tasks:
 - Content publishing pipeline validated
 - Reusable deliverables to sell as workspace automation
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---------------|---------|

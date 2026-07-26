@@ -226,7 +226,7 @@ Week 4 — Compile learnings, build next month's brief
 - Refresh creative every 7–14 days to combat ad fatigue
 - Use cost caps and bid floors to protect margin
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

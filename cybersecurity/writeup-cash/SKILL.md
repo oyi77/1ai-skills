@@ -332,7 +332,7 @@ Email: researcher@example.com / Twitter: @handle
 - [ ] Cross-published on at least 2 platforms
 - [ ] CTA for consulting / tool sales included in footer
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

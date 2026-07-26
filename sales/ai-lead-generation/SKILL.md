@@ -379,7 +379,7 @@ ORDER BY grade;
 SQL
 ```
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Excuse | Truth |
 |--------|-------|

@@ -42,7 +42,7 @@ Google BigQuery integration for serverless, scalable data analytics. Supports SQ
 5. **Run queries** - SQL queries with parameterization
 6. **Export results** - To DataFrames, CSV, or streaming inserts
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

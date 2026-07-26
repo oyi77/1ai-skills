@@ -27,6 +27,16 @@ nist_csf:
 Microsoft releases security updates on the second Tuesday of each month ("Patch Tuesday"), addressing vulnerabilities across Windows, Office, Exchange, SQL Server, Azure services, and other products. In 2025, Microsoft patched over 1,129 vulnerabilities across the year -- an 11.9% increase from 2024 -- making a structured response process critical. The leading risk types include elevation of privilege (49%), remote code execution (34%), and information disclosure (7%). This skill covers building a repeatable Patch Tuesday response workflow from initial advisory review through testing, deployment, and validation.
 
 
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|---|---|
+| "I'll figure it out as I go" | A structured approach saves time and reduces errors. Follow the workflow in this skill rather than improvising. |
+| "I already know this topic" | Familiarity breeds shortcuts. Use the checklist to verify you haven't missed critical steps. |
+| "This doesn't apply to my situation" | The patterns here generalize across contexts. Adapt, don't skip — the underlying principles hold. |
+| "One more tool will fix it" | Adding complexity rarely solves process gaps. Master the core workflow first. |
+
 ## When to Use
 **Trigger phrases:**
 - "building patch tuesday response process"

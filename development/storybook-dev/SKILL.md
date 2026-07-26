@@ -372,7 +372,7 @@ npx chromatic --project-token=${{ secrets.CHROMATIC_TOKEN }}
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

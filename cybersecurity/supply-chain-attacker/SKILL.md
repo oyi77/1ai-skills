@@ -425,7 +425,7 @@ dependency confusion risks found, CI/CD pipeline gaps, overall risk rating>
 - [ ] Recommendations prioritized by effort vs. risk reduction
 - [ ] Invoice attached
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

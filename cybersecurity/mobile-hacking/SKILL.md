@@ -346,7 +346,7 @@ Classification: CONFIDENTIAL
 
 Billable deliverable: branded PDF report + CSV findings tracker. Include 30-day retest window in the SOW.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

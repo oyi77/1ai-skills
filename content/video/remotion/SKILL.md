@@ -884,7 +884,7 @@ For AI-generated clips to embed in Remotion compositions, use these skills.sh mo
 
 ---
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

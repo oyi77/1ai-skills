@@ -19,6 +19,16 @@ source: Panniantong/Agent-Reach
 
 Unified channel extraction framework for Southeast Asian e-commerce (Shopee, TikTok Shop) and Chinese messaging (WeChat).
 
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|---|---|
+| "I'll figure it out as I go" | A structured approach saves time and reduces errors. Follow the workflow in this skill rather than improvising. |
+| "I already know this topic" | Familiarity breeds shortcuts. Use the checklist to verify you haven't missed critical steps. |
+| "This doesn't apply to my situation" | The patterns here generalize across contexts. Adapt, don't skip — the underlying principles hold. |
+| "One more tool will fix it" | Adding complexity rarely solves process gaps. Master the core workflow first. |
+
 ## When to Use
 - **Shopee:** Extract products, reviews, seller info from Indonesia/Malaysia/Philippines/Thailand/Singapore/Vietnam
 - **TikTok Shop:** Extract TikTok Shop products, live streams, seller metrics

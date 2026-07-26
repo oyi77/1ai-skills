@@ -348,7 +348,7 @@ Best,
 [Your Name]
 ```
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

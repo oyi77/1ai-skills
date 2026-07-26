@@ -268,7 +268,7 @@ agent research-agent \
 
 ---
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

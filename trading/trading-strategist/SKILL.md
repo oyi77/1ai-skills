@@ -244,7 +244,7 @@ The following strategy-level skills are maintained alongside this skill as sub-r
 | [Polymarket Weather Trader](../polymarket-weather-trader/SKILL.md) | Temperature prediction markets | NOAA forecasts (Simmer) |
 | [XAUUSD Asia 7-Candle](../xauusd-asia-7c-breakout/SKILL.md) | Gold Asia session breakout | 7-candle HH/LL breakout |
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 |Excuse|Truth|
 |---|---|

@@ -322,7 +322,7 @@ echo "Config Valid: $(jq . config.json > /dev/null 2>&1 && echo 'âœ“' || echo 'â
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

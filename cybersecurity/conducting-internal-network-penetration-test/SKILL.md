@@ -363,7 +363,7 @@ Attack Path 1: Domain Compromise via LLMNR Poisoning
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

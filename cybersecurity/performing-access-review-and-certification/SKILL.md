@@ -27,6 +27,16 @@ nist_csf:
 Conduct systematic access reviews and certifications to ensure users have appropriate access rights aligned with their roles. This skill covers review campaign design, reviewer selection, risk-based prioritization, micro-certification strategies, and remediation tracking for compliance with SOX, HIPAA, and PCI DSS requirements.
 
 
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|---|---|
+| "I'll figure it out as I go" | A structured approach saves time and reduces errors. Follow the workflow in this skill rather than improvising. |
+| "I already know this topic" | Familiarity breeds shortcuts. Use the checklist to verify you haven't missed critical steps. |
+| "This doesn't apply to my situation" | The patterns here generalize across contexts. Adapt, don't skip — the underlying principles hold. |
+| "One more tool will fix it" | Adding complexity rarely solves process gaps. Master the core workflow first. |
+
 ## When to Use
 **Trigger phrases:**
 - "performing access review and certification"

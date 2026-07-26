@@ -78,7 +78,7 @@ def execute_sop(sop_name: str, steps: list[str]) -> dict:
 - Cost per operation
 - SLA compliance rate
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

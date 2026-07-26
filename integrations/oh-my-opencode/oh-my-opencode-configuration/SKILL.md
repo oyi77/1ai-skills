@@ -914,7 +914,7 @@ opencode logs --mcp
 - OpenCode Config: https://opencode.ai/docs/config/
 - Agent-Model Matching: https://github.com/code-yeongyu/oh-my-opencode/blob/master/docs/guide/agent-model-matching.md
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

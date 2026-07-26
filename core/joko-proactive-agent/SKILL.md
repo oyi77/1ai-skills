@@ -65,7 +65,7 @@ Joko Proactive Agent is a foundational core infrastructure skill that provides s
 - Compatible with the 1ai-skills hook system
 - Logs metrics for the skill performance monitor
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

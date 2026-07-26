@@ -42,7 +42,7 @@ Full Stripe integration covering payments, subscriptions, invoicing, and billing
 5. **Manage customers** - Create, update, attach payment methods
 6. **Handle errors** - Declined cards, expired tokens, rate limits
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

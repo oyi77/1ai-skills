@@ -1078,7 +1078,7 @@ contract CircuitBreaker {
 - [ ] `foundry.toml` / `hardhat.config.js` optimizes for appropriate runs
 - [ ] Gas snapshots compared before/after optimization changes
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

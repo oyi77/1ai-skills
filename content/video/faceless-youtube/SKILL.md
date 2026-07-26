@@ -609,7 +609,7 @@ Net 15 | Stripe / Bank / PayPal
 ---
 
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Excuse | Truth |
 |--------|-------|

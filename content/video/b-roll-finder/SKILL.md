@@ -59,7 +59,7 @@ curl "https://api.pexels.com/videos/search?query=person+frustrated+at+computer&p
 Script → b-roll-finder (match visuals) → video-editor (assemble) → faceless-youtube (upload)
 ```
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

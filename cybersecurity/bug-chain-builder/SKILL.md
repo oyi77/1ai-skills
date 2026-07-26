@@ -528,7 +528,7 @@ takeover affecting all 50K+ users."*
 [Optional: other chainable patterns observed during testing]
 ```
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

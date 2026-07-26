@@ -369,7 +369,7 @@ for platform in active_platforms:
 
 ---
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

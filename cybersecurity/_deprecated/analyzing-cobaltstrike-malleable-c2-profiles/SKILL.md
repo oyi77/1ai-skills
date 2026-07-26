@@ -106,7 +106,7 @@ A JSON report containing extracted C2 URIs, HTTP headers, user agents, sleep/jit
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

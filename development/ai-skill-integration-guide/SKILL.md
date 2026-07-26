@@ -202,7 +202,7 @@ Every imported skill must pass these gates before merge:
 
 - [ ] Skill output matches expected behavior
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

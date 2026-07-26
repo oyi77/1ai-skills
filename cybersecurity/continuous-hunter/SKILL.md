@@ -207,7 +207,7 @@ Attach raw JSON/CSV findings as appendix. Include in the monthly invoice as a de
 - [ ] Critical findings alerted immediately (not waiting for weekly report)
 - [ ] Recommendations provided with risk-based prioritization
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

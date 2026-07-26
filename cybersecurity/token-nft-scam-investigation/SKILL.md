@@ -1655,8 +1655,8 @@ Modeled on ZachXBT's proven approach:
 5. **Private client referrals** — Each investigation builds reputation for paid work
 
 
-## Anti-Rationalization
-## Anti-Rationalization
+## Anti-Rationalization Table
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

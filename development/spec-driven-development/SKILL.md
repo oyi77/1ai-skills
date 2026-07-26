@@ -44,7 +44,7 @@ Spec-Driven Development (SDD) forces clarity before code. A spec is a living doc
 7. **Set boundaries** - What is NOT in scope? What are the constraints?
 8. **Review** - Get sign-off before writing any code
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

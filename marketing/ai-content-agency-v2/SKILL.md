@@ -324,7 +324,7 @@ if __name__ == "__main__":
 
 ---
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

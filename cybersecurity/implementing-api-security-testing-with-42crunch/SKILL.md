@@ -397,7 +397,7 @@ When 42Crunch identifies issues, follow this remediation process:
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

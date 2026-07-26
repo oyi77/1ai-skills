@@ -117,7 +117,7 @@ JSON report containing per-user risk scores, anomalous activity details, peer gr
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

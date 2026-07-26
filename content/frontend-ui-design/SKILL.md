@@ -44,7 +44,7 @@ Build production-quality frontend interfaces with modern frameworks. Covers comp
 5. **Ensure accessibility** — ARIA labels, keyboard navigation, color contrast
 6. **Test** — Visual regression, interaction testing, cross-browser
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

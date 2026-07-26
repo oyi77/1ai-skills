@@ -119,7 +119,7 @@ JSON report with agent inventory, alert statistics, rule coverage, and logtest v
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

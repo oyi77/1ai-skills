@@ -82,7 +82,7 @@ def test_user_creation_invalid_email():
 - Keep functions small and focused (<50 lines)
 - Use immutable data patterns where possible
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

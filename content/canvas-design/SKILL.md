@@ -42,7 +42,7 @@ Create professional visual content using programmatic design tools. Supports HTM
 4. **Apply style** — Colors, gradients, shadows, typography
 5. **Export** — PNG, SVG, or interactive HTML
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

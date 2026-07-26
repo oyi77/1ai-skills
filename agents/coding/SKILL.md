@@ -266,7 +266,7 @@ echo "Report written to $REPORT"
 
 ---
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

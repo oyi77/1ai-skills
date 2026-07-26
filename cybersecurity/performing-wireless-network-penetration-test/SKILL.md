@@ -309,7 +309,7 @@ reaver -i wlan0mon -b AA:BB:CC:DD:EE:03 -K 1 -vv
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

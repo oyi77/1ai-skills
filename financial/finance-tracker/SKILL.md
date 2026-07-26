@@ -68,7 +68,7 @@ def calculate_risk(returns: list[float]) -> dict:
 - Redact sensitive financial data in reports
 - Document assumptions and methodologies
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

@@ -127,7 +127,7 @@ JSON report containing RASP policy audit results, detected attack attempts with 
 - Scope boundaries confirmed — only authorized targets were tested
 - Remediation recommendations included for every finding
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

@@ -257,7 +257,7 @@ Curated resources for free-dev-resources.
 5. Document usage, edge cases, and integration points
 6. Review with team before merging to shared branches
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

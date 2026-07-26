@@ -216,7 +216,7 @@ Use this for each layer:
 
 Status progression: `Not started` → `In QA` → `Fixing` → `Re-QA` → `CLEARED`
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

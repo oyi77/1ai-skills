@@ -390,7 +390,7 @@ def analyze_keywords(keywords: list[str]) -> list[dict]:
 
 ---
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

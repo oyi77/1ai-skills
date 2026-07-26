@@ -383,7 +383,7 @@ def benchmark_rule(rule_text, scan_directory, iterations=3):
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

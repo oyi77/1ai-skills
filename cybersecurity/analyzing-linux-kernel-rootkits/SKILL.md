@@ -174,7 +174,7 @@ Summary:
 - Chain of custody log complete with timestamps and examiner names
 - Analysis tools and versions documented for reproducibility
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

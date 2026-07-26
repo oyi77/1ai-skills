@@ -120,7 +120,7 @@ JSON report with detected account manipulation events, privileged group changes,
 - False positives filtered out through manual verification
 - Fix recommendations include code-level remediation guidance
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

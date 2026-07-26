@@ -110,7 +110,7 @@ JSON report containing:
 - Scope boundaries confirmed — only authorized targets were tested
 - Remediation recommendations included for every finding
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

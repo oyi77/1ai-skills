@@ -42,7 +42,7 @@ Browser-based testing using Playwright for E2E automation, DevTools for debuggin
 5. **Performance audit** - Core Web Vitals, bundle size
 6. **Accessibility audit** - WCAG violations, color contrast
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

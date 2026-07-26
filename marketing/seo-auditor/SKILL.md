@@ -741,7 +741,7 @@ echo "Target Sites: $(cat config.json 2>/dev/null | python3 -c "import sys,json;
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

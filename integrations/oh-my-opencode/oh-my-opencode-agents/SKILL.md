@@ -344,7 +344,7 @@ Refer to the skill overview for detailed usage instructions.
 - Agent-Model Matching: https://github.com/code-yeongyu/oh-my-opencode/blob/master/docs/guide/agent-model-matching.md
 - Quality Standards: https://github.com/code-yeongyu/oh-my-opencode/blob/master/docs/features.md
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

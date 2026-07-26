@@ -41,7 +41,7 @@ Context Engineering is the practice of designing what information an AI agent se
 5. **Optimize tokens** - Compress, deduplicate, summarize
 6. **Test** - Does the agent produce correct output with this context?
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

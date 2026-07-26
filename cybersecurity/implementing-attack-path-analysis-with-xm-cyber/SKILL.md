@@ -27,6 +27,16 @@ nist_csf:
 XM Cyber is a continuous exposure management platform that uses attack graph analysis to identify how adversaries can chain together exposures -- vulnerabilities, misconfigurations, identity risks, and credential weaknesses -- to reach critical business assets. According to XM Cyber's 2024 research analyzing over 40 million exposures across 11.5 million entities, organizations typically have around 15,000 exploitable exposures, but traditional CVEs account for less than 1% of total exposures. The platform identifies that only 2% of exposures reside on "choke points" of converging attack paths, enabling security teams to focus on fixes that eliminate the most risk with the least effort.
 
 
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|---|---|
+| "I'll figure it out as I go" | A structured approach saves time and reduces errors. Follow the workflow in this skill rather than improvising. |
+| "I already know this topic" | Familiarity breeds shortcuts. Use the checklist to verify you haven't missed critical steps. |
+| "This doesn't apply to my situation" | The patterns here generalize across contexts. Adapt, don't skip — the underlying principles hold. |
+| "One more tool will fix it" | Adding complexity rarely solves process gaps. Master the core workflow first. |
+
 ## When to Use
 **Trigger phrases:**
 - "implementing attack path analysis with xm cyber"

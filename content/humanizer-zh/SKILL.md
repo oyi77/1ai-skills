@@ -25,6 +25,16 @@ persona: "name: \"Stephen King\"\n  title: \"Master of Natural Prose\"\n  expert
 
 中文版的 AI 写作去痕工具。识别和去除 AI 生成文本的痕迹，使中文写作更自然、更有人味。基于维基百科的"AI 写作特征"页面。
 
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|---|---|
+| "I'll figure it out as I go" | A structured approach saves time and reduces errors. Follow the workflow in this skill rather than improvising. |
+| "I already know this topic" | Familiarity breeds shortcuts. Use the checklist to verify you haven't missed critical steps. |
+| "This doesn't apply to my situation" | The patterns here generalize across contexts. Adapt, don't skip — the underlying principles hold. |
+| "One more tool will fix it" | Adding complexity rarely solves process gaps. Master the core workflow first. |
+
 ## When to Use
 
 **Trigger phrases:**

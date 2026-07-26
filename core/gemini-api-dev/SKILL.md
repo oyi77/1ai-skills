@@ -45,7 +45,7 @@ Integrate Google Gemini API for chat, multimodal analysis, function calling, and
 4. **Handle responses** — Streaming, function calls, safety settings
 5. **Error handling** — Rate limits, retries, fallback models
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

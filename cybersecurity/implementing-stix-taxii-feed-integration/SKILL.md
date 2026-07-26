@@ -354,7 +354,7 @@ def push_to_taxii(server_url, collection_id, stix_bundle, user, password):
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

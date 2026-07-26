@@ -92,7 +92,7 @@ def kelly_size(win_rate: float, avg_win: float, avg_loss: float) -> float:
 - Never revenge trade after a loss
 - Take breaks after consecutive losses
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

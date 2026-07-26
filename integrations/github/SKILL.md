@@ -357,7 +357,7 @@ echo "Released v$VERSION"
 - Audit script ready to run on any repo
 - Proven infrastructure you can sell as a DevOps audit deliverable
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---------------|---------|

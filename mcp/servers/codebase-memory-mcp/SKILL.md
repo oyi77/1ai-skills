@@ -69,7 +69,7 @@ Codebase Memory Mcp implements a Model Context Protocol server for Model Context
 - Supports streaming responses for large payloads
 - Handles errors with standard MCP error codes
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

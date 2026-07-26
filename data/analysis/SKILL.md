@@ -391,7 +391,7 @@ if __name__ == "__main__":
 5. **Produce a report** — `generate_report(profile, cleaning, anomaly, charts)`
 6. **Package as a deliverable** — Bundle the report HTML + charts into a zip. That's your $500 minimum viable product.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

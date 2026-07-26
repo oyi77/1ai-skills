@@ -451,7 +451,7 @@ ship_automation("Daily Price Monitor", ["cron", "python"], 2, 150)
 
 ---
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

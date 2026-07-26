@@ -69,7 +69,7 @@ def evaluate_source(url: str) -> dict:
 - Recommendations (actionable next steps)
 - Sources and methodology
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

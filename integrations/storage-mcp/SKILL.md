@@ -385,7 +385,7 @@ Refer to the skill overview for detailed usage instructions.
 
 ---
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

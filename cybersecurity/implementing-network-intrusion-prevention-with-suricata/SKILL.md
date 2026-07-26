@@ -420,7 +420,7 @@ echo "rate_filter gen_id 1, sig_id 2100366, track by_src, count 10, seconds 60, 
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

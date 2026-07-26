@@ -146,7 +146,7 @@ Every Friday:
 3. Review the output for correctness before delivering to the user
 4. Combine with related skills for complex multi-step workflows
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

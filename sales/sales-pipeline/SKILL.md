@@ -168,7 +168,7 @@ A lead is qualified only when ALL 4 criteria are confirmed. Do not advance unqua
 
 ---
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Excuse | Truth |
 |--------|-------|

@@ -281,7 +281,7 @@ kubectl get clusterroles -o json | jq '.items[] | select(.rules[].resources[] ==
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

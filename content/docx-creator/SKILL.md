@@ -42,7 +42,7 @@ Create professional Word documents with full formatting support. Handles headers
 4. **Apply formatting** — Set headers/footers, page numbers, table of contents
 5. **Export** — Save as .docx with proper file naming
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

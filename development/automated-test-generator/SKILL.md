@@ -209,7 +209,7 @@ After generating tests, confirm:
 - [ ] Test names are descriptive (explain the scenario, not just the function)
 - [ ] E2E tests cover critical user journeys
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

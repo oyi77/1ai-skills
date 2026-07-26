@@ -308,7 +308,7 @@ Every merge request displays a security scanning widget showing:
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

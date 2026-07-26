@@ -483,7 +483,7 @@ tailscale up --authkey=$TS_AUTHKEY --hostname=ci-runner-$CI_JOB_ID
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

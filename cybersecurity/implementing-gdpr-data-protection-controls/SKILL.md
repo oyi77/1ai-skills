@@ -37,6 +37,16 @@ atlas_techniques:
 The General Data Protection Regulation (EU) 2016/679 (GDPR) is the EU's comprehensive data protection law governing the collection, processing, storage, and transfer of personal data. This skill covers implementing the technical and organizational measures required by GDPR, including data protection by design and by default, Data Protection Impact Assessments (DPIAs), data subject rights management, breach notification procedures, and cross-border data transfer mechanisms.
 
 
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|---|---|
+| "I'll figure it out as I go" | A structured approach saves time and reduces errors. Follow the workflow in this skill rather than improvising. |
+| "I already know this topic" | Familiarity breeds shortcuts. Use the checklist to verify you haven't missed critical steps. |
+| "This doesn't apply to my situation" | The patterns here generalize across contexts. Adapt, don't skip — the underlying principles hold. |
+| "One more tool will fix it" | Adding complexity rarely solves process gaps. Master the core workflow first. |
+
 ## When to Use
 **Trigger phrases:**
 - "implementing gdpr data protection controls"

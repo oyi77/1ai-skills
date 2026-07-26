@@ -78,7 +78,7 @@ while True:
 - Use idempotent operations where possible
 - Test with edge cases before deploying
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

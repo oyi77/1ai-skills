@@ -44,7 +44,7 @@ Intelligent model routing that selects the best LLM for each task based on capab
 4. **Track metrics** — Cost per request, latency, success rate
 5. **Optimize** — A/B test models, adjust routing rules
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

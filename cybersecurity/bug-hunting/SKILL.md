@@ -331,7 +331,7 @@ Auth: Required/Not Required
 > **Price:** $500
 > **Payment:** Due on delivery via invoice.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

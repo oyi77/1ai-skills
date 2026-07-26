@@ -366,7 +366,7 @@ for snapshot in monitor_servers(["github-mcp", "notion-mcp", "stripe-mcp"], inte
         print(f"All healthy: {counts}")
 ```
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

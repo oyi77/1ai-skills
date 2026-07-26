@@ -502,7 +502,7 @@ def archive_stale_content(dry_run: bool = True):
     return stale if dry_run else None
 ```
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

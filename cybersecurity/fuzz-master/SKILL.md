@@ -357,7 +357,7 @@ genhtml coverage.info --output-directory coverage-report/
 - [ ] Regression corpus prepared in client-requested format
 - [ ] Written authorization confirmed and scoped before any destructive testing
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

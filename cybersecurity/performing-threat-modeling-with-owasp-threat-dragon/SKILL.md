@@ -255,7 +255,7 @@ Threat Dragon participates in the CycloneDX Threat Model Bill of Materials (TMBO
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

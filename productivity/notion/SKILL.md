@@ -92,7 +92,7 @@ Notion enhances workflow optimization with proven systems and tools.
 4. **Validate** — Verify results meet quality standards
 5. **Document** — Record findings and decisions
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|
