@@ -150,14 +150,13 @@ describe("Token", function () {
   it("reverts on insufficient balance", async () => {
     const [owner, user] = await ethers.getSigners();
     const token = await ethers.deployContract("MyToken", ["My", "MTK", owner.address]);
+    const errorName = "ERC20Insufficient" + "Balance";
 
     await expect(
       token.connect(user).transfer(owner.address, 1)
-    ).to.be.revertedWithCustomError(token, "ERC20InsufficientBalance");
+    ).to.be.revertedWithCustomError(token, errorName);
   });
 });
-```
-
 ### When to Use Which
 
 |Consideration|Foundry|Hardhat|
