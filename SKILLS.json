@@ -1875,7 +1875,7 @@
     {
       "name": "company-kb",
       "category": "core",
-      "description": "company-kb — Company Knowledge Base Skill. Use when relevant to this domain.",
+      "description": "Company Knowledge Base Skill — organization-wide memory, cross-project entity linking, multi-agent collaboration, and brain integration for persistent team context. Use when working with company knowledge, team memory, or cross-project context.",
       "domain": "core",
       "tags": [
         "company",
@@ -1883,7 +1883,9 @@
         "memory",
         "self-improvement"
       ],
-      "version": "1.0.0",
+      "version": "2.0.0",
+      "depth": 2,
+      "quality": 3,
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2072,14 +2074,16 @@
     {
       "name": "kb",
       "category": "core",
-      "description": "Query and maintain the knowledge base for project context, decisions, and architecture documentation. Use on session start. Use when working with kb.",
+      "description": "Use when querying and maintaining the knowledge base for project context, decisions, and architecture documentation on session start.",
       "domain": "core",
       "tags": [
         "infrastructure",
         "memory",
         "self-improvement"
       ],
-      "version": "1.0.0",
+      "version": "2.0.0",
+      "depth": 2,
+      "quality": 3,
       "author": "",
       "subdomain": "",
       "type": "core"

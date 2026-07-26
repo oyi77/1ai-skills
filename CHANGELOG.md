@@ -3,6 +3,25 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 
 
 
+
+## [3.31.0] — 2026-07-26
+### Added
+- `core/core/kb/SKILL.md` — Deepened from 21-line stub to 509-line production skill (v2.0.0,
+  depth 2, quality 3). 15 code blocks, Anti-Rationalization Table, verification checklist,
+  session-start routine, PARA-structured persistence patterns.
+- `core/core/company-kb/SKILL.md` — Deepened from 114-line stub to 371-line production skill
+  (v2.0.0, depth 2, quality 3). Entity schema, multi-agent locking, session log sanitization,
+  privacy classification, team collaboration scenarios.
+
+### Changed
+- `SKILLS.json` — Updated `kb` and `company-kb` entries with version 2.0.0, depth 2, quality 3,
+  improved descriptions with `Use when` trigger phrase.
+
+### Verified
+- Lint: 0 errors, 0 warnings, 2326 info
+- Tests: 1306/1306 pass
+- SKILLS.json: valid JSON, 1309 skills
+
 ## [3.23.0] — 2026-07-26
 ### Added
 - `schemas/skill.schema.json` — Optional `depends_on` frontmatter field (array of kebab-case skill
