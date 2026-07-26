@@ -54,7 +54,7 @@ Atlassian Jira is the industry-standard issue tracking and project management pl
 Generate at `https://id.atlassian.com/manage-profile/security/api-tokens`. Format: `ATATT3xFfGF0...` (64+ chars).
 
 ```bash
-curl -s -u "user@example.com:ATATT3xFfGF0..." \
+curl -s -H "Authorization: Bearer YOUR_JIRA_TOKEN" \
   "https://your-domain.atlassian.net/rest/api/3/myself"
 ```
 
