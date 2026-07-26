@@ -83,6 +83,11 @@
       "items": { "type": "string", "minLength": 1 },
       "description": "Explicit trigger phrases. When an agent sees these inputs, it SHOULD activate this skill."
     },
+    "depends_on": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/kebab" },
+      "description": "Skill names that must be activated before this one (activation dependency graph)."
+    },
     "non_triggers": {
       "type": "array",
       "items": { "type": "string", "minLength": 1 },
