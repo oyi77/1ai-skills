@@ -8,6 +8,7 @@ tags:
 - infrastructure
 - pki
 - vault
+version: 1.0.0
 ---
 
 

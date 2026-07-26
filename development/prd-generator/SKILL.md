@@ -9,6 +9,7 @@ tags:
 - prd
 - software-engineering
 - testing
+version: 1.0.0
 ---
 
 persona:

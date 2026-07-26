@@ -9,6 +9,7 @@ tags:
 - self-improvement
 - session
 trigger: auto
+version: 1.0.0
 ---
 # Session Brain
 

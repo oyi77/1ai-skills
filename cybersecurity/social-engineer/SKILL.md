@@ -11,6 +11,7 @@ tags:
 - social-media
 - testing
 - threat-defense
+version: 1.0.0
 ---
 # Social Engineer
 

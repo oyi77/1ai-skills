@@ -10,6 +10,7 @@ tags:
   - defect-tracking
   - regression-testing
   - evidence-based
+version: 1.0.0
 ---
 
 # QA → Review → Fix Loop Protocol

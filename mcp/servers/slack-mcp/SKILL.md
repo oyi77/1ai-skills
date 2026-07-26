@@ -8,6 +8,7 @@ tags:
 - model-context-protocol
 - slack
 - tool-integration
+version: 1.0.0
 ---
 # Slack Mcp
 

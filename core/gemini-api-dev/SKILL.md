@@ -9,6 +9,7 @@ tags:
 - llm
 - multimodal
 - api
+version: 1.0.0
 ---
 
 # Gemini Api Dev

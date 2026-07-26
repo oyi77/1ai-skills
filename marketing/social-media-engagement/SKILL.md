@@ -11,6 +11,7 @@ tags:
 - seo
 - social
 - social-media
+version: 1.0.0
 ---
 
 

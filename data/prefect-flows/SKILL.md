@@ -9,6 +9,7 @@ tags:
 - prefect
 - visualization
 - workflow
+version: 1.0.0
 ---
 
 

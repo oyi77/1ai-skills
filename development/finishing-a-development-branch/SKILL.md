@@ -9,6 +9,7 @@ tags:
 - finishing
 - software-engineering
 - testing
+version: 1.0.0
 ---
 
 persona:

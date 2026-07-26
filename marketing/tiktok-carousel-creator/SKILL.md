@@ -15,6 +15,7 @@ tags:
 - tiktok
 metadata: "{\n    \"openclaw\": {\n      \"emoji\": \"\U0001F4F1\",\n      \"requires\": { \"bins\": [\"ffmpeg\", \"curl\"\
   ], \"env\": [\"PEXELS_API_KEY\"] }\n    }\n  }\n"
+version: 1.0.0
 ---
 # Tiktok Carousel Creator
 

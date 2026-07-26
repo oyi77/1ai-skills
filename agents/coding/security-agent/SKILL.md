@@ -8,6 +8,7 @@ tags:
   - automation
   - security
   - coding
+version: 1.0.0
 ---
 
 # Security Agent

@@ -11,6 +11,7 @@ tags:
   - ci-cd
   - dockerfile
   - money-making
+version: 1.0.0
 ---
 
 # DevOps Money Protocol — Compose, Optimize, Deploy

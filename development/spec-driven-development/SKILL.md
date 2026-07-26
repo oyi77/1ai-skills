@@ -9,6 +9,7 @@ tags:
 - planning
 - requirements
 - design-doc
+version: 1.0.0
 ---
 
 # Spec Driven Development

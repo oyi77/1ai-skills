@@ -9,6 +9,7 @@ tags:
 - testing
 - thinking
 - tool-integration
+version: 1.0.0
 ---
 
 ## Overview

@@ -10,6 +10,7 @@ tags:
 - integrations
 - mcp
 - third-party
+version: 1.0.0
 ---
 
 # Database MCP Skill

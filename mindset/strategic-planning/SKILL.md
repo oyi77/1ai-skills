@@ -9,6 +9,7 @@ tags:
 - planning
 - soft-skills
 - strategic
+version: 1.0.0
 ---
 # Strategic Planning
 

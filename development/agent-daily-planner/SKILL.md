@@ -28,6 +28,7 @@ persona:
   - Batch shallow work
   - Protect deep work blocks
   - Weekly planning ritual
+version: 1.0.0
 ---
 # Agent Daily Planner
 

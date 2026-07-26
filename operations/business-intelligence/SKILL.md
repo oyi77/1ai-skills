@@ -9,6 +9,7 @@ tags:
 - intelligence
 - management
 - operations
+version: 1.0.0
 ---
 # Business Intelligence
 

@@ -7,6 +7,7 @@ tags:
   - mindset
   - ponytail
   - reference
+version: 1.0.0
 ---
 
 # Help

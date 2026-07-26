@@ -13,6 +13,7 @@ persona:
   name: Pattern Recognition Expert
   expertise: Pattern matching, anomaly detection, similarity analysis
   philosophy: History repeats itself
+version: 1.0.0
 ---
 # Pattern Recognition
 

@@ -11,6 +11,7 @@ tags:
 - context-engineering
 - deprecation
 - adversarial-review
+version: 1.0.0
 ---
 
 

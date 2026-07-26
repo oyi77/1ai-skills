@@ -15,6 +15,7 @@ tags:
   - money
 homepage: https://github.com/DietrichGebert/ponytail
 license: MIT
+version: 1.0.0
 ---
 
 # Ponytail — Lazy Senior Dev Mode

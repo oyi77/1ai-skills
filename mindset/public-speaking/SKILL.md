@@ -8,6 +8,7 @@ tags:
 - public
 - soft-skills
 - speaking
+version: 1.0.0
 ---
 # Public Speaking
 

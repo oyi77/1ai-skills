@@ -9,6 +9,7 @@ tags:
 - personal-development
 - presence
 - soft-skills
+version: 1.0.0
 ---
 # Executive Presence
 

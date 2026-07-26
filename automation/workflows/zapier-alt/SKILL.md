@@ -7,6 +7,7 @@ tags:
 - zapier
 - alternative
 - self-hosted
+version: 1.0.0
 ---
 # Zapier Alt
 

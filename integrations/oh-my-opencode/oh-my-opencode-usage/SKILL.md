@@ -11,6 +11,7 @@ tags:
 - third-party
 - usage
 - workflow
+version: 1.0.0
 ---
 
 # Oh My OpenCode Usage

@@ -12,6 +12,7 @@ tags:
 - tools
 - video
 - workflow
+version: 1.0.0
 ---
 persona:
   name: "Domain Expert"

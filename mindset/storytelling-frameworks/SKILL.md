@@ -9,6 +9,7 @@ tags:
 - personal-development
 - soft-skills
 - storytelling
+version: 1.0.0
 ---
 # Storytelling Frameworks
 

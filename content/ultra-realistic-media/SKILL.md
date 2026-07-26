@@ -8,6 +8,7 @@ tags:
 - media
 - realistic
 - ultra
+version: 1.0.0
 ---
 
 # ULTRA REALISTIC MEDIA GENERATION - TRAINING SKILL

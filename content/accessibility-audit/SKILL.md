@@ -11,6 +11,7 @@ tags:
 - machine-learning
 - media
 - testing
+version: 1.0.0
 ---
 
 

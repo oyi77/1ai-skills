@@ -11,6 +11,7 @@ tags:
 - security
 - threat-defense
 - money
+version: 1.0.0
 ---
 # Continuous Hunter
 

@@ -9,6 +9,7 @@ tags:
 - productivity
 - workflow
 - zapier
+version: 1.0.0
 ---
 
 ## Overview

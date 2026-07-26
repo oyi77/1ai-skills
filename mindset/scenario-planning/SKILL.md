@@ -9,6 +9,7 @@ tags:
 - planning
 - scenario
 - soft-skills
+version: 1.0.0
 ---
 # Scenario Planning
 

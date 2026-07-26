@@ -8,6 +8,7 @@ tags:
 - software-engineering
 - testing
 - typeorm
+version: 1.0.0
 ---
 
 

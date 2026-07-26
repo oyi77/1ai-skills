@@ -6,6 +6,7 @@ tags:
 - api
 - integrations
 - notion
+version: 1.0.0
 ---
 
 # Notion API

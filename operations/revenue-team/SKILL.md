@@ -10,6 +10,7 @@ tags:
 - pipeline
 - revenue
 - team
+version: 1.0.0
 ---
 # Revenue Team
 

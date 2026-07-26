@@ -10,6 +10,7 @@ tags:
 - jenkins
 - pipeline
 - pipelines
+version: 1.0.0
 ---
 
 

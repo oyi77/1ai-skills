@@ -14,6 +14,7 @@ tags:
 - webhook
 metadata:
   model: sonnet
+version: 1.0.0
 ---
 
 # Kalodata Monitor Skill

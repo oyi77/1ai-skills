@@ -18,6 +18,7 @@ persona: "|\n  name: \"Neil Gaiman\"\n    title: \"Master of Voice and Imaginati
   \ your comfort zone - steal from everywhere\"\n      - \"Trust your reader - they're smart enough to follow you\"\n    \
   \  - \"Embrace the weird - the strange makes stories memorable\"\n      - \"Rewrite until it sounds like talking - natural\
   \ beats formal\"\n"
+version: 1.0.0
 ---
 # Humanizer
 

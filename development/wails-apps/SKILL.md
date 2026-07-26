@@ -8,6 +8,7 @@ tags:
 - software-engineering
 - testing
 - wails
+version: 1.0.0
 ---
 
 

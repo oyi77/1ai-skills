@@ -11,6 +11,7 @@ tags:
 - monitoring
 - productivity
 - workflow
+version: 1.0.0
 ---
 # Joko Moltbook
 

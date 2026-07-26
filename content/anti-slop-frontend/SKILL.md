@@ -13,6 +13,7 @@ tags:
 - typography
 - motion
 - image-to-code
+version: 1.0.0
 ---
 
 

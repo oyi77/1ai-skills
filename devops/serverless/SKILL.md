@@ -8,6 +8,7 @@ tags:
 - devops
 - infrastructure
 - serverless
+version: 1.0.0
 ---
 
 

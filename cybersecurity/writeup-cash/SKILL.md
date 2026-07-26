@@ -10,6 +10,7 @@ tags:
 - security
 - threat-defense
 - writeup
+version: 1.0.0
 ---
 
 # Writeup Cash

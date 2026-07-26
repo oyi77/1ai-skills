@@ -10,6 +10,7 @@ tags:
 - supply-chain
 - sbom
 - compliance
+version: 1.0.0
 ---
 # Dependency Scanner
 

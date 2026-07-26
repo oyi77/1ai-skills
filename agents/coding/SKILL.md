@@ -14,6 +14,7 @@ tags:
   - test
   - quality
   - money
+version: 1.0.0
 ---
 
 # Coding Agents

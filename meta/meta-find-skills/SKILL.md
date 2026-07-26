@@ -10,6 +10,7 @@ tags:
 - self-improvement
 - skill-evolution
 - skills
+version: 1.0.0
 ---
 persona:
   name: "Ada Lovelace"

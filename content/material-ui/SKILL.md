@@ -7,6 +7,7 @@ tags:
 - digital-content
 - material
 - media
+version: 1.0.0
 ---
 
 

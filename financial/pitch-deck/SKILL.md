@@ -9,6 +9,7 @@ tags:
 - finance
 - investment
 - pitch
+version: 1.0.0
 ---
 
 # Pitch Deck

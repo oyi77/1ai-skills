@@ -9,6 +9,7 @@ tags:
 - operations
 - project
 - slack
+version: 1.0.0
 ---
 # Project Management
 

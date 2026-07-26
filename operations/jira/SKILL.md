@@ -7,6 +7,7 @@ tags:
 - jira
 - management
 - operations
+version: 1.0.0
 ---
 
 ## Overview

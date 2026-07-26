@@ -8,6 +8,7 @@ tags:
 - model-context-protocol
 - resend
 - tool-integration
+version: 1.0.0
 ---
 # Resend Mcp
 

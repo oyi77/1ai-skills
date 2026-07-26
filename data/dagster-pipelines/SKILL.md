@@ -8,6 +8,7 @@ tags:
 - data-analysis
 - pipelines
 - visualization
+version: 1.0.0
 ---
 
 

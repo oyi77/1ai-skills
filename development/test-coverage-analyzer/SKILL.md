@@ -9,6 +9,7 @@ tags:
 - software-engineering
 - test
 - testing
+version: 1.0.0
 ---
 
 

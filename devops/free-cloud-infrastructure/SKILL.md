@@ -10,6 +10,7 @@ tags:
   - serverless
   - compute
   - storage
+version: 1.0.0
 ---
 
 

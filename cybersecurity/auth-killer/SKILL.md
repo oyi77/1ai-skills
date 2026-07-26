@@ -11,6 +11,7 @@ tags:
 - testing
 - threat-defense
 - money
+version: 1.0.0
 ---
 
 # Auth Killer

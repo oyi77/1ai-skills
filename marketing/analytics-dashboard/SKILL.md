@@ -10,6 +10,7 @@ tags:
 - marketing
 - seo
 - social-media
+version: 1.0.0
 ---
 
 persona:

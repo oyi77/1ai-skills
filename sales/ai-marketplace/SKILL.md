@@ -8,6 +8,7 @@ tags:
 - marketplace
 - revenue
 - sales
+version: 1.0.0
 ---
 
 persona:

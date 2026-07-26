@@ -9,6 +9,7 @@ tags:
 - management
 - operations
 - ops
+version: 1.0.0
 ---
 # Finance Ops
 

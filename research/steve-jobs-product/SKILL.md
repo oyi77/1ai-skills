@@ -9,6 +9,7 @@ tags:
 - product
 - research
 - steve
+version: 1.0.0
 ---
 # Steve Jobs Product
 

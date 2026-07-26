@@ -9,6 +9,7 @@ tags:
 - personal-development
 - presentation
 - soft-skills
+version: 1.0.0
 ---
 # Presentation Design
 

@@ -8,6 +8,7 @@ tags:
 - infrastructure
 - secrets
 - vault
+version: 1.0.0
 ---
 
 

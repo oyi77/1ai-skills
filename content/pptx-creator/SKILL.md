@@ -8,6 +8,7 @@ tags:
 - pptx
 - presentations
 - slides
+version: 1.0.0
 ---
 
 # Pptx Creator

@@ -27,6 +27,7 @@ persona:
   - Standardize the protocol, not the tool
   - Fail fast with clear error codes
   - One server, one responsibility
+version: 1.0.0
 ---
 
 # MCP Clients Hub — Model Context Protocol Client Ecosystem

@@ -8,6 +8,7 @@ tags:
 - envoy
 - infrastructure
 - proxy
+version: 1.0.0
 ---
 
 

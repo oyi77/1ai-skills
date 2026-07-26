@@ -11,6 +11,7 @@ tags:
 - opencode
 - third-party
 - workflow
+version: 1.0.0
 ---
 
 # Oh My OpenCode Features

@@ -10,6 +10,7 @@ tags:
 - scheduler
 - seo
 allowed-tools: "|\n  - MCP(notion:*)\n    - MCP(slack:*)\n"
+version: 1.0.0
 ---
 # Content Scheduler
 

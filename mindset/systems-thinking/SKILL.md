@@ -9,6 +9,7 @@ tags:
 - soft-skills
 - systems
 - thinking
+version: 1.0.0
 ---
 # Systems Thinking
 

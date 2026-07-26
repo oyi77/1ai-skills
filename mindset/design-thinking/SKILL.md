@@ -10,6 +10,7 @@ tags:
 - soft-skills
 - testing
 - thinking
+version: 1.0.0
 ---
 # Design Thinking
 

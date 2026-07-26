@@ -9,6 +9,7 @@ tags:
 - personal-development
 - servant
 - soft-skills
+version: 1.0.0
 ---
 # Servant Leadership
 

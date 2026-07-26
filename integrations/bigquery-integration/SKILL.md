@@ -9,6 +9,7 @@ tags:
 - analytics
 - data-warehouse
 - etl
+version: 1.0.0
 ---
 
 # Bigquery Integration

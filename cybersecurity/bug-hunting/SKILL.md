@@ -12,6 +12,7 @@ tags:
 - threat-defense
 - workflow
 - money
+version: 1.0.0
 ---
 
 # Bug Hunting Skill

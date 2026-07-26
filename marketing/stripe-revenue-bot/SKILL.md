@@ -10,6 +10,7 @@ tags:
 - revenue
 - seo
 - stripe
+version: 1.0.0
 ---
 
 persona:

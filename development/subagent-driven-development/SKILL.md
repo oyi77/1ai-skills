@@ -8,6 +8,7 @@ tags:
 - software-engineering
 - subagent
 - testing
+version: 1.0.0
 ---
 persona:
   name: "Domain Expert"

@@ -63,6 +63,7 @@ metadata:
       type: bool
       default: false
       desc: Jalan sekali aja, tidak loop
+version: 1.0.0
 ---
 # Maybe Hft
 

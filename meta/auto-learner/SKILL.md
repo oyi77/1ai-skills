@@ -13,6 +13,7 @@ persona:
   name: Autonomous Learner
   expertise: Machine learning, pattern recognition, self-supervision
   philosophy: Learn by doing, improve by reflecting
+version: 1.0.0
 ---
 # Auto Learner
 

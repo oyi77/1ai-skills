@@ -9,6 +9,7 @@ tags:
 - software-engineering
 - testing
 - workflow
+version: 1.0.0
 ---
 
 # Git Master Skill

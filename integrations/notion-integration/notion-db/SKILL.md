@@ -7,6 +7,7 @@ tags:
 - database
 - integrations
 - notion
+version: 1.0.0
 ---
 
 # Notion Database

@@ -9,6 +9,7 @@ tags:
 - monitoring
 - research
 - trendradar
+version: 1.0.0
 ---
 persona:
   name: "Domain Expert"

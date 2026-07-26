@@ -17,6 +17,7 @@ persona: "name: \"Jordan Belfort\"\n  title: \"The Wolf of Wall Street - Master 
   \ justify with logic\"\n    - \"Control the sale, don't let prospect wander\"\n    - \"Use tonality to build certainty\"\
   \n    - \"Answer objections before they arise\"\n    - \"The close starts at the beginning\"\n    - \"You can't close someone\
   \ you haven't opened\"\n    - \"Certainty = close. Uncertainty = no close\"\n"
+version: 1.0.0
 ---
 # High Ticket Closing
 

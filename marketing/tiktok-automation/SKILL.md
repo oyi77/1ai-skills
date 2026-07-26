@@ -9,6 +9,7 @@ tags:
 - seo
 - tiktok
 - video
+version: 1.0.0
 ---
 
 # TikTok Automation Skill 🎵

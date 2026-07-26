@@ -3,6 +3,7 @@ name: anomaly-detect
 description: Use when anomaly detection — merged into data-analysis parent. See ../SKILL.md for money protocol.
 domain: data
 tags: [analytics, anomaly, data-analysis]
+version: 1.0.0
 ---
 
 # Anomaly Detect

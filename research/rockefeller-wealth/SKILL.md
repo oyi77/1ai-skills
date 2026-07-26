@@ -9,6 +9,7 @@ tags:
 - research
 - rockefeller
 - wealth
+version: 1.0.0
 ---
 # Rockefeller Wealth
 

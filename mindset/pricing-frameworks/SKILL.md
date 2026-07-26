@@ -9,6 +9,7 @@ tags:
 - personal-development
 - pricing
 - soft-skills
+version: 1.0.0
 ---
 # Pricing Frameworks
 

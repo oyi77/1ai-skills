@@ -8,6 +8,7 @@ tags:
 - marketing
 - seo
 - money
+version: 1.0.0
 ---
 # Ai Seo
 

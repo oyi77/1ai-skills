@@ -18,6 +18,7 @@ persona: "|\n  name: \"Seth Godin\"\n    title: \"Master of Permission Marketing
   \ audience - serve the few who care deeply\"\n      - \"Ship daily - consistency compounds, perfection delays\"\n      -\
   \ \"Remarkable spreads - be worth talking about\"\n      - \"Tell stories - facts tell, stories sell\"\n      - \"Lead your\
   \ tribe - give them identity and connection\"\n      - \"Generosity builds trust - give value before asking\"\n"
+version: 1.0.0
 ---
 
 

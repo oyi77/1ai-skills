@@ -9,6 +9,7 @@ tags:
 - research
 - seo
 allowed-tools: "|\n  - MCP(exa:*)\n    - MCP(firecrawl:*)\n    - MCP(notion:*)\n"
+version: 1.0.0
 ---
 # Market Research
 

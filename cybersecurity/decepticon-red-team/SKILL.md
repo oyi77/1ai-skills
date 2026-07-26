@@ -9,6 +9,7 @@ tags:
 - attack-chain
 - mitre-attack
 - engagement-planning
+version: 1.0.0
 ---
 
 # Decepticon Red Team

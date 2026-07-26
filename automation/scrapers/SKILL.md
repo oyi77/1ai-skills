@@ -11,6 +11,7 @@ tags:
 - social-listener
 - data
 - intelligence
+version: 1.0.0
 ---
 # Scrapers — Data Extraction Hub
 

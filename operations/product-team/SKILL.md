@@ -9,6 +9,7 @@ tags:
 - operations
 - product
 - team
+version: 1.0.0
 ---
 # Product Team
 

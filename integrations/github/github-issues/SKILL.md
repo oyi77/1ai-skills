@@ -7,6 +7,7 @@ tags:
 - github
 - integrations
 - issues
+version: 1.0.0
 ---
 
 # GitHub Issues

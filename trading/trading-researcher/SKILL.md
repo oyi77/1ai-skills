@@ -13,6 +13,7 @@ allowed-tools:
 - MCP(exa:*)
 - fs
 - network
+version: 1.0.0
 ---
 
 # Trading Researcher

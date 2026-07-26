@@ -11,6 +11,7 @@ tags:
 - storyboard
 - third-party
 - video
+version: 1.0.0
 ---
 
 # Kalodata Storyboard Extract

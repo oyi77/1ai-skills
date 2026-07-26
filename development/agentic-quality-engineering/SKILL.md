@@ -10,6 +10,7 @@ tags:
   - risk-based-testing
   - pattern-learning
   - test-automation
+version: 1.0.0
 ---
 
 # Agentic Quality Engineering

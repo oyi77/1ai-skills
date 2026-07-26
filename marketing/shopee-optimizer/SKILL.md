@@ -10,6 +10,7 @@ tags:
 - optimizer
 - seo
 - shopee
+version: 1.0.0
 ---
 
 

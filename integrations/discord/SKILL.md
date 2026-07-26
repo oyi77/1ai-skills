@@ -13,6 +13,7 @@ tags:
 - third-party
 - webhook
 - communication
+version: 1.0.0
 ---
 
 # Discord Automation Hub

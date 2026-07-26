@@ -10,6 +10,7 @@ tags:
 - media
 - text-to-speech
 - voice
+version: 1.0.0
 ---
 
 

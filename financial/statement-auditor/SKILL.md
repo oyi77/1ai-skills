@@ -9,6 +9,7 @@ tags:
 - finance
 - investment
 - statement
+version: 1.0.0
 ---
 
 # Statement Auditor!

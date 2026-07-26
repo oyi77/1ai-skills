@@ -9,6 +9,7 @@ tags:
 - infrastructure
 - kubernetes
 - networking
+version: 1.0.0
 ---
 
 

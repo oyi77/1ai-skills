@@ -8,6 +8,7 @@ tags:
 - software-engineering
 - testing
 - websocket
+version: 1.0.0
 ---
 
 

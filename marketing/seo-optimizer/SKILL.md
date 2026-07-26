@@ -9,6 +9,7 @@ tags:
 - optimizer
 - money
 - seo
+version: 1.0.0
 ---
 
 persona:

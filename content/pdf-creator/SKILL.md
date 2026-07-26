@@ -8,6 +8,7 @@ tags:
 - reports
 - invoices
 - extraction
+version: 1.0.0
 ---
 
 # Pdf Creator

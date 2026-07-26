@@ -8,6 +8,7 @@ tags:
 - management
 - operations
 - success
+version: 1.0.0
 ---
 
 ## Overview

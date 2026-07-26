@@ -7,6 +7,7 @@ tags:
   - mindset
   - ponytail
   - simplification
+version: 1.0.0
 ---
 
 # Review

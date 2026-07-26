@@ -10,6 +10,7 @@ tags:
 - publisher
 - seo
 - workflow
+version: 1.0.0
 ---
 # Content Publisher
 

@@ -8,6 +8,7 @@ tags:
   - automation
   - review
   - autonomous
+version: 1.0.0
 ---
 
 # Review Agent

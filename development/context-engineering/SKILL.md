@@ -8,6 +8,7 @@ tags:
 - prompts
 - ai-agents
 - token-optimization
+version: 1.0.0
 ---
 
 # Context Engineering

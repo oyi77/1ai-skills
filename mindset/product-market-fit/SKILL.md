@@ -10,6 +10,7 @@ tags:
 - personal-development
 - product
 - soft-skills
+version: 1.0.0
 ---
 # Product Market Fit
 

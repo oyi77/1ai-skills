@@ -3,6 +3,7 @@ name: ad-copy
 description: Use when ad copy creation — merged into content-writing parent. See ../SKILL.md for money protocol.
 domain: content
 tags: [content-creation, copy]
+version: 1.0.0
 ---
 
 # Ad Copy

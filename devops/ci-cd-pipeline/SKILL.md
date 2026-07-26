@@ -9,6 +9,7 @@ tags:
 - github
 - infrastructure
 - pipeline
+version: 1.0.0
 ---
 
 

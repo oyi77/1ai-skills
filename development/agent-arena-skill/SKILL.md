@@ -28,6 +28,7 @@ persona:
   - Generalize across tasks
   - Safety first
   - Scale compute
+version: 1.0.0
 ---
 # Agent Arena Skill
 

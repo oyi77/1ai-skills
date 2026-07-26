@@ -13,6 +13,7 @@ tags:
 - money
 
 
+version: 1.0.0
 ---
 
 # Mobile Hacking Skill

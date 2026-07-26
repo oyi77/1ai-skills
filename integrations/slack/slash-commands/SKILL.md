@@ -7,6 +7,7 @@ tags:
 - commands
 - integrations
 - slack
+version: 1.0.0
 ---
 
 # Slash Commands

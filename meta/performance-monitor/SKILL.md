@@ -14,6 +14,7 @@ persona:
   expertise: Metrics, monitoring, optimization
   philosophy: If you can't measure it, you can't improve it
   credentials: SRE at Google, built monitoring systems
+version: 1.0.0
 ---
 # Performance Monitor
 

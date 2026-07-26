@@ -8,6 +8,7 @@ tags:
 - mindset
 - personal-development
 - soft-skills
+version: 1.0.0
 ---
 # Financial Literacy
 

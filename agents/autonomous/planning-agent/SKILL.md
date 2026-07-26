@@ -8,6 +8,7 @@ tags:
   - automation
   - planning
   - autonomous
+version: 1.0.0
 ---
 
 # Planning Agent

@@ -8,6 +8,7 @@ tags:
   - automation
   - deploy
   - autonomous
+version: 1.0.0
 ---
 
 # Deploy Agent

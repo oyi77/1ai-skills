@@ -8,6 +8,7 @@ tags:
   - automation
   - perf
   - coding
+version: 1.0.0
 ---
 
 # Perf Agent

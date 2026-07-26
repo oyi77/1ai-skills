@@ -8,6 +8,7 @@ tags:
 - media
 - pandacss
 - styling
+version: 1.0.0
 ---
 
 

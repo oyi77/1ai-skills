@@ -8,6 +8,7 @@ tags:
 - markets
 - portfolio
 - trading
+version: 1.0.0
 ---
 # Portfolio Manager
 

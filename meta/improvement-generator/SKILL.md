@@ -13,6 +13,7 @@ persona:
   name: Continuous Improvement Lead
   expertise: Root cause analysis, solution design, prioritization
   philosophy: Every problem has a solution
+version: 1.0.0
 ---
 # Improvement Generator
 

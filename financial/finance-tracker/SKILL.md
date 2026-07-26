@@ -8,6 +8,7 @@ tags:
 - finance
 - investment
 - tracker
+version: 1.0.0
 ---
 # Finance Tracker
 

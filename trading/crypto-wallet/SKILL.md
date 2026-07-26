@@ -8,6 +8,7 @@ tags:
 - markets
 - trading
 - wallet
+version: 1.0.0
 ---
 
 ## Overview

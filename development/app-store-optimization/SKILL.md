@@ -9,6 +9,7 @@ tags:
 - software-engineering
 - store
 - testing
+version: 1.0.0
 ---
 
 

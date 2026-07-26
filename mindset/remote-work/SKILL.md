@@ -10,6 +10,7 @@ tags:
 - soft-skills
 - video
 - work
+version: 1.0.0
 ---
 # Remote Work
 

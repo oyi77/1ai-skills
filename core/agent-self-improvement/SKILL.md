@@ -10,6 +10,7 @@ tags:
 - memory
 - self
 - self-improvement
+version: 1.0.0
 ---
 
 ## Overview

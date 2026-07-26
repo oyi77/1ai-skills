@@ -9,6 +9,7 @@ tags:
 - playwright
 - e2e
 - accessibility
+version: 1.0.0
 ---
 
 # Browser Testing Devtools

@@ -8,6 +8,7 @@ tags:
 - digital-content
 - media
 - styled
+version: 1.0.0
 ---
 
 

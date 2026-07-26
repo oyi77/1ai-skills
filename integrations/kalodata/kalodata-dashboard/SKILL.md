@@ -9,6 +9,7 @@ tags:
 - integrations
 - kalodata
 - third-party
+version: 1.0.0
 ---
 
 # Kalodata Dashboard Skill

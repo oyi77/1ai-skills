@@ -8,6 +8,7 @@ tags:
 - daisyui
 - digital-content
 - media
+version: 1.0.0
 ---
 
 

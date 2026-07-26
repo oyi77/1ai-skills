@@ -11,6 +11,7 @@ tags:
   - promotional-video
   - captions
   - audio-design
+version: 1.0.0
 ---
 # Video Editor — Professional Post-Production
 

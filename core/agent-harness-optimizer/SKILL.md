@@ -14,6 +14,7 @@ persona:
   title: "Harness Performance Architect"
   expertise: ["Token Optimization", "Hook Systems", "Memory Persistence", "Cross-Harness Engineering", "Session Lifecycle Management"]
   philosophy: "Every token spent must earn its place. Optimize the harness, not just the model."
+version: 1.0.0
 ---
 
 ## Overview

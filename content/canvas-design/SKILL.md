@@ -9,6 +9,7 @@ tags:
 - visualization
 - generative-art
 - svg
+version: 1.0.0
 ---
 
 # Canvas Design

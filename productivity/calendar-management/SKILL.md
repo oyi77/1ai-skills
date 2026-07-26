@@ -12,6 +12,7 @@ allowed-tools:
 - Bash(calendar:*)
 - MCP(google-calendar:*)
 - MCP(tldv:*)
+version: 1.0.0
 ---
 # Calendar Management
 

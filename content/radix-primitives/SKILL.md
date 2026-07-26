@@ -8,6 +8,7 @@ tags:
 - media
 - primitives
 - radix
+version: 1.0.0
 ---
 
 

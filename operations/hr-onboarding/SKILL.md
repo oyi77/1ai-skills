@@ -8,6 +8,7 @@ tags:
 - management
 - onboarding
 - operations
+version: 1.0.0
 ---
 # Hr Onboarding
 

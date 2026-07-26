@@ -10,6 +10,7 @@ tags:
   - long-form
   - product-descriptions
   - money-making
+version: 1.0.0
 ---
 
 # Content Writing Factory — Ad Copy, Emails, Long-Form, Product Descriptions

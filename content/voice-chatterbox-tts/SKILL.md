@@ -11,6 +11,7 @@ tags:
 - whisper
 - narration
 - audio
+version: 1.0.0
 ---
 # Voice Chatterbox Tts
 

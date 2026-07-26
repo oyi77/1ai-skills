@@ -9,6 +9,7 @@ tags:
   - developer-tools
   - cloud
   - side-project
+version: 1.0.0
 ---
 
 

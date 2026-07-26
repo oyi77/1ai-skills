@@ -8,6 +8,7 @@ tags:
 - personal-development
 - playbook
 - soft-skills
+version: 1.0.0
 ---
 # Hiring Playbook
 

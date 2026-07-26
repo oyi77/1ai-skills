@@ -8,6 +8,7 @@ tags:
   - automation
   - linter
   - coding
+version: 1.0.0
 ---
 
 # Linter Agent

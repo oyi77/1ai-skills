@@ -9,6 +9,7 @@ tags:
   - agenda
   - follow-up
   - collaboration
+version: 1.0.0
 ---
 
 ## When NOT to Use

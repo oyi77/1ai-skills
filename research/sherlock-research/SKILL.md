@@ -7,6 +7,7 @@ tags:
 - investigation
 - research
 - sherlock
+version: 1.0.0
 ---
 # Sherlock Research
 

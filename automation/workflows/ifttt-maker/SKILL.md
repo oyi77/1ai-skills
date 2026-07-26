@@ -7,6 +7,7 @@ tags:
 - ifttt
 - triggers
 - workflows
+version: 1.0.0
 ---
 # IFTTT Maker
 

@@ -9,6 +9,7 @@ tags:
 - personal-development
 - soft-skills
 - trade
+version: 1.0.0
 ---
 # Trade Off Analysis
 

@@ -9,6 +9,7 @@ tags:
 - image-generation
 - video
 - api
+version: 1.0.0
 ---
 
 # Replicate Runner

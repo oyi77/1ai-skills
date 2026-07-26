@@ -10,6 +10,7 @@ tags:
 - memory
 - omniroute
 - self-improvement
+version: 1.0.0
 ---
 persona:
   name: "Sam Altman"

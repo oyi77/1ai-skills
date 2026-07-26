@@ -9,6 +9,7 @@ tags:
 - investment
 - meeting
 - prep
+version: 1.0.0
 ---
 
 # Meeting Prep!

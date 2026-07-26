@@ -9,6 +9,7 @@ tags:
 - flowise
 - productivity
 - workflow
+version: 1.0.0
 ---
 
 ## Overview

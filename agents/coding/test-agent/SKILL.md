@@ -8,6 +8,7 @@ tags:
   - automation
   - test
   - coding
+version: 1.0.0
 ---
 
 # Test Agent

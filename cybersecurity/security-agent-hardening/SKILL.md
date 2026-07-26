@@ -10,6 +10,7 @@ tags:
 - sandboxing
 - llm-security
 - ai-safety
+version: 1.0.0
 ---
 # Security Agent Hardening
 

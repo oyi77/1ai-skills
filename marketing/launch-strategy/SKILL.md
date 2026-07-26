@@ -9,6 +9,7 @@ tags:
 - marketing
 - seo
 - strategy
+version: 1.0.0
 ---
 # Launch Strategy
 

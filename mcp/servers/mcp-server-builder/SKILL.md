@@ -17,6 +17,7 @@ persona:
   expertise: Protocol design, API integration, AI agent architecture
   philosophy: Standards enable interoperability
   credentials: Created MCP standard at Anthropic
+version: 1.0.0
 ---
 # Mcp Server Builder
 

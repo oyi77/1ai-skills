@@ -10,6 +10,7 @@ tags:
 - testing
 - validation
 - workflow
+version: 1.0.0
 ---
 # Content Validation Workflow
 

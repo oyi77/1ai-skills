@@ -11,6 +11,7 @@ tags:
 - media
 - text-to-speech
 - video
+version: 1.0.0
 ---
 # Content Factory
 

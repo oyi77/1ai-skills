@@ -8,6 +8,7 @@ tags:
 - markets
 - polymarket
 - trading
+version: 1.0.0
 ---
 # Polymarket
 

@@ -9,6 +9,7 @@ tags:
 - investigation
 - research
 - super
+version: 1.0.0
 ---
 # Super Browser
 

@@ -9,6 +9,7 @@ tags:
 - ops
 - self-improvement
 - vector
+version: 1.0.0
 ---
 
 ## Overview

@@ -9,6 +9,7 @@ tags:
 - personal-development
 - productivity
 - soft-skills
+version: 1.0.0
 ---
 # Personal Productivity
 

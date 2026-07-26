@@ -9,6 +9,7 @@ tags:
 - marketing
 - prevention
 - seo
+version: 1.0.0
 ---
 # Churn Prevention
 

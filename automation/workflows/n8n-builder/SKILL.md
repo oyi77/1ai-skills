@@ -7,6 +7,7 @@ tags:
 - n8n
 - workflows
 - visual-builder
+version: 1.0.0
 ---
 # n8n Buildern8n is the leading open-source workflow automation platform (self-hosted). 400+ nodes, visual drag-and-drop editor, custom JS/Python code nodes, and full REST API control.See parent skill for Docker deployment, hosted service model, and money-making workflows.
 ## When to Use

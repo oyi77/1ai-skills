@@ -8,6 +8,7 @@ tags:
 - seo
 - social-media
 - strategy
+version: 1.0.0
 ---
 
 

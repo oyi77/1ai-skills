@@ -9,6 +9,7 @@ tags:
 - finance
 - investment
 - model
+version: 1.0.0
 ---
 
 # Model Builder

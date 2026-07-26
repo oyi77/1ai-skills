@@ -9,6 +9,7 @@ tags:
 - personal-development
 - soft-skills
 - unit
+version: 1.0.0
 ---
 # Unit Economics
 

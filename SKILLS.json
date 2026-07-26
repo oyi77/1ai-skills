@@ -43,7 +43,7 @@
         "review",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "agents"
@@ -60,7 +60,7 @@
         "code",
         "autonomous"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "agents"
@@ -77,7 +77,7 @@
         "orchestration",
         "research"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "agents"
@@ -100,7 +100,7 @@
         "quality",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "agents"
@@ -117,7 +117,7 @@
         "deploy",
         "autonomous"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "agents"
@@ -134,7 +134,7 @@
         "linter",
         "coding"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "agents"
@@ -152,7 +152,7 @@
         "orchestration",
         "research"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "agents"
@@ -169,7 +169,7 @@
         "perf",
         "coding"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "agents"
@@ -186,7 +186,7 @@
         "planning",
         "autonomous"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "agents"
@@ -203,7 +203,7 @@
         "refactor",
         "coding"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "agents"
@@ -220,7 +220,7 @@
         "research",
         "autonomous"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "agents"
@@ -237,7 +237,7 @@
         "review",
         "autonomous"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "agents"
@@ -254,7 +254,7 @@
         "security",
         "coding"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "agents"
@@ -271,7 +271,7 @@
         "test",
         "coding"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "agents"
@@ -310,7 +310,7 @@
         "social-media",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -330,7 +330,7 @@
         "social-media",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -346,7 +346,7 @@
         "monitor",
         "alerts"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -364,7 +364,7 @@
         "seo",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -379,7 +379,7 @@
         "cron",
         "scheduling"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -397,7 +397,7 @@
         "productivity",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -413,7 +413,7 @@
         "triggers",
         "workflows"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -431,7 +431,7 @@
         "productivity",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -450,7 +450,7 @@
         "productivity",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -467,7 +467,7 @@
         "versioning",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -485,7 +485,7 @@
         "webhook",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -502,7 +502,7 @@
         "productivity",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -518,7 +518,7 @@
         "workflows",
         "visual-builder"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -536,7 +536,7 @@
         "workflow",
         "workflows"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -553,7 +553,7 @@
         "workflow",
         "workflows"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -571,7 +571,7 @@
         "voice",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -591,7 +591,7 @@
         "social-media",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -607,7 +607,7 @@
         "tracker",
         "ecommerce"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -627,7 +627,7 @@
         "data",
         "intelligence"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -643,7 +643,7 @@
         "data-extraction",
         "web"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -659,7 +659,7 @@
         "listener",
         "monitoring"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -675,7 +675,7 @@
         "telegram",
         "webhook"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -695,7 +695,7 @@
         "voice",
         "webhook"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -711,7 +711,7 @@
         "twitter",
         "social-media"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -729,7 +729,7 @@
         "voice",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -745,7 +745,7 @@
         "router",
         "api"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -761,7 +761,7 @@
         "whatsapp",
         "messaging"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -779,7 +779,7 @@
         "slack",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -800,7 +800,7 @@
         "productivity",
         "pipelines"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -816,7 +816,7 @@
         "alternative",
         "self-hosted"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -834,7 +834,7 @@
         "workflow",
         "zapier"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "automation"
@@ -854,7 +854,7 @@
         "media",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -868,7 +868,7 @@
         "content-creation",
         "copy"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -885,7 +885,7 @@
         "media",
         "newsletter"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -901,7 +901,7 @@
         "media",
         "podcast"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -918,7 +918,7 @@
         "digital-content",
         "media"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -938,7 +938,7 @@
         "motion",
         "image-to-code"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -953,7 +953,7 @@
         "clipper",
         "video"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -970,7 +970,7 @@
         "stock-footage",
         "ai"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -988,7 +988,7 @@
         "generative-art",
         "svg"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1004,7 +1004,7 @@
         "digital-content",
         "media"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1020,7 +1020,7 @@
         "video",
         "generator"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1038,7 +1038,7 @@
         "media",
         "reply"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1057,7 +1057,7 @@
         "text-to-speech",
         "video"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1076,7 +1076,7 @@
         "geminigen",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1095,7 +1095,7 @@
         "planner",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1112,7 +1112,7 @@
         "digital-content",
         "media"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1129,7 +1129,7 @@
         "media",
         "tokens"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1148,7 +1148,7 @@
         "real",
         "seo"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1166,7 +1166,7 @@
         "reports",
         "templates"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1180,7 +1180,7 @@
         "content-creation",
         "email"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1198,7 +1198,7 @@
         "automation",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1215,7 +1215,7 @@
         "frontend",
         "media"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1234,7 +1234,7 @@
         "components",
         "responsive"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1252,7 +1252,7 @@
         "image",
         "media"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1270,7 +1270,7 @@
         "media",
         "video"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1286,7 +1286,7 @@
         "humanizer",
         "media"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1302,7 +1302,7 @@
         "humanizer",
         "media"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1319,7 +1319,7 @@
         "image",
         "media"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1337,7 +1337,7 @@
         "media",
         "playbook"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1351,7 +1351,7 @@
         "content-creation",
         "long-form"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1367,7 +1367,7 @@
         "material",
         "media"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1384,7 +1384,7 @@
         "media",
         "minimalist"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1422,7 +1422,7 @@
         "platform",
         "podcast"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1467,7 +1467,7 @@
         "pandacss",
         "styling"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1502,7 +1502,7 @@
         "invoices",
         "extraction"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1519,7 +1519,7 @@
         "plugins",
         "postcss"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1536,7 +1536,7 @@
         "presentations",
         "slides"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1550,7 +1550,7 @@
         "content-creation",
         "product"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1567,7 +1567,7 @@
         "primitives",
         "radix"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1588,7 +1588,7 @@
         "ffmpeg",
         "transitions"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1605,7 +1605,7 @@
         "media",
         "responsive"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1621,7 +1621,7 @@
         "media",
         "shadcn"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1638,7 +1638,7 @@
         "storybook",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1655,7 +1655,7 @@
         "media",
         "styled"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1672,7 +1672,7 @@
         "media",
         "tailwind"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1690,7 +1690,7 @@
         "design-tokens",
         "branding"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1706,7 +1706,7 @@
         "digital-content",
         "media"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1725,7 +1725,7 @@
         "typography",
         "accessibility"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1742,7 +1742,7 @@
         "realistic",
         "ultra"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1759,7 +1759,7 @@
         "media",
         "vanilla"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1779,7 +1779,7 @@
         "captions",
         "audio-design"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1800,7 +1800,7 @@
         "seedance",
         "sora"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1820,7 +1820,7 @@
         "video",
         "viral"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1839,7 +1839,7 @@
         "video",
         "viral"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1857,7 +1857,7 @@
         "text-to-speech",
         "voice"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1876,7 +1876,7 @@
         "narration",
         "audio"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1895,7 +1895,7 @@
         "product-descriptions",
         "money-making"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1912,7 +1912,7 @@
         "skills",
         "writing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1929,7 +1929,7 @@
         "spreadsheets",
         "financial-models"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "content"
@@ -1948,7 +1948,7 @@
         "memory",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -1966,7 +1966,7 @@
         "cross-harness",
         "performance"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -1985,7 +1985,7 @@
         "cve",
         "scanning"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2003,7 +2003,7 @@
         "self",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2022,7 +2022,7 @@
         "agents",
         "education"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2041,7 +2041,7 @@
         "memory",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2059,7 +2059,7 @@
         "memory",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2077,7 +2077,7 @@
         "monitoring",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2096,7 +2096,7 @@
         "self-improvement",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2114,7 +2114,7 @@
         "router",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2130,7 +2130,7 @@
         "memory",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2149,7 +2149,7 @@
         "context",
         "recall"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2167,7 +2167,7 @@
         "memory",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2186,7 +2186,7 @@
         "self-improvement",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2203,7 +2203,7 @@
         "self-improvement",
         "skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2220,7 +2220,7 @@
         "memory",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2238,7 +2238,7 @@
         "multimodal",
         "api"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2256,7 +2256,7 @@
         "mind",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2273,7 +2273,7 @@
         "orchestrator",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2293,7 +2293,7 @@
         "self-improvement",
         "slack"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2311,7 +2311,7 @@
         "simplicity",
         "clean-code"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2326,7 +2326,7 @@
         "memory",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2345,7 +2345,7 @@
         "self-improvement",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2363,7 +2363,7 @@
         "patterns",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2381,7 +2381,7 @@
         "memory",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2397,7 +2397,7 @@
         "self-improvement",
         "system"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2416,7 +2416,7 @@
         "self-improvement",
         "tuning"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2434,7 +2434,7 @@
         "cost-optimization",
         "model-selection"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2452,7 +2452,7 @@
         "omniroute",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2469,7 +2469,7 @@
         "prompt",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2487,7 +2487,7 @@
         "rag",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2505,7 +2505,7 @@
         "video",
         "api"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2543,7 +2543,7 @@
         "self",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2559,7 +2559,7 @@
         "ruvector",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2594,7 +2594,7 @@
         "self-improvement",
         "semantic"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2611,7 +2611,7 @@
         "self-improvement",
         "session"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2628,7 +2628,7 @@
         "scraping",
         "rag"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2646,7 +2646,7 @@
         "self-improvement",
         "skill"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2664,7 +2664,7 @@
         "teamwork",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2681,7 +2681,7 @@
         "superpowers",
         "using"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2698,7 +2698,7 @@
         "self-improvement",
         "vector"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2714,7 +2714,7 @@
         "self-improvement",
         "vilona"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2730,7 +2730,7 @@
         "memory",
         "self-improvement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2747,7 +2747,7 @@
         "self-improvement",
         "zvec"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "core"
@@ -2790,7 +2790,7 @@
         "threat-defense",
         "windows"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -2809,7 +2809,7 @@
         "jailbreak",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -4240,7 +4240,7 @@
         "security",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -4385,7 +4385,7 @@
         "threat-defense",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -4447,7 +4447,7 @@
         "zero-day",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -4467,7 +4467,7 @@
         "target",
         "threat-defense"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -4486,7 +4486,7 @@
         "threat-defense",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -4506,7 +4506,7 @@
         "workflow",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -5227,7 +5227,7 @@
         "stub",
         "merged"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -5988,7 +5988,7 @@
         "threat-defense",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -6045,7 +6045,7 @@
         "threat-defense",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -6062,7 +6062,7 @@
         "mitre-attack",
         "engagement-planning"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "red-teaming",
       "type": "security"
@@ -6646,7 +6646,7 @@
         "stub",
         "merged"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -8722,7 +8722,7 @@
         "threat-defense",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -8758,7 +8758,7 @@
         "security",
         "threat-defense"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -8847,7 +8847,7 @@
         "ctf",
         "vulnerability-scanning"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "penetration-testing",
       "type": "security"
@@ -12743,7 +12743,7 @@
         "hardware",
         "embedded"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -12760,7 +12760,7 @@
         "security",
         "threat-defense"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -12833,7 +12833,7 @@
         "threat-defense",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -12909,7 +12909,7 @@
         "red-team",
         "claude-code"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "penetration-testing",
       "type": "security"
@@ -12927,7 +12927,7 @@
         "knowledge-graph",
         "terminal"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "penetration-testing",
       "type": "security"
@@ -16221,7 +16221,7 @@
         "security",
         "threat-defense"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -16239,7 +16239,7 @@
         "threat-defense",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -16308,7 +16308,7 @@
         "security",
         "threat-defense"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -16435,7 +16435,7 @@
         "security",
         "threat-defense"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -16780,7 +16780,7 @@
         "llm-security",
         "ai-safety"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -16824,7 +16824,7 @@
         "testing",
         "threat-defense"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -16847,7 +16847,7 @@
         "testing",
         "threat-defense"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -17401,7 +17401,7 @@
         "vulnerability",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -17441,7 +17441,7 @@
         "threat-defense",
         "web3"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -17459,7 +17459,7 @@
         "threat-defense",
         "writeup"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "security"
@@ -17477,7 +17477,7 @@
         "visualization",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "data"
@@ -17496,7 +17496,7 @@
         "pandas",
         "money-making"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "data"
@@ -17511,7 +17511,7 @@
         "anomaly",
         "data-analysis"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "data"
@@ -17528,7 +17528,7 @@
         "pipelines",
         "visualization"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "data"
@@ -17543,7 +17543,7 @@
         "data",
         "cleaning"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "data"
@@ -17560,7 +17560,7 @@
         "transform",
         "visualization"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "data"
@@ -17578,7 +17578,7 @@
         "visualization",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "data"
@@ -17593,7 +17593,7 @@
         "report",
         "data-analysis"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "data"
@@ -17611,7 +17611,7 @@
         "spark",
         "visualization"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "data"
@@ -17629,7 +17629,7 @@
         "workflow",
         "workflows"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "data"
@@ -17644,7 +17644,7 @@
         "visualization",
         "data-analysis"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "data"
@@ -17663,7 +17663,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17681,7 +17681,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17700,7 +17700,7 @@
         "pattern-learning",
         "test-automation"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17739,7 +17739,7 @@
         "format-conversion",
         "quality-gates"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17756,7 +17756,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17774,7 +17774,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17791,7 +17791,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17809,7 +17809,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17827,7 +17827,7 @@
         "store",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17844,7 +17844,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17862,7 +17862,7 @@
         "quality-assurance",
         "test-scaffolding"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17878,7 +17878,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17896,7 +17896,7 @@
         "e2e",
         "accessibility"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17913,7 +17913,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17931,7 +17931,7 @@
         "deprecation",
         "adversarial-review"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17951,7 +17951,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17968,7 +17968,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -17985,7 +17985,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18002,7 +18002,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18020,7 +18020,7 @@
         "validation",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18037,7 +18037,7 @@
         "ai-agents",
         "token-optimization"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18054,7 +18054,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18072,7 +18072,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18091,7 +18091,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18108,7 +18108,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18126,7 +18126,7 @@
         "sbom",
         "compliance"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18143,7 +18143,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18160,7 +18160,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18177,7 +18177,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18195,7 +18195,7 @@
         "agent-safety",
         "quality-gates"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18212,7 +18212,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18229,7 +18229,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18246,7 +18246,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18263,7 +18263,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18285,7 +18285,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18302,7 +18302,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18320,7 +18320,7 @@
         "cloud",
         "side-project"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18338,7 +18338,7 @@
         "testing",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18356,7 +18356,7 @@
         "worktrees",
         "merge"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18373,7 +18373,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18389,7 +18389,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18406,7 +18406,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18423,7 +18423,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18440,7 +18440,7 @@
         "swiftui",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18457,7 +18457,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18474,7 +18474,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18492,7 +18492,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18509,7 +18509,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18526,7 +18526,7 @@
         "testing",
         "tooling"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18543,7 +18543,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18560,7 +18560,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18578,7 +18578,7 @@
         "testing",
         "webhook"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18595,7 +18595,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18612,7 +18612,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18629,7 +18629,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18646,7 +18646,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18663,7 +18663,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18680,7 +18680,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18699,7 +18699,7 @@
         "regression-testing",
         "evidence-based"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18716,7 +18716,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18733,7 +18733,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18752,7 +18752,7 @@
         "testing",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18770,7 +18770,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18788,7 +18788,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18805,7 +18805,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18822,7 +18822,7 @@
         "software-engineering",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18840,7 +18840,7 @@
         "requirements",
         "design-doc"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18857,7 +18857,7 @@
         "storybook",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18874,7 +18874,7 @@
         "subagent",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18896,7 +18896,7 @@
         "realtime",
         "storage"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18913,7 +18913,7 @@
         "surrealdb",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18931,7 +18931,7 @@
         "patterns",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18948,7 +18948,7 @@
         "swiftui",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18965,7 +18965,7 @@
         "systematic",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -18983,7 +18983,7 @@
         "task",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -19001,7 +19001,7 @@
         "tauri",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -19019,7 +19019,7 @@
         "test",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -19036,7 +19036,7 @@
         "test",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -19053,7 +19053,7 @@
         "testing",
         "typeorm"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -19071,7 +19071,7 @@
         "using",
         "worktrees"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -19089,7 +19089,7 @@
         "testing",
         "verification"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -19106,7 +19106,7 @@
         "testing",
         "visual"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -19123,7 +19123,7 @@
         "testing",
         "vite"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -19142,7 +19142,7 @@
         "testing",
         "voice"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -19160,7 +19160,7 @@
         "framework",
         "vue"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -19177,7 +19177,7 @@
         "testing",
         "wails"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -19194,7 +19194,7 @@
         "testing",
         "webpack"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -19211,7 +19211,7 @@
         "testing",
         "websocket"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -19228,7 +19228,7 @@
         "testing",
         "writing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "dev"
@@ -19245,7 +19245,7 @@
         "devops",
         "infrastructure"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19262,7 +19262,7 @@
         "gitops",
         "infrastructure"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19279,7 +19279,7 @@
         "infrastructure",
         "ops"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19296,7 +19296,7 @@
         "infrastructure",
         "ops"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19316,7 +19316,7 @@
         "pipeline",
         "pipelines"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19333,7 +19333,7 @@
         "infrastructure",
         "pipeline"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19351,7 +19351,7 @@
         "kubernetes",
         "networking"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19369,7 +19369,7 @@
         "infrastructure",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19387,7 +19387,7 @@
         "mesh",
         "service"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19407,7 +19407,7 @@
         "dockerfile",
         "money-making"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19422,7 +19422,7 @@
         "docker",
         "compose"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19437,7 +19437,7 @@
         "docker",
         "dockerfile"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19455,7 +19455,7 @@
         "infrastructure",
         "optimize"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19473,7 +19473,7 @@
         "machine-learning",
         "pipeline"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19490,7 +19490,7 @@
         "edge",
         "infrastructure"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19507,7 +19507,7 @@
         "infrastructure",
         "proxy"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19524,7 +19524,7 @@
         "gitops",
         "infrastructure"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19543,7 +19543,7 @@
         "compute",
         "storage"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19560,7 +19560,7 @@
         "infrastructure",
         "ops"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19578,7 +19578,7 @@
         "infrastructure",
         "testing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19596,7 +19596,7 @@
         "kubernetes",
         "mesh"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19615,7 +19615,7 @@
         "pipeline",
         "pipelines"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19634,7 +19634,7 @@
         "pipeline",
         "shared"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19649,7 +19649,7 @@
         "k8s",
         "kubernetes"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19667,7 +19667,7 @@
         "kubernetes",
         "kustomize"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19685,7 +19685,7 @@
         "linkerd",
         "mesh"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19702,7 +19702,7 @@
         "nomad",
         "scheduler"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19719,7 +19719,7 @@
         "monitoring",
         "observability"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19739,7 +19739,7 @@
         "infrastructure",
         "packer"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19756,7 +19756,7 @@
         "infrastructure",
         "serverless"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19775,7 +19775,7 @@
         "pipelines",
         "tekton"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19792,7 +19792,7 @@
         "infrastructure",
         "terraform"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19809,7 +19809,7 @@
         "pki",
         "vault"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19826,7 +19826,7 @@
         "secrets",
         "vault"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "devops"
@@ -19887,7 +19887,7 @@
         "investment",
         "readiness"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "finance"
@@ -19933,7 +19933,7 @@
         "investment",
         "viewer"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "finance"
@@ -19949,7 +19949,7 @@
         "investment",
         "tracker"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "finance"
@@ -19965,7 +19965,7 @@
         "investment",
         "reconciler"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "finance"
@@ -19983,7 +19983,7 @@
         "kyc",
         "screener"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "finance"
@@ -20000,7 +20000,7 @@
         "meeting",
         "prep"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "finance"
@@ -20017,7 +20017,7 @@
         "investment",
         "model"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "finance"
@@ -20035,7 +20035,7 @@
         "investment",
         "month"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "finance"
@@ -20052,7 +20052,7 @@
         "investment",
         "pitch"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "finance"
@@ -20069,7 +20069,7 @@
         "monitor",
         "portfolio"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "finance"
@@ -20086,7 +20086,7 @@
         "investment",
         "statement"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "finance"
@@ -20104,7 +20104,7 @@
         "loss",
         "tax"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "finance"
@@ -20121,7 +20121,7 @@
         "reviewer",
         "valuation"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "finance"
@@ -20160,7 +20160,7 @@
         "data-warehouse",
         "etl"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20180,7 +20180,7 @@
         "integrations",
         "mcp"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20200,7 +20200,7 @@
         "slack",
         "third-party"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20218,7 +20218,7 @@
         "mcp",
         "third-party"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20240,7 +20240,7 @@
         "webhook",
         "communication"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20256,7 +20256,7 @@
         "discord",
         "integrations"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20272,7 +20272,7 @@
         "integrations",
         "webhook"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20291,7 +20291,7 @@
         "startup",
         "email-marketing"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20313,7 +20313,7 @@
         "github-pr",
         "devops"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20330,7 +20330,7 @@
         "github",
         "integrations"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20346,7 +20346,7 @@
         "integrations",
         "issues"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20362,7 +20362,7 @@
         "integrations",
         "pr"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20379,7 +20379,7 @@
         "kalodata",
         "third-party"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20397,7 +20397,7 @@
         "slack",
         "third-party"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20416,7 +20416,7 @@
         "third-party",
         "webhook"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20434,7 +20434,7 @@
         "research",
         "third-party"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20453,7 +20453,7 @@
         "video",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20472,7 +20472,7 @@
         "third-party",
         "video"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20489,7 +20489,7 @@
         "third-party",
         "video"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20507,7 +20507,7 @@
         "third-party",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20522,7 +20522,7 @@
         "integrations",
         "notion"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20538,7 +20538,7 @@
         "integrations",
         "notion"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20560,7 +20560,7 @@
         "notion-pages",
         "knowledge-management"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20576,7 +20576,7 @@
         "notion",
         "pages"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20593,7 +20593,7 @@
         "opencode",
         "third-party"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20611,7 +20611,7 @@
         "opencode",
         "third-party"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20629,7 +20629,7 @@
         "opencode",
         "third-party"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20648,7 +20648,7 @@
         "third-party",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20665,7 +20665,7 @@
         "opencode",
         "third-party"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20684,7 +20684,7 @@
         "usage",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20706,7 +20706,7 @@
         "workflow",
         "communication"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20722,7 +20722,7 @@
         "integrations",
         "slack"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20738,7 +20738,7 @@
         "notifications",
         "slack"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20754,7 +20754,7 @@
         "integrations",
         "slack"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20772,7 +20772,7 @@
         "storage",
         "third-party"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20790,7 +20790,7 @@
         "checkout",
         "webhooks"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20808,7 +20808,7 @@
         "third-party",
         "webhook"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "integrations"
@@ -20845,7 +20845,7 @@
         "social-media",
         "video"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -20865,7 +20865,7 @@
         "tiktok",
         "linkedin"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -20882,7 +20882,7 @@
         "marketing",
         "seo"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -20898,7 +20898,7 @@
         "marketing",
         "seo"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -20918,7 +20918,7 @@
         "workflow",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -20937,7 +20937,7 @@
         "seo",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -20953,7 +20953,7 @@
         "seo",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -20971,7 +20971,7 @@
         "seo",
         "social-media"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -20985,7 +20985,7 @@
         "stub",
         "merged"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21003,7 +21003,7 @@
         "seo",
         "social-media"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21021,7 +21021,7 @@
         "marketing",
         "seo"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21056,7 +21056,7 @@
         "prevention",
         "seo"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21074,7 +21074,7 @@
         "marketing",
         "seo"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21091,7 +21091,7 @@
         "marketing",
         "seo"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21110,7 +21110,7 @@
         "marketing",
         "seo"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21130,7 +21130,7 @@
         "video",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21148,7 +21148,7 @@
         "scheduler",
         "seo"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21164,7 +21164,7 @@
         "marketing",
         "seo"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21217,7 +21217,7 @@
         "outreach",
         "seo"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21234,7 +21234,7 @@
         "seo",
         "strategy"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21269,7 +21269,7 @@
         "marketing",
         "seo"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21286,7 +21286,7 @@
         "research",
         "seo"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21307,7 +21307,7 @@
         "automation",
         "sales"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21324,7 +21324,7 @@
         "social-media",
         "strategy"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21358,7 +21358,7 @@
         "seo",
         "strategy"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21375,7 +21375,7 @@
         "referral",
         "seo"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21392,7 +21392,7 @@
         "schema",
         "seo"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21410,7 +21410,7 @@
         "seo",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21427,7 +21427,7 @@
         "money",
         "seo"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21444,7 +21444,7 @@
         "seo",
         "shopee"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21462,7 +21462,7 @@
         "social",
         "social-media"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21481,7 +21481,7 @@
         "social",
         "social-media"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21501,7 +21501,7 @@
         "upload",
         "video"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21519,7 +21519,7 @@
         "seo",
         "stripe"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21536,7 +21536,7 @@
         "tiktok",
         "video"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21556,7 +21556,7 @@
         "social-media",
         "tiktok"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21577,7 +21577,7 @@
         "workflow",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21594,7 +21594,7 @@
         "seo",
         "twitter"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21610,7 +21610,7 @@
         "seo",
         "viral"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "marketing"
@@ -21630,7 +21630,7 @@
         "monitoring",
         "reach"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mcp"
@@ -21648,7 +21648,7 @@
         "tool-integration",
         "server-registry"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mcp"
@@ -21666,7 +21666,7 @@
         "model-context-protocol",
         "tool-integration"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mcp"
@@ -21683,7 +21683,7 @@
         "model-context-protocol",
         "tool-integration"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mcp"
@@ -21700,7 +21700,7 @@
         "model-context-protocol",
         "tool-integration"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mcp"
@@ -21717,7 +21717,7 @@
         "model-context-protocol",
         "tool-integration"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mcp"
@@ -21734,7 +21734,7 @@
         "model-context-protocol",
         "tool-integration"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mcp"
@@ -21754,7 +21754,7 @@
         "server",
         "tool-integration"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mcp"
@@ -21773,7 +21773,7 @@
         "model-context-protocol",
         "tool-integration"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mcp"
@@ -21790,7 +21790,7 @@
         "notion",
         "tool-integration"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mcp"
@@ -21807,7 +21807,7 @@
         "resend",
         "tool-integration"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mcp"
@@ -21825,7 +21825,7 @@
         "thinking",
         "tool-integration"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mcp"
@@ -21842,7 +21842,7 @@
         "slack",
         "tool-integration"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mcp"
@@ -21859,7 +21859,7 @@
         "stripe",
         "tool-integration"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mcp"
@@ -21876,7 +21876,7 @@
         "supabase",
         "tool-integration"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mcp"
@@ -21893,7 +21893,7 @@
         "self-improvement",
         "skill-evolution"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "meta"
@@ -21910,7 +21910,7 @@
         "self-improvement",
         "skill-evolution"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "meta"
@@ -21927,7 +21927,7 @@
         "skill-evolution",
         "skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "meta"
@@ -21943,7 +21943,7 @@
         "self-improvement",
         "skill-evolution"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "meta"
@@ -21960,7 +21960,7 @@
         "self-improvement",
         "skill-evolution"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "meta"
@@ -21977,7 +21977,7 @@
         "setup",
         "skill-evolution"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "meta"
@@ -21994,7 +21994,7 @@
         "self-improvement",
         "skill-evolution"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "meta"
@@ -22012,7 +22012,7 @@
         "skill-evolution",
         "skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "meta"
@@ -22030,7 +22030,7 @@
         "skill",
         "skill-evolution"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "meta"
@@ -22047,7 +22047,7 @@
         "self-improvement",
         "skill-evolution"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "meta"
@@ -22064,7 +22064,7 @@
         "self-improvement",
         "skill-evolution"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "meta"
@@ -22081,7 +22081,7 @@
         "self-improvement",
         "skill-evolution"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "meta"
@@ -22099,7 +22099,7 @@
         "stocktake",
         "gap-analysis"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "meta"
@@ -22116,7 +22116,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22132,7 +22132,7 @@
         "ponytail",
         "simplification"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22150,7 +22150,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22167,7 +22167,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22184,7 +22184,7 @@
         "soft-skills",
         "strategy"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22201,7 +22201,7 @@
         "resolution",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22217,7 +22217,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22262,7 +22262,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22278,7 +22278,7 @@
         "ponytail",
         "tracking"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22295,7 +22295,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22312,7 +22312,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22330,7 +22330,7 @@
         "testing",
         "thinking"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22347,7 +22347,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22364,7 +22364,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22382,7 +22382,7 @@
         "social-media",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22398,7 +22398,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22415,7 +22415,7 @@
         "presence",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22432,7 +22432,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22450,7 +22450,7 @@
         "soft-skills",
         "thinking"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22467,7 +22467,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22484,7 +22484,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22500,7 +22500,7 @@
         "ponytail",
         "reference"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22517,7 +22517,7 @@
         "playbook",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22536,7 +22536,7 @@
         "soft-skills",
         "without"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22553,7 +22553,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22570,7 +22570,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22586,7 +22586,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22603,7 +22603,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22621,7 +22621,7 @@
         "skill",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22637,7 +22637,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22654,7 +22654,7 @@
         "personal-development",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22671,7 +22671,7 @@
         "productivity",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22688,7 +22688,7 @@
         "persuasion",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22710,7 +22710,7 @@
         "simplification",
         "money"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22727,7 +22727,7 @@
         "presentation",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22744,7 +22744,7 @@
         "pricing",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22761,7 +22761,7 @@
         "soft-skills",
         "thinking"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22779,7 +22779,7 @@
         "product",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22796,7 +22796,7 @@
         "soft-skills",
         "speaking"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22814,7 +22814,7 @@
         "video",
         "work"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22830,7 +22830,7 @@
         "resilience",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22846,7 +22846,7 @@
         "ponytail",
         "simplification"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22863,7 +22863,7 @@
         "root",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22880,7 +22880,7 @@
         "scenario",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22897,7 +22897,7 @@
         "servant",
         "soft-skills"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22914,7 +22914,7 @@
         "soft-skills",
         "stakeholder"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22931,7 +22931,7 @@
         "soft-skills",
         "storytelling"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22948,7 +22948,7 @@
         "soft-skills",
         "strategic"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22965,7 +22965,7 @@
         "soft-skills",
         "stress"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22982,7 +22982,7 @@
         "systems",
         "thinking"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -22999,7 +22999,7 @@
         "soft-skills",
         "team"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -23016,7 +23016,7 @@
         "soft-skills",
         "time"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -23033,7 +23033,7 @@
         "soft-skills",
         "trade"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -23050,7 +23050,7 @@
         "soft-skills",
         "unit"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "mindset"
@@ -23068,7 +23068,7 @@
         "operations",
         "patterns"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23085,7 +23085,7 @@
         "management",
         "operations"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23101,7 +23101,7 @@
         "management",
         "operations"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23136,7 +23136,7 @@
         "operations",
         "success"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23153,7 +23153,7 @@
         "operations",
         "ops"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23170,7 +23170,7 @@
         "management",
         "operations"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23188,7 +23188,7 @@
         "operations",
         "team"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23204,7 +23204,7 @@
         "onboarding",
         "operations"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23220,7 +23220,7 @@
         "management",
         "operations"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23258,7 +23258,7 @@
         "monitoring",
         "operations"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23276,7 +23276,7 @@
         "operations",
         "reminder"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23292,7 +23292,7 @@
         "operations",
         "team"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23309,7 +23309,7 @@
         "operations",
         "payment"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23327,7 +23327,7 @@
         "payment",
         "voice"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23345,7 +23345,7 @@
         "product",
         "team"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23363,7 +23363,7 @@
         "project",
         "slack"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23382,7 +23382,7 @@
         "revenue",
         "team"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "operations"
@@ -23399,7 +23399,7 @@
         "time-management",
         "tools"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "productivity"
@@ -23419,7 +23419,7 @@
         "hiring",
         "job-tracker"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "productivity"
@@ -23436,7 +23436,7 @@
         "tools",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "productivity"
@@ -23454,7 +23454,7 @@
         "productivity",
         "schedule"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "productivity"
@@ -23471,7 +23471,7 @@
         "time-management",
         "tools"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "productivity"
@@ -23490,7 +23490,7 @@
         "video",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "productivity"
@@ -23507,7 +23507,7 @@
         "tools",
         "workspace"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "productivity"
@@ -23525,7 +23525,7 @@
         "follow-up",
         "collaboration"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "productivity"
@@ -23544,7 +23544,7 @@
         "tools",
         "voice"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "productivity"
@@ -23562,7 +23562,7 @@
         "tools",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "productivity"
@@ -23579,7 +23579,7 @@
         "investigation",
         "research"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23596,7 +23596,7 @@
         "investigation",
         "research"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23616,7 +23616,7 @@
         "seo",
         "social-media"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23634,7 +23634,7 @@
         "learning",
         "research"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23653,7 +23653,7 @@
         "pipeline",
         "research"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23671,7 +23671,7 @@
         "parallel",
         "research"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23688,7 +23688,7 @@
         "research",
         "science"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23705,7 +23705,7 @@
         "research",
         "trading"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23722,7 +23722,7 @@
         "investigation",
         "research"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23740,7 +23740,7 @@
         "maybe",
         "research"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23756,7 +23756,7 @@
         "mckinsey",
         "research"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23774,7 +23774,7 @@
         "principles",
         "research"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23791,7 +23791,7 @@
         "opportunity",
         "research"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23809,7 +23809,7 @@
         "research",
         "trading"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23827,7 +23827,7 @@
         "rockefeller",
         "wealth"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23844,7 +23844,7 @@
         "research",
         "rothschild"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23860,7 +23860,7 @@
         "research",
         "sherlock"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23878,7 +23878,7 @@
         "trend-monitoring",
         "agent-reach"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23896,7 +23896,7 @@
         "research",
         "steve"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23913,7 +23913,7 @@
         "research",
         "super"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23930,7 +23930,7 @@
         "research",
         "trendradar"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23947,7 +23947,7 @@
         "research",
         "value"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23963,7 +23963,7 @@
         "research",
         "zhive"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "research"
@@ -23980,7 +23980,7 @@
         "revenue",
         "sales"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "sales"
@@ -23996,7 +23996,7 @@
         "revenue",
         "sales"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "sales"
@@ -24032,7 +24032,7 @@
         "revenue",
         "sales"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "sales"
@@ -24068,7 +24068,7 @@
         "revenue",
         "sales"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "sales"
@@ -24087,7 +24087,7 @@
         "support",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "sales"
@@ -24105,7 +24105,7 @@
         "sales",
         "ticket"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "sales"
@@ -24139,7 +24139,7 @@
         "stub",
         "merged"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "sales"
@@ -24177,7 +24177,7 @@
         "sales",
         "strategy"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "sales"
@@ -24195,7 +24195,7 @@
         "sales",
         "shopee"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "sales"
@@ -24213,7 +24213,7 @@
         "sales",
         "talent"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "sales"
@@ -24267,7 +24267,7 @@
         "markets",
         "trading"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "trading"
@@ -24284,7 +24284,7 @@
         "trading",
         "wallet"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "trading"
@@ -24301,7 +24301,7 @@
         "protocols",
         "trading"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "trading"
@@ -24338,7 +24338,7 @@
         "nft",
         "trading"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "trading"
@@ -24354,7 +24354,7 @@
         "polymarket",
         "trading"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "trading"
@@ -24412,7 +24412,7 @@
         "portfolio",
         "trading"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "trading"
@@ -24430,7 +24430,7 @@
         "smart",
         "trading"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "trading"
@@ -24448,7 +24448,7 @@
         "monitoring",
         "trading"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "trading"
@@ -24465,7 +24465,7 @@
         "trading",
         "workflow"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "trading"
@@ -24481,7 +24481,7 @@
         "researcher",
         "trading"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "trading"
@@ -24498,7 +24498,7 @@
         "risk",
         "trading"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "trading"
@@ -24533,7 +24533,7 @@
         "trading",
         "tushare"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "",
       "subdomain": "",
       "type": "trading"

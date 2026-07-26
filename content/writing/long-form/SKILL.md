@@ -3,6 +3,7 @@ name: long-form
 description: Use when long-form content — merged into content-writing parent. See ../SKILL.md for money protocol.
 domain: content
 tags: [content-creation, long-form]
+version: 1.0.0
 ---
 
 # Long Form

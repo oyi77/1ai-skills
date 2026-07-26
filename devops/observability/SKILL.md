@@ -8,6 +8,7 @@ tags:
 - infrastructure
 - monitoring
 - observability
+version: 1.0.0
 ---
 
 

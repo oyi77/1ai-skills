@@ -9,6 +9,7 @@ tags:
 - investment
 - reviewer
 - valuation
+version: 1.0.0
 ---
 
 # Valuation Reviewer!

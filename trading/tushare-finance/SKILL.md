@@ -11,6 +11,7 @@ tags:
 allowed-tools:
 - Bash(python:*)
 - Read
+version: 1.0.0
 ---
 # Tushare Finance
 

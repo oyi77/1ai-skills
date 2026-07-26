@@ -12,6 +12,7 @@ tags:
 - rest-api
 - security
 - testing
+version: 1.0.0
 ---
 # Api Destroyer
 

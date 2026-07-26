@@ -8,6 +8,7 @@ tags:
 - investment
 - research
 - rothschild
+version: 1.0.0
 ---
 # Rothschild Investment
 

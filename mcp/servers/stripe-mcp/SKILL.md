@@ -8,6 +8,7 @@ tags:
 - model-context-protocol
 - stripe
 - tool-integration
+version: 1.0.0
 ---
 # Stripe Mcp
 

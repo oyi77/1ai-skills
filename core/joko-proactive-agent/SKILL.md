@@ -14,6 +14,7 @@ tags:
 allowed-tools:
 - MCP(slack:*)
 - MCP(notion:*)
+version: 1.0.0
 ---
 # Joko Proactive Agent
 

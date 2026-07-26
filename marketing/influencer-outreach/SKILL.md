@@ -9,6 +9,7 @@ tags:
 - marketing
 - outreach
 - seo
+version: 1.0.0
 ---
 
 

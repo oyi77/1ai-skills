@@ -25,6 +25,7 @@ persona:
   - Cognify everything
   - Share globally
   - Filter personally
+version: 1.0.0
 ---
 # Zhive
 

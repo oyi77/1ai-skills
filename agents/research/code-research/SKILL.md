@@ -9,6 +9,7 @@ tags:
 - code
 - orchestration
 - research
+version: 1.0.0
 ---
 # Code Research Agent
 

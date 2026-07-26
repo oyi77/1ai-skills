@@ -8,6 +8,7 @@ tags:
 - playwright
 - software-engineering
 - testing
+version: 1.0.0
 ---
 
 

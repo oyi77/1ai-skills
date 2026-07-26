@@ -9,6 +9,7 @@ tags:
 - infrastructure
 - kubernetes
 - kustomize
+version: 1.0.0
 ---
 
 

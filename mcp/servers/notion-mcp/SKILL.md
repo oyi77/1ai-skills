@@ -8,6 +8,7 @@ tags:
 - model-context-protocol
 - notion
 - tool-integration
+version: 1.0.0
 ---
 # Notion Mcp
 

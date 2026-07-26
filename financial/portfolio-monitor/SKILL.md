@@ -9,6 +9,7 @@ tags:
 - investment
 - monitor
 - portfolio
+version: 1.0.0
 ---
 
 # Portfolio Monitor!

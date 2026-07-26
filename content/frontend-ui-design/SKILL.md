@@ -10,6 +10,7 @@ tags:
 - css
 - components
 - responsive
+version: 1.0.0
 ---
 
 # Frontend Ui Design

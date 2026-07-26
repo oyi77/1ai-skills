@@ -9,6 +9,7 @@ tags:
 - personal-development
 - resolution
 - soft-skills
+version: 1.0.0
 ---
 # Conflict Resolution
 

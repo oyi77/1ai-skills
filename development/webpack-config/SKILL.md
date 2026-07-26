@@ -8,6 +8,7 @@ tags:
 - software-engineering
 - testing
 - webpack
+version: 1.0.0
 ---
 
 

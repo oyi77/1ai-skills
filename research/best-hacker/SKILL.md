@@ -8,6 +8,7 @@ tags:
 - hacker
 - investigation
 - research
+version: 1.0.0
 ---
 # The Hacker Mindset
 

@@ -9,6 +9,7 @@ tags:
 - self-improvement
 - superpowers
 - using
+version: 1.0.0
 ---
 persona:
   name: "Elon Musk"

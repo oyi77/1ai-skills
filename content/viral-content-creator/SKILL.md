@@ -12,6 +12,7 @@ tags:
 - testing
 - video
 - viral
+version: 1.0.0
 ---
 # Viral Content Creator
 

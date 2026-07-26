@@ -8,6 +8,7 @@ tags:
 - software-engineering
 - testing
 - tooling
+version: 1.0.0
 ---
 
 

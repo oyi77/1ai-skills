@@ -6,6 +6,7 @@ tags:
 - automation
 - cron
 - scheduling
+version: 1.0.0
 ---
 
 # Cron Designer

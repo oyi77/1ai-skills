@@ -10,6 +10,7 @@ tags:
 - kalodata
 - third-party
 - video
+version: 1.0.0
 ---
 
 # Kalodata Video Analysis

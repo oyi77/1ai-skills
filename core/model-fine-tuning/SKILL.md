@@ -10,6 +10,7 @@ tags:
 - model
 - self-improvement
 - tuning
+version: 1.0.0
 ---
 
 ## Overview

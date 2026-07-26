@@ -12,6 +12,7 @@ tags:
 - bulk-import
 - format-conversion
 - quality-gates
+version: 1.0.0
 ---
 
 

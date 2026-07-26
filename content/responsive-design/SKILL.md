@@ -8,6 +8,7 @@ tags:
 - digital-content
 - media
 - responsive
+version: 1.0.0
 ---
 
 

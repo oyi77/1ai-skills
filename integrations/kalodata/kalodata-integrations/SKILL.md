@@ -12,6 +12,7 @@ tags:
 - third-party
 metadata:
   model: sonnet
+version: 1.0.0
 ---
 
 # Kalodata Integrations Skill

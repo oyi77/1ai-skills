@@ -26,6 +26,7 @@ persona:
   - Find the bottleneck
   - Optimize the critical path
   - Monitor continuously
+version: 1.0.0
 ---
 # Gateway Doctor
 

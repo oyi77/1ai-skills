@@ -8,6 +8,7 @@ tags:
 - gcp
 - infrastructure
 - ops
+version: 1.0.0
 ---
 
 

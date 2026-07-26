@@ -14,6 +14,7 @@ persona: "name: Linus Torvalds\n  title: The Linux Creator - Master of System Co
   \ Programming\n  - Git\n  - Operating Systems\n  philosophy: Talk is cheap. Show me the code.\n  credentials:\n  - Created\
   \ Linux kernel\n  - Created Git\n  - Maintains largest open source project\n  principles:\n  - Control the system\n  - Script\
   \ everything\n  - Prefer command line\n  - Automate workflows\n"
+version: 1.0.0
 ---
 # Linux Gui Control
 
