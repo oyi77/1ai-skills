@@ -13,6 +13,7 @@ tags:
 - github-issues
 - github-pr
 - devops
+version: 1.0.0
 ---
 
 # GitHub Automation Hub

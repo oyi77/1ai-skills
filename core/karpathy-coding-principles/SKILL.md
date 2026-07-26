@@ -9,6 +9,7 @@ tags:
   - karpathy
   - simplicity
   - clean-code
+version: 1.0.0
 ---
 
 ## When NOT to Use

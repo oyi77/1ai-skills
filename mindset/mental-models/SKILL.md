@@ -9,6 +9,7 @@ tags:
 - models
 - personal-development
 - soft-skills
+version: 1.0.0
 ---
 # Mental Models
 

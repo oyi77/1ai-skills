@@ -7,6 +7,7 @@ tags:
 - memory
 - self-improvement
 - vilona
+version: 1.0.0
 ---
 # Vilona Skill
 

@@ -12,6 +12,7 @@ tags:
 - pipeline
 - software-engineering
 - testing
+version: 1.0.0
 ---
 
 # cicd-deployment

@@ -10,6 +10,7 @@ tags:
 - dockerfile
 - infrastructure
 - optimize
+version: 1.0.0
 ---
 
 

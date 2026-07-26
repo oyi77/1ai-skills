@@ -12,6 +12,7 @@ tags:
 - tiktok
 - linkedin
 category: marketing
+version: 1.0.0
 ---
 
 

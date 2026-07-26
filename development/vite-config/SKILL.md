@@ -8,6 +8,7 @@ tags:
 - software-engineering
 - testing
 - vite
+version: 1.0.0
 ---
 
 

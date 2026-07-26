@@ -10,6 +10,7 @@ tags:
 - self-improvement
 - teamwork
 - workflow
+version: 1.0.0
 ---
 # Teamwork
 

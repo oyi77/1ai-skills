@@ -14,6 +14,7 @@ allowed-tools:
 - MCP(google-drive:*)
 - MCP(google-sheets:*)
 - MCP(google-docs:*)
+version: 1.0.0
 ---
 # Google Workspace
 

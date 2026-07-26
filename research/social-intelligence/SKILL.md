@@ -11,6 +11,7 @@ tags:
 - competitive-intelligence
 - trend-monitoring
 - agent-reach
+version: 1.0.0
 ---
 # Social Intelligence
 

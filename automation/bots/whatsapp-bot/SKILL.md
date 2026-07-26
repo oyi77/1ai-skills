@@ -7,6 +7,7 @@ tags:
 - bot
 - whatsapp
 - messaging
+version: 1.0.0
 ---
 # WhatsApp Bot — WAHA-Powered AutomationBuild and scale WhatsApp bots using **WAHA** (WhatsApp HTTP API) — a lightweight self-hosted REST/WebSocket service wrapping the WhatsApp Web protocol. No Meta Business approval, no template pre-approval, no BSP fees.---
 ## When to Use

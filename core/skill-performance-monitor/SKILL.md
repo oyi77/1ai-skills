@@ -10,6 +10,7 @@ tags:
 - performance
 - self-improvement
 - skill
+version: 1.0.0
 ---
 persona:
   name: "Brendan Gregg"

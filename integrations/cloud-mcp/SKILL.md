@@ -12,6 +12,7 @@ tags:
 - gcp
 - integrations
 - mcp
+version: 1.0.0
 ---
 
 # Cloud MCP Skill

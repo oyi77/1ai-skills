@@ -27,6 +27,7 @@ persona:
   - Cache aggressively
   - Secure by default
   - Scale globally
+version: 1.0.0
 ---
 # Cloudflare Router
 

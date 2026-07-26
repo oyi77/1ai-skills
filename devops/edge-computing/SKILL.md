@@ -8,6 +8,7 @@ tags:
 - devops
 - edge
 - infrastructure
+version: 1.0.0
 ---
 
 

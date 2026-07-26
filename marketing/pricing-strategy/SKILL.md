@@ -9,6 +9,7 @@ tags:
 - pricing
 - seo
 - strategy
+version: 1.0.0
 ---
 # Pricing Strategy
 

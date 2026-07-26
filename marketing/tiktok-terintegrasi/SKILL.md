@@ -13,6 +13,7 @@ tags:
 - video
 - workflow
 - money
+version: 1.0.0
 ---
 
 # Tiktok Terintegrasi

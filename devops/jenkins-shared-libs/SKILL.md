@@ -10,6 +10,7 @@ tags:
 - libs
 - pipeline
 - shared
+version: 1.0.0
 ---
 
 

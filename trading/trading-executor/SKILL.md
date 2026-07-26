@@ -16,6 +16,7 @@ allowed-tools:
 - MCP(slack:*)
 - fs
 - network
+version: 1.0.0
 ---
 
 # Trading Executor

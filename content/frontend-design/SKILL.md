@@ -8,6 +8,7 @@ tags:
 - digital-content
 - frontend
 - media
+version: 1.0.0
 ---
 
 

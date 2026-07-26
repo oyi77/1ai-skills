@@ -8,6 +8,7 @@ tags:
 - sequelize
 - software-engineering
 - testing
+version: 1.0.0
 ---
 
 

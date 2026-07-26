@@ -9,6 +9,7 @@ tags:
 - llm
 - memory
 - self-improvement
+version: 1.0.0
 ---
 
 ## Overview

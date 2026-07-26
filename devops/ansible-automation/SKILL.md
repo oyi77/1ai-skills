@@ -8,6 +8,7 @@ tags:
 - ci-cd
 - devops
 - infrastructure
+version: 1.0.0
 ---
 
 

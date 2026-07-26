@@ -7,6 +7,7 @@ tags:
   - mindset
   - ponytail
   - tracking
+version: 1.0.0
 ---
 
 # Debt

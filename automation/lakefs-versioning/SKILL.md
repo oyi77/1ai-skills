@@ -8,6 +8,7 @@ tags:
 - productivity
 - versioning
 - workflow
+version: 1.0.0
 ---
 
 ## Overview

@@ -9,6 +9,7 @@ tags:
 - manager
 - marketing
 - seo
+version: 1.0.0
 ---
 
 

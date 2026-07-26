@@ -8,6 +8,7 @@ tags:
 - fluxcd
 - gitops
 - infrastructure
+version: 1.0.0
 ---
 
 

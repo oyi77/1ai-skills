@@ -16,6 +16,7 @@ persona: "name: \"Stephen King\"\n  title: \"Master of Natural Prose\"\n  expert
   \ imagination, but ends in the reader's\"\n    - \"The adverb is not your friend - show, don't tell through action\"\n \
   \   - \"Dialogue belongs to characters, not author - let them speak their truth\"\n    - \"Read a lot, write a lot - there's\
   \ no substitute for practice\"\n    - \"Good writing is telepathy - connect reader directly to experience\"\n"
+version: 1.0.0
 ---
 
 

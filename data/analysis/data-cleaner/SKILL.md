@@ -3,6 +3,7 @@ name: data-cleaner
 description: Use when data cleaning — merged into data-analysis parent. See ../SKILL.md for money protocol.
 domain: data
 tags: [analytics, data, cleaning]
+version: 1.0.0
 ---
 
 # Data Cleaner

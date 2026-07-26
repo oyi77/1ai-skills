@@ -10,6 +10,7 @@ tags:
 - job
 - productivity
 - workflow
+version: 1.0.0
 ---
 # Job Hunter
 

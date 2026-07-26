@@ -49,6 +49,20 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 
 
 
+
+## [3.19.0] — 2026-07-26
+
+### Changed
+- 556 skills gained `version: 1.0.0` in frontmatter (standardized version field across
+  the skill library). Inserted before closing `---` delimiter to avoid breaking multi-line
+  YAML fields.
+- SKILLS.json regenerated via `lint-skills.py --write` to sync catalog
+
+### Verified
+- Lint: 0 errors, 0 warnings, 3152 info
+- Tests: 1344/1344 pass
+- Schema: 1347/1347 pass (0 errors, 212 warnings)
+
 ## [3.18.0] — 2026-07-26
 
 ### Changed

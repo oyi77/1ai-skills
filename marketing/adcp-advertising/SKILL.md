@@ -16,6 +16,7 @@ persona: "|\n  name: Gary Halbert\n    title: The Prince of Print - Master of Di
   \ someone who has achieved the results you want and copy what they do.\n    credentials:\n    - Wrote most mailed letter\
   \ in history\n    - Coached top copywriters\n    - Marketing legend\n    principles:\n    - AIDA always\n    - Test headlines\n\
   \    - Benefits over features\n    - Strong call to action\n"
+version: 1.0.0
 ---
 # Adcp Advertising
 

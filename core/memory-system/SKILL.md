@@ -7,6 +7,7 @@ tags:
 - memory
 - self-improvement
 - system
+version: 1.0.0
 ---
 # Memory System
 

@@ -10,6 +10,7 @@ tags:
 - pipeline
 - pipelines
 - tekton
+version: 1.0.0
 ---
 
 

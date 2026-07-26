@@ -12,6 +12,7 @@ tags:
   - kling
   - seedance
   - sora
+version: 1.0.0
 ---
 # AI Video Generation
 

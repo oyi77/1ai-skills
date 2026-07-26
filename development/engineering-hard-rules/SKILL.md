@@ -9,6 +9,7 @@ tags:
   - enforcement-protocol
   - agent-safety
   - quality-gates
+version: 1.0.0
 ---
 
 # Engineering Hard Rules — Agent Enforcement Protocol

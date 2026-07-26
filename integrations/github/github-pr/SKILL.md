@@ -7,6 +7,7 @@ tags:
 - github
 - integrations
 - pr
+version: 1.0.0
 ---
 
 # GitHub PR

@@ -10,6 +10,7 @@ tags:
 - runtime
 - self
 - self-improvement
+version: 1.0.0
 ---
 persona:
   name: "Domain Expert"

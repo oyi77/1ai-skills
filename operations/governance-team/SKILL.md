@@ -10,6 +10,7 @@ tags:
 - management
 - operations
 - team
+version: 1.0.0
 ---
 # Governance Team
 

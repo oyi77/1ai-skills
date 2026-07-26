@@ -10,6 +10,7 @@ tags:
 - memory
 - model-context-protocol
 - tool-integration
+version: 1.0.0
 ---
 
 ## Overview

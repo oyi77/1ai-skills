@@ -10,6 +10,7 @@ tags:
 - testing
 - threat-defense
 - web3
+version: 1.0.0
 ---
 # Web3 Auditor
 

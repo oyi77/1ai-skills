@@ -9,6 +9,7 @@ tags:
 - polymarket
 - research
 - trading
+version: 1.0.0
 ---
 # Polymarket Analyst
 

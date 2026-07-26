@@ -9,6 +9,7 @@ tags:
 - personal-development
 - root
 - soft-skills
+version: 1.0.0
 ---
 # Root Cause Analysis
 

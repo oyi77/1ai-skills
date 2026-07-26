@@ -8,6 +8,7 @@ tags:
 - markets
 - nft
 - trading
+version: 1.0.0
 ---
 ## Money-Making Overview
 

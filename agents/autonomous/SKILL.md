@@ -15,6 +15,7 @@ tags:
   - research
   - review
   - money
+version: 1.0.0
 ---
 
 # Autonomous Agents

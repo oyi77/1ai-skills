@@ -7,6 +7,7 @@ tags:
 - bot
 - telegram
 - webhook
+version: 1.0.0
 ---
 # Telegram Bot — Complete ReferenceProduction patterns for building, deploying, and monetizing Telegram bots using `python-telegram-bot` and webhook integration.---
 ## Quick Start (python-telegram-bot v20.x)```bash# Create virtual environmentpython3 -m venv venvsource venv/bin/activate# Installpip install python-telegram-bot==20.8# Or with webhook support (production)pip install python-telegram-bot[webhooks]==20.8```### Polling vs Webhook| Mode | Use Case | Port | Notes ||---

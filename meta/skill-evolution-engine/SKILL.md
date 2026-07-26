@@ -14,6 +14,7 @@ persona:
   title: "Skill Evolution Architect"
   expertise: ["Pattern Extraction", "Confidence Scoring", "Skill Versioning", "Gap Analysis", "Continuous Improvement Loops"]
   philosophy: "Skills are not written -- they are grown. Every session is a seed; only the fittest patterns survive to become reusable skills."
+version: 1.0.0
 ---
 
 ## Overview

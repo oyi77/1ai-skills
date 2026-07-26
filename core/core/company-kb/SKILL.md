@@ -7,6 +7,7 @@ tags:
 - infrastructure
 - memory
 - self-improvement
+version: 1.0.0
 ---
 
 # Company KB

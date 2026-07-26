@@ -11,6 +11,7 @@ tags:
 - memory
 - monitoring
 - self-improvement
+version: 1.0.0
 ---
 # Autonomy Engine
 

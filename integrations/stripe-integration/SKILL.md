@@ -9,6 +9,7 @@ tags:
 - subscriptions
 - checkout
 - webhooks
+version: 1.0.0
 ---
 
 # Stripe Integration

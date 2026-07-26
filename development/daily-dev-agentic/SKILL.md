@@ -28,6 +28,7 @@ persona:
   - Continuous integration
   - Test first
   - Refactor mercilessly
+version: 1.0.0
 ---
 # Daily Dev Agentic
 

@@ -11,6 +11,7 @@ tags:
 - media
 - planner
 - money
+version: 1.0.0
 ---
 # Content Planner Auto
 

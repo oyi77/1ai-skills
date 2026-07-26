@@ -9,6 +9,7 @@ tags:
 - finance
 - investment
 - viewer
+version: 1.0.0
 ---
 
 # Earnings Viewer

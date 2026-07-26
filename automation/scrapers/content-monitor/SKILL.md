@@ -7,6 +7,7 @@ tags:
 - content
 - monitor
 - alerts
+version: 1.0.0
 ---
 # Content Monitor
 

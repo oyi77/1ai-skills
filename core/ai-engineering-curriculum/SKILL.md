@@ -10,6 +10,7 @@ tags:
   - llm
   - agents
   - education
+version: 1.0.0
 ---
 
 ## When NOT to Use

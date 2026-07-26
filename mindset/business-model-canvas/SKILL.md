@@ -10,6 +10,7 @@ tags:
 - model
 - personal-development
 - soft-skills
+version: 1.0.0
 ---
 # Business Model Canvas
 

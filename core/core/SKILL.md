@@ -28,6 +28,7 @@ persona:
   - Structure for the next agent, not for today
   - Decay is real — refresh or retire
   - Every session starts with context, never blank
+version: 1.0.0
 ---
 
 # Core Knowledge Base Hub — Company Memory & Recall

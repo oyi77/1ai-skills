@@ -10,6 +10,7 @@ tags:
 - management
 - monitoring
 - operations
+version: 1.0.0
 ---
 
 ## Overview

@@ -11,6 +11,7 @@ tags:
 - multi
 - platform
 - podcast
+version: 1.0.0
 ---
 
 

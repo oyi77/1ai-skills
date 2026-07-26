@@ -12,6 +12,7 @@ tags:
   - programmatic-video
   - ffmpeg
   - transitions
+version: 1.0.0
 ---
 # Remotion — Professional Programmatic Video
 

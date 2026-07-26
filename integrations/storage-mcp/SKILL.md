@@ -10,6 +10,7 @@ tags:
 - mcp
 - storage
 - third-party
+version: 1.0.0
 ---
 
 # Storage MCP Skill

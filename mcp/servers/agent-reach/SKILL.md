@@ -13,6 +13,7 @@ tags:
 - model-context-protocol
 - monitoring
 - reach
+version: 1.0.0
 ---
 # Agent Reach
 

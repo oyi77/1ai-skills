@@ -10,6 +10,7 @@ tags:
 - public
 - seo
 - social-media
+version: 1.0.0
 ---
 
 

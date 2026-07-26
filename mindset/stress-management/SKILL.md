@@ -9,6 +9,7 @@ tags:
 - personal-development
 - soft-skills
 - stress
+version: 1.0.0
 ---
 # Stress Management
 

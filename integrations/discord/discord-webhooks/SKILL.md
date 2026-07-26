@@ -7,6 +7,7 @@ tags:
 - discord
 - integrations
 - webhook
+version: 1.0.0
 ---
 
 # Discord Webhooks

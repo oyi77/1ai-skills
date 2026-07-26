@@ -7,6 +7,7 @@ tags:
 - digital-content
 - media
 - shadcn
+version: 1.0.0
 ---
 
 

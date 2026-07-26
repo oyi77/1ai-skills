@@ -17,6 +17,7 @@ persona: "name: \"Linus Torvalds\"\n  title: \"The Kernel Guardian - Master of C
   \n    - \"Simplicity is better than complexity\"\n    - \"No broken window - fix small issues immediately\"\n    - \"Show\
   \ me the code, not the excuses\"\n    - \"Performance matters at scale\"\n    - \"Security is not optional\"\n    - \"Break\
   \ things to learn, then fix properly\"\n"
+version: 1.0.0
 ---
 
 

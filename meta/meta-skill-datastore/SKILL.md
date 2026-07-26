@@ -10,6 +10,7 @@ tags:
 - self-improvement
 - skill
 - skill-evolution
+version: 1.0.0
 ---
 # Meta Skill Datastore
 

@@ -12,6 +12,7 @@ tags:
 - color-palette
 - typography
 - accessibility
+version: 1.0.0
 ---
 
 

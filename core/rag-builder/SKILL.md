@@ -9,6 +9,7 @@ tags:
 - pipeline
 - rag
 - self-improvement
+version: 1.0.0
 ---
 
 ## Overview

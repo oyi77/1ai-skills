@@ -11,6 +11,7 @@ tags:
 - monitoring
 - seo
 - money
+version: 1.0.0
 ---
 
 # SEO Auditor Skill

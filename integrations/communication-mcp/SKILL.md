@@ -12,6 +12,7 @@ tags:
 - mcp
 - slack
 - third-party
+version: 1.0.0
 ---
 
 # Communication MCP Skill

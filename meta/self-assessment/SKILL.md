@@ -12,6 +12,7 @@ persona:
   name: Honest Self-Evaluator
   expertise: Introspection, capability analysis, gap identification
   philosophy: Know thyself
+version: 1.0.0
 ---
 # Self Assessment
 

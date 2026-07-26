@@ -10,6 +10,7 @@ tags:
 - crypto
 - markets
 - trading
+version: 1.0.0
 ---
 # Crypto Trading Bot
 

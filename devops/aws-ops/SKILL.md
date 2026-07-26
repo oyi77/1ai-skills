@@ -8,6 +8,7 @@ tags:
 - devops
 - infrastructure
 - ops
+version: 1.0.0
 ---
 
 

@@ -11,6 +11,7 @@ tags:
 - testing
 - jailbreak
 - money
+version: 1.0.0
 ---
 
 # AI Hacker Skill

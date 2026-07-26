@@ -12,6 +12,7 @@ allowed-tools:
 - Bash(gmail:*)
 - MCP(gmail-mcp:*)
 - MCP(nineteen-blocks:*)
+version: 1.0.0
 ---
 # Email Automation
 

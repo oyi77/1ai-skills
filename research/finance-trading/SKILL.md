@@ -9,6 +9,7 @@ tags:
 - investigation
 - research
 - trading
+version: 1.0.0
 ---
 # Finance Trading
 

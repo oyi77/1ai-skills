@@ -10,6 +10,7 @@ tags:
 - investment
 - kyc
 - screener
+version: 1.0.0
 ---
 
 # KYC Screener

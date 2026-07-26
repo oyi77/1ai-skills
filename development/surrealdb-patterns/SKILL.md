@@ -8,6 +8,7 @@ tags:
 - software-engineering
 - surrealdb
 - testing
+version: 1.0.0
 ---
 
 

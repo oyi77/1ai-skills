@@ -12,6 +12,7 @@ tags:
 - social-media
 - video
 - money
+version: 1.0.0
 ---
 # Content Creator
 

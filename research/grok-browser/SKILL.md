@@ -8,6 +8,7 @@ tags:
 - grok
 - investigation
 - research
+version: 1.0.0
 ---
 # Grok Browser
 

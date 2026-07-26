@@ -9,6 +9,7 @@ tags:
 - office
 - reports
 - templates
+version: 1.0.0
 ---
 
 # Docx Creator

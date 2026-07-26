@@ -9,6 +9,7 @@ tags:
 - killer
 - security
 - threat-defense
+version: 1.0.0
 ---
 # Kernel Killer
 

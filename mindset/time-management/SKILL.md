@@ -8,6 +8,7 @@ tags:
 - personal-development
 - soft-skills
 - time
+version: 1.0.0
 ---
 # Time Management
 

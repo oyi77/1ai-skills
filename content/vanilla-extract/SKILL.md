@@ -8,6 +8,7 @@ tags:
 - extract
 - media
 - vanilla
+version: 1.0.0
 ---
 
 

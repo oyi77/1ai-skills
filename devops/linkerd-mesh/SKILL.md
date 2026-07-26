@@ -9,6 +9,7 @@ tags:
 - kubernetes
 - linkerd
 - mesh
+version: 1.0.0
 ---
 
 

@@ -10,6 +10,7 @@ tags:
 - rest-api
 - skill
 - soft-skills
+version: 1.0.0
 ---
 # Negotiation Skill
 

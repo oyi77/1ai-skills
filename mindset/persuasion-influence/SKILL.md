@@ -9,6 +9,7 @@ tags:
 - personal-development
 - persuasion
 - soft-skills
+version: 1.0.0
 ---
 # Persuasion Influence
 

@@ -9,6 +9,7 @@ tags:
 - personal-development
 - soft-skills
 - team
+version: 1.0.0
 ---
 # Team Management
 

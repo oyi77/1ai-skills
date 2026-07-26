@@ -12,6 +12,7 @@ tags:
 - social-media
 - upload
 - video
+version: 1.0.0
 ---
 
 

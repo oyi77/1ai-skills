@@ -13,6 +13,7 @@ tags:
 - notion-db
 - notion-pages
 - knowledge-management
+version: 1.0.0
 ---
 
 # Notion Automation Hub

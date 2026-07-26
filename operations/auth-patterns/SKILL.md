@@ -9,6 +9,7 @@ tags:
 - management
 - operations
 - patterns
+version: 1.0.0
 ---
 
 ## Overview

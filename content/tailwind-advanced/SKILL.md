@@ -8,6 +8,7 @@ tags:
 - digital-content
 - media
 - tailwind
+version: 1.0.0
 ---
 
 

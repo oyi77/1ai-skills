@@ -8,6 +8,7 @@ tags:
   - b-roll
   - stock-footage
   - ai
+version: 1.0.0
 ---
 # B-Roll Finder
 

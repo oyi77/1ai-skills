@@ -11,6 +11,7 @@ tags:
 - media
 - real
 - seo
+version: 1.0.0
 ---
 
 

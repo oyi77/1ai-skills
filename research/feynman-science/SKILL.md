@@ -8,6 +8,7 @@ tags:
 - investigation
 - research
 - science
+version: 1.0.0
 ---
 # Feynman Science
 

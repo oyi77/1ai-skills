@@ -25,6 +25,7 @@ persona:
   - Approximate is good enough
   - Scale to billions
   - Latency matters
+version: 1.0.0
 ---
 # RuVector Skill
 

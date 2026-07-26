@@ -8,6 +8,7 @@ tags:
 - finance
 - investment
 - readiness
+version: 1.0.0
 ---
 
 # AI Readiness!

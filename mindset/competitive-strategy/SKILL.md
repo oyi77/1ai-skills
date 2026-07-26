@@ -9,6 +9,7 @@ tags:
 - personal-development
 - soft-skills
 - strategy
+version: 1.0.0
 ---
 # Competitive Strategy
 

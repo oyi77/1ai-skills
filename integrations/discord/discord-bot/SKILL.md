@@ -7,6 +7,7 @@ tags:
 - bot
 - discord
 - integrations
+version: 1.0.0
 ---
 
 # Discord Bot

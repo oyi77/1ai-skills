@@ -18,6 +18,7 @@ persona: "|\n  name: \"Joe Rogan\"\n    title: \"Master of Long-Form Conversatio
   \ talk to everyone, challenge assumptions\"\n      - \"Preparation enables spontaneity - research deeply, then let it flow\"\
   \n      - \"Humor disarms - laughter opens minds to difficult topics\"\n      - \"Follow interesting tangents - the best\
   \ moments are unplanned\"\n"
+version: 1.0.0
 ---
 
 

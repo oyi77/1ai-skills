@@ -9,6 +9,7 @@ tags:
 - rest-api
 - soft-skills
 - stakeholder
+version: 1.0.0
 ---
 # Stakeholder Management
 

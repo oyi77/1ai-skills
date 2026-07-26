@@ -9,6 +9,7 @@ tags:
 - infrastructure
 - machine-learning
 - pipeline
+version: 1.0.0
 ---
 
 

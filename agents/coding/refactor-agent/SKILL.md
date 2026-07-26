@@ -8,6 +8,7 @@ tags:
   - automation
   - refactor
   - coding
+version: 1.0.0
 ---
 
 # Refactor Agent

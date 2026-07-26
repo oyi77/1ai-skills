@@ -9,6 +9,7 @@ tags:
 - revenue
 - sales
 - strategy
+version: 1.0.0
 ---
 # Sales Strategy
 

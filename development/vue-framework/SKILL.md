@@ -9,6 +9,7 @@ tags:
 - software-engineering
 - framework
 - vue
+version: 1.0.0
 ---
 
 

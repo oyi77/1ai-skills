@@ -11,6 +11,7 @@ tags:
 - investigation
 - pipeline
 - research
+version: 1.0.0
 ---
 
 ## Overview

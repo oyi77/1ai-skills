@@ -9,6 +9,7 @@ tags:
 - probabilistic
 - soft-skills
 - thinking
+version: 1.0.0
 ---
 # Probabilistic Thinking
 

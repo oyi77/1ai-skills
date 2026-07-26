@@ -12,6 +12,7 @@ tags:
 - zapier
 - productivity
 - pipelines
+version: 1.0.0
 ---
 # Workflows — Automation Workflow Hub
 

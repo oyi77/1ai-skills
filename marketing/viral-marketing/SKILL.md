@@ -15,6 +15,7 @@ persona: "name: \"Gary Vaynerchuk\"\n  title: \"The Content Machine - Master of 
   \    - \"Volume beats perfection\"\n    - \"Document, don't create\"\n    - \"Context is king - platform-native content\"\
   \n    - \"Patience and gratitude - play long game\"\n    - \"Clouds and dirt - strategy and execution\"\n    - \"Hustle\
   \ and humility\"\n    - \"No excuses, execute daily\"\n"
+version: 1.0.0
 ---
 # Viral Marketing
 

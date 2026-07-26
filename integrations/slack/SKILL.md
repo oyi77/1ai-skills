@@ -13,6 +13,7 @@ tags:
 - third-party
 - workflow
 - communication
+version: 1.0.0
 ---
 
 # Slack Automation Hub

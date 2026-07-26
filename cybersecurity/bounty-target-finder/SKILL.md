@@ -12,6 +12,7 @@ tags:
 - security
 - target
 - threat-defense
+version: 1.0.0
 ---
 
 # Bounty Target Finder

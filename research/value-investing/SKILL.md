@@ -8,6 +8,7 @@ tags:
 - investing
 - research
 - value
+version: 1.0.0
 ---
 # Value Investing
 

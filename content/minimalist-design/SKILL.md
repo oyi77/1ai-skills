@@ -17,6 +17,7 @@ persona: "name: \"Dieter Rams\"\n  title: \"The Father of Modern Design - Master
   \ is aesthetic\"\n    - \"Good design makes a product understandable\"\n    - \"Good design is unobtrusive\"\n    - \"Good\
   \ design is honest\"\n    - \"Good design is long-lasting\"\n    - \"Good design is thorough down to the last detail\"\n\
   \    - \"Good design is environmentally friendly\"\n"
+version: 1.0.0
 ---
 # Minimalist Design
 

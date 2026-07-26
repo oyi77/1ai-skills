@@ -15,6 +15,7 @@ tags:
 - supply
 - testing
 - threat-defense
+version: 1.0.0
 ---
 # Supply Chain Attacker
 

@@ -9,6 +9,7 @@ tags:
 - report
 - security
 - threat-defense
+version: 1.0.0
 ---
 
 # Report Generator Skill

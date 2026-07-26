@@ -10,6 +10,7 @@ tags:
 - testing
 - using
 - worktrees
+version: 1.0.0
 ---
 
 persona:

@@ -10,6 +10,7 @@ tags:
 - manager
 - media
 - reply
+version: 1.0.0
 ---
 # Comment Reply Manager
 

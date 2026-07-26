@@ -8,6 +8,7 @@ tags:
 - dbt
 - transform
 - visualization
+version: 1.0.0
 ---
 
 

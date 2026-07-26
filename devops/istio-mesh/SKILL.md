@@ -9,6 +9,7 @@ tags:
 - istio
 - kubernetes
 - mesh
+version: 1.0.0
 ---
 
 

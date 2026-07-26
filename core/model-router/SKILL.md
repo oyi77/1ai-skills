@@ -9,6 +9,7 @@ tags:
 - multi-provider
 - cost-optimization
 - model-selection
+version: 1.0.0
 ---
 
 # Model Router

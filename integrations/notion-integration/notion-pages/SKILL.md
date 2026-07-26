@@ -7,6 +7,7 @@ tags:
 - integrations
 - notion
 - pages
+version: 1.0.0
 ---
 
 # Notion Pages

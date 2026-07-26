@@ -7,6 +7,7 @@ tags:
 - clickup
 - management
 - operations
+version: 1.0.0
 ---
 
 ## When to Use

@@ -10,6 +10,7 @@ tags:
 - revenue
 - sales
 - talent
+version: 1.0.0
 ---
 
 

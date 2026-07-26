@@ -12,6 +12,7 @@ tags:
 - reverse-engineering
 - zero-day
 - money
+version: 1.0.0
 ---
 # Binary Breaker
 

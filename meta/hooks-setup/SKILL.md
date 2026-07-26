@@ -9,6 +9,7 @@ tags:
 - self-improvement
 - setup
 - skill-evolution
+version: 1.0.0
 ---
 
 # Hooks Setup — AI Agent Installation Guide

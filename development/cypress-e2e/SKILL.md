@@ -9,6 +9,7 @@ tags:
 - e2e
 - software-engineering
 - testing
+version: 1.0.0
 ---
 
 

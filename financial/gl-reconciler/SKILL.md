@@ -8,6 +8,7 @@ tags:
 - finance
 - investment
 - reconciler
+version: 1.0.0
 ---
 
 # GL Reconciler

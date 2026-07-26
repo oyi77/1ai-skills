@@ -3,6 +3,7 @@ name: email-writer
 description: Use when email content creation — merged into content-writing parent. See ../SKILL.md for money protocol.
 domain: content
 tags: [content-creation, email]
+version: 1.0.0
 ---
 
 # Email Writer

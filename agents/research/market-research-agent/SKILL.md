@@ -10,6 +10,7 @@ tags:
 - market
 - orchestration
 - research
+version: 1.0.0
 ---
 # Market Research Agent
 

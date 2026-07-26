@@ -12,6 +12,7 @@ persona:
   name: Database Architect
   expertise: SQLite, data modeling, query optimization
   philosophy: Data is the foundation of intelligence
+version: 1.0.0
 ---
 # Data
 

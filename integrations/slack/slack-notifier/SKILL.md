@@ -7,6 +7,7 @@ tags:
 - integrations
 - notifications
 - slack
+version: 1.0.0
 ---
 
 # Slack Notifier

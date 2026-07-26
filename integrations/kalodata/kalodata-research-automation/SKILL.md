@@ -14,6 +14,7 @@ tags:
 - workflow
 metadata:
   model: sonnet
+version: 1.0.0
 ---
 
 # Kalodata Research Automation Skill

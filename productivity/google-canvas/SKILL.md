@@ -9,6 +9,7 @@ tags:
 - productivity
 - time-management
 - tools
+version: 1.0.0
 ---
 persona:
   name: "Domain Expert"

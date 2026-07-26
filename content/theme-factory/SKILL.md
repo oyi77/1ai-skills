@@ -9,6 +9,7 @@ tags:
 - typography
 - design-tokens
 - branding
+version: 1.0.0
 ---
 
 # Theme Factory

@@ -3,6 +3,7 @@ name: dockerfile-opt
 description: Optimize Dockerfiles with multi-stage builds, layer caching, image size reduction, and security hardening. Use when writing production Dockerfiles.
 domain: devops
 tags: [devops, docker, dockerfile]
+version: 1.0.0
 ---
 # Dockerfile OptProduction Dockerfile optimization — multi-stage builds, layer caching, image size reduction, and security hardening for containerized applications.
 ## When to Use

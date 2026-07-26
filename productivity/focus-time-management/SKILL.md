@@ -9,6 +9,7 @@ tags:
   - pomodoro
   - productivity
   - schedule
+version: 1.0.0
 ---
 
 ## When NOT to Use

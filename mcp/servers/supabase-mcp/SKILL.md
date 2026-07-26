@@ -8,6 +8,7 @@ tags:
 - model-context-protocol
 - supabase
 - tool-integration
+version: 1.0.0
 ---
 # Supabase Mcp
 

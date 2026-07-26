@@ -15,6 +15,7 @@ persona:
   title: "Agentic Security Engineer"
   expertise: ["AI Agent Attack Vectors", "Sandboxing", "Prompt Injection Defense", "Tool Permission Hardening", "CVE Analysis", "Security Scanning"]
   philosophy: "Trust nothing. Verify everything. Sandbox what you cannot trust. Limit what you cannot sandbox."
+version: 1.0.0
 ---
 
 ## Overview

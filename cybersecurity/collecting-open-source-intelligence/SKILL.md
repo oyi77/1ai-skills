@@ -3,6 +3,7 @@ name: collecting-open-source-intelligence
 description: "Use when stub — merged into performing-open-source-intelligence-gathering. See the parent skill for both offensive and defensive OSINT workflows."
 domain: cybersecurity
 tags: [stub, merged]
+version: 1.0.0
 ---
 # Merged into performing-open-source-intelligence-gathering
 

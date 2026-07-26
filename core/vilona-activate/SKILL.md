@@ -7,6 +7,7 @@ tags:
 - memory
 - self-improvement
 name: vilona-activate
+version: 1.0.0
 ---
 
 # GM Activate Command

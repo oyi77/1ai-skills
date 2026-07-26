@@ -7,6 +7,7 @@ tags:
 - social
 - listener
 - monitoring
+version: 1.0.0
 ---
 # Social Listener
 

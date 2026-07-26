@@ -10,6 +10,7 @@ tags:
 - geminigen
 - media
 - video
+version: 1.0.0
 ---
 # Geminigen Ai
 

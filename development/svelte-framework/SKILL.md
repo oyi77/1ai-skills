@@ -9,6 +9,7 @@ tags:
 - svelte
 - patterns
 - testing
+version: 1.0.0
 ---
 
 

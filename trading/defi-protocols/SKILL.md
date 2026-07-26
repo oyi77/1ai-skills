@@ -8,6 +8,7 @@ tags:
 - markets
 - protocols
 - trading
+version: 1.0.0
 ---
 ## Overview
 

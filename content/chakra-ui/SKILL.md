@@ -7,6 +7,7 @@ tags:
 - content-creation
 - digital-content
 - media
+version: 1.0.0
 ---
 
 

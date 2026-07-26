@@ -14,6 +14,7 @@ tags:
 - firmware
 - hardware
 - embedded
+version: 1.0.0
 ---
 
 # IoT Hunter

@@ -10,6 +10,7 @@ tags:
   - visualization
   - pandas
   - money-making
+version: 1.0.0
 ---
 
 # Data Analysis Pipeline — Clean, Analyze, Report, Visualize

@@ -8,6 +8,7 @@ tags:
 - personal-development
 - resilience
 - soft-skills
+version: 1.0.0
 ---
 # Resilience
 

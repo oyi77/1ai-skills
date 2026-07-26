@@ -9,6 +9,7 @@ tags:
 - markets
 - smart
 - trading
+version: 1.0.0
 ---
 
 ## Overview

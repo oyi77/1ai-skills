@@ -11,6 +11,7 @@ tags:
 - product
 - research
 - third-party
+version: 1.0.0
 ---
 
 # Kalodata Product Research

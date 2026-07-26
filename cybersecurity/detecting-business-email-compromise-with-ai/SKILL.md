@@ -3,6 +3,7 @@ name: detecting-business-email-compromise-with-ai
 description: "Use when stub — merged into detecting-business-email-compromise. See the parent skill for AI-powered BEC detection content."
 domain: cybersecurity
 tags: [stub, merged]
+version: 1.0.0
 ---
 # Merged into detecting-business-email-compromise
 

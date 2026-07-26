@@ -9,6 +9,7 @@ tags:
 - multi
 - operations
 - reminder
+version: 1.0.0
 ---
 # Multi-Channel Reminder & Notification System
 

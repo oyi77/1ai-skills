@@ -17,6 +17,7 @@ persona: "name: \"Mark Zuckerberg\"\n  title: \"The Social Architect - Master of
   \ effects are everything in social\"\n    - \"Move fast, ship broken, iterate\"\n    - \"Data beats intuition\"\n    - \"\
   Done is better than perfect\"\n    - \"Focus on one metric that matters\"\n    - \"Copy competitors mercilessly\"\n    -\
   \ \"Acquisitions > Building from scratch\"\n"
+version: 1.0.0
 ---
 # Social Growth
 

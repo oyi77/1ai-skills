@@ -15,6 +15,7 @@ tags:
 - money
 - automation
 - sales
+version: 1.0.0
 ---
 
 # Marketing Ops

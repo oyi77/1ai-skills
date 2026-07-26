@@ -8,6 +8,7 @@ tags:
 - infrastructure
 - nomad
 - scheduler
+version: 1.0.0
 ---
 
 

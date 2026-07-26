@@ -7,6 +7,7 @@ tags:
 - price
 - tracker
 - ecommerce
+version: 1.0.0
 ---
 # Price Tracker
 

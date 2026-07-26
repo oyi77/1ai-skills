@@ -9,6 +9,7 @@ tags:
 - memory
 - prompt
 - self-improvement
+version: 1.0.0
 ---
 # Prompt Engineering
 

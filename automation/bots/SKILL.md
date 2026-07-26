@@ -12,6 +12,7 @@ tags:
 - messaging
 - social-media
 - workflow
+version: 1.0.0
 ---
 # Bots — Multi-Platform Bot Automation Hub
 

@@ -10,6 +10,7 @@ tags:
 - geminigen
 - money
 domain: content
+version: 1.0.0
 ---
 
 

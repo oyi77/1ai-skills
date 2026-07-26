@@ -9,6 +9,7 @@ tags:
 - business-development
 - revenue
 - sales
+version: 1.0.0
 ---
 
 

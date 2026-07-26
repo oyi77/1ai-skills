@@ -7,6 +7,7 @@ tags:
 - bot
 - integrations
 - slack
+version: 1.0.0
 ---
 
 # Slack Bot

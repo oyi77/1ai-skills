@@ -8,6 +8,7 @@ tags:
 - mcp-server
 - model-context-protocol
 - tool-integration
+version: 1.0.0
 ---
 
 # MCP Discover

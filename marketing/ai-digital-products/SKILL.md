@@ -11,6 +11,7 @@ tags:
 - products
 - seo
 - workflow
+version: 1.0.0
 ---
 
 persona:

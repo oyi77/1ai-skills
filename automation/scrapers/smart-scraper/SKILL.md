@@ -7,6 +7,7 @@ tags:
 - scraper
 - data-extraction
 - web
+version: 1.0.0
 ---
 # Smart ScraperProduction-grade web scraping toolkit: static HTML parsing, JavaScript-rendered content extraction, anti-blocking techniques, and scheduled collection pipelines.
 ## When to Use

@@ -9,6 +9,7 @@ tags:
 - finance
 - investment
 - month
+version: 1.0.0
 ---
 
 # Month-End Closer

@@ -7,6 +7,7 @@ tags:
 - bot
 - twitter
 - social-media
+version: 1.0.0
 ---
 # Twitter Bot
 

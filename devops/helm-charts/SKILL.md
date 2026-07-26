@@ -9,6 +9,7 @@ tags:
 - helm
 - infrastructure
 - testing
+version: 1.0.0
 ---
 
 

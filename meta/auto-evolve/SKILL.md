@@ -9,6 +9,7 @@ tags:
 - meta-learning
 - self-improvement
 - skill-evolution
+version: 1.0.0
 ---
 persona:
   name: "Charles Darwin"

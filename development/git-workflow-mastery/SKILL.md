@@ -9,6 +9,7 @@ tags:
 - rebase
 - worktrees
 - merge
+version: 1.0.0
 ---
 
 # Git Workflow Mastery

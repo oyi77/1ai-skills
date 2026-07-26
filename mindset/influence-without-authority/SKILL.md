@@ -11,6 +11,7 @@ tags:
 - social-media
 - soft-skills
 - without
+version: 1.0.0
 ---
 # Influence Without Authority
 

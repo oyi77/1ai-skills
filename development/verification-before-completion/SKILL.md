@@ -10,6 +10,7 @@ tags:
 - software-engineering
 - testing
 - verification
+version: 1.0.0
 ---
 persona:
   name: "Domain Expert"

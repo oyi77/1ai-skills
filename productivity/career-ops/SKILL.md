@@ -11,6 +11,7 @@ tags:
   - ats
   - hiring
   - job-tracker
+version: 1.0.0
 ---
 
 ## When NOT to Use

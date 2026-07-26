@@ -6,6 +6,7 @@ tags:
 - infrastructure
 - memory
 - self-improvement
+version: 1.0.0
 ---
 # Knowledge Base — Practical Developer's GuideThis is the hands-on companion to the core KB architecture. It covers session-to-session context persistence, daily notes, PARA navigation, fact storage, and retrieval patterns you use every day.## Quick-StartLoad today's context and make your first fact entry in under 60 seconds:```bash# 1. Ensure your KB root existsexport KB_ROOT=~/kbmkdir -p $KB_ROOT/{projects,areas,resources,archives}# 2. Load yesterday's note (if any)cat $KB_ROOT/areas/daily/$(date -d yesterday +%Y-%m-%d).md 2>/dev/null \ || echo "No yesterday note — first session in this KB"# 3. Start today's notetoday=$(date +%Y-%m-%d)note=$KB_ROOT/areas/daily/$today.mdif [ ! -f "$note" ]; then cat > "$note" <<NOTE# Daily Note: $today## Session Focus-## Decisions-## Tasks- [ ]---
 NOTE echo "Created $note"fi```After writing, echo today's open decisions into your prompt context so the agent starts warm.## Session Context PersistenceThe single most important pattern in autonomous-agent work: every session must begin where the last one left off.### Persistence Contract| Artifact | When Written | How Read Next Session ||---

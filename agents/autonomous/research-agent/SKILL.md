@@ -8,6 +8,7 @@ tags:
   - automation
   - research
   - autonomous
+version: 1.0.0
 ---
 
 # Research Agent

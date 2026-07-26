@@ -8,6 +8,7 @@ tags:
 - xlsx
 - spreadsheets
 - financial-models
+version: 1.0.0
 ---
 
 # Xlsx Creator

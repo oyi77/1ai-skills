@@ -12,6 +12,7 @@ persona:
   name: User Research Lead
   expertise: Feedback systems, NLP, sentiment analysis
   philosophy: Every interaction is an opportunity to learn
+version: 1.0.0
 ---
 # Feedback Collector
 

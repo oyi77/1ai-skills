@@ -10,6 +10,7 @@ tags:
 - integrations
 - opencode
 - third-party
+version: 1.0.0
 ---
 
 # Oh My OpenCode Agents

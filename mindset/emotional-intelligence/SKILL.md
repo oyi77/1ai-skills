@@ -10,6 +10,7 @@ tags:
 - personal-development
 - social-media
 - soft-skills
+version: 1.0.0
 ---
 # Emotional Intelligence
 

@@ -9,6 +9,7 @@ tags:
   - test-automation
   - quality-assurance
   - test-scaffolding
+version: 1.0.0
 ---
 
 # Automated Test Generator

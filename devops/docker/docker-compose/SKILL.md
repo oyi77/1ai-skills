@@ -3,6 +3,7 @@ name: docker-compose
 description: Use when docker Compose — merged into docker-devops parent. See ../SKILL.md for money protocol.
 domain: devops
 tags: [devops, docker, compose]
+version: 1.0.0
 ---
 # Docker Compose — Deep Reference
 ## When to Use

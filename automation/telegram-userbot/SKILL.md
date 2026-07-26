@@ -13,6 +13,7 @@ tags:
 - video
 - voice
 - webhook
+version: 1.0.0
 ---
 # Telegram Userbot
 

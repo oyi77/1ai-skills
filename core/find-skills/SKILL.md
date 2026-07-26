@@ -9,6 +9,7 @@ tags:
 - memory
 - self-improvement
 - skills
+version: 1.0.0
 ---
 persona:
   name: "Sergey Brin"

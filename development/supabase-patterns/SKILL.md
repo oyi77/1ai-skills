@@ -13,6 +13,7 @@ tags:
 - auth
 - realtime
 - storage
+version: 1.0.0
 ---
 
 

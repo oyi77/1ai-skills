@@ -9,6 +9,7 @@ tags:
 - musk
 - principles
 - research
+version: 1.0.0
 ---
 # Musk First Principles
 

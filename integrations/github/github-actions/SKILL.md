@@ -8,6 +8,7 @@ tags:
 - ci-cd
 - github
 - integrations
+version: 1.0.0
 ---
 
 # GitHub Actions

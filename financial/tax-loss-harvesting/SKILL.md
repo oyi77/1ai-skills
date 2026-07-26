@@ -9,6 +9,7 @@ tags:
 - investment
 - loss
 - tax
+version: 1.0.0
 ---
 
 # Tax Loss Harvesting!

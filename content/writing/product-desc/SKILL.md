@@ -3,6 +3,7 @@ name: product-desc
 description: Use when product descriptions — merged into content-writing parent. See ../SKILL.md for money protocol.
 domain: content
 tags: [content-creation, product]
+version: 1.0.0
 ---
 
 # Product Desc

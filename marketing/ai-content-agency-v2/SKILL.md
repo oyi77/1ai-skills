@@ -12,6 +12,7 @@ tags:
 - video
 - workflow
 - money
+version: 1.0.0
 ---
 # AI Content Agency V2
 

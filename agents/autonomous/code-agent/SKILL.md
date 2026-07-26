@@ -8,6 +8,7 @@ tags:
   - automation
   - code
   - autonomous
+version: 1.0.0
 ---
 
 # Code Agent

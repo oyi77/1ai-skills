@@ -11,6 +11,7 @@ tags:
 - time-management
 - tools
 - voice
+version: 1.0.0
 ---
 
 ## Overview

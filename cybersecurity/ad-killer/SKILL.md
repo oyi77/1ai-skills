@@ -17,6 +17,7 @@ tags:
 - testing
 - threat-defense
 - windows
+version: 1.0.0
 ---
 
 # Ad Killer

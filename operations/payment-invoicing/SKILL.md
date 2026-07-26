@@ -10,6 +10,7 @@ tags:
 - operations
 - payment
 - voice
+version: 1.0.0
 ---
 persona:
   name: "Domain Expert"
