@@ -27,6 +27,26 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 - Lint: 0 errors, 0 warnings, 3152 info messages
 - Tests: 1344/1344 pass
 
+## [3.16.0] — 2026-07-26
+
+### Added
+- `scripts/audit-skills.py` — multi-dimensional audit script (frontmatter quality, body
+  structure, content depth, cross-references, code quality, stub detection, security red flags)
+- `reports/audit-report.json` — full audit output: avg score 43.0%, 1342 F-grade, 16 CRITICAL
+- `reports/fix-report.txt` — actionable fix list grouped by severity
+
+### Changed
+- Lint: 0 errors, 0 warnings, 3152 info messages
+- Schema: 1347/1347 pass (0 errors, 212 warnings)
+- Tests: 1344/1344 pass
+
+### Verified
+- All 16 CRITICAL security_redflag findings are false positives (teaching examples in
+  cybersecurity/security-context skills — eval/exec in prose or code examples, SQL injection
+  payload lists, AWS example keys)
+- 1 domain_mismatch (agent-reach-channels: domain=social-commerce under automation/scrapers/)
+  is a legitimate specialization, not an error
+
 ## [3.14.0] — 2026-07-26
 
 ### Fixed
