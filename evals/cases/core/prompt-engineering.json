@@ -1,0 +1,17 @@
+{
+  "skill": "prompt-engineering",
+  "category": "core",
+  "name": "Prompt Engineering — chain-of-thought, few-shot, system design",
+  "description": "Verify prompt-engineering skill covers advanced prompting techniques, system prompt design, and optimization patterns",
+  "checks": [
+    {"type": "contains", "pattern": "chain-of-thought", "name": "contains-cot"},
+    {"type": "contains", "pattern": "few-shot", "name": "contains-few-shot"},
+    {"type": "contains", "pattern": "system prompt", "name": "contains-system-prompt"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "frontmatter_field_exists", "field": "tags", "name": "has-tags"},
+    {"type": "code_block_count", "min": 1, "name": "has-code-examples"},
+    {"type": "has_workflow_section", "name": "has-workflow"},
+    {"type": "domain_match", "domain": "core", "name": "domain-core"}
+  ]
+}

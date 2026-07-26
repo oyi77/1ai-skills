@@ -1,0 +1,15 @@
+{
+  "skill": "code-reviewer",
+  "category": "development",
+  "name": "Code Reviewer — review checklist and quality gates",
+  "description": "Verify code-reviewer skill has review workflow, quality checklist, and code examples",
+  "checks": [
+    {"type": "contains", "pattern": "code review", "name": "contains-code-review"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "frontmatter_field", "field": "version", "name": "has-version"},
+    {"type": "code_block_count", "min": 1, "name": "has-code-examples"},
+    {"type": "has_workflow_section", "name": "has-workflow"},
+    {"type": "skill_depth", "min_lines": 200, "name": "depth-sufficient"}
+  ]
+}

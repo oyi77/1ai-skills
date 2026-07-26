@@ -1,0 +1,17 @@
+{
+  "skill": "dockerfile-optimize",
+  "category": "devops",
+  "name": "Dockerfile Optimize — multi-stage builds, layer caching, security",
+  "description": "Verify dockerfile-optimize skill covers multi-stage builds, .dockerignore, layer ordering, and security hardening",
+  "checks": [
+    {"type": "contains", "pattern": "multi-stage", "name": "contains-multi-stage"},
+    {"type": "contains", "pattern": "\\.dockerignore", "name": "contains-dockerignore"},
+    {"type": "contains", "pattern": "layer", "name": "contains-layer-caching"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "frontmatter_field", "field": "version", "name": "has-version"},
+    {"type": "code_block_count", "min": 1, "name": "has-code-examples"},
+    {"type": "has_workflow_section", "name": "has-workflow"},
+    {"type": "domain_match", "domain": "devops", "name": "domain-devops"}
+  ]
+}

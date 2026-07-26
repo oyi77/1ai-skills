@@ -1,0 +1,17 @@
+{
+  "skill": "polymarket-analyst",
+  "category": "research",
+  "name": "Polymarket Analyst — prediction market analysis and EV",
+  "description": "Verify polymarket-analyst skill covers prediction market analysis, expected value calculation, market inefficiencies, and trading strategies",
+  "checks": [
+    {"type": "contains", "pattern": "Polymarket", "name": "contains-polymarket"},
+    {"type": "contains", "pattern": "expected value", "name": "contains-ev"},
+    {"type": "contains", "pattern": "market", "name": "contains-market"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "frontmatter_field_exists", "field": "version", "name": "has-version"},
+    {"type": "code_block_count", "min": 1, "name": "has-code-examples"},
+    {"type": "has_workflow_section", "name": "has-workflow"},
+    {"type": "domain_match", "domain": "research", "name": "domain-research"}
+  ]
+}

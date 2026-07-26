@@ -1,0 +1,18 @@
+{
+  "skill": "test-driven-development",
+  "category": "development",
+  "name": "TDD — RED→GREEN→REFACTOR workflow validation",
+  "description": "Verify TDD skill prescribes proper test-first methodology with RED-GREEN-REFACTOR cycle, code examples, and anti-rationalization",
+  "checks": [
+    {"type": "contains", "pattern": "RED", "name": "contains-red"},
+    {"type": "contains", "pattern": "GREEN", "name": "contains-green"},
+    {"type": "contains", "pattern": "REFACTOR", "name": "contains-refactor"},
+    {"type": "contains", "pattern": "Test-Driven Development", "name": "contains-tdd-title"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "frontmatter_field", "field": "version", "name": "has-version"},
+    {"type": "code_block_count", "min": 1, "name": "has-code-examples"},
+    {"type": "has_workflow_section", "name": "has-workflow"},
+    {"type": "trigger_phrase", "name": "describes-use-when"}
+  ]
+}
