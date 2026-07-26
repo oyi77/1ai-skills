@@ -47,6 +47,20 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 - 1 domain_mismatch (agent-reach-channels: domain=social-commerce under automation/scrapers/)
   is a legitimate specialization, not an error
 
+
+## [3.17.0] — 2026-07-26
+
+### Added
+- SKILLS.json auto-regenerated via `lint-skills.py --write`: 1347 registered skills (up from 1261),
+  matching on-disk count. All 86 previously unregistered SKILL.md files now included in the catalog.
+- 331 trigger-phrase description fixes applied to SKILLS.json entries
+- All category counts updated to reflect actual on-disk distribution
+
+### Changed
+- Lint: 0 errors, 0 warnings, 3152 info messages
+- Schema: 1347/1347 pass (0 errors, 212 warnings)
+- Tests: 1344/1344 pass
+
 ## [3.14.0] — 2026-07-26
 
 ### Fixed
