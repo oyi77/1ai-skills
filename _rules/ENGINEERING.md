@@ -134,14 +134,33 @@ SOLID, KISS, DRY, YAGNI · explicit > implicit · no silent failure · 100% exte
              Default OFF. Test OFF → no behavior change. Test ON → feature works.
              Gradual: 1%→10%→50%→100%. Rollback: toggle flag, not revert code.
 6.5 MONITORING VERIFICATION (wajib): Before claiming SHIP done:
-             Error logging: active? captures relevant errors? Alerting: to right channel?
-             Metrics: tracks latency, error rate, throughput? Dashboard: viewable by humans?
-             Receipt: "Logging: YES/NO. Alerting: YES/NO (where). Metrics: YES/NO (what)."
+            Error logging: active? captures relevant errors? Alerting: to right channel?
+            Metrics: tracks latency, error rate, throughput? Dashboard: viewable by humans?
+            Receipt: "Logging: YES/NO. Alerting: YES/NO (where). Metrics: YES/NO (what)."
+6.6 PRE-SALE HARDENING (wajib, sebelum SHIP): Code yang tidak bisa dijual = tidak selesai.
+            Before SHIP, audit against sellability checklist:
+            a) CRASH AUDIT — setiap route/handler/function: apa yang terjadi pada invalid input?
+               Empty state? Network failure? Auth failure? Rate limit? NO 500s, no unhandled rejections,
+               no silent crashes. Setiap error path harus return proper error message, not crash.
+            b) NOISE SUPPRESSION — no debug logs, console.log, raw stack traces visible to consumer.
+               ERR_ERL suppressed, validate:false on clean paths, clean output end-to-end.
+            c) EDGE CASE COVERAGE — empty lists, null values, missing fields, boundary conditions,
+               concurrent access, timeout. Masing-masing handled without crash, with proper response.
+            d) EVIDENCE PACK — screenshots of working flow, curl output for setiap endpoint,
+               case study dengan real data flowing through. Bukan "I tested it" — tunjukkin.
+            e) HANDOVER-READY — README updated, API docs accurate, deployment guide exists,
+               code comments explain WHY not WHAT. Someone else bisa pick up and run without asking.
+            f) VALUE STATEMENT — satu kalimat: "Ini [thing] melakukan [what] sehingga [who] bisa [benefit]."
+               Kalau tidak bisa ngomong itu, berarti tidak sellable. Refactor atau scrap.
+            Receipt: "Crash audit: PASS/FAIL. Noise: CLEAN/NOISY. Edges: ALL/MISSING[X].
+            Evidence: [screenshot/curl/case-study path]. Handover: PASS/FAIL.
+            Value: '[one-liner]'. Sellable: YES/NO."
 7. DOCS    → Sync arch, ADRs, API docs, ops docs, CHANGELOG before shipping.
-             Code ≠ Docs → STOP → SYNC → CONTINUE.
+            Code ≠ Docs → STOP → SYNC → CONTINUE.
 8. SHIP/REVIEW → All tests green · 0 dead code/TODOs/hardcoded vals ·
-             docs match code · monitoring verified (§6.5) · rollback tested · runbook written ·
-             restate goal + progress + literal command/tool-output receipts.
+            docs match code · monitoring verified (§6.5) · hardening verified (§6.6) ·
+            rollback tested · runbook written ·
+            restate goal + progress + literal command/tool-output receipts.
 9. POST-DEPLOY VERIFY (wajib): Smoke test in production. Check monitoring/alerting.
              Check logs. Check user reports. Issue → rollback per plan.
              Receipt: "Smoke: PASS/FAIL. Monitoring: CLEAN/ISSUES. Logs: CLEAN/ERRORS."
