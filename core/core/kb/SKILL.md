@@ -1,22 +1,509 @@
 ---
 name: kb
-description: Query and maintain the knowledge base for project context, decisions, and architecture documentation. Use on session start. Use when working with kb.
+category: core
 domain: core
+version: 2.0.0
+depth: 2
+quality: 3
+description: Use when querying and maintaining the knowledge base for project context, decisions, and architecture documentation on session start.
 tags:
 - infrastructure
 - memory
 - self-improvement
-version: 1.0.0
+- para
+- persistence
 ---
-# Knowledge Base — Practical Developer's GuideThis is the hands-on companion to the core KB architecture. It covers session-to-session context persistence, daily notes, PARA navigation, fact storage, and retrieval patterns you use every day.## Quick-StartLoad today's context and make your first fact entry in under 60 seconds:```bash# 1. Ensure your KB root existsexport KB_ROOT=~/kbmkdir -p $KB_ROOT/{projects,areas,resources,archives}# 2. Load yesterday's note (if any)cat $KB_ROOT/areas/daily/$(date -d yesterday +%Y-%m-%d).md 2>/dev/null \ || echo "No yesterday note — first session in this KB"# 3. Start today's notetoday=$(date +%Y-%m-%d)note=$KB_ROOT/areas/daily/$today.mdif [ ! -f "$note" ]; then cat > "$note" <<NOTE# Daily Note: $today## Session Focus-## Decisions-## Tasks- [ ]---
-NOTE echo "Created $note"fi```After writing, echo today's open decisions into your prompt context so the agent starts warm.## Session Context PersistenceThe single most important pattern in autonomous-agent work: every session must begin where the last one left off.### Persistence Contract| Artifact | When Written | How Read Next Session ||---
-|---
-|---
-|| Daily note with session log | End of session | `cat ~/kb/areas/daily/YYYY-MM-DD.md` || Open decisions list | On decision | `grep -r "status: open" ~/kb/areas/` || Entity facts | On discovery | `rg -l "$entity" ~/kb/` || Entity index | After any fact change | `cat ~/kb/resources/entity-index.yaml` |### Python File-Based Memory (YAML Storage)This is the canonical writer you'd embed in any agent workflow script:```pythonimport yamlfrom datetime import datetimefrom pathlib import PathKB = Path.home() / "kb"def ensure_kb():   """Bootstrap the KB file structure."""   for d in ["projects", "areas", "resources", "archives"]:       (KB / d).mkdir(parents=True, exist_ok=True)   (KB / "areas" / "daily").mkdir(parents=True, exist_ok=True)def save_fact(entity: str, category: str, value: str, **kw):   """Append one fact to a per-entity YAML file.   Args:       entity: the thing being described (project name, tool, client)       category: 'projects', 'areas', or 'resources'       value: the fact text       **kw: optional metadata (type, status, priority, related, source)   """   dir_ = KB / category / entity   dir_.mkdir(parents=True, exist_ok=True)   facts_file = dir_ / "facts.yaml"   facts = []   if facts_file.exists():       with open(facts_file) as f:           facts = yaml.safe_load(f) or []   facts.append({       "value": value,       "recorded_at": datetime.now().isoformat(),       **kw   })   with open(facts_file, "w") as f:       yaml.dump(facts, f, default_flow_style=False, sort_keys=False)   return facts_filedef load_context():   """Return today's note and open decisions as a dict."""   today = datetime.now().strftime("%Y-%m-%d")   note_file = KB / "areas" / "daily" / f"{today}.md"   note = note_file.read_text() if note_file.exists() else ""   decisions = []   for cat in ["projects", "areas", "resources"]:       for f in (KB / cat).rglob("facts.yaml"):           with open(f) as fh:               records = yaml.safe_load(fh) or []           for r in records:               if r.get("status") in ("open", "pending"):                   decisions.append({                       "entity": f.parent.name,                       "category": cat,                       "value": r["value"]                   })   return {"note": note, "open_decisions": decisions}```### Python File-Based Memory (JSON Storage)Use JSON when you need to serve the context to a JavaScript/TypeScript toolchain without a YAML parser:```pythonimport jsonfrom pathlib import Pathfrom datetime import datetimeJSON_KB = Path.home() / "kb"def save_json_fact(entity: str, category: str, value: str, **kw):   """Store a fact as JSON with timestamp."""   dir_ = JSON_KB / category / entity   dir_.mkdir(parents=True, exist_ok=True)   facts_file = dir_ / "facts.json"   facts = json.loads(facts_file.read_text()) if facts_file.exists() else []   facts.append({"value": value, "recorded_at": datetime.now().isoformat(), **kw})   facts_file.write_text(json.dumps(facts, indent=2))def load_json_facts(entity: str, category: str) -> list:   """Load all facts for an entity from JSON."""   facts_file = JSON_KB / category / entity / "facts.json"   return json.loads(facts_file.read_text()) if facts_file.exists() else []```### Context Persistence Across Agent CompactionsAgent sessions lose all context after compaction. The only things that survive are files on disk and static rules. Bridge the gap with a scratchpad pattern:```python# Run this at the END of every session or after significant decisionsSCRATCHPAD = Path.home() / ".kb-session-context.md"def save_session_context(current_step: str, files_affected: list,                       decisions: list, next_action: str, test_state: str):   """Write a compact bridge file that survives compaction."""   content = f"""# Session Context## Active- Step: {current_step}- Files: {', '.join(files_affected)}- Decisions: {'; '.join(decisions)}- Next: {next_action}- Verification: {test_state}---
-Last updated: {datetime.now().isoformat()}"""   SCRATCHPAD.write_text(content)# Run this at the START of every session — after compactiondef load_session_context() -> dict:   """Read the bridge file if it exists and is fresh (< 30 min)."""   if not SCRATCHPAD.exists():       return {"state": "cold_start", "context": {}}   from datetime import timedelta   mtime = datetime.fromtimestamp(SCRATCHPAD.stat().st_mtime)   if datetime.now() - mtime > timedelta(minutes=30):       return {"state": "stale", "context": {}}   text = SCRATCHPAD.read_text()   lines = [l for l in text.split("\n") if l.startswith("- ")]   context = {}   for line in lines:       key, _, val = line[2:].partition(": ")       context[key.lower()] = val   return {"state": "warm", "context": context}```## PARA Folder Structure ExampleThe canonical layout for a 1-person company:```~/kb/├── projects/                    ← Active, time-bound deliverables│   ├── website-redesign/│   │   ├── facts.yaml           ← Milestones, status, links│   │   └── research.md          ← Longer notes│   ├── client-alpha/│   │   └── facts.yaml│   └── kdp-course/│       └── facts.yaml├── areas/                       ← Ongoing responsibilities│   ├── daily/                   ← Chronological session notes│   │   ├── 2026-07-24.md│   │   └── 2026-07-25.md│   ├── finance/│   │   └── facts.yaml           ← Pricing decisions, payment info│   ├── marketing/│   │   └── facts.yaml│   ├── devops/│   │   └── facts.yaml│   └── compliance/│       └── facts.yaml├── resources/                   ← Reference material, templates│   ├── mcp-tools/│   │   └── facts.yaml│   ├── templates/│   │   └── weekly-review.md│   ├── entity-index.yaml        ← Master cross-reference│   └── decisions.yaml           ← Global decisions log└── archives/                    ← Stale content, auto-moved   └── projects/       └── dead-project/           └── facts.yaml```Key rules:- **Projects have deadlines.** If it has no end date, it's an area.- **Areas have no deadlines** but need regular maintenance.- **Resources** are reference — facts you read more often than write.- **Archives** are `git`-preserved, never deleted.## Daily Note TemplateUse this at session start. The top section primes the agent; the bottom captures output:```markdown# Daily Note: YYYY-MM-DD## Session Focus_Briefly: what is the single most important outcome for this session?_## Open Decisions Needing Input- _from yesterday's decisions log_## Continuity Context- Last session's key result:- Blockers from yesterday:- Conversations still pending:## Plan- [ ] - [ ] ## Decisions Made Today- ## Facts Captured Today- ## End-of-Session Summary_Write this before closing to bridge to the next session:_- What was shipped:- What is blocked:- What comes next:```The **End-of-Session Summary** is the most critical section — it is the bridge another agent (or your next session) uses to cold-start without reading yesterday's full log.## Workflow
-: Session Start → Load Context → Save Decisions → Session End```┌─────────────────────────────────────────────────────────────────┐│                    SESSION WORKFLOW                              │├─────────────────────────────────────────────────────────────────┤│                                                                  ││  ┌──────────────────────┐                                        ││  │ 1. SESSION START     │  Agent spawns, has no context          ││  └─────────┬────────────┘                                        ││            ▼                                                      ││  ┌──────────────────────┐                                        ││  │ 2. LOAD CONTEXT      │  Read today's note + last session's    ││  │                      │  summary from ~/kb/areas/daily/        ││  └─────────┬────────────┘                                        ││            ▼                                                      ││  ┌──────────────────────┐                                        ││  │ 3. CHECK DECISIONS   │  Read decisions.yaml & entity-index    ││  │                      │  for open/pending items                ││  └─────────┬────────────┘                                        ││            ▼                                                      ││  ┌──────────────────────┐                                        ││  │ 4. WORK / CODE       │  Agent performs the actual task        ││  │                      │  Captures facts as they arise:         ││  │                      │  save_fact("client-a", "projects",     ││  │                      │    "Signed contract for Phase 2",      ││  │                      │    type="milestone", status="done")    ││  └─────────┬────────────┘                                        ││            ▼                                                      ││  ┌──────────────────────┐                                        ││  │ 5. LOG DECISIONS     │  Every decision gets a YAML fact.      ││  │                      │  Status stays "open" until resolved.   ││  └─────────┬────────────┘                                        ││            ▼                                                      ││  ┌──────────────────────┐                                        ││  │ 6. SESSION END       │  Write end-of-session summary.         ││  │                      │  Update scratchpad bridge file.        ││  │                      │  Push git commit + brain_remember().   ││  └──────────────────────┘                                        │└─────────────────────────────────────────────────────────────────┘```### Concrete Shell Implementation```bash#!/usr/bin/env bash# kb-session.sh — run at every session startKB=~/kbTODAY=$(date +%Y-%m-%d)YESTERDAY=$(date -d yesterday +%Y-%m-%d)NOTE=$KB/areas/daily/$TODAY.md# Step 1-2: Load yesterday's contextif [ -f "$KB/areas/daily/$YESTERDAY.md" ]; then echo "=== Yesterday's Summary ===" # Extract end-of-session summary sed -n '/## End-of-Session Summary/,$ p' \   "$KB/areas/daily/$YESTERDAY.md" | head -20fi# Step 3: Check open decisionsecho ""echo "=== Open Decisions ==="grep -rl "status: open" "$KB"/{projects,areas,resources}/*/facts.yaml 2>/dev/null \ | while read -r f; do   entity=$(basename "$(dirname "$f")")   grep -A1 "value:" "$f" | head -2   echo "  (entity: $entity)" done || echo "  None"# Step 4: Create today's note if missingif [ ! -f "$NOTE" ]; then cat > "$NOTE" <<EOF# Daily Note: $TODAY## Session Focus-## Decisions Made Today-## End-of-Session Summary---
--EOF echo "" echo "Created $NOTE — edit the focus line and begin."fi```## Anti-Rationalization Table| Rationalization | Reality ||---
-|---
-|| "I remember what happened last session" | Agents lose everything on compaction. Without KB files, you start blank. || "The code comments are enough documentation" | Comments describe *what*; KB describes *why* you chose that approach. || "YAML facts are too structured for quick notes" | Unstructured daily notes cost nothing. Structure grows as the entity matures. || "I'll backfill facts when the project settles" | The gap between "I know this" and "I wrote this" is where information rot begins. Capture in the same turn you discover. || "grep is fast enough for recall" | grep finds text. Semantic relationships (what influenced what) need structure. || "My projects are too small for PARA" | PARA scales down to one file per entity. The cost of starting flat is refactoring 200 files into PARA later. || "The scratchpad file is enough for session bridging" | The scratchpad handles *active* session bridging; the KB handles *permanent* organizational memory. Both are needed. || "Daily notes are for humans, not agents" | Agents read more daily notes than humans do — they have zero tacit context to fall back on. |## Verification- [ ] `~/kb/{projects,areas,resources,archives}` directory tree exists- [ ] Today's daily note is present at `~/kb/areas/daily/YYYY-MM-DD.md`- [ ] Yesterday's daily note loads without error and contains an end-of-session summary- [ ] `save_fact()` writes valid YAML that can be re-read with `yaml.safe_load()`- [ ] Entity facts contain `status`, `recorded_at`, and `value` fields- [ ] `load_context()` returns a dict with `note` and `open_decisions`- [ ] `grep -r "status: open" ~/kb/` returns at least one decision- [ ] `entity-index.yaml` exists and has at least 3 entities registered- [ ] Scratchpad bridge file (`~/.kb-session-context.md`) is written on session end- [ ] Scratchpad is *checked* on session start and *ignored* when > 30 min stale- [ ] Archival script (`archive_stale_content()`) has been run at least once- [ ] All code blocks parse with valid Python/Bash syntax- [ ] Rollback: YAML fact files are under git — `git log` shows fact history
+
+# Knowledge Base (KB)
+
+## Overview
+
+The Knowledge Base (KB) is a PARA-structured persistent memory system for AI agents.
+It survives agent compactions, session boundaries, and context window limits by storing
+facts, decisions, architecture records, and project state in files on disk.
+
+**PARA stands for:**
+- **P**rojects — active deliverables with deadlines
+- **A**reas — ongoing responsibilities without end dates
+- **R**esources — reference material, templates, cross-references
+- **A**rchives — stale content, git-preserved, never deleted
+
+The KB works alongside the `memory` MCP tools (`search_nodes`, `open_nodes`,
+`read_graph`, `create_entities`, `add_observations`, `create_relations`) and the
+file-based scratchpad pattern. Use all three layers together:
+
+| Layer | Scope | Persistence | Example |
+|---|---|---|---|
+| KB files | Long-term org memory | Indefinite (git) | `~/kb/projects/foo/facts.yaml` |
+| MCP knowledge graph | Relationship graph | Per-session + recall | Entities, relations, observations |
+| Scratchpad file | Active session bridge | < 30 min | `~/.kb-session-context.md` |
+
+## Workflow
+
+The KB lifecycle follows a predictable loop across every agent session:
+
+```
+Session Start → Load Context → Check Decisions → Work & Capture → Log → Session End
+```
+
+### Per-Session Loop
+
+1. **Cold start** — MCP server connects, scratchpad is checked for < 30 min state
+2. **Load yesterday** — last session's End-of-Session Summary is retrieved
+3. **Open decisions** — all facts with `status: open` across every category
+4. **Work** — agent performs tasks, captures facts as they arise
+5. **Log decisions** — every resolved decision gets a fact with `status: confirmed`
+6. **End-of-Session** — summary written, scratchpad updated, git commit + brain save
+
+### Weekly Loop
+
+1. Archive projects untouched > 90 days
+2. Prune stale observations
+3. Rebuild entity cross-reference index
+4. Review open decisions for closure
+5. Verify all code blocks in KB skills parse correctly
+
+---
+## Querying the Knowledge Base
+
+### Using MCP Memory Tools
+
+The `memory` MCP server exposes a knowledge graph. Query it with structured tools:
+
+**search_nodes** — find entities by name or pattern:
+
+```python
+# Python — via MCP
+result = tool.memory_search_nodes(query="client-alpha")
+for node in result.nodes:
+    print(f"{node.name}: {node.entity_type}")
+    for obs in node.observations:
+        print(f"  - {obs}")
+```
+
+**open_nodes** — load full entity details including all observations and relations:
+
+```python
+nodes = tool.memory_open_nodes(names=["client-alpha", "website-redesign"])
+for node in nodes:
+    print(f"=== {node.name} ({node.entity_type}) ===")
+    for obs in node.observations:
+        print(f"  {obs}")
+```
+
+**read_graph** — dump the entire knowledge graph for cold-start initialization:
+
+```python
+graph = tool.memory_read_graph()
+print(f"Entities: {len(graph.entities)}")
+print(f"Relations: {len(graph.relations)}")
+```
+
+### Using Filesystem grep
+
+When the MCP server is unavailable, fall back to filesystem tools:
+
+```bash
+# Find all facts about a specific entity
+grep -r "entity: client-alpha" ~/kb/
+
+# List all open decisions across every project
+grep -r "status: open" ~/kb/projects/ --include="facts.yaml"
+
+# Quick count of entities per category
+for d in projects areas resources; do
+    count=$(find ~/kb/$d -maxdepth 2 -name "facts.yaml" | wc -l)
+    echo "$d: $count entities"
+done
+
+# Search daily notes for a keyword
+rg "blocker" ~/kb/areas/daily/
+```
+
+---
+
+## Writing to the Knowledge Base
+
+### Creating Entities
+
+Register a new entity in the knowledge graph:
+
+```python
+# Start tracking a project entity
+tool.memory_create_entities([
+    {
+        "name": "client-alpha-website",
+        "entityType": "project",
+        "observations": [
+            "Client: Alpha Corp",
+            "Deadline: 2026-09-30",
+            "Stack: Next.js + Tailwind + Supabase",
+            "Status: in_progress"
+        ]
+    }
+])
+```
+
+### Adding Observations
+
+Add facts to an existing entity as you discover them:
+
+```python
+# Attach new facts mid-session
+tool.memory_add_observations([
+    {
+        "entityName": "client-alpha-website",
+        "observations": [
+            "Decided: use Stripe for payments, not Paddle",
+            "API contract: GET /api/projects returns paginated list",
+            "Blocker: waiting for client to send brand assets"
+        ]
+    }
+])
+```
+
+### Creating Relations
+
+Link entities to model dependencies, influences, and ownership:
+
+```python
+# Wire up relationships between entities
+tool.memory_create_relations([
+    {
+        "source": "client-alpha-website",
+        "target": "payment-integration",
+        "relationType": "depends_on"
+    },
+    {
+        "source": "client-alpha-website",
+        "target": "auth-patterns",
+        "relationType": "references"
+    },
+    {
+        "source": "alice",
+        "target": "client-alpha-website",
+        "relationType": "owns"
+    }
+])
+```
+
+### File-Based Storage (YAML)
+
+Canonical writer for per-entity YAML fact files alongside the knowledge graph:
+
+```python
+import yaml
+from datetime import datetime
+from pathlib import Path
+
+KB = Path.home() / "kb"
+
+def save_fact(entity: str, category: str, value: str, **kw):
+    """Append one fact to a per-entity YAML file.
+
+    Args:
+        entity: the thing being described (project, tool, client)
+        category: 'projects', 'areas', or 'resources'
+        value: the fact text
+        **kw: optional metadata (status, priority, related, source)
+    """
+    dir_ = KB / category / entity
+    dir_.mkdir(parents=True, exist_ok=True)
+    facts_file = dir_ / "facts.yaml"
+
+    facts = []
+    if facts_file.exists():
+        with open(facts_file) as f:
+            facts = yaml.safe_load(f) or []
+
+    facts.append({
+        "value": value,
+        "recorded_at": datetime.now().isoformat(),
+        **kw
+    })
+
+    with open(facts_file, "w") as f:
+        yaml.dump(facts, f, default_flow_style=False, sort_keys=False)
+
+    return facts_file
+```
+
+---
+
+## Maintenance
+
+### Pruning Stale Observations
+
+Knowledge graphs accumulate noise. Run periodic pruning:
+
+```python
+def prune_stale_observations(days_threshold=90):
+    """Flag observations older than threshold for review."""
+    from datetime import timedelta
+
+    cutoff = datetime.now() - timedelta(days=days_threshold)
+    stale = []
+
+    for category in ["projects", "areas", "resources"]:
+        for facts_file in (KB / category).rglob("facts.yaml"):
+            with open(facts_file) as f:
+                records = yaml.safe_load(f) or []
+
+            fresh = []
+            for rec in records:
+                recorded = datetime.fromisoformat(rec["recorded_at"])
+                if recorded < cutoff and rec.get("status") != "archived":
+                    stale.append({
+                        "file": str(facts_file),
+                        "value": rec["value"],
+                        "recorded_at": rec["recorded_at"]
+                    })
+                else:
+                    fresh.append(rec)
+
+            if len(fresh) != len(records):
+                with open(facts_file, "w") as f:
+                    yaml.dump(fresh, f, default_flow_style=False, sort_keys=False)
+
+    return stale
+```
+
+### Weekly Review Checklist
+
+- [ ] Move completed projects from `projects/` to `archives/`
+- [ ] Delete observations marked "obsolete" or "superseded"
+- [ ] Verify all open decisions still need resolution
+- [ ] Run `entity-index-gen.py` to rebuild the cross-reference
+- [ ] Check that today's daily note has an End-of-Session Summary
+
+### Archiving Stale Content
+
+```bash
+#!/usr/bin/env bash
+# archive-stale.sh — move projects untouched for 90+ days to archives
+KB=~/kb
+CUTOFF=$(date -d "90 days ago" +%s)
+
+for dir in "$KB"/projects/*/; do
+    last=$(git -C "$KB" log -1 --format="%at" -- "$dir" 2>/dev/null || echo 0)
+    if [ "$last" -gt 0 ] && [ "$last" -lt "$CUTOFF" ]; then
+        name=$(basename "$dir")
+        mv "$dir" "$KB/archives/projects/$name"
+        echo "Archived: $name"
+    fi
+done
+```
+
+---
+
+## Session Start Routine
+
+This is the critical cold-start flow every agent session should execute.
+
+### Step 1 — Check the Scratchpad Bridge
+
+```python
+from pathlib import Path
+from datetime import datetime, timedelta
+
+SCRATCHPAD = Path.home() / ".kb-session-context.md"
+
+def load_session_context():
+    """Read the bridge file if it exists and is fresh (< 30 min)."""
+    if not SCRATCHPAD.exists():
+        return {"state": "cold_start", "context": {}}
+
+    mtime = datetime.fromtimestamp(SCRATCHPAD.stat().st_mtime)
+    if datetime.now() - mtime > timedelta(minutes=30):
+        return {"state": "stale", "context": {}}
+
+    text = SCRATCHPAD.read_text()
+    context = {}
+    for line in text.split("\n"):
+        if line.startswith("- "):
+            key, _, val = line[2:].partition(": ")
+            context[key.lower()] = val
+
+    return {"state": "warm", "context": context}
+```
+
+### Step 2 — Load the Knowledge Graph
+
+```python
+# Re-establish entity context
+graph = tool.memory_read_graph()
+stale_entities = [e.name for e in graph.entities
+                  if "stale" in (e.observations or [])]
+
+# Open entities related to today's focus
+focus = "client-alpha"
+related = tool.memory_open_nodes(names=[focus])
+
+for node in related:
+    print(f"Loaded: {node.name} — {len(node.observations)} observations")
+```
+
+### Step 3 — Create Today's Daily Note
+
+```python
+def ensure_daily_note():
+    """Create today's note if it doesn't exist."""
+    KB = Path.home() / "kb"
+    today = datetime.now().strftime("%Y-%m-%d")
+    note_file = KB / "areas" / "daily" / f"{today}.md"
+
+    if note_file.exists():
+        return note_file
+
+    # Load yesterday's summary for continuity
+    yesterday = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d")
+    yesterday_file = KB / "areas" / "daily" / f"{yesterday}.md"
+    yesterday_summary = ""
+    if yesterday_file.exists():
+        text = yesterday_file.read_text()
+        if "## End-of-Session Summary" in text:
+            yesterday_summary = text.split("## End-of-Session Summary", 1)[1]
+
+    content = f"""# Daily Note: {today}
+
+## Session Focus
+_(What is the single most important outcome this session?)_
+
+## Continuity Context
+{yesterday_summary}
+
+## Open Decisions Needing Input
+
+## Plan
+- [ ]
+
+## Decisions Made Today
+
+## End-of-Session Summary
+_Write before closing — this bridges the next session._
+"""
+    note_file.parent.mkdir(parents=True, exist_ok=True)
+    note_file.write_text(content)
+    return note_file
+```
+
+### Step 4 — Load Open Decisions
+
+```python
+def load_open_decisions():
+    """Return every entity fact with status=open."""
+    KB = Path.home() / "kb"
+    decisions = []
+
+    for category in ["projects", "areas", "resources"]:
+        for facts_file in (KB / category).rglob("facts.yaml"):
+            with open(facts_file) as f:
+                records = yaml.safe_load(f) or []
+
+            for rec in records:
+                if rec.get("status") in ("open", "pending"):
+                    decisions.append({
+                        "entity": facts_file.parent.name,
+                        "category": category,
+                        "value": rec["value"]
+                    })
+
+    return decisions
+```
+
+### Full Bash Session Starter
+
+```bash
+#!/usr/bin/env bash
+# kb-session.sh — run at every agent session start
+KB=~/kb
+TODAY=$(date +%Y-%m-%d)
+YESTERDAY=$(date -d yesterday +%Y-%m-%d)
+NOTE=$KB/areas/daily/$TODAY.md
+
+# Step 1: Load yesterday's summary
+if [ -f "$KB/areas/daily/$YESTERDAY.md" ]; then
+    echo "=== Yesterday's Summary ==="
+    sed -n '/## End-of-Session Summary/,$ p' \
+        "$KB/areas/daily/$YESTERDAY.md" | head -20
+fi
+
+# Step 2: Check open decisions
+echo ""
+echo "=== Open Decisions ==="
+grep -rl "status: open" "$KB"/{projects,areas,resources}/*/facts.yaml 2>/dev/null \
+    | while read -r f; do
+        entity=$(basename "$(dirname "$f")")
+        grep -A1 "value:" "$f" | head -2
+        echo "  (entity: $entity)"
+    done || echo "  None"
+
+# Step 3: Create today's note
+if [ ! -f "$NOTE" ]; then
+    cat > "$NOTE" <<EOF
+# Daily Note: $TODAY
+
+## Session Focus
+
+## Decisions Made Today
+
+## End-of-Session Summary
+
+---
+EOF
+    echo ""
+    echo "Created $NOTE — edit the focus line and begin."
+fi
+```
+
+---
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|---|---|
+| "I remember what happened last session" | Agents lose everything on compaction. Without KB files, you start blank. |
+| "The code comments are enough documentation" | Comments describe *what*; KB describes *why* you chose that approach. |
+| "YAML facts are too structured for quick notes" | Unstructured daily notes cost nothing. Structure grows as the entity matures. |
+| "I'll backfill facts when the project settles" | The gap between "I know this" and "I wrote this" is where information rot begins. |
+| "grep is fast enough for recall" | grep finds text. Semantic relationships need the knowledge graph. |
+| "My projects are too small for PARA" | PARA scales down to one file per entity. Starting flat means refactoring 200 files later. |
+| "The scratchpad file is enough" | The scratchpad handles *active* bridging; the KB handles *permanent* organizational memory. |
+| "Daily notes are for humans, not agents" | Agents read more daily notes than humans do — they have zero tacit context. |
+| "I don't need relations — tags are fine" | Relations model causality and dependency. Tags model membership. Both are needed. |
+| "Archiving is busywork" | Without archiving, every grep finds 3-year-old context about dead projects. |
+
+---
+
+## Verification Checklist
+
+- [ ] `~/kb/{projects,areas,resources,archives}` directory tree exists
+- [ ] Today's daily note is present at `~/kb/areas/daily/YYYY-MM-DD.md`
+- [ ] Yesterday's daily note contains an End-of-Session Summary section
+- [ ] `save_fact()` writes valid YAML re-readable with `yaml.safe_load()`
+- [ ] Entity facts contain `recorded_at`, `value`, and `status` fields
+- [ ] `load_open_decisions()` returns at least one result before cleanup
+- [ ] Knowledge graph has at least 3 entity types registered
+- [ ] Scratchpad bridge file is written on session end, checked on session start
+- [ ] Scratchpad older than 30 minutes is treated as stale (not loaded)
+- [ ] `prune_stale_observations(90)` returns no false positives
+- [ ] All Python code blocks parse without syntax errors
+- [ ] All bash code blocks pass `bash -n` syntax check
+- [ ] Archive script has been run at least once
+- [ ] YAML fact files are under git — `git log --oneline` shows fact history
+- [ ] Weekly review checklist completed within the last 7 days
+
+---
+
 ## When to Use
-Use this skill when working with kb. Specifically:- **Every session start** — load context, check open decisions, create daily note- **After every decision** — capture as a YAML fact with `status: open`/`status: confirmed`- **At session end** — write end-of-session summary, update scratchpad bridge, commit- **During investigations** — store entity facts as you discover them- **Weekly** — review stale content, archive anything untouched for 90+ days
+
+Use this skill when working with kb. Specifically:
+
+- **Every session start** — load context, check open decisions, create daily note
+- **After every decision** — capture as a YAML fact with `status: open` or
+  `status: confirmed`
+- **At session end** — write End-of-Session Summary, update scratchpad, commit
+- **During investigations** — store entity facts as you discover them
+- **Weekly** — review stale content, archive untouched projects
+- **When spawning subagents** — share relevant KB entities via `local://` URIs
+  so subagents start with context instead of cold
