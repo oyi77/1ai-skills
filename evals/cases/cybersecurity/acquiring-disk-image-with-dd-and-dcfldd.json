@@ -1,0 +1,17 @@
+{
+  "skill": "acquiring-disk-image-with-dd-and-dcfldd",
+  "category": "cybersecurity",
+  "name": "Disk Image Acquisition — dd/dcfldd forensically sound imaging",
+  "description": "Verify forensic disk imaging skill covers dd and dcfldd commands, hash verification, and evidence preservation",
+  "checks": [
+    {"type": "contains", "pattern": "dcfldd", "name": "contains-dcfldd"},
+    {"type": "contains", "pattern": "\\bdd\\b", "name": "contains-dd-word"},
+    {"type": "contains", "pattern": "hash", "name": "contains-hash"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "frontmatter_field_exists", "field": "version", "name": "has-version"},
+    {"type": "code_block_count", "min": 1, "name": "has-code-examples"},
+    {"type": "has_workflow_section", "name": "has-workflow"},
+    {"type": "domain_match", "domain": "cybersecurity", "name": "domain-cybersecurity"}
+  ]
+}

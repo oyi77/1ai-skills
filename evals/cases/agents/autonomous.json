@@ -1,0 +1,18 @@
+{
+  "skill": "autonomous",
+  "category": "agents",
+  "name": "Autonomous Agent — pipeline automation and revenue impact",
+  "description": "Verify autonomous skill covers agent pipeline, system monitoring, Revenue Impact, and escalation procedures",
+  "checks": [
+    {"type": "contains", "pattern": "Autonomous Agents", "name": "contains-autonomous"},
+    {"type": "contains", "pattern": "monitor", "name": "contains-monitoring"},
+    {"type": "contains", "pattern": "Revenue Impact", "name": "contains-revenue"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "frontmatter_field_exists", "field": "version", "name": "has-version"},
+    {"type": "code_block_count", "min": 3, "name": "has-multiple-code-examples"},
+    {"type": "has_workflow_section", "name": "has-workflow"},
+    {"type": "skill_depth", "min_lines": 250, "name": "depth-sufficient"},
+    {"type": "domain_match", "domain": "agents", "name": "domain-agents"}
+  ]
+}

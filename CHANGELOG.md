@@ -26,6 +26,30 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 - skill-graph.py: 1309 skills scanned, 0 with depends_on, 0 cycles, report written
 - Fix: PyYAML-based parser eliminates 22 phantom nodes from nested frontmatter keys
 
+
+## [3.24.0] — 2026-07-26
+### Added
+- `evals/` — Lightweight evaluation framework for skill quality verification:
+  - `evals/README.md` — Runner documentation with usage examples, check-type reference, and
+    case creation guide
+  - `evals/cases/` — 10 eval case JSON files across 8 categories (agents, content, core,
+    cybersecurity, development ×2, devops, integrations, marketing, research)
+  - `evals/reports/` — Output directory for runner-generated reports
+- `scripts/run-evals.py` — Evaluation runner with 12 check types (contains, section_exists,
+  anti_rat_table, code_block_count, has_workflow_section, frontmatter_field_exists,
+  frontmatter_field, trigger_phrase, skill_depth, domain_match, not_contains,
+  has_code_example). Supports `--skill`, `--category`, `--all`, `--json`, `--verbose`,
+  `--list` modes. Human-readable and JSON reporting, exit code zero on all-pass.
+- `scripts/run-evals.py`: `--all` flag — run all discovered eval cases at once
+- `scripts/run-evals.py`: Mutual exclusion validation — rejects combinations of
+  `--all`/`--skill`/`--category`
+### Verified
+- Lint: 0 errors, 0 warnings, 2327 info
+- Tests: 1306/1306 pass
+- Evals: 91/91 checks passed, 0 failed, 0 skipped across 10 case files
+- All 6 runner CLI modes verified: `--list`, `--all`, `--all --verbose`,
+  `--skill autonomous`, `--category development`, `--json`
+
 ## [3.22.0] — 2026-07-26
 ### Added
 - `scripts/skill_router.py` — Skill Routing & Discovery Engine. Takes natural-language queries

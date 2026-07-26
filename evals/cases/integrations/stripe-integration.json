@@ -1,0 +1,17 @@
+{
+  "skill": "stripe-integration",
+  "category": "integrations",
+  "name": "Stripe Integration — payments, subscriptions, webhooks",
+  "description": "Verify stripe-integration skill covers checkout sessions, webhook handling, subscription management, and billing",
+  "checks": [
+    {"type": "contains", "pattern": "Stripe", "name": "contains-stripe"},
+    {"type": "contains", "pattern": "webhook", "name": "contains-webhook"},
+    {"type": "contains", "pattern": "checkout", "name": "contains-checkout"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "frontmatter_field_exists", "field": "description", "name": "has-description"},
+    {"type": "code_block_count", "min": 1, "name": "has-code-examples"},
+    {"type": "has_workflow_section", "name": "has-workflow"},
+    {"type": "domain_match", "domain": "integrations", "name": "domain-integrations"}
+  ]
+}

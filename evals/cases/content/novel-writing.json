@@ -1,0 +1,18 @@
+{
+  "skill": "novel-writing",
+  "category": "content",
+  "name": "Novel Writing — story structure, character creation, world-building",
+  "description": "Verify novel-writing skill covers story structure, character creation, world-building, dialogue, and chapter craft",
+  "checks": [
+    {"type": "contains", "pattern": "character", "name": "contains-character"},
+    {"type": "contains", "pattern": "structure", "name": "contains-structure"},
+    {"type": "contains", "pattern": "chapter", "name": "contains-chapter"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "frontmatter_field_exists", "field": "version", "name": "has-version"},
+    {"type": "code_block_count", "min": 5, "name": "has-many-code-examples"},
+    {"type": "has_workflow_section", "name": "has-workflow"},
+    {"type": "skill_depth", "min_lines": 500, "name": "depth-sufficient"},
+    {"type": "domain_match", "domain": "content", "name": "domain-content"}
+  ]
+}

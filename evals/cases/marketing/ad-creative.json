@@ -1,0 +1,17 @@
+{
+  "skill": "ad-creative",
+  "category": "marketing",
+  "name": "Ad Creative — briefs, copy variations, A/B testing",
+  "description": "Verify ad-creative skill covers visual briefs, copy variations, A/B testing frameworks, and performance advertising",
+  "checks": [
+    {"type": "contains", "pattern": "A/B test", "name": "contains-ab-testing"},
+    {"type": "contains", "pattern": "creative", "name": "contains-creative"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "frontmatter_field_exists", "field": "version", "name": "has-version"},
+    {"type": "code_block_count", "min": 3, "name": "has-multiple-code-examples"},
+    {"type": "has_workflow_section", "name": "has-workflow"},
+    {"type": "skill_depth", "min_lines": 300, "name": "depth-sufficient"},
+    {"type": "domain_match", "domain": "marketing", "name": "domain-marketing"}
+  ]
+}
