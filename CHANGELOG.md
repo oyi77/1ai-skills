@@ -60,6 +60,29 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 - Lint: 0 errors, 0 warnings, 2327 info
 - Tests: 1306/1306 pass
 
+## [3.30.0] — 2026-07-26
+### Added
+- `docs/LEARNING_LIFECYCLE.md` — Learning lifecycle document with memory pollution avoidance
+### Verified
+- Lint: 0 errors, 0 warnings, 2327 info
+- Tests: 1306/1306 pass
+
+## [3.29.0] — 2026-07-26
+### Added
+- `docs/META_SKILL_GOVERNANCE.md` — Meta-skill governance document with 13-skill inventory,
+  5 governance rules, risk model, and lifecycle
+### Verified
+- Lint: 0 errors, 0 warnings, 2327 info
+- Tests: 1306/1306 pass
+
+## [3.27.0] — 2026-07-26
+### Added
+- `docs/INSTRUCTION_PRECEDENCE.md` — Instruction precedence and prompt-injection defense
+  documentation for skill authors
+### Verified
+- Lint: 0 errors, 0 warnings, 2327 info
+- Tests: 1306/1306 pass
+
 ## [3.24.0] — 2026-07-26
 ### Added
 - `evals/` — Lightweight evaluation framework for skill quality verification:
