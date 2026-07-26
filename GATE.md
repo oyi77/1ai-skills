@@ -1,33 +1,33 @@
-# GATE.md — Pre-Ship Checklist (v3.24.0)
+# GATE.md — Pre-Ship Checklist (v3.25.0)
 
 ## GATE 0: UNDERSTAND INTENT, VERIFY CLAIMS
-- **Said**: Phase 7 — Evaluation System (evals/ directory + runner + 10 eval cases)
-- **Wants**: Lightweight, script-based eval framework — `scripts/run-evals.py` with 12 check types, 10 JSON case files across 8 skill categories, JSON/human reporting with exit codes
-- **Solution fits intent?**: Yes — consistent with existing tooling (test-skills.py, validate-skill-schema.py). Runner uses argparse, check registry pattern, case JSON files in `evals/cases/<category>/`.
-- **Verified claims**: All 10 cases run via `--all` flag: **91/91 checks passed, 0 failed, 0 skipped**
+- **Said**: Phase 8 — Validator Strict Mode + broken-link checker
+- **Wants**: `--strict` flag on `validate-skill-schema.py` promoting warnings→errors; `scripts/check-broken-links.py` scanning internal `/skills/` refs against SKILLS.json
+- **Solution fits intent?**: Yes — `--strict` is opt-in flag (0 impact on existing CI); broken-link checker scans all `.md` files (not just SKILL.md) for `skill://`, `/skills/`, `../skills/` references
+- **Verified claims**: Default validator exits 0, `--strict` exits 1 with 211 warnings promoted; 1439 files scanned with 0 broken internal references
 
 ## GATE 1: CEK DOMAIN REPO
-- **Domain**: 1ai-skills — evaluation quality system (Phase 7)
-- **Fit**: Yes — quality-upgrade-plan.md Phase 7 explicitly calls for evaluation framework
-- **Bukti**: `evals/` directory exists with cases, reports, README; `scripts/run-evals.py` executable
+- **Domain**: 1ai-skills — validator quality improvements (Phase 8)
+- **Fit**: Yes — quality upgrade plan Phase 8
+- **Bukti**: `scripts/validate-skill-schema.py --strict` exits 1 when warnings present; `scripts/check-broken-links.py` scans 1439 files
 
 ## GATE 2: CEK SEBELUM PAKAI
-- **Tools used**: `python3 scripts/run-evals.py --list`, `python3 scripts/run-evals.py --all --verbose`, `python3 scripts/run-evals.py --skill autonomous --verbose`, `python3 scripts/run-evals.py --category agents --verbose`
-- **Scripts built**: `scripts/run-evals.py`
-- **Bukti**: `--list` shows 10 cases; `--all --verbose` reports 91/91 pass across 10 cases; `--skill` and `--category` filters work correctly
+- **Tools used**: `python3 scripts/validate-skill-schema.py`, `python3 scripts/validate-skill-schema.py --strict`, `python3 scripts/check-broken-links.py --verbose`, `python3 scripts/check-broken-links.py --json`, `python3 scripts/check-broken-links.py --exit-zero`
+- **Scripts built**: `scripts/check-broken-links.py` (new); `scripts/validate-skill-schema.py` (modified)
+- **Bukti**: Default exit 0 (1309/1309, 211 warnings); `--strict` exit 1; broken-link: 1439 scanned, 0 broken, `--json` valid, `--exit-zero` overrides exit to 0
 
 ## GATE 3: REVIEW SENDIRI
-- **Diff reviewed**: `scripts/run-evals.py` (~460 lines, 12 check types), `evals/README.md`, 10 eval case JSON files, `evals/reports/.gitkeep`, GATE.md, CHANGELOG
-- **Unnecessary code?**: No — eval framework matches spec exactly, all case files are meaningful
-- **One-off scripts**: One-off migration scripts deleted in earlier phases
+- **Diff reviewed**: `scripts/validate-skill-schema.py` (def main()+argparse extraction + exit logic); `scripts/check-broken-links.py` (full ~150-line new checker); CHANGELOG, GATE.md
+- **Unnecessary code?**: No — both tools are tightly scoped. Broken-link checker handles 3 reference patterns (`skill://`, `/skills/`, `../skills/`) and nothing more.
+- **One-off scripts**: `scripts/test-check-broken-links.py` deleted after verification (YAGNI)
 
 ## GATE 4: AGENT REVIEW
-- **Classification**: STANDARD — new eval tooling + case data
-- **Self-review with checklist**: All 10 cases verify actual skill quality attributes; runner handles JSON parse errors, missing files, edge cases correctly
-- **Bukti**: [STANDARD — 91/91 evals pass, --all flag added, argparse validation for mutual exclusion]
+- **Classification**: STANDARD — new CLI flags + new tool; both non-destructive
+- **Self-review with checklist**: `--strict` opt-in preserves existing CI behavior; broken-link checker is read-only, never modifies files
+- **Bukti**: [STANDARD — validator tests 2 modes × 2 exit codes; broken-link checker tests normal/JSON/exit-zero/broken-found scenarios]
 
 ## GATE 5: PLAYBOOK UPDATE CHECK
-- **Impact**: New developer evaluation tooling. No user-facing impact.
+- **Impact**: Developer tooling only. No user-facing changes.
 - **Bukti**: [skip — developer tool, no user-facing changes]
 
 ---
@@ -38,13 +38,13 @@
 |---|-------|--------|----------|
 | C1 | Compile — zero errors | ✅ | lint 0 errors, 0 warnings, 2327 info |
 | C2 | All tests pass | ✅ | 1306/1306 pass |
-| C3 | QA scenarios — ≥2 happy + 2 sad | ✅ | --all successful (10 cases, 91/91 pass); --skill filter (single case); --category filter (development → 2 cases); --list (shows 10 cases); --json output (valid JSON) |
-| C4 | Use like real user | ✅ | Eval runner tested with all 4 invocation modes; fixed 1 case definition (case-sensitive pattern) |
-| C5 | Business logic verification | ✅ | 10 eval cases × 91 checks = verified skill attributes (frontmatter, structure, depth, domain, anti-rationalization, workflow) |
-| C6 | Rollback plan | ✅ | `git revert <this-commit>` restores pre-evals state |
-| C7 | Feature flag | N/A | New tooling, zero-risk addition |
+| C3 | QA scenarios — ≥2 happy + 2 sad | ✅ | Validator: default (happy→0), --strict (warning→1); Broken-link: 1439 scanned/0 broken (happy), --exit-zero (override), --json (valid JSON output) |
+| C4 | Use like real user | ✅ | Validator tested with/without --strict; broken-link tested with --verbose, --json, --exit-zero; smoke test validated broken detection with controlled temp file |
+| C5 | Business logic verification | ✅ | --strict exit 1 verified via subprocess (211 warnings promoted); broken-link correctly reports 0 broken on clean repo |
+| C6 | Rollback plan | ✅ | `git revert <this-commit>` restores pre-Phase-8 state |
+| C7 | Feature flag | N/A | --strict is opt-in flag; broken-link checker is standalone script |
 | C8 | Monitoring verification | N/A | No production services |
-| C9 | Update docs | ✅ | CHANGELOG v3.24.0 entry added; evals/README.md documents runner usage |
+| C9 | Update docs | ✅ | CHANGELOG v3.25.0 entry added with all verified counts |
 | C10 | Timeline updated | ✅ | [skip — developer tool] |
 
 ---

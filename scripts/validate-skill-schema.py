@@ -246,10 +246,10 @@ def print_report(results: list[dict], args):
     print(f"Schema Validation: {passed}/{total} passed ({len(errors)} errors, {len(warnings)} warnings)")
     if args.summary:
         print(f"  Clean: {len(clean)}, Warnings only: {len(warnings)}, Errors: {len(errors)}")
-
-
 def main():
     parser = argparse.ArgumentParser(description="Validate 1ai-skills against schema")
+    parser.add_argument("--strict", action="store_true",
+                        help="Treat all warnings as errors (exit 1 on any warning)")
     parser.add_argument("--skill", help="Validate only one skill by name")
     parser.add_argument("--json", action="store_true",
                         help="Machine-readable JSON output")
@@ -281,12 +281,15 @@ def main():
 
     print_report(results, args)
 
+    has_warnings = any(
+        any(i["level"] == "warning" for i in r["issues"])
+        for r in results
+    )
     has_errors = any(
         any(i["level"] == "error" for i in r["issues"])
         for r in results
     )
-    sys.exit(1 if has_errors else 0)
-
+    sys.exit(1 if has_errors or (args.strict and has_warnings) else 0)
 
 if __name__ == "__main__":
     main()

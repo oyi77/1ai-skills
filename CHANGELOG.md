@@ -27,6 +27,24 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 - Fix: PyYAML-based parser eliminates 22 phantom nodes from nested frontmatter keys
 
 
+## [3.25.0] — 2026-07-26
+### Added
+- `scripts/validate-skill-schema.py`: `--strict` flag — promotes all warnings to errors
+  (exit 1 if any warnings present). Opt-in, default behavior unchanged.
+- `scripts/check-broken-links.py` — Broken internal skill reference checker. Scans all
+  markdown files for `skill://`, `/skills/`, and `../skills/` references and resolves them
+  against SKILLS.json skill names. Supports `--json`, `--verbose`, `--exit-zero` flags.
+### Changed
+- `scripts/validate-skill-schema.py`: Extracted `def main():` with full argparse (was previously
+  inline at module level). Exit logic now correctly evaluates `--strict` flag.
+### Verified
+- Validator default mode: 1309/1309 pass, 0 errors, 211 warnings, exit 0
+- Validator `--strict` mode: 1309/1309 pass, 0 errors, 211 warnings, exit 1 (warnings→errors)
+- Broken-link checker: 1439 files scanned, 0 broken internal references across all markdown
+  (SKILL.md + docs + other .md/.mdx files)
+- Lint: 0 errors, 0 warnings, 2327 info
+- Tests: 1306/1306 pass
+
 ## [3.24.0] — 2026-07-26
 ### Added
 - `evals/` — Lightweight evaluation framework for skill quality verification:
