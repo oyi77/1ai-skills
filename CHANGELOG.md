@@ -45,6 +45,21 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 - Lint: 0 errors, 0 warnings, 2327 info
 - Tests: 1306/1306 pass
 
+## [3.26.0] — 2026-07-26
+### Added
+- `SECURITY.md` — security policy with gitleaks integration and supply-chain notes
+- `threat_model.md` — lightweight threat model covering CI/CD, skill content, and supply chain
+- `.gitleaksignore` — false positive suppressions (2 entries: doc token example, Solidity constant)
+- `.github/dependabot.yml` — Dependabot config for GitHub Actions and npm dependency updates
+### Changed
+- `.github/workflows/validate.yml`: gitleaks `--config` flag removed (uses default config + `.gitleaksignore`);
+  `pyyaml` pinned to `6.0.2`
+- `.github/workflows/auto-release.yml`: gitleaks `--config` flag removed
+### Verified
+- gitleaks `--no-git` scan: 0 leaks found (exit 0), 9.17 MB scanned in 2.4s
+- Lint: 0 errors, 0 warnings, 2327 info
+- Tests: 1306/1306 pass
+
 ## [3.24.0] — 2026-07-26
 ### Added
 - `evals/` — Lightweight evaluation framework for skill quality verification:

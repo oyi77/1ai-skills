@@ -1,0 +1,4 @@
+# False positives — doc example with truncated token (format example, not real secret)
+operations/jira/SKILL.md:curl-auth-user:57
+# False positive — Solidity error constant in smart contract example
+trading/smart-contract-dev/SKILL.md:generic-api-key:156
