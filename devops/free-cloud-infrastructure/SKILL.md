@@ -188,7 +188,7 @@ Curated resources for free-cloud-infrastructure.
 5. Document runbooks for deployment, rollback, and incident response
 6. Test disaster recovery procedures regularly
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

@@ -599,7 +599,7 @@ Use built-in MCPs for web search, documentation, and code search.
 - Agent System: https://github.com/code-yeongyu/oh-my-opencode#for-those-who-want-to-read-meet-sisyphus
 - Configuration: https://github.com/code-yeongyu/oh-my-opencode/blob/master/docs/configurations.md
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

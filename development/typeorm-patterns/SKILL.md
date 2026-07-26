@@ -192,7 +192,7 @@ npx typeorm migration:revert -d src/data-source.ts
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

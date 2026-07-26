@@ -118,7 +118,7 @@ def extract_iocs(text: str) -> dict:
 - Scope boundaries confirmed — only authorized targets were tested
 - Remediation recommendations included for every finding
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

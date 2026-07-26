@@ -93,7 +93,7 @@ def score_lead(lead: dict) -> int:
 4. **Validate** — Verify results meet quality standards
 5. **Document** — Record findings and decisions
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

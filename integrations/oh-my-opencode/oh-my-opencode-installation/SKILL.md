@@ -580,7 +580,7 @@ npm view oh-my-opencode version && echo "✓ npm package verified"
 - Oh My OpenCode: https://github.com/code-yeongyu/oh-my-opencode
 - Installation Guide: https://github.com/code-yeongyu/oh-my-opencode/blob/master/docs/guide/installation.md
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

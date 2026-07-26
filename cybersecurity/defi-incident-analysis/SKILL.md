@@ -1565,8 +1565,8 @@ Knowing when to switch modes is a key ZachXBT skill:
   contact affected protocols, document the investigation's value for bounty claims.
 
 
-## Anti-Rationalization
-## Anti-Rationalization
+## Anti-Rationalization Table
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

@@ -75,7 +75,7 @@ def generate_content(topic: str, format: str = "article"):
 - Design tools for visual assets
 - Collaboration tools for review cycles
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

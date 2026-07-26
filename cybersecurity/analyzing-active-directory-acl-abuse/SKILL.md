@@ -116,7 +116,7 @@ This skill uses the ldap3 Python library to connect to a Domain Controller, quer
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

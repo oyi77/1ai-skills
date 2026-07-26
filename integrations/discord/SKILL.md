@@ -500,7 +500,7 @@ if __name__ == "__main__":
 - GitHub → Discord webhook bridge
 - Reusable infrastructure to sell as community automation
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---------------|---------|

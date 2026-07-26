@@ -310,7 +310,7 @@ def generate_dark_web_report(findings, organization):
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

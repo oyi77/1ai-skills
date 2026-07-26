@@ -42,7 +42,7 @@ Generate professional design systems including color palettes, typography scales
 4. **Create tokens** — Design token JSON for cross-platform use
 5. **Export** — CSS variables, Tailwind config, Figma tokens
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

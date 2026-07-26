@@ -336,7 +336,7 @@ Contains: entropy.txt, binwalk-scan.txt, all-strings.txt, secrets-credentials.tx
 **End of Report**
 ```
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |----------------|---------|

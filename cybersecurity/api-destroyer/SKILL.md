@@ -305,7 +305,7 @@ Send the client an invoice-ready report. Structure:
 - [ ] Client can re-test after fixes (included in Pro+)
 - [ ] Invoice attached
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

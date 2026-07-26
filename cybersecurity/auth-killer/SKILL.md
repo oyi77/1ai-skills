@@ -810,7 +810,7 @@ The client receives an **Authentication Security Assessment Report** — a profe
     - Long-term (60-90 days): Low CVSS 0.1-3.9 improvements
 12. **Appendices** — Full tool outputs, raw hashcat results, intercepted traffic extracts, fix code snippets
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

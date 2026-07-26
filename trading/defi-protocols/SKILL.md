@@ -884,7 +884,7 @@ After completing DeFi protocol implementation, confirm:
 9. **Audit for known attacks** — Reentrancy, sandwich, price manipulation, donation attacks on vaults, flash loan re-deposit.
 10. **Document failure modes** — What happens when oracle goes stale, when utilization spikes, when a pool gets drained. Document the circuit breakers.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

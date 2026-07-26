@@ -42,7 +42,7 @@ Access 1000+ AI models via Replicate API. Run Flux, Stable Diffusion, Whisper, a
 4. **Handle output** — Download files, process results
 5. **Chain models** — Pipe output of one model as input to another
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

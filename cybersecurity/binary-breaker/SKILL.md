@@ -306,7 +306,7 @@ binary_assessment_<target>_<date>/
 └──────────────────────────────────────────────────────────────┘
 ```
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

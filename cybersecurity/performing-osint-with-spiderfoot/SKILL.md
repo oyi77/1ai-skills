@@ -107,7 +107,7 @@ JSON report containing OSINT findings organized by data type (domains, IPs, emai
 - False positives filtered out through manual verification
 - Fix recommendations include code-level remediation guidance
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

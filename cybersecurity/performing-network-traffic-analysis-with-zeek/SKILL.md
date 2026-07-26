@@ -468,7 +468,7 @@ cat ssl.log | zeek-cut server_name not_valid_after | awk -F'\t' '$2 < systime()'
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

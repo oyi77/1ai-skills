@@ -449,7 +449,7 @@ PAYPAL: [Optional]
 - [ ] Invoice sent with the report
 - [ ] Follow-up scheduled: retest window offered (30 days), next engagement proposed (quarterly cadence)
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

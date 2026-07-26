@@ -504,7 +504,7 @@ which allows [impact]. Remediation is estimated at [effort].
 Cryptographic recommendations should be re-evaluated quarterly.
 ```
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

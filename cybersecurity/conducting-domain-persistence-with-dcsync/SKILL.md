@@ -246,7 +246,7 @@ DCSync is an attack technique that abuses the Microsoft Directory Replication Se
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

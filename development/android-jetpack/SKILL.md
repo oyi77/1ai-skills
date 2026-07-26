@@ -133,7 +133,7 @@ class ItemViewModel : ViewModel() {
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

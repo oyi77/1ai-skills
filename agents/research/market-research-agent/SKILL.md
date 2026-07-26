@@ -78,7 +78,7 @@ def orchestrate(tasks: list[Task]) -> dict:
 - Configure tool access and permissions
 - Enable logging for debugging and audit
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

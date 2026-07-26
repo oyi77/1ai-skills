@@ -372,7 +372,7 @@ kubectl get namespaces -L pod-security.kubernetes.io/enforce
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

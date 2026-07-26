@@ -343,7 +343,7 @@ in-toto attestations map directly to SLSA (Supply chain Levels for Software Arti
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

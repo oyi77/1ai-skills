@@ -21,6 +21,16 @@ persona:
 
 AI agents present a unique attack surface: they read untrusted input, execute code, access files, call APIs, and spawn subagents -- all with elevated privileges. Traditional application security applies, but new agent-specific vectors (prompt injection, tool abuse, data exfiltration via agent actions) require dedicated defense patterns. This skill covers the full agentic security lifecycle: threat modeling, hardening, scanning, and continuous monitoring.
 
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|---|---|
+| "I'll figure it out as I go" | A structured approach saves time and reduces errors. Follow the workflow in this skill rather than improvising. |
+| "I already know this topic" | Familiarity breeds shortcuts. Use the checklist to verify you haven't missed critical steps. |
+| "This doesn't apply to my situation" | The patterns here generalize across contexts. Adapt, don't skip — the underlying principles hold. |
+| "One more tool will fix it" | Adding complexity rarely solves process gaps. Master the core workflow first. |
+
 ## When to Use
 
 **Trigger phrases:**

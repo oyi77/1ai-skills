@@ -154,7 +154,7 @@ Use the `scripts/process.py` to analyze email gateway logs, identify spearphishi
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

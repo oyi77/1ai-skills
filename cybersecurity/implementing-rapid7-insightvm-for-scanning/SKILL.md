@@ -27,6 +27,16 @@ nist_csf:
 Rapid7 InsightVM (formerly Nexpose) is an enterprise vulnerability management platform that combines on-premises scanning via Security Console and Scan Engines with cloud-based analytics through the Insight Platform. InsightVM leverages Rapid7's vulnerability research library, Metasploit exploit knowledge, global attacker behavior data, internet-wide scanning telemetry, and real-time reporting to provide comprehensive vulnerability visibility. This skill covers deploying the Security Console, configuring Scan Engines, setting up scan templates, credentialed scanning, and integrating with the Insight Agent for continuous assessment.
 
 
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|---|---|
+| "I'll figure it out as I go" | A structured approach saves time and reduces errors. Follow the workflow in this skill rather than improvising. |
+| "I already know this topic" | Familiarity breeds shortcuts. Use the checklist to verify you haven't missed critical steps. |
+| "This doesn't apply to my situation" | The patterns here generalize across contexts. Adapt, don't skip — the underlying principles hold. |
+| "One more tool will fix it" | Adding complexity rarely solves process gaps. Master the core workflow first. |
+
 ## When to Use
 **Trigger phrases:**
 - "implementing rapid7 insightvm for scanning"

@@ -321,7 +321,7 @@ Build Agent → Deploy → Monthly Retainer → Upsell Features
 
 ---
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

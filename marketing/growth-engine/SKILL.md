@@ -157,7 +157,7 @@ Growth Engine drives growth marketing with data-driven strategies.
 - Build organic before scaling paid
 - Track attribution across the full funnel
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

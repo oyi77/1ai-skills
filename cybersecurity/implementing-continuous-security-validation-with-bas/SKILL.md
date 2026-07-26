@@ -34,6 +34,16 @@ nist_csf:
 Breach and Attack Simulation (BAS) is an automated, continuous approach to validating security control effectiveness by safely executing real-world attack techniques against production security infrastructure. Unlike traditional penetration testing (point-in-time), BAS platforms continuously simulate threats mapped to MITRE ATT&CK, testing endpoint protection, network security, email gateways, SIEM detection, and incident response capabilities. Leading platforms include SafeBreach, AttackIQ, Picus Security (2024 Gartner Customers' Choice), Cymulate, Pentera, and SCYTHE. BAS 2.0 solutions safely emulate real attacker behavior across the entire IT environment without requiring pre-deployed agents on every endpoint.
 
 
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|---|---|
+| "I'll figure it out as I go" | A structured approach saves time and reduces errors. Follow the workflow in this skill rather than improvising. |
+| "I already know this topic" | Familiarity breeds shortcuts. Use the checklist to verify you haven't missed critical steps. |
+| "This doesn't apply to my situation" | The patterns here generalize across contexts. Adapt, don't skip — the underlying principles hold. |
+| "One more tool will fix it" | Adding complexity rarely solves process gaps. Master the core workflow first. |
+
 ## When to Use
 **Trigger phrases:**
 - "implementing continuous security validation with bas"

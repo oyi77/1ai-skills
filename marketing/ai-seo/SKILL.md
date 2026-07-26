@@ -207,7 +207,7 @@ APPENDIX: AI Engine Citation Scoring
 
 Copy template, fill sections from audit output, brand with your logo, send as PDF.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

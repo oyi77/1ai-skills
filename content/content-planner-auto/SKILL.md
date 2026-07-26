@@ -189,7 +189,7 @@ Price anchor: show the calendar as a stand-alone deliverable. Up sell to caption
 2. **Create** — Generate content following brand guidelines and best practices
 3. **Publish & Optimize** — Distribute to target platforms, track performance, iterate
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

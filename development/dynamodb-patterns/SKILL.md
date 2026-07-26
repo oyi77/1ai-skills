@@ -196,7 +196,7 @@ UPDATE "MyTable" SET "name" = 'Updated' WHERE "PK" = 'USER#123' AND "SK" = 'PROF
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

@@ -1792,8 +1792,8 @@ ZachXBT's model shows wallet intelligence is monetizable:
 - **Media** — Journalists purchase wallet intelligence for investigative pieces
 
 
-## Anti-Rationalization
-## Anti-Rationalization
+## Anti-Rationalization Table
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

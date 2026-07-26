@@ -43,7 +43,7 @@ Advanced Git workflows for professional development teams. Covers Git Flow, GitH
 6. **Bisect** - Binary search for bug-introducing commits
 7. **Worktrees** - Parallel work on multiple branches
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

@@ -118,7 +118,7 @@ The agent uses bleak's asyncio API to discover nearby BLE devices, connect to ta
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

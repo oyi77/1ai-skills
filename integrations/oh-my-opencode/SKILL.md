@@ -290,7 +290,7 @@ Refer to the skill overview for detailed usage instructions.
 - Configuration: https://github.com/code-yeongyu/oh-my-opencode/blob/master/docs/configurations.md
 - Agent-Model Matching: https://github.com/code-yeongyu/oh-my-opencode/blob/master/docs/guide/agent-model-matching.md
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

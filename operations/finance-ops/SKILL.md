@@ -147,7 +147,7 @@ Finance Ops streamlines operational efficiency for operational excellence.
 - Cost per operation
 - SLA compliance rate
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

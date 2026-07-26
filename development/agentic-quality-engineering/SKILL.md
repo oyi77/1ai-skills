@@ -304,7 +304,7 @@ After implementing quality engineering, confirm:
 - [ ] Anti-sycophancy checks reject hollow tests
 - [ ] Pattern learning captures reusable test strategies
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

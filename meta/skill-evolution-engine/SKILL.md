@@ -20,6 +20,16 @@ persona:
 
 The Skill Evolution Engine turns raw session activity into refined, reusable skills through a continuous improvement loop: observe, extract, score, evolve, and deploy. Instead of manually writing skills from scratch, the engine identifies repeated successful patterns in agent sessions, promotes them to instincts (atomic learned behaviors), clusters related instincts into coherent skills, and version-tracks them through their lifecycle. This creates a system that gets measurably better with every session.
 
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|---|---|
+| "I'll figure it out as I go" | A structured approach saves time and reduces errors. Follow the workflow in this skill rather than improvising. |
+| "I already know this topic" | Familiarity breeds shortcuts. Use the checklist to verify you haven't missed critical steps. |
+| "This doesn't apply to my situation" | The patterns here generalize across contexts. Adapt, don't skip — the underlying principles hold. |
+| "One more tool will fix it" | Adding complexity rarely solves process gaps. Master the core workflow first. |
+
 ## When to Use
 **Trigger phrases:**
 - "Lamarck"

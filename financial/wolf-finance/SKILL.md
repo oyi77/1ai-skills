@@ -41,7 +41,7 @@ echo "4. Check thesis: has anything fundamentally changed?"
 echo "5. Decision: HOLD, INCREASE, or EXIT each position"
 ```
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Excuse | Truth |
 |---|---|
@@ -118,7 +118,7 @@ def calculate_risk(returns: list[float]) -> dict:
 - Redact sensitive financial data in reports
 - Document assumptions and methodologies
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

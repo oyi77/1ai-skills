@@ -132,7 +132,7 @@ JSON report containing detected lateral movement indicators, correlated event ch
 - IAM policies reviewed for least-privilege compliance after testing
 - No residual test resources left running (cost and security check)
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

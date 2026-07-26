@@ -42,7 +42,7 @@ Create professional PowerPoint presentations with full layout support. Handles s
 5. **Add notes** — Speaker notes for each slide
 6. **Export** — Save as .pptx or .pdf
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

@@ -387,7 +387,7 @@ On completion: "[N]-email sequence created for [goal], expected [N]% conversion 
 - **Sequence conversion flat for 30+ days**: Refresh creative or segment
 - **No re-engagement running**: Dormant list growing — start a cleanup today
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Excuse | Truth |
 |--------|-------|

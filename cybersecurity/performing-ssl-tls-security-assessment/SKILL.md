@@ -113,7 +113,7 @@ JSON report with supported protocols, accepted cipher suites, certificate detail
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

@@ -42,7 +42,7 @@ Full Excel lifecycle — creation, editing, formatting, formulas, charts, and da
 5. **Add validation** — Data validation rules, conditional formatting
 6. **Export** — Save as .xlsx with proper naming
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

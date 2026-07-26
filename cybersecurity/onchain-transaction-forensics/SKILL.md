@@ -1573,8 +1573,8 @@ ZachXBT demonstrates that on-chain investigation is a viable career. Revenue sou
 - **Private investigations** — Law firms and insurance companies contract for court-ready reports
 
 
-## Anti-Rationalization
-## Anti-Rationalization
+## Anti-Rationalization Table
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

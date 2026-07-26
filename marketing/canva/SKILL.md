@@ -87,7 +87,7 @@ def analyze_keywords(keywords: list[str]) -> list[dict]:
 - Build organic before scaling paid
 - Track attribution across the full funnel
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

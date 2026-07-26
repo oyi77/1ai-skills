@@ -114,7 +114,7 @@ def extract_iocs(text: str) -> dict:
 - False positives filtered out through manual verification
 - Fix recommendations include code-level remediation guidance
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

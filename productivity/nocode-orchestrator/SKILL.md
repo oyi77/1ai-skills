@@ -323,7 +323,7 @@ After completing this skill, confirm:
 - [ ] Error handling covers edge cases
 - [ ] Results are accurate and actionable
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

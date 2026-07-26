@@ -120,7 +120,7 @@ JSON report listing DNS anomalies with record type, historical changes, risk sev
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

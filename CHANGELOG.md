@@ -48,6 +48,20 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
   is a legitimate specialization, not an error
 
 
+
+## [3.18.0] — 2026-07-26
+
+### Changed
+- 1335 skills updated: standardized `## Anti-Rationalization` headers to
+  `## Anti-Rationalization Table` (1132 renamed, 2 concatenated split, 201 added
+  where missing). 12 files were already correct.
+- SKILLS.json regenerated via `lint-skills.py --write` to sync catalog after content changes
+
+### Verified
+- Lint: 0 errors, 0 warnings, 3152 info
+- Tests: 1344/1344 pass
+- Schema: 1347/1347 pass (0 errors, 212 warnings)
+
 ## [3.17.0] — 2026-07-26
 
 ### Added

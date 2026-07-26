@@ -445,7 +445,7 @@ python3 schedule_social.py --promote newsletter --platforms "twitter,linkedin"
 python3 track_revenue.py --source newsletter --period weekly
 ```
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Excuse | Truth |
 |---|---|

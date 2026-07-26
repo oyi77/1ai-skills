@@ -108,7 +108,7 @@ az functionapp create -g MyRG -p MyPlan -n MyFunc --runtime node
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

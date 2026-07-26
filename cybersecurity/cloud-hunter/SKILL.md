@@ -529,7 +529,7 @@ aws s3api get-bucket-acl --bucket "$BUCKET" --query 'Grants[?Grantee.URI==`http:
 - [ ] Deliverables delivered as password-protected PDF + CSV attachment per client communication preference
 - [ ] Report includes a signed findings disclaimer: "This assessment reflects the configuration at the time of scan and does not guarantee ongoing security posture"
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

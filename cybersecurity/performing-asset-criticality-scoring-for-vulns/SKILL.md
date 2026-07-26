@@ -27,6 +27,16 @@ nist_csf:
 Asset criticality scoring assigns a business impact rating to each IT asset so that vulnerability remediation efforts focus on systems with the greatest organizational risk. Without criticality context, a CVSS 9.0 vulnerability on a test server receives the same urgency as the same vulnerability on a payment processing database. This skill covers building a multi-factor scoring model incorporating data sensitivity, business function dependency, regulatory scope, network exposure, and recoverability to create a 1-5 criticality tier that directly modifies vulnerability remediation SLAs.
 
 
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|---|---|
+| "I'll figure it out as I go" | A structured approach saves time and reduces errors. Follow the workflow in this skill rather than improvising. |
+| "I already know this topic" | Familiarity breeds shortcuts. Use the checklist to verify you haven't missed critical steps. |
+| "This doesn't apply to my situation" | The patterns here generalize across contexts. Adapt, don't skip — the underlying principles hold. |
+| "One more tool will fix it" | Adding complexity rarely solves process gaps. Master the core workflow first. |
+
 ## When to Use
 **Trigger phrases:**
 - "performing asset criticality scoring for vulns"

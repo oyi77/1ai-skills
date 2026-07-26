@@ -106,7 +106,7 @@ JSON report with per-rule tuning recommendations including current FP rate, sugg
 - Results validated against known-good baselines or reference implementations
 - Documentation complete enough for another analyst to reproduce findings
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

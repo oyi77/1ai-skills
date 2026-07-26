@@ -537,7 +537,7 @@ Complete SEO toolkit for organic growth. Research keywords, optimize content, tr
 - Targeting keywords with zero search volume - wasted effort
 
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 Common excuses SEO consultants tell themselves not to sell:
 

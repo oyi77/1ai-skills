@@ -140,7 +140,7 @@ Agent: Searches finance palettes, recommends trust-building blues with accent gr
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

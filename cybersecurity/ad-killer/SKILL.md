@@ -480,7 +480,7 @@ PAYMENT: USDC / Wire / ACH (net 15)
 - [ ] No persistence mechanisms left in client environment; credentials handled per ROE
 - [ ] Report includes raw data appendix for client review
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

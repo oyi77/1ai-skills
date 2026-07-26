@@ -370,7 +370,7 @@ KALODATA_CF_CFLEARANCE=your_cf_clearance_token
 4. **Content Ideas**: Use as starting points - customize for your product
 5. **Scene Timing**: Use `startTime` and `endTime` to replicate exact structure
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

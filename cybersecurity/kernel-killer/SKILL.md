@@ -89,7 +89,7 @@ def extract_iocs(text: str) -> dict:
 - [ ] Results documented with evidence and timestamps
 - [ ] Recommendations provided with risk-based prioritization
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

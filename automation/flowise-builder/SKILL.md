@@ -151,7 +151,7 @@ curl -X POST http://localhost:3000/api/v1/prediction/{chatflow-id} \
 2. Apply domain expertise
 3. Verify output quality
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

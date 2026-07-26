@@ -156,7 +156,7 @@ After completing any code change, confirm:
 - [ ] Documentation synced
 - [ ] Review receipts (command output proving it works)
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|

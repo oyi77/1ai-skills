@@ -183,7 +183,7 @@ PAYMENT: USDC / Bank Transfer / PayPal (net 15)
 5. **Prioritize & Rank** — Score by: payout × (1 − competition_factor) × skill_match
 6. **Output Report** — Deliver ranked list with payout estimates and scope summaries
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|
