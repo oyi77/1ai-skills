@@ -14,7 +14,7 @@ Instructions are resolved in this order (highest priority first):
 | 1 | **Runtime/system prompt** | Session | Harness-level rules, user session config |
 | 2 | **User instruction** | Turn | Direct user command in conversation |
 | 3 | **CLAUDE.md / AGENTS.md** | Repo | Per-project engineering constraints |
-| 4 | **Activated skill** | Task | `skill://name` instructions loaded into context |
+ | 4 | **Activated skill** | Task | Skill instructions loaded into context via `skill://` URIs |
 | 5 | **SKILL.md content** | Reference | Skill body loaded on demand |
 | 6 | **SKILLS.json metadata** | Discovery | Name, description, tags, category |
 
