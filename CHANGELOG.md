@@ -1,6 +1,26 @@
 # Changelog
 All notable changes to 1ai-skills are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [3.21.0] — 2026-07-26
+### Removed
+- 37 G1 stub sub-skill files deleted from disk and SKILLS.json (entries that redirect to parent
+  skills): ad-copy, analytics-reporting, collecting-open-source-intelligence, cron-designer,
+  detecting-business-email-compromise-with-ai, discord-bot, discord-webhooks, docker-compose,
+  dockerfile-opt, email-writer, github-actions, github-issues, github-pr, ifttt-maker,
+  k8s-deploy, lead-generation-engine, long-form, make-scenarios, n8n-builder, notion-api,
+  notion-db, notion-pages, pipedream-workflows, product-desc, scrapers, slack-bot,
+  slack-notifier, slash-commands, smart-scraper, social-listener, social-media-engagement,
+  webhook-router, whatsapp-bot, workflows, zapier-alt, email-sequences, price-tracker
+- `dockerfile-opt` → `dockerfile-optimize` — duplicate merged (69% name, 68% desc similarity;
+  substance from `dockerfile-opt` absorbed into `dockerfile-optimize`)
+- `scripts/bulk-add-version.py`, `scripts/bulk-fix-ar-table.py`, `scripts/find-duplicates.py` —
+
+### Changed
+- `devops/dockerfile-optimize/SKILL.md` — merged with `dockerfile-opt`: added layer ordering
+  table, .dockerignore section, base image selection guide, security hardening rules, expanded
+  anti-rationalization table (7 rows)
+### Verified
+
 ## [3.20.0] — 2026-07-26
 
 ### Changed
