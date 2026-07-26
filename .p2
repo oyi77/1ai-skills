@@ -1,1 +1,1 @@
-P2: yaml.safe_load. PASS.
+P2: yaml.safe_load at test-skills.py L108. No yaml.load found. PASS.
