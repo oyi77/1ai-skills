@@ -1,6 +1,27 @@
 # Changelog
 All notable changes to 1ai-skills are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [3.20.0] — 2026-07-26
+
+### Changed
+- 48 thin/stub skills deepened to 80–140 lines with redirect notes, domain overviews,
+  Quick Start guides, focused code examples, verification checklists (5–7 items), and
+  anti-rationalization tables (3–4 domain-specific rows)
+- 15 files fixed post-deepening: Python syntax error in `anomaly-detect`, 14 missing
+  `## When to Use` sections added (derived from frontmatter descriptions)
+- 14 files had `## Workflow` sections auto-generated via `scripts/bulk-add-workflow.py`
+  (fixed 28/29, remaining 15 fixed with targeted `## When to Use` insertion)
+- SKILLS.json regenerated via `lint-skills.py --write` to sync catalog
+
+### Verified
+- Lint: 0 errors, 0 warnings, 2572 info
+- Tests: 1344/1344 pass
+- Schema: 1347/1347 pass (0 errors, 212 warnings)
+
+### Removed
+- `scripts/bulk-add-workflow.py` — one-off Phase 3d migration script (YAGNI)
+- `scripts/bulk-fix-when-to-use.py` — one-off Phase 3d fix script (YAGNI)
+
 ## [3.15.0] — 2026-07-26
 
 ### Added
