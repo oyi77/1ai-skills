@@ -51,6 +51,17 @@ No TODO, FIXME, "Not Implemented", placeholder, stub, skeleton, or pass-through 
 ### 12. Revenue Prioritization
 Business-critical paths shall be delivered before aesthetic or non-functional improvements. Every MVP shall constitute a complete, demoable vertical slice. Scope shall be reduced rather than stubbed. An organization without revenue does not survive. Revenue-critical paths shall ship first.
 
+### 13. Sellability Requirement (Pre-Sale Hardening)
+Code shall be pre-sale hardened before it is considered complete. Hardening is defined by six criteria:
+- **Crash audit** — every handler returns proper errors, no 500s, no unhandled rejections
+- **Noise suppression** — no debug logs, console.log, or raw stack traces visible to consumer
+- **Edge case coverage** — empty/null/failure/timeout/concurrent states handled gracefully
+- **Evidence pack** — screenshots, curl output, or case study with real data flowing through
+- **Handover-ready** — README, API docs, deployment guide accurate; someone else can pick it up
+- **Value statement** — one sentence: "This [thing] does [what] so [who] can [benefit]"
+
+Code that cannot be sold is not complete code. The sellability gate (GATE.md Gate 6) shall pass before any commit.
+
 ---
 
 ## Design Principles
@@ -168,6 +179,7 @@ Acceptable response: "We have [capability]. Missing: [deficit]. Required: [actio
 [ ] Documentation updated to match code changes?
 [ ] Evidence captured for all claims?
 [ ] All GATE.md gates passed?
+[ ] Pre-sale hardening — crash audit, noise suppressed, edges covered, evidence pack, handover-ready, value statement clear?
 ```
 
 **If any box remains unchecked, the commit shall not proceed.**
@@ -190,3 +202,6 @@ Acceptable response: "We have [capability]. Missing: [deficit]. Required: [actio
 | Skipped tests | Run tests, capture results |
 | No self-review | Re-read own diff |
 | Hardcoded provider reference | Interface plus implementation pattern |
+| **Code compiles but can't be sold** | **Run §6.6 pre-sale hardening — crash audit, noise, edges, evidence, handover, value** |
+| **"I tested it" without evidence** | **Screenshots, curl output, real data flow receipts** |
+| **Debug noise in shipped code** | **Suppress all console.log/print/debug — clean output only** |
