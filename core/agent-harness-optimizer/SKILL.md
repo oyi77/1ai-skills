@@ -3,12 +3,12 @@ name: agent-harness-optimizer
 description: Agent harness optimization patterns for token efficiency, memory persistence, session management, and cross-harness parity. Use when optimizing agent performance, reducing token costs,.
 domain: core
 tags: 
-- [token-optimization
-- memory-persistence
-- session-management
-- hooks
-- cross-harness
-- performance]
+  - token-optimization
+  - memory-persistence
+  - session-management
+  - hooks
+  - cross-harness
+  - performance
 persona:
   name: "NanoClaw"
   title: "Harness Performance Architect"

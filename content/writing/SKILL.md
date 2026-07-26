@@ -1,7 +1,7 @@
 ---
 name: writing
 description: Use when full-stack content production factory — ad copy, emails, long-form articles, product descriptions. Turn words into revenue with data-driven writing pipelines.
-domain: content/writing
+domain: content
 tags:
   - content-creation
   - copywriting

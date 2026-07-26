@@ -1,7 +1,7 @@
 ---
 name: investment-bottleneck
 version: 2.0.0
-category: investment
+category: finance
 domain: finance
 description: "Use when find bottleneck companies — the critical constraint in supply chains that have pricing power, low competition, and high returns. Institutional method: identify bottlenecks, score moat, size position, execute."
 keywords: [bottleneck, investment, company analysis, market gaps, supply chain, pricing power, economic moat, value investing, concentration]

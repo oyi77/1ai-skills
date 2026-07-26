@@ -3,12 +3,12 @@ name: skill-evolution-engine
 description: Self-improving skill system that auto-extracts patterns from sessions into reusable skills with confidence scoring, skill versioning, import/export, and continuous improvement loops. Use. Use when working with skill evolution engine.
 domain: meta
 tags: 
-- [self-improvement
-- skill-evolution
-- confidence-scoring
-- continuous-learning
-- stocktake
-- gap-analysis]
+  - self-improvement
+  - skill-evolution
+  - confidence-scoring
+  - continuous-learning
+  - stocktake
+  - gap-analysis
 persona:
   name: "Lamarck"
   title: "Skill Evolution Architect"

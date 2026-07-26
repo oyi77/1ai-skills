@@ -12,7 +12,7 @@ tags:
 - WPA3
 - rogue-AP
 - evil-twin
-- 802.11
+- "802.11"
 - Kismet
 version: '1.0'
 author: mahipal

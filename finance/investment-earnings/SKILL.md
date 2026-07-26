@@ -1,7 +1,7 @@
 ---
 name: investment-earnings
 version: 2.0.0
-category: investment
+category: finance
 domain: finance
 description: "Use when trade earnings reports for profit — pre-earnings positioning, post-earnings momentum, and management quality scoring. Systematic framework for the highest-alpha event in equity markets."
 keywords: [earnings, trading, financial analysis, earnings calls, management quality, post-earnings drift, options, straddle, momentum]
