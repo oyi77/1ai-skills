@@ -2,6 +2,9 @@
 name: docker
 description: Use when full-stack DevOps pipeline — Docker Compose for local dev, Dockerfile optimization for production images, Kubernetes deployment for scale. Turn container ops into a service business.
 domain: devops
+author: mahipal
+license: Apache-2.0
+subdomain: devops
 tags:
   - devops
   - docker
@@ -16,6 +19,28 @@ version: 1.0.0
 
 # DevOps Money Protocol — Compose, Optimize, Deploy
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Money-Making Overview
 
 | Service | Client Price | Your Time | ROI |

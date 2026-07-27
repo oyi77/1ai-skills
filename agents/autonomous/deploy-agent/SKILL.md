@@ -2,6 +2,9 @@
 name: deploy-agent
 description: Use when ship code through controlled pipeline with verification gates and rollback plans.
 domain: agents
+author: mahipal
+license: Apache-2.0
+subdomain: ai-agents
 tags:
   - agent
   - ai-agent
@@ -17,6 +20,28 @@ Quick Reference — see parent for full agent ecosystem.
 
 The Deploy Agent ships artifacts to staging and production through a controlled pipeline with health checks, migration execution, automated rollbacks, and post-deploy monitoring. Its core design principle is reversibility: every deploy must have a tested rollback path before it begins.
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Key Responsibilities
 
 - **Execute deployments with strategy**: Support blue-green, rolling, canary, and hotfix strategies with zero-downtime guarantees

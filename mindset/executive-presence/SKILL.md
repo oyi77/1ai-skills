@@ -3,6 +3,9 @@ name: executive-presence
 description: Command rooms, communicate with gravitas, and project confidence. Covers body language, vocal tonality, storytelling,
   and handling pressure.
 domain: mindset
+author: mahipal
+license: Apache-2.0
+subdomain: mindset
 tags:
 - executive
 - mindset

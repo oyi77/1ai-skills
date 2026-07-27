@@ -2,6 +2,9 @@
 name: calendar-management
 description: Advanced calendar management, scheduling, and meeting automation with Google Calendar MCP. Use when working with calendar management.
 domain: productivity
+author: mahipal
+license: Apache-2.0
+subdomain: productivity
 tags:
 - calendar
 - management

@@ -3,6 +3,9 @@ name: strategic-planning
 description: Set strategy using OKRs, roadmaps, quarterly planning, and review cadences. Use when defining direction or aligning
   teams on goals.
 domain: mindset
+author: mahipal
+license: Apache-2.0
+subdomain: mindset
 tags:
 - mindset
 - personal-development

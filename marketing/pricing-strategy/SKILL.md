@@ -3,6 +3,9 @@ name: pricing-strategy
 description: Pricing page design, tier structuring, anchoring psychology, conversion optimization. Use when designing pricing
   pages, setting up tier structures, or optimizing pricing conversion rates.
 domain: marketing
+author: mahipal
+license: Apache-2.0
+subdomain: marketing
 tags:
 - growth
 - marketing

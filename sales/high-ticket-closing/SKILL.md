@@ -2,6 +2,9 @@
 name: high-ticket-closing
 description: Jordan Belfort's Straight Line System - closing high-value deals through persuasion and psychology. Use when working with high ticket closing.
 domain: sales
+author: mahipal
+license: Apache-2.0
+subdomain: sales
 tags:
 - business-development
 - closing

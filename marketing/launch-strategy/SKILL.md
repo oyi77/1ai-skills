@@ -3,6 +3,9 @@ name: launch-strategy
 description: Go-to-market planning — launch sequencing, channel strategy, audience building, PR outreach. Use when planning
   product launches, building launch checklists, or coordinating multi-channel campaigns.
 domain: marketing
+author: mahipal
+license: Apache-2.0
+subdomain: marketing
 tags:
 - growth
 - launch

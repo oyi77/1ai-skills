@@ -2,6 +2,9 @@
 name: daisyui-components
 description: daisyUI component library for Tailwind — themed components, colors, responsive, dark mode. Use when working with daisyui components.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - components
 - content-creation

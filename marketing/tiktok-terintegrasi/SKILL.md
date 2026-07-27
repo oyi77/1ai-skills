@@ -3,6 +3,9 @@ name: tiktok-terintegrasi
 description: Integrated TikTok content suite with 9 specialized workflows — generates 9:16 videos and images using NVIDIA
   NIM, BytePlus Seedance, Kling AI, and ElevenLabs TTS.
 domain: marketing
+author: mahipal
+license: Apache-2.0
+subdomain: marketing
 tags:
 - growth
 - marketing
@@ -19,6 +22,28 @@ version: 1.0.0
 # Tiktok Terintegrasi
 
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Anti-Rationalization Table
 
 | Rationalization | Reality |

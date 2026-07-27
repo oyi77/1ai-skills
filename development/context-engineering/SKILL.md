@@ -2,6 +2,9 @@
 name: context-engineering
 description: Design and manage the context window for AI coding agents. Structure prompts, manage file loading, and optimize token usage for maximum agent effectiveness. Use when designing and manage the context window for ai coding agents.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - engineering
 - context

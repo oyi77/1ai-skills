@@ -2,6 +2,9 @@
 name: replicate-runner
 description: Run AI models on Replicate cloud API. Deploy image generation, video creation, audio processing, and custom models without managing infrastructure. Use when working with replicate runner.
 domain: core
+author: mahipal
+license: Apache-2.0
+subdomain: core-platform
 tags:
 - ai
 - replicate

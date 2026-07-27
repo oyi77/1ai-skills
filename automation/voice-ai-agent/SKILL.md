@@ -3,6 +3,9 @@ name: voice-ai-agent
 description: AI voice agent for handling incoming calls, appointment scheduling, lead qualification, and 24/7 customer service
   without human intervention. Use when working with voice ai agent.
 domain: automation
+author: mahipal
+license: Apache-2.0
+subdomain: workflow-automation
 tags:
 - agent
 - ai-agent

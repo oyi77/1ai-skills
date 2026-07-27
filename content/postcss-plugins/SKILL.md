@@ -2,6 +2,9 @@
 name: postcss-plugins
 description: PostCSS plugin ecosystem — Autoprefixer, cssnano, nesting, custom plugins, preset configuration. Use when working with postcss plugins.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - content-creation
 - digital-content

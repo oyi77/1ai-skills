@@ -2,6 +2,9 @@
 name: viral-marketing
 description: Gary Vaynerchuk's content machine approach - producing high-volume, authentic content across all platforms. Use when working with viral marketing.
 domain: marketing
+author: mahipal
+license: Apache-2.0
+subdomain: marketing
 tags:
 - growth
 - marketing

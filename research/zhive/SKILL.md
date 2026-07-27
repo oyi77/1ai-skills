@@ -2,6 +2,9 @@
 name: zhive
 description: 'Skill: zhive. See SKILL.md body for details. Use when this domain is relevant.'
 domain: research
+author: mahipal
+license: Apache-2.0
+subdomain: research
 tags:
 - analysis
 - investigation

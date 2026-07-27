@@ -4,3 +4,6 @@
 .gate*
 .phase-*
 .verification-*
+__pycache__/
+validation-report.json
+_improve/

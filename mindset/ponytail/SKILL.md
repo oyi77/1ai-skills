@@ -2,6 +2,8 @@
 name: ponytail
 description: Lazy senior dev mode. Four disciplined mindsets — audit, debt, help, review — that cut complexity, track deferrals, surface reference, and catch over-engineering. Forces YAGNI, stdlib first, no unrequested abstractions. Use when working with ponytail.
 domain: mindset
+author: mahipal
+subdomain: ponytail-framework
 tags:
   - mindset
   - personal-development

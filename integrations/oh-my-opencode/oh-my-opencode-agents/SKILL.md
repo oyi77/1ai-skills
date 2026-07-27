@@ -3,6 +3,9 @@ name: oh-my-opencode-agents
 description: Deep dive into each oh-my-opencode agent - Sisyphus, Hephaestus, Oracle, Librarian, Explore - their characteristics,
   use cases, and when to use each. Use when working with oh my opencode agents.
 domain: integrations
+author: mahipal
+license: Apache-2.0
+subdomain: integrations
 tags:
 - agents
 - ai-agent

@@ -2,6 +2,9 @@
 name: ant-design
 description: Ant Design React component library — enterprise UI, forms, tables, charts, theming, ProComponents. Use when working with ant design.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - ant
 - content-creation

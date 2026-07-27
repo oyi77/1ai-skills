@@ -2,6 +2,9 @@
 name: sequelize-patterns
 description: Sequelize ORM patterns — models, associations, migrations, transactions, hooks, TypeScript support. Use when working with sequelize patterns.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - coding
 - patterns

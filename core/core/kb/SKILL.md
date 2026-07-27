@@ -2,6 +2,9 @@
 name: kb
 category: core
 domain: core
+author: mahipal
+license: Apache-2.0
+subdomain: core-platform
 version: 2.0.0
 depth: 2
 quality: 3

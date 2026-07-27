@@ -3,6 +3,9 @@ name: remote-work
 description: Work effectively remotely including async communication, documentation, video meetings, and self-management in
   distributed teams. Use when working with remote work.
 domain: mindset
+author: mahipal
+license: Apache-2.0
+subdomain: mindset
 tags:
 - mindset
 - personal-development

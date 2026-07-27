@@ -2,6 +2,9 @@
 name: theme-factory
 description: Generate and apply professional color themes, typography systems, and design tokens for applications. Create consistent visual identities across platforms.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - design
 - themes

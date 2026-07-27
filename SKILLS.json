@@ -1,6 +1,6 @@
 {
-  "total_skills": 1309,
-  "category_count": 20,
+  "total_skills": 1306,
+  "category_count": 19,
   "categories": {
     "agents": 14,
     "automation": 20,
@@ -10,7 +10,6 @@
     "data": 7,
     "development": 90,
     "devops": 31,
-    "finance": 3,
     "financial": 15,
     "integrations": 26,
     "marketing": 44,

@@ -2,6 +2,9 @@
 name: customer-success
 description: Automated customer onboarding, health scoring, churn prediction, proactive outreach, and support ticket resolution
 domain: operations
+author: mahipal
+license: Apache-2.0
+subdomain: business-operations
 tags:
 - business-ops
 - customer

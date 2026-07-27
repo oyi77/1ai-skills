@@ -2,6 +2,9 @@
 name: langchain-patterns
 description: LangChain/LangGraph patterns — chains, agents, tools, memory, retrieval, graph workflows. Use when working with langchain patterns.
 domain: core
+author: mahipal
+license: Apache-2.0
+subdomain: core-platform
 tags:
 - ai-agent
 - infrastructure

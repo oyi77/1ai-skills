@@ -3,6 +3,9 @@ name: workflow-builder
 description: Build and automate business workflows with Notion task tracking, Slack notifications, Kanban boards, and cross-functional
   process orchestration.
 domain: automation
+author: mahipal
+license: Apache-2.0
+subdomain: workflow-automation
 tags:
 - automation
 - builder

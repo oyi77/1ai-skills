@@ -2,6 +2,9 @@
 name: react-native-expo
 description: React Native with Expo — managed workflow, native modules, navigation, and app store deployment. Use when working with react native expo.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - coding
 - expo

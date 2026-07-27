@@ -2,6 +2,9 @@
 name: larry-playbook
 description: Autonomous AI agent that learns and improves viral content over time using Oliver Henry's proven formula. Use when working with larry playbook.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - ai-agent
 - content-creation

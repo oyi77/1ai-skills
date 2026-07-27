@@ -2,6 +2,9 @@
 name: bots
 description: Multi-platform bot automation hub — Telegram, Twitter/X, and WhatsApp bots for automated engagement, content distribution, and revenue generation.
 domain: automation
+author: mahipal
+license: Apache-2.0
+subdomain: workflow-automation
 tags:
 - automation
 - bots

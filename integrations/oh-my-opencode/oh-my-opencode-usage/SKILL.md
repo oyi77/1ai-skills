@@ -3,6 +3,9 @@ name: oh-my-opencode-usage
 description: Daily usage patterns for oh-my-opencode including workflow commands, session management, agent invocation, and
   productivity tips. Use when working with oh my opencode usage.
 domain: integrations
+author: mahipal
+license: Apache-2.0
+subdomain: integrations
 tags:
 - ai-agent
 - api

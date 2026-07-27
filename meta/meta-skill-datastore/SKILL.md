@@ -3,6 +3,9 @@ name: meta-skill-datastore
 description: Centralized database for meta-skill operations. Stores performance metrics, feedback, patterns, and skill evolution
   history. Use when working with meta skill datastore.
 domain: meta
+author: mahipal
+license: Apache-2.0
+subdomain: meta-skills
 tags:
 - datastore
 - meta

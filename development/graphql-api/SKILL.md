@@ -2,6 +2,9 @@
 name: graphql-api
 description: GraphQL API development — schema design, resolvers, subscriptions, federation. Apollo, Relay, performance optimization. Use when working with graphql api.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - api
 - coding

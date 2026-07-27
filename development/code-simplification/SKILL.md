@@ -3,6 +3,9 @@ name: code-simplification
 description: Simplifies code for clarity. Use when code is overly complex, has unnecessary abstractions, or when refactoring
   for readability.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - code
 - coding

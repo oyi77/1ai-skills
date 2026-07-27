@@ -2,6 +2,9 @@
 name: api-testing
 description: REST and GraphQL API testing — contract testing, schema validation, and integration test automation. Use when working with api testing.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - api
 - coding

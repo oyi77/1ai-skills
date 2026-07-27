@@ -3,6 +3,9 @@ name: finance-tracker
 description: Track real-time revenue across 5 income streams, monitor cashflow and runway, detect revenue gaps, and send threshold
   alerts via Telegram. Use when tracking real-time revenue across 5 income streams, monitor cashflow and.
 domain: financial
+author: mahipal
+license: Apache-2.0
+subdomain: financial-analysis
 tags:
 - analysis
 - finance

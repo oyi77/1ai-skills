@@ -4,6 +4,9 @@ description: 6 unique agent skills cherry-picked from Addy Osmani's agent-skills
   adversarial review, source-driven development, context engineering, and deprecation workflows. Use when requirements gathering,
   idea refinement, adversarial review, documentation-driven dev, context optimization, code deprecation.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - agent-skills
 - methodology

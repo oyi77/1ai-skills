@@ -3,6 +3,9 @@ name: leadership-essentials
 description: Lead teams through vision-setting, decision-making, delegation, and accountability. Use when stepping into a
   leadership role or improving team performance.
 domain: mindset
+author: mahipal
+license: Apache-2.0
+subdomain: mindset
 tags:
 - essentials
 - leadership

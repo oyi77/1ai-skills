@@ -2,6 +2,9 @@
 name: clients
 description: Model Context Protocol client hub — connect AI agents to any MCP server for tool discovery, invocation, and ecosystem management. Use when working with MCP clients, discovering MCP servers, or building MCP-based toolchains.
 domain: mcp
+author: mahipal
+license: Apache-2.0
+subdomain: mcp-clients
 tags:
 - mcp
 - model-context-protocol
@@ -32,6 +35,28 @@ version: 1.0.0
 
 # MCP Clients Hub — Model Context Protocol Client Ecosystem
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Money-Making Overview
 
 MCP clients are the gateway layer that connects AI agents to the entire tool ecosystem. Mastering MCP client usage and discovery directly enables revenue generation across every other skill:

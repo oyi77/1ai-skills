@@ -3,6 +3,9 @@ name: security-agent-hardening
 description: Secure AI agents against prompt injection, jailbreaking, data exfiltration, and supply chain attacks. Implement
   guardrails, sandboxing, and monitoring for safe autonomous operation. Use when working with security agent hardening.
 domain: cybersecurity
+author: mahipal
+license: Apache-2.0
+subdomain: general-cybersecurity
 tags:
 - agent-security
 - prompt-injection

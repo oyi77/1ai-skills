@@ -2,6 +2,9 @@
 name: dagster-pipelines
 description: Dagster data orchestration — software-defined assets, ops, jobs, schedules, sensors, IO managers. Use when working with dagster pipelines.
 domain: data
+author: mahipal
+license: Apache-2.0
+subdomain: data-engineering
 tags:
 - analytics
 - dagster

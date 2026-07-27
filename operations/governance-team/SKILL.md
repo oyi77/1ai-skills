@@ -3,6 +3,9 @@ name: governance-team
 description: Manage organizational policies, access control, compliance frameworks, and governance processes with radical
   transparency principles. Use when manageing organizational policies, access control, compliance frameworks, and governance processes.
 domain: operations
+author: mahipal
+license: Apache-2.0
+subdomain: business-operations
 tags:
 - business-ops
 - compliance

@@ -2,6 +2,9 @@
 name: rabbitmq-patterns
 description: RabbitMQ patterns — exchanges, queues, routing, dead letter queues, priority queues, clustering. Use when working with rabbitmq patterns.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - coding
 - patterns

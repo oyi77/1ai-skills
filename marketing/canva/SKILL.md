@@ -3,6 +3,9 @@ name: canva
 description: Create, export, and manage Canva designs via the Connect API. Generate social posts, carousels, and graphics
   programmatically.
 domain: marketing
+author: mahipal
+license: Apache-2.0
+subdomain: marketing
 tags:
 - api
 - canva

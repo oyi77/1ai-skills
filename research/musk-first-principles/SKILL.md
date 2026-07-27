@@ -2,6 +2,9 @@
 name: musk-first-principles
 description: Break problems down to fundamental truths and reason up using Elon Musk's first-principles methodology. Use when working with musk first principles.
 domain: research
+author: mahipal
+license: Apache-2.0
+subdomain: research
 tags:
 - analysis
 - first

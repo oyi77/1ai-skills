@@ -3,6 +3,9 @@ name: iot-hunter
 description: IoT and embedded device security testing — firmware analysis, hardware interfaces, protocol exploitation. Use
   when testing IoT devices, extracting firmware, analyzing embedded systems, or finding hardware vulnerabilities. Use when working with iot hunter.
 domain: cybersecurity
+author: mahipal
+license: Apache-2.0
+subdomain: general-cybersecurity
 tags:
 - cybersecurity
 - hunter

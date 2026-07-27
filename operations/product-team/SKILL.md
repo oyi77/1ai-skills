@@ -2,6 +2,9 @@
 name: product-team
 description: Manage PRD creation, roadmap planning, sprint coordination, and release management with Notion integration. Use when manageing prd creation, roadmap planning, sprint coordination, and release management.
 domain: operations
+author: mahipal
+license: Apache-2.0
+subdomain: business-operations
 tags:
 - business-ops
 - management

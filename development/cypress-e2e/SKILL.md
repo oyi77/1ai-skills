@@ -2,6 +2,9 @@
 name: cypress-e2e
 description: Cypress E2E testing — component testing, API testing, fixtures, custom commands, CI integration. Use when working with cypress e2e.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - api
 - coding

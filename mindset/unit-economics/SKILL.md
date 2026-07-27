@@ -3,6 +3,9 @@ name: unit-economics
 description: Calculate CAC, LTV, margins, payback period, and cohort analysis. Use when evaluating business model sustainability
   or optimizing growth efficiency.
 domain: mindset
+author: mahipal
+license: Apache-2.0
+subdomain: mindset
 tags:
 - economics
 - mindset

@@ -4,6 +4,9 @@ description: "|\n  >\n    Full influencer scouting, outreach, and performance tr
   \   platform search across TikTok, Instagram, and YouTube for creators,\n    scoring/qualification, DM outreach,\
   \   negotiation, deal tracking, and ROI measurement.\n    Integrates with Kalodata for TikTok analytics.\n"
 domain: sales
+author: mahipal
+license: Apache-2.0
+subdomain: sales
 tags:
 - influencer
 - marketing

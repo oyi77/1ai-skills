@@ -2,6 +2,7 @@
 name: trading-strategist
 description: "Design and backtest trading strategies using technical indicators, fundamental analysis, and statistical models. Use when designing and backtesting trading strategies."
 domain: trading
+license: Apache-2.0
 tags: [algorithms, markets, strategist, trading, money, backtesting]
 version: "2.0.0"
 author: ""

@@ -3,6 +3,9 @@ name: gl-reconciler
 description: Finds breaks, traces root cause, routes for sign-off. Use when user says "reconcile GL", "find breaks", "trace
   accounting error".
 domain: financial
+author: mahipal
+license: Apache-2.0
+subdomain: financial-analysis
 tags:
 - analysis
 - finance

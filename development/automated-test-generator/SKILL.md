@@ -2,6 +2,9 @@
 name: automated-test-generator
 description: Generate test suites, analyze coverage, and scaffold E2E tests automatically. Use when creating tests for existing code, improving test coverage, scaffolding integration tests, or setting.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags: 
   - test-generation
   - coverage-analysis

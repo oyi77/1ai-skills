@@ -2,6 +2,9 @@
 name: core
 description: Knowledge base hub — PARA-structured company memory combining company-kb and kb for persistent context, project documentation, and agent recall across sessions. Use when working with knowledge base, company knowledge, or persistent memory.
 domain: core
+author: mahipal
+license: Apache-2.0
+subdomain: core-platform
 tags:
 - knowledge-base
 - memory
@@ -33,6 +36,28 @@ version: 1.0.0
 
 # Core Knowledge Base Hub — Company Memory & Recall
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Money-Making Overview
 
 A well-structured knowledge base is the single highest-leverage investment for an autonomous agent ecosystem. Every hour spent organizing knowledge saves 10 hours of re-discovery and context-switching. Direct revenue impact:

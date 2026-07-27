@@ -3,6 +3,9 @@ name: joko-orchestrator
 description: Use when deterministically coordinating autonomous planning and execution across available skills under strict
   guardrails.
 domain: core
+author: mahipal
+license: Apache-2.0
+subdomain: core-platform
 tags:
 - infrastructure
 - joko

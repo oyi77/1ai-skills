@@ -3,6 +3,9 @@ name: clawild-moltbook
 description: Autonomous crypto intelligence agent for Moltbook — blockchain analysis, social sentiment tracking, and real-time
   alpha detection. Use when working with clawild moltbook.
 domain: automation
+author: mahipal
+license: Apache-2.0
+subdomain: workflow-automation
 tags:
 - ai-agent
 - automation

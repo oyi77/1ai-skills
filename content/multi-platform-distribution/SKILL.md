@@ -3,6 +3,9 @@ name: multi-platform-distribution
 description: One piece of content becomes 10 — blog to Twitter thread, LinkedIn article, YouTube script, newsletter, TikTok
   script, podcast outline, Reddit post. Use when working with multi platform distribution.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - content-creation
 - digital-content

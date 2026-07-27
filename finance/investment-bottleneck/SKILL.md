@@ -3,6 +3,9 @@ name: investment-bottleneck
 version: 2.0.0
 category: finance
 domain: finance
+author: mahipal
+license: Apache-2.0
+subdomain: finance
 description: "Use when find bottleneck companies — the critical constraint in supply chains that have pricing power, low competition, and high returns. Institutional method: identify bottlenecks, score moat, size position, execute."
 keywords: [bottleneck, investment, company analysis, market gaps, supply chain, pricing power, economic moat, value investing, concentration]
 source: ai-berkshire
@@ -12,6 +15,28 @@ tags: [investment, bottleneck, finance]
 
 # Investment Bottleneck Hunter
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Money-Making Overview
 
 **Bottleneck investing** is the highest-conviction strategy in value investing. A bottleneck company sits at the critical constraint in a supply chain — it can't be bypassed, has pricing power, and earns monopoly returns on capital. Charlie Munger calls this the "lollapalooza effect."

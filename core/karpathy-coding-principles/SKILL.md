@@ -2,6 +2,9 @@
 name: karpathy-coding-principles
 description: Andrej Karpathy's 4 coding principles — think before coding, simplicity first, surgical changes, goal-driven execution. Use when coding, reviewing code quality, reducing overengineering,.
 domain: core
+author: mahipal
+license: Apache-2.0
+subdomain: core-platform
 tags: 
   - coding-principles
   - code-quality

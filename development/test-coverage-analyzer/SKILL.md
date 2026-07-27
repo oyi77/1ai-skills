@@ -2,6 +2,9 @@
 name: test-coverage-analyzer
 description: Identify untested code paths — coverage reports, gap analysis, and test prioritization. Use when working with test coverage analyzer.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - analyzer
 - coding

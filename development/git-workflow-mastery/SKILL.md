@@ -2,6 +2,9 @@
 name: git-workflow-mastery
 description: Master Git workflows including branching strategies, interactive rebase, cherry-pick, bisect, worktrees, and advanced merge conflict resolution. Use when working with git workflow mastery.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - git
 - version-control

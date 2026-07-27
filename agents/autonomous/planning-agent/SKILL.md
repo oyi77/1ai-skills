@@ -2,6 +2,9 @@
 name: planning-agent
 description: Use when decompose complex tasks into executable steps with dependencies, risk assessment, and verification criteria.
 domain: agents
+author: mahipal
+license: Apache-2.0
+subdomain: ai-agents
 tags:
   - agent
   - ai-agent
@@ -17,6 +20,28 @@ Quick Reference — see parent for full agent ecosystem.
 
 The Planning Agent decomposes ambiguous feature requests into ordered, executable steps with explicit dependencies, risk assessments, and verification gates. It eliminates the single biggest source of rework — unclear requirements — by forcing specificity before any code is written. Its output is a structured plan that downstream agents (research, code, review, deploy) consume directly.
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Key Responsibilities
 
 - **Break down features**: Convert natural-language requirements into a step graph with clear inputs, outputs, and dependencies

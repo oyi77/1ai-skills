@@ -2,6 +2,9 @@
 name: berkahkarya-orchestrator
 description: Use when orchestrate multi-skill workflows by routing tasks to the right agents and coordinating cross-platform operations.
 domain: core
+author: mahipal
+license: Apache-2.0
+subdomain: core-platform
 tags:
 - ai-agent
 - berkahkarya

@@ -4,6 +4,7 @@ description: Profile and cluster blockchain wallet addresses to identify entity 
   and build address reputation intelligence across multiple chains. Use when analyzing wallet behavior, clustering
   related addresses, assessing counterparty risk, or building address intelligence reports.
 domain: cybersecurity
+license: Apache-2.0
 subdomain: blockchain-security
 tags:
 - blockchain

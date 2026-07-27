@@ -2,6 +2,9 @@
 name: pdf-creator
 description: Create, edit, and extract text from PDF documents. Generate reports, invoices, and forms. Parse existing PDFs for data extraction.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - documents
 - pdf

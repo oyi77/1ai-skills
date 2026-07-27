@@ -3,6 +3,9 @@ name: mcp-server-builder
 description: Create MCP (Model Context Protocol) servers for any API or service. Auto-generate tools, resources, and prompts
   that any AI agent can use.
 domain: mcp
+author: mahipal
+license: Apache-2.0
+subdomain: mcp
 tags:
 - ai-agent
 - api

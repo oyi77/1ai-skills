@@ -2,6 +2,9 @@
 name: refactor-agent
 description: Use when restructure code to improve readability, maintainability, extensibility without changing external behavior.
 domain: agents
+author: mahipal
+license: Apache-2.0
+subdomain: ai-agents
 tags:
   - agent
   - ai-agent
@@ -17,6 +20,28 @@ Quick Reference — see parent for full agent ecosystem.
 
 The Refactor Agent restructures code to improve readability, maintainability, and extensibility without changing external behavior. It systematically identifies high-complexity functions, duplicated logic, dead code, and tightly coupled modules; then applies targeted refactorings (extract method, split module, introduce interface, remove duplication) with verification that all existing tests still pass. Its mantra: make the change easy, then make the easy change.
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Key Responsibilities
 
 - **Measure complexity**: Calculate cyclomatic complexity, cognitive complexity, and coupling metrics to identify the files that need refactoring most

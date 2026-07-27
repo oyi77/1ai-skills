@@ -3,6 +3,9 @@ name: presentation-design
 description: Design persuasive presentations using the 10/20/30 rule, slide anatomy principles, and storytelling arcs. Use
   when creating decks or keynotes. Use when designing persuasive presentations using the 10/20/30 rule, slide anatomy principles,.
 domain: mindset
+author: mahipal
+license: Apache-2.0
+subdomain: mindset
 tags:
 - design
 - mindset

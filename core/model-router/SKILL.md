@@ -2,6 +2,9 @@
 name: model-router
 description: Route AI model requests to the optimal provider based on task, cost, latency, and capability requirements. Manage multi-provider LLM deployments. Use when working with model router.
 domain: core
+author: mahipal
+license: Apache-2.0
+subdomain: core-platform
 tags:
 - ai
 - llm

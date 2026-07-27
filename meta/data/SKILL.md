@@ -3,6 +3,9 @@ name: data
 description: Raw data storage layer for 1ai-skills. Provides structured data persistence, query interface, and data pipeline support for skill operations.
   history. Use when working with data.
 domain: meta
+author: mahipal
+license: Apache-2.0
+subdomain: meta-skills
 tags:
 - data
 - meta-learning

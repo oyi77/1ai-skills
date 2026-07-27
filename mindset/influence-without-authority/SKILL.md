@@ -3,6 +3,9 @@ name: influence-without-authority
 description: Gain buy-in from peers, stakeholders, and executives when you lack direct authority. Covers reciprocity, social
   proof, and coalition building.
 domain: mindset
+author: mahipal
+license: Apache-2.0
+subdomain: mindset
 tags:
 - authority
 - influence

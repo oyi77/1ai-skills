@@ -2,6 +2,9 @@
 name: make-scenarios
 description: Make.com scenario automation — modules, routes, filters, error handlers, data stores, webhooks. Use when working with make scenarios.
 domain: automation
+author: mahipal
+license: Apache-2.0
+subdomain: workflow-automation
 tags:
 - automation
 - make

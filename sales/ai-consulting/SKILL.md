@@ -3,6 +3,9 @@ name: ai-consulting
 description: Offer fractional AI engineering and consulting services. Act as a part-time AI executive for companies that can't
   afford full-time AI staff. Generate $3K-10K/month.
 domain: sales
+author: mahipal
+license: Apache-2.0
+subdomain: sales
 tags:
 - business-development
 - consulting

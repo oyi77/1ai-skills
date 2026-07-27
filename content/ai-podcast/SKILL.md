@@ -3,6 +3,9 @@ name: ai-podcast
 description: Create and automate AI-powered podcasts. Generate episodes from topics, URLs, or documents with multiple AI hosts.
   Build audience and monetize through sponsorships.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - content-creation
 - digital-content

@@ -2,6 +2,9 @@
 name: appwrite-patterns
 description: Appwrite backend-as-a-service — auth, database, storage, functions, realtime for web/mobile/desktop. Use when working with appwrite patterns.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - appwrite
 - coding

@@ -2,6 +2,9 @@
 name: rothschild-investment
 description: Apply Rothschild dynasty principles for long-term wealth preservation, diversification, and generational planning. Use when working with rothschild investment.
 domain: research
+author: mahipal
+license: Apache-2.0
+subdomain: research
 tags:
 - analysis
 - investigation

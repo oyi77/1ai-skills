@@ -2,6 +2,7 @@
 name: wolf-finance
 description: "ACTIVATE for ANY finance, investment, trading, or market query. Comprehensive value investing framework combining Buffett, Munger, Duan Yongping, and Li Lu methodologies. Use when making investment decisions."
 domain: financial
+license: Apache-2.0
 tags: [analysis, crypto, finance, investment, testing, trading, wolf, money, value-investing]
 version: "2.0.0"
 author: ""

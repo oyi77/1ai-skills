@@ -2,6 +2,9 @@
 name: jenkins-pipelines
 description: Jenkins pipeline as code — Declarative/Scripted pipelines, shared libraries, agents, stages, credentials. Use when working with jenkins pipelines.
 domain: devops
+author: mahipal
+license: Apache-2.0
+subdomain: devops
 tags:
 - ai-agent
 - ci-cd

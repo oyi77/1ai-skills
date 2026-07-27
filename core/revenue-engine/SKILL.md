@@ -2,6 +2,7 @@
 name: revenue-engine
 description: "Manage revenue pipelines, track Stripe/analytics metrics, and automate financial reporting for SaaS businesses. Use when building revenue infrastructure."
 domain: core
+license: Apache-2.0
 tags: [engine, infrastructure, memory, pipeline, revenue, self-improvement, money, analytics]
 version: "2.0.0"
 author: ""
@@ -12,6 +13,21 @@ type: core
 
 This engine is the financial nervous system of your business. Without it, you leak 5-15% of revenue through forgotten invoices, missed renewals, and untracked metrics. With it, you capture every dollar and know exactly where to focus to grow.
 
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Revenue Streams
 1. **Your Own Revenue Ops** — tracking prevents leakage
 2. **Revenue Dashboard Service ($2K-5K/setup)** — build for clients

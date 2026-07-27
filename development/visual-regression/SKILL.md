@@ -2,6 +2,9 @@
 name: visual-regression
 description: Visual regression testing — screenshot comparison, baseline management, and UI change detection. Use when working with visual regression.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - coding
 - regression

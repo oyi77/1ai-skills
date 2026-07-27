@@ -2,6 +2,7 @@
 name: ai-lead-generation
 description: "Automated AI-powered lead generation and prospecting. Find ideal customers, enrich data, personalize outreach, and book meetings without manual effort. Use when generating B2B leads at scale."
 domain: sales
+license: Apache-2.0
 tags: [business-development, generation, lead, revenue, sales, money, outreach, b2b]
 version: "2.0.0"
 author: ""
@@ -13,6 +14,28 @@ type: sales
 
 AI lead generation is a $500-5K/month service you can sell to B2B companies. Each booked meeting is worth $50-500 in service revenue. At 3-15% conversion from outreach to meeting, with 500 prospects/month at $0.50-5/lead cost, you generate $2.5K-25K pipeline value per month.
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Revenue Streams
 
 1. **Lead Gen Service ($2K-10K/client/month)** — Run full pipeline for clients: prospect, enrich, personalize, and book meetings.

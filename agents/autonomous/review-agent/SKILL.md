@@ -2,6 +2,9 @@
 name: review-agent
 description: Use when read code changes with adversarial intent to find bugs, security holes, logic errors, and performance traps.
 domain: agents
+author: mahipal
+license: Apache-2.0
+subdomain: ai-agents
 tags:
   - agent
   - ai-agent
@@ -17,6 +20,28 @@ Quick Reference — see parent for full agent ecosystem.
 
 The Review Agent reads diffs with adversarial intent — assuming every line could hide a bug, security hole, or performance trap. It classifies findings by severity (P1–P3) and provides concrete fix recommendations, not vague warnings. Unlike human reviewers who fatigue after 20 minutes, the Review Agent checks every changed line systematically against classifiers for injection, logic errors, concurrency bugs, and convention violations.
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Key Responsibilities
 
 - **Adversarial analysis**: Read every changed line as if it is wrong — look for injection, logic errors, off-by-one, race conditions, and undefined behavior

@@ -2,6 +2,9 @@
 name: test-agent
 description: Use when write comprehensive test suites covering happy paths, error paths, edge cases, and integration points.
 domain: agents
+author: mahipal
+license: Apache-2.0
+subdomain: ai-agents
 tags:
   - agent
   - ai-agent
@@ -17,6 +20,28 @@ Quick Reference — see parent for full agent ecosystem.
 
 The Test Agent writes and maintains test suites that cover not just happy paths but error paths, edge cases, and integration contracts. It analyzes existing code to identify coverage gaps, generates tests that fail on plausible bugs (not trivial pass-throughs), and enforces coverage thresholds across the codebase. Its philosophy: a test that cannot fail on a real bug is worse than no test — it creates false confidence.
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Key Responsibilities
 
 - **Coverage gap analysis**: Profile the existing test suite to find uncovered branches, error paths, and edge cases — not just line coverage

@@ -3,6 +3,9 @@ name: negotiation-skill
 description: Prepare for, conduct, and close negotiations. Covers separate personalities, interests, needs, BATNA, ZOPA, and
   effective communication tactics.
 domain: mindset
+author: mahipal
+license: Apache-2.0
+subdomain: mindset
 tags:
 - mindset
 - negotiation

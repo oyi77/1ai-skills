@@ -2,6 +2,9 @@
 name: bigquery-integration
 description: Integrate Google BigQuery for large-scale data analytics. Write SQL queries, manage datasets, export results, and build data pipelines. Use when integrateing google bigquery for large-scale data analytics. write sql queries,.
 domain: integrations
+author: mahipal
+license: Apache-2.0
+subdomain: integrations
 tags:
 - bigquery
 - google-cloud

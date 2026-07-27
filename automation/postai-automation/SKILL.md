@@ -3,6 +3,9 @@ name: postai-automation
 description: Automate TikTok and Instagram video creation from product images using POST AI — generates dozens of captioned,
   voiced-over variants for affiliate and e-commerce marketing.
 domain: automation
+author: mahipal
+license: Apache-2.0
+subdomain: workflow-automation
 tags:
 - automation
 - postai

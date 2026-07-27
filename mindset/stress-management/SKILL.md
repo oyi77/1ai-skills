@@ -3,6 +3,9 @@ name: stress-management
 description: Manage stress through breathing techniques, exercise, sleep hygiene, and cognitive reframing. Use when overwhelmed
   or at risk of burnout.
 domain: mindset
+author: mahipal
+license: Apache-2.0
+subdomain: mindset
 tags:
 - management
 - mindset

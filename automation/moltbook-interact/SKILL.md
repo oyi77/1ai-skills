@@ -3,6 +3,9 @@ name: moltbook-interact
 description: Automate Moltbook engagement — content posting, community management, sentiment-aware replies, and account growth
   at scale.
 domain: automation
+author: mahipal
+license: Apache-2.0
+subdomain: workflow-automation
 tags:
 - automation
 - interact

@@ -2,6 +2,9 @@
 name: xlsx-creator
 description: Create, edit, and analyze Excel spreadsheets programmatically. Generate financial models, data tables, charts, and dashboards with formulas and formatting.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - documents
 - excel

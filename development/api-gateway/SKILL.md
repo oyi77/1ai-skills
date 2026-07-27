@@ -3,6 +3,9 @@ name: api-gateway
 description: API gateway design — rate limiting, authentication, routing, caching, request transformation. Kong, Traefik,
   custom gateways. Use when working with api gateway.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - api
 - coding

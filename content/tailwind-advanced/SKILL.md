@@ -2,6 +2,9 @@
 name: tailwind-advanced
 description: Advanced Tailwind CSS — custom plugins, JIT, container queries, animations, dark mode, design systems. Use when working with tailwind advanced.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - advanced
 - content-creation

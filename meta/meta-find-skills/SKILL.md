@@ -3,6 +3,9 @@ name: meta-find-skills
 description: Automatically discover evaluate and activate community skills when local skills dont cover user needs Includes
   credibility scoring and safety checks for complete self-sufficiency
 domain: meta
+author: mahipal
+license: Apache-2.0
+subdomain: meta-skills
 tags:
 - find
 - meta

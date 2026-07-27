@@ -3,6 +3,9 @@ name: ai-readiness
 description: Assess portfolio company AI readiness, AI adoption maturity. Use when user says "AI readiness", "AI maturity",
   "assess AI adoption".
 domain: financial
+author: mahipal
+license: Apache-2.0
+subdomain: financial-analysis
 tags:
 - analysis
 - finance

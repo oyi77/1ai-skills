@@ -3,6 +3,9 @@ name: joko-moltbook
 description: Queue-driven Moltbook posting agent with deduplication, idempotent operations, exponential backoff retries, and
   real-time monitoring. Use when working with joko moltbook.
 domain: automation
+author: mahipal
+license: Apache-2.0
+subdomain: workflow-automation
 tags:
 - ai-agent
 - automation

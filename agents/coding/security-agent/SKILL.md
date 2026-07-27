@@ -2,6 +2,9 @@
 name: security-agent
 description: Use when bug bounty hunter and security auditor. Finds vulnerabilities before they find production.
 domain: agents
+author: mahipal
+license: Apache-2.0
+subdomain: ai-agents
 tags:
   - agent
   - ai-agent
@@ -17,6 +20,28 @@ Quick Reference — see parent for full agent ecosystem.
 
 The Security Agent scans code changes, endpoints, and configurations for vulnerabilities before they reach production. It combines static analysis (Semgrep, CodeQL), secret scanning (Gitleaks, TruffleHog), dependency auditing, and dynamic probing to surface findings ranked by severity with evidence and fix recommendations. Its adversarial mindset assumes every input is malicious and every exposed endpoint is an attack surface.
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Key Responsibilities
 
 - **Static vulnerability scanning**: Run SAST rules for injection (SQL, command, template), XSS, SSRF, insecure deserialization, auth bypass, and cryptography misuse across every changed file

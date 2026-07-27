@@ -2,6 +2,9 @@
 name: ansible-automation
 description: Ansible automation — playbooks, roles, inventory, variables, handlers, Galaxy, AWX. Use when working with ansible automation.
 domain: devops
+author: mahipal
+license: Apache-2.0
+subdomain: devops
 tags:
 - ansible
 - automation
