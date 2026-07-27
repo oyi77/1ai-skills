@@ -3,6 +3,9 @@ name: notion
 description: Automate Notion workflows including database CRUD, page creation, content publishing, and workspace management
   via API.
 domain: productivity
+author: mahipal
+license: Apache-2.0
+subdomain: productivity
 tags:
 - api
 - notion

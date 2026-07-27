@@ -4,6 +4,9 @@ description: Meta-skill for integrating external GitHub skill repos into 1ai-ski
   conversion, category mapping, validation, and quality gates. Use when integrating external skill repos, bulk skill imports,
   skill format conversion.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - meta
 - integration

@@ -2,6 +2,9 @@
 name: tauri-apps
 description: Tauri desktop app development — Rust backend, web frontend, native APIs, small binary size, cross-platform. Use when working with tauri apps.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - api
 - apps

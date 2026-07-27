@@ -3,6 +3,9 @@ name: investment-earnings
 version: 2.0.0
 category: finance
 domain: finance
+author: mahipal
+license: Apache-2.0
+subdomain: finance
 description: "Use when trade earnings reports for profit — pre-earnings positioning, post-earnings momentum, and management quality scoring. Systematic framework for the highest-alpha event in equity markets."
 keywords: [earnings, trading, financial analysis, earnings calls, management quality, post-earnings drift, options, straddle, momentum]
 source: ai-berkshire
@@ -12,6 +15,28 @@ tags: [investment, earnings, finance]
 
 # Investment Earnings Analysis
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Money-Making Overview
 
 **Earnings season** produces the largest, fastest stock moves of the year. A single earnings report can move a stock 10-20% in hours. This skill gives you a systematic framework to:

@@ -2,6 +2,9 @@
 name: vanilla-extract
 description: Vanilla Extract zero-runtime CSS-in-JS — type-safe styles, Sprinkles, Recipes, themes. Use when working with vanilla extract.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - content-creation
 - digital-content

@@ -3,6 +3,9 @@ name: investment-industry
 version: 2.0.0
 category: finance
 domain: finance
+author: mahipal
+license: Apache-2.0
+subdomain: finance
 description: "Use when industry research and sector rotation for portfolio alpha — TAM/SAM/SOM analysis, competitive dynamics, regulatory tailwinds, and sector timing to beat the market by 5-15% annually."
 keywords: [industry, research, market analysis, sector rotation, TAM, competitive dynamics, top-down investing, macro, thematic]
 source: ai-berkshire
@@ -12,6 +15,28 @@ tags: [investment, industry, finance]
 
 # Investment Industry Research
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Money-Making Overview
 
 **Sector rotation** is the single most leveragable edge for portfolio returns. Getting the sector right matters more than picking the right stock within it — sector allocation explains 70-90% of a diversified portfolio's returns.

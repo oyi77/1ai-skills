@@ -3,6 +3,9 @@ name: ai-newsletter
 description: Build and monetize AI-powered email newsletters. Curate content, automate writing, and grow paid subscriptions.
   Generate $1K-20K/month.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - content-creation
 - digital-content

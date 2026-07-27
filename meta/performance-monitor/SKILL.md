@@ -3,6 +3,9 @@ name: performance-monitor
 description: Track and analyze skill execution performance. Measure latency, success rates, accuracy, and resource usage for
   continuous improvement. Use when tracking and analyze skill execution performance. measure latency, success rates,.
 domain: meta
+author: mahipal
+license: Apache-2.0
+subdomain: meta-skills
 tags:
 - meta-learning
 - monitor

@@ -2,6 +2,9 @@
 name: portfolio-manager
 description: Use when portfolio manager — capital allocation, risk management, and performance metrics tracking for trading strategies.
 domain: trading
+author: mahipal
+license: Apache-2.0
+subdomain: trading
 tags:
 - algorithms
 - manager

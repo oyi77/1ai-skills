@@ -2,6 +2,9 @@
 name: vite-config
 description: Vite build tool configuration — plugins, SSR, library mode, environment variables, dev server proxy. Use when working with vite config.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - coding
 - config

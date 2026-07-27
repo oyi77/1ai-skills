@@ -2,6 +2,9 @@
 name: humanizer
 description: Transform AI-generated content into natural, human-sounding writing with proper tone and style. Use when working with humanizer.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - content-creation
 - digital-content

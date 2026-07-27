@@ -3,6 +3,9 @@ name: market-research-agent
 description: Analyze markets, competitors, user segments, and trends to produce evidence-based business intelligence. Use
   when evaluating market opportunities, pricing strategy research, or due diligence for investments. Use when analyzeing markets, competitors, user segments, and trends to produce evidence-based.
 domain: agents
+author: mahipal
+license: Apache-2.0
+subdomain: ai-agents
 tags:
 - agent
 - ai-agent

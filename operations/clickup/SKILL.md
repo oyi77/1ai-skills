@@ -2,6 +2,9 @@
 name: clickup
 description: 'Skill: clickup. See SKILL.md body for details. Use when this domain is relevant.'
 domain: operations
+author: mahipal
+license: Apache-2.0
+subdomain: business-operations
 tags:
 - business-ops
 - clickup

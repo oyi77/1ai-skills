@@ -2,6 +2,9 @@
 name: api-design
 description: REST API design — resource modeling, versioning, pagination, error handling, OpenAPI/Swagger documentation. Use when working with api design.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - api
 - coding

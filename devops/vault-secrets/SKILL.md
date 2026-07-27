@@ -2,6 +2,9 @@
 name: vault-secrets
 description: HashiCorp Vault — secrets management, dynamic secrets, encryption, auth methods, policies. Use when working with vault secrets.
 domain: devops
+author: mahipal
+license: Apache-2.0
+subdomain: devops
 tags:
 - ci-cd
 - devops

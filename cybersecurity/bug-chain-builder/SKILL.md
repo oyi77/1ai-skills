@@ -3,6 +3,9 @@ name: bug-chain-builder
 description: Chain multiple low-severity bugs into critical impact for maximum bounty payouts. Use when combining vulnerabilities,
   escalating impact, or when a single bug isn't enough for a high-severity report.
 domain: cybersecurity
+author: mahipal
+license: Apache-2.0
+subdomain: general-cybersecurity
 tags:
 - bug
 - builder

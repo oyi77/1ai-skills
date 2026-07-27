@@ -3,6 +3,9 @@ name: business-intelligence
 description: Define and track KPIs across revenue, marketing, and content performance with weekly business reviews and data-driven
   decisions. Use when working with business intelligence.
 domain: operations
+author: mahipal
+license: Apache-2.0
+subdomain: business-operations
 tags:
 - business
 - business-ops

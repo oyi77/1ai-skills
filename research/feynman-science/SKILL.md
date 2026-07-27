@@ -2,6 +2,9 @@
 name: feynman-science
 description: 'Explain complex concepts simply using Feynman''s technique: teach, identify gaps, simplify, and analogize. . Use when working with feynman science.'
 domain: research
+author: mahipal
+license: Apache-2.0
+subdomain: research
 tags:
 - analysis
 - feynman

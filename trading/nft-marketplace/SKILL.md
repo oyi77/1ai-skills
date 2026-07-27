@@ -2,6 +2,9 @@
 name: nft-marketplace
 description: 'Skill: nft-marketplace. See SKILL.md body for details. Use when this domain is relevant.'
 domain: trading
+author: mahipal
+license: Apache-2.0
+subdomain: trading
 tags:
 - algorithms
 - marketplace

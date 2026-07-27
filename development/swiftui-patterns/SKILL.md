@@ -2,6 +2,9 @@
 name: swiftui-patterns
 description: SwiftUI native iOS/macOS development — declarative UI, Combine, Core Data, widgets, App Clips. Use when working with swiftui patterns.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - coding
 - patterns

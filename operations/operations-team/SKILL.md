@@ -3,6 +3,9 @@ name: operations-team
 description: Execute SOPs, triage on-call incidents, manage SLA breaches, and drive continuous improvement using lean operations
   principles. Use when working with operations team.
 domain: operations
+author: mahipal
+license: Apache-2.0
+subdomain: business-operations
 tags:
 - business-ops
 - management

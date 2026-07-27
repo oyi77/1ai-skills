@@ -3,6 +3,9 @@ name: prd-generator
 description: Generate detailed Product Requirement Documents (PRDs) from feature descriptions. Create structured specifications
   ready for implementation.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - coding
 - generator

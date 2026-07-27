@@ -3,6 +3,9 @@ name: codebase-memory-mcp
 description: Index codebases into a persistent knowledge graph for structural code queries, call-chain tracing, and semantic
   search. Use when navigating unfamiliar repos, understanding architecture, or exploring large codebases.
 domain: mcp
+author: mahipal
+license: Apache-2.0
+subdomain: mcp
 tags:
 - codebase
 - mcp

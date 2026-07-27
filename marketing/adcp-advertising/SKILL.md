@@ -3,6 +3,9 @@ name: adcp-advertising
 description: Automate ad campaigns via AdCP protocol — create ads, buy media, manage budgets, and optimize performance across
   display, video, CTV, and social channels.
 domain: marketing
+author: mahipal
+license: Apache-2.0
+subdomain: marketing
 tags:
 - adcp
 - advertising

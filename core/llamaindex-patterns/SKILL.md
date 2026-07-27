@@ -2,6 +2,9 @@
 name: llamaindex-patterns
 description: LlamaIndex data framework — ingestion, indexing, query engines, chat engines, agents. Use when working with llamaindex patterns.
 domain: core
+author: mahipal
+license: Apache-2.0
+subdomain: core-platform
 tags:
 - ai-agent
 - infrastructure

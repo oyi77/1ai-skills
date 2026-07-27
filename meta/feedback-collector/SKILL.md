@@ -2,6 +2,9 @@
 name: feedback-collector
 description: Collect, analyze, and route feedback from users and systems. Turn feedback into actionable improvement signals. Use when working with feedback collector.
 domain: meta
+author: mahipal
+license: Apache-2.0
+subdomain: meta-skills
 tags:
 - collector
 - feedback

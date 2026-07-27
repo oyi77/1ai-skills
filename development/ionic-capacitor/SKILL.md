@@ -2,6 +2,9 @@
 name: ionic-capacitor
 description: Ionic + Capacitor hybrid mobile apps — Angular/React/Vue, native plugins, PWA, App Store deployment. Use when working with ionic capacitor.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - capacitor
 - coding

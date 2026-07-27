@@ -2,6 +2,9 @@
 name: daily-dev-agentic
 description: 'Skill: daily-dev-agentic. See SKILL.md body for details. Use when this domain is relevant.'
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - agentic
 - ai-agent

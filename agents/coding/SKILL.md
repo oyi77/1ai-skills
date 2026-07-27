@@ -2,6 +2,9 @@
 name: coding
 description: Five specialized coding agents (linter, perf, refactor, security, test) that enforce quality gates across the development lifecycle. From lint enforcement through performance profiling, refactoring, security auditing, and test coverage. Use when working with coding agents.
 domain: agents
+author: mahipal
+license: Apache-2.0
+subdomain: coding-agents
 tags:
   - agent
   - ai-agent

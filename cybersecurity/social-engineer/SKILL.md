@@ -3,6 +3,9 @@ name: social-engineer
 description: Social engineering and phishing for authorized security assessments. Use when testing human attack vectors, conducting
   phishing simulations, or assessing organizational security awareness.
 domain: cybersecurity
+author: mahipal
+license: Apache-2.0
+subdomain: general-cybersecurity
 tags:
 - cybersecurity
 - engineer

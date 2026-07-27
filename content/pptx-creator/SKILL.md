@@ -2,6 +2,9 @@
 name: pptx-creator
 description: Create and edit PowerPoint presentations programmatically. Generate slide decks with layouts, charts, images, animations, and speaker notes.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - documents
 - powerpoint

@@ -2,6 +2,9 @@
 name: sequential-thinking
 description: Dynamic problem-solving through thought sequences — iterative reasoning, hypothesis testing, and solution refinement. Use when working with sequential thinking.
 domain: mcp
+author: mahipal
+license: Apache-2.0
+subdomain: mcp
 tags:
 - mcp-server
 - model-context-protocol

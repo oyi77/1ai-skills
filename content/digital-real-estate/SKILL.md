@@ -3,6 +3,9 @@ name: digital-real-estate
 description: Build and manage a portfolio of niche content sites generating affiliate and AdSense revenue with AI handling
   research, writing, SEO, and updates. Use when building and manage a portfolio of niche content sites generating.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - content-creation
 - digital

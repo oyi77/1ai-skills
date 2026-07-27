@@ -3,6 +3,9 @@ name: ad-killer
 description: Active Directory and Windows domain exploitation for enterprise penetration testing. Use when attacking Windows
   domains, exploiting AD misconfigurations, or performing lateral movement in enterprise environments.
 domain: cybersecurity
+author: mahipal
+license: Apache-2.0
+subdomain: general-cybersecurity
 tags:
 - ad
 - active-directory

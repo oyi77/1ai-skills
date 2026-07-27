@@ -3,6 +3,9 @@ name: polymarket
 description: Natural-language interface to Polymarket prediction markets. Ask questions about event probabilities, market odds, price movements, and betting strategies in plain English.
   event probabilities, or when user asks about Polymarket data. Use when working with polymarket.
 domain: trading
+author: mahipal
+license: Apache-2.0
+subdomain: trading
 tags:
 - algorithms
 - markets

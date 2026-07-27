@@ -4,6 +4,9 @@ description: Trade Polymarket BTC 5-minute and 15-minute fast markets using CEX 
   signal is Binance BTC/USDT klines. Use when user wants to trade sprint/fast markets, automate short-term crypto trading,
   or use CEX momentum as a Polymarket signal.
 domain: trading
+author: mahipal
+license: Apache-2.0
+subdomain: trading
 tags:
 - algorithms
 - api

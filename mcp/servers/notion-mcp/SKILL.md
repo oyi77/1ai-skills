@@ -2,6 +2,9 @@
 name: notion-mcp
 description: MCP server for Notion databases. Query pages, manage databases, and automate Notion workflows via standardized protocol.
 domain: mcp
+author: mahipal
+license: Apache-2.0
+subdomain: mcp
 tags:
 - mcp
 - mcp-server

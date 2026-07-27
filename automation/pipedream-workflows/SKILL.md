@@ -2,6 +2,9 @@
 name: pipedream-workflows
 description: Pipedream serverless workflows — triggers, code steps, pre-built actions, data stores, HTTP. Use when working with pipedream workflows.
 domain: automation
+author: mahipal
+license: Apache-2.0
+subdomain: workflow-automation
 tags:
 - automation
 - pipedream

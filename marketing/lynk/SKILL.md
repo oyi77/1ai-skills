@@ -2,6 +2,9 @@
 name: lynk
 description: LYNK - Complete Affiliate Link Management with Browser Automation. Use when relevant to this domain.
 domain: marketing
+author: mahipal
+license: Apache-2.0
+subdomain: marketing
 tags:
 - growth
 - lynk

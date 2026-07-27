@@ -3,6 +3,9 @@ name: hr-onboarding
 description: Design onboarding programs, manage new hire paperwork, and track 30-60-90 day milestones. Use when scaling teams
   or improving retention.
 domain: operations
+author: mahipal
+license: Apache-2.0
+subdomain: business-operations
 tags:
 - business-ops
 - management

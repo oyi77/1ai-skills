@@ -4,6 +4,9 @@ description: Universal internet scraper for AI agents. Read and search Twitter, 
   LinkedIn, V2EX, RSS, web pages. Zero API fees. Use when agents need real-time social media data, content research, or trend
   monitoring.
 domain: mcp
+author: mahipal
+license: Apache-2.0
+subdomain: mcp
 tags:
 - agent
 - ai-agent

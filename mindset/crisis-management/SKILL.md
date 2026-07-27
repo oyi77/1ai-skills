@@ -3,6 +3,9 @@ name: crisis-management
 description: Respond to crises using incident command structure, stakeholder communication, and recovery planning. Use during
   security breaches, PR disasters, or operational failures. Use when working with crisis management.
 domain: mindset
+author: mahipal
+license: Apache-2.0
+subdomain: mindset
 tags:
 - crisis
 - mindset

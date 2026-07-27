@@ -2,6 +2,9 @@
 name: scrapers
 description: Data extraction hub — content monitoring, price tracking, web scraping, and social listening for competitive intelligence, market research, and automated revenue generation.
 domain: automation
+author: mahipal
+license: Apache-2.0
+subdomain: web-scraping
 tags:
 - automation
 - scrapers

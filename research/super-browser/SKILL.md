@@ -3,6 +3,9 @@ name: super-browser
 description: The ultimate browser automation framework combining the best of 8 top-rated browser skills for unified local
   or cloud-based web task automation. Use when working with super browser.
 domain: research
+author: mahipal
+license: Apache-2.0
+subdomain: research
 tags:
 - analysis
 - browser

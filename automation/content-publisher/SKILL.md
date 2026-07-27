@@ -3,6 +3,9 @@ name: content-publisher
 description: Automates drafting and publishing articles to Substack and Medium with SEO optimization, editorial calendars,
   and cross-platform distribution.
 domain: automation
+author: mahipal
+license: Apache-2.0
+subdomain: workflow-automation
 tags:
 - automation
 - content

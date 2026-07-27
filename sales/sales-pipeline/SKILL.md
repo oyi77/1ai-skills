@@ -2,6 +2,7 @@
 name: sales-pipeline
 description: "AI-powered sales pipeline inside 1ai-social. Track leads, qualify with BANT, generate proposals, schedule follow-ups, and get daily sales analytics. Use when managing B2B sales pipelines."
 domain: sales
+license: Apache-2.0
 tags: [sales, pipeline, crm, lead-scoring, proposals, follow-up, b2b, money, revenue]
 version: "2.0.0"
 author: "BerkahKarya"
@@ -13,6 +14,28 @@ type: sales
 
 This pipeline converts leads into cash. Each stage advance increases deal probability: NEW (5%) → CONTACTED (10%) → QUALIFIED (25%) → DEMO (40%) → PROPOSAL (60%) → NEGOTIATION (80%) → CLOSED_WON (100%). Moving 10 leads through the full pipeline per month at $2K average deal size = $20K monthly revenue.
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Revenue Streams
 
 1. **Your Own Sales ($2K-20K/deal)** — Close your own services through the pipeline

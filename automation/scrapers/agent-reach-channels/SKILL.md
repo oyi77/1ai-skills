@@ -2,7 +2,10 @@
 name: agent-reach-channels
 version: 1.0.0
 category: automation
-domain: social-commerce
+domain: automation
+author: mahipal
+license: Apache-2.0
+subdomain: workflow-automation
 description: Use when multi-platform e-commerce and messaging channel extraction (Shopee, TikTok Shop, WeChat)
 keywords: [shopee, tiktok-shop, wechat, scraping, commerce, messaging, southeast-asia, indonesia]
 tags:
@@ -20,6 +23,28 @@ source: Panniantong/Agent-Reach
 Unified channel extraction framework for Southeast Asian e-commerce (Shopee, TikTok Shop) and Chinese messaging (WeChat).
 
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Anti-Rationalization Table
 
 | Rationalization | Reality |

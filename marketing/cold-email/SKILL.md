@@ -3,6 +3,9 @@ name: cold-email
 description: Outbound email with personalization, deliverability optimization, follow-up sequences, and compliance. Use when
   building cold email campaigns, improving email deliverability, or designing outreach sequences.
 domain: marketing
+author: mahipal
+license: Apache-2.0
+subdomain: marketing
 tags:
 - cold
 - compliance

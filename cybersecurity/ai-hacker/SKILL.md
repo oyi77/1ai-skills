@@ -3,6 +3,9 @@ name: ai-hacker
 description: AI and LLM security testing — prompt injection, model manipulation, data exfiltration via AI. Use when testing
   AI-powered applications, finding prompt injection vulnerabilities, or assessing LLM-integrated systems.
 domain: cybersecurity
+author: mahipal
+license: Apache-2.0
+subdomain: general-cybersecurity
 tags:
 - ai
 - llm

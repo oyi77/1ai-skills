@@ -2,6 +2,9 @@
 name: ads-manager
 description: Research trending ads, analyze competitor strategies, and clone successful ad patterns using integrated MCP servers. Use when working with ads manager.
 domain: marketing
+author: mahipal
+license: Apache-2.0
+subdomain: marketing
 tags:
 - advertising
 - competitive-analysis

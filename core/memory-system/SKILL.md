@@ -2,6 +2,9 @@
 name: memory-system
 description: Store, retrieve, and organize knowledge across sessions using structured memory files and entity tracking. Use when working with memory system.
 domain: core
+author: mahipal
+license: Apache-2.0
+subdomain: core-platform
 tags:
 - infrastructure
 - memory

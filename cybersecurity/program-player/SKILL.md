@@ -3,6 +3,9 @@ name: program-player
 description: Get invited to private bug bounty programs and build reputation on platforms. Use when building platform reputation,
   applying to private programs, or optimizing your hunter profile for maximum opportunities.
 domain: cybersecurity
+author: mahipal
+license: Apache-2.0
+subdomain: general-cybersecurity
 tags:
 - cybersecurity
 - player

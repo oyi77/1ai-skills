@@ -2,6 +2,9 @@
 name: steve-jobs-product
 description: 'Design products using Steve Jobs'' philosophy: simplicity, user experience, intersection of technology and liberal arts. . Use when working with steve jobs product.'
 domain: research
+author: mahipal
+license: Apache-2.0
+subdomain: research
 tags:
 - analysis
 - investigation

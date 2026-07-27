@@ -2,6 +2,9 @@
 name: b-roll-finder
 description: Find relevant B-roll and stock footage by analyzing script content with semantic search. Match video meaning to text instead of random selection. Use when sourcing stock footage, finding B-roll clips, or matching visuals to narration.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
   - video
   - semantic-search

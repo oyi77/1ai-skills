@@ -2,6 +2,9 @@
 name: azure-ops
 description: Azure operations — Virtual Machines, App Service, Azure Functions, AKS, Cosmos DB, Azure AD. Use when working with azure ops.
 domain: devops
+author: mahipal
+license: Apache-2.0
+subdomain: devops
 tags:
 - azure
 - ci-cd

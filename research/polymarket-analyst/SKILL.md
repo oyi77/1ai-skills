@@ -2,6 +2,9 @@
 name: polymarket-analyst
 description: Analyze Polymarket prediction markets for expected value, market inefficiencies, and trading opportunities. Use when analyzeing polymarket prediction markets for expected value, market inefficiencies, and.
 domain: research
+author: mahipal
+license: Apache-2.0
+subdomain: research
 tags:
 - analysis
 - analyst

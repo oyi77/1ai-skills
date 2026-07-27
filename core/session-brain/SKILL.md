@@ -2,6 +2,9 @@
 name: session-brain
 description: Query bk-hub for project context on session start so every session begins with memory instead of starting blind. Use when working with session brain.
 domain: core
+author: mahipal
+license: Apache-2.0
+subdomain: core-platform
 tags:
 - brain
 - infrastructure

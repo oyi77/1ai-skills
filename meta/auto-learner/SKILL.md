@@ -3,6 +3,9 @@ name: auto-learner
 description: Autonomous learning from execution data. Skills improve themselves by identifying patterns in successful vs failed
   executions without human intervention. Use when working with auto learner.
 domain: meta
+author: mahipal
+license: Apache-2.0
+subdomain: meta-skills
 tags:
 - auto
 - learner

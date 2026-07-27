@@ -3,6 +3,9 @@ name: earnings-viewer
 description: Analyzes earnings calls + SEC filings, updates financial models, and drafts earnings notes. Use when user says
   "analyze earnings", "earnings call", "update model after earnings".
 domain: financial
+author: mahipal
+license: Apache-2.0
+subdomain: financial-analysis
 tags:
 - analysis
 - earnings

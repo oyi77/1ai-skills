@@ -3,6 +3,9 @@ name: growth-engine
 description: Autonomous marketing experiment framework — design A/B tests, score hypotheses with ICE, validate results with
   statistical significance, and run automated optimization loops.
 domain: marketing
+author: mahipal
+license: Apache-2.0
+subdomain: marketing
 tags:
 - engine
 - growth

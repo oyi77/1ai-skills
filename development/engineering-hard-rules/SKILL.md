@@ -2,6 +2,9 @@
 name: engineering-hard-rules
 description: Non-negotiable engineering protocol for AI agents. Enforces READ→THINK→DECIDE→PLAN→BUILD→VERIFY→DOCS→REVIEW loop. Use when any code change requires evidence-first execution, blast radius.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags: 
   - engineering-discipline
   - code-quality

@@ -2,6 +2,9 @@
 name: lakefs-versioning
 description: LakeFS data versioning — Git-like branching for data lakes, atomic commits, time travel, CI/CD. Use when working with lakefs versioning.
 domain: automation
+author: mahipal
+license: Apache-2.0
+subdomain: workflow-automation
 tags:
 - automation
 - lakefs

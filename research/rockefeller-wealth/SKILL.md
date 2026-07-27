@@ -2,6 +2,9 @@
 name: rockefeller-wealth
 description: 'Apply Rockefeller''s systematic wealth-building strategies: vertical integration, capital allocation, and monopoly thinking. . Use when working with rockefeller wealth.'
 domain: research
+author: mahipal
+license: Apache-2.0
+subdomain: research
 tags:
 - analysis
 - api

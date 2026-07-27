@@ -2,6 +2,9 @@
 name: buildkite-pipelines
 description: Buildkite CI pipelines — pipeline YAML, steps, agents, artifacts, test splitting, dynamic pipelines. Use when working with buildkite pipelines.
 domain: devops
+author: mahipal
+license: Apache-2.0
+subdomain: devops
 tags:
 - ai-agent
 - buildkite

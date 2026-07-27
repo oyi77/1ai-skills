@@ -3,6 +3,9 @@ name: prompt-engineering
 description: Advanced prompt engineering — chain-of-thought, few-shot, tree-of-thought, self-consistency, meta-prompting,
   system design, debugging, and optimization for production AI systems. Use when working with prompt engineering.
 domain: core
+author: mahipal
+license: Apache-2.0
+subdomain: core-platform
 tags:
 - engineering
 - infrastructure

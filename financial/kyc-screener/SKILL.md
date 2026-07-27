@@ -3,6 +3,9 @@ name: kyc-screener
 description: Parses onboarding docs, runs rules engine, flags compliance gaps. Use when user says "KYC check", "onboard client",
   "screen company".
 domain: financial
+author: mahipal
+license: Apache-2.0
+subdomain: financial-analysis
 tags:
 - analysis
 - compliance

@@ -2,6 +2,9 @@
 name: code-agent
 description: Use when implement features from specs — reads requirements, writes code with tests, iterates until verification passes.
 domain: agents
+author: mahipal
+license: Apache-2.0
+subdomain: ai-agents
 tags:
   - agent
   - ai-agent
@@ -17,6 +20,28 @@ Quick Reference — see parent for full agent ecosystem.
 
 The Code Agent converts specs and plans into working, tested code. It reads requirements or a plan JSON, produces implementation across multiple files, writes companion tests, and iterates until all verification gates pass. Its primary contract is correctness: the output must compile, pass tests, and follow project conventions.
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Key Responsibilities
 
 - **Read specs, write code**: Accept structured plans or natural-language requirements and produce production-ready implementation across the defined file boundaries

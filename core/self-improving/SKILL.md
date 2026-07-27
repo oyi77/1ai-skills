@@ -3,6 +3,9 @@ name: self-improving
 description: Self-reflection + Self-criticism + Auto-learning from corrections + Self-organizing memory. Agent evaluates its
   own work, catches mistakes, and improves permanently. Use when working with self improving.
 domain: core
+author: mahipal
+license: Apache-2.0
+subdomain: core-platform
 tags:
 - ai-agent
 - improving

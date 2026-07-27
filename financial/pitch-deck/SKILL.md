@@ -3,6 +3,9 @@ name: pitch-deck
 description: Populates branded pitch deck templates with financial data and market comps. Use when user says "create pitch
   deck", "pitch for investors", "populate pitchbook".
 domain: financial
+author: mahipal
+license: Apache-2.0
+subdomain: financial-analysis
 tags:
 - analysis
 - deck

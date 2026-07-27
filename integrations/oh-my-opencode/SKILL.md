@@ -3,6 +3,9 @@ name: oh-my-opencode
 description: Use when working with OpenCode AI coding agent and oh-my-opencode harness to install, configure, and leverage
   its advanced features including Sisyphus, Hephaestus, Oracle, Librarian, and Explore agents
 domain: integrations
+author: mahipal
+license: Apache-2.0
+subdomain: ai-coding-tools
 tags:
 - ai-agent
 - api

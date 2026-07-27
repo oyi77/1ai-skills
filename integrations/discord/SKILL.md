@@ -2,6 +2,9 @@
 name: discord
 description: Use when discord Automation Hub — Bot and Webhooks for community management, DevOps notifications, and interactive servers. Monetize through community infrastructure-as-a-service.
 domain: integrations
+author: mahipal
+license: Apache-2.0
+subdomain: integrations
 tags:
 - api
 - automation
@@ -18,6 +21,28 @@ version: 1.0.0
 
 # Discord Automation Hub
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Money-Making Overview
 
 Discord has outgrown gaming — it's now the primary community platform for dev tools, DAOs, NFT projects, open-source communities, and online courses. Automating Discord is a growing market:

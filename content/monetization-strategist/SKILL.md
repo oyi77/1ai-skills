@@ -2,6 +2,7 @@
 name: monetization-strategist
 description: "Turn content into revenue — newsletter businesses, YouTube automation, affiliate sites, digital product creation, funnel design, audience building. Use when building content-based revenue streams."
 domain: content
+license: Apache-2.0
 tags: [content-creation, digital-content, media, monetization, strategist, money, passive-income]
 version: "2.0.0"
 author: ""

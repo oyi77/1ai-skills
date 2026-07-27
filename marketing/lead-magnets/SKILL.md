@@ -2,6 +2,7 @@
 name: lead-magnets
 description: "Lead magnet design and creation — ebooks, templates, calculators, quizzes matched to audience intent. Use when building lead generation funnels."
 domain: marketing
+license: Apache-2.0
 tags: [growth, lead, magnets, marketing, money, conversions, funnels]
 version: "2.0.0"
 author: ""

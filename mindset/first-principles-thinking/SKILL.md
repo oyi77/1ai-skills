@@ -3,6 +3,9 @@ name: first-principles-thinking
 description: Decompose problems to fundamental truths using Musk's method. Use when challenging assumptions, solving novel
   problems, or questioning conventional approaches.
 domain: mindset
+author: mahipal
+license: Apache-2.0
+subdomain: mindset
 tags:
 - first
 - mindset

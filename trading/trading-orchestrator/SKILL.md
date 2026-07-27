@@ -2,6 +2,9 @@
 name: trading-orchestrator
 description: Coordinate multi-strategy trading workflows by routing signals to the right executor and managing risk limits. Use when working with trading orchestrator.
 domain: trading
+author: mahipal
+license: Apache-2.0
+subdomain: trading
 tags:
 - algorithms
 - markets

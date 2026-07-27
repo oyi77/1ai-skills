@@ -3,6 +3,9 @@ name: competitor-alternatives
 description: Competitive comparison page strategy — alternative to pages, positioning, differentiation messaging. Use when
   creating competitive positioning content.
 domain: marketing
+author: mahipal
+license: Apache-2.0
+subdomain: marketing
 tags:
 - alternatives
 - competitor

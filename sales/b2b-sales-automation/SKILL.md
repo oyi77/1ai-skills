@@ -4,6 +4,9 @@ description: "|\n  >\n    Full B2B sales pipeline automation — from cold prosp
   \   Covers ICP definition, lead sourcing, outreach sequences, proposal generation, CRM tracking,\n    and deal alerts via\
   \   Telegram. Targets SMEs needing AI automation, digital products,\n    and content services.\n"
 domain: sales
+author: mahipal
+license: Apache-2.0
+subdomain: sales
 tags:
 - sales
 - b2b

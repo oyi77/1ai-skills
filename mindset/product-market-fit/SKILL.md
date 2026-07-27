@@ -3,6 +3,9 @@ name: product-market-fit
 description: Find and measure product-market fit using surveys, NPS, retention cohorts, and the Mom Test. Use when validating
   a product's viability.
 domain: mindset
+author: mahipal
+license: Apache-2.0
+subdomain: mindset
 tags:
 - fit
 - market

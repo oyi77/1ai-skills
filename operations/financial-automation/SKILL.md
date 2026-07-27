@@ -3,6 +3,9 @@ name: financial-automation
 description: AI CFO for solo businesses — invoicing, expense categorization, tax optimization, cash flow forecasting, multi-currency
   management. Use when working with financial automation.
 domain: operations
+author: mahipal
+license: Apache-2.0
+subdomain: business-operations
 tags:
 - automation
 - business-ops

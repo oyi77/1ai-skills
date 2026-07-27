@@ -3,6 +3,9 @@ name: ai-agent-development
 description: Build and sell custom AI agents as services or products. Create vertical-specific AI solutions for clients and
   generate $2K-$8K/month recurring revenue.
 domain: sales
+author: mahipal
+license: Apache-2.0
+subdomain: sales
 tags:
 - agent
 - ai-agent

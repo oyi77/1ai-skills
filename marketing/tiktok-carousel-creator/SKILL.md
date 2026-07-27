@@ -4,6 +4,9 @@ description: ">\n  Creates TikTok image carousels with text overlays using Pexel
   \ API.\n  Use when the user wants to: create TikTok slideshows or carousels, search images for social media content,\n \
   \ post or upload slideshow content to TikTok, edit slide text, or manage image collections for content creation."
 domain: marketing
+author: mahipal
+license: Apache-2.0
+subdomain: marketing
 tags:
 - api
 - carousel

@@ -2,6 +2,9 @@
 name: agent-security-scanner
 description: Agentic security patterns for AI agent systems including attack vector defense, sandboxing, input sanitization, security scanning, CVE awareness, and least-privilege tool access. Use when.
 domain: core
+author: mahipal
+license: Apache-2.0
+subdomain: core-platform
 tags: 
   - security
   - prompt-injection

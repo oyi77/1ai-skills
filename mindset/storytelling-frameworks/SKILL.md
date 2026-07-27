@@ -3,6 +3,9 @@ name: storytelling-frameworks
 description: Structure narratives for pitches, content, and communication using Hero's Journey, Before-After-Bridge, and Pixar
   pitch templates. Use when working with storytelling frameworks.
 domain: mindset
+author: mahipal
+license: Apache-2.0
+subdomain: mindset
 tags:
 - frameworks
 - mindset

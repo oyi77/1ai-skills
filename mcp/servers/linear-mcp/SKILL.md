@@ -2,6 +2,9 @@
 name: linear-mcp
 description: Linear Mcp. Use when working with linear mcp in mcp domain.
 domain: mcp
+author: mahipal
+license: Apache-2.0
+subdomain: mcp
 tags:
 - linear
 - mcp

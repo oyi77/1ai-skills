@@ -2,6 +2,9 @@
 name: agent-arena-skill
 description: 'Skill: agent-arena-skill. See SKILL.md body for details. Use when this domain is relevant.'
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - agent
 - ai-agent

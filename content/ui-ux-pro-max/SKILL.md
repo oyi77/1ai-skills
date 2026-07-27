@@ -4,6 +4,9 @@ description: Industry-specific design intelligence — 161 reasoning rules, 99 U
   49 UI styles. Use when building professional UI, need industry-specific design, generating design systems, choosing colors
   or typography.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - ui
 - ux

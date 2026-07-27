@@ -4,6 +4,7 @@ description: Trace and analyze blockchain transactions to investigate illicit fu
   and map transaction graphs across multiple blockchains. Use when investigating stolen funds, following money trails on-chain,
   analyzing suspicious addresses, or tracing cross-chain transactions.
 domain: cybersecurity
+license: Apache-2.0
 subdomain: blockchain-security
 tags:
 - blockchain

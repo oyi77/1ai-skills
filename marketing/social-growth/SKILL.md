@@ -2,6 +2,9 @@
 name: social-growth
 description: Mark Zuckerberg's approach to building massive social platforms through network effects and rapid iteration. Use when working with social growth.
 domain: marketing
+author: mahipal
+license: Apache-2.0
+subdomain: marketing
 tags:
 - api
 - growth

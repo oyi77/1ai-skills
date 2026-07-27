@@ -3,6 +3,9 @@ name: meeting-prep
 description: Prepares briefing pack before client/investor meetings. Use when user says "prep for meeting", "briefing pack",
   "client meeting".
 domain: financial
+author: mahipal
+license: Apache-2.0
+subdomain: financial-analysis
 tags:
 - analysis
 - finance

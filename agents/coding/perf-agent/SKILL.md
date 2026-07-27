@@ -2,6 +2,9 @@
 name: perf-agent
 description: Use when measure before optimizing, target actual bottlenecks proven by profiling, verify with benchmarks.
 domain: agents
+author: mahipal
+license: Apache-2.0
+subdomain: ai-agents
 tags:
   - agent
   - ai-agent
@@ -17,6 +20,28 @@ Quick Reference — see parent for full agent ecosystem.
 
 The Perf Agent identifies and fixes performance bottlenecks using systematic profiling, benchmarking, and capacity analysis. Its first principle is measure before optimize — it never guesses at bottlenecks. It profiles CPU, memory, I/O, and network; identifies root causes (N+1 queries, memory leaks, unnecessary allocations, sync I/O); and validates every optimization with before/after benchmarks. The perf agent also projects cost impact so teams prioritize by ROI.
 
+
+
+## When Not to Use
+
+- **Simple or one-off tasks** — if the task is straightforward, direct execution is faster than structured methodology.
+- **Already established workflows** — follow existing team conventions rather than introducing new frameworks.
+- **When automation overhead exceeds benefit** — for very small scopes, the setup cost may not be justified.
+
+
+## Dependencies
+
+- Python 3.8+ or Node.js 18+
+- Access to relevant APIs/services for your specific use case
+- Basic understanding of the domain concepts
+
+
+## Commands
+
+```bash
+# Refer to the skill's usage section for specific commands
+# Adapt these to your workflow
+```
 ## Key Responsibilities
 
 - **Profile before optimize**: Use profilers (py-spy, cProfile, valgrind, lighthouse, k6) to identify actual bottlenecks, not perceived ones

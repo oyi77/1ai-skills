@@ -1,6 +1,6 @@
 # 1ai-skills
 
-> 1348 production-ready AI agent skills with anti-rationalization tables, code examples, and verification checklists. The largest open-source skill library for Claude Code, Cursor, Gemini CLI, and more.
+> 1306 production-ready AI agent skills with anti-rationalization tables, code examples, and verification checklists. The largest open-source skill library for Claude Code, Cursor, Gemini CLI, and more.
 
 ## What
 

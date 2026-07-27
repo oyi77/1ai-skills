@@ -2,6 +2,9 @@
 name: vilona
 description: Use when foundational core infrastructure skill providing system foundation capabilities for the agent ecosystem.
 domain: core
+author: mahipal
+license: Apache-2.0
+subdomain: core-platform
 tags:
 - infrastructure
 - memory

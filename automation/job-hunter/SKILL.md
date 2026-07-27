@@ -3,6 +3,9 @@ name: job-hunter
 description: Autonomous job hunting agent with state tracking, tailored applications, ATS optimization, and multi-platform
   search across LinkedIn, Indeed, and Glassdoor. Use when working with job hunter.
 domain: automation
+author: mahipal
+license: Apache-2.0
+subdomain: workflow-automation
 tags:
 - ai-agent
 - automation

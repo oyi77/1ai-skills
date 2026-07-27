@@ -2,6 +2,9 @@
 name: resend-mcp
 description: Resend Mcp. Use when working with resend mcp in mcp domain.
 domain: mcp
+author: mahipal
+license: Apache-2.0
+subdomain: mcp
 tags:
 - mcp
 - mcp-server

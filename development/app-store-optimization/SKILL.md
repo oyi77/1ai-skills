@@ -2,6 +2,9 @@
 name: app-store-optimization
 description: App Store and Play Store optimization — keywords, screenshots, reviews, and conversion rate optimization. Use when working with app store optimization.
 domain: development
+author: mahipal
+license: Apache-2.0
+subdomain: software-development
 tags:
 - app
 - coding

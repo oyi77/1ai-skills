@@ -2,6 +2,9 @@
 name: company-kb
 description: company-kb — Company Knowledge Base Skill. Use when relevant to this domain.
 domain: core
+author: mahipal
+license: Apache-2.0
+subdomain: core-platform
 tags:
 - company
 - infrastructure

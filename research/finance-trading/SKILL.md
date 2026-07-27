@@ -3,6 +3,9 @@ name: finance-trading
 description: Analyze financial markets using technical indicators, fundamental analysis, and macro trends. Use for investment
   research.
 domain: research
+author: mahipal
+license: Apache-2.0
+subdomain: research
 tags:
 - analysis
 - finance

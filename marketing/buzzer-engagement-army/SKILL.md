@@ -3,6 +3,9 @@ name: buzzer-engagement-army
 description: Multi-account engagement booster across TikTok, Instagram, and Facebook — automates likes, comments, and warmup
   schedules to beat algorithm suppression on new posts.
 domain: marketing
+author: mahipal
+license: Apache-2.0
+subdomain: marketing
 tags:
 - army
 - buzzer

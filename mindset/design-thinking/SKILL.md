@@ -3,6 +3,9 @@ name: design-thinking
 description: Solve complex problems through empathy, ideation, prototyping, and testing. Use when tackling ambiguous challenges
   with user-centered approaches.
 domain: mindset
+author: mahipal
+license: Apache-2.0
+subdomain: mindset
 tags:
 - design
 - mindset

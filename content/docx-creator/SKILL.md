@@ -2,6 +2,9 @@
 name: docx-creator
 description: Create, edit, and analyze Word documents programmatically using python-docx or docx.js. Generate reports, proposals, and templates with formatting, tables, images, and styles.
 domain: content
+author: mahipal
+license: Apache-2.0
+subdomain: content-creation
 tags:
 - documents
 - word

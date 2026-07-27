@@ -3,6 +3,9 @@ name: conflict-resolution
 description: Resolve interpersonal and team conflicts using mediation techniques, non-violent communication, and de-escalation.
   Use when tensions arise between individuals or groups.
 domain: mindset
+author: mahipal
+license: Apache-2.0
+subdomain: mindset
 tags:
 - conflict
 - mindset
