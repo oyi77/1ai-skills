@@ -51,6 +51,12 @@ def safe_invoke(client, tool, params, retries=2):
     raise RuntimeError(f"Failed: {'; '.join(errors)}")
 ```
 
+## When NOT to Use
+
+- You need a full SDK with application-level abstractions (use language-specific MCP SDK)
+- You're building a long-running server (this is a client, not a server implementation)
+- Connection management isn't needed (direct HTTP calls suffice for one-off tool calls)
+
 ## Transports
 
 | Transport | When | Example |
@@ -65,6 +71,34 @@ def safe_invoke(client, tool, params, retries=2):
 - [ ] Error handling covers all 3 failure modes: protocol error, connection failure, timeout
 - [ ] Exponential backoff configured for transient failures
 - [ ] Disconnect/cleanup called after each session
+
+## Commands
+
+```bash
+# List all available tools from a connected MCP server
+# (implement via client.list_tools())
+
+# Call a tool with typed parameters
+# (implement via client.call_tool("tool_name", {"param": "value"}))
+
+# Standard health check before any tool call
+# client.ping()  → throws on unreachable server
+```
+
+## Dependencies
+
+- Python 3.10+ (for async/await patterns)
+- `mcp` package: Python MCP SDK
+- `httpx` or `aiohttp`: for HTTP/SSE transport
+- No external services required (connects to local or remote MCP servers)
+
+## Verification
+
+- [ ] `client.ping()` succeeds before invoking tools
+- [ ] `list_tools()` returns valid JSON Schema for every tool parameter
+- [ ] Error handling tested for all 3 failure modes: protocol error, connection failure, timeout
+- [ ] Exponential backoff configured for transient failures
+- [ ] `disconnect()` called after each session (no dangling processes)
 
 ## When to Use
 
