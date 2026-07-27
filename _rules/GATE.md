@@ -55,21 +55,31 @@ GATE 5: PLAYBOOK UPDATE CHECK
   - Timeline updated in `~/projects/1ai-playbook/content/playbook/timeline/index.mdx`?
   - Format: date, what, sections affected, files changed, status, why it matters
   Bukti: [skip — no impact] / [updated YYYY-MM-DD — entry content]
-GATE 6: PRE-SALE HARDENING (SELLABILITY CHECK)
-  - Crash audit: every handler handles errors? NO 500s? NO silent crashes?
-  - Noise suppression: debug logs/console.log suppressed? ERR_ERL cleaned?
-  - Edge case coverage: empty/null/failure/timeout/concurrent states handled?
-  - Evidence pack: screenshots/curl/case study produced with real data?
-  - Handover-ready: README, API docs, deployment guide accurate?
-  - Value statement: "Ini [thing] melakukan [what] sehingga [who] bisa [benefit]"?
-  Bukti: [PASS/FAIL — yang belum: ______]
+GATE 6: PRE-SALE HARDENING (SELLABILITY CHECK) — WAJIB ENGINEERING.md §6.6
+  - Kerjain 6 audit dari ENGINEERING.md §6.6:
+    A. Crash audit     → abuse setiap entry point: empty body, invalid JSON, missing fields,
+                         expired token, rate-limit abuse. NO 500s, NO silent crashes.
+                         Receipt: crash audit table (endpoint × test × result × error msg)
+    B. Noise audit     → grep console.log/print/DEBUG dari src/
+                         cek production output: no stack traces, no internal paths, no ERR_ERL
+                         Receipt: "Noise grep: 0 matches. Stdout: CLEAN. Errors: CLEAN."
+    C. Edge case matrix → empty/null/duplicate/concurrent/timeout/invalid state transition
+                         Receipt: edge case table (feature × edge × expected × actual × verdict)
+    D. Evidence pack   → screenshots (UI) + curl receipts (API) + case study (docs/evidence/)
+                         Receipt: "Screenshots: N files. Curl: N files. Case study: [path]"
+    E. Handover check  → README exists + API docs + deployment guide + WHY comments + no secrets
+                         Receipt: "README: YES. API docs: COMPLETE. Deploy guide: YES. Secrets: 0"
+    F. Value statement → "Ini [thing] melakukan [what] sehingga [who] bisa [benefit]"
+                         Receipt: value statement one-liner
+  - MASTER RECEIPT (wajib):
+    ╔══════════════════════════════════════════════╗
+    ║ Crash: PASS/FAIL  Noise: CLEAN/NOISY        ║
+    ║ Edges: ALL/N_FAIL Evidence: COMPLETE/MISSING ║
+    ║ Handover: PASS/FAIL Value: [statement]       ║
+    ║ SELLABLE: YES / NO                           ║
+    ╚══════════════════════════════════════════════╝
+  Bukti: [paste MASTER RECEIPT]
   Sellable: [YES/NO — jika NO, jangan commit sebelum fixed]
-  - Did this task change systems, code, or company processes?
-    No → skip this gate (explain why in bukti)
-    Yes → PLAYBOOK PROTOCOL in RULES.md requires a timeline entry
-  - Timeline updated in `~/projects/1ai-playbook/content/playbook/timeline/index.mdx`?
-  - Format: date, what, sections affected, files changed, status, why it matters
-  Bukti: [skip — no impact] / [updated YYYY-MM-DD — entry content]
 ```
 
 ---
