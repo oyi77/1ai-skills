@@ -17,6 +17,11 @@ You have access to the Skill Seekers MCP server which provides 40 tools for conv
 
 Build new agent skills with proper structure, triggers, and verification.
 
+## When NOT to Use
+
+- You need to edit an existing skill (use the skill's own editing workflow)
+- The source is a conversational transcript with no clear structure (use manual writing)
+- You're looking for pre-built skills (use `skill_view` or search the 1ai-skills library)
 
 ## Anti-Rationalization Table
 
@@ -94,6 +99,34 @@ Automatically detect the source type from user input:
 - `build_how_to_guides` — Generate how-to guides from tests
 - `split_config` — Split large configs into focused skills
 - `export_to_weaviate`, `export_to_chroma`, `export_to_faiss`, `export_to_qdrant` — Vector DB export
+
+## Commands
+
+```bash
+# Detect source type from input
+#   URL → scrape_docs
+#   owner/repo → scrape_github
+#   file.pdf → scrape_pdf
+#   video URL → scrape_video
+
+# Basic workflow pipeline
+python3 -c "
+from skill_seekers import scrape_docs, enhance_skill, package_skill
+# Step 1: Scrape
+config = scrape_docs('https://example.com/docs', output_dir='./scraped')
+# Step 2: Enhance
+enhanced = enhance_skill(config, target_platform='hermes')
+# Step 3: Package
+package_skill(enhanced, format='SKILL.md', output='./output/')
+"
+```
+
+## Dependencies
+
+- Python 3.10+
+- `skill-seekers` package (tools for scraping and packaging)
+- Internet access for documentation scraping
+- API keys for vector DB exports (optional)
 
 ## Process
 

@@ -14,6 +14,10 @@ type: marketing
 
 A single lead magnet can generate 50-500 new leads/month for years. At 2-10% email-to-customer conversion and $50-500 average order, that's $50-25,000/month from one magnet. Sell lead magnet creation as a $500-5K service to businesses.
 
+## Overview
+
+Lead magnets are high-value free resources (checklists, templates, calculators) gated behind an email capture. They're the entry point of most B2C and B2B funnels — a single well-designed magnet can generate 50-500 leads/month with minimal ongoing effort.
+
 ## Revenue Streams
 1. Lead Magnet Creation ($500-5K/magnet) — design + build for clients
 2. Lead Gen Funnels ($2K-10K) — full landing page + email sequence

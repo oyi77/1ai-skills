@@ -52,6 +52,14 @@ subdomain: money-mindset
 - Situations where professional financial advising is legally required
 - When the user explicitly wants emotional support, not strategy
 
+## Overview
+
+Diagnose your starting position, evaluate every opportunity by expected value, and execute proven income-generating strategies. This skill gives you the mental frameworks to cut through noise, avoid cognitive traps, and commit to actions that actually move the needle — no hype, no theory, just systematic judgment.
+
+## Dependencies
+
+- None required — this is a mental framework, not a toolchain
+
 ## Core Principles
 
 - **Start with the starting point** — Your capital, time, and skills determine what's accessible. Never prescribe above the user's tier.
@@ -646,6 +654,22 @@ When to kill a strategy. Hard metrics, not feelings:
 | Package your skill into a template/tool | $100-$5K/mo passive (if marketed) | 30 days build, ongoing |
 | Cold email 100 prospects in a niche | $2K-$10K in services revenue | 30-60 days |
 | Build one AI wrapper + list on a marketplace | $500-$5K/mo (if solves real pain) | 7-14 days build |
+
+---
+
+## Commands
+
+```bash
+# Quick-start: diagnose your starting position
+# Tier 1 (<$1K): gig platforms + flipping
+# Tier 2 ($1-10K drops): services + cold email
+# Tier 3 ($10-100K drops): micro-SaaS + content flywheel
+# Tier 4 (100K+): info products + arbitrage + community
+
+# Evaluate any opportunity by expected value
+# EV = (success_prob * success_value) - (failure_prob * failure_cost)
+# If EV < 0 or payback > 90 days → pass
+```
 
 ---
 
