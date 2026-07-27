@@ -138,23 +138,251 @@ SOLID, KISS, DRY, YAGNI · explicit > implicit · no silent failure · 100% exte
             Metrics: tracks latency, error rate, throughput? Dashboard: viewable by humans?
             Receipt: "Logging: YES/NO. Alerting: YES/NO (where). Metrics: YES/NO (what)."
 6.6 PRE-SALE HARDENING (wajib, sebelum SHIP): Code yang tidak bisa dijual = tidak selesai.
-            Before SHIP, audit against sellability checklist:
-            a) CRASH AUDIT — setiap route/handler/function: apa yang terjadi pada invalid input?
-               Empty state? Network failure? Auth failure? Rate limit? NO 500s, no unhandled rejections,
-               no silent crashes. Setiap error path harus return proper error message, not crash.
-            b) NOISE SUPPRESSION — no debug logs, console.log, raw stack traces visible to consumer.
-               ERR_ERL suppressed, validate:false on clean paths, clean output end-to-end.
-            c) EDGE CASE COVERAGE — empty lists, null values, missing fields, boundary conditions,
-               concurrent access, timeout. Masing-masing handled without crash, with proper response.
-            d) EVIDENCE PACK — screenshots of working flow, curl output for setiap endpoint,
-               case study dengan real data flowing through. Bukan "I tested it" — tunjukkin.
-            e) HANDOVER-READY — README updated, API docs accurate, deployment guide exists,
-               code comments explain WHY not WHAT. Someone else bisa pick up and run without asking.
-            f) VALUE STATEMENT — satu kalimat: "Ini [thing] melakukan [what] sehingga [who] bisa [benefit]."
-               Kalau tidak bisa ngomong itu, berarti tidak sellable. Refactor atau scrap.
-            Receipt: "Crash audit: PASS/FAIL. Noise: CLEAN/NOISY. Edges: ALL/MISSING[X].
-            Evidence: [screenshot/curl/case-study path]. Handover: PASS/FAIL.
-            Value: '[one-liner]'. Sellable: YES/NO."
+            ==========================================================================
+            Sebelum SHIP, jalankan 6 audit berikut. Setiap audit WAJIB produce receipt.
+            Kalau salah satu FAIL → HARDEN dulu, baru SHIP.
+
+            ──────────────────────────────────────────────────────────────────────
+            AUDIT A: CRASH AUDIT (setiap endpoint/handler/function)
+            ──────────────────────────────────────────────────────────────────────
+            Goal: NO 500s, NO unhandled rejections, NO silent crashes.
+            Cara: Abuse setiap entry point seperti attacker:
+
+            [API Routes]   curl -X POST dengan body kosong
+                           curl -X POST dengan JSON invalid (trailing comma, string instead of int)
+                           curl -X POST dengan field missing
+                           curl -X POST dengan tipe salah (string di field number)
+                           curl dengan auth token expired / missing
+                           curl dengan rate-limit abuse (30x in 1s)
+                           curl ke route yang不存在 (404 handling)
+            [Functions]    Call with null/undefined/none
+                           Call with empty string/list/dict
+                           Call with out-of-range values
+                           Call with concurrent invocations
+            [CLI Tools]    Run tanpa args
+                           Run dengan arg salah
+                           Run dengan path tidak ada
+
+            ✅ LULUS: setiap test return error message (bukan crash/500).
+                      Error message: specific, human-readable, no stack trace leaked.
+            ❌ GAGAL: 500 Internal Server Error, unhandled TypeError/ReferenceError,
+                      Promise rejection tanpa catch, silent try/except yang swallow error.
+
+            Receipt template:
+            ```
+            CRASH AUDIT:
+            Endpoint        | Test                  | Result     | Error msg
+            ----------------|-----------------------|------------|-------------------------
+            POST /orders    | empty body            | 400        | "body: required"
+            POST /orders    | invalid JSON          | 400        | "body: invalid JSON"
+            POST /orders    | missing user_id       | 400        | "user_id: required"
+            GET /orders/xxx | nonexistent id        | 404        | "order not found"
+            GET /orders     | expired token         | 401        | "token expired"
+            GET /orders     | no auth header        | 401        | "authorization required"
+            Verdict: PASS / FAIL (n unhandled crashes)
+            ```
+
+            ──────────────────────────────────────────────────────────────────────
+            AUDIT B: NOISE SUPPRESSION (clean output)
+            ──────────────────────────────────────────────────────────────────────
+            Goal: Zero debug artifacts visible to consumer.
+            Cara:
+            1. Grep all source files for noise:
+               `grep -rn 'console\.log\|print(\|println\|fmt\.Print\|puts\|p DEBUG\|logger\.Debug\|console\.error' src/ --include='*.py' --include='*.js' --include='*.ts' --include='*.go' --include='*.rs' | grep -v test/ | grep -v vendor/`
+            2. Cek production output: jalankan app → tangkap stdout/stderr → pastikan tidak ada
+               debug noise, raw stack trace, atau log yang seharusnya cuma untuk dev.
+            3. Cek error responses: pastikan error message ke user tidak mengandung:
+               - Internal path (/var/www/... /home/user/...)
+               - Stack trace
+               - Query/command text
+               - Environment variable names
+               - Database detail (table name, column name)
+
+            ✅ LULUS: output ke consumer = intended response only.
+                      DEBUG-level log hanya ke file/stdout, NEVER ke HTTP response.
+            ❌ GAGAL: `{"error": "TypeError: Cannot read property 'x' of undefined at /app/server.js:42"}`
+                      `validate:true` / `ERR_ERL` visible in production responses.
+                      `console.log("user data:", user)` left in shipped code.
+
+            Receipt template:
+            ```
+            NOISE AUDIT:
+            Noise grep          : 0 matches (or N matches — all in test/ or handled)
+            Production stdout   : CLEAN — only [expected output]
+            Error responses     : CLEAN — no paths, traces, or internals leaked
+            Verdict: CLEAN / NOISY (fix: _____)
+            ```
+
+            ──────────────────────────────────────────────────────────────────────
+            AUDIT C: EDGE CASE MATRIX
+            ──────────────────────────────────────────────────────────────────────
+            Goal: Setiap state boundary handled gracefully.
+            Audit matrix — apply to setiap function/route yang relevan:
+
+            | Edge case               | What to test                                              |
+            |-------------------------|-----------------------------------------------------------|
+            | Empty input             | [], {}, "", null, undefined, 0                            |
+            | Missing field           | Payload tanpa field wajib                                  |
+            | Wrong type              | String di number field, number di string field             |
+            | Boundary                | Max int, min int, max length, 0 items, 1 item, N items     |
+            | Duplicate              | Submit data yang sama 2x                                 |
+            | Concurrent             | 2 requests bersamaan ke resource yang sama                  |
+            | Timeout                 | Dependency slow/offline — apakah handler timeout graceful? |
+            | State order             | Approve→Submit vs Submit→Approve — semua urutan?          |
+            | Invalid state transit   | Cancel already-cancelled order, delete already-deleted     |
+            | Auth mismatch           | User A akses data User B                                    |
+
+            Untuk setiap edge case:
+            - Catat input → expected output → actual output → verdict
+            - Kalau actual ≠ expected → ini BUG → fix sebelum SHIP
+
+            Receipt template:
+            ```
+            EDGE CASE MATRIX:
+            Feature/Route | Edge              | Expected          | Actual            | Verdict
+            --------------|-------------------|-------------------|-------------------|---------
+            POST /orders  | empty body        | 400 + error msg   | 400 + error msg   | PASS
+            POST /orders  | duplicate submit  | 409 "already exists" | 500 crash      | ❌ FAIL
+            Verdict: ALL PASS / N EDGES FAIL (fix: _____)
+            ```
+
+            ──────────────────────────────────────────────────────────────────────
+            AUDIT D: EVIDENCE PACK
+            ──────────────────────────────────────────────────────────────────────
+            Goal: Bisa tunjukkin ke calon buyer bahwa ini kerja.
+            Wajib produce 3 artifacts:
+
+            d1) SCREENSHOTS (untuk UI/Web):
+                - Screenshot setiap flow step (before → after)
+                - Annotate dengan arrow/circle untuk highlight
+                - Simpan di `docs/evidence/screenshots/`
+
+            d2) CURL RECEIPTS (untuk API/Backend):
+                - Setiap endpoint: curl command + response (status + body)
+                - Include happy path + 1 error path per endpoint
+                - Simpan di `docs/evidence/curl/`
+
+            d3) CASE STUDY (untuk calon buyer):
+                Format minimal:
+                ```markdown
+                # Case Study: [Feature Name]
+                ## Problem
+                [What problem does this solve? 2-3 kalimat]
+
+                ## Solution
+                [How does it work? Key architecture decisions]
+
+                ## Real Data Flow
+                ```
+                [Input] → [System Process] → [Output]
+                - Input: [what goes in]
+                - Process: [what happens internally]
+                - Output: [what comes out — include screenshot/curl]
+                ```
+
+                ## Business Impact
+                - [Metric X]: [before] → [after]
+                - [Metric Y]: [before] → [after]
+
+                ## How to Verify
+                [Exact steps someone else can follow to see it working]
+                ```
+
+            ✅ LULUS: screenshots ada, curl receipts ada, case study written with real data.
+            ❌ GAGAL: "I tested it, trust me" / "it works on my machine" / no evidence files.
+
+            Receipt template:
+            ```
+            EVIDENCE PACK:
+            Screenshots : N files at docs/evidence/screenshots/
+            Curl receipts: N files at docs/evidence/curl/
+            Case study  : docs/evidence/case-study-[feature].md
+            Verdict: COMPLETE / MISSING (_____)
+            ```
+
+            ──────────────────────────────────────────────────────────────────────
+            AUDIT E: HANDOVER-READY CHECK
+            ──────────────────────────────────────────────────────────────────────
+            Goal: Someone else bisa clone repo + run tanpa tanya.
+            Checklist:
+
+            [ ] README.md exists dan mencakup:
+                - Apa ini? (one-liner)
+                - Prerequisites (language, database, API keys, env vars)
+                - Quick Start (clone → install → configure → run — exact commands)
+                - Architecture (diagram atau text — main components + data flow)
+            [ ] API docs accurate (OpenAPI, README, atau docstrings):
+                - Setiap endpoint tercantum dengan request/response format
+                - Error codes documented
+            [ ] Deployment guide exists:
+                - Production vs development config
+                - Env vars list (template .env.example)
+                - Persistence (DB setup, migrations)
+                - Health check endpoint
+            [ ] Code comments explain WHY not WHAT:
+                - `# Retry 3x because external API is eventually consistent` ✓
+                - `# Loop through items` ✗ (code already shows WHAT)
+            [ ] No sensitive data in code:
+                - No hardcoded keys/passwords/tokens
+                - .env.example uses placeholder values
+                - .gitignore includes .env, secrets, logs
+
+            Receipt template:
+            ```
+            HANDOVER CHECK:
+            README           : EXISTS / MISSING
+            API docs         : COMPLETE / PARTIAL / MISSING
+            Deployment guide : EXISTS / MISSING
+            Code comments    : WHY-based / WHAT-based / MISSING
+            Secrets in code  : 0 leaks (or N leaks — fix before ship)
+            Verdict: PASS / FAIL (fix: _____)
+            ```
+
+            ──────────────────────────────────────────────────────────────────────
+            AUDIT F: VALUE STATEMENT
+            ──────────────────────────────────────────────────────────────────────
+            Goal: Satu kalimat yang bikin calon buyer ngerti kenapa ini berharga.
+
+            Formula: "Ini [THING] melakukan [WHAT] sehingga [WHO] bisa [BENEFIT]."
+
+            Contoh:
+            - ✅ "Ini automated trading bot melakukan eksekusi order berdasarkan signal
+                 sehingga trader bisa profit tanpa monitor layar 24 jam."
+            - ✅ "Ini API gateway melakukan validasi + routing request
+                 sehingga developer bisa deploy microservices tanpa manage auth sendiri."
+            - ❌ "Ini API untuk trading." (terlalu umum — gak jelas value-nya)
+            - ❌ "Ini bot." (gak ngasih tau apa yang bot ini lakukan)
+
+            Kalau tidak bisa bikin value statement yang jelas dalam 1 kalimat:
+            ➤ Berarti kamu sendiri tidak paham apa yang kamu buat.
+            ➤ STOP. Refactor atau scrap. Jangan SHIP code yang tidak paham value-nya.
+
+            Receipt template:
+            ```
+            VALUE STATEMENT:
+            "Ini [_________] melakukan [_________] sehingga [_________] bisa [_________]."
+            Sellable: YES / NO (if NO, stop and rethink)
+            ```
+
+            ──────────────────────────────────────────────────────────────────────
+            MASTER RECEIPT (wajib di copy-paste ke SHIP output):
+            ──────────────────────────────────────────────────────────────────────
+            ```
+            ╔══════════════════════════════════════════════════════════╗
+            ║      PRE-SALE HARDENING — MASTER RECEIPT                ║
+            ╠══════════════════════════════════════════════════════════╣
+            ║ A. Crash audit  : PASS / FAIL (n crashes)              ║
+            ║ B. Noise        : CLEAN / NOISY                        ║
+            ║ C. Edge cases   : ALL PASS / N FAIL                    ║
+            ║ D. Evidence pack: COMPLETE / MISSING                   ║
+            ║ E. Handover     : PASS / FAIL                          ║
+            ║ F. Value        : "[statement]"                        ║
+            ╠══════════════════════════════════════════════════════════╣
+            ║ SELLABLE: YES / NO                                     ║
+            ╚══════════════════════════════════════════════════════════╝
+            ```
+            Jika SELLABLE = NO → DON'T SHIP. Harden dulu.
+            Jika SELLABLE = YES → proceed ke §7 DOCS.
 7. DOCS    → Sync arch, ADRs, API docs, ops docs, CHANGELOG before shipping.
             Code ≠ Docs → STOP → SYNC → CONTINUE.
 8. SHIP/REVIEW → All tests green · 0 dead code/TODOs/hardcoded vals ·
