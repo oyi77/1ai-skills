@@ -257,7 +257,7 @@ def parse_frontmatter(text: str) -> tuple[dict, str]:
     fm_text = text[4:end]
     body = text[end + 4:]
     try:
-        fm = yaml.safe_load(fm_text)
+        fm = yaml.load(fm_text, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))
         if not isinstance(fm, dict):
             fm = {}
     except yaml.YAMLError:

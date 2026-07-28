@@ -40,7 +40,7 @@ def parse_frontmatter(path: Path) -> dict[str, Any]:
     if not m:
         return {}
     try:
-        result = yaml.safe_load(m.group(1))
+        result = yaml.load(m.group(1), Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))
         return result if isinstance(result, dict) else {}
     except (yaml.YAMLError,):
         return {}
