@@ -105,7 +105,7 @@ def test_structure(text, skill_name):
     parsed = {}
     yaml_ok = False
     try:
-        parsed_raw = yaml.safe_load(fm)
+        parsed_raw = yaml.load(fm, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))
         if isinstance(parsed_raw, dict):
             parsed = parsed_raw
             yaml_ok = True
