@@ -35,12 +35,8 @@ from pathlib import Path
 # ── Config ──
 
 ROOT = Path(__file__).resolve().parent.parent
-CATS = [
-    'agents', 'automation', 'content', 'core', 'cybersecurity', 'data',
-    'development', 'devops', 'financial', 'integrations', 'marketing',
-    'mcp', 'meta', 'mindset', 'operations', 'productivity', 'research',
-    'sales', 'trading',
-]
+
+from config import SKILL_DIRS as CATS
 
 REQUIRED_FM = ['name', 'description', 'domain']
 REQUIRED_SECTIONS = ['## When to Use']
@@ -63,6 +59,18 @@ class TestResult:
 
 # ── Collectors ──
 
+def _canonical_name(md):
+    """Extract canonical name from SKILL.md frontmatter, falling back to dir name."""
+    try:
+        text = md.read_text(encoding='utf-8')
+        m = re.search(r'^name:\s*(.+)$', text[:500], re.MULTILINE)
+        if m:
+            return m.group(1).strip().strip("'\"").strip()
+    except Exception:
+        pass
+    return md.parent.name
+
+
 def collect_skills(filter_name=None):
     """Collect all SKILL.md files."""
     skills = []
@@ -71,7 +79,7 @@ def collect_skills(filter_name=None):
         if not cat_dir.exists():
             continue
         for md in sorted(cat_dir.rglob('SKILL.md')):
-            name = md.parent.name
+            name = _canonical_name(md)
             if filter_name and name != filter_name:
                 continue
             skills.append({

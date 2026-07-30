@@ -37,12 +37,7 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parent.parent
 
-SKILL_DIRS = [
-    "agents", "automation", "content", "core", "cybersecurity", "data",
-    "development", "devops", "finance", "financial", "integrations",
-    "marketing", "mcp", "meta", "mindset", "operations", "productivity",
-    "research", "sales", "trading",
-]
+from config import SKILL_DIRS
 
 # ── Thresholds ──────────────────────────────────────────────────────────
 MIN_DESC_LENGTH = 30          # characters
