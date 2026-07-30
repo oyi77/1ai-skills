@@ -49,7 +49,7 @@ for cat in SKILL_DIRS:
 
         # Parse with yaml
         try:
-            parsed = yaml.safe_load(fm)
+            parsed = yaml.load(fm, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))
         except yaml.YAMLError:
             skipped.append(f'{cat}/{entry} (yaml error)')
             continue
