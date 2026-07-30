@@ -102,7 +102,7 @@ def split_frontmatter(text: str) -> tuple[str | None, str]:
 
 def parse_meta(text: str) -> dict | None:
     try:
-        return yaml.safe_load(text)
+        return yaml.load(text, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))
     except yaml.YAMLError:
         return None
 
