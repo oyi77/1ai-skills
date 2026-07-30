@@ -28,3 +28,6 @@
 ## 2025-07-27 - [Optimize YAML Parsing Speed]
 **Learning:** Parsing hundreds or thousands of YAML files (e.g., `SKILL.md` frontmatter) using `yaml.safe_load()` in pure Python creates a massive CPU bottleneck during batch operations.
 **Action:** When working with PyYAML for large-scale file processing, always switch to the C-extension loader `yaml.load(..., Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))`. This provides a ~5x speedup by seamlessly utilizing the C-based parser when available, while safely falling back to pure Python without complex nested exception handling.
+## 2025-02-28 - PyYAML C-extension usage for serialization
+**Learning:** Just like `yaml.safe_load()`, using `yaml.safe_dump()` in pure Python creates a massive CPU bottleneck during batch operations (like fixing hundreds of `SKILL.md` frontmatters).
+**Action:** When updating or serializing multiple YAML files, use `yaml.dump(..., Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))` to dramatically improve performance by utilizing the PyYAML C-extension (`libyaml`) when available.
