@@ -232,8 +232,8 @@ def fix_one(path: Path) -> list[str]:
             ordered[key] = meta.pop(key)
     ordered.update(meta)
 
-    new_fm = yaml.safe_dump(
-        ordered, sort_keys=False, allow_unicode=True, width=120
+    new_fm = yaml.dump(
+        ordered, sort_keys=False, allow_unicode=True, width=120, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper)
     ).rstrip()
     new_text = (
         f"---\n{new_fm}\n---\n{body}"
