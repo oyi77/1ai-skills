@@ -11,7 +11,7 @@ tags:
 - IGA
 subdomain: identity-access-management
 version: '1.0'
-author: mahipal
+author: oyi77
 license: Apache-2.0
 nist_ai_rmf:
 - GOVERN-1.1

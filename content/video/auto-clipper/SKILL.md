@@ -2,7 +2,7 @@
 name: auto-clipper
 description: Use when automatically clip long videos into short, engaging highlights for TikTok, Reels, and YouTube Shorts using FFmpeg and AI scene detection.
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags: [auto, clipper, video]

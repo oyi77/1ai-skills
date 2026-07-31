@@ -2,7 +2,7 @@
 name: material-ui
 description: Material UI (MUI) React components — theming, styled engine, data grid, date pickers, icons. Use when working with material ui.
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

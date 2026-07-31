@@ -3,7 +3,7 @@ name: portfolio-monitor
 description: Track portfolio company KPIs, variances, returns analysis. Use when user says "monitor portfolio", "track KPIs",
   "portfolio returns".
 domain: financial
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: financial-analysis
 tags:

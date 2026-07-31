@@ -17,7 +17,7 @@ mitre_attack:
 - T1210
 - T1072
 version: 1.0.0
-author: mahipal
+author: oyi77
 license: Apache-2.0
 nist_csf:
 - RS.MA-01

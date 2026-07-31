@@ -3,7 +3,7 @@ name: hooks-setup
 description: Use when user says "install hooks", "setup hooks", "hooks setup", "configure hooks", "/hooks-setup". Installs
   and configures 1ai-skills auto-evolve hooks for Claude Code.
 domain: meta
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: meta-skills
 tags:

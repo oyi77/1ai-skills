@@ -5,7 +5,7 @@ domain: sales
 license: Apache-2.0
 tags: [business-development, generation, lead, revenue, sales, money, outreach, b2b]
 version: "2.0.0"
-author: ""
+author: oyi77
 subdomain: ""
 type: sales
 ---

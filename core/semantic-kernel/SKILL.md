@@ -2,7 +2,7 @@
 name: semantic-kernel
 description: Microsoft Semantic Kernel — AI orchestration, plugins, planners, memory, prompt templates. Use when working with semantic kernel.
 domain: core
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: core-platform
 tags:

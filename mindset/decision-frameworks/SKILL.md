@@ -3,7 +3,7 @@ name: decision-frameworks
 description: Apply structured decision frameworks like RICE, ICE, weighted scoring, and pre-mortem analysis. Use when prioritizing
   features, evaluating options, or making high-stakes decisions.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

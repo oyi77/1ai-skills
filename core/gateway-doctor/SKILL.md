@@ -2,7 +2,7 @@
 name: gateway-doctor
 description: Diagnose and fix MCP gateway routing issues, health checks, and server connectivity problems. Use when working with gateway doctor.
 domain: core
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: core-platform
 tags:

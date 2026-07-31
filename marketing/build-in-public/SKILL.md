@@ -3,7 +3,7 @@ name: build-in-public
 description: Document and share your startup journey, revenue, and learnings on social media. Build audience, attract customers,
   and find co-founders through transparent sharing. Use when working with build in public.
 domain: marketing
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: marketing
 tags:

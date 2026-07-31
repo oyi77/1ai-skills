@@ -2,7 +2,7 @@
 name: dockerfile-optimize
 description: Dockerfile optimization — multi-stage builds, layer caching, security hardening, minimal images. Use when optimizing Docker builds or hardening container security.
 domain: devops
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: devops
 tags:

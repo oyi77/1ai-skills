@@ -3,7 +3,7 @@ name: google-canvas
 description: Use when creating, opening, reading, editing, or collaborating on Google Canvas documents and Gemini Canvas shared
   applications through browser automation.
 domain: productivity
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: productivity
 tags:

@@ -2,7 +2,7 @@
 name: incremental-implementation
 description: Delivers changes incrementally. Use when implementing any feature or change that touches more than one file.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

@@ -2,7 +2,7 @@
 name: debt
 description: Use when harvest ponytail shortcut comments into one debt ledger so deferrals get tracked instead of forgotten.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

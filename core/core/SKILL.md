@@ -2,7 +2,7 @@
 name: core
 description: Knowledge base hub — PARA-structured company memory combining company-kb and kb for persistent context, project documentation, and agent recall across sessions. Use when working with knowledge base, company knowledge, or persistent memory.
 domain: core
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: core-platform
 tags:

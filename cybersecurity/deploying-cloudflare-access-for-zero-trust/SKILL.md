@@ -12,7 +12,7 @@ tags:
 - cloudflare-one
 subdomain: zero-trust-architecture
 version: '1.0'
-author: mahipal
+author: oyi77
 license: Apache-2.0
 atlas_techniques:
 - AML.T0051

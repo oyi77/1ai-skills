@@ -2,7 +2,7 @@
 name: trading-risk-manager
 description: Monitor portfolio risk, enforce position limits, and trigger stop-losses. Use when managing exposure across strategies.
 domain: trading
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: trading
 tags:

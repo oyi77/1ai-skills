@@ -3,7 +3,7 @@ description: Core autonomy protocol for AI agent operations. Defines how agents 
   — monitoring all systems, generating revenue, managing team, escalating decisions, and growing.
   Use this skill to understand an autonomous operating system. Use when working with autonomy engine.
 domain: core
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: core-platform
 name: autonomy-engine

@@ -4,7 +4,7 @@ description: Cross-platform social media intelligence gathering using Agent Reac
   intel, and user insights from Twitter, Reddit, YouTube, XiaoHongShu across 35+ platforms. Use when researching social proof,
   market sentiment, viral content patterns, or competitive positioning.
 domain: research
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: research
 tags:

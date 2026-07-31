@@ -2,7 +2,7 @@
 name: payment-gateways
 description: Payment gateway integration — Stripe, Paddle, Lemon Squeezy, dunning, subscription management. Use when working with payment gateways.
 domain: operations
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: business-operations
 tags:

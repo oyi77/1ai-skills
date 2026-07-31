@@ -2,7 +2,7 @@
 name: cassandra-patterns
 description: Apache Cassandra patterns — data modeling, CQL, partition keys, clustering, replication, performance tuning. Use when working with cassandra patterns.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

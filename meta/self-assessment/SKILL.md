@@ -2,7 +2,7 @@
 name: self-assessment
 description: Skills evaluate their own performance, capabilities, and limitations. Honest self-reflection drives improvement. Use when working with self assessment.
 domain: meta
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: meta-skills
 tags:

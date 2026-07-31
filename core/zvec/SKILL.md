@@ -2,7 +2,7 @@
 name: zvec
 description: Zero-copy vector operations for efficient similarity search and embedding storage in agent memory systems. Use when working with zvec.
 domain: core
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: core-platform
 tags:

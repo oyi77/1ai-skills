@@ -3,7 +3,7 @@ name: customer-support
 description: Use when handling customer support via browser - email responses, chat interactions, ticket management, and escalation
   workflows.
 domain: sales
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: sales
 tags:

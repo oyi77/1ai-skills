@@ -12,7 +12,7 @@ tags:
 - directory-services
 - hardening
 version: '1.0'
-author: mahipal
+author: oyi77
 license: Apache-2.0
 nist_csf:
 - PR.AA-01

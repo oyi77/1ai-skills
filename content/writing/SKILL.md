@@ -2,7 +2,7 @@
 name: writing
 description: Use when full-stack content production factory — ad copy, emails, long-form articles, product descriptions. Turn words into revenue with data-driven writing pipelines.
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

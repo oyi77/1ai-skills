@@ -2,7 +2,7 @@
 name: decepticon-red-team
 description: Autonomous red team agent executing full attack chains with domain specialists. Use when running autonomous red team operations, simulating end-to-end attack chains, or planning engagements.
 domain: cybersecurity
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: red-teaming
 tags:

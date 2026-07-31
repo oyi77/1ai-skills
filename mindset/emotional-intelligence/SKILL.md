@@ -3,7 +3,7 @@ name: emotional-intelligence
 description: Build self-awareness, empathy, and social skills using the EQ model. Use when improving relationships, communication,
   or leadership effectiveness.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

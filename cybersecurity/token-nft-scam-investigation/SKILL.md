@@ -4,7 +4,7 @@ description: Investigate token and NFT scams including rug pulls, honeypot token
   wash trading, and NFT floor manipulation to identify fraudulent patterns and trace perpetrator wallets.
   Use when analyzing suspicious token launches, investigating NFT fraud, or detecting market manipulation.
 domain: cybersecurity
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: blockchain-security
 tags:

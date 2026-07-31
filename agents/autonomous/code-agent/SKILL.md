@@ -2,7 +2,7 @@
 name: code-agent
 description: Use when implement features from specs — reads requirements, writes code with tests, iterates until verification passes.
 domain: agents
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:

@@ -3,7 +3,7 @@ name: alphaear-strategy
 description: Score trading setups using AlphaEar multi-factor analysis (momentum, volume, sentiment). Use when evaluating
   entry/exit signals.
 domain: trading
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: trading
 tags:

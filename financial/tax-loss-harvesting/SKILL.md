@@ -2,7 +2,7 @@
 name: tax-loss-harvesting
 description: Identify TLH opportunities, manage wash sales. Use when user says "tax loss harvest", "TLH", "wash sale check".
 domain: financial
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: financial-analysis
 tags:

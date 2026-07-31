@@ -4,7 +4,7 @@ description: Query and analyze TikTok Shop products by category with intelligent
   goal detection. Use when researching trending products, finding emerging winners, analyzing competition, or building product
   intelligence reports.
 domain: integrations
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: integrations
 tags:

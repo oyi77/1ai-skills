@@ -13,7 +13,7 @@ tags:
 - workload-protection
 subdomain: security-operations
 version: 1.0.0
-author: mahipal
+author: oyi77
 license: Apache-2.0
 nist_ai_rmf:
 - GOVERN-1.1

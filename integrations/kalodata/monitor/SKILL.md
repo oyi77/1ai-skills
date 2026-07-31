@@ -4,7 +4,7 @@ description: Scheduled research runs with auto-alerts for NEW viral products. Ru
   detects new products by comparing with previous runs, alerts on revenue threshold crossings, and sends notifications via
   Slack webhook. Use when working with kalodata monitor.
 domain: integrations
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: integrations
 tags:

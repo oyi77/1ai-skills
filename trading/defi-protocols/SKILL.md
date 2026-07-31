@@ -2,7 +2,7 @@
 name: defi-protocols
 description: 'Skill: defi-protocols. See SKILL.md body for details. Use when this domain is relevant.'
 domain: trading
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: trading
 tags:

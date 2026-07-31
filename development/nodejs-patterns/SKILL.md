@@ -2,7 +2,7 @@
 name: nodejs-patterns
 description: Node.js patterns — Express, Fastify, streams, worker threads, clustering, performance optimization. Use when working with nodejs patterns.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

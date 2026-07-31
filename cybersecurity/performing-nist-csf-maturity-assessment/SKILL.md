@@ -12,7 +12,7 @@ tags:
   - risk-management
 nist_csf: [GV.OC-01, GV.RM-01, GV.PO-01, ID.RA-01, GV.OV-01]
 version: "1.0"
-author: mahipal
+author: oyi77
 license: Apache-2.0
 ---
 # Performing NIST CSF Maturity Assessment

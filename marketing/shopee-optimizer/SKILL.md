@@ -4,7 +4,7 @@ description: Shopee product management automation - listings, pricing, inventory
   Shopee product listings, automating price adjustments based on competitors, syncing inventory across variants, processing
   orders with templates, tracking analytics, generating SEO-optimized content, or bulk uploading products from CSV files.
 domain: marketing
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: marketing
 tags:

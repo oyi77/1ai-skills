@@ -3,7 +3,7 @@ name: talent-crm
 description: Manage talent pipeline with candidate tracking, outreach automation, and interview scheduling. Use for recruiting
   CRM.
 domain: sales
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: sales
 tags:

@@ -3,7 +3,7 @@ name: probabilistic-thinking
 description: Apply Bayesian updating, base rates, and expected value to decision-making. Use when reasoning under uncertainty
   or evaluating risks.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

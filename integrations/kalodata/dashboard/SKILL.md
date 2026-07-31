@@ -3,7 +3,7 @@ name: kalodata-dashboard
 description: Use when generating CLI-based visual reports from Kalodata product research data, including ASCII trend charts,
   product cards, interactive dashboards, and markdown exports.
 domain: integrations
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: integrations
 tags:

@@ -2,7 +2,7 @@
 name: writing-skills
 description: Use when creating new skills, editing existing skills, or verifying skills work before deployment
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

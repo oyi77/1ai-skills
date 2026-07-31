@@ -2,7 +2,7 @@
 name: typeorm-patterns
 description: TypeORM patterns — entities, repositories, migrations, relations, query builder, active record vs data mapper. Use when working with typeorm patterns.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

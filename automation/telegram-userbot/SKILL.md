@@ -4,7 +4,7 @@ description: Full MTProto control of Telegram account via Telethon. DM, Voice No
   member scraping, bot cloning, outreach automation, broadcast, CRM tracking, content reposting, scheduled messaging, webhook
   triggers. Use for all Telegram automation as a real user (not bot API).
 domain: automation
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: workflow-automation
 tags:

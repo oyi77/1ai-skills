@@ -3,7 +3,7 @@ name: teamwork
 description: Dynamically creates and manages AI agent teams for complex tasks. Invoke when user requests multi-agent collaboration,
   complex project execution, or when tasks require specialized roles and coordinated workflow. Use when working with teamwork.
 domain: core
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: core-platform
 tags:

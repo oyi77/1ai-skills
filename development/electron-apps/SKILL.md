@@ -2,7 +2,7 @@
 name: electron-apps
 description: Electron desktop app development — main/renderer process, IPC, native menus, auto-update, packaging. Use when working with electron apps.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

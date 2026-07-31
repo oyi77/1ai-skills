@@ -2,7 +2,7 @@
 name: ruvector
 description: Generate and manage vector embeddings for semantic search and RAG retrieval across knowledge bases.
 domain: core
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: core-platform
 tags:

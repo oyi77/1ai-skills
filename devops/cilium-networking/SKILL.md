@@ -2,7 +2,7 @@
 name: cilium-networking
 description: Cilium eBPF networking — Kubernetes CNI, network policies, load balancing, observability with Hubble. Use when working with cilium networking.
 domain: devops
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: devops
 tags:

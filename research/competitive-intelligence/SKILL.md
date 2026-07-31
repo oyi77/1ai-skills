@@ -3,7 +3,7 @@ name: competitive-intelligence
 description: Continuous competitor monitoring — pricing changes, feature launches, job postings, ad spend, SEO rankings, social
   media activity — with weekly intelligence briefs and strategic recommendations. Use when working with competitive intelligence.
 domain: research
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: research
 tags:

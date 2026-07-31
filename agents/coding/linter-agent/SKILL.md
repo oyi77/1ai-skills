@@ -2,7 +2,7 @@
 name: linter-agent
 description: Use when detect and fix code style violations, enforce project conventions, ensure consistent formatting.
 domain: agents
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:

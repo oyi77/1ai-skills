@@ -2,7 +2,7 @@
 name: review-agent
 description: Use when read code changes with adversarial intent to find bugs, security holes, logic errors, and performance traps.
 domain: agents
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:

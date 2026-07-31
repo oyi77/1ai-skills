@@ -3,7 +3,7 @@ name: partnership-development
 description: Find partners, structure deals, manage co-marketing, and revenue sharing. Use when building strategic alliances
   or channel partnerships.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

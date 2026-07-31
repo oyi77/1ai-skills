@@ -3,7 +3,7 @@ name: legal-compliance
 description: Contract generation, terms of service, privacy policies, GDPR/CCPA compliance checks, regulatory monitoring,
   entity management. Use when working with legal compliance.
 domain: operations
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: business-operations
 tags:

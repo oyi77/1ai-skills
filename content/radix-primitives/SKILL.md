@@ -2,7 +2,7 @@
 name: radix-primitives
 description: Radix UI headless primitives — accessible, unstyled React components for dialogs, dropdowns, tooltips. Use when working with radix primitives.
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

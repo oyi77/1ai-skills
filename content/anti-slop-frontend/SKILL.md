@@ -4,7 +4,7 @@ description: Anti-slop frontend framework for AI agents. Enforces better layout,
   generic AI-generated boilerplate UIs. Use when building frontend, countering generic AI UIs, need distinctive visual design,
   image-to-code pipeline.
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

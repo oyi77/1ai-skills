@@ -3,7 +3,7 @@ name: content-creator
 description: Use when generating multi-platform content via browser automation - social media, blogs, articles, video scripts,
   and images.
 domain: marketing
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: marketing
 tags:

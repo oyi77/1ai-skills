@@ -2,7 +2,7 @@
 name: email-automation
 description: Automate email workflows, templates, and campaigns with Gmail MCP integration
 domain: productivity
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: productivity
 tags:

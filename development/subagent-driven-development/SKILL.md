@@ -2,7 +2,7 @@
 name: subagent-driven-development
 description: Use when executing implementation plans with independent tasks in the current session
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

@@ -3,7 +3,7 @@ name: code-reviewer
 description: Professional code review skill. Review local changes or PRs for correctness, maintainability, and best practices.
   Based on playbooks.com community skill. Use when working with code reviewer.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

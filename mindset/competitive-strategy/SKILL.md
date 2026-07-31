@@ -3,7 +3,7 @@ name: competitive-strategy
 description: Analyze competitors using Porter's Five Forces, positioning maps, and competitive response frameworks. Use when
   assessing market position or strategic threats.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

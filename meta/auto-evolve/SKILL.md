@@ -3,7 +3,7 @@ name: auto-evolve
 description: Continuously monitors system performance identifies improvement opportunities and orchestrates find-skills and
   create-skills to autonomously evolve capabilities. The brain of the self-evolving system. Use when working with auto evolve.
 domain: meta
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: meta-skills
 tags:

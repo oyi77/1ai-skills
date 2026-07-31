@@ -3,7 +3,7 @@ name: social-media-upload
 description: Distribute content across multiple social media platforms (X, Instagram, TikTok, LinkedIn, Facebook, YouTube).
   Upload images, videos, and text with platform-specific optimization. Use when working with social media upload.
 domain: marketing
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: marketing
 tags:

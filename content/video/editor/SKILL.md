@@ -2,7 +2,7 @@
 name: video-editor
 description: Professional video post-production using FFmpeg — color grading, audio design, kinetic typography, transitions, motion effects, captions, brand overlays, and platform-optimized export for promotional and marketing videos. Use when editing videos, adding captions, color grading, or creating promo content.
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

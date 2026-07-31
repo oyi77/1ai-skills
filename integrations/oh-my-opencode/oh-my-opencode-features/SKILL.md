@@ -3,7 +3,7 @@ name: oh-my-opencode-features
 description: Complete reference of all oh-my-opencode features including agents, tools, MCPs, hooks, workflow automation,
   and productivity enhancements. Use when working with oh my opencode features.
 domain: integrations
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: integrations
 tags:

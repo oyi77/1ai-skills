@@ -2,7 +2,7 @@
 name: public-speaking
 description: Deliver engaging talks and presentations using narrative structure, audience analysis, and stage presence techniques. Use when working with public speaking.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

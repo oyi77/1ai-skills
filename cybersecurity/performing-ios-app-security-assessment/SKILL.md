@@ -15,7 +15,7 @@ tags:
 - ipa-analysis
 - owasp-mastg
 subdomain: mobile-security
-author: mukul975
+author: oyi77
 version: 1.0.0
 license: Apache-2.0
 nist_csf:

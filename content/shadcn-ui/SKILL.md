@@ -2,7 +2,7 @@
 name: shadcn-ui
 description: shadcn/ui component library — copy-paste React components, Tailwind CSS, Radix primitives, theming. Use when working with shadcn ui.
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

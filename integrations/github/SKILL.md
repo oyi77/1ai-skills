@@ -2,7 +2,7 @@
 name: github
 description: Use when gitHub Automation Hub — Actions, Issues, and PR management for CI/CD, project tracking, and code review workflows. Monetize through automation-as-a-service.
 domain: integrations
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: integrations
 tags:

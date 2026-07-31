@@ -4,7 +4,7 @@ description: XAUUSD Asia 7-Candle Breakout strategy with backtest, paper trade, 
   on the Asia session breakout strategy, running historical backtests, setting up paper trading simulations, or executing
   live trades with the 7-candle breakout system.
 domain: trading
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: trading
 tags:

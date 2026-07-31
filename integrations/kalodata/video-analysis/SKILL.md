@@ -4,7 +4,7 @@ description: Get videos associated with products, extract video metadata, get do
   videos for competitive analysis. Use when analyzing video marketing strategies, finding best-performing creative assets,
   or building video intelligence reports.
 domain: integrations
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: integrations
 tags:

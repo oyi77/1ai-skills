@@ -2,7 +2,7 @@
 name: ultra-realistic-media
 description: ULTRA REALISTIC MEDIA GENERATION - TRAINING SKILL. Use when relevant to this domain.
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

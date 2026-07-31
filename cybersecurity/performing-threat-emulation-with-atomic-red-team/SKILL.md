@@ -13,7 +13,7 @@ tags:
 - with
 subdomain: threat-intelligence
 version: '1.0'
-author: mahipal
+author: oyi77
 license: Apache-2.0
 nist_ai_rmf:
 - MEASURE-2.7

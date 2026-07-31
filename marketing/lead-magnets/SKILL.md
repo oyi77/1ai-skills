@@ -5,7 +5,7 @@ domain: marketing
 license: Apache-2.0
 tags: [growth, lead, magnets, marketing, money, conversions, funnels]
 version: "2.0.0"
-author: ""
+author: oyi77
 subdomain: ""
 type: marketing
 ---

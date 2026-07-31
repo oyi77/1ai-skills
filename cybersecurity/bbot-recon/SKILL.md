@@ -2,7 +2,7 @@
 name: bbot-recon
 description: Automated reconnaissance using BBOT (Black Lantern Security's recursive internet scanner). Use when performing bug bounty recon, attack surface management, subdomain enumeration, web.
 domain: cybersecurity
-author: mahipal
+author: oyi77
 subdomain: penetration-testing
 tags:
 - bbot

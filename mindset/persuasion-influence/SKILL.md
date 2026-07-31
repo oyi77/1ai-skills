@@ -3,7 +3,7 @@ name: persuasion-influence
 description: Apply Cialdini's 6 principles of influence ethically in business contexts. Use when pitching, selling, or driving
   adoption without formal authority.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

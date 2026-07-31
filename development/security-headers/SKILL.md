@@ -2,7 +2,7 @@
 name: security-headers
 description: Web security headers — CSP, CORS, HSTS, X-Frame-Options. Configure, audit, and harden HTTP security headers. Use when working with security headers.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

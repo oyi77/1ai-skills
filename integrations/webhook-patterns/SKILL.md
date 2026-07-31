@@ -2,7 +2,7 @@
 name: webhook-patterns
 description: Webhook design and handling — signature verification, retry logic, idempotency, event routing, testing. Use when working with webhook patterns.
 domain: integrations
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: integrations
 tags:

@@ -3,7 +3,7 @@ name: improvement-generator
 description: Generate specific, actionable improvements for skills based on performance data and feedback. Create improvement
   plans, not just identify problems.
 domain: meta
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: meta-skills
 tags:

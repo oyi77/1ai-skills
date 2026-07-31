@@ -18,7 +18,7 @@ mitre_attack:
 - T1021
 - T1570
 version: 1.0.0
-author: mahipal
+author: oyi77
 license: Apache-2.0
 nist_csf:
 - RS.MA-01

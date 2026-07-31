@@ -2,7 +2,7 @@
 name: refactor-agent
 description: Use when restructure code to improve readability, maintainability, extensibility without changing external behavior.
 domain: agents
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:

@@ -2,7 +2,7 @@
 name: receiving-code-review
 description: Use when getting code feedback, before implementing suggestions.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

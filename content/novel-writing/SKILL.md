@@ -19,7 +19,7 @@ tags:
   - indonesian
   - buku-anak
   - bahasa-indonesia
-author: 1ai-skills
+author: oyi77
 license: MIT
 subdomain: writing
 version: 1.0.0

@@ -3,7 +3,7 @@ name: pricing-frameworks
 description: Set prices using value-based, cost-plus, competitive, and subscription models. Includes tiering, anchoring, discounts,
   and pricing experiments. Use when working with pricing frameworks.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

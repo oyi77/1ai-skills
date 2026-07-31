@@ -2,7 +2,7 @@
 name: all-in-one-finance
 description: Use when user mentions ticker symbols, tokens, forex pairs, commodities, portfolio, trade, DCF, valuation, technical analysis, on-chain metrics, risk management, position sizing, financial.
 domain: financial
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: financial-analysis
 version: "2.0.0"

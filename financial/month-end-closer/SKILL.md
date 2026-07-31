@@ -2,7 +2,7 @@
 name: month-end-closer
 description: Accruals, roll-forwards, variance commentary. Use when user says "month-end close", "accruals", "roll-forward".
 domain: financial
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: financial-analysis
 tags:

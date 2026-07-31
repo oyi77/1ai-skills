@@ -3,7 +3,7 @@ name: cross-cultural-communication
 description: Navigate cross-cultural communication using Hofstede's dimensions, high/low-context awareness, and async norms.
   Use when working with global teams or international stakeholders.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

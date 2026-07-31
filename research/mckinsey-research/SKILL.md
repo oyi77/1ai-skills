@@ -3,7 +3,7 @@ name: mckinsey-research
 description: Use when running McKinsey-level market research and strategy analysis - competitive analysis, TAM analysis, pricing
   strategy, go-to-market planning, and business strategy.
 domain: research
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: research
 tags:

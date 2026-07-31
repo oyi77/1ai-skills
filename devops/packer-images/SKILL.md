@@ -2,7 +2,7 @@
 name: packer-images
 description: HashiCorp Packer — machine image building, builders, provisioners, post-processors for AWS/GCP/Azure. Use when working with packer images.
 domain: devops
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: devops
 tags:

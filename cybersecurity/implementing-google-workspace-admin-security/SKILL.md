@@ -12,7 +12,7 @@ tags:
 - cloud-security
 subdomain: identity-access-management
 version: '1.0'
-author: mahipal
+author: oyi77
 license: Apache-2.0
 nist_csf:
 - PR.AA-01

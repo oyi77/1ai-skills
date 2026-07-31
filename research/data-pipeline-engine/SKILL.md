@@ -3,7 +3,7 @@ name: data-pipeline-engine
 description: ETL pipelines that pull data from multiple sources (APIs, databases, web scraping), transform it, and produce
   actionable dashboards and reports. Use when working with data pipeline engine.
 domain: research
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: research
 tags:
