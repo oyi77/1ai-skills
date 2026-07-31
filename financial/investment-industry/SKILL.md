@@ -1,9 +1,9 @@
 ---
 name: investment-industry
 version: 2.0.0
-category: finance
-domain: finance
-author: mahipal
+category: financial
+domain: financial
+author: oyi77
 license: Apache-2.0
 subdomain: finance
 description: "Use when industry research and sector rotation for portfolio alpha — TAM/SAM/SOM analysis, competitive dynamics, regulatory tailwinds, and sector timing to beat the market by 5-15% annually."

@@ -1,9 +1,9 @@
 ---
 name: investment-bottleneck
 version: 2.0.0
-category: finance
-domain: finance
-author: mahipal
+category: financial
+domain: financial
+author: oyi77
 license: Apache-2.0
 subdomain: finance
 description: "Use when find bottleneck companies — the critical constraint in supply chains that have pricing power, low competition, and high returns. Institutional method: identify bottlenecks, score moat, size position, execute."

@@ -1,9 +1,9 @@
 ---
 name: investment-earnings
 version: 2.0.0
-category: finance
-domain: finance
-author: mahipal
+category: financial
+domain: financial
+author: oyi77
 license: Apache-2.0
 subdomain: finance
 description: "Use when trade earnings reports for profit — pre-earnings positioning, post-earnings momentum, and management quality scoring. Systematic framework for the highest-alpha event in equity markets."
