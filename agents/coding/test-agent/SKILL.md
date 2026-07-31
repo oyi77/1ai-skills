@@ -1,16 +1,17 @@
 ---
 name: test-agent
-description: Use when write comprehensive test suites covering happy paths, error paths, edge cases, and integration points.
+description: Use when writing comprehensive test suites covering happy paths, error
+  paths, edge cases, and integration points.
 domain: agents
 author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:
-  - agent
-  - ai-agent
-  - automation
-  - test
-  - coding
+- agent
+- ai-agent
+- automation
+- test
+- coding
 version: 1.0.0
 ---
 

@@ -1,16 +1,17 @@
 ---
 name: code-agent
-description: Use when implement features from specs — reads requirements, writes code with tests, iterates until verification passes.
+description: Use when implementing features from specs — reads requirements, writes
+  code with tests, iterates until verification passes.
 domain: agents
 author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:
-  - agent
-  - ai-agent
-  - automation
-  - code
-  - autonomous
+- agent
+- ai-agent
+- automation
+- code
+- autonomous
 version: 1.0.0
 ---
 

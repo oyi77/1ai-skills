@@ -1,6 +1,6 @@
 ---
 name: slack-mcp
-description: MCP server for Slack integration. Send messages, manage channels, and automate Slack workflows via standardized protocol.
+description: Use when MCP server for Slack integration. Send messages, manage channels, and automate Slack workflows via standardized protocol.
 domain: mcp
 author: oyi77
 license: Apache-2.0

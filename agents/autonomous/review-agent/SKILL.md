@@ -1,16 +1,17 @@
 ---
 name: review-agent
-description: Use when read code changes with adversarial intent to find bugs, security holes, logic errors, and performance traps.
+description: Use when reading code changes with adversarial intent to find bugs, security
+  holes, logic errors, and performance traps.
 domain: agents
 author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:
-  - agent
-  - ai-agent
-  - automation
-  - review
-  - autonomous
+- agent
+- ai-agent
+- automation
+- review
+- autonomous
 version: 1.0.0
 ---
 

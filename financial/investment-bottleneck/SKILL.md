@@ -6,11 +6,25 @@ domain: financial
 author: oyi77
 license: Apache-2.0
 subdomain: finance
-description: "Use when find bottleneck companies — the critical constraint in supply chains that have pricing power, low competition, and high returns. Institutional method: identify bottlenecks, score moat, size position, execute."
-keywords: [bottleneck, investment, company analysis, market gaps, supply chain, pricing power, economic moat, value investing, concentration]
+description: 'Use when finding bottleneck companies — the critical constraint in supply
+  chains that have pricing power, low competition, and high returns. Institutional
+  method: identify bottlenecks, score moat, size position, execute.'
+keywords:
+- bottleneck
+- investment
+- company analysis
+- market gaps
+- supply chain
+- pricing power
+- economic moat
+- value investing
+- concentration
 source: ai-berkshire
 money: true
-tags: [investment, bottleneck, finance]
+tags:
+- investment
+- bottleneck
+- finance
 ---
 
 # Investment Bottleneck Hunter

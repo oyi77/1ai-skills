@@ -1,7 +1,7 @@
 ---
 name: workflow-builder
-description: Build and automate business workflows with Notion task tracking, Slack notifications, Kanban boards, and cross-functional
-  process orchestration.
+description: Use when building and automating business workflows with Notion task
+  tracking, Slack notifications, Kanban boards, and cross-functional process orchestration.
 domain: automation
 author: oyi77
 license: Apache-2.0

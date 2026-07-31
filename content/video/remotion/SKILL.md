@@ -1,20 +1,23 @@
 ---
 name: remotion
-description: Create, render, and manage programmatic videos using Remotion (React-based video framework). Covers compositions, frame-driven animation, transitions, effects, captions, audio, voiceover, FFmpeg post-production, and professional SaaS-grade motion design.
+description: Use when creating, rendering, and managing programmatic videos using
+  Remotion (React-based video framework). Covers compositions, frame-driven animation,
+  transitions, effects, captions, audio, voiceover, FFmpeg post-production, and professional
+  SaaS-grade motion design.
 domain: content
 author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:
-  - content-creation
-  - video-production
-  - remotion
-  - react
-  - animation
-  - motion-design
-  - programmatic-video
-  - ffmpeg
-  - transitions
+- content-creation
+- video-production
+- remotion
+- react
+- animation
+- motion-design
+- programmatic-video
+- ffmpeg
+- transitions
 version: 1.0.0
 ---
 # Remotion — Professional Programmatic Video

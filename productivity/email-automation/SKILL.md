@@ -1,6 +1,7 @@
 ---
 name: email-automation
-description: Automate email workflows, templates, and campaigns with Gmail MCP integration
+description: Use when automating email workflows, templates, and campaigns with Gmail
+  MCP integration
 domain: productivity
 author: oyi77
 license: Apache-2.0

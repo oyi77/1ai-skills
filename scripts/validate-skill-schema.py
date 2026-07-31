@@ -36,12 +36,8 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parent.parent
 
-SKILL_DIRS = [
-    "agents", "automation", "content", "core", "cybersecurity", "data",
-    "development", "devops", "finance", "financial", "integrations",
-    "marketing", "mcp", "meta", "mindset", "operations", "productivity",
-    "research", "sales", "trading",
-]
+# Single source of truth — lint-skills.py and test-skills.py import the same list.
+from config import SKILL_DIRS
 
 SCHEMA_PATH = ROOT / "schemas" / "skill.schema.json"
 
@@ -58,7 +54,13 @@ DEFAULTS = {
 }
 
 # Fields allowed in frontmatter that are NOT part of the schema schema.
-ALLOWED_EXTRA = {"persona", "scripts", "language", "type"}
+# Recurring enrichment/classification fields tolerated across many skills.
+ALLOWED_EXTRA = {
+    "persona", "scripts", "language", "type",
+    "nist_csf", "d3fend_techniques", "nist_ai_rmf", "atlas_techniques",
+    "mitre_attack", "allowed-tools", "metadata", "source", "keywords",
+    "money", "homepage", "requires",
+}
 
 
 def load_schema() -> dict:
@@ -152,11 +154,14 @@ def validate_skill(skill_info: dict, schema: dict) -> list[dict]:
     meta = normalize_metadata(meta)
 
     # Frontmatter name vs directory
+    # Nested grouping dirs (content/video/gen → video-gen, trading/executor →
+    # trading-executor) deliberately prefix a category/parent label; only flag
+    # names with NO relation to the directory at all.
     dir_name = skill_info["path"].parent.name
     fm_name = meta.get("name", "")
-    if fm_name and fm_name != dir_name:
+    if fm_name and not fm_name.endswith(dir_name):
         issues.append({"level": "warning", "code": "name-mismatch",
-                       "message": f"Frontmatter name '{fm_name}' != directory '{dir_name}'"})
+                       "message": f"Frontmatter name '{fm_name}' does not relate to directory '{dir_name}'"})
 
     # JSON Schema validation
     try:

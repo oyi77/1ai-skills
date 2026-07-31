@@ -1,6 +1,6 @@
 ---
 name: customer-success
-description: Automated customer onboarding, health scoring, churn prediction, proactive outreach, and support ticket resolution
+description: Use when automated customer onboarding, health scoring, churn prediction, proactive outreach, and support ticket resolution
 domain: operations
 author: oyi77
 license: Apache-2.0

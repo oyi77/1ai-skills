@@ -1,8 +1,6 @@
 ---
 name: telegram-userbot
-description: Full MTProto control of Telegram account via Telethon. DM, Voice Note, Call, Video Call, Group/Channel management,
-  member scraping, bot cloning, outreach automation, broadcast, CRM tracking, content reposting, scheduled messaging, webhook
-  triggers. Use for all Telegram automation as a real user (not bot API).
+description: Use when full MTProto control of Telegram account via Telethon. DM, Voice Note, Call, Video Call, Group/Channel management, member scraping, bot cloning, outreach automation, broadcast, CRM tracking, content reposting, scheduled messaging, webhook triggers. Use for all Telegram automation as a real user (not bot API).
 domain: automation
 author: oyi77
 license: Apache-2.0

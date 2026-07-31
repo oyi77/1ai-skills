@@ -1,8 +1,6 @@
 ---
 name: influencer-scouting
-description: "|\n  >\n    Full influencer scouting, outreach, and performance tracking system.\n    Covers\
-  \   platform search across TikTok, Instagram, and YouTube for creators,\n    scoring/qualification, DM outreach,\
-  \   negotiation, deal tracking, and ROI measurement.\n    Integrates with Kalodata for TikTok analytics.\n"
+description: "Use when | > Full influencer scouting, outreach, and performance tracking system. Covers platform search across TikTok, Instagram, and YouTube for creators, scoring/qualification, DM outreach, negotiation, deal tracking, and ROI measurement. Integrates with Kalodata for TikTok analytics."
 domain: sales
 author: oyi77
 license: Apache-2.0

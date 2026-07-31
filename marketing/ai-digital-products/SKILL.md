@@ -1,7 +1,8 @@
 ---
 name: ai-digital-products
-description: Create and sell AI-powered digital products. Build templates, prompt libraries, workflows, and Notion systems.
-  Generate $500-5K/month passive income.
+description: Use when creating and selling AI-powered digital products. Build templates,
+  prompt libraries, workflows, and Notion systems. Generate $500-5K/month passive
+  income.
 domain: marketing
 author: oyi77
 license: Apache-2.0

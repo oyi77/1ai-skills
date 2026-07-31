@@ -1,7 +1,7 @@
 ---
 name: notion
-description: Automate Notion workflows including database CRUD, page creation, content publishing, and workspace management
-  via API.
+description: Use when automating Notion workflows including database CRUD, page creation,
+  content publishing, and workspace management via API.
 domain: productivity
 author: oyi77
 license: Apache-2.0

@@ -1,7 +1,8 @@
 ---
 name: building-adversary-infrastructure-tracking-system
-description: Build an automated system to track adversary infrastructure using passive DNS, certificate transparency, WHOIS
-  data, and IP enrichment to map and monitor threat actor command-and-control networks.
+description: Use when building an automated system to track adversary infrastructure
+  using passive DNS, certificate transparency, WHOIS data, and IP enrichment to map
+  and monitor threat actor command-and-control networks.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:

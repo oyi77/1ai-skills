@@ -1,7 +1,8 @@
 ---
 name: performing-service-account-credential-rotation
-description: Automate credential rotation for service accounts across Active Directory, cloud platforms, and application databases
-  to eliminate stale secrets and reduce compromise risk.
+description: Use when automating credential rotation for service accounts across Active
+  Directory, cloud platforms, and application databases to eliminate stale secrets
+  and reduce compromise risk.
 domain: cybersecurity
 subdomain: identity-access-management
 tags:

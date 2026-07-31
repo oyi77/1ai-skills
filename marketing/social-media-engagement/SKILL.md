@@ -1,7 +1,8 @@
 ---
 name: social-media-engagement
-description: Automate social media engagement activities including liking, commenting, following, unfollowing, DMing, and
-  replying. Build audience and increase reach across X, Instagram, TikTok, and LinkedIn.
+description: Use when automating social media engagement activities including liking,
+  commenting, following, unfollowing, DMing, and replying. Build audience and increase
+  reach across X, Instagram, TikTok, and LinkedIn.
 domain: marketing
 author: oyi77
 license: Apache-2.0

@@ -1,7 +1,6 @@
 ---
 name: dependency-scanner
-description: Automated dependency auditing for npm, pip, cargo, go. Detect vulnerabilities, outdated packages, license conflicts,
-  and supply chain risks. Generate SBOMs and compliance reports.
+description: Use when automated dependency auditing for npm, pip, cargo, go. Detect vulnerabilities, outdated packages, license conflicts, and supply chain risks. Generate SBOMs and compliance reports.
 domain: development
 author: oyi77
 license: Apache-2.0

@@ -13,11 +13,8 @@ tags:
 - memory
 - self
 - self-improvement
-slug: self-improving
 version: 1.2.1
 homepage: https://clawic.com/skills/self-improving
-changelog: Clarified the core promise to highlight auto-learning from corrections and self-organizing memory for continuous
-  improvement.
 metadata:
   clawdbot:
     emoji: 🧠

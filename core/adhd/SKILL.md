@@ -1,8 +1,6 @@
 ---
 name: adhd
-description: Parallel divergent ideation for agents — spawns N isolated reasoning branches under different cognitive frames,
-  then scores, clusters, prunes traps, and deepens survivors. Use for open-ended design, architecture, naming, API surface
-  decisions, fuzzy debugging, and brainstorming. Skip for syntax lookups or bugs with known root cause.
+description: Use when parallel divergent ideation for agents — spawns N isolated reasoning branches under different cognitive frames, then scores, clusters, prunes traps, and deepens survivors. Use for open-ended design, architecture, naming, API surface decisions, fuzzy debugging, and brainstorming. Skip for syntax lookups or bugs with known root cause.
 domain: core
 author: mahipal
 license: MIT

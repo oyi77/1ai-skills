@@ -1,7 +1,6 @@
 ---
 name: content-factory
-description: 'All-in-one YouTube content generator: create full videos from prompts, generate vertical Shorts from text, or
-  clip long videos into Shorts using free tools (ffmpeg, edge-tts, Pexels).'
+description: 'Use when all-in-one YouTube content generator: create full videos from prompts, generate vertical Shorts from text, or clip long videos into Shorts using free tools (ffmpeg, edge-tts, Pexels).'
 domain: content
 author: oyi77
 license: Apache-2.0

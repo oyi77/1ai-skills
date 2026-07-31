@@ -1,7 +1,8 @@
 ---
 name: performing-network-traffic-analysis-with-tshark
-description: Automate network traffic analysis using tshark and pyshark for protocol statistics, suspicious flow detection,
-  DNS anomaly identification, and IOC extraction from PCAP files
+description: Use when automating network traffic analysis using tshark and pyshark
+  for protocol statistics, suspicious flow detection, DNS anomaly identification,
+  and IOC extraction from PCAP files
 domain: cybersecurity
 subdomain: network-security
 tags:

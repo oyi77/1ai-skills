@@ -23,10 +23,6 @@ nist_csf:
 - DE.AE-07
 - PR.IP-12
 - RS.MI-01
-price:
-  basic: 2000
-  pro: 5000
-  enterprise: 8000
 ---
 
 # Conducting Network Penetration Test

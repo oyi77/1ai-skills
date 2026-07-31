@@ -1,6 +1,8 @@
 ---
 name: browser-testing-devtools
-description: Test web applications using browser DevTools, Playwright, or Puppeteer. Automate E2E testing, visual regression, performance auditing, and accessibility checking.
+description: Use when testing web applications using browser DevTools, Playwright,
+  or Puppeteer. Automate E2E testing, visual regression, performance auditing, and
+  accessibility checking.
 domain: development
 author: oyi77
 license: Apache-2.0

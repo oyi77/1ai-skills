@@ -1,7 +1,8 @@
 ---
 name: viral-research-engine
-description: Research trending topics, generate viral hooks, find content gaps, analyze competitors, and get hashtag recommendations
-  for Indonesian short-form video creators on TikTok, Reels, and Shorts.
+description: Use when researching trending topics, generating viral hooks, finding
+  content gaps, analyzing competitors, and getting hashtag recommendations for Indonesian
+  short-form video creators on TikTok, Reels, and Shorts.
 domain: content
 author: oyi77
 license: Apache-2.0

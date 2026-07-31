@@ -1,7 +1,6 @@
 ---
 name: buzzer-engagement-army
-description: Multi-account engagement booster across TikTok, Instagram, and Facebook — automates likes, comments, and warmup
-  schedules to beat algorithm suppression on new posts.
+description: Use when multi-account engagement booster across TikTok, Instagram, and Facebook — automates likes, comments, and warmup schedules to beat algorithm suppression on new posts.
 domain: marketing
 author: oyi77
 license: Apache-2.0

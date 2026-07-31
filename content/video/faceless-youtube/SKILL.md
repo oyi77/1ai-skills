@@ -1,6 +1,8 @@
 ---
 name: faceless-youtube
-description: Create and automate faceless YouTube channels using AI-generated scripts, TTS voiceovers, stock footage, and automated publishing workflows with zero on-camera presence.
+description: Use when creating and automating faceless YouTube channels using AI-generated
+  scripts, TTS voiceovers, stock footage, and automated publishing workflows with
+  zero on-camera presence.
 domain: content
 author: oyi77
 license: Apache-2.0

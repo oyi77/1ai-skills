@@ -1,6 +1,6 @@
 ---
 name: tiktok-marketing
-description: TikTok marketing automation for the Indonesian market — content upload, carousel creation, engagement, and account management.
+description: Use when tikTok marketing automation for the Indonesian market — content upload, carousel creation, engagement, and account management.
 domain: marketing
 author: oyi77
 license: Apache-2.0

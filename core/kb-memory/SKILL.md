@@ -1,6 +1,6 @@
 ---
 name: kb-memory
-description: Knowledge base and memory system for AI agents. Covers company KB, persistent memory, session recall, and brain architecture for context preservation.
+description: Use when knowledge base and memory system for AI agents. Covers company KB, persistent memory, session recall, and brain architecture for context preservation.
 domain: core
 author: oyi77
 license: Apache-2.0

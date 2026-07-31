@@ -1,7 +1,6 @@
 ---
 name: find-skills
-description: Automatically discover, evaluate, and activate community skills when local skills don't cover user needs. Includes
-  credibility scoring and safety checks for complete OpenClaw self-sufficiency.
+description: Use when automatically discover, evaluate, and activate community skills when local skills don't cover user needs. Includes credibility scoring and safety checks for complete OpenClaw self-sufficiency.
 domain: core
 author: oyi77
 license: Apache-2.0

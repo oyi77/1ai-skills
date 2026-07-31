@@ -1,7 +1,7 @@
 ---
 name: canva
-description: Create, export, and manage Canva designs via the Connect API. Generate social posts, carousels, and graphics
-  programmatically.
+description: Use when creating, exporting, and managing Canva designs via the Connect
+  API. Generate social posts, carousels, and graphics programmatically.
 domain: marketing
 author: oyi77
 license: Apache-2.0
