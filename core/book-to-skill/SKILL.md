@@ -161,7 +161,7 @@ python3 -m book_to_skill paper1.pdf notes.txt research-dir/ unified-research
 python3 -m book_to_skill --analyze /path/to/book.pdf
 
 # Update existing skill with new content
-python3 -m book_to_skill new-chapter.pdf ~/.claude/skills/existing-skill/
+python3 -m book_to_skill new-chapter.pdf ~/.claude/skills/<existing-skill>/
 ```
 
 ### After generation

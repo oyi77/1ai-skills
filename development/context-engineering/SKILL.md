@@ -2,7 +2,7 @@
 name: context-engineering
 description: Design and manage the context window for AI coding agents. Structure prompts, manage file loading, and optimize token usage for maximum agent effectiveness. Use when designing and manage the context window for ai coding agents.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:
@@ -83,4 +83,184 @@ Context Engineering is the practice of designing what information an AI agent se
 - [ ] File structure map is accurate
 - [ ] No redundant information across context files
 - [ ] Agent produces correct output with this context
+
+## Code Examples
+
+### Python — Token Counting
+
+```python
+import tiktoken
+
+def count_tokens(text: str, model: str = "gpt-4") -> int:
+    """Count tokens for a given text and model."""
+    try:
+        encoding = tiktoken.encoding_for_model(model)
+    except KeyError:
+        encoding = tiktoken.get_encoding("cl100k_base")
+    return len(encoding.encode(text))
+
+
+def truncate_to_limit(text: str, max_tokens: int, model: str = "gpt-4") -> str:
+    """Truncate text to fit within token limit, preserving complete tokens."""
+    encoding = tiktoken.encoding_for_model(model)
+    tokens = encoding.encode(text)
+    if len(tokens) <= max_tokens:
+        return text
+    return encoding.decode(tokens[:max_tokens])
+
+
+# Usage
+prompt = "You are a senior engineer. Follow these rules..."
+print(count_tokens(prompt))  # ~11 tokens
+truncated = truncate_to_limit(prompt * 50, 200)
+```
+
+### Python — Context Window Manager with Priority Eviction
+
+```python
+class ContextManager:
+    """Manages context window with priority-based eviction.
+    
+    Highest-priority content survives when the total exceeds max_tokens.
+    """
+    
+    def __init__(self, max_tokens: int = 8000, model: str = "gpt-4"):
+        self.max_tokens = max_tokens
+        self.sections: list[dict] = []
+        self._encoding = tiktoken.get_encoding("cl100k_base")
+    
+    def add(self, content: str, priority: int = 5):
+        tokens = len(self._encoding.encode(content))
+        self.sections.append({
+            "content": content,
+            "priority": priority,
+            "tokens": tokens,
+        })
+        self._evict()
+    
+    def _evict(self):
+        total = sum(s["tokens"] for s in self.sections)
+        if total <= self.max_tokens:
+            return
+        self.sections.sort(key=lambda s: s["priority"])
+        while total > self.max_tokens and self.sections:
+            removed = self.sections.pop(0)
+            total -= removed["tokens"]
+    
+    def build(self) -> str:
+        """Assemble context string, highest priority first."""
+        ordered = sorted(self.sections, key=lambda s: (-s["priority"], s["tokens"]))
+        return "\n\n---\n\n".join(s["content"] for s in ordered)
+
+
+# Usage
+ctx = ContextManager(max_tokens=4000)
+ctx.add("Project overview and architecture decisions", priority=10)
+ctx.add("Full API reference with all endpoints", priority=5)
+ctx.add("Historical changelog and edge cases", priority=1)
+agent_prompt = ctx.build()
+```
+
+### Node.js — Token Counting
+
+```javascript
+import { encoding_for_model } from "tiktoken";
+
+function countTokens(text, model = "gpt-4") {
+  const enc = encoding_for_model(model);
+  const count = enc.encode(text).length;
+  enc.free(); // tiktoken requires explicit free
+  return count;
+}
+
+function truncateToLimit(text, maxTokens, model = "gpt-4") {
+  const enc = encoding_for_model(model);
+  const tokens = enc.encode(text);
+  if (tokens.length <= maxTokens) {
+    enc.free();
+    return text;
+  }
+  const result = enc.decode(tokens.slice(0, maxTokens));
+  enc.free();
+  return result;
+}
+```
+
+### Node.js — Progressive Context Loader
+
+```javascript
+import { readFileSync } from "fs";
+import { encoding_for_model } from "tiktoken";
+
+class ProgressiveContext {
+  constructor(maxTokens = 8000, model = "gpt-4") {
+    this.maxTokens = maxTokens;
+    this.enc = encoding_for_model(model);
+    this.sections = [];
+  }
+
+  add(name, content, priority = 5) {
+    const tokens = this.enc.encode(content).length;
+    this.sections.push({ name, content, priority, tokens });
+    this.sections.sort((a, b) => b.priority - a.priority);
+  }
+
+  /** Build prompt fitting within maxTokens, highest priority first */
+  compile(separator = "\n\n---\n\n") {
+    let result = "";
+    for (const s of this.sections) {
+      const candidate = result ? result + separator + s.content : s.content;
+      if (this.enc.encode(candidate).length > this.maxTokens) break;
+      result = candidate;
+    }
+    return result;
+  }
+
+  cleanup() {
+    this.enc.free();
+  }
+}
+
+// Usage
+const ctx = new ProgressiveContext(6000);
+ctx.add("rules", readFileSync("AGENTS.md", "utf-8"), 10);
+ctx.add("types", readFileSync("types.d.ts", "utf-8"), 7);
+ctx.add("docs", readFileSync("README.md", "utf-8"), 3);
+const prompt = ctx.compile();
+ctx.cleanup();
+```
+
+## Setup & Configuration
+
+```bash
+# Python — install tokenizer
+pip install tiktoken
+
+# Node.js — install tokenizer
+npm install tiktoken
+# lighter alternative with no WASM dependency
+npm install gpt-tokenizer
+
+# Verify installation works
+python -c "import tiktoken; print(tiktoken.get_encoding('cl100k_base').encode('hello'))"
+```
+
+## Common Issues & Troubleshooting
+
+| Problem | Solution |
+|---|---|
+| Context window exceeded mid-task | Break task into subtasks; use progressive disclosure; summarize intermediate results before continuing |
+| Agent ignores instructions at end of prompt | Place critical instructions first (primacy effect); use AGENTS.md loaded at session start |
+| Token count differs between environments | Use the same tokenizer library (tiktoken) everywhere; always specify the exact model name |
+| File loading order affects output quality | Load critical-path files first; use dependency ordering, not alphabetical |
+| Multi-turn context drift over long sessions | Re-inject core instructions every N turns (summary + system prompt re-insertion pattern) |
+| Agent hallucinates file paths or APIs | Include an explicit file tree map and API surface summary in the context block |
+
+## Monetization
+
+- **Context audit consulting** — Charge $500-2000 per engagement to audit and optimize context setups for teams using AI coding agents. Identify wasted tokens, structural gaps, and priority misalignments across their AGENTS.md, rules files, and system prompts.
+- **Template marketplace** — Sell project-specific context templates ($20-100 each) for popular stacks (Next.js, Django, FastAPI, Rails, Spring Boot) with pre-optimized token budgets, priority ordering, and file structure maps.
+- **Training workshops** — Run 2-day remote workshops ($3000-8000) covering token economics, progressive disclosure design, multi-agent context sharing, CI-based context validation, and debugging session drift.
+- **CI context validation SaaS** — Build a service that checks PRs for context health: token budgets, stale references, duplicate sections, priority inversions, and missing critical paths. $10-50/month per repo.
+- **Internal tooling development** — Build custom context management tooling for enterprise teams: token budget dashboards, auto-summarization pipelines that compress verbose docs into agent-optimal chunks, and collaborative context editors with diff/review workflows.
 

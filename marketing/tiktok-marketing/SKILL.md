@@ -19,6 +19,21 @@ version: 2.0.0
 
 Automated TikTok marketing toolkit for the Indonesian market. Covers content posting, carousel creation, and account management.
 
+## When to Use
+
+**Trigger phrases:**
+- "post to TikTok" / "schedule TikTok content"
+- "create a TikTok carousel" / "make a slideshow for TikTok"
+- "manage our TikTok accounts" / "auto-engage on TikTok"
+
+**Use when:**
+- You need to publish or schedule TikTok content for the Indonesian market
+- You want automated engagement, posting pipelines, or multi-account management
+
+**Don't use for:**
+- TikTok analytics or research (see Kalodata skills for product research)
+- Non-TikTok social posting (see PostBridge for cross-platform)
+
 ## Capabilities
 
 | Area | Description | Reference |

@@ -2,7 +2,7 @@
 name: dispatching-parallel-agents
 description: Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies
 domain: research
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: research
 tags:
@@ -28,10 +28,16 @@ persona:
 
 ## Overview
 
-When you have multiple unrelated failures (different test files, different subsystems, different bugs), investigating them wastes time. Each investigation is independent and can happen in parallel.
+Parallel agent dispatch solves a common bottleneck: when multiple independent problems need solving, investigating them one at a time wastes time. This skill covers two patterns:
 
-**Core principle:** Dispatch one agent per independent problem domain. Let them work concurrently.
+1. **Independent Debugging** — Split unrelated failures across agents (different files, different subsystems)
+2. **Divergent Ideation** — Attack the *same* problem from multiple cognitive angles to escape premature convergence
 
+Both use the same core mechanism (parallel isolated agent calls) but for fundamentally different purposes.
+
+**Core principle:** Dispatch one agent per independent unit of work. Let them run concurrently without shared context.
+
+---
 
 ## Anti-Rationalization Table
 
@@ -49,40 +55,50 @@ When you have multiple unrelated failures (different test files, different subsy
 - "3+ test files failing with different root causes"
 - "Multiple subsystems broken independently"
 - "Each problem can be understood without context from others"
+- "/adhd", "brainstorm this", "give me a few ways to"
+- "think outside the box on this"
 
+### Decision Tree
 
 ```dot
 digraph when_to_use {
-    "Multiple failures?" [shape=diamond];
-    "Are they independent?" [shape=diamond];
-    "Single agent investigates all" [shape=box];
-    "One agent per problem domain" [shape=box];
-    "Can they work in parallel?" [shape=diamond];
-    "Sequential agents" [shape=box];
-    "Parallel dispatch" [shape=box];
+    "Multiple independent failures?" [shape=diamond];
+    "Single open-ended problem?" [shape=diamond];
+    "Independent Debugging" [shape=box];
+    "Divergent Ideation" [shape=box];
+    "Direct answer" [shape=box];
 
-    "Multiple failures?" -> "Are they independent?" [label="yes"];
-    "Are they independent?" -> "Single agent investigates all" [label="no - related"];
-    "Are they independent?" -> "Can they work in parallel?" [label="yes"];
-    "Can they work in parallel?" -> "Parallel dispatch" [label="yes"];
-    "Can they work in parallel?" -> "Sequential agents" [label="no - shared state"];
+    "Multiple independent failures?" -> "Independent Debugging" [label="yes"];
+    "Multiple independent failures?" -> "Single open-ended problem?" [label="no"];
+    "Single open-ended problem?" -> "Divergent Ideation" [label="yes — high stakes?"];
+    "Single open-ended problem?" -> "Direct answer" [label="no — canonical answer"];
 }
 ```
 
-**Use when:**
+**Use Pattern 1 (Independent Debugging) when:**
 - 3+ test files failing with different root causes
 - Multiple subsystems broken independently
 - Each problem can be understood without context from others
 - No shared state between investigations
 
-**Don't use when:**
+**Use Pattern 2 (Divergent Ideation) when:**
+- Architecture decisions where the obvious answer may not be best
+- API/SDK surface design (naming, ergonomics, tradeoffs)
+- Fuzzy debugging with no known root cause
+- Open-ended strategy or positioning
+- Schema / data model design
+
+**Don't use either when:**
 - Failures are related (fix one might fix others)
-- Need to understand full system state
-- Agents would interfere with each other
+- Syntax lookups or bugs with known root cause
+- Low-stakes decisions
+- User says "quick", "standard", "canonical", "textbook", or "just"
 
-## The Pattern
+---
 
-The core pattern this skill implements.
+## Pattern 1 — Independent Debugging
+
+Split unrelated failures across parallel agents, each owning one problem domain.
 
 
 ### 1. Identify Independent Domains
@@ -119,6 +135,117 @@ When agents return:
 - Verify fixes don't conflict
 - Run full test suite
 - Integrate all changes
+
+---
+
+## Pattern 2 — Divergent Ideation
+
+Attack the *same* problem from multiple cognitive angles to escape premature convergence. Instead of splitting by problem domain, split by *cognitive frame* — every agent gets the same problem but a different vantage prompt.
+
+This is expensive (~10 agent calls per run). Use a pre-flight gate first.
+
+### Pre-Flight Gate
+
+**Step 1. Explicit invocation check.** If the user typed `/adhd` or explicitly asked for "brainstorm", "divergent ideation", or "parallel frames", skip the rest of this gate and proceed directly.
+
+**Step 2. Self-judge.** Ask three questions. If any answer is no, ABORT and answer directly.
+
+1. **Open-ended?** Would a senior engineer give multiple viable answers here, or is there one canonical answer?
+2. **High-stakes?** Is the cost of the obvious answer being wrong actually high? Architecture, public APIs, product naming, fuzzy bugs = yes.
+3. **Open phrasing?** Did the user avoid words like "quick", "standard", "canonical", "textbook", "just"?
+
+### Phase 1 — Diverge (no critic)
+
+1. **Pick 5 cognitive frames** from the table below. Bias toward engineering tags for code problems. Always include at least one wild frame.
+
+2. **Spawn 5 parallel isolated branches.** Each branch gets only:
+   - The problem P
+   - Any context the user provided
+   - The chosen frame's vantage prompt
+   - A system instruction forbidding evaluation
+
+   ```
+   You are in DIVERGENT mode — a generator, not a critic.
+   Generate 6 short distinct ideas under this frame. Each idea is one
+   phrase or one sentence. Do not evaluate. Do not rank. Do not hedge.
+   The first three obvious answers everyone would give are banned.
+   Push past them into the awkward middle.
+   Output JSON only: [{"text": "...", "rationale": "..."}, ...]
+   ```
+
+3. **Critical invariant:** Branches must be parallel and isolated. Do NOT serialize. Do NOT pass one branch's output to another. Branches that see each other anchor each other, and the whole method collapses to a wider single thought.
+
+### Phase 2 — Focus (critic on)
+
+1. **Score.** Rate each idea 0–10 on: **Novelty** (distance from obvious), **Viability** (could it ship), **Fit** (addresses the problem). Flag traps with a one-line reason.
+
+2. **Cluster.** Group into 3–6 clusters by underlying angle. Label by angle: "remove-the-server plays", "cache-shaped plays".
+
+3. **Deepen the top 3.** Rank by weighted score (Novelty 0.35 + Viability 0.40 + Fit 0.25), exclude traps. For each, produce:
+   - 4–8 sentence sketch
+   - The load-bearing risk
+   - The first concrete step a builder would take
+   - 3–5 child ideas (variations, hybrids, unlocks)
+
+   ```
+   You are in FOCUS mode. Take one promising idea and connect dots.
+   Sketch how it would actually work in 4–8 sentences. Name the
+   load-bearing risk. Name the first concrete step a coder would take.
+   Then generate 3–5 sub-ideas that branch off.
+   Output JSON only.
+   ```
+
+### Cognitive Frames
+
+Pick 5 per run. For code problems: 4 tagged `code`/`design` + 1 tagged `wild`.
+
+| Frame | Vantage Prompt | Tags |
+|-------|---------------|------|
+| **hardware engineer** | You think in latency, memory layout, and physical constraints. Re-ask this as a hardware/firmware problem. What does the bus topology, cache, timing budget tell you? | code, wild |
+| **regulator** | You audit systems for compliance and failure modes. What must be provable, traceable, or refusable here? | design, general |
+| **10-year-old** | You are a curious 10 year old who has never seen software. Describe naive but unencumbered approaches. Ignore convention. | general, wild |
+| **competitor trying to break it** | You are a hostile competitor or attacker. Generate approaches that exploit, fail, or sabotage the obvious solution. Then invert into ideas. | code, design |
+| **biology** | Transplant a mechanism from biology (immune systems, neural plasticity, cell signaling, evolution, gut flora). Force-fit it onto this engineering problem. | code, wild |
+| **logistics** | Steal mechanisms from logistics: queues, batching, just-in-time, hub-and-spoke, returns, last-mile. Apply them literally. | code, design |
+| **game design** | Approach this as a game designer. What are the loops, rewards, friction, save-states, speedrun tricks? Treat the user as a player. | design, general |
+| **markets** | Treat the problem as a market. Buyers, sellers, market-makers. What does an auction, a futures contract, a clearing house look like here? | design, wild |
+| **inversion** | Ask the OPPOSITE question. If goal is X, brainstorm how to guarantee NOT X. Then negate each answer back. | code, design, general |
+| **extreme: $0 budget, 1 hour** | No money, no team, one hour. What is the crudest version that still does the load-bearing thing? | code, general |
+| **extreme: infinite budget, 10 years** | Infinite compute, infinite engineers, a decade. What is the maximalist version? | design, wild |
+| **remove the load-bearing assumption** | Name the thing everyone treats as fixed (framework, database, request-response model, network). Imagine it is gone. What is possible? | code, design, wild |
+| **speedrunner** | You are a speedrunner. Find glitches, skips, out-of-bounds tricks, frame-perfect shortcuts. What is the abusive-but-legal path? | code, wild |
+| **ant colony** | No central planner. Many dumb agents, local rules, pheromone trails. How does the problem solve itself emergently? | code, wild |
+| **3am on-call** | You are the on-call engineer woken at 3am when this breaks. What design would let you not get paged? | code, design |
+
+### Output Shape
+
+Render in this order. Structure is the point — do not collapse into prose.
+
+1. **Brief.** One–two lines confirming the problem and any reframe used.
+2. **Wide set.** Full pool grouped by cluster. Show score chips: `[N7 V8 F9]` per idea.
+3. **Converge.** 2–4 idea shortlist. Mark non-obvious pick with ★. List traps with one-line reasons.
+4. **Focus.** 3 deepened branches: sketch, risk, first step, child ideas.
+5. **Provocation.** One wildcard question/idea if nothing landed.
+
+### Calibration
+
+| Context | Frames × Ideas | Total |
+|---------|---------------|-------|
+| Quick naming decision | 3 × 4 | ~12 |
+| Default | 5 × 6 | ~30 |
+| High-stakes strategy | 5 × 8 | ~40 |
+
+### Divergent Ideation Anti-Patterns
+
+| Anti-pattern | Fix |
+|-------------|-----|
+| Convergence disguised as divergence | If every candidate shares one assumption, you decorated, not diverged. |
+| Weird-for-weird's-sake with no convergence | Always converge. Structure is half the value. |
+| Walls of equally-weighted prose | Cluster, label, pull out the best. |
+| Refusing to commit | Take a position. Generate wide, converge with an opinion. |
+| Skipping the isolation invariant | Branches must be in fresh contexts. Sequential = wider single thought, not divergent. |
+
+---
 
 ## Agent Prompt Structure
 

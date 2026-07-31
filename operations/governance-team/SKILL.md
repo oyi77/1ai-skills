@@ -3,7 +3,7 @@ name: governance-team
 description: Manage organizational policies, access control, compliance frameworks, and governance processes with radical
   transparency principles. Use when manageing organizational policies, access control, compliance frameworks, and governance processes.
 domain: operations
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: business-operations
 tags:
@@ -90,6 +90,31 @@ def execute_sop(sop_name: str, steps: list[str]) -> dict:
 | "Manual processes work fine" | Manual processes do not scale and are error-prone. Automate. |
 | "Compliance is optional" | Compliance protects you legally. Build it in from the start. |
 
+
+## Common Pitfalls
+
+**1. Policy bloat without enforcement.** Drafting dozens of policies that nobody reads or enforces creates a false sense of security. Every policy must have an owner, a review cadence, and a measurable enforcement mechanism — from automated RBAC checks to quarterly attestation campaigns.
+
+**2. Role explosion in RBAC.** Granting custom roles for every edge case leads to an unmanageable matrix of permissions that nobody can audit. Enforce a tiered RBAC model (User → Power User → Admin → Super Admin) and resist requests for one-off roles. Use ABAC for fine-grained decisions where RBAC tiers are too coarse.
+
+**3. Compliance checkbox mentality.** Treating SOC2 or ISO 27001 as a one-time audit event rather than a continuous process. Certifications require ongoing evidence collection, periodic risk assessments, and remediation tracking — not just a binder of policies filed after the auditor leaves.
+
+**4. Audit trail gaps.** Logging who accessed what is half the story. Without tamper-proof storage, correlation IDs, and regular log review, an audit trail becomes a liability. Ensure logs are append-only (e.g., journald, cloud trail, blockchain-anchored hashes), retained per regulatory requirements, and reviewed on a schedule.
+
+**5. Transparency without governance.** Publishing everything openly without access controls or approval workflows invites chaos. Radical transparency should apply to outcomes and decisions, not to raw credentials, unreviewed policy drafts, or PII. Layer governance processes (review gates, approval chains, escalation paths) on top of transparent reporting.
+
+**6. Ignoring organizational inertia.** The best governance framework fails if the team is not trained, motivated, or held accountable. Pair every new policy with training, a grace period, and a feedback loop that allows the policy to adapt to actual workflows.
+
+
+## Monetization
+
+| Approach | Timeframe | Description |
+|---|---|---|
+| Compliance-as-a-Service | 3–6 months | Offer SOC2 / ISO 27001 readiness assessments, evidence collection, and auditor liaison for startups and SMBs. Recurring retainer for ongoing compliance maintenance (quarterly reviews, policy updates). |
+| Virtual CISO / Governance Advisory | Monthly retainer | Act as fractional Chief Information Security Officer for companies that cannot afford a full-time CISO. Scope includes risk assessments, vendor security reviews, incident response plan maintenance, and board-level reporting. |
+| Policy Management Platform | SaaS product | Build a lightweight policy lifecycle tool — draft, version, approve, distribute, and track attestation. Integrate with HRIS for joiner/mover/leaver workflows and with IAM tools for role-based access reviews. |
+| Access Control Audit & Remediation | Per-engagement | Audit existing RBAC/ABAC implementations (AWS IAM, Azure AD, Kubernetes RBAC, SaaS apps), identify over-privileged roles and unused entitlements, and deliver a prioritized remediation plan. |
+| Governance Training & Certification Prep | Per-seat / course | Create on-demand training modules for SOC2 awareness, ISO 27001 internal auditor certification, or access-control best practices. Offer cohort-based workshops with live labs for hands-on policy-writing and audit-simulation practice. |
 
 ## Process
 
