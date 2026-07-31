@@ -50,7 +50,7 @@
     {
       "name": "code-agent",
       "category": "agents",
-      "description": "Use when implement features from specs — reads requirements, writes code with tests, iterates until verification passes.",
+      "description": "Use when implementing features from specs — reads requirements, writes code with tests, iterates until verification passes.",
       "domain": "agents",
       "tags": [
         "agent",
@@ -124,7 +124,7 @@
     {
       "name": "linter-agent",
       "category": "agents",
-      "description": "Use when detect and fix code style violations, enforce project conventions, ensure consistent formatting.",
+      "description": "Use when detecting and fixing code style violations, enforcing project conventions, ensuring consistent formatting.",
       "domain": "agents",
       "tags": [
         "agent",
@@ -210,7 +210,7 @@
     {
       "name": "research-agent",
       "category": "agents",
-      "description": "Use when investigate topics deeply with cross-referenced sources and produce evidence-backed findings.",
+      "description": "Use when investigating topics deeply with cross-referenced sources and producing evidence-backed findings.",
       "domain": "agents",
       "tags": [
         "agent",
@@ -227,7 +227,7 @@
     {
       "name": "review-agent",
       "category": "agents",
-      "description": "Use when read code changes with adversarial intent to find bugs, security holes, logic errors, and performance traps.",
+      "description": "Use when reading code changes with adversarial intent to find bugs, security holes, logic errors, and performance traps.",
       "domain": "agents",
       "tags": [
         "agent",
@@ -261,7 +261,7 @@
     {
       "name": "test-agent",
       "category": "agents",
-      "description": "Use when write comprehensive test suites covering happy paths, error paths, edge cases, and integration points.",
+      "description": "Use when writing comprehensive test suites covering happy paths, error paths, edge cases, and integration points.",
       "domain": "agents",
       "tags": [
         "agent",
@@ -296,7 +296,7 @@
     {
       "name": "bots",
       "category": "automation",
-      "description": "Multi-platform bot automation hub — Telegram, Twitter/X, and WhatsApp bots for automated engagement, content distribution, and revenue generation.",
+      "description": "Use when multi-platform bot automation hub — Telegram, Twitter/X, and WhatsApp bots for automated engagement, content distribution, and revenue generation.",
       "domain": "automation",
       "tags": [
         "automation",
@@ -337,7 +337,7 @@
     {
       "name": "content-publisher",
       "category": "automation",
-      "description": "Automates drafting and publishing articles to Substack and Medium with SEO optimization, editorial calendars, and cross-platform distribution.",
+      "description": "Use when automating drafting and publishing articles to Substack and Medium with SEO optimization, editorial calendars, and cross-platform distribution.",
       "domain": "automation",
       "tags": [
         "automation",
@@ -445,7 +445,7 @@
     {
       "name": "moltbook-interact",
       "category": "automation",
-      "description": "Automate Moltbook engagement — content posting, community management, sentiment-aware replies, and account growth at scale.",
+      "description": "Use when automating Moltbook engagement — content posting, community management, sentiment-aware replies, and account growth at scale.",
       "domain": "automation",
       "tags": [
         "automation",
@@ -497,7 +497,7 @@
     {
       "name": "postai-automation",
       "category": "automation",
-      "description": "Automate TikTok and Instagram video creation from product images using POST AI — generates dozens of captioned, voiced-over variants for affiliate and e-commerce marketing.",
+      "description": "Use when automating TikTok and Instagram video creation from product images using POST AI — generates dozens of captioned, voiced-over variants for affiliate and e-commerce marketing.",
       "domain": "automation",
       "tags": [
         "automation",
@@ -535,7 +535,7 @@
     {
       "name": "scrapers",
       "category": "automation",
-      "description": "Data extraction hub — content monitoring, price tracking, web scraping, and social listening for competitive intelligence, market research, and automated revenue generation.",
+      "description": "Use when data extraction hub — content monitoring, price tracking, web scraping, and social listening for competitive intelligence, market research, and automated revenue generation.",
       "domain": "automation",
       "tags": [
         "automation",
@@ -555,7 +555,7 @@
     {
       "name": "telegram-userbot",
       "category": "automation",
-      "description": "Full MTProto control of Telegram account via Telethon. DM, Voice Note, Call, Video Call, Group/Channel management, member scraping, bot cloning, outreach automation, broadcast, CRM tracking, content reposting, scheduled messaging, webhook triggers. Use for all Telegram automation as a real user (not bot API).",
+      "description": "Use when full MTProto control of Telegram account via Telethon. DM, Voice Note, Call, Video Call, Group/Channel management, member scraping, bot cloning, outreach automation, broadcast, CRM tracking, content reposting, scheduled messaging, webhook triggers. Use for all Telegram automation as a real user (not bot API).",
       "domain": "automation",
       "tags": [
         "api",
@@ -593,7 +593,7 @@
     {
       "name": "workflow-builder",
       "category": "automation",
-      "description": "Build and automate business workflows with Notion task tracking, Slack notifications, Kanban boards, and cross-functional process orchestration.",
+      "description": "Use when building and automating business workflows with Notion task tracking, Slack notifications, Kanban boards, and cross-functional process orchestration.",
       "domain": "automation",
       "tags": [
         "automation",
@@ -670,7 +670,7 @@
     {
       "name": "ai-newsletter",
       "category": "content",
-      "description": "Build and monetize AI-powered email newsletters. Curate content, automate writing, and grow paid subscriptions. Generate $1K-20K/month.",
+      "description": "Use when building and monetizing AI-powered email newsletters. Curate content, automate writing, and grow paid subscriptions. Generate $1K-20K/month.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -687,7 +687,7 @@
     {
       "name": "ai-podcast",
       "category": "content",
-      "description": "Create and automate AI-powered podcasts. Generate episodes from topics, URLs, or documents with multiple AI hosts. Build audience and monetize through sponsorships.",
+      "description": "Use when creating and automating AI-powered podcasts. Generate episodes from topics, URLs, or documents with multiple AI hosts. Build audience and monetize through sponsorships.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -840,7 +840,7 @@
     {
       "name": "content-factory",
       "category": "content",
-      "description": "All-in-one YouTube content generator: create full videos from prompts, generate vertical Shorts from text, or clip long videos into Shorts using free tools (ffmpeg, edge-tts, Pexels).",
+      "description": "Use when all-in-one YouTube content generator: create full videos from prompts, generate vertical Shorts from text, or clip long videos into Shorts using free tools (ffmpeg, edge-tts, Pexels).",
       "domain": "content",
       "tags": [
         "content",
@@ -878,7 +878,7 @@
     {
       "name": "content-planner-auto",
       "category": "content",
-      "description": "Auto-generate 30-day content calendars with pillar rotation, platform-optimized timing, multi-account rotation, seasonal Indonesian events, and PostBridge batch scheduling.",
+      "description": "Use when auto-generate 30-day content calendars with pillar rotation, platform-optimized timing, multi-account rotation, seasonal Indonesian events, and PostBridge batch scheduling.",
       "domain": "content",
       "tags": [
         "auto",
@@ -950,7 +950,7 @@
     {
       "name": "document-creator",
       "category": "content",
-      "description": "Create, edit, and generate Office documents programmatically — Word, PowerPoint, Excel, and PDF. One interface for all document formats with shared methodology.",
+      "description": "Use when creating, editing, and generating Office documents programmatically — Word, PowerPoint, Excel, and PDF. One interface for all document formats with shared methodology.",
       "domain": "content",
       "tags": [
         "documents",
@@ -991,7 +991,7 @@
     {
       "name": "faceless-youtube",
       "category": "content",
-      "description": "Create and automate faceless YouTube channels using AI-generated scripts, TTS voiceovers, stock footage, and automated publishing workflows with zero on-camera presence.",
+      "description": "Use when creating and automating faceless YouTube channels using AI-generated scripts, TTS voiceovers, stock footage, and automated publishing workflows with zero on-camera presence.",
       "domain": "content",
       "tags": [
         "content",
@@ -1316,7 +1316,7 @@
     {
       "name": "remotion",
       "category": "content",
-      "description": "Create, render, and manage programmatic videos using Remotion (React-based video framework). Covers compositions, frame-driven animation, transitions, effects, captions, audio, voiceover, FFmpeg post-production, and professional SaaS-grade motion design.",
+      "description": "Use when creating, rendering, and managing programmatic videos using Remotion (React-based video framework). Covers compositions, frame-driven animation, transitions, effects, captions, audio, voiceover, FFmpeg post-production, and professional SaaS-grade motion design.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1421,7 +1421,7 @@
     {
       "name": "theme-factory",
       "category": "content",
-      "description": "Generate and apply professional color themes, typography systems, and design tokens for applications. Create consistent visual identities across platforms.",
+      "description": "Use when generating and applying professional color themes, typography systems, and design tokens for applications. Create consistent visual identities across platforms.",
       "domain": "content",
       "tags": [
         "design",
@@ -1549,7 +1549,7 @@
     {
       "name": "viral-content-creator",
       "category": "content",
-      "description": "Generate 50+ video variations from a single product image across TikTok, Instagram, Facebook, Twitter, and YouTube with hook-based A/B testing, viral score prediction, and autopilot scheduling.",
+      "description": "Use when generating 50+ video variations from a single product image across TikTok, Instagram, Facebook, Twitter, and YouTube with hook-based A/B testing, viral score prediction, and autopilot scheduling.",
       "domain": "content",
       "tags": [
         "content",
@@ -1569,7 +1569,7 @@
     {
       "name": "viral-research-engine",
       "category": "content",
-      "description": "Research trending topics, generate viral hooks, find content gaps, analyze competitors, and get hashtag recommendations for Indonesian short-form video creators on TikTok, Reels, and Shorts.",
+      "description": "Use when researching trending topics, generating viral hooks, finding content gaps, analyzing competitors, and getting hashtag recommendations for Indonesian short-form video creators on TikTok, Reels, and Shorts.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -1661,7 +1661,7 @@
     {
       "name": "adhd",
       "category": "core",
-      "description": "Parallel divergent ideation for agents — spawns N isolated reasoning branches under different cognitive frames, then scores, clusters, prunes traps, and deepens survivors. Use for open-ended design, architecture, naming, API surface decisions, fuzzy debugging, and brainstorming. Skip for syntax lookups or bugs with known root cause.",
+      "description": "Use when parallel divergent ideation for agents — spawns N isolated reasoning branches under different cognitive frames, then scores, clusters, prunes traps, and deepens survivors. Use for open-ended design, architecture, naming, API surface decisions, fuzzy debugging, and brainstorming. Skip for syntax lookups or bugs with known root cause.",
       "domain": "core",
       "tags": [
         "reasoning",
@@ -1960,7 +1960,7 @@
     {
       "name": "find-skills",
       "category": "core",
-      "description": "Automatically discover, evaluate, and activate community skills when local skills don't cover user needs. Includes credibility scoring and safety checks for complete OpenClaw self-sufficiency.",
+      "description": "Use when automatically discover, evaluate, and activate community skills when local skills don't cover user needs. Includes credibility scoring and safety checks for complete OpenClaw self-sufficiency.",
       "domain": "core",
       "tags": [
         "find",
@@ -2102,7 +2102,7 @@
     {
       "name": "kb-memory",
       "category": "core",
-      "description": "Knowledge base and memory system for AI agents. Covers company KB, persistent memory, session recall, and brain architecture for context preservation.",
+      "description": "Use when knowledge base and memory system for AI agents. Covers company KB, persistent memory, session recall, and brain architecture for context preservation.",
       "domain": "core",
       "tags": [
         "knowledge-base",
@@ -2321,7 +2321,7 @@
     {
       "name": "ruvector",
       "category": "core",
-      "description": "Generate and manage vector embeddings for semantic search and RAG retrieval across knowledge bases.",
+      "description": "Use when generating and managing vector embeddings for semantic search and RAG retrieval across knowledge bases.",
       "domain": "core",
       "tags": [
         "infrastructure",
@@ -2660,7 +2660,7 @@
     {
       "name": "analyzing-bootkit-and-rootkit-samples",
       "category": "cybersecurity",
-      "description": "Analyzes bootkit and advanced rootkit malware that infects the Master Boot Record (MBR), Volume Boot Record (VBR), or UEFI firmware to gain persistence below the operating system. Covers boot sector analysis, UEFI module inspection, and anti-rootkit detection techniques. Activates for requests involving bootkit analysis, MBR malware investigation, UEFI persistence analysis, or pre-OS malware detection.\n",
+      "description": "Use when analyzing bootkit and advanced rootkit malware that infects the Master Boot Record (MBR), Volume Boot Record (VBR), or UEFI firmware to gain persistence below the operating system. Covers boot sector analysis, UEFI module inspection, and anti-rootkit detection techniques. Activates for requests involving bootkit analysis, MBR malware investigation, UEFI persistence analysis, or pre-OS malware detection.",
       "domain": "cybersecurity",
       "tags": [
         "malware",
@@ -2699,7 +2699,7 @@
     {
       "name": "analyzing-campaign-attribution-evidence",
       "category": "cybersecurity",
-      "description": "Campaign attribution analysis involves systematically evaluating evidence to determine which threat actor or group is responsible for a cyber operation. This skill covers collecting and weighting attr",
+      "description": "Use when campaign attribution analysis involves systematically evaluating evidence to determine which threat actor or group is responsible for a cyber operation. This skill covers collecting and weighting attr",
       "domain": "cybersecurity",
       "tags": [
         "threat-intelligence",
@@ -2773,7 +2773,7 @@
     {
       "name": "analyzing-cobaltstrike-malleable-c2-profiles",
       "category": "cybersecurity",
-      "description": "Parse and analyze Cobalt Strike Malleable C2 profiles using dissect.cobaltstrike and pyMalleableC2 to extract C2 indicators, detect evasion techniques, and generate network detection signatures.",
+      "description": "Use when parsing and analyzing Cobalt Strike Malleable C2 profiles using dissect.cobaltstrike and pyMalleableC2 to extract C2 indicators, detect evasion techniques, and generate network detection signatures.",
       "domain": "cybersecurity",
       "tags": [
         "cobalt-strike",
@@ -2792,7 +2792,7 @@
     {
       "name": "analyzing-command-and-control-communication",
       "category": "cybersecurity",
-      "description": "Analyzes malware command-and-control (C2) communication protocols to understand beacon patterns, command structures, data encoding, and infrastructure. Covers HTTP, HTTPS, DNS, and custom protocol C2 analysis for detection development and threat intelligence. Activates for requests involving C2 analysis, beacon detection, C2 protocol reverse engineering, or command-and-control infrastructure mapping.\n",
+      "description": "Use when analyzing malware command-and-control (C2) communication protocols to understand beacon patterns, command structures, data encoding, and infrastructure. Covers HTTP, HTTPS, DNS, and custom protocol C2 analysis for detection development and threat intelligence. Activates for requests involving C2 analysis, beacon detection, C2 protocol reverse engineering, or command-and-control infrastructure mapping.",
       "domain": "cybersecurity",
       "tags": [
         "malware",
@@ -3012,7 +3012,7 @@
     {
       "name": "analyzing-linux-audit-logs-for-intrusion",
       "category": "cybersecurity",
-      "description": "Uses the Linux Audit framework (auditd) with ausearch and aureport utilities to detect intrusion attempts, unauthorized access, privilege escalation, and suspicious system activity. Covers audit rule configuration, log querying, timeline reconstruction, and integration with SIEM platforms. Activates for requests involving auditd analysis, Linux audit log investigation, ausearch queries, aureport summaries, or host-based intrusion detection on Linux.\n",
+      "description": "Use when using the Linux Audit framework (auditd) with ausearch and aureport utilities to detect intrusion attempts, unauthorized access, privilege escalation, and suspicious system activity. Covers audit rule configuration, log querying, timeline reconstruction, and integration with SIEM platforms. Activates for requests involving auditd analysis, Linux audit log investigation, ausearch queries, aureport summaries, or host-based intrusion detection on Linux.",
       "domain": "cybersecurity",
       "tags": [
         "auditd",
@@ -3031,7 +3031,7 @@
     {
       "name": "analyzing-linux-elf-malware",
       "category": "cybersecurity",
-      "description": "Analyzes malicious Linux ELF (Executable and Linkable Format) binaries including botnets, cryptominers, ransomware, and rootkits targeting Linux servers, containers, and cloud infrastructure. Covers static analysis, dynamic tracing, and reverse engineering of x86_64 and ARM ELF samples. Activates for requests involving Linux malware analysis, ELF binary investigation, Linux server compromise assessment, or container malware analysis.\n",
+      "description": "Use when analyzing malicious Linux ELF (Executable and Linkable Format) binaries including botnets, cryptominers, ransomware, and rootkits targeting Linux servers, containers, and cloud infrastructure. Covers static analysis, dynamic tracing, and reverse engineering of x86_64 and ARM ELF samples. Activates for requests involving Linux malware analysis, ELF binary investigation, Linux server compromise assessment, or container malware analysis.",
       "domain": "cybersecurity",
       "tags": [
         "malware",
@@ -3164,7 +3164,7 @@
     {
       "name": "analyzing-malware-behavior-with-cuckoo-sandbox",
       "category": "cybersecurity",
-      "description": "Executes malware samples in Cuckoo Sandbox to observe runtime behavior including process creation, file system modifications, registry changes, network communications, and API calls. Generates comprehensive behavioral reports for malware classification and IOC extraction. Activates for requests involving dynamic malware analysis, sandbox detonation, behavioral analysis, or automated malware execution.\n",
+      "description": "Use when executing malware samples in Cuckoo Sandbox to observe runtime behavior including process creation, file system modifications, registry changes, network communications, and API calls. Generates comprehensive behavioral reports for malware classification and IOC extraction. Activates for requests involving dynamic malware analysis, sandbox detonation, behavioral analysis, or automated malware execution.",
       "domain": "cybersecurity",
       "tags": [
         "malware",
@@ -3442,7 +3442,7 @@
     {
       "name": "analyzing-packed-malware-with-upx-unpacker",
       "category": "cybersecurity",
-      "description": "Identifies and unpacks UPX-packed and other packed malware samples to expose the original executable code for static analysis. Covers both standard UPX unpacking and handling modified UPX headers that prevent automated decompression. Activates for requests involving malware unpacking, UPX decompression, packer removal, or preparing packed samples for analysis.\n",
+      "description": "Use when identifying and unpacking UPX-packed and other packed malware samples to expose the original executable code for static analysis. Covers both standard UPX unpacking and handling modified UPX headers that prevent automated decompression. Activates for requests involving malware unpacking, UPX decompression, packer removal, or preparing packed samples for analysis.",
       "domain": "cybersecurity",
       "tags": [
         "malware",
@@ -3552,7 +3552,7 @@
     {
       "name": "analyzing-ransomware-encryption-mechanisms",
       "category": "cybersecurity",
-      "description": "Analyzes encryption algorithms, key management, and file encryption routines used by ransomware families to assess decryption feasibility, identify implementation weaknesses, and support recovery efforts. Covers AES, RSA, ChaCha20, and hybrid encryption schemes. Activates for requests involving ransomware cryptanalysis, encryption analysis, key recovery assessment, or ransomware decryption feasibility.\n",
+      "description": "Use when analyzing encryption algorithms, key management, and file encryption routines used by ransomware families to assess decryption feasibility, identify implementation weaknesses, and support recovery efforts. Covers AES, RSA, ChaCha20, and hybrid encryption schemes. Activates for requests involving ransomware cryptanalysis, encryption analysis, key recovery assessment, or ransomware decryption feasibility.",
       "domain": "cybersecurity",
       "tags": [
         "malware",
@@ -3626,7 +3626,7 @@
     {
       "name": "analyzing-sbom-for-supply-chain-vulnerabilities",
       "category": "cybersecurity",
-      "description": "Parses Software Bill of Materials (SBOM) in CycloneDX and SPDX JSON formats to identify supply chain vulnerabilities by correlating components against the NVD CVE database via the NVD 2.0 API. Builds dependency graphs, calculates risk scores, identifies transitive vulnerability paths, and generates compliance reports.",
+      "description": "Use when parsing Software Bill of Materials (SBOM) in CycloneDX and SPDX JSON formats to identify supply chain vulnerabilities by correlating components against the NVD CVE database via the NVD 2.0 API. Builds dependency graphs, calculating risk scores, identifying transitive vulnerability paths, and generating compliance reports.",
       "domain": "cybersecurity",
       "tags": [
         "SBOM",
@@ -3647,7 +3647,7 @@
     {
       "name": "analyzing-security-logs-with-splunk",
       "category": "cybersecurity",
-      "description": "Leverages Splunk Enterprise Security and SPL (Search Processing Language) to investigate security incidents through log correlation, timeline reconstruction, and anomaly detection. Covers Windows event logs, firewall logs, proxy logs, and authentication data analysis. Activates for requests involving Splunk investigation, SPL queries, SIEM log analysis, security event correlation, or log-based incident investigation.\n",
+      "description": "Use when leverages Splunk Enterprise Security and SPL (Search Processing Language) to investigate security incidents through log correlation, timeline reconstruction, and anomaly detection. Covers Windows event logs, firewall logs, proxy logs, and authentication data analysis. Activates for requests involving Splunk investigation, SPL queries, SIEM log analysis, security event correlation, or log-based incident investigation.",
       "domain": "cybersecurity",
       "tags": [
         "splunk",
@@ -3702,7 +3702,7 @@
     {
       "name": "analyzing-threat-actor-ttps-with-mitre-attack",
       "category": "cybersecurity",
-      "description": "MITRE ATT&CK is a globally-accessible knowledge base of adversary tactics, techniques, and procedures (TTPs) based on real-world observations. This skill covers systematically mapping threat actor beh",
+      "description": "Use when MITRE ATT&CK is a globally-accessible knowledge base of adversary tactics, techniques, and procedures (TTPs) based on real-world observations. This skill covers systematically mapping threat actor beh",
       "domain": "cybersecurity",
       "tags": [
         "threat-intelligence",
@@ -3721,7 +3721,7 @@
     {
       "name": "analyzing-threat-actor-ttps-with-mitre-navigator",
       "category": "cybersecurity",
-      "description": "Map advanced persistent threat (APT) group tactics, techniques, and procedures (TTPs) to the MITRE ATT&CK framework using the ATT&CK Navigator and attackcti Python library. The analyst queries STIX/TAXII data for group-technique associations, generates Navigator layer files for visualization, and compares defensive coverage against adversary profiles. Activates for requests involving APT TTP mapping, ATT&CK Navigator layers, threat actor profiling, or MITRE technique coverage analysis.",
+      "description": "Use when mapping advanced persistent threat (APT) group tactics, techniques, and procedures (TTPs) to the MITRE ATT&CK framework using the ATT&CK Navigator and attackcti Python library. The analyst queries STIX/TAXII data for group-technique associations, generates Navigator layer files for visualization, and compares defensive coverage against adversary profiles.",
       "domain": "cybersecurity",
       "tags": [
         "mitre-attack",
@@ -3761,7 +3761,7 @@
     {
       "name": "analyzing-threat-landscape-with-misp",
       "category": "cybersecurity",
-      "description": "Analyze the threat landscape using MISP (Malware Information Sharing Platform) by querying event statistics, attribute distributions, threat actor galaxy clusters, and tag trends over time. Uses PyMISP to pull event data, compute IOC type breakdowns, identify top threat actors and malware families, and generate threat landscape reports with temporal trends.",
+      "description": "Use when analyzing the threat landscape using MISP (Malware Information Sharing Platform) by querying event statistics, attribute distributions, threat actor galaxy clusters, and tag trends over time. Uses PyMISP to pull event data, compute IOC type breakdowns, identify top threat actors and malware families, and generate threat landscape reports with temporal trends.",
       "domain": "cybersecurity",
       "tags": [
         "analyzing",
@@ -3777,7 +3777,7 @@
     {
       "name": "analyzing-tls-certificate-transparency-logs",
       "category": "cybersecurity",
-      "description": "Queries Certificate Transparency logs via crt.sh and pycrtsh to detect phishing domains, unauthorized certificate issuance, and shadow IT. Monitors newly issued certificates for typosquatting and brand impersonation using Levenshtein distance. Use for proactive phishing domain detection and certificate monitoring.\n",
+      "description": "Use when querying Certificate Transparency logs via crt.sh and pycrtsh to detect phishing domains, unauthorized certificate issuance, and shadow IT. Monitors newly issued certificates for typosquatting and brand impersonation using Levenshtein distance. Use for proactive phishing domain detection and certificate monitoring.",
       "domain": "cybersecurity",
       "tags": [
         "analyzing",
@@ -3793,7 +3793,7 @@
     {
       "name": "analyzing-typosquatting-domains-with-dnstwist",
       "category": "cybersecurity",
-      "description": "Detect typosquatting, homograph phishing, and brand impersonation domains using dnstwist to generate domain permutations and identify registered lookalike domains targeting your organization.",
+      "description": "Use when detecting typosquatting, homograph phishing, and brand impersonation domains using dnstwist to generate domain permutations and identify registered lookalike domains targeting your organization.",
       "domain": "cybersecurity",
       "tags": [
         "dnstwist",
@@ -3813,7 +3813,7 @@
     {
       "name": "analyzing-uefi-bootkit-persistence",
       "category": "cybersecurity",
-      "description": "Analyzes UEFI bootkit persistence mechanisms including firmware implants in SPI flash, EFI System Partition (ESP) modifications, Secure Boot bypass techniques, and UEFI variable manipulation. Covers detection of known bootkit families (BlackLotus, LoJax, MosaicRegressor, MoonBounce, CosmicStrand), ESP partition forensic inspection, chipsec-based firmware integrity verification, and Secure Boot configuration auditing.",
+      "description": "Use when analyzing UEFI bootkit persistence mechanisms including firmware implants in SPI flash, EFI System Partition (ESP) modifications, Secure Boot bypass techniques, and UEFI variable manipulation. Covers detection of known bootkit families (BlackLotus, LoJax, MosaicRegressor, MoonBounce, CosmicStrand), ESP partition forensic inspection, chipsec-based firmware integrity verification, and Secure Boot configuration auditing.",
       "domain": "cybersecurity",
       "tags": [
         "UEFI",
@@ -4037,7 +4037,7 @@
     {
       "name": "auditing-cloud-with-cis-benchmarks",
       "category": "cybersecurity",
-      "description": "This skill details how to conduct cloud security audits using Center for Internet Security benchmarks for AWS, Azure, and GCP. It covers interpreting CIS Foundations Benchmark controls, running automated assessments with tools like Prowler and ScoutSuite, remediating failed controls, and maintaining continuous compliance monitoring against CIS v5 for AWS, v4 for Azure, and v4 for GCP.\n",
+      "description": "Use when this skill details how to conduct cloud security audits using Center for Internet Security benchmarks for AWS, Azure, and GCP. It covers interpreting CIS Foundations Benchmark controls, running automated assessments with tools like Prowler and ScoutSuite, remediating failed controls, and maintaining continuous compliance monitoring against CIS v5 for AWS, v4 for Azure, and v4 for GCP.",
       "domain": "cybersecurity",
       "tags": [
         "cis-benchmarks",
@@ -4267,7 +4267,7 @@
     {
       "name": "building-adversary-infrastructure-tracking-system",
       "category": "cybersecurity",
-      "description": "Build an automated system to track adversary infrastructure using passive DNS, certificate transparency, WHOIS data, and IP enrichment to map and monitor threat actor command-and-control networks.",
+      "description": "Use when building an automated system to track adversary infrastructure using passive DNS, certificate transparency, WHOIS data, and IP enrichment to map and monitor threat actor command-and-control networks.",
       "domain": "cybersecurity",
       "tags": [
         "infrastructure-tracking",
@@ -4346,7 +4346,7 @@
     {
       "name": "building-cloud-siem-with-sentinel",
       "category": "cybersecurity",
-      "description": "This skill covers deploying Microsoft Sentinel as a cloud-native SIEM and SOAR platform for centralized security operations. It details configuring data connectors for multi-cloud log ingestion, writing KQL detection queries, building automated response playbooks with Logic Apps, and leveraging the Sentinel data lake for petabyte-scale threat hunting across AWS, Azure, and GCP security telemetry.\n",
+      "description": "Use when this skill covers deploying Microsoft Sentinel as a cloud-native SIEM and SOAR platform for centralized security operations. It details configuring data connectors for multi-cloud log ingestion, writing KQL detection queries, building automated response playbooks with Logic Apps, and leveraging the Sentinel data lake for petabyte-scale threat hunting across AWS, Azure, and GCP security telemetry.",
       "domain": "cybersecurity",
       "tags": [
         "microsoft-sentinel",
@@ -4480,7 +4480,7 @@
     {
       "name": "building-incident-response-playbook",
       "category": "cybersecurity",
-      "description": "Designs and documents structured incident response playbooks that define step-by-step procedures for specific incident types aligned with NIST SP 800-61r3 and SANS PICERL frameworks. Covers playbook structure, decision trees, escalation criteria, RACI matrices, and integration with SOAR platforms. Activates for requests involving IR playbook creation, incident response procedure documentation, response runbook development, or SOAR playbook design.\n",
+      "description": "Use when designs and documents structured incident response playbooks that define step-by-step procedures for specific incident types aligned with NIST SP 800-61r3 and SANS PICERL frameworks. Covers playbook structure, decision trees, escalation criteria, RACI matrices, and integration with SOAR platforms. Activates for requests involving IR playbook creation, incident response procedure documentation, response runbook development, or SOAR playbook design.",
       "domain": "cybersecurity",
       "tags": [
         "IR-playbook",
@@ -4516,7 +4516,7 @@
     {
       "name": "building-ioc-defanging-and-sharing-pipeline",
       "category": "cybersecurity",
-      "description": "Build an automated pipeline to defang indicators of compromise (URLs, IPs, domains, emails) for safe sharing and distribute them in STIX format through TAXII feeds and threat intelligence platforms.",
+      "description": "Use when building an automated pipeline to defang indicators of compromise (URLs, IPs, domains, emails) for safe sharing and distribute them in STIX format through TAXII feeds and threat intelligence platforms.",
       "domain": "cybersecurity",
       "tags": [
         "ioc",
@@ -4536,7 +4536,7 @@
     {
       "name": "building-ioc-enrichment-pipeline-with-opencti",
       "category": "cybersecurity",
-      "description": "OpenCTI is an open-source platform for managing cyber threat intelligence knowledge, built on STIX 2.1 as its native data model. This skill covers building an automated IOC enrichment pipeline using O",
+      "description": "Use when openCTI is an open-source platform for managing cyber threat intelligence knowledge, built on STIX 2.1 as its native data model. This skill covers building an automated IOC enrichment pipeline using O",
       "domain": "cybersecurity",
       "tags": [
         "threat-intelligence",
@@ -4593,7 +4593,7 @@
     {
       "name": "building-phishing-reporting-button-workflow",
       "category": "cybersecurity",
-      "description": "Implement a phishing report button in email clients with automated triage workflow that analyzes user-reported suspicious emails and provides feedback to reporters.",
+      "description": "Use when implementing a phishing report button in email clients with automated triage workflow that analyzes user-reported suspicious emails and provides feedback to reporters.",
       "domain": "cybersecurity",
       "tags": [
         "phishing-reporting",
@@ -4612,7 +4612,7 @@
     {
       "name": "building-ransomware-playbook-with-cisa-framework",
       "category": "cybersecurity",
-      "description": "Builds a structured ransomware incident response playbook aligned with the CISA StopRansomware Guide and NIST Cybersecurity Framework. Covers preparation, detection, containment, eradication, recovery, and post-incident phases with actionable checklists. Activates for requests involving ransomware response planning, CISA compliance, incident response playbook creation, or ransomware preparedness assessment.\n",
+      "description": "Use when building a structured ransomware incident response playbook aligned with the CISA StopRansomware Guide and NIST Cybersecurity Framework. Covers preparation, detection, containment, eradication, recovery, and post-incident phases with actionable checklists. Activates for requests involving ransomware response planning, CISA compliance, incident response playbook creation, or ransomware preparedness assessment.",
       "domain": "cybersecurity",
       "tags": [
         "ransomware",
@@ -4744,7 +4744,7 @@
     {
       "name": "building-threat-feed-aggregation-with-misp",
       "category": "cybersecurity",
-      "description": "Deploy MISP (Malware Information Sharing Platform) to aggregate, correlate, and distribute threat intelligence feeds from multiple sources for centralized IOC management and automated SIEM integration.",
+      "description": "Use when deploying MISP (Malware Information Sharing Platform) to aggregate, correlate, and distribute threat intelligence feeds from multiple sources for centralized IOC management and automated SIEM integration.",
       "domain": "cybersecurity",
       "tags": [
         "misp",
@@ -4782,7 +4782,7 @@
     {
       "name": "building-threat-intelligence-enrichment-in-splunk",
       "category": "cybersecurity",
-      "description": "Build automated threat intelligence enrichment pipelines in Splunk Enterprise Security using lookup tables, modular inputs, and the Threat Intelligence Framework.",
+      "description": "Use when building automated threat intelligence enrichment pipelines in Splunk Enterprise Security using lookup tables, modular inputs, and the Threat Intelligence Framework.",
       "domain": "cybersecurity",
       "tags": [
         "splunk",
@@ -4957,7 +4957,7 @@
     {
       "name": "collecting-indicators-of-compromise",
       "category": "cybersecurity",
-      "description": "Systematically collects, categorizes, and distributes indicators of compromise (IOCs) during and after security incidents to enable detection, blocking, and threat intelligence sharing. Covers network, host, email, and behavioral indicators using STIX/TAXII formats and threat intelligence platforms. Activates for requests involving IOC collection, indicator extraction, threat indicator sharing, compromise indicators, STIX export, or IOC enrichment.\n",
+      "description": "Use when systematically collects, categorizes, and distributes indicators of compromise (IOCs) during and after security incidents to enable detection, blocking, and threat intelligence sharing. Covers network, host, email, and behavioral indicators using STIX/TAXII formats and threat intelligence platforms. Activates for requests involving IOC collection, indicator extraction, threat indicator sharing, compromise indicators, STIX export, or IOC enrichment.",
       "domain": "cybersecurity",
       "tags": [
         "IOC-collection",
@@ -5046,7 +5046,7 @@
     {
       "name": "conducting-cloud-penetration-testing",
       "category": "cybersecurity",
-      "description": "This skill outlines methodologies for performing authorized penetration testing against AWS, Azure, and GCP cloud environments. It covers understanding the shared responsibility model for testing scope, leveraging cloud-specific attack tools like Pacu and ScoutSuite, exploiting IAM misconfigurations, testing for SSRF to cloud metadata services, and reporting findings aligned to MITRE ATT&CK Cloud matrix.\n",
+      "description": "Use when this skill outlines methodologies for performing authorized penetration testing against AWS, Azure, and GCP cloud environments. It covers understanding the shared responsibility model for testing scope, leveraging cloud-specific attack tools like Pacu and ScoutSuite, exploiting IAM misconfigurations, testing for SSRF to cloud metadata services, and reporting findings aligned to MITRE ATT&CK Cloud matrix.",
       "domain": "cybersecurity",
       "tags": [
         "cloud-pentesting",
@@ -5156,7 +5156,7 @@
     {
       "name": "conducting-malware-incident-response",
       "category": "cybersecurity",
-      "description": "Responds to malware infections across enterprise endpoints by identifying the malware family, determining infection vectors, assessing spread, and executing eradication procedures. Covers the full lifecycle from detection through containment, analysis, removal, and recovery. Activates for requests involving malware response, malware eradication, trojan removal, worm containment, malware triage, or infected endpoint remediation.\n",
+      "description": "Use when responding to malware infections across enterprise endpoints by identifying the malware family, determining infection vectors, assessing spread, and executing eradication procedures. Covers the full lifecycle from detection through containment, analysis, removal, and recovery. Activates for requests involving malware response, malware eradication, trojan removal, worm containment, malware triage, or infected endpoint remediation.",
       "domain": "cybersecurity",
       "tags": [
         "malware-response",
@@ -5190,7 +5190,7 @@
     {
       "name": "conducting-memory-forensics-with-volatility",
       "category": "cybersecurity",
-      "description": "Performs memory forensics analysis using Volatility 3 to extract evidence of malware execution, process injection, network connections, and credential theft from RAM dumps captured during incident response. Covers memory acquisition, process analysis, DLL inspection, and malware detection. Activates for requests involving memory forensics, RAM analysis, Volatility framework, memory dump investigation, volatile evidence analysis, or live memory acquisition.\n",
+      "description": "Use when performing memory forensics analysis using Volatility 3 to extract evidence of malware execution, process injection, network connections, and credential theft from RAM dumps captured during incident response. Covers memory acquisition, process analysis, DLL inspection, and malware detection. Activates for requests involving memory forensics, RAM analysis, Volatility framework, memory dump investigation, volatile evidence analysis, or live memory acquisition.",
       "domain": "cybersecurity",
       "tags": [
         "memory-forensics",
@@ -5265,7 +5265,7 @@
     {
       "name": "conducting-phishing-incident-response",
       "category": "cybersecurity",
-      "description": "Responds to phishing incidents by analyzing reported emails, extracting indicators, assessing credential compromise, quarantining malicious messages across the organization, and remediating affected accounts. Covers email header analysis, URL/attachment sandboxing, and mailbox-wide purge operations. Activates for requests involving phishing response, email incident, credential phishing, spear phishing investigation, or phishing remediation.\n",
+      "description": "Use when responding to phishing incidents by analyzing reported emails, extracting indicators, assessing credential compromise, quarantining malicious messages across the organization, and remediating affected accounts. Covers email header analysis, URL/attachment sandboxing, and mailbox-wide purge operations. Activates for requests involving phishing response, email incident, credential phishing, spear phishing investigation, or phishing remediation.",
       "domain": "cybersecurity",
       "tags": [
         "phishing-response",
@@ -5375,7 +5375,7 @@
     {
       "name": "configuring-active-directory-tiered-model",
       "category": "cybersecurity",
-      "description": "Implement Microsoft's Enhanced Security Admin Environment (ESAE) tiered administration model for Active Directory. Covers Tier 0/1/2 separation, privileged access workstations (PAWs), administrative f",
+      "description": "Use when implementing Microsoft's Enhanced Security Admin Environment (ESAE) tiered administration model for Active Directory. Covers Tier 0/1/2 separation, privileged access workstations (PAWs), administrative f",
       "domain": "cybersecurity",
       "tags": [
         "iam",
@@ -5415,7 +5415,7 @@
     {
       "name": "configuring-certificate-authority-with-openssl",
       "category": "cybersecurity",
-      "description": "A Certificate Authority (CA) is the trust anchor in a PKI hierarchy, responsible for issuing, signing, and revoking digital certificates. This skill covers building a two-tier CA hierarchy (Root CA +",
+      "description": "Use when a Certificate Authority (CA) is the trust anchor in a PKI hierarchy, responsible for issuing, signing, and revoking digital certificates. This skill covers building a two-tier CA hierarchy (Root CA +",
       "domain": "cybersecurity",
       "tags": [
         "cryptography",
@@ -5486,7 +5486,7 @@
     {
       "name": "configuring-ldap-security-hardening",
       "category": "cybersecurity",
-      "description": "Harden LDAP directory services against common attacks including credential harvesting, LDAP injection, anonymous binding, and channel binding bypass. Covers LDAPS enforcement, channel binding, LDAP si",
+      "description": "Use when hardening LDAP directory services against common attacks including credential harvesting, LDAP injection, anonymous binding, and channel binding bypass. Covers LDAPS enforcement, channel binding, LDAP si",
       "domain": "cybersecurity",
       "tags": [
         "iam",
@@ -5521,7 +5521,7 @@
     {
       "name": "configuring-multi-factor-authentication-with-duo",
       "category": "cybersecurity",
-      "description": "Deploy Cisco Duo multi-factor authentication across enterprise applications, VPN, RDP, and SSH access points. This skill covers Duo integration methods, adaptive authentication policies, device trust",
+      "description": "Use when deploying Cisco Duo multi-factor authentication across enterprise applications, VPN, RDP, and SSH access points. This skill covers Duo integration methods, adaptive authentication policies, device trust",
       "domain": "cybersecurity",
       "tags": [
         "iam",
@@ -5557,7 +5557,7 @@
     {
       "name": "configuring-oauth2-authorization-flow",
       "category": "cybersecurity",
-      "description": "Configure secure OAuth 2.0 authorization flows including Authorization Code with PKCE, Client Credentials, and Device Authorization Grant. This skill covers flow selection, PKCE implementation, token",
+      "description": "Use when configuring secure OAuth 2.0 authorization flows including Authorization Code with PKCE, Client Credentials, and Device Authorization Grant. This skill covers flow selection, PKCE implementation, token",
       "domain": "cybersecurity",
       "tags": [
         "iam",
@@ -6052,7 +6052,7 @@
     {
       "name": "detecting-anomalies-in-industrial-control-systems",
       "category": "cybersecurity",
-      "description": "This skill covers deploying anomaly detection systems for industrial control environments using machine learning models trained on OT network baselines, physics-based process models, and behavioral analysis of industrial protocol communications. It addresses building normal behavior profiles for SCADA polling patterns, detecting deviations in Modbus/DNP3/OPC UA traffic, identifying rogue devices, and correlating network anomalies with physical process data from historians.\n",
+      "description": "Use when this skill covers deploying anomaly detection systems for industrial control environments using machine learning models trained on OT network baselines, physics-based process models, and behavioral analysis of industrial protocol communications. It addresses building normal behavior profiles for SCADA polling patterns, detecting deviations in Modbus/DNP3/OPC UA traffic, identifying rogue devices, and correlating network anomalies with physical process data from historians.",
       "domain": "cybersecurity",
       "tags": [
         "ot-security",
@@ -6149,7 +6149,7 @@
     {
       "name": "detecting-attacks-on-scada-systems",
       "category": "cybersecurity",
-      "description": "This skill covers detecting cyber attacks targeting Supervisory Control and Data Acquisition (SCADA) systems including man-in-the-middle attacks on industrial protocols, unauthorized command injection into PLCs, HMI compromise, historian data manipulation, and denial-of-service against control system communications. It leverages OT-specific intrusion detection systems, industrial protocol anomaly detection, and process data analytics to identify attacks that traditional IT security tool.",
+      "description": "Use when this skill covers detecting cyber attacks targeting Supervisory Control and Data Acquisition (SCADA) systems including man-in-the-middle attacks on industrial protocols, unauthorized command injection into PLCs, HMI compromise, historian data manipulation, and denial-of-service against control system communications. It leverages OT-specific intrusion detection systems, industrial protocol anomaly detection, and process data analytics to identify attacks that traditional IT security t...",
       "domain": "cybersecurity",
       "tags": [
         "ot-security",
@@ -6204,7 +6204,7 @@
     {
       "name": "detecting-aws-guardduty-findings-automation",
       "category": "cybersecurity",
-      "description": "Automate AWS GuardDuty threat detection findings processing using EventBridge and Lambda to enable real-time incident response, automatic quarantine of compromised resources, and security notification workflows.",
+      "description": "Use when automating AWS GuardDuty threat detection findings processing using EventBridge and Lambda to enable real-time incident response, automatic quarantine of compromised resources, and security notification workflows.",
       "domain": "cybersecurity",
       "tags": [
         "aws",
@@ -6379,7 +6379,7 @@
     {
       "name": "detecting-cloud-threats-with-guardduty",
       "category": "cybersecurity",
-      "description": "This skill teaches security teams how to deploy and operationalize Amazon GuardDuty for continuous threat detection across AWS accounts and workloads. It covers enabling protection plans for S3, EKS, EC2 runtime monitoring, and Lambda, interpreting finding severity levels, and building automated response workflows using EventBridge and Lambda.\n",
+      "description": "Use when this skill teaches security teams how to deploy and operationalize Amazon GuardDuty for continuous threat detection across AWS accounts and workloads. It covers enabling protection plans for S3, EKS, EC2 runtime monitoring, and Lambda, interpreting finding severity levels, and building automated response workflows using EventBridge and Lambda.",
       "domain": "cybersecurity",
       "tags": [
         "amazon-guardduty",
@@ -6396,7 +6396,7 @@
     {
       "name": "detecting-command-and-control-over-dns",
       "category": "cybersecurity",
-      "description": "Detects command-and-control (C2) communications tunneled through DNS protocol including DNS tunneling tools (Iodine, dnscat2, dns2tcp, Cobalt Strike DNS beacon), domain generation algorithms (DGA), encoded payload delivery via TXT/CNAME records, and DNS beaconing patterns. Covers Shannon entropy analysis of query subdomains, statistical anomaly detection, ML-based DGA classification, passive DNS correlation, and Zeek/Suricata signature development.",
+      "description": "Use when detecting command-and-control (C2) communications tunneled through DNS protocol including DNS tunneling tools (Iodine, dnscat2, dns2tcp, Cobalt Strike DNS beacon), domain generation algorithms (DGA), encoded payload delivery via TXT/CNAME records, and DNS beaconing patterns. Covers Shannon entropy analysis of query subdomains, statistical anomaly detection, ML-based DGA classification, passive DNS correlation, and Zeek/Suricata signature development.",
       "domain": "cybersecurity",
       "tags": [
         "dns",
@@ -6507,7 +6507,7 @@
     {
       "name": "detecting-cryptomining-in-cloud",
       "category": "cybersecurity",
-      "description": "This skill teaches security teams how to detect and respond to unauthorized cryptocurrency mining operations in cloud environments. It covers identifying cryptomining indicators through compute usage anomalies, network traffic patterns to mining pools, GuardDuty CryptoCurrency findings, and runtime process monitoring on EC2, ECS, EKS, and Azure Automation workloads.\n",
+      "description": "Use when this skill teaches security teams how to detect and respond to unauthorized cryptocurrency mining operations in cloud environments. It covers identifying cryptomining indicators through compute usage anomalies, network traffic patterns to mining pools, GuardDuty CryptoCurrency findings, and runtime process monitoring on EC2, ECS, EKS, and Azure Automation workloads.",
       "domain": "cybersecurity",
       "tags": [
         "cryptomining-detection",
@@ -6543,7 +6543,7 @@
     {
       "name": "detecting-deepfake-audio-in-vishing-attacks",
       "category": "cybersecurity",
-      "description": "Detects AI-generated deepfake audio used in voice phishing (vishing) attacks by extracting spectral features (MFCC, spectral centroid, spectral contrast, zero-crossing rate) and classifying samples with machine learning models. Supports batch analysis of audio files, generates confidence scores, and produces forensic reports.",
+      "description": "Use when detecting AI-generated deepfake audio used in voice phishing (vishing) attacks by extracting spectral features (MFCC, spectral centroid, spectral contrast, zero-crossing rate) and classifying samples with machine learning models. Supports batch analysis of audio files, generating confidence scores, and produces forensic reports.",
       "domain": "cybersecurity",
       "tags": [
         "deepfake-detection",
@@ -6925,7 +6925,7 @@
     {
       "name": "detecting-malicious-scheduled-tasks-with-sysmon",
       "category": "cybersecurity",
-      "description": "Use when detect malicious scheduled task creation and modification using Sysmon Event IDs 1 (Process Create for schtasks.exe), 11 (File Create for task XML), and Windows Security Event 4698/4702. The analyst correlates task creation with suspicious parent processes, public directory paths, and encoded command arguments to identify persistence and lateral movement via scheduled tasks. Activates for requests involving scheduled task detection, Sysmon persistence hunting, or T1053.",
+      "description": "Use when detecting malicious scheduled task creation and modification using Sysmon Event IDs 1 (Process Create for schtasks.exe), 11 (File Create for task XML), and Windows Security Event 4698/4702. The analyst correlates task creation with suspicious parent processes, public directory paths, and encoded command arguments to identify persistence and lateral movement via scheduled tasks. Activates for requests involving scheduled task detection, Sysmon persistence hunting, or T1053.",
       "domain": "cybersecurity",
       "tags": [
         "sysmon",
@@ -7018,7 +7018,7 @@
     {
       "name": "detecting-modbus-protocol-anomalies",
       "category": "cybersecurity",
-      "description": "This skill covers detecting anomalies in Modbus/TCP and Modbus RTU communications in industrial control systems. It addresses function code monitoring, register range validation, timing analysis, unauthorized client detection, and deep packet inspection for malformed Modbus frames. The skill leverages Zeek with Modbus protocol analyzers, Suricata IDS with OT rules, and custom Python-based detection using Markov chain models for normal Modbus transaction sequences.\n",
+      "description": "Use when this skill covers detecting anomalies in Modbus/TCP and Modbus RTU communications in industrial control systems. It addresses function code monitoring, register range validation, timing analysis, unauthorized client detection, and deep packet inspection for malformed Modbus frames. The skill leverages Zeek with Modbus protocol analyzers, Suricata IDS with OT rules, and custom Python-based detection using Markov chain models for normal Modbus transaction sequences.",
       "domain": "cybersecurity",
       "tags": [
         "ot-security",
@@ -7037,7 +7037,7 @@
     {
       "name": "detecting-network-anomalies-with-zeek",
       "category": "cybersecurity",
-      "description": "Deploys and configures Zeek (formerly Bro) network security monitor to passively analyze network traffic, generate structured logs, detect anomalous behavior, and create custom detection scripts for threat hunting and incident response.\n",
+      "description": "Use when deploying and configuring Zeek (formerly Bro) network security monitor to passively analyze network traffic, generate structured logs, detect anomalous behavior, and create custom detection scripts for threat hunting and incident response.",
       "domain": "cybersecurity",
       "tags": [
         "network-security",
@@ -7098,7 +7098,7 @@
     {
       "name": "detecting-oauth-token-theft",
       "category": "cybersecurity",
-      "description": "Detects and responds to OAuth token theft and replay attacks in cloud environments, focusing on Microsoft Entra ID (Azure AD) token protection, conditional access policies, and sign-in anomaly detection. Covers access token theft, refresh token replay, Primary Refresh Token (PRT) abuse, and pass-the-cookie attacks. Activates for requests involving OAuth token theft detection, token replay prevention, Azure AD conditional access token protection, or cloud identity attack investigation.",
+      "description": "Use when detecting and responding to OAuth token theft and replay attacks in cloud environments, focusing on Microsoft Entra ID (Azure AD) token protection, conditional access policies, and sign-in anomaly detection. Covers access token theft, refresh token replay, Primary Refresh Token (PRT) abuse, and pass-the-cookie attacks. Activates for requests involving OAuth token theft detection, token replay prevention, Azure AD conditional access token protection, or cloud identity attack investiga...",
       "domain": "cybersecurity",
       "tags": [
         "oauth",
@@ -7446,7 +7446,7 @@
     {
       "name": "detecting-sql-injection-via-waf-logs",
       "category": "cybersecurity",
-      "description": "Analyze WAF (ModSecurity/AWS WAF/Cloudflare) logs to detect SQL injection attack campaigns. Parses ModSecurity audit logs and JSON WAF event logs to identify SQLi patterns (UNION SELECT, OR 1=1, SLEEP(), BENCHMARK()), tracks attack sources, correlates multi-stage injection attempts, and generates incident reports with OWASP classification.",
+      "description": "Use when analyzing WAF (ModSecurity/AWS WAF/Cloudflare) logs to detect SQL injection attack campaigns. Parses ModSecurity audit logs and JSON WAF event logs to identify SQLi patterns (UNION SELECT, OR 1=1, SLEEP(), BENCHMARK()), tracks attack sources, correlates multi-stage injection attempts, and generates incident reports with OWASP classification.",
       "domain": "cybersecurity",
       "tags": [
         "detecting",
@@ -7462,7 +7462,7 @@
     {
       "name": "detecting-stuxnet-style-attacks",
       "category": "cybersecurity",
-      "description": "This skill covers detecting sophisticated cyber-physical attacks that follow the Stuxnet attack pattern of modifying PLC logic while spoofing sensor readings to hide the manipulation from operators. It addresses PLC logic integrity monitoring, physics-based process anomaly detection, engineering workstation compromise indicators, USB-borne attack vectors, and multi-stage attack chain detection spanning IT-to-OT lateral movement through to process manipulation.\n",
+      "description": "Use when this skill covers detecting sophisticated cyber-physical attacks that follow the Stuxnet attack pattern of modifying PLC logic while spoofing sensor readings to hide the manipulation from operators. It addresses PLC logic integrity monitoring, physics-based process anomaly detection, engineering workstation compromise indicators, USB-borne attack vectors, and multi-stage attack chain detection spanning IT-to-OT lateral movement through to process manipulation.",
       "domain": "cybersecurity",
       "tags": [
         "ot-security",
@@ -8200,7 +8200,7 @@
     {
       "name": "exploiting-sql-injection-vulnerabilities",
       "category": "cybersecurity",
-      "description": "Identifies and exploits SQL injection vulnerabilities in web applications during authorized penetration tests using manual techniques and automated tools like sqlmap. The tester detects injection points through error-based, union-based, blind boolean, and time-based blind techniques across all major database engines (MySQL, PostgreSQL, MSSQL, Oracle) to demonstrate data extraction, authentication bypass, and potential remote code execution.",
+      "description": "Use when identifying and exploiting SQL injection vulnerabilities in web applications during authorized penetration tests using manual techniques and automated tools like sqlmap. The tester detects injection points through error-based, union-based, blind boolean, and time-based blind techniques across all major database engines (MySQL, PostgreSQL, MSSQL, Oracle) to demonstrate data extraction, authentication bypass, and potential remote code execution.",
       "domain": "cybersecurity",
       "tags": [
         "SQL-injection",
@@ -8617,7 +8617,7 @@
     {
       "name": "hunting-for-anomalous-powershell-execution",
       "category": "cybersecurity",
-      "description": "Use when hunt for malicious PowerShell activity by analyzing Script Block Logging (Event 4104), Module Logging (Event 4103), and process creation events. The analyst parses Windows Event Log EVTX files to detect obfuscated commands, AMSI bypass attempts, encoded payloads, credential dumping keywords, and suspicious download cradles. Activates for requests involving PowerShell threat hunting, script block analysis, encoded command detection, or AMSI bypass identification.\n'.",
+      "description": "Use when hunting for malicious PowerShell activity by analyzing Script Block Logging (Event 4104), Module Logging (Event 4103), and process creation events. The analyst parses Windows Event Log EVTX files to detect obfuscated commands, AMSI bypass attempts, encoded payloads, credential dumping keywords, and suspicious download cradles. Activates for requests involving PowerShell threat hunting, script block analysis, encoded command detection, or AMSI bypass identification.\n'.",
       "domain": "cybersecurity",
       "tags": [
         "powershell",
@@ -9223,7 +9223,7 @@
     {
       "name": "implementing-aes-encryption-for-data-at-rest",
       "category": "cybersecurity",
-      "description": "AES (Advanced Encryption Standard) is a symmetric block cipher standardized by NIST (FIPS 197) used to protect classified and sensitive data. This skill covers implementing AES-256 encryption in GCM m",
+      "description": "Use when AES (Advanced Encryption Standard) is a symmetric block cipher standardized by NIST (FIPS 197) used to protect classified and sensitive data. This skill covers implementing AES-256 encryption in GCM m",
       "domain": "cybersecurity",
       "tags": [
         "cryptography",
@@ -9600,7 +9600,7 @@
     {
       "name": "implementing-aws-security-hub",
       "category": "cybersecurity",
-      "description": "This skill covers deploying AWS Security Hub as a centralized cloud security posture management platform that aggregates findings from GuardDuty, Inspector, Macie, and third-party tools. It details enabling security standards like CIS AWS Foundations Benchmark, configuring automated remediation, and building executive dashboards for compliance tracking across multi-account AWS organizations.\n",
+      "description": "Use when this skill covers deploying AWS Security Hub as a centralized cloud security posture management platform that aggregates findings from GuardDuty, Inspector, Macie, and third-party tools. It details enabling security standards like CIS AWS Foundations Benchmark, configuring automated remediation, and building executive dashboards for compliance tracking across multi-account AWS organizations.",
       "domain": "cybersecurity",
       "tags": [
         "aws-security-hub",
@@ -9617,7 +9617,7 @@
     {
       "name": "implementing-aws-security-hub-compliance",
       "category": "cybersecurity",
-      "description": "Implementing AWS Security Hub to aggregate security findings across AWS accounts, enable compliance standards like CIS AWS Foundations and PCI DSS, configure automated remediation with EventBridge and Lambda, and create custom security insights for organizational risk management.\n",
+      "description": "Use when implementing AWS Security Hub to aggregate security findings across AWS accounts, enable compliance standards like CIS AWS Foundations and PCI DSS, configure automated remediation with EventBridge and Lambda, and create custom security insights for organizational risk management.",
       "domain": "cybersecurity",
       "tags": [
         "cloud-security",
@@ -9654,7 +9654,7 @@
     {
       "name": "implementing-azure-defender-for-cloud",
       "category": "cybersecurity",
-      "description": "Implementing Microsoft Defender for Cloud to enable cloud security posture management, workload protection across VMs, containers, databases, and storage, configure security recommendations, and set up adaptive security controls with automated remediation.\n",
+      "description": "Use when implementing Microsoft Defender for Cloud to enable cloud security posture management, workload protection across VMs, containers, databases, and storage, configure security recommendations, and set up adaptive security controls with automated remediation.",
       "domain": "cybersecurity",
       "tags": [
         "cloud-security",
@@ -9846,7 +9846,7 @@
     {
       "name": "implementing-cloud-waf-rules",
       "category": "cybersecurity",
-      "description": "This skill covers deploying and tuning Web Application Firewall rules on AWS WAF, Azure WAF, and Cloudflare to protect cloud-hosted applications against OWASP Top 10 attacks. It details configuring managed rule sets, creating custom rules for business logic protection, implementing rate limiting, deploying bot management, and reducing false positives through rule tuning and logging analysis.\n",
+      "description": "Use when this skill covers deploying and tuning Web Application Firewall rules on AWS WAF, Azure WAF, and Cloudflare to protect cloud-hosted applications against OWASP Top 10 attacks. It details configuring managed rule sets, creating custom rules for business logic protection, implementing rate limiting, deploying bot management, and reducing false positives through rule tuning and logging analysis.",
       "domain": "cybersecurity",
       "tags": [
         "cloud-waf",
@@ -9880,7 +9880,7 @@
     {
       "name": "implementing-code-signing-for-artifacts",
       "category": "cybersecurity",
-      "description": "This skill covers implementing code signing for build artifacts to ensure integrity and authenticity throughout the software supply chain. It addresses signing binaries, packages, and containers using GPG, Sigstore, and platform-specific signing tools, establishing trust chains, and verifying signatures in deployment pipelines.\n",
+      "description": "Use when this skill covers implementing code signing for build artifacts to ensure integrity and authenticity throughout the software supply chain. It addresses signing binaries, packages, and containers using GPG, Sigstore, and platform-specific signing tools, establishing trust chains, and verifying signatures in deployment pipelines.",
       "domain": "cybersecurity",
       "tags": [
         "devsecops",
@@ -9898,7 +9898,7 @@
     {
       "name": "implementing-conditional-access-policies-azure-ad",
       "category": "cybersecurity",
-      "description": "Configure Microsoft Entra ID (Azure AD) Conditional Access policies for zero trust access control. Covers signal-based policy design, device compliance requirements, risk-based authentication, named l",
+      "description": "Use when configuring Microsoft Entra ID (Azure AD) Conditional Access policies for zero trust access control. Covers signal-based policy design, device compliance requirements, risk-based authentication, named l",
       "domain": "cybersecurity",
       "tags": [
         "iam",
@@ -10053,7 +10053,7 @@
     {
       "name": "implementing-delinea-secret-server-for-pam",
       "category": "cybersecurity",
-      "description": "Implements Delinea Secret Server for privileged access management (PAM) including secret vault configuration, role-based access policies, automated password rotation, session recording, and integration with Active Directory and cloud platforms. Activates for requests involving PAM deployment, privileged credential vaulting, secret server administration, or password rotation automation.\n",
+      "description": "Use when implementing Delinea Secret Server for privileged access management (PAM) including secret vault configuration, role-based access policies, automated password rotation, session recording, and integration with Active Directory and cloud platforms. Activates for requests involving PAM deployment, privileged credential vaulting, secret server administration, or password rotation automation.",
       "domain": "cybersecurity",
       "tags": [
         "PAM",
@@ -10090,7 +10090,7 @@
     {
       "name": "implementing-devsecops-security-scanning",
       "category": "cybersecurity",
-      "description": "Integrates Static Application Security Testing (SAST), Dynamic Application Security Testing (DAST), and Software Composition Analysis (SCA) into CI/CD pipelines using open-source tools. Covers Semgrep for SAST, Trivy for SCA and container scanning, OWASP ZAP for DAST, and Gitleaks for secrets detection. Activates for requests involving DevSecOps pipeline setup, automated security scanning in CI/CD, SAST/DAST/SCA integration, or shift-left security implementation.\n",
+      "description": "Use when integrating Static Application Security Testing (SAST), Dynamic Application Security Testing (DAST), and Software Composition Analysis (SCA) into CI/CD pipelines using open-source tools. Covers Semgrep for SAST, Trivy for SCA and container scanning, OWASP ZAP for DAST, and Gitleaks for secrets detection. Activates for requests involving DevSecOps pipeline setup, automated security scanning in CI/CD, SAST/DAST/SCA integration, or shift-left security implementation.",
       "domain": "cybersecurity",
       "tags": [
         "devsecops",
@@ -10112,7 +10112,7 @@
     {
       "name": "implementing-diamond-model-analysis",
       "category": "cybersecurity",
-      "description": "The Diamond Model of Intrusion Analysis provides a structured framework for analyzing cyber intrusions by examining four core features - Adversary, Capability, Infrastructure, and Victim. This skill covers implementing the Diamond Model programmatically to classify and correlate intrusion events, build activity threads, and generate pivot-ready intelligence.",
+      "description": "Use when the Diamond Model of Intrusion Analysis provides a structured framework for analyzing cyber intrusions by examining four core features - Adversary, Capability, Infrastructure, and Victim. This skill covers implementing the Diamond Model programmatically to classify and correlate intrusion events, build activity threads, and generate pivot-ready intelligence.",
       "domain": "cybersecurity",
       "tags": [
         "threat-intelligence",
@@ -10262,7 +10262,7 @@
     {
       "name": "implementing-endpoint-detection-with-wazuh",
       "category": "cybersecurity",
-      "description": "Deploy and configure Wazuh SIEM/XDR for endpoint detection including agent management, custom decoder and rule XML creation, alert querying via the Wazuh REST API, and automated response actions.",
+      "description": "Use when deploying and configuring Wazuh SIEM/XDR for endpoint detection including agent management, custom decoder and rule XML creation, alert querying via the Wazuh REST API, and automated response actions.",
       "domain": "cybersecurity",
       "tags": [
         "siem",
@@ -10429,7 +10429,7 @@
     {
       "name": "implementing-gdpr-data-protection-controls",
       "category": "cybersecurity",
-      "description": "The General Data Protection Regulation (EU) 2016/679 (GDPR) is the EU's comprehensive data protection law governing the collection, processing, storage, and transfer of personal data. This skill cover",
+      "description": "Use when the General Data Protection Regulation (EU) 2016/679 (GDPR) is the EU's comprehensive data protection law governing the collection, processing, storage, and transfer of personal data. This skill cover",
       "domain": "cybersecurity",
       "tags": [
         "compliance",
@@ -10466,7 +10466,7 @@
     {
       "name": "implementing-github-advanced-security-for-code-scanning",
       "category": "cybersecurity",
-      "description": "Configure GitHub Advanced Security with CodeQL to perform automated static analysis and vulnerability detection across repositories at enterprise scale.",
+      "description": "Use when configuring GitHub Advanced Security with CodeQL to perform automated static analysis and vulnerability detection across repositories at enterprise scale.",
       "domain": "cybersecurity",
       "tags": [
         "github-advanced-security",
@@ -10560,7 +10560,7 @@
     {
       "name": "implementing-hashicorp-vault-dynamic-secrets",
       "category": "cybersecurity",
-      "description": "Implements HashiCorp Vault dynamic secrets engines for database credentials, AWS IAM keys, and PKI certificates with automatic generation, lease management, and credential rotation to eliminate static secrets in application configurations. Activates for requests involving Vault secrets engine configuration, dynamic database credentials, ephemeral cloud credentials, or automated secret rotation.\n",
+      "description": "Use when implementing HashiCorp Vault dynamic secrets engines for database credentials, AWS IAM keys, and PKI certificates with automatic generation, lease management, and credential rotation to eliminate static secrets in application configurations. Activates for requests involving Vault secrets engine configuration, dynamic database credentials, ephemeral cloud credentials, or automated secret rotation.",
       "domain": "cybersecurity",
       "tags": [
         "HashiCorp-Vault",
@@ -10632,7 +10632,7 @@
     {
       "name": "implementing-identity-governance-with-sailpoint",
       "category": "cybersecurity",
-      "description": "Deploy SailPoint IdentityNow or IdentityIQ for identity governance and administration. Covers identity lifecycle management, access request workflows, certification campaigns, role mining, SOD policy",
+      "description": "Use when deploying SailPoint IdentityNow or IdentityIQ for identity governance and administration. Covers identity lifecycle management, access request workflows, certification campaigns, role mining, SOD policy",
       "domain": "cybersecurity",
       "tags": [
         "iam",
@@ -10668,7 +10668,7 @@
     {
       "name": "implementing-iec-62443-security-zones",
       "category": "cybersecurity",
-      "description": "This skill covers designing and implementing security zones and conduits for industrial automation and control systems (IACS) per IEC 62443-3-2. It addresses zone partitioning based on risk assessment, assigning Security Level targets (SL-T), designing conduit security controls, implementing microsegmentation with industrial firewalls, and validating zone architecture through traffic analysis and penetration testing against the Purdue Reference Model.\n",
+      "description": "Use when this skill covers designing and implementing security zones and conduits for industrial automation and control systems (IACS) per IEC 62443-3-2. It addresses zone partitioning based on risk assessment, assigning Security Level targets (SL-T), designing conduit security controls, implementing microsegmentation with industrial firewalls, and validating zone architecture through traffic analysis and penetration testing against the Purdue Reference Model.",
       "domain": "cybersecurity",
       "tags": [
         "ot-security",
@@ -10706,7 +10706,7 @@
     {
       "name": "implementing-immutable-backup-with-restic",
       "category": "cybersecurity",
-      "description": "Implements immutable backup strategy using restic with S3-compatible storage and object lock for ransomware-resistant data protection. Automates backup creation, integrity verification via restic check --read-data, snapshot retention policy enforcement, and restore testing. Integrates with AWS S3 Object Lock, MinIO, and Backblaze B2 for WORM (Write Once Read Many) storage that prevents backup deletion or encryption by ransomware actors.\n",
+      "description": "Use when implementing immutable backup strategy using restic with S3-compatible storage and object lock for ransomware-resistant data protection. Automates backup creation, integrity verification via restic check --read-data, snapshot retention policy enforcement, and restore testing. Integrates with AWS S3 Object Lock, MinIO, and Backblaze B2 for WORM (Write Once Read Many) storage that prevents backup deletion or encryption by ransomware actors.",
       "domain": "cybersecurity",
       "tags": [
         "restic",
@@ -10726,7 +10726,7 @@
     {
       "name": "implementing-infrastructure-as-code-security-scanning",
       "category": "cybersecurity",
-      "description": "This skill covers implementing automated security scanning for Infrastructure as Code (IaC) templates using tools like Checkov, tfsec, and KICS. It addresses detecting misconfigurations in Terraform, CloudFormation, Kubernetes manifests, and Helm charts before deployment, establishing policy-based governance, and integrating IaC scanning into CI/CD pipelines to prevent insecure cloud resource provisioning.\n",
+      "description": "Use when this skill covers implementing automated security scanning for Infrastructure as Code (IaC) templates using tools like Checkov, tfsec, and KICS. It addresses detecting misconfigurations in Terraform, CloudFormation, Kubernetes manifests, and Helm charts before deployment, establishing policy-based governance, and integrating IaC scanning into CI/CD pipelines to prevent insecure cloud resource provisioning.",
       "domain": "cybersecurity",
       "tags": [
         "devsecops",
@@ -10745,7 +10745,7 @@
     {
       "name": "implementing-iso-27001-information-security-management",
       "category": "cybersecurity",
-      "description": "ISO/IEC 27001:2022 is the international standard for establishing, implementing, maintaining, and continually improving an Information Security Management System (ISMS). This skill covers the complete",
+      "description": "Use when ISO/IEC 27001:2022 is the international standard for establishing, implementing, maintaining, and continually improving an Information Security Management System (ISMS). This skill covers the complete",
       "domain": "cybersecurity",
       "tags": [
         "compliance",
@@ -10763,7 +10763,7 @@
     {
       "name": "implementing-just-in-time-access-provisioning",
       "category": "cybersecurity",
-      "description": "Implement Just-In-Time (JIT) access provisioning to eliminate standing privileges by granting temporary, time-bound access only when needed. This skill covers JIT architecture design, approval workflo",
+      "description": "Use when implementing Just-In-Time (JIT) access provisioning to eliminate standing privileges by granting temporary, time-bound access only when needed. This skill covers JIT architecture design, approval workflo",
       "domain": "cybersecurity",
       "tags": [
         "iam",
@@ -10782,7 +10782,7 @@
     {
       "name": "implementing-jwt-signing-and-verification",
       "category": "cybersecurity",
-      "description": "JSON Web Tokens (JWT) defined in RFC 7519 are compact, URL-safe tokens used for authentication and authorization in web applications. This skill covers implementing secure JWT signing with HMAC-SHA256",
+      "description": "Use when JSON Web Tokens (JWT) defined in RFC 7519 are compact, URL-safe tokens used for authentication and authorization in web applications. This skill covers implementing secure JWT signing with HMAC-SHA256",
       "domain": "cybersecurity",
       "tags": [
         "cryptography",
@@ -10994,7 +10994,7 @@
     {
       "name": "implementing-nerc-cip-compliance-controls",
       "category": "cybersecurity",
-      "description": "This skill covers implementing North American Electric Reliability Corporation Critical Infrastructure Protection (NERC CIP) compliance controls for Bulk Electric System (BES) cyber systems. It addresses asset categorization (CIP-002), electronic security perimeters (CIP-005), system security management (CIP-007), configuration management (CIP-010), supply chain risk management (CIP-013), and the 2025 updates including mandatory MFA for remote access and expanded low-impact asset requir.",
+      "description": "Use when this skill covers implementing North American Electric Reliability Corporation Critical Infrastructure Protection (NERC CIP) compliance controls for Bulk Electric System (BES) cyber systems. It addresses asset categorization (CIP-002), electronic security perimeters (CIP-005), system security management (CIP-007), configuration management (CIP-010), supply chain risk management (CIP-013), and the 2025 updates including mandatory MFA for remote access and expanded low-impact asset req...",
       "domain": "cybersecurity",
       "tags": [
         "ot-security",
@@ -11110,7 +11110,7 @@
     {
       "name": "implementing-network-segmentation-for-ot",
       "category": "cybersecurity",
-      "description": "This skill covers implementing network segmentation in Operational Technology environments using VLANs, industrial firewalls, data diodes, and software-defined networking. It addresses the Purdue Model-based segmentation strategy, migration from flat networks to segmented architectures without disrupting operations, configuring OT-aware firewalls with industrial protocol deep packet inspection, and validating segmentation effectiveness through traffic analysis.\n",
+      "description": "Use when this skill covers implementing network segmentation in Operational Technology environments using VLANs, industrial firewalls, data diodes, and software-defined networking. It addresses the Purdue Model-based segmentation strategy, migration from flat networks to segmented architectures without disrupting operations, configuring OT-aware firewalls with industrial protocol deep packet inspection, and validating segmentation effectiveness through traffic analysis.",
       "domain": "cybersecurity",
       "tags": [
         "ot-security",
@@ -11264,7 +11264,7 @@
     {
       "name": "implementing-pam-for-database-access",
       "category": "cybersecurity",
-      "description": "Deploy privileged access management for database systems including Oracle, SQL Server, PostgreSQL, and MySQL. Covers session proxy configuration, credential vaulting, query auditing, dynamic credentia",
+      "description": "Use when deploying privileged access management for database systems including Oracle, SQL Server, PostgreSQL, and MySQL. Covers session proxy configuration, credential vaulting, query auditing, dynamic credentia",
       "domain": "cybersecurity",
       "tags": [
         "iam",
@@ -11301,7 +11301,7 @@
     {
       "name": "implementing-passwordless-authentication-with-fido2",
       "category": "cybersecurity",
-      "description": "Deploy FIDO2/WebAuthn passwordless authentication using security keys and platform authenticators. Covers WebAuthn API integration, FIDO2 server configuration, passkey enrollment, biometric authentica",
+      "description": "Use when deploying FIDO2/WebAuthn passwordless authentication using security keys and platform authenticators. Covers WebAuthn API integration, FIDO2 server configuration, passkey enrollment, biometric authentica",
       "domain": "cybersecurity",
       "tags": [
         "iam",
@@ -11320,7 +11320,7 @@
     {
       "name": "implementing-patch-management-for-ot-systems",
       "category": "cybersecurity",
-      "description": "This skill covers implementing a structured patch management program for OT/ICS environments where traditional IT patching approaches can cause process disruption or safety hazards. It addresses vendor compatibility testing, risk-based patch prioritization, staged deployment through test environments, maintenance window coordination, rollback procedures, and compensating controls when patches cannot be applied due to operational constraints or vendor restrictions.\n",
+      "description": "Use when this skill covers implementing a structured patch management program for OT/ICS environments where traditional IT patching approaches can cause process disruption or safety hazards. It addresses vendor compatibility testing, risk-based patch prioritization, staged deployment through test environments, maintenance window coordination, rollback procedures, and compensating controls when patches cannot be applied due to operational constraints or vendor restrictions.",
       "domain": "cybersecurity",
       "tags": [
         "ot-security",
@@ -11391,7 +11391,7 @@
     {
       "name": "implementing-policy-as-code-with-open-policy-agent",
       "category": "cybersecurity",
-      "description": "This skill covers implementing Open Policy Agent (OPA) and Gatekeeper for policy-as-code enforcement in Kubernetes and CI/CD pipelines. It addresses writing Rego policies, deploying OPA Gatekeeper as a Kubernetes admission controller, testing policies in development, and integrating policy evaluation into deployment pipelines.\n",
+      "description": "Use when this skill covers implementing Open Policy Agent (OPA) and Gatekeeper for policy-as-code enforcement in Kubernetes and CI/CD pipelines. It addresses writing Rego policies, deploying OPA Gatekeeper as a Kubernetes admission controller, testing policies in development, and integrating policy evaluation into deployment pipelines.",
       "domain": "cybersecurity",
       "tags": [
         "devsecops",
@@ -11410,7 +11410,7 @@
     {
       "name": "implementing-privileged-access-management-with-cyberark",
       "category": "cybersecurity",
-      "description": "Deploy CyberArk Privileged Access Management to discover, vault, rotate, and monitor privileged credentials across enterprise infrastructure. This skill covers vault architecture, session isolation, c",
+      "description": "Use when deploying CyberArk Privileged Access Management to discover, vault, rotate, and monitor privileged credentials across enterprise infrastructure. This skill covers vault architecture, session isolation, c",
       "domain": "cybersecurity",
       "tags": [
         "iam",
@@ -11447,7 +11447,7 @@
     {
       "name": "implementing-privileged-session-monitoring",
       "category": "cybersecurity",
-      "description": "Implements privileged session monitoring and recording using Privileged Access Management (PAM) solutions, focusing on CyberArk Privileged Session Manager (PSM) and open-source alternatives. Covers session recording configuration, keystroke logging, real-time monitoring, risk-based session analysis, and compliance audit trail generation.",
+      "description": "Use when implementing privileged session monitoring and recording using Privileged Access Management (PAM) solutions, focusing on CyberArk Privileged Session Manager (PSM) and open-source alternatives. Covers session recording configuration, keystroke logging, real-time monitoring, risk-based session analysis, and compliance audit trail generation.",
       "domain": "cybersecurity",
       "tags": [
         "PAM",
@@ -11506,7 +11506,7 @@
     {
       "name": "implementing-ransomware-backup-strategy",
       "category": "cybersecurity",
-      "description": "Designs and implements a ransomware-resilient backup strategy following the 3-2-1-1-0 methodology (3 copies, 2 media types, 1 offsite, 1 immutable/air-gapped, 0 errors on restore verification). Configures backup schedules aligned to RPO/RTO requirements, implements backup credential isolation to prevent ransomware from compromising backup infrastructure, and establishes automated restore testing.",
+      "description": "Use when designs and implements a ransomware-resilient backup strategy following the 3-2-1-1-0 methodology (3 copies, 2 media types, 1 offsite, 1 immutable/air-gapped, 0 errors on restore verification). Configures backup schedules aligned to RPO/RTO requirements, implements backup credential isolation to prevent ransomware from compromising backup infrastructure, and establishes automated restore testing.",
       "domain": "cybersecurity",
       "tags": [
         "ransomware",
@@ -11581,7 +11581,7 @@
     {
       "name": "implementing-rsa-key-pair-management",
       "category": "cybersecurity",
-      "description": "RSA (Rivest-Shamir-Adleman) is the most widely deployed asymmetric cryptographic algorithm, used for digital signatures, key exchange, and encryption. This skill covers generating, storing, rotating,",
+      "description": "Use when RSA (Rivest-Shamir-Adleman) is the most widely deployed asymmetric cryptographic algorithm, used for digital signatures, key exchange, and encryption. This skill covers generating, storing, rotating,",
       "domain": "cybersecurity",
       "tags": [
         "cryptography",
@@ -11639,7 +11639,7 @@
     {
       "name": "implementing-saml-sso-with-okta",
       "category": "cybersecurity",
-      "description": "Implement SAML 2.0 Single Sign-On (SSO) using Okta as the Identity Provider (IdP). This skill covers end-to-end configuration of SAML authentication flows, attribute mapping, certificate management, a",
+      "description": "Use when implementing SAML 2.0 Single Sign-On (SSO) using Okta as the Identity Provider (IdP). This skill covers end-to-end configuration of SAML authentication flows, attribute mapping, certificate management, a",
       "domain": "cybersecurity",
       "tags": [
         "iam",
@@ -11658,7 +11658,7 @@
     {
       "name": "implementing-scim-provisioning-with-okta",
       "category": "cybersecurity",
-      "description": "Implement automated user provisioning and deprovisioning using SCIM 2.0 protocol with Okta as the identity provider.",
+      "description": "Use when implementing automated user provisioning and deprovisioning using SCIM 2.0 protocol with Okta as the identity provider.",
       "domain": "cybersecurity",
       "tags": [
         "scim",
@@ -11677,7 +11677,7 @@
     {
       "name": "implementing-secret-scanning-with-gitleaks",
       "category": "cybersecurity",
-      "description": "This skill covers implementing Gitleaks for detecting and preventing hardcoded secrets in git repositories. It addresses configuring pre-commit hooks, CI/CD pipeline integration, custom rule authoring for organization-specific secrets, baseline management for existing repositories, and remediation workflows for exposed credentials.\n",
+      "description": "Use when this skill covers implementing Gitleaks for detecting and preventing hardcoded secrets in git repositories. It addresses configuring pre-commit hooks, CI/CD pipeline integration, custom rule authoring for organization-specific secrets, baseline management for existing repositories, and remediation workflows for exposed credentials.",
       "domain": "cybersecurity",
       "tags": [
         "devsecops",
@@ -11695,7 +11695,7 @@
     {
       "name": "implementing-secrets-management-with-vault",
       "category": "cybersecurity",
-      "description": "This skill covers deploying HashiCorp Vault for centralized secrets management across cloud environments, including dynamic secret generation for databases and cloud providers, transit encryption, PKI certificate management, and Kubernetes integration. It addresses eliminating hardcoded credentials from application code and CI/CD pipelines by implementing short-lived, automatically rotated secrets.\n",
+      "description": "Use when this skill covers deploying HashiCorp Vault for centralized secrets management across cloud environments, including dynamic secret generation for databases and cloud providers, transit encryption, PKI certificate management, and Kubernetes integration. It addresses eliminating hardcoded credentials from application code and CI/CD pipelines by implementing short-lived, automatically rotated secrets.",
       "domain": "cybersecurity",
       "tags": [
         "hashicorp-vault",
@@ -11744,7 +11744,7 @@
     {
       "name": "implementing-security-information-sharing-with-stix2",
       "category": "cybersecurity",
-      "description": "Create, validate, and share STIX 2.1 threat intelligence objects using the stix2 Python library. Covers indicators, malware, campaigns, relationships, bundles, and TAXII 2.1 publishing.\n",
+      "description": "Use when creating, validating, and sharing STIX 2.1 threat intelligence objects using the stix2 Python library. Covers indicators, malware, campaigns, relationships, bundles, and TAXII 2.1 publishing.",
       "domain": "cybersecurity",
       "tags": [
         "stix",
@@ -11760,7 +11760,7 @@
     {
       "name": "implementing-security-monitoring-with-datadog",
       "category": "cybersecurity",
-      "description": "Implements security monitoring using Datadog Cloud SIEM, Cloud Security Management (CSM), and Workload Protection to detect threats, enforce compliance, and respond to security events across cloud and hybrid infrastructure. Covers Agent deployment, log source ingestion, detection rule creation, security dashboards, and automated notification workflows. Activates for requests involving Datadog security setup, Cloud SIEM configuration, CSM threat detection, or security monitoring dashboards.",
+      "description": "Use when implementing security monitoring using Datadog Cloud SIEM, Cloud Security Management (CSM), and Workload Protection to detect threats, enforce compliance, and respond to security events across cloud and hybrid infrastructure. Covers Agent deployment, log source ingestion, detection rule creation, security dashboards, and automated notification workflows. Activates for requests involving Datadog security setup, Cloud SIEM configuration, CSM threat detection, or security monitoring das...",
       "domain": "cybersecurity",
       "tags": [
         "siem",
@@ -11894,7 +11894,7 @@
     {
       "name": "implementing-soar-playbook-for-phishing",
       "category": "cybersecurity",
-      "description": "Automate phishing incident response using Splunk SOAR REST API to create containers, add artifacts, and trigger playbooks",
+      "description": "Use when automating phishing incident response using Splunk SOAR REST API to create containers, add artifacts, and trigger playbooks",
       "domain": "cybersecurity",
       "tags": [
         "soar",
@@ -11910,7 +11910,7 @@
     {
       "name": "implementing-soar-playbook-with-palo-alto-xsoar",
       "category": "cybersecurity",
-      "description": "Implement automated incident response playbooks in Cortex XSOAR to orchestrate security workflows across SOC tools and reduce manual response time.",
+      "description": "Use when implementing automated incident response playbooks in Cortex XSOAR to orchestrate security workflows across SOC tools and reduce manual response time.",
       "domain": "cybersecurity",
       "tags": [
         "xsoar",
@@ -11930,7 +11930,7 @@
     {
       "name": "implementing-stix-taxii-feed-integration",
       "category": "cybersecurity",
-      "description": "STIX (Structured Threat Information eXpression) and TAXII (Trusted Automated eXchange of Intelligence Information) are OASIS open standards for representing and transporting cyber threat intelligence.",
+      "description": "Use when STIX (Structured Threat Information eXpression) and TAXII (Trusted Automated eXchange of Intelligence Information) are OASIS open standards for representing and transporting cyber threat intelligence.",
       "domain": "cybersecurity",
       "tags": [
         "threat-intelligence",
@@ -11971,7 +11971,7 @@
     {
       "name": "implementing-syslog-centralization-with-rsyslog",
       "category": "cybersecurity",
-      "description": "Configure rsyslog for centralized log collection with TLS encryption, custom templates, and log rotation. Generates server and client configuration files with GnuTLS stream drivers, x509 certificate authentication, per-host log segregation, and reliable queue settings for high-availability syslog infrastructure.",
+      "description": "Use when configuring rsyslog for centralized log collection with TLS encryption, custom templates, and log rotation. Generates server and client configuration files with GnuTLS stream drivers, x509 certificate authentication, per-host log segregation, and reliable queue settings for high-availability syslog infrastructure.",
       "domain": "cybersecurity",
       "tags": [
         "implementing",
@@ -11987,7 +11987,7 @@
     {
       "name": "implementing-taxii-server-with-opentaxii",
       "category": "cybersecurity",
-      "description": "Deploy and configure an OpenTAXII server to share and consume STIX-formatted cyber threat intelligence using the TAXII 2.1 protocol for automated indicator exchange between organizations.",
+      "description": "Use when deploying and configuring an OpenTAXII server to share and consume STIX-formatted cyber threat intelligence using the TAXII 2.1 protocol for automated indicator exchange between organizations.",
       "domain": "cybersecurity",
       "tags": [
         "taxii",
@@ -12140,7 +12140,7 @@
     {
       "name": "implementing-vulnerability-sla-breach-alerting",
       "category": "cybersecurity",
-      "description": "Build automated alerting for vulnerability remediation SLA breaches with severity-based timelines, escalation workflows, and compliance reporting dashboards.",
+      "description": "Use when building automated alerting for vulnerability remediation SLA breaches with severity-based timelines, escalation workflows, and compliance reporting dashboards.",
       "domain": "cybersecurity",
       "tags": [
         "vulnerability-sla",
@@ -12159,7 +12159,7 @@
     {
       "name": "implementing-web-application-logging-with-modsecurity",
       "category": "cybersecurity",
-      "description": "Use when configure ModSecurity WAF with OWASP Core Rule Set (CRS) for web application logging, tune rules to reduce false positives, analyze audit logs for attack detection, and implement custom SecRules for application-specific threats. The analyst configures SecRuleEngine, SecAuditEngine, and CRS paranoia levels to balance security coverage with operational stability. Activates for requests involving WAF configuration, ModSecurity rule tuning, web application audit logging, or CRS deployment.",
+      "description": "Use when configuring ModSecurity WAF with OWASP Core Rule Set (CRS) for web application logging, tuning rules to reduce false positives, analyze audit logs for attack detection, and implement custom SecRules for application-specific threats. The analyst configures SecRuleEngine, SecAuditEngine, and CRS paranoia levels to balance security coverage with operational stability.",
       "domain": "cybersecurity",
       "tags": [
         "modsecurity",
@@ -12253,7 +12253,7 @@
     {
       "name": "implementing-zero-trust-in-cloud",
       "category": "cybersecurity",
-      "description": "This skill guides organizations through implementing zero trust architecture in cloud environments following NIST SP 800-207 and Google BeyondCorp principles. It covers identity-centric access controls, micro-segmentation, continuous verification, device trust assessment, and deploying Identity-Aware Proxy to eliminate implicit network trust in AWS, Azure, and GCP environments.\n",
+      "description": "Use when this skill guides organizations through implementing zero trust architecture in cloud environments following NIST SP 800-207 and Google BeyondCorp principles. It covers identity-centric access controls, micro-segmentation, continuous verification, device trust assessment, and deploying Identity-Aware Proxy to eliminate implicit network trust in AWS, Azure, and GCP environments.",
       "domain": "cybersecurity",
       "tags": [
         "zero-trust",
@@ -12344,7 +12344,7 @@
     {
       "name": "integrating-dast-with-owasp-zap-in-pipeline",
       "category": "cybersecurity",
-      "description": "This skill covers integrating OWASP ZAP (Zed Attack Proxy) for Dynamic Application Security Testing in CI/CD pipelines. It addresses configuring baseline, full, and API scans against running applications, interpreting ZAP findings, tuning scan policies, and establishing DAST quality gates in GitHub Actions and GitLab CI.\n",
+      "description": "Use when this skill covers integrating OWASP ZAP (Zed Attack Proxy) for Dynamic Application Security Testing in CI/CD pipelines. It addresses configuring baseline, full, and API scans against running applications, interpreting ZAP findings, tuning scan policies, and establishing DAST quality gates in GitHub Actions and GitLab CI.",
       "domain": "cybersecurity",
       "tags": [
         "devsecops",
@@ -12362,7 +12362,7 @@
     {
       "name": "integrating-sast-into-github-actions-pipeline",
       "category": "cybersecurity",
-      "description": "This skill covers integrating Static Application Security Testing (SAST) tools—CodeQL and Semgrep—into GitHub Actions CI/CD pipelines. It addresses configuring automated code scanning on pull requests and pushes, tuning rules to reduce false positives, uploading SARIF results to GitHub Advanced Security, and establishing quality gates that block merges when high-severity vulnerabilities are detected.\n",
+      "description": "Use when this skill covers integrating Static Application Security Testing (SAST) tools—CodeQL and Semgrep—into GitHub Actions CI/CD pipelines. It addresses configuring automated code scanning on pull requests and pushes, tuning rules to reduce false positives, uploading SARIF results to GitHub Advanced Security, and establishing quality gates that block merges when high-severity vulnerabilities are detected.",
       "domain": "cybersecurity",
       "tags": [
         "devsecops",
@@ -12493,7 +12493,7 @@
     {
       "name": "managing-cloud-identity-with-okta",
       "category": "cybersecurity",
-      "description": "This skill covers implementing Okta as a centralized identity provider for cloud environments, configuring SSO integration with AWS, Azure, and GCP, deploying phishing- resistant MFA with Okta FastPass, managing lifecycle automation for user provisioning and deprovisioning, and enforcing adaptive access policies based on device posture and risk signals.\n",
+      "description": "Use when this skill covers implementing Okta as a centralized identity provider for cloud environments, configuring SSO integration with AWS, Azure, and GCP, deploying phishing- resistant MFA with Okta FastPass, managing lifecycle automation for user provisioning and deprovisioning, and enforcing adaptive access policies based on device posture and risk signals.",
       "domain": "cybersecurity",
       "tags": [
         "okta",
@@ -12678,7 +12678,7 @@
     {
       "name": "performing-access-review-and-certification",
       "category": "cybersecurity",
-      "description": "Conduct systematic access reviews and certifications to ensure users have appropriate access rights aligned with their roles. This skill covers review campaign design, reviewer selection, risk-based p",
+      "description": "Use when conduct systematic access reviews and certifications to ensure users have appropriate access rights aligned with their roles. This skill covers review campaign design, reviewer selection, risk-based p",
       "domain": "cybersecurity",
       "tags": [
         "iam",
@@ -12949,7 +12949,7 @@
     {
       "name": "performing-api-security-testing-with-postman",
       "category": "cybersecurity",
-      "description": "Uses Postman to perform structured API security testing by building collections that test for OWASP API Security Top 10 vulnerabilities including authentication bypass, authorization flaws, injection, and data exposure. The tester creates environments with multiple user roles, writes test scripts for automated security validation, and integrates Postman with OWASP ZAP and Newman for CI/CD security testing.",
+      "description": "Use when using Postman to perform structured API security testing by building collections that test for OWASP API Security Top 10 vulnerabilities including authentication bypass, authorization flaws, injection, and data exposure. The tester creates environments with multiple user roles, writing test scripts for automated security validation, and integrating Postman with OWASP ZAP and Newman for CI/CD security testing.",
       "domain": "cybersecurity",
       "tags": [
         "api-security",
@@ -13040,7 +13040,7 @@
     {
       "name": "performing-automated-malware-analysis-with-cape",
       "category": "cybersecurity",
-      "description": "Deploy and operate CAPEv2 sandbox for automated malware analysis with behavioral monitoring, payload extraction, configuration parsing, and anti-evasion capabilities.",
+      "description": "Use when deploying and operating CAPEv2 sandbox for automated malware analysis with behavioral monitoring, payload extraction, configuration parsing, and anti-evasion capabilities.",
       "domain": "cybersecurity",
       "tags": [
         "cape",
@@ -13059,7 +13059,7 @@
     {
       "name": "performing-aws-account-enumeration-with-scout-suite",
       "category": "cybersecurity",
-      "description": "Perform comprehensive security posture assessment of AWS accounts using ScoutSuite to enumerate resources, identify misconfigurations, and generate actionable security reports.",
+      "description": "Use when performing comprehensive security posture assessment of AWS accounts using ScoutSuite to enumerate resources, identify misconfigurations, and generate actionable security reports.",
       "domain": "cybersecurity",
       "tags": [
         "aws",
@@ -13114,7 +13114,7 @@
     {
       "name": "performing-binary-exploitation-analysis",
       "category": "cybersecurity",
-      "description": "Analyze binary exploitation techniques including buffer overflows and ROP chains using pwntools Python library. Covers checksec analysis, gadget discovery with ROPgadget, and exploit development for CTF and authorized security assessments.\n",
+      "description": "Use when analyzing binary exploitation techniques including buffer overflows and ROP chains using pwntools Python library. Covers checksec analysis, gadget discovery with ROPgadget, and exploit development for CTF and authorized security assessments.",
       "domain": "cybersecurity",
       "tags": [
         "binary-exploitation",
@@ -13317,7 +13317,7 @@
     {
       "name": "performing-cloud-native-threat-hunting-with-aws-detective",
       "category": "cybersecurity",
-      "description": "Hunt for threats in AWS environments using Detective behavior graphs, entity investigation timelines, GuardDuty finding correlation, and automated entity profiling across IAM users, EC2 instances, and IP addresses.",
+      "description": "Use when hunting for threats in AWS environments using Detective behavior graphs, entity investigation timelines, GuardDuty finding correlation, and automated entity profiling across IAM users, EC2 instances, and IP addresses.",
       "domain": "cybersecurity",
       "tags": [
         "aws-detective",
@@ -13394,7 +13394,7 @@
     {
       "name": "performing-container-image-hardening",
       "category": "cybersecurity",
-      "description": "This skill covers hardening container images by minimizing attack surface, removing unnecessary packages, implementing multi-stage builds, configuring non-root users, and applying CIS Docker Benchmark recommendations to produce secure production-ready images.\n",
+      "description": "Use when this skill covers hardening container images by minimizing attack surface, removing unnecessary packages, implementing multi-stage builds, configuring non-root users, and applying CIS Docker Benchmark recommendations to produce secure production-ready images.",
       "domain": "cybersecurity",
       "tags": [
         "devsecops",
@@ -13739,7 +13739,7 @@
     {
       "name": "performing-entitlement-review-with-sailpoint-iiq",
       "category": "cybersecurity",
-      "description": "Performs entitlement review and access certification campaigns using SailPoint IdentityIQ including manager certifications, targeted entitlement reviews, role-based access validation, SOD violation remediation, and automated revocation workflows. Activates for requests involving access reviews, entitlement certifications, SailPoint IIQ governance, or periodic user access recertification.\n",
+      "description": "Use when performing entitlement review and access certification campaigns using SailPoint IdentityIQ including manager certifications, targeted entitlement reviews, role-based access validation, SOD violation remediation, and automated revocation workflows. Activates for requests involving access reviews, entitlement certifications, SailPoint IIQ governance, or periodic user access recertification.",
       "domain": "cybersecurity",
       "tags": [
         "SailPoint",
@@ -13815,7 +13815,7 @@
     {
       "name": "performing-firmware-extraction-with-binwalk",
       "category": "cybersecurity",
-      "description": "Performs firmware image extraction and analysis using binwalk to identify embedded filesystems, compressed archives, bootloaders, kernel images, and cryptographic material. Covers entropy analysis for detecting encrypted or compressed regions, recursive extraction of nested archives, SquashFS/CramFS/JFFS2 filesystem mounting, and string analysis for credential and configuration discovery.",
+      "description": "Use when performing firmware image extraction and analysis using binwalk to identify embedded filesystems, compressed archives, bootloaders, kernel images, and cryptographic material. Covers entropy analysis for detecting encrypted or compressed regions, recursive extraction of nested archives, SquashFS/CramFS/JFFS2 filesystem mounting, and string analysis for credential and configuration discovery.",
       "domain": "cybersecurity",
       "tags": [
         "firmware",
@@ -13833,7 +13833,7 @@
     {
       "name": "performing-firmware-malware-analysis",
       "category": "cybersecurity",
-      "description": "Analyzes firmware images for embedded malware, backdoors, and unauthorized modifications targeting routers, IoT devices, UEFI/BIOS, and embedded systems. Covers firmware extraction, filesystem analysis, binary reverse engineering, and bootkit detection. Activates for requests involving firmware security analysis, IoT malware investigation, UEFI rootkit detection, or embedded device compromise assessment.\n",
+      "description": "Use when analyzing firmware images for embedded malware, backdoors, and unauthorized modifications targeting routers, IoT devices, UEFI/BIOS, and embedded systems. Covers firmware extraction, filesystem analysis, binary reverse engineering, and bootkit detection. Activates for requests involving firmware security analysis, IoT malware investigation, UEFI rootkit detection, or embedded device compromise assessment.",
       "domain": "cybersecurity",
       "tags": [
         "malware",
@@ -13850,7 +13850,7 @@
     {
       "name": "performing-fuzzing-with-aflplusplus",
       "category": "cybersecurity",
-      "description": "Use when perform coverage-guided fuzzing of compiled binaries using AFL++ (American Fuzzy Lop Plus Plus) to discover memory corruption, crashes, and security vulnerabilities. The tester instruments target binaries with afl-cc/afl-clang-fast, manages input corpora with afl-cmin and afl-tmin, runs parallel fuzzing campaigns with afl-fuzz, and triages crashes using CASR or GDB scripts. Activates for requests involving binary fuzzing, crash discovery, coverage-guided testing, or AFL++ fuzzing cam...",
+      "description": "Use when performing coverage-guided fuzzing of compiled binaries using AFL++ (American Fuzzy Lop Plus Plus) to discover memory corruption, crashes, and security vulnerabilities. The tester instruments target binaries with afl-cc/afl-clang-fast, manages input corpora with afl-cmin and afl-tmin, runs parallel fuzzing campaigns with afl-fuzz, and triages crashes using CASR or GDB scripts.",
       "domain": "cybersecurity",
       "tags": [
         "fuzzing",
@@ -14034,7 +14034,7 @@
     {
       "name": "performing-indicator-lifecycle-management",
       "category": "cybersecurity",
-      "description": "Indicator lifecycle management tracks IOCs from initial discovery through validation, enrichment, deployment, monitoring, and eventual retirement. This skill covers implementing systematic processes f",
+      "description": "Use when indicator lifecycle management tracks IOCs from initial discovery through validation, enrichment, deployment, monitoring, and eventual retirement. This skill covers implementing systematic processes f",
       "domain": "cybersecurity",
       "tags": [
         "threat-intelligence",
@@ -14206,7 +14206,7 @@
     {
       "name": "performing-kubernetes-cis-benchmark-with-kube-bench",
       "category": "cybersecurity",
-      "description": "Audit Kubernetes cluster security posture against CIS benchmarks using kube-bench with automated checks for control plane, worker nodes, and RBAC.",
+      "description": "Use when auditing Kubernetes cluster security posture against CIS benchmarks using kube-bench with automated checks for control plane, worker nodes, and RBAC.",
       "domain": "cybersecurity",
       "tags": [
         "kube-bench",
@@ -14419,7 +14419,7 @@
     {
       "name": "performing-malware-triage-with-yara",
       "category": "cybersecurity",
-      "description": "Performs rapid malware triage and classification using YARA rules to match file patterns, strings, byte sequences, and structural characteristics against known malware families and suspicious indicators. Covers rule writing, scanning, and integration with analysis pipelines. Activates for requests involving YARA rule creation, malware classification, pattern matching, sample triage, or signature-based detection.\n",
+      "description": "Use when performing rapid malware triage and classification using YARA rules to match file patterns, strings, byte sequences, and structural characteristics against known malware families and suspicious indicators. Covers rule writing, scanning, and integration with analysis pipelines. Activates for requests involving YARA rule creation, malware classification, pattern matching, sample triage, or signature-based detection.",
       "domain": "cybersecurity",
       "tags": [
         "malware",
@@ -14473,7 +14473,7 @@
     {
       "name": "performing-mobile-app-certificate-pinning-bypass",
       "category": "cybersecurity",
-      "description": "Bypasses SSL/TLS certificate pinning implementations in Android and iOS applications to enable traffic interception during authorized security assessments. Covers OkHttp, TrustManager, NSURLSession, and third-party pinning library bypass techniques using Frida, Objection, and custom scripts. Activates for requests involving certificate pinning bypass, SSL pinning defeat, mobile TLS interception, or proxy-resistant app testing.\n",
+      "description": "Use when bypasses SSL/TLS certificate pinning implementations in Android and iOS applications to enable traffic interception during authorized security assessments. Covers OkHttp, TrustManager, NSURLSession, and third-party pinning library bypass techniques using Frida, Objection, and custom scripts. Activates for requests involving certificate pinning bypass, SSL pinning defeat, mobile TLS interception, or proxy-resistant app testing.",
       "domain": "cybersecurity",
       "tags": [
         "mobile-security",
@@ -14549,7 +14549,7 @@
     {
       "name": "performing-network-traffic-analysis-with-tshark",
       "category": "cybersecurity",
-      "description": "Automate network traffic analysis using tshark and pyshark for protocol statistics, suspicious flow detection, DNS anomaly identification, and IOC extraction from PCAP files",
+      "description": "Use when automating network traffic analysis using tshark and pyshark for protocol statistics, suspicious flow detection, DNS anomaly identification, and IOC extraction from PCAP files",
       "domain": "cybersecurity",
       "tags": [
         "tshark",
@@ -14589,7 +14589,7 @@
     {
       "name": "performing-nist-csf-maturity-assessment",
       "category": "cybersecurity",
-      "description": "Assess organizational cybersecurity maturity against NIST CSF framework. Evaluate identify, protect, detect, respond, and recover functions with actionable gap analysis. The NIST Cybersecurity Framework (CSF) 2.0, released in February 2024, provides a comprehensive taxonomy for managing cybersecurity risk through six core Functions - Govern, Identify, Protect, Detect, Respond, and Recover. This skill covers conducting a maturity assessment against the CSF using Implementation Tiers to me.",
+      "description": "Use when assessing organizational cybersecurity maturity against NIST CSF framework. Evaluate identify, protect, detect, respond, and recover functions with actionable gap analysis. The NIST Cybersecurity Framework (CSF) 2.0, released in February 2024, provides a comprehensive taxonomy for managing cybersecurity risk through six core Functions - Govern, Identify, Protect, Detect, Respond, and Recover.",
       "domain": "cybersecurity",
       "tags": [
         "compliance",
@@ -14625,7 +14625,7 @@
     {
       "name": "performing-oil-gas-cybersecurity-assessment",
       "category": "cybersecurity",
-      "description": "This skill covers conducting cybersecurity assessments specific to oil and gas facilities including upstream (exploration/production), midstream (pipeline/transport), and downstream (refining/distribution) operations. It addresses SCADA systems controlling pipeline operations, DCS for refinery process control, safety instrumented systems for hazardous processes, remote terminal units at unmanned wellhead sites, and compliance with API 1164, TSA Pipeline Security Directives, IEC 62443, an.",
+      "description": "Use when this skill covers conducting cybersecurity assessments specific to oil and gas facilities including upstream (exploration/production), midstream (pipeline/transport), and downstream (refining/distribution) operations. It addresses SCADA systems controlling pipeline operations, DCS for refinery process control, safety instrumented systems for hazardous processes, remote terminal units at unmanned wellhead sites, and compliance with API 1164, TSA Pipeline Security Directives, IEC 62443...",
       "domain": "cybersecurity",
       "tags": [
         "ot-security",
@@ -14664,7 +14664,7 @@
     {
       "name": "performing-osint-with-spiderfoot",
       "category": "cybersecurity",
-      "description": "Automate OSINT collection using SpiderFoot REST API and CLI for target profiling, module-based reconnaissance, and structured result analysis across 200+ data sources",
+      "description": "Use when automating OSINT collection using SpiderFoot REST API and CLI for target profiling, module-based reconnaissance, and structured result analysis across 200+ data sources",
       "domain": "cybersecurity",
       "tags": [
         "osint",
@@ -14682,7 +14682,7 @@
     {
       "name": "performing-ot-network-security-assessment",
       "category": "cybersecurity",
-      "description": "This skill covers conducting comprehensive security assessments of Operational Technology (OT) networks including SCADA systems, DCS architectures, and industrial control system communication paths. It addresses the Purdue Reference Model layers, identifies IT/OT convergence risks, evaluates firewall rules between zones, and maps industrial protocol traffic (Modbus, DNP3, OPC UA, EtherNet/IP) to detect misconfigurations, unauthorized connections, and attack surfaces in critical infrastr.",
+      "description": "Use when this skill covers conducting comprehensive security assessments of Operational Technology (OT) networks including SCADA systems, DCS architectures, and industrial control system communication paths. It addresses the Purdue Reference Model layers, identifies IT/OT convergence risks, evaluates firewall rules between zones, and maps industrial protocol traffic (Modbus, DNP3, OPC UA, EtherNet/IP) to detect misconfigurations, unauthorized connections, and attack surfaces in critical infra...",
       "domain": "cybersecurity",
       "tags": [
         "ot-security",
@@ -14700,7 +14700,7 @@
     {
       "name": "performing-ot-vulnerability-assessment-with-claroty",
       "category": "cybersecurity",
-      "description": "This skill covers performing vulnerability assessments in OT environments using the Claroty xDome platform for comprehensive asset discovery, risk scoring, vulnerability correlation, and remediation prioritization. It addresses passive vulnerability identification through traffic analysis, active safe querying of OT devices, integration with CVE databases and ICS-CERT advisories, and risk-based prioritization that accounts for operational impact and compensating controls.\n",
+      "description": "Use when this skill covers performing vulnerability assessments in OT environments using the Claroty xDome platform for comprehensive asset discovery, risk scoring, vulnerability correlation, and remediation prioritization. It addresses passive vulnerability identification through traffic analysis, active safe querying of OT devices, integration with CVE databases and ICS-CERT advisories, and risk-based prioritization that accounts for operational impact and compensating controls.",
       "domain": "cybersecurity",
       "tags": [
         "ot-security",
@@ -14756,7 +14756,7 @@
     {
       "name": "performing-paste-site-monitoring-for-credentials",
       "category": "cybersecurity",
-      "description": "Monitor paste sites like Pastebin and GitHub Gists for leaked credentials, API keys, and sensitive data dumps using automated scraping and keyword matching to detect breaches early.",
+      "description": "Use when monitoring paste sites like Pastebin and GitHub Gists for leaked credentials, API keys, and sensitive data dumps using automated scraping and keyword matching to detect breaches early.",
       "domain": "cybersecurity",
       "tags": [
         "paste-monitoring",
@@ -14813,7 +14813,7 @@
     {
       "name": "performing-plc-firmware-security-analysis",
       "category": "cybersecurity",
-      "description": "This skill covers analyzing Programmable Logic Controller (PLC) firmware for security vulnerabilities including hardcoded credentials, insecure update mechanisms, backdoor functions, memory corruption flaws, and undocumented debug interfaces. It addresses firmware extraction from common PLC platforms (Siemens S7, Allen-Bradley, Schneider Modicon), static analysis of firmware images, dynamic analysis in emulated environments, and comparison against known-good baselines to detect tampering.",
+      "description": "Use when this skill covers analyzing Programmable Logic Controller (PLC) firmware for security vulnerabilities including hardcoded credentials, insecure update mechanisms, backdoor functions, memory corruption flaws, and undocumented debug interfaces. It addresses firmware extraction from common PLC platforms (Siemens S7, Allen-Bradley, Schneider Modicon), static analysis of firmware images, dynamic analysis in emulated environments, and comparison against known-good baselines to detect tampe...",
       "domain": "cybersecurity",
       "tags": [
         "ot-security",
@@ -14853,7 +14853,7 @@
     {
       "name": "performing-power-grid-cybersecurity-assessment",
       "category": "cybersecurity",
-      "description": "This skill covers conducting cybersecurity assessments of electric power grid infrastructure including generation facilities, transmission substations, distribution systems, and energy management system (EMS) control centers. It addresses NERC CIP compliance verification, substation automation security, IEC 61850 protocol analysis, synchrophasor (PMU) network security, and the unique threat landscape targeting power grid operations as demonstrated by Industroyer/CrashOverride and related.",
+      "description": "Use when this skill covers conducting cybersecurity assessments of electric power grid infrastructure including generation facilities, transmission substations, distribution systems, and energy management system (EMS) control centers. It addresses NERC CIP compliance verification, substation automation security, IEC 61850 protocol analysis, synchrophasor (PMU) network security, and the unique threat landscape targeting power grid operations as demonstrated by Industroyer/CrashOverride and rel...",
       "domain": "cybersecurity",
       "tags": [
         "ot-security",
@@ -14873,7 +14873,7 @@
     {
       "name": "performing-privacy-impact-assessment",
       "category": "cybersecurity",
-      "description": "Automates the Privacy Impact Assessment (PIA) workflow including data flow mapping, privacy risk scoring matrices, GDPR Article 35 DPIA and CCPA/CPRA alignment checks, data inventory cataloging, and remediation tracking. Implements the NIST Privacy Framework PRAM methodology and ICO DPIA guidance for systematic identification and mitigation of privacy risks across processing activities.",
+      "description": "Use when automating the Privacy Impact Assessment (PIA) workflow including data flow mapping, privacy risk scoring matrices, GDPR Article 35 DPIA and CCPA/CPRA alignment checks, data inventory cataloging, and remediation tracking. Implements the NIST Privacy Framework PRAM methodology and ICO DPIA guidance for systematic identification and mitigation of privacy risks across processing activities.",
       "domain": "cybersecurity",
       "tags": [
         "privacy",
@@ -14966,7 +14966,7 @@
     {
       "name": "performing-purple-team-atomic-testing",
       "category": "cybersecurity",
-      "description": "Executes Atomic Red Team tests mapped to MITRE ATT&CK techniques, performs coverage gap analysis across the ATT&CK matrix, and runs detection validation loops to measure blue team visibility. Covers Invoke-AtomicRedTeam PowerShell execution, ATT&CK Navigator layer generation for heatmaps, Sigma rule correlation, and continuous atomic testing pipelines.",
+      "description": "Use when executing Atomic Red Team tests mapped to MITRE ATT&CK techniques, performing coverage gap analysis across the ATT&CK matrix, and running detection validation loops to measure blue team visibility. Covers Invoke-AtomicRedTeam PowerShell execution, ATT&CK Navigator layer generation for heatmaps, Sigma rule correlation, and continuous atomic testing pipelines.",
       "domain": "cybersecurity",
       "tags": [
         "purple-team",
@@ -15036,7 +15036,7 @@
     {
       "name": "performing-red-team-phishing-with-gophish",
       "category": "cybersecurity",
-      "description": "Automate GoPhish phishing simulation campaigns using the Python gophish library. Creates email templates with tracking pixels, configures SMTP sending profiles, builds target groups from CSV, launches campaigns, and analyzes results including open rates, click rates, and credential submission statistics for security awareness assessment.",
+      "description": "Use when automating GoPhish phishing simulation campaigns using the Python gophish library. Creates email templates with tracking pixels, configures SMTP sending profiles, builds target groups from CSV, launches campaigns, and analyzes results including open rates, click rates, and credential submission statistics for security awareness assessment.",
       "domain": "cybersecurity",
       "tags": [
         "performing",
@@ -15089,7 +15089,7 @@
     {
       "name": "performing-sca-dependency-scanning-with-snyk",
       "category": "cybersecurity",
-      "description": "This skill covers implementing Software Composition Analysis (SCA) using Snyk to detect vulnerable open-source dependencies in CI/CD pipelines. It addresses scanning package manifests and lockfiles, automated fix pull request generation, license compliance checking, continuous monitoring of deployed applications, and integration with GitHub, GitLab, and Jenkins pipelines.\n",
+      "description": "Use when this skill covers implementing Software Composition Analysis (SCA) using Snyk to detect vulnerable open-source dependencies in CI/CD pipelines. It addresses scanning package manifests and lockfiles, automated fix pull request generation, license compliance checking, continuous monitoring of deployed applications, and integration with GitHub, GitLab, and Jenkins pipelines.",
       "domain": "cybersecurity",
       "tags": [
         "devsecops",
@@ -15183,7 +15183,7 @@
     {
       "name": "performing-service-account-audit",
       "category": "cybersecurity",
-      "description": "Audit service accounts across enterprise infrastructure to identify orphaned, over-privileged, and non-compliant accounts. This skill covers discovery of service accounts in Active Directory, cloud pl",
+      "description": "Use when auditing service accounts across enterprise infrastructure to identify orphaned, over-privileged, and non-compliant accounts. This skill covers discovery of service accounts in Active Directory, cloud pl",
       "domain": "cybersecurity",
       "tags": [
         "iam",
@@ -15201,7 +15201,7 @@
     {
       "name": "performing-service-account-credential-rotation",
       "category": "cybersecurity",
-      "description": "Automate credential rotation for service accounts across Active Directory, cloud platforms, and application databases to eliminate stale secrets and reduce compromise risk.",
+      "description": "Use when automating credential rotation for service accounts across Active Directory, cloud platforms, and application databases to eliminate stale secrets and reduce compromise risk.",
       "domain": "cybersecurity",
       "tags": [
         "service-accounts",
@@ -15259,7 +15259,7 @@
     {
       "name": "performing-soc2-type2-audit-preparation",
       "category": "cybersecurity",
-      "description": "Automates SOC 2 Type II audit preparation including gap assessment against AICPA Trust Services Criteria (CC1-CC9), evidence collection from cloud providers and identity systems, control testing validation, remediation tracking, and continuous compliance monitoring. Covers all five TSC categories (Security, Availability, Processing Integrity, Confidentiality, Privacy) with automated evidence gathering from AWS, Azure, GCP, Okta, GitHub, and Jira.",
+      "description": "Use when automating SOC 2 Type II audit preparation including gap assessment against AICPA Trust Services Criteria (CC1-CC9), evidence collection from cloud providers and identity systems, control testing validation, remediation tracking, and continuous compliance monitoring. Covers all five TSC categories (Security, Availability, Processing Integrity, Confidentiality, Privacy) with automated evidence gathering from AWS, Azure, GCP, Okta, GitHub, and Jira.",
       "domain": "cybersecurity",
       "tags": [
         "performing",
@@ -15518,7 +15518,7 @@
     {
       "name": "performing-threat-hunting-with-yara-rules",
       "category": "cybersecurity",
-      "description": "Use YARA pattern-matching rules to hunt for malware, suspicious files, and indicators of compromise across filesystems and memory dumps. Covers rule authoring, yara-python scanning, and integration with threat intel feeds.\n",
+      "description": "Use when using YARA pattern-matching rules to hunt for malware, suspicious files, and indicators of compromise across filesystems and memory dumps. Covers rule authoring, yara-python scanning, and integration with threat intel feeds.",
       "domain": "cybersecurity",
       "tags": [
         "yara",
@@ -15573,7 +15573,7 @@
     {
       "name": "performing-threat-modeling-with-owasp-threat-dragon",
       "category": "cybersecurity",
-      "description": "Use OWASP Threat Dragon to create data flow diagrams, identify threats using STRIDE and LINDDUN methodologies, and generate threat model reports for secure design review.",
+      "description": "Use when using OWASP Threat Dragon to create data flow diagrams, identify threats using STRIDE and LINDDUN methodologies, and generate threat model reports for secure design review.",
       "domain": "cybersecurity",
       "tags": [
         "threat-modeling",
@@ -15647,7 +15647,7 @@
     {
       "name": "performing-vulnerability-scanning-with-nessus",
       "category": "cybersecurity",
-      "description": "Performs authenticated and unauthenticated vulnerability scanning using Tenable Nessus to identify known vulnerabilities, misconfigurations, default credentials, and missing patches across network infrastructure, servers, and applications. The scanner correlates findings with CVE databases and CVSS scores to produce prioritized remediation guidance. Activates for requests involving vulnerability scanning, Nessus assessment, patch compliance checking, or automated vulnerability detection.",
+      "description": "Use when performing authenticated and unauthenticated vulnerability scanning using Tenable Nessus to identify known vulnerabilities, misconfigurations, default credentials, and missing patches across network infrastructure, servers, and applications. The scanner correlates findings with CVE databases and CVSS scores to produce prioritized remediation guidance. Activates for requests involving vulnerability scanning, Nessus assessment, patch compliance checking, or automated vulnerability dete...",
       "domain": "cybersecurity",
       "tags": [
         "vulnerability-scanning",
@@ -15683,7 +15683,7 @@
     {
       "name": "performing-web-application-penetration-test",
       "category": "cybersecurity",
-      "description": "Performs systematic security testing of web applications following the OWASP Web Security Testing Guide (WSTG) methodology to identify vulnerabilities in authentication, authorization, input validation, session management, and business logic. The tester uses Burp Suite as the primary interception proxy alongside manual testing techniques to find flaws that automated scanners miss.",
+      "description": "Use when performing systematic security testing of web applications following the OWASP Web Security Testing Guide (WSTG) methodology to identify vulnerabilities in authentication, authorization, input validation, session management, and business logic. The tester uses Burp Suite as the primary interception proxy alongside manual testing techniques to find flaws that automated scanners miss.",
       "domain": "cybersecurity",
       "tags": [
         "web-application-pentest",
@@ -15990,7 +15990,7 @@
     {
       "name": "recovering-from-ransomware-attack",
       "category": "cybersecurity",
-      "description": "Executes structured recovery from a ransomware incident following NIST and CISA frameworks, including environment isolation, forensic evidence preservation, clean infrastructure rebuild, prioritized system restoration from verified backups, credential reset, and validation against re-infection. Covers Active Directory recovery, database restoration, and application stack rebuild in dependency order.",
+      "description": "Use when executing structured recovery from a ransomware incident following NIST and CISA frameworks, including environment isolation, forensic evidence preservation, clean infrastructure rebuild, prioritized system restoration from verified backups, credential reset, and validation against re-infection. Covers Active Directory recovery, database restoration, and application stack rebuild in dependency order.",
       "domain": "cybersecurity",
       "tags": [
         "ransomware",
@@ -16007,7 +16007,7 @@
     {
       "name": "remediating-s3-bucket-misconfiguration",
       "category": "cybersecurity",
-      "description": "This skill provides step-by-step procedures for identifying and remediating Amazon S3 bucket misconfigurations that expose sensitive data to unauthorized access. It covers enabling S3 Block Public Access at account and bucket levels, auditing bucket policies and ACLs, enforcing encryption, configuring access logging, and deploying automated remediation using AWS Config and Lambda.\n",
+      "description": "Use when this skill provides step-by-step procedures for identifying and remediating Amazon S3 bucket misconfigurations that expose sensitive data to unauthorized access. It covers enabling S3 Block Public Access at account and bucket levels, auditing bucket policies and ACLs, enforcing encryption, configuring access logging, and deploying automated remediation using AWS Config and Lambda.",
       "domain": "cybersecurity",
       "tags": [
         "s3-security",
@@ -16149,7 +16149,7 @@
     {
       "name": "saas-orchestrator",
       "category": "cybersecurity",
-      "description": "Wraps the existing 23 security skills into a sellable security-as-a-Service offering — automated pentest reports, compliance checking, client management",
+      "description": "Use when wraps the existing 23 security skills into a sellable security-as-a-Service offering — automated pentest reports, compliance checking, client management",
       "domain": "cybersecurity",
       "tags": [
         "compliance",
@@ -16186,7 +16186,7 @@
     {
       "name": "scanning-containers-with-trivy-in-cicd",
       "category": "cybersecurity",
-      "description": "This skill covers integrating Aqua Security's Trivy scanner into CI/CD pipelines for comprehensive container image vulnerability detection. It addresses scanning Docker images for OS package and application dependency CVEs, detecting misconfigurations in Dockerfiles, scanning filesystem and git repositories, and establishing severity-based quality gates that block deployment of vulnerable images.\n",
+      "description": "Use when this skill covers integrating Aqua Security's Trivy scanner into CI/CD pipelines for comprehensive container image vulnerability detection. It addresses scanning Docker images for OS package and application dependency CVEs, detecting misconfigurations in Dockerfiles, scanning filesystem and git repositories, and establishing severity-based quality gates that block deployment of vulnerable images.",
       "domain": "cybersecurity",
       "tags": [
         "devsecops",
@@ -16295,7 +16295,7 @@
     {
       "name": "securing-aws-iam-permissions",
       "category": "cybersecurity",
-      "description": "This skill guides practitioners through hardening AWS Identity and Access Management configurations to enforce least privilege access across cloud accounts. It covers IAM policy scoping, permission boundaries, Access Analyzer integration, and credential rotation strategies to reduce the blast radius of compromised identities.\n",
+      "description": "Use when this skill guides practitioners through hardening AWS Identity and Access Management configurations to enforce least privilege access across cloud accounts. It covers IAM policy scoping, permission boundaries, Access Analyzer integration, and credential rotation strategies to reduce the blast radius of compromised identities.",
       "domain": "cybersecurity",
       "tags": [
         "aws-iam",
@@ -16330,7 +16330,7 @@
     {
       "name": "securing-azure-with-microsoft-defender",
       "category": "cybersecurity",
-      "description": "This skill instructs security practitioners on deploying Microsoft Defender for Cloud as a cloud-native application protection platform for Azure, multi-cloud, and hybrid environments. It covers enabling Defender plans for servers, containers, storage, and databases, configuring security recommendations, managing Secure Score, and integrating with the unified Defender portal for centralized threat management.\n",
+      "description": "Use when this skill instructs security practitioners on deploying Microsoft Defender for Cloud as a cloud-native application protection platform for Azure, multi-cloud, and hybrid environments. It covers enabling Defender plans for servers, containers, storage, and databases, configuring security recommendations, managing Secure Score, and integrating with the unified Defender portal for centralized threat management.",
       "domain": "cybersecurity",
       "tags": [
         "microsoft-defender",
@@ -16384,7 +16384,7 @@
     {
       "name": "securing-github-actions-workflows",
       "category": "cybersecurity",
-      "description": "This skill covers hardening GitHub Actions workflows against supply chain attacks, credential theft, and privilege escalation. It addresses pinning actions to SHA digests, minimizing GITHUB_TOKEN permissions, protecting secrets from exfiltration, preventing script injection in workflow expressions, and implementing required reviewers for workflow changes.\n",
+      "description": "Use when this skill covers hardening GitHub Actions workflows against supply chain attacks, credential theft, and privilege escalation. It addresses pinning actions to SHA digests, minimizing GITHUB_TOKEN permissions, protecting secrets from exfiltration, preventing script injection in workflow expressions, and implementing required reviewers for workflow changes.",
       "domain": "cybersecurity",
       "tags": [
         "devsecops",
@@ -16420,7 +16420,7 @@
     {
       "name": "securing-historian-server-in-ot-environment",
       "category": "cybersecurity",
-      "description": "This skill covers hardening and securing process historian servers (OSIsoft PI, Honeywell PHD, GE Proficy, AVEVA Historian) in OT environments. It addresses network placement across Purdue levels, access control for historian interfaces, data replication through DMZ using data diodes or PI-to-PI connectors, SQL injection prevention in historian queries, and integrity protection of process data used for safety analysis, regulatory reporting, and process optimization.\n",
+      "description": "Use when this skill covers hardening and securing process historian servers (OSIsoft PI, Honeywell PHD, GE Proficy, AVEVA Historian) in OT environments. It addresses network placement across Purdue levels, access control for historian interfaces, data replication through DMZ using data diodes or PI-to-PI connectors, SQL injection prevention in historian queries, and integrity protection of process data used for safety analysis, regulatory reporting, and process optimization.",
       "domain": "cybersecurity",
       "tags": [
         "ot-security",
@@ -16440,7 +16440,7 @@
     {
       "name": "securing-kubernetes-on-cloud",
       "category": "cybersecurity",
-      "description": "This skill covers hardening managed Kubernetes clusters on EKS, AKS, and GKE by implementing Pod Security Standards, network policies, workload identity, RBAC scoping, image admission controls, and runtime security monitoring. It addresses cloud-specific security features including IRSA for EKS, Workload Identity for GKE, and Managed Identities for AKS.\n",
+      "description": "Use when this skill covers hardening managed Kubernetes clusters on EKS, AKS, and GKE by implementing Pod Security Standards, network policies, workload identity, RBAC scoping, image admission controls, and runtime security monitoring. It addresses cloud-specific security features including IRSA for EKS, Workload Identity for GKE, and Managed Identities for AKS.",
       "domain": "cybersecurity",
       "tags": [
         "kubernetes-security",
@@ -16458,7 +16458,7 @@
     {
       "name": "securing-remote-access-to-ot-environment",
       "category": "cybersecurity",
-      "description": "This skill covers implementing secure remote access to OT/ICS environments for operators, engineers, and vendors while preventing unauthorized access that could compromise industrial operations. It addresses jump server architecture, multi-factor authentication, session recording, privileged access management, vendor remote access controls, and compliance with IEC 62443 and NERC CIP-005 remote access requirements.\n",
+      "description": "Use when this skill covers implementing secure remote access to OT/ICS environments for operators, engineers, and vendors while preventing unauthorized access that could compromise industrial operations. It addresses jump server architecture, multi-factor authentication, session recording, privileged access management, vendor remote access controls, and compliance with IEC 62443 and NERC CIP-005 remote access requirements.",
       "domain": "cybersecurity",
       "tags": [
         "ot-security",
@@ -16478,7 +16478,7 @@
     {
       "name": "securing-serverless-functions",
       "category": "cybersecurity",
-      "description": "This skill covers security hardening for serverless compute platforms including AWS Lambda, Azure Functions, and Google Cloud Functions. It addresses least privilege IAM roles, dependency vulnerability scanning, secrets management integration, input validation, function URL authentication, and runtime monitoring to protect against injection attacks, credential theft, and supply chain compromises.\n",
+      "description": "Use when this skill covers security hardening for serverless compute platforms including AWS Lambda, Azure Functions, and Google Cloud Functions. It addresses least privilege IAM roles, dependency vulnerability scanning, secrets management integration, input validation, function URL authentication, and runtime monitoring to protect against injection attacks, credential theft, and supply chain compromises.",
       "domain": "cybersecurity",
       "tags": [
         "serverless-security",
@@ -16651,7 +16651,7 @@
     {
       "name": "testing-api-security-with-owasp-top-10",
       "category": "cybersecurity",
-      "description": "Systematically assessing REST and GraphQL API endpoints against the OWASP API Security Top 10 risks using automated and manual testing techniques.",
+      "description": "Use when systematically assessing REST and GraphQL API endpoints against the OWASP API Security Top 10 risks using automated and manual testing techniques.",
       "domain": "cybersecurity",
       "tags": [
         "penetration-testing",
@@ -17098,7 +17098,7 @@
     {
       "name": "validating-backup-integrity-for-recovery",
       "category": "cybersecurity",
-      "description": "Validate backup integrity through cryptographic hash verification, automated restore testing, corruption detection, and recoverability checks to ensure backups are reliable for disaster recovery and ransomware response scenarios.",
+      "description": "Use when validating backup integrity through cryptographic hash verification, automated restore testing, corruption detection, and recoverability checks to ensure backups are reliable for disaster recovery and ransomware response scenarios.",
       "domain": "cybersecurity",
       "tags": [
         "incident-response",
@@ -17210,7 +17210,7 @@
     {
       "name": "analysis",
       "category": "data",
-      "description": "Full-stack data analysis pipeline — clean, detect anomalies, generate reports, and create visualizations with production pandas. Turn raw data into paid deliverables.",
+      "description": "Use when full-stack data analysis pipeline — clean, detect anomalies, generate reports, and create visualizations with production pandas. Turn raw data into paid deliverables.",
       "domain": "data",
       "tags": [
         "analytics",
@@ -17336,7 +17336,7 @@
     {
       "name": "agent-daily-planner",
       "category": "development",
-      "description": "Generate daily plans with task priorities, track shipped work, and maintain cross-session accountability using deep work principles.",
+      "description": "Use when generating daily plans with task priorities, tracking shipped work, and maintaining cross-session accountability using deep work principles.",
       "domain": "development",
       "tags": [
         "agent",
@@ -17551,7 +17551,7 @@
     {
       "name": "browser-testing-devtools",
       "category": "development",
-      "description": "Test web applications using browser DevTools, Playwright, or Puppeteer. Automate E2E testing, visual regression, performance auditing, and accessibility checking.",
+      "description": "Use when testing web applications using browser DevTools, Playwright, or Puppeteer. Automate E2E testing, visual regression, performance auditing, and accessibility checking.",
       "domain": "development",
       "tags": [
         "testing",
@@ -17781,7 +17781,7 @@
     {
       "name": "dependency-scanner",
       "category": "development",
-      "description": "Automated dependency auditing for npm, pip, cargo, go. Detect vulnerabilities, outdated packages, license conflicts, and supply chain risks. Generate SBOMs and compliance reports.",
+      "description": "Use when automated dependency auditing for npm, pip, cargo, go. Detect vulnerabilities, outdated packages, license conflicts, and supply chain risks. Generate SBOMs and compliance reports.",
       "domain": "development",
       "tags": [
         "security",
@@ -18147,7 +18147,7 @@
     {
       "name": "linux-gui-control",
       "category": "development",
-      "description": "Automate Linux desktop GUI interactions using xdotool, wmctrl, and dogtail for window management, mouse/keyboard simulation, and accessibility inspection.",
+      "description": "Use when automating Linux desktop GUI interactions using xdotool, wmctrl, and dogtail for window management, mouse/keyboard simulation, and accessibility inspection.",
       "domain": "development",
       "tags": [
         "coding",
@@ -18319,7 +18319,7 @@
     {
       "name": "prd-generator",
       "category": "development",
-      "description": "Generate detailed Product Requirement Documents (PRDs) from feature descriptions. Create structured specifications ready for implementation.",
+      "description": "Use when generating detailed Product Requirement Documents (PRDs) from feature descriptions. Create structured specifications ready for implementation.",
       "domain": "development",
       "tags": [
         "coding",
@@ -19548,7 +19548,7 @@
     {
       "name": "investment-bottleneck",
       "category": "financial",
-      "description": "Use when find bottleneck companies — the critical constraint in supply chains that have pricing power, low competition, and high returns. Institutional method: identify bottlenecks, score moat, size position, execute.",
+      "description": "Use when finding bottleneck companies — the critical constraint in supply chains that have pricing power, low competition, and high returns. Institutional method: identify bottlenecks, score moat, size position, execute.",
       "domain": "financial",
       "tags": [
         "investment",
@@ -19563,7 +19563,7 @@
     {
       "name": "investment-earnings",
       "category": "financial",
-      "description": "Use when trade earnings reports for profit — pre-earnings positioning, post-earnings momentum, and management quality scoring. Systematic framework for the highest-alpha event in equity markets.",
+      "description": "Use when trading earnings reports for profit — pre-earnings positioning, post-earnings momentum, and management quality scoring. Systematic framework for the highest-alpha event in equity markets.",
       "domain": "financial",
       "tags": [
         "investment",
@@ -20206,7 +20206,7 @@
     {
       "name": "storage-mcp",
       "category": "integrations",
-      "description": "MCP servers for cloud storage. Connect AI agents to S3, Google Drive, Dropbox, and file storage for automated backup, sync, and management.",
+      "description": "Use when MCP servers for cloud storage. Connect AI agents to S3, Google Drive, Dropbox, and file storage for automated backup, sync, and management.",
       "domain": "integrations",
       "tags": [
         "ai-agent",
@@ -20278,7 +20278,7 @@
     {
       "name": "adcp-advertising",
       "category": "marketing",
-      "description": "Automate ad campaigns via AdCP protocol — create ads, buy media, manage budgets, and optimize performance across display, video, CTV, and social channels.",
+      "description": "Use when automating ad campaigns via AdCP protocol — creating ads, buying media, managing budgets, and optimizing performance across display, video, CTV, and social channels.",
       "domain": "marketing",
       "tags": [
         "adcp",
@@ -20317,7 +20317,7 @@
     {
       "name": "affiliate-manager",
       "category": "marketing",
-      "description": "Automated discovery of affiliate programs, partnership opportunities, and cross-promotion deals with outreach, commission tracking, and placement optimization",
+      "description": "Use when automated discovery of affiliate programs, partnership opportunities, and cross-promotion deals with outreach, commission tracking, and placement optimization",
       "domain": "marketing",
       "tags": [
         "affiliate",
@@ -20334,7 +20334,7 @@
     {
       "name": "affiliate-marketing",
       "category": "marketing",
-      "description": "AI-powered affiliate marketing automation. Research products, generate content, optimize conversions, and build passive income through automated affiliate campaigns.",
+      "description": "Use when AI-powered affiliate marketing automation. Research products, generate content, optimize conversions, and build passive income through automated affiliate campaigns.",
       "domain": "marketing",
       "tags": [
         "affiliate",
@@ -20350,7 +20350,7 @@
     {
       "name": "ai-content-agency-v2",
       "category": "marketing",
-      "description": "9-workflow, 6-phase AI content agency blueprint — generates ads, videos, images, and landing pages from product info using LLM ideation through multi-provider rendering.",
+      "description": "Use when 9-workflow, 6-phase AI content agency blueprint — generates ads, videos, images, and landing pages from product info using LLM ideation through multi-provider rendering.",
       "domain": "marketing",
       "tags": [
         "agency",
@@ -20370,7 +20370,7 @@
     {
       "name": "ai-digital-products",
       "category": "marketing",
-      "description": "Create and sell AI-powered digital products. Build templates, prompt libraries, workflows, and Notion systems. Generate $500-5K/month passive income.",
+      "description": "Use when creating and selling AI-powered digital products. Build templates, prompt libraries, workflows, and Notion systems. Generate $500-5K/month passive income.",
       "domain": "marketing",
       "tags": [
         "digital",
@@ -20405,7 +20405,7 @@
     {
       "name": "analytics-dashboard",
       "category": "marketing",
-      "description": "Track performance across all platforms. Monitor social media metrics, ad performance, website analytics, and revenue. Generate automated reports and identify trends for data-driven decisions.",
+      "description": "Use when tracking performance across all platforms. Monitor social media metrics, ad performance, website analytics, and revenue. Generate automated reports and identify trends for data-driven decisions.",
       "domain": "marketing",
       "tags": [
         "analytics",
@@ -20441,7 +20441,7 @@
     {
       "name": "buzzer-engagement-army",
       "category": "marketing",
-      "description": "Multi-account engagement booster across TikTok, Instagram, and Facebook — automates likes, comments, and warmup schedules to beat algorithm suppression on new posts.",
+      "description": "Use when multi-account engagement booster across TikTok, Instagram, and Facebook — automates likes, comments, and warmup schedules to beat algorithm suppression on new posts.",
       "domain": "marketing",
       "tags": [
         "army",
@@ -20459,7 +20459,7 @@
     {
       "name": "canva",
       "category": "marketing",
-      "description": "Create, export, and manage Canva designs via the Connect API. Generate social posts, carousels, and graphics programmatically.",
+      "description": "Use when creating, exporting, and managing Canva designs via the Connect API. Generate social posts, carousels, and graphics programmatically.",
       "domain": "marketing",
       "tags": [
         "api",
@@ -20529,7 +20529,7 @@
     {
       "name": "content-analytics-engine",
       "category": "marketing",
-      "description": "Collect content performance data from PostBridge API and generate daily/weekly reports tracking the full revenue funnel — views, engagement, clicks, and sales.",
+      "description": "Use when collecting content performance data from PostBridge API and generating daily/weekly reports tracking the full revenue funnel — views, engagement, clicks, and sales.",
       "domain": "marketing",
       "tags": [
         "analytics",
@@ -20586,7 +20586,7 @@
     {
       "name": "email-marketing",
       "category": "marketing",
-      "description": "Create and send email campaigns, newsletters, and drip sequences. Build email lists, design templates, automate follow-ups, and track email performance for customer nurturing.",
+      "description": "Use when creating and sending email campaigns, newsletters, and drip sequences. Build email lists, design templates, automate follow-ups, and track email performance for customer nurturing.",
       "domain": "marketing",
       "tags": [
         "email",
@@ -20621,7 +20621,7 @@
     {
       "name": "growth-engine",
       "category": "marketing",
-      "description": "Autonomous marketing experiment framework — design A/B tests, score hypotheses with ICE, validate results with statistical significance, and run automated optimization loops.",
+      "description": "Use when autonomous marketing experiment framework — design A/B tests, score hypotheses with ICE, validate results with statistical significance, and run automated optimization loops.",
       "domain": "marketing",
       "tags": [
         "engine",
@@ -20724,7 +20724,7 @@
     {
       "name": "marketing-ops",
       "category": "marketing",
-      "description": ">\n  Complete AI-powered marketing & sales operating system for solo founders.\n  Covers the full revenue lifecycle: customer research, content creation,\n  SEO/GEO/SMO optimization, paid ads, email sequences, sales enablement,\n  CRO, pricing, retention, analytics, automation, and global expansion.\n  Includes stage-based playbooks ($0→$100K MRR), AI agent orchestration,\n  PLG frameworks, Indonesia e-commerce, and decision-making infrastructure.",
+      "description": "Use when > Complete AI-powered marketing & sales operating system for solo founders. Covers the full revenue lifecycle: customer research, content creation, SEO/GEO/SMO optimization, paid ads, email sequences, sales enablement, CRO, pricing, retention, analytics, automation, and global expansion. Includes stage-based playbooks ($0→$100K MRR), AI agent orchestration, PLG frameworks, Indonesia e-commerce, and decision-making infrastructure.",
       "domain": "marketing",
       "tags": [
         "ai-agent",
@@ -20900,7 +20900,7 @@
     {
       "name": "social-media-engagement",
       "category": "marketing",
-      "description": "Automate social media engagement activities including liking, commenting, following, unfollowing, DMing, and replying. Build audience and increase reach across X, Instagram, TikTok, and LinkedIn.",
+      "description": "Use when automating social media engagement activities including liking, commenting, following, unfollowing, DMing, and replying. Build audience and increase reach across X, Instagram, TikTok, and LinkedIn.",
       "domain": "marketing",
       "tags": [
         "engagement",
@@ -20939,7 +20939,7 @@
     {
       "name": "stripe-revenue-bot",
       "category": "marketing",
-      "description": "Automate posting your Stripe revenue milestones to Twitter/X. Build trust through transparency, attract customers, and join the \"build in public\" movement.",
+      "description": "Use when automating posting your Stripe revenue milestones to Twitter/X. Build trust through transparency, attract customers, and join the \"build in public\" movement.",
       "domain": "marketing",
       "tags": [
         "bot",
@@ -20957,7 +20957,7 @@
     {
       "name": "tiktok-marketing",
       "category": "marketing",
-      "description": "TikTok marketing automation for the Indonesian market — content upload, carousel creation, engagement, and account management.",
+      "description": "Use when tikTok marketing automation for the Indonesian market — content upload, carousel creation, engagement, and account management.",
       "domain": "marketing",
       "tags": [
         "tiktok",
@@ -20975,7 +20975,7 @@
     {
       "name": "twitter-automation",
       "category": "marketing",
-      "description": "Automate Twitter/X presence with AI-powered posting, engagement, and growth. Schedule posts, auto-reply, track analytics, and build audience on autopilot.",
+      "description": "Use when automating Twitter/X presence with AI-powered posting, engagement, and growth. Schedule posts, auto-reply, track analytics, and build audience on autopilot.",
       "domain": "marketing",
       "tags": [
         "automation",
@@ -21135,7 +21135,7 @@
     {
       "name": "mcp-server-builder",
       "category": "mcp",
-      "description": "Create MCP (Model Context Protocol) servers for any API or service. Auto-generate tools, resources, and prompts that any AI agent can use.",
+      "description": "Use when creating MCP (Model Context Protocol) servers for any API or service. Auto-generate tools, resources, and prompts that any AI agent can use.",
       "domain": "mcp",
       "tags": [
         "ai-agent",
@@ -21174,7 +21174,7 @@
     {
       "name": "notion-mcp",
       "category": "mcp",
-      "description": "MCP server for Notion databases. Query pages, manage databases, and automate Notion workflows via standardized protocol.",
+      "description": "Use when MCP server for Notion databases. Query pages, manage databases, and automate Notion workflows via standardized protocol.",
       "domain": "mcp",
       "tags": [
         "mcp",
@@ -21226,7 +21226,7 @@
     {
       "name": "slack-mcp",
       "category": "mcp",
-      "description": "MCP server for Slack integration. Send messages, manage channels, and automate Slack workflows via standardized protocol.",
+      "description": "Use when MCP server for Slack integration. Send messages, manage channels, and automate Slack workflows via standardized protocol.",
       "domain": "mcp",
       "tags": [
         "mcp",
@@ -21380,7 +21380,7 @@
     {
       "name": "improvement-generator",
       "category": "meta",
-      "description": "Generate specific, actionable improvements for skills based on performance data and feedback. Create improvement plans, not just identify problems.",
+      "description": "Use when generating specific, actionable improvements for skills based on performance data and feedback. Create improvement plans, not just identify problems.",
       "domain": "meta",
       "tags": [
         "generator",
@@ -21397,7 +21397,7 @@
     {
       "name": "meta-find-skills",
       "category": "meta",
-      "description": "Automatically discover evaluate and activate community skills when local skills dont cover user needs Includes credibility scoring and safety checks for complete self-sufficiency",
+      "description": "Use when automatically discover evaluate and activate community skills when local skills dont cover user needs Includes credibility scoring and safety checks for complete self-sufficiency",
       "domain": "meta",
       "tags": [
         "find",
@@ -21519,7 +21519,7 @@
     {
       "name": "audit",
       "category": "mindset",
-      "description": "Use when audit repo for over-engineering. Ranked list of what to delete, simplify, or replace with stdlib or native features.",
+      "description": "Use when auditing repo for over-engineering. Ranked list of what to delete, simplify, or replace with stdlib or native features.",
       "domain": "mindset",
       "tags": [
         "audit",
@@ -21801,7 +21801,7 @@
     {
       "name": "executive-presence",
       "category": "mindset",
-      "description": "Command rooms, communicate with gravitas, and project confidence. Covers body language, vocal tonality, storytelling, and handling pressure.",
+      "description": "Use when command rooms, communicate with gravitas, and project confidence. Covers body language, vocal tonality, storytelling, and handling pressure.",
       "domain": "mindset",
       "tags": [
         "executive",
@@ -21920,7 +21920,7 @@
     {
       "name": "influence-without-authority",
       "category": "mindset",
-      "description": "Gain buy-in from peers, stakeholders, and executives when you lack direct authority. Covers reciprocity, social proof, and coalition building.",
+      "description": "Use when gain buy-in from peers, stakeholders, and executives when you lack direct authority. Covers reciprocity, social proof, and coalition building.",
       "domain": "mindset",
       "tags": [
         "authority",
@@ -22006,7 +22006,7 @@
     {
       "name": "negotiation-skill",
       "category": "mindset",
-      "description": "Prepare for, conduct, and close negotiations. Covers separate personalities, interests, needs, BATNA, ZOPA, and effective communication tactics.",
+      "description": "Use when preparing for, conducting, and closing negotiations. Covers separate personalities, interests, needs, BATNA, ZOPA, and effective communication tactics.",
       "domain": "mindset",
       "tags": [
         "mindset",
@@ -22233,7 +22233,7 @@
     {
       "name": "review",
       "category": "mindset",
-      "description": "Use when review a diff for over-engineering. Finds what to delete — reinvented stdlib, needless deps, speculative abstractions.",
+      "description": "Use when reviewing a diff for over-engineering. Finds what to delete — reinvented stdlib, needless deps, speculative abstractions.",
       "domain": "mindset",
       "tags": [
         "review",
@@ -22504,7 +22504,7 @@
     {
       "name": "contract-manager",
       "category": "operations",
-      "description": "Contract lifecycle management — draft, review, negotiate, sign, track, archive. Covers talent agreements, client deals, vendor contracts, employment. Indonesian law compliant (PKS format). Telegram alerts for renewals and breaches.",
+      "description": "Use when contract lifecycle management — draft, review, negotiate, sign, track, archive. Covers talent agreements, client deals, vendor contracts, employment. Indonesian law compliant (PKS format). Telegram alerts for renewals and breaches.",
       "domain": "operations",
       "tags": [
         "contracts",
@@ -22522,7 +22522,7 @@
     {
       "name": "customer-success",
       "category": "operations",
-      "description": "Automated customer onboarding, health scoring, churn prediction, proactive outreach, and support ticket resolution",
+      "description": "Use when automated customer onboarding, health scoring, churn prediction, proactive outreach, and support ticket resolution",
       "domain": "operations",
       "tags": [
         "business-ops",
@@ -22712,7 +22712,7 @@
     {
       "name": "payment-invoicing",
       "category": "operations",
-      "description": "Process payments and generate invoices using Indonesian payment gateways (TriPay, LYNK.ID, Midtrans). Create payment links, track transactions, and automate invoicing for 1-man company revenue collection.",
+      "description": "Use when processing payments and generating invoices using Indonesian payment gateways (TriPay, LYNK.ID, Midtrans). Create payment links, track transactions, and automate invoicing for 1-man company revenue collection.",
       "domain": "operations",
       "tags": [
         "business-ops",
@@ -22826,7 +22826,7 @@
     {
       "name": "email-automation",
       "category": "productivity",
-      "description": "Automate email workflows, templates, and campaigns with Gmail MCP integration",
+      "description": "Use when automating email workflows, templates, and campaigns with Gmail MCP integration",
       "domain": "productivity",
       "tags": [
         "email",
@@ -22951,7 +22951,7 @@
     {
       "name": "notion",
       "category": "productivity",
-      "description": "Automate Notion workflows including database CRUD, page creation, content publishing, and workspace management via API.",
+      "description": "Use when automating Notion workflows including database CRUD, page creation, content publishing, and workspace management via API.",
       "domain": "productivity",
       "tags": [
         "api",
@@ -23098,7 +23098,7 @@
     {
       "name": "finance-trading",
       "category": "research",
-      "description": "Analyze financial markets using technical indicators, fundamental analysis, and macro trends. Use for investment research.",
+      "description": "Use when analyzing financial markets using technical indicators, fundamental analysis, and macro trends. Use for investment research.",
       "domain": "research",
       "tags": [
         "analysis",
@@ -23378,7 +23378,7 @@
     {
       "name": "ai-agent-development",
       "category": "sales",
-      "description": "Build and sell custom AI agents as services or products. Create vertical-specific AI solutions for clients and generate $2K-$8K/month recurring revenue.",
+      "description": "Use when building and selling custom AI agents as services or products. Create vertical-specific AI solutions for clients and generate $2K-$8K/month recurring revenue.",
       "domain": "sales",
       "tags": [
         "agent",
@@ -23395,7 +23395,7 @@
     {
       "name": "ai-consulting",
       "category": "sales",
-      "description": "Offer fractional AI engineering and consulting services. Act as a part-time AI executive for companies that can't afford full-time AI staff. Generate $3K-10K/month.",
+      "description": "Use when offer fractional AI engineering and consulting services. Act as a part-time AI executive for companies that can't afford full-time AI staff. Generate $3K-10K/month.",
       "domain": "sales",
       "tags": [
         "business-development",
@@ -23431,7 +23431,7 @@
     {
       "name": "ai-marketplace",
       "category": "sales",
-      "description": "Sell AI-powered services on Fiverr, Upwork, and Toptal. Offer automation, content, and development services. Build recurring clients and generate $2K-10K/month.",
+      "description": "Use when selling AI-powered services on Fiverr, Upwork, and Toptal. Offer automation, content, and development services. Build recurring clients and generate $2K-10K/month.",
       "domain": "sales",
       "tags": [
         "business-development",
@@ -23447,7 +23447,7 @@
     {
       "name": "b2b-sales-automation",
       "category": "sales",
-      "description": "|\n  >\n    Full B2B sales pipeline automation — from cold prospect to onboarded client.\n    Covers ICP definition, lead sourcing, outreach sequences, proposal generation, CRM tracking,\n    and deal alerts via   Telegram. Targets SMEs needing AI automation, digital products,\n    and content services.\n",
+      "description": "Use when | > Full B2B sales pipeline automation — from cold prospect to onboarded client. Covers ICP definition, lead sourcing, outreach sequences, proposal generation, CRM tracking, and deal alerts via Telegram. Targets SMEs needing AI automation, digital products, and content services.",
       "domain": "sales",
       "tags": [
         "sales",
@@ -23466,7 +23466,7 @@
     {
       "name": "business-development",
       "category": "sales",
-      "description": "Generate leads, research prospects, and manage outreach sequences with HubSpot and Exa integration. Use for B2B pipeline building.",
+      "description": "Use when generating leads, researching prospects, and managing outreach sequences with HubSpot and Exa integration. Use for B2B pipeline building.",
       "domain": "sales",
       "tags": [
         "business",
@@ -23520,7 +23520,7 @@
     {
       "name": "influencer-scouting",
       "category": "sales",
-      "description": "|\n  >\n    Full influencer scouting, outreach, and performance tracking system.\n    Covers   platform search across TikTok, Instagram, and YouTube for creators,\n    scoring/qualification, DM outreach,   negotiation, deal tracking, and ROI measurement.\n    Integrates with Kalodata for TikTok analytics.\n",
+      "description": "Use when | > Full influencer scouting, outreach, and performance tracking system. Covers platform search across TikTok, Instagram, and YouTube for creators, scoring/qualification, DM outreach, negotiation, deal tracking, and ROI measurement. Integrates with Kalodata for TikTok analytics.",
       "domain": "sales",
       "tags": [
         "influencer",
@@ -23596,7 +23596,7 @@
     {
       "name": "talent-crm",
       "category": "sales",
-      "description": "Manage talent pipeline with candidate tracking, outreach automation, and interview scheduling. Use for recruiting CRM.",
+      "description": "Use when managing talent pipeline with candidate tracking, outreach automation, and interview scheduling. Use for recruiting CRM.",
       "domain": "sales",
       "tags": [
         "business-development",
@@ -23866,7 +23866,7 @@
     {
       "name": "trading-researcher",
       "category": "trading",
-      "description": "Research market conditions, on-chain data, and sentiment to identify trading opportunities. Use for market analysis.",
+      "description": "Use when researching market conditions, on-chain data, and sentiment to identify trading opportunities. Use for market analysis.",
       "domain": "trading",
       "tags": [
         "algorithms",

@@ -1,15 +1,16 @@
 ---
 name: audit
-description: Use when audit repo for over-engineering. Ranked list of what to delete, simplify, or replace with stdlib or native features.
+description: Use when auditing repo for over-engineering. Ranked list of what to delete,
+  simplify, or replace with stdlib or native features.
 domain: mindset
 author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:
-  - audit
-  - mindset
-  - ponytail
-  - simplification
+- audit
+- mindset
+- ponytail
+- simplification
 version: 1.0.0
 ---
 

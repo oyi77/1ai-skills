@@ -1,7 +1,8 @@
 ---
 name: negotiation-skill
-description: Prepare for, conduct, and close negotiations. Covers separate personalities, interests, needs, BATNA, ZOPA, and
-  effective communication tactics.
+description: Use when preparing for, conducting, and closing negotiations. Covers
+  separate personalities, interests, needs, BATNA, ZOPA, and effective communication
+  tactics.
 domain: mindset
 author: oyi77
 license: Apache-2.0

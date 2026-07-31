@@ -1,6 +1,7 @@
 ---
 name: trading-researcher
-description: Research market conditions, on-chain data, and sentiment to identify trading opportunities. Use for market analysis.
+description: Use when researching market conditions, on-chain data, and sentiment
+  to identify trading opportunities. Use for market analysis.
 domain: trading
 author: oyi77
 license: Apache-2.0

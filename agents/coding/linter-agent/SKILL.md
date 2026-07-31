@@ -1,16 +1,17 @@
 ---
 name: linter-agent
-description: Use when detect and fix code style violations, enforce project conventions, ensure consistent formatting.
+description: Use when detecting and fixing code style violations, enforcing project
+  conventions, ensuring consistent formatting.
 domain: agents
 author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:
-  - agent
-  - ai-agent
-  - automation
-  - linter
-  - coding
+- agent
+- ai-agent
+- automation
+- linter
+- coding
 version: 1.0.0
 ---
 

@@ -1,7 +1,8 @@
 ---
 name: content-analytics-engine
-description: Collect content performance data from PostBridge API and generate daily/weekly reports tracking the full revenue
-  funnel — views, engagement, clicks, and sales.
+description: Use when collecting content performance data from PostBridge API and
+  generating daily/weekly reports tracking the full revenue funnel — views, engagement,
+  clicks, and sales.
 domain: marketing
 author: oyi77
 license: Apache-2.0

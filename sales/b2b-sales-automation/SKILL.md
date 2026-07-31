@@ -1,8 +1,6 @@
 ---
 name: b2b-sales-automation
-description: "|\n  >\n    Full B2B sales pipeline automation — from cold prospect to onboarded client.\n \
-  \   Covers ICP definition, lead sourcing, outreach sequences, proposal generation, CRM tracking,\n    and deal alerts via\
-  \   Telegram. Targets SMEs needing AI automation, digital products,\n    and content services.\n"
+description: "Use when | > Full B2B sales pipeline automation — from cold prospect to onboarded client. Covers ICP definition, lead sourcing, outreach sequences, proposal generation, CRM tracking, and deal alerts via Telegram. Targets SMEs needing AI automation, digital products, and content services."
 domain: sales
 author: oyi77
 license: Apache-2.0

@@ -1,7 +1,8 @@
 ---
 name: performing-cloud-native-threat-hunting-with-aws-detective
-description: Hunt for threats in AWS environments using Detective behavior graphs, entity investigation timelines, GuardDuty
-  finding correlation, and automated entity profiling across IAM users, EC2 instances, and IP addresses.
+description: Use when hunting for threats in AWS environments using Detective behavior
+  graphs, entity investigation timelines, GuardDuty finding correlation, and automated
+  entity profiling across IAM users, EC2 instances, and IP addresses.
 domain: cybersecurity
 tags:
 - aws-detective

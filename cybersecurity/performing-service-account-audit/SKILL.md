@@ -1,7 +1,8 @@
 ---
 name: performing-service-account-audit
-description: Audit service accounts across enterprise infrastructure to identify orphaned, over-privileged, and non-compliant
-  accounts. This skill covers discovery of service accounts in Active Directory, cloud pl
+description: Use when auditing service accounts across enterprise infrastructure to
+  identify orphaned, over-privileged, and non-compliant accounts. This skill covers
+  discovery of service accounts in Active Directory, cloud pl
 domain: cybersecurity
 subdomain: identity-access-management
 tags:

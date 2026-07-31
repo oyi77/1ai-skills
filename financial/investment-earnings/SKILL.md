@@ -6,11 +6,25 @@ domain: financial
 author: oyi77
 license: Apache-2.0
 subdomain: finance
-description: "Use when trade earnings reports for profit — pre-earnings positioning, post-earnings momentum, and management quality scoring. Systematic framework for the highest-alpha event in equity markets."
-keywords: [earnings, trading, financial analysis, earnings calls, management quality, post-earnings drift, options, straddle, momentum]
+description: Use when trading earnings reports for profit — pre-earnings positioning,
+  post-earnings momentum, and management quality scoring. Systematic framework for
+  the highest-alpha event in equity markets.
+keywords:
+- earnings
+- trading
+- financial analysis
+- earnings calls
+- management quality
+- post-earnings drift
+- options
+- straddle
+- momentum
 source: ai-berkshire
 money: true
-tags: [investment, earnings, finance]
+tags:
+- investment
+- earnings
+- finance
 ---
 
 # Investment Earnings Analysis

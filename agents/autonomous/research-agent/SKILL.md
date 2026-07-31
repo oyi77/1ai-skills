@@ -1,16 +1,17 @@
 ---
 name: research-agent
-description: Use when investigate topics deeply with cross-referenced sources and produce evidence-backed findings.
+description: Use when investigating topics deeply with cross-referenced sources and
+  producing evidence-backed findings.
 domain: agents
 author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:
-  - agent
-  - ai-agent
-  - automation
-  - research
-  - autonomous
+- agent
+- ai-agent
+- automation
+- research
+- autonomous
 version: 1.0.0
 ---
 

@@ -1,7 +1,6 @@
 ---
 name: executive-presence
-description: Command rooms, communicate with gravitas, and project confidence. Covers body language, vocal tonality, storytelling,
-  and handling pressure.
+description: Use when command rooms, communicate with gravitas, and project confidence. Covers body language, vocal tonality, storytelling, and handling pressure.
 domain: mindset
 author: oyi77
 license: Apache-2.0

@@ -1,11 +1,6 @@
 ---
 name: implementing-infrastructure-as-code-security-scanning
-description: 'This skill covers implementing automated security scanning for Infrastructure as Code (IaC) templates using
-  tools like Checkov, tfsec, and KICS. It addresses detecting misconfigurations in Terraform, CloudFormation, Kubernetes manifests,
-  and Helm charts before deployment, establishing policy-based governance, and integrating IaC scanning into CI/CD pipelines
-  to prevent insecure cloud resource provisioning.
-
-  '
+description: 'Use when this skill covers implementing automated security scanning for Infrastructure as Code (IaC) templates using tools like Checkov, tfsec, and KICS. It addresses detecting misconfigurations in Terraform, CloudFormation, Kubernetes manifests, and Helm charts before deployment, establishing policy-based governance, and integrating IaC scanning into CI/CD pipelines to prevent insecure cloud resource provisioning.'
 domain: cybersecurity
 tags:
 - devsecops

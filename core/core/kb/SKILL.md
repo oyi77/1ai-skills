@@ -6,8 +6,6 @@ author: oyi77
 license: Apache-2.0
 subdomain: core-platform
 version: 2.0.0
-depth: 2
-quality: 3
 description: Use when querying and maintaining the knowledge base for project context, decisions, and architecture documentation on session start.
 tags:
 - infrastructure

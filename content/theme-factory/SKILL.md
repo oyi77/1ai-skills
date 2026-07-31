@@ -1,6 +1,8 @@
 ---
 name: theme-factory
-description: Generate and apply professional color themes, typography systems, and design tokens for applications. Create consistent visual identities across platforms.
+description: Use when generating and applying professional color themes, typography
+  systems, and design tokens for applications. Create consistent visual identities
+  across platforms.
 domain: content
 author: oyi77
 license: Apache-2.0

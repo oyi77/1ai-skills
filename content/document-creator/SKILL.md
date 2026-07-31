@@ -1,6 +1,6 @@
 ---
 name: document-creator
-description: Create, edit, and generate Office documents programmatically — Word, PowerPoint, Excel, and PDF. One interface for all document formats with shared methodology.
+description: Use when creating, editing, and generating Office documents programmatically — Word, PowerPoint, Excel, and PDF. One interface for all document formats with shared methodology.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -39,7 +39,7 @@ Generate professional Office documents programmatically across all major formats
 5. **Validate** — Check output opens cleanly in the target application
 6. **Deliver** — Save or stream to client
 
-## When to Use Each Format
+## When to Use
 
 | Need | Format |
 |------|--------|

@@ -1,7 +1,6 @@
 ---
 name: meta-find-skills
-description: Automatically discover evaluate and activate community skills when local skills dont cover user needs Includes
-  credibility scoring and safety checks for complete self-sufficiency
+description: Use when automatically discover evaluate and activate community skills when local skills dont cover user needs Includes credibility scoring and safety checks for complete self-sufficiency
 domain: meta
 author: oyi77
 license: Apache-2.0

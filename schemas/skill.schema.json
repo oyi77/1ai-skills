@@ -61,6 +61,11 @@
       "type": "string",
       "description": "Optional subcategory within the parent category. Maps to subdirectory when applicable."
     },
+    "subdomain": {
+      "type": "string",
+      "pattern": "^(?:[a-z0-9]+(?:-[a-z0-9]+)*)?$",
+      "description": "Optional subdomain label (kebab-case)."
+    },
     "description": {
       "type": "string",
       "minLength": 30,

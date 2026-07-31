@@ -1,7 +1,6 @@
 ---
 name: saas-orchestrator
-description: Wraps the existing 23 security skills into a sellable security-as-a-Service offering — automated pentest reports,
-  compliance checking, client management
+description: Use when wraps the existing 23 security skills into a sellable security-as-a-Service offering — automated pentest reports, compliance checking, client management
 domain: cybersecurity
 author: oyi77
 license: Apache-2.0

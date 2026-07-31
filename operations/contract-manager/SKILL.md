@@ -1,10 +1,7 @@
 ---
 name: contract-manager
 version: 1.0.0
-description: Contract lifecycle management — draft, review, negotiate,
-  sign, track, archive. Covers talent agreements, client deals, vendor contracts,
-  employment. Indonesian law compliant (PKS format). Telegram alerts for renewals
-  and breaches.
+description: Use when contract lifecycle management — draft, review, negotiate, sign, track, archive. Covers talent agreements, client deals, vendor contracts, employment. Indonesian law compliant (PKS format). Telegram alerts for renewals and breaches.
 
 author: oyi77
 license: Apache-2.0

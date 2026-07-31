@@ -1,7 +1,7 @@
 ---
 name: business-development
-description: Generate leads, research prospects, and manage outreach sequences with HubSpot and Exa integration. Use for B2B
-  pipeline building.
+description: Use when generating leads, researching prospects, and managing outreach
+  sequences with HubSpot and Exa integration. Use for B2B pipeline building.
 domain: sales
 author: oyi77
 license: Apache-2.0

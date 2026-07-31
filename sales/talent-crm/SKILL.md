@@ -1,7 +1,7 @@
 ---
 name: talent-crm
-description: Manage talent pipeline with candidate tracking, outreach automation, and interview scheduling. Use for recruiting
-  CRM.
+description: Use when managing talent pipeline with candidate tracking, outreach automation,
+  and interview scheduling. Use for recruiting CRM.
 domain: sales
 author: oyi77
 license: Apache-2.0

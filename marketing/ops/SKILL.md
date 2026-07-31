@@ -1,9 +1,6 @@
 ---
 name: marketing-ops
-description: ">\n  Complete AI-powered marketing & sales operating system for solo founders.\n  Covers the full revenue lifecycle:\
-  \ customer research, content creation,\n  SEO/GEO/SMO optimization, paid ads, email sequences, sales enablement,\n  CRO,\
-  \ pricing, retention, analytics, automation, and global expansion.\n  Includes stage-based playbooks ($0→$100K MRR), AI\
-  \ agent orchestration,\n  PLG frameworks, Indonesia e-commerce, and decision-making infrastructure."
+description: "Use when > Complete AI-powered marketing & sales operating system for solo founders. Covers the full revenue lifecycle: customer research, content creation, SEO/GEO/SMO optimization, paid ads, email sequences, sales enablement, CRO, pricing, retention, analytics, automation, and global expansion. Includes stage-based playbooks ($0→$100K MRR), AI agent orchestration, PLG frameworks, Indonesia e-commerce, and decision-making infrastructure."
 domain: marketing
 author: oyi77
 license: Apache-2.0
