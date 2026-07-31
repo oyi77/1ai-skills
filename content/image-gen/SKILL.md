@@ -3,7 +3,7 @@ name: image-gen
 description: AI image generation — Stable Diffusion, Midjourney, DALL-E, ComfyUI. Prompt engineering for images, inpainting,
   outpainting, ControlNet. Use when working with image gen.
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

@@ -2,7 +2,7 @@
 name: grpc
 description: gRPC development — Protocol Buffers, service definitions, streaming, interceptors, load balancing. Use when working with grpc.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

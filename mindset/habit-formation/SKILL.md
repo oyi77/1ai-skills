@@ -3,7 +3,7 @@ name: habit-formation
 description: Build and maintain habits using cue-routine-reward loops, habit stacking, and environment design. Use when creating
   new routines or breaking old patterns.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

@@ -2,7 +2,7 @@
 name: gcp-ops
 description: Google Cloud operations — Compute Engine, Cloud Run, BigQuery, Cloud Functions, GKE, IAM. Use when working with gcp ops.
 domain: devops
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: devops
 tags:

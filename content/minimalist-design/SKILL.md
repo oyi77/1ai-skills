@@ -2,7 +2,7 @@
 name: minimalist-design
 description: Dieter Rams' approach to timeless product design - less but better. Use when working with minimalist design.
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

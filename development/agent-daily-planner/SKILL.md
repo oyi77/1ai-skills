@@ -3,7 +3,7 @@ name: agent-daily-planner
 description: Generate daily plans with task priorities, track shipped work, and maintain cross-session accountability using
   deep work principles.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

@@ -2,7 +2,7 @@
 name: fluxcd-gitops
 description: Flux CD GitOps — source controllers, kustomize/helm controllers, image automation, notifications. Use when working with fluxcd gitops.
 domain: devops
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: devops
 tags:

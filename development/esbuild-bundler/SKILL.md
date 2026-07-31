@@ -2,7 +2,7 @@
 name: esbuild-bundler
 description: esbuild bundler configuration — blazing fast JS/TS bundling, plugins, watch mode, minification. Use when working with esbuild bundler.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

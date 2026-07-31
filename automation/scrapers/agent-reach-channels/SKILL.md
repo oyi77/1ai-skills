@@ -3,7 +3,7 @@ name: agent-reach-channels
 version: 1.0.0
 category: automation
 domain: automation
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: workflow-automation
 description: Use when multi-platform e-commerce and messaging channel extraction (Shopee, TikTok Shop, WeChat)

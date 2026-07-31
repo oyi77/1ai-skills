@@ -2,7 +2,7 @@
 name: perf-agent
 description: Use when measure before optimizing, target actual bottlenecks proven by profiling, verify with benchmarks.
 domain: agents
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:

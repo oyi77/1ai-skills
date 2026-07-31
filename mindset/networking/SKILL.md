@@ -3,7 +3,7 @@ name: networking
 description: Build and maintain professional relationships through strategic outreach, events, and follow-up. Use when expanding
   your professional network or finding opportunities.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

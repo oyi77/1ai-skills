@@ -2,7 +2,7 @@
 name: deploy-agent
 description: Use when ship code through controlled pipeline with verification gates and rollback plans.
 domain: agents
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:

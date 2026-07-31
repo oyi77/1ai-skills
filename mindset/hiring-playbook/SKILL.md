@@ -2,7 +2,7 @@
 name: hiring-playbook
 description: Design jobs, source candidates, run structured interviews, and onboard effectively. Use when hiring for any role.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

@@ -3,7 +3,7 @@ name: find-skills
 description: Automatically discover, evaluate, and activate community skills when local skills don't cover user needs. Includes
   credibility scoring and safety checks for complete OpenClaw self-sufficiency.
 domain: core
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: core-platform
 tags:

@@ -2,7 +2,7 @@
 name: mcp-client
 description: Generic MCP client implementation for connecting to any Model Context Protocol server with standardized tool access. Use when working with mcp client.
 domain: mcp
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mcp
 tags:

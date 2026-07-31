@@ -2,7 +2,7 @@
 name: git-master
 description: Handles advanced Git workflows. Use when rebasing, squashing, bisecting, or managing complex branch histories.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

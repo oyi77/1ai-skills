@@ -2,7 +2,7 @@
 name: agent-harness-optimizer
 description: Agent harness optimization patterns for token efficiency, memory persistence, session management, and cross-harness parity. Use when optimizing agent performance, reducing token costs,.
 domain: core
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: core-platform
 tags: 

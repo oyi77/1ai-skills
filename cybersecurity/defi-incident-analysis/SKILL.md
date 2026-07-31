@@ -4,7 +4,7 @@ description: Analyze DeFi security incidents including flash loan attacks, oracl
   bridge hacks, and governance attacks to reconstruct attack chains and identify root causes. Use when investigating DeFi
   protocol exploits, analyzing smart contract attacks, or writing incident post-mortems.
 domain: cybersecurity
-author: mahipal
+author: oyi77
 subdomain: blockchain-security
 tags:
 - blockchain

@@ -19,7 +19,7 @@ tags:
 - decision-making
 - execution
 version: '2.0'
-author: 1ai-org
+author: oyi77
 license: MIT
 subdomain: money-mindset
 ---

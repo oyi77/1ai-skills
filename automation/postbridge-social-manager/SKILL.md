@@ -3,7 +3,7 @@ name: postbridge-social-manager
 description: Multi-platform social media posting, scheduling, analytics, and media management via PostBridge API for TikTok,
   Instagram, X, LinkedIn, and Facebook. Use when working with postbridge social manager.
 domain: automation
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: workflow-automation
 tags:

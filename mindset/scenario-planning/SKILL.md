@@ -3,7 +3,7 @@ name: scenario-planning
 description: Plan for uncertainty using best/worst/likely scenarios, war-gaming, and trigger-based pivots. Use when facing
   high uncertainty or preparing for strategic decisions.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

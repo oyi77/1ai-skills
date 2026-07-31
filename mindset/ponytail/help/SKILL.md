@@ -2,7 +2,7 @@
 name: help
 description: Use when quick reference for ponytail modes, skills, and commands. One-shot display.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

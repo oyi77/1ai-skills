@@ -5,7 +5,7 @@ domain: marketing
 license: Apache-2.0
 tags: [email, growth, marketing, sequences, money, automation, conversions]
 version: "2.0.0"
-author: ""
+author: oyi77
 subdomain: ""
 type: marketing
 ---

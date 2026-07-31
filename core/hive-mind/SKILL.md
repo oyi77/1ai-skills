@@ -3,7 +3,7 @@ name: hive-mind
 description: Coordinate multi-agent consensus using TiDB-backed shared memory. Use when agents need to agree on decisions
   or share state.
 domain: core
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: core-platform
 tags:

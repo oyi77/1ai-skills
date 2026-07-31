@@ -2,7 +2,7 @@
 name: webpack-config
 description: Webpack 5 configuration — loaders, plugins, code splitting, tree shaking, module federation, dev server. Use when working with webpack config.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

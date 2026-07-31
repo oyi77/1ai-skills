@@ -3,7 +3,7 @@ name: viral-research-engine
 description: Research trending topics, generate viral hooks, find content gaps, analyze competitors, and get hashtag recommendations
   for Indonesian short-form video creators on TikTok, Reels, and Shorts.
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

@@ -3,7 +3,7 @@ name: execution
 description: Ship projects reliably using goal-setting, progress tracking, and accountability. Use when moving from planning
   to delivery.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

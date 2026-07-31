@@ -2,7 +2,7 @@
 name: temporal-workflows
 description: Temporal durable workflows — workflow/activity definitions, retries, signals, queries, versioning. Use when working with temporal workflows.
 domain: data
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: data-engineering
 tags:

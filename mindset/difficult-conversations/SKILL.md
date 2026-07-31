@@ -3,7 +3,7 @@ name: difficult-conversations
 description: Navigate hard talks like feedback, disagreements, and terminations using SBI, DESC, and the 3-conversations framework.
   Use when delivering bad news or addressing conflict.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

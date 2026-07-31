@@ -5,7 +5,7 @@ domain: sales
 license: Apache-2.0
 tags: [sales, pipeline, crm, lead-scoring, proposals, follow-up, b2b, money, revenue]
 version: "2.0.0"
-author: "BerkahKarya"
+author: oyi77
 subdomain: ""
 type: sales
 ---

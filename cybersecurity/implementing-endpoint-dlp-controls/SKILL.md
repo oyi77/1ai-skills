@@ -15,7 +15,7 @@ tags:
 - content-inspection
 subdomain: endpoint-security
 version: 1.0.0
-author: mahipal
+author: oyi77
 license: Apache-2.0
 atlas_techniques:
 - AML.T0024

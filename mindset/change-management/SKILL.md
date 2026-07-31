@@ -3,7 +3,7 @@ name: change-management
 description: Lead organizational change using Kotter's 8-step model, ADKAR framework, and stakeholder analysis. Use when rolling
   out major initiatives or transformations.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

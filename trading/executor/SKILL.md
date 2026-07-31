@@ -3,7 +3,7 @@ name: trading-executor
 description: Execute trades via API with position sizing, order management, and slippage monitoring. Use when placing orders
   on exchanges.
 domain: trading
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: trading
 tags:

@@ -2,7 +2,7 @@
 name: task-scheduler
 description: Task scheduling and cron patterns — node-cron, BullMQ, Celery, systemd timers. Recurring jobs, distributed scheduling. Use when working with task scheduler.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

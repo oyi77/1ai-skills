@@ -2,7 +2,7 @@
 name: gemini-image-generator
 description: Use when generating professional posed product images for e-commerce using Gemini AI with optimized prompts
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

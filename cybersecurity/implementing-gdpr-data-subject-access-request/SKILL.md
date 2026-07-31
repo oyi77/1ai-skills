@@ -17,7 +17,7 @@ tags:
 - article-15
 subdomain: privacy-compliance
 version: '1.0'
-author: mukul975
+author: oyi77
 license: Apache-2.0
 nist_csf:
 - GV.PO-01

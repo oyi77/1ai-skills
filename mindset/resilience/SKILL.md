@@ -3,7 +3,7 @@ name: resilience
 description: Build mental toughness, recover from setbacks, and adapt to change. Use when navigating failure, crisis, or high-pressure
   environments.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

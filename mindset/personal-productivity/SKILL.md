@@ -3,7 +3,7 @@ name: personal-productivity
 description: Manage time, energy, and focus using GTD, Eisenhower Matrix, time blocking, and deep work. Use when optimizing
   personal effectiveness.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

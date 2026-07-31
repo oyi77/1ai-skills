@@ -2,7 +2,7 @@
 name: frontend-design
 description: Design system patterns — component architecture, Tailwind mastery, visual hierarchy, and responsive layouts. Use when designing system patterns — component architecture, tailwind mastery, visual hierarchy,.
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

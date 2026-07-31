@@ -3,7 +3,7 @@ name: investing-algorithm-framework
 version: "2.0.0"
 description: Build algorithmic investing strategies with backtesting, signal generation, and portfolio optimization frameworks. Use when building algorithmic investing strategies with backtesting, signal generation, and portfolio.
 domain: trading
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: trading
 tags:

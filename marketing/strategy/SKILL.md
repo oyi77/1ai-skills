@@ -2,7 +2,7 @@
 name: marketing-strategy
 description: Use when doing social media automation, content scheduling, analytics tracking, and campaign management.
 domain: marketing
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: marketing
 tags:

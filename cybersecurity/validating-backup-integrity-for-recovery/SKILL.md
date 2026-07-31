@@ -12,7 +12,7 @@ tags:
 - disaster-recovery
 subdomain: incident-response
 version: '1.0'
-author: mahipal
+author: oyi77
 license: Apache-2.0
 nist_csf:
 - RS.MA-01

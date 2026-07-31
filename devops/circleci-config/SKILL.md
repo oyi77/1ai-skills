@@ -2,7 +2,7 @@
 name: circleci-config
 description: CircleCI configuration — workflows, jobs, orbs, caching, contexts, dynamic config. Use when working with circleci config.
 domain: devops
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: devops
 tags:

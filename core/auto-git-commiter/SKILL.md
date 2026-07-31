@@ -3,7 +3,7 @@ name: auto-git-commiter
 description: Automatically commit and push OpenClaw changes to GitHub. Enable continuous improvement with automatic versioning,
   changelogs, and deployment-ready commits. Use when working with auto git commiter.
 domain: core
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: core-platform
 tags:

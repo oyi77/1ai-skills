@@ -2,7 +2,7 @@
 name: autonomous
 description: Five specialized autonomous agents (code, deploy, planning, research, review) working as a coordinated pipeline. From spec to shipped code with automated planning, research, review, and deployment gates. Use when working with autonomous agents.
 domain: agents
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: autonomous-agents
 tags:

@@ -3,7 +3,7 @@ name: valuation-reviewer
 description: Ingests GP packages, runs valuation template, stages LP reporting. Use when user says "review valuation", "LP
   reporting", "GP package".
 domain: financial
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: financial-analysis
 tags:

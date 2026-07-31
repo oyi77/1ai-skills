@@ -2,7 +2,7 @@
 name: docker
 description: Use when full-stack DevOps pipeline — Docker Compose for local dev, Dockerfile optimization for production images, Kubernetes deployment for scale. Turn container ops into a service business.
 domain: devops
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: devops
 tags:

@@ -3,7 +3,7 @@ name: kernel-killer
 description: Linux and Windows kernel exploitation for privilege escalation. Use when finding kernel vulnerabilities, exploiting
   kernel drivers, or escalating privileges from user to root/system.
 domain: cybersecurity
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: general-cybersecurity
 tags:

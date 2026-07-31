@@ -3,7 +3,7 @@ name: finishing-a-development-branch
 description: Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides
   completion of development work by presenting structured options for merge, PR, or cleanup
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

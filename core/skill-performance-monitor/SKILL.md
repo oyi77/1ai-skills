@@ -3,7 +3,7 @@ name: skill-performance-monitor
 description: Monitor and analyze skill effectiveness in real-time. Track usage, success rates, response quality, and user
   satisfaction for continuous optimization. Use when monitoring and analyze skill effectiveness in real-time. track usage, success.
 domain: core
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: core-platform
 tags:

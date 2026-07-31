@@ -13,7 +13,7 @@ tags:
 - enterprise-security
 - owasp-mobile
 subdomain: mobile-security
-author: mahipal
+author: oyi77
 version: 1.0.0
 license: Apache-2.0
 nist_csf:

@@ -15,7 +15,7 @@ tags:
 - persistence
 subdomain: firmware-security
 version: 1.0.0
-author: mukul975
+author: oyi77
 license: Apache-2.0
 d3fend_techniques:
 - Platform Hardening

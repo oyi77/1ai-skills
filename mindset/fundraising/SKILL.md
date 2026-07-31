@@ -3,7 +3,7 @@ name: fundraising
 description: Pitch investors using 10-slide deck structure, understand term sheets, and manage investor relations. Use when
   raising capital.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

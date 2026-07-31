@@ -3,7 +3,7 @@ name: pattern-recognition
 description: Identify patterns in skill execution, errors, and successes. Recognize when situations match previous patterns
   and apply learned solutions. Use when working with pattern recognition.
 domain: meta
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: meta-skills
 tags:

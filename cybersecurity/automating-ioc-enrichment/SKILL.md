@@ -17,7 +17,7 @@ tags:
 - NIST-CSF
 subdomain: threat-intelligence
 version: 1.0.0
-author: team-cybersecurity
+author: oyi77
 license: Apache-2.0
 nist_csf:
 - ID.RA-01

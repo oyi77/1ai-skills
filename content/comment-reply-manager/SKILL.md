@@ -3,7 +3,7 @@ name: comment-reply-manager
 description: Monitor TikTok/Instagram comments, classify sentiment, auto-reply with FAQ answers, and DM high-intent commenters
   with LYNK affiliate links to convert engagement into sales. Use when monitoring tiktok/instagram comments, classify sentiment, auto-reply with faq answers, and.
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

@@ -2,7 +2,7 @@
 name: joko-proactive-agent
 description: Proactive agent that detects signals and suggests actions with Slack notifications. Use when working with joko proactive agent.
 domain: core
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: core-platform
 tags:

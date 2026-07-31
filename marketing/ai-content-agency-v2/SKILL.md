@@ -3,7 +3,7 @@ name: ai-content-agency-v2
 description: 9-workflow, 6-phase AI content agency blueprint — generates ads, videos, images, and landing pages from product
   info using LLM ideation through multi-provider rendering.
 domain: marketing
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: marketing
 tags:

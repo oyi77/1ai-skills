@@ -4,7 +4,7 @@ description: SEO analysis and optimization automation for websites. Use when con
   rankings, analyzing competitor SEO, monitoring backlink profiles, optimizing existing content, improving local SEO visibility,
   generating SEO reports for clients, or automating website health checks.
 domain: marketing
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: marketing
 tags:

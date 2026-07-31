@@ -5,7 +5,7 @@ domain: financial
 license: Apache-2.0
 tags: [analysis, crypto, finance, investment, testing, trading, wolf, money, value-investing]
 version: "2.0.0"
-author: ""
+author: oyi77
 subdomain: ""
 type: finance
 ---

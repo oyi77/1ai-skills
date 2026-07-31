@@ -3,7 +3,7 @@ name: twitter-automation
 description: Automate Twitter/X presence with AI-powered posting, engagement, and growth. Schedule posts, auto-reply, track
   analytics, and build audience on autopilot.
 domain: marketing
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: marketing
 tags:

@@ -5,7 +5,7 @@ description: ">\n  Complete AI-powered marketing & sales operating system for so
   \ pricing, retention, analytics, automation, and global expansion.\n  Includes stage-based playbooks ($0→$100K MRR), AI\
   \ agent orchestration,\n  PLG frameworks, Indonesia e-commerce, and decision-making infrastructure."
 domain: marketing
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: marketing
 tags:

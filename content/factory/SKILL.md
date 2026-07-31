@@ -3,7 +3,7 @@ name: content-factory
 description: 'All-in-one YouTube content generator: create full videos from prompts, generate vertical Shorts from text, or
   clip long videos into Shorts using free tools (ffmpeg, edge-tts, Pexels).'
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

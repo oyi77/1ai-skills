@@ -2,7 +2,7 @@
 name: vue-framework
 description: Vue.js 3 development patterns — Composition API, Pinia state management, Vue Router, Nuxt.js SSR/SSG, component architecture, performance optimization. Use when working with vue patterns or vue framework.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

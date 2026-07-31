@@ -2,7 +2,7 @@
 name: review
 description: Use when review a diff for over-engineering. Finds what to delete — reinvented stdlib, needless deps, speculative abstractions.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

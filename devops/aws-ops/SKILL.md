@@ -2,7 +2,7 @@
 name: aws-ops
 description: AWS operations — EC2, S3, Lambda, RDS, ECS, IAM, CloudFormation. Infrastructure and cost optimization. Use when working with aws ops.
 domain: devops
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: devops
 tags:

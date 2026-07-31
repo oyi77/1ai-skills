@@ -2,7 +2,7 @@
 name: research-agent
 description: Use when investigate topics deeply with cross-referenced sources and produce evidence-backed findings.
 domain: agents
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:

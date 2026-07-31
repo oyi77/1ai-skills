@@ -13,7 +13,7 @@ tags:
 - passive-recon
 subdomain: penetration-testing
 version: 1.0.0
-author: mahipal
+author: oyi77
 license: Apache-2.0
 nist_csf:
 - ID.RA-01

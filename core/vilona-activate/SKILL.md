@@ -1,7 +1,7 @@
 ---
 description: Use when activate an AI general manager persona with full context awareness and multi-user adaptation.
 domain: core
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: core-platform
 tags:

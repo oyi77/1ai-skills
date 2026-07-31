@@ -2,7 +2,7 @@
 name: black-edge
 description: Apply institutional trading edge using order flow analysis, market microstructure, and dark pool signals. Use when working with black edge.
 domain: trading
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: trading
 version: 2.0.0

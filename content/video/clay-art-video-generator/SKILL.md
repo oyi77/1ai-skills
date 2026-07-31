@@ -2,7 +2,7 @@
 name: clay-art-video-generator
 description: Use when clay art video generator skill.
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags: [clay, art, video, generator]

@@ -3,7 +3,7 @@ name: sales-strategy
 description: Build sales playbooks, define pipeline stages, and optimize conversion rates. Use when designing or improving
   the sales process.
 domain: sales
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: sales
 tags:

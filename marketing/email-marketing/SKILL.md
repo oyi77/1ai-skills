@@ -3,7 +3,7 @@ name: email-marketing
 description: Create and send email campaigns, newsletters, and drip sequences. Build email lists, design templates, automate
   follow-ups, and track email performance for customer nurturing.
 domain: marketing
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: marketing
 tags:

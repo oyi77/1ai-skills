@@ -2,7 +2,7 @@
 name: envoy-proxy
 description: Envoy proxy — L4/L7 filtering, load balancing, circuit breaking, observability, extensibility. Use when working with envoy proxy.
 domain: devops
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: devops
 tags:

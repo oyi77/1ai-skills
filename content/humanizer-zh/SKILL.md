@@ -2,7 +2,7 @@
 name: humanizer-zh
 description: Use when removing AI writing痕迹 from Chinese text to make it sound more natural and human-written.
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

@@ -2,7 +2,7 @@
 name: responsive-design
 description: Mobile-first responsive design — breakpoints, fluid typography, container queries, and touch optimization. Use when working with responsive design.
 domain: content
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:

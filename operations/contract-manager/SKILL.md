@@ -6,7 +6,7 @@ description: Contract lifecycle management — draft, review, negotiate,
   employment. Indonesian law compliant (PKS format). Telegram alerts for renewals
   and breaches.
 
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: business-operations
 tags:

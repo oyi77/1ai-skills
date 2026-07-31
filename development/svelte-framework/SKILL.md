@@ -2,7 +2,7 @@
 name: svelte-framework
 description: Svelte and SvelteKit development — runes, stores, server-side rendering, form actions, streaming, edge deployment, and patterns. Use when working with svelte framework.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

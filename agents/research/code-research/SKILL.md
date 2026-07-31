@@ -3,7 +3,7 @@ name: code-research
 description: Produce structured understanding of unfamiliar codebases — architecture, data flows, dependencies, and conventions.
   Use when joining a new project, tracing feature implementations, or mapping system architecture.
 domain: agents
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:

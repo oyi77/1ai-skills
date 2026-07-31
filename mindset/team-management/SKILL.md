@@ -3,7 +3,7 @@ name: team-management
 description: Manage teams through 1:1s, feedback (SBI model), delegation (70% rule), and performance reviews. Use when leading
   individual contributors or managers.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:

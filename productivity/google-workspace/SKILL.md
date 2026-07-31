@@ -2,7 +2,7 @@
 name: google-workspace
 description: Integrate with Google Workspace (Docs, Sheets, Drive, Calendar) using MCP servers. Use when integrateing with google workspace (docs, sheets, drive, calendar) using mcp.
 domain: productivity
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: productivity
 tags:

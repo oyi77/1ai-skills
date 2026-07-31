@@ -15,7 +15,7 @@ tags:
 - CTAP2
 subdomain: identity-and-access-management
 version: 1.0.0
-author: mukul975
+author: oyi77
 license: Apache-2.0
 atlas_techniques:
 - AML.T0051

@@ -10,7 +10,7 @@ tags:
 - detection-assessment
 subdomain: penetration-testing
 version: 1.0.0
-author: mahipal
+author: oyi77
 license: Apache-2.0
 d3fend_techniques:
 - File Metadata Consistency Validation

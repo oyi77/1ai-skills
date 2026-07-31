@@ -2,7 +2,7 @@
 name: storybook-dev
 description: Storybook component development — stories, addons, controls, accessibility testing, visual regression. Use when working with storybook dev.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

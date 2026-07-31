@@ -5,7 +5,7 @@ domain: trading
 license: Apache-2.0
 tags: [algorithms, markets, strategist, trading, money, backtesting]
 version: "2.0.0"
-author: ""
+author: oyi77
 subdomain: ""
 type: trading
 ---

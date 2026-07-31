@@ -3,7 +3,7 @@ name: linux-gui-control
 description: Automate Linux desktop GUI interactions using xdotool, wmctrl, and dogtail for window management, mouse/keyboard
   simulation, and accessibility inspection.
 domain: development
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: software-development
 tags:

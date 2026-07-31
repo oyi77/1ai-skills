@@ -4,7 +4,7 @@ description: Use when navigating and operating Google Flow (labs.google/fx/tools
   with project management, scenebuilder interface, prompt entry, preset selection, model configuration, and video generation
   workflow.
 domain: productivity
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: productivity
 tags:

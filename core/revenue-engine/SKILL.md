@@ -5,7 +5,7 @@ domain: core
 license: Apache-2.0
 tags: [engine, infrastructure, memory, pipeline, revenue, self-improvement, money, analytics]
 version: "2.0.0"
-author: ""
+author: oyi77
 subdomain: ""
 type: core
 ---

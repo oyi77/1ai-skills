@@ -2,7 +2,7 @@
 name: analysis
 description: Full-stack data analysis pipeline — clean, detect anomalies, generate reports, and create visualizations with production pandas. Turn raw data into paid deliverables.
 domain: data
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: data-engineering
 tags:

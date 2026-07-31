@@ -2,7 +2,7 @@
 name: notion-integration
 description: Use when notion Automation Hub — API, Database, and Page management for knowledge bases, project trackers, and content systems. Monetize through workspace automation-as-a-service.
 domain: integrations
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: integrations
 tags:

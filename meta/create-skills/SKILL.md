@@ -3,7 +3,7 @@ name: create-skills
 description: Use when the system identifies a skill gap and needs to autonomously generate a new skill to fill it. Works with
   find-skills to ensure no duplicates.
 domain: meta
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: meta-skills
 tags:

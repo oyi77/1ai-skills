@@ -2,7 +2,7 @@
 name: audit
 description: Use when audit repo for over-engineering. Ranked list of what to delete, simplify, or replace with stdlib or native features.
 domain: mindset
-author: mahipal
+author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:
