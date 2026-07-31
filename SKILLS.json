@@ -1,10 +1,10 @@
 {
-  "total_skills": 1305,
+  "total_skills": 1306,
   "category_count": 19,
   "categories": {
     "agents": 14,
     "automation": 20,
-    "content": 55,
+    "content": 56,
     "core": 47,
     "cybersecurity": 788,
     "data": 7,
@@ -965,6 +965,27 @@
       "version": "2.0.0",
       "author": "oyi77",
       "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "emil-design-skills",
+      "category": "content",
+      "description": "Collection of 8 design engineering skills by Emil Kowalski (Vercel, Linear) — animation standards, UI craft, Apple design principles, library selection, and prototyping. Based on years of production experience. Use when the user asks about UI polish, animation decisions, or wants to audit/improve interface motion.",
+      "domain": "content",
+      "tags": [
+        "design",
+        "animation",
+        "ui",
+        "motion",
+        "css",
+        "frontend",
+        "prototyping",
+        "apple-design",
+        "craft"
+      ],
+      "version": "1.0.0",
+      "author": "mahipal",
+      "subdomain": "ui-design",
       "type": "content"
     },
     {
