@@ -30,7 +30,7 @@ Generate professional Office documents programmatically across all major formats
 | **Excel** (.xlsx) | openpyxl / xlsxwriter | exceljs / xlsx | [reference/format/xlsx.md](./reference/format/xlsx.md) |
 | **PDF** (.pdf) | fpdf2 / reportlab | pdfkit / jspdf | [reference/format/pdf.md](./reference/format/pdf.md) |
 
-## Shared Workflow
+## Workflow
 
 1. **Define structure** — Plan document sections, sheets, slides, or pages
 2. **Choose format** — Select the right format for the audience (Word for contracts, PPTX for presentations, XLSX for data, PDF for distribution)

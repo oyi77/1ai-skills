@@ -19,6 +19,31 @@ version: 2.0.0
 
 Unified skill for agent knowledge persistence and recall. Covers four approaches to maintaining context across sessions.
 
+## When to Use
+
+**Trigger phrases:**
+- "save this to memory" / "remember this for later"
+- "what do we know about…" / "search the knowledge base"
+- "restore context from last session" / "where did we leave off?"
+- "update the company KB" / "sync knowledge to brain"
+
+**Use when:**
+- A fact, decision, or preference should survive the current session
+- You need to recall prior context, decisions, or project state
+- Session continuity matters (compaction, resume, handoff)
+
+**Don't use for:**
+- One-off lookups that live entirely in the current context window
+- General file storage — this is for structured knowledge, not arbitrary files
+
+## How to Use
+
+1. **Pick the approach** — Match the need to one of the four approaches below (KB, Company KB, Memory System, Session Brain)
+2. **Follow the approach doc** — Each row links a reference file with the exact commands and storage format
+3. **Store with structure** — Include entities/relations and timestamps so recall is precise
+4. **Recall before acting** — Query memory before duplicating effort or re-deriving decisions
+5. **Consolidate** — Promote durable facts from session brain to persistent memory at session end
+
 ## Approaches
 
 | Approach | Purpose | Reference |

@@ -62,6 +62,16 @@ Stop picking the textbook answer. This skill forces the agent to walk into the a
 
 ---
 
+## How to Use
+
+1. **Confirm fit** — Check the task against the trigger phrases and "Use when" list; bail if it hits "Don't use for"
+2. **Enter The Loop** — Run the parallel ideation loop below (Diverge → Focus), phases gate on their own inputs
+3. **Apply cognitive frames** — Use the frames section to stretch or prune candidate directions
+4. **Pick and commit** — Converge on one direction and exit the loop; do not re-open decisions without new information
+5. **Verify** — Run the Verification Checklist before shipping the chosen design
+
+---
+
 ## Pre-flight Gate
 
 This skill is expensive (~5–10× a single answer). Run this gate before proceeding.
