@@ -66,6 +66,13 @@ MIN_DESC_LEN = 20
 # Pattern for cross-references like `category/skill-name`
 CROSS_REF_RE = re.compile(r"`([a-z][a-z0-9-]*/[a-z][a-z0-9-]*(?:/[a-z][a-z0-9-]*)*)`")
 
+# Pre-compiled regexes for performance
+FM_KEY_RE = re.compile(r"^([a-zA-Z_][\w-]*):\s*(.*)")
+SECTION_RE = re.compile(r"^##\s+(.+?)\s*$", re.MULTILINE)
+HDR_RE = re.compile(r"^##\s+(.+?)\s*$")
+ANY_HDR_RE = re.compile(r"^#{1,6}\s+")
+TODO_RE = re.compile(r"^\s*-\s*\[")
+
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
@@ -112,7 +119,7 @@ def parse_frontmatter(text: str) -> tuple[dict | None, str | None, str]:
 
     for line in fm_text.split("\n"):
         # Detect top-level key: value
-        m = re.match(r"^([a-zA-Z_][\w-]*):\s*(.*)", line)
+        m = FM_KEY_RE.match(line)
         if m and not line.startswith(("  ", "\t")):
             # Save previous key
             if current_key is not None:
@@ -141,7 +148,7 @@ def count_lines(text: str) -> int:
 def find_sections(body: str) -> list[str]:
     """Extract all ## section headers from body."""
     sections = []
-    for m in re.finditer(r"^##\s+(.+?)\s*$", body, re.MULTILINE):
+    for m in SECTION_RE.finditer(body):
         sections.append(m.group(1).strip())
     return sections
 
@@ -151,13 +158,13 @@ def find_empty_sections(body: str) -> list[str]:
     empty = []
     lines = body.split("\n")
     for i, line in enumerate(lines):
-        hdr = re.match(r"^##\s+(.+?)\s*$", line)
+        hdr = HDR_RE.match(line)
         if not hdr:
             continue
         # Look at next non-empty line
         for j in range(i + 1, len(lines)):
             if lines[j].strip():
-                if re.match(r"^#{1,6}\s+", lines[j]):
+                if ANY_HDR_RE.match(lines[j]):
                     empty.append(hdr.group(1).strip())
                 break
     return empty
@@ -248,7 +255,7 @@ def validate_skill(path: str) -> dict:
     todo_lines = [
         line
         for line in text.splitlines()
-        if "[TODO]" in line and not re.match(r"^\s*-\s*\[", line)
+        if "[TODO]" in line and not TODO_RE.match(line)
     ]
     if todo_lines:
         errors.append(f"contains {len(todo_lines)} [TODO] marker(s)")
