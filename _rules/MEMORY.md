@@ -1,3 +1,11 @@
+---
+name: memory
+version: 1.0.0
+severity: mandatory
+scope: [all]
+pairs-with: [session-tracing, subagent-memory]
+description: Agent Memory Protocol — filesystem-based read/write contract so sessions accumulate context (GAP-002)
+---
 # Agent Memory Protocol (GAP-002)
 
 **Status:** Active · **Version:** 1.0 · **Last updated:** 2026-07-13

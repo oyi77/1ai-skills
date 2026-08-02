@@ -1,3 +1,11 @@
+---
+name: human-escalation
+version: 1.0.0
+severity: mandatory
+scope: [all]
+pairs-with: [decision, roles, comms]
+description: Protocol for agent-to-human escalation when an agent encounters high-stakes decisions outside its autonomy boundary
+---
 # HUMAN_ESCALATION — Human-in-the-Loop Escalation Protocol
 
 > **Status:** v1.0.0 | **Severity:** mandatory | **Scope:** [all agents]

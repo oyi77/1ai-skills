@@ -1,3 +1,11 @@
+---
+name: cost-tracking
+version: 1.0.0
+severity: mandatory
+scope: [all]
+pairs-with: [finance, session-tracing]
+description: Cost observability and tracking — model API costs per session, per agent, and per task
+---
 # Cost Observability / Tracking
 > Version: 1.0.0 | Status: Active
 

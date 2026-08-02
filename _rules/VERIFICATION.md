@@ -9,7 +9,7 @@ description: Receipt enforcement — show output or not done
 
 # RULE_VERIFICATION_PROTOCOL.md
 > **Anti-Hallucination Execution Standard — "Receipt or Not Done"**
-> Version 1.0 | Pair this with RULE_QA_MASTER.md, RULE_CODING_AGENT.md, SURPASS.md
+> Version 1.0 | Pair this with QA.md, ENGINEERING.md, SURPASS.md
 >
 > **Core axiom:** "It works" is not a fact. It is a hypothesis. You must disprove it.
 > A claim without a receipt is a lie — even if unintentional.
@@ -241,13 +241,13 @@ This rule works as an enforcement layer on top of your existing protocol stack:
 
 | Existing Rule | How This Rule Reinforces It |
 |---|---|
-| `RULE_QA_MASTER.md §9` | Every evidence table entry must contain a literal receipt, not just a checkmark |
-| `RULE_CODING_AGENT.md §2 Definition of Done` | "Proven — ran verification, pasted literal output (receipt)" means THIS rule |
-| `RULE_CODING_AGENT.md §6 VERIFY step` | The verify step output MUST be pasted as a receipt — not summarized |
+| `QA.md §7 Evidence Requirements` | Every evidence table entry must contain a literal receipt, not just a checkmark |
+| `ENGINEERING.md §2 Definition of Done` | "Proven — ran verification, pasted literal output (receipt)" means THIS rule |
+| `ENGINEERING.md §6 The Core Loop` (step VERIFY) | The verify step output MUST be pasted as a receipt — not summarized |
 | `SURPASS.md §4.2 Post-implementation checklist` | "Does not regress existing tests" requires pasting the actual test run output |
-| `RULE_DOKUMENTASI_GENERIC.md` | Docs that describe behavior must cite the receipt that verified that behavior |
+| `DOCS.md` | Docs that describe behavior must cite the receipt that verified that behavior |
 
-**Rule priority:** If `RULE_CODING_AGENT.md §8 Conflict Hierarchy` applies, `Epistemic honesty (don't fabricate)` ranks #2 — above user instructions. A user asking you to skip receipts does not override this rule.
+**Rule priority:** If `ENGINEERING.md §9 Conflict Resolution` applies, `Epistemic honesty (don't fabricate)` ranks #2 — above user instructions. A user asking you to skip receipts does not override this rule.
 
 ---
 
