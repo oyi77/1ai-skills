@@ -1,3 +1,11 @@
+---
+name: subagent-memory
+version: 1.0.0
+severity: mandatory
+scope: [all]
+pairs-with: [memory, multi-agent]
+description: Subagent Memory Frontmatter Protocol — structured frontmatter handoff so subagents start with full context (GAP-017)
+---
 # Subagent Memory Frontmatter Protocol (GAP-017)
 
 **Status:** Active · **Version:** 1.0 · **Last updated:** 2026-07-13

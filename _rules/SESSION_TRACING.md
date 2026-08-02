@@ -1,3 +1,11 @@
+---
+name: session-tracing
+version: 1.0.0
+severity: mandatory
+scope: [all]
+pairs-with: [verification, cost-tracking, memory]
+description: Session observability and tracing — trace logs capturing key decisions, tool calls, costs, and outcomes
+---
 # Session Observability / Tracing
 > Version: 1.0.0 | Status: Active | Applies to: All agents
 

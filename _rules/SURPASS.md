@@ -524,11 +524,11 @@ See [DOC_TEMPLATES.md](DOC_TEMPLATES.md) for the full spec.
     Fallback (no human testers available): agent-run task-completion audit —
       1. Take competitor screenshots of the same core flow.
       2. Count steps-to-completion for competitor vs. ours.
-      3. Document results in docs/qa/UX_AUDIT.md.
+      3. Document results in docs/qa/.
       4. ✅ only if our step count ≤ competitor's AND no dead-ends observed.
     A verbal claim "our UX is better" with no audit file = ❌ not met.
 [ ] Reliability: uptime SLA ≥ industry standard. Definition: "industry standard" = 99.9% for SaaS (three nines). If a competitor publishes a higher SLA, use that as the bar instead. Proof: link to status page or published SLA doc.
-[ ] Time-to-value: ≤ fastest competitor's onboarding. Definition: "time-to-value" = wall-clock minutes from account creation to completing the product's primary use-case for the first time. Measure both ours and the fastest competitor's. Document results in docs/qa/UX_AUDIT.md.
+[ ] Time-to-value: ≤ fastest competitor's onboarding. Definition: "time-to-value" = wall-clock minutes from account creation to completing the product's primary use-case for the first time. Measure both ours and the fastest competitor's. Document results in docs/qa/.
 [ ] Moats: ≥ 3 features where we are ⭐ with no competitor match
 [ ] Traction: active user/revenue metric trending up vs. competitors
 ```
