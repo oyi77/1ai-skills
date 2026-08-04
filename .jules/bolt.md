@@ -31,3 +31,7 @@
 ## 2025-02-28 - PyYAML C-extension usage for serialization
 **Learning:** Just like `yaml.safe_load()`, using `yaml.safe_dump()` in pure Python creates a massive CPU bottleneck during batch operations (like fixing hundreds of `SKILL.md` frontmatters).
 **Action:** When updating or serializing multiple YAML files, use `yaml.dump(..., Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))` to dramatically improve performance by utilizing the PyYAML C-extension (`libyaml`) when available.
+
+## 2024-05-24 - difflib.SequenceMatcher fast-path optimizations
+**Learning:** When using `difflib.SequenceMatcher.ratio()` repeatedly against a minimum similarity threshold in nested loops, using length-based pre-checks is good, but you can get up to 50% extra speedup by instantiating the `SequenceMatcher` and checking `real_quick_ratio()` and `quick_ratio()` before executing the expensive `ratio()` computation. These quick methods provide reliable upper bounds on the similarity ratio in O(N) time compared to `ratio()`'s O(N^2) complexity.
+**Action:** When calling `SequenceMatcher(...).ratio()` in a loop and filtering by a threshold, always instantiate the matcher object and verify `matcher.real_quick_ratio() >= threshold` and `matcher.quick_ratio() >= threshold` before calling `matcher.ratio()`.
