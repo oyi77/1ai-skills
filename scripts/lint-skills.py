@@ -117,12 +117,21 @@ def skill_rel_path(path: Path) -> str:
 
 
 def similarity(a: str, b: str, threshold: float = 0.0) -> float:
-    """Sequence-based similarity ratio with length-based pre-check."""
+    """Sequence-based similarity ratio with fast upper-bound pre-checks."""
     len_a, len_b = len(a), len(b)
     if threshold > 0.0 and (len_a + len_b) > 0:
         if 2.0 * min(len_a, len_b) < threshold * (len_a + len_b):
             return 0.0
-    return SequenceMatcher(None, a.lower(), b.lower()).ratio()
+
+    matcher = SequenceMatcher(None, a.lower(), b.lower())
+
+    if threshold > 0.0:
+        if matcher.real_quick_ratio() < threshold:
+            return 0.0
+        if matcher.quick_ratio() < threshold:
+            return 0.0
+
+    return matcher.ratio()
 
 
 def levenshtein_ratio(s1: str, s2: str) -> float:
