@@ -66,6 +66,11 @@ MIN_DESC_LEN = 20
 # Pattern for cross-references like `category/skill-name`
 CROSS_REF_RE = re.compile(r"`([a-z][a-z0-9-]*/[a-z][a-z0-9-]*(?:/[a-z][a-z0-9-]*)*)`")
 
+# Pre-compiled regexes for hot loops
+FM_KEY_VAL_RE = re.compile(r"^([a-zA-Z_][\w-]*):\s*(.*)")
+H2_SECTION_RE = re.compile(r"^##\s+(.+?)\s*$")
+ANY_HEADER_RE = re.compile(r"^#{1,6}\s+")
+
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
@@ -91,19 +96,18 @@ def parse_frontmatter(text: str) -> tuple[dict | None, str | None, str]:
     if not text.startswith("---"):
         return None, "missing leading ---", text
 
-    # Find closing ---
-    lines = text.split("\n")
-    close_idx = None
-    for i in range(1, len(lines)):
-        if lines[i].rstrip() == "---":
-            close_idx = i
-            break
-
-    if close_idx is None:
-        return None, "missing closing ---", text
-
-    fm_text = "\n".join(lines[1:close_idx])
-    body = "\n".join(lines[close_idx + 1 :])
+    # Fast string search instead of splitting the entire file
+    end_idx = text.find("\n---", 3)
+    if end_idx == -1:
+        # Fallback for CRLF
+        end_idx = text.find("\r\n---", 3)
+        if end_idx == -1:
+            return None, "missing closing ---", text
+        fm_text = text[4:end_idx]
+        body = text[end_idx + 6:]
+    else:
+        fm_text = text[4:end_idx]
+        body = text[end_idx + 5:]
 
     # Simple YAML parser (no PyYAML dependency) — handles flat key: value
     meta: dict[str, str] = {}
@@ -112,7 +116,7 @@ def parse_frontmatter(text: str) -> tuple[dict | None, str | None, str]:
 
     for line in fm_text.split("\n"):
         # Detect top-level key: value
-        m = re.match(r"^([a-zA-Z_][\w-]*):\s*(.*)", line)
+        m = FM_KEY_VAL_RE.match(line)
         if m and not line.startswith(("  ", "\t")):
             # Save previous key
             if current_key is not None:
@@ -151,13 +155,13 @@ def find_empty_sections(body: str) -> list[str]:
     empty = []
     lines = body.split("\n")
     for i, line in enumerate(lines):
-        hdr = re.match(r"^##\s+(.+?)\s*$", line)
+        hdr = H2_SECTION_RE.match(line)
         if not hdr:
             continue
         # Look at next non-empty line
         for j in range(i + 1, len(lines)):
             if lines[j].strip():
-                if re.match(r"^#{1,6}\s+", lines[j]):
+                if ANY_HEADER_RE.match(lines[j]):
                     empty.append(hdr.group(1).strip())
                 break
     return empty
