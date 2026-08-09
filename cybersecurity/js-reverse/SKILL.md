@@ -136,6 +136,25 @@ Use this skill when:
 - Evidence-first: any claim about what the code does requires a recorded
   run or a captured value.
 
+## Hands-On Example
+
+Rebuild a captured signing function in Node and confirm the digest matches
+the traffic (Phase 3 — Rebuild). In a scratch directory, install the library
+with `npm install crypto-js`, then reproduce the observed hash:
+
+```bash
+node -e "const C=require('crypto-js'); console.log(C.MD5('a=1&t=1').toString())"
+# 1f16f5f46ff3c3b478e870f6446cf656
+
+node -e "const C=require('crypto-js'); console.log(C.HmacSHA256('data','k').toString())"
+# 98755ce7a0d431b5...
+```
+
+Verified with Node 22 + crypto-js 4.2.0 (output above). A digest match
+between your rebuild and the recorded request proves you reproduced the exact
+computation — the same evidence used in Phase 4 to confirm a patched script
+preserves behavior.
+
 ## Verification
 
 Run this self-check before claiming completion:

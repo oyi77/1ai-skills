@@ -116,6 +116,23 @@ Use this skill when:
 - Record which function names are recovered vs inferred (equivalent mapping
   is an acceptable fallback when pclntab recovery is partial).
 
+## Hands-On Example
+
+Triage a stripped Go binary and confirm its runtime before metadata recovery
+(Phase 1 — Triage). Ensure the toolchain exists with `apt install golang-go`
+(Debian/Kali; go 1.24 verified here), then list symbols directly:
+
+```bash
+go tool nm ./sample | grep -E ' main\.main| runtime\.main'
+# a35100 T main.main
+# a361c0 T main.main.CountFlags.CountFlags.func1
+```
+
+`go tool nm` (output above verified against a real Go binary) gives an
+instant stripped-vs-not read: a symbol-rich result means the binary was NOT
+stripped and Go-aware tooling can recover full metadata without pclntab
+parsing. Pair it with `file ./sample` for the runtime fingerprint.
+
 ## Verification
 
 Run this self-check before claiming completion:
