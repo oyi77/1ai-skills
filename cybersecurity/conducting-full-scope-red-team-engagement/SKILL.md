@@ -232,6 +232,13 @@ The report should include:
 - TIBER-EU Framework for Red Teaming: https://www.ecb.europa.eu/paym/cyber-resilience/tiber-eu/
 - CBEST Intelligence-Led Testing: https://www.bankofengland.co.uk/financial-stability/financial-sector-continuity
 
+## Companion Patterns
+
+- **[Task Router + Case-Init Auth Gate](references/task-router-and-auth-gate.md)** — routing-table classification
+  (single source of truth), `scope.md` auth gate before any target ACT, and the Evidence → Finding → Path chain
+  with hash-pinned artifacts + read-only pre-handoff review. Condensed from the
+  [reverse-skill routing pack](https://github.com/zhaoxuya520/reverse-skill) (MIT) and framework-agnostic.
+
 ## Process
 
 1. Analyze the task requirements

@@ -107,5 +107,13 @@ def route_request(task: str, prompt: str):
 
 - [ ] All steps executed successfully
 - [ ] Results validated against acceptance criteria
+- [ ] New task started by reading the experience index (see references/field-journal.md) when the task
+  domain has prior cases
+
+## Companion Patterns
+
+- **[Field Journal — Lessons-Per-Case](references/field-journal.md)** — dated, anonymized, scenario-indexed
+  per-case notes with a `_index.md` lookup surface; makes completed work a reusable lesson instead of a
+  dead artifact. Condensed from the [reverse-skill field-journal](https://github.com/zhaoxuya520/reverse-skill) (MIT).
 - [ ] Error handling tested with edge cases
 - [ ] Documentation updated with findings
