@@ -66,6 +66,13 @@ MIN_DESC_LEN = 20
 # Pattern for cross-references like `category/skill-name`
 CROSS_REF_RE = re.compile(r"`([a-z][a-z0-9-]*/[a-z][a-z0-9-]*(?:/[a-z][a-z0-9-]*)*)`")
 
+# Hoisted compiled regexes for performance
+KEY_VAL_RE = re.compile(r"^([a-zA-Z_][\w-]*):\s*(.*)")
+SECTION_HEADER_RE = re.compile(r"^##\s+(.+?)\s*$", re.MULTILINE)
+SECTION_HEADER_LINE_RE = re.compile(r"^##\s+(.+?)\s*$")
+ANY_HEADER_RE = re.compile(r"^#{1,6}\s+")
+TODO_RE = re.compile(r"^\s*-\s*\[")
+
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
@@ -92,18 +99,19 @@ def parse_frontmatter(text: str) -> tuple[dict | None, str | None, str]:
         return None, "missing leading ---", text
 
     # Find closing ---
-    lines = text.split("\n")
-    close_idx = None
-    for i in range(1, len(lines)):
-        if lines[i].rstrip() == "---":
-            close_idx = i
-            break
+    # Need to find \n--- on its own line (possibly with trailing whitespace)
+    m = re.search(r"\n---\s*\n", text[3:])
+    if not m:
+        # Check if it ends exactly with \n--- or \n---\s*
+        m = re.search(r"\n---\s*$", text[3:])
+        if not m:
+            return None, "missing closing ---", text
 
-    if close_idx is None:
-        return None, "missing closing ---", text
+    end_idx = 3 + m.start()
+    fm_text = text[3:end_idx].strip()
 
-    fm_text = "\n".join(lines[1:close_idx])
-    body = "\n".join(lines[close_idx + 1 :])
+    body_start = 3 + m.end()
+    body = text[body_start:]
 
     # Simple YAML parser (no PyYAML dependency) — handles flat key: value
     meta: dict[str, str] = {}
@@ -112,7 +120,7 @@ def parse_frontmatter(text: str) -> tuple[dict | None, str | None, str]:
 
     for line in fm_text.split("\n"):
         # Detect top-level key: value
-        m = re.match(r"^([a-zA-Z_][\w-]*):\s*(.*)", line)
+        m = KEY_VAL_RE.match(line)
         if m and not line.startswith(("  ", "\t")):
             # Save previous key
             if current_key is not None:
@@ -141,7 +149,7 @@ def count_lines(text: str) -> int:
 def find_sections(body: str) -> list[str]:
     """Extract all ## section headers from body."""
     sections = []
-    for m in re.finditer(r"^##\s+(.+?)\s*$", body, re.MULTILINE):
+    for m in SECTION_HEADER_RE.finditer(body):
         sections.append(m.group(1).strip())
     return sections
 
@@ -151,13 +159,13 @@ def find_empty_sections(body: str) -> list[str]:
     empty = []
     lines = body.split("\n")
     for i, line in enumerate(lines):
-        hdr = re.match(r"^##\s+(.+?)\s*$", line)
+        hdr = SECTION_HEADER_LINE_RE.match(line)
         if not hdr:
             continue
         # Look at next non-empty line
         for j in range(i + 1, len(lines)):
             if lines[j].strip():
-                if re.match(r"^#{1,6}\s+", lines[j]):
+                if ANY_HEADER_RE.match(lines[j]):
                     empty.append(hdr.group(1).strip())
                 break
     return empty
@@ -248,7 +256,7 @@ def validate_skill(path: str) -> dict:
     todo_lines = [
         line
         for line in text.splitlines()
-        if "[TODO]" in line and not re.match(r"^\s*-\s*\[", line)
+        if "[TODO]" in line and not TODO_RE.match(line)
     ]
     if todo_lines:
         errors.append(f"contains {len(todo_lines)} [TODO] marker(s)")
