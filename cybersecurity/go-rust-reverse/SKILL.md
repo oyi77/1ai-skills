@@ -153,7 +153,11 @@ Run this self-check before claiming completion:
 - C/C++ binaries with normal symbols — generic RE is faster.
 - Go binaries already handled by a dedicated Go workflow — use this skill as
   the additive pclntab/GoReSym layer, not a duplicate.
-- Fully dynamic-only tasks where static recovery adds no value.
+- Malware-family Go/Rust samples with a single-toolchain playbook — start
+  from `reverse-engineering-rust-malware` (Rust malware, IDA/Ghidra +
+  sandbox/IOCs) or `analyzing-golang-malware-with-ghidra` (Go + Ghidra
+  scripts); this skill is the toolchain-agnostic, non-malware path.
+- Fully dynamic-only tasks where no static recovery adds value.
 
 ## Anti-Rationalization Table
 

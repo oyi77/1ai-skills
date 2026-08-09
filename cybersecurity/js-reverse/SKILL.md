@@ -176,6 +176,9 @@ Run this self-check before claiming completion:
   is the right tool.
 - The target is real WebAssembly — use WASM tooling and `dsl-vm-reverse` for
   JS VM targets separately.
+- The JavaScript is malware (phishing pages, droppers, exploit kits) — use
+  `deobfuscating-javascript-malware` instead; this skill targets legitimate
+  app signing logic, not malicious payloads.
 - You only need to call the endpoint, not reproduce its algorithm — a
   recorded replay may be sufficient, though context-bound tokens will break.
 
