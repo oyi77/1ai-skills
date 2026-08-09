@@ -119,6 +119,21 @@ MV3 specifics: audit the `service_worker` lifecycle and
 `declarativeNetRequest` rules — static/dynamic rules are a common covert
 traffic-modification surface.
 
+## Hands-On Example
+
+Before reading the bundle, unpack a CRX and run Mozilla's linter over it —
+`npx web-ext lint` (verified: resolves web-ext 10.6.0 from npm):
+
+```bash
+mkdir -p /tmp/ext && unzip -q sample.crx -d /tmp/ext
+npx web-ext lint --source-dir /tmp/ext
+```
+
+The lint report surfaces permission misuse, remote-code hazards, and MV3
+migration issues that map directly to the Manifest Risk Signals table — a
+cheap first pass (Phase 1 — Package) that tells you where to look before the
+static scan of the bundle.
+
 ## Verification
 
 Run this self-check before claiming completion:

@@ -146,6 +146,24 @@ For each candidate:
 - Contact the SRC before testing anything unusual (origin discovery,
   production-adjacent assets, third-party integrations).
 
+## Hands-On Example
+
+Quick reachability probe of in-scope assets before active fingerprinting
+(Phase 2 — Recon). With Python's httpx, installed via `pip install httpx`:
+
+```python
+import httpx
+for url in ["https://example.com"]:
+    r = httpx.get(url, timeout=10, headers={"User-Agent": "probe"})
+    print(url, r.status_code, len(r.content), r.headers.get("server"))
+# https://example.com 200 559 cloudflare
+```
+
+Output above verified live (example.com 200, 559 bytes). A 200 from a
+CDN-backed asset is a probe result, not a finding: log it, fingerprint the
+origin — Kali's `apt install nuclei` installs nuclei 3.8+ — and only assets
+that survive scope + compliance red-line checks get active testing.
+
 ## Verification
 
 Run this self-check before claiming completion:
