@@ -41,6 +41,8 @@ version: 1.0.0
 - When you lack proper authorization for testing
 - For production systems without change management
 - When the task requires legal or compliance expertise beyond technical scope
+- A time-boxed single SRC program campaign — use `src-hunter`; this skill is
+  for long-running 24/7 automation.
 
 ## Money-Making Overview
 

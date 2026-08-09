@@ -149,6 +149,8 @@ Control the level of human oversight:
 - You don't have access to target systems
 - Task requires compliance expertise (consult professionals)
 - Task is about defense, not offense (use defensive skills)
+- Hunting inside a formal SRC program with scope rules and a payout table —
+  use `src-hunter`; this skill is the generic, program-agnostic flow.
 
 
 ## Red Flags

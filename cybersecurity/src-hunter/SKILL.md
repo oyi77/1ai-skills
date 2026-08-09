@@ -182,6 +182,10 @@ Run this self-check before claiming completion:
 - Unscoped testing or assets without authorization — stop and get scope.
 - Pure infrastructure/networking programs (no web surface) — use network
   pentest workflows.
+- A program-agnostic hunt with no SRC rules or payout table — `bug-hunting`
+  is the generic AI-orchestrated workflow.
+- Long-running 24/7 scanning across many targets — `continuous-hunter`;
+  SRC hunting is time-boxed by design.
 - Long-horizon APT-style engagement — SRC hunting is time-boxed by design.
 
 ## Anti-Rationalization Table
