@@ -1,12 +1,12 @@
 {
-  "total_skills": 1306,
+  "total_skills": 1311,
   "category_count": 19,
   "categories": {
     "agents": 14,
     "automation": 20,
     "content": 56,
     "core": 47,
-    "cybersecurity": 788,
+    "cybersecurity": 793,
     "data": 7,
     "development": 90,
     "devops": 31,
@@ -23949,6 +23949,100 @@
       "author": "oyi77",
       "subdomain": "trading",
       "type": "trading"
+    },
+    {
+      "name": "browser-extension-reverse",
+      "category": "cybersecurity",
+      "description": "Reverse engineer browser extensions from unpack CRX/JS or load unpacked directories, audit manifest permissions for overreach, trace content and background script data flows, extract API endpoints and storage keys, and detect malicious or data-exfiltrating behavior. Use when analyzing extension security posture, suspicious extensions, or extension-based attack chains.",
+      "domain": "cybersecurity",
+      "tags": [
+        "browser-extension",
+        "reverse-engineering",
+        "malware-analysis",
+        "manifest",
+        "chrome",
+        "firefox",
+        "supply-chain"
+      ],
+      "version": "1.0",
+      "author": "oyi77",
+      "subdomain": "web-application-security",
+      "type": "security"
+    },
+    {
+      "name": "dsl-vm-reverse",
+      "category": "cybersecurity",
+      "description": "Reverse JavaScript-based custom DSL/VM interpreters, non-standard WASM-like runtimes, and risk-control engines. Use when analyzing IIFE or switch-based opcode dispatchers, extracting instruction tables, recovering bytecode semantics, capturing VM state at runtime, or reconstructing execution flow.",
+      "domain": "cybersecurity",
+      "tags": [
+        "javascript",
+        "reverse-engineering",
+        "dsl",
+        "vm",
+        "anti-bot",
+        "obfuscation",
+        "risk-control",
+        "web-application-security"
+      ],
+      "version": "1.0",
+      "author": "oyi77",
+      "subdomain": "web-application-security",
+      "type": "security"
+    },
+    {
+      "name": "go-rust-reverse",
+      "category": "cybersecurity",
+      "description": "Reverse engineer Go and Rust binaries: recognize the language runtime from go.buildid or runtime symbols, recover function tables and names from pclntab, and rebuild symbols with GoReSym or redress before Ghidra/IDA analysis. Use when analyzing stripped Go/Rust malware or ELF/PE binaries with non-standard symbol layouts.",
+      "domain": "cybersecurity",
+      "tags": [
+        "go",
+        "rust",
+        "reverse-engineering",
+        "malware-analysis",
+        "pclntab",
+        "ghidra",
+        "ida",
+        "symbol-recovery"
+      ],
+      "version": "1.0",
+      "author": "oyi77",
+      "subdomain": "malware-analysis",
+      "type": "security"
+    },
+    {
+      "name": "js-reverse",
+      "category": "cybersecurity",
+      "description": "Front-end JavaScript reverse engineering for web apps and anti-bot engines: observe request flows, capture logic via hooks or breakpoints, rebuild in a local Node environment, and decode obfuscated signing or challenges. Use when reproducing request signing or reverse-engineering client-side anti-bot logic.",
+      "domain": "cybersecurity",
+      "tags": [
+        "javascript",
+        "reverse-engineering",
+        "deobfuscation",
+        "anti-bot",
+        "web-application-security"
+      ],
+      "version": "1.0",
+      "author": "oyi77",
+      "subdomain": "web-application-security",
+      "type": "security"
+    },
+    {
+      "name": "src-hunter",
+      "category": "cybersecurity",
+      "description": "Structured SRC bug hunting for security response centers: intake scoped targets and rules, recon subdomains and perimeters, enumerate attack surface, hunt prioritized vulnerability classes under time boxes, and report with evidence discipline. Use when joining an SRC program, running a time-boxed bug bounty campaign, or applying China-specific asset fingerprinting.",
+      "domain": "cybersecurity",
+      "tags": [
+        "bug-bounty",
+        "src",
+        "reconnaissance",
+        "web-application-security",
+        "pentesting",
+        "vulnerability-hunting"
+      ],
+      "version": "1.0",
+      "author": "oyi77",
+      "subdomain": "web-application-security",
+      "type": "security"
     }
   ],
   "tooling_dirs": [
