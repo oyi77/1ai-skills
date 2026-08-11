@@ -66,6 +66,10 @@ MIN_DESC_LEN = 20
 # Pattern for cross-references like `category/skill-name`
 CROSS_REF_RE = re.compile(r"`([a-z][a-z0-9-]*/[a-z][a-z0-9-]*(?:/[a-z][a-z0-9-]*)*)`")
 
+# Patterns for optimized frontmatter parsing
+FM_END_RE = re.compile(r'\n---\s*(?:\n|$)')
+YAML_KEY_RE = re.compile(r"^([a-zA-Z_][\w-]*):\s*(.*)")
+
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
@@ -92,18 +96,14 @@ def parse_frontmatter(text: str) -> tuple[dict | None, str | None, str]:
         return None, "missing leading ---", text
 
     # Find closing ---
-    lines = text.split("\n")
-    close_idx = None
-    for i in range(1, len(lines)):
-        if lines[i].rstrip() == "---":
-            close_idx = i
-            break
-
-    if close_idx is None:
+    m = FM_END_RE.search(text, 3)
+    if not m:
         return None, "missing closing ---", text
 
-    fm_text = "\n".join(lines[1:close_idx])
-    body = "\n".join(lines[close_idx + 1 :])
+    end_idx = m.start()
+    fm_text = text[3:end_idx].strip()
+    body_start = m.end()
+    body = text[body_start:]
 
     # Simple YAML parser (no PyYAML dependency) — handles flat key: value
     meta: dict[str, str] = {}
@@ -112,13 +112,13 @@ def parse_frontmatter(text: str) -> tuple[dict | None, str | None, str]:
 
     for line in fm_text.split("\n"):
         # Detect top-level key: value
-        m = re.match(r"^([a-zA-Z_][\w-]*):\s*(.*)", line)
-        if m and not line.startswith(("  ", "\t")):
+        m_line = YAML_KEY_RE.match(line)
+        if m_line and not line.startswith(("  ", "\t")):
             # Save previous key
             if current_key is not None:
                 meta[current_key] = "\n".join(current_value_lines).strip()
-            current_key = m.group(1)
-            val = m.group(2).strip()
+            current_key = m_line.group(1)
+            val = m_line.group(2).strip()
             # Strip surrounding quotes
             if len(val) >= 2 and val[0] in ('"', "'") and val[-1] == val[0]:
                 val = val[1:-1]
