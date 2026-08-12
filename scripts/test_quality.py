@@ -66,6 +66,11 @@ MIN_DESC_LEN = 20
 # Pattern for cross-references like `category/skill-name`
 CROSS_REF_RE = re.compile(r"`([a-z][a-z0-9-]*/[a-z][a-z0-9-]*(?:/[a-z][a-z0-9-]*)*)`")
 
+FM_END_RE = re.compile(r'\n---\s*(?:\n|$)')
+YAML_KEY_RE = re.compile(r"^([a-zA-Z_][\w-]*):\s*(.*)")
+HDR_RE = re.compile(r"^##\s+(.+?)\s*$", re.MULTILINE)
+ANY_HDR_RE = re.compile(r"^#{1,6}\s+", re.MULTILINE)
+
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
@@ -91,19 +96,12 @@ def parse_frontmatter(text: str) -> tuple[dict | None, str | None, str]:
     if not text.startswith("---"):
         return None, "missing leading ---", text
 
-    # Find closing ---
-    lines = text.split("\n")
-    close_idx = None
-    for i in range(1, len(lines)):
-        if lines[i].rstrip() == "---":
-            close_idx = i
-            break
-
-    if close_idx is None:
+    m = FM_END_RE.search(text, 3)
+    if not m:
         return None, "missing closing ---", text
 
-    fm_text = "\n".join(lines[1:close_idx])
-    body = "\n".join(lines[close_idx + 1 :])
+    fm_text = text[3:m.start()].strip()
+    body = text[m.end():]
 
     # Simple YAML parser (no PyYAML dependency) — handles flat key: value
     meta: dict[str, str] = {}
@@ -112,13 +110,13 @@ def parse_frontmatter(text: str) -> tuple[dict | None, str | None, str]:
 
     for line in fm_text.split("\n"):
         # Detect top-level key: value
-        m = re.match(r"^([a-zA-Z_][\w-]*):\s*(.*)", line)
-        if m and not line.startswith(("  ", "\t")):
+        m_key = YAML_KEY_RE.match(line)
+        if m_key and not line.startswith(("  ", "\t")):
             # Save previous key
             if current_key is not None:
                 meta[current_key] = "\n".join(current_value_lines).strip()
-            current_key = m.group(1)
-            val = m.group(2).strip()
+            current_key = m_key.group(1)
+            val = m_key.group(2).strip()
             # Strip surrounding quotes
             if len(val) >= 2 and val[0] in ('"', "'") and val[-1] == val[0]:
                 val = val[1:-1]
@@ -141,7 +139,7 @@ def count_lines(text: str) -> int:
 def find_sections(body: str) -> list[str]:
     """Extract all ## section headers from body."""
     sections = []
-    for m in re.finditer(r"^##\s+(.+?)\s*$", body, re.MULTILINE):
+    for m in HDR_RE.finditer(body):
         sections.append(m.group(1).strip())
     return sections
 
@@ -149,17 +147,14 @@ def find_sections(body: str) -> list[str]:
 def find_empty_sections(body: str) -> list[str]:
     """Find section headers immediately followed by another header (empty section)."""
     empty = []
-    lines = body.split("\n")
-    for i, line in enumerate(lines):
-        hdr = re.match(r"^##\s+(.+?)\s*$", line)
-        if not hdr:
-            continue
-        # Look at next non-empty line
-        for j in range(i + 1, len(lines)):
-            if lines[j].strip():
-                if re.match(r"^#{1,6}\s+", lines[j]):
-                    empty.append(hdr.group(1).strip())
-                break
+    matches = list(HDR_RE.finditer(body))
+    for i, match in enumerate(matches):
+        hdr_title = match.group(1).strip()
+        start_idx = match.end()
+        end_idx = matches[i+1].start() if i + 1 < len(matches) else len(body)
+        content_between = body[start_idx:end_idx].strip()
+        if not content_between or ANY_HDR_RE.match(content_between):
+            empty.append(hdr_title)
     return empty
 
 
