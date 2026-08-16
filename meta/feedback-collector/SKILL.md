@@ -1,6 +1,8 @@
 ---
 name: feedback-collector
-description: Collect, analyze, and route feedback from users and systems. Turn feedback into actionable improvement signals. Use when working with feedback collector.
+description: Use when collect, analyze, and route feedback from users and systems.
+  Turn feedback into actionable improvement signals. Use when working with feedback
+  collector.
 domain: meta
 author: oyi77
 license: Apache-2.0
@@ -16,7 +18,9 @@ persona:
   expertise: Feedback systems, NLP, sentiment analysis
   philosophy: Every interaction is an opportunity to learn
 version: 1.0.0
+category: meta
 ---
+
 # Feedback Collector
 
 ## When to Use

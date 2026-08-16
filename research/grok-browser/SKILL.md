@@ -1,6 +1,7 @@
 ---
 name: grok-browser
-description: Use Grok's browser capabilities to search the web, analyze pages, and synthesize real-time information. Use when working with grok browser.
+description: Use when use Grok's browser capabilities to search the web, analyze pages,
+  and synthesize real-time information. Use when working with grok browser.
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - investigation
 - research
 version: 1.0.0
+category: research
 ---
+
 # Grok Browser
 
 ## When to Use

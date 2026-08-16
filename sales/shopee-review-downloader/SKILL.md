@@ -1,7 +1,8 @@
 ---
 name: shopee-review-downloader
-description: Download and analyze Shopee product reviews in bulk for competitive research, sentiment analysis, and market
-  intelligence. Use when working with shopee review downloader.
+description: Use when download and analyze Shopee product reviews in bulk for competitive
+  research, sentiment analysis, and market intelligence. Use when working with shopee
+  review downloader.
 domain: sales
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - sales
 - shopee
 version: 1.0.0
+category: sales
 ---
+
 # Shopee Review Downloader
 
 ## When to Use

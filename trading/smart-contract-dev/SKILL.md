@@ -1,6 +1,7 @@
 ---
 name: smart-contract-dev
-description: 'Skill: smart-contract-dev. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Use when skill: smart-contract-dev. See SKILL.md body for details. Use
+  when this domain is relevant.'
 domain: trading
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - smart
 - trading
 version: 1.0.0
+category: trading
 ---
+
 
 ## Overview
 

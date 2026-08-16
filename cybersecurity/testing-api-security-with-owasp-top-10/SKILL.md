@@ -1,6 +1,7 @@
 ---
 name: testing-api-security-with-owasp-top-10
-description: Use when systematically assessing REST and GraphQL API endpoints against the OWASP API Security Top 10 risks using automated and manual testing techniques.
+description: Use when systematically assessing REST and GraphQL API endpoints against
+  the OWASP API Security Top 10 risks using automated and manual testing techniques.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -19,7 +20,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Testing Api Security With Owasp Top 10
 
 ## Overview

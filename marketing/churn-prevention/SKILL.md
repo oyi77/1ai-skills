@@ -1,7 +1,8 @@
 ---
 name: churn-prevention
-description: Retention messaging, cancellation flows, win-back campaigns, and customer health scoring. Use when reducing churn
-  rates, designing retention campaigns, or implementing cancellation flows.
+description: Use when retention messaging, cancellation flows, win-back campaigns,
+  and customer health scoring. Use when reducing churn rates, designing retention
+  campaigns, or implementing cancellation flows.
 domain: marketing
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,10 @@ tags:
 - prevention
 - seo
 version: 1.0.0
+category: marketing
 ---
+
+
 # Churn Prevention
 
 ## When to Use
@@ -126,3 +130,10 @@ Key capabilities include customer health scoring models, automated alert systems
 | Customer Health Score Product | Build in 4-6 weeks | Sell a lightweight SaaS dashboard that ingests product usage data and outputs segment-level churn risk scores. $49-199/month per workspace. |
 | Win-Back Campaign Consulting | Project (2-4 weeks) | Design and execute multi-channel win-back sequences for churned high-value segments. $5K-15K per campaign. |
 | Retention Playbook (Digital Product) | Write once | Sell a battle-tested retention playbook with templates, scripts, and decision trees for early-stage SaaS founders. $29-97 per copy. |
+## Verification Checklist
+
+- [ ] Customer segmentation covers >95% of user base
+- [ ] Churn risk scores correlate with actual churn (AUC > 0.75)
+- [ ] Retention campaigns have A/B test framework
+- [ ] Win-back flow triggers within 24h of cancellation
+- [ ] Revenue saved measurable and reported monthly

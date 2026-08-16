@@ -1,6 +1,8 @@
 ---
 name: clients
-description: Model Context Protocol client hub — connect AI agents to any MCP server for tool discovery, invocation, and ecosystem management. Use when working with MCP clients, discovering MCP servers, or building MCP-based toolchains.
+description: Use when model Context Protocol client hub — connect AI agents to any
+  MCP server for tool discovery, invocation, and ecosystem management. Use when working
+  with MCP clients, discovering MCP servers, or building MCP-based toolchains.
 domain: mcp
 author: oyi77
 license: Apache-2.0
@@ -31,7 +33,9 @@ persona:
   - Fail fast with clear error codes
   - One server, one responsibility
 version: 1.0.0
+category: mcp
 ---
+
 
 # MCP Clients Hub — Model Context Protocol Client Ecosystem
 

@@ -1,6 +1,7 @@
 ---
 name: dynamodb-patterns
-description: Amazon DynamoDB patterns — single table design, GSI/LSI, DynamoDB Streams, PartiQL, performance optimization. Use when working with dynamodb patterns.
+description: Use when amazon DynamoDB patterns — single table design, GSI/LSI, DynamoDB
+  Streams, PartiQL, performance optimization. Use when working with dynamodb patterns.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

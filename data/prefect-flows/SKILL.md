@@ -1,6 +1,7 @@
 ---
 name: prefect-flows
-description: Prefect workflow orchestration — flows, tasks, deployments, work pools, schedules, retries. Use when working with prefect flows.
+description: Use when prefect workflow orchestration — flows, tasks, deployments,
+  work pools, schedules, retries. Use when working with prefect flows.
 domain: data
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - visualization
 - workflow
 version: 1.0.0
+category: data
 ---
+
 
 
 ## Overview

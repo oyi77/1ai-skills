@@ -1,6 +1,11 @@
 ---
 name: building-incident-response-playbook
-description: 'Use when designs and documents structured incident response playbooks that define step-by-step procedures for specific incident types aligned with NIST SP 800-61r3 and SANS PICERL frameworks. Covers playbook structure, decision trees, escalation criteria, RACI matrices, and integration with SOAR platforms. Activates for requests involving IR playbook creation, incident response procedure documentation, response runbook development, or SOAR playbook design.'
+description: Use when designs and documents structured incident response playbooks
+  that define step-by-step procedures for specific incident types aligned with NIST
+  SP 800-61r3 and SANS PICERL frameworks. Covers playbook structure, decision trees,
+  escalation criteria, RACI matrices, and integration with SOAR platforms. Activates
+  for requests involving IR playbook creation, incident response procedure documentation,
+  response runbook development, or SOAR playbook design.
 domain: cybersecurity
 tags:
 - IR-playbook
@@ -21,7 +26,9 @@ nist_csf:
 - RS.MA-02
 - RS.AN-03
 - RC.RP-01
+category: cybersecurity
 ---
+
 # Building Incident Response Playbook
 
 ## Overview

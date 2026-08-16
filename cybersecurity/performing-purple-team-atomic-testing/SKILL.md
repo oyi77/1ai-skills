@@ -1,6 +1,10 @@
 ---
 name: performing-purple-team-atomic-testing
-description: Use when executing Atomic Red Team tests mapped to MITRE ATT&CK techniques, performing coverage gap analysis across the ATT&CK matrix, and running detection validation loops to measure blue team visibility. Covers Invoke-AtomicRedTeam PowerShell execution, ATT&CK Navigator layer generation for heatmaps, Sigma rule correlation, and continuous atomic testing pipelines.
+description: Use when executing Atomic Red Team tests mapped to MITRE ATT&CK techniques,
+  performing coverage gap analysis across the ATT&CK matrix, and running detection
+  validation loops to measure blue team visibility. Covers Invoke-AtomicRedTeam PowerShell
+  execution, ATT&CK Navigator layer generation for heatmaps, Sigma rule correlation,
+  and continuous atomic testing pipelines.
 domain: cybersecurity
 tags:
 - purple-team
@@ -30,7 +34,9 @@ nist_csf:
 - ID.RA-01
 - DE.AE-07
 - GV.OV-02
+category: cybersecurity
 ---
+
 # Performing Purple Team Atomic Testing
 
 ## Overview

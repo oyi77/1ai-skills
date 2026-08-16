@@ -1,7 +1,9 @@
 ---
 name: performing-ssl-tls-inspection-configuration
-description: Configure SSL/TLS inspection on network security devices to decrypt, inspect, and re-encrypt HTTPS traffic for
-  threat detection while managing certificates, exemptions, and privacy compliance. Use when configureing ssl/tls inspection on network security devices to decrypt, inspect,.
+description: Use when configure SSL/TLS inspection on network security devices to
+  decrypt, inspect, and re-encrypt HTTPS traffic for threat detection while managing
+  certificates, exemptions, and privacy compliance. Use when configureing ssl/tls
+  inspection on network security devices to decrypt, inspect,.
 domain: cybersecurity
 subdomain: network-security
 tags:
@@ -21,7 +23,9 @@ nist_csf:
 - DE.CM-01
 - ID.AM-03
 - PR.DS-02
+category: cybersecurity
 ---
+
 
 # Performing SSL/TLS Inspection Configuration
 

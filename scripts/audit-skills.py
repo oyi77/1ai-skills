@@ -60,8 +60,8 @@ WEIGHTS = {
 MAX_SCORE = sum(WEIGHTS.values())  # 100
 
 # ── Required/recommended sections ────────────────────────────────────────
-REQUIRED_SECTIONS = {"## When to Use", "## Anti-Rationalization Table"}
-RECOMMENDED_SECTIONS = {"## Overview", "## Process", "## Verification Checklist"}
+REQUIRED_SECTIONS = {"When to Use", "Anti-Rationalization Table"}
+RECOMMENDED_SECTIONS = {"Overview", "Process", "Verification Checklist"}
 
 TRIGGER_PHRASES = {
     "use when", "triggers on", "covers", "activates for",
@@ -72,9 +72,21 @@ SECURITY_PATTERNS = re.compile(
     r"(?:sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{36}|"
     r"rm\s+-rf\s+/\s*$|DROP\s+TABLE|"
     r"(?:subprocess|os\.system)\s*\(|"
-    r"(?:exec|eval)\s*\()",
+    r"(?<![A-Za-z])(?:exec|eval)\s*\()",
     re.IGNORECASE,
 )
+
+DOC_CONTEXT_EXCLUSIONS = [
+    r"check\s+for\s+",
+    r"look\s+for\s+",
+    r"scan\s+for\s+",
+    r"detect\s+",
+    r"find\s+",
+    r"insecure\s+",
+    r"malware\s+scan",
+    r"system\(\),\s*",
+    r"obfuscated\s+code",
+]
 
 SKILL_LINK_RE = re.compile(r"skill://([\w-]+)")
 
@@ -98,6 +110,15 @@ def split_frontmatter(text: str) -> tuple[str | None, str]:
     fm = text[4:end]
     body = text[end + 4:]
     return fm, body
+
+
+def strip_code_blocks(text: str) -> str:
+    """Remove fenced code blocks from text to avoid false positives in security checks."""
+    # Remove ```...``` blocks
+    text = re.sub(r"```.*?```", "", text, flags=re.DOTALL)
+    # Remove `...` inline code
+    text = re.sub(r"`[^`]+`", "", text)
+    return text
 
 
 def parse_meta(text: str) -> dict | None:
@@ -357,12 +378,25 @@ def audit_skill(path: Path, skill_names: set[str], all_skills: list[dict]) -> di
         score += WEIGHTS["cross_refs_valid"]
 
     # ── Security red flags ──
-    sec_matches = SECURITY_PATTERNS.findall(body)
-    if sec_matches:
+    body_no_code = strip_code_blocks(body)
+    sec_matches = SECURITY_PATTERNS.findall(body_no_code)
+    # Filter out documentation context (educational mentions of what to check for)
+    filtered_matches = []
+    for match in sec_matches:
+        # Find the context around the match
+        idx = body_no_code.lower().find(match.lower())
+        if idx >= 0:
+            context = body_no_code[max(0, idx-40):idx+len(match)+20].lower()
+            # Skip if in documentation context
+            if any(re.search(excl, context) for excl in DOC_CONTEXT_EXCLUSIONS):
+                continue
+        filtered_matches.append(match)
+    
+    if filtered_matches:
         issues.append({
             "severity": "CRITICAL",
             "rule": "security_redflag",
-            "detail": f"Security-sensitive patterns: {sec_matches[:3]}",
+            "detail": f"Security-sensitive patterns: {filtered_matches[:3]}",
         })
     else:
         score += WEIGHTS["no_security_redflags"]

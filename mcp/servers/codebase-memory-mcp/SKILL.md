@@ -1,7 +1,8 @@
 ---
 name: codebase-memory-mcp
-description: Index codebases into a persistent knowledge graph for structural code queries, call-chain tracing, and semantic
-  search. Use when navigating unfamiliar repos, understanding architecture, or exploring large codebases.
+description: Use when index codebases into a persistent knowledge graph for structural
+  code queries, call-chain tracing, and semantic search. Use when navigating unfamiliar
+  repos, understanding architecture, or exploring large codebases.
 domain: mcp
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - model-context-protocol
 - tool-integration
 version: 1.0.0
+category: mcp
 ---
+
 # Codebase Memory Mcp
 
 ## When to Use

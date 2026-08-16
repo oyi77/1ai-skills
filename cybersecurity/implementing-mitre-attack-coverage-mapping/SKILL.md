@@ -1,7 +1,9 @@
 ---
 name: implementing-mitre-attack-coverage-mapping
-description: Implement MITRE ATT&CK coverage mapping to identify detection gaps, prioritize rule development, and measure
-  SOC detection maturity against adversary techniques. Use when implementing mitre att&ck coverage mapping to identify detection gaps, prioritize.
+description: Use when implement MITRE ATT&CK coverage mapping to identify detection
+  gaps, prioritize rule development, and measure SOC detection maturity against adversary
+  techniques. Use when implementing mitre att&ck coverage mapping to identify detection
+  gaps, prioritize.
 domain: cybersecurity
 subdomain: soc-operations
 tags:
@@ -33,7 +35,9 @@ nist_csf:
 - DE.AE-02
 - RS.MA-01
 - DE.AE-06
+category: cybersecurity
 ---
+
 
 # Implementing MITRE ATT&CK Coverage Mapping
 

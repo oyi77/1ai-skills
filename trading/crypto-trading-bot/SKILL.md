@@ -1,7 +1,7 @@
 ---
 name: crypto-trading-bot
-description: 加密貨幣交易機器人開發 - 幫你整自動交易Bot，支持Pine Script、Python、CCXT API對接。適用於：(1)整TradingView信號Bot (2)CEX/DEX API自動化 (3)套利機器人
-  (4)止盈止損策略. Use when working with crypto trading bot.
+description: Use when 加密貨幣交易機器人開發 - 幫你整自動交易Bot，支持Pine Script、Python、CCXT API對接。適用於：(1)整TradingView信號Bot
+  (2)CEX/DEX API自動化 (3)套利機器人 (4)止盈止損策略. Use when working with crypto trading bot.
 domain: trading
 author: oyi77
 license: Apache-2.0
@@ -14,7 +14,9 @@ tags:
 - markets
 - trading
 version: 1.0.0
+category: trading
 ---
+
 # Crypto Trading Bot
 
 ## When to Use

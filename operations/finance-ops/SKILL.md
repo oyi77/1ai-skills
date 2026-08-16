@@ -1,7 +1,8 @@
 ---
 name: finance-ops
-description: Run AI-powered CFO analysis for cost detection, financial modeling, scenario planning, and operational efficiency
-  optimization. Use when working with finance ops.
+description: Use when run AI-powered CFO analysis for cost detection, financial modeling,
+  scenario planning, and operational efficiency optimization. Use when working with
+  finance ops.
 domain: operations
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - operations
 - ops
 version: 1.0.0
+category: operations
 ---
+
 # Finance Ops
 
 ## When to Use

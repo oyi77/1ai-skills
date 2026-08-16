@@ -1,7 +1,7 @@
 ---
 name: unit-economics
-description: Calculate CAC, LTV, margins, payback period, and cohort analysis. Use when evaluating business model sustainability
-  or optimizing growth efficiency.
+description: Use when calculate CAC, LTV, margins, payback period, and cohort analysis.
+  Use when evaluating business model sustainability or optimizing growth efficiency.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - soft-skills
 - unit
 version: 1.0.0
+category: mindset
 ---
+
 # Unit Economics
 
 ## Overview

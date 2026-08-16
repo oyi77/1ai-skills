@@ -1,6 +1,7 @@
 ---
 name: executive-presence
-description: Use when command rooms, communicate with gravitas, and project confidence. Covers body language, vocal tonality, storytelling, and handling pressure.
+description: Use when command rooms, communicate with gravitas, and project confidence.
+  Covers body language, vocal tonality, storytelling, and handling pressure.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - presence
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Executive Presence
 
 ## Overview

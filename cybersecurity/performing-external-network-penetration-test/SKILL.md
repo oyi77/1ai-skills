@@ -1,7 +1,9 @@
 ---
 name: performing-external-network-penetration-test
-description: Conduct a comprehensive external network penetration test to identify vulnerabilities in internet-facing infrastructure
-  using PTES methodology, reconnaissance, scanning, exploitation, and reporting. Use when conducting a comprehensive external network penetration test to identify vulnerabilities.
+description: Use when conduct a comprehensive external network penetration test to
+  identify vulnerabilities in internet-facing infrastructure using PTES methodology,
+  reconnaissance, scanning, exploitation, and reporting. Use when conducting a comprehensive
+  external network penetration test to identify vulnerabilities.
 domain: cybersecurity
 subdomain: penetration-testing
 tags:
@@ -22,7 +24,9 @@ nist_csf:
 - ID.RA-06
 - GV.OV-02
 - DE.AE-07
+category: cybersecurity
 ---
+
 
 # Performing External Network Penetration Test
 

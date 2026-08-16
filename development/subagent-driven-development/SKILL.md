@@ -1,6 +1,7 @@
 ---
 name: subagent-driven-development
-description: Use when executing implementation plans with independent tasks in the current session
+description: Use when executing implementation plans with independent tasks in the
+  current session
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - subagent
 - testing
 version: 1.0.0
+category: development
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Subagent Driven Development"

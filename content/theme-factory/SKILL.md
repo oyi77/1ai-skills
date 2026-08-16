@@ -15,7 +15,9 @@ tags:
 - design-tokens
 - branding
 version: 1.0.0
+category: content
 ---
+
 
 # Theme Factory
 

@@ -1,19 +1,23 @@
 ---
 name: focus-time-management
-description: Deep work scheduling, time blocking, Pomodoro technique, distraction management, and energy-aware productivity. Use when optimizing focus time, building work schedules, or managing distractions.
+description: Use when deep work scheduling, time blocking, Pomodoro technique, distraction
+  management, and energy-aware productivity. Use when optimizing focus time, building
+  work schedules, or managing distractions.
 domain: productivity
 author: oyi77
 license: Apache-2.0
 subdomain: productivity
-tags: 
-  - focus
-  - deep-work
-  - time-blocking
-  - pomodoro
-  - productivity
-  - schedule
+tags:
+- focus
+- deep-work
+- time-blocking
+- pomodoro
+- productivity
+- schedule
 version: 1.0.0
+category: productivity
 ---
+
 
 ## When NOT to Use
 

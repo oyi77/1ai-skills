@@ -1,7 +1,9 @@
 ---
 name: implementing-attack-path-analysis-with-xm-cyber
-description: Deploy XM Cyber's continuous exposure management platform to map attack paths, identify choke points, and prioritize
-  the 2% of exposures that threaten critical assets. Use when deploying xm cyber's continuous exposure management platform to map attack.
+description: Use when deploy XM Cyber's continuous exposure management platform to
+  map attack paths, identify choke points, and prioritize the 2% of exposures that
+  threaten critical assets. Use when deploying xm cyber's continuous exposure management
+  platform to map attack.
 domain: cybersecurity
 subdomain: vulnerability-management
 tags:
@@ -20,7 +22,9 @@ nist_csf:
 - ID.RA-02
 - ID.IM-02
 - ID.RA-06
+category: cybersecurity
 ---
+
 # Implementing Attack Path Analysis with XM Cyber
 
 ## Overview

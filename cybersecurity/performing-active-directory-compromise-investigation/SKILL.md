@@ -1,7 +1,9 @@
 ---
 name: performing-active-directory-compromise-investigation
-description: Investigate Active Directory compromise by analyzing authentication logs, replication metadata, Group Policy
-  changes, and Kerberos ticket anomalies to identify attacker persistence and lateral movement paths. Use when working with performing active directory compromise investigation.
+description: Use when investigate Active Directory compromise by analyzing authentication
+  logs, replication metadata, Group Policy changes, and Kerberos ticket anomalies
+  to identify attacker persistence and lateral movement paths. Use when working with
+  performing active directory compromise investigation.
 domain: cybersecurity
 subdomain: incident-response
 tags:
@@ -33,7 +35,9 @@ nist_csf:
 - RS.MA-02
 - RS.AN-03
 - RC.RP-01
+category: cybersecurity
 ---
+
 
 # Performing Active Directory Compromise Investigation
 

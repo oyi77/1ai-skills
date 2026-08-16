@@ -1,21 +1,26 @@
 ---
 name: video-editor
-description: Professional video post-production using FFmpeg — color grading, audio design, kinetic typography, transitions, motion effects, captions, brand overlays, and platform-optimized export for promotional and marketing videos. Use when editing videos, adding captions, color grading, or creating promo content.
+description: Use when professional video post-production using FFmpeg — color grading,
+  audio design, kinetic typography, transitions, motion effects, captions, brand overlays,
+  and platform-optimized export for promotional and marketing videos. Use when editing
+  videos, adding captions, color grading, or creating promo content.
 domain: content
 author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:
-  - content-creation
-  - video-production
-  - ffmpeg
-  - post-production
-  - color-grading
-  - promotional-video
-  - captions
-  - audio-design
+- content-creation
+- video-production
+- ffmpeg
+- post-production
+- color-grading
+- promotional-video
+- captions
+- audio-design
 version: 1.0.0
+category: content
 ---
+
 # Video Editor — Professional Post-Production
 
 Companion skills: [remotion](../remotion/SKILL.md) · [video-gen](../video-gen/SKILL.md) · [faceless-youtube](../faceless-youtube/SKILL.md)

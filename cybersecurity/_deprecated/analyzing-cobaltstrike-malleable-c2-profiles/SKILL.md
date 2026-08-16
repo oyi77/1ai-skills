@@ -21,7 +21,9 @@ nist_csf:
 - RS.AN-03
 - ID.RA-01
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Analyzing CobaltStrike Malleable C2 Profiles
 
 ## Overview

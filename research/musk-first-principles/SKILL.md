@@ -1,6 +1,7 @@
 ---
 name: musk-first-principles
-description: Break problems down to fundamental truths and reason up using Elon Musk's first-principles methodology. Use when working with musk first principles.
+description: Use when break problems down to fundamental truths and reason up using
+  Elon Musk's first-principles methodology. Use when working with musk first principles.
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,10 @@ tags:
 - principles
 - research
 version: 1.0.0
+category: research
 ---
+
+
 # Musk First Principles
 
 ## When to Use
@@ -141,3 +145,10 @@ First-principles thinking can be monetized through several practical business mo
 5. **SaaS tool for structured reasoning** — Build a guided decision-analysis tool that walks users through decompose → reconstruct → validate workflow. Structured assumption mapping with physics-ceiling calculators. Freemium with team/enterprise tiers at $29-199/month.
 
 6. **Bounty-style innovation challenges** — Host first-principles "deconstruction challenges" for specific industry problems. Sponsor companies pay $10,000+ for access to solutions. Winners share prize pool. Combines consulting revenue with community engagement.
+## Verification Checklist
+
+- [ ] Problem decomposed to fundamental physics/economics
+- [ ] Assumptions explicitly stated and challenged
+- [ ] Re-composed solution from ground up
+- [ ] Cost/feasibility validated against constraints
+- [ ] Comparison to conventional approach documented

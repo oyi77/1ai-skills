@@ -1,7 +1,8 @@
 ---
 name: conflict-resolution
-description: Resolve interpersonal and team conflicts using mediation techniques, non-violent communication, and de-escalation.
-  Use when tensions arise between individuals or groups.
+description: Use when resolve interpersonal and team conflicts using mediation techniques,
+  non-violent communication, and de-escalation. Use when tensions arise between individuals
+  or groups.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - resolution
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Conflict Resolution
 
 ## Overview

@@ -1,6 +1,7 @@
 ---
 name: zhive
-description: 'Skill: zhive. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Use when skill: zhive. See SKILL.md body for details. Use when this
+  domain is relevant.'
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -29,7 +30,9 @@ persona:
   - Share globally
   - Filter personally
 version: 1.0.0
+category: research
 ---
+
 # Zhive
 
 ## When to Use

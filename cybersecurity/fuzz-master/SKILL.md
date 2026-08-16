@@ -1,7 +1,8 @@
 ---
 name: fuzz-master
-description: Advanced fuzzing techniques for finding zero-days and hidden vulnerabilities. Use when automated scanners miss
-  bugs, testing custom protocols, finding memory corruption, or hunting for novel attack vectors.
+description: Use when advanced fuzzing techniques for finding zero-days and hidden
+  vulnerabilities. Use when automated scanners miss bugs, testing custom protocols,
+  finding memory corruption, or hunting for novel attack vectors.
 domain: cybersecurity
 author: oyi77
 license: Apache-2.0
@@ -15,7 +16,9 @@ tags:
 - threat-defense
 - money
 version: 1.0.0
+category: cybersecurity
 ---
+
 
 # Fuzz Master
 

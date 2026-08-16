@@ -1,7 +1,7 @@
 ---
 name: negotiation-mastery
-description: Master negotiation through BATNA analysis, anchoring, and tactical empathy. Use when negotiating deals, resolving
-  conflicts, or structuring agreements.
+description: Use when master negotiation through BATNA analysis, anchoring, and tactical
+  empathy. Use when negotiating deals, resolving conflicts, or structuring agreements.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - personal-development
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Negotiation Mastery
 
 ## Overview

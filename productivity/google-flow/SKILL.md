@@ -1,8 +1,8 @@
 ---
 name: google-flow
-description: Use when navigating and operating Google Flow (labs.google/fx/tools/flow) - an AI video generation tool. Helps
-  with project management, scenebuilder interface, prompt entry, preset selection, model configuration, and video generation
-  workflow.
+description: Use when navigating and operating Google Flow (labs.google/fx/tools/flow)
+  - an AI video generation tool. Helps with project management, scenebuilder interface,
+  prompt entry, preset selection, model configuration, and video generation workflow.
 domain: productivity
 author: oyi77
 license: Apache-2.0
@@ -16,7 +16,9 @@ tags:
 - video
 - workflow
 version: 1.0.0
+category: productivity
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Google Flow"

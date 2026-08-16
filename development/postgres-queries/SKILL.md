@@ -1,6 +1,7 @@
 ---
 name: postgres-queries
-description: PostgreSQL optimization — query tuning, schema design, indexing strategies, and performance analysis. Use when working with postgres queries.
+description: Use when postgreSQL optimization — query tuning, schema design, indexing
+  strategies, and performance analysis. Use when working with postgres queries.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

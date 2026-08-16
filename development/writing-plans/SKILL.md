@@ -1,6 +1,7 @@
 ---
 name: writing-plans
-description: Use when you have a spec or requirements for a multi-step task, before touching code
+description: Use when you have a spec or requirements for a multi-step task, before
+  touching code
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - testing
 - writing
 version: 1.0.0
+category: development
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Writing Plans"

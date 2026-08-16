@@ -1,6 +1,8 @@
 ---
 name: decepticon-red-team
-description: Autonomous red team agent executing full attack chains with domain specialists. Use when running autonomous red team operations, simulating end-to-end attack chains, or planning engagements.
+description: Use when autonomous red team agent executing full attack chains with
+  domain specialists. Use when running autonomous red team operations, simulating
+  end-to-end attack chains, or planning engagements.
 domain: cybersecurity
 author: oyi77
 license: Apache-2.0
@@ -12,7 +14,9 @@ tags:
 - mitre-attack
 - engagement-planning
 version: 1.0.0
+category: cybersecurity
 ---
+
 
 # Decepticon Red Team
 

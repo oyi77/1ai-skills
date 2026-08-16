@@ -1,6 +1,7 @@
 ---
 name: incremental-implementation
-description: Delivers changes incrementally. Use when implementing any feature or change that touches more than one file.
+description: Use when delivers changes incrementally. Use when implementing any feature
+  or change that touches more than one file.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 # Incremental Implementation Skill

@@ -1,7 +1,10 @@
 ---
 name: analyzing-browser-forensics-with-hindsight
-description: Analyze Chromium-based browser artifacts using Hindsight to extract browsing history, downloads, cookies, cached
-  content, autofill data, saved passwords, and browser extensions from Chrome, Edge, Brave, and Opera for forensic investigation. Use when analyzeing chromium-based browser artifacts using hindsight to extract browsing history,.
+description: Use when analyze Chromium-based browser artifacts using Hindsight to
+  extract browsing history, downloads, cookies, cached content, autofill data, saved
+  passwords, and browser extensions from Chrome, Edge, Brave, and Opera for forensic
+  investigation. Use when analyzeing chromium-based browser artifacts using hindsight
+  to extract browsing history,.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:
@@ -23,7 +26,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 
 # Analyzing Browser Forensics with Hindsight
 

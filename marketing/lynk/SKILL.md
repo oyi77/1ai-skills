@@ -1,6 +1,7 @@
 ---
 name: lynk
-description: LYNK - Complete Affiliate Link Management with Browser Automation. Use when relevant to this domain.
+description: Use when lYNK - Complete Affiliate Link Management with Browser Automation.
+  Use when relevant to this domain.
 domain: marketing
 author: oyi77
 license: Apache-2.0
@@ -11,7 +12,9 @@ tags:
 - marketing
 - seo
 version: 1.0.0
+category: marketing
 ---
+
 
 
 # LYNK - Complete Affiliate Link Management with Browser Automation

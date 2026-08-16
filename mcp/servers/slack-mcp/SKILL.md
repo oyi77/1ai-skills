@@ -1,6 +1,7 @@
 ---
 name: slack-mcp
-description: Use when MCP server for Slack integration. Send messages, manage channels, and automate Slack workflows via standardized protocol.
+description: Use when MCP server for Slack integration. Send messages, manage channels,
+  and automate Slack workflows via standardized protocol.
 domain: mcp
 author: oyi77
 license: Apache-2.0
@@ -14,11 +15,46 @@ tags:
 - chat-ops
 - bot
 version: 1.0.0
+category: mcp
 ---
+
+
 
 # Slack Mcp
 
 ## When to Use
+
+**Trigger phrases:**
+- "slack mcp"
+- "Help me with slack mcp"
+- "post to slack"
+- "send slack message"
+- "slack bot"
+- "slack automation"
+
+**Use cases:**
+- When an AI agent needs to send messages, notifications, or alerts to Slack channels
+- When building an MCP server that exposes Slack API tools (post message, list channels, create channel, add reaction, search history)
+- When wiring Slack as a communication channel in a multi-platform agent workflow
+- When creating internal dev-ops bots that notify teams of deployments, builds, errors, or incidents
+- When automating channel management, user invites, or message moderation via AI agents
+
+**When NOT to use:**
+- For tasks outside this skill's scope
+- When a simpler HTTP client (curl, requests) would suffice for a single scripted Slack call
+- When the tool is used by a single agent in a single context without needing MCP interoperability
+- When the Slack integration is read-only and does not benefit from MCP's tool-discovery and streaming
+
+
+
+## Anti-Rationalization Table
+
+| Excuse | Reality | Rule |
+|--------|---------|------|
+| "Webhooks are fine" | Webhooks lack discovery, type safety, and protocol evolution | MCP provides schema, capabilities, and versioning |
+| "I'll write custom Slack integration" | Custom integrations rot; MCP servers are maintained | Use the standard; contribute upstream |
+| "MCP is overkill" | MCP pays off at 2+ tools; Slack + anything = 2+ | Start with MCP; don't retrofit later |
+
 
 **Trigger phrases:**
 - "slack mcp"

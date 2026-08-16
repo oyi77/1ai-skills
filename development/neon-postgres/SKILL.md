@@ -1,6 +1,7 @@
 ---
 name: neon-postgres
-description: Neon serverless Postgres — branching, autoscaling, connection pooling, edge-compatible Postgres. Use when working with neon postgres.
+description: Use when neon serverless Postgres — branching, autoscaling, connection
+  pooling, edge-compatible Postgres. Use when working with neon postgres.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

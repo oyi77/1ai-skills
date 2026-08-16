@@ -1,6 +1,7 @@
 ---
 name: vault-secrets
-description: HashiCorp Vault — secrets management, dynamic secrets, encryption, auth methods, policies. Use when working with vault secrets.
+description: Use when hashiCorp Vault — secrets management, dynamic secrets, encryption,
+  auth methods, policies. Use when working with vault secrets.
 domain: devops
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - secrets
 - vault
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

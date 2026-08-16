@@ -1,8 +1,9 @@
 ---
 name: performing-supply-chain-attack-simulation
-description: Simulate and detect software supply chain attacks including typosquatting detection via Levenshtein distance,
-  dependency confusion testing against private registries, package hash verification with pip, and known vulnerability scanning
-  with pip-audit. Use when working with performing supply chain attack simulation.
+description: Use when simulate and detect software supply chain attacks including
+  typosquatting detection via Levenshtein distance, dependency confusion testing against
+  private registries, package hash verification with pip, and known vulnerability
+  scanning with pip-audit. Use when working with performing supply chain attack simulation.
 domain: cybersecurity
 subdomain: application-security
 tags:
@@ -21,7 +22,9 @@ nist_csf:
 - PR.PS-04
 - ID.RA-01
 - PR.DS-10
+category: cybersecurity
 ---
+
 
 # Performing Supply Chain Attack Simulation
 

@@ -1,7 +1,8 @@
 ---
 name: performing-file-carving-with-foremost
-description: Recover files from disk images and unallocated space using Foremost's header-footer signature carving to extract
-  evidence regardless of file system state. Use when working with performing file carving with foremost.
+description: Use when recover files from disk images and unallocated space using Foremost's
+  header-footer signature carving to extract evidence regardless of file system state.
+  Use when working with performing file carving with foremost.
 domain: cybersecurity
 tags:
 - forensics
@@ -19,7 +20,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 # Performing File Carving With Foremost
 
 ## Overview

@@ -1,7 +1,8 @@
 ---
 name: competitive-strategy
-description: Analyze competitors using Porter's Five Forces, positioning maps, and competitive response frameworks. Use when
-  assessing market position or strategic threats.
+description: Use when analyze competitors using Porter's Five Forces, positioning
+  maps, and competitive response frameworks. Use when assessing market position or
+  strategic threats.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - soft-skills
 - strategy
 version: 1.0.0
+category: mindset
 ---
+
 # Competitive Strategy
 
 ## Overview

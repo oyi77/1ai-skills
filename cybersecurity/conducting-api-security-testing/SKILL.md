@@ -1,9 +1,11 @@
 ---
 name: conducting-api-security-testing
-description: Conducts security testing of REST, GraphQL, and gRPC APIs to identify vulnerabilities in authentication, authorization,
-  rate limiting, input validation, and business logic. The tester uses the OWASP API Security Top 10 as the testing framework,
-  combining Burp Suite interception with Postman collections and custom scripts to test endpoint security at every privilege
-  level. Use when working with conducting api security testing.
+description: Use when conducts security testing of REST, GraphQL, and gRPC APIs to
+  identify vulnerabilities in authentication, authorization, rate limiting, input
+  validation, and business logic. The tester uses the OWASP API Security Top 10 as
+  the testing framework, combining Burp Suite interception with Postman collections
+  and custom scripts to test endpoint security at every privilege level. Use when
+  working with conducting api security testing.
 domain: cybersecurity
 tags:
 - API-security
@@ -20,7 +22,9 @@ nist_csf:
 - ID.RA-06
 - GV.OV-02
 - DE.AE-07
+category: cybersecurity
 ---
+
 # Conducting Api Security Testing
 
 ## Overview

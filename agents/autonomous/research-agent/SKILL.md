@@ -13,7 +13,9 @@ tags:
 - research
 - autonomous
 version: 1.0.0
+category: agents
 ---
+
 
 # Research Agent
 

@@ -15,7 +15,9 @@ tags:
 - e2e
 - accessibility
 version: 1.0.0
+category: development
 ---
+
 
 # Browser Testing Devtools
 

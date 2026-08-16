@@ -1,7 +1,8 @@
 ---
 name: performing-mobile-device-forensics-with-cellebrite
-description: Acquire and analyze mobile device data using Cellebrite UFED and open-source tools to extract communications,
-  location data, and application artifacts. Use when working with performing mobile device forensics with cellebrite.
+description: Use when acquire and analyze mobile device data using Cellebrite UFED
+  and open-source tools to extract communications, location data, and application
+  artifacts. Use when working with performing mobile device forensics with cellebrite.
 domain: cybersecurity
 tags:
 - forensics
@@ -19,7 +20,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 # Performing Mobile Device Forensics With Cellebrite
 
 ## Overview

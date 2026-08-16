@@ -1,7 +1,8 @@
 ---
 name: build-in-public
-description: Document and share your startup journey, revenue, and learnings on social media. Build audience, attract customers,
-  and find co-founders through transparent sharing. Use when working with build in public.
+description: Use when document and share your startup journey, revenue, and learnings
+  on social media. Build audience, attract customers, and find co-founders through
+  transparent sharing. Use when working with build in public.
 domain: marketing
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - seo
 - social-media
 version: 1.0.0
+category: marketing
 ---
+
 
 
 persona:

@@ -1,7 +1,7 @@
 ---
 name: hr-onboarding
-description: Design onboarding programs, manage new hire paperwork, and track 30-60-90 day milestones. Use when scaling teams
-  or improving retention.
+description: Use when design onboarding programs, manage new hire paperwork, and track
+  30-60-90 day milestones. Use when scaling teams or improving retention.
 domain: operations
 author: oyi77
 license: Apache-2.0
@@ -12,7 +12,10 @@ tags:
 - onboarding
 - operations
 version: 1.0.0
+category: operations
 ---
+
+
 # Hr Onboarding
 
 ## When to Use
@@ -166,3 +169,11 @@ Onboarding automation can be offered as a service to growing companies that lack
 - **Template marketplace**: Sell reusable onboarding checklists, 30-60-90 day templates, offer letter templates, and SOP libraries ($10-$50 per template, passive income)
 
 Target clients: startups scaling past 10 employees, SMEs without dedicated HR, and remote-first companies needing standardized virtual onboarding.
+## Verification Checklist
+
+- [ ] New hire productive on first project by day 7
+- [ ] All accounts/access provisioned before start date
+- [ ] Buddy assigned and meeting weekly for first 90 days
+- [ ] 30/60/90 day reviews completed on schedule
+- [ ] Feedback collected from hire and team
+- [ ] Onboarding NPS > 8/10

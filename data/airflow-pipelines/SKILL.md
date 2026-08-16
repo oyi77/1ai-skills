@@ -1,6 +1,7 @@
 ---
 name: airflow-pipelines
-description: Apache Airflow workflow orchestration — DAGs, operators, sensors, XComs, pools, scheduling. Use when working with airflow pipelines.
+description: Use when apache Airflow workflow orchestration — DAGs, operators, sensors,
+  XComs, pools, scheduling. Use when working with airflow pipelines.
 domain: data
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - visualization
 - workflow
 version: 1.0.0
+category: data
 ---
+
 
 
 ## Overview

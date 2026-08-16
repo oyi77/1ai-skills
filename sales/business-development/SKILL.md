@@ -14,7 +14,9 @@ tags:
 - sales
 allowed-tools: "|\n  - MCP(hubspot:*)\n    - MCP(exa:*)\n    - MCP(slack:*)\n"
 version: 1.0.0
+category: sales
 ---
+
 # Business Development
 
 ## When to Use

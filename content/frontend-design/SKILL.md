@@ -1,6 +1,8 @@
 ---
 name: frontend-design
-description: Design system patterns — component architecture, Tailwind mastery, visual hierarchy, and responsive layouts. Use when designing system patterns — component architecture, tailwind mastery, visual hierarchy,.
+description: Use when design system patterns — component architecture, Tailwind mastery,
+  visual hierarchy, and responsive layouts. Use when designing system patterns — component
+  architecture, tailwind mastery, visual hierarchy,.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -12,7 +14,9 @@ tags:
 - frontend
 - media
 version: 1.0.0
+category: content
 ---
+
 
 
 

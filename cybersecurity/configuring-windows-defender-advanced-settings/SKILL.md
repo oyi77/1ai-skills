@@ -1,6 +1,11 @@
 ---
 name: configuring-windows-defender-advanced-settings
-description: Configures Microsoft Defender for Endpoint (MDE) advanced protection settings including attack surface reduction rules, controlled folder access, network protection, and exploit protection. Use when hardening Windows endpoints beyond default Defender settings, deploying enterprise-grade endpoint protection, or meeting compliance requirements for advanced malware defense. Activates for requests involving Windows Defender configuration, ASR rules, MDE tuning, or Microsoft endpoint securit.
+description: Use when configures Microsoft Defender for Endpoint (MDE) advanced protection
+  settings including attack surface reduction rules, controlled folder access, network
+  protection, and exploit protection. Use when hardening Windows endpoints beyond
+  default Defender settings, deploying enterprise-grade endpoint protection, or meeting
+  compliance requirements for advanced malware defense. Activates for requests involving
+  Windows Defender configuration, ASR rules, MDE tuning, or Microsoft endpoint securit.
 domain: cybersecurity
 tags:
 - endpoint
@@ -18,7 +23,9 @@ nist_csf:
 - PR.PS-02
 - DE.CM-01
 - PR.IR-01
+category: cybersecurity
 ---
+
 # Configuring Windows Defender Advanced Settings
 
 ## Overview

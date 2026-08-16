@@ -19,7 +19,9 @@ nist_csf:
 - PR.IR-01
 - ID.AM-08
 - DE.CM-01
+category: cybersecurity
 ---
+
 
 # Performing Kubernetes CIS Benchmark with kube-bench
 

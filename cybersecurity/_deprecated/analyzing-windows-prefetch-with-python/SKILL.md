@@ -1,7 +1,9 @@
 ---
 name: analyzing-windows-prefetch-with-python
-description: Parse Windows Prefetch files using the windowsprefetch Python library to reconstruct application execution history,
-  detect renamed or masquerading binaries, and identify suspicious program execution patterns. Use when working with analyzing windows prefetch with python.
+description: Use when parse Windows Prefetch files using the windowsprefetch Python
+  library to reconstruct application execution history, detect renamed or masquerading
+  binaries, and identify suspicious program execution patterns. Use when working with
+  analyzing windows prefetch with python.
 domain: cybersecurity
 subdomain: digital-forensics
 tags:
@@ -23,7 +25,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 # Analyzing Windows Prefetch with Python
 
 ## Overview

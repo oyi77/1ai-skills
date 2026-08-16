@@ -1,6 +1,8 @@
 ---
 name: crypto-breaker
-description: "Cryptographic attack techniques for breaking implementations, side-channel attacks, and exploiting crypto weaknesses. Use when assessing crypto implementations, finding side-channel leaks, or breaking custom cryptography."
+description: Use when cryptographic attack techniques for breaking implementations,
+  side-channel attacks, and exploiting crypto weaknesses. Use when assessing crypto
+  implementations, finding side-channel leaks, or breaking custom cryptography.
 domain: cybersecurity
 author: oyi77
 license: Apache-2.0
@@ -13,7 +15,9 @@ tags:
 - threat-defense
 - money
 version: 1.0.0
+category: cybersecurity
 ---
+
 
 # Crypto Breaker
 

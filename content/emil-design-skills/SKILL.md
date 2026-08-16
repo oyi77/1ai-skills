@@ -1,8 +1,9 @@
 ---
 name: emil-design-skills
-description: Collection of 8 design engineering skills by Emil Kowalski (Vercel, Linear) — animation standards, UI craft, Apple
-  design principles, library selection, and prototyping. Based on years of production experience. Use when the user asks about
-  UI polish, animation decisions, or wants to audit/improve interface motion.
+description: Use when collection of 8 design engineering skills by Emil Kowalski (Vercel,
+  Linear) — animation standards, UI craft, Apple design principles, library selection,
+  and prototyping. Based on years of production experience. Use when the user asks
+  about UI polish, animation decisions, or wants to audit/improve interface motion.
 domain: content
 author: mahipal
 license: MIT
@@ -27,7 +28,11 @@ depends_on:
 - apple-design
 - pick-ui-library
 - prototype
+category: content
 ---
+
+
+
 persona:
   name: "Emil Kowalski"
   title: "The Design Engineer — UI Craft Authority"
@@ -55,6 +60,41 @@ This is **domain expertise as code**. AI doesn't replace taste — it amplifies 
 ---
 
 ## When to Use
+
+**Trigger phrases:**
+- "improve the animations in this project"
+- "audit the UI motion"
+- "what library should I use for X?"
+- "design this UI with Apple-level polish"
+- "review these animation changes"
+- "help me pick between animation approaches"
+- "prototype this UI component in multiple ways"
+
+**Use when:**
+- Building UI that needs to feel polished, not just functional
+- Reviewing animation/motion PRs
+- Choosing frontend libraries for a new project
+- Designing gesture-driven or spring-based interactions
+- Looking for where motion adds value (and where it doesn't)
+- You want your agent to build interfaces that stand out from AI slop
+
+**Don't use for:**
+- General code review (non-motion changes)
+- Brand/graphic design (logos, illustrations)
+- Backend or infrastructure decisions
+
+---
+
+
+
+## Anti-Rationalization Table
+
+| Excuse | Reality | Rule |
+|--------|---------|------|
+| "Design systems slow me down" | Inconsistent UI slows you down more — every component decision | Build the system once, use it forever |
+| "I'll just copy the design" | Copied designs drift and accumulate inconsistencies | Reference the system; don't fork it |
+| "Animations are polish" | Motion communicates state, hierarchy, causality | Animation is information architecture, not decoration |
+
 
 **Trigger phrases:**
 - "improve the animations in this project"
@@ -285,3 +325,13 @@ Each skill in this collection follows a strict pattern:
 - [ ] Output follows the skill's operating posture (read-only where applicable)
 - [ ] Animation recommendations include exact CSS values (easing, duration)
 - [ ] Library recommendations are from the curated list, not generic
+## Overview
+
+Collection of 8 design engineering skills by Emil Kowalski (Vercel, Linear) — animation standards, UI craft, Apple design principles, library selection, and prototyping. Based on years of production experience at top-tier companies.
+
+## Process
+
+1. **Select relevant skill** — Choose from animation, UI craft, Apple principles, library selection, or prototyping
+2. **Apply design rules** — Follow the specific guidelines for the chosen domain
+3. **Implement in code** — Translate design decisions into production-ready components
+4. **Review against standards** — Verify compliance with design system principles

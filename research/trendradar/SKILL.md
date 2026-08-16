@@ -1,7 +1,8 @@
 ---
 name: trendradar
-description: AI-powered trending topic monitoring from 35+ platforms. Aggregate trends, analyze sentiment, and get real-time
-  notifications. Based on TrendRadar MCP server (4.5K+ stars). Use when working with trendradar.
+description: Use when aI-powered trending topic monitoring from 35+ platforms. Aggregate
+  trends, analyze sentiment, and get real-time notifications. Based on TrendRadar
+  MCP server (4.5K+ stars). Use when working with trendradar.
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - research
 - trendradar
 version: 1.0.0
+category: research
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Trendradar"

@@ -1,6 +1,7 @@
 ---
 name: wails-apps
-description: Wails desktop app development — Go backend, web frontend, native bindings, small binary, cross-platform. Use when working with wails apps.
+description: Use when wails desktop app development — Go backend, web frontend, native
+  bindings, small binary, cross-platform. Use when working with wails apps.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - testing
 - wails
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

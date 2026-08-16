@@ -1,6 +1,8 @@
 ---
 name: supabase-patterns
-description: Supabase patterns — Row Level Security, edge functions, real-time subscriptions, auth integration, setup, and configuration. Use when working with supabase patterns.
+description: Use when supabase patterns — Row Level Security, edge functions, real-time
+  subscriptions, auth integration, setup, and configuration. Use when working with
+  supabase patterns.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -17,7 +19,9 @@ tags:
 - realtime
 - storage
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

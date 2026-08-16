@@ -1,14 +1,25 @@
 ---
 name: trading-strategist
-description: "Design and backtest trading strategies using technical indicators, fundamental analysis, and statistical models. Use when designing and backtesting trading strategies."
+description: Use when design and backtest trading strategies using technical indicators,
+  fundamental analysis, and statistical models. Use when designing and backtesting
+  trading strategies.
 domain: trading
 license: Apache-2.0
-tags: [algorithms, markets, strategist, trading, money, backtesting]
-version: "2.0.0"
+tags:
+- algorithms
+- markets
+- strategist
+- trading
+- money
+- backtesting
+version: 2.0.0
 author: oyi77
-subdomain: ""
+subdomain: ''
 type: trading
+category: trading
 ---
+
+
 # Money-Making Overview
 
 A validated strategy with Sharpe >1.5 and profit factor >1.3 compounds capital at 20-50%+/year. One good strategy can generate $500-5K/month on a $25K account. Multiple uncorrelated strategies scale exponentially.
@@ -260,3 +271,11 @@ On completion: "Strategy [name] - Sharpe: [N], PF: [N], Win%: [N]%, MaxDD: [N]%,
 
 ## Workflow
 See the parent skill for authoritative workflow documentation.
+## Process
+
+1. **Discover** — Identify revenue streams matching your assets and constraints
+2. **Validate** — Quick test each stream with minimum viable effort
+3. **Select** — Rank by expected value / time-to-revenue ratio
+4. **Execute** — Deploy using strategy design pipeline
+5. **Monitor** — Track leading indicators, adjust allocation
+6. **Scale** — Double down on winners, kill losers

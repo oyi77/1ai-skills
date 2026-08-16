@@ -1,6 +1,11 @@
 ---
 name: implementing-network-segmentation-for-ot
-description: 'Use when this skill covers implementing network segmentation in Operational Technology environments using VLANs, industrial firewalls, data diodes, and software-defined networking. It addresses the Purdue Model-based segmentation strategy, migration from flat networks to segmented architectures without disrupting operations, configuring OT-aware firewalls with industrial protocol deep packet inspection, and validating segmentation effectiveness through traffic analysis.'
+description: Use when this skill covers implementing network segmentation in Operational
+  Technology environments using VLANs, industrial firewalls, data diodes, and software-defined
+  networking. It addresses the Purdue Model-based segmentation strategy, migration
+  from flat networks to segmented architectures without disrupting operations, configuring
+  OT-aware firewalls with industrial protocol deep packet inspection, and validating
+  segmentation effectiveness through traffic analysis.
 domain: cybersecurity
 tags:
 - ot-security
@@ -19,7 +24,9 @@ nist_csf:
 - DE.CM-01
 - ID.AM-05
 - GV.OC-02
+category: cybersecurity
 ---
+
 # Implementing Network Segmentation For Ot
 
 ## Overview

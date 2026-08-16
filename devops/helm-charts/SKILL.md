@@ -1,6 +1,7 @@
 ---
 name: helm-charts
-description: Helm chart development — templates, values, hooks, dependencies, chart testing, repository management. Use when working with helm charts.
+description: Use when helm chart development — templates, values, hooks, dependencies,
+  chart testing, repository management. Use when working with helm charts.
 domain: devops
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - infrastructure
 - testing
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

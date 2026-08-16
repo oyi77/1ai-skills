@@ -1,6 +1,10 @@
 ---
 name: implementing-ransomware-backup-strategy
-description: Use when designs and implements a ransomware-resilient backup strategy following the 3-2-1-1-0 methodology (3 copies, 2 media types, 1 offsite, 1 immutable/air-gapped, 0 errors on restore verification). Configures backup schedules aligned to RPO/RTO requirements, implements backup credential isolation to prevent ransomware from compromising backup infrastructure, and establishes automated restore testing.
+description: Use when designs and implements a ransomware-resilient backup strategy
+  following the 3-2-1-1-0 methodology (3 copies, 2 media types, 1 offsite, 1 immutable/air-gapped,
+  0 errors on restore verification). Configures backup schedules aligned to RPO/RTO
+  requirements, implements backup credential isolation to prevent ransomware from
+  compromising backup infrastructure, and establishes automated restore testing.
 domain: cybersecurity
 tags:
 - ransomware
@@ -28,7 +32,9 @@ nist_csf:
 - RS.MA-01
 - RC.RP-01
 - PR.IR-01
+category: cybersecurity
 ---
+
 # Implementing Ransomware Backup Strategy
 
 ## Overview

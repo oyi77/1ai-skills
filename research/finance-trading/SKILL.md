@@ -13,7 +13,10 @@ tags:
 - research
 - trading
 version: 1.0.0
+category: research
 ---
+
+
 # Finance Trading
 
 ## When to Use
@@ -249,3 +252,10 @@ The analysis process is iterative and adaptive — each trade outcome feeds back
 - **Consulting for Small Hedge Funds**: Provide independent trade research, portfolio construction, and risk framework design for emerging fund managers. Retainer at $2,000-5,000/month
 - **Custom Indicator Development**: Build bespoke TradingView Pine Script or Python indicator suites for retail traders. Per-indicator pricing ($500-2,000) or bundle subscriptions
 - **Quant Research Reports**: Monthly deep-dive reports analyzing specific market regimes, factor performance, or sector rotation dynamics. Distribute via Substack paid newsletter at $20-50/month
+## Verification Checklist
+
+- [ ] Technical indicators backtested on out-of-sample data
+- [ ] Fundamental analysis covers financials, moat, management
+- [ ] Macro trends contextualized (rates, inflation, policy)
+- [ ] Position sizing respects risk limits
+- [ ] Trade journal maintained with pre/post analysis

@@ -1,9 +1,11 @@
 ---
 name: profiling-threat-actor-groups
-description: Develops comprehensive threat actor profiles for APT groups, criminal organizations, and hacktivist collectives
-  by aggregating TTP documentation, historical campaign data, tooling fingerprints, and attribution indicators from multiple
-  intelligence sources. Use when briefing executives on sector-specific threats, updating threat model assumptions, or prioritizing
-  defensive controls against specific adversaries.
+description: Use when develops comprehensive threat actor profiles for APT groups,
+  criminal organizations, and hacktivist collectives by aggregating TTP documentation,
+  historical campaign data, tooling fingerprints, and attribution indicators from
+  multiple intelligence sources. Use when briefing executives on sector-specific threats,
+  updating threat model assumptions, or prioritizing defensive controls against specific
+  adversaries.
 domain: cybersecurity
 tags:
 - MITRE-ATT&CK
@@ -23,7 +25,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Profiling Threat Actor Groups
 
 ## Overview

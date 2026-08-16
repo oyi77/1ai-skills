@@ -1,6 +1,7 @@
 ---
 name: bots
-description: Use when multi-platform bot automation hub — Telegram, Twitter/X, and WhatsApp bots for automated engagement, content distribution, and revenue generation.
+description: Use when multi-platform bot automation hub — Telegram, Twitter/X, and
+  WhatsApp bots for automated engagement, content distribution, and revenue generation.
 domain: automation
 author: oyi77
 license: Apache-2.0
@@ -16,7 +17,9 @@ tags:
 - social-media
 - workflow
 version: 1.0.0
+category: automation
 ---
+
 # Bots — Multi-Platform Bot Automation Hub
 
 ## Money-Making Overview

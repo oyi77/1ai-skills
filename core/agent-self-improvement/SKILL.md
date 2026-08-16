@@ -1,7 +1,8 @@
 ---
 name: agent-self-improvement
-description: Monitor performance of other skills, identify bottlenecks, suggest improvements, and auto-optimize the skill
-  portfolio. Use when monitoring performance of other skills, identify bottlenecks, suggest improvements, and.
+description: Use when monitor performance of other skills, identify bottlenecks, suggest
+  improvements, and auto-optimize the skill portfolio. Use when monitoring performance
+  of other skills, identify bottlenecks, suggest improvements, and.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - self
 - self-improvement
 version: 1.0.0
+category: core
 ---
+
 
 ## Overview
 

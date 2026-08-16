@@ -1,8 +1,9 @@
 ---
 name: kalodata-video-analysis
-description: Get videos associated with products, extract video metadata, get downloadable video URLs, and identify top-performing
-  videos for competitive analysis. Use when analyzing video marketing strategies, finding best-performing creative assets,
-  or building video intelligence reports.
+description: Use when get videos associated with products, extract video metadata,
+  get downloadable video URLs, and identify top-performing videos for competitive
+  analysis. Use when analyzing video marketing strategies, finding best-performing
+  creative assets, or building video intelligence reports.
 domain: integrations
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - third-party
 - video
 version: 1.0.0
+category: integrations
 ---
+
 
 # Kalodata Video Analysis
 

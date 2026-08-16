@@ -24,7 +24,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Implementing Security Information Sharing With Stix2
 
 ## Overview

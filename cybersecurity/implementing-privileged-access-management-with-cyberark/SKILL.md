@@ -20,7 +20,9 @@ nist_csf:
 - PR.AA-02
 - PR.AA-05
 - PR.AA-06
+category: cybersecurity
 ---
+
 # Implementing Privileged Access Management with CyberArk
 
 ## Overview

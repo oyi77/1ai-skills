@@ -1,6 +1,7 @@
 ---
 name: storybook-dev
-description: Storybook component development — stories, addons, controls, accessibility testing, visual regression. Use when working with storybook dev.
+description: Use when storybook component development — stories, addons, controls,
+  accessibility testing, visual regression. Use when working with storybook dev.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - storybook
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

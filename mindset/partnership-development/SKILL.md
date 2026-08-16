@@ -1,7 +1,7 @@
 ---
 name: partnership-development
-description: Find partners, structure deals, manage co-marketing, and revenue sharing. Use when building strategic alliances
-  or channel partnerships.
+description: Use when find partners, structure deals, manage co-marketing, and revenue
+  sharing. Use when building strategic alliances or channel partnerships.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - personal-development
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Partnership Development
 
 ## Overview

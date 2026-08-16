@@ -1,6 +1,8 @@
 ---
 name: time-management
-description: Prioritize tasks, manage schedules, and avoid burnout using Eisenhower Matrix, time blocking, and Pomodoro technique. Use when working with time management.
+description: Use when prioritize tasks, manage schedules, and avoid burnout using
+  Eisenhower Matrix, time blocking, and Pomodoro technique. Use when working with
+  time management.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -12,7 +14,9 @@ tags:
 - soft-skills
 - time
 version: 1.0.0
+category: mindset
 ---
+
 # Time Management
 
 ## Overview

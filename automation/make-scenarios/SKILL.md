@@ -1,6 +1,7 @@
 ---
 name: make-scenarios
-description: Make.com scenario automation — modules, routes, filters, error handlers, data stores, webhooks. Use when working with make scenarios.
+description: Use when make.com scenario automation — modules, routes, filters, error
+  handlers, data stores, webhooks. Use when working with make scenarios.
 domain: automation
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - webhook
 - workflow
 version: 1.0.0
+category: automation
 ---
+
 
 ## Overview
 

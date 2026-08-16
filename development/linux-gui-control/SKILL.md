@@ -21,7 +21,9 @@ persona: "name: Linus Torvalds\n  title: The Linux Creator - Master of System Co
   \  - Control the system\n  - Script everything\n  - Prefer command line\n  - Automate\
   \ workflows\n"
 version: 1.0.0
+category: development
 ---
+
 # Linux Gui Control
 
 ## When to Use

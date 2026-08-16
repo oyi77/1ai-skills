@@ -1,8 +1,10 @@
 ---
 name: performing-ai-driven-osint-correlation
-description: Use AI and LLM-based reasoning to correlate findings across multiple OSINT sources—username enumeration, email
-  lookups, social media profiles, domain records, breach databases, and dark-web mentions—into unified intelligence profiles
-  with confidence scoring and link analysis. Use when working with performing ai driven osint correlation.
+description: Use when use AI and LLM-based reasoning to correlate findings across
+  multiple OSINT sources—username enumeration, email lookups, social media profiles,
+  domain records, breach databases, and dark-web mentions—into unified intelligence
+  profiles with confidence scoring and link analysis. Use when working with performing
+  ai driven osint correlation.
 domain: cybersecurity
 tags:
 - osint
@@ -39,7 +41,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Performing Ai Driven Osint Correlation
 
 ## Overview

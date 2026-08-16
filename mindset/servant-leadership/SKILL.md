@@ -1,7 +1,7 @@
 ---
 name: servant-leadership
-description: Lead by serving using Greenleaf's 10 characteristics. Use when empowering teams, removing obstacles, or building
-  trust-based leadership.
+description: Use when lead by serving using Greenleaf's 10 characteristics. Use when
+  empowering teams, removing obstacles, or building trust-based leadership.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - servant
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Servant Leadership
 
 ## Overview

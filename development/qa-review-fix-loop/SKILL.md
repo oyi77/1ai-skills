@@ -1,20 +1,24 @@
 ---
 name: qa-review-fix-loop
-description: Comprehensive QA→Review→Fix loop protocol for any codebase. Layer-based testing with evidence requirements. Use when performing full QA cycles, codebase audits, pre-release testing, or.
+description: Use when comprehensive QA→Review→Fix loop protocol for any codebase.
+  Layer-based testing with evidence requirements. Use when performing full QA cycles,
+  codebase audits, pre-release testing, or.
 domain: development
 author: oyi77
 license: Apache-2.0
 subdomain: software-development
-tags: 
-  - qa
-  - testing
-  - quality-assurance
-  - review-loop
-  - defect-tracking
-  - regression-testing
-  - evidence-based
+tags:
+- qa
+- testing
+- quality-assurance
+- review-loop
+- defect-tracking
+- regression-testing
+- evidence-based
 version: 1.0.0
+category: development
 ---
+
 
 # QA → Review → Fix Loop Protocol
 

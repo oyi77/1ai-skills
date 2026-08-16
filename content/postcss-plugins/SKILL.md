@@ -1,6 +1,7 @@
 ---
 name: postcss-plugins
-description: PostCSS plugin ecosystem — Autoprefixer, cssnano, nesting, custom plugins, preset configuration. Use when working with postcss plugins.
+description: Use when postCSS plugin ecosystem — Autoprefixer, cssnano, nesting, custom
+  plugins, preset configuration. Use when working with postcss plugins.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - plugins
 - postcss
 version: 1.0.0
+category: content
 ---
+
 
 
 

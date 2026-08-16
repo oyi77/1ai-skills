@@ -1,7 +1,9 @@
 ---
 name: performing-ssl-certificate-lifecycle-management
-description: SSL/TLS certificate lifecycle management encompasses the full process of requesting, issuing, deploying, monitoring,
-  renewing, and revoking X.509 certificates. Poor certificate management is a leading. Use when working with performing ssl certificate lifecycle management.
+description: Use when sSL/TLS certificate lifecycle management encompasses the full
+  process of requesting, issuing, deploying, monitoring, renewing, and revoking X.509
+  certificates. Poor certificate management is a leading. Use when working with performing
+  ssl certificate lifecycle management.
 domain: cybersecurity
 subdomain: cryptography
 tags:
@@ -18,7 +20,9 @@ nist_csf:
 - PR.DS-01
 - PR.DS-02
 - PR.DS-10
+category: cybersecurity
 ---
+
 # Performing SSL Certificate Lifecycle Management
 
 ## Overview

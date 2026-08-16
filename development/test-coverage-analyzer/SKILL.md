@@ -1,6 +1,7 @@
 ---
 name: test-coverage-analyzer
-description: Identify untested code paths — coverage reports, gap analysis, and test prioritization. Use when working with test coverage analyzer.
+description: Use when identify untested code paths — coverage reports, gap analysis,
+  and test prioritization. Use when working with test coverage analyzer.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - test
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

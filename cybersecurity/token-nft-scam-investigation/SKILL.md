@@ -1,8 +1,9 @@
 ---
 name: token-nft-scam-investigation
-description: Investigate token and NFT scams including rug pulls, honeypot tokens, pump-and-dump schemes,
-  wash trading, and NFT floor manipulation to identify fraudulent patterns and trace perpetrator wallets.
-  Use when analyzing suspicious token launches, investigating NFT fraud, or detecting market manipulation.
+description: Use when investigate token and NFT scams including rug pulls, honeypot
+  tokens, pump-and-dump schemes, wash trading, and NFT floor manipulation to identify
+  fraudulent patterns and trace perpetrator wallets. Use when analyzing suspicious
+  token launches, investigating NFT fraud, or detecting market manipulation.
 domain: cybersecurity
 author: oyi77
 license: Apache-2.0
@@ -19,7 +20,9 @@ tags:
 - fraud
 - money
 version: '1.0'
+category: cybersecurity
 ---
+
 
 # Token & NFT Scam Investigation
 

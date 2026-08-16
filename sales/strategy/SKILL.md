@@ -1,7 +1,7 @@
 ---
 name: sales-strategy
-description: Build sales playbooks, define pipeline stages, and optimize conversion rates. Use when designing or improving
-  the sales process.
+description: Use when build sales playbooks, define pipeline stages, and optimize
+  conversion rates. Use when designing or improving the sales process.
 domain: sales
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - sales
 - strategy
 version: 1.0.0
+category: sales
 ---
+
 # Sales Strategy
 
 ## When to Use

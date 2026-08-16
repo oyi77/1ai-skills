@@ -1,7 +1,9 @@
 ---
 name: paperpod
-description: Isolated agent runtime for code execution, live preview URLs, browser automation, 50+ tools (ffmpeg, sqlite,
-  pandoc, imagemagick), LLM inference, and persistent memory — all via CLI or HTTP, no SDK or API keys required. Use when working with paperpod.
+description: Use when isolated agent runtime for code execution, live preview URLs,
+  browser automation, 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), LLM inference,
+  and persistent memory — all via CLI or HTTP, no SDK or API keys required. Use when
+  working with paperpod.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -14,7 +16,11 @@ tags:
 - media
 - paperpod
 metadata: "|\n  author: PaperPod\n    version: \"2.0.3\"\n    homepage: https://paperpod.dev\n"
+category: content
+version: 1.0.0
 ---
+
+
 # Paperpod
 
 ## When to Use
@@ -99,3 +105,10 @@ def generate_content(topic: str, format: str = "article"):
 - [ ] Output is properly formatted for target platform
 - [ ] All facts and references verified
 - [ ] SEO/distribution optimization applied where applicable
+## Verification Checklist
+
+- [ ] Runtime starts in < 30s
+- [ ] All 50+ tools available
+- [ ] Browser automation functional
+- [ ] LLM inference working
+- [ ] Persistent memory survives restarts

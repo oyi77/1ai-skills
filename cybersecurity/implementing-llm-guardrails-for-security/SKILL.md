@@ -1,9 +1,11 @@
 ---
 name: implementing-llm-guardrails-for-security
-description: Implements input and output validation guardrails for LLM-powered applications to prevent prompt injection, data
-  leakage, toxic content generation, and hallucinated outputs. Builds a security validation pipeline using NVIDIA NeMo Guardrails
-  Colang definitions, custom Python validators for PII detection and content policy enforcement, and the Guardrails AI framework
-  for structured output validation. Use when working with implementing llm guardrails for security.
+description: Use when implements input and output validation guardrails for LLM-powered
+  applications to prevent prompt injection, data leakage, toxic content generation,
+  and hallucinated outputs. Builds a security validation pipeline using NVIDIA NeMo
+  Guardrails Colang definitions, custom Python validators for PII detection and content
+  policy enforcement, and the Guardrails AI framework for structured output validation.
+  Use when working with implementing llm guardrails for security.
 domain: cybersecurity
 tags:
 - LLM-guardrails
@@ -38,7 +40,9 @@ nist_csf:
 - ID.RA-01
 - PR.PS-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Implementing Llm Guardrails For Security
 
 ## Overview

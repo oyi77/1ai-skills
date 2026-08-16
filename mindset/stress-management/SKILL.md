@@ -1,7 +1,7 @@
 ---
 name: stress-management
-description: Manage stress through breathing techniques, exercise, sleep hygiene, and cognitive reframing. Use when overwhelmed
-  or at risk of burnout.
+description: Use when manage stress through breathing techniques, exercise, sleep
+  hygiene, and cognitive reframing. Use when overwhelmed or at risk of burnout.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - soft-skills
 - stress
 version: 1.0.0
+category: mindset
 ---
+
 # Stress Management
 
 ## Overview

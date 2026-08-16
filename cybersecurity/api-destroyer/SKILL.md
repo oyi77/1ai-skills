@@ -1,6 +1,8 @@
 ---
 name: api-destroyer
-description: Aggressive API security testing for REST, GraphQL, gRPC, and WebSocket endpoints. Use when testing APIs for authorization flaws, injection, rate limiting bypass, or business logic abuse.
+description: Use when aggressive API security testing for REST, GraphQL, gRPC, and
+  WebSocket endpoints. Use when testing APIs for authorization flaws, injection, rate
+  limiting bypass, or business logic abuse.
 domain: cybersecurity
 author: oyi77
 license: Apache-2.0
@@ -16,7 +18,9 @@ tags:
 - security
 - testing
 version: 1.0.0
+category: cybersecurity
 ---
+
 # Api Destroyer
 
 ## Overview

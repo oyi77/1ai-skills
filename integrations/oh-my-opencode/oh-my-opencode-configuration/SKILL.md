@@ -1,7 +1,8 @@
 ---
 name: oh-my-opencode-configuration
-description: Comprehensive configuration guide for oh-my-opencode including agent settings, MCP servers, hooks, categories,
-  and advanced options. Use when working with oh my opencode configuration.
+description: Use when comprehensive configuration guide for oh-my-opencode including
+  agent settings, MCP servers, hooks, categories, and advanced options. Use when working
+  with oh my opencode configuration.
 domain: integrations
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - opencode
 - third-party
 version: 1.0.0
+category: integrations
 ---
+
 
 # Oh My OpenCode Configuration
 

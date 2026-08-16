@@ -27,7 +27,9 @@ persona: "|\n  name: \"Seth Godin\"\n    title: \"Master of Permission Marketing
   \ - give them identity and connection\"\n      - \"Generosity builds trust - give\
   \ value before asking\"\n"
 version: 1.0.0
+category: content
 ---
+
 
 
 

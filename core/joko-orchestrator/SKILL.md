@@ -1,7 +1,7 @@
 ---
 name: joko-orchestrator
-description: Use when deterministically coordinating autonomous planning and execution across available skills under strict
-  guardrails.
+description: Use when deterministically coordinating autonomous planning and execution
+  across available skills under strict guardrails.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - orchestrator
 - self-improvement
 version: 1.0.0
+category: core
 ---
+
 persona:
   name: "Jeff Dean"
   title: "The Distributed Systems Legend - Master of Orchestration"

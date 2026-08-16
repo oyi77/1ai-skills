@@ -1,7 +1,8 @@
 ---
 name: testing-for-business-logic-vulnerabilities
-description: Identifying flaws in application business logic that allow price manipulation, workflow bypass, and privilege
-  escalation beyond what technical vulnerability scanners can detect. Use when working with testing for business logic vulnerabilities.
+description: Use when identifying flaws in application business logic that allow price
+  manipulation, workflow bypass, and privilege escalation beyond what technical vulnerability
+  scanners can detect. Use when working with testing for business logic vulnerabilities.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -19,7 +20,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Testing For Business Logic Vulnerabilities
 
 ## Overview

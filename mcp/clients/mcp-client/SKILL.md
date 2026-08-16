@@ -1,6 +1,8 @@
 ---
 name: mcp-client
-description: Generic MCP client implementation for connecting to any Model Context Protocol server with standardized tool access. Use when working with mcp client.
+description: Use when generic MCP client implementation for connecting to any Model
+  Context Protocol server with standardized tool access. Use when working with mcp
+  client.
 domain: mcp
 author: oyi77
 license: Apache-2.0
@@ -12,7 +14,9 @@ tags:
 - model-context-protocol
 - tool-integration
 version: 1.0.0
+category: mcp
 ---
+
 
 
 # MCP Client — Connect to Any MCP Server

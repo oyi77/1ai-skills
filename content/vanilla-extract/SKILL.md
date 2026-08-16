@@ -1,6 +1,7 @@
 ---
 name: vanilla-extract
-description: Vanilla Extract zero-runtime CSS-in-JS — type-safe styles, Sprinkles, Recipes, themes. Use when working with vanilla extract.
+description: Use when vanilla Extract zero-runtime CSS-in-JS — type-safe styles, Sprinkles,
+  Recipes, themes. Use when working with vanilla extract.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - media
 - vanilla
 version: 1.0.0
+category: content
 ---
+
 
 
 

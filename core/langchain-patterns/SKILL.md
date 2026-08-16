@@ -1,6 +1,7 @@
 ---
 name: langchain-patterns
-description: LangChain/LangGraph patterns — chains, agents, tools, memory, retrieval, graph workflows. Use when working with langchain patterns.
+description: Use when langChain/LangGraph patterns — chains, agents, tools, memory,
+  retrieval, graph workflows. Use when working with langchain patterns.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - self-improvement
 - workflow
 version: 1.0.0
+category: core
 ---
+
 
 ## Overview
 

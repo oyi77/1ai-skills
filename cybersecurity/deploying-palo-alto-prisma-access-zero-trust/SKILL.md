@@ -1,6 +1,9 @@
 ---
 name: deploying-palo-alto-prisma-access-zero-trust
-description: 'Deploying Palo Alto Networks Prisma Access for SASE-based zero trust network access using GlobalProtect agents, ZTNA Connectors, security policy enforcement, and integration with Strata Cloud Manager for unified security management. . Use when working with deploying palo alto prisma access zero trust.'
+description: Use when deploying Palo Alto Networks Prisma Access for SASE-based zero
+  trust network access using GlobalProtect agents, ZTNA Connectors, security policy
+  enforcement, and integration with Strata Cloud Manager for unified security management.
+  . Use when working with deploying palo alto prisma access zero trust.
 domain: cybersecurity
 tags:
 - prisma-access
@@ -23,7 +26,9 @@ nist_csf:
 - PR.AA-05
 - PR.IR-01
 - GV.PO-01
+category: cybersecurity
 ---
+
 # Deploying Palo Alto Prisma Access Zero Trust
 
 ## Overview

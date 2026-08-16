@@ -1,9 +1,11 @@
 ---
 name: hardening-linux-endpoint-with-cis-benchmark
-description: 'Hardens Linux endpoints using CIS Benchmark recommendations for Ubuntu, RHEL, and CentOS to reduce attack surface,
-  enforce security baselines, and meet compliance requirements. Use when deploying new Linux servers, remediating audit findings,
-  or establishing security baselines for Linux infrastructure. Activates for requests involving Linux hardening, CIS benchmarks
-  for Linux, server security baselines, or Linux configuration compliance.
+description: 'Use when hardens Linux endpoints using CIS Benchmark recommendations
+  for Ubuntu, RHEL, and CentOS to reduce attack surface, enforce security baselines,
+  and meet compliance requirements. Use when deploying new Linux servers, remediating
+  audit findings, or establishing security baselines for Linux infrastructure. Activates
+  for requests involving Linux hardening, CIS benchmarks for Linux, server security
+  baselines, or Linux configuration compliance.
 
   '
 domain: cybersecurity
@@ -23,7 +25,9 @@ nist_csf:
 - PR.PS-02
 - DE.CM-01
 - PR.IR-01
+category: cybersecurity
 ---
+
 # Hardening Linux Endpoint With Cis Benchmark
 
 ## Overview

@@ -14,7 +14,9 @@ tags:
 - tools
 - workflow
 version: 1.0.0
+category: productivity
 ---
+
 # Notion
 
 ## When to Use

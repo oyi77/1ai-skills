@@ -1,6 +1,7 @@
 ---
 name: dbt-transform
-description: dbt data transformation — models, tests, macros, sources, snapshots, documentation, packages. Use when working with dbt transform.
+description: Use when dbt data transformation — models, tests, macros, sources, snapshots,
+  documentation, packages. Use when working with dbt transform.
 domain: data
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - transform
 - visualization
 version: 1.0.0
+category: data
 ---
+
 
 
 ## Overview

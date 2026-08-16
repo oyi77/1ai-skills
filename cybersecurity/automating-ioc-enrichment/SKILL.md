@@ -1,9 +1,10 @@
 ---
 name: automating-ioc-enrichment
-description: Automates the enrichment of raw indicators of compromise with multi-source threat intelligence context using
-  SOAR platforms, Python pipelines, or TIP playbooks to reduce analyst triage time and standardize enrichment outputs. Use
-  when building automated enrichment workflows integrated with SIEM alerts, email submission pipelines, or bulk IOC processing
-  from threat feeds.
+description: Use when automates the enrichment of raw indicators of compromise with
+  multi-source threat intelligence context using SOAR platforms, Python pipelines,
+  or TIP playbooks to reduce analyst triage time and standardize enrichment outputs.
+  Use when building automated enrichment workflows integrated with SIEM alerts, email
+  submission pipelines, or bulk IOC processing from threat feeds.
 domain: cybersecurity
 tags:
 - SOAR
@@ -24,7 +25,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Automating Ioc Enrichment
 
 ## Overview

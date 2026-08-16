@@ -1,7 +1,8 @@
 ---
 name: code-research
-description: Produce structured understanding of unfamiliar codebases — architecture, data flows, dependencies, and conventions.
-  Use when joining a new project, tracing feature implementations, or mapping system architecture.
+description: Use when produce structured understanding of unfamiliar codebases — architecture,
+  data flows, dependencies, and conventions. Use when joining a new project, tracing
+  feature implementations, or mapping system architecture.
 domain: agents
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - orchestration
 - research
 version: 1.0.0
+category: agents
 ---
+
 # Code Research Agent
 
 Autonomous codebase analysis agent that produces structured understanding of unfamiliar code: architecture, data flows, dependencies, conventions, and entry points. This agent reads code systematically -- not randomly browsing files, but following a deliberate investigation protocol.

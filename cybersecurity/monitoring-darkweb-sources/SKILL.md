@@ -1,9 +1,11 @@
 ---
 name: monitoring-darkweb-sources
-description: Monitors dark web forums, marketplaces, paste sites, and ransomware leak sites for mentions of organizational
-  assets, leaked credentials, threatened attacks, and threat actor communications to provide early warning intelligence. Use
-  when establishing dark web monitoring coverage, investigating specific data breach claims, or enriching incident investigations
-  with dark web context. Use when working with monitoring darkweb sources.
+description: Use when monitors dark web forums, marketplaces, paste sites, and ransomware
+  leak sites for mentions of organizational assets, leaked credentials, threatened
+  attacks, and threat actor communications to provide early warning intelligence.
+  Use when establishing dark web monitoring coverage, investigating specific data
+  breach claims, or enriching incident investigations with dark web context. Use when
+  working with monitoring darkweb sources.
 domain: cybersecurity
 tags:
 - dark-web
@@ -30,7 +32,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Monitoring Darkweb Sources
 
 ## Overview

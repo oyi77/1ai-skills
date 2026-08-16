@@ -1,6 +1,7 @@
 ---
 name: consul-service-mesh
-description: HashiCorp Consul — service discovery, health checking, KV store, service mesh, intentions. Use when working with consul service mesh.
+description: Use when hashiCorp Consul — service discovery, health checking, KV store,
+  service mesh, intentions. Use when working with consul service mesh.
 domain: devops
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - mesh
 - service
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

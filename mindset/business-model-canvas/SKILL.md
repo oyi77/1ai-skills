@@ -1,7 +1,7 @@
 ---
 name: business-model-canvas
-description: Design and analyze business models using the 9 building blocks of the Business Model Canvas. Use when launching,
-  pivoting, or evaluating a business.
+description: Use when design and analyze business models using the 9 building blocks
+  of the Business Model Canvas. Use when launching, pivoting, or evaluating a business.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -14,7 +14,9 @@ tags:
 - personal-development
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Business Model Canvas
 
 ## Overview

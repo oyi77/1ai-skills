@@ -1,6 +1,7 @@
 ---
 name: istio-mesh
-description: Istio service mesh — traffic management, security, observability for Kubernetes microservices. Use when working with istio mesh.
+description: Use when istio service mesh — traffic management, security, observability
+  for Kubernetes microservices. Use when working with istio mesh.
 domain: devops
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - kubernetes
 - mesh
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

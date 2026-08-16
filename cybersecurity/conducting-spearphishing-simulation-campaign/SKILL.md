@@ -1,7 +1,9 @@
 ---
 name: conducting-spearphishing-simulation-campaign
-description: Spearphishing simulation is a targeted social engineering attack vector used by red teams to gain initial access.
-  Unlike broad phishing campaigns, spearphishing uses OSINT-derived intelligence to craf. Use when working with conducting spearphishing simulation campaign.
+description: Use when spearphishing simulation is a targeted social engineering attack
+  vector used by red teams to gain initial access. Unlike broad phishing campaigns,
+  spearphishing uses OSINT-derived intelligence to craf. Use when working with conducting
+  spearphishing simulation campaign.
 domain: cybersecurity
 subdomain: red-teaming
 tags:
@@ -25,7 +27,9 @@ nist_csf:
 - ID.RA-01
 - GV.OV-02
 - DE.AE-07
+category: cybersecurity
 ---
+
 # Conducting Spearphishing Simulation Campaign
 
 

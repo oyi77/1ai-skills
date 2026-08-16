@@ -1,7 +1,9 @@
 ---
 name: conducting-social-engineering-penetration-test
-description: Design and execute a social engineering penetration test including phishing, vishing, smishing, and physical
-  pretexting campaigns to measure human security resilience and identify training gaps. Use when designing and execute a social engineering penetration test including phishing,.
+description: Use when design and execute a social engineering penetration test including
+  phishing, vishing, smishing, and physical pretexting campaigns to measure human
+  security resilience and identify training gaps. Use when designing and execute a
+  social engineering penetration test including phishing,.
 domain: cybersecurity
 subdomain: penetration-testing
 tags:
@@ -28,7 +30,9 @@ nist_csf:
 - ID.RA-06
 - GV.OV-02
 - DE.AE-07
+category: cybersecurity
 ---
+
 
 # Conducting Social Engineering Penetration Test
 

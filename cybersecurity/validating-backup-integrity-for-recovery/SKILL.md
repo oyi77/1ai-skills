@@ -20,7 +20,9 @@ nist_csf:
 - RS.MA-02
 - RS.AN-03
 - RC.RP-01
+category: cybersecurity
 ---
+
 # Validating Backup Integrity For Recovery
 
 ## Overview

@@ -1,6 +1,7 @@
 ---
 name: jira
-description: 'Skill: jira. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Use when skill: jira. See SKILL.md body for details. Use when this domain
+  is relevant.'
 domain: operations
 author: oyi77
 license: Apache-2.0
@@ -11,7 +12,9 @@ tags:
 - management
 - operations
 version: 1.0.0
+category: operations
 ---
+
 
 ## Overview
 

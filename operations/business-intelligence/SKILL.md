@@ -1,7 +1,8 @@
 ---
 name: business-intelligence
-description: Define and track KPIs across revenue, marketing, and content performance with weekly business reviews and data-driven
-  decisions. Use when working with business intelligence.
+description: Use when define and track KPIs across revenue, marketing, and content
+  performance with weekly business reviews and data-driven decisions. Use when working
+  with business intelligence.
 domain: operations
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - management
 - operations
 version: 1.0.0
+category: operations
 ---
+
 # Business Intelligence
 
 ## When to Use

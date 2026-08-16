@@ -1,7 +1,8 @@
 ---
 name: testing-jwt-token-security
-description: Assessing JSON Web Token implementations for cryptographic weaknesses, algorithm confusion attacks, and authorization
-  bypass vulnerabilities during security engagements. Use when working with testing jwt token security.
+description: Use when assessing JSON Web Token implementations for cryptographic weaknesses,
+  algorithm confusion attacks, and authorization bypass vulnerabilities during security
+  engagements. Use when working with testing jwt token security.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -19,7 +20,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Testing Jwt Token Security
 
 ## Overview

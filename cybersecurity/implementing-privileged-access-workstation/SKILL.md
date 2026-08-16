@@ -1,7 +1,9 @@
 ---
 name: implementing-privileged-access-workstation
-description: Design and implement Privileged Access Workstations (PAWs) with device hardening, just-in-time access, and integration
-  with CyberArk or BeyondTrust for secure administrative operations. Use when designing and implement privileged access workstations (paws) with device hardening,.
+description: Use when design and implement Privileged Access Workstations (PAWs) with
+  device hardening, just-in-time access, and integration with CyberArk or BeyondTrust
+  for secure administrative operations. Use when designing and implement privileged
+  access workstations (paws) with device hardening,.
 domain: cybersecurity
 subdomain: identity-and-access-management
 tags:
@@ -19,7 +21,9 @@ nist_csf:
 - PR.AA-01
 - PR.AA-02
 - PR.AA-05
+category: cybersecurity
 ---
+
 
 # Implementing Privileged Access Workstation
 

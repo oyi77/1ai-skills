@@ -1,6 +1,7 @@
 ---
 name: trading-orchestrator
-description: Coordinate multi-strategy trading workflows by routing signals to the right executor and managing risk limits. Use when working with trading orchestrator.
+description: Use when coordinate multi-strategy trading workflows by routing signals
+  to the right executor and managing risk limits. Use when working with trading orchestrator.
 domain: trading
 author: oyi77
 license: Apache-2.0
@@ -18,7 +19,9 @@ allowed-tools:
 - fs
 - network
 version: 1.0.0
+category: trading
 ---
+
 
 # Trading Orchestrator
 

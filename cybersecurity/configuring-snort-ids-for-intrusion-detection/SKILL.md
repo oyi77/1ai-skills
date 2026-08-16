@@ -1,6 +1,9 @@
 ---
 name: configuring-snort-ids-for-intrusion-detection
-description: 'Installs, configures, and tunes Snort 3 intrusion detection system to monitor network traffic for malicious activity using custom and community rulesets, preprocessors, and alert output plugins on authorized network segments. . Use when working with configuring snort ids for intrusion detection.'
+description: Use when installs, configures, and tunes Snort 3 intrusion detection
+  system to monitor network traffic for malicious activity using custom and community
+  rulesets, preprocessors, and alert output plugins on authorized network segments.
+  . Use when working with configuring snort ids for intrusion detection.
 domain: cybersecurity
 tags:
 - network-security
@@ -17,7 +20,9 @@ nist_csf:
 - DE.CM-01
 - ID.AM-03
 - PR.DS-02
+category: cybersecurity
 ---
+
 # Configuring Snort Ids For Intrusion Detection
 
 ## Overview

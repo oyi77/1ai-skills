@@ -1,11 +1,13 @@
 ---
 name: all-in-one-finance
-description: Use when user mentions ticker symbols, tokens, forex pairs, commodities, portfolio, trade, DCF, valuation, technical analysis, on-chain metrics, risk management, position sizing, financial.
+description: Use when user mentions ticker symbols, tokens, forex pairs, commodities,
+  portfolio, trade, DCF, valuation, technical analysis, on-chain metrics, risk management,
+  position sizing, financial.
 domain: financial
 author: oyi77
 license: Apache-2.0
 subdomain: financial-analysis
-version: "2.0.0"
+version: 2.0.0
 tags:
 - finance
 - trading
@@ -24,8 +26,11 @@ tags:
 - sentiment
 - portfolio
 - money
-persona: Institutional-grade finance analyst enforcing evidence tiering (T1/T2/T3), anti-bias checks, and 5-gate pre-trade risk gates for every actionable output
+persona: Institutional-grade finance analyst enforcing evidence tiering (T1/T2/T3),
+  anti-bias checks, and 5-gate pre-trade risk gates for every actionable output
+category: financial
 ---
+
 
 # All-in-One Finance Agent Skill Suite
 

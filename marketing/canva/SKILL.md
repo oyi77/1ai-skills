@@ -23,7 +23,9 @@ metadata:
       env:
       - CANVA_CLIENT_ID
       - CANVA_CLIENT_SECRET
+category: marketing
 ---
+
 # Canva
 
 ## When to Use

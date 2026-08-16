@@ -1,7 +1,8 @@
 ---
 name: meta-skill-datastore
-description: Centralized database for meta-skill operations. Stores performance metrics, feedback, patterns, and skill evolution
-  history. Use when working with meta skill datastore.
+description: Use when centralized database for meta-skill operations. Stores performance
+  metrics, feedback, patterns, and skill evolution history. Use when working with
+  meta skill datastore.
 domain: meta
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - skill
 - skill-evolution
 version: 1.0.0
+category: meta
 ---
+
 # Meta Skill Datastore
 
 ## When to Use

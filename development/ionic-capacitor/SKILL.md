@@ -1,6 +1,7 @@
 ---
 name: ionic-capacitor
-description: Ionic + Capacitor hybrid mobile apps — Angular/React/Vue, native plugins, PWA, App Store deployment. Use when working with ionic capacitor.
+description: Use when ionic + Capacitor hybrid mobile apps — Angular/React/Vue, native
+  plugins, PWA, App Store deployment. Use when working with ionic capacitor.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

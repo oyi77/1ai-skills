@@ -1,6 +1,10 @@
 ---
 name: integrating-dast-with-owasp-zap-in-pipeline
-description: 'Use when this skill covers integrating OWASP ZAP (Zed Attack Proxy) for Dynamic Application Security Testing in CI/CD pipelines. It addresses configuring baseline, full, and API scans against running applications, interpreting ZAP findings, tuning scan policies, and establishing DAST quality gates in GitHub Actions and GitLab CI.'
+description: Use when this skill covers integrating OWASP ZAP (Zed Attack Proxy) for
+  Dynamic Application Security Testing in CI/CD pipelines. It addresses configuring
+  baseline, full, and API scans against running applications, interpreting ZAP findings,
+  tuning scan policies, and establishing DAST quality gates in GitHub Actions and
+  GitLab CI.
 domain: cybersecurity
 tags:
 - devsecops
@@ -18,7 +22,9 @@ nist_csf:
 - GV.SC-07
 - ID.IM-04
 - PR.PS-04
+category: cybersecurity
 ---
+
 # Integrating Dast With Owasp Zap In Pipeline
 
 ## Overview

@@ -1,6 +1,7 @@
 ---
 name: api-testing
-description: REST and GraphQL API testing — contract testing, schema validation, and integration test automation. Use when working with api testing.
+description: Use when rEST and GraphQL API testing — contract testing, schema validation,
+  and integration test automation. Use when working with api testing.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

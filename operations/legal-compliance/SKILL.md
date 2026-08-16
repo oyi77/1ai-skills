@@ -1,7 +1,8 @@
 ---
 name: legal-compliance
-description: Contract generation, terms of service, privacy policies, GDPR/CCPA compliance checks, regulatory monitoring,
-  entity management. Use when working with legal compliance.
+description: Use when contract generation, terms of service, privacy policies, GDPR/CCPA
+  compliance checks, regulatory monitoring, entity management. Use when working with
+  legal compliance.
 domain: operations
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - monitoring
 - operations
 version: 1.0.0
+category: operations
 ---
+
 
 ## Overview
 

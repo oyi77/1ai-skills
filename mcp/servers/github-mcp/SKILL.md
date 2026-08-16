@@ -1,6 +1,7 @@
 ---
 name: github-mcp
-description: MCP server for GitHub automation. Manage repos, issues, PRs, and workflows through the Model Context Protocol. Use when working with github mcp.
+description: Use when mCP server for GitHub automation. Manage repos, issues, PRs,
+  and workflows through the Model Context Protocol. Use when working with github mcp.
 domain: mcp
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - model-context-protocol
 - tool-integration
 version: 1.0.0
+category: mcp
 ---
+
 # Github Mcp
 
 ## When to Use

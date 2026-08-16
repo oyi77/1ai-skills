@@ -1,7 +1,9 @@
 ---
 name: performing-ip-reputation-analysis-with-shodan
-description: Analyze IP address reputation using the Shodan API to identify open ports, running services, known vulnerabilities,
-  and hosting context for threat intelligence enrichment and incident triage. Use when analyzeing ip address reputation using the shodan api to identify.
+description: Use when analyze IP address reputation using the Shodan API to identify
+  open ports, running services, known vulnerabilities, and hosting context for threat
+  intelligence enrichment and incident triage. Use when analyzeing ip address reputation
+  using the shodan api to identify.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:
@@ -21,7 +23,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Performing IP Reputation Analysis with Shodan
 
 ## Overview

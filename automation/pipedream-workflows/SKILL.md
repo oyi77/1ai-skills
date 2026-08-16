@@ -1,6 +1,7 @@
 ---
 name: pipedream-workflows
-description: Pipedream serverless workflows — triggers, code steps, pre-built actions, data stores, HTTP. Use when working with pipedream workflows.
+description: Use when pipedream serverless workflows — triggers, code steps, pre-built
+  actions, data stores, HTTP. Use when working with pipedream workflows.
 domain: automation
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - workflow
 - workflows
 version: 1.0.0
+category: automation
 ---
+
 
 ## Overview
 

@@ -1,7 +1,8 @@
 ---
 name: testing-for-xss-vulnerabilities-with-burpsuite
-description: Identifying and validating cross-site scripting vulnerabilities using Burp Suite's scanner, intruder, and repeater
-  tools during authorized security assessments. Use when working with testing for xss vulnerabilities with burpsuite.
+description: Use when identifying and validating cross-site scripting vulnerabilities
+  using Burp Suite's scanner, intruder, and repeater tools during authorized security
+  assessments. Use when working with testing for xss vulnerabilities with burpsuite.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -19,7 +20,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Testing For Xss Vulnerabilities With Burpsuite
 
 ## Overview

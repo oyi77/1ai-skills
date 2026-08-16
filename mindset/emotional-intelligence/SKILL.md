@@ -1,7 +1,7 @@
 ---
 name: emotional-intelligence
-description: Build self-awareness, empathy, and social skills using the EQ model. Use when improving relationships, communication,
-  or leadership effectiveness.
+description: Use when build self-awareness, empathy, and social skills using the EQ
+  model. Use when improving relationships, communication, or leadership effectiveness.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -14,7 +14,9 @@ tags:
 - social-media
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Emotional Intelligence
 
 ## Overview

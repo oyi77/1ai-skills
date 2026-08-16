@@ -1,6 +1,7 @@
 ---
 name: aws-ops
-description: AWS operations — EC2, S3, Lambda, RDS, ECS, IAM, CloudFormation. Infrastructure and cost optimization. Use when working with aws ops.
+description: Use when aWS operations — EC2, S3, Lambda, RDS, ECS, IAM, CloudFormation.
+  Infrastructure and cost optimization. Use when working with aws ops.
 domain: devops
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - infrastructure
 - ops
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

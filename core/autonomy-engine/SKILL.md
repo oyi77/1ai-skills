@@ -1,7 +1,8 @@
 ---
-description: Core autonomy protocol for AI agent operations. Defines how agents operate 24/7 without human prompts
-  — monitoring all systems, generating revenue, managing team, escalating decisions, and growing.
-  Use this skill to understand an autonomous operating system. Use when working with autonomy engine.
+description: Use when core autonomy protocol for AI agent operations. Defines how
+  agents operate 24/7 without human prompts — monitoring all systems, generating revenue,
+  managing team, escalating decisions, and growing. Use this skill to understand an
+  autonomous operating system. Use when working with autonomy engine.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -15,7 +16,9 @@ tags:
 - monitoring
 - self-improvement
 version: 1.0.0
+category: core
 ---
+
 # Autonomy Engine
 
 ## When to Use

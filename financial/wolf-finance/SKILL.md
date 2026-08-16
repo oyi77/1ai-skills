@@ -1,14 +1,27 @@
 ---
 name: wolf-finance
-description: "ACTIVATE for ANY finance, investment, trading, or market query. Comprehensive value investing framework combining Buffett, Munger, Duan Yongping, and Li Lu methodologies. Use when making investment decisions."
+description: Use when aCTIVATE for ANY finance, investment, trading, or market query.
+  Comprehensive value investing framework combining Buffett, Munger, Duan Yongping,
+  and Li Lu methodologies. Use when making investment decisions.
 domain: financial
 license: Apache-2.0
-tags: [analysis, crypto, finance, investment, testing, trading, wolf, money, value-investing]
-version: "2.0.0"
+tags:
+- analysis
+- crypto
+- finance
+- investment
+- testing
+- trading
+- wolf
+- money
+- value-investing
+version: 2.0.0
 author: oyi77
-subdomain: ""
+subdomain: ''
 type: finance
+category: financial
 ---
+
 # Money-Making Overview
 
 Systematic value investing compounds at 15-25% annually. A $50K portfolio following this framework generates $7.5K-12.5K/year. With position sizing and margin of safety, drawdowns stay under 20%. One good investment thesis can return 2-10x over 3-5 years.

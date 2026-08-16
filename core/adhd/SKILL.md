@@ -1,6 +1,10 @@
 ---
 name: adhd
-description: Use when parallel divergent ideation for agents — spawns N isolated reasoning branches under different cognitive frames, then scores, clusters, prunes traps, and deepens survivors. Use for open-ended design, architecture, naming, API surface decisions, fuzzy debugging, and brainstorming. Skip for syntax lookups or bugs with known root cause.
+description: Use when parallel divergent ideation for agents — spawns N isolated reasoning
+  branches under different cognitive frames, then scores, clusters, prunes traps,
+  and deepens survivors. Use for open-ended design, architecture, naming, API surface
+  decisions, fuzzy debugging, and brainstorming. Skip for syntax lookups or bugs with
+  known root cause.
 domain: core
 author: mahipal
 license: MIT
@@ -14,7 +18,11 @@ tags:
 - architecture
 - design
 version: 1.0.0
+category: core
 ---
+
+
+
 persona:
   name: "Udit Akhouri"
   title: "The Divergent Ideation Architect"
@@ -34,6 +42,42 @@ Stop picking the textbook answer. This skill forces the agent to walk into the a
 ---
 
 ## When to Use
+
+**Trigger phrases:**
+- "/adhd"
+- "ADHD mode"
+- "use parallel ideation"
+- "brainstorm this"
+- "give me a few ways to..."
+- "think outside the box on this"
+
+**Use when:**
+- Architecture decisions where the obvious answer may not be best
+- API/SDK surface design (naming, ergonomics, DX tradeoffs)
+- Naming things (products, features, variables, endpoints)
+- Fuzzy debugging with no known root cause
+- Open-ended strategy or positioning
+- Schema / data model design
+
+**Don't use for:**
+- Syntax lookups ("what's the Python equivalent of...")
+- Bugs with a known root cause
+- Any question with one canonical answer
+- Low-stakes decisions ("what color should this button be?")
+- When the user says "quick", "standard", "canonical", "textbook", or "just"
+
+---
+
+
+
+## Anti-Rationalization Table
+
+| Excuse | Reality | Rule |
+|--------|---------|------|
+| "Parallel branches waste tokens" | Divergent thinking finds better solutions than single-path | The cost of a bad architecture exceeds parallel exploration cost |
+| "I can just think harder" | Cognitive biases blind single-threaded reasoning | Structured parallel frames force coverage of blind spots |
+| "Naming isn't a design problem" | Names reveal conceptual clarity; bad names = bad abstractions | Treat naming as API design — it is |
+
 
 **Trigger phrases:**
 - "/adhd"
@@ -217,3 +261,15 @@ Render in this order. Structure is the point — do not collapse into prose.
 - [Independent benchmark](https://miyagadget.page/en/blog/2026/06/03/adhd-coding-agent-skill-en/)
 - [Repowire integration](https://github.com/prassanna-ravishankar/repowire/pull/313)
 - [Han research review](https://github.com/testdouble/han/blob/adhd-swarm-research/docs/research/adhd-application-to-han.md)
+## Overview
+
+Parallel divergent ideation for agents — spawns N isolated reasoning branches under different cognitive frames, then scores, clusters, prunes traps, and deepens survivors. Use for open-ended design, architecture, naming, API surface decisions.
+
+## Process
+
+1. **Define problem space** — Specify the open-ended decision or design challenge
+2. **Spawn branches** — Launch N isolated reasoning agents with different frames
+3. **Score outputs** — Evaluate each branch against quality criteria
+4. **Cluster & prune** — Group similar ideas, remove cognitive traps
+5. **Deepen survivors** — Run deep analysis on top candidates
+6. **Synthesize** — Merge insights into final recommendation

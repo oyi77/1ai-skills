@@ -1,7 +1,8 @@
 ---
 name: first-principles-thinking
-description: Decompose problems to fundamental truths using Musk's method. Use when challenging assumptions, solving novel
-  problems, or questioning conventional approaches.
+description: Use when decompose problems to fundamental truths using Musk's method.
+  Use when challenging assumptions, solving novel problems, or questioning conventional
+  approaches.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - soft-skills
 - thinking
 version: 1.0.0
+category: mindset
 ---
+
 # First Principles Thinking
 
 ## Overview

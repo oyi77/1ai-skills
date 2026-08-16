@@ -1,20 +1,24 @@
 ---
 name: analysis
-description: Use when full-stack data analysis pipeline — clean, detect anomalies, generate reports, and create visualizations with production pandas. Turn raw data into paid deliverables.
+description: Use when full-stack data analysis pipeline — clean, detect anomalies,
+  generate reports, and create visualizations with production pandas. Turn raw data
+  into paid deliverables.
 domain: data
 author: oyi77
 license: Apache-2.0
 subdomain: data-engineering
 tags:
-  - analytics
-  - data-cleaning
-  - anomaly-detection
-  - reporting
-  - visualization
-  - pandas
-  - money-making
+- analytics
+- data-cleaning
+- anomaly-detection
+- reporting
+- visualization
+- pandas
+- money-making
 version: 1.0.0
+category: data
 ---
+
 
 # Data Analysis Pipeline — Clean, Analyze, Report, Visualize
 

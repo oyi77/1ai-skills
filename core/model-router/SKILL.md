@@ -1,6 +1,8 @@
 ---
 name: model-router
-description: Route AI model requests to the optimal provider based on task, cost, latency, and capability requirements. Manage multi-provider LLM deployments. Use when working with model router.
+description: Use when route AI model requests to the optimal provider based on task,
+  cost, latency, and capability requirements. Manage multi-provider LLM deployments.
+  Use when working with model router.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -13,7 +15,9 @@ tags:
 - cost-optimization
 - model-selection
 version: 1.0.0
+category: core
 ---
+
 
 # Model Router
 

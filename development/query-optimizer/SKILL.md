@@ -1,6 +1,7 @@
 ---
 name: query-optimizer
-description: Slow query analysis — EXPLAIN plans, index recommendations, N+1 detection, and caching strategies. Use when working with query optimizer.
+description: Use when slow query analysis — EXPLAIN plans, index recommendations,
+  N+1 detection, and caching strategies. Use when working with query optimizer.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

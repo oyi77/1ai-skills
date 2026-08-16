@@ -1,7 +1,9 @@
 ---
 name: hunting-for-domain-fronting-c2-traffic
-description: Detect domain fronting C2 traffic by analyzing SNI vs HTTP Host header mismatches in proxy logs and TLS certificate
-  discrepancies using pyOpenSSL for certificate inspection. Use when detecting domain fronting c2 traffic by analyzing sni vs http.
+description: Use when detect domain fronting C2 traffic by analyzing SNI vs HTTP Host
+  header mismatches in proxy logs and TLS certificate discrepancies using pyOpenSSL
+  for certificate inspection. Use when detecting domain fronting c2 traffic by analyzing
+  sni vs http.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -26,7 +28,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 
 # Hunting for Domain Fronting C2 Traffic
 

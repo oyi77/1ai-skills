@@ -1,7 +1,8 @@
 ---
 name: active-listening
-description: Master active listening through the HEAR model, reflective listening, and questioning techniques. Use when coaching,
-  resolving conflicts, or building trust.
+description: Use when master active listening through the HEAR model, reflective listening,
+  and questioning techniques. Use when coaching, resolving conflicts, or building
+  trust.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - personal-development
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Active Listening
 
 ## Overview

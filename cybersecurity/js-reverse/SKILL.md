@@ -1,29 +1,30 @@
 ---
 name: js-reverse
-description: >-
-  Front-end JavaScript reverse engineering for web apps and anti-bot engines:
-  observe request flows, capture logic via hooks or breakpoints, rebuild in a
-  local Node environment, apply minimal patches, and decode obfuscated signing
-  algorithms. Use when analyzing request signing chains, obfuscated SDKs, or
-  client-side protection logic.
+description: 'Use when front-end JavaScript reverse engineering for web apps and anti-bot
+  engines: observe request flows, capture logic via hooks or breakpoints, rebuild
+  in a local Node environment, apply minimal patches, and decode obfuscated signing
+  algorithms. Use when analyzing request signing chains, obfuscated SDKs, or client-side
+  protection logic.'
 domain: cybersecurity
 subdomain: web-application-security
 tags:
-  - javascript
-  - reverse-engineering
-  - deobfuscation
-  - anti-bot
-  - web-application-security
-  - devtools
-  - signing-algorithm
+- javascript
+- reverse-engineering
+- deobfuscation
+- anti-bot
+- web-application-security
+- devtools
+- signing-algorithm
 version: '1.0'
 author: oyi77
 license: Apache-2.0
 nist_csf:
-  - DE.AE-02
-  - RS.AN-03
-  - ID.RA-01
+- DE.AE-02
+- RS.AN-03
+- ID.RA-01
+category: cybersecurity
 ---
+
 
 # Front-End JavaScript Reverse Engineering
 

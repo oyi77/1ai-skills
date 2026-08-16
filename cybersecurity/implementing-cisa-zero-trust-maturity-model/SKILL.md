@@ -1,7 +1,9 @@
 ---
 name: implementing-cisa-zero-trust-maturity-model
-description: Implement the CISA Zero Trust Maturity Model v2.0 across the five pillars of identity, devices, networks, applications,
-  and data to achieve progressive organizational zero trust maturity. Use when implementing the cisa zero trust maturity model v2.0 across the.
+description: Use when implement the CISA Zero Trust Maturity Model v2.0 across the
+  five pillars of identity, devices, networks, applications, and data to achieve progressive
+  organizational zero trust maturity. Use when implementing the cisa zero trust maturity
+  model v2.0 across the.
 domain: cybersecurity
 subdomain: zero-trust-architecture
 tags:
@@ -30,7 +32,9 @@ nist_csf:
 - PR.AA-05
 - PR.IR-01
 - GV.PO-01
+category: cybersecurity
 ---
+
 
 # Implementing CISA Zero Trust Maturity Model
 

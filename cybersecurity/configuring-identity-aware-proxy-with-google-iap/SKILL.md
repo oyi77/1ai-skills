@@ -1,6 +1,10 @@
 ---
 name: configuring-identity-aware-proxy-with-google-iap
-description: 'Configuring Google Cloud Identity-Aware Proxy (IAP) to enforce per-request identity verification for Compute Engine, App Engine, Cloud Run, and GKE services using access levels, context-aware policies, and programmatic access with service accounts. . Use when working with configuring identity aware proxy with google iap.'
+description: Use when configuring Google Cloud Identity-Aware Proxy (IAP) to enforce
+  per-request identity verification for Compute Engine, App Engine, Cloud Run, and
+  GKE services using access levels, context-aware policies, and programmatic access
+  with service accounts. . Use when working with configuring identity aware proxy
+  with google iap.
 domain: cybersecurity
 tags:
 - google-iap
@@ -19,7 +23,9 @@ nist_csf:
 - PR.AA-05
 - PR.IR-01
 - GV.PO-01
+category: cybersecurity
 ---
+
 # Configuring Identity Aware Proxy With Google Iap
 
 ## Overview

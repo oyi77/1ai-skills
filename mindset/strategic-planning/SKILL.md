@@ -1,7 +1,7 @@
 ---
 name: strategic-planning
-description: Set strategy using OKRs, roadmaps, quarterly planning, and review cadences. Use when defining direction or aligning
-  teams on goals.
+description: Use when set strategy using OKRs, roadmaps, quarterly planning, and review
+  cadences. Use when defining direction or aligning teams on goals.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - soft-skills
 - strategic
 version: 1.0.0
+category: mindset
 ---
+
 # Strategic Planning
 
 ## Overview

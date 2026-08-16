@@ -1,22 +1,27 @@
 ---
 name: video-gen
-description: Generate videos with AI models — Runway, Kling, Sora, Pika, Seedance 2.0, Grok Imagine, Veo. Text-to-video, image-to-video, video extension, multi-modal references. Use when generating video from text prompts, animating images, or creating AI video content.
+description: Use when generate videos with AI models — Runway, Kling, Sora, Pika,
+  Seedance 2.0, Grok Imagine, Veo. Text-to-video, image-to-video, video extension,
+  multi-modal references. Use when generating video from text prompts, animating images,
+  or creating AI video content.
 domain: content
 author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:
-  - content-creation
-  - video-generation
-  - ai-video
-  - text-to-video
-  - image-to-video
-  - runway
-  - kling
-  - seedance
-  - sora
+- content-creation
+- video-generation
+- ai-video
+- text-to-video
+- image-to-video
+- runway
+- kling
+- seedance
+- sora
 version: 1.0.0
+category: content
 ---
+
 # AI Video Generation
 
 Generate videos from text prompts or images using diffusion-based models. This is the umbrella skill for all AI video generation providers.

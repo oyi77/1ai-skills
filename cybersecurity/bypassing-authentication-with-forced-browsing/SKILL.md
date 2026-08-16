@@ -1,7 +1,9 @@
 ---
 name: bypassing-authentication-with-forced-browsing
-description: Discovering and accessing unprotected pages, APIs, and administrative interfaces by enumerating URLs and bypassing
-  authentication controls during authorized security assessments. Use when working with bypassing authentication with forced browsing.
+description: Use when discovering and accessing unprotected pages, APIs, and administrative
+  interfaces by enumerating URLs and bypassing authentication controls during authorized
+  security assessments. Use when working with bypassing authentication with forced
+  browsing.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -19,7 +21,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Bypassing Authentication With Forced Browsing
 
 ## Overview

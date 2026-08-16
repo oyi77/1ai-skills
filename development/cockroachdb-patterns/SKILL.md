@@ -1,6 +1,7 @@
 ---
 name: cockroachdb-patterns
-description: CockroachDB distributed SQL — PostgreSQL compatible, serializable isolation, geo-partitioning, multi-region. Use when working with cockroachdb patterns.
+description: Use when cockroachDB distributed SQL — PostgreSQL compatible, serializable
+  isolation, geo-partitioning, multi-region. Use when working with cockroachdb patterns.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

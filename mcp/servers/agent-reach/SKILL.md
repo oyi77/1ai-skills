@@ -1,8 +1,9 @@
 ---
 name: agent-reach
-description: Universal internet scraper for AI agents. Read and search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu,
-  LinkedIn, V2EX, RSS, web pages. Zero API fees. Use when agents need real-time social media data, content research, or trend
-  monitoring.
+description: Use when universal internet scraper for AI agents. Read and search Twitter,
+  Reddit, YouTube, GitHub, Bilibili, XiaoHongShu, LinkedIn, V2EX, RSS, web pages.
+  Zero API fees. Use when agents need real-time social media data, content research,
+  or trend monitoring.
 domain: mcp
 author: oyi77
 license: Apache-2.0
@@ -17,7 +18,9 @@ tags:
 - monitoring
 - reach
 version: 1.0.0
+category: mcp
 ---
+
 # Agent Reach
 
 ## When to Use

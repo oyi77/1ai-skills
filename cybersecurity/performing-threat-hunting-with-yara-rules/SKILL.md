@@ -1,6 +1,8 @@
 ---
 name: performing-threat-hunting-with-yara-rules
-description: 'Use when using YARA pattern-matching rules to hunt for malware, suspicious files, and indicators of compromise across filesystems and memory dumps. Covers rule authoring, yara-python scanning, and integration with threat intel feeds.'
+description: Use when using YARA pattern-matching rules to hunt for malware, suspicious
+  files, and indicators of compromise across filesystems and memory dumps. Covers
+  rule authoring, yara-python scanning, and integration with threat intel feeds.
 domain: cybersecurity
 tags:
 - yara
@@ -22,7 +24,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Performing Threat Hunting With Yara Rules
 
 ## Overview

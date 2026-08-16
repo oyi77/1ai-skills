@@ -1,7 +1,9 @@
 ---
 name: performing-content-security-policy-bypass
-description: Analyze and bypass Content Security Policy implementations to achieve cross-site scripting by exploiting misconfigurations,
-  JSONP endpoints, unsafe directives, and policy injection techniques. Use when analyzeing and bypass content security policy implementations to achieve cross-site.
+description: Use when analyze and bypass Content Security Policy implementations to
+  achieve cross-site scripting by exploiting misconfigurations, JSONP endpoints, unsafe
+  directives, and policy injection techniques. Use when analyzeing and bypass content
+  security policy implementations to achieve cross-site.
 domain: cybersecurity
 tags:
 - csp-bypass
@@ -20,7 +22,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Performing Content Security Policy Bypass
 
 ## Overview

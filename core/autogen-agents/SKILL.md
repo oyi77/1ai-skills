@@ -1,6 +1,7 @@
 ---
 name: autogen-agents
-description: AutoGen multi-agent conversations — AssistantAgent, UserProxyAgent, group chat, code execution. Use when working with autogen agents.
+description: Use when autoGen multi-agent conversations — AssistantAgent, UserProxyAgent,
+  group chat, code execution. Use when working with autogen agents.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - memory
 - self-improvement
 version: 1.0.0
+category: core
 ---
+
 
 ## Overview
 

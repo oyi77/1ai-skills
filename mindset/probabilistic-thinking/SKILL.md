@@ -1,7 +1,7 @@
 ---
 name: probabilistic-thinking
-description: Apply Bayesian updating, base rates, and expected value to decision-making. Use when reasoning under uncertainty
-  or evaluating risks.
+description: Use when apply Bayesian updating, base rates, and expected value to decision-making.
+  Use when reasoning under uncertainty or evaluating risks.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - soft-skills
 - thinking
 version: 1.0.0
+category: mindset
 ---
+
 # Probabilistic Thinking
 
 ## Overview

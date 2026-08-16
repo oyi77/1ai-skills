@@ -1,6 +1,7 @@
 ---
 name: spark-processing
-description: Apache Spark distributed processing — DataFrames, SQL, streaming, MLlib, cluster management. Use when working with spark processing.
+description: Use when apache Spark distributed processing — DataFrames, SQL, streaming,
+  MLlib, cluster management. Use when working with spark processing.
 domain: data
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - spark
 - visualization
 version: 1.0.0
+category: data
 ---
+
 
 
 ## Overview

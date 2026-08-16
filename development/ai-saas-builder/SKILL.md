@@ -1,14 +1,26 @@
 ---
 name: ai-saas-builder
-description: "Takes a problem statement and produces a deployable micro-SaaS product — landing page, auth, payments, database, API, and billing. Use when building micro-SaaS products solo."
+description: Use when takes a problem statement and produces a deployable micro-SaaS
+  product — landing page, auth, payments, database, API, and billing. Use when building
+  micro-SaaS products solo.
 domain: development
 license: Apache-2.0
-tags: [api, builder, coding, saas, software-engineering, testing, money, passive-income]
-version: "2.0.0"
+tags:
+- api
+- builder
+- coding
+- saas
+- software-engineering
+- testing
+- money
+- passive-income
+version: 2.0.0
 author: oyi77
-subdomain: ""
+subdomain: ''
 type: dev
+category: development
 ---
+
 
 # Money-Making Overview
 

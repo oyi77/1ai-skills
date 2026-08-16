@@ -1,6 +1,7 @@
 ---
 name: executing-plans
-description: Use when you have a completed, Momus-approved plan artifact ready for execution with checkpoint discipline
+description: Use when you have a completed, Momus-approved plan artifact ready for
+  execution with checkpoint discipline
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 persona:
   name: "Domain Expert"

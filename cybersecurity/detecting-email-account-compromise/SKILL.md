@@ -1,7 +1,9 @@
 ---
 name: detecting-email-account-compromise
-description: Detect compromised O365 and Google Workspace email accounts by analyzing inbox rule creation, suspicious sign-in
-  locations, mail forwarding rules, and unusual API access patterns via Microsoft Graph and audit logs. Use when detecting compromised o365 and google workspace email accounts by analyzing.
+description: Use when detect compromised O365 and Google Workspace email accounts
+  by analyzing inbox rule creation, suspicious sign-in locations, mail forwarding
+  rules, and unusual API access patterns via Microsoft Graph and audit logs. Use when
+  detecting compromised o365 and google workspace email accounts by analyzing.
 domain: cybersecurity
 subdomain: incident-response
 tags:
@@ -25,7 +27,9 @@ nist_csf:
 - RS.MA-02
 - RS.AN-03
 - RC.RP-01
+category: cybersecurity
 ---
+
 # Detecting Email Account Compromise
 
 ## Overview

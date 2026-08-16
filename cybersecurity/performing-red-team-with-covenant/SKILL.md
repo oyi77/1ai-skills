@@ -1,7 +1,9 @@
 ---
 name: performing-red-team-with-covenant
-description: Conduct red team operations using the Covenant C2 framework for authorized adversary simulation, including listener
-  setup, grunt deployment, task execution, and lateral movement tracking. Use when conducting red team operations using the covenant c2 framework for.
+description: Use when conduct red team operations using the Covenant C2 framework
+  for authorized adversary simulation, including listener setup, grunt deployment,
+  task execution, and lateral movement tracking. Use when conducting red team operations
+  using the covenant c2 framework for.
 domain: cybersecurity
 subdomain: red-team
 tags:
@@ -17,7 +19,9 @@ nist_csf:
 - ID.RA-01
 - GV.OV-02
 - DE.AE-07
+category: cybersecurity
 ---
+
 # Performing Red Team Operations with Covenant C2
 
 ## Overview

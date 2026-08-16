@@ -1,7 +1,8 @@
 ---
 name: testing-for-open-redirect-vulnerabilities
-description: Identify and test open redirect vulnerabilities in web applications by analyzing URL redirection parameters,
-  bypass techniques, and exploitation chains for phishing and token theft. Use when working with testing for open redirect vulnerabilities.
+description: Use when identify and test open redirect vulnerabilities in web applications
+  by analyzing URL redirection parameters, bypass techniques, and exploitation chains
+  for phishing and token theft. Use when working with testing for open redirect vulnerabilities.
 domain: cybersecurity
 tags:
 - open-redirect
@@ -20,7 +21,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Testing For Open Redirect Vulnerabilities
 
 ## Overview

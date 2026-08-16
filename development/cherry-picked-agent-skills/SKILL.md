@@ -1,8 +1,10 @@
 ---
 name: cherry-picked-agent-skills
-description: 6 unique agent skills cherry-picked from Addy Osmani's agent-skills — interview extraction, idea refinement,
-  adversarial review, source-driven development, context engineering, and deprecation workflows. Use when requirements gathering,
-  idea refinement, adversarial review, documentation-driven dev, context optimization, code deprecation.
+description: Use when 6 unique agent skills cherry-picked from Addy Osmani's agent-skills
+  — interview extraction, idea refinement, adversarial review, source-driven development,
+  context engineering, and deprecation workflows. Use when requirements gathering,
+  idea refinement, adversarial review, documentation-driven dev, context optimization,
+  code deprecation.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -15,7 +17,9 @@ tags:
 - deprecation
 - adversarial-review
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

@@ -1,6 +1,7 @@
 ---
 name: pocketbase-patterns
-description: PocketBase — single-file backend with SQLite, realtime subscriptions, auth, file storage, custom JS extensions. Use when working with pocketbase patterns.
+description: Use when pocketBase — single-file backend with SQLite, realtime subscriptions,
+  auth, file storage, custom JS extensions. Use when working with pocketbase patterns.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

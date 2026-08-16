@@ -1,9 +1,11 @@
 ---
 name: implementing-honeypot-for-ransomware-detection
-description: Deploys canary files, honeypot shares, and decoy systems to detect ransomware activity at the earliest possible
-  stage. Configures canary tokens embedded in strategic file locations that trigger alerts when ransomware attempts encryption,
-  uses honeypot network shares that mimic high-value targets, and deploys Thinkst Canary appliances for comprehensive deception-based
-  detection. Use when working with implementing honeypot for ransomware detection.
+description: Use when deploys canary files, honeypot shares, and decoy systems to
+  detect ransomware activity at the earliest possible stage. Configures canary tokens
+  embedded in strategic file locations that trigger alerts when ransomware attempts
+  encryption, uses honeypot network shares that mimic high-value targets, and deploys
+  Thinkst Canary appliances for comprehensive deception-based detection. Use when
+  working with implementing honeypot for ransomware detection.
 domain: cybersecurity
 tags:
 - ransomware
@@ -27,7 +29,9 @@ nist_csf:
 - RS.MA-01
 - RC.RP-01
 - PR.IR-01
+category: cybersecurity
 ---
+
 # Implementing Honeypot For Ransomware Detection
 
 ## Overview

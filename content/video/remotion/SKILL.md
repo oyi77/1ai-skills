@@ -19,7 +19,9 @@ tags:
 - ffmpeg
 - transitions
 version: 1.0.0
+category: content
 ---
+
 # Remotion — Professional Programmatic Video
 
 Canonical source: [remotion-dev/skills](https://github.com/remotion-dev/skills) (401K+ installs on skills.sh).

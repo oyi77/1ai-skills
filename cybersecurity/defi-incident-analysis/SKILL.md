@@ -1,7 +1,8 @@
 ---
 name: defi-incident-analysis
-description: Analyze DeFi security incidents including flash loan attacks, oracle manipulation, reentrancy exploits,
-  bridge hacks, and governance attacks to reconstruct attack chains and identify root causes. Use when investigating DeFi
+description: Use when analyze DeFi security incidents including flash loan attacks,
+  oracle manipulation, reentrancy exploits, bridge hacks, and governance attacks to
+  reconstruct attack chains and identify root causes. Use when investigating DeFi
   protocol exploits, analyzing smart contract attacks, or writing incident post-mortems.
 domain: cybersecurity
 author: oyi77
@@ -20,7 +21,9 @@ tags:
 - money
 version: '1.0'
 license: Apache-2.0
+category: cybersecurity
 ---
+
 
 # DeFi Incident Analysis
 

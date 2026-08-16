@@ -1,6 +1,7 @@
 ---
 name: agent-arena-skill
-description: 'Skill: agent-arena-skill. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Use when skill: agent-arena-skill. See SKILL.md body for details. Use
+  when this domain is relevant.'
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -32,7 +33,9 @@ persona:
   - Safety first
   - Scale compute
 version: 1.0.0
+category: development
 ---
+
 # Agent Arena Skill
 
 ## When to Use

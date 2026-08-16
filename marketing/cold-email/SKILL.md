@@ -1,7 +1,8 @@
 ---
 name: cold-email
-description: Outbound email with personalization, deliverability optimization, follow-up sequences, and compliance. Use when
-  building cold email campaigns, improving email deliverability, or designing outreach sequences.
+description: Use when outbound email with personalization, deliverability optimization,
+  follow-up sequences, and compliance. Use when building cold email campaigns, improving
+  email deliverability, or designing outreach sequences.
 domain: marketing
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - marketing
 - seo
 version: 1.0.0
+category: marketing
 ---
+
 # Cold Email
 
 ## When to Use

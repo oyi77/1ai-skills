@@ -12,7 +12,9 @@ tags:
 - ponytail
 - simplification
 version: 1.0.0
+category: mindset
 ---
+
 
 
 # Audit — Repo-Wide Over-Engineering Sweep

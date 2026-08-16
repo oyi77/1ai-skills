@@ -1,7 +1,9 @@
 ---
 name: implementing-proofpoint-email-security-gateway
-description: Deploy and configure Proofpoint Email Protection as a secure email gateway to detect and block phishing, malware,
-  BEC, and spam before messages reach user inboxes. Use when deploying and configure proofpoint email protection as a secure email.
+description: Use when deploy and configure Proofpoint Email Protection as a secure
+  email gateway to detect and block phishing, malware, BEC, and spam before messages
+  reach user inboxes. Use when deploying and configure proofpoint email protection
+  as a secure email.
 domain: cybersecurity
 subdomain: phishing-defense
 tags:
@@ -21,7 +23,9 @@ nist_csf:
 - DE.CM-09
 - RS.CO-02
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Implementing Proofpoint Email Security Gateway
 
 ## Overview

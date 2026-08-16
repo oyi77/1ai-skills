@@ -1,6 +1,8 @@
 ---
 name: scrapers
-description: Use when data extraction hub — content monitoring, price tracking, web scraping, and social listening for competitive intelligence, market research, and automated revenue generation.
+description: Use when data extraction hub — content monitoring, price tracking, web
+  scraping, and social listening for competitive intelligence, market research, and
+  automated revenue generation.
 domain: automation
 author: oyi77
 license: Apache-2.0
@@ -15,7 +17,9 @@ tags:
 - data
 - intelligence
 version: 1.0.0
+category: automation
 ---
+
 # Scrapers — Data Extraction Hub
 
 ## Money-Making Overview

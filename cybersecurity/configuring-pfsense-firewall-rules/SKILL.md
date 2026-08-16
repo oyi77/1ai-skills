@@ -1,6 +1,9 @@
 ---
 name: configuring-pfsense-firewall-rules
-description: 'Configures pfSense firewall rules, NAT policies, VPN tunnels, and traffic shaping to enforce network segmentation, control traffic flow, and protect internal network zones in enterprise and small-to-medium business environments. . Use when working with configuring pfsense firewall rules.'
+description: Use when configures pfSense firewall rules, NAT policies, VPN tunnels,
+  and traffic shaping to enforce network segmentation, control traffic flow, and protect
+  internal network zones in enterprise and small-to-medium business environments.
+  . Use when working with configuring pfsense firewall rules.
 domain: cybersecurity
 tags:
 - network-security
@@ -17,7 +20,9 @@ nist_csf:
 - DE.CM-01
 - ID.AM-03
 - PR.DS-02
+category: cybersecurity
 ---
+
 # Configuring Pfsense Firewall Rules
 
 ## Overview

@@ -1,6 +1,7 @@
 ---
 name: jenkins-shared-libs
-description: Jenkins shared libraries — reusable pipeline code, Groovy vars, resources, global pipeline libraries. Use when working with jenkins shared libs.
+description: Use when jenkins shared libraries — reusable pipeline code, Groovy vars,
+  resources, global pipeline libraries. Use when working with jenkins shared libs.
 domain: devops
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - pipeline
 - shared
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

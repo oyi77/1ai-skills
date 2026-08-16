@@ -1,9 +1,11 @@
 ---
 name: testing-api-authentication-weaknesses
-description: Tests API authentication mechanisms for weaknesses including broken token validation, missing authentication
-  on endpoints, weak password policies, credential stuffing susceptibility, token leakage in URLs or logs, and session management
-  flaws. The tester evaluates JWT implementation, API key handling, OAuth flows, and session token entropy to identify authentication
-  bypasses. Maps to OWASP API2:2023 Broken Authentication. Use when working with testing api authentication weaknesses.
+description: Use when tests API authentication mechanisms for weaknesses including
+  broken token validation, missing authentication on endpoints, weak password policies,
+  credential stuffing susceptibility, token leakage in URLs or logs, and session management
+  flaws. The tester evaluates JWT implementation, API key handling, OAuth flows, and
+  session token entropy to identify authentication bypasses. Maps to OWASP API2:2023
+  Broken Authentication. Use when working with testing api authentication weaknesses.
 domain: cybersecurity
 tags:
 - api-security
@@ -21,7 +23,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Testing Api Authentication Weaknesses
 
 ## Overview

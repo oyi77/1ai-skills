@@ -1,7 +1,8 @@
 ---
 name: runtime-self-improvement
-description: Automatically improve OpenClaw and 1ai-skills at runtime. Analyze performance, detect gaps, enhance skills, and
-  self-optimize during operation. Use when working with runtime self improvement.
+description: Use when automatically improve OpenClaw and 1ai-skills at runtime. Analyze
+  performance, detect gaps, enhance skills, and self-optimize during operation. Use
+  when working with runtime self improvement.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - self
 - self-improvement
 version: 1.0.0
+category: core
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Runtime Self Improvement"

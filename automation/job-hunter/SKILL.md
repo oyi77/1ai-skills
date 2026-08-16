@@ -1,7 +1,8 @@
 ---
 name: job-hunter
-description: Autonomous job hunting agent with state tracking, tailored applications, ATS optimization, and multi-platform
-  search across LinkedIn, Indeed, and Glassdoor. Use when working with job hunter.
+description: Use when autonomous job hunting agent with state tracking, tailored applications,
+  ATS optimization, and multi-platform search across LinkedIn, Indeed, and Glassdoor.
+  Use when working with job hunter.
 domain: automation
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - productivity
 - workflow
 version: 1.0.0
+category: automation
 ---
+
 # Job Hunter
 
 ## When to Use

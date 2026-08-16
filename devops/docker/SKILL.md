@@ -1,21 +1,25 @@
 ---
 name: docker
-description: Use when full-stack DevOps pipeline — Docker Compose for local dev, Dockerfile optimization for production images, Kubernetes deployment for scale. Turn container ops into a service business.
+description: Use when full-stack DevOps pipeline — Docker Compose for local dev, Dockerfile
+  optimization for production images, Kubernetes deployment for scale. Turn container
+  ops into a service business.
 domain: devops
 author: oyi77
 license: Apache-2.0
 subdomain: devops
 tags:
-  - devops
-  - docker
-  - compose
-  - kubernetes
-  - k8s
-  - ci-cd
-  - dockerfile
-  - money-making
+- devops
+- docker
+- compose
+- kubernetes
+- k8s
+- ci-cd
+- dockerfile
+- money-making
 version: 1.0.0
+category: devops
 ---
+
 
 # DevOps Money Protocol — Compose, Optimize, Deploy
 

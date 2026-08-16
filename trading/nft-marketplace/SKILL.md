@@ -1,6 +1,7 @@
 ---
 name: nft-marketplace
-description: 'Skill: nft-marketplace. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Use when skill: nft-marketplace. See SKILL.md body for details. Use
+  when this domain is relevant.'
 domain: trading
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - nft
 - trading
 version: 1.0.0
+category: trading
 ---
+
 ## Money-Making Overview
 
 NFT marketplaces generate revenue through protocol fees (0.5-2.5% per trade), listing fees, and order-flow monetization. A marketplace doing $1M daily volume at 1% fee yields ~$3.6M/year gross. Liquidity bootstrapping through zero-fee periods, trader incentives, and EIP-2981 royalty enforcement drives volume.

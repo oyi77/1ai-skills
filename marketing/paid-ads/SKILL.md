@@ -1,7 +1,8 @@
 ---
 name: paid-ads
-description: Paid advertising for Google, Meta, LinkedIn — ad copy, audience targeting, budget optimization, conversion tracking.
-  Use when setting up ad campaigns, optimizing ad spend, or designing ad creative.
+description: Use when paid advertising for Google, Meta, LinkedIn — ad copy, audience
+  targeting, budget optimization, conversion tracking. Use when setting up ad campaigns,
+  optimizing ad spend, or designing ad creative.
 domain: marketing
 author: oyi77
 license: Apache-2.0
@@ -12,8 +13,10 @@ tags:
 - marketing
 - paid
 - money
-version: "2.0.0"
+version: 2.0.0
+category: marketing
 ---
+
 # Paid Ads
 
 ## When to Use

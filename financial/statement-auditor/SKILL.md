@@ -1,7 +1,7 @@
 ---
 name: statement-auditor
-description: Audits LP statements before distribution. Use when user says "audit statement", "review LP package", "distribution
-  check".
+description: Use when audits LP statements before distribution. Use when user says
+  "audit statement", "review LP package", "distribution check".
 domain: financial
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - investment
 - statement
 version: 1.0.0
+category: financial
 ---
+
 
 # Statement Auditor!
 

@@ -1,6 +1,7 @@
 ---
 name: monorepo-tooling
-description: Monorepo management — Turborepo, Nx, pnpm workspaces, shared packages, CI optimization. Use when working with monorepo tooling.
+description: Use when monorepo management — Turborepo, Nx, pnpm workspaces, shared
+  packages, CI optimization. Use when working with monorepo tooling.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - testing
 - tooling
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

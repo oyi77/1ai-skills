@@ -21,7 +21,9 @@ nist_csf:
 - PR.AA-02
 - PR.AA-05
 - PR.AA-06
+category: cybersecurity
 ---
+
 # Implementing Conditional Access Policies in Azure AD
 
 ## Overview

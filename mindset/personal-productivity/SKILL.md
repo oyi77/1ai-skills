@@ -1,7 +1,7 @@
 ---
 name: personal-productivity
-description: Manage time, energy, and focus using GTD, Eisenhower Matrix, time blocking, and deep work. Use when optimizing
-  personal effectiveness.
+description: Use when manage time, energy, and focus using GTD, Eisenhower Matrix,
+  time blocking, and deep work. Use when optimizing personal effectiveness.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - productivity
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Personal Productivity
 
 ## Overview

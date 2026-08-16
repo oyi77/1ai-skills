@@ -1,6 +1,10 @@
 ---
 name: implementing-ot-network-traffic-analysis-with-nozomi
-description: 'Deploy Nozomi Networks Guardian sensors for passive OT network traffic analysis to achieve comprehensive asset visibility, real-time threat detection, and vulnerability assessment across industrial control systems without disrupting operations, leveraging behavioral anomaly detection and protocol-aware monitoring. . Use when working with implementing ot network traffic analysis with nozomi.'
+description: Use when deploy Nozomi Networks Guardian sensors for passive OT network
+  traffic analysis to achieve comprehensive asset visibility, real-time threat detection,
+  and vulnerability assessment across industrial control systems without disrupting
+  operations, leveraging behavioral anomaly detection and protocol-aware monitoring.
+  . Use when working with implementing ot network traffic analysis with nozomi.
 domain: cybersecurity
 tags:
 - ot-security
@@ -28,7 +32,9 @@ nist_csf:
 - DE.CM-01
 - ID.AM-05
 - GV.OC-02
+category: cybersecurity
 ---
+
 # Implementing Ot Network Traffic Analysis With Nozomi
 
 ## Overview

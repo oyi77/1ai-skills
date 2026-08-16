@@ -1,14 +1,26 @@
 ---
 name: ai-lead-generation
-description: "Automated AI-powered lead generation and prospecting. Find ideal customers, enrich data, personalize outreach, and book meetings without manual effort. Use when generating B2B leads at scale."
+description: Automated AI-powered lead generation and prospecting. Find ideal customers,
+  enrich data, personalize outreach, and book meetings without manual effort. Use
+  when generating B2B leads at scale.
 domain: sales
 license: Apache-2.0
-tags: [business-development, generation, lead, revenue, sales, money, outreach, b2b]
-version: "2.0.0"
+tags:
+- business-development
+- generation
+- lead
+- revenue
+- sales
+- money
+- outreach
+- b2b
+version: 2.0.0
 author: oyi77
-subdomain: ""
+subdomain: ''
 type: sales
+category: sales
 ---
+
 
 # Money-Making Overview
 

@@ -1,6 +1,11 @@
 ---
 name: detecting-anomalies-in-industrial-control-systems
-description: 'Use when this skill covers deploying anomaly detection systems for industrial control environments using machine learning models trained on OT network baselines, physics-based process models, and behavioral analysis of industrial protocol communications. It addresses building normal behavior profiles for SCADA polling patterns, detecting deviations in Modbus/DNP3/OPC UA traffic, identifying rogue devices, and correlating network anomalies with physical process data from historians.'
+description: Use when this skill covers deploying anomaly detection systems for industrial
+  control environments using machine learning models trained on OT network baselines,
+  physics-based process models, and behavioral analysis of industrial protocol communications.
+  It addresses building normal behavior profiles for SCADA polling patterns, detecting
+  deviations in Modbus/DNP3/OPC UA traffic, identifying rogue devices, and correlating
+  network anomalies with physical process data from historians.
 domain: cybersecurity
 tags:
 - ot-security
@@ -26,7 +31,9 @@ nist_csf:
 - DE.CM-01
 - ID.AM-05
 - GV.OC-02
+category: cybersecurity
 ---
+
 # Detecting Anomalies In Industrial Control Systems
 
 ## Overview

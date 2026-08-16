@@ -1,7 +1,8 @@
 ---
 name: analyzing-active-directory-acl-abuse
-description: Detect dangerous ACL misconfigurations in Active Directory using ldap3 to identify GenericAll, WriteDACL, and
-  WriteOwner abuse paths. Use when detecting dangerous acl misconfigurations in active directory using ldap3 to.
+description: Use when detect dangerous ACL misconfigurations in Active Directory using
+  ldap3 to identify GenericAll, WriteDACL, and WriteOwner abuse paths. Use when detecting
+  dangerous acl misconfigurations in active directory using ldap3 to.
 domain: cybersecurity
 subdomain: identity-security
 tags:
@@ -16,7 +17,9 @@ nist_csf:
 - PR.AA-01
 - PR.AA-05
 - PR.AA-06
+category: cybersecurity
 ---
+
 
 
 # Analyzing Active Directory ACL Abuse

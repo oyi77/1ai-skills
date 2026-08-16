@@ -1,7 +1,8 @@
 ---
 name: onchain-transaction-forensics
-description: Trace and analyze blockchain transactions to investigate illicit fund flows, identify wallet clusters,
-  and map transaction graphs across multiple blockchains. Use when investigating stolen funds, following money trails on-chain,
+description: Use when trace and analyze blockchain transactions to investigate illicit
+  fund flows, identify wallet clusters, and map transaction graphs across multiple
+  blockchains. Use when investigating stolen funds, following money trails on-chain,
   analyzing suspicious addresses, or tracing cross-chain transactions.
 domain: cybersecurity
 license: Apache-2.0
@@ -19,7 +20,9 @@ tags:
 - money
 version: '1.0'
 author: oyi77
+category: cybersecurity
 ---
+
 
 # On-Chain Transaction Forensics
 

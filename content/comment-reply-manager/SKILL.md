@@ -1,7 +1,9 @@
 ---
 name: comment-reply-manager
-description: Monitor TikTok/Instagram comments, classify sentiment, auto-reply with FAQ answers, and DM high-intent commenters
-  with LYNK affiliate links to convert engagement into sales. Use when monitoring tiktok/instagram comments, classify sentiment, auto-reply with faq answers, and.
+description: Use when monitor TikTok/Instagram comments, classify sentiment, auto-reply
+  with FAQ answers, and DM high-intent commenters with LYNK affiliate links to convert
+  engagement into sales. Use when monitoring tiktok/instagram comments, classify sentiment,
+  auto-reply with faq answers, and.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -14,7 +16,10 @@ tags:
 - media
 - reply
 version: 1.0.0
+category: content
 ---
+
+
 # Comment Reply Manager
 
 ## When to Use
@@ -103,3 +108,10 @@ def generate_content(topic: str, format: str = "article"):
 - [ ] Output is properly formatted for target platform
 - [ ] All facts and references verified
 - [ ] SEO/distribution optimization applied where applicable
+## Verification Checklist
+
+- [ ] Comment classification accuracy > 90%
+- [ ] Auto-reply triggers on correct sentiment
+- [ ] DM conversion tracking functional
+- [ ] Rate limits respected (no account flags)
+- [ ] Affiliate links properly attributed

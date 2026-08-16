@@ -1,6 +1,8 @@
 ---
 name: steve-jobs-product
-description: 'Design products using Steve Jobs'' philosophy: simplicity, user experience, intersection of technology and liberal arts. . Use when working with steve jobs product.'
+description: 'Use when design products using Steve Jobs'' philosophy: simplicity,
+  user experience, intersection of technology and liberal arts. . Use when working
+  with steve jobs product.'
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -13,7 +15,10 @@ tags:
 - research
 - steve
 version: 1.0.0
+category: research
 ---
+
+
 # Steve Jobs Product
 
 ## When to Use
@@ -109,3 +114,10 @@ Jobs' philosophy on value capture centered on premium pricing justified by super
 - **Vertical integration margin capture** — Designing chips (A-series), hardware, OS, and retail allows Apple to capture margin at every layer rather than leaving it to partners. The "whole widget" approach means no margin is left on the table.
 - **Services as a compounder** — Once a user is in the ecosystem, services (iCloud, Apple Music, App Store commissions, AppleCare) layer recurring revenue on top of hardware margins with near-zero marginal cost.
 - **Bundling as a pricing lever** — iLife, iWork, and eventually Apple One bundles make individual prices disappear into a perceived value that no competitor can match piece-by-piece.
+## Verification Checklist
+
+- [ ] Simplicity achieved through subtraction, not minimalism
+- [ ] User experience starts at unboxing/onboarding
+- [ ] Technology serves liberal arts intersection
+- [ ] Say 'no' to 1000 good ideas for 1 great one
+- [ ] Reality distortion field calibrated (aspirational but achievable)

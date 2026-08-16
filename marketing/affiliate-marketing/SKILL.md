@@ -1,6 +1,8 @@
 ---
 name: affiliate-marketing
-description: Use when AI-powered affiliate marketing automation. Research products, generate content, optimize conversions, and build passive income through automated affiliate campaigns.
+description: Use when AI-powered affiliate marketing automation. Research products,
+  generate content, optimize conversions, and build passive income through automated
+  affiliate campaigns.
 domain: marketing
 author: oyi77
 license: Apache-2.0
@@ -11,7 +13,9 @@ tags:
 - marketing
 - seo
 version: 1.0.0
+category: marketing
 ---
+
 
 
 persona:

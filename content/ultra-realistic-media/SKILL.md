@@ -1,6 +1,7 @@
 ---
 name: ultra-realistic-media
-description: ULTRA REALISTIC MEDIA GENERATION - TRAINING SKILL. Use when relevant to this domain.
+description: Use when uLTRA REALISTIC MEDIA GENERATION - TRAINING SKILL. Use when
+  relevant to this domain.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - realistic
 - ultra
 version: 1.0.0
+category: content
 ---
+
 
 # ULTRA REALISTIC MEDIA GENERATION - TRAINING SKILL
 ## When to Use

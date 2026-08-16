@@ -14,7 +14,9 @@ tags:
 - sales
 - talent
 version: 1.0.0
+category: sales
 ---
+
 
 
 # talent-crm

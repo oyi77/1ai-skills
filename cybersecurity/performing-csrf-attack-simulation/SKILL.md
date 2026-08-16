@@ -1,7 +1,8 @@
 ---
 name: performing-csrf-attack-simulation
-description: Testing web applications for Cross-Site Request Forgery vulnerabilities by crafting forged requests that exploit
-  authenticated user sessions during authorized security assessments. Use when working with performing csrf attack simulation.
+description: Use when testing web applications for Cross-Site Request Forgery vulnerabilities
+  by crafting forged requests that exploit authenticated user sessions during authorized
+  security assessments. Use when working with performing csrf attack simulation.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -19,7 +20,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Performing Csrf Attack Simulation
 
 ## Overview

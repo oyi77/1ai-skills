@@ -26,7 +26,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Analyzing Threat Landscape With Misp
 
 ## Overview

@@ -1,6 +1,7 @@
 ---
 name: playwright-e2e
-description: End-to-end test automation with Playwright — cross-browser testing, page objects, and CI integration. Use when working with playwright e2e.
+description: Use when end-to-end test automation with Playwright — cross-browser testing,
+  page objects, and CI integration. Use when working with playwright e2e.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

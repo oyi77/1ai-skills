@@ -1,8 +1,10 @@
 ---
 name: deploying-ransomware-canary-files
-description: Deploys and monitors ransomware canary files across critical directories using Python's watchdog library for
-  real-time filesystem event detection. Places strategically named decoy files that mimic high-value targets (financial records,
-  credentials, database exports) in locations ransomware typically enumerates first. Use when working with deploying ransomware canary files.
+description: Use when deploys and monitors ransomware canary files across critical
+  directories using Python's watchdog library for real-time filesystem event detection.
+  Places strategically named decoy files that mimic high-value targets (financial
+  records, credentials, database exports) in locations ransomware typically enumerates
+  first. Use when working with deploying ransomware canary files.
 domain: cybersecurity
 tags:
 - ransomware
@@ -21,7 +23,9 @@ nist_csf:
 - RS.MA-01
 - RC.RP-01
 - PR.IR-01
+category: cybersecurity
 ---
+
 # Deploying Ransomware Canary Files
 
 ## Overview

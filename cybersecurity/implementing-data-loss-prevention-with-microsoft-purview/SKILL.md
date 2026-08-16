@@ -1,6 +1,11 @@
 ---
 name: implementing-data-loss-prevention-with-microsoft-purview
-description: 'Use when implements data loss prevention policies using Microsoft Purview to protect sensitive information across Exchange Online, SharePoint, OneDrive, Teams, endpoint devices, and Power BI. The analyst configures sensitivity labels with encryption and content marking, creates DLP policies using built-in and custom sensitive information types with regex patterns, deploys endpoint DLP rules to control file operations on Windows and macOS devices, and monitors policy effectiveness through Acti...'
+description: Use when implements data loss prevention policies using Microsoft Purview
+  to protect sensitive information across Exchange Online, SharePoint, OneDrive, Teams,
+  endpoint devices, and Power BI. The analyst configures sensitivity labels with encryption
+  and content marking, creates DLP policies using built-in and custom sensitive information
+  types with regex patterns, deploys endpoint DLP rules to control file operations
+  on Windows and macOS devices, and monitors policy effectiveness through Acti...
 domain: cybersecurity
 tags:
 - DLP
@@ -18,7 +23,9 @@ nist_csf:
 - PR.DS-02
 - PR.DS-10
 - GV.PO-01
+category: cybersecurity
 ---
+
 # Implementing Data Loss Prevention With Microsoft Purview
 
 ## Overview

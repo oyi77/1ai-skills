@@ -1,7 +1,9 @@
 ---
 name: implementing-gcp-binary-authorization
-description: Implement GCP Binary Authorization to enforce deploy-time security controls that ensure only trusted, attested
-  container images are deployed to Google Kubernetes Engine and Cloud Run. Use when implementing gcp binary authorization to enforce deploy-time security controls that.
+description: Use when implement GCP Binary Authorization to enforce deploy-time security
+  controls that ensure only trusted, attested container images are deployed to Google
+  Kubernetes Engine and Cloud Run. Use when implementing gcp binary authorization
+  to enforce deploy-time security controls that.
 domain: cybersecurity
 subdomain: cloud-security
 tags:
@@ -21,7 +23,9 @@ nist_csf:
 - ID.AM-08
 - GV.SC-06
 - DE.CM-01
+category: cybersecurity
 ---
+
 
 # Implementing GCP Binary Authorization
 

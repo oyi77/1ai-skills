@@ -1,18 +1,21 @@
 ---
 name: deploy-agent
-description: Use when ship code through controlled pipeline with verification gates and rollback plans.
+description: Use when ship code through controlled pipeline with verification gates
+  and rollback plans.
 domain: agents
 author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:
-  - agent
-  - ai-agent
-  - automation
-  - deploy
-  - autonomous
+- agent
+- ai-agent
+- automation
+- deploy
+- autonomous
 version: 1.0.0
+category: agents
 ---
+
 
 # Deploy Agent
 

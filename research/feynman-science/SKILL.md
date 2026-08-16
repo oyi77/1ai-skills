@@ -1,6 +1,7 @@
 ---
 name: feynman-science
-description: 'Explain complex concepts simply using Feynman''s technique: teach, identify gaps, simplify, and analogize. Use when working with feynman science.'
+description: 'Use when explain complex concepts simply using Feynman''s technique:
+  teach, identify gaps, simplify, and analogize. Use when working with feynman science.'
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -15,7 +16,10 @@ tags:
 - pedagogy
 - science
 version: 1.0.0
+category: research
 ---
+
+
 # Feynman Science
 
 > *"If you can't explain it simply, you don't understand it well enough."* — **Richard Feynman**
@@ -249,3 +253,10 @@ The Feynman Technique translates directly into revenue-generating activities bec
 ### Income Stacking Strategy
 
 Start with tutoring (fastest cash, builds reputation). Record sessions → turn notes into course content. Course students → newsletter subscribers. Newsletter audience → consulting leads. Each level feeds the next with zero additional acquisition cost.
+## Verification Checklist
+
+- [ ] Complex concept broken into simple components
+- [ ] Each component explained with clear analogies
+- [ ] Gaps in explanation identified and filled
+- [ ] Explanation tested with target audience
+- [ ] Simplified version maintains accuracy

@@ -1,7 +1,8 @@
 ---
 name: maybe-hft
-description: Hedging EA dengan sistem trailing stop dan pending order otomatis. Converted dari MQL5, cross-platform (Windows/Linux/Mac).
-  Compatible dengan mt5linux Docker. Use when working with maybe hft.
+description: Use when hedging EA dengan sistem trailing stop dan pending order otomatis.
+  Converted dari MQL5, cross-platform (Windows/Linux/Mac). Compatible dengan mt5linux
+  Docker. Use when working with maybe hft.
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -67,7 +68,9 @@ metadata:
       default: false
       desc: Jalan sekali aja, tidak loop
 version: 1.0.0
+category: research
 ---
+
 # Maybe Hft
 
 ## When to Use

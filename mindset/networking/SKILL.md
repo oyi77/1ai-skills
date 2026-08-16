@@ -1,7 +1,8 @@
 ---
 name: networking
-description: Build and maintain professional relationships through strategic outreach, events, and follow-up. Use when expanding
-  your professional network or finding opportunities.
+description: Use when build and maintain professional relationships through strategic
+  outreach, events, and follow-up. Use when expanding your professional network or
+  finding opportunities.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - personal-development
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Networking
 
 ## Overview

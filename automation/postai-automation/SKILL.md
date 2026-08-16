@@ -15,7 +15,9 @@ tags:
 - voice
 - workflow
 version: 1.0.0
+category: automation
 ---
+
 # Postai Automation
 
 ## When to Use

@@ -1,7 +1,9 @@
 ---
 name: conducting-internal-network-penetration-test
-description: Execute an internal network penetration test simulating an insider threat or post-breach attacker to identify
-  lateral movement paths, privilege escalation vectors, and sensitive data exposure within the corporate network. Use when working with conducting internal network penetration test.
+description: Use when execute an internal network penetration test simulating an insider
+  threat or post-breach attacker to identify lateral movement paths, privilege escalation
+  vectors, and sensitive data exposure within the corporate network. Use when working
+  with conducting internal network penetration test.
 domain: cybersecurity
 subdomain: penetration-testing
 tags:
@@ -26,7 +28,9 @@ nist_csf:
 - ID.RA-06
 - GV.OV-02
 - DE.AE-07
+category: cybersecurity
 ---
+
 
 # Conducting Internal Network Penetration Test
 

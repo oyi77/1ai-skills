@@ -1,7 +1,9 @@
 ---
 name: hunting-for-living-off-the-cloud-techniques
-description: Hunt for adversary abuse of legitimate cloud services for C2, data staging, and exfiltration including abuse
-  of Azure, AWS, GCP services, and SaaS platforms. Use when hunting for adversary abuse of legitimate cloud services for c2,.
+description: Use when hunt for adversary abuse of legitimate cloud services for C2,
+  data staging, and exfiltration including abuse of Azure, AWS, GCP services, and
+  SaaS platforms. Use when hunting for adversary abuse of legitimate cloud services
+  for c2,.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -26,7 +28,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Hunting For Living Off The Cloud Techniques
 
 ## Overview

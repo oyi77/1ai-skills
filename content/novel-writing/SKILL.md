@@ -1,29 +1,35 @@
 ---
 name: novel-writing
-description: 'Complete novel and fiction writing skill covering story structure, character creation, world-building, dialogue, pacing, and chapter craft. Adopts Chinese novelist patterns (show-don''t-tell, conflict, cliffhanger) plus Western frameworks. Includes kids books (picture book, middle grade) and Buku Bahasa Indonesia for Indonesian fiction. Use when writing novels, short stories, or children''s fiction.'
+description: Use when complete novel and fiction writing skill covering story structure,
+  character creation, world-building, dialogue, pacing, and chapter craft. Adopts
+  Chinese novelist patterns (show-don't-tell, conflict, cliffhanger) plus Western
+  frameworks. Includes kids books (picture book, middle grade) and Buku Bahasa Indonesia
+  for Indonesian fiction. Use when writing novels, short stories, or children's fiction.
 domain: content
 tags:
-  - content
-  - writing
-  - fiction
-  - novel
-  - character
-  - plot
-  - worldbuilding
-  - story
-  - creative-writing
-  - kids
-  - childrens-books
-  - middle-grade
-  - picture-book
-  - indonesian
-  - buku-anak
-  - bahasa-indonesia
+- content
+- writing
+- fiction
+- novel
+- character
+- plot
+- worldbuilding
+- story
+- creative-writing
+- kids
+- childrens-books
+- middle-grade
+- picture-book
+- indonesian
+- buku-anak
+- bahasa-indonesia
 author: oyi77
 license: MIT
 subdomain: writing
 version: 1.0.0
+category: content
 ---
+
 
 # Novel & Fiction Writing — Complete Craft System
 

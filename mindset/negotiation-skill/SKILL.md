@@ -15,7 +15,9 @@ tags:
 - skill
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Negotiation Skill
 
 ## Overview

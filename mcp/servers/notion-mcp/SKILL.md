@@ -1,6 +1,7 @@
 ---
 name: notion-mcp
-description: Use when MCP server for Notion databases. Query pages, manage databases, and automate Notion workflows via standardized protocol.
+description: Use when MCP server for Notion databases. Query pages, manage databases,
+  and automate Notion workflows via standardized protocol.
 domain: mcp
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - notion
 - tool-integration
 version: 1.0.0
+category: mcp
 ---
+
 # Notion Mcp
 
 ## When to Use

@@ -1,7 +1,8 @@
 ---
 name: prompt-engineering
-description: Advanced prompt engineering — chain-of-thought, few-shot, tree-of-thought, self-consistency, meta-prompting,
-  system design, debugging, and optimization for production AI systems. Use when working with prompt engineering.
+description: Use when advanced prompt engineering — chain-of-thought, few-shot, tree-of-thought,
+  self-consistency, meta-prompting, system design, debugging, and optimization for
+  production AI systems. Use when working with prompt engineering.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - prompt
 - self-improvement
 version: 1.0.0
+category: core
 ---
+
 # Prompt Engineering
 
 ## When to Use

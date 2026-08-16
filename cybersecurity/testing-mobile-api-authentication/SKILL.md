@@ -1,8 +1,10 @@
 ---
 name: testing-mobile-api-authentication
-description: Tests authentication and authorization mechanisms in mobile application APIs to identify broken authentication,
-  insecure token management, session fixation, privilege escalation, and IDOR vulnerabilities. Use when performing API security
-  assessments against mobile app backends, testing JWT implementations, evaluating OAuth flows, or assessing session management.
+description: Use when tests authentication and authorization mechanisms in mobile
+  application APIs to identify broken authentication, insecure token management, session
+  fixation, privilege escalation, and IDOR vulnerabilities. Use when performing API
+  security assessments against mobile app backends, testing JWT implementations, evaluating
+  OAuth flows, or assessing session management.
 domain: cybersecurity
 tags:
 - mobile-security
@@ -20,7 +22,9 @@ nist_csf:
 - PR.AA-05
 - ID.RA-01
 - DE.CM-09
+category: cybersecurity
 ---
+
 # Testing Mobile Api Authentication
 
 ## Overview

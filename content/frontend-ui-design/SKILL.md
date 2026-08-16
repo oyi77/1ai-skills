@@ -1,6 +1,9 @@
 ---
 name: frontend-ui-design
-description: Design and build production-grade UI components using React, Vue, or vanilla HTML/CSS. Create responsive layouts, design systems, and accessible interfaces. Use when designing and build production-grade ui components using react, vue, or.
+description: Use when design and build production-grade UI components using React,
+  Vue, or vanilla HTML/CSS. Create responsive layouts, design systems, and accessible
+  interfaces. Use when designing and build production-grade ui components using react,
+  vue, or.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -14,7 +17,9 @@ tags:
 - components
 - responsive
 version: 1.0.0
+category: content
 ---
+
 
 # Frontend Ui Design
 

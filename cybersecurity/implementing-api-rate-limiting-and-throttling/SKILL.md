@@ -1,6 +1,11 @@
 ---
 name: implementing-api-rate-limiting-and-throttling
-description: Use when implements API rate limiting and throttling controls using token bucket, sliding window, and fixed window algorithms to protect against brute force attacks, credential stuffing, resource exhaustion, and API abuse. The engineer configures per-user, per-IP, and per-endpoint rate limits using Redis-backed counters, API gateway plugins, or application middleware, and implements proper HTTP 429 responses with Retry-After headers.
+description: Use when implements API rate limiting and throttling controls using token
+  bucket, sliding window, and fixed window algorithms to protect against brute force
+  attacks, credential stuffing, resource exhaustion, and API abuse. The engineer configures
+  per-user, per-IP, and per-endpoint rate limits using Redis-backed counters, API
+  gateway plugins, or application middleware, and implements proper HTTP 429 responses
+  with Retry-After headers.
 domain: cybersecurity
 tags:
 - api-security
@@ -18,7 +23,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Implementing Api Rate Limiting And Throttling
 
 ## Overview

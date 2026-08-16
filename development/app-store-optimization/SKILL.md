@@ -1,6 +1,7 @@
 ---
 name: app-store-optimization
-description: App Store and Play Store optimization — keywords, screenshots, reviews, and conversion rate optimization. Use when working with app store optimization.
+description: Use when app Store and Play Store optimization — keywords, screenshots,
+  reviews, and conversion rate optimization. Use when working with app store optimization.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - store
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

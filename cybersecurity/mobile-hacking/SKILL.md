@@ -1,7 +1,8 @@
 ---
 name: mobile-hacking
-description: Android and mobile application security testing — emulators, rooting, traffic interception, dynamic instrumentation.
-  Use when testing mobile apps for vulnerabilities, reversing APKs, or bypassing security controls on Android.
+description: Use when android and mobile application security testing — emulators,
+  rooting, traffic interception, dynamic instrumentation. Use when testing mobile
+  apps for vulnerabilities, reversing APKs, or bypassing security controls on Android.
 domain: cybersecurity
 author: oyi77
 license: Apache-2.0
@@ -17,10 +18,10 @@ tags:
 - flutter
 - fluttertap
 - zygisk
-
-
 version: 1.0.0
+category: cybersecurity
 ---
+
 
 # Mobile Hacking Skill
 

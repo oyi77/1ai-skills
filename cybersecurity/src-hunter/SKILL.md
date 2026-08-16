@@ -1,29 +1,29 @@
 ---
 name: src-hunter
-description: >-
-  Structured SRC bug bounty hunting for security response centers: intake
-  scoped targets and payout rules, recon subdomains and perimeters, enumerate
-  attack surface, hunt prioritized vulnerability classes with time-boxed
-  discipline, and report with evidence discipline. Use when hunting on SRC
-  platforms, running time-boxed bounty campaigns, or applying China-specific
-  asset fingerprinting.
+description: 'Use when structured SRC bug bounty hunting for security response centers:
+  intake scoped targets and payout rules, recon subdomains and perimeters, enumerate
+  attack surface, hunt prioritized vulnerability classes with time-boxed discipline,
+  and report with evidence discipline. Use when hunting on SRC platforms, running
+  time-boxed bounty campaigns, or applying China-specific asset fingerprinting.'
 domain: cybersecurity
 subdomain: web-application-security
 tags:
-  - bug-bounty
-  - src
-  - reconnaissance
-  - web-application-security
-  - pentesting
-  - vulnerability-hunting
+- bug-bounty
+- src
+- reconnaissance
+- web-application-security
+- pentesting
+- vulnerability-hunting
 version: '1.0'
 author: oyi77
 license: Apache-2.0
 nist_csf:
-  - DE.AE-02
-  - ID.RA-01
-  - RS.AN-03
+- DE.AE-02
+- ID.RA-01
+- RS.AN-03
+category: cybersecurity
 ---
+
 
 # SRC Bug Bounty Hunting
 

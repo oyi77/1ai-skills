@@ -1,6 +1,10 @@
 ---
 name: implementing-code-signing-for-artifacts
-description: 'Use when this skill covers implementing code signing for build artifacts to ensure integrity and authenticity throughout the software supply chain. It addresses signing binaries, packages, and containers using GPG, Sigstore, and platform-specific signing tools, establishing trust chains, and verifying signatures in deployment pipelines.'
+description: Use when this skill covers implementing code signing for build artifacts
+  to ensure integrity and authenticity throughout the software supply chain. It addresses
+  signing binaries, packages, and containers using GPG, Sigstore, and platform-specific
+  signing tools, establishing trust chains, and verifying signatures in deployment
+  pipelines.
 domain: cybersecurity
 tags:
 - devsecops
@@ -18,7 +22,9 @@ nist_csf:
 - GV.SC-07
 - ID.IM-04
 - PR.PS-04
+category: cybersecurity
 ---
+
 # Implementing Code Signing For Artifacts
 
 ## Overview

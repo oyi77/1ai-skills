@@ -17,7 +17,9 @@ nist_csf:
 - RS.MA-01
 - GV.OV-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 
 
 # Implementing SOAR Playbook for Phishing

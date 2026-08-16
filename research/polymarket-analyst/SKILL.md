@@ -1,6 +1,8 @@
 ---
 name: polymarket-analyst
-description: Analyze Polymarket prediction markets for expected value, market inefficiencies, and trading opportunities. Use when analyzeing polymarket prediction markets for expected value, market inefficiencies, and.
+description: Use when analyze Polymarket prediction markets for expected value, market
+  inefficiencies, and trading opportunities. Use when analyzeing polymarket prediction
+  markets for expected value, market inefficiencies, and.
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -13,7 +15,9 @@ tags:
 - research
 - trading
 version: 1.0.0
+category: research
 ---
+
 # Polymarket Analyst
 
 ## When to Use

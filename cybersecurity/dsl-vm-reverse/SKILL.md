@@ -1,30 +1,31 @@
 ---
 name: dsl-vm-reverse
-description: >-
-  Reverse JavaScript-based custom DSL/VM interpreters, non-standard WASM-like
-  runtimes, and risk-control engines. Use when analyzing IIFE or switch-based
-  opcode dispatchers, extracting instruction tables, recovering bytecode
-  semantics, capturing VM state at runtime, or reconstructing execution flow.
+description: Use when reverse JavaScript-based custom DSL/VM interpreters, non-standard
+  WASM-like runtimes, and risk-control engines. Use when analyzing IIFE or switch-based
+  opcode dispatchers, extracting instruction tables, recovering bytecode semantics,
+  capturing VM state at runtime, or reconstructing execution flow.
 domain: cybersecurity
 subdomain: web-application-security
 tags:
-  - javascript
-  - reverse-engineering
-  - dsl
-  - vm
-  - anti-bot
-  - obfuscation
-  - risk-control
-  - web-application-security
+- javascript
+- reverse-engineering
+- dsl
+- vm
+- anti-bot
+- obfuscation
+- risk-control
+- web-application-security
 version: '1.0'
 author: oyi77
 license: Apache-2.0
 nist_csf:
-  - DE.AE-02
-  - RS.AN-03
-  - ID.RA-01
-  - DE.CM-01
+- DE.AE-02
+- RS.AN-03
+- ID.RA-01
+- DE.CM-01
+category: cybersecurity
 ---
+
 
 # DSL VM Reverse Engineering
 

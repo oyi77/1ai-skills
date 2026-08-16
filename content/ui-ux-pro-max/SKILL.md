@@ -1,8 +1,9 @@
 ---
 name: ui-ux-pro-max
-description: Industry-specific design intelligence — 161 reasoning rules, 99 UX guidelines, 161 color palettes, 57 font pairings,
-  49 UI styles. Use when building professional UI, need industry-specific design, generating design systems, choosing colors
-  or typography.
+description: Use when industry-specific design intelligence — 161 reasoning rules,
+  99 UX guidelines, 161 color palettes, 57 font pairings, 49 UI styles. Use when building
+  professional UI, need industry-specific design, generating design systems, choosing
+  colors or typography.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -16,7 +17,9 @@ tags:
 - typography
 - accessibility
 version: 1.0.0
+category: content
 ---
+
 
 
 ## Overview

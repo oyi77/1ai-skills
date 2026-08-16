@@ -1,6 +1,7 @@
 ---
 name: multi-channel-reminder
-description: 'Skill: multi-channel-reminder. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Use when skill: multi-channel-reminder. See SKILL.md body for details.
+  Use when this domain is relevant.'
 domain: operations
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - operations
 - reminder
 version: 1.0.0
+category: operations
 ---
+
 # Multi-Channel Reminder & Notification System
 
 > Design, build, and operate a reliable multi-channel notification system that delivers reminders across email, SMS, Slack, Telegram, Discord, WhatsApp, and push notifications. Handles scheduling, templating, deduplication, delivery tracking, and failure recovery.

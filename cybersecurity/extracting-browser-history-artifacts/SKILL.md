@@ -1,7 +1,8 @@
 ---
 name: extracting-browser-history-artifacts
-description: Extract and analyze browser history, cookies, cache, downloads, and bookmarks from Chrome, Firefox, and Edge
-  for forensic evidence of user web activity. Use when working with extracting browser history artifacts.
+description: Use when extract and analyze browser history, cookies, cache, downloads,
+  and bookmarks from Chrome, Firefox, and Edge for forensic evidence of user web activity.
+  Use when working with extracting browser history artifacts.
 domain: cybersecurity
 tags:
 - forensics
@@ -20,7 +21,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 # Extracting Browser History Artifacts
 
 ## Overview

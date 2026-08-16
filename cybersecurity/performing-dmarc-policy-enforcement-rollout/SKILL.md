@@ -1,7 +1,9 @@
 ---
 name: performing-dmarc-policy-enforcement-rollout
-description: Execute a phased DMARC rollout from p=none monitoring through p=quarantine to p=reject enforcement, ensuring
-  all legitimate email sources are authenticated before blocking unauthorized senders. Use when working with performing dmarc policy enforcement rollout.
+description: Use when execute a phased DMARC rollout from p=none monitoring through
+  p=quarantine to p=reject enforcement, ensuring all legitimate email sources are
+  authenticated before blocking unauthorized senders. Use when working with performing
+  dmarc policy enforcement rollout.
 domain: cybersecurity
 subdomain: phishing-defense
 tags:
@@ -21,7 +23,9 @@ nist_csf:
 - DE.CM-09
 - RS.CO-02
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Performing DMARC Policy Enforcement Rollout
 
 ## Overview

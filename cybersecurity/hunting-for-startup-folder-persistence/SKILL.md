@@ -1,7 +1,9 @@
 ---
 name: hunting-for-startup-folder-persistence
-description: Detect T1547.001 startup folder persistence by monitoring Windows startup directories for suspicious file creation,
-  analyzing autoruns entries, and using Python watchdog for real-time filesystem monitoring. Use when detecting t1547.001 startup folder persistence by monitoring windows startup directories.
+description: Use when detect T1547.001 startup folder persistence by monitoring Windows
+  startup directories for suspicious file creation, analyzing autoruns entries, and
+  using Python watchdog for real-time filesystem monitoring. Use when detecting t1547.001
+  startup folder persistence by monitoring windows startup directories.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -26,7 +28,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 
 # Hunting for Startup Folder Persistence
 

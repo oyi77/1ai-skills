@@ -1,6 +1,7 @@
 ---
 name: ads-manager
-description: Research trending ads, analyze competitor strategies, and clone successful ad patterns using integrated MCP servers. Use when working with ads manager.
+description: Use when research trending ads, analyze competitor strategies, and clone
+  successful ad patterns using integrated MCP servers. Use when working with ads manager.
 domain: marketing
 author: oyi77
 license: Apache-2.0
@@ -17,6 +18,7 @@ tags:
 category: marketing
 version: 1.0.0
 ---
+
 
 
 persona:

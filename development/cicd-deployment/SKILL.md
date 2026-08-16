@@ -1,7 +1,8 @@
 ---
 name: cicd-deployment
-description: Build production CI/CD pipelines with GitHub Actions, Docker, zero-downtime blue/green deploys, rollback, and
-  Telegram alerts. Use when building production ci/cd pipelines with github actions, docker, zero-downtime blue/green.
+description: Use when build production CI/CD pipelines with GitHub Actions, Docker,
+  zero-downtime blue/green deploys, rollback, and Telegram alerts. Use when building
+  production ci/cd pipelines with github actions, docker, zero-downtime blue/green.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -16,7 +17,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 # cicd-deployment
 ## When to Use

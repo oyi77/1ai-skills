@@ -1,9 +1,10 @@
 ---
 name: implementing-mobile-application-management
-description: Implements Mobile Application Management (MAM) policies to protect enterprise data on managed and unmanaged mobile
-  devices through app-level controls including data loss prevention, selective wipe, app configuration, and containerization.
-  Use when securing corporate apps on BYOD devices, implementing Intune App Protection Policies, or enforcing data separation
-  between personal and work apps.
+description: Use when implements Mobile Application Management (MAM) policies to protect
+  enterprise data on managed and unmanaged mobile devices through app-level controls
+  including data loss prevention, selective wipe, app configuration, and containerization.
+  Use when securing corporate apps on BYOD devices, implementing Intune App Protection
+  Policies, or enforcing data separation between personal and work apps.
 domain: cybersecurity
 tags:
 - mobile-security
@@ -21,7 +22,9 @@ nist_csf:
 - PR.AA-05
 - ID.RA-01
 - DE.CM-09
+category: cybersecurity
 ---
+
 # Implementing Mobile Application Management
 
 ## Overview

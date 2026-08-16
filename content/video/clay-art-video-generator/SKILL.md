@@ -5,9 +5,15 @@ domain: content
 author: oyi77
 license: Apache-2.0
 subdomain: content-creation
-tags: [clay, art, video, generator]
+tags:
+- clay
+- art
+- video
+- generator
 version: 1.0.0
+category: content
 ---
+
 description: Generate viral short-form videos with clay art/plasticine stop-motion diorama visuals for TikTok, Reels, and Shorts. Use when creating clay animation, plasticine-style, or stop-motion diorama videos.
 domain: content
 tags:

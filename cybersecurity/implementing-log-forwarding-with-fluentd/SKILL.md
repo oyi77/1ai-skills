@@ -1,7 +1,8 @@
 ---
 name: implementing-log-forwarding-with-fluentd
-description: Configure Fluentd and Fluent Bit for centralized log aggregation, routing, filtering, and enrichment across distributed
-  infrastructure. Use when configureing fluentd and fluent bit for centralized log aggregation, routing,.
+description: Use when configure Fluentd and Fluent Bit for centralized log aggregation,
+  routing, filtering, and enrichment across distributed infrastructure. Use when configureing
+  fluentd and fluent bit for centralized log aggregation, routing,.
 domain: cybersecurity
 subdomain: security-operations
 tags:
@@ -20,7 +21,9 @@ nist_csf:
 - RS.MA-01
 - GV.OV-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 
 # Implementing Log Forwarding with Fluentd
 

@@ -1,7 +1,8 @@
 ---
 name: analyzing-docker-container-forensics
-description: Investigate compromised Docker containers by analyzing images, layers, volumes, logs, and runtime artifacts to
-  identify malicious activity and evidence. Use when working with analyzing docker container forensics.
+description: Use when investigate compromised Docker containers by analyzing images,
+  layers, volumes, logs, and runtime artifacts to identify malicious activity and
+  evidence. Use when working with analyzing docker container forensics.
 domain: cybersecurity
 tags:
 - forensics
@@ -19,7 +20,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 # Analyzing Docker Container Forensics
 
 ## Overview

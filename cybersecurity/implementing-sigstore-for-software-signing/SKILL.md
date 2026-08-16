@@ -1,6 +1,11 @@
 ---
 name: implementing-sigstore-for-software-signing
-description: Use when implements Sigstore-based software signing and verification using Cosign keyless signing, Rekor transparency log verification, and Fulcio certificate authority integration to establish cryptographic provenance for container images, binaries, and software artifacts. The practitioner configures OIDC-based identity binding, verifies signing events against the Rekor transparency log, and integrates signing workflows into CI/CD pipelines.
+description: Use when implements Sigstore-based software signing and verification
+  using Cosign keyless signing, Rekor transparency log verification, and Fulcio certificate
+  authority integration to establish cryptographic provenance for container images,
+  binaries, and software artifacts. The practitioner configures OIDC-based identity
+  binding, verifies signing events against the Rekor transparency log, and integrates
+  signing workflows into CI/CD pipelines.
 domain: cybersecurity
 tags:
 - sigstore
@@ -21,7 +26,9 @@ nist_csf:
 - GV.SC-03
 - GV.SC-06
 - GV.SC-07
+category: cybersecurity
 ---
+
 # Implementing Sigstore For Software Signing
 
 ## Overview

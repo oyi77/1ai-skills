@@ -22,7 +22,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Implementing TAXII Server with OpenTAXII
 
 ## Overview

@@ -1,7 +1,8 @@
 ---
 name: securing-helm-chart-deployments
-description: Secure Helm chart deployments by validating chart integrity, scanning templates for misconfigurations, and enforcing
-  security contexts in Kubernetes releases. Use when working with securing helm chart deployments.
+description: Use when secure Helm chart deployments by validating chart integrity,
+  scanning templates for misconfigurations, and enforcing security contexts in Kubernetes
+  releases. Use when working with securing helm chart deployments.
 domain: cybersecurity
 subdomain: container-security
 tags:
@@ -19,7 +20,9 @@ nist_csf:
 - PR.IR-01
 - ID.AM-08
 - DE.CM-01
+category: cybersecurity
 ---
+
 
 # Securing Helm Chart Deployments
 

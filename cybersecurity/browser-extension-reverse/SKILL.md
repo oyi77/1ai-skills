@@ -1,30 +1,31 @@
 ---
 name: browser-extension-reverse
-description: >-
-  Reverse engineer browser extensions: unpack CRX/XPIs or load unpacked
-  directories, audit manifest permissions for overreach, trace content and
-  background script data flows, extract API endpoints and storage keys, and
-  detect malicious or data-exfiltrating behavior. Use when analyzing extension
-  security posture, suspicious extensions, or extension-based attack chains.
+description: 'Use when reverse engineer browser extensions: unpack CRX/XPIs or load
+  unpacked directories, audit manifest permissions for overreach, trace content and
+  background script data flows, extract API endpoints and storage keys, and detect
+  malicious or data-exfiltrating behavior. Use when analyzing extension security posture,
+  suspicious extensions, or extension-based attack chains.'
 domain: cybersecurity
 subdomain: web-application-security
 tags:
-  - browser-extension
-  - reverse-engineering
-  - malware-analysis
-  - manifest
-  - chrome
-  - firefox
-  - supply-chain
+- browser-extension
+- reverse-engineering
+- malware-analysis
+- manifest
+- chrome
+- firefox
+- supply-chain
 version: '1.0'
 author: oyi77
 license: Apache-2.0
 nist_csf:
-  - DE.AE-02
-  - RS.AN-03
-  - ID.RA-01
-  - DE.CM-01
+- DE.AE-02
+- RS.AN-03
+- ID.RA-01
+- DE.CM-01
+category: cybersecurity
 ---
+
 
 # Browser Extension Reverse Engineering
 

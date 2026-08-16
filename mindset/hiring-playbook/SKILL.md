@@ -1,6 +1,7 @@
 ---
 name: hiring-playbook
-description: Design jobs, source candidates, run structured interviews, and onboard effectively. Use when hiring for any role.
+description: Use when design jobs, source candidates, run structured interviews, and
+  onboard effectively. Use when hiring for any role.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - playbook
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Hiring Playbook
 
 ## Overview

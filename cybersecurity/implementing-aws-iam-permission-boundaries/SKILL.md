@@ -1,7 +1,8 @@
 ---
 name: implementing-aws-iam-permission-boundaries
-description: Configure IAM permission boundaries in AWS to delegate role creation to developers while enforcing maximum privilege
-  limits set by the security team. Use when configureing iam permission boundaries in aws to delegate role creation.
+description: Use when configure IAM permission boundaries in AWS to delegate role
+  creation to developers while enforcing maximum privilege limits set by the security
+  team. Use when configureing iam permission boundaries in aws to delegate role creation.
 domain: cybersecurity
 subdomain: identity-access-management
 tags:
@@ -19,7 +20,9 @@ nist_csf:
 - PR.AA-02
 - PR.AA-05
 - PR.AA-06
+category: cybersecurity
 ---
+
 
 # Implementing AWS IAM Permission Boundaries
 

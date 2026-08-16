@@ -1,6 +1,7 @@
 ---
 name: zvec
-description: Zero-copy vector operations for efficient similarity search and embedding storage in agent memory systems. Use when working with zvec.
+description: Use when zero-copy vector operations for efficient similarity search
+  and embedding storage in agent memory systems. Use when working with zvec.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -30,7 +31,9 @@ persona:
   - Train on large corpora
   - Visualize in 2D/3D
 version: 1.0.0
+category: core
 ---
+
 # ZVec Skill
 
 > Alibaba's lightweight in-process vector database - "The SQLite of Vector Databases"

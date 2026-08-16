@@ -1,7 +1,8 @@
 ---
 name: triaging-security-incident-with-ir-playbook
-description: Classify and prioritize security incidents using structured IR playbooks to determine severity, assign response
-  teams, and initiate appropriate response procedures. Use when working with triaging security incident with ir playbook.
+description: Use when classify and prioritize security incidents using structured
+  IR playbooks to determine severity, assign response teams, and initiate appropriate
+  response procedures. Use when working with triaging security incident with ir playbook.
 domain: cybersecurity
 tags:
 - incident-response
@@ -22,7 +23,9 @@ nist_csf:
 - RS.MA-02
 - RS.AN-03
 - RC.RP-01
+category: cybersecurity
 ---
+
 # Triaging Security Incident With Ir Playbook
 
 ## Overview

@@ -1,7 +1,8 @@
 ---
 name: hunting-for-persistence-mechanisms-in-windows
-description: Systematically hunt for adversary persistence mechanisms across Windows endpoints including registry, services,
-  startup folders, and WMI subscriptions. Use when working with hunting for persistence mechanisms in windows.
+description: Use when systematically hunt for adversary persistence mechanisms across
+  Windows endpoints including registry, services, startup folders, and WMI subscriptions.
+  Use when working with hunting for persistence mechanisms in windows.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -26,7 +27,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Hunting For Persistence Mechanisms In Windows
 
 ## Overview

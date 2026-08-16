@@ -1,18 +1,21 @@
 ---
 name: planning-agent
-description: Use when decompose complex tasks into executable steps with dependencies, risk assessment, and verification criteria.
+description: Use when decompose complex tasks into executable steps with dependencies,
+  risk assessment, and verification criteria.
 domain: agents
 author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:
-  - agent
-  - ai-agent
-  - automation
-  - planning
-  - autonomous
+- agent
+- ai-agent
+- automation
+- planning
+- autonomous
 version: 1.0.0
+category: agents
 ---
+
 
 # Planning Agent
 

@@ -1,7 +1,9 @@
 ---
 name: detecting-dll-sideloading-attacks
-description: Detect DLL side-loading attacks where adversaries place malicious DLLs alongside legitimate applications to hijack
-  execution flow for defense evasion. Use when detecting dll side-loading attacks where adversaries place malicious dlls alongside.
+description: Use when detect DLL side-loading attacks where adversaries place malicious
+  DLLs alongside legitimate applications to hijack execution flow for defense evasion.
+  Use when detecting dll side-loading attacks where adversaries place malicious dlls
+  alongside.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -26,7 +28,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Detecting Dll Sideloading Attacks
 
 ## Overview

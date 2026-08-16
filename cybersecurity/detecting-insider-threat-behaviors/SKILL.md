@@ -1,7 +1,9 @@
 ---
 name: detecting-insider-threat-behaviors
-description: Detect insider threat behavioral indicators including unusual data access, off-hours activity, mass file downloads,
-  privilege abuse, and resignation-correlated data theft. Use when detecting insider threat behavioral indicators including unusual data access, off-hours.
+description: Use when detect insider threat behavioral indicators including unusual
+  data access, off-hours activity, mass file downloads, privilege abuse, and resignation-correlated
+  data theft. Use when detecting insider threat behavioral indicators including unusual
+  data access, off-hours.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -25,7 +27,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Detecting Insider Threat Behaviors
 
 ## Overview

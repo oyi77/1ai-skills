@@ -1,6 +1,8 @@
 ---
 name: meta-find-skills
-description: Use when automatically discover evaluate and activate community skills when local skills dont cover user needs Includes credibility scoring and safety checks for complete self-sufficiency
+description: Use when automatically discover evaluate and activate community skills
+  when local skills dont cover user needs Includes credibility scoring and safety
+  checks for complete self-sufficiency
 domain: meta
 author: oyi77
 license: Apache-2.0
@@ -13,7 +15,9 @@ tags:
 - skill-evolution
 - skills
 version: 1.0.0
+category: meta
 ---
+
 persona:
   name: "Ada Lovelace"
   title: "The First Programmer - Master of Algorithmic Discovery"

@@ -1,7 +1,9 @@
 ---
 name: implementing-bgp-security-with-rpki
-description: Implement BGP route origin validation using RPKI with Route Origin Authorizations, RPKI-to-Router protocol, and
-  ROV policies on Cisco and Juniper routers to prevent route hijacking. Use when implementing bgp route origin validation using rpki with route origin.
+description: Use when implement BGP route origin validation using RPKI with Route
+  Origin Authorizations, RPKI-to-Router protocol, and ROV policies on Cisco and Juniper
+  routers to prevent route hijacking. Use when implementing bgp route origin validation
+  using rpki with route origin.
 domain: cybersecurity
 subdomain: network-security
 tags:
@@ -22,7 +24,9 @@ nist_csf:
 - DE.CM-01
 - ID.AM-03
 - PR.DS-02
+category: cybersecurity
 ---
+
 
 # Implementing BGP Security with RPKI
 

@@ -1,7 +1,8 @@
 ---
 name: team-management
-description: Manage teams through 1:1s, feedback (SBI model), delegation (70% rule), and performance reviews. Use when leading
-  individual contributors or managers.
+description: Use when manage teams through 1:1s, feedback (SBI model), delegation
+  (70% rule), and performance reviews. Use when leading individual contributors or
+  managers.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - soft-skills
 - team
 version: 1.0.0
+category: mindset
 ---
+
 # Team Management
 
 ## Overview

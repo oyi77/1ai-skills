@@ -1,7 +1,9 @@
 ---
 name: performing-memory-forensics-with-volatility3
-description: Analyze volatile memory dumps using Volatility 3 to extract running processes, network connections, loaded modules,
-  and evidence of malicious activity. Use when analyzeing volatile memory dumps using volatility 3 to extract running.
+description: Use when analyze volatile memory dumps using Volatility 3 to extract
+  running processes, network connections, loaded modules, and evidence of malicious
+  activity. Use when analyzeing volatile memory dumps using volatility 3 to extract
+  running.
 domain: cybersecurity
 tags:
 - forensics
@@ -19,7 +21,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 # Performing Memory Forensics With Volatility3
 
 ## Overview

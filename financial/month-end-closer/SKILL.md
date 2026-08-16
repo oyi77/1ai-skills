@@ -1,6 +1,7 @@
 ---
 name: month-end-closer
-description: Accruals, roll-forwards, variance commentary. Use when user says "month-end close", "accruals", "roll-forward".
+description: Use when accruals, roll-forwards, variance commentary. Use when user
+  says "month-end close", "accruals", "roll-forward".
 domain: financial
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - investment
 - month
 version: 1.0.0
+category: financial
 ---
+
 
 # Month-End Closer
 

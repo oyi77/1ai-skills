@@ -1,7 +1,9 @@
 ---
 name: teamwork
-description: Dynamically creates and manages AI agent teams for complex tasks. Invoke when user requests multi-agent collaboration,
-  complex project execution, or when tasks require specialized roles and coordinated workflow. Use when working with teamwork.
+description: Use when dynamically creates and manages AI agent teams for complex tasks.
+  Invoke when user requests multi-agent collaboration, complex project execution,
+  or when tasks require specialized roles and coordinated workflow. Use when working
+  with teamwork.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -14,7 +16,9 @@ tags:
 - teamwork
 - workflow
 version: 1.0.0
+category: core
 ---
+
 # Teamwork
 
 ## When to Use

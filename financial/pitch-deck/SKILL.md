@@ -1,7 +1,8 @@
 ---
 name: pitch-deck
-description: Populates branded pitch deck templates with financial data and market comps. Use when user says "create pitch
-  deck", "pitch for investors", "populate pitchbook".
+description: Use when populates branded pitch deck templates with financial data and
+  market comps. Use when user says "create pitch deck", "pitch for investors", "populate
+  pitchbook".
 domain: financial
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - investment
 - pitch
 version: 1.0.0
+category: financial
 ---
+
 
 # Pitch Deck
 

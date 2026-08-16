@@ -1,6 +1,10 @@
 ---
 name: analyzing-sbom-for-supply-chain-vulnerabilities
-description: Use when parsing Software Bill of Materials (SBOM) in CycloneDX and SPDX JSON formats to identify supply chain vulnerabilities by correlating components against the NVD CVE database via the NVD 2.0 API. Builds dependency graphs, calculating risk scores, identifying transitive vulnerability paths, and generating compliance reports.
+description: Use when parsing Software Bill of Materials (SBOM) in CycloneDX and SPDX
+  JSON formats to identify supply chain vulnerabilities by correlating components
+  against the NVD CVE database via the NVD 2.0 API. Builds dependency graphs, calculating
+  risk scores, identifying transitive vulnerability paths, and generating compliance
+  reports.
 domain: cybersecurity
 tags:
 - SBOM
@@ -30,7 +34,9 @@ nist_csf:
 - GV.SC-03
 - GV.SC-06
 - GV.SC-07
+category: cybersecurity
 ---
+
 # Analyzing Sbom For Supply Chain Vulnerabilities
 
 ## Overview

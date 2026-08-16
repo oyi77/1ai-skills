@@ -1,6 +1,7 @@
 ---
 name: grpc
-description: gRPC development — Protocol Buffers, service definitions, streaming, interceptors, load balancing. Use when working with grpc.
+description: Use when gRPC development — Protocol Buffers, service definitions, streaming,
+  interceptors, load balancing. Use when working with grpc.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -11,7 +12,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

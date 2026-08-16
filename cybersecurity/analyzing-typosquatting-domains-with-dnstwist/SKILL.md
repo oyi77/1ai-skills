@@ -25,7 +25,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Analyzing Typosquatting Domains with DNSTwist
 
 ## Overview

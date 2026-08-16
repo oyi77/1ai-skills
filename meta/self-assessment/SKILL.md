@@ -1,6 +1,7 @@
 ---
 name: self-assessment
-description: Skills evaluate their own performance, capabilities, and limitations. Honest self-reflection drives improvement. Use when working with self assessment.
+description: Use when skills evaluate their own performance, capabilities, and limitations.
+  Honest self-reflection drives improvement. Use when working with self assessment.
 domain: meta
 author: oyi77
 license: Apache-2.0
@@ -16,7 +17,9 @@ persona:
   expertise: Introspection, capability analysis, gap identification
   philosophy: Know thyself
 version: 1.0.0
+category: meta
 ---
+
 # Self Assessment
 
 ## When to Use

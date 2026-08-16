@@ -1,6 +1,7 @@
 ---
 name: android-jetpack
-description: Android Jetpack Compose — declarative UI, state management, Material Design, and Play Store deployment. Use when working with android jetpack.
+description: Use when android Jetpack Compose — declarative UI, state management,
+  Material Design, and Play Store deployment. Use when working with android jetpack.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

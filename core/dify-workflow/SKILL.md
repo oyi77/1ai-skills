@@ -1,6 +1,7 @@
 ---
 name: dify-workflow
-description: Dify AI workflow platform — LLM apps, knowledge bases, agents, workflow orchestration, API deployment. Use when working with dify workflow.
+description: Use when dify AI workflow platform — LLM apps, knowledge bases, agents,
+  workflow orchestration, API deployment. Use when working with dify workflow.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - self-improvement
 - workflow
 version: 1.0.0
+category: core
 ---
+
 
 ## Overview
 

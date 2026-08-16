@@ -1,6 +1,7 @@
 ---
 name: black-edge
-description: Apply institutional trading edge using order flow analysis, market microstructure, and dark pool signals. Use when working with black edge.
+description: Use when apply institutional trading edge using order flow analysis,
+  market microstructure, and dark pool signals. Use when working with black edge.
 domain: trading
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - markets
 - trading
 - money
+category: trading
 ---
+
 # Black Edge
 
 ## When to Use

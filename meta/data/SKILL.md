@@ -1,7 +1,8 @@
 ---
 name: data
-description: Raw data storage layer for 1ai-skills. Provides structured data persistence, query interface, and data pipeline support for skill operations.
-  history. Use when working with data.
+description: Use when raw data storage layer for 1ai-skills. Provides structured data
+  persistence, query interface, and data pipeline support for skill operations. history.
+  Use when working with data.
 domain: meta
 author: oyi77
 license: Apache-2.0
@@ -16,7 +17,9 @@ persona:
   expertise: SQLite, data modeling, query optimization
   philosophy: Data is the foundation of intelligence
 version: 1.0.0
+category: meta
 ---
+
 # Data
 
 ## When to Use

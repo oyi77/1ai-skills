@@ -13,7 +13,9 @@ tags:
 - linter
 - coding
 version: 1.0.0
+category: agents
 ---
+
 
 # Linter Agent
 

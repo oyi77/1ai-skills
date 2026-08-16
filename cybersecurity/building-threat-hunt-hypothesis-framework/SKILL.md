@@ -1,7 +1,9 @@
 ---
 name: building-threat-hunt-hypothesis-framework
-description: Build a systematic threat hunt hypothesis framework that transforms threat intelligence, attack patterns, and
-  environmental data into testable hunting hypotheses. Use when building a systematic threat hunt hypothesis framework that transforms threat.
+description: Use when build a systematic threat hunt hypothesis framework that transforms
+  threat intelligence, attack patterns, and environmental data into testable hunting
+  hypotheses. Use when building a systematic threat hunt hypothesis framework that
+  transforms threat.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -19,7 +21,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Building Threat Hunt Hypothesis Framework
 
 ## Overview

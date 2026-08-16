@@ -1,8 +1,11 @@
 ---
 name: performing-privilege-escalation-assessment
-description: Performs privilege escalation assessments on compromised Linux and Windows systems to identify paths from low-privilege
-  access to root or SYSTEM-level control. The tester enumerates misconfigurations, vulnerable services, kernel exploits, SUID
-  binaries, unquoted service paths, and credential stores to demonstrate the full impact of an initial compromise. Use when working with performing privilege escalation assessment.
+description: Use when performs privilege escalation assessments on compromised Linux
+  and Windows systems to identify paths from low-privilege access to root or SYSTEM-level
+  control. The tester enumerates misconfigurations, vulnerable services, kernel exploits,
+  SUID binaries, unquoted service paths, and credential stores to demonstrate the
+  full impact of an initial compromise. Use when working with performing privilege
+  escalation assessment.
 domain: cybersecurity
 tags:
 - privilege-escalation
@@ -25,7 +28,9 @@ nist_csf:
 - ID.RA-06
 - GV.OV-02
 - DE.AE-07
+category: cybersecurity
 ---
+
 # Performing Privilege Escalation Assessment
 
 ## Overview

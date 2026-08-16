@@ -1,6 +1,8 @@
 ---
 name: message-queue
-description: Message queue patterns — RabbitMQ, Redis Streams, SQS. Task queues, pub/sub, dead letter queues, retry logic. Use when working with message queue.
+description: Use when message queue patterns — RabbitMQ, Redis Streams, SQS. Task
+  queues, pub/sub, dead letter queues, retry logic. Use when working with message
+  queue.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +14,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

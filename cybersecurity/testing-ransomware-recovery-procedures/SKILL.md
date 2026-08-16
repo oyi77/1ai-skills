@@ -1,7 +1,10 @@
 ---
 name: testing-ransomware-recovery-procedures
-description: Test and validate ransomware recovery procedures including backup restore operations, RTO/RPO target verification,
-  recovery sequencing, and clean restore validation to ensure organizational resilience against destructive ransomware attacks. Use when testing and validate ransomware recovery procedures including backup restore operations,.
+description: Use when test and validate ransomware recovery procedures including backup
+  restore operations, RTO/RPO target verification, recovery sequencing, and clean
+  restore validation to ensure organizational resilience against destructive ransomware
+  attacks. Use when testing and validate ransomware recovery procedures including
+  backup restore operations,.
 domain: cybersecurity
 tags:
 - incident-response
@@ -20,7 +23,9 @@ nist_csf:
 - RS.MA-02
 - RS.AN-03
 - RC.RP-01
+category: cybersecurity
 ---
+
 # Testing Ransomware Recovery Procedures
 
 ## Overview

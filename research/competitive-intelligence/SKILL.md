@@ -1,7 +1,9 @@
 ---
 name: competitive-intelligence
-description: Continuous competitor monitoring — pricing changes, feature launches, job postings, ad spend, SEO rankings, social
-  media activity — with weekly intelligence briefs and strategic recommendations. Use when working with competitive intelligence.
+description: Use when continuous competitor monitoring — pricing changes, feature
+  launches, job postings, ad spend, SEO rankings, social media activity — with weekly
+  intelligence briefs and strategic recommendations. Use when working with competitive
+  intelligence.
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -16,7 +18,9 @@ tags:
 - seo
 - social-media
 version: 1.0.0
+category: research
 ---
+
 
 ## Overview
 

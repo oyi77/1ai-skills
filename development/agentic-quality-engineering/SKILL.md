@@ -1,20 +1,24 @@
 ---
 name: agentic-quality-engineering
-description: AI-powered quality engineering with flaky test detection, mutation testing, chaos engineering, risk-based test prioritization, and cross-project pattern learning. Use when building quality.
+description: Use when aI-powered quality engineering with flaky test detection, mutation
+  testing, chaos engineering, risk-based test prioritization, and cross-project pattern
+  learning. Use when building quality.
 domain: development
 author: oyi77
 license: Apache-2.0
 subdomain: software-development
-tags: 
-  - quality-engineering
-  - flaky-tests
-  - mutation-testing
-  - chaos-engineering
-  - risk-based-testing
-  - pattern-learning
-  - test-automation
+tags:
+- quality-engineering
+- flaky-tests
+- mutation-testing
+- chaos-engineering
+- risk-based-testing
+- pattern-learning
+- test-automation
 version: 1.0.0
+category: development
 ---
+
 
 # Agentic Quality Engineering
 

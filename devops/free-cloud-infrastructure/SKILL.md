@@ -1,20 +1,24 @@
 ---
 name: free-cloud-infrastructure
-description: Recommend free-tier cloud infrastructure for compute, storage, serverless, databases, and CDN. Use when provisioning free cloud resources, comparing always-free vs trial tiers, or building.
+description: Use when recommend free-tier cloud infrastructure for compute, storage,
+  serverless, databases, and CDN. Use when provisioning free cloud resources, comparing
+  always-free vs trial tiers, or building.
 domain: devops
 author: oyi77
 license: Apache-2.0
 subdomain: devops
-tags: 
-  - free-tier
-  - cloud
-  - infrastructure
-  - cost-optimization
-  - serverless
-  - compute
-  - storage
+tags:
+- free-tier
+- cloud
+- infrastructure
+- cost-optimization
+- serverless
+- compute
+- storage
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

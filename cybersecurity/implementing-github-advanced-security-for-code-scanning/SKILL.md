@@ -21,7 +21,9 @@ nist_csf:
 - GV.SC-07
 - ID.IM-04
 - PR.PS-04
+category: cybersecurity
 ---
+
 
 # Implementing GitHub Advanced Security for Code Scanning
 

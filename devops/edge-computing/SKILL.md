@@ -1,6 +1,7 @@
 ---
 name: edge-computing
-description: Edge computing — Cloudflare Workers, Vercel Edge, Deno Deploy. Edge rendering, caching, edge databases. Use when working with edge computing.
+description: Use when edge computing — Cloudflare Workers, Vercel Edge, Deno Deploy.
+  Edge rendering, caching, edge databases. Use when working with edge computing.
 domain: devops
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - edge
 - infrastructure
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

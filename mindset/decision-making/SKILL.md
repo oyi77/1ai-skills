@@ -1,6 +1,8 @@
 ---
 name: decision-making
-description: Make sound decisions under uncertainty using frameworks like RICE, weighted matrix, decision trees, and pre-mortems. Use when working with decision making.
+description: Use when make sound decisions under uncertainty using frameworks like
+  RICE, weighted matrix, decision trees, and pre-mortems. Use when working with decision
+  making.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -12,7 +14,9 @@ tags:
 - personal-development
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Decision Making
 
 ## Overview

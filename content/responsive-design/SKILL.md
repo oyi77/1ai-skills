@@ -1,6 +1,7 @@
 ---
 name: responsive-design
-description: Mobile-first responsive design — breakpoints, fluid typography, container queries, and touch optimization. Use when working with responsive design.
+description: Use when mobile-first responsive design — breakpoints, fluid typography,
+  container queries, and touch optimization. Use when working with responsive design.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - media
 - responsive
 version: 1.0.0
+category: content
 ---
+
 
 
 

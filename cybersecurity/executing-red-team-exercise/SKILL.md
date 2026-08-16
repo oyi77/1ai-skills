@@ -1,6 +1,11 @@
 ---
 name: executing-red-team-exercise
-description: Use when executes comprehensive red team exercises that simulate real-world adversary operations against an organization's people, processes, and technology. The red team operates with stealth as a primary objective, employing the full attack lifecycle from initial reconnaissance through objective completion while testing the organization's detection and response capabilities. This differs from penetration testing by focusing on adversary emulation rather than vulnerability identification.
+description: Use when executes comprehensive red team exercises that simulate real-world
+  adversary operations against an organization's people, processes, and technology.
+  The red team operates with stealth as a primary objective, employing the full attack
+  lifecycle from initial reconnaissance through objective completion while testing
+  the organization's detection and response capabilities. This differs from penetration
+  testing by focusing on adversary emulation rather than vulnerability identification.
 domain: cybersecurity
 tags:
 - red-team
@@ -23,7 +28,9 @@ nist_csf:
 - ID.RA-06
 - GV.OV-02
 - DE.AE-07
+category: cybersecurity
 ---
+
 # Executing Red Team Exercise
 
 ## Overview

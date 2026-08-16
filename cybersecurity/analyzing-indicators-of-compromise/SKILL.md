@@ -1,9 +1,11 @@
 ---
 name: analyzing-indicators-of-compromise
-description: 'Analyzes indicators of compromise (IOCs) including IP addresses, domains, file hashes, URLs, and email artifacts
-  to determine maliciousness confidence, campaign attribution, and blocking priority. Use when triaging IOCs from phishing
-  emails, security alerts, or external threat feeds; enriching raw IOCs with multi-source intelligence; or making block/monitor/whitelist
-  decisions. Activates for requests involving VirusTotal, AbuseIPDB, MalwareBazaar, MISP, or IOC enrichment pipelines.
+description: 'Use when analyzes indicators of compromise (IOCs) including IP addresses,
+  domains, file hashes, URLs, and email artifacts to determine maliciousness confidence,
+  campaign attribution, and blocking priority. Use when triaging IOCs from phishing
+  emails, security alerts, or external threat feeds; enriching raw IOCs with multi-source
+  intelligence; or making block/monitor/whitelist decisions. Activates for requests
+  involving VirusTotal, AbuseIPDB, MalwareBazaar, MISP, or IOC enrichment pipelines.
 
   '
 domain: cybersecurity
@@ -27,7 +29,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Analyzing Indicators Of Compromise
 
 ## Overview

@@ -1,7 +1,9 @@
 ---
 name: auto-evolve
-description: Continuously monitors system performance identifies improvement opportunities and orchestrates find-skills and
-  create-skills to autonomously evolve capabilities. The brain of the self-evolving system. Use when working with auto evolve.
+description: Use when continuously monitors system performance identifies improvement
+  opportunities and orchestrates find-skills and create-skills to autonomously evolve
+  capabilities. The brain of the self-evolving system. Use when working with auto
+  evolve.
 domain: meta
 author: oyi77
 license: Apache-2.0
@@ -13,7 +15,9 @@ tags:
 - self-improvement
 - skill-evolution
 version: 1.0.0
+category: meta
 ---
+
 persona:
   name: "Charles Darwin"
   title: "The Evolution Architect - Master of Continuous Adaptation"

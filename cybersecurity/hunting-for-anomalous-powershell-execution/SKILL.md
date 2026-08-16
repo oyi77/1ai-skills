@@ -26,7 +26,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Hunting for Anomalous PowerShell Execution
 
 ## Overview

@@ -29,7 +29,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Detecting Malicious Scheduled Tasks with Sysmon
 
 ## Overview

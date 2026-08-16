@@ -1,19 +1,23 @@
 ---
 name: engineering-hard-rules
-description: Non-negotiable engineering protocol for AI agents. Enforces READ→THINK→DECIDE→PLAN→BUILD→VERIFY→DOCS→REVIEW loop. Use when any code change requires evidence-first execution, blast radius.
+description: Use when non-negotiable engineering protocol for AI agents. Enforces
+  READ→THINK→DECIDE→PLAN→BUILD→VERIFY→DOCS→REVIEW loop. Use when any code change requires
+  evidence-first execution, blast radius.
 domain: development
 author: oyi77
 license: Apache-2.0
 subdomain: software-development
-tags: 
-  - engineering-discipline
-  - code-quality
-  - evidence-first
-  - enforcement-protocol
-  - agent-safety
-  - quality-gates
+tags:
+- engineering-discipline
+- code-quality
+- evidence-first
+- enforcement-protocol
+- agent-safety
+- quality-gates
 version: 1.0.0
+category: development
 ---
+
 
 # Engineering Hard Rules — Agent Enforcement Protocol
 

@@ -1,9 +1,11 @@
 ---
 name: correlating-threat-campaigns
-description: Correlates disparate security incidents, IOCs, and adversary behaviors across time and organizations to identify
-  unified threat campaigns, attribute them to common threat actors, and extract shared indicators for improved detection.
-  Use when multiple incidents exhibit overlapping indicators, when sector-wide attack campaigns require cross-organizational
-  analysis, or when building campaign-level intelligence products.
+description: Use when correlates disparate security incidents, IOCs, and adversary
+  behaviors across time and organizations to identify unified threat campaigns, attribute
+  them to common threat actors, and extract shared indicators for improved detection.
+  Use when multiple incidents exhibit overlapping indicators, when sector-wide attack
+  campaigns require cross-organizational analysis, or when building campaign-level
+  intelligence products.
 domain: cybersecurity
 tags:
 - campaign-analysis
@@ -23,7 +25,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Correlating Threat Campaigns
 
 ## Overview

@@ -1,6 +1,7 @@
 ---
 name: public-speaking
-description: Deliver engaging talks and presentations using narrative structure, audience analysis, and stage presence techniques. Use when working with public speaking.
+description: Use when deliver engaging talks and presentations using narrative structure,
+  audience analysis, and stage presence techniques. Use when working with public speaking.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - soft-skills
 - speaking
 version: 1.0.0
+category: mindset
 ---
+
 # Public Speaking
 
 ## Overview

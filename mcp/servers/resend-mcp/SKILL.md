@@ -1,6 +1,6 @@
 ---
 name: resend-mcp
-description: Resend Mcp. Use when working with resend mcp in mcp domain.
+description: Use when resend Mcp. Use when working with resend mcp in mcp domain.
 domain: mcp
 author: oyi77
 license: Apache-2.0
@@ -12,7 +12,9 @@ tags:
 - resend
 - tool-integration
 version: 1.0.0
+category: mcp
 ---
+
 # Resend Mcp
 
 ## When to Use

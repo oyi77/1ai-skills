@@ -1,7 +1,9 @@
 ---
 name: analyzing-office365-audit-logs-for-compromise
-description: Parse Office 365 Unified Audit Logs via Microsoft Graph API to detect email forwarding rule creation, inbox delegation,
-  suspicious OAuth app grants, and other indicators of account compromise. Use when working with analyzing office365 audit logs for compromise.
+description: Use when parse Office 365 Unified Audit Logs via Microsoft Graph API
+  to detect email forwarding rule creation, inbox delegation, suspicious OAuth app
+  grants, and other indicators of account compromise. Use when working with analyzing
+  office365 audit logs for compromise.
 domain: cybersecurity
 subdomain: cloud-security
 tags:
@@ -20,7 +22,9 @@ nist_csf:
 - ID.AM-08
 - GV.SC-06
 - DE.CM-01
+category: cybersecurity
 ---
+
 
 # Analyzing Office 365 Audit Logs for Compromise
 

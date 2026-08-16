@@ -1,7 +1,9 @@
 ---
 name: implementing-file-integrity-monitoring-with-aide
-description: Configure AIDE (Advanced Intrusion Detection Environment) for file integrity monitoring including baseline creation,
-  scheduled integrity checks, change detection, and alerting. Use when configureing aide (advanced intrusion detection environment) for file integrity monitoring.
+description: Use when configure AIDE (Advanced Intrusion Detection Environment) for
+  file integrity monitoring including baseline creation, scheduled integrity checks,
+  change detection, and alerting. Use when configureing aide (advanced intrusion detection
+  environment) for file integrity monitoring.
 domain: cybersecurity
 subdomain: endpoint-security
 tags:
@@ -20,7 +22,9 @@ nist_csf:
 - PR.PS-02
 - DE.CM-01
 - PR.IR-01
+category: cybersecurity
 ---
+
 
 # Implementing File Integrity Monitoring with AIDE
 

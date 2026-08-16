@@ -1,8 +1,10 @@
 ---
 name: book-to-skill
-description: Convert technical books and documents (PDF, EPUB, DOCX, HTML, Markdown, RTF, MOBI) into structured agent
-  skills with frameworks, mental models, chapter references, and decision rules. Includes full extraction pipeline.
-  Use when the user wants to turn a book or document collection into a reusable agent skill for study and reference.
+description: Use when convert technical books and documents (PDF, EPUB, DOCX, HTML,
+  Markdown, RTF, MOBI) into structured agent skills with frameworks, mental models,
+  chapter references, and decision rules. Includes full extraction pipeline. Use when
+  the user wants to turn a book or document collection into a reusable agent skill
+  for study and reference.
 domain: core
 author: mahipal, virgiliojr94
 license: MIT
@@ -17,7 +19,10 @@ tags:
 - learning
 - extraction
 version: 1.0.0
+category: core
 ---
+
+
 persona:
   name: "Virgilio Jr."
   title: "The Knowledge Distiller — Book-to-Skill Pipeline Maintainer"
@@ -39,6 +44,37 @@ Transform written knowledge into actionable agent skills by extracting framework
 ---
 
 ## When to Use
+
+**Trigger phrases:**
+- "turn this book into a skill"
+- "book-to-skill"
+- "convert this PDF to an agent skill"
+- "generate a skill from this document"
+- "study this book with my agent"
+
+**Use when:**
+- You want your agent to reference a technical book while coding
+- You have a collection of docs/papers you constantly re-read
+- You need structured access to a book's content without dumping the whole PDF into context
+- You own a book PDF and want it as an on-demand agent skill
+
+**Don't use for:**
+- Fiction / narrative books (the tool works technically but the output isn't useful)
+- Books you don't own (copyright compliance — you must own the source)
+- Simple web articles (use web extraction instead; full pipeline is overkill)
+
+---
+
+
+
+## Anti-Rationalization Table
+
+| Excuse | Reality | Rule |
+|--------|---------|------|
+| "I'll just read the book" | Reading ≠ actionable skill; skills need frameworks, not summaries | Extract mental models, decision rules, and code patterns |
+| "One skill per book" | Books contain multiple transferable frameworks | Split into atomic skills by framework/model |
+| "PDF extraction is enough" | PDFs lose structure; need chapter, section, diagram mapping | Parse structure first, then content |
+
 
 **Trigger phrases:**
 - "turn this book into a skill"
