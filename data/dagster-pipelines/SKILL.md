@@ -1,6 +1,7 @@
 ---
 name: dagster-pipelines
-description: Dagster data orchestration — software-defined assets, ops, jobs, schedules, sensors, IO managers. Use when working with dagster pipelines.
+description: Use when dagster data orchestration — software-defined assets, ops, jobs,
+  schedules, sensors, IO managers. Use when working with dagster pipelines.
 domain: data
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - pipelines
 - visualization
 version: 1.0.0
+category: data
 ---
+
 
 
 ## Overview

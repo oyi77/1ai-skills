@@ -1,6 +1,11 @@
 ---
 name: securing-remote-access-to-ot-environment
-description: 'Use when this skill covers implementing secure remote access to OT/ICS environments for operators, engineers, and vendors while preventing unauthorized access that could compromise industrial operations. It addresses jump server architecture, multi-factor authentication, session recording, privileged access management, vendor remote access controls, and compliance with IEC 62443 and NERC CIP-005 remote access requirements.'
+description: Use when this skill covers implementing secure remote access to OT/ICS
+  environments for operators, engineers, and vendors while preventing unauthorized
+  access that could compromise industrial operations. It addresses jump server architecture,
+  multi-factor authentication, session recording, privileged access management, vendor
+  remote access controls, and compliance with IEC 62443 and NERC CIP-005 remote access
+  requirements.
 domain: cybersecurity
 tags:
 - ot-security
@@ -20,7 +25,9 @@ nist_csf:
 - DE.CM-01
 - ID.AM-05
 - GV.OC-02
+category: cybersecurity
 ---
+
 # Securing Remote Access To Ot Environment
 
 ## Overview

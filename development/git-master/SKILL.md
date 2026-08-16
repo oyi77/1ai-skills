@@ -1,6 +1,7 @@
 ---
 name: git-master
-description: Handles advanced Git workflows. Use when rebasing, squashing, bisecting, or managing complex branch histories.
+description: Use when handles advanced Git workflows. Use when rebasing, squashing,
+  bisecting, or managing complex branch histories.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - testing
 - workflow
 version: 1.0.0
+category: development
 ---
+
 
 # Git Master Skill
 

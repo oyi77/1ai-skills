@@ -1,7 +1,7 @@
 ---
 name: systems-thinking
-description: Understand feedback loops, leverage points, and system archetypes to solve complex problems. Use when addressing
-  recurring issues or unintended consequences.
+description: Use when understand feedback loops, leverage points, and system archetypes
+  to solve complex problems. Use when addressing recurring issues or unintended consequences.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - systems
 - thinking
 version: 1.0.0
+category: mindset
 ---
+
 # Systems Thinking
 
 ## Overview

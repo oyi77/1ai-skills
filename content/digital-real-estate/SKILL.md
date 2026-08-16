@@ -1,7 +1,8 @@
 ---
 name: digital-real-estate
-description: Build and manage a portfolio of niche content sites generating affiliate and AdSense revenue with AI handling
-  research, writing, SEO, and updates. Use when building and manage a portfolio of niche content sites generating.
+description: Use when build and manage a portfolio of niche content sites generating
+  affiliate and AdSense revenue with AI handling research, writing, SEO, and updates.
+  Use when building and manage a portfolio of niche content sites generating.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -15,7 +16,9 @@ tags:
 - real
 - seo
 version: 1.0.0
+category: content
 ---
+
 
 
 

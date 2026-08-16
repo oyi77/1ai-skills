@@ -1,6 +1,7 @@
 ---
 name: pandacss-styling
-description: Panda CSS zero-runtime styling — token system, patterns, recipes, conditions, JSX styles. Use when working with pandacss styling.
+description: Use when panda CSS zero-runtime styling — token system, patterns, recipes,
+  conditions, JSX styles. Use when working with pandacss styling.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - pandacss
 - styling
 version: 1.0.0
+category: content
 ---
+
 
 
 

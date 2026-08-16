@@ -1,6 +1,10 @@
 ---
 name: auditing-azure-active-directory-configuration
-description: 'Auditing Microsoft Entra ID (Azure Active Directory) configuration to identify risky authentication policies, overly permissive role assignments, stale accounts, conditional access gaps, and guest user risks using AzureAD PowerShell, Microsoft Graph API, and ScoutSuite. . Use when working with auditing azure active directory configuration.'
+description: Use when auditing Microsoft Entra ID (Azure Active Directory) configuration
+  to identify risky authentication policies, overly permissive role assignments, stale
+  accounts, conditional access gaps, and guest user risks using AzureAD PowerShell,
+  Microsoft Graph API, and ScoutSuite. . Use when working with auditing azure active
+  directory configuration.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -18,7 +22,9 @@ nist_csf:
 - ID.AM-08
 - GV.SC-06
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Auditing Azure Active Directory Configuration
 
 ## Overview

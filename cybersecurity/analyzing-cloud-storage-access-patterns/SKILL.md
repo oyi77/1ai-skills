@@ -1,8 +1,11 @@
 ---
 name: analyzing-cloud-storage-access-patterns
-description: Detect abnormal access patterns in AWS S3, GCS, and Azure Blob Storage by analyzing CloudTrail Data Events, GCS
-  audit logs, and Azure Storage Analytics. Identifies after-hours bulk downloads, access from new IP addresses, unusual API
-  calls (GetObject spikes), and potential data exfiltration using statistical baselines and time-series anomaly detection. Use when detecting abnormal access patterns in aws s3, gcs, and azure.
+description: Use when detect abnormal access patterns in AWS S3, GCS, and Azure Blob
+  Storage by analyzing CloudTrail Data Events, GCS audit logs, and Azure Storage Analytics.
+  Identifies after-hours bulk downloads, access from new IP addresses, unusual API
+  calls (GetObject spikes), and potential data exfiltration using statistical baselines
+  and time-series anomaly detection. Use when detecting abnormal access patterns in
+  aws s3, gcs, and azure.
 domain: cybersecurity
 tags:
 - analyzing
@@ -25,7 +28,9 @@ nist_csf:
 - ID.AM-08
 - GV.SC-06
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Analyzing Cloud Storage Access Patterns
 
 ## Overview

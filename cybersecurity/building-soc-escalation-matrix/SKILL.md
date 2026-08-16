@@ -1,7 +1,8 @@
 ---
 name: building-soc-escalation-matrix
-description: Build a structured SOC escalation matrix defining severity tiers, response SLAs, escalation paths, and notification
-  procedures for security incidents. Use when building a structured soc escalation matrix defining severity tiers, response.
+description: Use when build a structured SOC escalation matrix defining severity tiers,
+  response SLAs, escalation paths, and notification procedures for security incidents.
+  Use when building a structured soc escalation matrix defining severity tiers, response.
 domain: cybersecurity
 subdomain: soc-operations
 tags:
@@ -20,7 +21,9 @@ nist_csf:
 - DE.AE-02
 - RS.MA-01
 - DE.AE-06
+category: cybersecurity
 ---
+
 
 # Building SOC Escalation Matrix
 

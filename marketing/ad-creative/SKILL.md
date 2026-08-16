@@ -1,6 +1,7 @@
 ---
 name: ad-creative
-description: Ad creative production — visual briefs, copy variations, and A/B testing frameworks for performance advertising. Use when working with ad creative.
+description: Use when ad creative production — visual briefs, copy variations, and
+  A/B testing frameworks for performance advertising. Use when working with ad creative.
 version: 2.0.0
 domain: marketing
 author: oyi77
@@ -13,7 +14,9 @@ tags:
 - seo
 - testing
 - money
+category: marketing
 ---
+
 
 
 

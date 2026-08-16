@@ -1,7 +1,9 @@
 ---
 name: detecting-t1548-abuse-elevation-control-mechanism
-description: Detect abuse of elevation control mechanisms including UAC bypass, sudo exploitation, and setuid/setgid manipulation
-  by monitoring registry modifications, process elevation flags, and unusual parent-child process relationships. Use when detecting abuse of elevation control mechanisms including uac bypass, sudo.
+description: Use when detect abuse of elevation control mechanisms including UAC bypass,
+  sudo exploitation, and setuid/setgid manipulation by monitoring registry modifications,
+  process elevation flags, and unusual parent-child process relationships. Use when
+  detecting abuse of elevation control mechanisms including uac bypass, sudo.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -25,7 +27,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Detecting T1548 Abuse Elevation Control Mechanism
 
 ## Overview

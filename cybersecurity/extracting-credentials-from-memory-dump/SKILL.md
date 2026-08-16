@@ -1,7 +1,8 @@
 ---
 name: extracting-credentials-from-memory-dump
-description: Extract cached credentials, password hashes, Kerberos tickets, and authentication tokens from memory dumps using
-  Volatility and Mimikatz for forensic investigation. Use when working with extracting credentials from memory dump.
+description: Use when extract cached credentials, password hashes, Kerberos tickets,
+  and authentication tokens from memory dumps using Volatility and Mimikatz for forensic
+  investigation. Use when working with extracting credentials from memory dump.
 domain: cybersecurity
 tags:
 - forensics
@@ -24,7 +25,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 # Extracting Credentials From Memory Dump
 
 ## Overview

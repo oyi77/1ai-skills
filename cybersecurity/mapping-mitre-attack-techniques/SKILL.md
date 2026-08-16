@@ -1,9 +1,11 @@
 ---
 name: mapping-mitre-attack-techniques
-description: 'Maps observed adversary behaviors, security alerts, and detection rules to MITRE ATT&CK techniques and sub-techniques
-  to quantify detection coverage and guide control prioritization. Use when building an ATT&CK-based coverage heatmap, tagging
-  SIEM alerts with technique IDs, aligning security controls to adversary playbooks, or reporting threat exposure to executives.
-  Activates for requests involving ATT&CK Navigator, Sigma rules, MITRE D3FEND, or coverage gap analysis.
+description: 'Use when maps observed adversary behaviors, security alerts, and detection
+  rules to MITRE ATT&CK techniques and sub-techniques to quantify detection coverage
+  and guide control prioritization. Use when building an ATT&CK-based coverage heatmap,
+  tagging SIEM alerts with technique IDs, aligning security controls to adversary
+  playbooks, or reporting threat exposure to executives. Activates for requests involving
+  ATT&CK Navigator, Sigma rules, MITRE D3FEND, or coverage gap analysis.
 
   '
 domain: cybersecurity
@@ -38,7 +40,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Mapping Mitre Attack Techniques
 
 ## Overview

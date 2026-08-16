@@ -1,7 +1,8 @@
 ---
 name: binary-breaker
-description: Binary exploitation and reverse engineering for finding zero-days in compiled software. Use when analyzing binaries,
-  finding memory corruption bugs, reverse engineering firmware, or hunting bugs in C/C++ applications.
+description: Use when binary exploitation and reverse engineering for finding zero-days
+  in compiled software. Use when analyzing binaries, finding memory corruption bugs,
+  reverse engineering firmware, or hunting bugs in C/C++ applications.
 domain: cybersecurity
 author: oyi77
 license: Apache-2.0
@@ -16,7 +17,9 @@ tags:
 - zero-day
 - money
 version: 1.0.0
+category: cybersecurity
 ---
+
 # Binary Breaker
 
 ## Overview

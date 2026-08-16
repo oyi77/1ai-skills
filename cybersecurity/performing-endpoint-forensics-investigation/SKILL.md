@@ -1,9 +1,10 @@
 ---
 name: performing-endpoint-forensics-investigation
-description: 'Performs digital forensics investigation on compromised endpoints including memory acquisition, disk imaging,
-  artifact analysis, and timeline reconstruction. Use when investigating security incidents, collecting evidence for legal
-  proceedings, or analyzing endpoint compromise scope. Activates for requests involving endpoint forensics, memory analysis,
-  disk forensics, or incident investigation.
+description: 'Use when performs digital forensics investigation on compromised endpoints
+  including memory acquisition, disk imaging, artifact analysis, and timeline reconstruction.
+  Use when investigating security incidents, collecting evidence for legal proceedings,
+  or analyzing endpoint compromise scope. Activates for requests involving endpoint
+  forensics, memory analysis, disk forensics, or incident investigation.
 
   '
 domain: cybersecurity
@@ -23,7 +24,9 @@ nist_csf:
 - PR.PS-02
 - DE.CM-01
 - PR.IR-01
+category: cybersecurity
 ---
+
 # Performing Endpoint Forensics Investigation
 
 ## Overview

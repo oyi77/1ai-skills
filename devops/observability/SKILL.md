@@ -1,6 +1,7 @@
 ---
 name: observability
-description: Observability stack — Prometheus, Grafana, Loki, OpenTelemetry. Metrics, logs, traces, alerting, SLO monitoring. Use when working with observability.
+description: Use when observability stack — Prometheus, Grafana, Loki, OpenTelemetry.
+  Metrics, logs, traces, alerting, SLO monitoring. Use when working with observability.
 domain: devops
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - monitoring
 - observability
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

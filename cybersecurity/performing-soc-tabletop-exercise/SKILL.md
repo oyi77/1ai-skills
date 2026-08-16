@@ -1,9 +1,10 @@
 ---
 name: performing-soc-tabletop-exercise
-description: 'Performs tabletop exercises for SOC teams simulating security incidents through discussion-based scenarios to
-  test incident response procedures, communication workflows, and decision-making under pressure without impacting production
-  systems. Use when organizations need to validate IR playbooks, train analysts, or meet compliance requirements for incident
-  response testing.
+description: 'Use when performs tabletop exercises for SOC teams simulating security
+  incidents through discussion-based scenarios to test incident response procedures,
+  communication workflows, and decision-making under pressure without impacting production
+  systems. Use when organizations need to validate IR playbooks, train analysts, or
+  meet compliance requirements for incident response testing.
 
   '
 domain: cybersecurity
@@ -28,7 +29,9 @@ nist_csf:
 - DE.AE-02
 - RS.MA-01
 - DE.AE-06
+category: cybersecurity
 ---
+
 # Performing Soc Tabletop Exercise
 
 ## Overview

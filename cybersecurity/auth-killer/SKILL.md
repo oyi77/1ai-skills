@@ -1,7 +1,8 @@
 ---
 name: auth-killer
-description: Authentication and authorization bypass specialist — OAuth, SAML, JWT, SSO, MFA bypass. Use when testing login
-  flows, breaking authentication mechanisms, or finding auth bypass vulnerabilities.
+description: Use when authentication and authorization bypass specialist — OAuth,
+  SAML, JWT, SSO, MFA bypass. Use when testing login flows, breaking authentication
+  mechanisms, or finding auth bypass vulnerabilities.
 domain: cybersecurity
 author: oyi77
 license: Apache-2.0
@@ -15,7 +16,9 @@ tags:
 - threat-defense
 - money
 version: 1.0.0
+category: cybersecurity
 ---
+
 
 # Auth Killer
 

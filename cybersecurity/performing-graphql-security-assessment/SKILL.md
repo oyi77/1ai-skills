@@ -1,7 +1,8 @@
 ---
 name: performing-graphql-security-assessment
-description: Assessing GraphQL API endpoints for introspection leaks, injection attacks, authorization flaws, and denial-of-service
-  vulnerabilities during authorized security tests. Use when working with performing graphql security assessment.
+description: Use when assessing GraphQL API endpoints for introspection leaks, injection
+  attacks, authorization flaws, and denial-of-service vulnerabilities during authorized
+  security tests. Use when working with performing graphql security assessment.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -19,7 +20,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Performing Graphql Security Assessment
 
 ## Overview

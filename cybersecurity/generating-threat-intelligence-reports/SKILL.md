@@ -1,9 +1,10 @@
 ---
 name: generating-threat-intelligence-reports
-description: Generates structured cyber threat intelligence reports at strategic, operational, and tactical levels tailored
-  to specific audiences including executives, security operations teams, and technical analysts. Use when producing finished
-  intelligence products from raw collection data, creating sector threat briefings, or delivering post-incident intelligence
-  assessments.
+description: Generates structured cyber threat intelligence reports at strategic,
+  operational, and tactical levels tailored to specific audiences including executives,
+  security operations teams, and technical analysts. Use when producing finished intelligence
+  products from raw collection data, creating sector threat briefings, or delivering
+  post-incident intelligence assessments.
 domain: cybersecurity
 tags:
 - CTI
@@ -22,7 +23,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Generating Threat Intelligence Reports
 
 ## Overview

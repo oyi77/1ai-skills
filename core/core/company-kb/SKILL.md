@@ -1,6 +1,7 @@
 ---
 name: company-kb
-description: company-kb — Company Knowledge Base Skill. Use when relevant to this domain.
+description: Use when company-kb — Company Knowledge Base Skill. Use when relevant
+  to this domain.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - privacy
 - brain-integration
 version: 2.0.0
+category: core
 ---
+
 
 # Company KB — Quick Reference
 

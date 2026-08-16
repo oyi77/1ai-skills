@@ -1,6 +1,8 @@
 ---
 name: workflows
-description: Use when workflow automation hub — cron scheduling, IFTTT triggers, n8n visual builder, webhook routing, and self-hosted Zapier alternatives for zero-vendor-lock-in automation.
+description: Use when workflow automation hub — cron scheduling, IFTTT triggers, n8n
+  visual builder, webhook routing, and self-hosted Zapier alternatives for zero-vendor-lock-in
+  automation.
 domain: automation
 author: oyi77
 license: Apache-2.0
@@ -16,7 +18,9 @@ tags:
 - productivity
 - pipelines
 version: 1.0.0
+category: automation
 ---
+
 # Workflows — Automation Workflow Hub
 
 ## Money-Making Overview

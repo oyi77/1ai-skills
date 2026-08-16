@@ -1,9 +1,10 @@
 ---
 name: performing-deception-technology-deployment
-description: 'Deploys deception technology including honeypots, honeytokens, and decoy systems to detect attackers who have
-  bypassed perimeter defenses, providing high-fidelity alerts with near-zero false positive rates. Use when SOC teams need
-  early warning of lateral movement, credential abuse, or internal reconnaissance by deploying convincing traps across the
-  network.
+description: 'Use when deploys deception technology including honeypots, honeytokens,
+  and decoy systems to detect attackers who have bypassed perimeter defenses, providing
+  high-fidelity alerts with near-zero false positive rates. Use when SOC teams need
+  early warning of lateral movement, credential abuse, or internal reconnaissance
+  by deploying convincing traps across the network.
 
   '
 domain: cybersecurity
@@ -24,7 +25,9 @@ nist_csf:
 - DE.AE-02
 - RS.MA-01
 - DE.AE-06
+category: cybersecurity
 ---
+
 # Performing Deception Technology Deployment
 
 ## Overview

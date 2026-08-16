@@ -1,6 +1,8 @@
 ---
 name: cloud-hunter
-description: Cloud infrastructure misconfiguration hunting for AWS, GCP, and Azure. Use when testing cloud assets, finding exposed S3 buckets, hunting IAM misconfigs, or testing serverless applications.
+description: Use when cloud infrastructure misconfiguration hunting for AWS, GCP,
+  and Azure. Use when testing cloud assets, finding exposed S3 buckets, hunting IAM
+  misconfigs, or testing serverless applications.
 domain: cybersecurity
 tags:
 - aws
@@ -22,7 +24,9 @@ nist_csf:
 - PR.AC-05
 - DE.CM-01
 - DE.CM-07
+category: cybersecurity
 ---
+
 
 # Cloud Hunter
 

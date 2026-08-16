@@ -1,9 +1,11 @@
 ---
 name: performing-iot-security-assessment
-description: Performs comprehensive security assessments of IoT devices and their ecosystems by testing hardware interfaces,
-  firmware, network communications, cloud APIs, and companion mobile applications. The tester uses firmware extraction and
-  analysis, hardware debugging via UART and JTAG, network protocol analysis, and runtime exploitation to identify vulnerabilities
-  across all layers of the IoT stack. Use when working with performing iot security assessment.
+description: Use when performs comprehensive security assessments of IoT devices and
+  their ecosystems by testing hardware interfaces, firmware, network communications,
+  cloud APIs, and companion mobile applications. The tester uses firmware extraction
+  and analysis, hardware debugging via UART and JTAG, network protocol analysis, and
+  runtime exploitation to identify vulnerabilities across all layers of the IoT stack.
+  Use when working with performing iot security assessment.
 domain: cybersecurity
 tags:
 - IoT-security
@@ -20,7 +22,9 @@ nist_csf:
 - ID.RA-06
 - GV.OV-02
 - DE.AE-07
+category: cybersecurity
 ---
+
 # Performing Iot Security Assessment
 
 ## Overview

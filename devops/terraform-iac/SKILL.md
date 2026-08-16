@@ -1,6 +1,8 @@
 ---
 name: terraform-iac
-description: Infrastructure as Code with Terraform — providers, modules, state management, workspaces, multi-cloud deployments. Use when working with terraform iac.
+description: Use when infrastructure as Code with Terraform — providers, modules,
+  state management, workspaces, multi-cloud deployments. Use when working with terraform
+  iac.
 domain: devops
 author: oyi77
 license: Apache-2.0
@@ -12,7 +14,9 @@ tags:
 - infrastructure
 - terraform
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

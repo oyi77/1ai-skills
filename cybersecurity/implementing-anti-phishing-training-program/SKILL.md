@@ -1,7 +1,9 @@
 ---
 name: implementing-anti-phishing-training-program
-description: Security awareness training is the human layer of phishing defense. An effective anti-phishing training program
-  combines regular simulations, interactive learning modules, metric tracking, and positiv. Use when working with implementing anti phishing training program.
+description: Use when security awareness training is the human layer of phishing defense.
+  An effective anti-phishing training program combines regular simulations, interactive
+  learning modules, metric tracking, and positiv. Use when working with implementing
+  anti phishing training program.
 domain: cybersecurity
 subdomain: phishing-defense
 tags:
@@ -20,7 +22,9 @@ nist_csf:
 - DE.CM-09
 - RS.CO-02
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Implementing Anti-Phishing Training Program
 
 ## Overview

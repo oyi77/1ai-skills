@@ -1,8 +1,11 @@
 ---
 name: analyzing-web-server-logs-for-intrusion
-description: Parse Apache and Nginx access logs to detect SQL injection attempts, local file inclusion, directory traversal,
-  web scanner fingerprints, and brute-force patterns. Uses regex-based pattern matching against OWASP attack signatures, GeoIP
-  enrichment for source attribution, and statistical anomaly detection for request frequency and response size outliers. Use when working with analyzing web server logs for intrusion.
+description: Use when parse Apache and Nginx access logs to detect SQL injection attempts,
+  local file inclusion, directory traversal, web scanner fingerprints, and brute-force
+  patterns. Uses regex-based pattern matching against OWASP attack signatures, GeoIP
+  enrichment for source attribution, and statistical anomaly detection for request
+  frequency and response size outliers. Use when working with analyzing web server
+  logs for intrusion.
 domain: cybersecurity
 tags:
 - analyzing
@@ -18,7 +21,9 @@ nist_csf:
 - RS.MA-01
 - GV.OV-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Analyzing Web Server Logs For Intrusion
 
 ## Overview

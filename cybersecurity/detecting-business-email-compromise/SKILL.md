@@ -1,7 +1,9 @@
 ---
 name: detecting-business-email-compromise
-description: Business Email Compromise (BEC) is a sophisticated fraud scheme where attackers impersonate executives, vendors,
-  or trusted partners to trick employees into transferring funds, sharing sensitive data,. Use when working with detecting business email compromise.
+description: Use when business Email Compromise (BEC) is a sophisticated fraud scheme
+  where attackers impersonate executives, vendors, or trusted partners to trick employees
+  into transferring funds, sharing sensitive data,. Use when working with detecting
+  business email compromise.
 domain: cybersecurity
 subdomain: phishing-defense
 tags:
@@ -32,7 +34,9 @@ nist_csf:
 - DE.CM-09
 - RS.CO-02
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Detecting Business Email Compromise
 
 ## Overview

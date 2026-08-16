@@ -1,7 +1,8 @@
 ---
 name: auto-git-commiter
-description: Automatically commit and push OpenClaw changes to GitHub. Enable continuous improvement with automatic versioning,
-  changelogs, and deployment-ready commits. Use when working with auto git commiter.
+description: Use when automatically commit and push OpenClaw changes to GitHub. Enable
+  continuous improvement with automatic versioning, changelogs, and deployment-ready
+  commits. Use when working with auto git commiter.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -15,7 +16,9 @@ tags:
 - memory
 - self-improvement
 version: 1.0.0
+category: core
 ---
+
 persona:
   name: "Linus Torvalds"
   title: "The Git Creator - Master of Version Control"

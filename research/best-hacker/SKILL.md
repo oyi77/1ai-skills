@@ -1,6 +1,7 @@
 ---
 name: best-hacker
-description: Apply hacker mindset to find vulnerabilities, break assumptions, and stress-test systems before attackers do. Use when working with best hacker.
+description: Use when apply hacker mindset to find vulnerabilities, break assumptions,
+  and stress-test systems before attackers do. Use when working with best hacker.
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - investigation
 - research
 version: 1.0.0
+category: research
 ---
+
 # The Hacker Mindset
 
 ## Overview

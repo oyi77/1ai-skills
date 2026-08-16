@@ -1,7 +1,8 @@
 ---
 name: voice-chatterbox-tts
-description: Free local TTS with voice cloning using Chatterbox. Zero API costs, word-level timing, whisper integration. Clone
-  any voice with 10-60s reference audio. Use when generating narration, voiceovers, or custom AI voices.
+description: Use when free local TTS with voice cloning using Chatterbox. Zero API
+  costs, word-level timing, whisper integration. Clone any voice with 10-60s reference
+  audio. Use when generating narration, voiceovers, or custom AI voices.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -15,7 +16,9 @@ tags:
 - narration
 - audio
 version: 1.0.0
+category: content
 ---
+
 # Voice Chatterbox Tts
 
 ## When to Use

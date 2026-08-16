@@ -1,6 +1,11 @@
 ---
 name: monitoring-scada-modbus-traffic-anomalies
-description: Use when monitors Modbus TCP traffic on SCADA and ICS networks to detect anomalous function code usage, unauthorized register writes, and suspicious communication patterns. The analyst uses deep packet inspection with pymodbus, Scapy, and Zeek to baseline normal PLC/RTU communication behavior, then applies statistical and rule-based anomaly detection to identify reconnaissance, parameter manipulation, and denial-of-service attacks targeting Modbus devices on port 502.
+description: Use when monitors Modbus TCP traffic on SCADA and ICS networks to detect
+  anomalous function code usage, unauthorized register writes, and suspicious communication
+  patterns. The analyst uses deep packet inspection with pymodbus, Scapy, and Zeek
+  to baseline normal PLC/RTU communication behavior, then applies statistical and
+  rule-based anomaly detection to identify reconnaissance, parameter manipulation,
+  and denial-of-service attacks targeting Modbus devices on port 502.
 domain: cybersecurity
 tags:
 - Modbus-TCP
@@ -17,7 +22,9 @@ nist_csf:
 - PR.IR-01
 - DE.CM-01
 - ID.AM-05
+category: cybersecurity
 ---
+
 # Monitoring Scada Modbus Traffic Anomalies
 
 ## Overview

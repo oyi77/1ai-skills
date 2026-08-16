@@ -21,7 +21,9 @@ persona:
   philosophy: Standards enable interoperability
   credentials: Created MCP standard at Anthropic
 version: 1.0.0
+category: mcp
 ---
+
 # Mcp Server Builder
 
 ## When to Use

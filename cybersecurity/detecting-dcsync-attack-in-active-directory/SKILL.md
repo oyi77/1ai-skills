@@ -1,7 +1,9 @@
 ---
 name: detecting-dcsync-attack-in-active-directory
-description: Detect DCSync attacks where adversaries abuse Active Directory replication privileges to extract password hashes
-  by monitoring for non-domain-controller accounts requesting directory replication via DsGetNCChanges. Use when detecting dcsync attacks where adversaries abuse active directory replication privileges.
+description: Use when detect DCSync attacks where adversaries abuse Active Directory
+  replication privileges to extract password hashes by monitoring for non-domain-controller
+  accounts requesting directory replication via DsGetNCChanges. Use when detecting
+  dcsync attacks where adversaries abuse active directory replication privileges.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -26,7 +28,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Detecting Dcsync Attack In Active Directory
 
 ## Overview

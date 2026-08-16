@@ -1,7 +1,8 @@
 ---
 name: social-intelligence
-description: Cross-platform social media intelligence gathering using Agent Reach. Research trends, sentiment, competitive
-  intel, and user insights from Twitter, Reddit, YouTube, XiaoHongShu across 35+ platforms. Use when researching social proof,
+description: Use when cross-platform social media intelligence gathering using Agent
+  Reach. Research trends, sentiment, competitive intel, and user insights from Twitter,
+  Reddit, YouTube, XiaoHongShu across 35+ platforms. Use when researching social proof,
   market sentiment, viral content patterns, or competitive positioning.
 domain: research
 author: oyi77
@@ -15,7 +16,9 @@ tags:
 - trend-monitoring
 - agent-reach
 version: 1.0.0
+category: research
 ---
+
 # Social Intelligence
 
 ## When to Use

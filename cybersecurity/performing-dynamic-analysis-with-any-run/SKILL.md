@@ -1,6 +1,11 @@
 ---
 name: performing-dynamic-analysis-with-any-run
-description: 'Performs interactive dynamic malware analysis using the ANY.RUN cloud sandbox to observe real-time execution behavior, interact with malware prompts, and capture process trees, network traffic, and system changes. Activates for requests involving interactive sandbox analysis, cloud-based malware detonation, real-time behavioral observation, or ANY.RUN usage. . Use when working with performing dynamic analysis with any run.'
+description: Use when performs interactive dynamic malware analysis using the ANY.RUN
+  cloud sandbox to observe real-time execution behavior, interact with malware prompts,
+  and capture process trees, network traffic, and system changes. Activates for requests
+  involving interactive sandbox analysis, cloud-based malware detonation, real-time
+  behavioral observation, or ANY.RUN usage. . Use when working with performing dynamic
+  analysis with any run.
 domain: cybersecurity
 tags:
 - malware
@@ -23,7 +28,9 @@ nist_csf:
 - RS.AN-03
 - ID.RA-01
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Performing Dynamic Analysis With Any Run
 
 ## Overview

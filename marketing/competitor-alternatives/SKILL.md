@@ -1,7 +1,8 @@
 ---
 name: competitor-alternatives
-description: Competitive comparison page strategy — alternative to pages, positioning, differentiation messaging. Use when
-  creating competitive positioning content.
+description: Use when competitive comparison page strategy — alternative to pages,
+  positioning, differentiation messaging. Use when creating competitive positioning
+  content.
 domain: marketing
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - marketing
 - seo
 version: 1.0.0
+category: marketing
 ---
+
 
 
 

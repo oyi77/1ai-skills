@@ -1,6 +1,7 @@
 ---
 name: storybook-ui
-description: Storybook for UI component development — stories, addons, controls, a11y testing, visual regression. Use when working with storybook ui.
+description: Use when storybook for UI component development — stories, addons, controls,
+  a11y testing, visual regression. Use when working with storybook ui.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - storybook
 - testing
 version: 1.0.0
+category: content
 ---
+
 
 
 

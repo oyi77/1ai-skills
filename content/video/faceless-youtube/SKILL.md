@@ -15,7 +15,9 @@ tags:
 - automation
 - money
 version: 1.0.0
+category: content
 ---
+
 description: Build automated faceless YouTube channels with AI. Create videos from a single prompt using free tools (edge-tts + Pexels stock footage + FFmpeg), or build full channel pipelines with monetization. Use when creating YouTube content without showing your face, building passive income channels, or generating complete videos from a topic.
 domain: content
 tags:

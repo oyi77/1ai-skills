@@ -1,7 +1,8 @@
 ---
 name: oh-my-opencode-usage
-description: Daily usage patterns for oh-my-opencode including workflow commands, session management, agent invocation, and
-  productivity tips. Use when working with oh my opencode usage.
+description: Use when daily usage patterns for oh-my-opencode including workflow commands,
+  session management, agent invocation, and productivity tips. Use when working with
+  oh my opencode usage.
 domain: integrations
 author: oyi77
 license: Apache-2.0
@@ -15,7 +16,9 @@ tags:
 - usage
 - workflow
 version: 1.0.0
+category: integrations
 ---
+
 
 # Oh My OpenCode Usage
 

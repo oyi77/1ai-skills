@@ -1,6 +1,7 @@
 ---
 name: kb-memory
-description: Use when knowledge base and memory system for AI agents. Covers company KB, persistent memory, session recall, and brain architecture for context preservation.
+description: Use when knowledge base and memory system for AI agents. Covers company
+  KB, persistent memory, session recall, and brain architecture for context preservation.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -13,13 +14,42 @@ tags:
 - recall
 - brain
 version: 2.0.0
+category: core
 ---
+
+
 
 # KB-Memory: Knowledge Base & Memory System
 
 Unified skill for agent knowledge persistence and recall. Covers four approaches to maintaining context across sessions.
 
 ## When to Use
+
+**Trigger phrases:**
+- "save this to memory" / "remember this for later"
+- "what do we know about…" / "search the knowledge base"
+- "restore context from last session" / "where did we leave off?"
+- "update the company KB" / "sync knowledge to brain"
+
+**Use when:**
+- A fact, decision, or preference should survive the current session
+- You need to recall prior context, decisions, or project state
+- Session continuity matters (compaction, resume, handoff)
+
+**Don't use for:**
+- One-off lookups that live entirely in the current context window
+- General file storage — this is for structured knowledge, not arbitrary files
+
+
+
+## Anti-Rationalization Table
+
+| Excuse | Reality | Rule |
+|--------|---------|------|
+| "I'll remember it" | Human memory is unreliable; agent context windows overflow | Persist everything; retrieval > recall |
+| "Vector search is enough" | Vectors miss exact matches, relationships, temporal ordering | Combine vector + graph + keyword; no single index suffices |
+| "One big context window" | Large contexts dilute attention and increase cost | Chunk, summarize, and retrieve precisely |
+
 
 **Trigger phrases:**
 - "save this to memory" / "remember this for later"

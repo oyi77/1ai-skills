@@ -1,7 +1,8 @@
 ---
 name: content-validation-workflow
-description: Validate AI-generated content quality through sample generation, human review gates, and controlled batch production
-  workflows. Use when working with content validation workflow.
+description: Use when validate AI-generated content quality through sample generation,
+  human review gates, and controlled batch production workflows. Use when working
+  with content validation workflow.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - validation
 - workflow
 version: 1.0.0
+category: development
 ---
+
 # Content Validation Workflow
 
 ## When to Use

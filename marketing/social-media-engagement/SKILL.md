@@ -16,7 +16,9 @@ tags:
 - social
 - social-media
 version: 1.0.0
+category: marketing
 ---
+
 
 
 persona:

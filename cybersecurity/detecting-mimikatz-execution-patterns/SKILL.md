@@ -1,7 +1,9 @@
 ---
 name: detecting-mimikatz-execution-patterns
-description: Detect Mimikatz execution through command-line patterns, LSASS access signatures, binary indicators, and in-memory
-  detection of known modules. Use when detecting mimikatz execution through command-line patterns, lsass access signatures, binary.
+description: Use when detect Mimikatz execution through command-line patterns, LSASS
+  access signatures, binary indicators, and in-memory detection of known modules.
+  Use when detecting mimikatz execution through command-line patterns, lsass access
+  signatures, binary.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -26,7 +28,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Detecting Mimikatz Execution Patterns
 
 ## Overview

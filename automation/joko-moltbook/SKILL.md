@@ -1,7 +1,8 @@
 ---
 name: joko-moltbook
-description: Queue-driven Moltbook posting agent with deduplication, idempotent operations, exponential backoff retries, and
-  real-time monitoring. Use when working with joko moltbook.
+description: Use when queue-driven Moltbook posting agent with deduplication, idempotent
+  operations, exponential backoff retries, and real-time monitoring. Use when working
+  with joko moltbook.
 domain: automation
 author: oyi77
 license: Apache-2.0
@@ -15,7 +16,9 @@ tags:
 - productivity
 - workflow
 version: 1.0.0
+category: automation
 ---
+
 # Joko Moltbook
 
 ## When to Use

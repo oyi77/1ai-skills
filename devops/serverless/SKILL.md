@@ -1,6 +1,7 @@
 ---
 name: serverless
-description: Serverless architecture — AWS Lambda, Cloudflare Workers, Vercel Edge. Event-driven design, cold start optimization. Use when working with serverless.
+description: Use when serverless architecture — AWS Lambda, Cloudflare Workers, Vercel
+  Edge. Event-driven design, cold start optimization. Use when working with serverless.
 domain: devops
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - infrastructure
 - serverless
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

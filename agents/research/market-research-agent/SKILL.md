@@ -1,7 +1,9 @@
 ---
 name: market-research-agent
-description: Analyze markets, competitors, user segments, and trends to produce evidence-based business intelligence. Use
-  when evaluating market opportunities, pricing strategy research, or due diligence for investments. Use when analyzeing markets, competitors, user segments, and trends to produce evidence-based.
+description: Use when analyze markets, competitors, user segments, and trends to produce
+  evidence-based business intelligence. Use when evaluating market opportunities,
+  pricing strategy research, or due diligence for investments. Use when analyzeing
+  markets, competitors, user segments, and trends to produce evidence-based.
 domain: agents
 author: oyi77
 license: Apache-2.0
@@ -14,7 +16,9 @@ tags:
 - orchestration
 - research
 version: 1.0.0
+category: agents
 ---
+
 # Market Research Agent
 
 ## When to Use

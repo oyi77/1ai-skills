@@ -1,7 +1,9 @@
 ---
 name: detecting-privilege-escalation-attempts
-description: Detect privilege escalation attempts including token manipulation, UAC bypass, unquoted service paths, kernel
-  exploits, and sudo/doas abuse across Windows and Linux. Use when detecting privilege escalation attempts including token manipulation, uac bypass, unquoted.
+description: Use when detect privilege escalation attempts including token manipulation,
+  UAC bypass, unquoted service paths, kernel exploits, and sudo/doas abuse across
+  Windows and Linux. Use when detecting privilege escalation attempts including token
+  manipulation, uac bypass, unquoted.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -25,7 +27,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Detecting Privilege Escalation Attempts
 
 ## Overview

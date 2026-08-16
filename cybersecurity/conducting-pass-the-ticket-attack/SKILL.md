@@ -1,7 +1,9 @@
 ---
 name: conducting-pass-the-ticket-attack
-description: Pass-the-Ticket (PtT) is a lateral movement technique that uses stolen Kerberos tickets (TGT or TGS) to authenticate
-  to services without knowing the user's password. By extracting Kerberos tickets fro. Use when working with conducting pass the ticket attack.
+description: Use when pass-the-Ticket (PtT) is a lateral movement technique that uses
+  stolen Kerberos tickets (TGT or TGS) to authenticate to services without knowing
+  the user's password. By extracting Kerberos tickets fro. Use when working with conducting
+  pass the ticket attack.
 domain: cybersecurity
 subdomain: red-teaming
 tags:
@@ -26,7 +28,9 @@ nist_csf:
 - ID.RA-01
 - GV.OV-02
 - DE.AE-07
+category: cybersecurity
 ---
+
 # Conducting Pass-the-Ticket Attack
 
 

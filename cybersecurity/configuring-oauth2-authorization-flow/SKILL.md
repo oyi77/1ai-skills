@@ -22,7 +22,9 @@ nist_csf:
 - PR.AA-02
 - PR.AA-05
 - PR.AA-06
+category: cybersecurity
 ---
+
 # Configuring OAuth 2.0 Authorization Flow
 
 ## Overview

@@ -1,6 +1,7 @@
 ---
 name: berkahkarya-orchestrator
-description: Use when orchestrate multi-skill workflows by routing tasks to the right agents and coordinating cross-platform operations.
+description: Use when orchestrate multi-skill workflows by routing tasks to the right
+  agents and coordinating cross-platform operations.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - self-improvement
 - workflow
 version: 1.0.0
+category: core
 ---
+
 # Berkahkarya Orchestrator
 
 ## When to Use

@@ -1,6 +1,8 @@
 ---
 name: model-fine-tuning
-description: Fine-tune LLMs and ML models — LoRA, QLoRA, PEFT, Hugging Face. Dataset prep, training, evaluation, deployment. Use when working with model fine tuning.
+description: Use when fine-tune LLMs and ML models — LoRA, QLoRA, PEFT, Hugging Face.
+  Dataset prep, training, evaluation, deployment. Use when working with model fine
+  tuning.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -14,7 +16,9 @@ tags:
 - self-improvement
 - tuning
 version: 1.0.0
+category: core
 ---
+
 
 ## Overview
 

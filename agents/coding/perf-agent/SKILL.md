@@ -1,18 +1,21 @@
 ---
 name: perf-agent
-description: Use when measure before optimizing, target actual bottlenecks proven by profiling, verify with benchmarks.
+description: Use when measure before optimizing, target actual bottlenecks proven
+  by profiling, verify with benchmarks.
 domain: agents
 author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:
-  - agent
-  - ai-agent
-  - automation
-  - perf
-  - coding
+- agent
+- ai-agent
+- automation
+- perf
+- coding
 version: 1.0.0
+category: agents
 ---
+
 
 # Perf Agent
 

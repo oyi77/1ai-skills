@@ -12,7 +12,9 @@ tags:
 - ponytail
 - simplification
 version: 1.0.0
+category: mindset
 ---
+
 
 
 # Review — Diff Over-Engineering Detection

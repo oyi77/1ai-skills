@@ -1,6 +1,7 @@
 ---
 name: vilona
-description: Use when foundational core infrastructure skill providing system foundation capabilities for the agent ecosystem.
+description: Use when foundational core infrastructure skill providing system foundation
+  capabilities for the agent ecosystem.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -11,7 +12,9 @@ tags:
 - self-improvement
 - vilona
 version: 1.0.0
+category: core
 ---
+
 # Vilona Skill
 
 ## When to Use

@@ -1,7 +1,8 @@
 ---
 name: pattern-recognition
-description: Identify patterns in skill execution, errors, and successes. Recognize when situations match previous patterns
-  and apply learned solutions. Use when working with pattern recognition.
+description: Use when identify patterns in skill execution, errors, and successes.
+  Recognize when situations match previous patterns and apply learned solutions. Use
+  when working with pattern recognition.
 domain: meta
 author: oyi77
 license: Apache-2.0
@@ -17,7 +18,10 @@ persona:
   expertise: Pattern matching, anomaly detection, similarity analysis
   philosophy: History repeats itself
 version: 1.0.0
+category: meta
 ---
+
+
 # Pattern Recognition
 
 ## When to Use
@@ -102,3 +106,10 @@ Pattern Recognition is a foundational meta-skills skill that provides skill mana
 - [ ] Results validated against acceptance criteria
 - [ ] Error handling tested with edge cases
 - [ ] Documentation updated with findings
+## Verification Checklist
+
+- [ ] Pattern matching finds relevant historical cases
+- [ ] Solution adaptation preserves core logic
+- [ ] Outcome tracking captures success/failure accurately
+- [ ] Database grows without performance degradation
+- [ ] False positive rate < 20%

@@ -1,7 +1,7 @@
 ---
 name: create-skills
-description: Use when the system identifies a skill gap and needs to autonomously generate a new skill to fill it. Works with
-  find-skills to ensure no duplicates.
+description: Use when the system identifies a skill gap and needs to autonomously
+  generate a new skill to fill it. Works with find-skills to ensure no duplicates.
 domain: meta
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - skill-evolution
 - skills
 version: 1.0.0
+category: meta
 ---
+
 persona:
   name: "Grace Hopper"
   title: "The Compiler Creator - Master of Systematic Generation"

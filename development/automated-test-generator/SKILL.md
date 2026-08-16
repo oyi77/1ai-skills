@@ -1,19 +1,23 @@
 ---
 name: automated-test-generator
-description: Generate test suites, analyze coverage, and scaffold E2E tests automatically. Use when creating tests for existing code, improving test coverage, scaffolding integration tests, or setting.
+description: Use when generate test suites, analyze coverage, and scaffold E2E tests
+  automatically. Use when creating tests for existing code, improving test coverage,
+  scaffolding integration tests, or setting.
 domain: development
 author: oyi77
 license: Apache-2.0
 subdomain: software-development
-tags: 
-  - test-generation
-  - coverage-analysis
-  - e2e-testing
-  - test-automation
-  - quality-assurance
-  - test-scaffolding
+tags:
+- test-generation
+- coverage-analysis
+- e2e-testing
+- test-automation
+- quality-assurance
+- test-scaffolding
 version: 1.0.0
+category: development
 ---
+
 
 # Automated Test Generator
 

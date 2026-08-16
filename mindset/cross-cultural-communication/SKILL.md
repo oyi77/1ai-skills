@@ -1,7 +1,8 @@
 ---
 name: cross-cultural-communication
-description: Navigate cross-cultural communication using Hofstede's dimensions, high/low-context awareness, and async norms.
-  Use when working with global teams or international stakeholders.
+description: Use when navigate cross-cultural communication using Hofstede's dimensions,
+  high/low-context awareness, and async norms. Use when working with global teams
+  or international stakeholders.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - personal-development
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Cross Cultural Communication
 
 ## Overview

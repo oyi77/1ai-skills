@@ -14,7 +14,9 @@ tags:
 - slack
 - workflow
 version: 1.0.0
+category: automation
 ---
+
 # Workflow Builder
 
 ## When to Use

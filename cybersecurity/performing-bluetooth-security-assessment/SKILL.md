@@ -1,6 +1,8 @@
 ---
 name: performing-bluetooth-security-assessment
-description: Assess Bluetooth Low Energy device security by scanning, enumerating GATT services, and detecting vulnerabilities. Use when working with performing bluetooth security assessment.
+description: Use when assess Bluetooth Low Energy device security by scanning, enumerating
+  GATT services, and detecting vulnerabilities. Use when working with performing bluetooth
+  security assessment.
 domain: cybersecurity
 subdomain: wireless-security
 tags:
@@ -15,7 +17,9 @@ nist_csf:
 - PR.IR-01
 - DE.CM-01
 - ID.AM-03
+category: cybersecurity
 ---
+
 
 
 # Performing Bluetooth Security Assessment

@@ -1,7 +1,8 @@
 ---
 name: using-git-worktrees
-description: Use when starting feature work that needs isolation from current workspace or before executing implementation
-  plans - creates isolated git worktrees with smart directory selection and safety verification
+description: Use when starting feature work that needs isolation from current workspace
+  or before executing implementation plans - creates isolated git worktrees with smart
+  directory selection and safety verification
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - using
 - worktrees
 version: 1.0.0
+category: development
 ---
+
 
 persona:
   name: "Domain Expert"

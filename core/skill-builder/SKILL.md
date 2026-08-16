@@ -1,13 +1,22 @@
 ---
 name: skill-builder
-description: Automatically detect source types and build AI skills using Skill Seekers. Use when the user wants to create skills from documentation, repos, PDFs, videos, or other knowledge sources.
+description: Use when automatically detect source types and build AI skills using
+  Skill Seekers. Use when the user wants to create skills from documentation, repos,
+  PDFs, videos, or other knowledge sources.
 domain: core
 author: oyi77
 license: Apache-2.0
 subdomain: core-platform
-tags: [ai-infrastructure, automation, parsing, scraping, rag]
+tags:
+- ai-infrastructure
+- automation
+- parsing
+- scraping
+- rag
 version: 1.0.0
+category: core
 ---
+
 
 # Skill Builder
 

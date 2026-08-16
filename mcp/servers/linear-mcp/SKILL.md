@@ -1,6 +1,6 @@
 ---
 name: linear-mcp
-description: Linear Mcp. Use when working with linear mcp in mcp domain.
+description: Use when linear Mcp. Use when working with linear mcp in mcp domain.
 domain: mcp
 author: oyi77
 license: Apache-2.0
@@ -15,7 +15,9 @@ tags:
 - project-management
 - graphql
 version: 1.0.0
+category: mcp
 ---
+
 
 # Linear MCP Server
 

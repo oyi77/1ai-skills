@@ -1,7 +1,8 @@
 ---
 name: skill-performance-monitor
-description: Monitor and analyze skill effectiveness in real-time. Track usage, success rates, response quality, and user
-  satisfaction for continuous optimization. Use when monitoring and analyze skill effectiveness in real-time. track usage, success.
+description: Use when monitor and analyze skill effectiveness in real-time. Track
+  usage, success rates, response quality, and user satisfaction for continuous optimization.
+  Use when monitoring and analyze skill effectiveness in real-time. track usage, success.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - self-improvement
 - skill
 version: 1.0.0
+category: core
 ---
+
 persona:
   name: "Brendan Gregg"
   title: "The Performance Engineering Expert - Master of Metrics"

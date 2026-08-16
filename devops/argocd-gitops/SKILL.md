@@ -1,6 +1,7 @@
 ---
 name: argocd-gitops
-description: ArgoCD GitOps — declarative continuous delivery, application sync, drift detection, multi-cluster. Use when working with argocd gitops.
+description: Use when argoCD GitOps — declarative continuous delivery, application
+  sync, drift detection, multi-cluster. Use when working with argocd gitops.
 domain: devops
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - gitops
 - infrastructure
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

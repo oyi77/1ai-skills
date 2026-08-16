@@ -1,7 +1,7 @@
 ---
 name: customer-support
-description: Use when handling customer support via browser - email responses, chat interactions, ticket management, and escalation
-  workflows.
+description: Use when handling customer support via browser - email responses, chat
+  interactions, ticket management, and escalation workflows.
 domain: sales
 author: oyi77
 license: Apache-2.0
@@ -15,7 +15,9 @@ tags:
 - support
 - workflow
 version: 1.0.0
+category: sales
 ---
+
 
 
 persona:

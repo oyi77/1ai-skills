@@ -1,9 +1,11 @@
 ---
 name: performing-ios-app-security-assessment
-description: Performs comprehensive iOS application security assessments using Frida for dynamic instrumentation, Objection
-  for runtime exploration, SSL pinning bypass for traffic interception, keychain extraction for credential analysis, and IPA
-  static analysis for binary-level review. Use when conducting authorized iOS penetration tests, evaluating mobile app security
-  posture against OWASP MASTG, or assessing iOS app data protection and transport security controls.
+description: Use when performs comprehensive iOS application security assessments
+  using Frida for dynamic instrumentation, Objection for runtime exploration, SSL
+  pinning bypass for traffic interception, keychain extraction for credential analysis,
+  and IPA static analysis for binary-level review. Use when conducting authorized
+  iOS penetration tests, evaluating mobile app security posture against OWASP MASTG,
+  or assessing iOS app data protection and transport security controls.
 domain: cybersecurity
 tags:
 - mobile-security
@@ -23,7 +25,9 @@ nist_csf:
 - PR.AA-05
 - ID.RA-01
 - DE.CM-09
+category: cybersecurity
 ---
+
 # Performing Ios App Security Assessment
 
 ## Overview

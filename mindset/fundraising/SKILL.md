@@ -1,7 +1,7 @@
 ---
 name: fundraising
-description: Pitch investors using 10-slide deck structure, understand term sheets, and manage investor relations. Use when
-  raising capital.
+description: Use when pitch investors using 10-slide deck structure, understand term
+  sheets, and manage investor relations. Use when raising capital.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - personal-development
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Fundraising
 
 ## Overview

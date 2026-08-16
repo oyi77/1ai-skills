@@ -1,6 +1,10 @@
 ---
 name: implementing-ot-incident-response-playbook
-description: 'Develop and implement OT-specific incident response playbooks aligned with SANS PICERL framework, IEC 62443, and NIST SP 800-82 that address unique ICS challenges including safety-critical systems, limited downtime tolerance, and coordination between IT SOC, OT engineering, and plant operations teams. . Use when working with implementing ot incident response playbook.'
+description: Use when develop and implement OT-specific incident response playbooks
+  aligned with SANS PICERL framework, IEC 62443, and NIST SP 800-82 that address unique
+  ICS challenges including safety-critical systems, limited downtime tolerance, and
+  coordination between IT SOC, OT engineering, and plant operations teams. . Use when
+  working with implementing ot incident response playbook.
 domain: cybersecurity
 tags:
 - ot-security
@@ -20,7 +24,9 @@ nist_csf:
 - DE.CM-01
 - ID.AM-05
 - GV.OC-02
+category: cybersecurity
 ---
+
 # Implementing Ot Incident Response Playbook
 
 ## Overview

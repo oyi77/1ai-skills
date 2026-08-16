@@ -1,6 +1,7 @@
 ---
 name: daily-dev-agentic
-description: 'Skill: daily-dev-agentic. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Use when skill: daily-dev-agentic. See SKILL.md body for details. Use
+  when this domain is relevant.'
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -32,7 +33,9 @@ persona:
   - Test first
   - Refactor mercilessly
 version: 1.0.0
+category: development
 ---
+
 # Daily Dev Agentic
 
 ## When to Use

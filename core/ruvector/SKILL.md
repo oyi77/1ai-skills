@@ -30,7 +30,9 @@ persona:
   - Scale to billions
   - Latency matters
 version: 1.0.0
+category: core
 ---
+
 # RuVector Skill
 
 > Self-learning vector database with Graph Neural Networks for autonomous AI memory

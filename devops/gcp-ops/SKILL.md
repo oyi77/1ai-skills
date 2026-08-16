@@ -1,6 +1,7 @@
 ---
 name: gcp-ops
-description: Google Cloud operations — Compute Engine, Cloud Run, BigQuery, Cloud Functions, GKE, IAM. Use when working with gcp ops.
+description: Use when google Cloud operations — Compute Engine, Cloud Run, BigQuery,
+  Cloud Functions, GKE, IAM. Use when working with gcp ops.
 domain: devops
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - infrastructure
 - ops
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

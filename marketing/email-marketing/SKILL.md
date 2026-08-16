@@ -13,7 +13,9 @@ tags:
 - marketing
 - seo
 version: 1.0.0
+category: marketing
 ---
+
 
 
 persona:

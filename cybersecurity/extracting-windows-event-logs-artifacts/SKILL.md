@@ -1,7 +1,8 @@
 ---
 name: extracting-windows-event-logs-artifacts
-description: Extract, parse, and analyze Windows Event Logs (EVTX) using Chainsaw, Hayabusa, and EvtxECmd to detect lateral
-  movement, persistence, and privilege escalation. Use when working with extracting windows event logs artifacts.
+description: Use when extract, parse, and analyze Windows Event Logs (EVTX) using
+  Chainsaw, Hayabusa, and EvtxECmd to detect lateral movement, persistence, and privilege
+  escalation. Use when working with extracting windows event logs artifacts.
 domain: cybersecurity
 tags:
 - forensics
@@ -20,7 +21,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 # Extracting Windows Event Logs Artifacts
 
 ## Overview

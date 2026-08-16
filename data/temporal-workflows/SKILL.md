@@ -1,6 +1,7 @@
 ---
 name: temporal-workflows
-description: Temporal durable workflows — workflow/activity definitions, retries, signals, queries, versioning. Use when working with temporal workflows.
+description: Use when temporal durable workflows — workflow/activity definitions,
+  retries, signals, queries, versioning. Use when working with temporal workflows.
 domain: data
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - workflow
 - workflows
 version: 1.0.0
+category: data
 ---
+
 
 
 ## Overview

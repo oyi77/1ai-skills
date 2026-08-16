@@ -1,7 +1,8 @@
 ---
 name: omniroute-integration
-description: Integrate with OmniRoute AI Router for multi-provider LLM routing, MCP server access, and A2A agent-to-agent
-  orchestration. Use when integrateing with omniroute ai router for multi-provider llm routing, mcp.
+description: Use when integrate with OmniRoute AI Router for multi-provider LLM routing,
+  MCP server access, and A2A agent-to-agent orchestration. Use when integrateing with
+  omniroute ai router for multi-provider llm routing, mcp.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - omniroute
 - self-improvement
 version: 1.0.0
+category: core
 ---
+
 persona:
   name: "Sam Altman"
   title: "The AI Infrastructure Expert - Master of LLM Routing"

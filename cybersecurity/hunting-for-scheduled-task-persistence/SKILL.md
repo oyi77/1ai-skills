@@ -1,7 +1,9 @@
 ---
 name: hunting-for-scheduled-task-persistence
-description: Hunt for adversary persistence via Windows Scheduled Tasks by analyzing task creation events, suspicious task
-  actions, and unusual scheduling patterns. Use when hunting for adversary persistence via windows scheduled tasks by analyzing.
+description: Use when hunt for adversary persistence via Windows Scheduled Tasks by
+  analyzing task creation events, suspicious task actions, and unusual scheduling
+  patterns. Use when hunting for adversary persistence via windows scheduled tasks
+  by analyzing.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -25,7 +27,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Hunting For Scheduled Task Persistence
 
 ## Overview

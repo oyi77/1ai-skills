@@ -1,7 +1,8 @@
 ---
 name: operations-team
-description: Execute SOPs, triage on-call incidents, manage SLA breaches, and drive continuous improvement using lean operations
-  principles. Use when working with operations team.
+description: Use when execute SOPs, triage on-call incidents, manage SLA breaches,
+  and drive continuous improvement using lean operations principles. Use when working
+  with operations team.
 domain: operations
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,10 @@ tags:
 - operations
 - team
 version: 1.0.0
+category: operations
 ---
+
+
 # Operations Team
 
 ## When to Use
@@ -160,3 +164,11 @@ Operations expertise translates into consulting revenue across these service lin
 - Fractional operations lead (monthly): $2,000–5,000
 - Incident playbook development: $1,500–4,000
 - Training workshop (half-day): $1,500–3,000
+## Verification Checklist
+
+- [ ] Incident response time < SLA for all severity levels
+- [ ] Runbooks cover >90% of incident types
+- [ ] Postmortems completed within 48h
+- [ ] Action items from postmortems tracked to completion
+- [ ] SLA compliance > 99% monthly
+- [ ] On-call rotation sustainable (no burnout signals)

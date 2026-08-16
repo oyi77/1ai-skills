@@ -1,7 +1,9 @@
 ---
 name: collecting-volatile-evidence-from-compromised-host
-description: Collect volatile forensic evidence from a compromised system following order of volatility, preserving memory,
-  network connections, processes, and system state before they are lost. Use when working with collecting volatile evidence from compromised host.
+description: Use when collect volatile forensic evidence from a compromised system
+  following order of volatility, preserving memory, network connections, processes,
+  and system state before they are lost. Use when working with collecting volatile
+  evidence from compromised host.
 domain: cybersecurity
 tags:
 - incident-response
@@ -24,7 +26,9 @@ nist_csf:
 - RS.MA-02
 - RS.AN-03
 - RC.RP-01
+category: cybersecurity
 ---
+
 # Collecting Volatile Evidence From Compromised Host
 
 ## Overview

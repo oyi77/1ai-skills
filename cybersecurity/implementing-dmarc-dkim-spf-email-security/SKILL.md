@@ -1,7 +1,9 @@
 ---
 name: implementing-dmarc-dkim-spf-email-security
-description: SPF, DKIM, and DMARC form the three pillars of email authentication. Together they prevent domain spoofing, validate
-  message integrity, and define policies for handling unauthenticated mail. Proper im. Use when working with implementing dmarc dkim spf email security.
+description: Use when sPF, DKIM, and DMARC form the three pillars of email authentication.
+  Together they prevent domain spoofing, validate message integrity, and define policies
+  for handling unauthenticated mail. Proper im. Use when working with implementing
+  dmarc dkim spf email security.
 domain: cybersecurity
 subdomain: phishing-defense
 tags:
@@ -21,7 +23,9 @@ nist_csf:
 - DE.CM-09
 - RS.CO-02
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Implementing DMARC, DKIM, and SPF Email Security
 
 ## Overview

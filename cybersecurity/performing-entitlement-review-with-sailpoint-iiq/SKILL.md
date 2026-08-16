@@ -1,6 +1,10 @@
 ---
 name: performing-entitlement-review-with-sailpoint-iiq
-description: 'Use when performing entitlement review and access certification campaigns using SailPoint IdentityIQ including manager certifications, targeted entitlement reviews, role-based access validation, SOD violation remediation, and automated revocation workflows. Activates for requests involving access reviews, entitlement certifications, SailPoint IIQ governance, or periodic user access recertification.'
+description: Use when performing entitlement review and access certification campaigns
+  using SailPoint IdentityIQ including manager certifications, targeted entitlement
+  reviews, role-based access validation, SOD violation remediation, and automated
+  revocation workflows. Activates for requests involving access reviews, entitlement
+  certifications, SailPoint IIQ governance, or periodic user access recertification.
 domain: cybersecurity
 tags:
 - SailPoint
@@ -18,7 +22,9 @@ nist_csf:
 - PR.AA-02
 - PR.AA-05
 - PR.AA-06
+category: cybersecurity
 ---
+
 # Performing Entitlement Review With Sailpoint Iiq
 
 ## Overview

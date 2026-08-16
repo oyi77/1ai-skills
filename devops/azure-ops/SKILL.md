@@ -1,6 +1,7 @@
 ---
 name: azure-ops
-description: Azure operations — Virtual Machines, App Service, Azure Functions, AKS, Cosmos DB, Azure AD. Use when working with azure ops.
+description: Use when azure operations — Virtual Machines, App Service, Azure Functions,
+  AKS, Cosmos DB, Azure AD. Use when working with azure ops.
 domain: devops
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - infrastructure
 - ops
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

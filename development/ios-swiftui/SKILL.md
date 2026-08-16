@@ -1,6 +1,7 @@
 ---
 name: ios-swiftui
-description: SwiftUI development — declarative UI, state management, navigation, and Apple ecosystem integration. Use when working with ios swiftui.
+description: Use when swiftUI development — declarative UI, state management, navigation,
+  and Apple ecosystem integration. Use when working with ios swiftui.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - swiftui
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

@@ -1,7 +1,9 @@
 ---
 name: conducting-post-incident-lessons-learned
-description: Facilitate structured post-incident reviews to identify root causes, document what worked and failed, and produce
-  actionable recommendations to improve future incident response. Use when working with conducting post incident lessons learned.
+description: Use when facilitate structured post-incident reviews to identify root
+  causes, document what worked and failed, and produce actionable recommendations
+  to improve future incident response. Use when working with conducting post incident
+  lessons learned.
 domain: cybersecurity
 tags:
 - incident-response
@@ -22,7 +24,9 @@ nist_csf:
 - RS.MA-02
 - RS.AN-03
 - RC.RP-01
+category: cybersecurity
 ---
+
 # Conducting Post Incident Lessons Learned
 
 ## Overview

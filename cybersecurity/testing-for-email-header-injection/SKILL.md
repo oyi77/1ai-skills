@@ -1,7 +1,9 @@
 ---
 name: testing-for-email-header-injection
-description: Test web application email functionality for SMTP header injection vulnerabilities that allow attackers to inject
-  additional email headers, modify recipients, and abuse contact forms for spam relay. Use when testing web application email functionality for smtp header injection vulnerabilities.
+description: Use when test web application email functionality for SMTP header injection
+  vulnerabilities that allow attackers to inject additional email headers, modify
+  recipients, and abuse contact forms for spam relay. Use when testing web application
+  email functionality for smtp header injection vulnerabilities.
 domain: cybersecurity
 tags:
 - email-injection
@@ -20,7 +22,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Testing For Email Header Injection
 
 ## Overview

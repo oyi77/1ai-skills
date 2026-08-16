@@ -1,6 +1,7 @@
 ---
 name: crewai-agents
-description: CrewAI multi-agent orchestration — agents, tasks, crews, tools, memory, delegation. Use when working with crewai agents.
+description: Use when crewAI multi-agent orchestration — agents, tasks, crews, tools,
+  memory, delegation. Use when working with crewai agents.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - memory
 - self-improvement
 version: 1.0.0
+category: core
 ---
+
 
 ## Overview
 

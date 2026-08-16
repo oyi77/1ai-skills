@@ -1,7 +1,8 @@
 ---
 name: testing-for-sensitive-data-exposure
-description: Identifying sensitive data exposure vulnerabilities including API key leakage, PII in responses, insecure storage,
-  and unprotected data transmission during security assessments. Use when working with testing for sensitive data exposure.
+description: Use when identifying sensitive data exposure vulnerabilities including
+  API key leakage, PII in responses, insecure storage, and unprotected data transmission
+  during security assessments. Use when working with testing for sensitive data exposure.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -28,7 +29,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Testing For Sensitive Data Exposure
 
 ## Overview

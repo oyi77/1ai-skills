@@ -1,6 +1,8 @@
 ---
 name: firebase-patterns
-description: Firebase patterns and integration — Firestore queries, auth flows, cloud functions, security rules, SDK setup, and real-time data. Use when working with firebase patterns, integrating firebase.
+description: Use when firebase patterns and integration — Firestore queries, auth
+  flows, cloud functions, security rules, SDK setup, and real-time data. Use when
+  working with firebase patterns, integrating firebase.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -17,7 +19,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

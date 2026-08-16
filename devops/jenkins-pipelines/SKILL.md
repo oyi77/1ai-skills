@@ -1,6 +1,7 @@
 ---
 name: jenkins-pipelines
-description: Jenkins pipeline as code — Declarative/Scripted pipelines, shared libraries, agents, stages, credentials. Use when working with jenkins pipelines.
+description: Use when jenkins pipeline as code — Declarative/Scripted pipelines, shared
+  libraries, agents, stages, credentials. Use when working with jenkins pipelines.
 domain: devops
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - pipeline
 - pipelines
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

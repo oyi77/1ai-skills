@@ -1,6 +1,8 @@
 ---
 name: content-scheduler
-description: Schedule and manage content publishing across platforms with Notion calendar. Use when scheduleing and manage content publishing across platforms with notion calendar.
+description: Use when schedule and manage content publishing across platforms with
+  Notion calendar. Use when scheduleing and manage content publishing across platforms
+  with notion calendar.
 domain: marketing
 author: oyi77
 license: Apache-2.0
@@ -14,7 +16,9 @@ tags:
 - seo
 allowed-tools: "|\n  - MCP(notion:*)\n    - MCP(slack:*)\n"
 version: 1.0.0
+category: marketing
 ---
+
 # Content Scheduler
 
 ## When to Use

@@ -1,7 +1,8 @@
 ---
 name: implementing-semgrep-for-custom-sast-rules
-description: Write custom Semgrep SAST rules in YAML to detect application-specific vulnerabilities, enforce coding standards,
-  and integrate into CI/CD pipelines. Use when writeing custom semgrep sast rules in yaml to detect application-specific.
+description: Use when write custom Semgrep SAST rules in YAML to detect application-specific
+  vulnerabilities, enforce coding standards, and integrate into CI/CD pipelines. Use
+  when writeing custom semgrep sast rules in yaml to detect application-specific.
 domain: cybersecurity
 subdomain: devsecops
 tags:
@@ -19,7 +20,9 @@ nist_csf:
 - GV.SC-07
 - ID.IM-04
 - PR.PS-04
+category: cybersecurity
 ---
+
 
 # Implementing Semgrep for Custom SAST Rules
 

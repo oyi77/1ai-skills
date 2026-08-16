@@ -1,7 +1,9 @@
 ---
 name: detecting-container-drift-at-runtime
-description: Detect unauthorized modifications to running containers by monitoring for binary execution drift, file system
-  changes, and configuration deviations from the original container image. Use when detecting unauthorized modifications to running containers by monitoring for binary.
+description: Use when detect unauthorized modifications to running containers by monitoring
+  for binary execution drift, file system changes, and configuration deviations from
+  the original container image. Use when detecting unauthorized modifications to running
+  containers by monitoring for binary.
 domain: cybersecurity
 subdomain: container-security
 tags:
@@ -21,7 +23,9 @@ nist_csf:
 - PR.IR-01
 - ID.AM-08
 - DE.CM-01
+category: cybersecurity
 ---
+
 
 # Detecting Container Drift at Runtime
 

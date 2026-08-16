@@ -1,7 +1,8 @@
 ---
 name: nocode-orchestrator
-description: Build and manage automations across Make.com, n8n, Zapier, and Pipedream — onboarding, support tickets, content
-  approval, invoice processing. Use when building and manage automations across make.com, n8n, zapier, and pipedream.
+description: Use when build and manage automations across Make.com, n8n, Zapier, and
+  Pipedream — onboarding, support tickets, content approval, invoice processing. Use
+  when building and manage automations across make.com, n8n, zapier, and pipedream.
 domain: productivity
 author: oyi77
 license: Apache-2.0
@@ -15,7 +16,9 @@ tags:
 - tools
 - voice
 version: 1.0.0
+category: productivity
 ---
+
 
 ## Overview
 

@@ -1,6 +1,7 @@
 ---
 name: api-design
-description: REST API design — resource modeling, versioning, pagination, error handling, OpenAPI/Swagger documentation. Use when working with api design.
+description: Use when rEST API design — resource modeling, versioning, pagination,
+  error handling, OpenAPI/Swagger documentation. Use when working with api design.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

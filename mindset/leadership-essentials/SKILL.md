@@ -1,7 +1,7 @@
 ---
 name: leadership-essentials
-description: Lead teams through vision-setting, decision-making, delegation, and accountability. Use when stepping into a
-  leadership role or improving team performance.
+description: Use when lead teams through vision-setting, decision-making, delegation,
+  and accountability. Use when stepping into a leadership role or improving team performance.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - personal-development
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Leadership Essentials
 
 ## Overview

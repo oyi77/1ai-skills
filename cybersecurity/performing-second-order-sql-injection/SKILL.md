@@ -1,7 +1,9 @@
 ---
 name: performing-second-order-sql-injection
-description: Detect and exploit second-order SQL injection vulnerabilities where malicious input is stored in a database and
-  later executed in an unsafe SQL query during a different application operation. Use when detecting and exploit second-order sql injection vulnerabilities where malicious input.
+description: Use when detect and exploit second-order SQL injection vulnerabilities
+  where malicious input is stored in a database and later executed in an unsafe SQL
+  query during a different application operation. Use when detecting and exploit second-order
+  sql injection vulnerabilities where malicious input.
 domain: cybersecurity
 tags:
 - second-order-sqli
@@ -20,7 +22,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Performing Second Order Sql Injection
 
 ## Overview

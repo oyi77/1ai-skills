@@ -1,6 +1,7 @@
 ---
 name: llm-deployment
-description: LLM deployment and serving — vLLM, Ollama, TGI, llama.cpp. Model quantization, GPU optimization, API serving. Use when working with llm deployment.
+description: Use when lLM deployment and serving — vLLM, Ollama, TGI, llama.cpp. Model
+  quantization, GPU optimization, API serving. Use when working with llm deployment.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - memory
 - self-improvement
 version: 1.0.0
+category: core
 ---
+
 
 ## Overview
 

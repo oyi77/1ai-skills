@@ -1,7 +1,8 @@
 ---
 name: ai-hacker
-description: AI and LLM security testing — prompt injection, model manipulation, data exfiltration via AI. Use when testing
-  AI-powered applications, finding prompt injection vulnerabilities, or assessing LLM-integrated systems.
+description: Use when aI and LLM security testing — prompt injection, model manipulation,
+  data exfiltration via AI. Use when testing AI-powered applications, finding prompt
+  injection vulnerabilities, or assessing LLM-integrated systems.
 domain: cybersecurity
 author: oyi77
 license: Apache-2.0
@@ -15,7 +16,9 @@ tags:
 - jailbreak
 - money
 version: 1.0.0
+category: cybersecurity
 ---
+
 
 # AI Hacker Skill
 

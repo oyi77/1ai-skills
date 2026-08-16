@@ -1,6 +1,11 @@
 ---
 name: detecting-ransomware-precursors-in-network
-description: Use when detects early-stage ransomware indicators in network traffic before encryption begins, including initial access broker activity, command-and-control beaconing, credential harvesting, reconnaissance scanning, and staging behavior. Uses network detection tools (Zeek, Suricata, Arkime), SIEM correlation rules, and threat intelligence feeds to identify ransomware precursor patterns such as Cobalt Strike beacons, Mimikatz network signatures, and RDP brute-force attempts.
+description: Use when detects early-stage ransomware indicators in network traffic
+  before encryption begins, including initial access broker activity, command-and-control
+  beaconing, credential harvesting, reconnaissance scanning, and staging behavior.
+  Uses network detection tools (Zeek, Suricata, Arkime), SIEM correlation rules, and
+  threat intelligence feeds to identify ransomware precursor patterns such as Cobalt
+  Strike beacons, Mimikatz network signatures, and RDP brute-force attempts.
 domain: cybersecurity
 tags:
 - ransomware
@@ -17,7 +22,9 @@ nist_csf:
 - RS.MA-01
 - RC.RP-01
 - PR.IR-01
+category: cybersecurity
 ---
+
 # Detecting Ransomware Precursors In Network
 
 ## Overview

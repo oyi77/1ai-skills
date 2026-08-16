@@ -1,8 +1,10 @@
 ---
 name: investigating-phishing-email-incident
-description: 'Investigates phishing email incidents from initial user report through header analysis, URL/attachment detonation,
-  impacted user identification, and containment actions using SOC tools like Splunk, Microsoft Defender, and sandbox analysis
-  platforms. Use when a reported phishing email requires full incident investigation to determine scope and impact.
+description: 'Use when investigates phishing email incidents from initial user report
+  through header analysis, URL/attachment detonation, impacted user identification,
+  and containment actions using SOC tools like Splunk, Microsoft Defender, and sandbox
+  analysis platforms. Use when a reported phishing email requires full incident investigation
+  to determine scope and impact.
 
   '
 domain: cybersecurity
@@ -28,7 +30,9 @@ nist_csf:
 - DE.AE-02
 - RS.MA-01
 - DE.AE-06
+category: cybersecurity
 ---
+
 # Investigating Phishing Email Incident
 
 ## Overview

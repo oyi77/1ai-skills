@@ -1,7 +1,8 @@
 ---
 name: agent-docs
-description: Use when writing documentation optimized for AI agent consumption - SKILL.md files, README files, API docs, or
-  any documentation that will be read by LLMs in context windows.
+description: Use when writing documentation optimized for AI agent consumption - SKILL.md
+  files, README files, API docs, or any documentation that will be read by LLMs in
+  context windows.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -15,7 +16,9 @@ tags:
 - memory
 - self-improvement
 version: 1.0.0
+category: core
 ---
+
 persona:
   name: "Don Knuth"
   title: "The Documentation Master - Literate Programming Pioneer"

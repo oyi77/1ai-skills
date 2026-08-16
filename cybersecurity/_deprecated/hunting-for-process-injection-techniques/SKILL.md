@@ -1,7 +1,9 @@
 ---
 name: hunting-for-process-injection-techniques
-description: Detect process injection techniques (T1055) including CreateRemoteThread, process hollowing, and DLL injection
-  via Sysmon Event IDs 8 and 10 and EDR process telemetry. Use when detecting process injection techniques (t1055) including createremotethread, process hollowing, and.
+description: Use when detect process injection techniques (T1055) including CreateRemoteThread,
+  process hollowing, and DLL injection via Sysmon Event IDs 8 and 10 and EDR process
+  telemetry. Use when detecting process injection techniques (t1055) including createremotethread,
+  process hollowing, and.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -26,7 +28,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 
 # Hunting for Process Injection Techniques
 

@@ -1,6 +1,7 @@
 ---
 name: websocket
-description: WebSocket development — real-time bidirectional communication, Socket.IO, native WebSocket API, scaling patterns. Use when working with websocket.
+description: Use when webSocket development — real-time bidirectional communication,
+  Socket.IO, native WebSocket API, scaling patterns. Use when working with websocket.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - testing
 - websocket
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

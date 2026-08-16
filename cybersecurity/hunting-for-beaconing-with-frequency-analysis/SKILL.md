@@ -1,7 +1,9 @@
 ---
 name: hunting-for-beaconing-with-frequency-analysis
-description: Identify command-and-control beaconing patterns in network traffic by applying statistical frequency analysis,
-  jitter calculation, and coefficient of variation scoring to detect periodic callbacks from compromised endpoints. Use when working with hunting for beaconing with frequency analysis.
+description: Use when identify command-and-control beaconing patterns in network traffic
+  by applying statistical frequency analysis, jitter calculation, and coefficient
+  of variation scoring to detect periodic callbacks from compromised endpoints. Use
+  when working with hunting for beaconing with frequency analysis.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -27,7 +29,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Hunting For Beaconing With Frequency Analysis
 
 ## Overview

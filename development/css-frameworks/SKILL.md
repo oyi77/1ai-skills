@@ -1,6 +1,7 @@
 ---
 name: css-frameworks
-description: CSS framework patterns — Tailwind CSS, Bootstrap, PostCSS, Sass, CSS Modules, CSS-in-JS. Use when working with css frameworks.
+description: Use when cSS framework patterns — Tailwind CSS, Bootstrap, PostCSS, Sass,
+  CSS Modules, CSS-in-JS. Use when working with css frameworks.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

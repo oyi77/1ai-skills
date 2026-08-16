@@ -1,6 +1,7 @@
 ---
 name: gateway-doctor
-description: Diagnose and fix MCP gateway routing issues, health checks, and server connectivity problems. Use when working with gateway doctor.
+description: Use when diagnose and fix MCP gateway routing issues, health checks,
+  and server connectivity problems. Use when working with gateway doctor.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -30,7 +31,9 @@ persona:
   - Optimize the critical path
   - Monitor continuously
 version: 1.0.0
+category: core
 ---
+
 # Gateway Doctor
 
 ## When to Use

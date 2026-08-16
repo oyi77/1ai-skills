@@ -1,6 +1,7 @@
 ---
 name: tauri-apps
-description: Tauri desktop app development — Rust backend, web frontend, native APIs, small binary size, cross-platform. Use when working with tauri apps.
+description: Use when tauri desktop app development — Rust backend, web frontend,
+  native APIs, small binary size, cross-platform. Use when working with tauri apps.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - tauri
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

@@ -1,6 +1,9 @@
 ---
 name: performing-arp-spoofing-attack-simulation
-description: 'Simulates ARP spoofing attacks in authorized lab or pentest environments using arpspoof, Ettercap, and Scapy to demonstrate man-in-the-middle risks, test network detection capabilities, and validate ARP inspection countermeasures. . Use when working with performing arp spoofing attack simulation.'
+description: Use when simulates ARP spoofing attacks in authorized lab or pentest
+  environments using arpspoof, Ettercap, and Scapy to demonstrate man-in-the-middle
+  risks, test network detection capabilities, and validate ARP inspection countermeasures.
+  . Use when working with performing arp spoofing attack simulation.
 domain: cybersecurity
 tags:
 - network-security
@@ -17,7 +20,9 @@ nist_csf:
 - DE.CM-01
 - ID.AM-03
 - PR.DS-02
+category: cybersecurity
 ---
+
 # Performing Arp Spoofing Attack Simulation
 
 ## Overview

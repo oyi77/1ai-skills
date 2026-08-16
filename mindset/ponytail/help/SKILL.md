@@ -1,17 +1,20 @@
 ---
 name: help
-description: Use when quick reference for ponytail modes, skills, and commands. One-shot display.
+description: Use when quick reference for ponytail modes, skills, and commands. One-shot
+  display.
 domain: mindset
 author: oyi77
 license: Apache-2.0
 subdomain: mindset
 tags:
-  - help
-  - mindset
-  - ponytail
-  - reference
+- help
+- mindset
+- ponytail
+- reference
 version: 1.0.0
+category: mindset
 ---
+
 
 
 # Help — Quick Reference Card for Ponytail Modes

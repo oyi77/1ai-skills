@@ -1,7 +1,9 @@
 ---
 name: performing-active-directory-penetration-test
-description: Conduct a focused Active Directory penetration test to enumerate domain objects, discover attack paths with BloodHound,
-  exploit Kerberos weaknesses, escalate privileges via ADCS/DCSync, and demonstrate domain compromise. Use when conducting a focused active directory penetration test to enumerate domain.
+description: Use when conduct a focused Active Directory penetration test to enumerate
+  domain objects, discover attack paths with BloodHound, exploit Kerberos weaknesses,
+  escalate privileges via ADCS/DCSync, and demonstrate domain compromise. Use when
+  conducting a focused active directory penetration test to enumerate domain.
 domain: cybersecurity
 subdomain: penetration-testing
 tags:
@@ -21,7 +23,9 @@ nist_csf:
 - ID.RA-06
 - GV.OV-02
 - DE.AE-07
+category: cybersecurity
 ---
+
 
 # Performing Active Directory Penetration Test
 

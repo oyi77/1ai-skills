@@ -1,7 +1,7 @@
 ---
 name: content-creator
-description: Use when generating multi-platform content via browser automation - social media, blogs, articles, video scripts,
-  and images.
+description: Use when generating multi-platform content via browser automation - social
+  media, blogs, articles, video scripts, and images.
 domain: marketing
 author: oyi77
 license: Apache-2.0
@@ -16,7 +16,9 @@ tags:
 - video
 - money
 version: 1.0.0
+category: marketing
 ---
+
 # Content Creator
 
 ## When to Use

@@ -1,7 +1,8 @@
 ---
 name: performing-jwt-none-algorithm-attack
-description: Execute and test the JWT none algorithm attack to bypass signature verification by manipulating the alg header
-  field in JSON Web Tokens. Use when working with performing jwt none algorithm attack.
+description: Use when execute and test the JWT none algorithm attack to bypass signature
+  verification by manipulating the alg header field in JSON Web Tokens. Use when working
+  with performing jwt none algorithm attack.
 domain: cybersecurity
 subdomain: api-security
 tags:
@@ -21,7 +22,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 
 # Performing JWT None Algorithm Attack
 

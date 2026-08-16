@@ -1,6 +1,9 @@
 ---
 name: auditing-aws-s3-bucket-permissions
-description: 'Systematically audit AWS S3 bucket permissions to identify publicly accessible buckets, overly permissive ACLs, misconfigured bucket policies, and missing encryption settings using AWS CLI, S3audit, and Prowler to enforce least-privilege data access controls. . Use when working with auditing aws s3 bucket permissions.'
+description: Use when systematically audit AWS S3 bucket permissions to identify publicly
+  accessible buckets, overly permissive ACLs, misconfigured bucket policies, and missing
+  encryption settings using AWS CLI, S3audit, and Prowler to enforce least-privilege
+  data access controls. . Use when working with auditing aws s3 bucket permissions.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -18,7 +21,9 @@ nist_csf:
 - ID.AM-08
 - GV.SC-06
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Auditing Aws S3 Bucket Permissions
 
 ## Overview

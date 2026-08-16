@@ -1,7 +1,8 @@
 ---
 name: using-superpowers
-description: Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation
-  before ANY response including clarifying questions
+description: Use when starting any conversation - establishes how to find and use
+  skills, requiring Skill tool invocation before ANY response including clarifying
+  questions
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - superpowers
 - using
 version: 1.0.0
+category: core
 ---
+
 persona:
   name: "Elon Musk"
   title: "The First Principles Thinker - Master of Capability Utilization"

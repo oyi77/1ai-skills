@@ -1,7 +1,8 @@
 ---
 name: vector-db-ops
-description: Vector database operations — Pinecone, Weaviate, Qdrant, ChromaDB. Indexing, querying, filtering, and managing
-  vector embeddings for RAG and similarity search. Use when working with vector db ops.
+description: Use when vector database operations — Pinecone, Weaviate, Qdrant, ChromaDB.
+  Indexing, querying, filtering, and managing vector embeddings for RAG and similarity
+  search. Use when working with vector db ops.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - self-improvement
 - vector
 version: 1.0.0
+category: core
 ---
+
 
 ## Overview
 

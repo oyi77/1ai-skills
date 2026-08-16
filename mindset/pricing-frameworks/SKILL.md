@@ -1,7 +1,8 @@
 ---
 name: pricing-frameworks
-description: Set prices using value-based, cost-plus, competitive, and subscription models. Includes tiering, anchoring, discounts,
-  and pricing experiments. Use when working with pricing frameworks.
+description: Use when set prices using value-based, cost-plus, competitive, and subscription
+  models. Includes tiering, anchoring, discounts, and pricing experiments. Use when
+  working with pricing frameworks.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - pricing
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Pricing Frameworks
 
 ## Overview

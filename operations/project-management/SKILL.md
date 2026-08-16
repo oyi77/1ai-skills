@@ -1,6 +1,7 @@
 ---
 name: project-management
-description: Coordinate sprints, track deadlines, manage tasks, and maintain project documentation with Notion and Slack. Use when working with project management.
+description: Use when coordinate sprints, track deadlines, manage tasks, and maintain
+  project documentation with Notion and Slack. Use when working with project management.
 domain: operations
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,10 @@ tags:
 - project
 - slack
 version: 1.1.0
+category: operations
 ---
+
+
 # Project Management
 
 ## When to Use
@@ -225,3 +229,11 @@ Project management skills generate revenue through delivery, not by being the de
 - When the team is too small to benefit from SOPs (1-2 people may use lightweight checklists instead)
 - For one-time events that will not repeat (a single event is a project, not a process)
 - When ad-hoc communication already achieves reliable outcomes (do not add ceremony where none is needed)
+## Verification Checklist
+
+- [ ] Project charter signed by all stakeholders
+- [ ] Sprint velocity stable after 3 sprints
+- [ ] No scope creep without change request process
+- [ ] Risks identified and mitigation plans active
+- [ ] Retrospective actions implemented next sprint
+- [ ] Project closed with stakeholder sign-off

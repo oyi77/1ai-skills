@@ -1,6 +1,10 @@
 ---
 name: detecting-ntlm-relay-with-event-correlation
-description: 'Detect NTLM relay attacks through Windows Security Event correlation by analyzing Event 4624 LogonType 3 for IP-to-hostname mismatches, identifying Responder/LLMNR poisoning artifacts, auditing SMB and LDAP signing enforcement across the domain, and detecting NTLM downgrade attacks from NTLMv2 to NTLMv1 using event log analysis. . Use when working with detecting ntlm relay with event correlation.'
+description: Use when detect NTLM relay attacks through Windows Security Event correlation
+  by analyzing Event 4624 LogonType 3 for IP-to-hostname mismatches, identifying Responder/LLMNR
+  poisoning artifacts, auditing SMB and LDAP signing enforcement across the domain,
+  and detecting NTLM downgrade attacks from NTLMv2 to NTLMv1 using event log analysis.
+  . Use when working with detecting ntlm relay with event correlation.
 domain: cybersecurity
 subdomain: threat-hunting
 tags:
@@ -39,7 +43,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 
 # Detecting NTLM Relay with Event Correlation
 

@@ -1,7 +1,9 @@
 ---
 name: investing-algorithm-framework
-version: "2.0.0"
-description: Build algorithmic investing strategies with backtesting, signal generation, and portfolio optimization frameworks. Use when building algorithmic investing strategies with backtesting, signal generation, and portfolio.
+version: 2.0.0
+description: Use when build algorithmic investing strategies with backtesting, signal
+  generation, and portfolio optimization frameworks. Use when building algorithmic
+  investing strategies with backtesting, signal generation, and portfolio.
 domain: trading
 author: oyi77
 license: Apache-2.0
@@ -15,7 +17,9 @@ tags:
 - testing
 - trading
 - money
+category: trading
 ---
+
 ## Overview
 
 Full quantitative trading framework based on [coding-kitties/investing-algorithm-framework](https://github.com/coding-kitties/investing-algorithm-framework). Python-native workflow covering strategy definition, vectorized backtesting, event-driven simulation, Monte Carlo robustness testing, and live deployment to CCXT exchanges.

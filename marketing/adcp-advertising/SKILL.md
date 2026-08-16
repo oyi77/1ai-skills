@@ -23,7 +23,9 @@ persona: "|\n  name: Gary Halbert\n    title: The Prince of Print - Master of Di
   \ Marketing legend\n    principles:\n    - AIDA always\n    - Test headlines\n \
   \   - Benefits over features\n    - Strong call to action\n"
 version: 1.0.0
+category: marketing
 ---
+
 # Adcp Advertising
 
 ## When to Use

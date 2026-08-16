@@ -1,7 +1,8 @@
 ---
 name: finance-tracker
-description: Track real-time revenue across 5 income streams, monitor cashflow and runway, detect revenue gaps, and send threshold
-  alerts via Telegram. Use when tracking real-time revenue across 5 income streams, monitor cashflow and.
+description: Use when track real-time revenue across 5 income streams, monitor cashflow
+  and runway, detect revenue gaps, and send threshold alerts via Telegram. Use when
+  tracking real-time revenue across 5 income streams, monitor cashflow and.
 domain: financial
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,10 @@ tags:
 - investment
 - tracker
 version: 1.0.0
+category: financial
 ---
+
+
 # Finance Tracker
 
 ## When to Use
@@ -121,3 +125,20 @@ Designed for freelancers, bootstrapped startups, and small agencies with 3-10 ac
 - [ ] Revenue gap detection algorithm flags all missing expected income events per stream
 - [ ] Monthly revenue rollup matches payment processor totals (Stripe/Paddle/Lemon Squeezy)
 - [ ] Historical daily data retained for 90+ days with weekly summary backups
+## Process
+
+1. **Connect income sources** — Link Stripe, bank, crypto, affiliate, and other revenue APIs
+2. **Fetch real-time data** — Pull transactions, balances, and metrics from all sources
+3. **Calculate metrics** — Compute cashflow, runway, revenue gaps, growth rates
+4. **Check thresholds** — Compare against alert thresholds for gaps, runway, growth
+5. **Send notifications** — Push alerts via Telegram for threshold breaches
+6. **Update dashboard** — Refresh tracking dashboard with latest data
+
+## Verification Checklist
+
+- [ ] All 5 income streams connected and syncing
+- [ ] Real-time data refreshes within 5 minutes
+- [ ] Runway calculation matches manual verification
+- [ ] Threshold alerts fire correctly (test with known values)
+- [ ] Telegram notifications delivered and formatted
+- [ ] Dashboard shows accurate historical trends

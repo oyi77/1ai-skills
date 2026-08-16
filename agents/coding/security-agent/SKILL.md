@@ -1,18 +1,21 @@
 ---
 name: security-agent
-description: Use when bug bounty hunter and security auditor. Finds vulnerabilities before they find production.
+description: Use when bug bounty hunter and security auditor. Finds vulnerabilities
+  before they find production.
 domain: agents
 author: oyi77
 license: Apache-2.0
 subdomain: ai-agents
 tags:
-  - agent
-  - ai-agent
-  - automation
-  - security
-  - coding
+- agent
+- ai-agent
+- automation
+- security
+- coding
 version: 1.0.0
+category: agents
 ---
+
 
 # Security Agent
 

@@ -1,7 +1,8 @@
 ---
 name: oh-my-opencode-features
-description: Complete reference of all oh-my-opencode features including agents, tools, MCPs, hooks, workflow automation,
-  and productivity enhancements. Use when working with oh my opencode features.
+description: Use when complete reference of all oh-my-opencode features including
+  agents, tools, MCPs, hooks, workflow automation, and productivity enhancements.
+  Use when working with oh my opencode features.
 domain: integrations
 author: oyi77
 license: Apache-2.0
@@ -15,7 +16,9 @@ tags:
 - third-party
 - workflow
 version: 1.0.0
+category: integrations
 ---
+
 
 # Oh My OpenCode Features
 

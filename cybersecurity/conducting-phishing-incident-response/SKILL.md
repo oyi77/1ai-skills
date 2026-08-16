@@ -1,6 +1,11 @@
 ---
 name: conducting-phishing-incident-response
-description: 'Use when responding to phishing incidents by analyzing reported emails, extracting indicators, assessing credential compromise, quarantining malicious messages across the organization, and remediating affected accounts. Covers email header analysis, URL/attachment sandboxing, and mailbox-wide purge operations. Activates for requests involving phishing response, email incident, credential phishing, spear phishing investigation, or phishing remediation.'
+description: Use when responding to phishing incidents by analyzing reported emails,
+  extracting indicators, assessing credential compromise, quarantining malicious messages
+  across the organization, and remediating affected accounts. Covers email header
+  analysis, URL/attachment sandboxing, and mailbox-wide purge operations. Activates
+  for requests involving phishing response, email incident, credential phishing, spear
+  phishing investigation, or phishing remediation.
 domain: cybersecurity
 tags:
 - phishing-response
@@ -22,7 +27,9 @@ nist_csf:
 - RS.MA-02
 - RS.AN-03
 - RC.RP-01
+category: cybersecurity
 ---
+
 # Conducting Phishing Incident Response
 
 ## Overview

@@ -1,6 +1,7 @@
 ---
 name: defi-protocols
-description: 'Skill: defi-protocols. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Use when skill: defi-protocols. See SKILL.md body for details. Use when
+  this domain is relevant.'
 domain: trading
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - protocols
 - trading
 version: 1.0.0
+category: trading
 ---
+
 ## Overview
 
 DeFi protocol patterns for Automated Market Makers (AMMs), lending pools, flash loans, yield farming, order-book DEXs, cross-chain bridges, and oracle integrations. Covers the mathematical foundations, Solidity implementations, Hardhat fork-testing patterns, and Web3.py/Ethers.js interaction code for each primitive. Security invariants (reentrancy, price manipulation, MEV) are treated as first-class design constraints, not afterthoughts.

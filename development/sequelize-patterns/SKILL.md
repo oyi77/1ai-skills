@@ -1,6 +1,7 @@
 ---
 name: sequelize-patterns
-description: Sequelize ORM patterns — models, associations, migrations, transactions, hooks, TypeScript support. Use when working with sequelize patterns.
+description: Use when sequelize ORM patterns — models, associations, migrations, transactions,
+  hooks, TypeScript support. Use when working with sequelize patterns.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

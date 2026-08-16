@@ -1,7 +1,8 @@
 ---
 name: performing-network-forensics-with-wireshark
-description: Capture and analyze network traffic using Wireshark and tshark to reconstruct network events, extract artifacts,
-  and identify malicious communications. Use when working with performing network forensics with wireshark.
+description: Use when capture and analyze network traffic using Wireshark and tshark
+  to reconstruct network events, extract artifacts, and identify malicious communications.
+  Use when working with performing network forensics with wireshark.
 domain: cybersecurity
 tags:
 - forensics
@@ -19,7 +20,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 # Performing Network Forensics With Wireshark
 
 ## Overview

@@ -1,7 +1,9 @@
 ---
 name: seo-optimizer
-description: Optimize content for search engines. Perform keyword research, analyze on-page SEO, track rankings, audit technical
-  SEO, and improve organic visibility for sustainable traffic growth. Use when optimizeing content for search engines. perform keyword research, analyze on-page.
+description: Use when optimize content for search engines. Perform keyword research,
+  analyze on-page SEO, track rankings, audit technical SEO, and improve organic visibility
+  for sustainable traffic growth. Use when optimizeing content for search engines.
+  perform keyword research, analyze on-page.
 domain: marketing
 author: oyi77
 license: Apache-2.0
@@ -13,7 +15,9 @@ tags:
 - money
 - seo
 version: 1.0.0
+category: marketing
 ---
+
 
 persona:
   name: "Domain Expert"

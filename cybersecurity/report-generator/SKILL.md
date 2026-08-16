@@ -1,7 +1,8 @@
 ---
 name: report-generator
-description: Generate professional security vulnerability reports for bug bounty platforms. Use when documenting security
-  findings, preparing bug bounty submissions, or creating assessment reports.
+description: Use when generate professional security vulnerability reports for bug
+  bounty platforms. Use when documenting security findings, preparing bug bounty submissions,
+  or creating assessment reports.
 domain: cybersecurity
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - security
 - threat-defense
 version: 1.0.0
+category: cybersecurity
 ---
+
 
 # Report Generator Skill
 

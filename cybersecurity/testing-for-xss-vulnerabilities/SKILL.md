@@ -1,9 +1,11 @@
 ---
 name: testing-for-xss-vulnerabilities
-description: Tests web applications for Cross-Site Scripting (XSS) vulnerabilities by injecting JavaScript payloads into reflected,
-  stored, and DOM-based contexts to demonstrate client-side code execution, session hijacking, and user impersonation. The
-  tester identifies all injection points and output contexts, crafts context-appropriate payloads, and bypasses sanitization
-  and CSP protections. Use when working with testing for xss vulnerabilities.
+description: Use when tests web applications for Cross-Site Scripting (XSS) vulnerabilities
+  by injecting JavaScript payloads into reflected, stored, and DOM-based contexts
+  to demonstrate client-side code execution, session hijacking, and user impersonation.
+  The tester identifies all injection points and output contexts, crafts context-appropriate
+  payloads, and bypasses sanitization and CSP protections. Use when working with testing
+  for xss vulnerabilities.
 domain: cybersecurity
 tags:
 - XSS
@@ -20,7 +22,9 @@ nist_csf:
 - ID.RA-06
 - GV.OV-02
 - DE.AE-07
+category: cybersecurity
 ---
+
 # Testing For Xss Vulnerabilities
 
 ## Overview

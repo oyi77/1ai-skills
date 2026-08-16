@@ -1,7 +1,9 @@
 ---
 name: testing-for-xml-injection-vulnerabilities
-description: Test web applications for XML injection vulnerabilities including XXE, XPath injection, and XML entity attacks
-  to identify data exposure and server-side request forgery risks. Use when testing web applications for xml injection vulnerabilities including xxe, xpath.
+description: Use when test web applications for XML injection vulnerabilities including
+  XXE, XPath injection, and XML entity attacks to identify data exposure and server-side
+  request forgery risks. Use when testing web applications for xml injection vulnerabilities
+  including xxe, xpath.
 domain: cybersecurity
 tags:
 - xml-injection
@@ -20,7 +22,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Testing For Xml Injection Vulnerabilities
 
 ## Overview

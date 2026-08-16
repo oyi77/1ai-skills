@@ -1,7 +1,8 @@
 ---
 name: performing-log-analysis-for-forensic-investigation
-description: Collect, parse, and correlate system, application, and security logs to reconstruct events and establish timelines
-  during forensic investigations. Use when working with performing log analysis for forensic investigation.
+description: Use when collect, parse, and correlate system, application, and security
+  logs to reconstruct events and establish timelines during forensic investigations.
+  Use when working with performing log analysis for forensic investigation.
 domain: cybersecurity
 tags:
 - forensics
@@ -19,7 +20,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 # Performing Log Analysis For Forensic Investigation
 
 ## Overview

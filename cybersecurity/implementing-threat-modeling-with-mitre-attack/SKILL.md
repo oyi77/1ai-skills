@@ -1,8 +1,10 @@
 ---
 name: implementing-threat-modeling-with-mitre-attack
-description: 'Implements threat modeling using the MITRE ATT&CK framework to map adversary TTPs against organizational assets,
-  assess detection coverage gaps, and prioritize defensive investments. Use when SOC teams need to align detection engineering
-  with threat landscape, conduct threat assessments for new environments, or justify security tool procurement.
+description: 'Use when implements threat modeling using the MITRE ATT&CK framework
+  to map adversary TTPs against organizational assets, assess detection coverage gaps,
+  and prioritize defensive investments. Use when SOC teams need to align detection
+  engineering with threat landscape, conduct threat assessments for new environments,
+  or justify security tool procurement.
 
   '
 domain: cybersecurity
@@ -37,7 +39,9 @@ nist_csf:
 - DE.AE-02
 - RS.MA-01
 - DE.AE-06
+category: cybersecurity
 ---
+
 # Implementing Threat Modeling With Mitre Attack
 
 ## Overview

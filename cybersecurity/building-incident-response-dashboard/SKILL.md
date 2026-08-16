@@ -1,8 +1,10 @@
 ---
 name: building-incident-response-dashboard
-description: 'Builds real-time incident response dashboards in Splunk, Elastic, or Grafana to provide SOC analysts and leadership
-  with situational awareness during active incidents, tracking affected systems, containment status, IOC spread, and response
-  timeline. Use when IR teams need unified visibility during incident coordination and post-incident reporting.
+description: 'Use when builds real-time incident response dashboards in Splunk, Elastic,
+  or Grafana to provide SOC analysts and leadership with situational awareness during
+  active incidents, tracking affected systems, containment status, IOC spread, and
+  response timeline. Use when IR teams need unified visibility during incident coordination
+  and post-incident reporting.
 
   '
 domain: cybersecurity
@@ -23,7 +25,9 @@ nist_csf:
 - DE.AE-02
 - RS.MA-01
 - DE.AE-06
+category: cybersecurity
 ---
+
 # Building Incident Response Dashboard
 
 ## Overview

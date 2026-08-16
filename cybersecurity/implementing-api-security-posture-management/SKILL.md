@@ -1,7 +1,9 @@
 ---
 name: implementing-api-security-posture-management
-description: Implement API Security Posture Management to continuously discover, classify, and score APIs based on risk while
-  enforcing security policies across the API lifecycle. Use when implementing api security posture management to continuously discover, classify, and.
+description: Use when implement API Security Posture Management to continuously discover,
+  classify, and score APIs based on risk while enforcing security policies across
+  the API lifecycle. Use when implementing api security posture management to continuously
+  discover, classify, and.
 domain: cybersecurity
 subdomain: api-security
 tags:
@@ -21,7 +23,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 
 # Implementing API Security Posture Management
 

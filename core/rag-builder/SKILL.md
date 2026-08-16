@@ -1,6 +1,7 @@
 ---
 name: rag-builder
-description: RAG pipeline design — document chunking, embedding strategies, retrieval optimization, and answer generation. Use when working with rag builder.
+description: Use when rAG pipeline design — document chunking, embedding strategies,
+  retrieval optimization, and answer generation. Use when working with rag builder.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - rag
 - self-improvement
 version: 1.0.0
+category: core
 ---
+
 
 ## Overview
 

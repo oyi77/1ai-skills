@@ -1,7 +1,8 @@
 ---
 name: detecting-shadow-api-endpoints
-description: Discover and inventory shadow API endpoints that operate outside documented specifications using traffic analysis,
-  code scanning, and API discovery platforms. Use when working with detecting shadow api endpoints.
+description: Use when discover and inventory shadow API endpoints that operate outside
+  documented specifications using traffic analysis, code scanning, and API discovery
+  platforms. Use when working with detecting shadow api endpoints.
 domain: cybersecurity
 subdomain: api-security
 tags:
@@ -21,7 +22,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 
 # Detecting Shadow API Endpoints
 

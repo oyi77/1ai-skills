@@ -1,6 +1,8 @@
 ---
 name: market-research
-description: Conduct market research, competitive analysis, and industry insights with Exa and Firecrawl. Use when conducting market research, competitive analysis, and industry insights with exa.
+description: Use when conduct market research, competitive analysis, and industry
+  insights with Exa and Firecrawl. Use when conducting market research, competitive
+  analysis, and industry insights with exa.
 domain: marketing
 author: oyi77
 license: Apache-2.0
@@ -13,7 +15,9 @@ tags:
 - seo
 allowed-tools: "|\n  - MCP(exa:*)\n    - MCP(firecrawl:*)\n    - MCP(notion:*)\n"
 version: 1.0.0
+category: marketing
 ---
+
 # Market Research
 
 ## When to Use

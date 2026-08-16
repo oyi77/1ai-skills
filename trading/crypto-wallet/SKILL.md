@@ -1,6 +1,7 @@
 ---
 name: crypto-wallet
-description: 'Skill: crypto-wallet. See SKILL.md body for details. Use when this domain is relevant.'
+description: 'Use when skill: crypto-wallet. See SKILL.md body for details. Use when
+  this domain is relevant.'
 domain: trading
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - trading
 - wallet
 version: 1.0.0
+category: trading
 ---
+
 
 ## Overview
 

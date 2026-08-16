@@ -1,6 +1,11 @@
 ---
 name: conducting-network-penetration-test
-description: "Conducts comprehensive network penetration tests against authorized target environments by performing host discovery, port scanning, service enumeration, vulnerability identification, and controlled exploitation to assess the security posture of network infrastructure. The tester follows PTES methodology from reconnaissance through post-exploitation and reporting. Use when working with conducting network penetration test."
+description: Use when conducts comprehensive network penetration tests against authorized
+  target environments by performing host discovery, port scanning, service enumeration,
+  vulnerability identification, and controlled exploitation to assess the security
+  posture of network infrastructure. The tester follows PTES methodology from reconnaissance
+  through post-exploitation and reporting. Use when working with conducting network
+  penetration test.
 domain: cybersecurity
 tags:
 - network-pentest
@@ -23,7 +28,9 @@ nist_csf:
 - DE.AE-07
 - PR.IP-12
 - RS.MI-01
+category: cybersecurity
 ---
+
 
 # Conducting Network Penetration Test
 

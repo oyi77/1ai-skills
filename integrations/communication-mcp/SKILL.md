@@ -1,7 +1,8 @@
 ---
 name: communication-mcp
-description: MCP servers for team communication. Connect AI agents to Slack, Discord, and Telegram for notifications, messaging,
-  and channel management. Use when working with communication mcp.
+description: Use when mCP servers for team communication. Connect AI agents to Slack,
+  Discord, and Telegram for notifications, messaging, and channel management. Use
+  when working with communication mcp.
 domain: integrations
 author: oyi77
 license: Apache-2.0
@@ -16,7 +17,9 @@ tags:
 - slack
 - third-party
 version: 1.0.0
+category: integrations
 ---
+
 
 # Communication MCP Skill
 

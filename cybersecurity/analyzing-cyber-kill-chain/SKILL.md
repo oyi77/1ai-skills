@@ -1,9 +1,10 @@
 ---
 name: analyzing-cyber-kill-chain
-description: Analyzes intrusion activity against the Lockheed Martin Cyber Kill Chain framework to identify which phases an
-  adversary has completed, where defenses succeeded or failed, and what controls would have interrupted the attack at earlier
-  phases. Use when conducting post-incident analysis, building prevention-focused security controls, or mapping detection
-  gaps to kill chain phases.
+description: Use when analyzes intrusion activity against the Lockheed Martin Cyber
+  Kill Chain framework to identify which phases an adversary has completed, where
+  defenses succeeded or failed, and what controls would have interrupted the attack
+  at earlier phases. Use when conducting post-incident analysis, building prevention-focused
+  security controls, or mapping detection gaps to kill chain phases.
 domain: cybersecurity
 tags:
 - kill-chain
@@ -21,7 +22,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Analyzing Cyber Kill Chain
 
 ## Overview

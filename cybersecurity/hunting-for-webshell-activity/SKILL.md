@@ -1,7 +1,9 @@
 ---
 name: hunting-for-webshell-activity
-description: Hunt for web shell deployments on internet-facing servers by analyzing file creation in web directories, suspicious
-  process spawning from web servers, and anomalous HTTP patterns. Use when hunting for web shell deployments on internet-facing servers by analyzing.
+description: Use when hunt for web shell deployments on internet-facing servers by
+  analyzing file creation in web directories, suspicious process spawning from web
+  servers, and anomalous HTTP patterns. Use when hunting for web shell deployments
+  on internet-facing servers by analyzing.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -26,7 +28,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Hunting For Webshell Activity
 
 ## Overview

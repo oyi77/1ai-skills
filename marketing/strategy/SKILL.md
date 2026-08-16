@@ -1,6 +1,7 @@
 ---
 name: marketing-strategy
-description: Use when doing social media automation, content scheduling, analytics tracking, and campaign management.
+description: Use when doing social media automation, content scheduling, analytics
+  tracking, and campaign management.
 domain: marketing
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - social-media
 - strategy
 version: 1.0.0
+category: marketing
 ---
+
 
 
 persona:

@@ -1,6 +1,7 @@
 ---
 name: influence-without-authority
-description: Use when gain buy-in from peers, stakeholders, and executives when you lack direct authority. Covers reciprocity, social proof, and coalition building.
+description: Use when gain buy-in from peers, stakeholders, and executives when you
+  lack direct authority. Covers reciprocity, social proof, and coalition building.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - soft-skills
 - without
 version: 1.0.0
+category: mindset
 ---
+
 # Influence Without Authority
 
 ## Overview

@@ -1,7 +1,8 @@
 ---
 name: hunting-for-living-off-the-land-binaries
-description: Proactively hunt for adversary abuse of legitimate system binaries (LOLBins) to execute malicious payloads while
-  evading detection. Use when working with hunting for living off the land binaries.
+description: Use when proactively hunt for adversary abuse of legitimate system binaries
+  (LOLBins) to execute malicious payloads while evading detection. Use when working
+  with hunting for living off the land binaries.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -26,7 +27,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Hunting For Living Off The Land Binaries
 
 ## Overview

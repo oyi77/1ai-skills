@@ -1,7 +1,9 @@
 ---
 name: performing-privilege-escalation-on-linux
-description: Linux privilege escalation involves elevating from a low-privilege user account to root access on a compromised
-  system. Red teams exploit misconfigurations, vulnerable services, kernel exploits, and w. Use when working with performing privilege escalation on linux.
+description: Use when linux privilege escalation involves elevating from a low-privilege
+  user account to root access on a compromised system. Red teams exploit misconfigurations,
+  vulnerable services, kernel exploits, and w. Use when working with performing privilege
+  escalation on linux.
 domain: cybersecurity
 subdomain: red-teaming
 tags:
@@ -25,7 +27,9 @@ nist_csf:
 - ID.RA-01
 - GV.OV-02
 - DE.AE-07
+category: cybersecurity
 ---
+
 # Performing Privilege Escalation on Linux
 
 

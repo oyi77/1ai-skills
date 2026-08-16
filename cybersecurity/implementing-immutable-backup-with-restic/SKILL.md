@@ -1,6 +1,11 @@
 ---
 name: implementing-immutable-backup-with-restic
-description: 'Use when implementing immutable backup strategy using restic with S3-compatible storage and object lock for ransomware-resistant data protection. Automates backup creation, integrity verification via restic check --read-data, snapshot retention policy enforcement, and restore testing. Integrates with AWS S3 Object Lock, MinIO, and Backblaze B2 for WORM (Write Once Read Many) storage that prevents backup deletion or encryption by ransomware actors.'
+description: Use when implementing immutable backup strategy using restic with S3-compatible
+  storage and object lock for ransomware-resistant data protection. Automates backup
+  creation, integrity verification via restic check --read-data, snapshot retention
+  policy enforcement, and restore testing. Integrates with AWS S3 Object Lock, MinIO,
+  and Backblaze B2 for WORM (Write Once Read Many) storage that prevents backup deletion
+  or encryption by ransomware actors.
 domain: cybersecurity
 tags:
 - restic
@@ -28,7 +33,9 @@ nist_csf:
 - RS.MA-01
 - RC.RP-01
 - PR.IR-01
+category: cybersecurity
 ---
+
 # Implementing Immutable Backup With Restic
 
 ## Overview

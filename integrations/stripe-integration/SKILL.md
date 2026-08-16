@@ -1,6 +1,9 @@
 ---
 name: stripe-integration
-description: Integrate Stripe for payments, subscriptions, invoicing, and billing. Handle checkout sessions, webhooks, customer management, and payment method handling. Use when integrateing stripe for payments, subscriptions, invoicing, and billing. handle checkout.
+description: Use when integrate Stripe for payments, subscriptions, invoicing, and
+  billing. Handle checkout sessions, webhooks, customer management, and payment method
+  handling. Use when integrateing stripe for payments, subscriptions, invoicing, and
+  billing. handle checkout.
 domain: integrations
 author: oyi77
 license: Apache-2.0
@@ -13,7 +16,9 @@ tags:
 - checkout
 - webhooks
 version: 1.0.0
+category: integrations
 ---
+
 
 # Stripe Integration
 

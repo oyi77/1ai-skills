@@ -1,6 +1,8 @@
 ---
 name: spec-driven-development
-description: Write a PRD covering objectives, commands, structure, code style, testing, and boundaries before any code. Spec before code, always. Use when writeing a prd covering objectives, commands, structure, code style, testing,.
+description: Use when write a PRD covering objectives, commands, structure, code style,
+  testing, and boundaries before any code. Spec before code, always. Use when writeing
+  a prd covering objectives, commands, structure, code style, testing,.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -13,7 +15,9 @@ tags:
 - requirements
 - design-doc
 version: 1.0.0
+category: development
 ---
+
 
 # Spec Driven Development
 

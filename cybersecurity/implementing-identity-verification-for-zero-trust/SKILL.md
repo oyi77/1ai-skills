@@ -1,7 +1,9 @@
 ---
 name: implementing-identity-verification-for-zero-trust
-description: Implement continuous identity verification for zero trust using phishing-resistant MFA (FIDO2/WebAuthn), risk-based
-  conditional access, and identity governance aligned with the CISA Zero Trust Maturity Model. Use when implementing continuous identity verification for zero trust using phishing-resistant mfa.
+description: Use when implement continuous identity verification for zero trust using
+  phishing-resistant MFA (FIDO2/WebAuthn), risk-based conditional access, and identity
+  governance aligned with the CISA Zero Trust Maturity Model. Use when implementing
+  continuous identity verification for zero trust using phishing-resistant mfa.
 domain: cybersecurity
 subdomain: zero-trust-architecture
 tags:
@@ -24,7 +26,9 @@ nist_csf:
 - PR.AA-05
 - PR.IR-01
 - GV.PO-01
+category: cybersecurity
 ---
+
 
 # Implementing Identity Verification for Zero Trust
 

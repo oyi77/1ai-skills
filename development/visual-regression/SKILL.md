@@ -1,6 +1,7 @@
 ---
 name: visual-regression
-description: Visual regression testing — screenshot comparison, baseline management, and UI change detection. Use when working with visual regression.
+description: Use when visual regression testing — screenshot comparison, baseline
+  management, and UI change detection. Use when working with visual regression.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - testing
 - visual
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

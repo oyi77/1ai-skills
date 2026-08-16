@@ -1,6 +1,8 @@
 ---
 name: sherlock-research
-description: 'Investigate problems systematically using Sherlock Holmes'' method: observe, deduce, hypothesize, and verify. . Use when working with sherlock research.'
+description: 'Use when investigate problems systematically using Sherlock Holmes''
+  method: observe, deduce, hypothesize, and verify. . Use when working with sherlock
+  research.'
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -11,7 +13,10 @@ tags:
 - research
 - sherlock
 version: 1.0.0
+category: research
 ---
+
+
 # Sherlock Research
 
 ## When to Use
@@ -116,3 +121,10 @@ The framework also acknowledges its limits: it works best with accessible eviden
 - **Investigative journalism / freelance research** — Sell in-depth investigations to publications or produce subscriber-funded research reports. Narrative format, single-topic deep dives. Revenue from publication fees, syndication, and reader donations.
 - **Training and methodology licensing** — Package the investigation framework as a workshop or certification. Sell to corporate security teams, journalism programs, and law enforcement agencies. Product model: curriculum + workbooks + case studies.
 - **Research-as-a-Service (RaaS)** — Subscription-based ongoing research for startups and SMBs: customer discovery, market validation, competitor tracking. Monthly retainer with scheduled delivery of research briefs.
+## Verification Checklist
+
+- [ ] Observations separated from deductions
+- [ ] Hypotheses falsifiable and tested
+- [ ] Evidence chain complete (no gaps)
+- [ ] Alternative explanations considered
+- [ ] Conclusion confidence calibrated

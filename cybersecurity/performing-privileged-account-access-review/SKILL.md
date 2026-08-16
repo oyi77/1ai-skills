@@ -1,7 +1,9 @@
 ---
 name: performing-privileged-account-access-review
-description: Conduct systematic reviews of privileged accounts to validate access rights, identify excessive permissions,
-  and enforce least privilege across PAM infrastructure. Use when conducting systematic reviews of privileged accounts to validate access rights,.
+description: Use when conduct systematic reviews of privileged accounts to validate
+  access rights, identify excessive permissions, and enforce least privilege across
+  PAM infrastructure. Use when conducting systematic reviews of privileged accounts
+  to validate access rights,.
 domain: cybersecurity
 subdomain: identity-access-management
 tags:
@@ -20,7 +22,9 @@ nist_csf:
 - PR.AA-02
 - PR.AA-05
 - PR.AA-06
+category: cybersecurity
 ---
+
 
 # Performing Privileged Account Access Review
 

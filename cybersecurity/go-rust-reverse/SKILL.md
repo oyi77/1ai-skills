@@ -1,30 +1,31 @@
 ---
 name: go-rust-reverse
-description: >-
-  Reverse engineer Go and Rust binaries: recognize the language runtime from
-  go.buildid, runtime symbols, or panic strings, recover function tables and
-  names from pclntab, and rebuild symbols with GoReSym or redress before
-  Ghidra/IDA analysis. Use when analyzing stripped Go/Rust malware, ELF/PE
-  binaries with non-standard symbol layouts, or runtime-library-heavy samples.
+description: 'Use when reverse engineer Go and Rust binaries: recognize the language
+  runtime from go.buildid, runtime symbols, or panic strings, recover function tables
+  and names from pclntab, and rebuild symbols with GoReSym or redress before Ghidra/IDA
+  analysis. Use when analyzing stripped Go/Rust malware, ELF/PE binaries with non-standard
+  symbol layouts, or runtime-library-heavy samples.'
 domain: cybersecurity
 subdomain: malware-analysis
 tags:
-  - go
-  - rust
-  - reverse-engineering
-  - malware-analysis
-  - pclntab
-  - ghidra
-  - ida
-  - symbol-recovery
+- go
+- rust
+- reverse-engineering
+- malware-analysis
+- pclntab
+- ghidra
+- ida
+- symbol-recovery
 version: '1.0'
 author: oyi77
 license: Apache-2.0
 nist_csf:
-  - DE.AE-02
-  - RS.AN-03
-  - ID.RA-01
+- DE.AE-02
+- RS.AN-03
+- ID.RA-01
+category: cybersecurity
 ---
+
 
 # Go / Rust Binary Reverse Engineering
 

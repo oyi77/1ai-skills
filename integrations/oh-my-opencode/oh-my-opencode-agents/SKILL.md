@@ -1,7 +1,8 @@
 ---
 name: oh-my-opencode-agents
-description: Deep dive into each oh-my-opencode agent - Sisyphus, Hephaestus, Oracle, Librarian, Explore - their characteristics,
-  use cases, and when to use each. Use when working with oh my opencode agents.
+description: Use when deep dive into each oh-my-opencode agent - Sisyphus, Hephaestus,
+  Oracle, Librarian, Explore - their characteristics, use cases, and when to use each.
+  Use when working with oh my opencode agents.
 domain: integrations
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - opencode
 - third-party
 version: 1.0.0
+category: integrations
 ---
+
 
 # Oh My OpenCode Agents
 

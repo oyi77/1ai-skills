@@ -1,6 +1,8 @@
 ---
 name: building-ioc-enrichment-pipeline-with-opencti
-description: Use when openCTI is an open-source platform for managing cyber threat intelligence knowledge, built on STIX 2.1 as its native data model. This skill covers building an automated IOC enrichment pipeline using O
+description: Use when openCTI is an open-source platform for managing cyber threat
+  intelligence knowledge, built on STIX 2.1 as its native data model. This skill covers
+  building an automated IOC enrichment pipeline using O
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:
@@ -20,7 +22,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Building IOC Enrichment Pipeline with OpenCTI
 
 ## Overview

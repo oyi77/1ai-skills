@@ -1,7 +1,9 @@
 ---
 name: detecting-container-escape-attempts
-description: Container escape is a critical attack technique where an adversary breaks out of container isolation to access
-  the host system or other containers. Detection involves monitoring for escape indicators. Use when working with detecting container escape attempts.
+description: Use when container escape is a critical attack technique where an adversary
+  breaks out of container isolation to access the host system or other containers.
+  Detection involves monitoring for escape indicators. Use when working with detecting
+  container escape attempts.
 domain: cybersecurity
 subdomain: container-security
 tags:
@@ -25,7 +27,9 @@ nist_csf:
 - PR.IR-01
 - ID.AM-08
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Detecting Container Escape Attempts
 
 ## Overview

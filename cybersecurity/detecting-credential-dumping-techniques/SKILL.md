@@ -1,7 +1,9 @@
 ---
 name: detecting-credential-dumping-techniques
-description: Detect LSASS credential dumping, SAM database extraction, and NTDS.dit theft using Sysmon Event ID 10, Windows
-  Security logs, and SIEM correlation rules. Use when detecting lsass credential dumping, sam database extraction, and ntds.dit theft.
+description: Use when detect LSASS credential dumping, SAM database extraction, and
+  NTDS.dit theft using Sysmon Event ID 10, Windows Security logs, and SIEM correlation
+  rules. Use when detecting lsass credential dumping, sam database extraction, and
+  ntds.dit theft.
 domain: cybersecurity
 subdomain: threat-detection
 tags:
@@ -26,7 +28,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-06
 - ID.RA-05
+category: cybersecurity
 ---
+
 
 # Detecting Credential Dumping Techniques
 

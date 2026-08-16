@@ -1,6 +1,8 @@
 ---
 name: google-workspace
-description: Integrate with Google Workspace (Docs, Sheets, Drive, Calendar) using MCP servers. Use when integrateing with google workspace (docs, sheets, drive, calendar) using mcp.
+description: Use when integrate with Google Workspace (Docs, Sheets, Drive, Calendar)
+  using MCP servers. Use when integrateing with google workspace (docs, sheets, drive,
+  calendar) using mcp.
 domain: productivity
 author: oyi77
 license: Apache-2.0
@@ -18,7 +20,9 @@ allowed-tools:
 - MCP(google-sheets:*)
 - MCP(google-docs:*)
 version: 1.0.0
+category: productivity
 ---
+
 # Google Workspace
 
 ## When to Use

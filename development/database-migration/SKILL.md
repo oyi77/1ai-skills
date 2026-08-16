@@ -1,6 +1,7 @@
 ---
 name: database-migration
-description: Safe database migrations — schema changes, data migrations, rollback strategies, and zero-downtime deploys. Use when working with database migration.
+description: Use when safe database migrations — schema changes, data migrations,
+  rollback strategies, and zero-downtime deploys. Use when working with database migration.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

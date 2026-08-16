@@ -1,7 +1,8 @@
 ---
 name: performing-subdomain-enumeration-with-subfinder
-description: Enumerate subdomains of target domains using ProjectDiscovery's Subfinder passive reconnaissance tool to map
-  the attack surface during security assessments. Use when working with performing subdomain enumeration with subfinder.
+description: Use when enumerate subdomains of target domains using ProjectDiscovery's
+  Subfinder passive reconnaissance tool to map the attack surface during security
+  assessments. Use when working with performing subdomain enumeration with subfinder.
 domain: cybersecurity
 tags:
 - subdomain-enumeration
@@ -20,7 +21,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Performing Subdomain Enumeration With Subfinder
 
 ## Overview

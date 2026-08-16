@@ -1,8 +1,13 @@
 ---
 name: implementing-ransomware-kill-switch-detection
-description: Use when detects and exploits ransomware kill switch mechanisms including mutex-based execution guards, domain-based kill switches, and registry-based termination checks. Implements proactive mutex vaccination and kill switch domain monitoring to prevent ransomware from executing. Activates for requests involving ransomware kill switch analysis, mutex vaccination, WannaCry-style domain kill switches, or malware execution guard detection.
+description: 'Use when detects and exploits ransomware kill switch mechanisms including
+  mutex-based execution guards, domain-based kill switches, and registry-based termination
+  checks. Implements proactive mutex vaccination and kill switch domain monitoring
+  to prevent ransomware from executing. Activates for requests involving ransomware
+  kill switch analysis, mutex vaccination, WannaCry-style domain kill switches, or
+  malware execution guard detection.
 
-  '.
+  ''.'
 domain: cybersecurity
 tags:
 - ransomware
@@ -20,7 +25,9 @@ nist_csf:
 - RS.MA-01
 - RC.RP-01
 - PR.IR-01
+category: cybersecurity
 ---
+
 # Implementing Ransomware Kill Switch Detection
 
 ## Overview

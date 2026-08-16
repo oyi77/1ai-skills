@@ -1,7 +1,8 @@
 ---
 name: continuous-learning
-description: Transform session insights into actionable skills with confidence-weighted scoring — captures patterns, analyzes
-  outcomes, and integrates learnings to improve agent performance. Use when working with continuous learning.
+description: Use when transform session insights into actionable skills with confidence-weighted
+  scoring — captures patterns, analyzes outcomes, and integrates learnings to improve
+  agent performance. Use when working with continuous learning.
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - learning
 - research
 version: 1.0.0
+category: research
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Continuous Learning"

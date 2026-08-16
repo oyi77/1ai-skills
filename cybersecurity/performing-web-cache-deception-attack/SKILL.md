@@ -1,7 +1,9 @@
 ---
 name: performing-web-cache-deception-attack
-description: Execute web cache deception attacks by exploiting path normalization discrepancies between CDN caching layers
-  and origin servers to cache and retrieve sensitive authenticated content. Use when working with performing web cache deception attack.
+description: Use when execute web cache deception attacks by exploiting path normalization
+  discrepancies between CDN caching layers and origin servers to cache and retrieve
+  sensitive authenticated content. Use when working with performing web cache deception
+  attack.
 domain: cybersecurity
 tags:
 - web-cache-deception
@@ -20,7 +22,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Performing Web Cache Deception Attack
 
 ## Overview

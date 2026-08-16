@@ -1,7 +1,9 @@
 ---
 name: performing-cloud-forensics-investigation
-description: Conduct forensic investigations in cloud environments by collecting and analyzing logs, snapshots, and metadata
-  from AWS, Azure, and GCP services. Use when conducting forensic investigations in cloud environments by collecting and analyzing.
+description: Use when conduct forensic investigations in cloud environments by collecting
+  and analyzing logs, snapshots, and metadata from AWS, Azure, and GCP services. Use
+  when conducting forensic investigations in cloud environments by collecting and
+  analyzing.
 domain: cybersecurity
 tags:
 - forensics
@@ -20,7 +22,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 # Performing Cloud Forensics Investigation
 
 ## Overview

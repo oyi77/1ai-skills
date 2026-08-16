@@ -1,6 +1,11 @@
 ---
 name: conducting-memory-forensics-with-volatility
-description: 'Use when performing memory forensics analysis using Volatility 3 to extract evidence of malware execution, process injection, network connections, and credential theft from RAM dumps captured during incident response. Covers memory acquisition, process analysis, DLL inspection, and malware detection. Activates for requests involving memory forensics, RAM analysis, Volatility framework, memory dump investigation, volatile evidence analysis, or live memory acquisition.'
+description: Use when performing memory forensics analysis using Volatility 3 to extract
+  evidence of malware execution, process injection, network connections, and credential
+  theft from RAM dumps captured during incident response. Covers memory acquisition,
+  process analysis, DLL inspection, and malware detection. Activates for requests
+  involving memory forensics, RAM analysis, Volatility framework, memory dump investigation,
+  volatile evidence analysis, or live memory acquisition.
 domain: cybersecurity
 tags:
 - memory-forensics
@@ -22,7 +27,9 @@ nist_csf:
 - RS.MA-02
 - RS.AN-03
 - RC.RP-01
+category: cybersecurity
 ---
+
 # Conducting Memory Forensics With Volatility
 
 ## Overview

@@ -1,9 +1,10 @@
 ---
 name: performing-purple-team-exercise
-description: 'Performs purple team exercises by coordinating red team adversary emulation with blue team detection validation
-  using MITRE ATT&CK-mapped attack scenarios, real-time detection testing, and collaborative gap remediation. Use when SOC
-  teams need to validate detection capabilities, improve analyst skills, and close detection gaps through structured offensive-defensive
-  collaboration.
+description: 'Use when performs purple team exercises by coordinating red team adversary
+  emulation with blue team detection validation using MITRE ATT&CK-mapped attack scenarios,
+  real-time detection testing, and collaborative gap remediation. Use when SOC teams
+  need to validate detection capabilities, improve analyst skills, and close detection
+  gaps through structured offensive-defensive collaboration.
 
   '
 domain: cybersecurity
@@ -30,7 +31,9 @@ nist_csf:
 - DE.AE-02
 - RS.MA-01
 - DE.AE-06
+category: cybersecurity
 ---
+
 # Performing Purple Team Exercise
 
 ## Overview

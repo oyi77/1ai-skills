@@ -1,6 +1,8 @@
 ---
 name: growth-engine
-description: Use when autonomous marketing experiment framework — design A/B tests, score hypotheses with ICE, validate results with statistical significance, and run automated optimization loops.
+description: Use when autonomous marketing experiment framework — design A/B tests,
+  score hypotheses with ICE, validate results with statistical significance, and run
+  automated optimization loops.
 domain: marketing
 author: oyi77
 license: Apache-2.0
@@ -12,7 +14,9 @@ tags:
 - seo
 - money
 version: 2.0.0
+category: marketing
 ---
+
 # Growth Engine
 
 ## When to Use

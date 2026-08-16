@@ -1,6 +1,9 @@
 ---
 name: scanning-network-with-nmap-advanced
-description: 'Performs advanced network reconnaissance using Nmap''s scripting engine, timing controls, evasion techniques, and output parsing to discover hosts, enumerate services, detect vulnerabilities, and fingerprint operating systems across authorized target networks. . Use when working with scanning network with nmap advanced.'
+description: Use when performs advanced network reconnaissance using Nmap's scripting
+  engine, timing controls, evasion techniques, and output parsing to discover hosts,
+  enumerate services, detect vulnerabilities, and fingerprint operating systems across
+  authorized target networks. . Use when working with scanning network with nmap advanced.
 domain: cybersecurity
 tags:
 - network-security
@@ -17,7 +20,9 @@ nist_csf:
 - DE.CM-01
 - ID.AM-03
 - PR.DS-02
+category: cybersecurity
 ---
+
 # Scanning Network With Nmap Advanced
 
 ## Overview

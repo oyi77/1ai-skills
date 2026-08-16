@@ -1,8 +1,9 @@
 ---
 name: anti-slop-frontend
-description: Anti-slop frontend framework for AI agents. Enforces better layout, typography, motion, and spacing to counter
-  generic AI-generated boilerplate UIs. Use when building frontend, countering generic AI UIs, need distinctive visual design,
-  image-to-code pipeline.
+description: Use when anti-slop frontend framework for AI agents. Enforces better
+  layout, typography, motion, and spacing to counter generic AI-generated boilerplate
+  UIs. Use when building frontend, countering generic AI UIs, need distinctive visual
+  design, image-to-code pipeline.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -17,7 +18,9 @@ tags:
 - motion
 - image-to-code
 version: 1.0.0
+category: content
 ---
+
 
 
 ## Overview

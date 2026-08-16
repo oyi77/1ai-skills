@@ -1,8 +1,13 @@
 ---
 name: deploying-decoy-files-for-ransomware-detection
-description: Use when deploys canary files (honeytokens) across file systems to detect ransomware encryption activity in real time. Uses strategically placed decoy documents monitored via file integrity monitoring or OS-level watchdogs to trigger alerts when ransomware modifies or encrypts them. Activates for requests involving ransomware canary deployment, honeyfile setup, deception-based ransomware detection, or file integrity monitoring for encryption.
+description: 'Use when deploys canary files (honeytokens) across file systems to detect
+  ransomware encryption activity in real time. Uses strategically placed decoy documents
+  monitored via file integrity monitoring or OS-level watchdogs to trigger alerts
+  when ransomware modifies or encrypts them. Activates for requests involving ransomware
+  canary deployment, honeyfile setup, deception-based ransomware detection, or file
+  integrity monitoring for encryption.
 
-  '.
+  ''.'
 domain: cybersecurity
 tags:
 - ransomware
@@ -20,7 +25,9 @@ nist_csf:
 - RS.MA-01
 - RC.RP-01
 - PR.IR-01
+category: cybersecurity
 ---
+
 # Deploying Decoy Files For Ransomware Detection
 
 ## Overview

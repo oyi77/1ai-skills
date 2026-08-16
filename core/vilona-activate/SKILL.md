@@ -1,5 +1,6 @@
 ---
-description: Use when activate an AI general manager persona with full context awareness and multi-user adaptation.
+description: Use when activate an AI general manager persona with full context awareness
+  and multi-user adaptation.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -11,7 +12,9 @@ tags:
 - self-improvement
 name: vilona-activate
 version: 1.0.0
+category: core
 ---
+
 
 # GM Activate Command
 

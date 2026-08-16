@@ -32,7 +32,9 @@ persona:
   - Protect deep work blocks
   - Weekly planning ritual
 version: 1.0.0
+category: development
 ---
+
 # Agent Daily Planner
 
 ## When to Use

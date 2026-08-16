@@ -1,9 +1,11 @@
 ---
 name: executing-active-directory-attack-simulation
-description: Executes authorized attack simulations against Active Directory environments to identify misconfigurations, weak
-  credentials, dangerous privilege paths, and exploitable trust relationships that could lead to domain compromise. The tester
-  uses BloodHound for attack path analysis, Mimikatz for credential extraction, and Impacket for protocol-level attacks including
-  Kerberoasting, AS-REP Roasting, and delegation abuse. Use when working with executing active directory attack simulation.
+description: Use when executes authorized attack simulations against Active Directory
+  environments to identify misconfigurations, weak credentials, dangerous privilege
+  paths, and exploitable trust relationships that could lead to domain compromise.
+  The tester uses BloodHound for attack path analysis, Mimikatz for credential extraction,
+  and Impacket for protocol-level attacks including Kerberoasting, AS-REP Roasting,
+  and delegation abuse. Use when working with executing active directory attack simulation.
 domain: cybersecurity
 tags:
 - Active-Directory
@@ -26,7 +28,9 @@ nist_csf:
 - ID.RA-06
 - GV.OV-02
 - DE.AE-07
+category: cybersecurity
 ---
+
 # Executing Active Directory Attack Simulation
 
 ## Overview

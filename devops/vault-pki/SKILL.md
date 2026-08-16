@@ -1,6 +1,7 @@
 ---
 name: vault-pki
-description: Vault PKI secrets engine — certificate authority, dynamic certificates, certificate rotation. Use when working with vault pki.
+description: Use when vault PKI secrets engine — certificate authority, dynamic certificates,
+  certificate rotation. Use when working with vault pki.
 domain: devops
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - pki
 - vault
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

@@ -1,14 +1,24 @@
 ---
 name: email-sequences
-description: "Automated email sequence design — welcome series, nurture funnels, re-engagement, transactional flows. Use when building email automation systems."
+description: Automated email sequence design — welcome series, nurture funnels, re-engagement,
+  transactional flows. Use when building email automation systems.
 domain: marketing
 license: Apache-2.0
-tags: [email, growth, marketing, sequences, money, automation, conversions]
-version: "2.0.0"
+tags:
+- email
+- growth
+- marketing
+- sequences
+- money
+- automation
+- conversions
+version: 2.0.0
 author: oyi77
-subdomain: ""
+subdomain: ''
 type: marketing
+category: marketing
 ---
+
 
 # Money-Making Overview
 

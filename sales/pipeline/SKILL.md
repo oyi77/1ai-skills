@@ -1,14 +1,27 @@
 ---
 name: sales-pipeline
-description: "AI-powered sales pipeline inside 1ai-social. Track leads, qualify with BANT, generate proposals, schedule follow-ups, and get daily sales analytics. Use when managing B2B sales pipelines."
+description: Use when aI-powered sales pipeline inside 1ai-social. Track leads, qualify
+  with BANT, generate proposals, schedule follow-ups, and get daily sales analytics.
+  Use when managing B2B sales pipelines.
 domain: sales
 license: Apache-2.0
-tags: [sales, pipeline, crm, lead-scoring, proposals, follow-up, b2b, money, revenue]
-version: "2.0.0"
+tags:
+- sales
+- pipeline
+- crm
+- lead-scoring
+- proposals
+- follow-up
+- b2b
+- money
+- revenue
+version: 2.0.0
 author: oyi77
-subdomain: ""
+subdomain: ''
 type: sales
+category: sales
 ---
+
 
 # Money-Making Overview
 

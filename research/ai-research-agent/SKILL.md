@@ -1,7 +1,8 @@
 ---
 name: ai-research-agent
-description: Autonomous research agent that monitors trends, discovers income opportunities, and creates new skills — runs
-  daily research cycles to keep the one-man-company evolving. Use when working with ai research agent.
+description: Use when autonomous research agent that monitors trends, discovers income
+  opportunities, and creates new skills — runs daily research cycles to keep the one-man-company
+  evolving. Use when working with ai research agent.
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - investigation
 - research
 version: 1.0.0
+category: research
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Ai Research Agent"

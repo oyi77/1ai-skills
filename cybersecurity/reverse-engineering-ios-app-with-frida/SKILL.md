@@ -1,9 +1,10 @@
 ---
 name: reverse-engineering-ios-app-with-frida
-description: Reverse engineers iOS applications using Frida dynamic instrumentation to understand internal logic, extract
-  encryption keys, bypass security controls, and discover hidden functionality without source code access. Use when performing
-  authorized iOS penetration testing, analyzing proprietary protocols, understanding obfuscated logic, or extracting runtime
-  secrets from iOS binaries.
+description: Use when reverse engineers iOS applications using Frida dynamic instrumentation
+  to understand internal logic, extract encryption keys, bypass security controls,
+  and discover hidden functionality without source code access. Use when performing
+  authorized iOS penetration testing, analyzing proprietary protocols, understanding
+  obfuscated logic, or extracting runtime secrets from iOS binaries.
 domain: cybersecurity
 tags:
 - mobile-security
@@ -21,7 +22,9 @@ nist_csf:
 - PR.AA-05
 - ID.RA-01
 - DE.CM-09
+category: cybersecurity
 ---
+
 # Reverse Engineering Ios App With Frida
 
 ## Overview

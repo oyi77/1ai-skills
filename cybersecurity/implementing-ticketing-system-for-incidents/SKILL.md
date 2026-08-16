@@ -1,8 +1,10 @@
 ---
 name: implementing-ticketing-system-for-incidents
-description: 'Implements an integrated incident ticketing system connecting SIEM alerts to ServiceNow, Jira, or TheHive for
-  structured incident tracking, SLA management, escalation workflows, and compliance documentation. Use when SOC teams need
-  formalized incident lifecycle management with automated ticket creation, assignment routing, and resolution tracking.
+description: 'Use when implements an integrated incident ticketing system connecting
+  SIEM alerts to ServiceNow, Jira, or TheHive for structured incident tracking, SLA
+  management, escalation workflows, and compliance documentation. Use when SOC teams
+  need formalized incident lifecycle management with automated ticket creation, assignment
+  routing, and resolution tracking.
 
   '
 domain: cybersecurity
@@ -24,7 +26,9 @@ nist_csf:
 - DE.AE-02
 - RS.MA-01
 - DE.AE-06
+category: cybersecurity
 ---
+
 # Implementing Ticketing System For Incidents
 
 ## Overview

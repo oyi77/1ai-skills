@@ -1,7 +1,9 @@
 ---
 name: detecting-lateral-movement-with-splunk
-description: Detect adversary lateral movement across networks using Splunk SPL queries against Windows authentication logs,
-  SMB traffic, and remote service abuse. Use when detecting adversary lateral movement across networks using splunk spl queries.
+description: Use when detect adversary lateral movement across networks using Splunk
+  SPL queries against Windows authentication logs, SMB traffic, and remote service
+  abuse. Use when detecting adversary lateral movement across networks using splunk
+  spl queries.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -26,7 +28,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Detecting Lateral Movement With Splunk
 
 ## Overview

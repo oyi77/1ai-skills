@@ -1,7 +1,9 @@
 ---
 name: implementing-container-network-policies-with-calico
-description: Enforce Kubernetes network segmentation using Calico CNI network policies and global network policies to control
-  pod-to-pod traffic, restrict egress, and implement zero-trust microsegmentation. Use when working with implementing container network policies with calico.
+description: Use when enforce Kubernetes network segmentation using Calico CNI network
+  policies and global network policies to control pod-to-pod traffic, restrict egress,
+  and implement zero-trust microsegmentation. Use when working with implementing container
+  network policies with calico.
 domain: cybersecurity
 subdomain: container-security
 tags:
@@ -19,7 +21,9 @@ nist_csf:
 - PR.IR-01
 - ID.AM-08
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Implementing Container Network Policies with Calico
 
 ## Overview

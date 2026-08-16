@@ -1,6 +1,10 @@
 ---
 name: detecting-dnp3-protocol-anomalies
-description: 'Detect anomalies in DNP3 (Distributed Network Protocol 3) communications used in SCADA systems by monitoring for unauthorized control commands, firmware update attempts, protocol violations, and deviations from baseline traffic patterns using deep packet inspection and machine learning approaches. . Use when working with detecting dnp3 protocol anomalies.'
+description: Use when detect anomalies in DNP3 (Distributed Network Protocol 3) communications
+  used in SCADA systems by monitoring for unauthorized control commands, firmware
+  update attempts, protocol violations, and deviations from baseline traffic patterns
+  using deep packet inspection and machine learning approaches. . Use when working
+  with detecting dnp3 protocol anomalies.
 domain: cybersecurity
 tags:
 - ot-security
@@ -27,7 +31,9 @@ nist_csf:
 - DE.CM-01
 - ID.AM-05
 - GV.OC-02
+category: cybersecurity
 ---
+
 # Detecting Dnp3 Protocol Anomalies
 
 ## Overview

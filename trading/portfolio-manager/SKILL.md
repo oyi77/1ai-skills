@@ -1,6 +1,7 @@
 ---
 name: portfolio-manager
-description: Use when portfolio manager — capital allocation, risk management, and performance metrics tracking for trading strategies.
+description: Use when portfolio manager — capital allocation, risk management, and
+  performance metrics tracking for trading strategies.
 domain: trading
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - portfolio
 - trading
 version: 1.0.0
+category: trading
 ---
+
 # Portfolio Manager
 
 ## When to Use

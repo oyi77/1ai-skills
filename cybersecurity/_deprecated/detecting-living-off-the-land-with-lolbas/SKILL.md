@@ -1,7 +1,9 @@
 ---
 name: detecting-living-off-the-land-with-lolbas
-description: Detect Living Off the Land Binaries (LOLBins/LOLBAS) abuse including certutil, regsvr32, mshta, and rundll32
-  via process telemetry, Sigma rules, and parent-child process analysis. Use when detecting living off the land binaries (lolbins/lolbas) abuse including certutil,.
+description: Use when detect Living Off the Land Binaries (LOLBins/LOLBAS) abuse including
+  certutil, regsvr32, mshta, and rundll32 via process telemetry, Sigma rules, and
+  parent-child process analysis. Use when detecting living off the land binaries (lolbins/lolbas)
+  abuse including certutil,.
 domain: cybersecurity
 subdomain: threat-detection
 tags:
@@ -26,7 +28,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-06
 - ID.RA-05
+category: cybersecurity
 ---
+
 
 # Detecting Living Off the Land with LOLBAS
 

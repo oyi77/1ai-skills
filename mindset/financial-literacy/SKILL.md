@@ -1,6 +1,8 @@
 ---
 name: financial-literacy
-description: Manage personal and business finances including budgeting, cash flow, financial statements, and basic FP&A. Use when manageing personal and business finances including budgeting, cash flow, financial.
+description: Use when manage personal and business finances including budgeting, cash
+  flow, financial statements, and basic FP&A. Use when manageing personal and business
+  finances including budgeting, cash flow, financial.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -12,7 +14,9 @@ tags:
 - personal-development
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Financial Literacy
 
 ## Overview

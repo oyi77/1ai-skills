@@ -1,8 +1,9 @@
 ---
 name: ai-skill-integration-guide
-description: Meta-skill for integrating external GitHub skill repos into 1ai-skills. Covers discovery, deduplication, format
-  conversion, category mapping, validation, and quality gates. Use when integrating external skill repos, bulk skill imports,
-  skill format conversion.
+description: Use when meta-skill for integrating external GitHub skill repos into
+  1ai-skills. Covers discovery, deduplication, format conversion, category mapping,
+  validation, and quality gates. Use when integrating external skill repos, bulk skill
+  imports, skill format conversion.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -16,7 +17,9 @@ tags:
 - format-conversion
 - quality-gates
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

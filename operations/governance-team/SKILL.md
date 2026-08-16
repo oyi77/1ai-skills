@@ -1,7 +1,8 @@
 ---
 name: governance-team
-description: Manage organizational policies, access control, compliance frameworks, and governance processes with radical
-  transparency principles. Use when manageing organizational policies, access control, compliance frameworks, and governance processes.
+description: Use when manage organizational policies, access control, compliance frameworks,
+  and governance processes with radical transparency principles. Use when manageing
+  organizational policies, access control, compliance frameworks, and governance processes.
 domain: operations
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - operations
 - team
 version: 1.0.0
+category: operations
 ---
+
 # Governance Team
 
 ## When to Use

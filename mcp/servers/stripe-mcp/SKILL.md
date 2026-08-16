@@ -1,6 +1,7 @@
 ---
 name: stripe-mcp
-description: MCP server for Stripe payments. Process payments, manage subscriptions, and handle billing via standardized protocol. Use when working with stripe mcp.
+description: Use when mCP server for Stripe payments. Process payments, manage subscriptions,
+  and handle billing via standardized protocol. Use when working with stripe mcp.
 domain: mcp
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - stripe
 - tool-integration
 version: 1.0.0
+category: mcp
 ---
+
 # Stripe Mcp
 
 ## When to Use

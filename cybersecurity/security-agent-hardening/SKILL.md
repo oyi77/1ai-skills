@@ -1,7 +1,8 @@
 ---
 name: security-agent-hardening
-description: Secure AI agents against prompt injection, jailbreaking, data exfiltration, and supply chain attacks. Implement
-  guardrails, sandboxing, and monitoring for safe autonomous operation. Use when working with security agent hardening.
+description: Use when secure AI agents against prompt injection, jailbreaking, data
+  exfiltration, and supply chain attacks. Implement guardrails, sandboxing, and monitoring
+  for safe autonomous operation. Use when working with security agent hardening.
 domain: cybersecurity
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - llm-security
 - ai-safety
 version: 1.0.0
+category: cybersecurity
 ---
+
 # Security Agent Hardening
 
 ## Overview

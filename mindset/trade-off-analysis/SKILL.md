@@ -1,7 +1,7 @@
 ---
 name: trade-off-analysis
-description: Evaluate opportunity costs and prioritize using Eisenhower Matrix, MoSCoW, and cost of delay. Use when prioritizing
-  with constrained resources.
+description: Use when evaluate opportunity costs and prioritize using Eisenhower Matrix,
+  MoSCoW, and cost of delay. Use when prioritizing with constrained resources.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - soft-skills
 - trade
 version: 1.0.0
+category: mindset
 ---
+
 # Trade Off Analysis
 
 ## Overview

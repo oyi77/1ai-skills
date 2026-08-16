@@ -1,6 +1,7 @@
 ---
 name: n8n-workflows
-description: n8n workflow automation — nodes, triggers, expressions, credentials, webhooks, error handling. Use when working with n8n workflows.
+description: Use when n8n workflow automation — nodes, triggers, expressions, credentials,
+  webhooks, error handling. Use when working with n8n workflows.
 domain: automation
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - workflow
 - workflows
 version: 1.0.0
+category: automation
 ---
+
 
 ## Overview
 

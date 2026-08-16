@@ -1,7 +1,7 @@
 ---
 name: valuation-reviewer
-description: Ingests GP packages, runs valuation template, stages LP reporting. Use when user says "review valuation", "LP
-  reporting", "GP package".
+description: Use when ingests GP packages, runs valuation template, stages LP reporting.
+  Use when user says "review valuation", "LP reporting", "GP package".
 domain: financial
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - reviewer
 - valuation
 version: 1.0.0
+category: financial
 ---
+
 
 # Valuation Reviewer!
 

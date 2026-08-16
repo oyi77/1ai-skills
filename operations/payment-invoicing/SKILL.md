@@ -15,7 +15,9 @@ tags:
 - payment
 - voice
 version: 1.0.0
+category: operations
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Payment Invoicing"

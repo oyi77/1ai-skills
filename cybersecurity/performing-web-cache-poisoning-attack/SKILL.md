@@ -1,7 +1,9 @@
 ---
 name: performing-web-cache-poisoning-attack
-description: Exploiting web cache mechanisms to serve malicious content to other users by poisoning cached responses through
-  unkeyed headers and parameters during authorized security tests. Use when working with performing web cache poisoning attack.
+description: Use when exploiting web cache mechanisms to serve malicious content to
+  other users by poisoning cached responses through unkeyed headers and parameters
+  during authorized security tests. Use when working with performing web cache poisoning
+  attack.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -19,7 +21,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Performing Web Cache Poisoning Attack
 
 ## Overview

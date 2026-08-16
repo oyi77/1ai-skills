@@ -1,7 +1,9 @@
 ---
 name: analyzing-disk-image-with-autopsy
-description: Perform comprehensive forensic analysis of disk images using Autopsy to recover files, examine artifacts, and
-  build investigation timelines. Use when performing comprehensive forensic analysis of disk images using autopsy to.
+description: Use when perform comprehensive forensic analysis of disk images using
+  Autopsy to recover files, examine artifacts, and build investigation timelines.
+  Use when performing comprehensive forensic analysis of disk images using autopsy
+  to.
 domain: cybersecurity
 tags:
 - forensics
@@ -19,7 +21,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 # Analyzing Disk Image With Autopsy
 
 ## Overview

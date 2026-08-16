@@ -1,7 +1,8 @@
 ---
 name: pricing-strategy
-description: Pricing page design, tier structuring, anchoring psychology, conversion optimization. Use when designing pricing
-  pages, setting up tier structures, or optimizing pricing conversion rates.
+description: Use when pricing page design, tier structuring, anchoring psychology,
+  conversion optimization. Use when designing pricing pages, setting up tier structures,
+  or optimizing pricing conversion rates.
 domain: marketing
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - seo
 - strategy
 version: 1.0.0
+category: marketing
 ---
+
 # Pricing Strategy
 
 ## When to Use

@@ -1,6 +1,8 @@
 ---
 name: performing-indicator-lifecycle-management
-description: Use when indicator lifecycle management tracks IOCs from initial discovery through validation, enrichment, deployment, monitoring, and eventual retirement. This skill covers implementing systematic processes f
+description: Use when indicator lifecycle management tracks IOCs from initial discovery
+  through validation, enrichment, deployment, monitoring, and eventual retirement.
+  This skill covers implementing systematic processes f
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:
@@ -19,7 +21,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Performing Indicator Lifecycle Management
 
 ## Overview

@@ -14,7 +14,9 @@ tags:
 - revenue
 - sales
 version: 1.0.0
+category: sales
 ---
+
 
 
 # AI Agent Development Skill

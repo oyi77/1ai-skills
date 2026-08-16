@@ -1,7 +1,9 @@
 ---
 name: hunting-for-unusual-network-connections
-description: Hunt for unusual network connections by analyzing outbound traffic patterns, rare destinations, non-standard
-  ports, and anomalous connection frequencies from endpoints. Use when hunting for unusual network connections by analyzing outbound traffic patterns,.
+description: Use when hunt for unusual network connections by analyzing outbound traffic
+  patterns, rare destinations, non-standard ports, and anomalous connection frequencies
+  from endpoints. Use when hunting for unusual network connections by analyzing outbound
+  traffic patterns,.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -25,7 +27,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Hunting For Unusual Network Connections
 
 ## Overview

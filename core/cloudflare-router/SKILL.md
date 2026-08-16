@@ -1,6 +1,7 @@
 ---
 name: cloudflare-router
-description: Manage Cloudflare DNS, CDN, and security rules via API. Use when configuring domains, SSL, WAF, or edge caching.
+description: Use when manage Cloudflare DNS, CDN, and security rules via API. Use
+  when configuring domains, SSL, WAF, or edge caching.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -31,7 +32,9 @@ persona:
   - Secure by default
   - Scale globally
 version: 1.0.0
+category: core
 ---
+
 # Cloudflare Router
 
 ## When to Use

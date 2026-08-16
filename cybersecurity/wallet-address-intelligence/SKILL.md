@@ -1,8 +1,9 @@
 ---
 name: wallet-address-intelligence
-description: Profile and cluster blockchain wallet addresses to identify entity associations, assess risk levels,
-  and build address reputation intelligence across multiple chains. Use when analyzing wallet behavior, clustering
-  related addresses, assessing counterparty risk, or building address intelligence reports.
+description: Use when profile and cluster blockchain wallet addresses to identify
+  entity associations, assess risk levels, and build address reputation intelligence
+  across multiple chains. Use when analyzing wallet behavior, clustering related addresses,
+  assessing counterparty risk, or building address intelligence reports.
 domain: cybersecurity
 license: Apache-2.0
 subdomain: blockchain-security
@@ -19,7 +20,9 @@ tags:
 - money
 version: '1.0'
 author: oyi77
+category: cybersecurity
 ---
+
 
 # Wallet & Address Intelligence
 

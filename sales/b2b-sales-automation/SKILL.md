@@ -1,6 +1,9 @@
 ---
 name: b2b-sales-automation
-description: "Use when | > Full B2B sales pipeline automation — from cold prospect to onboarded client. Covers ICP definition, lead sourcing, outreach sequences, proposal generation, CRM tracking, and deal alerts via Telegram. Targets SMEs needing AI automation, digital products, and content services."
+description: Use when | > Full B2B sales pipeline automation — from cold prospect
+  to onboarded client. Covers ICP definition, lead sourcing, outreach sequences, proposal
+  generation, CRM tracking, and deal alerts via Telegram. Targets SMEs needing AI
+  automation, digital products, and content services.
 domain: sales
 author: oyi77
 license: Apache-2.0
@@ -14,10 +17,11 @@ tags:
 - pipeline
 - indonesian
 version: 1.0.0
-
 language: id-ID / en
 scripts: "|\n  - scripts/lead_scorer.py\n    - scripts/proposal_gen.py\n    - scripts/outreach_sequencer.py\n"
+category: sales
 ---
+
 # B2B Sales Automation
 
 ## When to Use

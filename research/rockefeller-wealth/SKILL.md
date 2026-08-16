@@ -1,6 +1,8 @@
 ---
 name: rockefeller-wealth
-description: 'Apply Rockefeller''s systematic wealth-building strategies: vertical integration, capital allocation, and monopoly thinking. . Use when working with rockefeller wealth.'
+description: 'Use when apply Rockefeller''s systematic wealth-building strategies:
+  vertical integration, capital allocation, and monopoly thinking. . Use when working
+  with rockefeller wealth.'
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -13,7 +15,10 @@ tags:
 - rockefeller
 - wealth
 version: 1.0.0
+category: research
 ---
+
+
 # Rockefeller Wealth
 
 > *"The way to make money is to make money."* — **John D. Rockefeller**
@@ -212,3 +217,14 @@ Ruthless cost-cutting and buying distressed assets only work if the underlying b
 | **Distressed M&A** | 2-5 years | Raise a dedicated vehicle for counter-cyclical acquisitions. Target small-to-medium businesses in fragmented industries where consolidation creates value. Apply the efficiency playbook post-acquisition. |
 | **Advisory / Consulting** | Ongoing | Package the Rockefeller methodology as a consulting offering for mid-market businesses: value chain analysis, cost auditing, M&A strategy, capital allocation advisory. Charge retainer + success fee on efficiency gains. |
 | **Content / Education** | 6-12 months | Create a course or publication on Rockefeller-style business building. Case studies analyzing modern companies through the Rockefeller lens (Amazon, TSMC, Berkshire Hathaway) attract the serious entrepreneur audience that pays for premium content. |
+## Overview
+
+Apply Rockefeller's systematic wealth-building strategies: vertical integration, capital allocation, and monopoly thinking. Extract mental models from Standard Oil's dominance for modern business strategy.
+
+## Verification Checklist
+
+- [ ] Vertical integration opportunities mapped
+- [ ] Capital allocation framework defined
+- [ ] Monopoly/moat strategy articulated
+- [ ] Historical case studies applied to current context
+- [ ] Risk-adjusted return targets set

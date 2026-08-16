@@ -1,6 +1,7 @@
 ---
 name: react-native-expo
-description: React Native with Expo — managed workflow, native modules, navigation, and app store deployment. Use when working with react native expo.
+description: Use when react Native with Expo — managed workflow, native modules, navigation,
+  and app store deployment. Use when working with react native expo.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - testing
 - workflow
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

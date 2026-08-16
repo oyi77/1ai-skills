@@ -16,7 +16,9 @@ tags:
 - video
 - viral
 version: 1.0.0
+category: content
 ---
+
 # Viral Research Engine
 
 ## When to Use

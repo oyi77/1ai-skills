@@ -1,7 +1,8 @@
 ---
 name: scenario-planning
-description: Plan for uncertainty using best/worst/likely scenarios, war-gaming, and trigger-based pivots. Use when facing
-  high uncertainty or preparing for strategic decisions.
+description: Use when plan for uncertainty using best/worst/likely scenarios, war-gaming,
+  and trigger-based pivots. Use when facing high uncertainty or preparing for strategic
+  decisions.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - scenario
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Scenario Planning
 
 ## Overview

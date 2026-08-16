@@ -1,6 +1,9 @@
 ---
 name: influencer-scouting
-description: "Use when | > Full influencer scouting, outreach, and performance tracking system. Covers platform search across TikTok, Instagram, and YouTube for creators, scoring/qualification, DM outreach, negotiation, deal tracking, and ROI measurement. Integrates with Kalodata for TikTok analytics."
+description: Use when | > Full influencer scouting, outreach, and performance tracking
+  system. Covers platform search across TikTok, Instagram, and YouTube for creators,
+  scoring/qualification, DM outreach, negotiation, deal tracking, and ROI measurement.
+  Integrates with Kalodata for TikTok analytics.
 domain: sales
 author: oyi77
 license: Apache-2.0
@@ -15,10 +18,11 @@ tags:
 - affiliate
 - indonesia
 version: 1.0.0
-
 language: id-ID / en
 scripts: "|\n  - scripts/ig_scout.py\n    - scripts/tiktok_scout.py\n"
+category: sales
 ---
+
 # Influencer Scouting
 
 ## When to Use

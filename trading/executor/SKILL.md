@@ -1,7 +1,7 @@
 ---
 name: trading-executor
-description: Execute trades via API with position sizing, order management, and slippage monitoring. Use when placing orders
-  on exchanges.
+description: Use when execute trades via API with position sizing, order management,
+  and slippage monitoring. Use when placing orders on exchanges.
 domain: trading
 author: oyi77
 license: Apache-2.0
@@ -20,7 +20,9 @@ allowed-tools:
 - fs
 - network
 version: 1.0.0
+category: trading
 ---
+
 
 # Trading Executor
 

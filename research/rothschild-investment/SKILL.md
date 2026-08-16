@@ -1,6 +1,7 @@
 ---
 name: rothschild-investment
-description: Apply Rothschild dynasty principles for long-term wealth preservation, diversification, and generational planning. Use when working with rothschild investment.
+description: Use when apply Rothschild dynasty principles for long-term wealth preservation,
+  diversification, and generational planning. Use when working with rothschild investment.
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,10 @@ tags:
 - research
 - rothschild
 version: 1.0.0
+category: research
 ---
+
+
 # Rothschild Investment
 
 ## When to Use
@@ -177,3 +181,10 @@ The Rothschild framework generates value not through active trading or short-ter
 - **Referral fees from wealth managers, trust companies, and gold dealers** — When a client executes the structural recommendations, the professionals who implement them (custodians, trustees, bullion dealers) often pay referral fees. Disclose these relationships.
 - **Speaking and content** — Rothschild principles are evergreen content that attracts high-net-worth audiences. Keynote fees: $5K-$25K per engagement. Premium newsletter: $50-$200/month.
 - **Legacy consulting** — After the first-generation wealth preservation structure is in place, the family governance work (investment committees, next-generation education, annual family meetings) creates recurring retainer opportunities at $20K-$100K/year.
+## Verification Checklist
+
+- [ ] Diversification across uncorrelated assets
+- [ ] Generational time horizon (20+ years)
+- [ ] Information advantage systematically cultivated
+- [ ] Counterparty risk minimized
+- [ ] Liquidity reserves maintained

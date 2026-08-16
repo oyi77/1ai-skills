@@ -1,6 +1,11 @@
 ---
 name: implementing-google-workspace-admin-security
-description: 'Implements comprehensive Google Workspace security hardening including admin console configuration, phishing-resistant MFA enforcement, DLP policies, email authentication (SPF/DKIM/DMARC), OAuth app control, and external sharing restrictions. Activates for requests involving Google Workspace hardening, G Suite security configuration, or cloud office security administration. . Use when working with implementing google workspace admin security.'
+description: Use when implements comprehensive Google Workspace security hardening
+  including admin console configuration, phishing-resistant MFA enforcement, DLP policies,
+  email authentication (SPF/DKIM/DMARC), OAuth app control, and external sharing restrictions.
+  Activates for requests involving Google Workspace hardening, G Suite security configuration,
+  or cloud office security administration. . Use when working with implementing google
+  workspace admin security.
 domain: cybersecurity
 tags:
 - Google-Workspace
@@ -19,7 +24,9 @@ nist_csf:
 - PR.AA-02
 - PR.AA-05
 - PR.AA-06
+category: cybersecurity
 ---
+
 # Implementing Google Workspace Admin Security
 
 ## Overview

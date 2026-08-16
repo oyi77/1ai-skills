@@ -1,8 +1,10 @@
 ---
 name: seo-auditor
-description: SEO analysis and optimization automation for websites. Use when conducting technical SEO audits, tracking keyword
-  rankings, analyzing competitor SEO, monitoring backlink profiles, optimizing existing content, improving local SEO visibility,
-  generating SEO reports for clients, or automating website health checks.
+description: Use when sEO analysis and optimization automation for websites. Use when
+  conducting technical SEO audits, tracking keyword rankings, analyzing competitor
+  SEO, monitoring backlink profiles, optimizing existing content, improving local
+  SEO visibility, generating SEO reports for clients, or automating website health
+  checks.
 domain: marketing
 author: oyi77
 license: Apache-2.0
@@ -15,7 +17,9 @@ tags:
 - seo
 - money
 version: 1.0.0
+category: marketing
 ---
+
 
 # SEO Auditor Skill
 

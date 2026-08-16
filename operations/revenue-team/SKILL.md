@@ -1,6 +1,8 @@
 ---
 name: revenue-team
-description: Manage sales pipelines, forecast revenue, track deals, and optimize sales velocity with HubSpot and Notion integration. Use when manageing sales pipelines, forecast revenue, track deals, and optimize sales.
+description: Use when manage sales pipelines, forecast revenue, track deals, and optimize
+  sales velocity with HubSpot and Notion integration. Use when manageing sales pipelines,
+  forecast revenue, track deals, and optimize sales.
 domain: operations
 author: oyi77
 license: Apache-2.0
@@ -14,7 +16,9 @@ tags:
 - revenue
 - team
 version: 1.0.0
+category: operations
 ---
+
 # Revenue Team
 
 ## When to Use

@@ -1,6 +1,7 @@
 ---
 name: mcp-discover
-description: Discover and connect to MCP servers automatically. Browse available tools and register new server endpoints. Use when working with mcp discover.
+description: Use when discover and connect to MCP servers automatically. Browse available
+  tools and register new server endpoints. Use when working with mcp discover.
 domain: mcp
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - model-context-protocol
 - tool-integration
 version: 1.0.0
+category: mcp
 ---
+
 
 
 # MCP Discover — Find and Register MCP Servers

@@ -1,21 +1,25 @@
 ---
 name: career-ops
-description: AI-powered job search system — CV optimization, ATS scanning, interview prep, application tracking. Use when job searching, writing CVs, preparing for interviews, tracking applications,.
+description: Use when aI-powered job search system — CV optimization, ATS scanning,
+  interview prep, application tracking. Use when job searching, writing CVs, preparing
+  for interviews, tracking applications,.
 domain: productivity
 author: oyi77
 license: Apache-2.0
 subdomain: productivity
-tags: 
-  - career
-  - job-search
-  - cv
-  - resume
-  - interview
-  - ats
-  - hiring
-  - job-tracker
+tags:
+- career
+- job-search
+- cv
+- resume
+- interview
+- ats
+- hiring
+- job-tracker
 version: 1.0.0
+category: productivity
 ---
+
 
 ## When NOT to Use
 

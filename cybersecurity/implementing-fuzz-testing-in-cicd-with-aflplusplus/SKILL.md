@@ -1,7 +1,9 @@
 ---
 name: implementing-fuzz-testing-in-cicd-with-aflplusplus
-description: Integrate AFL++ coverage-guided fuzz testing into CI/CD pipelines to discover memory corruption, input handling,
-  and logic vulnerabilities in C/C++ and compiled applications. Use when integrateing afl++ coverage-guided fuzz testing into ci/cd pipelines to discover.
+description: Use when integrate AFL++ coverage-guided fuzz testing into CI/CD pipelines
+  to discover memory corruption, input handling, and logic vulnerabilities in C/C++
+  and compiled applications. Use when integrateing afl++ coverage-guided fuzz testing
+  into ci/cd pipelines to discover.
 domain: cybersecurity
 subdomain: devsecops
 tags:
@@ -28,7 +30,9 @@ nist_csf:
 - GV.SC-07
 - ID.IM-04
 - PR.PS-04
+category: cybersecurity
 ---
+
 
 # Implementing Fuzz Testing in CI/CD with AFL++
 

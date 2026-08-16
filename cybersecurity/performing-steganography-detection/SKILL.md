@@ -1,7 +1,8 @@
 ---
 name: performing-steganography-detection
-description: Detect and extract hidden data embedded in images, audio, and other media files using steganalysis tools to uncover
-  covert communication channels. Use when detecting and extract hidden data embedded in images, audio, and.
+description: Use when detect and extract hidden data embedded in images, audio, and
+  other media files using steganalysis tools to uncover covert communication channels.
+  Use when detecting and extract hidden data embedded in images, audio, and.
 domain: cybersecurity
 tags:
 - forensics
@@ -19,7 +20,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 # Performing Steganography Detection
 
 ## Overview

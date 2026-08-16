@@ -1,7 +1,8 @@
 ---
 name: super-browser
-description: The ultimate browser automation framework combining the best of 8 top-rated browser skills for unified local
-  or cloud-based web task automation. Use when working with super browser.
+description: Use when the ultimate browser automation framework combining the best
+  of 8 top-rated browser skills for unified local or cloud-based web task automation.
+  Use when working with super browser.
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - research
 - super
 version: 1.0.0
+category: research
 ---
+
 # Super Browser
 
 ## When to Use

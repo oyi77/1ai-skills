@@ -1,7 +1,7 @@
 ---
 name: google-canvas
-description: Use when creating, opening, reading, editing, or collaborating on Google Canvas documents and Gemini Canvas shared
-  applications through browser automation.
+description: Use when creating, opening, reading, editing, or collaborating on Google
+  Canvas documents and Gemini Canvas shared applications through browser automation.
 domain: productivity
 author: oyi77
 license: Apache-2.0
@@ -13,7 +13,9 @@ tags:
 - time-management
 - tools
 version: 1.0.0
+category: productivity
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Google Canvas"

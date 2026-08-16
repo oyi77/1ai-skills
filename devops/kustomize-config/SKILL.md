@@ -1,6 +1,7 @@
 ---
 name: kustomize-config
-description: Kustomize Kubernetes configuration — bases, overlays, patches, generators, transformers. Use when working with kustomize config.
+description: Use when kustomize Kubernetes configuration — bases, overlays, patches,
+  generators, transformers. Use when working with kustomize config.
 domain: devops
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - kubernetes
 - kustomize
 version: 1.0.0
+category: devops
 ---
+
 
 
 ## Overview

@@ -1,7 +1,8 @@
 ---
 name: analyzing-slack-space-and-file-system-artifacts
-description: Examine file system slack space, MFT entries, USN journal, and alternate data streams to recover hidden data
-  and reconstruct file activity on NTFS volumes. Use when working with analyzing slack space and file system artifacts.
+description: Use when examine file system slack space, MFT entries, USN journal, and
+  alternate data streams to recover hidden data and reconstruct file activity on NTFS
+  volumes. Use when working with analyzing slack space and file system artifacts.
 domain: cybersecurity
 tags:
 - forensics
@@ -20,7 +21,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 # Analyzing Slack Space And File System Artifacts
 
 ## Overview

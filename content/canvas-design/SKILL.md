@@ -1,6 +1,8 @@
 ---
 name: canvas-design
-description: Design visual art and graphics using HTML5 Canvas, p5.js, or SVG. Create generative art, data visualizations, diagrams, and interactive graphics. Use when designing visual art and graphics using html5 canvas, p5.js, or.
+description: Use when design visual art and graphics using HTML5 Canvas, p5.js, or
+  SVG. Create generative art, data visualizations, diagrams, and interactive graphics.
+  Use when designing visual art and graphics using html5 canvas, p5.js, or.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -13,7 +15,9 @@ tags:
 - generative-art
 - svg
 version: 1.0.0
+category: content
 ---
+
 
 # Canvas Design
 

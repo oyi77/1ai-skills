@@ -1,6 +1,8 @@
 ---
 name: content-factory
-description: 'Use when all-in-one YouTube content generator: create full videos from prompts, generate vertical Shorts from text, or clip long videos into Shorts using free tools (ffmpeg, edge-tts, Pexels).'
+description: 'Use when all-in-one YouTube content generator: create full videos from
+  prompts, generate vertical Shorts from text, or clip long videos into Shorts using
+  free tools (ffmpeg, edge-tts, Pexels).'
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -14,7 +16,10 @@ tags:
 - text-to-speech
 - video
 version: 1.0.0
+category: content
 ---
+
+
 # Content Factory
 
 ## When to Use
@@ -110,3 +115,10 @@ def generate_content(topic: str, format: str = "article"):
 - [ ] Output is properly formatted for target platform
 - [ ] All facts and references verified
 - [ ] SEO/distribution optimization applied where applicable
+## Verification Checklist
+
+- [ ] Video generation completes without errors
+- [ ] Output formats match platform specs
+- [ ] Audio sync verified
+- [ ] Batch processing handles failures gracefully
+- [ ] Storage cleanup after generation

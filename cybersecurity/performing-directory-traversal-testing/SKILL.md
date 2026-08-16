@@ -1,7 +1,8 @@
 ---
 name: performing-directory-traversal-testing
-description: Testing web applications for path traversal vulnerabilities that allow reading or writing arbitrary files on
-  the server by manipulating file path parameters. Use when working with performing directory traversal testing.
+description: Use when testing web applications for path traversal vulnerabilities
+  that allow reading or writing arbitrary files on the server by manipulating file
+  path parameters. Use when working with performing directory traversal testing.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -19,7 +20,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Performing Directory Traversal Testing
 
 ## Overview

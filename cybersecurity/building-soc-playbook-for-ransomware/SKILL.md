@@ -1,8 +1,10 @@
 ---
 name: building-soc-playbook-for-ransomware
-description: 'Builds a structured SOC incident response playbook for ransomware attacks covering detection, containment, eradication,
-  and recovery phases with specific SIEM queries, isolation procedures, and decision trees. Use when SOC teams need formalized
-  response procedures for ransomware incidents aligned to NIST SP 800-61 and MITRE ATT&CK ransomware techniques.
+description: 'Use when builds a structured SOC incident response playbook for ransomware
+  attacks covering detection, containment, eradication, and recovery phases with specific
+  SIEM queries, isolation procedures, and decision trees. Use when SOC teams need
+  formalized response procedures for ransomware incidents aligned to NIST SP 800-61
+  and MITRE ATT&CK ransomware techniques.
 
   '
 domain: cybersecurity
@@ -34,7 +36,9 @@ nist_csf:
 - DE.AE-02
 - RS.MA-01
 - DE.AE-06
+category: cybersecurity
 ---
+
 # Building Soc Playbook For Ransomware
 
 ## Overview

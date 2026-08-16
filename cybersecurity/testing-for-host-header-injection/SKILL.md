@@ -1,7 +1,9 @@
 ---
 name: testing-for-host-header-injection
-description: Test web applications for HTTP Host header injection vulnerabilities to identify password reset poisoning, web
-  cache poisoning, SSRF, and virtual host routing manipulation risks. Use when testing web applications for http host header injection vulnerabilities to.
+description: Use when test web applications for HTTP Host header injection vulnerabilities
+  to identify password reset poisoning, web cache poisoning, SSRF, and virtual host
+  routing manipulation risks. Use when testing web applications for http host header
+  injection vulnerabilities to.
 domain: cybersecurity
 tags:
 - host-header-injection
@@ -20,7 +22,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Testing For Host Header Injection
 
 ## Overview

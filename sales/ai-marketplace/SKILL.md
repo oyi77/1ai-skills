@@ -13,7 +13,9 @@ tags:
 - revenue
 - sales
 version: 1.0.0
+category: sales
 ---
+
 
 persona:
   name: "Pat Flynn"

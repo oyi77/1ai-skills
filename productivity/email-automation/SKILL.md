@@ -17,7 +17,9 @@ allowed-tools:
 - MCP(gmail-mcp:*)
 - MCP(nineteen-blocks:*)
 version: 1.0.0
+category: productivity
 ---
+
 # Email Automation
 
 ## When to Use

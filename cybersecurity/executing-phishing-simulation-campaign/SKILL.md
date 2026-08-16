@@ -1,9 +1,11 @@
 ---
 name: executing-phishing-simulation-campaign
-description: Executes authorized phishing simulation campaigns to assess an organization's susceptibility to email-based social
-  engineering attacks. The tester designs realistic phishing scenarios, builds credential harvesting infrastructure, sends
-  targeted phishing emails, and tracks open rates, click-through rates, and credential submission rates to measure human security
-  awareness. Use when working with executing phishing simulation campaign.
+description: Use when executes authorized phishing simulation campaigns to assess
+  an organization's susceptibility to email-based social engineering attacks. The
+  tester designs realistic phishing scenarios, builds credential harvesting infrastructure,
+  sends targeted phishing emails, and tracks open rates, click-through rates, and
+  credential submission rates to measure human security awareness. Use when working
+  with executing phishing simulation campaign.
 domain: cybersecurity
 tags:
 - phishing-simulation
@@ -20,7 +22,9 @@ nist_csf:
 - ID.RA-06
 - GV.OV-02
 - DE.AE-07
+category: cybersecurity
 ---
+
 # Executing Phishing Simulation Campaign
 
 ## Overview

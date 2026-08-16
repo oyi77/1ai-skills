@@ -1,7 +1,7 @@
 ---
 name: execution
-description: Ship projects reliably using goal-setting, progress tracking, and accountability. Use when moving from planning
-  to delivery.
+description: Use when ship projects reliably using goal-setting, progress tracking,
+  and accountability. Use when moving from planning to delivery.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -12,7 +12,9 @@ tags:
 - personal-development
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Execution
 
 ## Overview

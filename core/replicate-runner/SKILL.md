@@ -1,6 +1,8 @@
 ---
 name: replicate-runner
-description: Run AI models on Replicate cloud API. Deploy image generation, video creation, audio processing, and custom models without managing infrastructure. Use when working with replicate runner.
+description: Use when run AI models on Replicate cloud API. Deploy image generation,
+  video creation, audio processing, and custom models without managing infrastructure.
+  Use when working with replicate runner.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -13,11 +15,34 @@ tags:
 - video
 - api
 version: 1.0.0
+category: core
 ---
+
+
 
 # Replicate Runner
 
 ## When to Use
+**Trigger phrases:**
+- "replicate runner"
+- "Run AI models on Replicate cloud API"
+
+
+- When running AI models without managing GPU infrastructure
+- When generating images, videos, or audio with state-of-the-art models
+- When deploying custom models to a cloud API
+- When chaining multiple AI models in a pipeline
+
+
+
+## Anti-Rationalization Table
+
+| Excuse | Reality | Rule |
+|--------|---------|------|
+| "I'll just use the API directly" | Replicate API changes; runner abstraction insulates your code | One integration point, not N scattered calls |
+| "Docker is enough" | Docker lacks model versioning, caching, cost tracking | Runner adds observability and governance |
+| "I don't need model routing" | Different models excel at different tasks | Route automatically; don't hardcode |
+
 **Trigger phrases:**
 - "replicate runner"
 - "Run AI models on Replicate cloud API"

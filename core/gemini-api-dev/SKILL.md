@@ -1,6 +1,9 @@
 ---
 name: gemini-api-dev
-description: Build applications using Google Gemini API. Handle chat completions, multimodal inputs, function calling, streaming, and grounding with Google Search. Use when building applications using google gemini api. handle chat completions, multimodal.
+description: Use when build applications using Google Gemini API. Handle chat completions,
+  multimodal inputs, function calling, streaming, and grounding with Google Search.
+  Use when building applications using google gemini api. handle chat completions,
+  multimodal.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -13,7 +16,9 @@ tags:
 - multimodal
 - api
 version: 1.0.0
+category: core
 ---
+
 
 # Gemini Api Dev
 

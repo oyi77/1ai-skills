@@ -22,7 +22,9 @@ nist_csf:
 - DE.AE-02
 - RS.MA-01
 - DE.AE-06
+category: cybersecurity
 ---
+
 
 # Building Threat Intelligence Enrichment in Splunk
 

@@ -1,7 +1,9 @@
 ---
 name: hunting-for-suspicious-scheduled-tasks
-description: Hunt for adversary persistence and execution via Windows scheduled tasks by analyzing task creation events, suspicious
-  task properties, and unusual execution patterns that indicate T1053.005 abuse. Use when hunting for adversary persistence and execution via windows scheduled tasks.
+description: Use when hunt for adversary persistence and execution via Windows scheduled
+  tasks by analyzing task creation events, suspicious task properties, and unusual
+  execution patterns that indicate T1053.005 abuse. Use when hunting for adversary
+  persistence and execution via windows scheduled tasks.
 domain: cybersecurity
 tags:
 - threat-hunting
@@ -19,7 +21,9 @@ nist_csf:
 - DE.AE-02
 - DE.AE-07
 - ID.RA-05
+category: cybersecurity
 ---
+
 # Hunting For Suspicious Scheduled Tasks
 
 ## Overview

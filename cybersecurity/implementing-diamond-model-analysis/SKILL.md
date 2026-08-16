@@ -1,6 +1,10 @@
 ---
 name: implementing-diamond-model-analysis
-description: Use when the Diamond Model of Intrusion Analysis provides a structured framework for analyzing cyber intrusions by examining four core features - Adversary, Capability, Infrastructure, and Victim. This skill covers implementing the Diamond Model programmatically to classify and correlate intrusion events, build activity threads, and generate pivot-ready intelligence.
+description: Use when the Diamond Model of Intrusion Analysis provides a structured
+  framework for analyzing cyber intrusions by examining four core features - Adversary,
+  Capability, Infrastructure, and Victim. This skill covers implementing the Diamond
+  Model programmatically to classify and correlate intrusion events, build activity
+  threads, and generate pivot-ready intelligence.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:
@@ -19,7 +23,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Implementing Diamond Model Analysis
 
 ## Overview

@@ -1,7 +1,8 @@
 ---
 name: crisis-management
-description: Respond to crises using incident command structure, stakeholder communication, and recovery planning. Use during
-  security breaches, PR disasters, or operational failures. Use when working with crisis management.
+description: Use when respond to crises using incident command structure, stakeholder
+  communication, and recovery planning. Use during security breaches, PR disasters,
+  or operational failures. Use when working with crisis management.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - personal-development
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Crisis Management
 
 ## Overview

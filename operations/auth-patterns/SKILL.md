@@ -1,6 +1,7 @@
 ---
 name: auth-patterns
-description: Authentication patterns — OAuth 2.0, JWT, session management, MFA, RBAC, API key management. Use when working with auth patterns.
+description: Use when authentication patterns — OAuth 2.0, JWT, session management,
+  MFA, RBAC, API key management. Use when working with auth patterns.
 domain: operations
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - operations
 - patterns
 version: 1.0.0
+category: operations
 ---
+
 
 ## Overview
 

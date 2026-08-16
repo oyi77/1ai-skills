@@ -1,8 +1,13 @@
 ---
 name: performing-ransomware-response
-description: Use when executes a structured ransomware incident response from initial detection through containment, forensic analysis, decryption assessment, recovery, and post-incident hardening. Addresses ransom negotiation considerations, backup integrity verification, and regulatory notification requirements. Activates for requests involving ransomware response, ransomware recovery, crypto-ransomware, data encryption attack, ransom payment decision, or ransomware containment.
+description: 'Use when executes a structured ransomware incident response from initial
+  detection through containment, forensic analysis, decryption assessment, recovery,
+  and post-incident hardening. Addresses ransom negotiation considerations, backup
+  integrity verification, and regulatory notification requirements. Activates for
+  requests involving ransomware response, ransomware recovery, crypto-ransomware,
+  data encryption attack, ransom payment decision, or ransomware containment.
 
-  '.
+  ''.'
 domain: cybersecurity
 tags:
 - ransomware
@@ -25,7 +30,9 @@ nist_csf:
 - RS.MA-02
 - RS.AN-03
 - RC.RP-01
+category: cybersecurity
 ---
+
 # Performing Ransomware Response
 
 ## Overview

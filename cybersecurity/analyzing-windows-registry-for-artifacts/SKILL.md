@@ -1,7 +1,8 @@
 ---
 name: analyzing-windows-registry-for-artifacts
-description: Extract and analyze Windows Registry hives to uncover user activity, installed software, autostart entries, and
-  evidence of system compromise. Use when working with analyzing windows registry for artifacts.
+description: Use when extract and analyze Windows Registry hives to uncover user activity,
+  installed software, autostart entries, and evidence of system compromise. Use when
+  working with analyzing windows registry for artifacts.
 domain: cybersecurity
 tags:
 - forensics
@@ -19,7 +20,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 # Analyzing Windows Registry For Artifacts
 
 ## Overview

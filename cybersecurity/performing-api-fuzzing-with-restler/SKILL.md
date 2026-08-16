@@ -1,6 +1,12 @@
 ---
 name: performing-api-fuzzing-with-restler
-description: 'Use when uses Microsoft RESTler to perform stateful REST API fuzzing by automatically generating and executing test sequences that exercise API endpoints, discover producer-consumer dependencies between requests, and find security and reliability bugs. The tester compiles an OpenAPI specification into a RESTler fuzzing grammar, configures authentication, runs test/fuzz-lean/fuzz modes, and analyzes results for 500 errors, authentication bypasses, resource leaks, and payload injection vulnerab...'
+description: Use when uses Microsoft RESTler to perform stateful REST API fuzzing
+  by automatically generating and executing test sequences that exercise API endpoints,
+  discover producer-consumer dependencies between requests, and find security and
+  reliability bugs. The tester compiles an OpenAPI specification into a RESTler fuzzing
+  grammar, configures authentication, runs test/fuzz-lean/fuzz modes, and analyzes
+  results for 500 errors, authentication bypasses, resource leaks, and payload injection
+  vulnerab...
 domain: cybersecurity
 tags:
 - api-security
@@ -18,7 +24,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Performing Api Fuzzing With Restler
 
 ## Overview

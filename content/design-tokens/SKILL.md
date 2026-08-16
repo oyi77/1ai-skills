@@ -1,6 +1,8 @@
 ---
 name: design-tokens
-description: Design token systems — color, typography, spacing, and theme architecture for consistent design. Use when designing token systems — color, typography, spacing, and theme architecture.
+description: Use when design token systems — color, typography, spacing, and theme
+  architecture for consistent design. Use when designing token systems — color, typography,
+  spacing, and theme architecture.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -12,7 +14,9 @@ tags:
 - media
 - tokens
 version: 1.0.0
+category: content
 ---
+
 
 
 

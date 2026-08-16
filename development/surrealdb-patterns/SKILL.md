@@ -1,6 +1,8 @@
 ---
 name: surrealdb-patterns
-description: SurrealDB multi-model database — document, graph, key-value. SurrealQL, realtime subscriptions, embedded mode. Use when working with surrealdb patterns.
+description: Use when surrealDB multi-model database — document, graph, key-value.
+  SurrealQL, realtime subscriptions, embedded mode. Use when working with surrealdb
+  patterns.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +14,9 @@ tags:
 - surrealdb
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

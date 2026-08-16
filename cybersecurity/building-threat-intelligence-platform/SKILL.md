@@ -1,7 +1,9 @@
 ---
 name: building-threat-intelligence-platform
-description: Building a Threat Intelligence Platform (TIP) involves deploying and integrating multiple CTI tools into a unified
-  system for collecting, analyzing, enriching, and disseminating threat intelligence. T. Use when working with building threat intelligence platform.
+description: Use when building a Threat Intelligence Platform (TIP) involves deploying
+  and integrating multiple CTI tools into a unified system for collecting, analyzing,
+  enriching, and disseminating threat intelligence. T. Use when working with building
+  threat intelligence platform.
 domain: cybersecurity
 subdomain: threat-intelligence
 tags:
@@ -21,7 +23,9 @@ nist_csf:
 - ID.RA-05
 - DE.CM-01
 - DE.AE-02
+category: cybersecurity
 ---
+
 # Building Threat Intelligence Platform
 
 ## Overview

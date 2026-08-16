@@ -1,9 +1,11 @@
 ---
 name: detecting-typosquatting-packages-in-npm-pypi
-description: Detects typosquatting attacks in npm and PyPI package registries by analyzing package name similarity using Levenshtein
-  distance and other string metrics, examining publish date heuristics to identify recently created packages mimicking established
-  ones, and flagging download count anomalies where suspicious packages have disproportionately low usage compared to their
-  legitimate targets. Use when working with detecting typosquatting packages in npm pypi.
+description: Use when detects typosquatting attacks in npm and PyPI package registries
+  by analyzing package name similarity using Levenshtein distance and other string
+  metrics, examining publish date heuristics to identify recently created packages
+  mimicking established ones, and flagging download count anomalies where suspicious
+  packages have disproportionately low usage compared to their legitimate targets.
+  Use when working with detecting typosquatting packages in npm pypi.
 domain: cybersecurity
 tags:
 - typosquatting
@@ -23,7 +25,9 @@ nist_csf:
 - GV.SC-03
 - GV.SC-06
 - GV.SC-07
+category: cybersecurity
 ---
+
 # Detecting Typosquatting Packages In Npm Pypi
 
 ## Overview

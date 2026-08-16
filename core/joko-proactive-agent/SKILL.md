@@ -1,6 +1,7 @@
 ---
 name: joko-proactive-agent
-description: Proactive agent that detects signals and suggests actions with Slack notifications. Use when working with joko proactive agent.
+description: Use when proactive agent that detects signals and suggests actions with
+  Slack notifications. Use when working with joko proactive agent.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -18,7 +19,9 @@ allowed-tools:
 - MCP(slack:*)
 - MCP(notion:*)
 version: 1.0.0
+category: core
 ---
+
 # Joko Proactive Agent
 
 ## When to Use

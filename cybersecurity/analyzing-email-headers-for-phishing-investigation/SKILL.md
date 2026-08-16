@@ -1,7 +1,8 @@
 ---
 name: analyzing-email-headers-for-phishing-investigation
-description: Parse and analyze email headers to trace the origin of phishing emails, verify sender authenticity, and identify
-  spoofing through SPF, DKIM, and DMARC validation. Use when working with analyzing email headers for phishing investigation.
+description: Use when parse and analyze email headers to trace the origin of phishing
+  emails, verify sender authenticity, and identify spoofing through SPF, DKIM, and
+  DMARC validation. Use when working with analyzing email headers for phishing investigation.
 domain: cybersecurity
 tags:
 - forensics
@@ -22,7 +23,9 @@ nist_csf:
 - RS.AN-03
 - DE.AE-02
 - RS.MA-01
+category: cybersecurity
 ---
+
 # Analyzing Email Headers For Phishing Investigation
 
 ## Overview

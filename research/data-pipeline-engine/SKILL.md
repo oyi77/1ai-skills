@@ -1,7 +1,8 @@
 ---
 name: data-pipeline-engine
-description: ETL pipelines that pull data from multiple sources (APIs, databases, web scraping), transform it, and produce
-  actionable dashboards and reports. Use when working with data pipeline engine.
+description: Use when eTL pipelines that pull data from multiple sources (APIs, databases,
+  web scraping), transform it, and produce actionable dashboards and reports. Use
+  when working with data pipeline engine.
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -15,7 +16,9 @@ tags:
 - pipeline
 - research
 version: 1.0.0
+category: research
 ---
+
 
 ## Overview
 

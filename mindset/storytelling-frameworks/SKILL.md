@@ -1,7 +1,8 @@
 ---
 name: storytelling-frameworks
-description: Structure narratives for pitches, content, and communication using Hero's Journey, Before-After-Bridge, and Pixar
-  pitch templates. Use when working with storytelling frameworks.
+description: Use when structure narratives for pitches, content, and communication
+  using Hero's Journey, Before-After-Bridge, and Pixar pitch templates. Use when working
+  with storytelling frameworks.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - soft-skills
 - storytelling
 version: 1.0.0
+category: mindset
 ---
+
 # Storytelling Frameworks
 
 ## Overview

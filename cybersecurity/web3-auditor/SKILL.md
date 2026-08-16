@@ -1,7 +1,8 @@
 ---
 name: web3-auditor
-description: Smart contract and DeFi security auditing for maximum bounty payouts. Use when auditing Solidity/Vyper contracts,
-  testing DeFi protocols, hunting web3 vulnerabilities, or preparing Immunefi submissions.
+description: Use when smart contract and DeFi security auditing for maximum bounty
+  payouts. Use when auditing Solidity/Vyper contracts, testing DeFi protocols, hunting
+  web3 vulnerabilities, or preparing Immunefi submissions.
 domain: cybersecurity
 author: oyi77
 license: Apache-2.0
@@ -14,7 +15,9 @@ tags:
 - threat-defense
 - web3
 version: 1.0.0
+category: cybersecurity
 ---
+
 # Web3 Auditor
 
 ## Overview

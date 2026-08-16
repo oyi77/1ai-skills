@@ -1,6 +1,8 @@
 ---
 name: content-planner-auto
-description: Use when auto-generate 30-day content calendars with pillar rotation, platform-optimized timing, multi-account rotation, seasonal Indonesian events, and PostBridge batch scheduling.
+description: Use when auto-generate 30-day content calendars with pillar rotation,
+  platform-optimized timing, multi-account rotation, seasonal Indonesian events, and
+  PostBridge batch scheduling.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -14,7 +16,9 @@ tags:
 - planner
 - money
 version: 1.0.0
+category: content
 ---
+
 # Content Planner Auto
 
 Auto-generate 30-day content calendars for your brand or clients. Revenue survival tool.

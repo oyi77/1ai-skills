@@ -1,6 +1,9 @@
 ---
 name: performing-serverless-function-security-review
-description: 'Performing security reviews of serverless functions across AWS Lambda, Azure Functions, and GCP Cloud Functions to identify overly permissive execution roles, insecure environment variables, injection vulnerabilities, and missing runtime protections. . Use when working with performing serverless function security review.'
+description: Use when performing security reviews of serverless functions across AWS
+  Lambda, Azure Functions, and GCP Cloud Functions to identify overly permissive execution
+  roles, insecure environment variables, injection vulnerabilities, and missing runtime
+  protections. . Use when working with performing serverless function security review.
 domain: cybersecurity
 tags:
 - cloud-security
@@ -18,7 +21,9 @@ nist_csf:
 - ID.AM-08
 - GV.SC-06
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Performing Serverless Function Security Review
 
 ## Overview

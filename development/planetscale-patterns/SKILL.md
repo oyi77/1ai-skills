@@ -1,6 +1,7 @@
 ---
 name: planetscale-patterns
-description: PlanetScale MySQL — branching, deploy requests, Vitess sharding, connection handling, schema management. Use when working with planetscale patterns.
+description: Use when planetScale MySQL — branching, deploy requests, Vitess sharding,
+  connection handling, schema management. Use when working with planetscale patterns.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +13,9 @@ tags:
 - software-engineering
 - testing
 version: 1.0.0
+category: development
 ---
+
 
 
 ## Overview

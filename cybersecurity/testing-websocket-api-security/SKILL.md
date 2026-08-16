@@ -1,6 +1,11 @@
 ---
 name: testing-websocket-api-security
-description: Use when tests WebSocket API implementations for security vulnerabilities including missing authentication on WebSocket upgrade, Cross-Site WebSocket Hijacking (CSWSH), injection attacks through WebSocket messages, insufficient input validation, denial-of-service via message flooding, and information leakage through WebSocket frames. The tester intercepts WebSocket handshakes and messages using Burp Suite, crafts malicious payloads, and tests for authorization bypass on WebSocket channels.
+description: Use when tests WebSocket API implementations for security vulnerabilities
+  including missing authentication on WebSocket upgrade, Cross-Site WebSocket Hijacking
+  (CSWSH), injection attacks through WebSocket messages, insufficient input validation,
+  denial-of-service via message flooding, and information leakage through WebSocket
+  frames. The tester intercepts WebSocket handshakes and messages using Burp Suite,
+  crafts malicious payloads, and tests for authorization bypass on WebSocket channels.
 domain: cybersecurity
 tags:
 - api-security
@@ -18,7 +23,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Testing Websocket Api Security
 
 ## Overview

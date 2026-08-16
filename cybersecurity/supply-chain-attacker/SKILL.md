@@ -1,7 +1,8 @@
 ---
 name: supply-chain-attacker
-description: Software supply chain attack testing — dependency confusion, typosquatting, malicious packages, CI/CD pipeline
-  exploitation. Use when assessing supply chain security, testing package managers, or finding supply chain vulnerabilities.
+description: Use when software supply chain attack testing — dependency confusion,
+  typosquatting, malicious packages, CI/CD pipeline exploitation. Use when assessing
+  supply chain security, testing package managers, or finding supply chain vulnerabilities.
 domain: cybersecurity
 author: oyi77
 license: Apache-2.0
@@ -19,7 +20,9 @@ tags:
 - testing
 - threat-defense
 version: 1.0.0
+category: cybersecurity
 ---
+
 # Supply Chain Attacker
 
 ## Overview

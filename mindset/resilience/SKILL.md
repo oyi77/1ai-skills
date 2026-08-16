@@ -1,7 +1,7 @@
 ---
 name: resilience
-description: Build mental toughness, recover from setbacks, and adapt to change. Use when navigating failure, crisis, or high-pressure
-  environments.
+description: Use when build mental toughness, recover from setbacks, and adapt to
+  change. Use when navigating failure, crisis, or high-pressure environments.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -12,7 +12,9 @@ tags:
 - resilience
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Resilience
 
 ## Overview

@@ -23,7 +23,9 @@ nist_csf:
 - ID.AM-08
 - GV.SC-06
 - DE.CM-01
+category: cybersecurity
 ---
+
 
 # Performing Cloud-Native Threat Hunting with AWS Detective
 ## When to Use

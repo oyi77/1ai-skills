@@ -1,7 +1,8 @@
 ---
 name: habit-formation
-description: Build and maintain habits using cue-routine-reward loops, habit stacking, and environment design. Use when creating
-  new routines or breaking old patterns.
+description: Use when build and maintain habits using cue-routine-reward loops, habit
+  stacking, and environment design. Use when creating new routines or breaking old
+  patterns.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - personal-development
 - soft-skills
 version: 1.0.0
+category: mindset
 ---
+
 # Habit Formation
 
 ## Overview

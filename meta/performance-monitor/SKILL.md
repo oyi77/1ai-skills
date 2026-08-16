@@ -1,7 +1,8 @@
 ---
 name: performance-monitor
-description: Track and analyze skill execution performance. Measure latency, success rates, accuracy, and resource usage for
-  continuous improvement. Use when tracking and analyze skill execution performance. measure latency, success rates,.
+description: Use when track and analyze skill execution performance. Measure latency,
+  success rates, accuracy, and resource usage for continuous improvement. Use when
+  tracking and analyze skill execution performance. measure latency, success rates,.
 domain: meta
 author: oyi77
 license: Apache-2.0
@@ -18,7 +19,9 @@ persona:
   philosophy: If you can't measure it, you can't improve it
   credentials: SRE at Google, built monitoring systems
 version: 1.0.0
+category: meta
 ---
+
 # Performance Monitor
 
 ## When to Use

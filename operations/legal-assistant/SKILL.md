@@ -1,7 +1,9 @@
 ---
 name: legal-assistant
-description: Use when legal assistant — contract review checklists, IP protection, business compliance, GDPR/privacy for digital products,
-  DMCA, software licensing, employment law, and dispute resolution. Built for 1-person companies scaling to team.
+description: Use when legal assistant — contract review checklists, IP protection,
+  business compliance, GDPR/privacy for digital products, DMCA, software licensing,
+  employment law, and dispute resolution. Built for 1-person companies scaling to
+  team.
 domain: operations
 author: oyi77
 license: Apache-2.0
@@ -16,9 +18,10 @@ tags:
 - licensing
 - dmca
 version: 1.0.0
-
 requires: []
+category: operations
 ---
+
 # Legal Assistant
 
 ## When to Use

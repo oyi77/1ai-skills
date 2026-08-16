@@ -1,7 +1,8 @@
 ---
 name: oh-my-opencode-installation
-description: Smart installation and configuration for OpenCode with oh-my-opencode harness - detects existing installation
-  and only installs if needed. Use when working with oh my opencode installation.
+description: Use when smart installation and configuration for OpenCode with oh-my-opencode
+  harness - detects existing installation and only installs if needed. Use when working
+  with oh my opencode installation.
 domain: integrations
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - opencode
 - third-party
 version: 1.0.0
+category: integrations
 ---
+
 
 # Oh My OpenCode Installation
 

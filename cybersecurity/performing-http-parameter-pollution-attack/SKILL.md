@@ -1,7 +1,9 @@
 ---
 name: performing-http-parameter-pollution-attack
-description: Execute HTTP Parameter Pollution attacks to bypass input validation, WAF rules, and security controls by injecting
-  duplicate parameters that are processed differently by front-end and back-end systems. Use when working with performing http parameter pollution attack.
+description: Use when execute HTTP Parameter Pollution attacks to bypass input validation,
+  WAF rules, and security controls by injecting duplicate parameters that are processed
+  differently by front-end and back-end systems. Use when working with performing
+  http parameter pollution attack.
 domain: cybersecurity
 tags:
 - http-parameter-pollution
@@ -20,7 +22,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Performing Http Parameter Pollution Attack
 
 ## Overview

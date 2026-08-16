@@ -1,20 +1,24 @@
 ---
 name: writing
-description: Use when full-stack content production factory — ad copy, emails, long-form articles, product descriptions. Turn words into revenue with data-driven writing pipelines.
+description: Use when full-stack content production factory — ad copy, emails, long-form
+  articles, product descriptions. Turn words into revenue with data-driven writing
+  pipelines.
 domain: content
 author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:
-  - content-creation
-  - copywriting
-  - ad-copy
-  - email-marketing
-  - long-form
-  - product-descriptions
-  - money-making
+- content-creation
+- copywriting
+- ad-copy
+- email-marketing
+- long-form
+- product-descriptions
+- money-making
 version: 1.0.0
+category: content
 ---
+
 
 # Content Writing Factory — Ad Copy, Emails, Long-Form, Product Descriptions
 

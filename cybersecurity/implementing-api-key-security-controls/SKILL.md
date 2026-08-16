@@ -1,9 +1,11 @@
 ---
 name: implementing-api-key-security-controls
-description: Implements secure API key generation, storage, rotation, and revocation controls to protect API authentication
-  credentials from leakage, brute force, and abuse. The engineer designs API key formats with sufficient entropy, implements
-  secure hashing for storage, enforces per-key scoping and rate limiting, monitors for leaked keys in public repositories,
-  and builds key rotation workflows. Use when working with implementing api key security controls.
+description: Use when implements secure API key generation, storage, rotation, and
+  revocation controls to protect API authentication credentials from leakage, brute
+  force, and abuse. The engineer designs API key formats with sufficient entropy,
+  implements secure hashing for storage, enforces per-key scoping and rate limiting,
+  monitors for leaked keys in public repositories, and builds key rotation workflows.
+  Use when working with implementing api key security controls.
 domain: cybersecurity
 tags:
 - api-security
@@ -28,7 +30,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Implementing Api Key Security Controls
 
 ## Overview

@@ -1,6 +1,7 @@
 ---
 name: ui-critique
-description: Structured UI review — visual hierarchy, consistency, accessibility, and actionable improvement feedback. Use when working with ui critique.
+description: Use when structured UI review — visual hierarchy, consistency, accessibility,
+  and actionable improvement feedback. Use when working with ui critique.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -11,7 +12,9 @@ tags:
 - digital-content
 - media
 version: 1.0.0
+category: content
 ---
+
 
 
 

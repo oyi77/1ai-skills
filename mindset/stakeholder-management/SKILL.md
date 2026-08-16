@@ -1,7 +1,8 @@
 ---
 name: stakeholder-management
-description: Map, engage, and align stakeholders using the power-interest grid, RACI matrix, and communication plans. Use
-  when navigating complex projects or organizational politics. Use when working with stakeholder management.
+description: Use when map, engage, and align stakeholders using the power-interest
+  grid, RACI matrix, and communication plans. Use when navigating complex projects
+  or organizational politics. Use when working with stakeholder management.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - soft-skills
 - stakeholder
 version: 1.0.0
+category: mindset
 ---
+
 # Stakeholder Management
 
 ## Overview

@@ -1,6 +1,8 @@
 ---
 name: context-engineering
-description: Design and manage the context window for AI coding agents. Structure prompts, manage file loading, and optimize token usage for maximum agent effectiveness. Use when designing and manage the context window for ai coding agents.
+description: Use when design and manage the context window for AI coding agents. Structure
+  prompts, manage file loading, and optimize token usage for maximum agent effectiveness.
+  Use when designing and manage the context window for ai coding agents.
 domain: development
 author: oyi77
 license: Apache-2.0
@@ -12,7 +14,9 @@ tags:
 - ai-agents
 - token-optimization
 version: 1.0.0
+category: development
 ---
+
 
 # Context Engineering
 

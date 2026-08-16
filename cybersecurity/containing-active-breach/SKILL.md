@@ -1,8 +1,13 @@
 ---
 name: containing-active-breach
-description: Use when executes containment strategies to stop active adversary operations and prevent lateral movement during a confirmed security breach. Implements short-term and long-term containment using network segmentation, endpoint isolation, credential revocation, and access control modifications. Activates for requests involving breach containment, lateral movement prevention, network isolation, active threat containment, or live incident response.
+description: 'Use when executes containment strategies to stop active adversary operations
+  and prevent lateral movement during a confirmed security breach. Implements short-term
+  and long-term containment using network segmentation, endpoint isolation, credential
+  revocation, and access control modifications. Activates for requests involving breach
+  containment, lateral movement prevention, network isolation, active threat containment,
+  or live incident response.
 
-  '.
+  ''.'
 domain: cybersecurity
 tags:
 - breach-containment
@@ -24,7 +29,9 @@ nist_csf:
 - RS.MA-02
 - RS.AN-03
 - RC.RP-01
+category: cybersecurity
 ---
+
 # Containing Active Breach
 
 ## Overview

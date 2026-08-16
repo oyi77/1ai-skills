@@ -1,6 +1,7 @@
 ---
 name: dispatching-parallel-agents
-description: Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies
+description: Use when facing 2+ independent tasks that can be worked on without shared
+  state or sequential dependencies
 domain: research
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - parallel
 - research
 version: 1.0.0
+category: research
 ---
+
 persona:
   name: "Domain Expert"
   title: "Master of Dispatching Parallel Agents"

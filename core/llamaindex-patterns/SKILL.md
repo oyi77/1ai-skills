@@ -1,6 +1,7 @@
 ---
 name: llamaindex-patterns
-description: LlamaIndex data framework — ingestion, indexing, query engines, chat engines, agents. Use when working with llamaindex patterns.
+description: Use when llamaIndex data framework — ingestion, indexing, query engines,
+  chat engines, agents. Use when working with llamaindex patterns.
 domain: core
 author: oyi77
 license: Apache-2.0
@@ -13,7 +14,9 @@ tags:
 - patterns
 - self-improvement
 version: 1.0.0
+category: core
 ---
+
 
 ## Overview
 

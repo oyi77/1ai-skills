@@ -1,7 +1,8 @@
 ---
 name: auto-learner
-description: Autonomous learning from execution data. Skills improve themselves by identifying patterns in successful vs failed
-  executions without human intervention. Use when working with auto learner.
+description: Use when autonomous learning from execution data. Skills improve themselves
+  by identifying patterns in successful vs failed executions without human intervention.
+  Use when working with auto learner.
 domain: meta
 author: oyi77
 license: Apache-2.0
@@ -17,7 +18,10 @@ persona:
   expertise: Machine learning, pattern recognition, self-supervision
   philosophy: Learn by doing, improve by reflecting
 version: 1.0.0
+category: meta
 ---
+
+
 # Auto Learner
 
 ## When to Use
@@ -110,3 +114,10 @@ Auto Learner is a foundational meta-skills skill that provides skill management 
 - [ ] Results validated against acceptance criteria
 - [ ] Error handling tested with edge cases
 - [ ] Documentation updated with findings
+## Verification Checklist
+
+- [ ] Learning cycle completes without errors
+- [ ] Pattern detection accuracy > 80%
+- [ ] Generated improvements are specific and actionable
+- [ ] No regression in skill performance after updates
+- [ ] Audit trail maintained for all auto-generated changes

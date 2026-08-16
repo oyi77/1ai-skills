@@ -1,7 +1,7 @@
 ---
 name: design-thinking
-description: Solve complex problems through empathy, ideation, prototyping, and testing. Use when tackling ambiguous challenges
-  with user-centered approaches.
+description: Use when solve complex problems through empathy, ideation, prototyping,
+  and testing. Use when tackling ambiguous challenges with user-centered approaches.
 domain: mindset
 author: oyi77
 license: Apache-2.0
@@ -14,7 +14,9 @@ tags:
 - testing
 - thinking
 version: 1.0.0
+category: mindset
 ---
+
 # Design Thinking
 
 ## Overview

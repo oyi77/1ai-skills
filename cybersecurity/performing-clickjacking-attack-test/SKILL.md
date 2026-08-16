@@ -1,7 +1,9 @@
 ---
 name: performing-clickjacking-attack-test
-description: Testing web applications for clickjacking vulnerabilities by assessing frame embedding controls and crafting
-  proof-of-concept overlay attacks during authorized security assessments. Use when working with performing clickjacking attack test.
+description: Use when testing web applications for clickjacking vulnerabilities by
+  assessing frame embedding controls and crafting proof-of-concept overlay attacks
+  during authorized security assessments. Use when working with performing clickjacking
+  attack test.
 domain: cybersecurity
 tags:
 - penetration-testing
@@ -25,7 +27,9 @@ nist_csf:
 - ID.RA-01
 - PR.DS-10
 - DE.CM-01
+category: cybersecurity
 ---
+
 # Performing Clickjacking Attack Test
 
 ## Overview
