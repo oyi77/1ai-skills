@@ -21,6 +21,9 @@ category: marketing
 
 # Content Creator
 
+## Overview
+
+Content Creator turns one topic into a full multi-platform content package — a blog post, 5 platform-adapted social posts, image specs, and a publication calendar — for SMEs, agencies, and startups. It covers the full lifecycle (brief → research → create → deliver → upsell) with AI-assisted drafting and reusable client-ready templates, so a single idea becomes a sellable asset without a design or dev team.
 ## When to Use
 
 **Trigger phrases:**

@@ -19,6 +19,9 @@ category: marketing
 
 # Ai Seo
 
+## Overview
+
+AI SEO (Answer Engine Optimization / GEO) optimizes content for AI-powered search engines — Perplexity, ChatGPT Search, Google AI Overviews, Gemini, Copilot — so your pages get cited in zero-click answers instead of buried below them. Unlike traditional SEO that chases ranking clicks, this skill restructures existing content into citation-ready formats, implements the schema AI crawlers prefer, and builds topical authority clusters that engines trust as primary sources.
 ## When to Use
 
 **Trigger phrases:**
