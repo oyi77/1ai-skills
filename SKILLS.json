@@ -1,5 +1,5 @@
 {
-"total_skills": 1329,
+"total_skills": 1335,
   "category_count": 19,
   "categories": {
     "automation": 20,
@@ -17,9 +17,9 @@
     "mindset": 55,
     "operations": 19,
     "productivity": 10,
-    "research": 35,
+    "research": 36,
     "sales": 13,
-    "trading": 21
+    "trading": 26
   },
   "skills": [
     {
@@ -24366,6 +24366,102 @@
         "crypto",
         "sentiment",
         "briefing"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-exchange-marketanalysis",
+      "category": "trading",
+      "description": "Read-only crypto market structure and sentiment analysis for any spot/perp market — trend, support/resistance, volume profile, funding, and social/news sentiment. Produces a structured market brief with no execution glue.",
+      "domain": "trading",
+      "tags": [
+        "trading",
+        "market-analysis",
+        "sentiment",
+        "technical-analysis"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "gate-exchange-dual",
+      "category": "trading",
+      "description": "Dual investment (sell-high / buy-low) yield strategy design — strike selection, settlement logic, and forced-position risk. Strategy-only; uses public market data, no exchange CLI/MCP.",
+      "domain": "trading",
+      "tags": [
+        "trading",
+        "yield",
+        "options-like",
+        "structured-products"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "gate-exchange-bot",
+      "category": "trading",
+      "description": "Grid and martingale trading-bot strategy design — parameter discipline, range/leverage/direction selection, and confirmation gates. Strategy-only; uses public market data, no exchange CLI/MCP.",
+      "domain": "trading",
+      "tags": [
+        "trading",
+        "grid",
+        "martingale",
+        "automation"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "gate-exchange-autoinvest",
+      "category": "trading",
+      "description": "Dollar-cost-averaging (auto-invest) plan design — investment currency, target allocation, cadence, and fund-flow discipline. Strategy-only; uses public data, no exchange CLI/MCP.",
+      "domain": "trading",
+      "tags": [
+        "trading",
+        "dca",
+        "auto-invest",
+        "portfolio"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "gate-exchange-assetswap",
+      "category": "trading",
+      "description": "Portfolio rebalancing strategy design — conservative / conviction / market-cap-Top-N baskets, preview-before-create, and order-state checks. Strategy-only; uses public data (CoinGecko market-cap), no exchange CLI/MCP.",
+      "domain": "trading",
+      "tags": [
+        "trading",
+        "rebalancing",
+        "portfolio",
+        "allocation"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "gate-exchange-newcoin",
+      "category": "research",
+      "description": "New-listing due diligence and event radar — listings calendar, fundamentals, contract-safety/rug checks, sentiment/tape, and a gated first-buy draft. Strategy-only; uses public data (CoinGecko, Etherscan, web search), no exchange CLI/MCP.",
+      "domain": "research",
+      "tags": [
+        "research",
+        "due-diligence",
+        "new-listings",
+        "token-safety"
       ],
       "version": "1.0.0",
       "author": "oyi77",
