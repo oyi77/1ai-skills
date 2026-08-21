@@ -1,5 +1,5 @@
 {
-  "total_skills": 1321,
+"total_skills": 1329,
   "category_count": 19,
   "categories": {
     "automation": 20,
@@ -17,7 +17,7 @@
     "mindset": 55,
     "operations": 19,
     "productivity": 10,
-    "research": 27,
+    "research": 35,
     "sales": 13,
     "trading": 21
   },
@@ -24222,6 +24222,150 @@
         "intel",
         "crypto",
         "events"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-coinanalysis",
+      "category": "research",
+      "description": "Use when deep crypto market + on-chain research on a single coin — price, volume, supply, holder spread, trend, and on-chain activity via public APIs. Triggers on 'coinanalysis', 'analyze coin', single-coin research.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "research",
+        "crypto",
+        "coin-analysis",
+        "on-chain"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-coincompare",
+      "category": "research",
+      "description": "Use when compare multiple coins across price, volume, market cap, and supply metrics side by side via public APIs. Triggers on 'coincompare', 'compare coins', multi-coin comparison.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "research",
+        "crypto",
+        "coin-compare",
+        "comparison"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-defianalysis",
+      "category": "research",
+      "description": "Use when analyze a DeFi protocol — TVL, yields, stablecoins, bridges, and risk via DeFiLlama and public sources. Triggers on 'defianalysis', 'defi analysis', protocol TVL.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "research",
+        "crypto",
+        "defi",
+        "tvl"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-marketoverview",
+      "category": "research",
+      "description": "Use when produce a crypto market-wide snapshot — total cap, BTC dominance, top movers, and trending assets via public APIs (CoinGecko). Triggers on 'market overview', 'how is the market', macro picture.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "research",
+        "crypto",
+        "market-overview",
+        "macro"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-trendanalysis",
+      "category": "research",
+      "description": "Use when analyze crypto price trends and momentum — multi-window performance, trending assets, and directional read via public APIs (CoinGecko). Triggers on 'trend analysis', 'momentum', 'is coin trending'.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "research",
+        "crypto",
+        "trend",
+        "momentum"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-tokenonchain",
+      "category": "research",
+      "description": "Use when investigate a token's on-chain footprint — supply, holders, transfers, and contract verification via public explorers (Etherscan and equivalents). Triggers on 'token on-chain', 'holder concentration', 'contract verified'.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "research",
+        "crypto",
+        "on-chain",
+        "token"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-riskcheck",
+      "category": "research",
+      "description": "Use when risk-score a token — contract verification, honeypot heuristics, buy/sell tax, and open-source status via public explorers. Triggers on 'risk check', 'honeypot', 'token tax', 'is it safe'.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "research",
+        "crypto",
+        "risk",
+        "token"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-news-briefing",
+      "category": "research",
+      "description": "Use when produce a crypto news + sentiment briefing — latest events, trending stories, and social sentiment via web search and public sources. Triggers on 'news briefing', 'crypto news', 'what happened recently'.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "news",
+        "research",
+        "crypto",
+        "sentiment",
+        "briefing"
       ],
       "version": "1.0.0",
       "author": "oyi77",
