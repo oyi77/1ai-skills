@@ -1,18 +1,18 @@
 {
-  "generated": "2026-07-16T09:29:35.563675+00:00",
-  "total": 1348,
+  "generated": "2026-08-16T04:03:34.378593+00:00",
+  "total": 1315,
   "categories": [
     {
       "name": "cybersecurity",
-      "count": 786
+      "count": 794
     },
     {
       "name": "development",
-      "count": 90
+      "count": 91
     },
     {
       "name": "content",
-      "count": 61
+      "count": 56
     },
     {
       "name": "mindset",
@@ -20,27 +20,27 @@
     },
     {
       "name": "core",
-      "count": 46
+      "count": 47
     },
     {
       "name": "marketing",
-      "count": 45
-    },
-    {
-      "name": "integrations",
-      "count": 38
+      "count": 42
     },
     {
       "name": "devops",
-      "count": 34
+      "count": 31
     },
     {
-      "name": "automation",
-      "count": 32
+      "name": "integrations",
+      "count": 28
     },
     {
       "name": "research",
       "count": 25
+    },
+    {
+      "name": "automation",
+      "count": 20
     },
     {
       "name": "trading",
@@ -51,12 +51,8 @@
       "count": 19
     },
     {
-      "name": "agents",
-      "count": 17
-    },
-    {
       "name": "financial",
-      "count": 15
+      "count": 18
     },
     {
       "name": "mcp",
@@ -64,115 +60,115 @@
     },
     {
       "name": "sales",
-      "count": 14
+      "count": 13
     },
     {
       "name": "meta",
       "count": 13
     },
     {
-      "name": "data",
-      "count": 11
+      "name": "agents",
+      "count": 12
     },
     {
       "name": "productivity",
       "count": 10
     },
     {
-      "name": "other",
-      "count": 3
+      "name": "data",
+      "count": 7
     }
   ],
-  "categoryCount": 20,
+  "categoryCount": 19,
   "featured": [
     {
       "name": "AgentShield",
-      "description": "Agentic security patterns for AI agent systems including attack vector defense, sandboxing, input sanitization, security scanning, CVE awareness, and least-priv",
+      "description": "Use when agentic security patterns for AI agent systems including attack",
       "category": "core"
     },
     {
       "name": "Anthropic MCP Team",
-      "description": "Create MCP (Model Context Protocol) servers for any API or service. Auto-generate tools, resources, and prompts",
+      "description": "Use when creating MCP (Model Context Protocol) servers for any API or",
       "category": "mcp"
     },
     {
       "name": "Autonomous Learner",
-      "description": "Autonomous learning from execution data. Skills improve themselves by identifying patterns in successful vs failed",
+      "description": "Use when autonomous learning from execution data. Skills improve themselves",
       "category": "meta"
     },
     {
       "name": "Brendan Gregg",
-      "description": "Diagnose and fix MCP gateway routing issues, health checks, and server connectivity problems. Use when working with gateway doctor.",
+      "description": "Use when diagnose and fix MCP gateway routing issues, health checks,",
       "category": "core"
     },
     {
       "name": "Cal Newport",
-      "description": "Generate daily plans with task priorities, track shipped work, and maintain cross-session accountability using",
+      "description": "Use when generating daily plans with task priorities, tracking shipped",
       "category": "development"
     },
     {
       "name": "Continuous Improvement Lead",
-      "description": "Generate specific, actionable improvements for skills based on performance data and feedback. Create improvement",
+      "description": "Use when generating specific, actionable improvements for skills based",
       "category": "meta"
     },
     {
       "name": "Database Architect",
-      "description": "Raw data storage layer for 1ai-skills. Provides structured data persistence, query interface, and data pipeline support for skill operations.",
+      "description": "Use when raw data storage layer for 1ai-skills. Provides structured data",
       "category": "meta"
     },
     {
       "name": "Deborah Gordon",
-      "description": "Coordinate multi-agent consensus using TiDB-backed shared memory. Use when agents need to agree on decisions",
+      "description": "Use when coordinate multi-agent consensus using TiDB-backed shared memory.",
       "category": "core"
     },
     {
       "name": "Demis Hassabis",
-      "description": "Skill: agent-arena-skill. See SKILL.md body for details. Use when this domain is relevant.",
+      "description": "Use when skill: agent-arena-skill. See SKILL.md body for details. Use",
       "category": "development"
     },
     {
       "name": "Edo Liberty",
-      "description": "Generate and manage vector embeddings for semantic search and RAG retrieval across knowledge bases.",
+      "description": "Use when generating and managing vector embeddings for semantic search",
       "category": "core"
     },
     {
       "name": "Honest Self-Evaluator",
-      "description": "Skills evaluate their own performance, capabilities, and limitations. Honest self-reflection drives improvement. Use when working with self assessment.",
+      "description": "Use when skills evaluate their own performance, capabilities, and limitations.",
       "category": "meta"
     },
     {
       "name": "Kent Beck",
-      "description": "Skill: daily-dev-agentic. See SKILL.md body for details. Use when this domain is relevant.",
+      "description": "Use when skill: daily-dev-agentic. See SKILL.md body for details. Use",
       "category": "development"
     },
     {
       "name": "Kevin Kelly",
-      "description": "Skill: zhive. See SKILL.md body for details. Use when this domain is relevant.",
+      "description": "Use when skill: zhive. See SKILL.md body for details. Use when this",
       "category": "research"
     },
     {
       "name": "Knowledge Base Steward",
-      "description": "Knowledge base hub \u2014 PARA-structured company memory combining company-kb and kb for persistent context, project documentation, and agent recall across sessions.",
+      "description": "Use when knowledge base hub \u2014 PARA-structured company memory combining",
       "category": "core"
     },
     {
       "name": "Lamarck",
-      "description": "Self-improving skill system that auto-extracts patterns from sessions into reusable skills with confidence scoring, skill versioning, import/export, and continu",
+      "description": "Use when self-improving skill system that auto-extracts patterns from",
       "category": "meta"
     },
     {
       "name": "MCP Hub Operator",
-      "description": "Model Context Protocol client hub \u2014 connect AI agents to any MCP server for tool discovery, invocation, and ecosystem management. Use when working with MCP clie",
+      "description": "Use when model Context Protocol client hub \u2014 connect AI agents to any",
       "category": "mcp"
     },
     {
       "name": "Matthew Prince",
-      "description": "Manage Cloudflare DNS, CDN, and security rules via API. Use when configuring domains, SSL, WAF, or edge caching.",
+      "description": "Use when manage Cloudflare DNS, CDN, and security rules via API. Use",
       "category": "core"
     },
     {
       "name": "Mikolov et al.",
-      "description": "Zero-copy vector operations for efficient similarity search and embedding storage in agent memory systems. Use when working with zvec.",
+      "description": "Use when zero-copy vector operations for efficient similarity search",
       "category": "core"
     }
   ],
@@ -278,10 +274,6 @@
       "category": "mindset"
     },
     {
-      "name": "ad-copy",
-      "category": "content"
-    },
-    {
       "name": "ad-creative",
       "category": "marketing"
     },
@@ -292,6 +284,10 @@
     {
       "name": "adcp-advertising",
       "category": "marketing"
+    },
+    {
+      "name": "adhd",
+      "category": "core"
     },
     {
       "name": "ads-manager",
@@ -308,10 +304,6 @@
     {
       "name": "agent-docs",
       "category": "core"
-    },
-    {
-      "name": "agent-orchestrator",
-      "category": "agents"
     },
     {
       "name": "agent-reach",
@@ -407,10 +399,6 @@
     },
     {
       "name": "analytics-dashboard",
-      "category": "marketing"
-    },
-    {
-      "name": "analytics-reporting",
       "category": "marketing"
     },
     {
@@ -722,10 +710,6 @@
       "category": "development"
     },
     {
-      "name": "anomaly-detect",
-      "category": "data"
-    },
-    {
       "name": "ansible-automation",
       "category": "devops"
     },
@@ -878,6 +862,10 @@
       "category": "trading"
     },
     {
+      "name": "book-to-skill",
+      "category": "core"
+    },
+    {
       "name": "bots",
       "category": "automation"
     },
@@ -890,12 +878,12 @@
       "category": "development"
     },
     {
-      "name": "browser-testing-devtools",
-      "category": "development"
+      "name": "browser-extension-reverse",
+      "category": "cybersecurity"
     },
     {
-      "name": "browser-use",
-      "category": "agents"
+      "name": "browser-testing-devtools",
+      "category": "development"
     },
     {
       "name": "bug-chain-builder",
@@ -1122,6 +1110,10 @@
       "category": "devops"
     },
     {
+      "name": "claude-office-skills",
+      "category": "integrations"
+    },
+    {
       "name": "clawild-moltbook",
       "category": "automation"
     },
@@ -1178,10 +1170,6 @@
       "category": "cybersecurity"
     },
     {
-      "name": "collecting-open-source-intelligence",
-      "category": "cybersecurity"
-    },
-    {
       "name": "collecting-threat-intelligence-with-misp",
       "category": "cybersecurity"
     },
@@ -1212,10 +1200,6 @@
     {
       "name": "competitor-alternatives",
       "category": "marketing"
-    },
-    {
-      "name": "computer-use",
-      "category": "agents"
     },
     {
       "name": "conducting-api-security-testing",
@@ -1398,10 +1382,6 @@
       "category": "content"
     },
     {
-      "name": "content-monitor",
-      "category": "automation"
-    },
-    {
       "name": "content-planner-auto",
       "category": "content"
     },
@@ -1458,10 +1438,6 @@
       "category": "mindset"
     },
     {
-      "name": "cron-designer",
-      "category": "automation"
-    },
-    {
       "name": "cross-cultural-communication",
       "category": "mindset"
     },
@@ -1502,10 +1478,6 @@
       "category": "content"
     },
     {
-      "name": "data-cleaner",
-      "category": "data"
-    },
-    {
       "name": "data-pipeline-engine",
       "category": "research"
     },
@@ -1536,6 +1508,10 @@
     {
       "name": "decision-making",
       "category": "mindset"
+    },
+    {
+      "name": "defi-incident-analysis",
+      "category": "cybersecurity"
     },
     {
       "name": "defi-protocols",
@@ -1671,10 +1647,6 @@
     },
     {
       "name": "detecting-business-email-compromise",
-      "category": "cybersecurity"
-    },
-    {
-      "name": "detecting-business-email-compromise-with-ai",
       "category": "cybersecurity"
     },
     {
@@ -1966,14 +1938,6 @@
       "category": "integrations"
     },
     {
-      "name": "discord-bot",
-      "category": "integrations"
-    },
-    {
-      "name": "discord-webhooks",
-      "category": "integrations"
-    },
-    {
       "name": "dispatching-parallel-agents",
       "category": "research"
     },
@@ -1982,19 +1946,11 @@
       "category": "devops"
     },
     {
-      "name": "docker-compose",
-      "category": "devops"
-    },
-    {
-      "name": "dockerfile-opt",
-      "category": "devops"
-    },
-    {
       "name": "dockerfile-optimize",
       "category": "devops"
     },
     {
-      "name": "docx-creator",
+      "name": "document-creator",
       "category": "content"
     },
     {
@@ -2004,6 +1960,10 @@
     {
       "name": "drone-ci",
       "category": "devops"
+    },
+    {
+      "name": "dsl-vm-reverse",
+      "category": "cybersecurity"
     },
     {
       "name": "dynamodb-patterns",
@@ -2038,7 +1998,7 @@
       "category": "marketing"
     },
     {
-      "name": "email-writer",
+      "name": "emil-design-skills",
       "category": "content"
     },
     {
@@ -2250,10 +2210,6 @@
       "category": "cybersecurity"
     },
     {
-      "name": "fable-mode",
-      "category": "agents"
-    },
-    {
       "name": "faceless-youtube",
       "category": "content"
     },
@@ -2374,24 +2330,16 @@
       "category": "integrations"
     },
     {
-      "name": "github-actions",
-      "category": "integrations"
-    },
-    {
-      "name": "github-issues",
-      "category": "integrations"
-    },
-    {
       "name": "github-mcp",
       "category": "mcp"
     },
     {
-      "name": "github-pr",
-      "category": "integrations"
-    },
-    {
       "name": "gl-reconciler",
       "category": "financial"
+    },
+    {
+      "name": "go-rust-reverse",
+      "category": "cybersecurity"
     },
     {
       "name": "google-canvas",
@@ -2428,6 +2376,10 @@
     {
       "name": "habit-formation",
       "category": "mindset"
+    },
+    {
+      "name": "hack-skills",
+      "category": "cybersecurity"
     },
     {
       "name": "hackingtool",
@@ -2620,10 +2572,6 @@
     {
       "name": "hunting-for-webshell-activity",
       "category": "cybersecurity"
-    },
-    {
-      "name": "ifttt-maker",
-      "category": "automation"
     },
     {
       "name": "image-gen",
@@ -3343,15 +3291,15 @@
     },
     {
       "name": "investment-bottleneck",
-      "category": "other"
+      "category": "financial"
     },
     {
       "name": "investment-earnings",
-      "category": "other"
+      "category": "financial"
     },
     {
       "name": "investment-industry",
-      "category": "other"
+      "category": "financial"
     },
     {
       "name": "ionic-capacitor",
@@ -3382,10 +3330,6 @@
       "category": "operations"
     },
     {
-      "name": "jira-api",
-      "category": "integrations"
-    },
-    {
       "name": "job-hunter",
       "category": "automation"
     },
@@ -3406,8 +3350,8 @@
       "category": "core"
     },
     {
-      "name": "k8s-deploy",
-      "category": "devops"
+      "name": "js-reverse",
+      "category": "cybersecurity"
     },
     {
       "name": "kafka-patterns",
@@ -3450,6 +3394,10 @@
       "category": "core"
     },
     {
+      "name": "kb-memory",
+      "category": "core"
+    },
+    {
       "name": "kernel-killer",
       "category": "cybersecurity"
     },
@@ -3470,16 +3418,16 @@
       "category": "core"
     },
     {
+      "name": "langchain-skills",
+      "category": "integrations"
+    },
+    {
       "name": "larry-playbook",
       "category": "content"
     },
     {
       "name": "launch-strategy",
       "category": "marketing"
-    },
-    {
-      "name": "lead-generation-engine",
-      "category": "sales"
     },
     {
       "name": "lead-magnets",
@@ -3524,10 +3472,6 @@
     {
       "name": "llm-deployment",
       "category": "core"
-    },
-    {
-      "name": "long-form",
-      "category": "content"
     },
     {
       "name": "lynk",
@@ -3596,10 +3540,6 @@
     {
       "name": "memory-knowledge-graph",
       "category": "mcp"
-    },
-    {
-      "name": "memory-system",
-      "category": "core"
     },
     {
       "name": "mental-models",
@@ -3678,10 +3618,6 @@
       "category": "research"
     },
     {
-      "name": "n8n-builder",
-      "category": "automation"
-    },
-    {
       "name": "n8n-workflows",
       "category": "automation"
     },
@@ -3722,14 +3658,6 @@
       "category": "productivity"
     },
     {
-      "name": "notion-api",
-      "category": "integrations"
-    },
-    {
-      "name": "notion-db",
-      "category": "integrations"
-    },
-    {
       "name": "notion-integration",
       "category": "integrations"
     },
@@ -3738,8 +3666,8 @@
       "category": "mcp"
     },
     {
-      "name": "notion-pages",
-      "category": "integrations"
+      "name": "novel-writing",
+      "category": "content"
     },
     {
       "name": "observability",
@@ -3770,8 +3698,16 @@
       "category": "integrations"
     },
     {
+      "name": "old-coder",
+      "category": "development"
+    },
+    {
       "name": "omniroute-integration",
       "category": "core"
+    },
+    {
+      "name": "onchain-transaction-forensics",
+      "category": "cybersecurity"
     },
     {
       "name": "operations-team",
@@ -3812,10 +3748,6 @@
     {
       "name": "payment-invoicing",
       "category": "operations"
-    },
-    {
-      "name": "pdf-creator",
-      "category": "content"
     },
     {
       "name": "pentest-agent-orchestrator",
@@ -4594,10 +4526,6 @@
       "category": "development"
     },
     {
-      "name": "pptx-creator",
-      "category": "content"
-    },
-    {
       "name": "prd-generator",
       "category": "development"
     },
@@ -4608,10 +4536,6 @@
     {
       "name": "presentation-design",
       "category": "mindset"
-    },
-    {
-      "name": "price-tracker",
-      "category": "automation"
     },
     {
       "name": "pricing-frameworks",
@@ -4636,10 +4560,6 @@
     {
       "name": "processing-stix-taxii-feeds",
       "category": "cybersecurity"
-    },
-    {
-      "name": "product-desc",
-      "category": "content"
     },
     {
       "name": "product-market-fit",
@@ -4732,10 +4652,6 @@
     {
       "name": "replicate-runner",
       "category": "core"
-    },
-    {
-      "name": "report-gen",
-      "category": "data"
     },
     {
       "name": "report-generator",
@@ -4958,10 +4874,6 @@
       "category": "devops"
     },
     {
-      "name": "session-brain",
-      "category": "core"
-    },
-    {
       "name": "shadcn-ui",
       "category": "content"
     },
@@ -4990,20 +4902,8 @@
       "category": "integrations"
     },
     {
-      "name": "slack-bot",
-      "category": "integrations"
-    },
-    {
       "name": "slack-mcp",
       "category": "mcp"
-    },
-    {
-      "name": "slack-notifier",
-      "category": "integrations"
-    },
-    {
-      "name": "slash-commands",
-      "category": "integrations"
     },
     {
       "name": "smart-contract-dev",
@@ -5012,10 +4912,6 @@
     {
       "name": "smart-contract-exploiter",
       "category": "cybersecurity"
-    },
-    {
-      "name": "smart-scraper",
-      "category": "automation"
     },
     {
       "name": "social-engineer",
@@ -5028,10 +4924,6 @@
     {
       "name": "social-intelligence",
       "category": "research"
-    },
-    {
-      "name": "social-listener",
-      "category": "automation"
     },
     {
       "name": "social-media-engagement",
@@ -5048,6 +4940,10 @@
     {
       "name": "spec-driven-development",
       "category": "development"
+    },
+    {
+      "name": "src-hunter",
+      "category": "cybersecurity"
     },
     {
       "name": "stakeholder-management",
@@ -5104,10 +5000,6 @@
     {
       "name": "subagent-driven-development",
       "category": "development"
-    },
-    {
-      "name": "subagent-orchestration",
-      "category": "agents"
     },
     {
       "name": "supabase-mcp",
@@ -5176,10 +5068,6 @@
     {
       "name": "tekton-pipelines",
       "category": "devops"
-    },
-    {
-      "name": "telegram-bot",
-      "category": "automation"
     },
     {
       "name": "telegram-userbot",
@@ -5298,20 +5186,16 @@
       "category": "content"
     },
     {
-      "name": "tiktok-automation",
-      "category": "marketing"
-    },
-    {
-      "name": "tiktok-carousel-creator",
-      "category": "marketing"
-    },
-    {
-      "name": "tiktok-terintegrasi",
+      "name": "tiktok-marketing",
       "category": "marketing"
     },
     {
       "name": "time-management",
       "category": "mindset"
+    },
+    {
+      "name": "token-nft-scam-investigation",
+      "category": "cybersecurity"
     },
     {
       "name": "tracking-threat-actor-infrastructure",
@@ -5368,10 +5252,6 @@
     {
       "name": "twitter-automation",
       "category": "marketing"
-    },
-    {
-      "name": "twitter-bot",
-      "category": "automation"
     },
     {
       "name": "typeorm-patterns",
@@ -5470,10 +5350,6 @@
       "category": "development"
     },
     {
-      "name": "viz-creator",
-      "category": "data"
-    },
-    {
       "name": "voice-ai",
       "category": "content"
     },
@@ -5502,6 +5378,10 @@
       "category": "development"
     },
     {
+      "name": "wallet-address-intelligence",
+      "category": "cybersecurity"
+    },
+    {
       "name": "web3-auditor",
       "category": "cybersecurity"
     },
@@ -5510,20 +5390,12 @@
       "category": "integrations"
     },
     {
-      "name": "webhook-router",
-      "category": "automation"
-    },
-    {
       "name": "webpack-config",
       "category": "development"
     },
     {
       "name": "websocket",
       "category": "development"
-    },
-    {
-      "name": "whatsapp-bot",
-      "category": "automation"
     },
     {
       "name": "wolf-finance",
@@ -5556,14 +5428,6 @@
     {
       "name": "xauusd-asia-7c-breakout",
       "category": "trading"
-    },
-    {
-      "name": "xlsx-creator",
-      "category": "content"
-    },
-    {
-      "name": "zapier-alt",
-      "category": "automation"
     },
     {
       "name": "zapier-patterns",

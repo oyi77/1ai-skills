@@ -89,3 +89,17 @@ Execute these steps sequentially:
 | "I'll just read the source" | Help is faster than grepping source. It is the single entry point — use it first |
 | "I already know the commands" | Flags change, options get added. A 5-second help check prevents stale assumptions |
 | "I can guess the flag names" | `--rank-by-impact` vs `--sort-by-size` — guessing wastes more time than reading help once |
+
+## Process
+
+1. **Invoke** `ponytail help` for full reference
+2. **Filter** by mode if needed: `--mode audit|debt|review`
+3. **Show examples** with `--examples` for usage patterns
+4. **Apply** relevant mode to current task
+
+## Verification
+
+- Help output displays without errors
+- All modes listed with correct descriptions
+- Examples match current CLI behavior
+- Output parseable with `--json` flag

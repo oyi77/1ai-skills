@@ -91,7 +91,7 @@ Automated TikTok marketing toolkit for the Indonesian market. Covers content pos
 5. **Engage** — Auto-like, comment, and follow based on engagement rules
 6. **Monitor** — Track performance metrics and adjust strategy
 
-## Verification Checklist
+## Verification
 
 - [ ] All accounts authenticated and posting successfully
 - [ ] Content posts at scheduled WIB times

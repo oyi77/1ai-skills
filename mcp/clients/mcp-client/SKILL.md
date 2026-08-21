@@ -123,3 +123,14 @@ Execute these steps sequentially:
 | "I'll just use curl/requests directly" | MCP handles auth, retries, streaming, and type-safe schemas — curl duplicates all of that manually |
 | "I only need one connection, no abstraction needed" | One connection today becomes three next month. The client abstraction pays for itself at server #2 |
 | "Synchronous calls are fine" | MCP pipelines need async for parallel tool execution. Plan for it from the start |
+
+## Process
+
+1. **Connect** — Create `MCPClient` with transport (stdio, SSE, HTTP) and server command
+2. **Discover** — Call `list_tools()` to get typed schemas for all available tools
+3. **Invoke** — Call `call_tool(name, params)` with validated JSON Schema inputs
+4. **Handle Errors** — Retry with exponential backoff, handle MCP error codes gracefully
+5. **Disconnect** — Call `disconnect()` to clean up processes, avoid dangling resources
+6. **Monitor** — Health checks, reconnect on failure, log tool invocations for debugging
+
+## Anti-Rationalization Table

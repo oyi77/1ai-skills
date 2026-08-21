@@ -95,3 +95,18 @@ Execute these steps sequentially:
 | "This interface will be useful later" | The interface is a bet. Until there are two implementations, it costs more (indirection, boilerplate) than it saves |
 | "One more dependency doesn't matter" | Every dependency is a supply chain risk, API surface, and version lock. Prove stdlib cannot do it first |
 | "It's just a few comments" | Comments that restate the code are noise. Delete them and make the code self-documenting |
+
+## Process
+
+1. **Stage changes** — `git add -A` then review the staged diff
+2. **Run review** — `ponytail review --diff "$(git diff --cached)"`
+3. **Apply cuts** — For each finding: delete or keep. Target 50% line reduction
+4. **Verify** — Run tests, ensure no regressions, re-review if needed
+
+## Verification
+
+- Review output displays without errors
+- All findings classified with severity
+- Recommended cuts are safe (tests pass after application)
+- No critical functionality removed
+- Net line count reduced by target percentage

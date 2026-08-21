@@ -270,7 +270,23 @@ On completion: "Strategy [name] - Sharpe: [N], PF: [N], Win%: [N]%, MaxDD: [N]%,
 
 
 ## Workflow
-See the parent skill for authoritative workflow documentation.
+
+1. **Discover** — Identify revenue streams matching your assets and constraints
+2. **Validate** — Quick test each stream with minimum viable effort
+3. **Select** — Rank by expected value / time-to-revenue ratio
+4. **Execute** — Deploy using strategy design pipeline
+5. **Monitor** — Track leading indicators, adjust allocation
+6. **Scale** — Double down on winners, kill losers
+
+## Verification
+
+All strategies must pass verification before live deployment:
+- Strategy design verified: entry/exit rules defined, parameters quantified, risk controls documented
+- Backtest verified: quality data, realistic slippage/commission, metrics in expected ranges
+- Optimization verified: out-of-sample testing, walk-forward analysis, no data snooping
+- Scenario testing verified: regime stress tests, correlation analysis, tail risk assessment
+- Live trading verified: position sizing, risk limits, emergency stops configured
+
 ## Process
 
 1. **Discover** — Identify revenue streams matching your assets and constraints

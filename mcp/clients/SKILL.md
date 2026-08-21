@@ -40,6 +40,9 @@ category: mcp
 # MCP Clients Hub — Model Context Protocol Client Ecosystem
 
 
+## Overview
+
+MCP Clients Hub is the central client layer for the Model Context Protocol ecosystem. It provides tool discovery, invocation, and ecosystem management for connecting AI agents to any MCP server. This skill covers client architecture, server discovery, tool chaining, and cross-platform integration patterns.
 
 ## When Not to Use
 
@@ -443,7 +446,16 @@ For pipeline results:
 }
 ```
 
-## Verification Checklist
+## Process
+
+1. **Discover** — `mcp-discover scan --network 192.168.1.0/24` → find all servers
+2. **Connect** — `mcp-client.connect()` for each server, validate tool schemas
+3. **Chain** — Build pipelines: server A output → server B input → server C output
+4. **Orchestrate** — Use `swarm` skill for parallel independent tasks across servers
+5. **Monitor** — Health checks, auto-reconnect, swap failed servers
+6. **Scale** — Add servers, compose workflows, measure revenue per server
+
+## Verification
 
 - [ ] `mcp-discover` lists all expected servers with their tool schemas
 - [ ] `mcp-client.connect()` succeeds for each discovered server

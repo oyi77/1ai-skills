@@ -104,6 +104,16 @@ def price_from_slug(slug: str) -> float:
 | "This niche market has no competition — easy money" | Low-liquidity markets carry high slippage and manipulation risk. The edge may vanish when you try to exit. Size accordingly and prefer liquid venues. |
 | "My model is correct and the market is wrong" | Your model is a hypothesis, not ground truth. Track calibration — if your probability estimates are systematically off, recalibrate the model, don't blame the market. |
 
+## Verification
+
+All analysis must pass verification before deployment:
+- Probability estimates validated against base rates and historical calibration
+- Expected value calculations cross-checked with Kelly criterion sizing
+- Data sources verified for authority, currency, objectivity, accuracy
+- Market liquidity and slippage assessed before position sizing
+- Model calibration tracked over time with Brier score and log-loss metrics
+- Risk limits enforced: max position size, max portfolio allocation, stop-loss triggers
+
 ## Code Examples
 
 ```python

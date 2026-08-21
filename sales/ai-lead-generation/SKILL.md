@@ -27,6 +27,9 @@ category: sales
 AI lead generation is a $500-5K/month service you can sell to B2B companies. Each booked meeting is worth $50-500 in service revenue. At 3-15% conversion from outreach to meeting, with 500 prospects/month at $0.50-5/lead cost, you generate $2.5K-25K pipeline value per month.
 
 
+## Overview
+
+AI lead generation automates the full B2B prospecting pipeline: ICP definition, prospect sourcing, data enrichment, AI-personalized outreach, and meeting booking. This skill covers the complete methodology, tool stack, templates, and metrics to generate qualified B2B leads at scale without manual effort.
 
 ## When Not to Use
 
@@ -458,4 +461,20 @@ Use this skill when working with ai lead generation.
 
 
 ## Workflow
-See the parent skill for authoritative workflow documentation.
+
+1. **Define ICP** — Use framework: firmographics, technographics, behavioral, psychographic signals
+2. **Source Prospects** — Apollo/LinkedIn Sales Nav/Crunchbase → 500-5000 prospects
+3. **Enrich Data** — Clearbit/Clay/People Data Labs → company + personal + intent data
+4. **Score & Segment** — Fit + intent scoring → A/B/C/D grades
+5. **Personalize Outreach** — AI analyzes content, generates custom hooks and openers
+6. **Multi-Channel Sequence** — Email + LinkedIn + Twitter (5-touch over 21 days)
+6. **Book Meetings** — Calendly/Cal.com integration, track to CRM
+7. **Track & Optimize** — Daily pipeline report, A/B test subjects, weekly score recalibration
+
+## Process
+
+1. **Setup** — Define ICP, install tool stack (Apollo, Clearbit, Instantly, Calendly)
+2. **Daily Cron** — Scan signals → score leads → generate outreach → send → report
+3. **Weekly Review** — Pipeline report by grade, recalibrate scoring, A/B test subjects
+4. **Monthly** — Recalculate ICP, update signals, version criteria, retrain personalization
+

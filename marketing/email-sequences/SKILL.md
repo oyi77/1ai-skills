@@ -24,6 +24,11 @@ category: marketing
 
 Email sequences directly drive revenue. A welcome sequence converts 3-10% of new subscribers. A nurture sequence turns 2-5% of leads into customers. Re-engagement reclaims 10-15% of dormant subscribers. For a 10K subscriber list at $50 average order, a 5% conversion sequence = $25,000.
 
+
+## Overview
+
+Email sequences automate the customer journey through pre-written, trigger-based emails. This skill covers the complete methodology: welcome series, nurture funnels, re-engagement campaigns, transactional flows, abandoned cart recovery, personalization patterns, A/B testing, deliverability optimization, and segmentation strategies. All templates are copy-ready with placeholders.
+
 ## Revenue Streams
 1. **Email Sequence Setup ($1K-5K/client)** — build automations for businesses
 2. **Sequence Templates ($47-197/set)** — sell pre-built sequences
@@ -409,6 +414,16 @@ On completion: "[N]-email sequence created for [goal], expected [N]% conversion 
 | "Automation is too complex" | One trigger → one email → one goal |
 | "I'll design sequences after launch" | Build sequences before you have subscribers |
 
+## Process
+
+1. **Audit** — List all subscriber touchpoints, identify gaps in journey
+2. **Map** — Define triggers, delays, and goals for each sequence type
+3. **Write** — Draft emails using templates above, personalize placeholders
+4. **Build** — Configure in ESP (MailerLite, ConvertKit, ActiveCampaign, etc.)
+5. **Test** — Send test emails, verify links, merge tags, render across clients
+5. **Launch** — Activate sequences, monitor first 48h for deliverability
+6. **Optimize** — A/B test subject lines, track metrics, iterate weekly
+
 ## Verification
 
 - Sequence fires correctly from each trigger condition
@@ -421,7 +436,3 @@ On completion: "[N]-email sequence created for [goal], expected [N]% conversion 
 - Exit/removal logic terminates sequences on conversion
 - Test sends reach inbox, not spam
 - Re-engagement sequence leads to suppression, not infinite emails
-
-
-## Workflow
-See the parent skill for authoritative workflow documentation.

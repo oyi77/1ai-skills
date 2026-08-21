@@ -970,6 +970,21 @@ def dispatch(notification: dict) -> list[dict]:
 
 ---
 
+## Verification
+
+All notification channels must pass verification before production deployment:
+- Each channel tested independently with real credentials
+- Email deliverability verified: SPF, DKIM, DMARC passing (MXToolbox)
+- SMS numbers in E.164 format, international prefix confirmed
+- Slack/Discord/Telegram/WhatsApp/FCM/APNs channels tested end-to-end
+- Deduplication tested: same event fired twice within TTL produces one notification
+- Concurrent trigger guard: 3 simultaneous API calls produce one notification
+- Retry logic: invalid credentials handled, backoff delay observed
+- Dead letter queue populated on final failure, inspectable via admin
+- Rate limits documented per channel and monitored
+- Emergency rollback: disable all notifications, stop workers, drain queue
+- Monitoring: alerts fire when delivery failure rate exceeds 5%
+
 ## Verification Checklist
 
 - [ ] Each channel tested independently with real credentials

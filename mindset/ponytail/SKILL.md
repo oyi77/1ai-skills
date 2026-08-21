@@ -38,7 +38,12 @@ category: mindset
 
 **Combined ROI:** A team that consistently applies ponytail principles ships **2–3x faster** with **50% fewer bugs** because complexity never accumulates. Every line not written is a line never debugged, deployed, or maintained.
 
+
 ---
+
+## Overview
+
+Ponytail is a disciplined engineering mindset with four modes: **Audit** (finds over-engineering), **Debt** (tracks shortcuts), **Help** (quick reference), **Review** (diff analysis). It enforces YAGNI, stdlib-first, no speculative abstractions. Use when you need to cut complexity, track deferrals, find skills fast, or review diffs for over-engineering.
 
 ## When to Use
 
@@ -426,7 +431,22 @@ Usage: ponytail <mode> [options]
 - **Stdlib first** — Before adding a dependency, prove stdlib cannot do it.
 - **YAGNI** — You aren't gonna need it. Ship less code.
 
----
+## Process
+
+1. **Audit** — `ponytail audit --path "src/" --rank-by-impact` → rank findings by LOC savings
+2. **Debt** — `ponytail debt --scan` → harvest `ponytail:` comments into ledger
+3. **Review** — `ponytail review --diff "$(git diff --cached)"` → find over-engineering
+4. **Help** — `ponytail help --mode audit` → quick reference for any mode
+5. **Weekly cycle** — Run all four modes, apply top findings, track LOC reduction
+
+## Verification
+
+- Audit complete: all unnecessary abstractions, wrappers, dead code identified and ranked
+- Debt scan complete: all `ponytail:` comments in ledger with ceiling and upgrade path
+- Review complete: one-line findings for each over-engineering pattern, net LOC calculated
+- Help reference card displays all modes and options correctly
+- Total repo LOC decreased after applying top audit findings
+- Weekly debt review scheduled to prevent forgotten shortcuts
 
 ## Verification Checklist
 

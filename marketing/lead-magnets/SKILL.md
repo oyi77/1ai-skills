@@ -83,7 +83,7 @@ Choose the format that matches your audience's intent:
 | Case Study | Social proof, B2B decision makers | Medium | 15-25% |
 
 
-## Anti-Rationalization Table
+### Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|
@@ -195,18 +195,23 @@ print(result)
 - **Bounce rate above 70%**: Landing page mismatch or slow load times
 - **Attribution gaps**: Missing UTM parameters or broken tracking pixels
 
-# Verification
+## Verification
 
-- [ ] Skill output matches expected behavior
+All lead magnets must pass verification before launch:
+- [ ] Type matches audience pain point and solves a specific problem
+- [ ] Content is complete, accurate, and provides immediate value
+- [ ] Landing page headline matches ad/promotion promise
+- [ ] Form only asks for essential info (email + 1 field max)
+- [ ] Delivery is instant (email with direct link, not attachment)
+- [ ] Thank-you page confirms delivery and sets next expectations
+- [ ] UTM parameters on all promotion links for tracking
+- [ ] Thank-you email sent within 1 minute with download link
+- [ ] Welcome sequence triggered for new subscribers
+- [ ] Conversion tracking fires on form submit and email open
+- [ ] A/B test configured for headline and CTA
+- [ ] Thank-you page has secondary CTA (social follow, share, upsell)
 
-# Additional Resources
-
-- Review the 1ai-skills repository for related marketing skills
-- Check the references/ directory for checklists and templates
-- Join the community for best practices and support
-- Contribute improvements via pull requests
-
-# Anti-Rationalization
+## Anti-Rationalization Table
 
 | Excuse | Truth |
 |---|---|
@@ -214,6 +219,6 @@ print(result)
 | "Nobody will download it" | Test with $20 Facebook traffic. If <5% convert, iterate |
 | "I'll create it when I have more time" | 60 minutes = done. Right now. |
 
-# Output Format
+## Output Format
 
 On completion: "[Type] lead magnet created, expected [N]% conversion on [N] visitors = [N] leads/month"

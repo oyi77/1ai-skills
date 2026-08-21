@@ -28,6 +28,9 @@ category: sales
 This pipeline converts leads into cash. Each stage advance increases deal probability: NEW (5%) → CONTACTED (10%) → QUALIFIED (25%) → DEMO (40%) → PROPOSAL (60%) → NEGOTIATION (80%) → CLOSED_WON (100%). Moving 10 leads through the full pipeline per month at $2K average deal size = $20K monthly revenue.
 
 
+## Overview
+
+The sales pipeline automates B2B deal tracking from lead capture to close. It tracks leads through 7 stages (NEW → CONTACTED → QUALIFIED → DEMO → PROPOSAL → NEGOTIATION → CLOSED_WON), qualifies with BANT, generates proposals, schedules follow-ups, and provides daily sales analytics. Integrates with 1ai-engage for lead capture and 1ai-social for content-driven pipeline.
 
 ## When Not to Use
 
