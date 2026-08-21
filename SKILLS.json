@@ -1,8 +1,7 @@
 {
-  "total_skills": 1317,
+  "total_skills": 1321,
   "category_count": 19,
   "categories": {
-    "agents": 14,
     "automation": 20,
     "content": 56,
     "core": 47,
@@ -18,7 +17,7 @@
     "mindset": 55,
     "operations": 19,
     "productivity": 10,
-    "research": 23,
+    "research": 27,
     "sales": 13,
     "trading": 21
   },
@@ -24160,6 +24159,74 @@
       "author": "oyi77",
       "subdomain": "trading",
       "type": "trading"
+    },
+    {
+      "name": "gate-info-research",
+      "category": "research",
+      "description": "Use when running Gate.io crypto research playbooks — coin deep-dives, market/competitor scans, narrative tracking, project due-diligence. Triggers on 'research gate', 'gate research', coin fundamentals, market structure analysis.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "research",
+        "crypto",
+        "market-analysis"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-risk",
+      "category": "research",
+      "description": "Use when assessing Gate.io coin risk — single/multi-coin risk scoring, risk+news correlation. Triggers on 'risk gate', 'gate risk', coin risk assessment, due-diligence risk checks.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "risk",
+        "crypto",
+        "risk-assessment"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-web3",
+      "category": "research",
+      "description": "Use when running Gate.io Web3/on-chain investigation playbooks — DeFi protocol analysis, on-chain forensics, contract/token audits. Triggers on 'web3 gate', 'gate web3', defi analysis, on-chain investigation.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "web3",
+        "defi",
+        "on-chain"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-news-intel",
+      "category": "research",
+      "description": "Use when running Gate.io news/events/UGC intel playbooks — crypto news tracking, event impact, market-wide sentiment. Triggers on 'news gate', 'gate news', crypto events, market sentiment intel.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "news",
+        "intel",
+        "crypto",
+        "events"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
     }
   ],
   "tooling_dirs": [
