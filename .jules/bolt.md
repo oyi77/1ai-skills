@@ -31,3 +31,6 @@
 ## 2025-02-28 - PyYAML C-extension usage for serialization
 **Learning:** Just like `yaml.safe_load()`, using `yaml.safe_dump()` in pure Python creates a massive CPU bottleneck during batch operations (like fixing hundreds of `SKILL.md` frontmatters).
 **Action:** When updating or serializing multiple YAML files, use `yaml.dump(..., Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))` to dramatically improve performance by utilizing the PyYAML C-extension (`libyaml`) when available.
+## 2024-05-24 - Pre-compiled Regexes for High-Volume Parsing
+**Learning:** In scripts that parse large volumes of Markdown files, repeatedly calling `re.match()` or `re.finditer()` with inline string patterns inside loops creates significant overhead due to regex compilation and cache lookups. For instance, in `scripts/test_quality.py`, optimizing parsing logic by manually finding substrings reduces performance compared to using pre-compiled regex objects at the module-level.
+**Action:** When implementing parsing tools that iterate over thousands of files, hoist `re.compile()` calls to the module level instead of using inline `re.match()` inside loops. Avoid manual string manipulation fast-paths (like `split()` or `startswith()`) as they compromise correctness; use `re.compile()` for the optimal balance of speed and robustness.
