@@ -33,7 +33,9 @@ context, auto-chaining orchestrator, and feedback loops that learn.
 
 ---
 
+## Overview
 
+Marketing Ops is a complete AI-powered marketing & sales operating system for solo founders. It covers the full revenue lifecycle: customer research, content creation, SEO/GEO/SMO optimization, paid ads, email sequences, sales enablement, CRO, pricing, retention, analytics, automation, and global expansion. Includes stage-based playbooks ($0 → $100K MRR), AI agent orchestration, PLG frameworks, Indonesia e-commerce, and decision-making infrastructure.
 
 ## When Not to Use
 

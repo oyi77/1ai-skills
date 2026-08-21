@@ -96,3 +96,18 @@ Execute these steps sequentially:
 | "I'll remember to fix this later" | You won't. Without a ledger, every temporary hack is permanent. Write the ceiling and upgrade path now |
 | "Tracking debt is overhead" | One weekly 5-minute scan prevents one production incident per quarter. The ROI is 100:1 |
 | "My TODO comments are enough" | TODOs have no ceiling, no upgrade path, and no accountability. Debt ledger forces structure |
+
+## Process
+
+1. **Scan** — `ponytail debt --scan` harvests every `ponytail:` comment into `.ponytail/debt.md`
+2. **Review ledger** — Read ranked entries by directory, highest density = biggest risk
+3. **Prioritize 3** — Fix entries whose ceiling is closest to breach
+4. **Schedule review** — Weekly 5-minute scan prevents forgotten deferrals
+
+## Verification
+
+- Debt ledger generated without errors
+- All entries have ceiling and upgrade path
+- Entries grouped by directory to surface high-risk areas
+- Weekly review scheduled and executed
+- Top 3 entries by ceiling urgency have fix tickets assigned

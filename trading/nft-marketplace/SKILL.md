@@ -747,6 +747,15 @@ function buyWithAllowlist(bytes32[] calldata proof) external payable {
 - **Fee-on-transfer NFT tokens** — If token contract charges a transfer fee, `msg.value == price` underpays seller. Track actual received balance.
 - **Off-chain order replay across chains** — Signature lacks `chainId` in EIP-712 domain. Anyone can replay an Ethereum order on Polygon without binding `chainId`.
 
+## Verification
+
+All marketplace contracts must pass security audit before mainnet deployment. Key verification gates:
+- Protocol fee enforcement and cap verification
+- Reentrancy guards on all payable functions
+- Royalty deduction before seller payout (EIP-2981)
+- Off-chain order signing uses EIP-712 with chainId, nonce, deadline
+- Metadata IPFS/Arweave CIDs verified for CIDv1 format and schema compliance
+
 ## Verification Checklist
 
 ### Token Standard
@@ -788,6 +797,16 @@ function buyWithAllowlist(bytes32[] calldata proof) external payable {
 | "Royalty enforcement is mandatory for growth" | Markets enforcing EIP-2981 (OpenSea legacy) lost volume to optional-royalty markets (Blur). The trade-off between creator alignment and liquidity capture is real. |
 | "Event logs are sufficient — I don't need a subgraph" | Ethereum prunes event logs after ~128 blocks. Without an indexer, floor price trends and historical trade data are inaccessible. |
 | "ERC-1155 is always cheaper than ERC-721" | Batch mints are cheaper, but single transfers cost more due to the `amount` parameter. Profile your use case before choosing. |
+
+## Process
+
+1. **Scope** — Define token standard, order book model, royalty policy, and target volume
+2. **Architecture** — On-chain escrow (<$100K vol) or off-chain signed orders (scale)
+3. **Contracts** — Settlement, reentrancy guards, fee enforcement, royalty deduction
+3. **Metadata** — IPFS/Arweave CIDs, CIDv1, schema validation, Arweave confirmation
+4. **Integration** — Reservoir/Seaport aggregation, subgraph for indexing
+5. **Test** — Hardhat/Foundry: list/buy/cancel, auctions, royalty math, lazy minting
+6. **Deploy** — Mainnet with monitoring: floor price, trait bids, reentrancy alerts
 
 ## Workflow
 

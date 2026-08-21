@@ -1063,6 +1063,18 @@ contract CircuitBreaker {
 - **Missing `whenNotPaused` on critical functions** — Bypasses emergency stop.
 - **No freshness check on Oracle prices** — Must check `updatedAt`.
 
+## Verification
+
+All contracts must pass security verification before mainnet deployment:
+- Checks-Effects-Interactions pattern enforced on all state-changing functions
+- ReentrancyGuard on all external state-altering functions
+- AccessControl or Ownable2Step for all admin functions
+- Upgradeable contracts: `_disableInitializers()` in constructor, `__gap` arrays, UUPS `_authorizeUpgrade` override
+- Fork tests validate against mainnet state; fuzz tests ≥1000 runs for core math
+- Invariant tests validate protocol invariants (e.g., totalSupply == sum balances)
+- All external calls use SafeERC20 or check return values
+- Emergency pause mechanisms tested end-to-end
+
 ## Verification Checklist
 
 - [ ] All external state changes follow Checks-Effects-Interactions pattern

@@ -114,6 +114,16 @@ if __name__ == "__main__":
 4. **Verify** the output against expected results.
 5. **Iterate** based on feedback or new data.
 
+## Verification
+
+All reviews must pass verification before approval:
+- [ ] All P1 (blocking) findings resolved or explicitly risk-accepted
+- [ ] Security patterns verified: injection, secrets, auth bypass, CSRF, XSS
+- [ ] Logic verified: null checks, boundary conditions, error paths
+- [ ] Performance reviewed: N+1 queries, unnecessary allocations, sync I/O in hot paths
+- [ ] Convention compliance: naming, imports, error handling matches surrounding code
+- [ ] No unreviewed changed lines in security-sensitive areas (auth, payments, PII)
+
 ## Anti-Rationalization Table
 
 | Rationalization | Reality |

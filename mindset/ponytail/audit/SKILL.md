@@ -92,3 +92,20 @@ Execute these steps sequentially:
 | "This abstraction will pay off eventually" | 90% of speculative abstractions never pay off. Delete it now; add it back only when you have a real second consumer |
 | "I know my codebase, no audit needed" | Familiarity breeds normalization. A fresh pass finds what daily exposure hides |
 | "Auditing takes too long for the value" | Each audit saves 30-50% LOC per pass. That is weeks of maintenance you will never pay |
+
+## Process
+
+1. **Run audit** — `ponytail audit --path "src/" --rank-by-impact`
+2. **Review top 5** — Each finding shows file, line, severity, fix (often "delete it")
+3. **Delete #1 finding** — Biggest over-engineering removable in 15 minutes
+4. **Repeat** — Iterate until diminishing returns
+
+## Verification
+
+- Audit output displays without errors
+- All findings ranked by impact (highest LOC savings first)
+- Reinvented stdlib identified (custom JSON, LRU, CSV parsers)
+- Speculative abstractions flagged (unused interfaces, single-use factories)
+- Dead code paths and orphaned exports documented
+- Dependency replacements proposed (stdlib over third-party)
+- Net line count reduced after applying cuts

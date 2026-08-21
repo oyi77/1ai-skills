@@ -613,6 +613,24 @@ When to kill a strategy. Hard metrics, not feelings:
 
 ---
 
+## Process
+
+1. **Diagnose** — Map your starting position (tier, capital, skills, time)
+2. **Select** — Apply ROI Waterfall to ≥3 archetypes, pick highest EV
+3. **Execute** — First action in <30 min, then follow weekly cadence
+4. **Verify** — Check against Verification Checklist before each week
+5. **Scale** — Double down on winners, kill losers, move to next tier
+
+## Verification
+
+- Starting point diagnosed (tier, capital, skills, time)
+- ROI Waterfall applied to ≥3 archetypes with risk-adjusted EV
+- Chosen archetype matches available leverage and runway
+- First action is concrete, actionable in <30 min
+- Exit criteria defined, weekly cadence scheduled
+- Capital path to next tier defined
+- No questions asked — execution only
+
 ## Anti-Rationalization Table
 
 | Rationalization | Reality |

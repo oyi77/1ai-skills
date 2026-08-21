@@ -19,6 +19,10 @@ category: operations
 
 # Business Intelligence
 
+## Overview
+
+Business Intelligence (BI) transforms raw operational, financial, and engagement data into actionable insights that drive strategic decisions. For solo founders and small teams, BI provides the visibility needed to identify growth levers, optimize spending, and surface problems before they compound. The BI lifecycle spans five stages: Define (KPIs), Collect (data from payment processors, ad platforms, analytics, CRM), Analyze (trends, anomalies, correlations), Report (dashboards, scheduled summaries), and Act (translate insights into decisions).
+
 ## When to Use
 **Trigger phrases:**
 - "business intelligence"

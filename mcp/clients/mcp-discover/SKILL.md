@@ -89,3 +89,19 @@ Execute these steps sequentially:
 | "I know all the servers I need" | Discovery often surfaces servers you did not know existed — that is the point. Manual lists go stale |
 | "Discovery is a one-time setup" | Servers come and go, ports change, versions update. Continuous discovery keeps the ecosystem alive |
 | "Auto-discovery is over-engineering" | With 5+ servers, manual registration breaks constantly. Automate it before it becomes a time sink |
+
+## Process
+
+1. **Broadcast scan** — `mcp-discover scan --network 192.168.1.0/24 --port-range 5000-5100`
+2. **List registered** — `mcp-discover list --verbose` shows all known servers with tool counts
+3. **Health check** — `mcp-discover --health-check --timeout 5s` validates responsiveness
+4. **Register new** — Add discovered servers to registry with tool metadata
+5. **Schedule** — Run continuous discovery (cron/daemon) to keep registry fresh
+
+## Verification
+
+- All discovered servers respond to health check within timeout
+- Registry contains tool counts and capability metadata for each server
+- Continuous discovery daemon runs without errors
+- New servers auto-registered within configured scan interval
+- Stale entries removed after configurable TTL

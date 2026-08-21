@@ -740,9 +740,15 @@ function formatAddress(addr) { return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
 | HW path hardcoded | Wrong derivation | Make derivation path configurable |
 | Session persists after logout | Session hijacking | Disconnect all sessions on logout |
 
-## Verification Checklist
+## Verification
 
-**Wallet Setup**
+- All wallet operations verified end-to-end on testnet before mainnet deployment
+- Private keys never exposed in logs, error messages, or debugging output
+- Encrypted storage uses AES-256-GCM with PBKDF2; keys managed via OS keychain
+- Mnemonic backup requires user confirmation of 3+ random words
+- WalletConnect sessions disconnect cleanly on app close
+
+## Verification Checklist
 - [ ] Mnemonic generates valid entropy (12/15/18/21/24 words)
 - [ ] BIP-44 derivation produces correct address for 3+ coin types
 - [ ] Passphrase changes produce different wallet addresses
