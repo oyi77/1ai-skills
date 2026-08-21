@@ -122,7 +122,16 @@ def similarity(a: str, b: str, threshold: float = 0.0) -> float:
     if threshold > 0.0 and (len_a + len_b) > 0:
         if 2.0 * min(len_a, len_b) < threshold * (len_a + len_b):
             return 0.0
-    return SequenceMatcher(None, a.lower(), b.lower()).ratio()
+
+    # Optimization: Use O(N) real_quick_ratio and quick_ratio as upper bounds
+    # to avoid O(N^2) ratio() calculation when possible.
+    matcher = SequenceMatcher(None, a.lower(), b.lower())
+    if threshold > 0.0:
+        if matcher.real_quick_ratio() < threshold:
+            return 0.0
+        if matcher.quick_ratio() < threshold:
+            return 0.0
+    return matcher.ratio()
 
 
 def levenshtein_ratio(s1: str, s2: str) -> float:
