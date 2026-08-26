@@ -119,10 +119,20 @@ def skill_rel_path(path: Path) -> str:
 def similarity(a: str, b: str, threshold: float = 0.0) -> float:
     """Sequence-based similarity ratio with length-based pre-check."""
     len_a, len_b = len(a), len(b)
+
+    # ⚡ Bolt Optimization: Fast upper-bound check (O(1)) avoids instantiating SequenceMatcher at all
     if threshold > 0.0 and (len_a + len_b) > 0:
         if 2.0 * min(len_a, len_b) < threshold * (len_a + len_b):
             return 0.0
-    return SequenceMatcher(None, a.lower(), b.lower()).ratio()
+
+    sm = SequenceMatcher(None, a.lower(), b.lower())
+
+    # ⚡ Bolt Optimization: quick_ratio() provides an O(N) upper bound before falling back to the O(N^2) ratio()
+    if threshold > 0.0:
+        if sm.quick_ratio() < threshold:
+            return 0.0
+
+    return sm.ratio()
 
 
 def levenshtein_ratio(s1: str, s2: str) -> float:
