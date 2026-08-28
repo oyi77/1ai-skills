@@ -70,14 +70,30 @@ Artifacts, build output, caches, logs, dumps, and temporary files shall not be s
 Work classified COMPLEX (touches >1 module, new or removed dependency, public interface change, requires >1 PR, unclear rollback, or affects auth/security/data/infra) shall be decomposed into independent slices and executed by multiple agents in parallel under explicit orchestration — never implemented solo by a single agent. The orchestrating agent shall own the decomposition: each slice shall have disjoint file ownership, a defined cross-slice contract, and a named integration owner. Slices shall coordinate through the hub, and validation (build/lint/tests) shall run once at integration, not inside slices. See MULTI_AGENT.md.
 
 ### 17. Full Engineering Team Protocol
-A task classified COMPLEX shall be executed as a structured engineering team, not by a single agent. The orchestrating agent shall assign distinct roles with separation of duties:
-- **Architect/Planner** — owns decomposition, design decisions, cross-slice contracts, and the rollback plan. Does not implement.
-- **Implementers** — one per parallel slice, builds code against the defined contracts. Do not review.
-- **Reviewer** — fresh-context review of the integrated result. Did not plan or implement.
-- **QA/Verifier** — runs the full verification battery: end-to-end test, edge case matrix, business logic audit, pre-sale hardening. Did not plan, build, or review.
-- **Integrator** — merges all slices, runs validation, resolves conflicts, and produces the final verification receipt. May be the orchestrator or a dedicated integrator.
+A task classified COMPLEX shall be executed as a structured engineering team, not by a single agent. The orchestrating agent shall staff the team from this role catalog — mirroring a human engineering team — with separation of duties:
 
-No agent shall hold more than one role on the same task. The orchestrator coordinates through the hub, tracks each role's completion, and guarantees that no agent audits its own work. This separation of duties mirrors a human engineering team: planner does not build, builder does not review, reviewer does not QA.
+**Leadership**
+- **Project Manager (PM)** — owns scope, priorities, acceptance criteria, delivery tracking, and stakeholder communication. Decides what is built and when; does not write code.
+- **Architect / Senior Engineer** — owns technical design, decomposition, cross-slice contracts, and the rollback plan. Acts as technical authority over all integrated code.
+
+**Engineering**
+- **UI/UX Designer** — owns user flows, layouts, visual design, design tokens, and accessibility. Does not implement; hands off specifications to Frontend.
+- **Backend Engineer** — owns server code: APIs, database, business logic, integrations, security.
+- **Frontend Engineer** — owns client code: pages, components, interactions, state, responsive behavior.
+
+**Quality**
+- **Reviewer** — fresh-context adversarial review of the integrated result. Did not plan, design, or implement.
+- **QA/Verifier** — runs the full verification battery: end-to-end test, edge case matrix, business logic audit, pre-sale hardening. Did not plan, design, build, or review.
+- **Integrator** — merges all slices, runs validation, resolves conflicts, and produces the final verification receipt. May be the orchestrator.
+
+**Staffing minimums per work type:**
+- Full-stack feature → PM, Architect, Backend, Frontend, UI/UX (if UI changes), Reviewer, QA
+- Backend-only → Architect/Senior, Backend, Reviewer, QA
+- Frontend-only → Architect/Senior, Frontend, UI/UX (if design work), QA
+- Design-only → PM, UI/UX, Frontend (implementation), QA
+- Trivial/single-file → one agent, still self-reviewed
+
+No agent shall hold more than one role on the same task. The orchestrator coordinates through the hub, tracks each role's completion, and guarantees that no agent audits its own work. This separation of duties mirrors a human engineering team: PM does not build, designer does not implement, builder does not review, reviewer does not QA.
 
 ---
 
