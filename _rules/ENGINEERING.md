@@ -1,6 +1,6 @@
 ---
 name: engineering
-version: 2.5.0
+version: 2.7.0
 severity: mandatory
 scope: [all]
 pairs-with: [verification, gate]
@@ -418,6 +418,8 @@ Skipping step 1 or 2 is a protocol violation regardless of task size or urgency.
 🚫 One giant PR for complex work
 🚫 Bypassing hooks or gates (`--no-verify`)
 🚫 `console.log`/`print`/`println`/`dump` in shipped code (ok in active dev)
+🚫 Dirty project root — untracked, generated, or transient files scattered in the repo root
+🚫 One agent implementing COMPLEX work solo — decompose into parallel slices with explicit orchestration (§2.2, MULTI_AGENT.md)
 
 ---
 
