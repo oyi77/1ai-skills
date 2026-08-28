@@ -1,16 +1,16 @@
 {
-"total_skills": 1335,
+  "total_skills": 1343,
   "category_count": 19,
   "categories": {
     "automation": 20,
-    "content": 56,
+    "content": 63,
     "core": 47,
     "cybersecurity": 794,
     "data": 7,
     "development": 91,
     "devops": 31,
     "financial": 18,
-    "integrations": 28,
+    "integrations": 29,
     "marketing": 42,
     "mcp": 15,
     "meta": 13,
@@ -1454,7 +1454,7 @@
     {
       "name": "ui-ux-pro-max",
       "category": "content",
-      "description": "Use when industry-specific design intelligence \u2014 161 reasoning rules, 99 UX guidelines, 161 color palettes, 57 font pairings, 49 UI styles. Use when building professional UI, need industry-specific design, generating design systems, choosing colors or typography.",
+      "description": "UI/UX design intelligence for web, mobile, and desktop. Use when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 79 searchable styles (50 active), 192 product palettes and reasoning profiles, 74 font pairings, 119 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 22 stacks.",
       "domain": "content",
       "tags": [
         "ui",
@@ -1463,11 +1463,14 @@
         "design-system",
         "color-palette",
         "typography",
-        "accessibility"
+        "accessibility",
+        "gsap",
+        "charts",
+        "stacks"
       ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "content-creation",
+      "version": "2.0.0",
+      "author": "nextlevelbuilder",
+      "subdomain": "design-intelligence",
       "type": "content"
     },
     {
@@ -24163,7 +24166,7 @@
     {
       "name": "gate-info-research",
       "category": "research",
-      "description": "Use when running Gate.io crypto research playbooks — coin deep-dives, market/competitor scans, narrative tracking, project due-diligence. Triggers on 'research gate', 'gate research', coin fundamentals, market structure analysis.",
+      "description": "Use when running Gate.io crypto research playbooks \u2014 coin deep-dives, market/competitor scans, narrative tracking, project due-diligence. Triggers on 'research gate', 'gate research', coin fundamentals, market structure analysis.",
       "domain": "research",
       "tags": [
         "gate",
@@ -24180,7 +24183,7 @@
     {
       "name": "gate-info-risk",
       "category": "research",
-      "description": "Use when assessing Gate.io coin risk — single/multi-coin risk scoring, risk+news correlation. Triggers on 'risk gate', 'gate risk', coin risk assessment, due-diligence risk checks.",
+      "description": "Use when assessing Gate.io coin risk \u2014 single/multi-coin risk scoring, risk+news correlation. Triggers on 'risk gate', 'gate risk', coin risk assessment, due-diligence risk checks.",
       "domain": "research",
       "tags": [
         "gate",
@@ -24197,7 +24200,7 @@
     {
       "name": "gate-info-web3",
       "category": "research",
-      "description": "Use when running Gate.io Web3/on-chain investigation playbooks — DeFi protocol analysis, on-chain forensics, contract/token audits. Triggers on 'web3 gate', 'gate web3', defi analysis, on-chain investigation.",
+      "description": "Use when running Gate.io Web3/on-chain investigation playbooks \u2014 DeFi protocol analysis, on-chain forensics, contract/token audits. Triggers on 'web3 gate', 'gate web3', defi analysis, on-chain investigation.",
       "domain": "research",
       "tags": [
         "gate",
@@ -24214,7 +24217,7 @@
     {
       "name": "gate-news-intel",
       "category": "research",
-      "description": "Use when running Gate.io news/events/UGC intel playbooks — crypto news tracking, event impact, market-wide sentiment. Triggers on 'news gate', 'gate news', crypto events, market sentiment intel.",
+      "description": "Use when running Gate.io news/events/UGC intel playbooks \u2014 crypto news tracking, event impact, market-wide sentiment. Triggers on 'news gate', 'gate news', crypto events, market sentiment intel.",
       "domain": "research",
       "tags": [
         "gate",
@@ -24231,7 +24234,7 @@
     {
       "name": "gate-info-coinanalysis",
       "category": "research",
-      "description": "Use when deep crypto market + on-chain research on a single coin — price, volume, supply, holder spread, trend, and on-chain activity via public APIs. Triggers on 'coinanalysis', 'analyze coin', single-coin research.",
+      "description": "Use when deep crypto market + on-chain research on a single coin \u2014 price, volume, supply, holder spread, trend, and on-chain activity via public APIs. Triggers on 'coinanalysis', 'analyze coin', single-coin research.",
       "domain": "research",
       "tags": [
         "gate",
@@ -24267,7 +24270,7 @@
     {
       "name": "gate-info-defianalysis",
       "category": "research",
-      "description": "Use when analyze a DeFi protocol — TVL, yields, stablecoins, bridges, and risk via DeFiLlama and public sources. Triggers on 'defianalysis', 'defi analysis', protocol TVL.",
+      "description": "Use when analyze a DeFi protocol \u2014 TVL, yields, stablecoins, bridges, and risk via DeFiLlama and public sources. Triggers on 'defianalysis', 'defi analysis', protocol TVL.",
       "domain": "research",
       "tags": [
         "gate",
@@ -24285,7 +24288,7 @@
     {
       "name": "gate-info-marketoverview",
       "category": "research",
-      "description": "Use when produce a crypto market-wide snapshot — total cap, BTC dominance, top movers, and trending assets via public APIs (CoinGecko). Triggers on 'market overview', 'how is the market', macro picture.",
+      "description": "Use when produce a crypto market-wide snapshot \u2014 total cap, BTC dominance, top movers, and trending assets via public APIs (CoinGecko). Triggers on 'market overview', 'how is the market', macro picture.",
       "domain": "research",
       "tags": [
         "gate",
@@ -24303,7 +24306,7 @@
     {
       "name": "gate-info-trendanalysis",
       "category": "research",
-      "description": "Use when analyze crypto price trends and momentum — multi-window performance, trending assets, and directional read via public APIs (CoinGecko). Triggers on 'trend analysis', 'momentum', 'is coin trending'.",
+      "description": "Use when analyze crypto price trends and momentum \u2014 multi-window performance, trending assets, and directional read via public APIs (CoinGecko). Triggers on 'trend analysis', 'momentum', 'is coin trending'.",
       "domain": "research",
       "tags": [
         "gate",
@@ -24321,7 +24324,7 @@
     {
       "name": "gate-info-tokenonchain",
       "category": "research",
-      "description": "Use when investigate a token's on-chain footprint — supply, holders, transfers, and contract verification via public explorers (Etherscan and equivalents). Triggers on 'token on-chain', 'holder concentration', 'contract verified'.",
+      "description": "Use when investigate a token's on-chain footprint \u2014 supply, holders, transfers, and contract verification via public explorers (Etherscan and equivalents). Triggers on 'token on-chain', 'holder concentration', 'contract verified'.",
       "domain": "research",
       "tags": [
         "gate",
@@ -24339,7 +24342,7 @@
     {
       "name": "gate-info-riskcheck",
       "category": "research",
-      "description": "Use when risk-score a token — contract verification, honeypot heuristics, buy/sell tax, and open-source status via public explorers. Triggers on 'risk check', 'honeypot', 'token tax', 'is it safe'.",
+      "description": "Use when risk-score a token \u2014 contract verification, honeypot heuristics, buy/sell tax, and open-source status via public explorers. Triggers on 'risk check', 'honeypot', 'token tax', 'is it safe'.",
       "domain": "research",
       "tags": [
         "gate",
@@ -24357,7 +24360,7 @@
     {
       "name": "gate-news-briefing",
       "category": "research",
-      "description": "Use when produce a crypto news + sentiment briefing — latest events, trending stories, and social sentiment via web search and public sources. Triggers on 'news briefing', 'crypto news', 'what happened recently'.",
+      "description": "Use when produce a crypto news + sentiment briefing \u2014 latest events, trending stories, and social sentiment via web search and public sources. Triggers on 'news briefing', 'crypto news', 'what happened recently'.",
       "domain": "research",
       "tags": [
         "gate",
@@ -24375,7 +24378,7 @@
     {
       "name": "gate-exchange-marketanalysis",
       "category": "trading",
-      "description": "Read-only crypto market structure and sentiment analysis for any spot/perp market — trend, support/resistance, volume profile, funding, and social/news sentiment. Produces a structured market brief with no execution glue.",
+      "description": "Read-only crypto market structure and sentiment analysis for any spot/perp market \u2014 trend, support/resistance, volume profile, funding, and social/news sentiment. Produces a structured market brief with no execution glue.",
       "domain": "trading",
       "tags": [
         "trading",
@@ -24391,7 +24394,7 @@
     {
       "name": "gate-exchange-dual",
       "category": "trading",
-      "description": "Dual investment (sell-high / buy-low) yield strategy design — strike selection, settlement logic, and forced-position risk. Strategy-only; uses public market data, no exchange CLI/MCP.",
+      "description": "Dual investment (sell-high / buy-low) yield strategy design \u2014 strike selection, settlement logic, and forced-position risk. Strategy-only; uses public market data, no exchange CLI/MCP.",
       "domain": "trading",
       "tags": [
         "trading",
@@ -24407,7 +24410,7 @@
     {
       "name": "gate-exchange-bot",
       "category": "trading",
-      "description": "Grid and martingale trading-bot strategy design — parameter discipline, range/leverage/direction selection, and confirmation gates. Strategy-only; uses public market data, no exchange CLI/MCP.",
+      "description": "Grid and martingale trading-bot strategy design \u2014 parameter discipline, range/leverage/direction selection, and confirmation gates. Strategy-only; uses public market data, no exchange CLI/MCP.",
       "domain": "trading",
       "tags": [
         "trading",
@@ -24423,7 +24426,7 @@
     {
       "name": "gate-exchange-autoinvest",
       "category": "trading",
-      "description": "Dollar-cost-averaging (auto-invest) plan design — investment currency, target allocation, cadence, and fund-flow discipline. Strategy-only; uses public data, no exchange CLI/MCP.",
+      "description": "Dollar-cost-averaging (auto-invest) plan design \u2014 investment currency, target allocation, cadence, and fund-flow discipline. Strategy-only; uses public data, no exchange CLI/MCP.",
       "domain": "trading",
       "tags": [
         "trading",
@@ -24439,7 +24442,7 @@
     {
       "name": "gate-exchange-assetswap",
       "category": "trading",
-      "description": "Portfolio rebalancing strategy design — conservative / conviction / market-cap-Top-N baskets, preview-before-create, and order-state checks. Strategy-only; uses public data (CoinGecko market-cap), no exchange CLI/MCP.",
+      "description": "Portfolio rebalancing strategy design \u2014 conservative / conviction / market-cap-Top-N baskets, preview-before-create, and order-state checks. Strategy-only; uses public data (CoinGecko market-cap), no exchange CLI/MCP.",
       "domain": "trading",
       "tags": [
         "trading",
@@ -24455,7 +24458,7 @@
     {
       "name": "gate-exchange-newcoin",
       "category": "research",
-      "description": "New-listing due diligence and event radar — listings calendar, fundamentals, contract-safety/rug checks, sentiment/tape, and a gated first-buy draft. Strategy-only; uses public data (CoinGecko, Etherscan, web search), no exchange CLI/MCP.",
+      "description": "New-listing due diligence and event radar \u2014 listings calendar, fundamentals, contract-safety/rug checks, sentiment/tape, and a gated first-buy draft. Strategy-only; uses public data (CoinGecko, Etherscan, web search), no exchange CLI/MCP.",
       "domain": "research",
       "tags": [
         "research",
@@ -24467,6 +24470,174 @@
       "author": "oyi77",
       "subdomain": "research",
       "type": "research"
+    },
+    {
+      "name": "banner-design",
+      "category": "content",
+      "description": "Banner design for social media, ads, web, print. 22 art direction styles, exact platform sizes, safe zones, export workflow. Use when creating banners, covers, headers for Facebook, Twitter, LinkedIn, YouTube, Instagram, Google Ads, website hero.",
+      "domain": "content",
+      "tags": [
+        "banner",
+        "design",
+        "social-media",
+        "ads",
+        "cover",
+        "header",
+        "export",
+        "html-css",
+        "screenshot"
+      ],
+      "version": "1.0.0",
+      "author": "claudekit",
+      "subdomain": "visual-design",
+      "type": "content"
+    },
+    {
+      "name": "brand",
+      "category": "content",
+      "description": "Brand voice, visual identity, messaging frameworks, asset management, brand consistency. Activate for branded content, tone of voice, marketing assets, brand compliance, style guides.",
+      "domain": "content",
+      "tags": [
+        "brand",
+        "identity",
+        "voice",
+        "messaging",
+        "assets",
+        "consistency",
+        "style-guide",
+        "guidelines"
+      ],
+      "version": "1.0.0",
+      "author": "claudekit",
+      "subdomain": "brand-identity",
+      "type": "content"
+    },
+    {
+      "name": "design",
+      "category": "content",
+      "description": "Comprehensive design skill: brand identity, design tokens, UI styling, logo generation (55 styles, Gemini or Atlas Cloud AI), corporate identity program (50 deliverables, CIP mockups), HTML presentations (Chart.js), banner design (22 styles, social/ads/web/print), icon design (15 styles, SVG, Gemini 3.1 Pro), social photos (HTML\u2192screenshot, multi-platform). Actions: design logo, create CIP, generate mockups, build slides, design banner, generate icon, create social photos, social media images, brand identity, design system. Platforms: Facebook, Twitter, LinkedIn, YouTube, Instagram, Pinterest, TikTok, Threads, Google Ads.",
+      "domain": "content",
+      "tags": [
+        "design",
+        "logo",
+        "cip",
+        "brand",
+        "banner",
+        "icon",
+        "social",
+        "mockup",
+        "presentation",
+        "slides"
+      ],
+      "version": "2.1.0",
+      "author": "claudekit",
+      "subdomain": "visual-design",
+      "type": "content"
+    },
+    {
+      "name": "design-system",
+      "category": "content",
+      "description": "Token architecture, component specifications, and slide generation. Three-layer tokens (primitive\u2192semantic\u2192component), CSS variables, spacing/typography scales, component specs, strategic slide creation. Use for design tokens, systematic design, brand-compliant presentations.",
+      "domain": "content",
+      "tags": [
+        "design-system",
+        "tokens",
+        "css-variables",
+        "component-specs",
+        "slides",
+        "presentations",
+        "chartjs",
+        "tailwind"
+      ],
+      "version": "1.0.0",
+      "author": "claudekit",
+      "subdomain": "design-tokens",
+      "type": "content"
+    },
+    {
+      "name": "slides",
+      "category": "content",
+      "description": "Create strategic HTML presentations with Chart.js, design tokens, responsive layouts, copywriting formulas, and contextual slide strategies.",
+      "domain": "content",
+      "tags": [
+        "slides",
+        "presentations",
+        "pitch-deck",
+        "chartjs",
+        "copywriting",
+        "html",
+        "strategy"
+      ],
+      "version": "1.0.0",
+      "author": "claudekit",
+      "subdomain": "presentations",
+      "type": "content"
+    },
+    {
+      "name": "ui-styling",
+      "category": "content",
+      "description": "Create beautiful, accessible user interfaces with shadcn/ui components (built on Radix UI + Tailwind), Tailwind CSS utility-first styling, and canvas-based visual designs. Use when building user interfaces, implementing design systems, creating responsive layouts, adding accessible components (dialogs, dropdowns, forms, tables), customizing themes and colors, implementing dark mode, generating visual designs and posters, or establishing consistent styling patterns across applications.",
+      "domain": "content",
+      "tags": [
+        "ui",
+        "styling",
+        "shadcn",
+        "tailwind",
+        "radix",
+        "components",
+        "dark-mode",
+        "responsive",
+        "canvas",
+        "visual-design"
+      ],
+      "version": "1.0.0",
+      "author": "claudekit",
+      "subdomain": "ui-design",
+      "type": "content"
+    },
+    {
+      "name": "21st-dev",
+      "category": "integrations",
+      "description": "Use when UI component registry for AI coding agents \u2014 search, generate, and publish React/Next.js/Tailwind components via MCP. 12,000+ community components, logo search, design system tokens, theme generation. Use when building UI with agent, need production components, want to publish/share components.",
+      "domain": "integrations",
+      "tags": [
+        "ui",
+        "components",
+        "registry",
+        "mcp",
+        "react",
+        "nextjs",
+        "tailwind",
+        "agent",
+        "generate",
+        "publish"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "ui-registry",
+      "type": "integrations"
+    },
+    {
+      "name": "motion-dev",
+      "category": "content",
+      "description": "Use when React animation library \u2014 spring physics, gesture animations, layout animations, scroll effects, SVG path drawing. Successor to Framer Motion. Use when building UI animations, micro-interactions, page transitions, shared element transitions, parallax effects.",
+      "domain": "content",
+      "tags": [
+        "animation",
+        "react",
+        "motion",
+        "spring",
+        "gesture",
+        "layout",
+        "scroll",
+        "svg",
+        "transition",
+        "micro-interaction"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "animation",
+      "type": "content"
     }
   ],
   "tooling_dirs": [
