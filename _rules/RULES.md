@@ -1,6 +1,6 @@
 ---
 name: rules
-version: 2.7.0
+version: 2.9.0
 severity: mandatory
 scope: [all]
 pairs-with: [engineering, verification]
@@ -50,7 +50,6 @@ No TODO, FIXME, "Not Implemented", placeholder, stub, skeleton, or pass-through 
 
 ### 12. Revenue Prioritization
 Business-critical paths shall be delivered before aesthetic or non-functional improvements. Every MVP shall constitute a complete, demoable vertical slice. Scope shall be reduced rather than stubbed. An organization without revenue does not survive. Revenue-critical paths shall ship first.
-
 ### 13. Sellability Requirement (Pre-Sale Hardening)
 Code shall be pre-sale hardened before it is considered complete. Hardening is defined by six criteria:
 - **Crash audit** — every handler returns proper errors, no 500s, no unhandled rejections
@@ -61,6 +60,14 @@ Code shall be pre-sale hardened before it is considered complete. Hardening is d
 - **Value statement** — one sentence: "This [thing] does [what] so [who] can [benefit]"
 
 Code that cannot be sold is not complete code. The sellability gate (GATE.md Gate 6) shall pass before any commit.
+
+### 14. Clean Project Root
+The project root shall contain only tracked, intentional files. Untracked files, generated artifacts, editor/OS metadata files, and stray logs shall not accumulate in the root directory. All generated and transient output shall be directed to designated subdirectories (e.g. `data/`, `logs/`, `dist/`, `build/`, `renders/`) or explicitly gitignored. A dirty working tree at the project root is a blocking defect and shall be resolved before commit.
+### 15. No Codebase Littering
+Artifacts, build output, caches, logs, dumps, and temporary files shall not be scattered across the codebase. Each project shall define designated directories for generated output and maintain a complete `.gitignore` for all transient data. Any file placed outside its designated directory without a documented purpose constitutes litter and shall be removed or relocated before commit.
+
+### 16. Multi-Agent Orchestration for Complex Work
+Work classified COMPLEX (touches >1 module, new or removed dependency, public interface change, requires >1 PR, unclear rollback, or affects auth/security/data/infra) shall be decomposed into independent slices and executed by multiple agents in parallel under explicit orchestration — never implemented solo by a single agent. The orchestrating agent shall own the decomposition: each slice shall have disjoint file ownership, a defined cross-slice contract, and a named integration owner. Slices shall coordinate through the hub, and validation (build/lint/tests) shall run once at integration, not inside slices. See MULTI_AGENT.md.
 
 ---
 
@@ -180,6 +187,8 @@ Acceptable response: "We have [capability]. Missing: [deficit]. Required: [actio
 [ ] Evidence captured for all claims?
 [ ] All GATE.md gates passed?
 [ ] Pre-sale hardening — crash audit, noise suppressed, edges covered, evidence pack, handover-ready, value statement clear?
+[ ] Project root clean — no untracked/generated/transient files scattered in root?
+[ ] No codebase litter — artifacts, caches, logs, dumps, temp files in designated dirs or gitignored?
 ```
 
 **If any box remains unchecked, the commit shall not proceed.**
