@@ -1,6 +1,6 @@
 ---
 name: rules
-version: 3.0.0
+version: 3.1.0
 severity: mandatory
 scope: [all]
 pairs-with: [engineering, verification]
