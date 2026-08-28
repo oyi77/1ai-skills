@@ -1,6 +1,6 @@
 ---
 name: rules
-version: 2.9.0
+version: 3.0.0
 severity: mandatory
 scope: [all]
 pairs-with: [engineering, verification]
@@ -68,6 +68,16 @@ Artifacts, build output, caches, logs, dumps, and temporary files shall not be s
 
 ### 16. Multi-Agent Orchestration for Complex Work
 Work classified COMPLEX (touches >1 module, new or removed dependency, public interface change, requires >1 PR, unclear rollback, or affects auth/security/data/infra) shall be decomposed into independent slices and executed by multiple agents in parallel under explicit orchestration — never implemented solo by a single agent. The orchestrating agent shall own the decomposition: each slice shall have disjoint file ownership, a defined cross-slice contract, and a named integration owner. Slices shall coordinate through the hub, and validation (build/lint/tests) shall run once at integration, not inside slices. See MULTI_AGENT.md.
+
+### 17. Full Engineering Team Protocol
+A task classified COMPLEX shall be executed as a structured engineering team, not by a single agent. The orchestrating agent shall assign distinct roles with separation of duties:
+- **Architect/Planner** — owns decomposition, design decisions, cross-slice contracts, and the rollback plan. Does not implement.
+- **Implementers** — one per parallel slice, builds code against the defined contracts. Do not review.
+- **Reviewer** — fresh-context review of the integrated result. Did not plan or implement.
+- **QA/Verifier** — runs the full verification battery: end-to-end test, edge case matrix, business logic audit, pre-sale hardening. Did not plan, build, or review.
+- **Integrator** — merges all slices, runs validation, resolves conflicts, and produces the final verification receipt. May be the orchestrator or a dedicated integrator.
+
+No agent shall hold more than one role on the same task. The orchestrator coordinates through the hub, tracks each role's completion, and guarantees that no agent audits its own work. This separation of duties mirrors a human engineering team: planner does not build, builder does not review, reviewer does not QA.
 
 ---
 
