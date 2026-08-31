@@ -490,12 +490,25 @@ def _suggest_terms(bm25, query, limit=6, threshold=None):
         return []
 
     candidates = []
+    sim_threshold = 0.72
     for term in bm25.vocabulary():
         if term in query_tokens:
             continue
-        similarity = max(difflib.SequenceMatcher(None, token, term).ratio()
-                         for token in query_tokens)
-        if (similarity >= 0.72
+        similarity = 0.0
+        for token in query_tokens:
+            len_t, len_term = len(token), len(term)
+            # O(1) mathematical upper bound based on string length differences
+            if 2.0 * min(len_t, len_term) < sim_threshold * (len_t + len_term):
+                continue
+            matcher = difflib.SequenceMatcher(None, token, term)
+            # O(N) linear time upper bound checks before expensive O(N^2) ratio
+            if matcher.real_quick_ratio() < sim_threshold or matcher.quick_ratio() < sim_threshold:
+                continue
+            sim = matcher.ratio()
+            if sim > similarity:
+                similarity = sim
+
+        if (similarity >= sim_threshold
                 and (threshold is None or _passes_threshold(bm25, term, threshold))):
             candidates.append((-similarity, -bm25.doc_freqs.get(term, 0), term))
     return [term for _, _, term in sorted(candidates)[:limit]]
@@ -508,16 +521,27 @@ def _suggest_identities(rows, query, fields, limit=6):
     if not query_tokens:
         return []
     candidates = []
+    sim_threshold = 0.72
     for row in rows:
         for identity in _row_identities(row, fields):
             identity_tokens = set(tokenizer.tokenize(identity))
             if not identity_tokens:
                 continue
-            similarity = max(
-                difflib.SequenceMatcher(None, source, target).ratio()
-                for source in query_tokens for target in identity_tokens
-            )
-            if similarity >= 0.72 and identity.casefold() != str(query).strip().casefold():
+            similarity = 0.0
+            for source in query_tokens:
+                for target in identity_tokens:
+                    len_s, len_t = len(source), len(target)
+                    # O(1) mathematical upper bound based on string length differences
+                    if 2.0 * min(len_s, len_t) < sim_threshold * (len_s + len_t):
+                        continue
+                    matcher = difflib.SequenceMatcher(None, source, target)
+                    # O(N) linear time upper bound checks before expensive O(N^2) ratio
+                    if matcher.real_quick_ratio() < sim_threshold or matcher.quick_ratio() < sim_threshold:
+                        continue
+                    sim = matcher.ratio()
+                    if sim > similarity:
+                        similarity = sim
+            if similarity >= sim_threshold and identity.casefold() != str(query).strip().casefold():
                 candidates.append((-similarity, len(identity_tokens), identity))
     return [identity for _, _, identity in sorted(set(candidates))[:limit]]
 
