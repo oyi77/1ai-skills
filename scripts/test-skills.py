@@ -46,6 +46,21 @@ WORKFLOW_ALTERNATIVES = ['## Workflow', '## Process', '## Steps', '## Daily Prac
 RECOMMENDED_SECTIONS = ['## When NOT to Use', '## Overview', '## Verification']
 QUALITY_MARKERS = ['Anti-Rationalization', 'Code Example', '```']
 
+# ── Regex Precompilation ──
+RE_NAME_FIELD_LIMIT = re.compile(r'^name:\s*(.+)$', re.MULTILINE)
+RE_FRONTMATTER = re.compile(r'^---\n(.*?)\n---', re.DOTALL)
+RE_TAGS = re.compile(r'^tags:\s*\n((?:\s*-\s*.+\n?)+)', re.MULTILINE)
+RE_VERSION = re.compile(r'^version:\s*(.+)$', re.MULTILINE)
+RE_CODE_BLOCK = re.compile(r'```')
+RE_PACKAGE_CMD = re.compile(r'`(npm|pip|npx|brew|apt)\s+(install|add)')
+RE_ANTI_RAT = re.compile(r'Anti-Rationalization|Common Rationalizations|Common Pitfalls')
+RE_VERIFY = re.compile(r'## Verification|## Quality Checklist|## Quality Gates')
+RE_WHEN_NOT = re.compile(r'## When NOT to Use|## When Not to Use')
+RE_OVERVIEW = re.compile(r'## Overview')
+RE_COMMANDS = re.compile(r'`(npm|pip|npx|brew|apt|docker|git)\s+')
+RE_IMPORTS = re.compile(r'(import |from |require\(|const .+ = require)')
+_FIELD_REGEX_CACHE = {}
+
 # ── Result types ──
 
 class TestResult:
@@ -63,7 +78,7 @@ def _canonical_name(md):
     """Extract canonical name from SKILL.md frontmatter, falling back to dir name."""
     try:
         text = md.read_text(encoding='utf-8')
-        m = re.search(r'^name:\s*(.+)$', text[:500], re.MULTILINE)
+        m = RE_NAME_FIELD_LIMIT.search(text[:500])
         if m:
             return m.group(1).strip().strip("'\"").strip()
     except Exception:
@@ -102,7 +117,7 @@ def test_structure(text, skill_name):
         errors.append('missing-leading----')
         return errors, warnings, metrics
 
-    fm_match = re.match(r'^---\n(.*?)\n---', text, re.DOTALL)
+    fm_match = RE_FRONTMATTER.match(text)
     if not fm_match:
         errors.append('unclosed-frontmatter')
         return errors, warnings, metrics
@@ -143,14 +158,16 @@ def test_structure(text, skill_name):
     else:
         # ── regex fallback path (malformed YAML) ──
         for field in REQUIRED_FM:
-            match = re.search(rf'^{field}:\s*(.+)$', fm, re.MULTILINE)
+            if field not in _FIELD_REGEX_CACHE:
+                _FIELD_REGEX_CACHE[field] = re.compile(rf'^{field}:\s*(.+)$', re.MULTILINE)
+            match = _FIELD_REGEX_CACHE[field].search(fm)
             if not match or not match.group(1).strip():
                 errors.append(f'missing-{field}')
             else:
                 metrics[field] = match.group(1).strip()
 
         # Tags
-        tags_match = re.search(r'^tags:\s*\n((?:\s*-\s*.+\n?)+)', fm, re.MULTILINE)
+        tags_match = RE_TAGS.search(fm)
         if tags_match:
             tags = [l.strip('- ').strip() for l in tags_match.group(1).strip().split('\n')]
             metrics['tag_count'] = len(tags)
@@ -160,7 +177,7 @@ def test_structure(text, skill_name):
             warnings.append('missing-tags')
 
         # Version
-        ver_match = re.search(r'^version:\s*(.+)$', fm, re.MULTILINE)
+        ver_match = RE_VERSION.search(fm)
         metrics['has_version'] = bool(ver_match)
 
     # Name matches directory
@@ -233,13 +250,13 @@ def test_content(text):
     depth = 0
     if 'Anti-Rationalization' in body or '## Common Pitfalls' in body:
         depth += 1
-    if re.search(r'```', body):
+    if RE_CODE_BLOCK.search(body):
         depth += 1
     if '## Verification' in body or '## Quality Checklist' in body:
         depth += 1
     if '## When NOT to Use' in body:
         depth += 1
-    if re.search(r'`(npm|pip|npx|brew|apt)\s+(install|add)', body):
+    if RE_PACKAGE_CMD.search(body):
         depth += 1
     metrics['depth_score'] = depth  # 0-5
 
@@ -310,13 +327,13 @@ def test_quality_markers(text):
     warnings = []
     metrics = {}
 
-    has_ar = bool(re.search(r'Anti-Rationalization|Common Rationalizations|Common Pitfalls', text))
-    has_code = bool(re.search(r'```', text))
-    has_verify = bool(re.search(r'## Verification|## Quality Checklist|## Quality Gates', text))
-    has_when_not = bool(re.search(r'## When NOT to Use|## When Not to Use', text))
-    has_overview = bool(re.search(r'## Overview', text))
-    has_commands = bool(re.search(r'`(npm|pip|npx|brew|apt|docker|git)\s+', text))
-    has_imports = bool(re.search(r'(import |from |require\(|const .+ = require)', text))
+    has_ar = bool(RE_ANTI_RAT.search(text))
+    has_code = bool(RE_CODE_BLOCK.search(text))
+    has_verify = bool(RE_VERIFY.search(text))
+    has_when_not = bool(RE_WHEN_NOT.search(text))
+    has_overview = bool(RE_OVERVIEW.search(text))
+    has_commands = bool(RE_COMMANDS.search(text))
+    has_imports = bool(RE_IMPORTS.search(text))
 
     metrics['has_anti_rationalization'] = has_ar
     metrics['has_code_examples'] = has_code
