@@ -78,6 +78,8 @@ node scripts/generate-tokens.cjs --config tokens.json -o tokens.css
 node scripts/validate-tokens.cjs --dir src/
 ```
 
+Requirements: Node 18+ for the `.cjs` token scripts (`apt install nodejs`), Python 3 for the slide search/validator scripts (`apt install python3`).
+
 ## References
 
 | Topic | File |
@@ -260,3 +262,33 @@ assets/designs/slides/claudekit-pitch-251223.html
 4. Use HSL format for opacity control
 5. Document every token's purpose
 6. **Slides must import design-tokens.css and use var() exclusively**
+## Overview
+
+design-system turns brand primitives into a three-layer token architecture — primitive → semantic → component — exposed as CSS variables and consumed by components and slides. It ships real tooling: `scripts/generate-tokens.cjs` (primitive→semantic→component generation), `scripts/embed-tokens.cjs` (token→CSS embedding), `scripts/validate-tokens.cjs` / `scripts/html-token-validator.py` (compliance checks), and `scripts/search-slides.py` + `scripts/generate-slide.py` (BM25 slide search and deck generation with Chart.js). The slide system enforces one source of truth: every deck imports `assets/design-tokens.css` and uses `var()` exclusively — no raw hex.
+
+## When NOT to Use
+
+- A single throwaway component — inline tokens beat a full system until reuse appears
+- UI implementation without a design-language decision — route to ui-styling/ui-ux-pro-max first
+- Brand definition itself (colors, voice) — that is brand; this skill consumes its output
+- A deck that will be delivered as native PowerPoint/PDF — slides here are HTML-screen-first
+- When the team already has an authoritative token platform (Tokens Studio, Style Dictionary) — keep one source of truth and export to it
+
+## Verification
+
+1. Every color/space/type used in components and slides resolves through `var(--...)` — run `scripts/html-token-validator.py` on generated HTML, zero raw-hex violations
+2. The three layers stay clean: primitives hold raw values, semantics name intent, components bind to semantics (no component→primitive direct links)
+3. `scripts/validate-tokens.cjs` passes — tokens parse, required namespaces exist, no orphaned/duplicate tokens
+4. Slides import `assets/design-tokens.css` and the BM25 search returns the expected strategy/layout reference for the request
+5. A deck renders with the Chart.js chart displaying real data and pattern-breaking at the 1/3 and 2/3 positions
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|-----------------|---------|
+| "I'll hardcode the color here, it's just one place" | One raw hex becomes ten; the validator exists because drift is the default |
+| "Two layers are enough" | Without the semantic layer, product decisions rewrite primitives and ripple everywhere |
+| "Tokens are a documentation task" | Tokens are executable: generation, embedding, and validation scripts enforce compliance mechanically |
+| "The slide search is extra work" | BM25 over the strategy/layout/decision CSVs is how a deck gets contextual structure instead of a generic template |
+| "Validation slows iteration" | Validation is a 2-second gate that catches off-system values before a human review round |
+

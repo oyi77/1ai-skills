@@ -17,6 +17,17 @@ tags:
 
 Master router for 790+ cybersecurity skills. Determines the testing phase, routes to the correct category, and ensures structured methodology over random tool usage.
 
+## Overview
+
+cybersecurity-router is the master entry for security work: it classifies a target (type, identity model, network position, input/output locations), routes the task to the right specialized skill by observed attack surface (web, API, auth, AD, cloud, mobile, binary, crypto, forensics, threat intel), enforces a testing priority order (Recon → API/Auth/IDOR → Injection → Business Logic → PrivEsc → Chain), and drives methodology before tooling. It maps 790+ cybersecurity skills into a decision tree so an engagement never starts with a random scanner run.
+
+## When NOT to Use
+
+- Authorized testing already scoped to a single deep technique — load the specialized skill directly (e.g. one known XSS sink: load `testing-for-xss-vulnerabilities`)
+- Defensive engineering with no offensive component (patch management, compliance audits) — route to the relevant detection/hardening skills
+- Unauthorized testing — this skill only supports authorized targets, bug bounty programs, and defensive validation
+- Pure OSINT gathering with no engagement goal — use `recon-automation` / OSINT skills standalone
+
 ---
 
 ## Anti-Rationalization Table
@@ -54,6 +65,28 @@ Master router for 790+ cybersecurity skills. Determines the testing phase, route
 4. **Load & execute** — Load the category skill, run its workflow, collect evidence.
 5. **Report** — Methodology, findings, evidence, impact, remediation — within authorized scope only.
 
+## Routing Decision Example
+
+The routing table is a lookup, not judgment-by-hand. Model it as data so the same decision is repeatable:
+
+```python
+import json  # signal -> primary skill, deep skill mapping from the Phase 2 table
+
+def route(signal: str, mapping: dict[str, list[str]]) -> list[str]:
+    return mapping.get(signal, [])
+
+mapping = {
+    "REST API / GraphQL": ["api-testing", "api-destroyer"],
+    "login / reset / 2FA / JWT": ["auth-patterns", "auth-killer"],
+    "input reflects in HTML/JS": ["testing-for-xss-vulnerabilities", "testing-for-xss-vulnerabilities-with-burpsuite"],
+    "server fetches URL": ["exploiting-server-side-request-forgery", "performing-blind-ssrf-exploitation"],
+    "object IDs in APIs": ["testing-api-for-broken-object-level-authorization", "testing-api-for-mass-assignment-vulnerability"],
+}
+print(route("REST API / GraphQL", mapping))  # -> ['api-testing', 'api-destroyer']
+```
+
+On non-Kali Linux, install the recon toolchain with `apt install nmap sqlmap nikto`; on Kali it ships preinstalled.
+
 
 ## Operating Model: The Cybersecurity Router
 
@@ -74,29 +107,29 @@ Collect before testing:
 | New target, unknown surface | Recon & methodology | `recon-automation` |
 | REST API, GraphQL, mobile backend | API Security | `api-testing` → `api-destroyer` |
 | Login, reset, 2FA, sessions, JWT, OAuth, SAML | Authentication & Authorization | `auth-patterns` → `auth-killer` |
-| Input reflects in HTML/JS | XSS / SSTI | `testing-for-xss-vulnerabilities` → `testing-for-xss-vulnerabilities` |
-| Server fetches URL/hostname | SSRF | `exploiting-server-side-request-forgery` → `exploiting-server-side-request-forgery` |
-| Accepts XML/Office/SVG | XXE | `testing-for-xxe-injection-vulnerabilities` → `testing-for-xxe-injection-vulnerabilities` |
-| Path/filename/download controllable | Path Traversal / LFI | `testing-for-broken-access-control` → `testing-for-broken-access-control` |
-| Object IDs in APIs | IDOR / BOLA / BFLA | `testing-api-for-broken-object-level-authorization` → `testing-api-for-broken-object-level-authorization` |
-| Multi-step: coupons, pricing, inventory | Business Logic | `testing-for-business-logic-vulnerabilities` → `testing-for-business-logic-vulnerabilities` |
-| MongoDB/JSON query syntax | NoSQL Injection | `exploiting-nosql-injection-vulnerabilities` → `exploiting-nosql-injection-vulnerabilities` |
-| CLI tools, image processing, importers | Command Injection | `exploiting-api-injection-vulnerabilities` → `exploiting-api-injection-vulnerabilities` |
-| HTTP parsing anomalies | Request Smuggling | `exploiting-http-request-smuggling` → `exploiting-http-request-smuggling` |
-| Node.js `__proto__` controllable | Prototype Pollution | `exploiting-prototype-pollution-in-javascript` → `exploiting-prototype-pollution-in-javascript` |
-| PHP weak comparison / 0e hash | Type Juggling | `exploiting-type-juggling-vulnerabilities` → `exploiting-type-juggling-vulnerabilities` |
-| Active Directory, domain joined | AD Attacks | `ad-killer` → `ad-killer` |
-| Windows host, local admin needed | Windows PrivEsc | `kernel-killer` → `kernel-killer` |
-| Linux host, SUID/sudo present | Linux PrivEsc | `kernel-killer` → `kernel-killer` |
-| Docker/Kubernetes environment | Container/K8s Security | `hardening-docker-containers-for-production` → `hardening-docker-containers-for-production` |
-| Cloud (AWS/Azure/GCP) | Cloud Security | `cloud-hunter` → `cloud-hunter` |
-| Mobile app (iOS/Android) | Mobile Security | `mobile-hacking` → `mobile-hacking` |
-| Binary/ELF/PE, heap/stack | Binary Exploitation | `binary-breaker` → `binary-breaker` |
-| Crypto implementation | Crypto Attacks | `crypto-breaker` → `crypto-breaker` |
-| Smart contract/DeFi | Blockchain Security | `web3-auditor` → `web3-auditor` |
-| LLM/RAG/prompt injection | AI/ML Security | `ai-hacker` → `ai-hacker` |
-| Memory dump, disk image | Forensics | `analyzing-memory-dumps-with-volatility` → `analyzing-memory-dumps-with-volatility` |
-| Threat actor profiling | Threat Intel | `analyzing-threat-actor-ttps-with-mitre-attack` → `analyzing-threat-actor-ttps-with-mitre-attack` |
+| Input reflects in HTML/JS | XSS / SSTI | `testing-for-xss-vulnerabilities` → `testing-for-xss-vulnerabilities-with-burpsuite` |
+| Server fetches URL/hostname | SSRF | `exploiting-server-side-request-forgery` → `performing-blind-ssrf-exploitation` |
+| Accepts XML/Office/SVG | XXE | `testing-for-xxe-injection-vulnerabilities` → `testing-for-xml-injection-vulnerabilities` |
+| Path/filename/download controllable | Path Traversal / LFI | `testing-for-broken-access-control` → `performing-directory-traversal-testing` |
+| Object IDs in APIs | IDOR / BOLA / BFLA | `testing-api-for-broken-object-level-authorization` → `testing-api-for-mass-assignment-vulnerability` |
+| Multi-step: coupons, pricing, inventory | Business Logic | `testing-for-business-logic-vulnerabilities` → `exploiting-race-condition-vulnerabilities` |
+| MongoDB/JSON query syntax | NoSQL Injection | `exploiting-nosql-injection-vulnerabilities` |
+| CLI tools, image processing, importers | Command Injection | `exploiting-api-injection-vulnerabilities` |
+| HTTP parsing anomalies | Request Smuggling | `exploiting-http-request-smuggling` |
+| Node.js `__proto__` controllable | Prototype Pollution | `exploiting-prototype-pollution-in-javascript` |
+| PHP weak comparison / 0e hash | Type Juggling | `exploiting-type-juggling-vulnerabilities` |
+| Active Directory, domain joined | AD Attacks | `ad-killer` → `exploiting-active-directory-with-bloodhound` |
+| Windows host, local admin needed | Windows PrivEsc | `kernel-killer` → `performing-privilege-escalation-assessment` |
+| Linux host, SUID/sudo present | Linux PrivEsc | `kernel-killer` → `performing-privilege-escalation-on-linux` |
+| Docker/Kubernetes environment | Container/K8s Security | `hardening-docker-containers-for-production` → `performing-container-escape-detection` |
+| Cloud (AWS/Azure/GCP) | Cloud Security | `cloud-hunter` → `auditing-aws-s3-bucket-permissions` |
+| Mobile app (iOS/Android) | Mobile Security | `mobile-hacking` → `analyzing-android-malware-with-apktool` |
+| Binary/ELF/PE, heap/stack | Binary Exploitation | `binary-breaker` → `reverse-engineering-malware-with-ghidra` |
+| Crypto implementation | Crypto Attacks | `crypto-breaker` → `performing-cryptographic-audit-of-application` |
+| Smart contract/DeFi | Blockchain Security | `web3-auditor` → `smart-contract-exploiter` |
+| LLM/RAG/prompt injection | AI/ML Security | `ai-hacker` → `detecting-ai-model-prompt-injection-attacks` |
+| Memory dump, disk image | Forensics | `analyzing-memory-dumps-with-volatility` → `analyzing-disk-image-with-autopsy` |
+| Threat actor profiling | Threat Intel | `analyzing-threat-actor-ttps-with-mitre-attack` → `analyzing-threat-actor-ttps-with-mitre-navigator` |
 
 ### Phase 3: Testing Priority Order
 

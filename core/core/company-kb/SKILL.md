@@ -23,6 +23,21 @@ category: core
 
 **Role:** The Company Knowledge Base (company-kb) stores organization-specific memory — products, services, team members, clients, procedures, and operational history. While the parent `kb` skill manages the PARA structure and general knowledge retrieval, company-kb specializes in entity tracking, company-wide procedures, agent accountability records, and cross-referencing decisions to organizational context. Both agents and humans use this to maintain a single source of truth.
 
+## When to Use
+
+- An org fact must survive sessions: product inventory, client accounts, team roster, vendor contracts
+- A decision needs recorded context and alternatives so the "why" is recoverable later
+- A recurring task needs a step-by-step procedure others can follow
+- Agent sessions must be accountable: what ran, what it did, what facts it added
+- A query spans entities ("which clients run the affected product?") — traverse the `links` graph
+- Critical entity changes should be recallable cross-session via the 1ai-hub brain
+
+## Overview
+
+The Python helpers need PyYAML — install with `pip install pyyaml`.
+
+company-kb is the organization-wide memory layer: structured YAML entities for products, clients, team, decisions, operations, vendors, procedures, and projects, linked into a navigable entity graph via the `links` field. Agents register entities, record decisions with rationale and alternatives, log session accountability, and cross-reference decisions to organizational context. It complements the parent `kb` skill (PARA structure, general retrieval) and pushes critical changes to the 1ai-hub brain for cross-session recall.
+
 ## Organization Structure
 
 Maintain a consistent directory layout so every agent and human can navigate without guessing:
@@ -370,8 +385,29 @@ Run this during intake — 3 seconds of structured lookup replaces 15 minutes of
 | "I'll just keep this in my head / chat logs" | Human memory fades after 48 hours. Chat logs are unstructured and buried. A YAML entity is searchable, parseable, and survives session restarts. |
 | "Privacy is someone else's problem" | PII in a shared YAML file is a data breach waiting to happen. Classify every field before writing and never assume the consumer has authorized access. |
 
-## When to Use
-Use this skill when working with company kb.
+## When NOT to Use
+
+- General-purpose knowledge retrieval (PARA structure, docs indexing) — that is the parent `kb` skill
+- Ephemeral conversation state — route to session-brain/memory-system, not org records
+- Sensitive data that must never live in shared files — PII, credentials, secrets: vault/encrypted store, not YAML entities
+- Code-level documentation (APIs, modules) — keep in the codebase
+- When no entity, decision, or procedure needs to survive beyond the session — don't persist noise
+
+## Verification
+
+1. Every product/client/team entity has a valid `entity.yaml` with name, type, status, version/team where applicable
+2. Client entities include tier, MRR, onboarding date, and primary contact
+3. Decisions carry context + alternatives + timestamp — a reader can reconstruct *why* without asking
+4. Session logs track agent ID, task, outcome, and timestamp for accountability
+5. Entity index cross-references related entities; auto-linker run after bulk imports
+6. Privacy boundaries respected: no PII in shared YAML; sensitive fields stripped before writing session logs
+7. Critical entity changes pushed to 1ai-hub brain; retrieval returns the expected entity before acting
 
 ## Workflow
-See the parent skill for authoritative workflow documentation.
+
+1. **Register** — Create entities with the `register_entity` helper (products, clients, team, procedures)
+2. **Record** — Capture decisions with context/alternatives and procedures as SOPs
+3. **Link** — Maintain `links` cross-references so the entity graph stays navigable
+4. **Log** — Append session accountability entries to the operations log
+5. **Recall** — Query entities before acting (`find_company_info`) so decisions aren't re-derived
+6. **Consolidate** — Push durable entity changes to the 1ai-hub brain; run the auto-linker after bulk imports

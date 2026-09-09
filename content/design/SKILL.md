@@ -319,9 +319,42 @@ export GEMINI_API_KEY="your-key"  # https://aistudio.google.com/apikey
 pip install google-genai pillow
 ```
 
+Alternatively install inline: `pip install google-genai pillow`.
+
 > **Note for Windows:** Use `python` instead of `pip` where needed (e.g., `python -m pip install ...`).
 
 ## Integration
 
 **External sub-skills:** brand, design-system, ui-styling
 **Related Skills:** frontend-design, ui-ux-pro-max, ai-multimodal, chrome-devtools
+## Overview
+
+design is the unified entry point for visual production: brand identity, design tokens, UI styling, logo generation (55 styles via Gemini), corporate identity programs (50 deliverables + mockups), HTML presentations with Chart.js, banner design (22 styles), icon design (15 styles, SVG), and social photos (HTML → screenshot). Each capability has a built-in workflow and its own scripts under `scripts/logo`, `scripts/icon`, `scripts/cip`; sub-tasks route to focused skills (brand, design-system, ui-styling) and the skill map at the top of this file picks the right workflow for a request.
+
+## When NOT to Use
+
+- A deep, single-discipline job — load the focused skill instead (brand, ui-ux-pro-max, ui-styling, banner-design) rather than the umbrella
+- Video or motion content — route to HyperFrames/Remotion
+- Programming logic, backend, or non-visual automation — design is visual-asset production
+- When no visual asset is needed (copy, strategy, data analysis) — this skill produces visuals
+- AI image generation without brand/system context — use geminigen-ai directly
+
+## Verification
+
+1. The output matches the requested asset type and platform dimensions (logo 1024px white background, banner exact target size, icon 16–512px export set)
+2. Generated images open and render correctly — no broken SVG text, no letterboxing artifacts
+3. Brand compliance: colors/type come from injected brand context where a brand exists; `validate-asset.cjs` passes
+4. HTML/slide outputs pass token validation (no raw hex; design-tokens.css imported)
+5. A human check on taste: layout hierarchy, safe zones, and CTA placement are correct for the platform
+6. AI-generated results were reviewed before delivery — never ship unverified model output
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|-----------------|---------|
+| "The umbrella skill covers everything, no need for sub-skills" | Each sub-skill holds deeper references and scripts; the umbrella routes, the specialist executes |
+| "AI output is fine as-is" | Model generations need review: white backgrounds for logos, correct text rendering, brand-safe palettes |
+| "One export size is enough" | Platforms demand exact dimensions; the export step exists per format (icons 16–512px, banners per platform) |
+| "I'll skip token validation for a quick asset" | Off-token hex accumulates across assets and breaks the design system later |
+| "Design work is just making it pretty" | The value is consistent, on-brand, platform-correct production — not decoration |
+

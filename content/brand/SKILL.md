@@ -25,6 +25,7 @@ Brand identity, voice, messaging, asset management, and consistency frameworks.
 
 ## When to Use
 
+
 - Brand voice definition and content tone guidance
 - Visual identity standards and style guide development
 - Messaging framework creation
@@ -58,6 +59,8 @@ node scripts/validate-asset.cjs <asset-path>
 node scripts/extract-colors.cjs --palette
 node scripts/extract-colors.cjs <image-path>
 ```
+
+All brand scripts are zero-dependency Node (builtins only). They need Node 18+ — check with `node --version`, or install on Debian/Ubuntu with `apt install nodejs`.
 
 ## Brand Sync Workflow
 
@@ -115,3 +118,32 @@ node scripts/inject-brand-context.cjs --json | head -20
 1. Parse subcommand from `$ARGUMENTS` (first word)
 2. Load corresponding `references/{subcommand}.md`
 3. Execute with remaining arguments
+## Overview
+
+Brand centralizes a company's voice, visual identity, and messaging so every piece of content stays consistent. It defines the brand framework (voice, tone, palette, typography), validates assets against the guidelines with `scripts/validate-asset.cjs`, and syncs approved colors/type into design tokens via `scripts/sync-brand-to-tokens.cjs` so downstream skills (design-system, ui-styling, banner-design) consume one source of truth.
+
+## When NOT to Use
+
+- One-off visual work with no brand — use design/design-system defaults instead of inventing a brand
+- Where brand guidelines already live in a dedicated platform (Frontify, Zeroheight) — keep the source there and import decisions
+- Writing marketing copy at length — this skill defines voice; copywriting formulas live in slides/design references
+- When the user wants a brand *created from scratch with visual exploration* — route to logo/CIP design first, then formalize here
+
+## Verification
+
+1. `node scripts/validate-asset.cjs <asset>` returns PASS against the active guidelines
+2. Colors used by any produced asset are in the approved palette (check with `node scripts/extract-colors.cjs`)
+3. Typography follows the style guide (font family, weights, casing rules)
+4. Voice sample sounds on-brand: read the copy aloud and confirm it matches the defined tone
+5. Token sync is current — `design-system` tokens reflect the latest approved palette (`node scripts/sync-brand-to-tokens.cjs`)
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|-----------------|---------|
+| "Every designer knows our brand, no doc needed" | Without a written source of truth each agent/contractor reinterprets; drift compounds per artifact |
+| "A logo IS the brand" | Logo is one asset; voice, messaging, and color discipline carry consistency further |
+| "I'll fix the palette later" | Late palette changes ripple through every asset; decide tokens before production work |
+| "Validation scripts slow me down" | Automated checks catch off-palette hex and wrong casing in seconds, before a human review round |
+| "Brand docs are static" | Brands evolve; treat guidelines as a living file reviewed at each asset milestone |
+

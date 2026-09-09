@@ -161,3 +161,34 @@ Full 22 styles: `references/banner-sizes-and-styles.md`
 - **brand** — Inject brand context and validate assets
 - **geminigen-ai** — Generate AI visuals for banners
 - **frontend-design** — Build HTML/CSS banner layouts
+## Overview
+
+Banner-design produces platform-ready creative across social, ads, web, and print from a single HTML/CSS source: 22 art direction styles, exact per-platform pixel sizes with safe zones (full matrix in `references/banner-sizes-and-styles.md`), and an export pipeline that screenshots HTML to PNG at the target dimensions. It pairs with ui-ux-pro-max for style intelligence, brand for identity injection/validation, and geminigen-ai for AI visuals. Serve an HTML banner locally with `npx http-server .` (or `python3 -m http.server`), then screenshot the target viewport to PNG at exact size.
+
+## When NOT to Use
+
+- Full-page website design — route to design/ui-styling instead of squeezing a page into a banner canvas
+- Video or animated ad formats — route to HyperFrames/Remotion; this skill outputs static images
+- Print production (brochures, multi-page) — a banner is single-surface; route multi-page print to design/document-creator
+- Logo or icon creation — use design/logo or icon workflows
+- When the user just needs a quick crop/resize of an existing asset — use an image tool, not a redesign
+
+## Verification
+
+1. Canvas dimensions match the target platform exactly (reference matrix, e.g. 1080×1080 Instagram post, 300×250 medium rectangle)
+2. Critical content sits inside the safe zone (central 70–80%); nothing vital within 10% of any edge
+3. One CTA per banner, bottom-right, ≥44px hit area, action verb
+4. Text ratio under 20% for paid social (Meta ad-policy check)
+5. Export at the exact pixel size; no letterboxing or upscaling artifacts
+6. Brand pass: colors and type come from the injected brand context; `validate-asset.cjs` returns PASS
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|-----------------|---------|
+| "One design will work across platforms" | Ratios differ wildly (3:1 header vs 9:16 story); cropping one master breaks composition per surface |
+| "I'll fill the whole canvas, more is better" | Dense banners fail at small ad sizes; safe zones and negative space carry the CTA |
+| "Text-heavy is fine, it explains more" | Paid platforms penalize >20% text ratio with lower delivery and cost per result |
+| "Screenshot at any size, it will scale" | Pixel-perfect export requires rendering at the exact target dimensions, not scaling |
+| "Print and web colors are the same" | Web is RGB, print is CMYK at 300 DPI with bleed — export differs per medium |
+
