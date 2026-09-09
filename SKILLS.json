@@ -1,9 +1,10 @@
 {
-  "total_skills": 1343,
+  "total_skills": 1360,
   "category_count": 19,
   "categories": {
+    "agents": 14,
     "automation": 20,
-    "content": 63,
+    "content": 78,
     "core": 47,
     "cybersecurity": 794,
     "data": 7,
@@ -11,14 +12,14 @@
     "devops": 31,
     "financial": 18,
     "integrations": 29,
-    "marketing": 42,
+    "marketing": 43,
     "mcp": 15,
     "meta": 13,
     "mindset": 55,
     "operations": 19,
     "productivity": 10,
     "research": 36,
-    "sales": 13,
+    "sales": 14,
     "trading": 26
   },
   "skills": [
@@ -24638,11 +24639,315 @@
       "author": "oyi77",
       "subdomain": "animation",
       "type": "content"
+    },
+    {
+      "name": "hyperframes-product-launch-video",
+      "category": "content",
+      "description": "Create product launch videos from a URL, brief, or script using HyperFrames (HTML\u2192MP4). Use when the user wants a product launch video, site tour, social clip, or marketing/promoting a product. Up to ~3 min (sweet spot 30-90s).",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "video",
+        "product-launch",
+        "html-to-video",
+        "animation",
+        "marketing"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content"
+    },
+    {
+      "name": "hyperframes-motion-graphics",
+      "category": "content",
+      "description": "Create short, unnarrated, design-led motion graphics (~under 10s) using HyperFrames. Use when the user wants kinetic type, stat/chart hits, logo stings, lower-thirds, or transparent overlay motion graphics.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "motion-graphics",
+        "animation",
+        "kinetic-type",
+        "lower-third"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content"
+    },
+    {
+      "name": "hyperframes-cut-the-curve",
+      "category": "content",
+      "description": "The transition technique catalog for HyperFrames videos \u2014 five velocity-matched SEAMS plus in-scene techniques. Covers partial-travel velocity matching, Z scale-sign rule, and the 2-3 transition budget.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "transitions",
+        "animation",
+        "cut-the-curve",
+        "velocity-matching"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content"
+    },
+    {
+      "name": "hyperframes-oversized-cursor",
+      "category": "content",
+      "description": "House-style oversized macOS cursor technique for HyperFrames videos. Use when a scene involves cursors, pointer-led action, or needs motion to carry the eye.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "cursor",
+        "motion",
+        "click-ignition",
+        "eye-carrier"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content"
+    },
+    {
+      "name": "hyperframes-embedded-captions",
+      "category": "content",
+      "description": "Add captions/subtitles to talking-head or launch videos using HyperFrames. Covers the drop/rail/embed caption model and the overlay law.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "captions",
+        "subtitles",
+        "talking-head",
+        "overlay"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content"
+    },
+    {
+      "name": "hyperframes-changelog-video",
+      "category": "content",
+      "description": "Turn a weekly changelog .md into a finished branded changelog video using HyperFrames. Self-contained \u2014 fonts, background, lexicon, and scripts ship in the skill.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "changelog",
+        "video",
+        "branded-content",
+        "digest"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content"
+    },
+    {
+      "name": "hyperframes-seam-craft",
+      "category": "content",
+      "description": "Render-correctness doctrine for scene-to-scene seams in HyperFrames videos. Covers the opaque stage-ground white-flash guard and injector overlap mechanics.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "seams",
+        "transitions",
+        "render-correctness",
+        "white-flash"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content"
+    },
+    {
+      "name": "hyperframes-talking-head-recut",
+      "category": "content",
+      "description": "Package an existing talking-head / interview / podcast video with timed, designed graphic overlays using HyperFrames. Use when the user wants kinetic titles, lower-thirds, data callouts, pull-quotes, side panels, or picture-in-picture on top of existing footage.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "talking-head",
+        "graphic-overlays",
+        "lower-thirds",
+        "video-packaging"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content"
+    },
+    {
+      "name": "hyperframes-faceless-explainer",
+      "category": "content",
+      "description": "Turn arbitrary text into a faceless explainer video using HyperFrames. Use when the user wants a topic explainer, concept breakdown, how-to, or listicle with no product/website to capture.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "explainer",
+        "faceless",
+        "education",
+        "concept",
+        "how-to"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content"
+    },
+    {
+      "name": "video-production-orchestrator",
+      "category": "content",
+      "description": "The single entry point for ALL video generation and editing needs. Analyzes user intent and routes to the right video workflow \u2014 HyperFrames, Remotion, FFmpeg, auto-clipper, content-factory, or slides. Use when the user says 'make a video', 'create video', 'edit video', or any video production request.",
+      "domain": "content-creation",
+      "tags": [
+        "video",
+        "orchestrator",
+        "router",
+        "hyperframes",
+        "remotion",
+        "ffmpeg",
+        "content-factory"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content"
+    },
+    {
+      "name": "video-strategy-orchestrator",
+      "category": "content",
+      "description": "Decides WHEN to use Remotion, HyperFrames, AI video generation, or a hybrid of all three. Use when building video production pipelines, choosing a video tool for a task, or when the user asks 'which video tool should I use?'.",
+      "domain": "content-creation",
+      "tags": [
+        "video",
+        "strategy",
+        "orchestrator",
+        "remotion",
+        "hyperframes",
+        "ai-video",
+        "hybrid"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content"
+    },
+    {
+      "name": "content-director",
+      "category": "content",
+      "description": "The top-level creative director that orchestrates ALL content production across the company. Acts as the Creative Director / Chief Content Officer \u2014 delegates to Video Director, Image Director, Copywriting, and Content Operations.",
+      "domain": "content-creation",
+      "tags": [
+        "content",
+        "director",
+        "orchestrator",
+        "creative",
+        "strategy",
+        "multi-format"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-direction",
+      "type": "content"
+    },
+    {
+      "name": "video-director",
+      "category": "content",
+      "description": "The video team lead that orchestrates ALL video production. Acts as the Video Production Manager \u2014 delegates to HyperFrames, Remotion, AI video, and FFmpeg based on the task.",
+      "domain": "content-creation",
+      "tags": [
+        "video",
+        "director",
+        "orchestrator",
+        "production",
+        "hyperframes",
+        "remotion"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content"
+    },
+    {
+      "name": "image-director",
+      "category": "content",
+      "description": "The photography and design team lead that orchestrates ALL visual design production. Acts as the Creative Design Manager \u2014 delegates to logo design, icon design, banner design, UI/UX, and brand design system.",
+      "domain": "content-creation",
+      "tags": [
+        "image",
+        "director",
+        "orchestrator",
+        "design",
+        "logo",
+        "icon",
+        "banner",
+        "ui",
+        "ux"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "design-production",
+      "type": "content"
+    },
+    {
+      "name": "marketing-director",
+      "category": "marketing",
+      "description": "The growth and distribution team lead that orchestrates ALL marketing activities. Acts as the Chief Marketing Officer \u2014 delegates to paid ads, content marketing, email marketing, social media, SEO, and analytics.",
+      "domain": "marketing",
+      "tags": [
+        "marketing",
+        "director",
+        "orchestrator",
+        "growth",
+        "advertising",
+        "promotion",
+        "seo"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "marketing-direction",
+      "type": "marketing"
+    },
+    {
+      "name": "sales-director",
+      "category": "sales",
+      "description": "The revenue and conversion team lead that orchestrates ALL sales activities. Acts as the Chief Revenue Officer \u2014 delegates to lead generation, pipeline management, closing, and customer success.",
+      "domain": "sales",
+      "tags": [
+        "sales",
+        "director",
+        "orchestrator",
+        "revenue",
+        "leads",
+        "pipeline",
+        "closing"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "sales-direction",
+      "type": "sales"
+    },
+    {
+      "name": "company-handbook",
+      "category": "content",
+      "description": "The cross-director coordination protocol that defines how Content, Video, Image, Marketing, and Sales directors work together. Defines shared brand standards, handoff protocols, and escalation paths.",
+      "domain": "content-creation",
+      "tags": [
+        "company",
+        "handbook",
+        "coordination",
+        "directors",
+        "brand",
+        "protocol"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "company-direction",
+      "type": "content"
     }
   ],
   "tooling_dirs": [
-    "docs",
-    "hooks",
     "manifests",
     "references",
     "scripts"
