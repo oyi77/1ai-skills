@@ -1,6 +1,6 @@
 ---
 name: gate-exchange-bot
-description: "Grid and martingale trading-bot strategy design — parameter discipline, range/leverage/direction selection, and confirmation gates. Strategy-only; uses public market data, no exchange CLI/MCP."
+description: "Use when designing grid and martingale trading-bot strategies — parameter discipline, range/leverage/direction selection, and confirmation gates. Strategy-only; uses public market data, no exchange CLI/MCP."
 domain: trading
 author: oyi77
 license: Apache-2.0

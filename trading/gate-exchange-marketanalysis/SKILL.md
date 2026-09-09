@@ -1,6 +1,6 @@
 ---
 name: gate-exchange-marketanalysis
-description: "Read-only crypto market structure and sentiment analysis for any spot/perp market — trend, support/resistance, volume profile, funding, and social/news sentiment. Produces a structured market brief with no execution glue."
+description: "Use when you need read-only crypto market structure and sentiment analysis for any spot/perp market — trend, support/resistance, volume profile, funding, and social/news sentiment. Produces a structured market brief with no execution glue."
 domain: trading
 author: oyi77
 license: Apache-2.0

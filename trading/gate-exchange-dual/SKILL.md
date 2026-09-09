@@ -1,6 +1,6 @@
 ---
 name: gate-exchange-dual
-description: "Dual investment (sell-high / buy-low) yield strategy design — strike selection, settlement logic, and forced-position risk. Strategy-only; uses public market data, no exchange CLI/MCP."
+description: "Use when designing dual investment (sell-high / buy-low) yield strategies — strike selection, settlement logic, and forced-position risk. Strategy-only; uses public market data, no exchange CLI/MCP."
 domain: trading
 author: oyi77
 license: Apache-2.0

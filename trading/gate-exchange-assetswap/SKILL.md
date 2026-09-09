@@ -1,6 +1,6 @@
 ---
 name: gate-exchange-assetswap
-description: "Portfolio rebalancing strategy design — conservative / conviction / market-cap-Top-N baskets, preview-before-create, and order-state checks. Strategy-only; uses public data (CoinGecko market-cap), no exchange CLI/MCP."
+description: "Use when designing portfolio rebalancing strategies — conservative / conviction / market-cap-Top-N baskets, preview-before-create, and order-state checks. Strategy-only; uses public data (CoinGecko market-cap), no exchange CLI/MCP."
 domain: trading
 author: oyi77
 license: Apache-2.0
