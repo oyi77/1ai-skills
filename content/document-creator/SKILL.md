@@ -59,6 +59,13 @@ Generate professional Office documents programmatically across all major formats
 
 
 
+## Verification
+
+- Generate one document per supported format (e.g. a DOCX report, PPTX deck, PDF export) and confirm each opens and renders correctly.
+- Verify content fidelity: headings, tables, and images in the generated file match the input data.
+- Test a template with missing fields and confirm the tool errors clearly or fills documented defaults.
+- Confirm batch generation produces files with unique, expected names and no partial writes on failure.
+
 ## Anti-Rationalization Table
 
 | Excuse | Reality | Rule |

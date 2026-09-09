@@ -18,6 +18,10 @@ tags:
 version: 1.0.0
 category: data
 ---
+## Overview
+
+This skill is the full-stack data analysis pipeline — cleaning, anomaly detection, report generation, and visualization with production pandas. Use it when raw data must become a paid deliverable. It covers the workflow from ingest to the finished report.
+
 
 
 # Data Analysis Pipeline — Clean, Analyze, Report, Visualize
@@ -420,6 +424,13 @@ if __name__ == "__main__":
 4. **Generate one chart** — `plot_numeric_distributions(df, df.columns[:3])` 
 5. **Produce a report** — `generate_report(profile, cleaning, anomaly, charts)`
 6. **Package as a deliverable** — Bundle the report HTML + charts into a zip. That's your $500 minimum viable product.
+
+## Verification
+
+- Run the pipeline on a dataset with a known injected anomaly and confirm detection flags exactly that row.
+- Verify the cleaning step handles missing values as documented (drop vs impute) and reports counts.
+- Check the report/visualization renders from the transformed data — numbers in the report match the computed aggregates.
+- Confirm the pipeline is rerunnable end-to-end on fresh data without manual steps.
 
 ## Anti-Rationalization Table
 

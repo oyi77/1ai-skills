@@ -14,7 +14,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "video-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill builds a timed slideshow video from a set of images with transitions, as a HyperFrames composition. Use it for portfolios, recaps, or gallery sequences. It renders the final MP4 with exact per-slide timing.
+
 
 # HyperFrames — Slideshow / Deck
 

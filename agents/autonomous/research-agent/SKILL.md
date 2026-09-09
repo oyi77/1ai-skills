@@ -15,6 +15,10 @@ tags:
 version: 1.0.0
 category: agents
 ---
+## Overview
+
+This agent investigates topics deeply by pulling multiple sources, cross-referencing claims, and separating evidence from assertion. Use it when a decision depends on facts you do not yet have. It returns findings with provenance so you can audit every conclusion.
+
 
 
 # Research Agent
@@ -110,6 +114,13 @@ if __name__ == "__main__":
 3. **Execute** the core routine.
 4. **Verify** the output against expected results.
 5. **Iterate** based on feedback or new data.
+
+## Verification
+
+- Assign a question with a verifiable factual answer and confirm the agent cites at least two independent sources.
+- Check each claim in the summary traces to a source in the citation list (no orphan assertions).
+- Introduce a source with conflicting claims and confirm the agent flags the conflict rather than picking one silently.
+- Verify the output distinguishes verified facts from inference or unverified claims.
 
 ## Anti-Rationalization Table
 

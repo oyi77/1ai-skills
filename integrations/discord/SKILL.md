@@ -20,6 +20,10 @@ tags:
 version: 1.0.0
 category: integrations
 ---
+## Overview
+
+This skill is the Discord automation hub — bots and webhooks for community management, DevOps notifications, and interactive servers. Use it when a Discord surface needs automated presence. It covers building, deploying, and monetizing community infrastructure-as-a-service.
+
 
 
 # Discord Automation Hub
@@ -528,6 +532,13 @@ if __name__ == "__main__":
 - Alert pipeline routing by severity
 - GitHub → Discord webhook bridge
 - Reusable infrastructure to sell as community automation
+
+## Verification
+
+- Create a bot token in a test server, deploy the bot, and confirm the documented commands respond in-channel.
+- Verify webhook notifications fire on the configured event (e.g. a DevOps alert) with the expected payload.
+- Test failure paths: invalid token, missing permissions, and rate-limit handling produce logged errors, not silent no-ops.
+- Confirm the bot survives a restart and reconnects to the gateway.
 
 ## Anti-Rationalization Table
 

@@ -48,6 +48,13 @@ category: automation
 
 
 
+## Verification
+
+- Post a piece of content via the skill and confirm it lands on the target surface with the expected format.
+- Trigger the sentiment-aware reply path on a known comment and verify the reply tone matches the classification.
+- Run the growth/engagement loop in dry-run mode and confirm the action queue contains exactly the planned actions.
+- Confirm dedupe: repeating the same content or action does not double-post.
+
 ## Anti-Rationalization Table
 
 | Excuse | Reality | Rule |

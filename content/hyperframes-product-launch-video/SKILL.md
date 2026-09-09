@@ -15,7 +15,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "video-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill assembles a product launch video — hero shot, feature callouts, timing — as a HyperFrames composition. Use it when a new release needs a tight, brandable announcement clip. It renders the final MP4 from the product assets you supply.
+
 
 # HyperFrames — Product Launch Video
 

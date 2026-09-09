@@ -19,6 +19,10 @@ tags:
 version: 1.0.0
 category: automation
 ---
+## Overview
+
+This skill is the hub for multi-platform bot automation — Telegram, Twitter/X, and WhatsApp — covering engagement, content distribution, and revenue workflows. Load it when you need a bot surface wired for one or more platforms. It routes to the per-platform playbooks for setup, deployment, and monetization.
+
 
 # Bots — Multi-Platform Bot Automation Hub
 

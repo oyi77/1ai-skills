@@ -535,6 +535,13 @@ takeover affecting all 50K+ users."*
 [Optional: other chainable patterns observed during testing]
 ```
 
+## Verification
+
+- Take two low-severity bugs that you already verified independently and confirm the chained exploit achieves the claimed combined impact.
+- Verify each chain link is real: every step in the chain has a reproduction, not an assumption.
+- Confirm the chain is reported with impact, prerequisites, and the minimum fix per link.
+- Check the chain works against the actual target version, not a locally patched variant.
+
 ## Anti-Rationalization Table
 
 | Rationalization | Reality |

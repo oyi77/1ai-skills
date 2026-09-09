@@ -14,7 +14,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "video-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill is the general-purpose HyperFrames video composition path: any HTML/CSS layout with timed clips and animations rendered to a deterministic MP4. Use it when a video fits no specialized template but is still code-defined. It handles the full compose → render loop.
+
 
 # HyperFrames — General Video (Fallback)
 

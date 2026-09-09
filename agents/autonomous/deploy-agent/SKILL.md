@@ -15,6 +15,10 @@ tags:
 version: 1.0.0
 category: agents
 ---
+## Overview
+
+This agent ships code through a controlled pipeline with verification gates at every stage — build, test, and health checks before anything reaches production. Use it when a release must be reproducible and reversible. It refuses to call a deployment done until the live state is verified.
+
 
 
 # Deploy Agent
@@ -104,6 +108,13 @@ if __name__ == "__main__":
 3. **Execute** the core routine.
 4. **Verify** the output against expected results.
 5. **Iterate** based on feedback or new data.
+
+## Verification
+
+- Deploy to a staging environment and confirm the verification gates (build, test, health) each ran and passed in the log.
+- Introduce a deliberately failing test and confirm the agent aborts the deploy at that gate.
+- Verify rollback: trigger a post-deploy failure and confirm the previous version is restored.
+- Confirm the final report states the live URL/state you can independently curl-check.
 
 ## Anti-Rationalization Table
 

@@ -70,6 +70,13 @@ Stop picking the textbook answer. This skill forces the agent to walk into the a
 
 
 
+## Verification
+
+- Run one full divergence round (N branches → score → cluster → prune → deepen) on a real design question and confirm the surviving branches are genuinely diverse, not rewrites of one idea.
+- Feed a problem with a known trap (e.g. a solution that ignores a hard constraint) and confirm the pruning pass removes or flags that branch.
+- Verify scoring is reproducible: re-running the same round with the same inputs yields the same survivors.
+- Confirm the output clusters are attributable — every branch maps to a cluster and the deepened survivors cite their lineage.
+
 ## Anti-Rationalization Table
 
 | Excuse | Reality | Rule |

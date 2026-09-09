@@ -122,6 +122,13 @@ docker run --read-only \
 | Permission denied in container | Running as root | Add USER directive with non-root user |
 | Image size bloated | Single-stage build | Use multi-stage build, copy only artifacts to final stage |
 
+## Verification
+
+- Build the optimized image and confirm the final layer count and size regressed vs the baseline build.
+- Verify the app still boots inside the optimized image with a smoke test (health endpoint or entrypoint).
+- Check multi-stage output: the run-time image contains no build-only tooling (compiler, package manager artifacts).
+- Rebuild from cache and confirm layer caching hits where expected; confirm any pinned base tags are explicit.
+
 ## Anti-Rationalization Table
 
 | Rationalization | Reality |

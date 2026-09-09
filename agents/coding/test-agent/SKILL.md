@@ -15,6 +15,10 @@ tags:
 version: 1.0.0
 category: agents
 ---
+## Overview
+
+This agent writes comprehensive test suites that defend observable contracts and fail on plausible bugs. Use it to close coverage on a changed module or to convert a manual reproduction into a regression test. It follows the project's test conventions and keeps the suite deterministic.
+
 
 
 # Test Agent
@@ -112,6 +116,13 @@ if __name__ == "__main__":
 3. **Execute** the core routine.
 4. **Verify** the output against expected results.
 5. **Iterate** based on feedback or new data.
+
+## Verification
+
+- Point the agent at a function with an uncovered edge case and confirm the added test fails against a broken variant (mutation check).
+- Verify tests assert observable behavior, not implementation internals (no source-text or wiring assertions).
+- Run the new tests in isolation and in the full suite — both must pass deterministically.
+- Confirm the agent followed the project's test conventions (framework, naming, fixtures).
 
 ## Anti-Rationalization Table
 

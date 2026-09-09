@@ -14,7 +14,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "video-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill builds faceless explainer videos — narration-driven, no on-camera presenter — as HyperFrames compositions. Use it for product or concept explainers where voiceover plus visuals carry the message. It renders the final MP4 from a script you provide.
+
 
 # HyperFrames — Faceless Explainer
 

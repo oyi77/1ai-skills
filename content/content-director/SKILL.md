@@ -17,7 +17,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "content-direction"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill is the Chief Content Officer protocol: it sets the content strategy, owns the editorial calendar, and directs production across formats and platforms. Use it when content output needs a single accountable brain. It converts goals into a pipeline of briefs, reviews, and published assets.
+
 
 # Content Director (Chief Content Officer)
 

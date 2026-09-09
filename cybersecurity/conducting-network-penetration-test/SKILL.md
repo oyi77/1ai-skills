@@ -211,7 +211,9 @@ echo "    Scan results: $BASE/01-recon/ $BASE/02-vuln/"
 
 Run this after the ROE is signed. It produces a structured directory you can immediately use to start the manual validation phase.
 
-## Workflow (PTES Methodology)
+## Process
+
+**PTES Methodology.**
 
 ### Phase 1: Pre-Engagement
 1. Sign ROE with client — target ranges, exclusions, hours, emergency contact

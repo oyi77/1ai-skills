@@ -20,7 +20,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "marketing-direction"
 type: "marketing"
+license: Apache-2.0
 ---
+## Overview
+
+This skill is the Chief Marketing Officer protocol: it owns positioning, campaigns, and the full funnel from awareness to conversion. Use it when growth needs a single accountable strategy brain. It converts business goals into channel plans, messaging, and measurement.
+
 
 # Marketing Director (Chief Marketing Officer)
 

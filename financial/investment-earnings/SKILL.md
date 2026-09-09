@@ -26,6 +26,10 @@ tags:
 - earnings
 - finance
 ---
+## Overview
+
+This skill trades earnings reports for profit — pre-earnings positioning, post-earnings momentum, and management quality scoring. Use it around the highest-alpha event in equity markets. It is a systematic framework for the earnings season edge.
+
 
 # Investment Earnings Analysis
 
@@ -79,7 +83,9 @@ tags:
 
 ---
 
-## Workflow: Earnings Event Playbook
+## Process
+
+**Earnings Event Playbook.**
 
 ### Phase 1: Pre-Earnings Screening (30 min, 2 days before report)
 
@@ -199,6 +205,13 @@ for r in results[:5]:
 ```
 
 ---
+
+## Verification
+
+- Backtest the playbook on the last 8 earnings cycles of a liquid name and confirm the pre/post positioning logic matches the documented signals.
+- Verify management quality scoring uses the documented inputs and produces a rating you can recompute.
+- Check the risk plan: position sizing and stop placement follow the documented rules from the inputs.
+- Confirm the playbook's entry criteria are checkable in real time before earnings.
 
 ## Anti-Rationalization Table
 

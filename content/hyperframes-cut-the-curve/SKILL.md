@@ -16,7 +16,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "video-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill creates a dynamic "cut the curve" animation — a curve being sliced along a moving line — as a HyperFrames composition. Use it for explainer moments where a literal cutting action makes a concept click. It renders a crisp, deterministic MP4 from the HTML composition.
+
 
 # HyperFrames — Cut the Curve (Transition Catalog)
 

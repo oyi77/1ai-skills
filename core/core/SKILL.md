@@ -37,11 +37,25 @@ persona:
 version: 1.0.0
 category: core
 ---
+## Overview
+
+This skill is the knowledge base hub: PARA-structured company memory combining the company-kb and kb skills for persistent context and project documentation. Use it for cross-session recall and organizational memory. It defines how knowledge is captured, filed, and retrieved.
+
 
 
 # Core Knowledge Base Hub — Company Memory & Recall
 
 
+
+## Process
+
+Maintain the knowledge base as a live PARA-structured memory that every session reads on start.
+
+1. **Initialize structure** — create the project/area/resource/archive areas if the KB is new.
+2. **Capture context** — record current session context, decisions, today's focus, open tasks, and follow-ups in the documented files.
+3. **File deliberately** — place each note in the area that makes it findable by the query path, not wherever it was written.
+4. **Query on session start** — load context at the beginning of each session so decisions persist across sessions.
+5. **Maintain** — update existing notes in place (replace, not duplicate) and archive completed work.
 
 ## When Not to Use
 
@@ -532,6 +546,13 @@ def archive_stale_content(dry_run: bool = True):
         print("No stale content found.")
     return stale if dry_run else None
 ```
+
+## Verification
+
+- Save a project decision to the knowledge base, then query it back in a fresh session and confirm it retrieves.
+- Verify PARA structure: content lands in the documented area (project/area/resource/archive) and is findable by search.
+- Check cross-session recall: context loaded at session start includes the decision you stored.
+- Confirm the KB stays consistent — updates to an existing note replace, not duplicate.
 
 ## Anti-Rationalization Table
 

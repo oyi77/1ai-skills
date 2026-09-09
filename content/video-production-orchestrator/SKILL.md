@@ -17,7 +17,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "video-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill orchestrates the video production pipeline across HyperFrames templates, from intake brief to rendered MP4. Use it when multiple video assets must be produced in a batch or on a schedule. It sequences briefing, composition, render, and QA so the line never stalls.
+
 
 # Video Production Orchestrator
 

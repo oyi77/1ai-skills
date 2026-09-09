@@ -15,6 +15,10 @@ tags:
 version: 1.0.0
 category: agents
 ---
+## Overview
+
+This agent detects and fixes code style violations and enforces the project's lint rules across the tree. Use it after any batch of edits to keep the diff convention-clean. It reports what changed and why, so the style pass stays auditable.
+
 
 
 # Linter Agent
@@ -112,6 +116,13 @@ if __name__ == "__main__":
 3. **Execute** the core routine.
 4. **Verify** the output against expected results.
 5. **Iterate** based on feedback or new data.
+
+## Verification
+
+- Run the agent over a file with a known violation and confirm the diff fixes exactly that class of violation.
+- Verify the agent's report lists each rule applied and the file:line where it fired.
+- Check the agent does not reformat unrelated regions (whitespace churn) outside the reported violations.
+- Re-run the project linter after the pass and confirm zero new findings.
 
 ## Anti-Rationalization Table
 

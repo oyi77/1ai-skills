@@ -23,6 +23,10 @@ tags:
 version: 1.0.0
 category: agents
 ---
+## Overview
+
+This skill is the hub for five specialized coding agents — linter, perf, refactor, security, and test — each owning one discipline on the same codebase. Load it when a change touches quality across multiple dimensions and you want each concern handled by an expert pass. It routes each agent in sequence so the passes compose instead of collide.
+
 
 
 # Coding Agents
@@ -274,6 +278,13 @@ echo "Report written to $REPORT"
 ```
 
 ---
+
+## Verification
+
+- Run the five-agent set (linter, perf, refactor, security, test) on one module and confirm each pass reported concrete findings in its own discipline.
+- Introduce a known style violation, a slow loop, and an XSS sink, and confirm each respective agent flags its own issue.
+- Verify passes compose: after all five, the module still builds and the original test suite passes.
+- Confirm no agent silently skipped its scan (each produced a report).
 
 ## Anti-Rationalization Table
 

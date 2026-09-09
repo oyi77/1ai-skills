@@ -20,6 +20,10 @@ tags:
 version: 1.0.0
 category: integrations
 ---
+## Overview
+
+This skill is the GitHub automation hub — Actions, Issues, and PR management for CI/CD, project tracking, and code review workflows. Use it when repository operations should be automated rather than manual. It covers the workflows that keep a repo healthy and its releases flowing.
+
 
 
 # GitHub Automation Hub
@@ -385,6 +389,13 @@ echo "Released v$VERSION"
 - PR merge workflow tested
 - Audit script ready to run on any repo
 - Proven infrastructure you can sell as a DevOps audit deliverable
+
+## Verification
+
+- Create a test issue and PR in a sandbox repo and confirm the documented automation (labels, assignment, CI) fires.
+- Verify Actions: push a commit and confirm the workflow runs and reports the expected status.
+- Test webhook/notification paths with an invalid secret and confirm signature failures are logged, not silently accepted.
+- Confirm the automation respects repo permissions — no operation escalates beyond the token's scope.
 
 ## Anti-Rationalization Table
 

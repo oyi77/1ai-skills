@@ -13,7 +13,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "video-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill creates the oversized animated cursor effect popular in product demo and walkthrough videos, as a HyperFrames composition. Use it to draw attention to exact click points and drag gestures in a UI demo. It renders the annotated MP4 from the HTML timeline.
+
 
 # HyperFrames — Oversized Cursor
 

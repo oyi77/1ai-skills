@@ -17,7 +17,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "video-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill is the Chief Video Officer protocol: it owns the video production line — briefing, scripting, composition, render, and review. Use it when video output needs a single accountable brain across many assets. It routes each production to the right template and quality bar.
+
 
 # Video Director (Video Production Manager)
 

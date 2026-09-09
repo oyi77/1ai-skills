@@ -24,6 +24,10 @@ tags:
 version: 1.0.0
 category: agents
 ---
+## Overview
+
+This skill is the hub for five specialized autonomous agents — code, deploy, planning, research, and review — that decompose and execute large tasks without constant supervision. Load it when you need to staff a job across multiple expert roles and coordinate their outputs. It dispatches each agent with the right context, then integrates the results into a finished deliverable.
+
 
 
 # Autonomous Agents
@@ -276,6 +280,13 @@ agent research-agent \
 ```
 
 ---
+
+## Verification
+
+- Dispatch one task through the full agent set (plan → code → test → review → deploy) and confirm each role produced its documented artifact.
+- Introduce a deliberate defect in the code step and confirm the review agent catches it before deploy.
+- Verify handoffs carry context: each downstream agent's input includes the upstream agent's output without re-asking.
+- Confirm the final deliverable passes the acceptance criteria stated in the plan.
 
 ## Anti-Rationalization Table
 

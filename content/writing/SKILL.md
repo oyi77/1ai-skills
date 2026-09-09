@@ -18,6 +18,10 @@ tags:
 version: 1.0.0
 category: content
 ---
+## Overview
+
+This skill is the full-stack content production factory — ad copy, emails, long-form articles, and product descriptions — with data-driven writing pipelines. Use it when words are the deliverable and volume matters. It turns briefs into on-brand copy at scale.
+
 
 
 # Content Writing Factory — Ad Copy, Emails, Long-Form, Product Descriptions
@@ -431,6 +435,13 @@ if __name__ == "__main__":
 4. **Draft article outline** — `outline = generate_article_outline("remote work productivity", "managers", ["remote work", "productivity tips"])` 
 5. **Write product description** — `desc = generate_product_description("Widget Pro", ["API access", "team dashboards"], ["save 10 hrs/week", "reduce errors"], "engineers")`
 6. **Ship it** — Zip everything into a client folder. That's your $500–$2,000 deliverable.
+
+## Verification
+
+- Generate one piece per format (ad copy, email, article, product description) from a brief and confirm each follows the documented structure and brand rules.
+- Verify tone/voice: output matches the brand guidelines in the brief, not generic prose.
+- Test the data-driven path: a brief with performance data produces copy that incorporates the numbers.
+- Confirm batch runs are deterministic in format — same brief yields consistent structure across runs.
 
 ## Anti-Rationalization Table
 

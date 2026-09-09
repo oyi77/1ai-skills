@@ -14,7 +14,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "video-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill turns a release changelog into a polished video composition using HyperFrames HTML-based rendering. Use it when a product update deserves a visual announcement — hero frames, key bullet callouts, and a background pattern. It produces an MP4 rendered from the changelog entries you feed it.
+
 
 # HyperFrames — Changelog Video
 

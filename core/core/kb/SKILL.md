@@ -459,6 +459,13 @@ fi
 
 ---
 
+## Verification
+
+- Save a project decision to the knowledge base, then query it back in a fresh session and confirm it retrieves.
+- Verify PARA structure: content lands in the documented area (project/area/resource/archive) and is findable by search.
+- Check cross-session recall: context loaded at session start includes the decision you stored.
+- Confirm the KB stays consistent — updates to an existing note replace, not duplicate.
+
 ## Anti-Rationalization Table
 
 | Rationalization | Reality |

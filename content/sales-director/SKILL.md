@@ -19,7 +19,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "sales-direction"
 type: "sales"
+license: Apache-2.0
 ---
+## Overview
+
+This skill is the Chief Sales Officer protocol: it owns pipeline, outreach, proposals, and closing. Use it when revenue depends on a structured selling motion rather than luck. It defines stages, tracking, and the conversion playbook end to end.
+
 
 # Sales Director (Chief Revenue Officer)
 

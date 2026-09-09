@@ -15,6 +15,10 @@ tags:
 version: 1.0.0
 category: agents
 ---
+## Overview
+
+This agent measures before optimizing: it profiles, identifies actual bottlenecks, and only then proposes targeted changes with before/after evidence. Use it when something is slow and the cause is not yet proven. It rejects speculative rewrites in favor of changes that move a measured number.
+
 
 
 # Perf Agent
@@ -124,6 +128,13 @@ if __name__ == "__main__":
 3. **Execute** the core routine.
 4. **Verify** the output against expected results.
 5. **Iterate** based on feedback or new data.
+
+## Verification
+
+- Give the agent a known slow function and confirm it profiles first — the report must contain measured before/after numbers.
+- Verify the proposed change targets the profiled bottleneck, not a different hot spot.
+- Re-run the profile after the change and confirm the improvement matches the claim within noise.
+- Confirm behavior is unchanged: the same inputs produce identical outputs pre/post optimization.
 
 ## Anti-Rationalization Table
 

@@ -15,6 +15,10 @@ tags:
 version: 1.0.0
 category: agents
 ---
+## Overview
+
+This agent operates as a bug bounty hunter and security auditor, hunting for vulnerabilities in code you own or test. Use it before shipping anything exposed to untrusted input or user data. It produces evidence-backed findings with reproduction steps, not generic warnings.
+
 
 
 # Security Agent
@@ -119,6 +123,13 @@ if __name__ == "__main__":
 3. **Execute** the core routine.
 4. **Verify** the output against expected results.
 5. **Iterate** based on feedback or new data.
+
+## Verification
+
+- Run the agent over a code path with a known vulnerability and confirm it reports that exact class with a reproduction.
+- Verify each finding includes the vulnerable file:line, an exploit sketch, and a severity rating.
+- Confirm no false-positive flood: findings must be reproducible, not generic pattern matches.
+- Check remediation advice is concrete — the fix should be actionable in the codebase's own patterns.
 
 ## Anti-Rationalization Table
 

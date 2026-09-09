@@ -19,7 +19,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "design-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill is the Chief Image Officer protocol: it owns visual asset strategy, art direction, and image production across campaigns. Use it when imagery output needs direction rather than ad-hoc generation. It sets briefs, style guardrails, and quality review for every visual deliverable.
+
 
 # Image Director (Creative Design Manager)
 
