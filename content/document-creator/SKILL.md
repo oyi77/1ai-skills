@@ -67,28 +67,9 @@ Generate professional Office documents programmatically across all major formats
 | "Manual document creation is fine" | Manual creation doesn't scale and introduces errors | Programmatic generation ensures consistency and version control |
 | "PDF generation is too complex" | fpdf2 and reportlab handle complex layouts well | Invest in learning the library; it pays off on every document |
 
-
-| Need | Format |
-|------|--------|
-| Contracts, proposals, reports | **Word** (.docx) |
-| Meeting decks, pitches | **PowerPoint** (.pptx) |
-| Financial models, data tables | **Excel** (.xlsx) |
-| Distribution, printing, archiving | **PDF** |
-| Bulk personalized documents | **Word** + mail merge |
-| Charts with live data | **Excel** or **PowerPoint** |
-| Invoice generation | **PDF** or **Word** |
-
 ## Provider Reference
 
 Load format-specific reference files for exact API usage, code examples, and troubleshooting.
-## Process
-
-1. **Define structure** — Plan document sections, sheets, slides, or pages
-2. **Choose format** — Select the right format for the audience (Word for contracts, PPTX for presentations, XLSX for data, PDF for distribution)
-3. **Load data** — From JSON, CSV, database, or API
-4. **Generate** — Use the format-specific reference for exact API calls
-5. **Validate** — Check output opens cleanly in the target application
-6. **Deliver** — Save or stream to client
 
 ## Verification Checklist
 
@@ -97,3 +78,41 @@ Load format-specific reference files for exact API usage, code examples, and tro
 - [ ] Formatting matches specifications (fonts, colors, layout)
 - [ ] File size is reasonable for distribution
 - [ ] Cross-platform compatibility verified
+
+## When NOT to Use
+
+- One-off manual document tweaks — a quick edit in the target app beats a script
+- Highly designed print collateral (branded brochures, complex layouts) — route to design/banner-design
+- Data-heavy dashboards or live reports — route to analytics or a web view
+- When the recipient needs an editable, collaboratively-authored file — generate the initial structure, then hand off to the human workflow
+- Image-first documents (scanned PDFs, photography books) — not a document-generation task
+
+## Quick Start
+
+Install the per-format libraries:
+```bash
+pip install python-docx python-pptx openpyxl fpdf2
+```
+
+Or install the Python library you need inline: `pip install python-docx`
+
+```bash
+pip install python-docx python-pptx openpyxl fpdf2
+```
+
+Generate a Word document:
+
+```python
+from docx import Document
+
+doc = Document()
+doc.add_heading("Proposal", 0)
+doc.add_paragraph("Generated programmatically for consistency.")
+doc.save("proposal.docx")
+```
+
+For each format, load the matching reference file before writing code:
+- Word → `reference/format/docx.md` (python-docx / docx)
+- PowerPoint → `reference/format/pptx.md` (python-pptx / pptxgenjs)
+- Excel → `reference/format/xlsx.md` (openpyxl / exceljs)
+- PDF → `reference/format/pdf.md` (fpdf2 / pdfkit)

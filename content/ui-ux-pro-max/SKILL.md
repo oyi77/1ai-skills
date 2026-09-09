@@ -60,7 +60,7 @@ The search script lives inside this skill's own directory, not the project direc
 python "${CLAUDE_PLUGIN_ROOT}/.claude/skills/ui-ux-pro-max/scripts/search.py" "<query>" --domain <domain>
 ```
 
-If `python` is not found, try `python3`, then `py -3`. Requires Python 3.x, no external dependencies (see README for install instructions if Python is missing).
+If `python` is not found, try `python3`, then `py -3`. Requires Python 3.x, no external dependencies — install Python 3 on Debian/Ubuntu with `apt install python3` if missing (see README).
 
 ## Workflow
 
@@ -230,3 +230,33 @@ Then synthesize the design system + detailed searches and implement.
 ## Before Delivering App UI
 
 Read `references/pro-rules.md` and run through its canonical Pre-Delivery Checklist. It covers icon/visual-element discipline, interaction feedback, light/dark contrast, safe-area layout, and accessibility — scoped to native/mobile app UI (iOS/Android/React Native/Flutter).
+## Overview
+
+UI/UX Pro Max is a searchable design-intelligence database: 79 styles (50 active), 192 product palettes with reasoning, 74 font pairings, 119 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 22 stack guides. All guidance lives in local CSV/data files queried through `scripts/search.py` — no external API. The core workflow is: analyze the request → query the smallest matching domain (`--domain <domain>`) → verify the top result → apply stack-specific implementation → check the pre-delivery checklist in `references/pro-rules.md`.
+
+## When NOT to Use
+
+- Pure backend, database, or API logic with no visible surface — no UI decisions involved
+- Infrastructure/DevOps work, CI pipelines, deployment — nothing to look at or interact with
+- Copywriting or brand strategy at the messaging level — that is brand/slides territory
+- When a search returns no verified match — retry once with a narrower query, then state the gap rather than fabricating guidance
+- Accessibility work needs the outcome first: query the semantic result (e.g. `"error summary validation" --domain ux`), then the component, then the stack — never a generic result for a specific interaction
+
+## Verification
+
+1. Every query used the smallest mode that fits (design-system vs detailed search) and an explicit `--domain` when the first attempt misrouted
+2. The top result's domain/category and identity were verified against the user's product/platform before applying
+3. Design tokens are consistent with the resolved palette — no off-system hex introduced
+4. Interaction feedback, dark/light contrast, and safe-area layout checked against `references/pro-rules.md` Pre-Delivery Checklist
+5. No unverified or fabricated guidance persisted — retries exhausted before labeling a fallback
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|-----------------|---------|
+| "I'll design from memory, the search takes too long" | The database encodes 119 UX guidelines and 192 palettes; memory alone re-derives generic patterns |
+| "One query covers the whole page" | Each query answers one dominant intent; page-level work needs design-system + targeted domain searches |
+| "The top result is always right" | Auto-detection can misroute overlapping terms (e.g. "font" → typography vs google-fonts); verify before applying |
+| "Accessibility is one setting" | It is outcome-specific — error summaries, focus, contrast, and keyboard flow each need their own query |
+| "I'll keep the generic result when search is empty" | Fabricating guidance beats an honest gap only in the short term; retry once, then state what is unverified |
+

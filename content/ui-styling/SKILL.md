@@ -344,3 +344,33 @@ export function LoginForm() {
 - Tailwind UI: https://tailwindui.com
 - Headless UI: https://headlessui.com
 - v0 (AI UI Generator): https://v0.dev
+## Overview
+
+ui-styling builds accessible React UIs from three layers: shadcn/ui components (Radix primitives + Tailwind), Tailwind utility styling, and canvas-based visual composition. It covers component library usage (`references/shadcn-components.md`), theming/dark mode (`shadcn-theming.md`), accessibility patterns (`shadcn-accessibility.md`), Tailwind utilities and customization, and Python automation scripts (`scripts/shadcn_add.py`, `scripts/tailwind_config_gen.py`). Setup is per-project: `npx shadcn-ui@latest init`, then add components with `npx shadcn@latest add <component>`. Core stack install: `npm install -D tailwindcss`.
+
+## When NOT to Use
+
+- Non-React codebases — the component layer is React; use plain HTML/CSS patterns or the framework's own UI kit
+- Pure visual-design decisions before implementation — query ui-ux-pro-max/design-system first for style direction
+- Full brand/identity work — route to brand; this skill implements, not defines
+- Heavy animation/motion design — use GSAP/Remotion workflows, not component styling
+- When no UI exists (backend, scripts, data work) — nothing to style
+
+## Verification
+
+1. Components render and pass interaction checks: keyboard navigation (Tab/Enter/Escape), focus visible, screen-reader labels on icon-only buttons
+2. Dark mode works with no flicker — theme applied via next-themes (or equivalent) with SSR-safe mounting
+3. Responsive check at 390px, 768px, 1280px: no horizontal scroll, tap targets ≥44px
+4. Theme tokens consistent — colors come from the design system, no stray hardcoded hex
+5. Components pass `npm run build` (or the project's typecheck) with zero errors
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|-----------------|---------|
+| "I'll style with inline Tailwind, no design tokens" | Ad-hoc utilities drift from the system; tokens keep palette and spacing consistent |
+| "Radix handles accessibility, nothing to check" | Radix provides primitives, but labels, focus order, and custom variants still need manual verification |
+| "Dark mode is just a class toggle" | SSR flash, contrast, and theme persistence need explicit handling |
+| "One component style fits every page" | Composition and spacing differ per context; reuse primitives, not pixel-identical markup |
+| "I'll add the component later when it's needed" | Adding shadcn components mid-build creates dependency churn; install at the start |
+
