@@ -164,6 +164,13 @@ When visual assets are needed for video:
 - Lower-third graphics
 - Brand overlays
 - Intro/outro animations
+## Dispatch Pattern
+
+When the task fans out (multi-scene video, multi-format package), dispatch one sub-agent per unit in parallel:
+- **Contract first:** define output path, resolution, duration, and brand tokens before spawning. Every worker gets the same contract.
+- **One unit per worker:** one scene per agent for video; one asset per agent for image batches. Workers never edit each other's files.
+- **Parent verifies:** workers skip lint/tests; parent runs `hyperframes check` + spot-frame review after all workers return.
+- **Failure isolation:** one worker failing never blocks others — parent re-dispatches only the failed unit.
 
 ## Anti-Rationalization Table
 

@@ -163,6 +163,13 @@ When visual assets are needed for campaigns:
 - Platform-optimized sizes
 - Brand compliance across channels
 - A/B test variations
+## Dispatch Pattern
+
+When launching across channels, dispatch one sub-agent per channel in parallel:
+- **Contract first:** define message, audience, budget cap, KPI, and launch window before spawning. Every channel worker gets the same contract.
+- **One channel per worker:** Meta Ads, TikTok organic, email sequence each get their own agent. Workers never edit each other's campaigns.
+- **Parent verifies:** workers skip cross-channel checks; parent runs budget-sum + message-consistency check after all workers return.
+- **Failure isolation:** one channel underperforming never blocks others — parent reallocates only that channel's budget.
 
 ## Anti-Rationalization Table
 

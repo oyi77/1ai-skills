@@ -161,6 +161,13 @@ When sales enablement materials need visuals:
 - Comparison charts
 - Customer testimonial graphics
 - Pitch deck visuals
+## Dispatch Pattern
+
+When the task fans out (asset batch, multi-size package), dispatch one sub-agent per asset in parallel:
+- **Contract first:** define dimensions, format, brand tokens, and output path before spawning. Every worker gets the same contract.
+- **One asset per worker:** logo, banner, thumbnail each get their own agent. Workers never edit each other's files.
+- **Parent verifies:** workers skip lint/tests; parent runs brand-compliance + dimension check after all workers return.
+- **Failure isolation:** one worker failing never blocks others — parent re-dispatches only the failed asset.
 
 ## Anti-Rationalization Table
 

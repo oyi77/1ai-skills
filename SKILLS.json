@@ -1,10 +1,10 @@
 {
-  "total_skills": 1360,
+  "total_skills": 1365,
   "category_count": 19,
   "categories": {
     "agents": 14,
     "automation": 20,
-    "content": 78,
+    "content": 83,
     "core": 47,
     "cybersecurity": 794,
     "data": 7,
@@ -24940,6 +24940,87 @@
         "directors",
         "brand",
         "protocol"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "company-direction",
+      "type": "content"
+    },
+    {
+      "name": "hyperframes-music-to-video",
+      "category": "content",
+      "description": "Turn a music track into a beat-synced HyperFrames video \u2014 lyric, slideshow, or kinetic promo. Use when the user provides an audio file, a video to pull audio from, or a mood brief. Music drives pacing.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "music",
+        "beat-sync",
+        "lyric-video"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content"
+    },
+    {
+      "name": "hyperframes-slideshow",
+      "category": "content",
+      "description": "Build a presentation, pitch deck, or interactive deck using HyperFrames. Use when the user wants slides with fragment reveals, branching navigation, or presenter mode. Output is a navigable deck, not a rendered MP4.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "slideshow",
+        "presentation",
+        "pitch-deck"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content"
+    },
+    {
+      "name": "hyperframes-pr-to-video",
+      "category": "content",
+      "description": "Turn a GitHub pull request into a changelog, feature-reveal, fix, or refactor explainer video using HyperFrames. Use when the user provides a PR URL, owner/repo#N ref, or says 'this PR'.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "pr-to-video",
+        "github",
+        "code-diff"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content"
+    },
+    {
+      "name": "hyperframes-general-video",
+      "category": "content",
+      "description": "The fallback HyperFrames workflow for anything that doesn't fit other skills \u2014 sizzle reels, title cards, static loops, freeform compositions. Input- and length-agnostic. Use when no other HyperFrames skill matches.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "general-video",
+        "freeform",
+        "sizzle-reel"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content"
+    },
+    {
+      "name": "vilona-gm",
+      "category": "content",
+      "description": "Vilona General Manager AI of the 1ai business kingdom. Single entry point routing any business request to the right director, coordinating cross-director campaigns, escalating to the human owner. Use when the user says Vilona or a request spans departments.",
+      "domain": "content-creation",
+      "tags": [
+        "vilona",
+        "gm",
+        "orchestrator",
+        "business-kingdom",
+        "coordinator"
       ],
       "version": "1.0.0",
       "author": "oyi77",
