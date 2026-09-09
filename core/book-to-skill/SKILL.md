@@ -21,6 +21,10 @@ tags:
 version: 1.0.0
 category: core
 ---
+## Overview
+
+This skill converts technical books and documents — PDF, EPUB, DOCX, HTML, Markdown, RTF, MOBI — into structured agent skills with frameworks, mental models, chapter references, and decision rules. Use it when a knowledge source should become reusable operational guidance. It includes the full extraction and structuring pipeline.
+
 
 
 persona:
@@ -42,6 +46,16 @@ Transform written knowledge into actionable agent skills by extracting framework
 **Format support:** PDF, EPUB, DOCX, TXT, Markdown, reStructuredText, AsciiDoc, HTML, RTF, MOBI/AZW/AZW3
 
 ---
+
+## Process
+
+Convert a knowledge source into a structured, loadable skill by following the extraction pipeline.
+
+1. **Ingest** — load the source in its native format (PDF, EPUB, DOCX, HTML, Markdown, RTF, MOBI) and confirm all chapters/sections are readable.
+2. **Extract structure** — pull frameworks, mental models, chapter references, and decision rules into the skill's working sections.
+3. **Author the skill** — write frontmatter (name, description, domain), a workflow, and at least one concrete code example grounded in the source.
+4. **Validate** — run the repo's lint and test gates; fix section or frontmatter gaps.
+5. **Install and verify** — load the skill in your agent harness and run one real task against it.
 
 ## When to Use
 
@@ -66,6 +80,13 @@ Transform written knowledge into actionable agent skills by extracting framework
 ---
 
 
+
+## Verification
+
+- Convert one book (e.g. a PDF) and confirm the output skill has frontmatter (name, description, domain), a workflow section, and at least one concrete example.
+- Spot-check that chapter-level frameworks and mental models from the source appear in the output, not just a summary.
+- Verify the skill loads in your agent harness (skill discovery finds it, sections parse).
+- Confirm license/attribution is preserved if the source book requires it.
 
 ## Anti-Rationalization Table
 

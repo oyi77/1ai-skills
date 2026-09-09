@@ -14,7 +14,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "video-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill generates a video that visualizes audio — waveform or beat-synced elements — from a music file using a HyperFrames composition. Use it when a track needs a companion visual without manual editing. It renders the final MP4 from the composition.
+
 
 # HyperFrames — Music to Video
 

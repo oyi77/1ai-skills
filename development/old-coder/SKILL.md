@@ -14,7 +14,14 @@ tags:
 - quality-assurance
 - high-assurance
 - test-driven-development
+author: oyi77
+license: Apache-2.0
+subdomain: software-development
 ---
+## Overview
+
+This skill implements high-assurance code with evidence-first development: an executable spec plus a gauntlet of constraints — tests, types, coverage, mutation — so line-by-line review becomes optional. Use it when the stakes are high: money, auth, data loss, concurrency, public API. It triggers on "prove it works" and similar demands for rigor.
+
 
 
 # Old Coder: Evidence-First Development
@@ -30,6 +37,13 @@ An old coder's strategy for the agent era: don't read the code — make it run t
 
 ---
 
+## Verification
+
+- Implement a small module with the evidence-first loop and confirm every constraint (tests, types, coverage, mutation) is green at the documented thresholds.
+- Introduce a bug and confirm at least one gate (test, type, coverage, mutation) catches it.
+- Verify the executable spec drives the implementation: acceptance criteria map 1:1 to tests.
+- Confirm the final review step requires the gates' output, not self-reported completion.
+
 ## Anti-Rationalization Table
 
 | Excuse | Reality | Rule |
@@ -44,7 +58,9 @@ An old coder's strategy for the agent era: don't read the code — make it run t
 
 ---
 
-## Workflow: The Evidence-First Loop
+## Process
+
+**The Evidence-First Loop.**
 
 ```
 SPEC → (human approves spec, not code) → RED → GREEN → REFACTOR → GAUNTLET → EVIDENCE

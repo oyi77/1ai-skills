@@ -15,6 +15,10 @@ tags:
 version: 1.0.0
 category: agents
 ---
+## Overview
+
+This agent reads code changes with adversarial intent, hunting for bugs, security holes, and broken contracts rather than style nits. Use it before merging anything that touches money, auth, or shared state. It reports concrete, reproducible findings ranked by severity.
+
 
 
 # Review Agent

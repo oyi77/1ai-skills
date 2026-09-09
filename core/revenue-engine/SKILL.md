@@ -19,6 +19,10 @@ subdomain: ''
 type: core
 category: core
 ---
+## Overview
+
+This skill manages revenue pipelines end to end: tracking Stripe and analytics metrics, and automating financial reporting for SaaS businesses. Use it when money metrics must be visible and attributable. It wires the measurement loop from raw events to the reports you act on.
+
 
 # Money-Making Overview
 
@@ -128,6 +132,13 @@ def route_request(task: str, prompt: str):
 - [ ] Results validated against acceptance criteria
 - [ ] Error handling tested with edge cases
 - [ ] Documentation updated with findings
+
+## Verification
+
+- Wire one revenue source and confirm events flow into the pipeline with correct amounts and attribution.
+- Verify reporting: the dashboard/report totals match the sum of recorded events, and period filters work.
+- Check alerting: a threshold breach triggers the documented notification with the right message.
+- Confirm the pipeline handles refunds and chargebacks without corrupting totals.
 
 ## Anti-Rationalization Table
 

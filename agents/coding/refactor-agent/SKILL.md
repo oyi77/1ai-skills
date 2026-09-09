@@ -15,6 +15,10 @@ tags:
 version: 1.0.0
 category: agents
 ---
+## Overview
+
+This agent restructures code to improve readability, maintainability, and extensibility without changing observable behavior. Use it when a module has grown past the point where it can be extended safely. It preserves contracts and verifies behavior after every move.
+
 
 
 # Refactor Agent
@@ -123,6 +127,13 @@ if __name__ == "__main__":
 3. **Execute** the core routine.
 4. **Verify** the output against expected results.
 5. **Iterate** based on feedback or new data.
+
+## Verification
+
+- Run the refactor on a module with an existing test suite and confirm all tests pass before and after.
+- Verify the public API surface (exported names, signatures) is unchanged — diff the module's exports.
+- Spot-check that comments referencing internal implementation details were updated or removed, not left stale.
+- Confirm the refactor report lists each structural change with its motivation.
 
 ## Anti-Rationalization Table
 

@@ -13,7 +13,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "video-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill adds burned-in captions to an existing video via a HyperFrames overlay composition. Use it when your source footage needs accessible, styled subtitles without a separate subtitle track. It renders the captioned MP4 deterministically from the HTML overlay.
+
 
 # HyperFrames — Embedded Captions
 

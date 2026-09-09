@@ -87,6 +87,13 @@ This is **domain expertise as code**. AI doesn't replace taste — it amplifies 
 
 
 
+## Verification
+
+- Apply one of the 8 skills (e.g. the animation standards or UI craft skill) to a small component and confirm the output follows its documented criteria.
+- Verify the skill's checklist is satisfiable: each criterion is checkable on the produced work, not aspirational.
+- Compare a component built with vs without the skill and confirm the difference matches the skill's stated intent.
+- Confirm the skills reference real, current tooling (versions/APIs you can verify).
+
 ## Anti-Rationalization Table
 
 | Excuse | Reality | Rule |

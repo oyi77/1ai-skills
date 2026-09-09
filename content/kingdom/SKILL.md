@@ -561,6 +561,13 @@ Status: Due upon receipt
 
 ---
 
+## Verification
+
+- Run one full cycle (research → plan → script → create → review → schedule) on a single piece of content and confirm each phase produces its documented artifact.
+- Verify the scheduler handoff: a scheduled post appears in the calendar/queue with correct platform and timestamp.
+- Check the analytics phase reads the tracked performance fields you expect, not placeholders.
+- Confirm a failure in one phase is isolated and reported, not swallowed.
+
 ## Anti-Rationalization Table
 
 | Rationalization | Reality |

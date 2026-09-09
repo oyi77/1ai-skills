@@ -14,7 +14,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "video-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill produces motion-graphics sequences — animated titles, transitions, and kinetic elements — as HyperFrames compositions. Use it for brand stings, intro cards, or animated data callouts. It renders frame-accurate MP4 output from the HTML/CSS animation timeline.
+
 
 # HyperFrames — Motion Graphics
 

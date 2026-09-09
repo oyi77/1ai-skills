@@ -15,7 +15,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "video-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill orchestrates video strategy across the whole catalog — choosing which videos to make, in which format, for which audience, on which cadence. Use it when video production needs a plan before it needs a pipeline. It turns business goals into a video roadmap with measurable targets.
+
 
 # Video Strategy Orchestrator
 

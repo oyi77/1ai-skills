@@ -19,6 +19,10 @@ tags:
 version: 1.0.0
 category: automation
 ---
+## Overview
+
+This skill is the data extraction hub covering content monitoring, price tracking, web scraping, and social listening. Load it when you need structured data pulled from external sites on a schedule. It covers scraper design, anti-blocking, and feeding results into competitive or market intelligence pipelines.
+
 
 # Scrapers — Data Extraction Hub
 

@@ -13,7 +13,14 @@ tags:
   - security-testing
   - methodology
 version: 1.0.0
+author: oyi77
+license: Apache-2.0
+subdomain: web-application-security
 ---
+## Overview
+
+This skill is the master router for web application testing, API security assessment, bug bounty hunting, and authorized penetration testing. Load it to determine the testing phase — recon, validation, privilege escalation, chain — and get routed to the correct vulnerability-category skill. It is the entry point into the cybersecurity playbook set.
+
 
 # HackSkills: Master Router for Security Testing
 
@@ -22,6 +29,13 @@ Master entry router for HackSkills — a curated knowledge base of 101 offensive
 Built for bug bounty, penetration testing, CTF competitions, and authorized security research.
 
 ---
+
+## Verification
+
+- Feed the router a scenario for each phase (recon, validation, exploitation, post-exploitation) and confirm it routes to the correct specialist skill each time.
+- Give an ambiguous request and confirm the router asks for scope/authorization before routing, or states its assumption.
+- Verify the routed skill actually exists and matches the phase (no dead links).
+- Confirm the router enforces authorization gates for destructive/active phases.
 
 ## Anti-Rationalization Table
 

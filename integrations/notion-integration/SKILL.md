@@ -21,6 +21,10 @@ tags:
 version: 1.0.0
 category: integrations
 ---
+## Overview
+
+This skill is the Notion automation hub — API, database, and page management for knowledge bases, project trackers, and content systems. Use it when Notion should store, move, or publish structured content programmatically. It covers CRUD, relations, and the workflows built on top.
+
 
 
 # Notion Automation Hub
@@ -471,6 +475,13 @@ for t in old_tasks:
 - Weekly report automation scheduled
 - Content publishing pipeline validated
 - Reusable deliverables to sell as workspace automation
+
+## Verification
+
+- Create a database and page via the API and confirm they appear in the Notion UI with the expected properties.
+- Verify query/update/archive operations round-trip: create → read → update → archive and confirm each reflected in the UI.
+- Test error paths: invalid token, missing parent, and rate limits produce typed errors, not silent failures.
+- Confirm webhook/integration auth respects the documented token scope.
 
 ## Anti-Rationalization Table
 

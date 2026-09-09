@@ -14,7 +14,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "video-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill covers crafting seamless loop edits — clips that cut and loop without visible seams — using HyperFrames timing. Use it for background loops, ambient scenes, or transition-heavy sequences. It renders the looped MP4 deterministically.
+
 
 # HyperFrames — Seam Craft
 

@@ -12,6 +12,10 @@ source: ai-berkshire
 money: true
 tags: [investment, industry, finance]
 ---
+## Overview
+
+This skill covers industry research and sector rotation for portfolio alpha — TAM/SAM/SOM analysis, competitive dynamics, regulatory tailwinds, and sector timing. Use it when picking sectors or rotating the book. It targets beating the market by 5–15% annually through industry positioning.
+
 
 # Investment Industry Research
 
@@ -64,7 +68,9 @@ This skill transforms industry research into actionable sector rotation trades w
 
 ---
 
-## Workflow: Industry Analysis → Trade
+## Process
+
+**Industry Analysis → Trade.**
 
 ### Phase 1: The Funnel (Top-Down Sector Selection)
 
@@ -168,6 +174,13 @@ for industry, score in sorted(industry_scores.items(), key=lambda x: x[1], rever
 ```
 
 ---
+
+## Verification
+
+- Run the industry analysis on a sector you know well and confirm the TAM/SAM/SOM numbers trace to cited sources.
+- Verify the competitive dynamics section identifies real, current players and their actual positions.
+- Check the sector timing signal matches a documented catalyst calendar, not hindsight.
+- Confirm the output includes a checkable trade/position recommendation with entry, exit, and sizing.
 
 ## Anti-Rationalization Table
 

@@ -40,6 +40,16 @@ IoT and embedded devices are the fastest-growing attack surface in modern networ
 - Boot integrity and secure boot bypass assessment
 - Physical interface identification (UART pinout, JTAG boundary scan)
 
+## Process
+
+Run the IoT/embedded assessment as a staged pipeline from recon to report.
+
+1. **Recon the target** — identify the device, its interfaces (UART, JTAG, network, web), and the attack surface.
+2. **Extract firmware** — obtain the image, identify the filesystem (binwalk/entropy), and unpack it.
+3. **Static analysis** — hunt hardcoded credentials, known vulnerable components, and configuration secrets in the extracted filesystem.
+4. **Dynamic testing** — probe exposed services, debug interfaces, and update mechanisms on the live device where authorized.
+5. **Report** — deliver findings with device context, severity, and reproducible steps.
+
 ## When to Use
 
 **Trigger phrases:**

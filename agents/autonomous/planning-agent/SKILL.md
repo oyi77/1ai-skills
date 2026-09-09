@@ -15,6 +15,10 @@ tags:
 version: 1.0.0
 category: agents
 ---
+## Overview
+
+This agent decomposes complex tasks into executable steps with explicit dependencies, owners, and sequencing. Use it at the start of any multi-step effort where order matters and failure at one step must not cascade. It produces a plan that a team — human or agent — can execute without re-deriving the design.
+
 
 
 # Planning Agent
@@ -123,6 +127,13 @@ if __name__ == "__main__":
 3. **Execute** the core routine.
 4. **Verify** the output against expected results.
 5. **Iterate** based on feedback or new data.
+
+## Verification
+
+- Feed the agent a task with a real dependency chain and confirm the produced plan orders dependent steps correctly.
+- Introduce a constraint (deadline, single owner) and confirm the plan adjusts sequencing and ownership.
+- Verify every plan step names an owner, a deliverable, and a done-condition.
+- Check the plan is executable as written: following it step-by-step reaches the goal without missing inputs.
 
 ## Anti-Rationalization Table
 

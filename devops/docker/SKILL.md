@@ -19,6 +19,10 @@ tags:
 version: 1.0.0
 category: devops
 ---
+## Overview
+
+This skill is the full-stack DevOps pipeline playbook — Docker Compose for local development, Dockerfile optimization for production images, and Kubernetes deployment at scale. Use it to turn container operations into a repeatable, serviceable process. It covers build, hardening, and the path from compose to cluster.
+
 
 
 # DevOps Money Protocol — Compose, Optimize, Deploy
@@ -605,6 +609,13 @@ echo "Deploy complete: https://$APP.$ENV.example.com"
 4. **Create `.dockerignore`** — copy the template above into the project
 5. **Build & measure** — `docker build -t test . && docker image ls | grep test` — target <200 MB
 6. **Scaffold K8s manifests** — `deployment.yaml`, `service.yaml`, `hpa.yaml` for the service
+
+## Verification
+
+- Bring up the documented compose stack and confirm all services reach healthy status with `docker compose ps`.
+- Rebuild one image and confirm layer caching hits where expected and the final image size matches expectations.
+- Verify secrets/env are injected as documented, not baked into image layers.
+- Tear down and confirm volumes/networks clean up per the documented lifecycle.
 
 ## Anti-Rationalization Table
 

@@ -13,7 +13,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "video-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill recuts a talking-head video — re-timing, cropping, or pacing segments — into a new composition via HyperFrames. Use it to tighten a long take into clips or repurpose footage for short-form. It renders the recut MP4 from the original source.
+
 
 # HyperFrames — Talking Head Recut
 

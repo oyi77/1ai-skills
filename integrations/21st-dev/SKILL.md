@@ -19,6 +19,10 @@ tags:
 version: 1.0.0
 category: integrations
 ---
+## Overview
+
+This skill is the roadmap for becoming a 21st-century developer: the modern toolkit, workflow, and career operating system for shipping software with AI assistance. Use it when leveling up your development practice or onboarding into a modern stack. It covers the skills and habits that compound.
+
 
 # 21st.dev — UI Component Registry for AI Agents
 

@@ -82,6 +82,13 @@ Designed for freelancers, bootstrapped startups, and small agencies with 3-10 ac
 - Redact sensitive financial data in reports
 - Document assumptions and methodologies
 
+## Verification
+
+- Wire one real income stream and confirm revenue events flow into the tracker with correct amounts and timestamps.
+- Verify threshold alerts fire: set a threshold below current revenue and confirm the Telegram alert arrives with the right message.
+- Check the dashboard/views reflect the stored data — totals match the sum of recorded events.
+- Confirm the tracker handles negative/refund events without corrupting totals.
+
 ## Anti-Rationalization Table
 
 | Rationalization | Reality |

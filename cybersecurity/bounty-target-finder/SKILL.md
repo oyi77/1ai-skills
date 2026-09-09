@@ -190,6 +190,13 @@ PAYMENT: USDC / Bank Transfer / PayPal (net 15)
 5. **Prioritize & Rank** — Score by: payout × (1 − competition_factor) × skill_match
 6. **Output Report** — Deliver ranked list with payout estimates and scope summaries
 
+## Verification
+
+- Run the finder against a fresh scope and confirm every returned program matches the payout/scope filters you set.
+- Spot-check 3 returned targets against the platform's live program pages — payout table and in-scope assets must match.
+- Verify the pipeline output (JSON/CSV) parses and dedupes when the same program appears twice.
+- Confirm filtered-out programs are excluded for the stated reason (payout floor, out-of-scope list, no public program).
+
 ## Anti-Rationalization Table
 
 | Rationalization | Reality |

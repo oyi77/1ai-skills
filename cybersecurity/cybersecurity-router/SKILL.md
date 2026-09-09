@@ -11,6 +11,9 @@ tags:
   - red-teaming
   - threat-hunting
   - incident-response
+author: oyi77
+license: Apache-2.0
+subdomain: web-application-security
 ---
 
 # Cybersecurity Router: Master Entry for Security Operations
@@ -29,6 +32,13 @@ cybersecurity-router is the master entry for security work: it classifies a targ
 - Pure OSINT gathering with no engagement goal — use `recon-automation` / OSINT skills standalone
 
 ---
+
+## Verification
+
+- Feed the router a scenario for each phase (recon, validation, exploitation, post-exploitation) and confirm it routes to the correct specialist skill each time.
+- Give an ambiguous request and confirm the router asks for scope/authorization before routing, or states its assumption.
+- Verify the routed skill actually exists and matches the phase (no dead links).
+- Confirm the router enforces authorization gates for destructive/active phases.
 
 ## Anti-Rationalization Table
 

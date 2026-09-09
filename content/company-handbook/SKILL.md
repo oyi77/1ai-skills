@@ -17,7 +17,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "company-direction"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill is the protocol for coordinating work across directors — content, video, image, sales, and marketing — under a single operating rhythm. Use it when multiple production tracks must stay aligned on goals and handoffs. It defines the cadence, decision rights, and escalation paths between roles.
+
 
 # Company Handbook (Cross-Director Coordination)
 

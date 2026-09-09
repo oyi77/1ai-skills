@@ -19,6 +19,10 @@ tags:
 version: 1.0.0
 category: content
 ---
+## Overview
+
+This skill is the motion development playbook for HyperFrames compositions — timeline choreography, easing, and animation primitives in HTML/CSS. Use it when building any animated video surface in code. It covers the animation techniques that make compositions feel designed rather than static.
+
 
 # Motion.dev — React Animation Library
 

@@ -17,6 +17,10 @@ tags:
 - wechat
 source: Panniantong/Agent-Reach
 ---
+## Overview
+
+This skill covers multi-platform extraction of e-commerce and messaging channel data — Shopee, TikTok Shop, and chat channels — through the Agent Reach scraper. Use it when you need product listings, sales data, or conversation content from these surfaces. It returns normalized data ready for analysis.
+
 
 # Agent-Reach Channels: Shopee, TikTok Shop, WeChat
 
@@ -45,6 +49,13 @@ Unified channel extraction framework for Southeast Asian e-commerce (Shopee, Tik
 # Refer to the skill's usage section for specific commands
 # Adapt these to your workflow
 ```
+## Verification
+
+- Run a live extraction against one channel (e.g. Shopee product search) and confirm the returned schema matches the documented field set.
+- Verify error handling by pointing the extractor at an invalid store/channel ID and confirming a typed error, not a crash.
+- Confirm rate-limit and retry behavior by firing a burst of requests and checking backoff kicks in.
+- Check that extracted data round-trips into the consumer (CSV/JSON output parses and fields align).
+
 ## Anti-Rationalization Table
 
 | Rationalization | Reality |

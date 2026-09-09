@@ -14,13 +14,37 @@ tags:
   - workflow-automation
   - claude-skills
 version: 1.0.0
+author: oyi77
+license: Apache-2.0
+subdomain: integrations
 ---
+## Overview
+
+This skill bundles 137 practical business skills for Claude — contracts, HR, finance, PDF, documents, presentations, workflows, CRM, marketing, e-commerce, project management, and data engineering — across 20+ categories. Use it when a business or office task has a ready-made playbook. It is a zero-setup library: copy any SKILL.md into a conversation and follow it.
+
 
 # Claude Office Skills: 137 Practical Business Skills for Claude
 
 A curated collection of practical Claude Skills for real-world office tasks. Zero setup required - just copy a skill's SKILL.md into your Claude conversation.
 
 ---
+
+## Process
+
+The bundle is zero-setup: select the skill that matches the task, load it, and follow it.
+
+1. **Select** — find the skill by category (contracts, HR, finance, PDF, documents, presentations, workflows, CRM, marketing, e-commerce, project management, data engineering).
+2. **Load** — copy the SKILL.md into the conversation, or install the bundle and reference the skill by name.
+3. **Follow the workflow** — execute the skill's steps with the actual inputs for your task.
+4. **Verify** — confirm the deliverable matches the skill's stated output and the underlying source data.
+5. **Extend via MCP** — for programmatic access, wire the Office MCP server (39 tools) instead of copy-paste.
+
+## Verification
+
+- Pick one bundled skill (e.g. a contract or presentation skill) and follow its SKILL.md end-to-end to a finished deliverable.
+- Verify the bundle's index matches on-disk skills: every listed skill has a readable SKILL.md and no listed skill 404s.
+- Spot-check that the 137 skills cover the documented categories (contracts, HR, finance, PDF, docs, presentations, workflows, CRM, marketing, e-commerce, PM, data engineering).
+- Confirm zero-setup claim: a fresh conversation with the SKILL.md pasted in produces a working result without extra tools.
 
 ## Anti-Rationalization Table
 

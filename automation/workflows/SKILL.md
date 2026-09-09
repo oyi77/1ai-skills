@@ -20,8 +20,22 @@ tags:
 version: 1.0.0
 category: automation
 ---
+## Overview
+
+This skill is the workflow automation hub — cron scheduling, IFTTT triggers, n8n visual building, webhook routing, and self-hosted Zapier alternatives. Load it when a recurring process should run without human babysitting. It matches the automation style to your infrastructure and vendor-lock-in tolerance.
+
 
 # Workflows — Automation Workflow Hub
+
+## Process
+
+Choose the automation style that matches your infrastructure and vendor tolerance, then run the same core loop for each: define the trigger, wire the action, test with a real event, and monitor for silent failure.
+
+1. **Select the tool** — cron for server-native scheduling, n8n for visual flows, IFTTT for consumer triggers, webhooks for API-to-API handoffs, or a self-hosted Zapier alternative when vendor lock-in matters.
+2. **Define the trigger** — the event or schedule that starts the workflow, with its exact input shape.
+3. **Wire the action** — the step or steps that consume the trigger and produce the output, including error paths and retries.
+4. **Test with a real event** — fire an actual trigger and confirm the action fires end to end, not just in dry-run.
+5. **Monitor** — confirm failures are observable (logs, notifications) and the workflow survives restarts.
 
 ## Money-Making Overview
 

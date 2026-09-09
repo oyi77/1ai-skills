@@ -14,7 +14,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "video-production"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill turns a pull request diff into a shareable code-walkthrough video via a HyperFrames composition. Use it when a review or announcement benefits from seeing the change animated. It renders an MP4 that presents the PR's story.
+
 
 # HyperFrames — PR to Video
 

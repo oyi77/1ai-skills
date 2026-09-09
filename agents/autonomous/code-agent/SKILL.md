@@ -15,6 +15,10 @@ tags:
 version: 1.0.0
 category: agents
 ---
+## Overview
+
+This agent implements features directly from specifications: it reads the requirements, writes the code, and iterates until the spec is satisfied. Use it when you have a clear written spec and want the implementation owned end-to-end. It delivers working code plus the reasoning trail behind each change.
+
 
 
 # Code Agent
@@ -105,6 +109,13 @@ if __name__ == "__main__":
 3. **Execute** the core routine.
 4. **Verify** the output against expected results.
 5. **Iterate** based on feedback or new data.
+
+## Verification
+
+- Feed the agent a spec with an acceptance test and confirm the produced code passes it on first run.
+- Introduce an intentional spec contradiction and confirm the agent flags it instead of silently picking one reading.
+- Verify the agent's final report lists every file touched and the reason, matching the actual diff.
+- Check no files outside the stated scope were modified.
 
 ## Anti-Rationalization Table
 

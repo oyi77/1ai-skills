@@ -16,7 +16,12 @@ version: "1.0.0"
 author: "oyi77"
 subdomain: "company-direction"
 type: "content"
+license: Apache-2.0
 ---
+## Overview
+
+This skill is the Vilona General Manager protocol: it operates the business as a whole — goals, staffing, revenue lines, and daily execution — across the director roles. Use it when the operation needs a single accountable operator. It runs the cadence that keeps every function moving.
+
 
 # Vilona — General Manager AI
 

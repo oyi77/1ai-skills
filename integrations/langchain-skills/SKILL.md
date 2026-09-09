@@ -12,13 +12,27 @@ tags:
   - rag
   - multi-agent
 version: 1.0.0
+author: oyi77
+license: Apache-2.0
+subdomain: integrations
 ---
+## Overview
+
+This skill bundles 21 skills for building agents with LangChain, LangGraph, and Deep Agents — ecosystem primer, quickstarts, Deep Agents (memory, orchestration, managed), LangChain fundamentals, middleware, RAG, persistence, evaluation, and utilities. Use it when an agent project lands in the LangChain ecosystem. It routes to the specific playbook for the layer you are building.
+
 
 # LangChain Skills: Agent Engineering with LangChain, LangGraph & Deep Agents
 
 Official agent skills from LangChain for building production-grade LLM applications. 21 skills covering the full stack from fundamentals to managed deployment.
 
 ---
+
+## Verification
+
+- Pick one bundled skill (e.g. a LangGraph quickstart) and follow its SKILL.md end-to-end to a working agent.
+- Verify the bundle's index matches on-disk skills: every listed skill has a readable SKILL.md and no listed skill 404s.
+- Spot-check that the 21 skills cover the documented areas (ecosystem primer, quickstarts, Deep Agents, fundamentals, middleware, RAG, persistence, evaluation, utilities).
+- Confirm the version pins in the skills match the dependency versions you actually installed.
 
 ## Anti-Rationalization Table
 

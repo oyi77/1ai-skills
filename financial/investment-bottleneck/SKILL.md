@@ -26,6 +26,10 @@ tags:
 - bottleneck
 - finance
 ---
+## Overview
+
+This skill finds bottleneck companies — the critical constraint in supply chains with pricing power, low competition, and high returns. Use it when hunting moat-rich industrial plays. It applies the institutional method: identify bottlenecks, score the moat, size the position, execute.
+
 
 # Investment Bottleneck Hunter
 
@@ -76,7 +80,9 @@ tags:
 
 ---
 
-## Workflow: The Bottleneck Hunter Method
+## Process
+
+**The Bottleneck Hunter Method.**
 
 ### Phase 1: Screen for Constraints
 Focus on industries with **inevitable consolidation** — the top 3 players control 70%+ market share AND new entrants face regulatory/IP/capital barriers.
@@ -155,6 +161,13 @@ MONITORING RULES:
 ```
 
 ---
+
+## Verification
+
+- Run the method on a known bottleneck company (e.g. a dominant niche supplier) and confirm it scores high on moat while a commodity business scores low.
+- Verify each score component is computed from cited data, not asserted opinion.
+- Check the output position size follows the documented sizing rule from the inputs.
+- Confirm the trade plan has entry, exit, and invalidation criteria that are checkable.
 
 ## Anti-Rationalization Table
 
