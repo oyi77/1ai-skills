@@ -159,6 +159,13 @@ When sales materials need visuals:
 - Comparison charts
 - Customer testimonial graphics
 - Pitch deck visuals
+## Dispatch Pattern
+
+When working the pipeline, dispatch one sub-agent per deal-stage batch in parallel:
+- **Contract first:** define offer, audience segment, follow-up sequence, and quota before spawning. Every worker gets the same contract.
+- **One batch per worker:** new leads, warm follow-ups, closing calls each get their own agent. Workers never edit each other's CRM records.
+- **Parent verifies:** workers skip pipeline-wide checks; parent runs conversion-rate + follow-up-coverage check after all workers return.
+- **Failure isolation:** one batch stalling never blocks others — parent re-assigns only the stalled batch.
 
 ## Anti-Rationalization Table
 

@@ -157,6 +157,13 @@ When visual assets are needed for content:
 - Brand compliance check
 - Alt text for accessibility
 - Usage rights clarification
+## Dispatch Pattern
+
+When briefing multiple directors, fan out in parallel with a shared contract:
+- **One brief per director:** Video, Image, Copy each get their own brief with the same brand tokens, audience, CTA, and deadline. Never one vague brief for all.
+- **Contract first:** output paths, formats, dimensions, and quality bar defined before any director starts. Every director works from the same contract.
+- **Parent verifies:** Content Director runs the cross-format consistency check after all directors return — never delegate verification to the workers.
+- **Failure isolation:** one director slipping never blocks others — re-brief only the slipped unit, keep the rest moving.
 
 ## Anti-Rationalization Table
 
