@@ -45,6 +45,13 @@ MAX_DESC_LENGTH = 500         # characters
 SIMILARITY_THRESHOLD = 0.99   # for near-duplicate detection
 REQUIRED_SECTIONS = {"## When to Use"}
 RECOMMENDED_SECTIONS = {"## Overview", "## Process", "## Verification"}
+# Alternative headings the repo's own test-skills.py already accepts
+# (WORKFLOW_ALTERNATIVES + verification regex); keep the two gates aligned.
+PROCESS_ALTERNATIVES = ["## Workflow", "## Process", "## Steps", "## Daily Practice",
+                        "## Core Principles", "## How to Use", "## Capabilities",
+                        "## Core Features", "## Architecture"]
+VERIFY_ALTERNATIVES = ["## Verification", "## Verification Checklist",
+                       "## Quality Checklist", "## Quality Gates"]
 
 # ── Frontmatter Schema ──────────────────────────────────────────────────
 REQUIRED_FRONTMATTER = {"name", "description", "domain"}
@@ -274,9 +281,14 @@ def check_sections(body: str, skill: str, result: LintResult):
                         f"Missing required section: {section}")
 
     for section in RECOMMENDED_SECTIONS:
-        if section not in headers:
-            result.add("info", skill, "missing-recommended-section",
-                        f"Missing recommended section: {section}")
+        if section in headers:
+            continue
+        alts = PROCESS_ALTERNATIVES if section == "## Process" else (
+            VERIFY_ALTERNATIVES if section == "## Verification" else None)
+        if alts and any(a in headers for a in alts):
+            continue
+        result.add("info", skill, "missing-recommended-section",
+                    f"Missing recommended section: {section}")
 
 
 def check_duplicates(skills_meta: list[dict], result: LintResult):
