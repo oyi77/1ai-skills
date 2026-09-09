@@ -1,6 +1,6 @@
 ---
 name: gate-exchange-newcoin
-description: "New-listing due diligence and event radar — listings calendar, fundamentals, contract-safety/rug checks, sentiment/tape, and a gated first-buy draft. Strategy-only; uses public data (CoinGecko, Etherscan, web search), no exchange CLI/MCP."
+description: "Use when you need new-listing due diligence and event radar — listings calendar, fundamentals, contract-safety/rug checks, sentiment/tape, and a gated first-buy draft. Strategy-only; uses public data (CoinGecko, Etherscan, web search), no exchange CLI/MCP."
 domain: research
 author: oyi77
 license: Apache-2.0

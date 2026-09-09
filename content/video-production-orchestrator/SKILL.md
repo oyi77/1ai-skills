@@ -1,6 +1,6 @@
 ---
 name: video-production-orchestrator
-description: "The single entry point for ALL video generation and editing needs. Analyzes user intent and routes to the right video workflow — HyperFrames (product-launch, motion-graphics, talking-head-recut, faceless-explainer, changelog, embedded-captions), Remotion (React-based), FFmpeg (programmatic), auto-clipper (highlights), content-factory (YouTube), or slides (presentations). Use when the user says 'make a video', 'create video', 'edit video', 'generate video', or any video production request. This skill decides WHICH video tool/workflow fits the ask."
+description: "The single entry point for ALL video generation and editing needs. Analyzes user intent and routes to the right workflow — HyperFrames (product-launch, motion-graphics, faceless-explainer, changelog, captions), Remotion (React), FFmpeg (programmatic), auto-clipper (highlights), content-factory (YouTube), or slides. Use when the user says 'make a video', 'create video', 'edit video', or any video production request; this skill decides WHICH tool fits the ask."
 domain: "content-creation"
 tags:
   - video

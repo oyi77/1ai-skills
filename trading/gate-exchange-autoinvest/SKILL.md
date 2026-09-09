@@ -1,6 +1,6 @@
 ---
 name: gate-exchange-autoinvest
-description: "Dollar-cost-averaging (auto-invest) plan design — investment currency, target allocation, cadence, and fund-flow discipline. Strategy-only; uses public data, no exchange CLI/MCP."
+description: "Use when designing dollar-cost-averaging (auto-invest) plans — investment currency, target allocation, cadence, and fund-flow discipline. Strategy-only; uses public data, no exchange CLI/MCP."
 domain: trading
 author: oyi77
 license: Apache-2.0
