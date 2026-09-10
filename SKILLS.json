@@ -1,5 +1,5 @@
 {
-  "total_skills": 1365,
+  "total_skills": 1366,
   "category_count": 19,
   "categories": {
     "agents": 14,
@@ -8,7 +8,7 @@
     "core": 47,
     "cybersecurity": 794,
     "data": 7,
-    "development": 91,
+    "development": 92,
     "devops": 31,
     "financial": 18,
     "integrations": 29,
@@ -25026,6 +25026,26 @@
       "author": "oyi77",
       "subdomain": "company-direction",
       "type": "content"
+    },
+    {
+      "name": "adhd-style-eval-run",
+      "category": "development",
+      "description": "Use when running or resuming the i-have-adhd paired blind response-style eval (baseline vs candidate) to test a rules/skill text change \u2014 gpt-oss:20b or claude-sonnet-5 judges, SIGKILL-resume pattern, score gate",
+      "domain": "development",
+      "tags": [
+        "eval",
+        "evaluation",
+        "response-style",
+        "rules",
+        "baseline",
+        "candidate",
+        "blind-judge",
+        "measurement"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "software-development",
+      "type": "dev"
     }
   ],
   "tooling_dirs": [
