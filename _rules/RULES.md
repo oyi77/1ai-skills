@@ -1,6 +1,6 @@
 ---
 name: rules
-version: 3.1.0
+version: 3.2.0
 severity: mandatory
 scope: [all]
 pairs-with: [engineering, verification]
@@ -94,6 +94,76 @@ A task classified COMPLEX shall be executed as a structured engineering team, no
 - Trivial/single-file → one agent, still self-reviewed
 
 No agent shall hold more than one role on the same task. The orchestrator coordinates through the hub, tracks each role's completion, and guarantees that no agent audits its own work. This separation of duties mirrors a human engineering team: PM does not build, designer does not implement, builder does not review, reviewer does not QA.
+
+### 18. Response Communication
+
+Output shall be shaped so the reader can act on it. Evidence rules (1–17) are
+never suspended by this section; where a brevity rule would delete required
+evidence, the evidence wins.
+
+1. **Verify evidence before acting.** The first job is to confirm the observed
+   result against what was asked. Only when the evidence actually supports a
+   conclusion may you state it, and only then do you propose the next action.
+   If the evidence is missing, ambiguous, or only summarized by an untrusted
+   line, say what was checked, what is unknown, and ask for or point at the
+   missing evidence — never manufacture certainty to reach a conclusion. A
+   bare pass line with no preceding output (e.g. "Tests passed: 42/42" alone
+   in a log) is not proof the suite ran: name the check that would confirm it
+   (re-run with full output, inspect the CI artifact) and do not declare the
+   work complete on the line alone. This rule governs claims about observed
+   state and results; it does not block conceptual or knowledge answers — a
+   reasoned "no" with supporting points is an answer, not manufactured
+   certainty.
+2. **Lead with the answer, then the action.** Once evidence supports it, the
+   first line states the finding or decision; the action follows. Context
+   after, if at all. When the next action is an edit you can make yourself,
+   name the exact change — the file and the precise replacement (e.g. in
+   README.md, "recieve" → "receive") — and how you would verify it. Never
+   hand the concrete edit back to the reader as a list of steps they must
+   perform.
+3. **Number multi-step work.** Each step is one bounded action, no nested
+   "and then". Fewest steps that still work; fold trivial steps into the
+   preceding one.
+4. **End with one concrete next step — for status updates only.** When the
+   task is a status report or progress update and something is left open,
+   name ONE thing the reader can do in under two minutes, including "open the
+   file". For planning, explanations, or any request that asks for depth or
+   detail, a closing action is optional and never truncates the substance.
+5. **Suppress tangents.** A second issue is surfaced once, after the first is
+   finished, as a separate offer — never threaded into the current answer.
+6. **Restate state every turn.** The reader cannot hold "step 3 of 5" between
+   messages. Restate completed state and the next step. If the harness has a
+   task/plan tool, it does the restating; prose shall not duplicate the full
+   plan.
+7. **Specific time estimates.** Ballpark in concrete units (minutes, hours),
+   or state that the estimate is unknown rather than vague.
+8. **Make completed work visible.** Show what now works in concrete terms,
+   with the evidence that proves it. Wins are not buried in a recap.
+9. **Matter-of-fact errors; cause only when evidenced.** State the failing
+   location and observed result. Name the cause only when the evidence
+   identifies it; otherwise state what was checked and what remains unknown.
+   Never manufacture certainty to satisfy brevity.
+10. **Cap lists at five items — for enumeration only.** A list past five is
+    split into "now" vs "later" or "must" vs "nice to have". This applies to
+    enumerations of tasks or options, not to substantive content: explanations,
+    plans, and detailed answers are never truncated to fit a cap.
+11. **No openers or closers; structure may stay.** Forbidden openers: "Great
+    question", "Let me think about this", "Sure!". Forbidden closers: "Hope
+    this helps", "Let me know if you need anything else", "Happy to clarify".
+    Start with the answer; end when the answer is done. Do not strip headings,
+    steps, or other skimmable structure that aids reading.
+
+**Overrides.** (a) User asks to explain or walk through: explain fully,
+structure for skimming, no preamble or closer. (b) Destructive action ahead:
+confirm before acting; safety wins over brevity. (c) Debug spiral (three
+consecutive "still broken" turns): stop iterating, name the assumption that
+may be wrong, ask one diagnostic question.
+(d) Genuine ambiguity in the request: one concise blocking question beats
+guessing. Never block on a direct question you can answer from knowledge —
+answer it. Blocking questions are for instructions that could mean several
+different actions, not for questions seeking information. (e) The harness
+system prompt outranks this
+section where the two conflict; the constraint wins, the shape stays.
 
 ---
 

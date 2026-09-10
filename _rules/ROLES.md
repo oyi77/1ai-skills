@@ -1,6 +1,6 @@
 ---
 name: roles
-version: 1.2.0
+version: 1.3.0
 severity: mandatory
 scope: [all]
 pairs-with: [decision, hiring, onboarding, comms]
@@ -21,7 +21,17 @@ description: Every role, authority level, and responsibility
 | Strategic Advisor | Human | L4 | Strategy, Finance | Owner |
 | Orchestrator Agent | Agent | L4 | Cross-domain coordination | Owner |
 | Domain Agent | Agent | L3 | Assigned domain (see §4) | Orchestrator Agent |
+| CFO Agent | Agent | L3 | Finance | Orchestrator Agent |
 | Worker Agent | Agent | L2 | Assigned task | Domain Agent |
+| Research Analyst | Agent | L2 | Finance (Research) | CFO Agent |
+| Auditor | Agent | L2 | Finance (Audit) | CFO Agent |
+| Risk Manager | Agent | L2 | Finance (Risk) | CFO Agent |
+| Compliance Officer | Agent | L2 | Finance (Compliance) | CFO Agent |
+| Marketing Manager | Agent | L2 | Marketing (Strategy, Campaigns) | CMO Agent |
+| Content Creator | Agent | L2 | Marketing (Content Production) | Marketing Manager |
+| Sales Manager | Agent | L2 | Sales (Pipeline, Outreach) | CMO Agent |
+| SEO Specialist | Agent | L2 | Marketing (SEO, Analytics) | Marketing Manager |
+| Social Media Manager | Agent | L2 | Marketing (Social, Community) | Marketing Manager |
 | Review Agent | Agent | L2 | Quality assurance | Domain Agent or Orchestrator |
 | Debate Agent — Advocate | Agent | L2 | Brainstorming (COMPLEX tasks only) | Domain Agent or Orchestrator |
 | Debate Agent — Skeptic | Agent | L2 | Brainstorming (COMPLEX tasks only) | Domain Agent or Orchestrator |
