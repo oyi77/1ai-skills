@@ -57,6 +57,10 @@ class TestResult:
         self.errors = errors
         self.metrics = metrics
 
+# ── Caches ──
+_AST_CACHE = {}
+_IMPORT_CACHE = {}
+
 # ── Collectors ──
 
 def _canonical_name(md):
@@ -257,10 +261,16 @@ def test_code_syntax(text):
     metrics['python_blocks'] = len(py_blocks)
     py_errors = 0
     for block in py_blocks:
+        if block in _AST_CACHE:
+            if not _AST_CACHE[block]:
+                py_errors += 1
+            continue
         try:
             ast.parse(block)
+            _AST_CACHE[block] = True
         except SyntaxError:
             py_errors += 1
+            _AST_CACHE[block] = False
     if py_errors > 0:
         errors.append(f'python-syntax-errors:{py_errors}')
     metrics['python_syntax_errors'] = py_errors
@@ -364,11 +374,19 @@ def test_sdk_availability(text):
     available = 0
     unavailable = 0
     for imp in imports:
+        if imp in _IMPORT_CACHE:
+            if _IMPORT_CACHE[imp]:
+                available += 1
+            else:
+                unavailable += 1
+            continue
         try:
             __import__(imp)
             available += 1
+            _IMPORT_CACHE[imp] = True
         except ImportError:
             unavailable += 1
+            _IMPORT_CACHE[imp] = False
 
     metrics['referenced_imports'] = len(imports)
     metrics['importable'] = available
