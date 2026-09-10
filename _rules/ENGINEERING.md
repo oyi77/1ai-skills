@@ -1,6 +1,6 @@
 ---
 name: engineering
-version: 2.9.0
+version: 2.10.0
 severity: mandatory
 scope: [all]
 pairs-with: [verification, gate]
@@ -420,6 +420,7 @@ Skipping step 1 or 2 is a protocol violation regardless of task size or urgency.
 🚫 `console.log`/`print`/`println`/`dump` in shipped code (ok in active dev)
 🚫 Dirty project root — untracked, generated, or transient files scattered in the repo root
 🚫 One agent holding multiple team roles on COMPLEX work — staff PM, Architect/Senior, UI/UX, Backend, Frontend, Reviewer, QA, Integrator with separation of duties (RULES.md Rule 17)
+🚫 Unverified conclusions or vague/unactionable responses — evidence before claims, lead with the answer (RULES.md Rule 18)
 
 ---
 
