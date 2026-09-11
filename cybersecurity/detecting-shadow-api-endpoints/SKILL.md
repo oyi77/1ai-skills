@@ -111,7 +111,8 @@ class ShadowAPIDetector:
             if spec_path.endswith('.json'):
                 spec = json.load(f)
             else:
-                spec = yaml.safe_load(f)
+                # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+                spec = yaml.load(f, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))
 
         paths = spec.get('paths', {})
         for path, methods in paths.items():

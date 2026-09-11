@@ -104,14 +104,16 @@ def save_entity(name: str, entity_type: str, observations: list[str], relations:
         "access_count": 0,
     }
     if entity_path.exists():
-        existing = yaml.safe_load(entity_path.read_text())
+        # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+        existing = yaml.load(entity_path.read_text(), Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))
         data["access_count"] = existing.get("access_count", 0) + 1
         existing_obs = set(existing.get("observations", []))
         data["observations"] = list(existing_obs | set(observations))
 
     # Atomic write
     tmp = entity_path.with_suffix(".yaml.tmp")
-    tmp.write_text(yaml.dump(data, default_flow_style=False))
+    # Optimization: Use CSafeDumper when available for ~5x faster YAML dumping
+    tmp.write_text(yaml.dump(data, default_flow_style=False, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper)))
     tmp.rename(entity_path)
     return entity_path
 
@@ -119,7 +121,8 @@ def query_entities(keyword: str, max_results: int = 10, min_importance: float = 
     """Search entities by keyword in name and observations."""
     results = []
     for path in (MEMORY_DIR / "entities").glob("*.yaml"):
-        entity = yaml.safe_load(path.read_text())
+        # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+        entity = yaml.load(path.read_text(), Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))
         importance = entity.get("importance", 0.5)
         if importance < min_importance:
             continue
@@ -138,7 +141,8 @@ def save_session_snapshot(session_id: str, context: dict):
         "session_id": session_id,
         "timestamp": datetime.now().isoformat(),
         "context": context,
-    }, default_flow_style=False))
+    # Optimization: Use CSafeDumper when available for ~5x faster YAML dumping
+    }, default_flow_style=False, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper)))
 
 # === Weekly consolidation ===
 def consolidate_weekly():
@@ -153,7 +157,8 @@ def consolidate_weekly():
         if day_date < cutoff:
             continue
         for session_file in day_dir.glob("*.yaml"):
-            session = yaml.safe_load(session_file.read_text())
+            # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+            session = yaml.load(session_file.read_text(), Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))
             ctx = session.get("context", {})
             if "decision" in ctx:
                 consolidated["decisions"].append(ctx["decision"])
@@ -162,7 +167,8 @@ def consolidate_weekly():
 
     out_path = MEMORY_DIR / "consolidated" / f"week-{datetime.now().strftime('%Y-W%W')}.yaml"
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(yaml.dump(consolidated, default_flow_style=False))
+    # Optimization: Use CSafeDumper when available for ~5x faster YAML dumping
+    out_path.write_text(yaml.dump(consolidated, default_flow_style=False, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper)))
     return out_path
 ```
 

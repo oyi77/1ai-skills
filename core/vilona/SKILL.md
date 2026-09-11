@@ -159,7 +159,8 @@ def create_entity(name: str, entity_type: str, facts: list[str] = None):
     filepath = ENTITIES_DIR / f"{sanitized}.md"
     with open(filepath, "w") as f:
         f.write("---\n")
-        yaml.dump(entity, f, default_flow_style=False, sort_keys=False)
+        # Optimization: Use CSafeDumper when available for ~5x faster YAML dumping
+        yaml.dump(entity, f, default_flow_style=False, sort_keys=False, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))
         f.write("---\n")
 
     # Update index.json for fast lookups
@@ -183,7 +184,8 @@ def add_entity_fact(entity_name: str, fact: str, max_facts: int = 50):
 
     raw = filepath.read_text()
     parts = raw.split("---")
-    data = yaml.safe_load(parts[1])
+    # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+    data = yaml.load(parts[1], Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))
 
     data["facts"].insert(0, fact)            # Newest first
     data["facts"] = data["facts"][:max_facts]  # Enforce cap
@@ -191,7 +193,8 @@ def add_entity_fact(entity_name: str, fact: str, max_facts: int = 50):
 
     with open(filepath, "w") as f:
         f.write("---\n")
-        yaml.dump(data, f, default_flow_style=False, sort_keys=False)
+        # Optimization: Use CSafeDumper when available for ~5x faster YAML dumping
+        yaml.dump(data, f, default_flow_style=False, sort_keys=False, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))
         f.write("---\n")
 
     _update_index(filename, data["type"])
@@ -328,7 +331,8 @@ def session_end(summary: str = None, decisions: list[str] = None):
     trace_path = MEMORY_DIR / "sessions" / f"{session_data['date']}-{session_data['session_id']}.md"
     with open(trace_path, "w") as f:
         f.write("---\n")
-        yaml.dump(session_data, default_flow_style=False, sort_keys=False)
+        # Optimization: Use CSafeDumper when available for ~5x faster YAML dumping
+        yaml.dump(session_data, default_flow_style=False, sort_keys=False, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))
         f.write("---\n")
 
     # Trigger persistent brain save
@@ -355,7 +359,8 @@ def recall_recent_sessions(days: int = 7) -> list[dict]:
         if mtime < cutoff:
             break
         frontmatter = f.read_text().split("---")[1]
-        data = yaml.safe_load(frontmatter)
+        # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+        data = yaml.load(frontmatter, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))
         recent.append({
             "date": data.get("date"),
             "id": data.get("session_id"),
@@ -375,7 +380,7 @@ def recall_recent_sessions(days: int = 7) -> list[dict]:
 | Entity name collision after sanitization | Two different names produce the same filename (e.g., "My Project" and "my-project" both become `my-project.md`). Always use unique canonical names. Prefix with type: `project-`, `person-`, `tool-`. Check `index.json` for duplicates before creation. |
 | Session context is stale on resume | Session trace file was created but never finalized. Run `session_end()` manually or `1ai memory session-end --force` to flush. The auto-brain-save hook may have missed firing if the commit hook was overridden or skipped. |
 | Memory recall returns no results | A brain layer (gbrain) may be unreachable. Verify with `xd://mcp__ai_hub_vilona_health`. Fall back to local entity files at `~/.1ai/memory/entities/` — these work offline and don't depend on gbrain. Use FTS5 grep search on those files as last resort. |
-| Entity frontmatter YAML parse error | An unescaped colon or special character in a fact string breaks `yaml.safe_load()`. Diagnose with: `python -c "import yaml; yaml.safe_load(open('path'))"`. Wrap parse in try/except and fall back to raw markdown body. Repair by editing the YAML frontmatter directly. |
+| Entity frontmatter YAML parse error | An unescaped colon or special character in a fact string breaks `yaml.load(f, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))`. Diagnose with: `python -c "import yaml; yaml.load(open('path'), Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))"`. Wrap parse in try/except and fall back to raw markdown body. Repair by editing the YAML frontmatter directly. |
 | Compaction deletes useful sessions before TTL | Default session TTL is 30 days (configurable in `config.yaml`). Extract key facts into the entity file before compaction runs — entities persist indefinitely. Set `session.ttl_days: 90` in `config.yaml` for important projects. |
 | Multi-agent entity write conflicts | Two agents writing the same entity file concurrently can overwrite each other's facts. Use the write-then-verify pattern: write, re-read, confirm your fact appears. Run `1ai memory status` to rebuild the index and resolve inconsistencies at session boundaries. |
 
