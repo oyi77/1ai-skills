@@ -63,8 +63,15 @@ QUALITY_SECTIONS = {
 MIN_LINES = 50
 MIN_DESC_LEN = 20
 
+# ⚡ Bolt Optimization: Precompiled regex constants to avoid inline compilation
+# and dictionary lookup overhead during loops over ~1300 files.
+_SECTION_RE = re.compile(r"^##\s+(.+?)\s*$", re.MULTILINE)
+_HDR_RE = re.compile(r"^#{1,6}\s+")
+
 # Pattern for cross-references like `category/skill-name`
 CROSS_REF_RE = re.compile(r"`([a-z][a-z0-9-]*/[a-z][a-z0-9-]*(?:/[a-z][a-z0-9-]*)*)`")
+
+_FM_KEY_RE = re.compile(r"^([a-zA-Z_][\w-]*):\s*(.*)")
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -112,7 +119,7 @@ def parse_frontmatter(text: str) -> tuple[dict | None, str | None, str]:
 
     for line in fm_text.split("\n"):
         # Detect top-level key: value
-        m = re.match(r"^([a-zA-Z_][\w-]*):\s*(.*)", line)
+        m = _FM_KEY_RE.match(line)
         if m and not line.startswith(("  ", "\t")):
             # Save previous key
             if current_key is not None:
@@ -141,7 +148,7 @@ def count_lines(text: str) -> int:
 def find_sections(body: str) -> list[str]:
     """Extract all ## section headers from body."""
     sections = []
-    for m in re.finditer(r"^##\s+(.+?)\s*$", body, re.MULTILINE):
+    for m in _SECTION_RE.finditer(body):
         sections.append(m.group(1).strip())
     return sections
 
@@ -151,13 +158,14 @@ def find_empty_sections(body: str) -> list[str]:
     empty = []
     lines = body.split("\n")
     for i, line in enumerate(lines):
-        hdr = re.match(r"^##\s+(.+?)\s*$", line)
+        hdr = _SECTION_RE.match(line)
         if not hdr:
             continue
         # Look at next non-empty line
         for j in range(i + 1, len(lines)):
-            if lines[j].strip():
-                if re.match(r"^#{1,6}\s+", lines[j]):
+            next_line = lines[j].strip()
+            if next_line:
+                if _HDR_RE.match(next_line):
                     empty.append(hdr.group(1).strip())
                 break
     return empty
@@ -245,13 +253,13 @@ def validate_skill(path: str) -> dict:
 
     # --- Content quality checks ---
     # Ignore [TODO] when inside checklist items (e.g., "- [ ] No [TODO] or placeholder")
-    todo_lines = [
-        line
-        for line in text.splitlines()
-        if "[TODO]" in line and not re.match(r"^\s*-\s*\[", line)
-    ]
-    if todo_lines:
-        errors.append(f"contains {len(todo_lines)} [TODO] marker(s)")
+    # ⚡ Bolt Optimization: Replaced regex `re.match` with `startswith` and generator for memory/speed gains
+    todo_count = sum(
+        1 for line in text.splitlines()
+        if "[TODO]" in line and not line.lstrip().startswith("- [")
+    )
+    if todo_count:
+        errors.append(f"contains {todo_count} [TODO] marker(s)")
 
     empty = find_empty_sections(body)
     if empty:

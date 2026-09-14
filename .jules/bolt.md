@@ -31,3 +31,10 @@
 ## 2025-02-28 - PyYAML C-extension usage for serialization
 **Learning:** Just like `yaml.safe_load()`, using `yaml.safe_dump()` in pure Python creates a massive CPU bottleneck during batch operations (like fixing hundreds of `SKILL.md` frontmatters).
 **Action:** When updating or serializing multiple YAML files, use `yaml.dump(..., Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))` to dramatically improve performance by utilizing the PyYAML C-extension (`libyaml`) when available.
+## 2025-10-23 - [Optimize Generator Sum for Conditional Counting]
+**Learning:** In text parsing scripts, using `len()` on a list comprehension creates unnecessary list allocation overhead in memory.
+**Action:** When counting occurrences that meet a specific condition within a loop, use a generator expression with `sum()` (e.g., `sum(1 for line in lines if condition)`) instead of allocating memory for a new list.
+
+## 2025-10-23 - [Precompile Regex for Hot Loops]
+**Learning:** In validation scripts like `scripts/test_quality.py` and `scripts/lint-skills.py`, inline `re.match` and `re.compile` inside loops that iterate over thousands of files caused avoidable CPU bottlenecks.
+**Action:** Always hoist `re.compile` calls to the module level when a pattern will be used inside hot loops. Additionally, for exact prefix matching, standard string methods like `.startswith()` on stripped strings can sometimes be faster and cleaner than a regex match.
