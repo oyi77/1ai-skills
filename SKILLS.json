@@ -1,9 +1,9 @@
 {
-  "total_skills": 1366,
+  "total_skills": 1367,
   "category_count": 19,
   "categories": {
     "agents": 14,
-    "automation": 20,
+    "automation": 21,
     "content": 83,
     "core": 47,
     "cybersecurity": 794,
@@ -25046,6 +25046,11 @@
       "author": "oyi77",
       "subdomain": "software-development",
       "type": "dev"
+    },
+    {
+      "name": "phone-harness",
+      "category": "automation",
+      "description": "Use when an agent needs to control a real phone \u2014 Android via adb (open apps, tap, type, swipe, OCR the screen) or iPhone via Mac Mirroring. Use for phonefarm device debugging, OTP flows, or one-off device QA."
     }
   ],
   "tooling_dirs": [
