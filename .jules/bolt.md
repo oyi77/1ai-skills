@@ -31,3 +31,7 @@
 ## 2025-02-28 - PyYAML C-extension usage for serialization
 **Learning:** Just like `yaml.safe_load()`, using `yaml.safe_dump()` in pure Python creates a massive CPU bottleneck during batch operations (like fixing hundreds of `SKILL.md` frontmatters).
 **Action:** When updating or serializing multiple YAML files, use `yaml.dump(..., Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))` to dramatically improve performance by utilizing the PyYAML C-extension (`libyaml`) when available.
+
+## 2025-06-28 - [Optimize Regular Expressions in Hot Loops]
+**Learning:** In heavily used validation scripts (like `scripts/test_quality.py`) that parse thousands of text files, using inline `re.match()` or `re.finditer()` within line-by-line loops introduces massive overhead due to repeated evaluation. However, replacing regex entirely with manual string slicing often breaks validation rules and compromises correctness.
+**Action:** Always precompile heavily utilized regular expressions at the module level (e.g. `_FIELD_RE = re.compile(...)`) and call the compiled `.match()` or `.finditer()` methods directly. Add fast-path substring checks (`if substring in text:`) before entering expensive matching loops when applicable.
