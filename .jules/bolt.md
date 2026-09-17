@@ -31,3 +31,6 @@
 ## 2025-02-28 - PyYAML C-extension usage for serialization
 **Learning:** Just like `yaml.safe_load()`, using `yaml.safe_dump()` in pure Python creates a massive CPU bottleneck during batch operations (like fixing hundreds of `SKILL.md` frontmatters).
 **Action:** When updating or serializing multiple YAML files, use `yaml.dump(..., Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))` to dramatically improve performance by utilizing the PyYAML C-extension (`libyaml`) when available.
+## 2025-05-19 - SequenceMatcher O(N^2) Optimization for Typos
+**Learning:** O(N^2) loops calculating `difflib.SequenceMatcher(...).ratio()` in `content/ui-ux-pro-max/scripts/core.py` for search/typo suggestions were consuming massive amounts of time when evaluating tokens against vocabulary or identities, much like previous findings in `scripts/lint-skills.py`.
+**Action:** When finding fuzzy matches over thresholds, wrap the `SequenceMatcher` to explicitly compute mathematically bound constraints using lengths (`2.0 * min(len(a), len(b)) < threshold * (len(a) + len(b))`), as well as utilizing `matcher.real_quick_ratio()` and `matcher.quick_ratio()` upper-bounds to eagerly discard non-matches before performing the expensive exact calculation.

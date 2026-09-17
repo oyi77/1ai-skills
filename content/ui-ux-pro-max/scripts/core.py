@@ -480,6 +480,19 @@ def _passes_threshold(index, query, threshold):
                  or top_score - runner_up_score >= threshold["min_margin"]))
 
 
+def _similarity_ratio(a, b, threshold=0.72):
+    """Calculate SequenceMatcher ratio with O(N) length and quick-ratio bounds."""
+    len_a, len_b = len(a), len(b)
+    if (len_a + len_b) > 0 and 2.0 * min(len_a, len_b) < threshold * (len_a + len_b):
+        return 0.0
+    matcher = difflib.SequenceMatcher(None, a, b)
+    if matcher.real_quick_ratio() < threshold:
+        return 0.0
+    if matcher.quick_ratio() < threshold:
+        return 0.0
+    return matcher.ratio()
+
+
 def _suggest_terms(bm25, query, limit=6, threshold=None):
     """Nearest known vocabulary terms for a query that returned 0 hits,
     so the caller can retry instead of silently reporting nothing."""
@@ -493,8 +506,7 @@ def _suggest_terms(bm25, query, limit=6, threshold=None):
     for term in bm25.vocabulary():
         if term in query_tokens:
             continue
-        similarity = max(difflib.SequenceMatcher(None, token, term).ratio()
-                         for token in query_tokens)
+        similarity = max(_similarity_ratio(token, term) for token in query_tokens)
         if (similarity >= 0.72
                 and (threshold is None or _passes_threshold(bm25, term, threshold))):
             candidates.append((-similarity, -bm25.doc_freqs.get(term, 0), term))
@@ -514,7 +526,7 @@ def _suggest_identities(rows, query, fields, limit=6):
             if not identity_tokens:
                 continue
             similarity = max(
-                difflib.SequenceMatcher(None, source, target).ratio()
+                _similarity_ratio(source, target)
                 for source in query_tokens for target in identity_tokens
             )
             if similarity >= 0.72 and identity.casefold() != str(query).strip().casefold():
