@@ -31,3 +31,7 @@
 ## 2025-02-28 - PyYAML C-extension usage for serialization
 **Learning:** Just like `yaml.safe_load()`, using `yaml.safe_dump()` in pure Python creates a massive CPU bottleneck during batch operations (like fixing hundreds of `SKILL.md` frontmatters).
 **Action:** When updating or serializing multiple YAML files, use `yaml.dump(..., Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))` to dramatically improve performance by utilizing the PyYAML C-extension (`libyaml`) when available.
+
+## 2024-05-18 - [Optimize AST and Import checks]
+**Learning:** In script operations validating syntax (`ast.parse`) and package availability (`__import__`) across many files (like `scripts/test-skills.py`), identical strings or packages are frequently repeatedly parsed or imported. This repetitive exception handling and syntax parsing across hundreds of files creates significant performance overhead.
+**Action:** When validating dependencies or code blocks across thousands of files, always implement module-level memoization dictionaries (`_AST_CACHE`, `_IMPORT_CACHE`) to cache the boolean results of syntax parsing and import checks. This completely bypasses the severe performance penalty of repeated `SyntaxError` and `ImportError` exception handling and redundant logic.
