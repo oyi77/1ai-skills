@@ -31,3 +31,6 @@
 ## 2025-02-28 - PyYAML C-extension usage for serialization
 **Learning:** Just like `yaml.safe_load()`, using `yaml.safe_dump()` in pure Python creates a massive CPU bottleneck during batch operations (like fixing hundreds of `SKILL.md` frontmatters).
 **Action:** When updating or serializing multiple YAML files, use `yaml.dump(..., Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))` to dramatically improve performance by utilizing the PyYAML C-extension (`libyaml`) when available.
+## 2024-05-15 - Optimizing Validation Through Exception Caching
+**Learning:** Exception handling in Python (like `ImportError` or `SyntaxError`) is incredibly expensive when triggered repeatedly across thousands of files inside loops (such as validating dependencies or AST blocks in `scripts/test-skills.py`).
+**Action:** Always implement module-level memoization dictionaries (e.g., `_IMPORT_CACHE` and `_AST_CACHE`) when repeatedly calling functions prone to failure (like `__import__()` and `ast.parse()`) within batched validation loops.
