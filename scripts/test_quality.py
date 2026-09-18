@@ -24,6 +24,9 @@ from collections import Counter, defaultdict
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
+# Pre-compiled regex for frontmatter parsing
+FM_RE = re.compile(r"^([a-zA-Z_][\w-]*):\s*(.*)")
+
 # ---------------------------------------------------------------------------
 # Config
 # ---------------------------------------------------------------------------
@@ -91,19 +94,32 @@ def parse_frontmatter(text: str) -> tuple[dict | None, str | None, str]:
     if not text.startswith("---"):
         return None, "missing leading ---", text
 
-    # Find closing ---
-    lines = text.split("\n")
-    close_idx = None
-    for i in range(1, len(lines)):
-        if lines[i].rstrip() == "---":
-            close_idx = i
-            break
-
-    if close_idx is None:
+    # Find closing --- using string find rather than full file split
+    close_idx = text.find('\n---', 3)
+    if close_idx == -1:
         return None, "missing closing ---", text
 
-    fm_text = "\n".join(lines[1:close_idx])
-    body = "\n".join(lines[close_idx + 1 :])
+    # accurately find the end of the `---` line
+    while True:
+        next_nl = text.find('\n', close_idx + 4)
+        if next_nl == -1:
+            rest = text[close_idx + 4:]
+            if rest.rstrip() == "":
+                fm_text = text[4:close_idx]
+                body = ""
+                break
+            else:
+                return None, "missing closing ---", text
+
+        line = text[close_idx+4:next_nl]
+        if line.rstrip() == "":
+            fm_text = text[4:close_idx]
+            body = text[next_nl + 1:]
+            break
+
+        close_idx = text.find('\n---', close_idx + 1)
+        if close_idx == -1:
+            return None, "missing closing ---", text
 
     # Simple YAML parser (no PyYAML dependency) — handles flat key: value
     meta: dict[str, str] = {}
@@ -112,7 +128,7 @@ def parse_frontmatter(text: str) -> tuple[dict | None, str | None, str]:
 
     for line in fm_text.split("\n"):
         # Detect top-level key: value
-        m = re.match(r"^([a-zA-Z_][\w-]*):\s*(.*)", line)
+        m = FM_RE.match(line)
         if m and not line.startswith(("  ", "\t")):
             # Save previous key
             if current_key is not None:

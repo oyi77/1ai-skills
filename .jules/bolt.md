@@ -31,3 +31,7 @@
 ## 2025-02-28 - PyYAML C-extension usage for serialization
 **Learning:** Just like `yaml.safe_load()`, using `yaml.safe_dump()` in pure Python creates a massive CPU bottleneck during batch operations (like fixing hundreds of `SKILL.md` frontmatters).
 **Action:** When updating or serializing multiple YAML files, use `yaml.dump(..., Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))` to dramatically improve performance by utilizing the PyYAML C-extension (`libyaml`) when available.
+
+## 2024-05-18 - Fast string-based frontmatter parsing over full file splits
+**Learning:** In `scripts/test_quality.py`, splitting the entire Markdown file text by newlines (`text.split('\n')`) just to parse a small frontmatter block at the beginning scales terribly for large files or many files. Profiling showed this O(N) allocation per file was extremely slow. Pre-compiling the validation regexes also contributed to the speedup.
+**Action:** When implementing high-performance frontmatter parsing in large Markdown files, always use fast string search (`text.find('\n---')` or `re.search`) combined with slicing instead of splitting the entire text body. Always hoist `re.compile()` calls to the module level to avoid the heavy penalty of inline `re.match()` within loops.
