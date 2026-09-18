@@ -246,6 +246,9 @@ def test_content(text):
     return errors, warnings, metrics
 
 
+
+_AST_CACHE = {}
+
 def test_code_syntax(text):
     """Test 3: Code block syntax validation."""
     errors = []
@@ -257,9 +260,13 @@ def test_code_syntax(text):
     metrics['python_blocks'] = len(py_blocks)
     py_errors = 0
     for block in py_blocks:
-        try:
-            ast.parse(block)
-        except SyntaxError:
+        if block not in _AST_CACHE:
+            try:
+                ast.parse(block)
+                _AST_CACHE[block] = True
+            except SyntaxError:
+                _AST_CACHE[block] = False
+        if not _AST_CACHE[block]:
             py_errors += 1
     if py_errors > 0:
         errors.append(f'python-syntax-errors:{py_errors}')
@@ -340,6 +347,9 @@ def test_quality_markers(text):
     return errors, warnings, metrics
 
 
+
+_IMPORT_CACHE = {}
+
 def test_sdk_availability(text):
     """Test 7: Check if referenced SDKs/tools are importable."""
     errors = []
@@ -364,10 +374,16 @@ def test_sdk_availability(text):
     available = 0
     unavailable = 0
     for imp in imports:
-        try:
-            __import__(imp)
+        if imp not in _IMPORT_CACHE:
+            try:
+                __import__(imp)
+                _IMPORT_CACHE[imp] = True
+            except ImportError:
+                _IMPORT_CACHE[imp] = False
+
+        if _IMPORT_CACHE[imp]:
             available += 1
-        except ImportError:
+        else:
             unavailable += 1
 
     metrics['referenced_imports'] = len(imports)
