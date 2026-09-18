@@ -27,7 +27,27 @@ import json
 import os
 import re
 import subprocess
+
 import sys
+
+# Pre-compile regexes for performance
+RE_FM = re.compile(r'^---\n(.*?)\n---', re.DOTALL)
+RE_PYTHON = re.compile(r'```python\n(.*?)```', re.DOTALL)
+RE_JS = re.compile(r'```(typescript|javascript|tsx|ts|jsx)\n(.*?)```', re.DOTALL)
+RE_BASH = re.compile(r'```bash\n(.*?)```', re.DOTALL)
+RE_SQL = re.compile(r'```sql\n(.*?)```', re.DOTALL)
+RE_ALL_CODE = re.compile(r'```\w*\n')
+RE_INTERNAL_LINKS = re.compile(r'/skills/([a-z0-9-]+)')
+RE_AR = re.compile(r'Anti-Rationalization|Common Rationalizations|Common Pitfalls')
+RE_CODE = re.compile(r'```')
+RE_VERIFY = re.compile(r'## Verification|## Quality Checklist|## Quality Gates')
+RE_WHEN_NOT = re.compile(r'## When NOT to Use|## When Not to Use')
+RE_OVERVIEW = re.compile(r'## Overview')
+RE_COMMANDS = re.compile(r'`(npm|pip|npx|brew|apt|docker|git)\s+')
+RE_IMPORTS = re.compile(r'(import |from |require\(|const .+ = require)')
+RE_IMPORT_STMT = re.compile(r'(?:from|import)\s+([\w.]+)')
+RE_NPM_INSTALL = re.compile(r'npm install\s+([\w@/-]+)')
+RE_HEADINGS = re.compile(r'^##+ .+$', re.MULTILINE)
 import time
 from collections import defaultdict
 from pathlib import Path
@@ -102,7 +122,7 @@ def test_structure(text, skill_name):
         errors.append('missing-leading----')
         return errors, warnings, metrics
 
-    fm_match = re.match(r'^---\n(.*?)\n---', text, re.DOTALL)
+    fm_match = RE_FM.match(text)
     if not fm_match:
         errors.append('unclosed-frontmatter')
         return errors, warnings, metrics
@@ -226,14 +246,14 @@ def test_content(text):
             warnings.append(f'missing-recommended:{section}')
 
     # Section count
-    headings = re.findall(r'^##+ .+$', body, re.MULTILINE)
+    headings = RE_HEADINGS.findall(body)
     metrics['section_count'] = len(headings)
 
     # Depth score (how many quality markers present)
     depth = 0
     if 'Anti-Rationalization' in body or '## Common Pitfalls' in body:
         depth += 1
-    if re.search(r'```', body):
+    if RE_CODE.search(body):
         depth += 1
     if '## Verification' in body or '## Quality Checklist' in body:
         depth += 1
@@ -246,6 +266,8 @@ def test_content(text):
     return errors, warnings, metrics
 
 
+_AST_CACHE = {}
+
 def test_code_syntax(text):
     """Test 3: Code block syntax validation."""
     errors = []
@@ -253,32 +275,36 @@ def test_code_syntax(text):
     metrics = {}
 
     # Python blocks
-    py_blocks = re.findall(r'```python\n(.*?)```', text, re.DOTALL)
+    py_blocks = RE_PYTHON.findall(text)
     metrics['python_blocks'] = len(py_blocks)
     py_errors = 0
     for block in py_blocks:
-        try:
-            ast.parse(block)
-        except SyntaxError:
+        if block not in _AST_CACHE:
+            try:
+                ast.parse(block)
+                _AST_CACHE[block] = True
+            except SyntaxError:
+                _AST_CACHE[block] = False
+        if not _AST_CACHE[block]:
             py_errors += 1
     if py_errors > 0:
         errors.append(f'python-syntax-errors:{py_errors}')
     metrics['python_syntax_errors'] = py_errors
 
     # JS/TS blocks
-    js_blocks = re.findall(r'```(typescript|javascript|tsx|ts|jsx)\n(.*?)```', text, re.DOTALL)
+    js_blocks = RE_JS.findall(text)
     metrics['js_blocks'] = len(js_blocks)
 
     # Bash blocks
-    bash_blocks = re.findall(r'```bash\n(.*?)```', text, re.DOTALL)
+    bash_blocks = RE_BASH.findall(text)
     metrics['bash_blocks'] = len(bash_blocks)
 
     # SQL blocks
-    sql_blocks = re.findall(r'```sql\n(.*?)```', text, re.DOTALL)
+    sql_blocks = RE_SQL.findall(text)
     metrics['sql_blocks'] = len(sql_blocks)
 
     # Total code blocks
-    all_blocks = re.findall(r'```\w*\n', text)
+    all_blocks = RE_ALL_CODE.findall(text)
     metrics['total_code_blocks'] = len(all_blocks)
 
     if len(all_blocks) == 0:
@@ -293,7 +319,7 @@ def test_internal_links(text, all_names):
     warnings = []
     metrics = {}
 
-    links = re.findall(r'/skills/([a-z0-9-]+)', text)
+    links = RE_INTERNAL_LINKS.findall(text)
     metrics['internal_links'] = len(links)
 
     broken = [l for l in links if l not in all_names]
@@ -310,13 +336,13 @@ def test_quality_markers(text):
     warnings = []
     metrics = {}
 
-    has_ar = bool(re.search(r'Anti-Rationalization|Common Rationalizations|Common Pitfalls', text))
-    has_code = bool(re.search(r'```', text))
-    has_verify = bool(re.search(r'## Verification|## Quality Checklist|## Quality Gates', text))
-    has_when_not = bool(re.search(r'## When NOT to Use|## When Not to Use', text))
-    has_overview = bool(re.search(r'## Overview', text))
-    has_commands = bool(re.search(r'`(npm|pip|npx|brew|apt|docker|git)\s+', text))
-    has_imports = bool(re.search(r'(import |from |require\(|const .+ = require)', text))
+    has_ar = bool(RE_AR.search(text))
+    has_code = bool(RE_CODE.search(text))
+    has_verify = bool(RE_VERIFY.search(text))
+    has_when_not = bool(RE_WHEN_NOT.search(text))
+    has_overview = bool(RE_OVERVIEW.search(text))
+    has_commands = bool(RE_COMMANDS.search(text))
+    has_imports = bool(RE_IMPORTS.search(text))
 
     metrics['has_anti_rationalization'] = has_ar
     metrics['has_code_examples'] = has_code
@@ -340,6 +366,8 @@ def test_quality_markers(text):
     return errors, warnings, metrics
 
 
+_IMPORT_CACHE = {}
+
 def test_sdk_availability(text):
     """Test 7: Check if referenced SDKs/tools are importable."""
     errors = []
@@ -348,14 +376,14 @@ def test_sdk_availability(text):
 
     # Extract import statements
     imports = set()
-    for match in re.findall(r'(?:from|import)\s+([\w.]+)', text):
+    for match in RE_IMPORT_STMT.findall(text):
         top = match.split('.')[0]
         if not top:
             continue
         imports.add(top)
 
     # Extract npm packages
-    for match in re.findall(r'npm install\s+([\w@/-]+)', text):
+    for match in RE_NPM_INSTALL.findall(text):
         path_part = match.split('/')[-1].replace('@', '')
         if path_part:
             imports.add(path_part)
@@ -364,10 +392,16 @@ def test_sdk_availability(text):
     available = 0
     unavailable = 0
     for imp in imports:
-        try:
-            __import__(imp)
+        if imp not in _IMPORT_CACHE:
+            try:
+                __import__(imp)
+                _IMPORT_CACHE[imp] = True
+            except ImportError:
+                _IMPORT_CACHE[imp] = False
+
+        if _IMPORT_CACHE[imp]:
             available += 1
-        except ImportError:
+        else:
             unavailable += 1
 
     metrics['referenced_imports'] = len(imports)
