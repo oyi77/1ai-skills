@@ -319,11 +319,12 @@ def check_duplicates(skills_meta: list[dict], result: LintResult):
                                 f"Near-duplicate of {name2} (similarity={sim:.2f})")
 
 
+# ⚡ Bolt Optimization: Hoisted regex compilation to module level to avoid recompilation overhead
+_SKILL_LINK_RE = re.compile(r"skill://([a-z0-9-]+)")
+
 def check_cross_references(skills_meta: list[dict], result: LintResult):
     """Check that skill:// links in body text point to real skills."""
     all_names = {m.get("name") for m in skills_meta if m.get("name")}
-
-    skill_link_re = re.compile(r"skill://([a-z0-9-]+)")
 
     for meta in skills_meta:
         body = meta.get("_body", "")
@@ -331,35 +332,46 @@ def check_cross_references(skills_meta: list[dict], result: LintResult):
             continue
 
         skill = meta.get("name", meta["_path"])
-        for match in skill_link_re.finditer(body):
+        for match in _SKILL_LINK_RE.finditer(body):
             target = match.group(1)
             if target not in all_names:
                 result.add("warnings", skill, "broken-skill-ref",
                             f"References nonexistent skill: skill://{target}")
 
 
+# ⚡ Bolt Optimization: Precompiled stub patterns at module level to eliminate
+# inline regex parsing cost inside the loop iterating over 1300+ skills
+_STUB_PATS = [
+    re.compile(r"^ai.?agent"),
+    re.compile(r"^skill for"),
+    re.compile(r"^use this skill"),
+    re.compile(r"^todo[:\s]"),
+    re.compile(r"^placeholder"),
+    re.compile(r"^tbd"),
+    re.compile(r"^lorem"),
+]
+
 def check_stub_descriptions(skills_meta: list[dict], result: LintResult):
     """Flag descriptions that look like auto-generated stubs."""
-    stub_patterns = [
-        r"^ai.?agent",
-        r"^skill for",
-        r"^use this skill",
-        r"^todo[:\s]",
-        r"^placeholder",
-        r"^tbd",
-        r"^lorem",
-    ]
     for meta in skills_meta:
         desc = (meta.get("description") or "").strip().lower()
         skill = meta.get("name", meta["_path"])
-        for pat in stub_patterns:
-            if re.match(pat, desc):
+        for pat in _STUB_PATS:
+            if pat.match(desc):
                 result.add("warnings", skill, "stub-description",
                             f"Stub description: '{desc[:60]}'")
                 break
 
 
 # ── Search Index Generation ─────────────────────────────────────────────
+
+# ⚡ Bolt Optimization: Module-level precompiled regexes to improve search indexing speed
+_TRIGGER_PATS = [
+    re.compile(r"\buse when\b\s*(.+)$"),
+    re.compile(r"\btriggers? on\b\s*(.+)$"),
+    re.compile(r"\bactivates for\b\s*(.+)$"),
+]
+
 def build_search_index(skills_meta: list[dict]) -> dict:
     """Build enriched SKILLS.json with per-skill metadata."""
     categories: dict[str, list] = defaultdict(list)
@@ -378,12 +390,8 @@ def build_search_index(skills_meta: list[dict]) -> dict:
         desc_lower = desc.lower()
         # Synthesise a one-line trigger from known patterns
         trigger = ""
-        trigger_pats = [
-            r"\buse when\b\s*(.+)$", r"\btriggers? on\b\s*(.+)$",
-            r"\bactivates for\b\s*(.+)$",
-        ]
-        for pat in trigger_pats:
-            m = re.search(pat, desc)
+        for pat in _TRIGGER_PATS:
+            m = pat.search(desc)
             if m:
                 trigger = m.group(1).strip().rstrip(".,")
                 break
