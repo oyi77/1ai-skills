@@ -99,7 +99,8 @@ def register_entity(entity_type, name, attributes):
     dir_path.mkdir(parents=True, exist_ok=True)
     file_path = dir_path / "entity.yaml"
     data = {"name": name, "type": entity_type, **attributes}
-    file_path.write_text(yaml.dump(data, default_flow_style=False, sort_keys=False))
+    # Optimization: Use CSafeDumper when available for ~5x faster YAML dumping
+    file_path.write_text(yaml.dump(data, default_flow_style=False, sort_keys=False, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper)))
 
 register_entity("products", "Agent Management Platform", {
     "status": "active", "version": "2.1.0", "team": "Platform",
@@ -119,7 +120,8 @@ def record_decision(title, context, decision, alternatives, date=None):
     from datetime import date as dt
     entry = {"title": title, "context": context, "decision": decision,
              "alternatives": alternatives, "date": str(date or dt.today())}
-    Path(KB_COMPANY / "decisions" / f"{title.replace(' ', '-').lower()}.yaml").write_text(yaml.dump(entry))
+    # Optimization: Use CSafeDumper when available for ~5x faster YAML dumping
+    Path(KB_COMPANY / "decisions" / f"{title.replace(' ', '-').lower()}.yaml").write_text(yaml.dump(entry, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper)))
 
 record_decision("Pricing Tier Structure",
     "Needed to differentiate free vs pro features for launch",
@@ -170,9 +172,11 @@ def update_entity(entity_type, name, transform_fn):
     with open(LOCK_FILE, "a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
         try:
-            data = yaml.safe_load(file_path.read_text()) if file_path.exists() else {}
+            # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+            data = yaml.load(file_path.read_text(), Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader)) if file_path.exists() else {}
             new_data = transform_fn(data)
-            file_path.write_text(yaml.dump(new_data, default_flow_style=False, sort_keys=False))
+            # Optimization: Use CSafeDumper when available for ~5x faster YAML dumping
+            file_path.write_text(yaml.dump(new_data, default_flow_style=False, sort_keys=False, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper)))
         finally:
             fcntl.flock(lock, fcntl.LOCK_UN)
 
@@ -205,8 +209,10 @@ def auto_link_entities(entity_type, name):
     file_path = KB_COMPANY / entity_type / name / "entity.yaml"
     if not file_path.exists():
         return
-    data = yaml.safe_load(file_path.read_text())
-    text = yaml.dump(data).lower()
+    # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+    data = yaml.load(file_path.read_text(), Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))
+    # Optimization: Use CSafeDumper when available for ~5x faster YAML dumping
+    text = yaml.dump(data, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper)).lower()
     existing_links = {(l["type"], l["name"]) for l in data.get("links", [])}
 
     # Scan all entity dirs for name matches in attribute text
@@ -244,7 +250,8 @@ def traverse_links(start_type, start_name, max_depth=3):
         file_path = KB_COMPANY / etype / ename / "entity.yaml"
         if not file_path.exists():
             continue
-        data = yaml.safe_load(file_path.read_text())
+        # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+        data = yaml.load(file_path.read_text(), Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))
         for link in data.get("links", []):
             queue.append((link["type"], link["name"], depth + 1))
 ```
@@ -339,14 +346,16 @@ def triage_client(client_name, symptom):
         print(f"Unknown client: {client_name}")
         return
 
-    client = yaml.safe_load(client_path.read_text())
+    # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+    client = yaml.load(client_path.read_text(), Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))
     print(f"Client: {client['name']} ({client.get('tier', 'unknown')})")
 
     # 2. Traverse links to find products and decisions
     for link in client.get("links", []):
         linked_path = KB_COMPANY / link["type"] / link["name"] / "entity.yaml"
         if linked_path.exists():
-            linked = yaml.safe_load(linked_path.read_text())
+            # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+            linked = yaml.load(linked_path.read_text(), Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))
             print(f"  {link['relation']}: {link['name']} (v{linked.get('version', '?')})")
 
     # 3. Check operations log for recent incidents mentioning this client

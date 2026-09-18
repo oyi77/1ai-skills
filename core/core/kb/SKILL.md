@@ -215,7 +215,8 @@ def save_fact(entity: str, category: str, value: str, **kw):
     facts = []
     if facts_file.exists():
         with open(facts_file) as f:
-            facts = yaml.safe_load(f) or []
+            # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+            facts = yaml.load(f, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader)) or []
 
     facts.append({
         "value": value,
@@ -224,7 +225,8 @@ def save_fact(entity: str, category: str, value: str, **kw):
     })
 
     with open(facts_file, "w") as f:
-        yaml.dump(facts, f, default_flow_style=False, sort_keys=False)
+        # Optimization: Use CSafeDumper when available for ~5x faster YAML dumping
+        yaml.dump(facts, f, default_flow_style=False, sort_keys=False, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))
 
     return facts_file
 ```
@@ -248,7 +250,8 @@ def prune_stale_observations(days_threshold=90):
     for category in ["projects", "areas", "resources"]:
         for facts_file in (KB / category).rglob("facts.yaml"):
             with open(facts_file) as f:
-                records = yaml.safe_load(f) or []
+                # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+                records = yaml.load(f, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader)) or []
 
             fresh = []
             for rec in records:
@@ -264,7 +267,8 @@ def prune_stale_observations(days_threshold=90):
 
             if len(fresh) != len(records):
                 with open(facts_file, "w") as f:
-                    yaml.dump(fresh, f, default_flow_style=False, sort_keys=False)
+                    # Optimization: Use CSafeDumper when available for ~5x faster YAML dumping
+                    yaml.dump(fresh, f, default_flow_style=False, sort_keys=False, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))
 
     return stale
 ```
@@ -399,7 +403,8 @@ def load_open_decisions():
     for category in ["projects", "areas", "resources"]:
         for facts_file in (KB / category).rglob("facts.yaml"):
             with open(facts_file) as f:
-                records = yaml.safe_load(f) or []
+                # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+                records = yaml.load(f, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader)) or []
 
             for rec in records:
                 if rec.get("status") in ("open", "pending"):
@@ -488,7 +493,7 @@ fi
 - [ ] `~/kb/{projects,areas,resources,archives}` directory tree exists
 - [ ] Today's daily note is present at `~/kb/areas/daily/YYYY-MM-DD.md`
 - [ ] Yesterday's daily note contains an End-of-Session Summary section
-- [ ] `save_fact()` writes valid YAML re-readable with `yaml.safe_load()`
+- [ ] `save_fact()` writes valid YAML re-readable with `yaml.load(f, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader))`
 - [ ] Entity facts contain `recorded_at`, `value`, and `status` fields
 - [ ] `load_open_decisions()` returns at least one result before cleanup
 - [ ] Knowledge graph has at least 3 entity types registered

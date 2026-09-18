@@ -246,7 +246,8 @@ def store_fact(category: str, entity: str, fact: dict):
     facts = []
     if file_path.exists():
         with open(file_path) as f:
-            facts = yaml.safe_load(f) or []
+            # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+            facts = yaml.load(f, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader)) or []
 
     # Append new fact
     facts.append({
@@ -256,7 +257,8 @@ def store_fact(category: str, entity: str, fact: dict):
     })
 
     with open(file_path, "w") as f:
-        yaml.dump(facts, f, default_flow_style=False, sort_keys=False)
+        # Optimization: Use CSafeDumper when available for ~5x faster YAML dumping
+        yaml.dump(facts, f, default_flow_style=False, sort_keys=False, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))
 
     print(f"Stored fact in {file_path}")
     return file_path
@@ -383,7 +385,8 @@ def session_warmup():
     decisions_file = KB_ROOT / "resources" / "decisions.yaml"
     if decisions_file.exists():
         with open(decisions_file) as f:
-            decisions = yaml.safe_load(f) or []
+            # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+            decisions = yaml.load(f, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader)) or []
         open_decisions = [d for d in decisions if d.get("status") == "open"]
         if open_decisions:
             print(f"\nOpen decisions ({len(open_decisions)}):")
@@ -427,7 +430,8 @@ def capture_knowledge(entity: str, category: str, content: dict):
     index_file = KB_ROOT / "resources" / "entity-index.yaml"
     if index_file.exists():
         with open(index_file) as f:
-            index = yaml.safe_load(f) or {}
+            # Optimization: Use CSafeLoader when available for ~5x faster YAML parsing
+            index = yaml.load(f, Loader=getattr(yaml, 'CSafeLoader', yaml.SafeLoader)) or {}
     else:
         index = {}
 
@@ -443,7 +447,8 @@ def capture_knowledge(entity: str, category: str, content: dict):
         index[entity]["related"] = list(set(index[entity]["related"]))
 
     with open(index_file, "w") as f:
-        yaml.dump(index, f, default_flow_style=False, sort_keys=False)
+        # Optimization: Use CSafeDumper when available for ~5x faster YAML dumping
+        yaml.dump(index, f, default_flow_style=False, sort_keys=False, Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))
 
     print(f"Entity index updated for '{entity}'")
     return fact_path
