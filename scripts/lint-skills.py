@@ -129,6 +129,10 @@ def similarity(a: str, b: str, threshold: float = 0.0) -> float:
     if threshold > 0.0 and (len_a + len_b) > 0:
         if 2.0 * min(len_a, len_b) < threshold * (len_a + len_b):
             return 0.0
+        matcher = SequenceMatcher(None, a.lower(), b.lower())
+        if matcher.real_quick_ratio() < threshold or matcher.quick_ratio() < threshold:
+            return 0.0
+        return matcher.ratio()
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
 
 
