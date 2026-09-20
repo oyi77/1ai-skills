@@ -493,8 +493,17 @@ def _suggest_terms(bm25, query, limit=6, threshold=None):
     for term in bm25.vocabulary():
         if term in query_tokens:
             continue
-        similarity = max(difflib.SequenceMatcher(None, token, term).ratio()
-                         for token in query_tokens)
+
+        similarity = 0.0
+        for token in query_tokens:
+            if 2.0 * min(len(token), len(term)) < 0.72 * (len(token) + len(term)):
+                continue
+            matcher = difflib.SequenceMatcher(None, token, term)
+            if matcher.real_quick_ratio() >= 0.72 and matcher.quick_ratio() >= 0.72:
+                sim = matcher.ratio()
+                if sim > similarity:
+                    similarity = sim
+
         if (similarity >= 0.72
                 and (threshold is None or _passes_threshold(bm25, term, threshold))):
             candidates.append((-similarity, -bm25.doc_freqs.get(term, 0), term))
@@ -513,10 +522,18 @@ def _suggest_identities(rows, query, fields, limit=6):
             identity_tokens = set(tokenizer.tokenize(identity))
             if not identity_tokens:
                 continue
-            similarity = max(
-                difflib.SequenceMatcher(None, source, target).ratio()
-                for source in query_tokens for target in identity_tokens
-            )
+
+            similarity = 0.0
+            for source in query_tokens:
+                for target in identity_tokens:
+                    if 2.0 * min(len(source), len(target)) < 0.72 * (len(source) + len(target)):
+                        continue
+                    matcher = difflib.SequenceMatcher(None, source, target)
+                    if matcher.real_quick_ratio() >= 0.72 and matcher.quick_ratio() >= 0.72:
+                        sim = matcher.ratio()
+                        if sim > similarity:
+                            similarity = sim
+
             if similarity >= 0.72 and identity.casefold() != str(query).strip().casefold():
                 candidates.append((-similarity, len(identity_tokens), identity))
     return [identity for _, _, identity in sorted(set(candidates))[:limit]]
