@@ -1,10 +1,10 @@
 {
-  "total_skills": 1367,
+  "total_skills": 1368,
   "category_count": 19,
   "categories": {
     "agents": 14,
     "automation": 21,
-    "content": 83,
+    "content": 84,
     "core": 48,
     "cybersecurity": 795,
     "data": 7,
@@ -1539,6 +1539,24 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "living-story-web",
+      "category": "content",
+      "description": "Build or improve immersive websites with living manhwa, interactive comics, articulated character or object animation, and scroll-directed cinematic storytelling. Use for requests such as \"make this feel like a live comic,\" \"make the character follow scrolling,\" or \"create an immersive illustrated website.\" Adapt to the current project and preserve its core functionality. Do not use for routine UI edits, standalone illustrations, or ordinary dashboards without a requested narrative experience.",
+      "domain": "content",
+      "tags": [
+        "web-design",
+        "interactive-storytelling",
+        "animation",
+        "manhwa",
+        "scroll-animation",
+        "accessibility"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "immersive-web",
       "type": "content"
     },
     {
