@@ -1,0 +1,34 @@
+{
+  "project": {
+    "name": "",
+    "audience": "",
+    "primaryAction": "",
+    "language": "",
+    "doNotChange": []
+  },
+  "creative": {
+    "thesis": "",
+    "referenceUrl": "",
+    "referenceRecording": "",
+    "exampleInspirationUrl": "https://santionispirits.com/"
+  },
+  "scenes": [],
+  "assets": [],
+  "officialLinks": {
+    "primaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "secondaryCta": {
+      "label": "",
+      "url": ""
+    },
+    "contact": [],
+    "social": [],
+    "products": [],
+    "community": [],
+    "documentation": [],
+    "legal": [],
+    "additional": []
+  }
+}
