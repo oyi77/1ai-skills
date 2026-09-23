@@ -30,6 +30,7 @@ import subprocess
 import sys
 import time
 from collections import defaultdict
+from functools import lru_cache
 from pathlib import Path
 
 # ── Config ──
@@ -45,6 +46,49 @@ WORKFLOW_ALTERNATIVES = ['## Workflow', '## Process', '## Steps', '## Daily Prac
                          '## Core Features', '## Architecture']
 RECOMMENDED_SECTIONS = ['## When NOT to Use', '## Overview', '## Verification']
 QUALITY_MARKERS = ['Anti-Rationalization', 'Code Example', '```']
+
+RE_NAME_FIELD = re.compile(r'^name:\s*(.+)$', re.MULTILINE)
+RE_FRONTMATTER = re.compile(r'^---\n(.*?)\n---', re.DOTALL)
+RE_TAGS = re.compile(r'^tags:\s*\n((?:\s*-\s*.+\n?)+)', re.MULTILINE)
+RE_VERSION = re.compile(r'^version:\s*(.+)$', re.MULTILINE)
+RE_PYTHON_BLOCK = re.compile(r'```python\n(.*?)```', re.DOTALL)
+RE_JS_BLOCK = re.compile(r'```(typescript|javascript|tsx|ts|jsx)\n(.*?)```', re.DOTALL)
+RE_BASH_BLOCK = re.compile(r'```bash\n(.*?)```', re.DOTALL)
+RE_SQL_BLOCK = re.compile(r'```sql\n(.*?)```', re.DOTALL)
+RE_CODE_BLOCK = re.compile(r'```\w*\n')
+RE_HEADINGS = re.compile(r'^##+ .+$', re.MULTILINE)
+RE_INTERNAL_LINK = re.compile(r'/skills/([a-z0-9-]+)')
+RE_PACKAGE_COMMAND = re.compile(r'`(npm|pip|npx|brew|apt)\s+(install|add)')
+RE_ANTI_RATIONALIZATION = re.compile(r'Anti-Rationalization|Common Rationalizations|Common Pitfalls')
+RE_VERIFICATION = re.compile(r'## Verification|## Quality Checklist|## Quality Gates')
+RE_WHEN_NOT = re.compile(r'## When NOT to Use|## When Not to Use')
+RE_OVERVIEW = re.compile(r'## Overview')
+RE_COMMAND = re.compile(r'`(npm|pip|npx|brew|apt|docker|git)\s+')
+RE_IMPORT_MARKER = re.compile(r'(import |from |require\(|const .+ = require)')
+RE_IMPORT_STATEMENT = re.compile(r'(?:from|import)\s+([\w.]+)')
+RE_NPM_INSTALL = re.compile(r'npm install\s+([\w@/-]+)')
+RE_REQUIRED_FIELD = {
+    field: re.compile(rf'^{field}:\s*(.+)$', re.MULTILINE)
+    for field in REQUIRED_FM
+}
+
+
+@lru_cache(maxsize=None)
+def _python_block_is_valid(block):
+    try:
+        ast.parse(block)
+    except SyntaxError:
+        return False
+    return True
+
+
+@lru_cache(maxsize=None)
+def _module_is_importable(module_name):
+    try:
+        __import__(module_name)
+    except ImportError:
+        return False
+    return True
 
 # ── Result types ──
 
@@ -63,7 +107,7 @@ def _canonical_name(md):
     """Extract canonical name from SKILL.md frontmatter, falling back to dir name."""
     try:
         text = md.read_text(encoding='utf-8')
-        m = re.search(r'^name:\s*(.+)$', text[:500], re.MULTILINE)
+        m = RE_NAME_FIELD.search(text[:500])
         if m:
             return m.group(1).strip().strip("'\"").strip()
     except Exception:
@@ -102,7 +146,7 @@ def test_structure(text, skill_name):
         errors.append('missing-leading----')
         return errors, warnings, metrics
 
-    fm_match = re.match(r'^---\n(.*?)\n---', text, re.DOTALL)
+    fm_match = RE_FRONTMATTER.match(text)
     if not fm_match:
         errors.append('unclosed-frontmatter')
         return errors, warnings, metrics
@@ -143,14 +187,14 @@ def test_structure(text, skill_name):
     else:
         # ── regex fallback path (malformed YAML) ──
         for field in REQUIRED_FM:
-            match = re.search(rf'^{field}:\s*(.+)$', fm, re.MULTILINE)
+            match = RE_REQUIRED_FIELD[field].search(fm)
             if not match or not match.group(1).strip():
                 errors.append(f'missing-{field}')
             else:
                 metrics[field] = match.group(1).strip()
 
         # Tags
-        tags_match = re.search(r'^tags:\s*\n((?:\s*-\s*.+\n?)+)', fm, re.MULTILINE)
+        tags_match = RE_TAGS.search(fm)
         if tags_match:
             tags = [l.strip('- ').strip() for l in tags_match.group(1).strip().split('\n')]
             metrics['tag_count'] = len(tags)
@@ -160,7 +204,7 @@ def test_structure(text, skill_name):
             warnings.append('missing-tags')
 
         # Version
-        ver_match = re.search(r'^version:\s*(.+)$', fm, re.MULTILINE)
+        ver_match = RE_VERSION.search(fm)
         metrics['has_version'] = bool(ver_match)
 
     # Name matches directory
@@ -226,20 +270,20 @@ def test_content(text):
             warnings.append(f'missing-recommended:{section}')
 
     # Section count
-    headings = re.findall(r'^##+ .+$', body, re.MULTILINE)
+    headings = RE_HEADINGS.findall(body)
     metrics['section_count'] = len(headings)
 
     # Depth score (how many quality markers present)
     depth = 0
     if 'Anti-Rationalization' in body or '## Common Pitfalls' in body:
         depth += 1
-    if re.search(r'```', body):
+    if '```' in body:
         depth += 1
     if '## Verification' in body or '## Quality Checklist' in body:
         depth += 1
     if '## When NOT to Use' in body:
         depth += 1
-    if re.search(r'`(npm|pip|npx|brew|apt)\s+(install|add)', body):
+    if RE_PACKAGE_COMMAND.search(body):
         depth += 1
     metrics['depth_score'] = depth  # 0-5
 
@@ -253,32 +297,30 @@ def test_code_syntax(text):
     metrics = {}
 
     # Python blocks
-    py_blocks = re.findall(r'```python\n(.*?)```', text, re.DOTALL)
+    py_blocks = RE_PYTHON_BLOCK.findall(text)
     metrics['python_blocks'] = len(py_blocks)
     py_errors = 0
     for block in py_blocks:
-        try:
-            ast.parse(block)
-        except SyntaxError:
+        if not _python_block_is_valid(block):
             py_errors += 1
     if py_errors > 0:
         errors.append(f'python-syntax-errors:{py_errors}')
     metrics['python_syntax_errors'] = py_errors
 
     # JS/TS blocks
-    js_blocks = re.findall(r'```(typescript|javascript|tsx|ts|jsx)\n(.*?)```', text, re.DOTALL)
+    js_blocks = RE_JS_BLOCK.findall(text)
     metrics['js_blocks'] = len(js_blocks)
 
     # Bash blocks
-    bash_blocks = re.findall(r'```bash\n(.*?)```', text, re.DOTALL)
+    bash_blocks = RE_BASH_BLOCK.findall(text)
     metrics['bash_blocks'] = len(bash_blocks)
 
     # SQL blocks
-    sql_blocks = re.findall(r'```sql\n(.*?)```', text, re.DOTALL)
+    sql_blocks = RE_SQL_BLOCK.findall(text)
     metrics['sql_blocks'] = len(sql_blocks)
 
     # Total code blocks
-    all_blocks = re.findall(r'```\w*\n', text)
+    all_blocks = RE_CODE_BLOCK.findall(text)
     metrics['total_code_blocks'] = len(all_blocks)
 
     if len(all_blocks) == 0:
@@ -293,7 +335,7 @@ def test_internal_links(text, all_names):
     warnings = []
     metrics = {}
 
-    links = re.findall(r'/skills/([a-z0-9-]+)', text)
+    links = RE_INTERNAL_LINK.findall(text)
     metrics['internal_links'] = len(links)
 
     broken = [l for l in links if l not in all_names]
@@ -310,13 +352,13 @@ def test_quality_markers(text):
     warnings = []
     metrics = {}
 
-    has_ar = bool(re.search(r'Anti-Rationalization|Common Rationalizations|Common Pitfalls', text))
-    has_code = bool(re.search(r'```', text))
-    has_verify = bool(re.search(r'## Verification|## Quality Checklist|## Quality Gates', text))
-    has_when_not = bool(re.search(r'## When NOT to Use|## When Not to Use', text))
-    has_overview = bool(re.search(r'## Overview', text))
-    has_commands = bool(re.search(r'`(npm|pip|npx|brew|apt|docker|git)\s+', text))
-    has_imports = bool(re.search(r'(import |from |require\(|const .+ = require)', text))
+    has_ar = bool(RE_ANTI_RATIONALIZATION.search(text))
+    has_code = '```' in text
+    has_verify = bool(RE_VERIFICATION.search(text))
+    has_when_not = bool(RE_WHEN_NOT.search(text))
+    has_overview = bool(RE_OVERVIEW.search(text))
+    has_commands = bool(RE_COMMAND.search(text))
+    has_imports = bool(RE_IMPORT_MARKER.search(text))
 
     metrics['has_anti_rationalization'] = has_ar
     metrics['has_code_examples'] = has_code
@@ -348,14 +390,14 @@ def test_sdk_availability(text):
 
     # Extract import statements
     imports = set()
-    for match in re.findall(r'(?:from|import)\s+([\w.]+)', text):
+    for match in RE_IMPORT_STATEMENT.findall(text):
         top = match.split('.')[0]
         if not top:
             continue
         imports.add(top)
 
     # Extract npm packages
-    for match in re.findall(r'npm install\s+([\w@/-]+)', text):
+    for match in RE_NPM_INSTALL.findall(text):
         path_part = match.split('/')[-1].replace('@', '')
         if path_part:
             imports.add(path_part)
@@ -364,10 +406,9 @@ def test_sdk_availability(text):
     available = 0
     unavailable = 0
     for imp in imports:
-        try:
-            __import__(imp)
+        if _module_is_importable(imp):
             available += 1
-        except ImportError:
+        else:
             unavailable += 1
 
     metrics['referenced_imports'] = len(imports)
