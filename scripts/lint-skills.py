@@ -69,6 +69,22 @@ GENERIC_DESCS = {
     "use this skill when", "agent skill",
 }
 
+SKILL_LINK_RE = re.compile(r"skill://([a-z0-9-]+)")
+STUB_DESCRIPTION_RES = tuple(re.compile(pattern) for pattern in (
+    r"^ai.?agent",
+    r"^skill for",
+    r"^use this skill",
+    r"^todo[:\s]",
+    r"^placeholder",
+    r"^tbd",
+    r"^lorem",
+))
+TRIGGER_RES = tuple(re.compile(pattern) for pattern in (
+    r"\buse when\b\s*(.+)$",
+    r"\btriggers? on\b\s*(.+)$",
+    r"\bactivates for\b\s*(.+)$",
+))
+
 
 # ── Helpers ─────────────────────────────────────────────────────────────
 def find_skills() -> list[Path]:
@@ -129,6 +145,10 @@ def similarity(a: str, b: str, threshold: float = 0.0) -> float:
     if threshold > 0.0 and (len_a + len_b) > 0:
         if 2.0 * min(len_a, len_b) < threshold * (len_a + len_b):
             return 0.0
+        matcher = SequenceMatcher(None, a.lower(), b.lower())
+        if matcher.quick_ratio() < threshold:
+            return 0.0
+        return matcher.ratio()
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
 
 
@@ -323,15 +343,13 @@ def check_cross_references(skills_meta: list[dict], result: LintResult):
     """Check that skill:// links in body text point to real skills."""
     all_names = {m.get("name") for m in skills_meta if m.get("name")}
 
-    skill_link_re = re.compile(r"skill://([a-z0-9-]+)")
-
     for meta in skills_meta:
         body = meta.get("_body", "")
         if not body:
             continue
 
         skill = meta.get("name", meta["_path"])
-        for match in skill_link_re.finditer(body):
+        for match in SKILL_LINK_RE.finditer(body):
             target = match.group(1)
             if target not in all_names:
                 result.add("warnings", skill, "broken-skill-ref",
@@ -340,20 +358,11 @@ def check_cross_references(skills_meta: list[dict], result: LintResult):
 
 def check_stub_descriptions(skills_meta: list[dict], result: LintResult):
     """Flag descriptions that look like auto-generated stubs."""
-    stub_patterns = [
-        r"^ai.?agent",
-        r"^skill for",
-        r"^use this skill",
-        r"^todo[:\s]",
-        r"^placeholder",
-        r"^tbd",
-        r"^lorem",
-    ]
     for meta in skills_meta:
         desc = (meta.get("description") or "").strip().lower()
         skill = meta.get("name", meta["_path"])
-        for pat in stub_patterns:
-            if re.match(pat, desc):
+        for pattern in STUB_DESCRIPTION_RES:
+            if pattern.match(desc):
                 result.add("warnings", skill, "stub-description",
                             f"Stub description: '{desc[:60]}'")
                 break
@@ -378,12 +387,8 @@ def build_search_index(skills_meta: list[dict]) -> dict:
         desc_lower = desc.lower()
         # Synthesise a one-line trigger from known patterns
         trigger = ""
-        trigger_pats = [
-            r"\buse when\b\s*(.+)$", r"\btriggers? on\b\s*(.+)$",
-            r"\bactivates for\b\s*(.+)$",
-        ]
-        for pat in trigger_pats:
-            m = re.search(pat, desc)
+        for pattern in TRIGGER_RES:
+            m = pattern.search(desc)
             if m:
                 trigger = m.group(1).strip().rstrip(".,")
                 break
