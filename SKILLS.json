@@ -1544,7 +1544,7 @@
     {
       "name": "living-story-web",
       "category": "content",
-      "description": "Build or improve immersive websites with living manhwa, interactive comics, articulated character or object animation, and scroll-directed cinematic storytelling. Use for requests such as \"make this feel like a live comic,\" \"make the character follow scrolling,\" or \"create an immersive illustrated website.\" Adapt to the current project and preserve its core functionality. Do not use for routine UI edits, standalone illustrations, or ordinary dashboards without a requested narrative experience.",
+      "description": "Build immersive websites with living manhwa, interactive comics, articulated character or object animation, and scroll-directed storytelling. Use for requests like \"make this feel like a live comic\" or \"make the character follow scrolling.\" Adapt to the current project and preserve its core functionality. Do not use for routine UI edits or standalone illustrations.",
       "domain": "content",
       "tags": [
         "web-design",
@@ -1554,7 +1554,7 @@
         "scroll-animation",
         "accessibility"
       ],
-      "version": "1.0.0",
+      "version": "2.0.0",
       "author": "oyi77",
       "subdomain": "immersive-web",
       "type": "content"
