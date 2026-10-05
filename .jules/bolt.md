@@ -31,3 +31,9 @@
 ## 2025-02-28 - PyYAML C-extension usage for serialization
 **Learning:** Just like `yaml.safe_load()`, using `yaml.safe_dump()` in pure Python creates a massive CPU bottleneck during batch operations (like fixing hundreds of `SKILL.md` frontmatters).
 **Action:** When updating or serializing multiple YAML files, use `yaml.dump(..., Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))` to dramatically improve performance by utilizing the PyYAML C-extension (`libyaml`) when available.
+## 2025-10-25 - [Optimize SequenceMatcher Instantiation]
+**Learning:** `difflib.SequenceMatcher` is expensive to instantiate repeatedly. In `scripts/lint-skills.py`, calling `similarity()` in an `O(N^2)` inner loop instantiated a new matcher for every pair of strings, causing a massive performance bottleneck.
+**Action:** When comparing a sequence against multiple other sequences in a nested loop, instantiate `SequenceMatcher` ONCE per outer loop. Use `.set_seq1(a)` on the outer string and `.set_seq2(b)` in the inner loop to reuse the matcher instance and avoid the `__init__` overhead.
+## 2025-10-25 - [Optimize SequenceMatcher Instantiation API correctly]
+**Learning:** `difflib.SequenceMatcher` caches sequence analysis internally for the *second* sequence passed to it. In `scripts/lint-skills.py`, using it in a nested loop and overriding `set_seq2()` in the inner loop recalculates this cache on every iteration, effectively neutralizing the instantiation optimization.
+**Action:** When comparing a base sequence against many other sequences in a nested loop, instantiate `SequenceMatcher` ONCE per outer loop. Set the base (outer loop) string using `.set_seq2(base_seq)` to leverage internal caching, and update the target (inner loop) string using `.set_seq1(target_seq)` on each iteration.
