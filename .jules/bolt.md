@@ -31,3 +31,6 @@
 ## 2025-02-28 - PyYAML C-extension usage for serialization
 **Learning:** Just like `yaml.safe_load()`, using `yaml.safe_dump()` in pure Python creates a massive CPU bottleneck during batch operations (like fixing hundreds of `SKILL.md` frontmatters).
 **Action:** When updating or serializing multiple YAML files, use `yaml.dump(..., Dumper=getattr(yaml, 'CSafeDumper', yaml.SafeDumper))` to dramatically improve performance by utilizing the PyYAML C-extension (`libyaml`) when available.
+## 2025-08-01 - SequenceMatcher Caching in N^2 Loop
+**Learning:** Instantiating `difflib.SequenceMatcher` in a tight O(N^2) inner loop (such as checking duplicate items in a list against each other) incurs significant overhead, along with repetitive data preparation like `len()` and string `.lower()`.
+**Action:** When finding duplicates or similarities across a list in O(N^2) loops using SequenceMatcher, pre-process lengths and lowercased strings outside the loop. Instantiate the `SequenceMatcher` once per outer iteration using the outer term and use `.set_seq1()` or `.set_seq2()` to check inner terms, preserving internal cache states and bypassing setup cost.
