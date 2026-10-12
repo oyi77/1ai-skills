@@ -272,3 +272,9 @@ Fill `result` after market resolution. Track every trade in a local CSV or SQLit
 - [ ] Results validated against acceptance criteria
 - [ ] Error handling tested with edge cases
 - [ ] Documentation updated with findings
+
+## Adopted Patterns — Mechanical-First EV Gate (repo audit 2026-10-12)
+
+Source: github.com/VGabriel45/polymarket-btc5m-jev-trading (`src/policy.ts`, `src/broker/live.ts`, `src/pnl/ledger.ts`).
+
+**Rule: confidence alone NEVER enters. Require an EV triple-gate** (`gate(c, threshold)` strict + `ask <= maxAsk` + `pWin >= ask + minEdge`) plus a time-left (`TOO_LATE`) and per-window `MAX_TRADES` cap. Compute a stable idempotency key `f"{side}:{token_id}:{outcome}:{size}:{round(price,2):.2f}"` on every intent to prevent retick double-fire. Refuse LIVE trading when the signal/price source is fixture/stub (fail-loud). Apply only fill-verified orders (FOK; partial fill → keep prior position, no move). Filter stub-wing quotes `abs(bestBid - mid) > 0.25`. Record PnL in an append-only JSONL ledger: `size*(exit-entry)` mid-window, `size*((1 if side==winner else 0)-entry)` on settle.
