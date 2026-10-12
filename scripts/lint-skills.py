@@ -331,9 +331,21 @@ def check_duplicates(skills_meta: list[dict], result: LintResult):
         by_category[cat].append((name, path))
 
     for cat, cat_skills in by_category.items():
-        for i, (name1, path1) in enumerate(cat_skills):
-            for name2, path2 in cat_skills[i + 1:]:
-                sim = similarity(name1, name2, threshold=SIMILARITY_THRESHOLD)
+        # Optimization: Pre-calculate lowercase and lengths for fast SequenceMatcher inner loop
+        processed_skills = [(name, path, name.lower(), len(name)) for name, path in cat_skills]
+        for i, (name1, path1, name1_lower, len_1) in enumerate(processed_skills):
+            matcher = SequenceMatcher(None, None, name1_lower)
+            for name2, path2, name2_lower, len_2 in processed_skills[i + 1:]:
+                if len_1 + len_2 > 0 and 2.0 * min(len_1, len_2) < SIMILARITY_THRESHOLD * (len_1 + len_2):
+                    continue
+
+                matcher.set_seq1(name2_lower)
+                if matcher.real_quick_ratio() < SIMILARITY_THRESHOLD:
+                    continue
+                if matcher.quick_ratio() < SIMILARITY_THRESHOLD:
+                    continue
+
+                sim = matcher.ratio()
                 if sim >= SIMILARITY_THRESHOLD and name1 != name2:
                     result.add("warnings", name1, "near-duplicate",
                                 f"Near-duplicate of {name2} (similarity={sim:.2f})")
