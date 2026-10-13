@@ -71,7 +71,13 @@ Use this skill when:
 - GoReSym (and/or redress, or a Go-aware IDA plugin) for Go metadata.
 - Ghidra or IDA with Go/Rust plugins for decompilation; radare2 for quick
   string work.
+## Artifact-Evidence Routing
 
+For a shipped local executable, use `reverse-engineer-anything-with-rea` as the
+artifact-evidence front door when the answer depends on embedded metadata, decompiled
+code, or observed behavior. Preserve the SHA-256 and evidence references, then return to
+the phases below for Go/Rust-specific interpretation. A missing pclntab or unsupported
+format is an unresolved limitation, not proof that the binary is not Go/Rust.
 ## Workflow
 
 ### Phase 1: Triage — Identify the Runtime
