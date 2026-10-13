@@ -38,6 +38,7 @@ category: mcp
 **When NOT to use:**
 - For tasks outside this skill's scope
 
+```
 mcp generate --spec https://api.example.com/openapi.json
 
 # Or create custom server

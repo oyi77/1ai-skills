@@ -1,6 +1,6 @@
 ---
 name: living-story-web
-description: Build immersive websites with living manhwa, interactive comics, articulated character or object animation, and scroll-directed storytelling. Use for requests like "make this feel like a live comic" or "make the character follow scrolling." Adapt to the current project and preserve its core functionality. Do not use for routine UI edits or standalone illustrations.
+description: Use when building immersive websites with living manhwa, interactive comics, articulated character or object animation, and scroll-directed storytelling — for requests like "make this feel like a live comic" or "make the character follow scrolling." Adapt to the current project and preserve its core functionality. Do not use for routine UI edits or standalone illustrations.
 domain: content
 category: content
 type: content

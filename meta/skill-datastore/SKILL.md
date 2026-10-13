@@ -32,6 +32,7 @@ category: meta
 **When NOT to use:**
 - For tasks outside this skill's scope
 
+```
 /meta-datastore record-execution --skill seo-optimizer --success true --latency 245
 
 # Query performance

@@ -107,6 +107,8 @@ Write simplest code to pass the test.
 - Improve code structure
 - Keep tests passing
 - Don't add new behavior
+<Good>
+```typescript
       if (i === 2) throw e;
     }
   }

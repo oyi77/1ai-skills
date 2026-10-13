@@ -1,6 +1,21 @@
 # Changelog
 All notable changes to 1ai-skills are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased] (fixup)
+### Fixed
+- Repaired 19 SKILL.md files with unbalanced (odd-count) code fences that swallowed
+  structural headings. Inserted missing opening fences for 7 meta-skill boilerplate blocks
+  and 12 content blocks (lost closers before `## When NOT to Use` / `---` /
+  `### When to Use Which`). All 1372 files now have even fence parity.
+- Quoted YAML descriptions containing unquoted colons in `content/design/SKILL.md`
+  and `content/ui-ux-pro-max/SKILL.md` (was a parse error, skill unregistered).
+- Added `content-creation` and removed dead `finance` from the schema `category` enum;
+  allowed a leading digit in the `kebab` name pattern for brand names such as `21st-dev`.
+  Schema validation is now 0 errors.
+### Changed
+- Refreshed `README.md` and `AGENTS.md` counts: **1372** skills, **19** categories,
+  per-category numbers regenerated from `SKILLS.json`.
+
 ## [Unreleased]
 ### Added
 - `cybersecurity/reverse-engineering-router`: parent hub for reverse engineering work. Classifies

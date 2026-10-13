@@ -44,6 +44,7 @@ if analysis.signal_score > 75:
     position_size = portfolio_value * 0.05  # 5% max
     entry = current_price
     stop = entry * 0.95  # 5% stop
+```
     target = entry * 1.15  # 15% target
 ```
 

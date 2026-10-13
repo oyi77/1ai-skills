@@ -36,6 +36,7 @@ category: meta
 **When NOT to use:**
 - For tasks outside this skill's scope
 
+```
 /auto-learner enable --skill seo-optimizer
 
 # Trigger learning cycle

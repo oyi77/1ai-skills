@@ -35,6 +35,7 @@ category: meta
 **When NOT to use:**
 - For tasks outside this skill's scope
 
+```
 /feedback-collector submit skill=seo-optimizer rating=4 comment="Good but slow"
 
 # Analyze sentiment

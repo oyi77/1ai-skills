@@ -46,6 +46,7 @@ briefing = generate_cfo_briefing(
 
 print(f"Cash Runway: {briefing.cash_runway.months} months")
 print(f"LTV/CAC: {briefing.unit_economics.ltv_cac_ratio}")
+```
 print(f"Optimization Opportunities: ${briefing.cost_opportunities.total_annual_value}")
 ```
 

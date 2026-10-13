@@ -191,11 +191,12 @@ def validate_skill(skill_info: dict, schema: dict) -> list[dict]:
         issues.append({"level": "warning", "code": "missing-tags",
                        "message": "No tags in frontmatter"})
 
-    # Category matches directory
+    # Category matches directory. Known aliases: finance/financial, and
+    # content-creation skills that live in the content/ directory.
     cat = skill_info["category"]
     fm_cat = meta.get("category", "")
-    finance_group = {"finance", "financial"}
-    if fm_cat and fm_cat != cat and {fm_cat, cat} != finance_group:
+    aliases = [{"finance", "financial"}, {"content", "content-creation"}]
+    if fm_cat and fm_cat != cat and {fm_cat, cat} not in aliases:
         issues.append({"level": "warning", "code": "category-mismatch",
                        "message": f"Frontmatter category '{fm_cat}' != directory '{cat}'"})
 

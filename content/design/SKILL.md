@@ -1,6 +1,6 @@
 ---
 name: design
-description: Comprehensive design skill: brand identity, design tokens, UI styling, logo generation (55 styles, Gemini or Atlas Cloud AI), corporate identity program (50 deliverables, CIP mockups), HTML presentations (Chart.js), banner design (22 styles, social/ads/web/print), icon design (15 styles, SVG, Gemini 3.1 Pro), social photos (HTML→screenshot, multi-platform).
+description: 'Use when creating brand identity, design tokens, UI styling, logo generation (55 styles, Gemini or Atlas Cloud AI), corporate identity programs (50 deliverables, CIP mockups), HTML presentations (Chart.js), banner design (22 styles, social/ads/web/print), icon design (15 styles, SVG), or social photos (HTML→screenshot, multi-platform).'
 domain: content
 author: claudekit
 license: MIT

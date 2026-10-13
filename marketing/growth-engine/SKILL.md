@@ -70,6 +70,7 @@ if results.winner and results.confidence >= 0.95:
     implement_winner(results.winner)
     document_learning(results)
 else:
+```
     document_learning(results)  # Document negative result too
 ```
 

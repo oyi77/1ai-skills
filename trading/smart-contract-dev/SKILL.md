@@ -163,6 +163,7 @@ describe("Token", function () {
     ).to.be.revertedWithCustomError(token, errorName);
   });
 });
+```
 ### When to Use Which
 
 |Consideration|Foundry|Hardhat|

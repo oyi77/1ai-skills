@@ -8,8 +8,8 @@
     "category": {
       "type": "string",
       "enum": [
-        "agents", "automation", "content", "core", "cybersecurity",
-        "data", "development", "devops", "finance", "financial",
+        "agents", "automation", "content", "content-creation", "core", "cybersecurity",
+        "data", "development", "devops", "financial",
         "integrations", "marketing", "mcp", "meta", "mindset",
         "operations", "productivity", "research", "sales", "trading"
       ],
@@ -22,8 +22,8 @@
     },
     "kebab": {
       "type": "string",
-      "pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
-      "description": "Lowercase kebab-case identifier."
+      "pattern": "^[a-z0-9][a-z0-9]*(-[a-z0-9]+)*$",
+      "description": "Lowercase kebab-case identifier. A leading digit is allowed for brand names (e.g. '21st-dev')."
     },
     "risk_level": {
       "type": "string",

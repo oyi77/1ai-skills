@@ -283,6 +283,7 @@ class CustomEnrichmentConnector:
 
 if __name__ == "__main__":
     connector = CustomEnrichmentConnector()
+```
 ## When NOT to Use
 
 - You need to test what you built (use performing-* skills)

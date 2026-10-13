@@ -36,6 +36,7 @@ category: meta
 **When NOT to use:**
 - For tasks outside this skill's scope
 
+```
 /performance-monitor start skill-name
 
 # Get report
