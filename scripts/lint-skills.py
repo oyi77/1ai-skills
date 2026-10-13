@@ -146,7 +146,7 @@ def similarity(a: str, b: str, threshold: float = 0.0) -> float:
         if 2.0 * min(len_a, len_b) < threshold * (len_a + len_b):
             return 0.0
         matcher = SequenceMatcher(None, a.lower(), b.lower())
-        if matcher.quick_ratio() < threshold:
+        if matcher.real_quick_ratio() < threshold or matcher.quick_ratio() < threshold:
             return 0.0
         return matcher.ratio()
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
@@ -331,9 +331,26 @@ def check_duplicates(skills_meta: list[dict], result: LintResult):
         by_category[cat].append((name, path))
 
     for cat, cat_skills in by_category.items():
-        for i, (name1, path1) in enumerate(cat_skills):
-            for name2, path2 in cat_skills[i + 1:]:
-                sim = similarity(name1, name2, threshold=SIMILARITY_THRESHOLD)
+        # Optimization: Pre-compute lengths and lowercase strings outside the hot loop
+        prepared = [(name, path, len(name), name.lower()) for name, path in cat_skills]
+        for i, (name1, path1, len1, lower1) in enumerate(prepared):
+            # Instantiate SequenceMatcher ONCE per outer loop to reuse internal caches
+            matcher = SequenceMatcher()
+            matcher.set_seq2(lower1)
+            for j in range(i + 1, len(prepared)):
+                name2, path2, len2, lower2 = prepared[j]
+
+                # O(1) length-based upper bound check
+                if 2.0 * min(len1, len2) < SIMILARITY_THRESHOLD * (len1 + len2):
+                    continue
+
+                # O(N) sequence assignment and quick bounds check
+                matcher.set_seq1(lower2)
+                if matcher.real_quick_ratio() < SIMILARITY_THRESHOLD or matcher.quick_ratio() < SIMILARITY_THRESHOLD:
+                    continue
+
+                # Expensive O(N^2) ratio calculation only when necessary
+                sim = matcher.ratio()
                 if sim >= SIMILARITY_THRESHOLD and name1 != name2:
                     result.add("warnings", name1, "near-duplicate",
                                 f"Near-duplicate of {name2} (similarity={sim:.2f})")
