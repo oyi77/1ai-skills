@@ -31,6 +31,7 @@ category: productivity
 **When NOT to use:**
 - For tasks outside this skill's scope
 
+```
 invoke <skill-name> with appropriate parameters
 
 # Advanced usage with options

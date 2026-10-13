@@ -329,6 +329,7 @@ if __name__ == "__main__":
 - Day 6: Publishing
 - Day 7: Report
 
+```
 ---
 
 ## Anti-Rationalization Table

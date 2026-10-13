@@ -34,6 +34,7 @@ category: meta
 **When NOT to use:**
 - For tasks outside this skill's scope
 
+```
 /improvement-generator create --skill seo-optimizer --data performance-report
 
 # Prioritize improvements

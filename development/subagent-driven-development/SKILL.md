@@ -128,6 +128,7 @@ digraph when_to_use {
 5. Fix if needed
 6. Mark task complete
 7. Repeat for remaining tasks
+```
 [Later] Implementer:
   - Implemented install-hook command
   - Added tests, 5/5 passing

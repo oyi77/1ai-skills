@@ -36,6 +36,7 @@ category: meta
 **When NOT to use:**
 - For tasks outside this skill's scope
 
+```
 /pattern-recognition analyze --skill seo-optimizer --lookback 30d
 
 # Match current situation

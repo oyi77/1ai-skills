@@ -126,6 +126,7 @@ Pass the `Stripe-Account` header to make calls as a connected account:
     }
   }
 }
+```
 
 ## Integration
 

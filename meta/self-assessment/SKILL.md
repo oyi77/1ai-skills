@@ -34,6 +34,7 @@ category: meta
 **When NOT to use:**
 - For tasks outside this skill's scope
 
+```
 /self-assessment run skill-name
 
 # View assessment history

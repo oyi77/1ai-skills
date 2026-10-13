@@ -41,6 +41,7 @@ position_size = calculate_kelly_size(
     edge_confidence=85,
     historical_accuracy=0.72,
     payoff_ratio=2.5
+```
 )
 ```
 
