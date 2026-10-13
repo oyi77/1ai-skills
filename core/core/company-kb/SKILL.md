@@ -389,7 +389,7 @@ Run this during intake — 3 seconds of structured lookup replaces 15 minutes of
 
 - General-purpose knowledge retrieval (PARA structure, docs indexing) — that is the parent `kb` skill
 - Ephemeral conversation state — route to session-brain/memory-system, not org records
-- Sensitive data that must never live in shared files — PII, credentials, secrets: vault/encrypted store, not YAML entities
+- Sensitive data that must never live in shared files (PII, credentials) — use a vault or encrypted store, not YAML entities
 - Code-level documentation (APIs, modules) — keep in the codebase
 - When no entity, decision, or procedure needs to survive beyond the session — don't persist noise
 

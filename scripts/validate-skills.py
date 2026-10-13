@@ -61,6 +61,16 @@ SKILL_DIRS = [
     "trading",
 ]
 
+# (category dir -> frontmatter domain) pairs that are deliberately finer-grained
+# than the directory. Verified against SKILLS.json: content/ holds a documented
+# `content-creation` sub-domain, and the *-director skills physically live in
+# content/ but functionally belong to marketing/sales.
+DOMAIN_ALIASES = {
+    ("content", "content-creation"),
+    ("content", "marketing"),
+    ("content", "sales"),
+}
+
 
 def find_skills() -> list[Path]:
     found = []
@@ -127,9 +137,14 @@ def validate_one(path: Path) -> list[str]:
     if not name or not isinstance(name, str):
         errors.append("missing-name")
     else:
-        # name should match parent dir basename (catches rename drift)
+        # Frontmatter name vs directory basename.
+        # Nested grouping dirs deliberately prefix a parent/category label
+        # (content/video/gen -> video-gen, trading/executor -> trading-executor,
+        # integrations/kalodata/dashboard -> kalodata-dashboard). The frontmatter
+        # name is canonical (see docs/STRUCTURE.md); only flag names with NO
+        # relation to the directory at all. Mirrors validate-skill-schema.py.
         expected = path.parent.name
-        if name.strip() != expected:
+        if name.strip() != expected and not name.strip().endswith(expected):
             errors.append(f"name-mismatch[name='{name}', dir='{expected}']")
 
     if not desc or not isinstance(desc, str) or not desc.strip():
@@ -139,11 +154,15 @@ def validate_one(path: Path) -> list[str]:
     if not domain or not isinstance(domain, str) or not domain.strip():
         errors.append("missing-domain")
     else:
-        # domain should match the top-level category dir (relative to ROOT)
+        # Domain is a functional taxonomy that may be finer-grained than the
+        # top-level category dir. Only these documented (dir -> domain) pairs
+        # are legitimate; anything else is drift (e.g. a content/ skill
+        # copy-pasting `domain: cybersecurity`).
         rel = path.relative_to(ROOT) if path.is_absolute() else path
         expected_cat = rel.parts[0] if len(rel.parts) > 1 else None
-        if expected_cat and domain.strip() != expected_cat:
-            errors.append(f"domain-mismatch[name='{domain.strip()}', dir='{expected_cat}']")
+        dom = domain.strip()
+        if expected_cat and dom != expected_cat and (expected_cat, dom) not in DOMAIN_ALIASES:
+            errors.append(f"domain-mismatch[name='{dom}', dir='{expected_cat}']")
 
     return errors
 

@@ -19,15 +19,10 @@ tags:
 - apple-design
 - craft
 version: 1.0.0
-depends_on:
-- emil-design-eng
-- review-animations
-- improve-animations
-- find-animation-opportunities
-- animation-vocabulary
-- apple-design
-- pick-ui-library
-- prototype
+# The 8 skills documented below ship in the external npm package
+# `emilkowalski/skills` (npx skills add emilkowalski/skills). They are NOT
+# present in this repo as standalone SKILL.md files, so `depends_on` is
+# intentionally omitted.
 category: content
 ---
 

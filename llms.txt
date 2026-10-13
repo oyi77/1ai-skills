@@ -1,32 +1,32 @@
 # 1ai-skills
 
-> 1306 production-ready AI agent skills with anti-rationalization tables, code examples, and verification checklists. The largest open-source skill library for Claude Code, Cursor, Gemini CLI, and more.
+> 1372 production-ready AI agent skills with anti-rationalization tables, code examples, and verification checklists. The largest open-source skill library for Claude Code, Cursor, Gemini CLI, and more.
 
 ## What
 
-1ai-skills is a library of 1348 SKILL.md files across 20 categories that force AI coding agents to follow real workflows instead of cutting corners. Every skill includes anti-rationalization tables, concrete code examples, step-by-step workflows, and verification checklists.
+1ai-skills is a library of 1372 SKILL.md files across 19 categories that force AI coding agents to follow real workflows instead of cutting corners. Every skill includes anti-rationalization tables, concrete code examples, step-by-step workflows, and verification checklists.
 
 ## Categories
 
-- **Cybersecurity** (790 skills) — Threat hunting, forensics, pen testing, SOC ops, incident response, zero trust, cloud security, API security, OT/ICS security
-- **Development** (90 skills) — TDD, debugging, code review, PRD, spec-driven development, context engineering, browser testing, Git workflows
-- **Content** (62 skills) — Video generation, audio, design, writing, document creation (docx, pdf, pptx, xlsx), UI design, themes
+- **Cybersecurity** (797 skills) — Threat hunting, forensics, pen testing, SOC ops, incident response, zero trust, cloud security, API security, OT/ICS security
+- **Development** (92 skills) — TDD, debugging, code review, PRD, spec-driven development, context engineering, browser testing, Git workflows
+- **Content** (86 skills) — Video generation, audio, design, writing, document creation (docx, pdf, pptx, xlsx), UI design, themes
 - **Mindset** (55 skills) — Negotiation, leadership, critical thinking, emotional intelligence, productivity, habit formation
-- **Marketing** (45 skills) — SEO, viral content, email marketing, ads, growth hacking, social media automation
-- **Core** (46 skills) — AI infrastructure, memory systems, self-improvement, model routing, Gemini API, Replicate
-- **Integrations** (38 skills) — GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase, BigQuery
-- **DevOps** (34 skills) — Docker, Kubernetes, CI/CD, cloud ops, GitOps, Terraform, Ansible
-- **Automation** (32 skills) — Bots, workflows, scrapers, n8n, Zapier, process automation
-- **Research** (23 skills) — Deep research, market analysis, competitive intelligence, McKinsey framework
-- **Trading** (19 skills) — Crypto, DeFi, Polymarket, trading strategies, risk management
+- **Core** (48 skills) — AI infrastructure, memory systems, self-improving, model routing, Gemini API, Replicate
+- **Marketing** (42 skills) — SEO, viral content, email marketing, ads, growth hacking, social media automation
+- **Research** (36 skills) — Deep research, market analysis, competitive intelligence, McKinsey framework
+- **DevOps** (31 skills) — Docker, Kubernetes, CI/CD, cloud ops, GitOps, Terraform, Ansible
+- **Integrations** (29 skills) — GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase, BigQuery
+- **Trading** (26 skills) — Crypto, DeFi, Polymarket, trading strategies, risk management
+- **Automation** (21 skills) — Bots, workflows, scrapers, n8n, Zapier, process automation
 - **Operations** (19 skills) — Business ops, governance, HR, legal, project management
-- **Agents** (14 skills) — AI agent orchestration, coding agents, research agents, autonomous execution
+- **Financial** (18 skills) — Finance analysis, valuation, tax, portfolio management
 - **MCP** (15 skills) — Model Context Protocol servers for GitHub, Slack, Stripe, Supabase, Notion
+- **Agents** (14 skills) — AI agent orchestration, coding agents, research agents, autonomous execution
 - **Meta** (13 skills) — Self-evolving meta-skills, performance monitoring, skill creation
-- **Financial** (15 skills) — Finance analysis, valuation, tax, portfolio management
-- **Sales** (14 skills) — Lead generation, CRM, outreach, sales automation
-- **Data** (11 skills) — Data pipelines, analysis, visualization, ETL, Airflow, dbt
+- **Sales** (13 skills) — Lead generation, CRM, outreach, sales automation
 - **Productivity** (10 skills) — Calendars, email, meetings, workspace management
+- **Data** (7 skills) — Data pipelines, analysis, visualization, ETL, Airflow, dbt
 
 ## Install
 
@@ -36,15 +36,13 @@ Gemini CLI: `gemini skills install https://github.com/oyi77/1ai-skills.git --pat
 
 ## Quality
 
-- 1348/1348 skills pass 8-dimension test suite
+- 1372/1372 skills pass 8-dimension test suite
 - 0 warnings, 0 failures
 - Every skill has anti-rationalization table
 - Every skill has code examples
-- Every skill has verification checklist
-- Python syntax validated (ast.parse)
-- Internal links verified
-- Description quality enforced (50-200 chars)
 
-## Keywords
+## Links
 
-AI agent skills, Claude Code skills, Cursor rules, Gemini CLI skills, agent skill library, anti-rationalization, cybersecurity skills, AI coding agent, SKILL.md, agent workflows, AI agent best practices, coding agent skills, MCP skills, Model Context Protocol, self-evolving skills, AI agent automation
+- [GitHub](https://github.com/oyi77/1ai-skills)
+- [npm](https://www.npmjs.com/package/1ai-skills)
+- [License: MIT](LICENSE)

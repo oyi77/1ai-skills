@@ -21,7 +21,7 @@ done
 
 # Category directories that contain skills
 CATEGORIES=(
-  content core development integrations marketing meta mindset
+  agents content core development integrations marketing meta mindset
   operations productivity research sales trading data devops
   cybersecurity automation financial mcp
 )
@@ -48,9 +48,15 @@ declare -A SOURCE_SKILLS
 
 for skill_file in "${SKILLS[@]}"; do
   skill_dir="$(dirname "$skill_file")"
-  skill_name="$(basename "$skill_dir")"
+  # Canonical skill name is the frontmatter `name` field (the same identity
+  # SKILLS.json is keyed on), NOT the directory basename. Nested grouping dirs
+  # (content/video/gen -> video-gen, trading/executor -> trading-executor,
+  # sales/pipeline -> sales-pipeline) would otherwise collide on short
+  # basenames like `strategy` / `ops` / `team`.
+  skill_name="$(sed -n 's/^name:[[:space:]]*//p' "$skill_file" | head -n1)"
+  [ -n "$skill_name" ] || skill_name="$(basename "$skill_dir")"
 
-  # Skip if name collision (prefer content/ over others)
+  # Skip if name collision (identical frontmatter names in two dirs)
   if [ -n "${SOURCE_SKILLS[$skill_name]+x}" ]; then
     ((SKIPPED++)) || true
     continue
