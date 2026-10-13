@@ -2,7 +2,39 @@
 All notable changes to 1ai-skills are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
+### Added
+- `cybersecurity/reverse-engineering-router`: parent hub for reverse engineering work. Classifies
+  the target artifact (extension, magic bytes, keywords) and routes deterministically to the
+  correct specialist skill via a 31-row `ROUTING_TABLE`; every row carries an explicit fallback
+  and the catch-all is `reverse-engineer-anything-with-rea`. Maps **46 of 47** RE-cluster skills;
+  the 47th is the router itself. Declares `depends_on: [cybersecurity-router]` so the security
+  router delegates rather than duplicates. Three RE-adjacent response/defense skills are listed
+  under **Deliberately Out of Scope** instead of being silently omitted.
+- `cybersecurity/reverse-engineer-anything-with-rea`: artifact- and runtime-evidence workflow for
+  questions that cannot be answered from available source (shipped binaries, Go/Rust, Android,
+  Electron/JavaScript, firmware, browser targets). Preserves artifact SHA-256, scope, tool
+  versions, and separates observation from inference.
+
 ### Changed
+- `cybersecurity/cybersecurity-router`: added a Reverse Engineering section to the skill map and a
+  `Crypto implementation` routing row; RE artifacts now delegate to `reverse-engineering-router`
+  instead of resolving directly to `binary-breaker`.
+- `SKILLS.json`: registered both skills — **1370** total, **797** cybersecurity, `category_count`
+  unchanged at 19.
+
+### Verified
+- Lint: 0 errors, 0 warnings
+- Tests: 1372/1372 pass
+- Broken links: 0 of 1596 files
+- Dependency graph: router edge valid, no cycles
+- Synced to `~/.agents/skills/` (router 351L, REA 137L)
+
+### Changed
+- `cybersecurity/cybersecurity-router`: added a Reverse Engineering section to the skill map and a
+  routing-table row for RE artifacts; they now delegate to `reverse-engineering-router` instead of
+  resolving directly to `binary-breaker`.
+- `SKILLS.json`: registered both skills — **1370** total, **797** cybersecurity, `category_count`
+  unchanged at 19.
 - `Plan C`: renamed 24 skill directories to match `SKILLS.json` registry paths (`content/document-creator` consolidation, `core/kb-memory` merge, `financial/investment-*`, `marketing/tiktok-marketing`)
 - `Plan C`: registered `content/emil-design-skills` (1306 skills), fixed 6 pre-existing test failures (missing `## When to Use` / `## Workflow` sections, false-positive `existing-skill` link in `core/book-to-skill`)
 - `Plan C`: normalized `author: oyi77` metadata across skill files; landed content improvements (descriptions, code examples, monetization sections)

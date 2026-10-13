@@ -70,7 +70,12 @@ Use this skill when:
 - Chrome (or Chromium) with DevTools; Playwright/puppeteer if scripting.
 - Node.js 18+ for local rebuilds.
 - A beautifier (prettier or js-beautify) and a proficient code editor.
+## Artifact-Evidence Routing
 
+When the target is a shipped bundle, Electron package, or browser behavior not established
+by source, begin with `reverse-engineer-anything-with-rea` for artifact identity and
+passive runtime evidence. Keep request capture passive—do not replay requests—and record
+the evidence scope, observed values, and limitations before rebuilding the logic here.
 ## Workflow
 
 ### Phase 1: Observe

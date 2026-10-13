@@ -135,6 +135,7 @@ Collect before testing:
 | Cloud (AWS/Azure/GCP) | Cloud Security | `cloud-hunter` → `auditing-aws-s3-bucket-permissions` |
 | Mobile app (iOS/Android) | Mobile Security | `mobile-hacking` → `analyzing-android-malware-with-apktool` |
 | Binary/ELF/PE, heap/stack | Binary Exploitation | `binary-breaker` → `reverse-engineering-malware-with-ghidra` |
+| Binary/ELF/PE, reverse engineering | Reverse Engineering | `reverse-engineering-router` → `binary-breaker` |
 | Crypto implementation | Crypto Attacks | `crypto-breaker` → `performing-cryptographic-audit-of-application` |
 | Smart contract/DeFi | Blockchain Security | `web3-auditor` → `smart-contract-exploiter` |
 | LLM/RAG/prompt injection | AI/ML Security | `ai-hacker` → `detecting-ai-model-prompt-injection-attacks` |
@@ -222,8 +223,11 @@ Collect before testing:
 - `analyzing-android-malware-with-apktool` — APK analysis
 - `analyzing-ios-app-security-with-objection` — iOS runtime
 
-### Binary Exploitation (Pwn)
+### Reverse Engineering
+- `reverse-engineering-router` — **Router** for all RE tasks (artifacts → correct specialist)
 - `binary-breaker` — Binary exploitation & RE
+
+### Binary Exploitation (Pwn)
 - `reverse-engineering-malware-with-ghidra` — Ghidra RE
 - `reverse-engineering-android-malware-with-jadx` — Android RE
 - `reverse-engineering-dotnet-malware-with-dnspy` — .NET RE

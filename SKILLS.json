@@ -1,12 +1,12 @@
 {
-  "total_skills": 1368,
+  "total_skills": 1370,
   "category_count": 19,
   "categories": {
     "agents": 14,
     "automation": 21,
     "content": 84,
     "core": 48,
-    "cybersecurity": 795,
+    "cybersecurity": 797,
     "data": 7,
     "development": 92,
     "devops": 31,
@@ -16767,6 +16767,24 @@
       "type": "security"
     },
     {
+      "name": "reverse-engineer-anything-with-rea",
+      "category": "cybersecurity",
+      "description": "Use when reverse engineering a shipped native binary, Go or Rust executable, Android application, Electron or JavaScript package, firmware image, browser target, or other artifact where behavior must be established from the artifact or observed runtime. Routes supported investigations through REA while preserving evidence, limitations, and unknowns; skip it for ordinary source-repository analysis.",
+      "domain": "cybersecurity",
+      "tags": [
+        "reverse-engineering",
+        "REA",
+        "binaries",
+        "malware-analysis",
+        "runtime-observation",
+        "artifact-analysis"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "reverse-engineering",
+      "type": "security"
+    },
+    {
       "name": "reverse-engineering-android-malware-with-jadx",
       "category": "cybersecurity",
       "description": "Use when reverse engineers malicious Android APK files using JADX decompiler to analyze Java/Kotlin source code, identify malicious functionality including data theft, C2 communication, privilege escalation, and overlay attacks. Examines manifest permissions, receivers, services, and native libraries. Activates for requests involving Android malware analysis, APK reverse engineering, mobile malware investigation, or Android threat analysis.\n'.",
@@ -25141,6 +25159,24 @@
       "author": "oyi77",
       "subdomain": "trading",
       "type": "trading"
+    },
+    {
+      "name": "reverse-engineering-router",
+      "description": "Use when starting any reverse engineering task — master router that classifies the target artifact and routes to the correct specialized RE skill (native binaries, Android, iOS, JavaScript, firmware, .NET, malware behavior, forensics).",
+      "category": "cybersecurity",
+      "domain": "cybersecurity",
+      "subdomain": "reverse-engineering",
+      "tags": [
+        "reverse-engineering",
+        "binary-analysis",
+        "malware-analysis",
+        "firmware-analysis",
+        "mobile-security",
+        "router"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "license": "Apache-2.0"
     }
   ],
   "tooling_dirs": [

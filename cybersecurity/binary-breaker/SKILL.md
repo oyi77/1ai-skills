@@ -45,7 +45,13 @@ The RTX 2060 SUPER GPU accelerates fuzzing workloads via AFL++ dictionary genera
 - Malware sample uses custom packing — unpack and extract the C2 configuration
 - CTF team needs an exploit chain for a heap exploitation challenge
 - Firmware update binary contains encrypted strings — identify the crypto routine and recover keys
+## Artifact-Evidence Routing
 
+When the finding depends on the shipped binary rather than available source, start with
+`reverse-engineer-anything-with-rea`: preserve the artifact SHA-256, scope the question,
+and tie decompiler/runtime claims to returned evidence. Use this skill for the authorized
+vulnerability-analysis or exploitability portion only. Treat missing symbols, truncated
+output, and a failed inspection as unknowns—not proof that a bug or mitigation is absent.
 ## When NOT to Use
 
 - When you lack authorized access to test the target binary (no reverse engineering without permission)
