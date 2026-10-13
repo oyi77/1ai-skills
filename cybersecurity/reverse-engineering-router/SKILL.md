@@ -31,11 +31,11 @@ triggers:
 
 # Reverse Engineering Router: Master Entry for RE Operations
 
-Determines the artifact type, selects the correct specialized reverse engineering skill, and enforces methodology before tooling. All 49 RE skills in the catalog are reachable through this router.
+Determines the artifact type, selects the correct specialized reverse engineering skill, and enforces methodology before tooling. All 48 RE skills in the catalog are reachable through this router.
 
 ## Overview
 
-reverse-engineering-router is the master entry for reverse engineering work: it classifies the target artifact (file format, architecture, platform), routes to the correct specialized skill, and ensures structured methodology over random tool usage. It maps 49 reverse-engineering skills into a deterministic decision tree.
+reverse-engineering-router is the master entry for reverse engineering work: it classifies the target artifact (file format, architecture, platform), routes to the correct specialized skill, and ensures structured methodology over random tool usage. It maps 48 reverse-engineering skills into a deterministic decision tree.
 
 ## When NOT to Use
 
@@ -197,7 +197,7 @@ def route(artifact_info: dict) -> tuple[str, str]:
 
 ---
 
-## Skill Map (50 Skills)
+## Skill Map (48 Skills)
 
 ### Native Binary Analysis (ELF / PE / Mach-O)
 - `binary-breaker` — Binary exploitation & RE for zero-days

@@ -6,19 +6,20 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 - `cybersecurity/reverse-engineering-router`: parent hub for reverse engineering work. Classifies
   the target artifact (extension, magic bytes, keywords) and routes deterministically to the
   correct specialist skill via a 31-row `ROUTING_TABLE`; every row carries an explicit fallback
-  and the catch-all is `reverse-engineer-anything-with-rea`. Maps **46 of 47** RE-cluster skills;
-  the 47th is the router itself. Declares `depends_on: [cybersecurity-router]` so the security
-  router delegates rather than duplicates. Three RE-adjacent response/defense skills are listed
-  under **Deliberately Out of Scope** instead of being silently omitted.
+  and the catch-all is `reverse-engineer-anything-with-rea`. Maps all **46** RE-cluster skills
+  reachable via routing or skill-map; the router itself is the 47th and does not self-list.
+  Declares `depends_on: [cybersecurity-router]` so the security router delegates rather
+  than duplicates. Three RE-adjacent response/defense skills are listed under **Deliberately
+  Out of Scope** instead of being silently omitted.
 - `cybersecurity/reverse-engineer-anything-with-rea`: artifact- and runtime-evidence workflow for
   questions that cannot be answered from available source (shipped binaries, Go/Rust, Android,
   Electron/JavaScript, firmware, browser targets). Preserves artifact SHA-256, scope, tool
   versions, and separates observation from inference.
 
 ### Changed
-- `cybersecurity/cybersecurity-router`: added a Reverse Engineering section to the skill map and a
-  `Crypto implementation` routing row; RE artifacts now delegate to `reverse-engineering-router`
-  instead of resolving directly to `binary-breaker`.
+- `cybersecurity/cybersecurity-router`: split the Reverse Engineering skills out of `Binary Exploitation (Pwn)`
+  into their own skill-map section, and added a routing-table row delegating RE artifacts to
+  `reverse-engineering-router` instead of resolving directly to `binary-breaker`.
 - `SKILLS.json`: registered both skills — **1370** total, **797** cybersecurity, `category_count`
   unchanged at 19.
 

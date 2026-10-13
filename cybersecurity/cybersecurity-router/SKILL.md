@@ -225,16 +225,16 @@ Collect before testing:
 
 ### Reverse Engineering
 - `reverse-engineering-router` — **Router** for all RE tasks (artifacts → correct specialist)
-- `binary-breaker` — Binary exploitation & RE
-
-### Binary Exploitation (Pwn)
 - `reverse-engineering-malware-with-ghidra` — Ghidra RE
 - `reverse-engineering-android-malware-with-jadx` — Android RE
 - `reverse-engineering-dotnet-malware-with-dnspy` — .NET RE
-- `analyzing-heap-spray-exploitation` — Heap spray
-- `analyzing-ransomware-encryption-mechanisms` — Ransomware crypto
 - `go-rust-reverse` — Go/Rust RE
 - `dsl-vm-reverse` — Custom VM/DSL RE
+- `analyzing-ransomware-encryption-mechanisms` — Ransomware crypto
+
+### Binary Exploitation (Pwn)
+- `binary-breaker` — Binary exploitation
+- `analyzing-heap-spray-exploitation` — Heap spray
 
 ### Cryptography
 - `crypto-breaker` — Crypto implementation attacks
