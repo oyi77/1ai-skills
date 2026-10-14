@@ -85,22 +85,57 @@ for skill_file in "${SKILLS[@]}"; do
   ((SYNCED++)) || true
 done
 
-# Clean: remove skills from target that no longer exist in source
+# Clean: remove skills from target that no longer exist in source.
+# Skills installed by OTHER tools (Orca, Paseo, terminal-value, ...) also live
+# in this directory and must never be removed by this script. Names matching
+# EXTERNAL_ALLOWLIST (or carrying a foreign manager marker) are skipped.
+EXTERNAL_ALLOWLIST=(
+  computer-use cua-driver orca-cli orca-per-workspace-env orchestration
+  paseo paseo-advisor paseo-committee paseo-handoff paseo-help paseo-plugin
+  terminal-value terminalvalue-io
+)
+
+is_external() {
+  local n="$1"
+  for ext in "${EXTERNAL_ALLOWLIST[@]}"; do
+    [ "$n" = "$ext" ] && return 0
+  done
+  # Any dir carrying a foreign manager marker file is also off-limits.
+  compgen -G "$TARGET/$n/.*-managed-files.json" >/dev/null 2>&1 && return 0
+  return 1
+}
+
 if $CLEAN; then
   echo ""
   echo "Cleaning stale skills..."
-  for installed in "$TARGET"/*/; do
-    [ -d "$installed" ] || continue
+  # NOTE: iterate WITHOUT a trailing slash. `rm -rf path/` dereferences a
+  # symlink and deletes the CONTENTS OF ITS TARGET (POSIX), which would
+  # silently gut an external plugin such as ~/.opencode/understand-anything.
+  for installed in "$TARGET"/*; do
+    [ -e "$installed" ] || [ -L "$installed" ] || continue
     name="$(basename "$installed")"
-    if [ -z "${SOURCE_SKILLS[$name]+x}" ]; then
-      if $DRY_RUN; then
-        echo "  [DRY] would remove: $name"
-      else
-        rm -rf "$installed"
-        echo "  ✗ removed: $name"
-      fi
-      ((REMOVED++)) || true
+    [ -n "${SOURCE_SKILLS[$name]+x}" ] && continue
+
+    # Symlinked skills are owned by another tool; never touch them.
+    if [ -L "$installed" ]; then
+      echo "  ◦ kept (symlink to external skill): $name"
+      continue
     fi
+    [ -d "$installed" ] || continue
+
+    if is_external "$name"; then
+      echo "  ◦ kept (externally managed): $name"
+      continue
+    fi
+
+    if $DRY_RUN; then
+      echo "  [DRY] would remove: $name"
+    else
+      # No trailing slash: removes the directory itself, never a target.
+      rm -rf -- "$installed"
+      echo "  ✗ removed: $name"
+    fi
+    ((REMOVED++)) || true
   done
 fi
 
