@@ -324,17 +324,34 @@ def check_duplicates(skills_meta: list[dict], result: LintResult):
         seen[name] = path
 
     # Near-duplicates (only check within same category for relevance)
-    by_category: dict[str, list[tuple[str, str]]] = defaultdict(list)
+    by_category: dict[str, list[tuple[str, str, str, int]]] = defaultdict(list)
     for name, path in names:
         parts = Path(path).parts
         cat = parts[0] if parts else "unknown"
-        by_category[cat].append((name, path))
+        by_category[cat].append((name, path, name.lower(), len(name)))
 
     for cat, cat_skills in by_category.items():
-        for i, (name1, path1) in enumerate(cat_skills):
-            for name2, path2 in cat_skills[i + 1:]:
-                sim = similarity(name1, name2, threshold=SIMILARITY_THRESHOLD)
-                if sim >= SIMILARITY_THRESHOLD and name1 != name2:
+        for i, (name1, path1, lower1, len1) in enumerate(cat_skills):
+            # Instantiate matcher ONCE per outer loop and use internal caching
+            matcher = SequenceMatcher(None)
+            matcher.set_seq2(lower1)
+
+            for name2, path2, lower2, len2 in cat_skills[i + 1:]:
+                if name1 == name2:
+                    continue
+
+                # Fast upper-bound pre-check
+                if SIMILARITY_THRESHOLD > 0.0 and (len1 + len2) > 0:
+                    if 2.0 * min(len1, len2) < SIMILARITY_THRESHOLD * (len1 + len2):
+                        continue
+
+                matcher.set_seq1(lower2)
+
+                if matcher.quick_ratio() < SIMILARITY_THRESHOLD:
+                    continue
+
+                sim = matcher.ratio()
+                if sim >= SIMILARITY_THRESHOLD:
                     result.add("warnings", name1, "near-duplicate",
                                 f"Near-duplicate of {name2} (similarity={sim:.2f})")
 
