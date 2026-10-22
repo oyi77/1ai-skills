@@ -139,19 +139,6 @@ def skill_rel_path(path: Path) -> str:
     return str(rel)
 
 
-def similarity(a: str, b: str, threshold: float = 0.0) -> float:
-    """Sequence-based similarity ratio with length-based pre-check."""
-    len_a, len_b = len(a), len(b)
-    if threshold > 0.0 and (len_a + len_b) > 0:
-        if 2.0 * min(len_a, len_b) < threshold * (len_a + len_b):
-            return 0.0
-        matcher = SequenceMatcher(None, a.lower(), b.lower())
-        if matcher.quick_ratio() < threshold:
-            return 0.0
-        return matcher.ratio()
-    return SequenceMatcher(None, a.lower(), b.lower()).ratio()
-
-
 def levenshtein_ratio(s1: str, s2: str) -> float:
     """Fast Levenshtein similarity (0-1)."""
     if len(s1) < len(s2):
@@ -330,10 +317,28 @@ def check_duplicates(skills_meta: list[dict], result: LintResult):
         cat = parts[0] if parts else "unknown"
         by_category[cat].append((name, path))
 
+    matcher = SequenceMatcher()
     for cat, cat_skills in by_category.items():
-        for i, (name1, path1) in enumerate(cat_skills):
-            for name2, path2 in cat_skills[i + 1:]:
-                sim = similarity(name1, name2, threshold=SIMILARITY_THRESHOLD)
+        # Pre-calculate lowercase strings and lengths
+        processed = [
+            (name, path, name.lower(), len(name))
+            for name, path in cat_skills
+        ]
+
+        for i, (name1, path1, lower1, len1) in enumerate(processed):
+            matcher.set_seq2(lower1)
+            for name2, path2, lower2, len2 in processed[i + 1:]:
+                # Length pre-check
+                total_len = len1 + len2
+                if total_len > 0 and 2.0 * min(len1, len2) < SIMILARITY_THRESHOLD * total_len:
+                    continue
+
+                matcher.set_seq1(lower2)
+                # Quick bounds
+                if matcher.quick_ratio() < SIMILARITY_THRESHOLD:
+                    continue
+
+                sim = matcher.ratio()
                 if sim >= SIMILARITY_THRESHOLD and name1 != name2:
                     result.add("warnings", name1, "near-duplicate",
                                 f"Near-duplicate of {name2} (similarity={sim:.2f})")
