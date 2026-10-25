@@ -559,3 +559,9 @@ Use this skill when working with slack.
 
 ## Workflow
 See the parent skill for authoritative workflow documentation.
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| slack-mcp | [SKILL.md](../../mcp/servers/slack-mcp/SKILL.md) | Sending Slack messages, managing channels, and automating workflows via Model Context Protocol. |

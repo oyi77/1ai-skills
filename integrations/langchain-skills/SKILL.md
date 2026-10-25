@@ -212,3 +212,9 @@ export ANTHROPIC_API_KEY=<your-key>   # For Anthropic models
 - `rag-builder` — RAG pipeline design: chunking, embedding, retrieval, answer generation
 - `agent-harness-optimizer` — Agent harness optimization for token efficiency, memory persistence
 - `model-router` — Route AI model requests to optimal provider
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| langchain-patterns | [SKILL.md](../../core/langchain-patterns/SKILL.md) | Implementing LangChain and LangGraph chains, agents, tools, memory, retrieval, and graph workflows. |

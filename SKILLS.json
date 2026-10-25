@@ -1,11 +1,11 @@
 {
-  "total_skills": 1215,
+  "total_skills": 1208,
   "category_count": 19,
   "categories": {
     "agents": 4,
     "automation": 13,
     "content": 57,
-    "core": 39,
+    "core": 38,
     "cybersecurity": 800,
     "data": 3,
     "development": 93,
@@ -13,12 +13,12 @@
     "financial": 11,
     "integrations": 19,
     "marketing": 34,
-    "mcp": 11,
+    "mcp": 6,
     "meta": 6,
     "mindset": 29,
     "operations": 16,
     "productivity": 8,
-    "research": 24,
+    "research": 23,
     "sales": 9,
     "trading": 14
   },
@@ -1847,25 +1847,6 @@
         "karpathy",
         "simplicity",
         "clean-code"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "core-platform",
-      "type": "core"
-    },
-    {
-      "name": "langchain-patterns",
-      "category": "core",
-      "description": "Use when langChain/LangGraph patterns — chains, agents, tools, memory, retrieval, graph workflows. Use when working with langchain patterns.",
-      "domain": "core",
-      "tags": [
-        "ai-agent",
-        "infrastructure",
-        "langchain",
-        "memory",
-        "patterns",
-        "self-improvement",
-        "workflow"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -20438,43 +20419,6 @@
       "type": "mcp"
     },
     {
-      "name": "github-mcp",
-      "category": "mcp",
-      "description": "Use when mCP server for GitHub automation. Manage repos, issues, PRs, and workflows through the Model Context Protocol. Use when working with github mcp.",
-      "domain": "mcp",
-      "tags": [
-        "github",
-        "mcp",
-        "mcp-server",
-        "model-context-protocol",
-        "tool-integration"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "mcp",
-      "type": "mcp"
-    },
-    {
-      "name": "linear-mcp",
-      "category": "mcp",
-      "description": "Use when linear Mcp. Use when working with linear mcp in mcp domain.",
-      "domain": "mcp",
-      "tags": [
-        "linear",
-        "mcp",
-        "mcp-server",
-        "model-context-protocol",
-        "tool-integration",
-        "issue-tracking",
-        "project-management",
-        "graphql"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "mcp",
-      "type": "mcp"
-    },
-    {
       "name": "mcp-server-builder",
       "category": "mcp",
       "description": "Use when creating MCP (Model Context Protocol) servers for any API or service. Auto-generate tools, resources, and prompts that any AI agent can use.",
@@ -20514,23 +20458,6 @@
       "type": "mcp"
     },
     {
-      "name": "notion-mcp",
-      "category": "mcp",
-      "description": "Use when MCP server for Notion databases. Query pages, manage databases, and automate Notion workflows via standardized protocol.",
-      "domain": "mcp",
-      "tags": [
-        "mcp",
-        "mcp-server",
-        "model-context-protocol",
-        "notion",
-        "tool-integration"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "mcp",
-      "type": "mcp"
-    },
-    {
       "name": "resend-mcp",
       "category": "mcp",
       "description": "Use when resend Mcp. Use when working with resend mcp in mcp domain.",
@@ -20558,42 +20485,6 @@
         "sequential",
         "testing",
         "thinking",
-        "tool-integration"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "mcp",
-      "type": "mcp"
-    },
-    {
-      "name": "slack-mcp",
-      "category": "mcp",
-      "description": "Use when MCP server for Slack integration. Send messages, manage channels, and automate Slack workflows via standardized protocol.",
-      "domain": "mcp",
-      "tags": [
-        "mcp",
-        "mcp-server",
-        "model-context-protocol",
-        "slack",
-        "tool-integration",
-        "chat-ops",
-        "bot"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "mcp",
-      "type": "mcp"
-    },
-    {
-      "name": "stripe-mcp",
-      "category": "mcp",
-      "description": "Use when mCP server for Stripe payments. Process payments, manage subscriptions, and handle billing via standardized protocol. Use when working with stripe mcp.",
-      "domain": "mcp",
-      "tags": [
-        "mcp",
-        "mcp-server",
-        "model-context-protocol",
-        "stripe",
         "tool-integration"
       ],
       "version": "1.0.0",
@@ -21991,24 +21882,6 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "scientific-research",
-      "type": "research"
-    },
-    {
-      "name": "social-intelligence",
-      "category": "research",
-      "description": "Use when cross-platform social media intelligence gathering using Agent Reach. Research trends, sentiment, competitive intel, and user insights from Twitter, Reddit, YouTube, XiaoHongShu across 35+ platforms. Use when researching social proof, market sentiment, viral content patterns, or competitive positioning.",
-      "domain": "research",
-      "tags": [
-        "social-media",
-        "research",
-        "sentiment-analysis",
-        "competitive-intelligence",
-        "trend-monitoring",
-        "agent-reach"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "research",
       "type": "research"
     },
     {

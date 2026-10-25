@@ -357,7 +357,7 @@ agent-reach twitter search "#trendingtopic" --since 24h
 agent-reach twitter thread "https://x.com/user/status/123"
 ```
 
-Use social-intelligence skill (`skill://social-intelligence`) for cross-platform sentiment analysis combining Twitter, Reddit, and YouTube data.
+Use social-intelligence skill (`skill://scrapers`) for cross-platform sentiment analysis combining Twitter, Reddit, and YouTube data.
 
 ## Related Skills
 

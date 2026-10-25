@@ -405,7 +405,7 @@ agent-reach youtube search "trending topic" --limit 20 --transcript
 agent-reach xhs search "热门话题" --limit 50
 ```
 
-Use TrendRadar for monitoring and alerting, Agent Reach for deep content extraction. Combine with `skill://social-intelligence` for full sentiment analysis.
+Use TrendRadar for monitoring and alerting, Agent Reach for deep content extraction. Combine with `skill://scrapers` for full sentiment analysis.
 
 ## Related Skills
 

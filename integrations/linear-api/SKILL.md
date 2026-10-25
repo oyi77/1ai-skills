@@ -196,3 +196,9 @@ After completing this skill, confirm:
 | "I will handle auth later" | Retrofitting auth is 10x harder. Build it from day one. |
 | "APIs do not change" | APIs change. Version your integrations and handle deprecations. |
 | "Webhooks are optional" | Without webhooks, you miss real-time events. They are essential. |
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| linear-mcp | [SKILL.md](../../mcp/servers/linear-mcp/SKILL.md) | Managing Linear issues, projects, and team workflows via Model Context Protocol. |

@@ -451,3 +451,9 @@ Use this skill when working with github.
 
 ## Workflow
 See the parent skill for authoritative workflow documentation.
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| github-mcp | [SKILL.md](../../mcp/servers/github-mcp/SKILL.md) | Managing GitHub repositories, issues, PRs, and workflows via Model Context Protocol. |
