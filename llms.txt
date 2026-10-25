@@ -1,19 +1,19 @@
 # 1ai-skills
 
-> 1208 production-ready AI agent skills with anti-rationalization tables, code examples, and verification checklists. The largest open-source skill library for Claude Code, Cursor, Gemini CLI, and more.
+> 1202 production-ready AI agent skills with anti-rationalization tables, code examples, and verification checklists. The largest open-source skill library for Claude Code, Cursor, Gemini CLI, and more.
 
 ## What
 
-1ai-skills is a library of 1208 SKILL.md files across 19 categories that force AI coding agents to follow real workflows instead of cutting corners. Every skill includes anti-rationalization tables, concrete code examples, step-by-step workflows, and verification checklists.
+1ai-skills is a library of 1202 SKILL.md files across 19 categories that force AI coding agents to follow real workflows instead of cutting corners. Every skill includes anti-rationalization tables, concrete code examples, step-by-step workflows, and verification checklists.
 
 ## Categories
 
 - **Cybersecurity** (800 skills) — Threat hunting, forensics, pen testing, SOC ops, incident response, zero trust, cloud security, API security, OT/ICS security
 - **Development** (93 skills) — TDD, debugging, code review, PRD, spec-driven development, context engineering, browser testing, Git workflows
-- **Content** (57 skills) — Video generation, audio, design, writing, document creation (docx, pdf, pptx, xlsx), UI design, themes
+- **Content** (55 skills) — Video generation, audio, design, writing, document creation (docx, pdf, pptx, xlsx), UI design, themes
 - **Mindset** (29 skills) — Negotiation, leadership, critical thinking, emotional intelligence, productivity, habit formation
 - **Core** (38 skills) — AI infrastructure, memory systems, self-improving, model routing, Gemini API, Replicate
-- **Marketing** (34 skills) — SEO, viral content, email marketing, ads, growth hacking, social media automation
+- **Marketing** (32 skills) — SEO, viral content, email marketing, ads, growth hacking, social media automation
 - **Research** (23 skills) — Deep research, market analysis, competitive intelligence, McKinsey framework
 - **DevOps** (25 skills) — Docker, Kubernetes, CI/CD, cloud ops, GitOps, Terraform, Ansible
 - **Integrations** (19 skills) — GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase, BigQuery
@@ -24,7 +24,7 @@
 - **MCP** (6 skills) — Model Context Protocol servers for GitHub, Slack, Stripe, Supabase, Notion
 - **Agents** (4 skills) — AI agent orchestration, coding agents, research agents, autonomous execution
 - **Meta** (6 skills) — Self-evolving meta-skills, performance monitoring, skill creation
-- **Sales** (9 skills) — Lead generation, CRM, outreach, sales automation
+- **Sales** (7 skills) — Lead generation, CRM, outreach, sales automation
 - **Productivity** (8 skills) — Calendars, email, meetings, workspace management
 - **Data** (3 skills) — Data pipelines, analysis, visualization, ETL, Airflow, dbt
 
@@ -36,7 +36,7 @@ Gemini CLI: `gemini skills install https://github.com/oyi77/1ai-skills.git --pat
 
 ## Quality
 
-- 1208/1208 skills pass 8-dimension test suite
+- 1202/1202 skills pass 8-dimension test suite
 - 0 warnings, 0 failures
 - Every skill has anti-rationalization table
 - Every skill has code examples

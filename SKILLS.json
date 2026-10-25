@@ -1,10 +1,10 @@
 {
-  "total_skills": 1208,
+  "total_skills": 1202,
   "category_count": 19,
   "categories": {
     "agents": 4,
     "automation": 13,
-    "content": 57,
+    "content": 55,
     "core": 38,
     "cybersecurity": 800,
     "data": 3,
@@ -12,14 +12,14 @@
     "devops": 25,
     "financial": 11,
     "integrations": 19,
-    "marketing": 34,
+    "marketing": 32,
     "mcp": 6,
     "meta": 6,
     "mindset": 29,
     "operations": 16,
     "productivity": 8,
     "research": 23,
-    "sales": 9,
+    "sales": 7,
     "trading": 14
   },
   "skills": [
@@ -366,39 +366,6 @@
         "machine-learning",
         "media",
         "testing"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "content-creation",
-      "type": "content"
-    },
-    {
-      "name": "ai-newsletter",
-      "category": "content",
-      "description": "Use when building and monetizing AI-powered email newsletters. Curate content, automate writing, and grow paid subscriptions. Generate $1K-20K/month.",
-      "domain": "content",
-      "tags": [
-        "content-creation",
-        "digital-content",
-        "email",
-        "media",
-        "newsletter"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "content-creation",
-      "type": "content"
-    },
-    {
-      "name": "ai-podcast",
-      "category": "content",
-      "description": "Use when creating and automating AI-powered podcasts. Generate episodes from topics, URLs, or documents with multiple AI hosts. Build audience and monetize through sponsorships.",
-      "domain": "content",
-      "tags": [
-        "content-creation",
-        "digital-content",
-        "media",
-        "podcast"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -19849,23 +19816,6 @@
       "type": "marketing"
     },
     {
-      "name": "affiliate-manager",
-      "category": "marketing",
-      "description": "Use when automated discovery of affiliate programs, partnership opportunities, and cross-promotion deals with outreach, commission tracking, and placement optimization",
-      "domain": "marketing",
-      "tags": [
-        "affiliate",
-        "growth",
-        "manager",
-        "marketing",
-        "seo"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "marketing",
-      "type": "marketing"
-    },
-    {
       "name": "affiliate-marketing",
       "category": "marketing",
       "description": "Use when AI-powered affiliate marketing automation. Research products, generate content, optimize conversions, and build passive income through automated affiliate campaigns.",
@@ -19875,26 +19825,6 @@
         "growth",
         "marketing",
         "seo"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "marketing",
-      "type": "marketing"
-    },
-    {
-      "name": "ai-content-agency-v2",
-      "category": "marketing",
-      "description": "Use when 9-workflow, 6-phase AI content agency blueprint — generates ads, videos, images, and landing pages from product info using LLM ideation through multi-provider rendering.",
-      "domain": "marketing",
-      "tags": [
-        "agency",
-        "content",
-        "growth",
-        "marketing",
-        "seo",
-        "video",
-        "workflow",
-        "money"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -22003,26 +21933,6 @@
       "type": "sales"
     },
     {
-      "name": "ai-lead-generation",
-      "category": "sales",
-      "description": "Automated AI-powered lead generation and prospecting. Find ideal customers, enrich data, personalize outreach, and book meetings without manual effort. Use when generating B2B leads at scale.",
-      "domain": "sales",
-      "tags": [
-        "business-development",
-        "generation",
-        "lead",
-        "revenue",
-        "sales",
-        "money",
-        "outreach",
-        "b2b"
-      ],
-      "version": "2.0.0",
-      "author": "oyi77",
-      "subdomain": "",
-      "type": "sales"
-    },
-    {
       "name": "ai-marketplace",
       "category": "sales",
       "description": "Use when selling AI-powered services on Fiverr, Upwork, and Toptal. Offer automation, content, and development services. Build recurring clients and generate $2K-10K/month.",
@@ -22069,26 +21979,6 @@
         "revenue",
         "sales",
         "ticket"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "sales",
-      "type": "sales"
-    },
-    {
-      "name": "influencer-scouting",
-      "category": "sales",
-      "description": "Use when | > Full influencer scouting, outreach, and performance tracking system. Covers platform search across TikTok, Instagram, and YouTube for creators, scoring/qualification, DM outreach, negotiation, deal tracking, and ROI measurement. Integrates with Kalodata for TikTok analytics.",
-      "domain": "sales",
-      "tags": [
-        "influencer",
-        "marketing",
-        "tiktok",
-        "instagram",
-        "youtube",
-        "kol",
-        "affiliate",
-        "indonesia"
       ],
       "version": "1.0.0",
       "author": "oyi77",

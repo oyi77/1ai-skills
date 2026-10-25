@@ -381,3 +381,4 @@ After completing this skill, confirm:
 | :--- | :--- | :--- |
 | `email-sequences` | Welcome, nurture, re-engagement, transactional, dan trigger-based email flows | [SKILL.md](../email-sequences/SKILL.md) |
 | `cold-email` | Personalized B2B outbound, deliverability, follow-up, dan compliance | [SKILL.md](../cold-email/SKILL.md) |
+| `ai-newsletter` | AI-powered newsletter creation, paid-subscription growth, and monetization | [SKILL.md](../../content/ai-newsletter/SKILL.md) |

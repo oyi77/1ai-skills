@@ -189,3 +189,10 @@ When briefing multiple directors, fan out in parallel with a shared contract:
 - [ ] Consistency check across all assets
 - [ ] Launch timing coordinated
 - [ ] Outcome saved to brain
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Use Case | Reference File |
+| :--- | :--- | :--- |
+| `ai-content-agency-v2` | End-to-end agency production across nine workflows and six phases | [SKILL.md](../../marketing/ai-content-agency-v2/SKILL.md) |
+| `ai-podcast` | Automated multi-host podcast episodes, audience growth, and monetization | [SKILL.md](../ai-podcast/SKILL.md) |
