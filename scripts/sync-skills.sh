@@ -85,6 +85,65 @@ for skill_file in "${SKILLS[@]}"; do
   ((SYNCED++)) || true
 done
 
+# The source tree is categorized but the runtime is flat. Rebase copied
+# relative SKILL.md links to canonical frontmatter names; leave source,
+# frontmatter, fenced examples, and non-SKILL links untouched. This also
+# repairs unchanged copies when upgrading sync.
+if ! $DRY_RUN; then
+  python3 - "$REPO_ROOT" "$TARGET" <<'PY'
+import re
+import sys
+from pathlib import Path
+
+repo, runtime = Path(sys.argv[1]), Path(sys.argv[2])
+sources = list(repo.glob("*/*/**/SKILL.md"))
+names = {}
+for source in sources:
+    name = re.search(r"^name:\s*[\"']?([a-z0-9-]+)", source.read_text(), re.MULTILINE)
+    if name:
+        names[source.resolve()] = name.group(1)
+
+for source in sources:
+    name = names.get(source.resolve())
+    if not name:
+        continue
+    copied = runtime / name / "SKILL.md"
+    if not copied.is_file():
+        continue
+
+    lines = copied.read_text().splitlines(keepends=True)
+    frontmatter, fence = True, False
+    for index, line in enumerate(lines):
+        stripped = line.strip()
+        if index == 0 and stripped == "---":
+            continue
+        if frontmatter:
+            if stripped == "---":
+                frontmatter = False
+            continue
+        if re.match(r"^(```|~~~)", stripped):
+            fence = not fence
+            continue
+        if fence:
+            continue
+
+        def rebase(match):
+            url = match.group(1)
+            path, separator, fragment = url.partition("#")
+            target = (source.parent / path).resolve()
+            if target not in names:
+                return match.group(0)
+            rebased = "../" + names[target] + "/SKILL.md"
+            return "](" + rebased + separator + fragment + ")"
+
+        lines[index] = re.sub(r"\]\((\.{1,2}/[^)\s]+/SKILL\.md(?:#[^)\s]*)?)\)", rebase, line)
+
+    rebased_text = "".join(lines)
+    if rebased_text != copied.read_text():
+        copied.write_text(rebased_text)
+PY
+fi
+
 # Clean: remove skills from target that no longer exist in source.
 # Skills installed by OTHER tools (Orca, Paseo, terminal-value, ...) also live
 # in this directory and must never be removed by this script. Names matching

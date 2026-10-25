@@ -51,7 +51,7 @@ Semantic video matching analyzes the meaning of your script/narration and finds 
 3. **Search stock libraries** — Query Pexels, Pixabay, or custom libraries with semantic matches
 4. **Rank results** — Score clips by relevance to narration meaning
 5. **Select and download** — Pick best matches, trim to section length
-6. **Assemble** — Use [video-editor](../video-editor/SKILL.md) to combine B-roll with voiceover
+6. **Assemble** — Use [video-editor](../editor/SKILL.md) to combine B-roll with voiceover
 
 ## API Example (Pexels)
 

@@ -45,6 +45,8 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 - Synchronized counts across `README.md`, `AGENTS.md`, `package.json`, `llms.txt`, and `scripts/generate-site.py` (dynamic catalog counts and canonical captured test receipt).
 - Refreshed `README.md` and `AGENTS.md` counts from the active registry, including per-category numbers.
 ### Fixed
+- Fixed source-relative `SKILL.md` links in the video playbooks by replacing stale `video-editor` / `video-gen` directory aliases with the canonical `editor` / `gen` paths.
+- Updated `scripts/sync-skills.sh` to rebase relative `SKILL.md` links from categorized source paths to canonical frontmatter names in the flattened runtime, including unchanged copies. Frontmatter, fenced examples, and non-`SKILL.md` links remain untouched; all 317 source and runtime relative-link occurrences now resolve, repeated sync is idempotent, and all 20 external runtime entries are preserved.
 - Repaired 19 SKILL.md files with unbalanced (odd-count) code fences that swallowed
   structural headings. Inserted missing opening fences for 7 meta-skill boilerplate blocks
   and 12 content blocks (lost closers before `## When NOT to Use` / `---` /
