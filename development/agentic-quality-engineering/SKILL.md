@@ -56,7 +56,7 @@ AI-powered quality engineering beyond traditional testing. Covers flaky test det
 **When NOT to use:**
 - Writing initial tests (use `skill://test-driven-development`)
 - Manual QA cycles (use `skill://qa-review-fix-loop`)
-- Simple test generation (use `skill://automated-test-generator`)
+- Simple test generation (use [automated-test-generator](../automated-test-generator/SKILL.md))
 - Code review (use `skill://code-reviewer`)
 
 
@@ -323,9 +323,9 @@ After implementing quality engineering, confirm:
 ## Related Skills
 
 - `skill://test-driven-development` — TDD workflow
-- `skill://automated-test-generator` — Generate tests automatically
+- [automated-test-generator](../automated-test-generator/SKILL.md) — Generate tests automatically
 - `skill://qa-review-fix-loop` — Full QA cycle
-- `skill://test-coverage-analyzer` — Coverage analysis
+- [test-coverage-analyzer](../test-coverage-analyzer/SKILL.md) — Coverage analysis
 - `skill://code-reviewer` — Code review
 - `skill://engineering-hard-rules` — Engineering enforcement
 - `skill://verification-before-completion` — Pre-completion checklist

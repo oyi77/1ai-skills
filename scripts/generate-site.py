@@ -272,8 +272,8 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
 }
 '''
 
-def page(title, active_nav, body_content, extra_js=''):
-    og_desc = "1310 production-grade AI agent skills with anti-rationalization tables. Every skill tested, every skill verified."
+def page(title, active_nav, body_content, extra_js='', *, total_skills):
+    og_desc = f"{total_skills} production-grade AI agent skills with anti-rationalization tables. Every skill tested, every skill verified."
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -569,13 +569,13 @@ function copyCmd(btn) {
   setTimeout(() => btn.textContent = 'Copy', 2000);
 }'''
 
-    return page('1ai-Skills  -  The Largest AI Agent Skill Library', 'home', body, extra_js)
+    return page('1ai-Skills  -  The Largest AI Agent Skill Library', 'home', body, extra_js, total_skills=data['total_skills'])
 
 
 # ── Page: docs.html ──
 
 def gen_docs(data):
-    body = '''
+    body = f'''
 <section class="page">
   <div class="container">
     <div class="page-header">
@@ -752,7 +752,7 @@ python3 scripts/test-skills.py --skill my-skill-name</code></pre>
 | "I will refactor later" | Technical debt compounds |</code></pre>
 
         <h3>How is this different from addyosmani/agent-skills?</h3>
-        <p>Complementary. His 24 skills are engineering lifecycle commands (/spec, /build, /test). Our 1310 skills are domain-specific knowledge (cybersecurity, trading, marketing). Use both.</p>
+        <p>Complementary. His 24 skills are engineering lifecycle commands (/spec, /build, /test). Our {data['total_skills']} skills are domain-specific knowledge (cybersecurity, trading, marketing). Use both.</p>
 
         <h3>Can I use skills from multiple categories?</h3>
         <p>Yes. Skills are independent and composable. Load the cybersecurity skill for security tasks, the development skill for coding tasks, etc.</p>
@@ -769,7 +769,7 @@ document.querySelectorAll('.docs-sidebar a').forEach(a => {
     a.classList.add('active');
   });
 });'''
-    return page('Documentation  -  1ai-Skills', 'docs', body, js)
+    return page('Documentation  -  1ai-Skills', 'docs', body, js, total_skills=data['total_skills'])
 
 
 # ── Page: browse.html ──
@@ -792,7 +792,7 @@ def gen_browse(data):
 <section class="page">
   <div class="container">
     <div class="page-header">
-      <h1>Browse <span class="grad">1310 Skills</span></h1>
+      <h1>Browse <span class="grad">{len(skills)} Skills</span></h1>
       <p>Search, filter, and explore every skill in the library.</p>
     </div>
 
@@ -864,7 +864,7 @@ document.querySelectorAll('.tab').forEach(tab => {{
 
 render(skills.slice(0, 60));'''
 
-    return page('Browse Skills  -  1ai-Skills', 'browse', body, js)
+    return page('Browse Skills  -  1ai-Skills', 'browse', body, js, total_skills=data['total_skills'])
 
 
 # ── Page: examples.html ──
@@ -1007,7 +1007,7 @@ document.querySelectorAll('.docs-sidebar a').forEach(a => {
     a.classList.add('active');
   });
 });'''
-    return page('Examples  -  1ai-Skills', 'examples', body, js)
+    return page('Examples  -  1ai-Skills', 'examples', body, js, total_skills=data['total_skills'])
 
 
 # ── Page: api.html ──
@@ -1106,11 +1106,11 @@ tags:                       # 3-5 relevant tags
 python3 scripts/test-skills.py
 
 # Output:
-# Total:    1310
-# Passed:   1310 (100.0%)
+# Total:    1398
+# Passed:   1398 (100.0%)
 # Failed:   0
-# Warnings: 0
-# Time:     0.96s
+# Warnings: 310
+# Time:     16.84s
 
 # JSON output for CI
 python3 scripts/test-skills.py --json > test-results.json</code></pre>
@@ -1134,7 +1134,7 @@ document.querySelectorAll('.docs-sidebar a').forEach(a => {
     a.classList.add('active');
   });
 });'''
-    return page('API Reference  -  1ai-Skills', 'api', body, js)
+    return page('API Reference  -  1ai-Skills', 'api', body, js, total_skills=data['total_skills'])
 
 
 # ── Main ──

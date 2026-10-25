@@ -23,10 +23,16 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
   - Financial Investment (4 sub-skills) -> `financial/investment-industry`
   - Corporate Accounting (3 sub-skills) -> `financial/month-end-closer`
   - Institutional Research (2 sub-skills) -> `research/mckinsey-research`
-- Zero File Deletion Invariant preserved across Waves 1–3: all on-disk physical `SKILL.md` files retained to guarantee link resolution.
-- Updated active registry in `SKILLS.json` from 1398 to **1310** skills across 19 categories.
-- Synchronized counts across `README.md`, `AGENTS.md`, `package.json`, `llms.txt`, and `generate-site.py`.
-- Refreshed `README.md` and `AGENTS.md` counts from the generated registry, including per-category numbers.
+- Wave 4: consolidated 18 CI/CD, Git workflow, and testing sub-skills into canonical parent routing tables:
+  - CI/CD (7 sub-skills) -> `devops/ci-cd-pipeline`
+  - GitOps (1 sub-skill) -> `devops/argocd-gitops`
+  - Git Workflow (4 sub-skills) -> `development/git-workflow-mastery`
+  - Test-Driven Development (3 sub-skills) -> `development/test-driven-development`
+  - Browser E2E Testing (3 sub-skills) -> `development/playwright-e2e`
+- Zero File Deletion Invariant preserved across Waves 1–4: all on-disk physical `SKILL.md` files retained to guarantee link resolution.
+- Updated active registry in `SKILLS.json` from 1398 to **1292** skills across 19 categories.
+- Synchronized counts across `README.md`, `AGENTS.md`, `package.json`, `llms.txt`, and `scripts/generate-site.py` (dynamic catalog counts and canonical captured test receipt).
+- Refreshed `README.md` and `AGENTS.md` counts from the active registry, including per-category numbers.
 ### Fixed
 - Repaired 19 SKILL.md files with unbalanced (odd-count) code fences that swallowed
   structural headings. Inserted missing opening fences for 7 meta-skill boilerplate blocks

@@ -134,3 +134,15 @@ jobs:
 | "Manual deployments are fine" | Manual deployments are error-prone and不可 repeatable. Automate. |
 | "We do not need monitoring" | Without monitoring, you are flying blind. Add observability from day one. |
 | "Infrastructure as code is overkill" | IaC enables reproducibility, version control, and disaster recovery. |
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+|---|---|---|
+| circleci-config | CircleCI orbs/workflows | [SKILL.md](../circleci-config/SKILL.md) |
+| drone-ci | Container-native Drone | [SKILL.md](../drone-ci/SKILL.md) |
+| buildkite-pipelines | Buildkite dynamic pipelines | [SKILL.md](../buildkite-pipelines/SKILL.md) |
+| tekton-pipelines | Kubernetes-native Tekton | [SKILL.md](../tekton-pipelines/SKILL.md) |
+| jenkins-pipelines | Jenkinsfile pipelines | [SKILL.md](../jenkins-pipelines/SKILL.md) |
+| jenkins-shared-libs | Jenkins shared libraries | [SKILL.md](../jenkins-shared-libs/SKILL.md) |
+| cicd-deployment | Production deployment, Docker, zero-downtime, rollback | [SKILL.md](../../development/cicd-deployment/SKILL.md) |
