@@ -473,3 +473,10 @@ For pipeline results:
 
 ## When to Use
 Use this skill when working with clients.
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| mcp-client | [SKILL.md](mcp-client/SKILL.md) | Connecting to Model Context Protocol servers with standardized tool access. |
+| mcp-discover | [SKILL.md](mcp-discover/SKILL.md) | Discovering and connecting to MCP servers, browsing tools, and registering endpoints. |

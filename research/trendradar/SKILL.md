@@ -389,7 +389,7 @@ After completing this skill, confirm:
 
 ## Agent Reach Integration
 
-For deeper platform scraping beyond trend monitoring, use `skill://agent-reach`:
+For deeper platform scraping beyond trend monitoring, use `skill://scrapers`:
 
 ```bash
 # After identifying trending topics via TrendRadar, deep-dive on Twitter

@@ -1,9 +1,9 @@
 {
-  "total_skills": 1224,
+  "total_skills": 1215,
   "category_count": 19,
   "categories": {
-    "agents": 9,
-    "automation": 14,
+    "agents": 4,
+    "automation": 13,
     "content": 57,
     "core": 39,
     "cybersecurity": 800,
@@ -13,7 +13,7 @@
     "financial": 11,
     "integrations": 19,
     "marketing": 34,
-    "mcp": 14,
+    "mcp": 11,
     "meta": 6,
     "mindset": 29,
     "operations": 16,
@@ -88,23 +88,6 @@
       "type": "agents"
     },
     {
-      "name": "linter-agent",
-      "category": "agents",
-      "description": "Use when detecting and fixing code style violations, enforcing project conventions, ensuring consistent formatting.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "linter",
-        "coding"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "ai-agents",
-      "type": "agents"
-    },
-    {
       "name": "market-research-agent",
       "category": "agents",
       "description": "Use when analyze markets, competitors, user segments, and trends to produce evidence-based business intelligence. Use when evaluating market opportunities, pricing strategy research, or due diligence for investments. Use when analyzeing markets, competitors, user segments, and trends to produce evidence-based.",
@@ -121,92 +104,6 @@
       "author": "oyi77",
       "subdomain": "ai-agents",
       "type": "agents"
-    },
-    {
-      "name": "perf-agent",
-      "category": "agents",
-      "description": "Use when measure before optimizing, target actual bottlenecks proven by profiling, verify with benchmarks.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "perf",
-        "coding"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "ai-agents",
-      "type": "agents"
-    },
-    {
-      "name": "refactor-agent",
-      "category": "agents",
-      "description": "Use when restructure code to improve readability, maintainability, extensibility without changing external behavior.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "refactor",
-        "coding"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "ai-agents",
-      "type": "agents"
-    },
-    {
-      "name": "security-agent",
-      "category": "agents",
-      "description": "Use when bug bounty hunter and security auditor. Finds vulnerabilities before they find production.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "security",
-        "coding"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "ai-agents",
-      "type": "agents"
-    },
-    {
-      "name": "test-agent",
-      "category": "agents",
-      "description": "Use when writing comprehensive test suites covering happy paths, error paths, edge cases, and integration points.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "test",
-        "coding"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "ai-agents",
-      "type": "agents"
-    },
-    {
-      "name": "agent-reach-channels",
-      "category": "automation",
-      "description": "Use when multi-platform e-commerce and messaging channel extraction (Shopee, TikTok Shop, WeChat)",
-      "domain": "automation",
-      "tags": [
-        "ecommerce",
-        "scraping",
-        "agent-reach",
-        "shopee",
-        "tiktok",
-        "wechat"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "workflow-automation",
-      "type": "automation"
     },
     {
       "name": "bots",
@@ -20523,26 +20420,6 @@
       "type": "marketing"
     },
     {
-      "name": "agent-reach",
-      "category": "mcp",
-      "description": "Use when universal internet scraper for AI agents. Read and search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu, LinkedIn, V2EX, RSS, web pages. Zero API fees. Use when agents need real-time social media data, content research, or trend monitoring.",
-      "domain": "mcp",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "api",
-        "github",
-        "mcp-server",
-        "model-context-protocol",
-        "monitoring",
-        "reach"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "mcp",
-      "type": "mcp"
-    },
-    {
       "name": "clients",
       "category": "mcp",
       "description": "Use when model Context Protocol client hub — connect AI agents to any MCP server for tool discovery, invocation, and ecosystem management. Use when working with MCP clients, discovering MCP servers, or building MCP-based toolchains.",
@@ -20591,40 +20468,6 @@
         "issue-tracking",
         "project-management",
         "graphql"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "mcp",
-      "type": "mcp"
-    },
-    {
-      "name": "mcp-client",
-      "category": "mcp",
-      "description": "Use when generic MCP client implementation for connecting to any Model Context Protocol server with standardized tool access. Use when working with mcp client.",
-      "domain": "mcp",
-      "tags": [
-        "client",
-        "mcp",
-        "mcp-server",
-        "model-context-protocol",
-        "tool-integration"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "mcp",
-      "type": "mcp"
-    },
-    {
-      "name": "mcp-discover",
-      "category": "mcp",
-      "description": "Use when discover and connect to MCP servers automatically. Browse available tools and register new server endpoints. Use when working with mcp discover.",
-      "domain": "mcp",
-      "tags": [
-        "discover",
-        "mcp",
-        "mcp-server",
-        "model-context-protocol",
-        "tool-integration"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -22673,12 +22516,5 @@
       "subdomain": "trading",
       "type": "trading"
     }
-  ],
-  "tooling_dirs": [
-    "docs",
-    "hooks",
-    "manifests",
-    "references",
-    "scripts"
   ]
 }

@@ -341,7 +341,7 @@ After completing this skill, confirm:
 
 ## Agent Reach Integration
 
-For real-time Twitter data gathering without API keys, use `skill://agent-reach`:
+For real-time Twitter data gathering without API keys, use `skill://scrapers`:
 
 ```bash
 # Competitor sentiment research

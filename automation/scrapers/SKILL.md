@@ -607,3 +607,10 @@ Use this skill when working with scrapers.
 
 ## Workflow
 See the parent skill for authoritative workflow documentation.
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| agent-reach | [SKILL.md](../../mcp/servers/agent-reach/SKILL.md) | Reading and searching social platforms, repositories, RSS feeds, and web pages for real-time research or trend monitoring. |
+| agent-reach-channels | [SKILL.md](agent-reach-channels/SKILL.md) | Extracting e-commerce and messaging channels from Shopee, TikTok Shop, and WeChat. |
