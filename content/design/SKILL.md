@@ -47,6 +47,7 @@ Unified design skill: brand, tokens, UI, logo, CIP, slides, banners, social phot
 | CIP mockups, deliverables | CIP (built-in) | `references/cip-design.md` |
 | Presentations, pitch decks | Slides (built-in) | `references/slides.md` |
 | Banners, covers, headers | Banner (built-in) | `references/banner-sizes-and-styles.md` |
+| Standalone banner workflows and export | `banner-design` | [SKILL.md](../banner-design/SKILL.md) |
 | Social media images/photos | Social Photos (built-in) | `references/social-photos-design.md` |
 | SVG icons, icon sets | Icon (built-in) | `references/icon-design.md` |
 

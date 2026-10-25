@@ -355,3 +355,9 @@ After completing this skill, confirm:
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `performance-monitor` | Measuring skill latency, success rates, accuracy, resource usage, and invocation telemetry | [SKILL.md](../../meta/performance-monitor/SKILL.md) |

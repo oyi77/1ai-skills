@@ -415,3 +415,9 @@ next_signal:
   conviction: "<low | medium | high>"
 target_allocation: "<percent of portfolio>"
 ```
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `alphaear-strategy` | Scoring trade setups with momentum, volume, and sentiment factors for entry and exit signals | [SKILL.md](../alphaear-strategy/SKILL.md) |

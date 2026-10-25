@@ -381,3 +381,9 @@ if __name__ == "__main__":
 - [ ] **Motion Overrides**: All transitions and animations declare `@media (prefers-reduced-motion: reduce)` fallbacks.
 - [ ] **CSS Hallmark Stamp**: First line of stylesheet contains the Hallmark stamp with theme, posture, critique scores, and resolved waivers.
 - [ ] **Sloplint Sweep Clean**: Static and rendered sloplint pass with zero open `FAIL` or `REFLEX` findings.
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `anti-slop-frontend` | Applying distinctive layout, typography, motion, and spacing constraints against generic AI interfaces | [SKILL.md](../anti-slop-frontend/SKILL.md) |

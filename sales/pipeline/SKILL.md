@@ -245,3 +245,4 @@ On pipeline report: "[N] leads in pipeline, $[N] total value, [N]% to next stage
 | `b2b-sales-automation` | Full B2B pipeline dari cold prospect hingga client onboarding | [SKILL.md](../b2b-sales-automation/SKILL.md) |
 | `talent-crm` | Talent pipeline management, candidate tracking, dan recruiting outreach | [SKILL.md](../talent-crm/SKILL.md) |
 | `business-development` | B2B prospect research, lead generation, dan HubSpot outreach workflows | [SKILL.md](../business-development/SKILL.md) |
+| `high-ticket-closing` | Closing high-value deals using structured persuasion, qualification, and negotiation psychology | [SKILL.md](../high-ticket-closing/SKILL.md) |
