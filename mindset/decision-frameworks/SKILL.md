@@ -120,3 +120,11 @@ Mindset skill for decision frameworks. Builds capability through deliberate prac
 - [ ] Results validated against acceptance criteria
 - [ ] Error handling tested with edge cases
 - [ ] Documentation updated with findings
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| decision-making | [SKILL.md](../decision-making/SKILL.md) | Making sound decisions under uncertainty with RICE, weighted matrices, decision trees, or pre-mortems. |
+| trade-off-analysis | [SKILL.md](../trade-off-analysis/SKILL.md) | Evaluating opportunity costs and prioritizing constrained resources with Eisenhower, MoSCoW, or cost of delay. |
+| probabilistic-thinking | [SKILL.md](../probabilistic-thinking/SKILL.md) | Applying Bayesian updating, base rates, and expected value under uncertainty or risk. |

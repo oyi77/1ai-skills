@@ -119,3 +119,10 @@ Mindset skill for unit economics. Builds capability through deliberate practice 
 - [ ] Results validated against acceptance criteria
 - [ ] Error handling tested with edge cases
 - [ ] Documentation updated with findings
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| pricing-frameworks | [SKILL.md](../pricing-frameworks/SKILL.md) | Setting prices with value-based, cost-plus, competitive, or subscription models and pricing experiments. |
+| financial-literacy | [SKILL.md](../financial-literacy/SKILL.md) | Managing personal or business budgeting, cash flow, financial statements, and basic FP&A. |

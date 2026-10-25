@@ -31,8 +31,9 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
   - Browser E2E Testing (3 sub-skills) -> `development/playwright-e2e`
 - Wave 5: consolidated 26 agent, automation, data orchestration, and self-evolution sub-skills into four canonical parent routing tables.
 - Wave 6: consolidated 18 knowledge, memory, meeting, productivity, and project-management sub-skills into seven canonical parent routing tables: `core/rag-builder`, `mcp/memory-knowledge-graph`, `core/core`, `core/find-skills`, `productivity/meeting-management`, `productivity/focus-time-management`, and `operations/team`.
-- Zero File Deletion Invariant preserved across Waves 1–6: all on-disk physical `SKILL.md` files retained to guarantee link resolution.
-- Updated active registry in `SKILLS.json` from 1398 to **1248** skills across 19 categories.
+- Wave 7: consolidated 24 mindset framework sub-skills into eight canonical parent routing tables: `mindset/ponytail`, `mindset/decision-frameworks`, `mindset/critical-thinking`, `mindset/leadership-essentials`, `mindset/difficult-conversations`, `mindset/storytelling-frameworks`, `mindset/unit-economics`, and `mindset/business-model-canvas`.
+- Zero File Deletion Invariant preserved across Waves 1–7: all on-disk physical `SKILL.md` files retained to guarantee link resolution.
+- Updated active registry in `SKILLS.json` from 1398 to **1224** skills across 19 categories.
 - Synchronized counts across `README.md`, `AGENTS.md`, `package.json`, `llms.txt`, and `scripts/generate-site.py` (dynamic catalog counts and canonical captured test receipt).
 - Refreshed `README.md` and `AGENTS.md` counts from the active registry, including per-category numbers.
 ### Fixed

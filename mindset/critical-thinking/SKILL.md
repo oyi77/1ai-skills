@@ -696,3 +696,10 @@ When to kill a strategy. Hard metrics, not feelings:
 ---
 
 *This skill transforms critical thinking from theory into a money-printing engine. The frameworks above are proven across thousands of operators. The only variable is execution.*
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| first-principles-thinking | [SKILL.md](../first-principles-thinking/SKILL.md) | Decomposing novel problems to fundamental truths or challenging assumptions and conventional approaches. |
+| systems-thinking | [SKILL.md](../systems-thinking/SKILL.md) | Understanding feedback loops, leverage points, and system archetypes behind recurring issues or unintended consequences. |
