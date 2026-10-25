@@ -587,3 +587,9 @@ After completing this skill, confirm:
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| meta-find-skills | [SKILL.md](../../meta/find-skills/SKILL.md) | Use when discovering, evaluating, and activating community skills with credibility scoring and safety checks. |

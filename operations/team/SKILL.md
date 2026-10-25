@@ -172,3 +172,12 @@ Operations expertise translates into consulting revenue across these service lin
 - [ ] Action items from postmortems tracked to completion
 - [ ] SLA compliance > 99% monthly
 - [ ] On-call rotation sustainable (no burnout signals)
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| clickup | [SKILL.md](../clickup/SKILL.md) | Use when automating ClickUp tasks, lists, spaces, sprints, dependencies, time tracking, or webhooks through its API. |
+| jira | [SKILL.md](../jira/SKILL.md) | Use when automating Jira issues, JQL queries, workflows, sprints, integrations, or webhooks. |
+| multi-channel-reminder | [SKILL.md](../multi-channel-reminder/SKILL.md) | Use when building scheduled reminders across email, SMS, Slack, Telegram, Discord, WhatsApp, or push notifications. |
+| project-management | [SKILL.md](../project-management/SKILL.md) | Use when coordinating sprints, deadlines, tasks, and project documentation with Notion and Slack. |

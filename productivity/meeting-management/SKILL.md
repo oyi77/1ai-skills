@@ -147,3 +147,11 @@ Open Items (next meeting):
 | "I am too busy to organize" | Disorganization costs more time than organizing. Invest upfront. |
 | "Multitasking is productive" | Context switching costs 25 minutes per switch. Focus on one thing. |
 | "I will remember this" | You will not. Write it down. Externalize your memory. |
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| meeting-prep | [SKILL.md](../../financial/meeting-prep/SKILL.md) | Use when preparing a briefing pack before client or investor meetings. |
+| calendar-management | [SKILL.md](../calendar-management/SKILL.md) | Use when managing schedules, calendars, and meeting automation with Google Calendar MCP. |
+| google-workspace | [SKILL.md](../google-workspace/SKILL.md) | Use when integrating with Google Docs, Sheets, Drive, or Calendar through MCP servers. |

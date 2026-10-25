@@ -16,7 +16,7 @@ Every task follows this sequence. No exceptions.
 Full details: `~/.1ai/core/PROCESS.md` (auto-injected by hooks)
 
 ## This repo
-Production-ready AI agent skill library — 1266 skills across 19 categories with anti-rationalization tables, code examples, and verification checklists.
+Production-ready AI agent skill library — 1248 skills across 19 categories with anti-rationalization tables, code examples, and verification checklists.
 Stack: Node.js / Python / YAML skills
 Domain: Agent skill library — NOT a product repo. Do not add features here unless adding new skills.
 
@@ -79,22 +79,22 @@ cat ~/projects/1ai-skills/integrations/stripe-integration/SKILL.md
 | cybersecurity | 800 | Threat hunting, forensics, pen testing, SOC, incident response |
 | development | 93 | TDD, debugging, code review, PRD, engineering workflows |
 | content | 57 | Video, audio, design, writing, docs |
-| mindset | 55 | Negotiation, leadership, critical thinking |
+| mindset | 53 | Negotiation, leadership, critical thinking |
 | marketing | 34 | SEO, viral content, email, ads, growth |
-| core | 46 | AI infrastructure, memory, self-improvement, model routing |
+| core | 39 | AI infrastructure, memory, self-improvement, model routing |
 | integrations | 19 | GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase |
 | devops | 25 | Docker, Kubernetes, CI/CD, cloud ops, GitOps |
 | automation | 14 | Bots, workflows, scrapers, process automation |
 | research | 24 | Deep research, market analysis, competitive intelligence |
 | trading | 14 | Crypto, DeFi, Polymarket, trading strategies |
-| operations | 20 | Business ops, governance, HR, legal, project management |
+| operations | 16 | Business ops, governance, HR, legal, project management |
 | agents | 9 | AI agent orchestration, coding, research, autonomous execution |
-| mcp | 15 | Model Context Protocol servers and tool integrations |
-| meta | 7 | Self-evolving meta-skills, performance monitoring |
-| financial | 12 | Finance analysis, valuation, tax, portfolio management |
+| mcp | 14 | Model Context Protocol servers and tool integrations |
+| meta | 6 | Self-evolving meta-skills, performance monitoring |
+| financial | 11 | Finance analysis, valuation, tax, portfolio management |
 | sales | 9 | Lead gen, CRM, outreach, sales automation |
 | data | 3 | Data pipelines, analysis, visualization, ETL |
-| productivity | 10 | Calendars, email, meetings, workspace management |
+| productivity | 8 | Calendars, email, meetings, workspace management |
 
 
 

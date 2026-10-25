@@ -619,3 +619,10 @@ Daily note output:
 
 ## When to Use
 Use this skill when working with core.
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| company-kb | [SKILL.md](company-kb/SKILL.md) | Use when storing organization-specific entities, procedures, decisions, and operational history for cross-session recall. |
+| kb | [SKILL.md](kb/SKILL.md) | Use when querying and maintaining the project knowledge base for context, decisions, and architecture documentation on session start. |

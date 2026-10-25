@@ -161,3 +161,10 @@ Every Friday:
 | "I am too busy to organize" | Disorganization costs more time than organizing. Invest upfront. |
 | "Multitasking is productive" | Context switching costs 25 minutes per switch. Focus on one thing. |
 | "I will remember this" | You will not. Write it down. Externalize your memory. |
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| time-management | [SKILL.md](../../mindset/time-management/SKILL.md) | Use when prioritizing tasks, managing schedules, and avoiding burnout with the Eisenhower Matrix, time blocking, and Pomodoro. |
+| personal-productivity | [SKILL.md](../../mindset/personal-productivity/SKILL.md) | Use when managing time, energy, and focus with GTD, the Eisenhower Matrix, time blocking, and deep work. |

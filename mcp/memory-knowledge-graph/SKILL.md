@@ -144,3 +144,10 @@ After completing this skill, confirm:
 | "I will just use curl" | MCP handles auth, retries, streaming, and type safety. Use the SDK. |
 | "One mega-server is simpler" | Single-responsibility servers are easier to debug and maintain. |
 | "MCP is just a wrapper" | MCP enables cross-platform tool sharing. It is infrastructure, not overhead. |
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| codebase-memory-mcp | [SKILL.md](../servers/codebase-memory-mcp/SKILL.md) | Use when indexing codebases into a persistent knowledge graph for structural queries, call-chain tracing, and semantic search. |
+| kb-memory | [SKILL.md](../../core/kb-memory/SKILL.md) | Use when building agent knowledge bases, persistent memory, session recall, or brain architecture for context preservation. |

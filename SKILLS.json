@@ -1,23 +1,23 @@
 {
-  "total_skills": 1266,
+  "total_skills": 1248,
   "category_count": 19,
   "categories": {
     "agents": 9,
     "automation": 14,
     "content": 57,
-    "core": 46,
+    "core": 39,
     "cybersecurity": 800,
     "data": 3,
     "development": 93,
     "devops": 25,
-    "financial": 12,
+    "financial": 11,
     "integrations": 19,
     "marketing": 34,
-    "mcp": 15,
-    "meta": 7,
-    "mindset": 55,
-    "operations": 20,
-    "productivity": 10,
+    "mcp": 14,
+    "meta": 6,
+    "mindset": 53,
+    "operations": 16,
+    "productivity": 8,
     "research": 24,
     "sales": 9,
     "trading": 14
@@ -1759,25 +1759,6 @@
       "type": "core"
     },
     {
-      "name": "company-kb",
-      "category": "core",
-      "description": "Use when company-kb — Company Knowledge Base Skill. Use when relevant to this domain.",
-      "domain": "core",
-      "tags": [
-        "company",
-        "infrastructure",
-        "memory",
-        "self-improvement",
-        "collaboration",
-        "privacy",
-        "brain-integration"
-      ],
-      "version": "2.0.0",
-      "author": "oyi77",
-      "subdomain": "core-platform",
-      "type": "core"
-    },
-    {
       "name": "coordination-bus",
       "category": "core",
       "description": "Use when two or more agents share work, when a task spans sessions, or when claiming, heartbeating, completing, or blocking a coordination bus task. The bus is the single source of truth for who owns what — never coordinate through private agreement.",
@@ -1976,41 +1957,6 @@
       "type": "core"
     },
     {
-      "name": "kb",
-      "category": "core",
-      "description": "Use when querying and maintaining the knowledge base for project context, decisions, and architecture documentation on session start.",
-      "domain": "core",
-      "tags": [
-        "infrastructure",
-        "memory",
-        "self-improvement",
-        "para",
-        "persistence"
-      ],
-      "version": "2.0.0",
-      "author": "oyi77",
-      "subdomain": "core-platform",
-      "type": "core"
-    },
-    {
-      "name": "kb-memory",
-      "category": "core",
-      "description": "Use when knowledge base and memory system for AI agents. Covers company KB, persistent memory, session recall, and brain architecture for context preservation.",
-      "domain": "core",
-      "tags": [
-        "knowledge-base",
-        "memory",
-        "context",
-        "persistence",
-        "recall",
-        "brain"
-      ],
-      "version": "2.0.0",
-      "author": "oyi77",
-      "subdomain": "ai-infrastructure",
-      "type": "core"
-    },
-    {
       "name": "langchain-patterns",
       "category": "core",
       "description": "Use when langChain/LangGraph patterns — chains, agents, tools, memory, retrieval, graph workflows. Use when working with langchain patterns.",
@@ -2023,24 +1969,6 @@
         "patterns",
         "self-improvement",
         "workflow"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "core-platform",
-      "type": "core"
-    },
-    {
-      "name": "llamaindex-patterns",
-      "category": "core",
-      "description": "Use when llamaIndex data framework — ingestion, indexing, query engines, chat engines, agents. Use when working with llamaindex patterns.",
-      "domain": "core",
-      "tags": [
-        "ai-agent",
-        "infrastructure",
-        "llamaindex",
-        "memory",
-        "patterns",
-        "self-improvement"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -2233,22 +2161,6 @@
       "type": "core"
     },
     {
-      "name": "ruvector",
-      "category": "core",
-      "description": "Use when generating and managing vector embeddings for semantic search and RAG retrieval across knowledge bases.",
-      "domain": "core",
-      "tags": [
-        "infrastructure",
-        "memory",
-        "ruvector",
-        "self-improvement"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "core-platform",
-      "type": "core"
-    },
-    {
       "name": "semantic-kernel",
       "category": "core",
       "description": "Use when microsoft Semantic Kernel — AI orchestration, plugins, planners, memory, prompt templates. Use when working with semantic kernel.",
@@ -2336,23 +2248,6 @@
       "type": "core"
     },
     {
-      "name": "vector-db-ops",
-      "category": "core",
-      "description": "Use when vector database operations — Pinecone, Weaviate, Qdrant, ChromaDB. Indexing, querying, filtering, and managing vector embeddings for RAG and similarity search. Use when working with vector db ops.",
-      "domain": "core",
-      "tags": [
-        "infrastructure",
-        "memory",
-        "ops",
-        "self-improvement",
-        "vector"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "core-platform",
-      "type": "core"
-    },
-    {
       "name": "vilona",
       "category": "core",
       "description": "Use when foundational core infrastructure skill providing system foundation capabilities for the agent ecosystem.",
@@ -2378,23 +2273,6 @@
         "infrastructure",
         "memory",
         "self-improvement"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "core-platform",
-      "type": "core"
-    },
-    {
-      "name": "zvec",
-      "category": "core",
-      "description": "Use when zero-copy vector operations for efficient similarity search and embedding storage in agent memory systems. Use when working with zvec.",
-      "domain": "core",
-      "tags": [
-        "ai-agent",
-        "infrastructure",
-        "memory",
-        "self-improvement",
-        "zvec"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -19555,23 +19433,6 @@
       "type": "finance"
     },
     {
-      "name": "meeting-prep",
-      "category": "financial",
-      "description": "Use when prepares briefing pack before client/investor meetings. Use when user says \"prep for meeting\", \"briefing pack\", \"client meeting\".",
-      "domain": "financial",
-      "tags": [
-        "analysis",
-        "finance",
-        "investment",
-        "meeting",
-        "prep"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "financial-analysis",
-      "type": "finance"
-    },
-    {
       "name": "model-builder",
       "category": "financial",
       "description": "Use when builds and updates DCF, LBO, and 3-statement financial models in Excel with live data connections. Use when user says \"build DCF\", \"create LBO model\", \"populate 3-statement model\".",
@@ -20700,24 +20561,6 @@
       "type": "mcp"
     },
     {
-      "name": "codebase-memory-mcp",
-      "category": "mcp",
-      "description": "Use when index codebases into a persistent knowledge graph for structural code queries, call-chain tracing, and semantic search. Use when navigating unfamiliar repos, understanding architecture, or exploring large codebases.",
-      "domain": "mcp",
-      "tags": [
-        "codebase",
-        "mcp",
-        "mcp-server",
-        "memory",
-        "model-context-protocol",
-        "tool-integration"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "mcp",
-      "type": "mcp"
-    },
-    {
       "name": "github-mcp",
       "category": "mcp",
       "description": "Use when mCP server for GitHub automation. Manage repos, issues, PRs, and workflows through the Model Context Protocol. Use when working with github mcp.",
@@ -20993,24 +20836,6 @@
         "self-improvement",
         "setup",
         "skill-evolution"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "meta-skills",
-      "type": "meta"
-    },
-    {
-      "name": "meta-find-skills",
-      "category": "meta",
-      "description": "Use when automatically discover evaluate and activate community skills when local skills dont cover user needs Includes credibility scoring and safety checks for complete self-sufficiency",
-      "domain": "meta",
-      "tags": [
-        "find",
-        "meta",
-        "meta-learning",
-        "self-improvement",
-        "skill-evolution",
-        "skills"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -21608,23 +21433,6 @@
       "type": "mindset"
     },
     {
-      "name": "personal-productivity",
-      "category": "mindset",
-      "description": "Use when manage time, energy, and focus using GTD, Eisenhower Matrix, time blocking, and deep work. Use when optimizing personal effectiveness.",
-      "domain": "mindset",
-      "tags": [
-        "mindset",
-        "personal",
-        "personal-development",
-        "productivity",
-        "soft-skills"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "mindset",
-      "type": "mindset"
-    },
-    {
       "name": "persuasion-influence",
       "category": "mindset",
       "description": "Use when apply Cialdini's 6 principles of influence ethically in business contexts. Use when pitching, selling, or driving adoption without formal authority.",
@@ -21953,23 +21761,6 @@
       "type": "mindset"
     },
     {
-      "name": "time-management",
-      "category": "mindset",
-      "description": "Use when prioritize tasks, manage schedules, and avoid burnout using Eisenhower Matrix, time blocking, and Pomodoro technique. Use when working with time management.",
-      "domain": "mindset",
-      "tags": [
-        "management",
-        "mindset",
-        "personal-development",
-        "soft-skills",
-        "time"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "mindset",
-      "type": "mindset"
-    },
-    {
       "name": "trade-off-analysis",
       "category": "mindset",
       "description": "Use when evaluate opportunity costs and prioritize using Eisenhower Matrix, MoSCoW, and cost of delay. Use when prioritizing with constrained resources.",
@@ -22030,22 +21821,6 @@
         "business",
         "business-ops",
         "intelligence",
-        "management",
-        "operations"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "business-operations",
-      "type": "operations"
-    },
-    {
-      "name": "clickup",
-      "category": "operations",
-      "description": "Use when skill: clickup. See SKILL.md body for details. Use when this domain is relevant.",
-      "domain": "operations",
-      "tags": [
-        "business-ops",
-        "clickup",
         "management",
         "operations"
       ],
@@ -22158,22 +21933,6 @@
       "type": "operations"
     },
     {
-      "name": "jira",
-      "category": "operations",
-      "description": "Use when skill: jira. See SKILL.md body for details. Use when this domain is relevant.",
-      "domain": "operations",
-      "tags": [
-        "business-ops",
-        "jira",
-        "management",
-        "operations"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "business-operations",
-      "type": "operations"
-    },
-    {
       "name": "legal-assistant",
       "category": "operations",
       "description": "Use when legal assistant — contract review checklists, IP protection, business compliance, GDPR/privacy for digital products, DMCA, software licensing, employment law, and dispute resolution. Built for 1-person companies scaling to team.",
@@ -22205,24 +21964,6 @@
         "management",
         "monitoring",
         "operations"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "business-operations",
-      "type": "operations"
-    },
-    {
-      "name": "multi-channel-reminder",
-      "category": "operations",
-      "description": "Use when skill: multi-channel-reminder. See SKILL.md body for details. Use when this domain is relevant.",
-      "domain": "operations",
-      "tags": [
-        "business-ops",
-        "channel",
-        "management",
-        "multi",
-        "operations",
-        "reminder"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -22303,24 +22044,6 @@
       "type": "operations"
     },
     {
-      "name": "project-management",
-      "category": "operations",
-      "description": "Use when coordinate sprints, track deadlines, manage tasks, and maintain project documentation with Notion and Slack. Use when working with project management.",
-      "domain": "operations",
-      "tags": [
-        "business-ops",
-        "management",
-        "notion",
-        "operations",
-        "project",
-        "slack"
-      ],
-      "version": "1.1.0",
-      "author": "oyi77",
-      "subdomain": "business-operations",
-      "type": "operations"
-    },
-    {
       "name": "revenue-team",
       "category": "operations",
       "description": "Use when manage sales pipelines, forecast revenue, track deals, and optimize sales velocity with HubSpot and Notion integration. Use when manageing sales pipelines, forecast revenue, track deals, and optimize sales.",
@@ -22359,23 +22082,6 @@
       "author": "oyi77",
       "subdomain": "product-management",
       "type": "operations"
-    },
-    {
-      "name": "calendar-management",
-      "category": "productivity",
-      "description": "Use when advanced calendar management, scheduling, and meeting automation with Google Calendar MCP. Use when working with calendar management.",
-      "domain": "productivity",
-      "tags": [
-        "calendar",
-        "management",
-        "productivity",
-        "time-management",
-        "tools"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "productivity",
-      "type": "productivity"
     },
     {
       "name": "career-ops",
@@ -22462,23 +22168,6 @@
         "tools",
         "video",
         "workflow"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "productivity",
-      "type": "productivity"
-    },
-    {
-      "name": "google-workspace",
-      "category": "productivity",
-      "description": "Use when integrate with Google Workspace (Docs, Sheets, Drive, Calendar) using MCP servers. Use when integrateing with google workspace (docs, sheets, drive, calendar) using mcp.",
-      "domain": "productivity",
-      "tags": [
-        "google",
-        "productivity",
-        "time-management",
-        "tools",
-        "workspace"
       ],
       "version": "1.0.0",
       "author": "oyi77",
