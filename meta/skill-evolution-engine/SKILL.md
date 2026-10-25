@@ -399,3 +399,17 @@ The full cycle that keeps the system evolving:
 - [ ] Continuous loop active: execute -> monitor -> learn -> evolve -> deploy -> measure cycle running
 - [ ] Safety guardrails enforced: promotion limits, quality thresholds, rollback capability
 - [ ] Import/export functional: skills portable across projects with conflict resolution
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| auto-learner | [SKILL.md](../auto-learner/SKILL.md) | Learning autonomously from execution patterns and data. |
+| auto-evolve | [SKILL.md](../auto-evolve/SKILL.md) | Monitoring performance to discover and create skills autonomously. |
+| continuous-learning | [SKILL.md](../../research/continuous-learning/SKILL.md) | Capturing session insights and confidence-weighted skill improvements. |
+| self-improving | [SKILL.md](../../core/self-improving/SKILL.md) | Applying self-reflection, self-criticism, and auto-learning. |
+| agent-self-improvement | [SKILL.md](../../core/agent-self-improvement/SKILL.md) | Monitoring skill performance and suggesting auto-optimizations. |
+| pattern-recognition | [SKILL.md](../pattern-recognition/SKILL.md) | Identifying recurring patterns, errors, and reusable solutions. |
+| self-assessment | [SKILL.md](../self-assessment/SKILL.md) | Evaluating agent performance, capabilities, and limitations. |
+| improvement-generator | [SKILL.md](../improvement-generator/SKILL.md) | Generating actionable skill improvements from performance data. |
+| meta-skill-datastore | [SKILL.md](../skill-datastore/SKILL.md) | Storing meta-skill metrics, feedback, patterns, and evolution history. |
