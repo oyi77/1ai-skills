@@ -904,3 +904,11 @@ After completing DeFi protocol implementation, confirm:
 | "Bridges just lock and mint — simple" | Bridge security depends on the validator/threshold set, not the lock/mint logic. Wormhole's $320M hack was a signature verification bug, not a lock/mint flaw. Light client bridges are more secure but significantly more expensive to verify on-chain. |
 | "Chainlink feeds are always reliable" | Chainlink feeds can go stale during extreme volatility (LUNA collapse). Always add a staleness check (`heartbeat`) and a fallback TWAP source with divergence checks. |
 | "I'll add emergency pause after the audit" | Without a pause mechanism deployed from the start, a live exploit forces the team to coordinate a migration before the protocol can be stopped. Code pause + proxy admin = minutes to stop an exploit. |
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `crypto-wallet` | Wallet operations, address/balance checks, signing, dan blockchain interactions | [SKILL.md](../crypto-wallet/SKILL.md) |
+| `nft-marketplace` | NFT marketplace workflows dan tokenized digital asset trading | [SKILL.md](../nft-marketplace/SKILL.md) |
+| `smart-contract-dev` | Full-lifecycle Solidity development untuk EVM-compatible chains | [SKILL.md](../smart-contract-dev/SKILL.md) |

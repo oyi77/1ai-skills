@@ -225,3 +225,12 @@ Return vs Benchmark: ____%
 
 ## When to Use
 Use this skill when working with investment industry.
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `investment-earnings` | Pre-earnings positioning, post-earnings momentum, dan management scoring | [SKILL.md](../investment-earnings/SKILL.md) |
+| `investment-bottleneck` | Menemukan supply-chain bottleneck companies dengan pricing power | [SKILL.md](../investment-bottleneck/SKILL.md) |
+| `earnings-viewer` | Earnings calls, SEC filings, dan earnings-focused company research | [SKILL.md](../earnings-viewer/SKILL.md) |
+| `valuation-reviewer` | GP package valuation review dan LP reporting analysis | [SKILL.md](../valuation-reviewer/SKILL.md) |

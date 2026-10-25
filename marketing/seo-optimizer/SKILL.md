@@ -1000,3 +1000,11 @@ After completing an SEO optimization task, confirm:
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `seo-auditor` | Technical SEO audits, ranking/backlink tracking, competitor analysis, dan reporting | [SKILL.md](../seo-auditor/SKILL.md) |
+| `schema-markup` | JSON-LD structured data untuk FAQ, HowTo, Product, dan rich results | [SKILL.md](../schema-markup/SKILL.md) |
+| `ai-seo` | Optimasi Perplexity, ChatGPT Search, AI Overviews, dan answer engines | [SKILL.md](../ai-seo/SKILL.md) |
