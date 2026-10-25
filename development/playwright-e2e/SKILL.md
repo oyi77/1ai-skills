@@ -151,3 +151,11 @@ const test = base.extend({
 | "Tests slow me down" | Bugs slow you down 10x more. Tests are speed, not overhead. |
 | "I will refactor later" | Technical debt compounds. Refactor as you go. |
 | "It works on my machine" | If it is not in CI, it does not work. Ship proof, not claims. |
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+|---|---|---|
+| cypress-e2e | Cypress component/E2E/API testing | [SKILL.md](../cypress-e2e/SKILL.md) |
+| browser-testing-devtools | DevTools and browser QA | [SKILL.md](../browser-testing-devtools/SKILL.md) |
+| visual-regression | Screenshot comparison/UI regression | [SKILL.md](../visual-regression/SKILL.md) |

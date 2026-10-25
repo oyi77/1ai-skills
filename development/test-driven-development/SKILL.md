@@ -324,3 +324,11 @@ After completing this skill, confirm:
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+|---|---|---|
+| automated-test-generator | Test suite generation/scaffolding | [SKILL.md](../automated-test-generator/SKILL.md) |
+| test-coverage-analyzer | Coverage gap analysis | [SKILL.md](../test-coverage-analyzer/SKILL.md) |
+| tdd-bug-reproduction | Red-green regression reproduction | [SKILL.md](../tdd-bug-reproduction/SKILL.md) |

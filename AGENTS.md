@@ -16,7 +16,7 @@ Every task follows this sequence. No exceptions.
 Full details: `~/.1ai/core/PROCESS.md` (auto-injected by hooks)
 
 ## This repo
-Production-ready AI agent skill library — 1310 skills across 19 categories with anti-rationalization tables, code examples, and verification checklists.
+Production-ready AI agent skill library — 1292 skills across 19 categories with anti-rationalization tables, code examples, and verification checklists.
 Stack: Node.js / Python / YAML skills
 Domain: Agent skill library — NOT a product repo. Do not add features here unless adding new skills.
 
@@ -77,13 +77,13 @@ cat ~/projects/1ai-skills/integrations/stripe-integration/SKILL.md
 | Category | Count | What it covers |
 |----------|------:|----------------|
 | cybersecurity | 800 | Threat hunting, forensics, pen testing, SOC, incident response |
-| development | 103 | TDD, debugging, code review, PRD, engineering workflows |
+| development | 93 | TDD, debugging, code review, PRD, engineering workflows |
 | content | 57 | Video, audio, design, writing, docs |
 | mindset | 55 | Negotiation, leadership, critical thinking |
 | marketing | 34 | SEO, viral content, email, ads, growth |
-| core | 49 | AI infrastructure, memory, self-improvement, model routing |
+| core | 48 | AI infrastructure, memory, self-improvement, model routing |
 | integrations | 19 | GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase |
-| devops | 32 | Docker, Kubernetes, CI/CD, cloud ops, GitOps |
+| devops | 25 | Docker, Kubernetes, CI/CD, cloud ops, GitOps |
 | automation | 21 | Bots, workflows, scrapers, process automation |
 | research | 25 | Deep research, market analysis, competitive intelligence |
 | trading | 14 | Crypto, DeFi, Polymarket, trading strategies |

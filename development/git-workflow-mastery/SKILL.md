@@ -796,3 +796,12 @@ Directly reduces integration time, CI pipeline failures, and onboarding overhead
 | "The merge conflict is too complex, I'll start over" | Conflict resolution is a skill. Use mergetool, learn the patterns, persist. |
 | "Worktrees are just for large projects" | Any project with context-switching benefits from isolated workspaces |
 | "Reflog is only for emergencies" | Check reflog regularly — it's the best undo button you have |
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+|---|---|---|
+| git-master | Advanced rebase/squash/bisect | [SKILL.md](../git-master/SKILL.md) |
+| using-git-worktrees | Isolated worktrees | [SKILL.md](../using-git-worktrees/SKILL.md) |
+| finishing-a-development-branch | Branch completion/integration | [SKILL.md](../finishing-a-development-branch/SKILL.md) |
+| auto-git-commiter | Automatic OpenClaw GitHub commits/pushes | [SKILL.md](../../core/auto-git-commiter/SKILL.md) |

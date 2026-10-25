@@ -212,3 +212,9 @@ argocd app history myapp
 | "Manual deployments are fine" | Manual deployments are error-prone and不可 repeatable. Automate. |
 | "We do not need monitoring" | Without monitoring, you are flying blind. Add observability from day one. |
 | "Infrastructure as code is overkill" | IaC enables reproducibility, version control, and disaster recovery. |
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+|---|---|---|
+| fluxcd-gitops | FluxCD source/kustomize/helm controllers | [SKILL.md](../fluxcd-gitops/SKILL.md) |

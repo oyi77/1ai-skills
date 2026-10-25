@@ -1,15 +1,15 @@
 {
-  "total_skills": 1310,
+  "total_skills": 1292,
   "category_count": 19,
   "categories": {
     "agents": 14,
     "automation": 21,
     "content": 57,
-    "core": 49,
+    "core": 48,
     "cybersecurity": 800,
     "data": 8,
-    "development": 103,
-    "devops": 32,
+    "development": 93,
+    "devops": 25,
     "financial": 12,
     "integrations": 19,
     "marketing": 34,
@@ -1889,25 +1889,6 @@
         "llm",
         "agents",
         "education"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "core-platform",
-      "type": "core"
-    },
-    {
-      "name": "auto-git-commiter",
-      "category": "core",
-      "description": "Use when automatically commit and push OpenClaw changes to GitHub. Enable continuous improvement with automatic versioning, changelogs, and deployment-ready commits. Use when working with auto git commiter.",
-      "domain": "core",
-      "tags": [
-        "auto",
-        "commiter",
-        "git",
-        "github",
-        "infrastructure",
-        "memory",
-        "self-improvement"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -17988,24 +17969,6 @@
       "type": "dev"
     },
     {
-      "name": "automated-test-generator",
-      "category": "development",
-      "description": "Use when generate test suites, analyze coverage, and scaffold E2E tests automatically. Use when creating tests for existing code, improving test coverage, scaffolding integration tests, or setting.",
-      "domain": "development",
-      "tags": [
-        "test-generation",
-        "coverage-analysis",
-        "e2e-testing",
-        "test-automation",
-        "quality-assurance",
-        "test-scaffolding"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "software-development",
-      "type": "dev"
-    },
-    {
       "name": "brainstorming",
       "category": "development",
       "description": "Use when effective brainstorming skill for features and projects. Clarify intent, explore options, and guide design decisions to align with user goals. Use when working with brainstorming.",
@@ -18015,24 +17978,6 @@
         "coding",
         "software-engineering",
         "testing"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "software-development",
-      "type": "dev"
-    },
-    {
-      "name": "browser-testing-devtools",
-      "category": "development",
-      "description": "Use when testing web applications using browser DevTools, Playwright, or Puppeteer. Automate E2E testing, visual regression, performance auditing, and accessibility checking.",
-      "domain": "development",
-      "tags": [
-        "testing",
-        "browser",
-        "devtools",
-        "playwright",
-        "e2e",
-        "accessibility"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -18068,26 +18013,6 @@
         "context-engineering",
         "deprecation",
         "adversarial-review"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "software-development",
-      "type": "dev"
-    },
-    {
-      "name": "cicd-deployment",
-      "category": "development",
-      "description": "Use when build production CI/CD pipelines with GitHub Actions, Docker, zero-downtime blue/green deploys, rollback, and Telegram alerts. Use when building production ci/cd pipelines with github actions, docker, zero-downtime blue/green.",
-      "domain": "development",
-      "tags": [
-        "cicd",
-        "coding",
-        "deployment",
-        "docker",
-        "github",
-        "pipeline",
-        "software-engineering",
-        "testing"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -18207,24 +18132,6 @@
         "coding",
         "css",
         "frameworks",
-        "software-engineering",
-        "testing"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "software-development",
-      "type": "dev"
-    },
-    {
-      "name": "cypress-e2e",
-      "category": "development",
-      "description": "Use when cypress E2E testing — component testing, API testing, fixtures, custom commands, CI integration. Use when working with cypress e2e.",
-      "domain": "development",
-      "tags": [
-        "api",
-        "coding",
-        "cypress",
-        "e2e",
         "software-engineering",
         "testing"
       ],
@@ -18426,23 +18333,6 @@
       "type": "dev"
     },
     {
-      "name": "finishing-a-development-branch",
-      "category": "development",
-      "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
-      "domain": "development",
-      "tags": [
-        "branch",
-        "coding",
-        "finishing",
-        "software-engineering",
-        "testing"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "software-development",
-      "type": "dev"
-    },
-    {
       "name": "firebase-patterns",
       "category": "development",
       "description": "Use when firebase patterns and integration — Firestore queries, auth flows, cloud functions, security rules, SDK setup, and real-time data. Use when working with firebase patterns, integrating firebase.",
@@ -18493,24 +18383,6 @@
         "developer-tools",
         "cloud",
         "side-project"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "software-development",
-      "type": "dev"
-    },
-    {
-      "name": "git-master",
-      "category": "development",
-      "description": "Use when handles advanced Git workflows. Use when rebasing, squashing, bisecting, or managing complex branch histories.",
-      "domain": "development",
-      "tags": [
-        "coding",
-        "git",
-        "master",
-        "software-engineering",
-        "testing",
-        "workflow"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -19273,43 +19145,6 @@
       "type": "dev"
     },
     {
-      "name": "tdd-bug-reproduction",
-      "category": "development",
-      "description": "Isolating bugs, writing failing minimal reproduction test cases, and verifying fixes with Test-Driven Development discipline. Use when diagnosing regressions, resolving customer-reported defects, fixing flakiness, or verifying edge case boundaries.",
-      "domain": "development",
-      "tags": [
-        "tdd",
-        "testing",
-        "debugging",
-        "bug-fix",
-        "regression-test",
-        "vitest",
-        "pytest"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "software-development",
-      "type": "dev"
-    },
-    {
-      "name": "test-coverage-analyzer",
-      "category": "development",
-      "description": "Use when identify untested code paths — coverage reports, gap analysis, and test prioritization. Use when working with test coverage analyzer.",
-      "domain": "development",
-      "tags": [
-        "analyzer",
-        "coding",
-        "coverage",
-        "software-engineering",
-        "test",
-        "testing"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "software-development",
-      "type": "dev"
-    },
-    {
       "name": "test-driven-development",
       "category": "development",
       "description": "Use when implementing any feature or bugfix, before writing implementation code",
@@ -19362,24 +19197,6 @@
       "type": "dev"
     },
     {
-      "name": "using-git-worktrees",
-      "category": "development",
-      "description": "Use when starting feature work that needs isolation from current workspace or before executing implementation plans - creates isolated git worktrees with smart directory selection and safety verification",
-      "domain": "development",
-      "tags": [
-        "coding",
-        "git",
-        "software-engineering",
-        "testing",
-        "using",
-        "worktrees"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "software-development",
-      "type": "dev"
-    },
-    {
       "name": "verification-before-completion",
       "category": "development",
       "description": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always",
@@ -19391,23 +19208,6 @@
         "software-engineering",
         "testing",
         "verification"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "software-development",
-      "type": "dev"
-    },
-    {
-      "name": "visual-regression",
-      "category": "development",
-      "description": "Use when visual regression testing — screenshot comparison, baseline management, and UI change detection. Use when working with visual regression.",
-      "domain": "development",
-      "tags": [
-        "coding",
-        "regression",
-        "software-engineering",
-        "testing",
-        "visual"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -19623,26 +19423,6 @@
       "type": "devops"
     },
     {
-      "name": "buildkite-pipelines",
-      "category": "devops",
-      "description": "Use when buildkite CI pipelines — pipeline YAML, steps, agents, artifacts, test splitting, dynamic pipelines. Use when working with buildkite pipelines.",
-      "domain": "devops",
-      "tags": [
-        "ai-agent",
-        "buildkite",
-        "ci-cd",
-        "devops",
-        "infrastructure",
-        "machine-learning",
-        "pipeline",
-        "pipelines"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "devops",
-      "type": "devops"
-    },
-    {
       "name": "ci-cd-pipeline",
       "category": "devops",
       "description": "Use when cI/CD pipeline design with GitHub Actions, GitLab CI — build, test, deploy automation. Use when setting up CI/CD pipelines or automating deployments.",
@@ -19671,24 +19451,6 @@
         "infrastructure",
         "kubernetes",
         "networking"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "devops",
-      "type": "devops"
-    },
-    {
-      "name": "circleci-config",
-      "category": "devops",
-      "description": "Use when circleCI configuration — workflows, jobs, orbs, caching, contexts, dynamic config. Use when working with circleci config.",
-      "domain": "devops",
-      "tags": [
-        "ci-cd",
-        "circleci",
-        "config",
-        "devops",
-        "infrastructure",
-        "workflow"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -19752,24 +19514,6 @@
       "type": "devops"
     },
     {
-      "name": "drone-ci",
-      "category": "devops",
-      "description": "Use when drone CI — container-native CI/CD, YAML pipelines, plugins, secrets, multi-machine builds. Use when working with drone ci.",
-      "domain": "devops",
-      "tags": [
-        "ci-cd",
-        "devops",
-        "drone",
-        "infrastructure",
-        "machine-learning",
-        "pipeline"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "devops",
-      "type": "devops"
-    },
-    {
       "name": "edge-computing",
       "category": "devops",
       "description": "Use when edge computing — Cloudflare Workers, Vercel Edge, Deno Deploy. Edge rendering, caching, edge databases. Use when working with edge computing.",
@@ -19797,23 +19541,6 @@
         "envoy",
         "infrastructure",
         "proxy"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "devops",
-      "type": "devops"
-    },
-    {
-      "name": "fluxcd-gitops",
-      "category": "devops",
-      "description": "Use when flux CD GitOps — source controllers, kustomize/helm controllers, image automation, notifications. Use when working with fluxcd gitops.",
-      "domain": "devops",
-      "tags": [
-        "ci-cd",
-        "devops",
-        "fluxcd",
-        "gitops",
-        "infrastructure"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -19886,44 +19613,6 @@
         "istio",
         "kubernetes",
         "mesh"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "devops",
-      "type": "devops"
-    },
-    {
-      "name": "jenkins-pipelines",
-      "category": "devops",
-      "description": "Use when jenkins pipeline as code — Declarative/Scripted pipelines, shared libraries, agents, stages, credentials. Use when working with jenkins pipelines.",
-      "domain": "devops",
-      "tags": [
-        "ai-agent",
-        "ci-cd",
-        "devops",
-        "infrastructure",
-        "jenkins",
-        "pipeline",
-        "pipelines"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "devops",
-      "type": "devops"
-    },
-    {
-      "name": "jenkins-shared-libs",
-      "category": "devops",
-      "description": "Use when jenkins shared libraries — reusable pipeline code, Groovy vars, resources, global pipeline libraries. Use when working with jenkins shared libs.",
-      "domain": "devops",
-      "tags": [
-        "ci-cd",
-        "devops",
-        "infrastructure",
-        "jenkins",
-        "libs",
-        "pipeline",
-        "shared"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -20051,25 +19740,6 @@
         "devops",
         "infrastructure",
         "serverless"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "devops",
-      "type": "devops"
-    },
-    {
-      "name": "tekton-pipelines",
-      "category": "devops",
-      "description": "Use when tekton CI/CD pipelines — Tasks, Pipelines, Triggers, Workspaces for Kubernetes-native CI. Use when working with tekton pipelines.",
-      "domain": "devops",
-      "tags": [
-        "ci-cd",
-        "devops",
-        "infrastructure",
-        "kubernetes",
-        "pipeline",
-        "pipelines",
-        "tekton"
       ],
       "version": "1.0.0",
       "author": "oyi77",
