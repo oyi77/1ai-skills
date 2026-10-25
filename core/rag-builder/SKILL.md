@@ -139,3 +139,12 @@ After completing this skill, confirm:
 | "I will add monitoring later" | Without monitoring, you cannot detect failures. Add it from day one. |
 | "One model is enough" | Different tasks need different models. Route intelligently. |
 | "Premature optimization" | Infrastructure decisions are hard to change later. Design for scale early. |
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| ruvector | [SKILL.md](../ruvector/SKILL.md) | Use when generating and managing vector embeddings for semantic search and RAG retrieval across knowledge bases. |
+| zvec | [SKILL.md](../zvec/SKILL.md) | Use when performing zero-copy vector operations for efficient similarity search and embedding storage in agent memory systems. |
+| vector-db-ops | [SKILL.md](../vector-db-ops/SKILL.md) | Use when indexing, querying, filtering, or managing embeddings in Pinecone, Weaviate, Qdrant, or ChromaDB. |
+| llamaindex-patterns | [SKILL.md](../llamaindex-patterns/SKILL.md) | Use when building LlamaIndex ingestion, indexing, query engines, chat engines, or agents. |
