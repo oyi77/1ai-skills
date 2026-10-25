@@ -1,6 +1,19 @@
 # Changelog
 All notable changes to 1ai-skills are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased] (Wave 1 Consolidation)
+### Changed
+- Consolidated 44 narrow sub-skills across 6 clusters into canonical parent playbooks with explicit `## Sub-Skills & Specialized Playbooks` routing tables:
+  - HyperFrames (12 sub-skills) -> `content/hyperframes-general-video`
+  - Kalodata (5 sub-skills) -> `integrations/kalodata/product-research`
+  - Oh My OpenCode (5 sub-skills) -> `integrations/oh-my-opencode`
+  - Gate.io Trading (6 sub-skills) -> `trading/gate-exchange-trading`
+  - Gate.io Info & Research (12 sub-skills) -> `research/gate-info-research`
+  - Trading Orchestrator (4 sub-skills) -> `trading/orchestrator`
+- Zero File Deletion Invariant preserved: all on-disk physical `SKILL.md` files retained to guarantee 100% link resolution.
+- Updated active registry in `SKILLS.json` from 1398 to **1354** skills across 19 categories.
+- Synchronized counts across `README.md`, `AGENTS.md`, `package.json`, `llms.txt`, and `generate-site.py`.
+
 ## [Unreleased] (fixup)
 ### Fixed
 - Repaired 19 SKILL.md files with unbalanced (odd-count) code fences that swallowed
@@ -18,6 +31,21 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 
 ## [Unreleased]
 ### Added
+- `cybersecurity/cloudflare-security-audit`: Multi-phase defensive vulnerability audit methodology ported from [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill). Enforces strict trust-boundary violation proof, independent adversarial candidate verification, structured findings ledger (`findings.json`), and minimal effective source diffs.
+- `research/scientific-agent-skills`: Master scientific research orchestration playbook ported from [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills). Integrates 100+ scientific databases (PubChem, ChEMBL, UniProt), 70+ scientific Python libraries (RDKit, BioPython, Scanpy), molecular docking, clinical trial evidence, and automated laboratory protocol generation.
+- `development/dead-code-graveyard`: Systematic audit, quarantine, and safe pruning of unreachable branches, dead code, unmounted endpoints, and orphaned assets across large codebases.
+- `development/ast-architectural-guard`: Layer boundary, import hierarchy, and circular dependency enforcement via AST inspection and dependency graph linting.
+- `development/concurrency-race-audit`: Concurrent async code audit for thread safety, shared state mutation, event loop blocking, and connection pool leaks.
+- `development/type-narrowing-audit`: Replacement of unsafe types (`any`, blind assertions, untyped catch blocks) with defensive type narrowing and runtime validation.
+- `development/api-contract-drift-audit`: Client-server schema parity and OpenAPI specification verification to detect wire breaking changes before deployment.
+- `development/zero-downtime-migration-audit`: Expand/Contract pattern enforcement for non-blocking database migrations, concurrent index builds, and backward-compatible DDL.
+- `development/godfile-ratchet-split`: Monolithic god-file dismantling into decoupled domain submodules behind backward-compatible barrel facades with ratchet line caps.
+- `development/tdd-bug-reproduction`: Red-Green-Refactor regression protocol isolating minimal bug reproductions into failing tests before touching production code.
+- `content/hallmark`: Anti-AI-slop design skill ported from [Nutlope/hallmark](https://github.com/Nutlope/hallmark).
+  Enforces non-negotiable floor rules against default AI generative aesthetics (declarative root tokens,
+  no transition all, no saturated violet defaults, max one display font per screen, zero stock photo cliches),
+  11 distinctive design genres, 10-point anti-rationalization table, sloplint linting scripts, Wikimedia
+  licensed photo library, and multi-viewport verification checklists.
 - `cybersecurity/reverse-engineering-router`: parent hub for reverse engineering work. Classifies
   the target artifact (extension, magic bytes, keywords) and routes deterministically to the
   correct specialist skill via a 31-row `ROUTING_TABLE`; every row carries an explicit fallback

@@ -363,3 +363,12 @@ async function researchCategory(categoryId: string) {
 | "I will handle auth later" | Retrofitting auth is 10x harder. Build it from day one. |
 | "APIs do not change" | APIs change. Version your integrations and handle deprecations. |
 | "Webhooks are optional" | Without webhooks, you miss real-time events. They are essential. |
+
+## Sub-Skills & Specialized Playbooks
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `kalodata-dashboard` | Use when generating CLI-based visual reports from Kalodata product research data, including ... | [SKILL.md](../dashboard/SKILL.md) |
+| `kalodata-integrations` | Use when multi-platform integrations for Kalodata research. Connect Shopify for product list... | [SKILL.md](../integrations/SKILL.md) |
+| `kalodata-monitor` | Use when scheduled research runs with auto-alerts for NEW viral products. Runs on configurab... | [SKILL.md](../monitor/SKILL.md) |
+| `kalodata-storyboard-extract` | Use when extracting AI-generated storyboards from viral TikTok Shop videos, including scene ... | [SKILL.md](../storyboard-extract/SKILL.md) |
+| `kalodata-video-analysis` | Use when get videos associated with products, extract video metadata, get downloadable video... | [SKILL.md](../video-analysis/SKILL.md) |

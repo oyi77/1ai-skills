@@ -141,6 +141,8 @@ Collect before testing:
 | LLM/RAG/prompt injection | AI/ML Security | `ai-hacker` → `detecting-ai-model-prompt-injection-attacks` |
 | Memory dump, disk image | Forensics | `analyzing-memory-dumps-with-volatility` → `analyzing-disk-image-with-autopsy` |
 | Threat actor profiling | Threat Intel | `analyzing-threat-actor-ttps-with-mitre-attack` → `analyzing-threat-actor-ttps-with-mitre-navigator` |
+| Source code, API repo, defensive audit | Codebase Vulnerability Audit | `cloudflare-security-audit` → `conducting-api-security-testing` |
+| All-in-one hacking tool, pentest suite | Security Tooling & CLI Hub | `hackingtool` → `recon-automation` |
 
 ### Phase 3: Testing Priority Order
 
@@ -183,6 +185,11 @@ Collect before testing:
 - `testing-api-for-broken-object-level-authorization` — BOLA/IDOR
 - `testing-api-for-mass-assignment-vulnerability` — Mass assignment
 - `testing-api-security-with-owasp-top-10` — OWASP API Top 10
+
+
+### Defensive Code Audit & Tooling
+- `cloudflare-security-audit` — Cloudflare 6-phase source code vulnerability audit, trust boundary verification, adversarial validation
+- `hackingtool` — All-in-one terminal hacking toolkit integrating 185+ tools for reconnaissance and exploitation
 
 ### Authentication & Authorization
 - `auth-killer` — Auth bypass specialist (OAuth, SAML, JWT, SSO, MFA)

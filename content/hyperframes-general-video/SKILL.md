@@ -95,3 +95,19 @@ npx hyperframes render --output general-video.mp4
 - [ ] Beat list written (3+ beats)
 - [ ] Composition follows standard contract
 - [ ] Output matches requested duration and style
+
+## Sub-Skills & Specialized Playbooks
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `hyperframes-changelog-video` | Turn a weekly changelog .md into a finished branded changelog video using HyperFrames. Use w... | [SKILL.md](../hyperframes-changelog-video/SKILL.md) |
+| `hyperframes-cut-the-curve` | Use when authoring any transition, text-beat handoff, or kinetic text entry in HyperFrames v... | [SKILL.md](../hyperframes-cut-the-curve/SKILL.md) |
+| `hyperframes-embedded-captions` | Add captions/subtitles to talking-head or launch videos using HyperFrames. Use when the user... | [SKILL.md](../hyperframes-embedded-captions/SKILL.md) |
+| `hyperframes-faceless-explainer` | Turn arbitrary text — an article, notes, a topic, a brief — into a faceless explainer video ... | [SKILL.md](../hyperframes-faceless-explainer/SKILL.md) |
+| `hyperframes-motion-graphics` | Create short, unnarrated, design-led motion graphics (~under 10s) using HyperFrames. Use whe... | [SKILL.md](../hyperframes-motion-graphics/SKILL.md) |
+| `hyperframes-music-to-video` | Turn a music track into a beat-synced HyperFrames video — lyric, slideshow, or kinetic promo... | [SKILL.md](../hyperframes-music-to-video/SKILL.md) |
+| `hyperframes-oversized-cursor` | House-style oversized macOS cursor technique for HyperFrames videos. Use when a scene involv... | [SKILL.md](../hyperframes-oversized-cursor/SKILL.md) |
+| `hyperframes-pr-to-video` | Turn a GitHub pull request into a changelog, feature-reveal, fix, or refactor explainer vide... | [SKILL.md](../hyperframes-pr-to-video/SKILL.md) |
+| `hyperframes-product-launch-video` | Create product launch videos from a URL, brief, or script using HyperFrames (HTML→MP4). Use ... | [SKILL.md](../hyperframes-product-launch-video/SKILL.md) |
+| `hyperframes-seam-craft` | Render-correctness doctrine for scene-to-scene seams in HyperFrames videos. Use when assembl... | [SKILL.md](../hyperframes-seam-craft/SKILL.md) |
+| `hyperframes-slideshow` | Build a presentation, pitch deck, or interactive deck using HyperFrames. Use when the user w... | [SKILL.md](../hyperframes-slideshow/SKILL.md) |
+| `hyperframes-talking-head-recut` | Package an existing talking-head / interview / podcast video with timed, designed graphic ov... | [SKILL.md](../hyperframes-talking-head-recut/SKILL.md) |

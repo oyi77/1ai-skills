@@ -255,3 +255,11 @@ Verification covers pipeline state transitions, circuit breaker triggers, notifi
 | "I will cut losses later" | Later never comes. Set stop-losses before entering any trade. |
 | "This time is different" | It never is. Follow your strategy, not your emotions. |
 | "I do not need to journal" | Journaling reveals patterns in your behavior. Track every trade. |
+
+## Sub-Skills & Specialized Playbooks
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `trading-executor` | Use when execute trades via API with position sizing, order management, and slippage monitor... | [SKILL.md](../executor/SKILL.md) |
+| `trading-researcher` | Use when researching market conditions, on-chain data, and sentiment to identify trading opp... | [SKILL.md](../researcher/SKILL.md) |
+| `trading-risk-manager` | Use when monitor portfolio risk, enforce position limits, and trigger stop-losses. Use when ... | [SKILL.md](../risk-manager/SKILL.md) |
+| `trading-strategist` | Use when design and backtest trading strategies using technical indicators, fundamental anal... | [SKILL.md](../strategist/SKILL.md) |

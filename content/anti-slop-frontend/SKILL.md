@@ -29,6 +29,19 @@ Anti-slop frontend design framework based on [Leonxlnx/taste-skill](https://gith
 
 The framework covers layout systems, typography hierarchies, motion design, spacing discipline, and image-to-code pipelines across three visual style variants.
 
+## Delegation: Full Design Builds → Hallmark & Impeccable
+
+This skill is the constraint/taste layer. When the task requires an actual page build, redesign, or rendered audit — not just visual constraint review — delegate to [`hallmark`](/skills/hallmark) or [`impeccable`](/skills/impeccable):
+
+| Task shape | Load |
+|---|---|
+| Review generated UI against slop patterns, pick a visual variant | this skill |
+| Build/redesign a page end-to-end, theme dealing, sloplint render check | `hallmark` |
+| End-to-end design OS, 24 commands (craft/critique/polish/harden), PRODUCT.md & DESIGN.md | `impeccable` |
+| Audit an existing rendered page for AI tells | `hallmark` via `/hallmark audit <path>` or `impeccable` via `/impeccable audit` |
+
+Never run conflicting constraint engines on one build: Hallmark's Floor and Impeccable's Craft Floor set the non-waivable bottom; this framework's variants are advisory above them.
+
 ## Implementation Skills
 
 - Configure agents, anti, better, boilerplate, building settings before first use
