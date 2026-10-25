@@ -1,17 +1,17 @@
 # 1ai-skills
 
-> 1248 production-ready AI agent skills with anti-rationalization tables, code examples, and verification checklists. The largest open-source skill library for Claude Code, Cursor, Gemini CLI, and more.
+> 1224 production-ready AI agent skills with anti-rationalization tables, code examples, and verification checklists. The largest open-source skill library for Claude Code, Cursor, Gemini CLI, and more.
 
 ## What
 
-1ai-skills is a library of 1248 SKILL.md files across 19 categories that force AI coding agents to follow real workflows instead of cutting corners. Every skill includes anti-rationalization tables, concrete code examples, step-by-step workflows, and verification checklists.
+1ai-skills is a library of 1224 SKILL.md files across 19 categories that force AI coding agents to follow real workflows instead of cutting corners. Every skill includes anti-rationalization tables, concrete code examples, step-by-step workflows, and verification checklists.
 
 ## Categories
 
 - **Cybersecurity** (800 skills) — Threat hunting, forensics, pen testing, SOC ops, incident response, zero trust, cloud security, API security, OT/ICS security
 - **Development** (93 skills) — TDD, debugging, code review, PRD, spec-driven development, context engineering, browser testing, Git workflows
 - **Content** (57 skills) — Video generation, audio, design, writing, document creation (docx, pdf, pptx, xlsx), UI design, themes
-- **Mindset** (53 skills) — Negotiation, leadership, critical thinking, emotional intelligence, productivity, habit formation
+- **Mindset** (29 skills) — Negotiation, leadership, critical thinking, emotional intelligence, productivity, habit formation
 - **Core** (39 skills) — AI infrastructure, memory systems, self-improving, model routing, Gemini API, Replicate
 - **Marketing** (34 skills) — SEO, viral content, email marketing, ads, growth hacking, social media automation
 - **Research** (24 skills) — Deep research, market analysis, competitive intelligence, McKinsey framework
@@ -36,7 +36,7 @@ Gemini CLI: `gemini skills install https://github.com/oyi77/1ai-skills.git --pat
 
 ## Quality
 
-- 1248/1248 skills pass 8-dimension test suite
+- 1224/1224 skills pass 8-dimension test suite
 - 0 warnings, 0 failures
 - Every skill has anti-rationalization table
 - Every skill has code examples

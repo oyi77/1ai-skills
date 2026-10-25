@@ -120,3 +120,11 @@ Mindset skill for difficult conversations. Builds capability through deliberate 
 - [ ] Results validated against acceptance criteria
 - [ ] Error handling tested with edge cases
 - [ ] Documentation updated with findings
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| conflict-resolution | [SKILL.md](../conflict-resolution/SKILL.md) | Resolving interpersonal or team conflict through mediation, non-violent communication, and de-escalation. |
+| active-listening | [SKILL.md](../active-listening/SKILL.md) | Coaching, resolving conflicts, or building trust with the HEAR model and reflective listening. |
+| cross-cultural-communication | [SKILL.md](../cross-cultural-communication/SKILL.md) | Working with global teams or international stakeholders across cultural and async communication norms. |

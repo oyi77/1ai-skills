@@ -117,3 +117,11 @@ Mindset skill for storytelling frameworks. Builds capability through deliberate 
 - [ ] Results validated against acceptance criteria
 - [ ] Error handling tested with edge cases
 - [ ] Documentation updated with findings
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| presentation-design | [SKILL.md](../presentation-design/SKILL.md) | Designing persuasive decks or keynotes with the 10/20/30 rule, slide anatomy, and storytelling arcs. |
+| public-speaking | [SKILL.md](../public-speaking/SKILL.md) | Delivering engaging talks with narrative structure, audience analysis, and stage presence. |
+| email-mastery | [SKILL.md](../email-mastery/SKILL.md) | Writing professional emails with AIDA, subject-line formulas, and follow-up cadences. |

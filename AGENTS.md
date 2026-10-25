@@ -16,7 +16,7 @@ Every task follows this sequence. No exceptions.
 Full details: `~/.1ai/core/PROCESS.md` (auto-injected by hooks)
 
 ## This repo
-Production-ready AI agent skill library — 1248 skills across 19 categories with anti-rationalization tables, code examples, and verification checklists.
+Production-ready AI agent skill library — 1224 skills across 19 categories with anti-rationalization tables, code examples, and verification checklists.
 Stack: Node.js / Python / YAML skills
 Domain: Agent skill library — NOT a product repo. Do not add features here unless adding new skills.
 
@@ -79,7 +79,7 @@ cat ~/projects/1ai-skills/integrations/stripe-integration/SKILL.md
 | cybersecurity | 800 | Threat hunting, forensics, pen testing, SOC, incident response |
 | development | 93 | TDD, debugging, code review, PRD, engineering workflows |
 | content | 57 | Video, audio, design, writing, docs |
-| mindset | 53 | Negotiation, leadership, critical thinking |
+| mindset | 29 | Negotiation, leadership, critical thinking |
 | marketing | 34 | SEO, viral content, email, ads, growth |
 | core | 39 | AI infrastructure, memory, self-improvement, model routing |
 | integrations | 19 | GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase |

@@ -460,3 +460,12 @@ Usage: ponytail <mode> [options]
 - [ ] Total repo LOC decreased after applying top audit findings
 - [ ] Weekly debt review scheduled to prevent forgotten shortcuts
 - [ ] Review criteria shared with team to normalize over-engineering detection
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| audit | [SKILL.md](audit/SKILL.md) | Auditing a repo for over-engineering and ranking deletion, simplification, or stdlib replacements. |
+| review | [SKILL.md](review/SKILL.md) | Reviewing a diff for reinvented stdlib, needless dependencies, and speculative abstractions. |
+| help | [SKILL.md](help/SKILL.md) | Displaying a quick reference for ponytail modes, skills, and commands. |
+| debt | [SKILL.md](debt/SKILL.md) | Harvesting ponytail shortcut comments into one tracked debt ledger. |

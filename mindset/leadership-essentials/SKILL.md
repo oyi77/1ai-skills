@@ -119,3 +119,12 @@ Mindset skill for leadership essentials. Builds capability through deliberate pr
 - [ ] Results validated against acceptance criteria
 - [ ] Error handling tested with edge cases
 - [ ] Documentation updated with findings
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| servant-leadership | [SKILL.md](../servant-leadership/SKILL.md) | Empowering teams, removing obstacles, and building trust-based leadership with Greenleaf's characteristics. |
+| team-management | [SKILL.md](../team-management/SKILL.md) | Managing teams through 1:1s, SBI feedback, delegation, and performance reviews. |
+| influence-without-authority | [SKILL.md](../influence-without-authority/SKILL.md) | Gaining buy-in from peers, stakeholders, and executives without direct authority. |
+| persuasion-influence | [SKILL.md](../persuasion-influence/SKILL.md) | Applying Cialdini's influence principles ethically when pitching, selling, or driving adoption. |

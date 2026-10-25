@@ -120,3 +120,11 @@ Mindset skill for business model canvas. Builds capability through deliberate pr
 - [ ] Results validated against acceptance criteria
 - [ ] Error handling tested with edge cases
 - [ ] Documentation updated with findings
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| product-market-fit | [SKILL.md](../product-market-fit/SKILL.md) | Finding and measuring product-market fit with surveys, NPS, retention cohorts, and the Mom Test. |
+| fundraising | [SKILL.md](../fundraising/SKILL.md) | Pitching investors, understanding term sheets, and managing investor relations while raising capital. |
+| competitive-strategy | [SKILL.md](../competitive-strategy/SKILL.md) | Analyzing market position or strategic threats with Porter's Five Forces and positioning maps. |

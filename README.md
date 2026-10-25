@@ -1,10 +1,10 @@
 # 1ai-skills
 
-**Your AI agent is lazy. These 1248 skills fix that.**
+**Your AI agent is lazy. These 1224 skills fix that.**
 
 AI agents skip tests, ignore security, write placeholder code, and cut corners whenever they can. 1ai-skills forces them to follow real workflows with anti-rationalization tables, code examples, and verification checklists — across every domain.
 
-[![Skills](https://img.shields.io/badge/Skills-1248-blue?style=flat-square)](https://github.com/oyi77/1ai-skills)
+[![Skills](https://img.shields.io/badge/Skills-1224-blue?style=flat-square)](https://github.com/oyi77/1ai-skills)
 [![Tested](https://img.shields.io/badge/Tests-100%25%20Pass-brightgreen?style=flat-square)](https://github.com/oyi77/1ai-skills/blob/main/scripts/test-skills.py)
 [![Warnings](https://img.shields.io/badge/Warnings-0-brightgreen?style=flat-square)](https://github.com/oyi77/1ai-skills/blob/main/scripts/test-skills.py)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](https://github.com/oyi77/1ai-skills/blob/main/LICENSE)
@@ -65,14 +65,14 @@ git clone https://github.com/oyi77/1ai-skills.git
 
 ---
 
-## 1248 Skills Across 19 Categories
+## 1224 Skills Across 19 Categories
 
 | Category | Skills | What It Covers |
 |---|---:|---|
 | Cybersecurity | 800 | Threat hunting, forensics, pen testing, SOC, incident response |
 | Development | 93 | TDD, debugging, code review, PRD, engineering workflows |
 | Content | 57 | Video, audio, design, writing, docs |
-| Mindset | 53 | Negotiation, leadership, critical thinking |
+| Mindset | 29 | Negotiation, leadership, critical thinking |
 | Marketing | 34 | SEO, viral content, email, ads, growth |
 | Core | 39 | AI infrastructure, memory, self-improvement, model routing |
 | Integrations | 19 | GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase |
@@ -95,7 +95,7 @@ git clone https://github.com/oyi77/1ai-skills.git
 
 | | Other repos | 1ai-skills |
 |---|---|---|
-| **Skills** | 24-100 curated | **1248 tested** |
+| **Skills** | 24-100 curated | **1224 tested** |
 | **Anti-rationalization** | Some | **Every skill** |
 | **Code examples** | Some | **Every skill** |
 | **Test suite** | None | **8-dimension, 100% pass** |
@@ -137,7 +137,7 @@ python3 scripts/test-skills.py --skill NAME  # Single skill
 7. SDK availability (referenced imports are installable)
 8. Workflow completeness (has workflow section)
 
-**Result: 1248/1248 PASS · 0 warnings · 0 failures**
+**Result: 1224/1224 PASS · 0 warnings · 0 failures**
 
 ---
 
