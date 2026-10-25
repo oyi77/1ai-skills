@@ -236,3 +236,12 @@ A lead is qualified only when ALL 4 criteria are confirmed. Do not advance unqua
 ## Output Format
 
 On pipeline report: "[N] leads in pipeline, $[N] total value, [N]% to next stage, [N] deals closing this week"
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `sales-strategy` | Sales playbooks, pipeline stages, dan conversion optimization | [SKILL.md](../strategy/SKILL.md) |
+| `b2b-sales-automation` | Full B2B pipeline dari cold prospect hingga client onboarding | [SKILL.md](../b2b-sales-automation/SKILL.md) |
+| `talent-crm` | Talent pipeline management, candidate tracking, dan recruiting outreach | [SKILL.md](../talent-crm/SKILL.md) |
+| `business-development` | B2B prospect research, lead generation, dan HubSpot outreach workflows | [SKILL.md](../business-development/SKILL.md) |

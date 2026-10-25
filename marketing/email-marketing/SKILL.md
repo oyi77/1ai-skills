@@ -374,3 +374,10 @@ After completing this skill, confirm:
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `email-sequences` | Welcome, nurture, re-engagement, transactional, dan trigger-based email flows | [SKILL.md](../email-sequences/SKILL.md) |
+| `cold-email` | Personalized B2B outbound, deliverability, follow-up, dan compliance | [SKILL.md](../cold-email/SKILL.md) |

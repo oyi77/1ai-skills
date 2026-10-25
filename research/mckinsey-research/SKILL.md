@@ -224,3 +224,10 @@ def evaluate_source(url: str) -> dict:
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `market-research` | Market research, competitive analysis, dan industry insights dengan Exa/Firecrawl | [SKILL.md](../../marketing/market-research/SKILL.md) |
+| `sherlock-research` | Systematic observation, deduction, hypothesis testing, dan verification | [SKILL.md](../sherlock-research/SKILL.md) |

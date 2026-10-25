@@ -780,3 +780,12 @@ After completing this skill, confirm:
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `social-media-upload` | Upload dan optimasi konten untuk X, Instagram, TikTok, LinkedIn, Facebook, YouTube | [SKILL.md](../social-media-upload/SKILL.md) |
+| `social-growth` | Massive social platform growth, audience acquisition, dan network effects | [SKILL.md](../social-growth/SKILL.md) |
+| `buzzer-engagement-army` | Multi-account engagement boosting dan warmup sesuai platform policies | [SKILL.md](../buzzer-engagement-army/SKILL.md) |
+| `comment-reply-manager` | Sentiment classification, FAQ replies, dan high-intent commenter DMs | [SKILL.md](../../content/comment-reply-manager/SKILL.md) |

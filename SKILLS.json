@@ -1,26 +1,26 @@
 {
-  "total_skills": 1335,
+  "total_skills": 1310,
   "category_count": 19,
   "categories": {
     "agents": 14,
     "automation": 21,
-    "content": 58,
+    "content": 57,
     "core": 49,
     "cybersecurity": 800,
     "data": 8,
     "development": 103,
     "devops": 32,
-    "financial": 19,
+    "financial": 12,
     "integrations": 19,
-    "marketing": 43,
+    "marketing": 34,
     "mcp": 15,
     "meta": 13,
     "mindset": 55,
     "operations": 20,
     "productivity": 10,
-    "research": 26,
-    "sales": 13,
-    "trading": 17
+    "research": 25,
+    "sales": 9,
+    "trading": 14
   },
   "skills": [
     {
@@ -793,24 +793,6 @@
         "visualization",
         "generative-art",
         "svg"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "content-creation",
-      "type": "content"
-    },
-    {
-      "name": "comment-reply-manager",
-      "category": "content",
-      "description": "Use when monitor TikTok/Instagram comments, classify sentiment, auto-reply with FAQ answers, and DM high-intent commenters with LYNK affiliate links to convert engagement into sales. Use when monitoring tiktok/instagram comments, classify sentiment, auto-reply with faq answers, and.",
-      "domain": "content",
-      "tags": [
-        "comment",
-        "content-creation",
-        "digital-content",
-        "manager",
-        "media",
-        "reply"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -20191,23 +20173,6 @@
       "type": "finance"
     },
     {
-      "name": "earnings-viewer",
-      "category": "financial",
-      "description": "Use when analyzes earnings calls + SEC filings, updates financial models, and drafts earnings notes. Use when user says \"analyze earnings\", \"earnings call\", \"update model after earnings\".",
-      "domain": "financial",
-      "tags": [
-        "analysis",
-        "earnings",
-        "finance",
-        "investment",
-        "viewer"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "financial-analysis",
-      "type": "finance"
-    },
-    {
       "name": "finance-tracker",
       "category": "financial",
       "description": "Use when track real-time revenue across 5 income streams, monitor cashflow and runway, detect revenue gaps, and send threshold alerts via Telegram. Use when tracking real-time revenue across 5 income streams, monitor cashflow and.",
@@ -20221,52 +20186,6 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "financial-analysis",
-      "type": "finance"
-    },
-    {
-      "name": "gl-reconciler",
-      "category": "financial",
-      "description": "Use when finds breaks, traces root cause, routes for sign-off. Use when user says \"reconcile GL\", \"find breaks\", \"trace accounting error\".",
-      "domain": "financial",
-      "tags": [
-        "analysis",
-        "finance",
-        "investment",
-        "reconciler"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "financial-analysis",
-      "type": "finance"
-    },
-    {
-      "name": "investment-bottleneck",
-      "category": "financial",
-      "description": "Use when finding bottleneck companies — the critical constraint in supply chains that have pricing power, low competition, and high returns. Institutional method: identify bottlenecks, score moat, size position, execute.",
-      "domain": "financial",
-      "tags": [
-        "investment",
-        "bottleneck",
-        "finance"
-      ],
-      "version": "2.0.0",
-      "author": "oyi77",
-      "subdomain": "finance",
-      "type": "finance"
-    },
-    {
-      "name": "investment-earnings",
-      "category": "financial",
-      "description": "Use when trading earnings reports for profit — pre-earnings positioning, post-earnings momentum, and management quality scoring. Systematic framework for the highest-alpha event in equity markets.",
-      "domain": "financial",
-      "tags": [
-        "investment",
-        "earnings",
-        "finance"
-      ],
-      "version": "2.0.0",
-      "author": "oyi77",
-      "subdomain": "finance",
       "type": "finance"
     },
     {
@@ -20402,58 +20321,6 @@
         "gl-reconciliation",
         "cashflow",
         "auditing"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "financial-analysis",
-      "type": "finance"
-    },
-    {
-      "name": "statement-auditor",
-      "category": "financial",
-      "description": "Use when audits LP statements before distribution. Use when user says \"audit statement\", \"review LP package\", \"distribution check\".",
-      "domain": "financial",
-      "tags": [
-        "analysis",
-        "auditor",
-        "finance",
-        "investment",
-        "statement"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "financial-analysis",
-      "type": "finance"
-    },
-    {
-      "name": "tax-loss-harvesting",
-      "category": "financial",
-      "description": "Use when identify TLH opportunities, manage wash sales. Use when user says \"tax loss harvest\", \"TLH\", \"wash sale check\".",
-      "domain": "financial",
-      "tags": [
-        "analysis",
-        "finance",
-        "harvesting",
-        "investment",
-        "loss",
-        "tax"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "financial-analysis",
-      "type": "finance"
-    },
-    {
-      "name": "valuation-reviewer",
-      "category": "financial",
-      "description": "Use when ingests GP packages, runs valuation template, stages LP reporting. Use when user says \"review valuation\", \"LP reporting\", \"GP package\".",
-      "domain": "financial",
-      "tags": [
-        "analysis",
-        "finance",
-        "investment",
-        "reviewer",
-        "valuation"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -20982,22 +20849,6 @@
       "type": "marketing"
     },
     {
-      "name": "ai-seo",
-      "category": "marketing",
-      "description": "Use when optimize for AI search engines — Perplexity, ChatGPT Search, Google AI Overviews, answer engine optimization. Use when adapting SEO strategy for AI-powered search, optimizing for featured snippets, or building AI-friendly content.",
-      "domain": "marketing",
-      "tags": [
-        "growth",
-        "marketing",
-        "seo",
-        "money"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "marketing",
-      "type": "marketing"
-    },
-    {
       "name": "analytics-dashboard",
       "category": "marketing",
       "description": "Use when tracking performance across all platforms. Monitor social media metrics, ad performance, website analytics, and revenue. Generate automated reports and identify trends for data-driven decisions.",
@@ -21034,24 +20885,6 @@
       "type": "marketing"
     },
     {
-      "name": "buzzer-engagement-army",
-      "category": "marketing",
-      "description": "Use when multi-account engagement booster across TikTok, Instagram, and Facebook — automates likes, comments, and warmup schedules to beat algorithm suppression on new posts.",
-      "domain": "marketing",
-      "tags": [
-        "army",
-        "buzzer",
-        "engagement",
-        "growth",
-        "marketing",
-        "seo"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "marketing",
-      "type": "marketing"
-    },
-    {
       "name": "canva",
       "category": "marketing",
       "description": "Use when creating, exporting, and managing Canva designs via the Connect API. Generate social posts, carousels, and graphics programmatically.",
@@ -21079,24 +20912,6 @@
         "growth",
         "marketing",
         "prevention",
-        "seo"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "marketing",
-      "type": "marketing"
-    },
-    {
-      "name": "cold-email",
-      "category": "marketing",
-      "description": "Use when outbound email with personalization, deliverability optimization, follow-up sequences, and compliance. Use when building cold email campaigns, improving email deliverability, or designing outreach sequences.",
-      "domain": "marketing",
-      "tags": [
-        "cold",
-        "compliance",
-        "email",
-        "growth",
-        "marketing",
         "seo"
       ],
       "version": "1.0.0",
@@ -21195,25 +21010,6 @@
       "type": "marketing"
     },
     {
-      "name": "email-sequences",
-      "category": "marketing",
-      "description": "Automated email sequence design — welcome series, nurture funnels, re-engagement, transactional flows. Use when building email automation systems.",
-      "domain": "marketing",
-      "tags": [
-        "email",
-        "growth",
-        "marketing",
-        "sequences",
-        "money",
-        "automation",
-        "conversions"
-      ],
-      "version": "2.0.0",
-      "author": "oyi77",
-      "subdomain": "",
-      "type": "marketing"
-    },
-    {
       "name": "growth-engine",
       "category": "marketing",
       "description": "Use when autonomous marketing experiment framework — design A/B tests, score hypotheses with ICE, validate results with statistical significance, and run automated optimization loops.",
@@ -21292,23 +21088,6 @@
         "growth",
         "lynk",
         "marketing",
-        "seo"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "marketing",
-      "type": "marketing"
-    },
-    {
-      "name": "market-research",
-      "category": "marketing",
-      "description": "Use when conduct market research, competitive analysis, and industry insights with Exa and Firecrawl. Use when conducting market research, competitive analysis, and industry insights with exa.",
-      "domain": "marketing",
-      "tags": [
-        "growth",
-        "market",
-        "marketing",
-        "research",
         "seo"
       ],
       "version": "1.0.0",
@@ -21428,41 +21207,6 @@
       "type": "marketing"
     },
     {
-      "name": "schema-markup",
-      "category": "marketing",
-      "description": "Use when structured data markup for rich results and AI search visibility — JSON-LD, FAQ, HowTo, Product schemas. Use when implementing structured data for SEO. Use when working with schema markup.",
-      "domain": "marketing",
-      "tags": [
-        "growth",
-        "marketing",
-        "markup",
-        "schema",
-        "seo"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "marketing",
-      "type": "marketing"
-    },
-    {
-      "name": "seo-auditor",
-      "category": "marketing",
-      "description": "Use when sEO analysis and optimization automation for websites. Use when conducting technical SEO audits, tracking keyword rankings, analyzing competitor SEO, monitoring backlink profiles, optimizing existing content, improving local SEO visibility, generating SEO reports for clients, or automating website health checks.",
-      "domain": "marketing",
-      "tags": [
-        "auditor",
-        "growth",
-        "marketing",
-        "monitoring",
-        "seo",
-        "money"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "marketing",
-      "type": "marketing"
-    },
-    {
       "name": "seo-optimizer",
       "category": "marketing",
       "description": "Use when optimize content for search engines. Perform keyword research, analyze on-page SEO, track rankings, audit technical SEO, and improve organic visibility for sustainable traffic growth. Use when optimizeing content for search engines. perform keyword research, analyze on-page.",
@@ -21497,24 +21241,6 @@
       "type": "marketing"
     },
     {
-      "name": "social-growth",
-      "category": "marketing",
-      "description": "Use when mark Zuckerberg's approach to building massive social platforms through network effects and rapid iteration. Use when working with social growth.",
-      "domain": "marketing",
-      "tags": [
-        "api",
-        "growth",
-        "marketing",
-        "seo",
-        "social",
-        "social-media"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "marketing",
-      "type": "marketing"
-    },
-    {
       "name": "social-media-engagement",
       "category": "marketing",
       "description": "Use when automating social media engagement activities including liking, commenting, following, unfollowing, DMing, and replying. Build audience and increase reach across X, Instagram, TikTok, and LinkedIn.",
@@ -21527,26 +21253,6 @@
         "seo",
         "social",
         "social-media"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "marketing",
-      "type": "marketing"
-    },
-    {
-      "name": "social-media-upload",
-      "category": "marketing",
-      "description": "Use when distribute content across multiple social media platforms (X, Instagram, TikTok, LinkedIn, Facebook, YouTube). Upload images, videos, and text with platform-specific optimization. Use when working with social media upload.",
-      "domain": "marketing",
-      "tags": [
-        "growth",
-        "marketing",
-        "media",
-        "seo",
-        "social",
-        "social-media",
-        "upload",
-        "video"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -23953,22 +23659,6 @@
       "type": "research"
     },
     {
-      "name": "sherlock-research",
-      "category": "research",
-      "description": "Use when investigate problems systematically using Sherlock Holmes' method: observe, deduce, hypothesize, and verify. . Use when working with sherlock research.",
-      "domain": "research",
-      "tags": [
-        "analysis",
-        "investigation",
-        "research",
-        "sherlock"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "research",
-      "type": "research"
-    },
-    {
       "name": "social-intelligence",
       "category": "research",
       "description": "Use when cross-platform social media intelligence gathering using Agent Reach. Research trends, sentiment, competitive intel, and user insights from Twitter, Reddit, YouTube, XiaoHongShu across 35+ platforms. Use when researching social proof, market sentiment, viral content patterns, or competitive positioning.",
@@ -24141,42 +23831,6 @@
       "type": "sales"
     },
     {
-      "name": "b2b-sales-automation",
-      "category": "sales",
-      "description": "Use when | > Full B2B sales pipeline automation — from cold prospect to onboarded client. Covers ICP definition, lead sourcing, outreach sequences, proposal generation, CRM tracking, and deal alerts via Telegram. Targets SMEs needing AI automation, digital products, and content services.",
-      "domain": "sales",
-      "tags": [
-        "sales",
-        "b2b",
-        "crm",
-        "outreach",
-        "proposal",
-        "pipeline",
-        "indonesian"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "sales",
-      "type": "sales"
-    },
-    {
-      "name": "business-development",
-      "category": "sales",
-      "description": "Use when generating leads, researching prospects, and managing outreach sequences with HubSpot and Exa integration. Use for B2B pipeline building.",
-      "domain": "sales",
-      "tags": [
-        "business",
-        "business-development",
-        "pipeline",
-        "revenue",
-        "sales"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "sales",
-      "type": "sales"
-    },
-    {
       "name": "customer-support",
       "category": "sales",
       "description": "Use when handling customer support via browser - email responses, chat interactions, ticket management, and escalation workflows.",
@@ -24255,23 +23909,6 @@
       "type": "sales"
     },
     {
-      "name": "sales-strategy",
-      "category": "sales",
-      "description": "Use when build sales playbooks, define pipeline stages, and optimize conversion rates. Use when designing or improving the sales process.",
-      "domain": "sales",
-      "tags": [
-        "business-development",
-        "pipeline",
-        "revenue",
-        "sales",
-        "strategy"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "sales",
-      "type": "sales"
-    },
-    {
       "name": "shopee-review-downloader",
       "category": "sales",
       "description": "Use when download and analyze Shopee product reviews in bulk for competitive research, sentiment analysis, and market intelligence. Use when working with shopee review downloader.",
@@ -24283,24 +23920,6 @@
         "review",
         "sales",
         "shopee"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "sales",
-      "type": "sales"
-    },
-    {
-      "name": "talent-crm",
-      "category": "sales",
-      "description": "Use when managing talent pipeline with candidate tracking, outreach automation, and interview scheduling. Use for recruiting CRM.",
-      "domain": "sales",
-      "tags": [
-        "business-development",
-        "crm",
-        "pipeline",
-        "revenue",
-        "sales",
-        "talent"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -24362,23 +23981,6 @@
       "type": "trading"
     },
     {
-      "name": "crypto-wallet",
-      "category": "trading",
-      "description": "Use when skill: crypto-wallet. See SKILL.md body for details. Use when this domain is relevant.",
-      "domain": "trading",
-      "tags": [
-        "algorithms",
-        "crypto",
-        "markets",
-        "trading",
-        "wallet"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "trading",
-      "type": "trading"
-    },
-    {
       "name": "defi-protocols",
       "category": "trading",
       "description": "Use when skill: defi-protocols. See SKILL.md body for details. Use when this domain is relevant.",
@@ -24428,23 +24030,6 @@
         "money"
       ],
       "version": "2.0.0",
-      "author": "oyi77",
-      "subdomain": "trading",
-      "type": "trading"
-    },
-    {
-      "name": "nft-marketplace",
-      "category": "trading",
-      "description": "Use when skill: nft-marketplace. See SKILL.md body for details. Use when this domain is relevant.",
-      "domain": "trading",
-      "tags": [
-        "algorithms",
-        "marketplace",
-        "markets",
-        "nft",
-        "trading"
-      ],
-      "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "trading",
       "type": "trading"
@@ -24541,24 +24126,6 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "quantitative-trading",
-      "type": "trading"
-    },
-    {
-      "name": "smart-contract-dev",
-      "category": "trading",
-      "description": "Use when skill: smart-contract-dev. See SKILL.md body for details. Use when this domain is relevant.",
-      "domain": "trading",
-      "tags": [
-        "algorithms",
-        "contract",
-        "dev",
-        "markets",
-        "smart",
-        "trading"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "trading",
       "type": "trading"
     },
     {

@@ -1,29 +1,32 @@
 # Changelog
 All notable changes to 1ai-skills are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
-## [Unreleased] (Wave 1 Consolidation)
+## [Unreleased]
 ### Changed
-- Consolidated 44 narrow sub-skills across 6 clusters into canonical parent playbooks with explicit `## Sub-Skills & Specialized Playbooks` routing tables:
+- Wave 1: consolidated 44 narrow sub-skills across 6 clusters into canonical parent playbooks with explicit `## Sub-Skills & Specialized Playbooks` routing tables:
   - HyperFrames (12 sub-skills) -> `content/hyperframes-general-video`
   - Kalodata (5 sub-skills) -> `integrations/kalodata/product-research`
   - Oh My OpenCode (5 sub-skills) -> `integrations/oh-my-opencode`
   - Gate.io Trading (6 sub-skills) -> `trading/gate-exchange-trading`
   - Gate.io Info & Research (12 sub-skills) -> `research/gate-info-research`
   - Trading Orchestrator (4 sub-skills) -> `trading/orchestrator`
-- Zero File Deletion Invariant preserved: all on-disk physical `SKILL.md` files retained to guarantee 100% link resolution.
-- Updated active registry in `SKILLS.json` from 1398 to **1354** skills across 19 categories.
-- Synchronized counts across `README.md`, `AGENTS.md`, `package.json`, `llms.txt`, and `generate-site.py`.
-
-## [Unreleased] (Wave 2 Consolidation)
-### Changed
-- Consolidated 19 sub-skills into canonical parent routing tables:
+- Wave 2: consolidated 19 sub-skills into canonical parent routing tables:
   - Core Video Production (6 sub-skills) -> `content/video-director`
   - UI Component Libraries (10 sub-skills) -> `content/ui-styling`
   - Design Systems & Tokens (3 sub-skills) -> `content/design-system`
-- Zero File Deletion Invariant preserved: all sub-skill `SKILL.md` files remain on disk and are linked from their canonical parents.
-- Updated active registry in `SKILLS.json` from 1354 to **1335** skills; `content` category from 77 to **58**.
-
-## [Unreleased] (fixup)
+- Wave 3: consolidated 25 business, marketing, sales, finance, and research sub-skills into canonical parent routing tables:
+  - Web3 Contract & Primitives (3 sub-skills) -> `trading/defi-protocols`
+  - SEO Optimization (3 sub-skills) -> `marketing/seo-optimizer`
+  - Social Media Automation (4 sub-skills) -> `marketing/social-media-engagement`
+  - Email Marketing (2 sub-skills) -> `marketing/email-marketing`
+  - Sales Pipeline & B2B (4 sub-skills) -> `sales/sales-pipeline`
+  - Financial Investment (4 sub-skills) -> `financial/investment-industry`
+  - Corporate Accounting (3 sub-skills) -> `financial/month-end-closer`
+  - Institutional Research (2 sub-skills) -> `research/mckinsey-research`
+- Zero File Deletion Invariant preserved across Waves 1–3: all on-disk physical `SKILL.md` files retained to guarantee link resolution.
+- Updated active registry in `SKILLS.json` from 1398 to **1310** skills across 19 categories.
+- Synchronized counts across `README.md`, `AGENTS.md`, `package.json`, `llms.txt`, and `generate-site.py`.
+- Refreshed `README.md` and `AGENTS.md` counts from the generated registry, including per-category numbers.
 ### Fixed
 - Repaired 19 SKILL.md files with unbalanced (odd-count) code fences that swallowed
   structural headings. Inserted missing opening fences for 7 meta-skill boilerplate blocks
@@ -34,12 +37,9 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 - Added `content-creation` and removed dead `finance` from the schema `category` enum;
   allowed a leading digit in the `kebab` name pattern for brand names such as `21st-dev`.
   Schema validation is now 0 errors.
-### Changed
-- Refreshed `README.md` and `AGENTS.md` counts: **1372** skills, **19** categories,
-  per-category numbers regenerated from `SKILLS.json`.
 
-## [Unreleased]
 ### Added
+
 - `cybersecurity/cloudflare-security-audit`: Multi-phase defensive vulnerability audit methodology ported from [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill). Enforces strict trust-boundary violation proof, independent adversarial candidate verification, structured findings ledger (`findings.json`), and minimal effective source diffs.
 - `research/scientific-agent-skills`: Master scientific research orchestration playbook ported from [K-Dense-AI/scientific-agent-skills](https://github.com/K-Dense-AI/scientific-agent-skills). Integrates 100+ scientific databases (PubChem, ChEMBL, UniProt), 70+ scientific Python libraries (RDKit, BioPython, Scanpy), molecular docking, clinical trial evidence, and automated laboratory protocol generation.
 - `development/dead-code-graveyard`: Systematic audit, quarantine, and safe pruning of unreachable branches, dead code, unmounted endpoints, and orphaned assets across large codebases.
