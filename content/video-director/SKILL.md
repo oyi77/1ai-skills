@@ -196,3 +196,14 @@ When the task fans out (multi-scene video, multi-format package), dispatch one s
 - [ ] Quality check completed
 - [ ] Output format verified
 - [ ] Outcome saved to brain
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `video-production-orchestrator` | Koordinasi produksi video multi-tahap dari brief hingga distribusi | [SKILL.md](../video-production-orchestrator/SKILL.md) |
+| `video-strategy-orchestrator` | Memilih pipeline Remotion, HyperFrames, atau AI video sesuai kebutuhan | [SKILL.md](../video-strategy-orchestrator/SKILL.md) |
+| `auto-clipper` | Memotong video panjang menjadi highlight TikTok, Reels, atau Shorts | [SKILL.md](../video/auto-clipper/SKILL.md) |
+| `b-roll-finder` | Mencari footage stok atau klip B-roll yang sesuai narasi | [SKILL.md](../video/b-roll-finder/SKILL.md) |
+| `clay-art-video-generator` | Membuat video dengan gaya visual clay art | [SKILL.md](../video/clay-art-video-generator/SKILL.md) |
+| `faceless-youtube` | Membangun kanal YouTube faceless dengan skrip dan video otomatis | [SKILL.md](../video/faceless-youtube/SKILL.md) |

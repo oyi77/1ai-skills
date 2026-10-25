@@ -292,3 +292,11 @@ design-system turns brand primitives into a three-layer token architecture — p
 | "The slide search is extra work" | BM25 over the strategy/layout/decision CSVs is how a deck gets contextual structure instead of a generic template |
 | "Validation slows iteration" | Validation is a 2-second gate that catches off-system values before a human review round |
 
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `design-tokens` | Merancang token color, typography, spacing, dark mode, dan theme architecture | [SKILL.md](../design-tokens/SKILL.md) |
+| `frontend-ui-design` | Merancang UI production-grade dengan React, Vue, atau vanilla HTML/CSS | [SKILL.md](../frontend-ui-design/SKILL.md) |
+| `ui-critique` | Review visual hierarchy, consistency, accessibility, dan actionable UI feedback | [SKILL.md](../ui-critique/SKILL.md) |
