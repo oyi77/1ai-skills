@@ -191,3 +191,9 @@ When working the pipeline, dispatch one sub-agent per deal-stage batch in parall
 - [ ] Pipeline tracking in place
 - [ ] Follow-up automated
 - [ ] Outcome saved to brain
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Use Case | Reference File |
+| :--- | :--- | :--- |
+| `ai-lead-generation` | Scaled B2B prospect discovery, enrichment, personalized outreach, and meeting booking | [SKILL.md](../../sales/ai-lead-generation/SKILL.md) |

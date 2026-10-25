@@ -130,3 +130,9 @@ def analyze_keywords(keywords: list[str]) -> list[dict]:
 | "Good products sell themselves" | They do not. Marketing is how people discover your product. |
 | "I will start marketing after launch" | Build audience before launch. Pre-launch momentum is critical. |
 | "SEO is dead" | SEO evolves. GEO (Generative Engine Optimization) is the new frontier. |
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Use Case | Reference File |
+| :--- | :--- | :--- |
+| `influencer-scouting` | Multi-platform creator discovery, qualification, outreach, negotiation, and ROI tracking | [SKILL.md](../../sales/influencer-scouting/SKILL.md) |

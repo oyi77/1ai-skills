@@ -543,4 +543,10 @@ After completing this skill, confirm:
 
 1. Analyze the task requirements
 2. Apply domain expertise
+
 3. Verify output quality
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Use Case | Reference File |
+| :--- | :--- | :--- |
+| `affiliate-manager` | Affiliate program discovery, partnership outreach, commission tracking, and placement optimization | [SKILL.md](../affiliate-manager/SKILL.md) |

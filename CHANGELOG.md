@@ -36,8 +36,10 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 - Deferred framework/autonomous candidates and broad integration/API candidates due canonical-parent scope mismatch; their registry entries remain active.
 - Wave 9: consolidated 7 adapter/intelligence/framework sub-skills into accepted parents: `integrations/stripe-integration` (`stripe-mcp`), `productivity/notion` (`notion-mcp`), `integrations/linear-api` (`linear-mcp`), `integrations/github` (`github-mcp`), `integrations/slack` (`slack-mcp`), `automation/scrapers` (`social-intelligence`), and `integrations/langchain-skills` (`langchain-patterns`).
 - Four no-code workflow links were already unregistered and required no registry count change.
-- Zero File Deletion Invariant preserved across Waves 1–9: all on-disk physical `SKILL.md` files retained to guarantee link resolution.
-- Updated active registry in `SKILLS.json` from 1398 to **1208** skills across 19 categories.
+- Wave 10: demoted 6 sub-skills from the active registry while retaining every physical `SKILL.md`: `content/content-director` now references `ai-content-agency-v2` and `ai-podcast`; `marketing/email-marketing` references `ai-newsletter`; `content/sales-director` references `ai-lead-generation`; `marketing/affiliate-marketing` references `affiliate-manager`; and `marketing/influencer-outreach` references `influencer-scouting`.
+- Wave 10 registry impact: content -2, marketing -2, sales -2; active skills **1208 -> 1202**, physical catalog files unchanged.
+- Zero File Deletion Invariant preserved across Waves 1–10: all on-disk physical `SKILL.md` files retained to guarantee link resolution.
+- Updated active registry in `SKILLS.json` from 1398 to **1202** skills across 19 categories.
 - Synchronized counts across `README.md`, `AGENTS.md`, `package.json`, `llms.txt`, and `scripts/generate-site.py` (dynamic catalog counts and canonical captured test receipt).
 - Refreshed `README.md` and `AGENTS.md` counts from the active registry, including per-category numbers.
 ### Fixed
