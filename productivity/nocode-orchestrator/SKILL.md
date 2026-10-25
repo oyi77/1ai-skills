@@ -337,3 +337,14 @@ After completing this skill, confirm:
 | "I am too busy to organize" | Disorganization costs more time than organizing. Invest upfront. |
 | "Multitasking is productive" | Context switching costs 25 minutes per switch. Focus on one thing. |
 | "I will remember this" | You will not. Write it down. Externalize your memory. |
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| make-scenarios | [SKILL.md](../../automation/make-scenarios/SKILL.md) | Building Make.com scenarios, routes, filters, and webhooks. |
+| n8n-workflows | [SKILL.md](../../automation/n8n-workflows/SKILL.md) | Creating n8n workflows, nodes, expressions, and credentials. |
+| pipedream-workflows | [SKILL.md](../../automation/pipedream-workflows/SKILL.md) | Building Pipedream serverless workflows and code steps. |
+| zapier-patterns | [SKILL.md](../../automation/zapier-patterns/SKILL.md) | Implementing Zapier triggers, actions, filters, and code steps. |
+| workflows | [SKILL.md](../../automation/workflows/SKILL.md) | Coordinating cron, IFTTT, n8n, webhooks, and self-hosted automation. |
+| workflow-builder | [SKILL.md](../../automation/workflow-builder/SKILL.md) | Building business workflows across Notion, Slack, Kanban, and automation tools. |

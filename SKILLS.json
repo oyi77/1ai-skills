@@ -1,24 +1,24 @@
 {
-  "total_skills": 1292,
+  "total_skills": 1266,
   "category_count": 19,
   "categories": {
-    "agents": 14,
-    "automation": 21,
+    "agents": 9,
+    "automation": 14,
     "content": 57,
-    "core": 48,
+    "core": 46,
     "cybersecurity": 800,
-    "data": 8,
+    "data": 3,
     "development": 93,
     "devops": 25,
     "financial": 12,
     "integrations": 19,
     "marketing": 34,
     "mcp": 15,
-    "meta": 13,
+    "meta": 7,
     "mindset": 55,
     "operations": 20,
     "productivity": 10,
-    "research": 25,
+    "research": 24,
     "sales": 9,
     "trading": 14
   },
@@ -45,23 +45,6 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "autonomous-agents",
-      "type": "agents"
-    },
-    {
-      "name": "code-agent",
-      "category": "agents",
-      "description": "Use when implementing features from specs — reads requirements, writes code with tests, iterates until verification passes.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "code",
-        "autonomous"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "ai-agents",
       "type": "agents"
     },
     {
@@ -102,23 +85,6 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "coding-agents",
-      "type": "agents"
-    },
-    {
-      "name": "deploy-agent",
-      "category": "agents",
-      "description": "Use when ship code through controlled pipeline with verification gates and rollback plans.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "deploy",
-        "autonomous"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "ai-agents",
       "type": "agents"
     },
     {
@@ -174,23 +140,6 @@
       "type": "agents"
     },
     {
-      "name": "planning-agent",
-      "category": "agents",
-      "description": "Use when decompose complex tasks into executable steps with dependencies, risk assessment, and verification criteria.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "planning",
-        "autonomous"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "ai-agents",
-      "type": "agents"
-    },
-    {
       "name": "refactor-agent",
       "category": "agents",
       "description": "Use when restructure code to improve readability, maintainability, extensibility without changing external behavior.",
@@ -201,40 +150,6 @@
         "automation",
         "refactor",
         "coding"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "ai-agents",
-      "type": "agents"
-    },
-    {
-      "name": "research-agent",
-      "category": "agents",
-      "description": "Use when investigating topics deeply with cross-referenced sources and producing evidence-backed findings.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "research",
-        "autonomous"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "ai-agents",
-      "type": "agents"
-    },
-    {
-      "name": "review-agent",
-      "category": "agents",
-      "description": "Use when reading code changes with adversarial intent to find bugs, security holes, logic errors, and performance traps.",
-      "domain": "agents",
-      "tags": [
-        "agent",
-        "ai-agent",
-        "automation",
-        "review",
-        "autonomous"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -408,41 +323,6 @@
       "type": "automation"
     },
     {
-      "name": "lakefs-versioning",
-      "category": "automation",
-      "description": "Use when lakeFS data versioning — Git-like branching for data lakes, atomic commits, time travel, CI/CD. Use when working with lakefs versioning.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "lakefs",
-        "productivity",
-        "versioning",
-        "workflow"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "workflow-automation",
-      "type": "automation"
-    },
-    {
-      "name": "make-scenarios",
-      "category": "automation",
-      "description": "Use when make.com scenario automation — modules, routes, filters, error handlers, data stores, webhooks. Use when working with make scenarios.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "make",
-        "productivity",
-        "scenarios",
-        "webhook",
-        "workflow"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "workflow-automation",
-      "type": "automation"
-    },
-    {
       "name": "moltbook-interact",
       "category": "automation",
       "description": "Use when automating Moltbook engagement — content posting, community management, sentiment-aware replies, and account growth at scale.",
@@ -453,24 +333,6 @@
         "moltbook",
         "productivity",
         "workflow"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "workflow-automation",
-      "type": "automation"
-    },
-    {
-      "name": "n8n-workflows",
-      "category": "automation",
-      "description": "Use when n8n workflow automation — nodes, triggers, expressions, credentials, webhooks, error handling. Use when working with n8n workflows.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "n8n",
-        "productivity",
-        "webhook",
-        "workflow",
-        "workflows"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -495,23 +357,6 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "device-automation",
-      "type": "automation"
-    },
-    {
-      "name": "pipedream-workflows",
-      "category": "automation",
-      "description": "Use when pipedream serverless workflows — triggers, code steps, pre-built actions, data stores, HTTP. Use when working with pipedream workflows.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "pipedream",
-        "productivity",
-        "workflow",
-        "workflows"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "workflow-automation",
       "type": "automation"
     },
     {
@@ -604,63 +449,6 @@
         "productivity",
         "voice",
         "workflow"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "workflow-automation",
-      "type": "automation"
-    },
-    {
-      "name": "workflow-builder",
-      "category": "automation",
-      "description": "Use when building and automating business workflows with Notion task tracking, Slack notifications, Kanban boards, and cross-functional process orchestration.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "builder",
-        "notion",
-        "productivity",
-        "slack",
-        "workflow"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "workflow-automation",
-      "type": "automation"
-    },
-    {
-      "name": "workflows",
-      "category": "automation",
-      "description": "Use when workflow automation hub — cron scheduling, IFTTT triggers, n8n visual builder, webhook routing, and self-hosted Zapier alternatives for zero-vendor-lock-in automation.",
-      "domain": "automation",
-      "tags": [
-        "automation",
-        "workflows",
-        "cron",
-        "ifttt",
-        "n8n",
-        "webhook",
-        "zapier",
-        "productivity",
-        "pipelines"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "workflow-automation",
-      "type": "automation"
-    },
-    {
-      "name": "zapier-patterns",
-      "category": "automation",
-      "description": "Use when zapier automation patterns — triggers, actions, filters, formatters, paths, code steps. Use when working with zapier patterns.",
-      "domain": "automation",
-      "tags": [
-        "api",
-        "automation",
-        "patterns",
-        "productivity",
-        "workflow",
-        "zapier"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -1859,24 +1647,6 @@
       "type": "core"
     },
     {
-      "name": "agent-self-improvement",
-      "category": "core",
-      "description": "Use when monitor performance of other skills, identify bottlenecks, suggest improvements, and auto-optimize the skill portfolio. Use when monitoring performance of other skills, identify bottlenecks, suggest improvements, and.",
-      "domain": "core",
-      "tags": [
-        "agent",
-        "improvement",
-        "infrastructure",
-        "memory",
-        "self",
-        "self-improvement"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "core-platform",
-      "type": "core"
-    },
-    {
       "name": "ai-engineering-curriculum",
       "category": "core",
       "description": "Use when structured AI engineering curriculum — 382 skills + 99 prompts across 20 phases covering ML, deep learning, LLMs, agents, and production systems. Use when learning AI, building AI skills,.",
@@ -2474,24 +2244,6 @@
         "self-improvement"
       ],
       "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "core-platform",
-      "type": "core"
-    },
-    {
-      "name": "self-improving",
-      "category": "core",
-      "description": "Use when self-reflection + Self-criticism + Auto-learning from corrections + Self-organizing memory. Agent evaluates its own work, catches mistakes, and improves permanently. Use when working with self improving.",
-      "domain": "core",
-      "tags": [
-        "ai-agent",
-        "improving",
-        "infrastructure",
-        "memory",
-        "self",
-        "self-improvement"
-      ],
-      "version": "1.2.1",
       "author": "oyi77",
       "subdomain": "core-platform",
       "type": "core"
@@ -17567,24 +17319,6 @@
       "type": "security"
     },
     {
-      "name": "airflow-pipelines",
-      "category": "data",
-      "description": "Use when apache Airflow workflow orchestration — DAGs, operators, sensors, XComs, pools, scheduling. Use when working with airflow pipelines.",
-      "domain": "data",
-      "tags": [
-        "airflow",
-        "analytics",
-        "data-analysis",
-        "pipelines",
-        "visualization",
-        "workflow"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "data-engineering",
-      "type": "data"
-    },
-    {
       "name": "analysis",
       "category": "data",
       "description": "Use when full-stack data analysis pipeline — clean, detect anomalies, generate reports, and create visualizations with production pandas. Turn raw data into paid deliverables.",
@@ -17597,23 +17331,6 @@
         "visualization",
         "pandas",
         "money-making"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "data-engineering",
-      "type": "data"
-    },
-    {
-      "name": "dagster-pipelines",
-      "category": "data",
-      "description": "Use when dagster data orchestration — software-defined assets, ops, jobs, schedules, sensors, IO managers. Use when working with dagster pipelines.",
-      "domain": "data",
-      "tags": [
-        "analytics",
-        "dagster",
-        "data-analysis",
-        "pipelines",
-        "visualization"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -17638,24 +17355,6 @@
       "type": "data"
     },
     {
-      "name": "prefect-flows",
-      "category": "data",
-      "description": "Use when prefect workflow orchestration — flows, tasks, deployments, work pools, schedules, retries. Use when working with prefect flows.",
-      "domain": "data",
-      "tags": [
-        "analytics",
-        "data-analysis",
-        "flows",
-        "prefect",
-        "visualization",
-        "workflow"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "data-engineering",
-      "type": "data"
-    },
-    {
       "name": "role-data-engineer",
       "category": "data",
       "description": "Use when orchestrating data engineering pipelines, batch/streaming ETL, dbt data modeling, Airflow DAG orchestration, database query optimization, and warehouse warehousing.",
@@ -17670,42 +17369,6 @@
         "kafka",
         "bigquery",
         "postgres"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "data-engineering",
-      "type": "data"
-    },
-    {
-      "name": "spark-processing",
-      "category": "data",
-      "description": "Use when apache Spark distributed processing — DataFrames, SQL, streaming, MLlib, cluster management. Use when working with spark processing.",
-      "domain": "data",
-      "tags": [
-        "analytics",
-        "data-analysis",
-        "machine-learning",
-        "processing",
-        "spark",
-        "visualization"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "data-engineering",
-      "type": "data"
-    },
-    {
-      "name": "temporal-workflows",
-      "category": "data",
-      "description": "Use when temporal durable workflows — workflow/activity definitions, retries, signals, queries, versioning. Use when working with temporal workflows.",
-      "domain": "data",
-      "tags": [
-        "analytics",
-        "data-analysis",
-        "temporal",
-        "visualization",
-        "workflow",
-        "workflows"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -21270,40 +20933,6 @@
       "type": "mcp"
     },
     {
-      "name": "auto-evolve",
-      "category": "meta",
-      "description": "Use when continuously monitors system performance identifies improvement opportunities and orchestrates find-skills and create-skills to autonomously evolve capabilities. The brain of the self-evolving system. Use when working with auto evolve.",
-      "domain": "meta",
-      "tags": [
-        "auto",
-        "evolve",
-        "meta-learning",
-        "self-improvement",
-        "skill-evolution"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "meta-skills",
-      "type": "meta"
-    },
-    {
-      "name": "auto-learner",
-      "category": "meta",
-      "description": "Use when autonomous learning from execution data. Skills improve themselves by identifying patterns in successful vs failed executions without human intervention. Use when working with auto learner.",
-      "domain": "meta",
-      "tags": [
-        "auto",
-        "learner",
-        "meta-learning",
-        "self-improvement",
-        "skill-evolution"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "meta-skills",
-      "type": "meta"
-    },
-    {
       "name": "create-skills",
       "category": "meta",
       "description": "Use when the system identifies a skill gap and needs to autonomously generate a new skill to fill it. Works with find-skills to ensure no duplicates.",
@@ -21371,23 +21000,6 @@
       "type": "meta"
     },
     {
-      "name": "improvement-generator",
-      "category": "meta",
-      "description": "Use when generating specific, actionable improvements for skills based on performance data and feedback. Create improvement plans, not just identify problems.",
-      "domain": "meta",
-      "tags": [
-        "generator",
-        "improvement",
-        "meta-learning",
-        "self-improvement",
-        "skill-evolution"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "meta-skills",
-      "type": "meta"
-    },
-    {
       "name": "meta-find-skills",
       "category": "meta",
       "description": "Use when automatically discover evaluate and activate community skills when local skills dont cover user needs Includes credibility scoring and safety checks for complete self-sufficiency",
@@ -21406,41 +21018,6 @@
       "type": "meta"
     },
     {
-      "name": "meta-skill-datastore",
-      "category": "meta",
-      "description": "Use when centralized database for meta-skill operations. Stores performance metrics, feedback, patterns, and skill evolution history. Use when working with meta skill datastore.",
-      "domain": "meta",
-      "tags": [
-        "datastore",
-        "meta",
-        "meta-learning",
-        "self-improvement",
-        "skill",
-        "skill-evolution"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "meta-skills",
-      "type": "meta"
-    },
-    {
-      "name": "pattern-recognition",
-      "category": "meta",
-      "description": "Use when identify patterns in skill execution, errors, and successes. Recognize when situations match previous patterns and apply learned solutions. Use when working with pattern recognition.",
-      "domain": "meta",
-      "tags": [
-        "meta-learning",
-        "pattern",
-        "recognition",
-        "self-improvement",
-        "skill-evolution"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "meta-skills",
-      "type": "meta"
-    },
-    {
       "name": "performance-monitor",
       "category": "meta",
       "description": "Use when track and analyze skill execution performance. Measure latency, success rates, accuracy, and resource usage for continuous improvement. Use when tracking and analyze skill execution performance. measure latency, success rates,.",
@@ -21449,23 +21026,6 @@
         "meta-learning",
         "monitor",
         "performance",
-        "self-improvement",
-        "skill-evolution"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "meta-skills",
-      "type": "meta"
-    },
-    {
-      "name": "self-assessment",
-      "category": "meta",
-      "description": "Use when skills evaluate their own performance, capabilities, and limitations. Honest self-reflection drives improvement. Use when working with self assessment.",
-      "domain": "meta",
-      "tags": [
-        "assessment",
-        "meta-learning",
-        "self",
         "self-improvement",
         "skill-evolution"
       ],
@@ -23028,24 +22588,6 @@
         "research",
         "seo",
         "social-media"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "research",
-      "type": "research"
-    },
-    {
-      "name": "continuous-learning",
-      "category": "research",
-      "description": "Use when transform session insights into actionable skills with confidence-weighted scoring — captures patterns, analyzes outcomes, and integrates learnings to improve agent performance. Use when working with continuous learning.",
-      "domain": "research",
-      "tags": [
-        "ai-agent",
-        "analysis",
-        "continuous",
-        "investigation",
-        "learning",
-        "research"
       ],
       "version": "1.0.0",
       "author": "oyi77",

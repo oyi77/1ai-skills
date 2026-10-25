@@ -156,3 +156,14 @@ echo "SUCCESS: dbt model and data contract tests verified cleanly."
 - [ ] Database query plans optimized using EXPLAIN ANALYZE with targeted indexing.
 - [ ] BigQuery tables partitioned and clustered to minimize scan costs.
 - [ ] Automated schema tests (`unique`, `not_null`, `relationships`) pass with zero defects.
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| airflow-pipelines | [SKILL.md](../airflow-pipelines/SKILL.md) | Developing Apache Airflow DAGs, operators, sensors, and schedules. |
+| dagster-pipelines | [SKILL.md](../dagster-pipelines/SKILL.md) | Building Dagster software-defined assets, resources, and jobs. |
+| prefect-flows | [SKILL.md](../prefect-flows/SKILL.md) | Orchestrating Prefect flows, tasks, deployments, and work pools. |
+| temporal-workflows | [SKILL.md](../temporal-workflows/SKILL.md) | Implementing durable Temporal workflows, retries, signals, and queries. |
+| spark-processing | [SKILL.md](../spark-processing/SKILL.md) | Processing distributed data with Spark SQL, streaming, and MLlib. |
+| lakefs-versioning | [SKILL.md](../../automation/lakefs-versioning/SKILL.md) | Versioning data lakes with lakeFS branches, commits, and time travel. |

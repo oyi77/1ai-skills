@@ -389,3 +389,13 @@ Each agent outputs a structured JSON result:
 
 ## Workflow
 See the parent skill for authoritative workflow documentation.
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| code-agent | [SKILL.md](code-agent/SKILL.md) | Implementing features from specifications with tests and iterative verification. |
+| deploy-agent | [SKILL.md](deploy-agent/SKILL.md) | Shipping code through deployment pipelines with gates and rollback. |
+| planning-agent | [SKILL.md](planning-agent/SKILL.md) | Decomposing complex tasks into executable steps with risk assessment. |
+| research-agent | [SKILL.md](research-agent/SKILL.md) | Investigating topics deeply with cross-referenced sources. |
+| review-agent | [SKILL.md](review-agent/SKILL.md) | Running adversarial reviews for bugs and security vulnerabilities. |

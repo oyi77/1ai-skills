@@ -29,8 +29,9 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
   - Git Workflow (4 sub-skills) -> `development/git-workflow-mastery`
   - Test-Driven Development (3 sub-skills) -> `development/test-driven-development`
   - Browser E2E Testing (3 sub-skills) -> `development/playwright-e2e`
-- Zero File Deletion Invariant preserved across Waves 1–4: all on-disk physical `SKILL.md` files retained to guarantee link resolution.
-- Updated active registry in `SKILLS.json` from 1398 to **1292** skills across 19 categories.
+- Wave 5: consolidated 26 agent, automation, data orchestration, and self-evolution sub-skills into four canonical parent routing tables.
+- Zero File Deletion Invariant preserved across Waves 1–5: all on-disk physical `SKILL.md` files retained to guarantee link resolution.
+- Updated active registry in `SKILLS.json` from 1398 to **1266** skills across 19 categories.
 - Synchronized counts across `README.md`, `AGENTS.md`, `package.json`, `llms.txt`, and `scripts/generate-site.py` (dynamic catalog counts and canonical captured test receipt).
 - Refreshed `README.md` and `AGENTS.md` counts from the active registry, including per-category numbers.
 ### Fixed
