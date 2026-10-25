@@ -1,10 +1,10 @@
 {
-  "total_skills": 1202,
+  "total_skills": 1188,
   "category_count": 19,
   "categories": {
     "agents": 4,
     "automation": 13,
-    "content": 55,
+    "content": 45,
     "core": 38,
     "cybersecurity": 800,
     "data": 3,
@@ -14,13 +14,13 @@
     "integrations": 19,
     "marketing": 32,
     "mcp": 6,
-    "meta": 6,
+    "meta": 5,
     "mindset": 29,
     "operations": 16,
     "productivity": 8,
     "research": 23,
-    "sales": 7,
-    "trading": 14
+    "sales": 6,
+    "trading": 12
   },
   "skills": [
     {
@@ -353,67 +353,6 @@
       "type": "automation"
     },
     {
-      "name": "accessibility-audit",
-      "category": "content",
-      "description": "Use when wCAG compliance audit — semantic HTML, ARIA, keyboard navigation, color contrast, and screen reader testing. Use when working with accessibility audit.",
-      "domain": "content",
-      "tags": [
-        "accessibility",
-        "audit",
-        "compliance",
-        "content-creation",
-        "digital-content",
-        "machine-learning",
-        "media",
-        "testing"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "content-creation",
-      "type": "content"
-    },
-    {
-      "name": "anti-slop-frontend",
-      "category": "content",
-      "description": "Use when anti-slop frontend framework for AI agents. Enforces better layout, typography, motion, and spacing to counter generic AI-generated boilerplate UIs. Use when building frontend, countering generic AI UIs, need distinctive visual design, image-to-code pipeline.",
-      "domain": "content",
-      "tags": [
-        "frontend",
-        "design",
-        "ui",
-        "anti-slop",
-        "taste",
-        "typography",
-        "motion",
-        "image-to-code"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "content-creation",
-      "type": "content"
-    },
-    {
-      "name": "banner-design",
-      "category": "content",
-      "description": "Banner design for social media, ads, web, print. 22 art direction styles, exact platform sizes, safe zones, export workflow. Use when creating banners, covers, headers for Facebook, Twitter, LinkedIn, YouTube, Instagram, Google Ads, website hero.",
-      "domain": "content",
-      "tags": [
-        "banner",
-        "design",
-        "social-media",
-        "ads",
-        "cover",
-        "header",
-        "export",
-        "html-css",
-        "screenshot"
-      ],
-      "version": "1.0.0",
-      "author": "claudekit",
-      "subdomain": "banner",
-      "type": "content"
-    },
-    {
       "name": "brand",
       "category": "content",
       "description": "Use when brand voice, visual identity, messaging frameworks, asset management, brand consistency. Activate for branded content, tone of voice, marketing assets, brand compliance, style guides.",
@@ -631,27 +570,6 @@
       "version": "2.0.0",
       "author": "oyi77",
       "subdomain": "content-creation",
-      "type": "content"
-    },
-    {
-      "name": "emil-design-skills",
-      "category": "content",
-      "description": "Use when collection of 8 design engineering skills by Emil Kowalski (Vercel, Linear) — animation standards, UI craft, Apple design principles, library selection, and prototyping. Based on years of production experience. Use when the user asks about UI polish, animation decisions, or wants to audit/improve interface motion.",
-      "domain": "content",
-      "tags": [
-        "design",
-        "animation",
-        "ui",
-        "motion",
-        "css",
-        "frontend",
-        "prototyping",
-        "apple-design",
-        "craft"
-      ],
-      "version": "1.0.0",
-      "author": "mahipal",
-      "subdomain": "ui-design",
       "type": "content"
     },
     {
@@ -902,23 +820,6 @@
       "type": "marketing"
     },
     {
-      "name": "minimalist-design",
-      "category": "content",
-      "description": "Use when dieter Rams' approach to timeless product design - less but better. Use when working with minimalist design.",
-      "domain": "content",
-      "tags": [
-        "content-creation",
-        "design",
-        "digital-content",
-        "media",
-        "minimalist"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "content-creation",
-      "type": "content"
-    },
-    {
       "name": "monetization-strategist",
       "category": "content",
       "description": "Use when turn content into revenue — newsletter businesses, YouTube automation, affiliate sites, digital product creation, funnel design, audience building. Use when building content-based revenue streams.",
@@ -1046,44 +947,6 @@
       "type": "content"
     },
     {
-      "name": "responsive-design",
-      "category": "content",
-      "description": "Use when mobile-first responsive design — breakpoints, fluid typography, container queries, and touch optimization. Use when working with responsive design.",
-      "domain": "content",
-      "tags": [
-        "content-creation",
-        "design",
-        "digital-content",
-        "media",
-        "responsive"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "content-creation",
-      "type": "content"
-    },
-    {
-      "name": "role-ui-ux-designer",
-      "category": "content",
-      "description": "Use when orchestrating UI/UX design systems, anti-AI-slop frontend styling, tactile micro-interactions, responsive design tokens, accessibility standards, and high-fidelity interface engineering.",
-      "domain": "content",
-      "tags": [
-        "ui",
-        "ux",
-        "design-systems",
-        "anti-slop",
-        "frontend",
-        "accessibility",
-        "typography",
-        "design-tokens",
-        "micro-interactions"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "ui-ux-design",
-      "type": "content"
-    },
-    {
       "name": "sales-director",
       "category": "content",
       "description": "The Chief Revenue Officer (CRO) — manages ALL sales activities across 1ai-affiliate and 1ai-career. Delegates to lead generation, pipeline management, closing, and customer success. Has memory via 1ai-hub brain, follows 1ai-rules, and coordinates with Marketing Director for leads and Content Director for sales enablement. Use when the user says 'sales strategy', 'generate leads', 'close deals', 'pipeline', or needs any sales work.",
@@ -1124,58 +987,6 @@
       "version": "1.0.0",
       "author": "claudekit",
       "subdomain": "slides",
-      "type": "content"
-    },
-    {
-      "name": "storybook-ui",
-      "category": "content",
-      "description": "Use when storybook for UI component development — stories, addons, controls, a11y testing, visual regression. Use when working with storybook ui.",
-      "domain": "content",
-      "tags": [
-        "content-creation",
-        "digital-content",
-        "media",
-        "storybook",
-        "testing"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "content-creation",
-      "type": "content"
-    },
-    {
-      "name": "tailwind-advanced",
-      "category": "content",
-      "description": "Use when advanced Tailwind CSS — custom plugins, JIT, container queries, animations, dark mode, design systems. Use when working with tailwind advanced.",
-      "domain": "content",
-      "tags": [
-        "advanced",
-        "content-creation",
-        "digital-content",
-        "media",
-        "tailwind"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "content-creation",
-      "type": "content"
-    },
-    {
-      "name": "theme-factory",
-      "category": "content",
-      "description": "Use when generating and applying professional color themes, typography systems, and design tokens for applications. Create consistent visual identities across platforms.",
-      "domain": "content",
-      "tags": [
-        "design",
-        "themes",
-        "colors",
-        "typography",
-        "design-tokens",
-        "branding"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "content-creation",
       "type": "content"
     },
     {
@@ -20507,23 +20318,6 @@
       "type": "meta"
     },
     {
-      "name": "performance-monitor",
-      "category": "meta",
-      "description": "Use when track and analyze skill execution performance. Measure latency, success rates, accuracy, and resource usage for continuous improvement. Use when tracking and analyze skill execution performance. measure latency, success rates,.",
-      "domain": "meta",
-      "tags": [
-        "meta-learning",
-        "monitor",
-        "performance",
-        "self-improvement",
-        "skill-evolution"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "meta-skills",
-      "type": "meta"
-    },
-    {
       "name": "skill-evolution-engine",
       "category": "meta",
       "description": "Use when self-improving skill system that auto-extracts patterns from sessions into reusable skills with confidence scoring, skill versioning, import/export, and continuous improvement loops. Use. Use when working with skill evolution engine.",
@@ -21968,24 +21762,6 @@
       "type": "sales"
     },
     {
-      "name": "high-ticket-closing",
-      "category": "sales",
-      "description": "Use when jordan Belfort's Straight Line System - closing high-value deals through persuasion and psychology. Use when working with high ticket closing.",
-      "domain": "sales",
-      "tags": [
-        "business-development",
-        "closing",
-        "high",
-        "revenue",
-        "sales",
-        "ticket"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "sales",
-      "type": "sales"
-    },
-    {
       "name": "sales-pipeline",
       "category": "sales",
       "description": "Use when aI-powered sales pipeline inside 1ai-social. Track leads, qualify with BANT, generate proposals, schedule follow-ups, and get daily sales analytics. Use when managing B2B sales pipelines.",
@@ -22025,24 +21801,6 @@
       "type": "sales"
     },
     {
-      "name": "alphaear-strategy",
-      "category": "trading",
-      "description": "Use when score trading setups using AlphaEar multi-factor analysis (momentum, volume, sentiment). Use when evaluating entry/exit signals.",
-      "domain": "trading",
-      "tags": [
-        "algorithms",
-        "alphaear",
-        "markets",
-        "money",
-        "strategy",
-        "trading"
-      ],
-      "version": "2.0.0",
-      "author": "oyi77",
-      "subdomain": "trading",
-      "type": "trading"
-    },
-    {
       "name": "black-edge",
       "category": "trading",
       "description": "Use when apply institutional trading edge using order flow analysis, market microstructure, and dark pool signals. Use when working with black edge.",
@@ -22056,24 +21814,6 @@
         "money"
       ],
       "version": "2.0.0",
-      "author": "oyi77",
-      "subdomain": "trading",
-      "type": "trading"
-    },
-    {
-      "name": "crypto-trading-bot",
-      "category": "trading",
-      "description": "Use when 加密貨幣交易機器人開發 - 幫你整自動交易Bot，支持Pine Script、Python、CCXT API對接。適用於：(1)整TradingView信號Bot (2)CEX/DEX API自動化 (3)套利機器人 (4)止盈止損策略. Use when working with crypto trading bot.",
-      "domain": "trading",
-      "tags": [
-        "algorithms",
-        "api",
-        "bot",
-        "crypto",
-        "markets",
-        "trading"
-      ],
-      "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "trading",
       "type": "trading"

@@ -38,8 +38,10 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 - Four no-code workflow links were already unregistered and required no registry count change.
 - Wave 10: demoted 6 sub-skills from the active registry while retaining every physical `SKILL.md`: `content/content-director` now references `ai-content-agency-v2` and `ai-podcast`; `marketing/email-marketing` references `ai-newsletter`; `content/sales-director` references `ai-lead-generation`; `marketing/affiliate-marketing` references `affiliate-manager`; and `marketing/influencer-outreach` references `influencer-scouting`.
 - Wave 10 registry impact: content -2, marketing -2, sales -2; active skills **1208 -> 1202**, physical catalog files unchanged.
-- Zero File Deletion Invariant preserved across Waves 1–10: all on-disk physical `SKILL.md` files retained to guarantee link resolution.
-- Updated active registry in `SKILLS.json` from 1398 to **1202** skills across 19 categories.
+- Wave 11: demoted 14 UI/design, skill-performance, sales-closing, and trading sub-skills from the active registry while retaining every physical `SKILL.md`; 11 canonical parent playbooks now route to them through `## Sub-Skills & Specialized Playbooks` links.
+- Wave 11 registry impact: content -10, meta -1, sales -1, trading -2; active skills **1202 -> 1188**, physical catalog files unchanged. Deferred `canvas-design`, `black-edge`, `lead-magnets`, and `create-skills` remain active.
+- Zero File Deletion Invariant preserved across Waves 1–11: all on-disk physical `SKILL.md` files retained to guarantee link resolution.
+- Updated active registry in `SKILLS.json` from 1398 to **1188** skills across 19 categories.
 - Synchronized counts across `README.md`, `AGENTS.md`, `package.json`, `llms.txt`, and `scripts/generate-site.py` (dynamic catalog counts and canonical captured test receipt).
 - Refreshed `README.md` and `AGENTS.md` counts from the active registry, including per-category numbers.
 ### Fixed

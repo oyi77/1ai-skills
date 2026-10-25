@@ -260,3 +260,11 @@ UI/UX Pro Max is a searchable design-intelligence database: 79 styles (50 active
 | "Accessibility is one setting" | It is outcome-specific — error summaries, focus, contrast, and keyboard flow each need their own query |
 | "I'll keep the generic result when search is empty" | Fabricating guidance beats an honest gap only in the short term; retry once, then state what is unverified |
 
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `role-ui-ux-designer` | Orchestrating end-to-end UI/UX design systems, responsive tokens, accessibility, and interface engineering | [SKILL.md](../role-ui-ux-designer/SKILL.md) |
+| `accessibility-audit` | Auditing WCAG compliance, semantic HTML, ARIA, keyboard navigation, contrast, and screen readers | [SKILL.md](../accessibility-audit/SKILL.md) |
+| `responsive-design` | Implementing mobile-first breakpoints, fluid typography, container queries, and touch optimization | [SKILL.md](../responsive-design/SKILL.md) |

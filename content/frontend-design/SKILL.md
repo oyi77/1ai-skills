@@ -170,3 +170,9 @@ const Button = ({ variant = 'primary', size = 'md', children, ...props }) => {
 ## Video / Motion Graphics
 
 Typography hierarchy, spacing rhythm, and visual hierarchy apply directly to [Remotion](../video/remotion/SKILL.md) video frames. Key difference: video has fixed dimensions (1920×1080), no responsive design. Text must be larger — main headline ≥84px, supporting ≥44px at 1080p.
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `storybook-ui` | Developing, testing, and documenting isolated UI components with stories, controls, accessibility, and visual regression | [SKILL.md](../storybook-ui/SKILL.md) |

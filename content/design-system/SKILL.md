@@ -300,3 +300,5 @@ design-system turns brand primitives into a three-layer token architecture — p
 | `design-tokens` | Merancang token color, typography, spacing, dark mode, dan theme architecture | [SKILL.md](../design-tokens/SKILL.md) |
 | `frontend-ui-design` | Merancang UI production-grade dengan React, Vue, atau vanilla HTML/CSS | [SKILL.md](../frontend-ui-design/SKILL.md) |
 | `ui-critique` | Review visual hierarchy, consistency, accessibility, dan actionable UI feedback | [SKILL.md](../ui-critique/SKILL.md) |
+| `theme-factory` | Generating color themes, typography systems, and application design tokens | [SKILL.md](../theme-factory/SKILL.md) |
+| `minimalist-design` | Applying Dieter Rams minimalist principles and reducing unnecessary design elements | [SKILL.md](../minimalist-design/SKILL.md) |

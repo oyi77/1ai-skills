@@ -289,3 +289,9 @@ def verify_craft_floor(css_content: str) -> list[str]:
 | "Cards inside cards help group related settings." | Nested cards create claustrophobic visual clutter. Use typography scale, hairline dividers, and intentional whitespace for grouping. |
 | "We can add focus rings and keyboard states later." | Accessible focus states (`:focus-visible`) are foundational. Without them, keyboard navigation is completely broken. |
 | "Emoji make the buttons feel friendly and modern." | Emojis break enterprise brand integrity and render inconsistently across OS platforms. Always use crisp SVG vector icons. |
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `emil-design-skills` | Refining interface motion, UI craft, animation standards, and prototyping decisions | [SKILL.md](../emil-design-skills/SKILL.md) |

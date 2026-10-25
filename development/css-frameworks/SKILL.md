@@ -412,3 +412,9 @@ h1 {
 | "Tests slow me down" | Bugs slow you down 10x more. Tests are speed, not overhead. |
 | "I will refactor later" | Technical debt compounds. Refactor as you go. |
 | "It works on my machine" | If it is not in CI, it does not work. Ship proof, not claims. |
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `tailwind-advanced` | Implementing advanced Tailwind plugins, container queries, animations, dark mode, and design-system integration | [SKILL.md](../../content/tailwind-advanced/SKILL.md) |
