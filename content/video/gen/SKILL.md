@@ -26,7 +26,7 @@ category: content
 
 Generate videos from text prompts or images using diffusion-based models. This is the umbrella skill for all AI video generation providers.
 
-Companion skills: [video-editor](../video-editor/SKILL.md) · [remotion](../remotion/SKILL.md) · [faceless-youtube](../faceless-youtube/SKILL.md) · [auto-clipper](../auto-clipper/SKILL.md) · [b-roll-finder](../b-roll-finder/SKILL.md)
+Companion skills: [video-editor](../editor/SKILL.md) · [remotion](../remotion/SKILL.md) · [faceless-youtube](../faceless-youtube/SKILL.md) · [auto-clipper](../auto-clipper/SKILL.md) · [b-roll-finder](../b-roll-finder/SKILL.md)
 
 ## When to Use
 
@@ -46,7 +46,7 @@ Companion skills: [video-editor](../video-editor/SKILL.md) · [remotion](../remo
 
 **When NOT to use:**
 - For programmatic/data-driven video (use [remotion](../remotion/SKILL.md))
-- For post-production editing of existing footage (use [video-editor](../video-editor/SKILL.md))
+- For post-production editing of existing footage (use [video-editor](../editor/SKILL.md))
 - For building YouTube channels at scale (use [faceless-youtube](../faceless-youtube/SKILL.md))
 - When you need frame-precise control (use [remotion](../remotion/SKILL.md))
 
@@ -298,7 +298,7 @@ while True:
 | "Vague prompts are fine" | "A car" gives garbage. "Red sports car on coastal highway at sunset, aerial tracking, cinematic 4K" gives production-ready output. |
 | "One generation is enough" | Generate 3-5 variations, pick the best. First generation is rarely the best. |
 | "Skip negative prompts" | Negative prompts prevent watermarks, blur, and artifacts. Always include them. |
-| "Post-processing is optional" | AI video often needs upscaling, color grading, and audio mixing. Budget time for [video-editor](../video-editor/SKILL.md). |
+| "Post-processing is optional" | AI video often needs upscaling, color grading, and audio mixing. Budget time for [video-editor](../editor/SKILL.md). |
 
 ## Process
 

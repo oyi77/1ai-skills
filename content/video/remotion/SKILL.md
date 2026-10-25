@@ -25,7 +25,7 @@ category: content
 # Remotion — Professional Programmatic Video
 
 Canonical source: [remotion-dev/skills](https://github.com/remotion-dev/skills) (401K+ installs on skills.sh).
-Companion skills: [video-editor](../video-editor/SKILL.md) · [video-gen](../video-gen/SKILL.md) · [faceless-youtube](../faceless-youtube/SKILL.md) · [auto-clipper](../auto-clipper/SKILL.md) · [b-roll-finder](../b-roll-finder/SKILL.md) · Frontend: [tailwind-advanced](../../tailwind-advanced/SKILL.md) · [frontend-design](../../frontend-design/SKILL.md) · [shadcn-ui](../../shadcn-ui/SKILL.md) · [design-tokens](../../design-tokens/SKILL.md)
+Companion skills: [video-editor](../editor/SKILL.md) · [video-gen](../gen/SKILL.md) · [faceless-youtube](../faceless-youtube/SKILL.md) · [auto-clipper](../auto-clipper/SKILL.md) · [b-roll-finder](../b-roll-finder/SKILL.md) · Frontend: [tailwind-advanced](../../tailwind-advanced/SKILL.md) · [frontend-design](../../frontend-design/SKILL.md) · [shadcn-ui](../../shadcn-ui/SKILL.md) · [design-tokens](../../design-tokens/SKILL.md)
 
 ## When to Use
 

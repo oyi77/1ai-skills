@@ -647,7 +647,7 @@ After completing this skill, confirm:
 ## Related Skills
 
 - [larry-playbook](../../larry-playbook/SKILL.md) - Viral content
-- [video-gen](../video-gen/SKILL.md) - AI video generation
+- [video-gen](../gen/SKILL.md) - AI video generation
 - [affiliate-marketing](../../../marketing/affiliate-marketing/SKILL.md) - Monetization
 - [seo-auditor](../../../marketing/seo-auditor/SKILL.md) - YouTube SEO
 

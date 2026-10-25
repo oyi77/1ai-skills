@@ -23,7 +23,7 @@ category: content
 
 # Video Editor — Professional Post-Production
 
-Companion skills: [remotion](../remotion/SKILL.md) · [video-gen](../video-gen/SKILL.md) · [faceless-youtube](../faceless-youtube/SKILL.md)
+Companion skills: [remotion](../remotion/SKILL.md) · [video-gen](../gen/SKILL.md) · [faceless-youtube](../faceless-youtube/SKILL.md)
 
 ## When to Use
 
@@ -44,7 +44,7 @@ Companion skills: [remotion](../remotion/SKILL.md) · [video-gen](../video-gen/S
 
 **When NOT to use:**
 - When creating video from scratch with React (use [remotion](../remotion/SKILL.md))
-- When generating video from AI models (use [video-gen](../video-gen/SKILL.md))
+- When generating video from AI models (use [video-gen](../gen/SKILL.md))
 - When the task requires real-time editing (use a NLE like DaVinci Resolve)
 
 ---
