@@ -127,3 +127,19 @@ gate-cli news +BTC --limit 5 --format json | jq '.[].title'
 - [ ] Data collected with `--format json` (machine-parseable).
 - [ ] Output follows the Synthesis template (Snapshot / Narrative / Risks / Sources).
 - [ ] If news was used, both `info` and `news` calls are cited in Sources.
+
+## Sub-Skills & Specialized Playbooks
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `gate-info-coinanalysis` | Use when deep single-coin crypto research — price, supply, market structure, and on-chain si... | [SKILL.md](../gate-info-coinanalysis/SKILL.md) |
+| `gate-info-coincompare` | Use when compare multiple crypto assets side-by-side — market structure, momentum, and suppl... | [SKILL.md](../gate-info-coincompare/SKILL.md) |
+| `gate-info-defianalysis` | Use when analyze a DeFi protocol — TVL, chains, yield pools, and audit/risk posture via publ... | [SKILL.md](../gate-info-defianalysis/SKILL.md) |
+| `gate-info-marketoverview` | Use when produce a crypto market-wide snapshot — total cap, BTC dominance, top movers, and t... | [SKILL.md](../gate-info-marketoverview/SKILL.md) |
+| `gate-info-risk` | Use when crypto risk assessment on Gate.io — single-coin risk scoring, comparative risk chec... | [SKILL.md](../gate-info-risk/SKILL.md) |
+| `gate-info-riskcheck` | Use when risk-score a token — contract verification, honeypot heuristics, buy/sell tax, and ... | [SKILL.md](../gate-info-riskcheck/SKILL.md) |
+| `gate-info-tokenonchain` | Use when investigate a token's on-chain footprint — supply, holders, transfers, and contract... | [SKILL.md](../gate-info-tokenonchain/SKILL.md) |
+| `gate-info-trendanalysis` | Use when analyze crypto price trends and momentum — multi-window performance, trending asset... | [SKILL.md](../gate-info-trendanalysis/SKILL.md) |
+| `gate-info-web3` | Use when Web3 / on-chain + DeFi analysis on Gate.io — token contract checks, DeFi protocol r... | [SKILL.md](../gate-info-web3/SKILL.md) |
+| `gate-news-briefing` | Use when produce a crypto news + sentiment briefing — latest events, trending stories, and s... | [SKILL.md](../gate-news-briefing/SKILL.md) |
+| `gate-news-intel` | Use when crypto news / events / UGC intelligence on Gate.io — latest news, event calendars, ... | [SKILL.md](../gate-news-intel/SKILL.md) |
+| `gate-exchange-newcoin` | Use when you need new-listing due diligence and event radar — listings calendar, fundamental... | [SKILL.md](../gate-exchange-newcoin/SKILL.md) |

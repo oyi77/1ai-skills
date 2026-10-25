@@ -318,3 +318,12 @@ Refer to the skill overview for detailed usage instructions.
 1. Analyze the task requirements
 2. Apply domain expertise
 3. Verify output quality
+
+## Sub-Skills & Specialized Playbooks
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `oh-my-opencode-agents` | Use when deep dive into each oh-my-opencode agent - Sisyphus, Hephaestus, Oracle, Librarian,... | [SKILL.md](oh-my-opencode-agents/SKILL.md) |
+| `oh-my-opencode-configuration` | Use when comprehensive configuration guide for oh-my-opencode including agent settings, MCP ... | [SKILL.md](oh-my-opencode-configuration/SKILL.md) |
+| `oh-my-opencode-features` | Use when complete reference of all oh-my-opencode features including agents, tools, MCPs, ho... | [SKILL.md](oh-my-opencode-features/SKILL.md) |
+| `oh-my-opencode-installation` | Use when smart installation and configuration for OpenCode with oh-my-opencode harness - det... | [SKILL.md](oh-my-opencode-installation/SKILL.md) |
+| `oh-my-opencode-usage` | Use when daily usage patterns for oh-my-opencode including workflow commands, session manage... | [SKILL.md](oh-my-opencode-usage/SKILL.md) |

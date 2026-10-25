@@ -58,48 +58,45 @@ text = re.sub(
     text,
 )
 
-# Category table — rebuild from cats dict
-cat_table_start = text.find('## 1337 Skills Across') 
-if cat_table_start == -1:
-    cat_table_start = text.find(f'## {total} Skills Across')
-if cat_table_start == -1:
-    cat_table_start = text.find('| Category | Skills | What It Covers |')
-if cat_table_start >= 0:
-    table_end = text.find('\n\n', cat_table_start + 10)
-    if table_end > 0:
-        # Find the actual table content — skip header and rebuild
-        table_lines = text[cat_table_start:table_end].split('\n')
-        header_lines = [l for l in table_lines if '|---' in l or '| Category' in l or '| ---' in l]
-        
-        # Build new table
-        new_table = f'## {total} Skills Across {len(cats)} Categories\n\n'
-        new_table += '| Category | Skills | What It Covers |\n'
-        new_table += '|---|---:|---|\n'
-        
-        # Map categories to descriptions (keep from original)
-        cat_descs = {}
-        for line in table_lines:
-            if line.startswith('| ') and line.count('|') >= 3:
-                parts = [p.strip() for p in line.split('|')]
-                if len(parts) >= 4 and parts[1] not in ('', 'Category'):
-                    name = parts[1].lower()
-                    desc = parts[3]
-                    cat_descs[name] = desc
-        
-        order = ['cybersecurity','development','content','mindset','marketing','core',
-                 'integrations','devops','automation','research','trading',
-                 'operations','agents','mcp','meta','financial','sales','data','productivity']
-        
-        for name in order:
-            count = cats.get(name, 0)
-            desc = cat_descs.get(name, '')
-            display = name.title() if name != 'mcp' else 'MCP'
-            if name == 'integrations': display = 'Integrations'
-            elif name == 'devops': display = 'DevOps'
-            new_table += f'| {display} | {count} | {desc} |\n'
-        
-        text = text[:cat_table_start] + new_table + text[table_end:]
+DEFAULT_CAT_DESCS = {
+    "cybersecurity": "Threat hunting, forensics, pen testing, SOC, incident response",
+    "development": "TDD, debugging, code review, PRD, engineering workflows",
+    "content": "Video, audio, design, writing, docs",
+    "mindset": "Negotiation, leadership, critical thinking",
+    "marketing": "SEO, viral content, email, ads, growth",
+    "core": "AI infrastructure, memory, self-improvement, model routing",
+    "integrations": "GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase",
+    "devops": "Docker, Kubernetes, CI/CD, cloud ops, GitOps",
+    "automation": "Bots, workflows, scrapers, process automation",
+    "research": "Deep research, market analysis, competitive intelligence",
+    "trading": "Crypto, DeFi, Polymarket, trading strategies",
+    "operations": "Business ops, governance, HR, legal, project management",
+    "agents": "AI agent orchestration, coding, research, autonomous execution",
+    "mcp": "Model Context Protocol servers and tool integrations",
+    "meta": "Self-evolving meta-skills, performance monitoring",
+    "financial": "Finance analysis, valuation, tax, portfolio management",
+    "sales": "Lead gen, CRM, outreach, sales automation",
+    "data": "Data pipelines, analysis, visualization, ETL",
+    "productivity": "Calendars, email, meetings, workspace management",
+}
 
+order = ['cybersecurity','development','content','mindset','marketing','core',
+         'integrations','devops','automation','research','trading',
+         'operations','agents','mcp','meta','financial','sales','data','productivity']
+
+cat_match = re.search(r'## \d+ Skills Across \d+ Categories[\s\S]*?(?=\n---\n)', text)
+if cat_match:
+    new_table = f'## {total} Skills Across {len(cats)} Categories\n\n'
+    new_table += '| Category | Skills | What It Covers |\n'
+    new_table += '|---|---:|---|\n'
+    for name in order:
+        count = cats.get(name, 0)
+        desc = DEFAULT_CAT_DESCS.get(name, '')
+        display = name.title() if name != 'mcp' else 'MCP'
+        if name == 'integrations': display = 'Integrations'
+        elif name == 'devops': display = 'DevOps'
+        new_table += f'| {display} | {count} | {desc} |\n'
+    text = text[:cat_match.start()] + new_table + text[cat_match.end():]
 with open(README, 'w') as f:
     f.write(text)
 print(f"  README.md — updated to {total}")

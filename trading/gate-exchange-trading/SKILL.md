@@ -90,3 +90,13 @@ gate-cli cex spot order create --symbol BTC_USDT --side buy --amount 0.001 --pri
 5. **Request confirmation** - get explicit user go-signal.
 6. **Execute trade** - invoke api/cli endpoint.
 7. **Post-execution read** - verify fills and status.
+
+## Sub-Skills & Specialized Playbooks
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `gate-exchange-assetswap` | Use when designing portfolio rebalancing strategies — conservative / conviction / market-cap... | [SKILL.md](../gate-exchange-assetswap/SKILL.md) |
+| `gate-exchange-autoinvest` | Use when designing dollar-cost-averaging (auto-invest) plans — investment currency, target a... | [SKILL.md](../gate-exchange-autoinvest/SKILL.md) |
+| `gate-exchange-bot` | Use when designing grid and martingale trading-bot strategies — parameter discipline, range/... | [SKILL.md](../gate-exchange-bot/SKILL.md) |
+| `gate-exchange-dual` | Use when designing dual investment (sell-high / buy-low) yield strategies — strike selection... | [SKILL.md](../gate-exchange-dual/SKILL.md) |
+| `gate-exchange-marketanalysis` | Use when you need read-only crypto market structure and sentiment analysis for any spot/perp... | [SKILL.md](../gate-exchange-marketanalysis/SKILL.md) |
+| `gate-dex-wallet` | Use when managing Gate DEX wallets or signing EVM/GateChain transactions. Triggers on addres... | [SKILL.md](../gate-dex-wallet/SKILL.md) |
