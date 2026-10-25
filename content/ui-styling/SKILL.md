@@ -374,3 +374,18 @@ ui-styling builds accessible React UIs from three layers: shadcn/ui components (
 | "One component style fits every page" | Composition and spacing differ per context; reuse primitives, not pixel-identical markup |
 | "I'll add the component later when it's needed" | Adding shadcn components mid-build creates dependency churn; install at the start |
 
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
+| :--- | :--- | :--- |
+| `ant-design` | Enterprise React UI, forms, tables, charts, theming, dan ProComponents | [SKILL.md](../ant-design/SKILL.md) |
+| `chakra-ui` | Komponen React modular dengan theming, responsive styles, dan color mode | [SKILL.md](../chakra-ui/SKILL.md) |
+| `daisyui-components` | Komponen Tailwind tanpa JavaScript dengan tema dan dark mode | [SKILL.md](../daisyui-components/SKILL.md) |
+| `material-ui` | Material Design React, styled engine, Data Grid, date pickers, dan icons | [SKILL.md](../material-ui/SKILL.md) |
+| `pandacss-styling` | Panda CSS zero-runtime tokens, patterns, recipes, conditions, dan JSX styles | [SKILL.md](../pandacss-styling/SKILL.md) |
+| `radix-primitives` | Headless React primitives yang accessible untuk dialog, dropdown, dan tooltip | [SKILL.md](../radix-primitives/SKILL.md) |
+| `shadcn-ui` | Copy-paste React components berbasis Tailwind CSS dan Radix primitives | [SKILL.md](../shadcn-ui/SKILL.md) |
+| `styled-components` | CSS-in-JS tagged templates, theming, dynamic props, animations, dan SSR | [SKILL.md](../styled-components/SKILL.md) |
+| `vanilla-extract` | Zero-runtime type-safe CSS-in-JS dengan Sprinkles, Recipes, dan themes | [SKILL.md](../vanilla-extract/SKILL.md) |
+| `postcss-plugins` | Autoprefixer, cssnano, nesting, custom plugins, dan preset configuration | [SKILL.md](../postcss-plugins/SKILL.md) |

@@ -14,6 +14,15 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 - Updated active registry in `SKILLS.json` from 1398 to **1354** skills across 19 categories.
 - Synchronized counts across `README.md`, `AGENTS.md`, `package.json`, `llms.txt`, and `generate-site.py`.
 
+## [Unreleased] (Wave 2 Consolidation)
+### Changed
+- Consolidated 19 sub-skills into canonical parent routing tables:
+  - Core Video Production (6 sub-skills) -> `content/video-director`
+  - UI Component Libraries (10 sub-skills) -> `content/ui-styling`
+  - Design Systems & Tokens (3 sub-skills) -> `content/design-system`
+- Zero File Deletion Invariant preserved: all sub-skill `SKILL.md` files remain on disk and are linked from their canonical parents.
+- Updated active registry in `SKILLS.json` from 1354 to **1335** skills; `content` category from 77 to **58**.
+
 ## [Unreleased] (fixup)
 ### Fixed
 - Repaired 19 SKILL.md files with unbalanced (odd-count) code fences that swallowed
