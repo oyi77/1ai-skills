@@ -1,10 +1,10 @@
 # 1ai-skills
 
-**Your AI agent is lazy. These 1224 skills fix that.**
+**Your AI agent is lazy. These 1215 skills fix that.**
 
 AI agents skip tests, ignore security, write placeholder code, and cut corners whenever they can. 1ai-skills forces them to follow real workflows with anti-rationalization tables, code examples, and verification checklists — across every domain.
 
-[![Skills](https://img.shields.io/badge/Skills-1224-blue?style=flat-square)](https://github.com/oyi77/1ai-skills)
+[![Skills](https://img.shields.io/badge/Skills-1215-blue?style=flat-square)](https://github.com/oyi77/1ai-skills)
 [![Tested](https://img.shields.io/badge/Tests-100%25%20Pass-brightgreen?style=flat-square)](https://github.com/oyi77/1ai-skills/blob/main/scripts/test-skills.py)
 [![Warnings](https://img.shields.io/badge/Warnings-0-brightgreen?style=flat-square)](https://github.com/oyi77/1ai-skills/blob/main/scripts/test-skills.py)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](https://github.com/oyi77/1ai-skills/blob/main/LICENSE)
@@ -65,7 +65,7 @@ git clone https://github.com/oyi77/1ai-skills.git
 
 ---
 
-## 1224 Skills Across 19 Categories
+## 1215 Skills Across 19 Categories
 
 | Category | Skills | What It Covers |
 |---|---:|---|
@@ -77,12 +77,12 @@ git clone https://github.com/oyi77/1ai-skills.git
 | Core | 39 | AI infrastructure, memory, self-improvement, model routing |
 | Integrations | 19 | GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase |
 | DevOps | 25 | Docker, Kubernetes, CI/CD, cloud ops, GitOps |
-| Automation | 14 | Bots, workflows, scrapers, process automation |
+| Automation | 13 | Bots, workflows, scrapers, process automation |
 | Research | 24 | Deep research, market analysis, competitive intelligence |
 | Trading | 14 | Crypto, DeFi, Polymarket, trading strategies |
 | Operations | 16 | Business ops, governance, HR, legal, project management |
-| Agents | 9 | AI agent orchestration, coding, research, autonomous execution |
-| MCP | 14 | Model Context Protocol servers and tool integrations |
+| Agents | 4 | AI agent orchestration, coding, research, autonomous execution |
+| MCP | 11 | Model Context Protocol servers and tool integrations |
 | Meta | 6 | Self-evolving meta-skills, performance monitoring |
 | Financial | 11 | Finance analysis, valuation, tax, portfolio management |
 | Sales | 9 | Lead gen, CRM, outreach, sales automation |
@@ -95,7 +95,7 @@ git clone https://github.com/oyi77/1ai-skills.git
 
 | | Other repos | 1ai-skills |
 |---|---|---|
-| **Skills** | 24-100 curated | **1224 tested** |
+| **Skills** | 24-100 curated | **1215 tested** |
 | **Anti-rationalization** | Some | **Every skill** |
 | **Code examples** | Some | **Every skill** |
 | **Test suite** | None | **8-dimension, 100% pass** |
@@ -137,7 +137,7 @@ python3 scripts/test-skills.py --skill NAME  # Single skill
 7. SDK availability (referenced imports are installable)
 8. Workflow completeness (has workflow section)
 
-**Result: 1224/1224 PASS · 0 warnings · 0 failures**
+**Result: 1215/1215 PASS · 0 warnings · 0 failures**
 
 ---
 

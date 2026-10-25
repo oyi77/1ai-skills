@@ -385,3 +385,13 @@ echo "Report written to $REPORT"
 
 ## Workflow
 See the parent skill for authoritative workflow documentation.
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| linter-agent | [SKILL.md](linter-agent/SKILL.md) | Detecting and fixing code style violations while enforcing project conventions and consistent formatting. |
+| perf-agent | [SKILL.md](perf-agent/SKILL.md) | Profiling actual bottlenecks before optimizing and verifying improvements with benchmarks. |
+| refactor-agent | [SKILL.md](refactor-agent/SKILL.md) | Restructuring code for readability, maintainability, and extensibility without changing external behavior. |
+| security-agent | [SKILL.md](security-agent/SKILL.md) | Auditing code for vulnerabilities before they reach production. |
+| test-agent | [SKILL.md](test-agent/SKILL.md) | Writing comprehensive test suites for happy paths, errors, edge cases, and integration points. |
