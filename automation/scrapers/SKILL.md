@@ -614,3 +614,4 @@ See the parent skill for authoritative workflow documentation.
 |---|---|---|
 | agent-reach | [SKILL.md](../../mcp/servers/agent-reach/SKILL.md) | Reading and searching social platforms, repositories, RSS feeds, and web pages for real-time research or trend monitoring. |
 | agent-reach-channels | [SKILL.md](agent-reach-channels/SKILL.md) | Extracting e-commerce and messaging channels from Shopee, TikTok Shop, and WeChat. |
+| social-intelligence | [SKILL.md](../../research/social-intelligence/SKILL.md) | Researching cross-platform social trends, sentiment, competitive intelligence, and user insights via Agent Reach. |

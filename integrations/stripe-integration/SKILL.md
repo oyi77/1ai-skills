@@ -97,3 +97,9 @@ app.post('/webhook', express.raw({type: 'application/json'}), (req, res) => {
 - [ ] Webhooks verify signature correctly
 - [ ] Failed payments handled gracefully
 
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| stripe-mcp | [SKILL.md](../../mcp/servers/stripe-mcp/SKILL.md) | Processing Stripe payments, managing subscriptions, and handling billing via Model Context Protocol. |

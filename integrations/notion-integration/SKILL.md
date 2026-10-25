@@ -529,3 +529,9 @@ Use this skill when working with notion.
 
 ## Workflow
 See the parent skill for authoritative workflow documentation.
+
+## Sub-Skills & Specialized Playbooks
+
+| Sub-skill | File | Use when |
+|---|---|---|
+| notion-mcp | [SKILL.md](../../mcp/servers/notion-mcp/SKILL.md) | Querying Notion pages, managing databases, and automating workflows via Model Context Protocol. |

@@ -34,8 +34,10 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 - Wave 7: consolidated 24 mindset framework sub-skills into eight canonical parent routing tables: `mindset/ponytail`, `mindset/decision-frameworks`, `mindset/critical-thinking`, `mindset/leadership-essentials`, `mindset/difficult-conversations`, `mindset/storytelling-frameworks`, `mindset/unit-economics`, and `mindset/business-model-canvas`.
 - Wave 8: consolidated 9 sub-skills into three canonical parent routing tables: `agents/coding` (5 fixed coding-role skills), `automation/scrapers` (2 Agent Reach skills), and `mcp/clients` (2 generic MCP client skills).
 - Deferred framework/autonomous candidates and broad integration/API candidates due canonical-parent scope mismatch; their registry entries remain active.
-- Zero File Deletion Invariant preserved across Waves 1–8: all on-disk physical `SKILL.md` files retained to guarantee link resolution.
-- Updated active registry in `SKILLS.json` from 1398 to **1215** skills across 19 categories.
+- Wave 9: consolidated 7 adapter/intelligence/framework sub-skills into accepted parents: `integrations/stripe-integration` (`stripe-mcp`), `productivity/notion` (`notion-mcp`), `integrations/linear-api` (`linear-mcp`), `integrations/github` (`github-mcp`), `integrations/slack` (`slack-mcp`), `automation/scrapers` (`social-intelligence`), and `integrations/langchain-skills` (`langchain-patterns`).
+- Four no-code workflow links were already unregistered and required no registry count change.
+- Zero File Deletion Invariant preserved across Waves 1–9: all on-disk physical `SKILL.md` files retained to guarantee link resolution.
+- Updated active registry in `SKILLS.json` from 1398 to **1208** skills across 19 categories.
 - Synchronized counts across `README.md`, `AGENTS.md`, `package.json`, `llms.txt`, and `scripts/generate-site.py` (dynamic catalog counts and canonical captured test receipt).
 - Refreshed `README.md` and `AGENTS.md` counts from the active registry, including per-category numbers.
 ### Fixed
