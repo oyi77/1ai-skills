@@ -139,17 +139,25 @@ def skill_rel_path(path: Path) -> str:
     return str(rel)
 
 
-def similarity(a: str, b: str, threshold: float = 0.0) -> float:
+def similarity(a: str, b: str, threshold: float = 0.0, matcher: SequenceMatcher = None) -> float:
     """Sequence-based similarity ratio with length-based pre-check."""
     len_a, len_b = len(a), len(b)
     if threshold > 0.0 and (len_a + len_b) > 0:
         if 2.0 * min(len_a, len_b) < threshold * (len_a + len_b):
             return 0.0
-        matcher = SequenceMatcher(None, a.lower(), b.lower())
+        if matcher is None:
+            matcher = SequenceMatcher(None, a.lower(), b.lower())
+        else:
+            matcher.set_seq1(b.lower())
         if matcher.quick_ratio() < threshold:
             return 0.0
         return matcher.ratio()
-    return SequenceMatcher(None, a.lower(), b.lower()).ratio()
+
+    if matcher is None:
+        return SequenceMatcher(None, a.lower(), b.lower()).ratio()
+    else:
+        matcher.set_seq1(b.lower())
+        return matcher.ratio()
 
 
 def levenshtein_ratio(s1: str, s2: str) -> float:
@@ -332,8 +340,10 @@ def check_duplicates(skills_meta: list[dict], result: LintResult):
 
     for cat, cat_skills in by_category.items():
         for i, (name1, path1) in enumerate(cat_skills):
+            matcher = SequenceMatcher()
+            matcher.set_seq2(name1.lower())
             for name2, path2 in cat_skills[i + 1:]:
-                sim = similarity(name1, name2, threshold=SIMILARITY_THRESHOLD)
+                sim = similarity(name1, name2, threshold=SIMILARITY_THRESHOLD, matcher=matcher)
                 if sim >= SIMILARITY_THRESHOLD and name1 != name2:
                     result.add("warnings", name1, "near-duplicate",
                                 f"Near-duplicate of {name2} (similarity={sim:.2f})")
