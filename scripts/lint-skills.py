@@ -152,6 +152,30 @@ def similarity(a: str, b: str, threshold: float = 0.0) -> float:
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
 
 
+class CachedSimilarityMatcher:
+    """Stateful matcher to optimize O(N^2) sequence comparisons by reusing internal cache."""
+    def __init__(self, base: str):
+        self.len_base = len(base)
+        self.matcher = SequenceMatcher(None, b=base.lower())
+
+    def similarity(self, target: str, target_lower: str, len_target: int, threshold: float) -> float:
+        total_len = self.len_base + len_target
+        if total_len == 0:
+            return 1.0 if self.len_base == 0 else 0.0
+
+        # Fast mathematically impossible pre-check
+        if threshold > 0.0 and 2.0 * min(self.len_base, len_target) < threshold * total_len:
+            return 0.0
+
+        self.matcher.set_seq1(target_lower)
+        if threshold > 0.0:
+            if self.matcher.real_quick_ratio() < threshold:
+                return 0.0
+            if self.matcher.quick_ratio() < threshold:
+                return 0.0
+        return self.matcher.ratio()
+
+
 def levenshtein_ratio(s1: str, s2: str) -> float:
     """Fast Levenshtein similarity (0-1)."""
     if len(s1) < len(s2):
@@ -331,9 +355,13 @@ def check_duplicates(skills_meta: list[dict], result: LintResult):
         by_category[cat].append((name, path))
 
     for cat, cat_skills in by_category.items():
-        for i, (name1, path1) in enumerate(cat_skills):
-            for name2, path2 in cat_skills[i + 1:]:
-                sim = similarity(name1, name2, threshold=SIMILARITY_THRESHOLD)
+        # Pre-calculate lowercase and length for all strings to avoid doing it O(N^2) times
+        processed = [(n, p, n.lower(), len(n)) for n, p in cat_skills]
+        for i, (name1, path1, lower1, len1) in enumerate(processed):
+            # Instantiate matcher ONCE per outer loop to reuse its character frequency cache
+            matcher = CachedSimilarityMatcher(name1)
+            for name2, path2, lower2, len2 in processed[i + 1:]:
+                sim = matcher.similarity(name2, lower2, len2, threshold=SIMILARITY_THRESHOLD)
                 if sim >= SIMILARITY_THRESHOLD and name1 != name2:
                     result.add("warnings", name1, "near-duplicate",
                                 f"Near-duplicate of {name2} (similarity={sim:.2f})")
