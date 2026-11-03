@@ -12,7 +12,7 @@ Get from zero to productive with 1ai-Skills in under 10 minutes.
 npx skills add oyi77/1ai-skills
 ```
 
-This copies all 1284 skills into your project's skill directory.
+This copies all 1427 skills into your project's skill directory.
 
 ### Install Hooks (auto-evolve system)
 

@@ -18,7 +18,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parent.parent
 SKILLS_JSON = ROOT / 'SKILLS.json'
-OUTPUT_STRUCTURE = ROOT / 'doc' / 'STRUCTURE.md'
+OUTPUT_STRUCTURE = ROOT / 'docs' / 'STRUCTURE.md'
 
 from config import SKILL_DIRS  # shared category definitions
 
