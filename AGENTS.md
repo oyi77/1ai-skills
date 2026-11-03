@@ -16,7 +16,7 @@ Every task follows this sequence. No exceptions.
 Full details: `~/.1ai/core/PROCESS.md` (auto-injected by hooks)
 
 ## This repo
-Production-ready AI agent skill library — 1424 skills across 19 categories with anti-rationalization tables, code examples, and verification checklists.
+Production-ready AI agent skill library — 1427 skills across 19 categories with anti-rationalization tables, code examples, and verification checklists.
 Stack: Node.js / Python / YAML skills
 Domain: Agent skill library — NOT a product repo. Do not add features here unless adding new skills.
 
@@ -78,7 +78,7 @@ cat ~/projects/1ai-skills/integrations/stripe-integration/SKILL.md
 |----------|------:|----------------|
 | cybersecurity | 801 | Threat hunting, forensics, pen testing, SOC, incident response |
 | development | 105 | TDD, debugging, code review, PRD, engineering workflows |
-| content | 105 | Video, audio, design, writing, docs |
+| content | 106 | Video, audio, design, writing, docs |
 | mindset | 55 | Negotiation, leadership, critical thinking |
 | marketing | 43 | SEO, viral content, email, ads, growth |
 | core | 53 | AI infrastructure, memory, self-improvement, model routing |
@@ -92,9 +92,12 @@ cat ~/projects/1ai-skills/integrations/stripe-integration/SKILL.md
 | mcp | 15 | Model Context Protocol servers and tool integrations |
 | meta | 14 | Self-evolving meta-skills, performance monitoring |
 | financial | 19 | Finance analysis, valuation, tax, portfolio management |
-| sales | 13 | Lead gen, CRM, outreach, sales automation |
+| sales | 15 | Lead gen, CRM, outreach, sales automation |
 | data | 8 | Data pipelines, analysis, visualization, ETL |
 | productivity | 10 | Calendars, email, meetings, workspace management |
+
+
+
 
 
 
