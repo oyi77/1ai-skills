@@ -9,3 +9,6 @@ validation-report.json
 _improve/
 reports/
 _rules
+backupcode_*/
+audit_consolidation_*.md
+audit_report_*.md
