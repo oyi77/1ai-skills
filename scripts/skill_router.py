@@ -275,6 +275,33 @@ def route(
             role_floor = min(25.0, 12.0 * max(hits, 1))
             data_all = load_skills()
             existing = {r.get("name") for r in flat}
+            # Tiers for the merged sort (one list, no positional slicing):
+            #   0 PROTECTED  — a query token matches a hyphen-split name part
+            #                  (same normalisation as score_skill) AND the
+            #                  score clears the 30.0 hijack-guard threshold
+            #                  expand_role already uses: genuine named intent,
+            #                  never demoted by expansion; incidental one-word
+            #                  name overlaps ("request") stay incidental.
+            #   1 ROLE       — member of the detected role (incl. its anchor):
+            #                  incidental token matches must not outrank the
+            #                  cluster regardless of raw score.
+            #   2 INCIDENTAL — everything else, raw score.
+            role_members: dict[str, set[str]] = {}
+            for s in data_all["skills"]:
+                role_members.setdefault(
+                    _ROLE_ANCHOR_BY_NAME.get(s.get("name", ""), role_of(s)), set()
+                ).add(s["name"])
+
+            def _tier(r: dict[str, Any]) -> int:
+                name_parts = [p for p in r.get("name", "").lower().replace("-", " ").split() if p]
+                if name_parts:
+                    matched = sum(1 for p in name_parts if p in query_tokens)
+                    if matched >= 1 and float(r.get("score", 0.0)) >= 30.0:
+                        return 0
+                if r.get("name") in role_members.get(target_role, set()):
+                    return 1
+                return 2
+
             merged = list(flat)
             for s in data_all["skills"]:
                 if s["name"] in existing:
@@ -282,7 +309,7 @@ def route(
                 if _ROLE_ANCHOR_BY_NAME.get(s.get("name", ""), role_of(s)) == target_role:
                     own = score_skill(query_tokens, s)
                     merged.append({"score": round(max(own, role_floor), 1), **s})
-            merged.sort(key=lambda x: -x.get("score", 0.0))
+            merged.sort(key=lambda x: (_tier(x), -x.get("score", 0.0)))
             out = merged[:top + expand_extra]
     return out
 
