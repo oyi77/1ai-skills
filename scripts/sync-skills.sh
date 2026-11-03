@@ -46,6 +46,58 @@ echo ""
 # Build list of skill names from source
 declare -A SOURCE_SKILLS
 
+# Resolved source dir -> frontmatter name, so link rebasing (repo category
+# paths vs flat runtime links) is not mistaken for content drift.
+CANON_MAP="$(mktemp)"
+trap 'rm -f "$CANON_MAP"' EXIT
+python3 - "$REPO_ROOT" "$CANON_MAP" <<'PY'
+import re, sys
+from pathlib import Path
+repo = Path(sys.argv[1])
+with open(sys.argv[2], "w") as out:
+    for source in repo.glob("*/*/**/SKILL.md"):
+        m = re.search(r"^name:\s*[\"']?([a-z0-9-]+)", source.read_text(), re.M | re.I)
+        if m:
+            out.write("%s\t%s\n" % (source.parent.resolve(), m.group(1)))
+PY
+
+# Compare normalized content: collapse both the repo's category-tree links and
+# the runtime's flat rebased links to the SAME canonical token (the linked
+# skill's frontmatter name), so a link-rebase-only difference counts as in sync
+# while real text edits still trigger a copy.
+canon_equal() {
+  python3 - "$CANON_MAP" "$1" "$2" <<'EOF'
+import re, sys
+from pathlib import Path
+names = {}
+for line in open(sys.argv[1]):
+    key, _, val = line.rstrip("\n").partition("\t")
+    if key:
+        names[key] = val
+        names.setdefault(key.rsplit("/", 1)[-1] + "/SKILL.md", val)
+
+def norm_link(path, frag, base):
+    target = (base / path).resolve()
+    name = names.get(str(target)) or names.get(str(target.parent))
+    if not name:
+        parts = [s for s in path.split("/") if s not in (".", "..")]
+        name = parts[-2] if len(parts) >= 2 else "?"
+    return "](../%s/SKILL.md%s)" % (name, frag)
+
+def norm_all(p):
+    p = Path(p)
+    return re.sub(
+        r"\]\(((?:\.{1,2}/)?[^)\s]*/)?([A-Za-z0-9._-]+)/SKILL\.md(#[^)\s]*)?\)",
+        lambda m: norm_link(
+            (m.group(1) or "") + m.group(2) + "/SKILL.md",
+            m.group(3) or "", p.parent),
+        p.read_text(encoding="utf-8", errors="replace"),
+    )
+
+sys.exit(0 if norm_all(sys.argv[2]) == norm_all(sys.argv[3]) else 1)
+EOF
+}
+
 for skill_file in "${SKILLS[@]}"; do
   skill_dir="$(dirname "$skill_file")"
   # Canonical skill name is the frontmatter `name` field (the same identity
@@ -66,9 +118,14 @@ for skill_file in "${SKILLS[@]}"; do
   src="$skill_dir"
   dst="$TARGET/$skill_name"
 
-  # Check if sync needed (compare SKILL.md mtime)
+  # Check if sync needed (compare NORMALIZED content, not mtime).
+  # Deliberate link-rebasing (lines ~90-160) rewrites relative SKILL.md links
+  # into flat ../name/ form, so raw byte comparison always differs for the
+  # 50+ skills that cross-reference others. canon_equal normalizes both sides
+  # through the same link canonicalization, so link-rebase residue no longer
+  # looks like drift, while real text edits still trigger a copy.
   if [ -f "$dst/SKILL.md" ]; then
-    if [ "$skill_file" -ot "$dst/SKILL.md" ] 2>/dev/null; then
+    if canon_equal "$skill_file" "$dst/SKILL.md" 2>/dev/null; then
       ((SKIPPED++)) || true
       continue
     fi
@@ -152,6 +209,7 @@ EXTERNAL_ALLOWLIST=(
   computer-use cua-driver orca-cli orca-per-workspace-env orchestration
   paseo paseo-advisor paseo-committee paseo-handoff paseo-help paseo-plugin
   terminal-value terminalvalue-io
+  understand understand-chat understand-dashboard understand-diff understand-explain understand-onboard
 )
 
 is_external() {
