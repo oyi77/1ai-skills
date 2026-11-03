@@ -49,7 +49,7 @@ RECOMMENDED_SECTIONS = {"## Overview", "## Process", "## Verification"}
 # (WORKFLOW_ALTERNATIVES + verification regex); keep the two gates aligned.
 PROCESS_ALTERNATIVES = ["## Workflow", "## Process", "## Steps", "## Daily Practice",
                         "## Core Principles", "## How to Use", "## Capabilities",
-                        "## Core Features", "## Architecture"]
+                        "## Core Features", "## Architecture", "## Workflows"]
 VERIFY_ALTERNATIVES = ["## Verification", "## Verification Checklist",
                        "## Quality Checklist", "## Quality Gates"]
 
@@ -301,11 +301,11 @@ def check_sections(body: str, skill: str, result: LintResult):
                         f"Missing required section: {section}")
 
     for section in RECOMMENDED_SECTIONS:
-        if section in headers:
+        if any(h == section or h.startswith(section + ":") for h in headers):
             continue
         alts = PROCESS_ALTERNATIVES if section == "## Process" else (
             VERIFY_ALTERNATIVES if section == "## Verification" else None)
-        if alts and any(a in headers for a in alts):
+        if alts and any(h == a or h.startswith(a + ":") for h in headers for a in alts):
             continue
         result.add("info", skill, "missing-recommended-section",
                     f"Missing recommended section: {section}")
@@ -404,10 +404,17 @@ def build_search_index(skills_meta: list[dict]) -> dict:
             "subdomain": meta.get("subdomain", ""),
         }
 
+        # Pass through explicit frontmatter triggers
+        if meta.get("triggers"):
+            entry["triggers"] = meta["triggers"]
+
+        # Pass through argument-hint if present
+        if meta.get("argument-hint"):
+            entry["argument-hint"] = meta["argument-hint"]
+
         # Add trigger hint when found
         if trigger:
             entry["trigger_hint"] = trigger
-
         # Derive "type" from category
         type_map = {
             "cybersecurity": "security",
