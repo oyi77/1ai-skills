@@ -49,6 +49,27 @@ jobs:
             exit 1
           fi
 
+      - name: Lint skills
+        run: python3 scripts/lint-skills.py
+
+      - name: Run skill quality tests
+        run: python3 scripts/test-skills.py --quick
+
+      - name: Verify router regression
+        run: python3 scripts/test_skill_router_regression.py
+
+      - name: Check for broken links
+        run: python3 scripts/check-broken-links.py
+
+      - name: Verify index docs are fresh
+        run: |
+          python3 scripts/generate-structure.py
+          if ! git diff --quiet -- '*_index.md' docs/ QUICK_START.md; then
+            echo "::error::Index docs are stale. Run 'python3 scripts/generate-structure.py' and commit."
+            git diff --stat -- '*_index.md' docs/ QUICK_START.md
+            exit 1
+          fi
+
       - name: Verify count consistency across docs
         run: |
           set -e
