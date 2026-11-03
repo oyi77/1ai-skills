@@ -76,6 +76,25 @@ def run_checks() -> None:
         f"'responsive-design' not in top-3 for 'responsive mobile layout': {_rml_names}"
     )
 
+    # 'refund request' must not surface a cybersecurity skill above the
+    # customer-support cluster. Before the three-tier sort, the word
+    # 'request' in an HTTP-smuggling description scored 18.5 and outranked
+    # the 12.0-floored support cluster.
+    _rf = route("refund request", top=10)
+    _rf_names = [r["name"] for r in _rf]
+    _support_idx = [
+        i for i, r in enumerate(_rf)
+        if "customer-support" in (r.get("roles") or [])
+    ]
+    assert _support_idx, f"no customer-support role skills for 'refund request': {_rf_names}"
+    _first_cyber = next(
+        (i for i, r in enumerate(_rf) if r.get("category") == "cybersecurity"), None
+    )
+    assert _first_cyber is None or _first_cyber > max(_support_idx[:3]), (
+        f"cybersecurity outranks customer-support cluster for 'refund request': "
+        f"{[(r['score'], r['name']) for r in _rf]}"
+    )
+
     for query, expected_name, expected_delegate in cases:
         results = route(query, top=5)
         delegate = should_delegate_external(results, threshold=30.0)
