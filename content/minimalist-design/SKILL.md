@@ -1,7 +1,6 @@
 ---
 name: minimalist-design
-description: Use when dieter Rams' approach to timeless product design - less but
-  better. Use when working with minimalist design.
+description: Use when dieter Rams' approach to timeless product design - less but better.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -26,10 +25,12 @@ persona: "name: \"Dieter Rams\"\n  title: \"The Father of Modern Design - Master
   \ \"Good design is thorough down to the last detail\"\n    - \"Good design is environmentally\
   \ friendly\"\n"
 version: 1.0.0
+triggers:
+- minimalist design
+- clean ui
+- reduce visual noise
 category: content
 ---
-
-
 # Minimalist Design
 
 ## When to Use

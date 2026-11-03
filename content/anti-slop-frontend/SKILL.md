@@ -18,11 +18,17 @@ tags:
 - motion
 - image-to-code
 version: 1.0.0
+triggers:
+- "anti-slop-frontend"
+- "anti slop"
+- "counter ai slop"
+- "taste framework"
+- "redesign ui"
+- "revamp ui"
+- "generic ai ui"
+- "boilerplate ui"
 category: content
 ---
-
-
-
 ## Overview
 
 Anti-slop frontend design framework based on [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill). Provides 13 specialized skills that enforce distinctive, production-grade visual design — countering the generic, soulless UIs that AI agents typically generate.
@@ -39,6 +45,16 @@ This skill is the constraint/taste layer. When the task requires an actual page 
 | Build/redesign a page end-to-end, theme dealing, sloplint render check | `hallmark` |
 | End-to-end design OS, 24 commands (craft/critique/polish/harden), PRODUCT.md & DESIGN.md | `impeccable` |
 | Audit an existing rendered page for AI tells | `hallmark` via `/hallmark audit <path>` or `impeccable` via `/impeccable audit` |
+| Cross-discipline interface review (accessibility, layout, writing, type, color, UI) | `better-interface` |
+| Change-scoped PR/diff interface review | `interface-review` |
+| Deep domain audit — WCAG, palette, type scale, layout, polish, copy | `better-accessibility` `better-colors` `better-typography` `better-layout` `better-ui` `better-writing` |
+| Explore component variants / stress-test / walk states | `variant` `break` `state-machine` |
+| Build UI from Figma or design image | `build-design` |
+| Explain how a live site or effect was built | `explain-interface` |
+| Technical illustration of an object (SVG/PNG/PDF) | `teardown` |
+| 9-pass redline redesign of an already-built screen (spacing → color → icons → copy → type → layout → details → visuals → motion) | `unslop` |
+| Author or audit a `DESIGN.md` spec so coding agents generate on-brand UI | `design-md` |
+| Independent operational audit of an AI agent's boundaries before shipping its UI-facing tools | `agent-alignment-audit` |
 
 Never run conflicting constraint engines on one build: Hallmark's Floor and Impeccable's Craft Floor set the non-waivable bottom; this framework's variants are advisory above them.
 

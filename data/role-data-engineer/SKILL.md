@@ -1,7 +1,7 @@
 ---
 name: role-data-engineer
 description: Use when orchestrating data engineering pipelines, batch/streaming ETL,
-  dbt data modeling, Airflow DAG orchestration, database query optimization, and warehouse
+  dbt data modeling, Airflow DAG orchestration, database query optimization, and data
   warehousing.
 domain: data
 author: oyi77
@@ -19,11 +19,20 @@ tags:
 - postgres
 license: MIT
 subdomain: data-engineering
+triggers:
+- data engineer role
+- etl pipeline
+- dbt model
+- airflow dag
+- streaming pipeline
+- warehouse modeling
+- query optimization
+- data quality check
 ---
 
 ## Overview
 
-The `role-data-engineer` skill directs enterprise data platform architecture, ingestion pipeline orchestration, transformation modeling, and warehouse performance optimization. Rather than building fragile one-off extract scripts or unmonitored cron jobs, this role coordinates idempotent ETL/ELT pipelines, declarative data transformations via dbt, resilient DAG workflow scheduling with Apache Airflow, distributed batch/streaming computation (Spark, Kafka), and high-throughput query optimization across relational and cloud columnar warehouses (PostgreSQL, BigQuery).
+Every pipeline is idempotent, lineage-tracked, and SLA-monitored before it is trusted. That standard is met through declarative dbt transformations, Apache Airflow DAG orchestration, distributed batch/streaming computation (Spark, Kafka), and high-throughput query optimization across relational and cloud columnar warehouses (PostgreSQL, BigQuery).
 
 ```
 [Phase 1: Ingestion & Schema Modeling] ──► [Phase 2: Stream/Batch Transport] ──► [Phase 3: dbt Transformation & Lineage]

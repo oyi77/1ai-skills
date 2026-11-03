@@ -1,8 +1,8 @@
 ---
 name: crisis-management
 description: Use when respond to crises using incident command structure, stakeholder
-  communication, and recovery planning. Use during security breaches, PR disasters,
-  or operational failures. Use when working with crisis management.
+  communication, and recovery planning. Use during security breaches, PR
+  disasters, or operational failures.
 domain: mindset
 author: oyi77
 license: Apache-2.0

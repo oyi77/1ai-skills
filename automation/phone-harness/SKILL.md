@@ -24,6 +24,9 @@ category: automation
 
 # Phone Harness
 
+## Overview
+
+Controls a real phone from the agent — iPhone via Mac iPhone Mirroring or Android via adb (open apps, tap, type, swipe, OCR the screen). Targets phonefarm devices for debugging, OTP/2FA flows, and one-off device QA.
 ## When to Use
 
 **Trigger phrases:**

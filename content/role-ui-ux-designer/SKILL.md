@@ -19,17 +19,22 @@ tags:
 - micro-interactions
 license: MIT
 subdomain: ui-ux-design
+triggers:
+- ui ux designer role
+- design system
+- anti ai slop
+- design tokens
+- micro interactions
+- wcag contrast fix
+- responsive layout
+- typography scale
+- component library
+- accessible components
 ---
 
 ## Overview
 
-The `role-ui-ux-designer` skill directs visual hierarchy, responsive layout engineering, accessible interaction patterns (WCAG 2.1 AA/AAA), tactile micro-motion, and disciplined design token architectures. This role enforces a strict defense against generic AI-generated templates (purple-cyan gradients, unearned glassmorphism orbs, cookie-cutter centered 3-card heroes, floating emoji headers, and sluggish unoptimized animations).
-
-```
-[Phase 1: Archetype & Token System] ──► [Phase 2: Anti-Slop Layout Composition]
-                                                               │
-[Phase 5: Responsive & A11y Verification] ◄── [Phase 4: Micro-Interactions] ◄─┘
-```
+The `role-ui-ux-designer` skill roots every interface in named design tokens, a legible type scale, and WCAG AA contrast; decorative gradients, emoji punctuation, and dead-click controls are deleted by default.
 
 The UI/UX designer operates through purposeful typography scales, cohesive color palettes, strict button ergonomics (zero dead clicks), semantic vector iconography, and spring-physics micro-interactions running smoothly at 60 FPS.
 

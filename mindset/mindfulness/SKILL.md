@@ -1,8 +1,8 @@
 ---
 name: mindfulness
 description: Use when practice presence, reduce stress, and improve focus through
-  meditation and awareness techniques. Use daily for mental clarity and emotional
-  regulation. Use when working with mindfulness.
+  meditation and awareness techniques. Use daily for mental clarity and
+  emotional regulation.
 domain: mindset
 author: oyi77
 license: Apache-2.0

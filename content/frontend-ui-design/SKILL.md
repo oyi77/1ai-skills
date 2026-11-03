@@ -17,6 +17,10 @@ tags:
 - components
 - responsive
 version: 1.0.0
+triggers:
+- "frontend-ui-design"
+- "ui components"
+- "production ui"
 category: content
 ---
 

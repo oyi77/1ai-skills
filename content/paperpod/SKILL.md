@@ -1,9 +1,8 @@
 ---
 name: paperpod
-description: Use when isolated agent runtime for code execution, live preview URLs,
-  browser automation, 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), LLM inference,
-  and persistent memory — all via CLI or HTTP, no SDK or API keys required. Use when
-  working with paperpod.
+description: Use when isolated agent runtime for code execution, live preview URLs, browser
+  automation, 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), LLM inference,
+  and persistent memory — all via CLI or HTTP, no SDK or API keys required.
 domain: content
 author: oyi77
 license: Apache-2.0

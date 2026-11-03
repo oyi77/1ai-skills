@@ -1,7 +1,7 @@
 ---
 name: voice-ai
 description: Use when voice AI — text-to-speech (ElevenLabs, OpenAI TTS), speech-to-text
-  (Whisper), voice cloning, real-time voice agents. Use when working with voice ai.
+  (Whisper), voice cloning, real-time voice agents.
 domain: content
 author: oyi77
 license: Apache-2.0

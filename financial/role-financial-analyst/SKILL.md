@@ -17,11 +17,21 @@ tags:
 - auditing
 license: MIT
 subdomain: financial-analysis
+triggers:
+- financial analyst role
+- dcf model
+- three statement model
+- gl reconciliation
+- variance analysis
+- unit economics
+- cashflow model
+- audit report
 ---
+
 
 ## Overview
 
-The `role-financial-analyst` skill directs corporate financial analysis, financial statement audits, three-statement financial modeling, valuation reviews, and automated general ledger (GL) reconciliations. Rather than treating finance as disconnected spreadsheets or manual balance checks, this role establishes rigorous mathematical models for cashflow forecasts, DCF/LBO valuations, automated break detection in accounting ledgers, and institutional-grade financial telemetry.
+Before a single number is reported, the ledger must close: Assets = Liabilities + Equity, and total debits must equal total credits. The proof rides on rigorous cashflow-forecast models, DCF/LBO valuations, automated break detection in accounting ledgers, and institutional-grade financial telemetry.
 
 ```
 [Phase 1: Financial Ingestion & Audit] ──► [Phase 2: GL Reconciliation & Breaks] ──► [Phase 3: Financial Modeling (3-Statement/DCF)]
@@ -29,7 +39,7 @@ The `role-financial-analyst` skill directs corporate financial analysis, financi
                    [Phase 5: CFO Telemetry & Report] ◄── [Phase 4: Valuation & Variance] ◄──────────┘
 ```
 
-The financial analyst enforces accounting equation invariants (Assets = Liabilities + Equity), double-entry debit-credit parity, verifiable audit trails, and defensible valuation assumptions grounded in empirical historical data.
+The analyst maintains verifiable audit trails through every reconciliation and roots each valuation assumption in empirical historical data.
 
 ## When to Use
 

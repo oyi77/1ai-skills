@@ -15,6 +15,12 @@ tags:
 - design-tokens
 - branding
 version: 1.0.0
+triggers:
+- color theme
+- typography system
+- palette generation
+- brand identity
+- theme tokens
 category: content
 ---
 
@@ -24,7 +30,7 @@ category: content
 ## When to Use
 **Trigger phrases:**
 - "theme factory"
-- "Generate and apply professional color themes, typography systems, and design tok"
+- "generate color themes"
 
 
 - When creating a new visual theme or color palette

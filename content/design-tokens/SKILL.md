@@ -14,12 +14,14 @@ tags:
 - media
 - tokens
 version: 1.0.0
+triggers:
+- "design-tokens"
+- "token system"
+- "css variables"
+- "design tokens"
+- "color token"
 category: content
 ---
-
-
-
-
 ## Overview
 
 Design tokens are the single source of truth for design decisions. This skill covers token taxonomy, color scales, typography, spacing systems, dark mode, and implementation via CSS custom properties and Tailwind.
@@ -163,6 +165,14 @@ on error:
 | "I will optimize later" | SEO and distribution need optimization from the start. |
 | "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
 
+## Companion Domain Skills
+
+Token systems are the substrate; these skills are the consumers that judge them:
+- `better-colors` — audits ramp structure, semantic token naming, and measures every rendered contrast pair against `better-accessibility`'s required ratios.
+- `better-typography` — sets the type scale, font features, wrapping and truncation against the tokens you declare here.
+- `better-layout` — uses spacing/breakpoint tokens for grouping, alignment and responsive structure.
+- `hallmark` — enforces a non-waivable Floor (every color/font/spacing value must be a CSS variable at `:root`); this skill is the source of those tokens.
+- `impeccable` — extracts and documents a project's existing tokens into `DESIGN.md` before any design work.
 ## Video / Motion Graphics
 
 Design tokens ensure brand consistency across [Remotion](../video/remotion/SKILL.md) video compositions. Define brand colors, spacing, and typography tokens once, use across all video scenes. Tokens map directly to CSS custom properties in Remotion components.

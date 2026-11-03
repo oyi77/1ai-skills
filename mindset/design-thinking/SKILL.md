@@ -14,6 +14,11 @@ tags:
 - testing
 - thinking
 version: 1.0.0
+triggers:
+- design thinking
+- ideation
+- prototype design
+- problem framing
 category: mindset
 ---
 

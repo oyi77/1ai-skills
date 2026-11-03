@@ -1,8 +1,6 @@
 ---
 name: frontend-design
-description: Use when design system patterns — component architecture, Tailwind mastery,
-  visual hierarchy, and responsive layouts. Use when designing system patterns — component
-  architecture, tailwind mastery, visual hierarchy,.
+description: Use when designing frontend systems — component architecture, Tailwind mastery, visual hierarchy, and responsive layouts. Covers design-system patterns, component composition, and responsive implementation.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -14,12 +12,16 @@ tags:
 - frontend
 - media
 version: 1.0.0
+triggers:
+- "frontend-design"
+- "ui design"
+- "component design"
+- "redesign page"
+- "revamp design"
+- "design task"
+- "ui design work"
 category: content
 ---
-
-
-
-
 ## Overview
 
 Frontend design skill for building beautiful, consistent UIs. Covers design systems, Tailwind CSS, component patterns, spacing, typography, color theory, and responsive design.

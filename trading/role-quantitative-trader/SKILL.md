@@ -17,17 +17,22 @@ tags:
 - market-making
 license: MIT
 subdomain: quantitative-trading
+triggers:
+- quant trader role
+- strategy backtest
+- walk forward test
+- drawdown limit
+- position sizing
+- slippage model
+- algorithmic trading
+- portfolio rebalance
+- alpha research
+- risk bounds
 ---
 
 ## Overview
 
-The `role-quantitative-trader` skill directs quantitative financial modeling, algorithmic strategy formulation, automated order execution, and portfolio risk management. Rather than relying on emotional discretion, uncalibrated technical indicators, or unbacktested heuristics, this role orchestrates mathematical alpha research, walk-forward parameter backtesting, slippage-aware execution routing, hard drawdown and position risk enforcement, and automated portfolio rebalancing across CeX and DeX venues.
-
-```
-[Phase 1: Market Research & Alpha Signals] ──► [Phase 2: Strategy Design & Backtest] ──► [Phase 3: Risk & Sizing Bounds]
-                                                                                                    │
-                 [Phase 5: Portfolio Rebalance] ◄── [Phase 4: Algorithmic Execution] ◄──────────────┘
-```
+The `role-quantitative-trader` skill refuses to risk capital on unproven edge: every strategy must pass walk-forward validation, hard risk bounds, and slippage-accounting execution before it touches a live order.
 
 The quantitative trader strictly enforces risk-first invariants (e.g. maximum portfolio Value-at-Risk, mandatory stop-losses, slippage caps, and fail-closed kill switches) to preserve capital under all regime shifts.
 

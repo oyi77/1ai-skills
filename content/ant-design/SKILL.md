@@ -1,7 +1,7 @@
 ---
 name: ant-design
 description: Use when ant Design React component library — enterprise UI, forms, tables,
-  charts, theming, ProComponents. Use when working with ant design.
+  charts, theming, ProComponents.
 domain: content
 author: oyi77
 license: Apache-2.0

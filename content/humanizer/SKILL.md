@@ -1,7 +1,7 @@
 ---
 name: humanizer
-description: Use when transform AI-generated content into natural, human-sounding
-  writing with proper tone and style. Use when working with humanizer.
+description: Use when transform AI-generated content into natural, human-sounding writing
+  with proper tone and style.
 domain: content
 author: oyi77
 license: Apache-2.0

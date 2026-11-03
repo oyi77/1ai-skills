@@ -1,8 +1,7 @@
 ---
 name: mental-models
-description: Use when apply 20+ mental models for better decision-making including
-  Circle of Competence, Inversion, Second-Order Thinking, and Margin of Safety. Use
-  when working with mental models.
+description: Use when apply 20+ mental models for better decision-making including Circle
+  of Competence, Inversion, Second-Order Thinking, and Margin of Safety.
 domain: mindset
 author: oyi77
 license: Apache-2.0

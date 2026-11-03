@@ -1,7 +1,7 @@
 ---
 name: tailwind-advanced
 description: Use when advanced Tailwind CSS — custom plugins, JIT, container queries,
-  animations, dark mode, design systems. Use when working with tailwind advanced.
+  animations, dark mode, design systems.
 domain: content
 author: oyi77
 license: Apache-2.0

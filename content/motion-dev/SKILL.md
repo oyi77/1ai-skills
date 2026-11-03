@@ -17,6 +17,10 @@ tags:
 - transition
 - micro-interaction
 version: 1.0.0
+triggers:
+- "motion-dev"
+- "animations"
+- "react spring"
 category: content
 ---
 ## Overview

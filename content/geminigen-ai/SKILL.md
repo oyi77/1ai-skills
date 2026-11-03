@@ -1,8 +1,8 @@
 ---
 name: geminigen-ai
 description: Use when unified multimedia API for image generation (nano-banana-pro,
-  imagen-4), video generation (Grok, Veo, Sora), and text-to-speech. Replaces grok-video-generation,
-  seedance, and gemini-image-generator. Use when working with geminigen ai.
+  imagen-4), video generation (Grok, Veo, Sora), and text-to-speech. Replaces
+  grok-video-generation, seedance, and gemini-image-generator.
 domain: content
 author: oyi77
 license: Apache-2.0

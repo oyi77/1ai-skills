@@ -18,19 +18,22 @@ tags:
 - e2e
 license: MIT
 subdomain: qa-automation
+triggers:
+- qa automation role
+- e2e test suite
+- playwright suite
+- flaky test triage
+- coverage gap audit
+- api contract test
+- test pyramid
+- browser automation
+- cypress test
+- release certification
 ---
 
 ## Overview
 
-The `role-qa-automation-engineer` skill directs comprehensive software verification, test harness construction, and automated regression testing. Rather than treating QA as an afterthought or relying on fragile manual spot-checks, this role orchestrates a multi-tier test pyramid spanning hermetic unit tests, API contract validations, cross-browser E2E journeys, test coverage gap audits, and chaos resilience sweeps.
-
-```
-[Phase 1: Test Strategy & Risk Matrix] ──► [Phase 2: Harness & Fixtures] ──► [Phase 3: Multi-Layer Execution]
-                                                                                              │
-                [Phase 5: Release Certification] ◄── [Phase 4: Flakiness & Chaos Audit] ◄────┘
-```
-
-The QA automation engineer enforces zero-unverified-claims, deterministically eliminates flaky tests, and certifies release readiness through machine-verifiable execution reports.
+The `role-qa-automation-engineer` skill ships nothing on vibes: every release claim must be backed by hermetic test executions, deterministic retries, and a machine-verifiable certification receipt that records exit codes, coverage deltas, and pass counts.
 
 ## When to Use
 

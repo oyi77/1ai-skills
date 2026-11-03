@@ -1,7 +1,7 @@
 ---
 name: material-ui
-description: Use when material UI (MUI) React components — theming, styled engine,
-  data grid, date pickers, icons. Use when working with material ui.
+description: Use when material UI (MUI) React components — theming, styled engine, data
+  grid, date pickers, icons.
 domain: content
 author: oyi77
 license: Apache-2.0

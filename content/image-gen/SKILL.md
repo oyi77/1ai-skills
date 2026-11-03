@@ -1,8 +1,7 @@
 ---
 name: image-gen
-description: Use when aI image generation — Stable Diffusion, Midjourney, DALL-E,
-  ComfyUI. Prompt engineering for images, inpainting, outpainting, ControlNet. Use
-  when working with image gen.
+description: Use when aI image generation — Stable Diffusion, Midjourney, DALL-E, ComfyUI.
+  Prompt engineering for images, inpainting, outpainting, ControlNet.
 domain: content
 author: oyi77
 license: Apache-2.0

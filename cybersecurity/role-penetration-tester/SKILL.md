@@ -18,11 +18,20 @@ tags:
 - reporting
 license: MIT
 subdomain: penetration-testing
+triggers:
+- pentester role
+- pentest engagement
+- red team exercise
+- bug bounty hunt
+- api fuzzing
+- exploit chain
+- kerberoasting
+- privilege escalation audit
 ---
 
 ## Overview
 
-The `role-penetration-tester` skill directs authorized offensive security assessments, red team exercises, bug bounty investigations, and exploit chaining. Rather than executing disjointed vulnerability scans or producing unverified theoretical findings, this role coordinates multi-phase penetration testing spanning passive/active reconnaissance, target surface mapping, API protocol fuzzing, binary and script reverse engineering, multi-vulnerability exploit chaining, and professional executive/technical reporting.
+A finding earns a place in the report only after it has a deterministic reproduction path and a demonstrated business impact. Multi-phase testing — passive/active reconnaissance, target surface mapping, API protocol fuzzing, binary and script reverse engineering, multi-vulnerability exploit chaining — exists to produce findings that clear that bar.
 
 ```
 [Phase 1: Scope & Reconnaissance] ──► [Phase 2: Vulnerability Hunting & Fuzzing] ──► [Phase 3: Reverse Engineering]

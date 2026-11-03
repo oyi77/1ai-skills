@@ -1,8 +1,7 @@
 ---
 name: cross-cultural-communication
 description: Use when navigate cross-cultural communication using Hofstede's dimensions,
-  high/low-context awareness, and async norms. Use when working with global teams
-  or international stakeholders.
+  high/low-context awareness, and async norms.
 domain: mindset
 author: oyi77
 license: Apache-2.0

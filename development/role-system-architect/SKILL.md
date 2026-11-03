@@ -15,19 +15,22 @@ tags:
 - domain-modeling
 license: MIT
 subdomain: system-architecture
+triggers:
+- system architect role
+- domain boundaries
+- circular dependency
+- god file split
+- layer boundary audit
+- monolith decomposition
+- ast import guard
+- modular decomposition
+- architecture decision
+- domain modeling
 ---
 
 ## Overview
 
-The `role-system-architect` skill directs the structural integrity, boundaries, and long-term maintainability of production software systems. Instead of allowing architectural decisions to degenerate into vague prose or unmonitored conventions, this role enforces strict domain boundaries, prevents circular and layer-violating dependencies via AST validation, drives god-file decomposition behind backward-compatible facades, and establishes deterministic event-driven integration patterns.
-
-```
-[Phase 1: Domain & Layer Topology] ──► [Phase 2: Invariant Scaffolding] ──► [Phase 3: Modular Carve]
-                                                                                     │
-         [Phase 5: Gate Enforcement] ◄── [Phase 4: Contract Parity] ◄───────────────┘
-```
-
-The system architect ensures that software evolvability is protected by automated tests rather than documentation alone, adhering to first-principles thinking and formal decision frameworks.
+The `role-system-architect` skill codifies exactly one boundary per layer: which module may import which; cross-layer edges are rejected in CI by AST validation before any call-site is preserved by a barrel facade.
 
 ## When to Use
 

@@ -1,7 +1,7 @@
 ---
 name: chakra-ui
-description: Use when chakra UI React component library — theming, responsive styles,
-  color mode, component composition. Use when working with chakra ui.
+description: Use when chakra UI React component library — theming, responsive styles, color
+  mode, component composition.
 domain: content
 author: oyi77
 license: Apache-2.0

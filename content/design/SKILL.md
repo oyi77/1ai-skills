@@ -17,6 +17,11 @@ tags:
 - presentation
 - slides
 version: 2.1.0
+triggers:
+- "design"
+- "brand identity"
+- "design tokens"
+- "logo design"
 category: content
 ---
 
