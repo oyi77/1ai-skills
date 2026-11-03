@@ -55,13 +55,13 @@ def score_skill(
     """Score a single skill against query tokens.
 
     Scoring factors (weights):
-    - Exact name match: +100
-    - Name substring match: +50
-    - Category match: +20
+    - Name part match: +50 / max(parts, 1) per matched hyphenated part
+    - Category match: +20 per token
+    - Explicit triggers (frontmatter): +15 per token
     - Tag overlap (fractional): max +30
     - Description "Use when" phrase overlap: +2 per token
     - Description body overlap: +1 per token
-    - Domain match: +10
+    - Domain match: +10 per token
     """
     score = 0.0
     name = skill.get("name", "").lower()
@@ -69,10 +69,8 @@ def score_skill(
     category = skill.get("category", "").lower()
     domain = skill.get("domain", "").lower()
     tags = [t.lower() for t in skill.get("tags", [])]
+    triggers = [t.lower() for t in skill.get("triggers", [])]
 
-    # Exact name match
-    if query_tokens & {name}:
-        score += 100
     # Name part match
     name_parts = set(name.replace("-", " ").split())
     matched_name = query_tokens & name_parts
@@ -85,21 +83,31 @@ def score_skill(
 
     # Tag overlap
     if tags:
-        tag_tokens = set(tags)
+        tag_tokens: set[str] = set()
+        for t in tags:
+            tag_tokens |= tokenize(t.replace("-", " "))
         matched_tags = query_tokens & tag_tokens
         score += (len(matched_tags) / max(len(tag_tokens), 1)) * 30
+
+    # Explicit frontmatter triggers — multi-word phrases tokenized for match
+    if triggers:
+        trigger_tokens: set[str] = set()
+        for t in triggers:
+            trigger_tokens |= tokenize(t.replace("-", " "))
+        matched_triggers = query_tokens & trigger_tokens
+        score += len(matched_triggers) * 15
 
     # Domain match
     dom_tokens = tokenize(domain)
     matched_dom = query_tokens & dom_tokens
     score += len(matched_dom) * 10
 
-    # Description "Use when" section — extract the trigger clause
-    use_when_match = re.search(r"use when\s*(.*?)(?:\.|$)", description)
+    # Description "Use when" section — extract trigger clause
+    use_when_match = re.search(r"use when\s*(.*?)(?:\.\s|$)", description)
     if use_when_match:
-        trigger_tokens = tokenize(use_when_match.group(1))
-        matched_triggers = query_tokens & trigger_tokens
-        score += len(matched_triggers) * 2
+        use_when_tokens = tokenize(use_when_match.group(1))
+        matched_use_when = query_tokens & use_when_tokens
+        score += len(matched_use_when) * 2
 
     # General description overlap
     desc_tokens = tokenize(description)
@@ -132,6 +140,20 @@ def route(
 
     scored.sort(key=lambda x: -x[0])
     return [{"score": round(s, 1), **skill} for s, skill in scored[:top]]
+
+def should_delegate_external(
+    scored_results: list[dict[str, Any]],
+    threshold: float = 30.0,
+) -> bool:
+    """Determine if a query should fall back to external skill discovery (find-skills).
+
+    Returns True when:
+    - No skills matched at all (empty results)
+    - The top-ranking skill's score is strictly below the threshold (default: 30.0)
+    """
+    if not scored_results:
+        return True
+    return scored_results[0].get("score", 0.0) < threshold
 
 
 def search_categories(query: str) -> list[dict[str, Any]]:
