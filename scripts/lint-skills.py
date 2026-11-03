@@ -404,6 +404,22 @@ def build_search_index(skills_meta: list[dict]) -> dict:
             "subdomain": meta.get("subdomain", ""),
         }
 
+        # Persist role assignment from role_map.assign_role (defensive import)
+        try:
+            if "assign_role" not in globals():
+                import sys as _sys
+                _sys.path.insert(0, str(ROOT / "scripts"))
+                from role_map import assign_role as _ar, ROLE_ANCHORS as _ra
+                globals()["assign_role"] = _ar
+                globals()["ROLE_ANCHORS"] = _ra
+            if assign_role and name in globals()["ROLE_ANCHORS"]:
+                entry["roles"] = [globals()["ROLE_ANCHORS"][name]]
+            elif assign_role:
+                entry["roles"] = [assign_role({k: v for k, v in meta.items() if k != "_path"})]
+            else:
+                entry["roles"] = []
+        except Exception:
+            entry["roles"] = []
         # Pass through explicit frontmatter triggers
         if meta.get("triggers"):
             entry["triggers"] = meta["triggers"]
