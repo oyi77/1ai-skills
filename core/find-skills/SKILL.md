@@ -210,10 +210,19 @@ npx skills add vercel-labs/agent-skills@vercel-react-best-practices -g -y
 # -y: Skip confirmation prompts
 ```
 
-**After Installation**:
-1. Update `.skill-activation.json` with new skill reference
-2. Reload skill activation rules
-3. Confirm to user that skill is now available
+
+
+## After Installation: Re-Index and Sync
+
+Once a community skill is downloaded and verified, wire it into the local catalog so `skill-router` can route to it:
+
+1. **Copy to local repo**: Place the validated SKILL.md into `./skills/<name>/` under the correct category directory (e.g. `content/`, `core/`, `meta/`).
+2. **Add provenance frontmatter**: Add `provenance.source`, `provenance.imported_at`, and `(downloaded: <source>, <date>)` to the skill description.
+3. **Re-index**: `python3 scripts/lint-skills.py --write` updates SKILLS.json with the new skill name, triggers, and scoring metadata.
+4. **Sync runtime mirror**: `bash scripts/sync-skills.sh` populates `~/.agents/skills/<name>/` for OMP agent discovery.
+5. **Re-dispatch**: Re-run `skill-router` on the original query; the imported skill now scores via its trigger phrases and should clear the 30-point floor.
+6. **Full validation ladder**: `scripts/check-broken-links.py`, `scripts/validate-skills.py`, `scripts/test-skills.py --quick` — all must pass before committing.
+7. **Update activation rules**: Add the new skill reference to `.skill-activation.json` if using selective mode, then confirm availability to the user.
 
 ---
 

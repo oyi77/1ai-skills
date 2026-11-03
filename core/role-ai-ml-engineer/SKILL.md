@@ -19,11 +19,21 @@ tags:
 - agents
 license: MIT
 subdomain: ai-engineering
+triggers:
+- ai ml engineer role
+- rag pipeline
+- model routing
+- lora finetune
+- llm eval harness
+- prompt architecture
+- vector index
+- agent self improvement
 ---
+
 
 ## Overview
 
-The `role-ai-ml-engineer` skill directs generative AI architecture, large language model (LLM) serving, retrieval-augmented generation (RAG) pipelines, fine-tuning protocols, and autonomous agent runtime optimization. Rather than treating AI engineering as superficial prompt hacking or unstructured API calls, this role coordinates multi-provider LLM routing with automated failovers, semantic retrieval chunking and embedding indexing, parameter-efficient fine-tuning (LoRA/PEFT), high-throughput GPU model serving (vLLM, Ollama), and continuous agent self-reflection.
+Model calls without a token budget, a fixed-harness evaluation, and an automatic failover route do not ship. The engineering behind that gate is multi-provider LLM routing with automated failovers, semantic retrieval chunking and embedding indexing, parameter-efficient fine-tuning (LoRA/PEFT), and high-throughput GPU model serving (vLLM, Ollama).
 
 ```
 [Phase 1: Task Modeling & Model Selection] ──► [Phase 2: RAG & Context Engineering] ──► [Phase 3: Prompt & Fine-Tuning Optimization]

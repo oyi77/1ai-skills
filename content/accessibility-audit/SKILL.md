@@ -1,7 +1,7 @@
 ---
 name: accessibility-audit
-description: Use when wCAG compliance audit — semantic HTML, ARIA, keyboard navigation,
-  color contrast, and screen reader testing. Use when working with accessibility audit.
+description: Use when WCAG compliance audit — semantic HTML, ARIA, keyboard navigation,
+  color contrast, and screen reader testing.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -16,6 +16,13 @@ tags:
 - media
 - testing
 version: 1.0.0
+triggers:
+- wcag
+- a11y audit
+- accessibility audit
+- color contrast
+- keyboard navigation
+- screen reader
 category: content
 ---
 

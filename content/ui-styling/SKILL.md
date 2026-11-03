@@ -17,6 +17,12 @@ tags:
 - canvas
 - visual-design
 version: 1.0.0
+triggers:
+- shadcn ui
+- tailwind styling
+- dark mode
+- ui components
+- styling system
 category: content
 ---
 

@@ -20,6 +20,15 @@ tags:
 - test
 - quality
 - money
+triggers:
+- coding agents
+- linter agent
+- performance profiling agent
+- refactor agent
+- security audit agent
+- test coverage agent
+- quality gate pipeline
+argument-hint: "[module or codebase path]"
 version: 1.0.0
 category: agents
 ---

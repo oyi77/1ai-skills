@@ -1,7 +1,7 @@
 ---
 name: larry-playbook
-description: Use when autonomous AI agent that learns and improves viral content over
-  time using Oliver Henry's proven formula. Use when working with larry playbook.
+description: Use when autonomous AI agent that learns and improves viral content over time
+  using Oliver Henry's proven formula.
 domain: content
 author: oyi77
 license: Apache-2.0

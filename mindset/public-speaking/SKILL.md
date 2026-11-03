@@ -1,7 +1,7 @@
 ---
 name: public-speaking
 description: Use when deliver engaging talks and presentations using narrative structure,
-  audience analysis, and stage presence techniques. Use when working with public speaking.
+  audience analysis, and stage presence techniques.
 domain: mindset
 author: oyi77
 license: Apache-2.0

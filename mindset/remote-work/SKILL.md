@@ -1,8 +1,7 @@
 ---
 name: remote-work
-description: Use when work effectively remotely including async communication, documentation,
-  video meetings, and self-management in distributed teams. Use when working with
-  remote work.
+description: Use when work effectively remotely including async communication,
+  documentation, video meetings, and self-management in distributed teams.
 domain: mindset
 author: oyi77
 license: Apache-2.0

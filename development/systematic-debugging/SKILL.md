@@ -74,7 +74,7 @@ If you haven't completed Phase 1, you cannot propose fixes.
 
 ## Four Phases
 
-- Configure before, behavior, debugging, encountering, failure settings before first use
+- Run the four phases in strict order; never skip Phase 1 root-cause isolation
 
 
 ### Phase 1: Root Cause Investigation

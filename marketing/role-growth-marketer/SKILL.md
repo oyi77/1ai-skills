@@ -20,11 +20,21 @@ tags:
 - conversion
 license: MIT
 subdomain: growth-marketing
+triggers:
+- growth marketer role
+- paid ad campaign
+- programmatic seo
+- cold email funnel
+- cac ltv audit
+- ab test significance
+- growth experiment
+- funnel conversion
 ---
+
 
 ## Overview
 
-The `role-growth-marketer` skill coordinates quantitative acquisition experiments, search engine optimization (SEO), paid performance marketing (Meta, Google, LinkedIn), targeted cold outbound email campaigns, customer acquisition cost (CAC) reduction, and full-funnel conversion telemetry. Rather than treating marketing as vanity social media posting, superficial engagement chasing, or uncalibrated ad spend, this role enforces unit economic discipline (LTV:CAC > 3:1, payback < 12 months), hypothesis-driven A/B experimentation, statistical significance validation, and end-to-end attribution modeling.
+No channel scales until its CAC, payback period, and significance bounds are proven. Enforcement means unit economic discipline (LTV:CAC > 3:1, payback < 12 months), hypothesis-driven A/B experimentation, statistical significance validation, and end-to-end attribution modeling.
 
 ```
 [Phase 1: Funnel Telemetry & Target Profiling] ──► [Phase 2: Acquisition Channel Strategy]

@@ -18,11 +18,21 @@ tags:
 - hardening
 license: MIT
 subdomain: security-engineering
+triggers:
+- security engineer role
+- threat model
+- security headers audit
+- idor bola audit
+- cis benchmark
+- cloud hardening
+- access control audit
+- api vulnerability
 ---
+
 
 ## Overview
 
-The `role-security-engineer` skill directs defensive application security, cloud security posture management, and vulnerability mitigation. Rather than relying on sporadic, passive scanning or surface-level checkbox compliance, this role coordinates proactive threat modeling, automated API security defense, fine-grained access control (BOLA/IDOR) enforcement, strict HTTP security header hardening, and continuous CIS compliance benchmarking across cloud infrastructure.
+The invariant: no request reaches a response without authentication, per-object authorization, and the security headers that block the exploit class the surface introduces. Proactive threat modeling, automated API security defense, fine-grained access control (BOLA/IDOR) enforcement, strict HTTP security header hardening, and continuous CIS compliance benchmarking all serve that rule.
 
 ```
 [Phase 1: Threat Modeling & Surface Recon] ──► [Phase 2: Access & Auth Gate Audit] ──► [Phase 3: Vulnerability Remediation]

@@ -19,17 +19,22 @@ tags:
 - prioritization
 license: MIT
 subdomain: product-management
+triggers:
+- product manager role
+- write a prd
+- feature prioritization
+- roadmap planning
+- acceptance criteria
+- product market fit
+- pricing strategy
+- ice scoring
+- rice scoring
+- sprint planning
 ---
 
 ## Overview
 
-The `role-product-manager` skill directs product vision, feature prioritization, Product Requirement Document (PRD) generation, spec-driven development, customer problem discovery, pricing strategy, and roadmap execution. Rather than relying on vague feature wishlists, subjective intuition, or endless meetings, this role enforces strict customer problem framing, quantifiable success metrics (OKRs, North Star metrics), disciplined scope boundaries (in-scope vs. explicitly out-of-scope), and acceptance criteria that engineering can test deterministically.
-
-```
-[Phase 1: Problem Discovery & PMF Validation] ──► [Phase 2: Structured PRD & Spec Drafting]
-                                                                        │
-[Phase 5: Release Review & Metric Verification] ◄── [Phase 4: Sprint & Acceptance Gate] ◄─┘
-```
+The `role-product-manager` skill converts every feature request into a falsifiable customer-job statement, RICE-ranked and priced against a real value metric, before any story is written.
 
 The product manager bridges business strategy, customer pain points, and technical execution to ensure engineering teams build the right product with zero wasted motion.
 

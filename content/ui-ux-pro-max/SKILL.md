@@ -17,10 +17,16 @@ tags:
 - charts
 - stacks
 version: 2.0.0
+triggers:
+- "ui-ux-pro-max"
+- "ui ux design"
+- "web ui"
+- "ui redesign"
+- "ux review"
+- "revamp dashboard"
+- "improve layout"
 category: content
 ---
-
-
 # UI/UX Pro Max - Design Intelligence
 
 Searchable local UI/UX guidance: 79 searchable styles (50 active), 192 product palettes and exact reasoning profiles, 74 font pairings, 119 UX guidelines, 105 curated icons, 17 GSAP presets, 25 chart types, and 22 technology stacks.

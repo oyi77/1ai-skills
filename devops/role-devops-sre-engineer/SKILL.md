@@ -18,11 +18,21 @@ tags:
 - observability
 license: MIT
 subdomain: devops-sre
+triggers:
+- devops role
+- sre role
+- zero downtime deploy
+- terraform module
+- ci cd pipeline
+- slo error budget
+- observability metrics
+- kubernetes deployment
 ---
+
 
 ## Overview
 
-The `role-devops-sre-engineer` skill directs cloud infrastructure provisioning, deployment automation, container lifecycle management, and production reliability engineering. Rather than treating operations as manual shell commands or unstructured scripts, this role establishes an automated infrastructure-as-code foundation, automated CI/CD pipelines with rollback guarantees, zero-downtime database and application deployments, and deep observability telemetry (metrics, logs, traces, and SLO alerts).
+Reversibility and measurability are the two non-negotiables: any production change must roll back cleanly, and any SLO breach must surface as a metric and an alert. Delivery runs on four rails: an automated infrastructure-as-code foundation, CI/CD pipelines with rollback guarantees, zero-downtime database and application deployments, and deep observability telemetry (metrics, logs, traces, and SLO alerts).
 
 ```
 [Phase 1: IaC & Environment Topology] ──► [Phase 2: Build & Packaging] ──► [Phase 3: CI/CD Pipeline Gates]

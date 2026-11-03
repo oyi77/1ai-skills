@@ -14,6 +14,17 @@ tags:
 - seo
 - money
 version: 1.0.0
+triggers:
+- ai seo
+- geo
+- aeo
+- answer engine optimization
+- generative engine optimization
+- ai overviews
+- llms txt
+- ai crawler
+- agentic readiness
+- ai search optimization
 category: marketing
 ---
 
@@ -237,6 +248,93 @@ Copy template, fill sections from audit output, brand with your logo, send as PD
 3. **Fix** — Add JSON-LD schema, rewrite H2s as questions, add direct-answer paragraphs
 4. **Monitor** — Track citation appearance in Perplexity, ChatGPT Search, Google AI Overviews
 5. **Report** — Monthly citation report showing visibility gains and gaps closed
+
+## GEO/AEO & Agentic Readiness (from claude-seo patterns)
+
+### AI Crawler Classification (never conflate training vs search)
+
+| Crawler | Owner | Purpose | robots.txt |
+|---------|-------|---------|------------|
+| **OAI-SearchBot** | OpenAI | ChatGPT Search citability | yes |
+| **GPTBot** | OpenAI | Model training only | yes |
+| **Claude-SearchBot** | Anthropic | Claude search citability | yes |
+| **ClaudeBot** | Anthropic | Model training only | yes |
+| **PerplexityBot** | Perplexity | Perplexity search | yes |
+| **Googlebot** | Google | Google Search / AI Overviews / AI Mode | yes |
+| **Google-Extended** | Google | Gemini/Vertex training only | yes |
+| **Applebot** | Apple | Siri/Spotlight/Safari search | yes |
+| **Applebot-Extended** | Apple | Apple Intelligence training opt-out | yes |
+
+**Rule:** Check each crawler separately. `GPTBot` blocked ≠ ChatGPT Search broken (use `OAI-SearchBot`). `Google-Extended` blocked ≠ Google Search missing (use `Googlebot`).
+
+### llms.txt Standard
+
+Location: `/llms.txt` at domain root. Format: H1 title, blockquote description, H2 sections with linked pages.
+
+**Critical evidence:** Google Search ignores `llms.txt` (Mueller: "dead end", Illyes: no plans, SE Ranking 300k-domain study: only 1/50 top-cited domains had it). Report presence but assign **zero** citation-ranking weight. Still valuable for AI coding agents (Cursor, Continue, Claude Code) and Mintlify-style developer docs sites.
+
+### RSL 1.0 (Really Simple Licensing)
+
+Machine-readable AI licensing standard (Dec 2025). Backed by Reddit, Yahoo, Medium, Quora, Cloudflare, Akamai, Creative Commons. Check for RSL implementation in HTML meta or HTTP headers.
+
+### Agent Readiness (Lighthouse Agentic Browsing)
+
+Lighthouse category `agentic-browsing` scores as fraction X/N (max N=6). Seven audits at weight 1:
+- `agent-accessibility-tree` (33 axe rules, no contrast/heading order)
+- `agent-semantic-form` (form labels, input names)
+- `agent-interaction-readiness` (clickable targets, focus)
+- `agent-catalog` (ARD discovery via `Agentmap:` in robots.txt)
+- `webmcp-registered-tools` (never counts toward N)
+- `webmcp-schema-validity` (tool name/description/params)
+- `llms-txt` (presence, not ranking)
+
+**Agent-friendly page checklist:**
+1. Real interactive elements (`<button>`, `<a>`, `<input>`) over ARIA
+2. Accessible names on every input and icon-only button
+3. WCAG 2.2 AA target sizes (24×24 CSS px minimum)
+4. No transparent overlays covering interactive nodes
+5. CLS ≤ 0.1 and stable layout across templates
+6. `cursor: pointer` only on real controls
+7. Landmarks (`<nav>`, `<main>`, `<article>`, `<aside>`) and stable `data-*` attributes
+
+### GEO Scoring Criteria
+
+| Criterion | Weight | Key Signals |
+|-----------|--------|-------------|
+| Citability | 25% | Self-contained answer blocks (130-170 words heuristic), direct answer in first 40-60 words, specific statistics with sources |
+| Structural Readability | 20% | Clean H1→H2→H3, question-based headings, short paragraphs (2-4 sentences), tables, FAQ sections |
+| Multi-Modal Content | 15% | Text + images, video, infographics, interactive tools |
+| Authority & Brand Signals | 20% | Author byline with credentials, publication/updated dates, citations to primary sources, entity presence (Wikipedia, Reddit, YouTube, LinkedIn) |
+| Technical Accessibility | 20% | SSR vs client-only, AI crawler access in robots.txt, llms.txt presence (no weight), RSL 1.0 |
+
+**Brand mentions correlate 3x more strongly with AI visibility than backlinks** (Ahrefs study, 75K brands). YouTube mentions ~0.737 correlation (strongest), Reddit high, Wikipedia high, LinkedIn moderate, Domain Rating ~0.266 (weak).
+
+### Platform-Specific Citation Sources
+
+| Platform | Key Citation Sources | Optimization Focus |
+|----------|---------------------|-------------------|
+| Google AI Overviews | Strongly ranking-correlated, cites top-10 pages | Traditional SEO + passage optimization |
+| Google AI Mode | Weakly ranking-correlated; broader pool (~9 domains/query) | Freshness, entity authority, citable passages beyond position 5 |
+| ChatGPT | Wikipedia (47.9%), Reddit (11.3%) of top-10 cited | Entity presence, authoritative sources |
+| Perplexity | Reddit (46.7%) of top-10 cited, Wikipedia | Community validation, discussions |
+| Bing Copilot | Bing index, authoritative sites | Bing SEO, IndexNow |
+
+### llms.txt Template (for non-Google optionality)
+
+```
+# Site Title
+> Brief description of the site and its purpose
+
+## Main sections
+- [Page title](url): Description
+- [Another page](url): Description
+
+## Key facts
+- Fact 1
+- Fact 2
+```
+
+Generate only when explicitly requested. Always include banner: "Google Search ignores llms.txt (Google docs, 2026-06-15); no major LLM provider has confirmed consumption; ship for non-Google optionality, not for citation."
 
 ## Verification
 

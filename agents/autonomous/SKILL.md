@@ -21,6 +21,13 @@ tags:
 - research
 - review
 - money
+triggers:
+- autonomous agents
+- autonomous agent pipeline
+- spec to shipped code
+- unattended agent fleet
+- multi-agent orchestration
+argument-hint: "[feature or task spec]"
 version: 1.0.0
 category: agents
 ---

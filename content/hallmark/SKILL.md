@@ -16,16 +16,17 @@ tags:
 version: 2.0.0
 category: content
 triggers:
-  - "hallmark"
-  - "anti-ai-slop"
-  - "anti slop"
-  - "design a website"
-  - "redesign page"
-  - "sloplint"
-  - "material theme"
-argument-hint: "<prompt> | redesign <path> | audit <path>"
+- "hallmark"
+- "anti-ai-slop"
+- "anti slop"
+- "design a website"
+- "redesign page"
+- "sloplint"
+- "material theme"
+- "revamp page"
+- "restyle website"
+- "visual overhaul"
 ---
-
 # Hallmark — Anti-AI-Slop Web Design Engine
 
 Hallmark is an anti-AI-slop design system created by Nutlope and Together AI for Claude Code, Cursor, Codex, and autonomous web engineering agents. It enforces a strict, non-waivable floor against machine-generated defaults, provides a catalog of forty-eight material themes across four genres, aligns layout anatomy to user jobs, and validates rendered output through automated sloplint verification and fresh-context reviews.
@@ -387,3 +388,5 @@ if __name__ == "__main__":
 | Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
 | :--- | :--- | :--- |
 | `anti-slop-frontend` | Applying distinctive layout, typography, motion, and spacing constraints against generic AI interfaces | [SKILL.md](../anti-slop-frontend/SKILL.md) |
+| `better-interface` | Cross-discipline review across accessibility, layout, writing, typography, color, and UI polish | [SKILL.md](../better-interface/SKILL.md) |
+| `interface-review` | Change-scoped review of a branch, PR, or uncommitted work | [SKILL.md](../interface-review/SKILL.md) |

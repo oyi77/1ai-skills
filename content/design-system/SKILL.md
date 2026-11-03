@@ -15,10 +15,15 @@ tags:
 - chartjs
 - tailwind
 version: 1.0.0
+triggers:
+- "design-system"
+- "token architecture"
+- "component specs"
+- "design system"
+- "component library"
+- "restyle component"
 category: content
 ---
-
-
 # Design System
 
 Token architecture, component specifications, systematic design, slide generation.
@@ -302,3 +307,7 @@ design-system turns brand primitives into a three-layer token architecture — p
 | `ui-critique` | Review visual hierarchy, consistency, accessibility, dan actionable UI feedback | [SKILL.md](../ui-critique/SKILL.md) |
 | `theme-factory` | Generating color themes, typography systems, and application design tokens | [SKILL.md](../theme-factory/SKILL.md) |
 | `minimalist-design` | Applying Dieter Rams minimalist principles and reducing unnecessary design elements | [SKILL.md](../minimalist-design/SKILL.md) |
+| `better-colors` | Building/auditing color systems, palette generation, contrast measurement | [SKILL.md](../better-colors/SKILL.md) |
+| `better-typography` | Setting/reviewing type scale, font features, wrapping, truncation | [SKILL.md](../better-typography/SKILL.md) |
+| `better-layout` | Grouping, alignment, responsive structure, RTL/mirror safety | [SKILL.md](../better-layout/SKILL.md) |
+|  `responsive-design` | Mobile-first, fluid type, container queries, touch targets | [SKILL.md](../responsive-design/SKILL.md) |

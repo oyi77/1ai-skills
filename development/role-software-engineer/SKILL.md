@@ -16,19 +16,29 @@ tags:
 - architecture
 license: MIT
 subdomain: software-engineering
+triggers:
+- software engineer role
+- end-to-end engineering workflow
+- bug triage
+- red green refactor
+- safe refactoring
+- api contract audit
+- race condition audit
+- type narrowing audit
+- code review
+- god file split
+argument-hint: "[task or bug description]"
 ---
 
 ## Overview
 
-The `role-software-engineer` skill serves as the principal operational router and composite orchestrator for production software engineering tasks. Instead of accumulating generic implementation boilerplate into a monolithic document, this role enforces a strict 5-phase engineering state machine and deterministically dispatches specialized execution to verified child skills in the repository.
+The `role-software-engineer` skill proves the fault before it touches the fix: every modification is preceded by a reproducing test failure, bounded by type and contract checks, and delivered with an execution receipt.
 
 ```
 [Phase 1: Triage & Root Cause] ──► [Phase 2: Invariants & Plan] ──► [Phase 3: TDD Execution]
                                                                             │
       [Phase 5: Delivery & Review] ◄── [Phase 4: Empirical Gates] ◄─────────┘
 ```
-
-The role guarantees that every code modification is backed by a reproducing test failure before touching production code, preserves architectural layer boundaries, verifies API contract parity, and eliminates unverified claims through empirical execution receipts.
 
 ## When to Use
 

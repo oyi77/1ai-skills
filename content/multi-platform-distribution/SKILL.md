@@ -1,8 +1,8 @@
 ---
 name: multi-platform-distribution
 description: Use when one piece of content becomes 10 — blog to Twitter thread, LinkedIn
-  article, YouTube script, newsletter, TikTok script, podcast outline, Reddit post.
-  Use when working with multi platform distribution.
+  article, YouTube script, newsletter, TikTok script, podcast outline, Reddit
+  post.
 domain: content
 author: oyi77
 license: Apache-2.0

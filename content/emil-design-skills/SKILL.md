@@ -19,10 +19,12 @@ tags:
 - apple-design
 - craft
 version: 1.0.0
-# The 8 skills documented below ship in the external npm package
-# `emilkowalski/skills` (npx skills add emilkowalski/skills). They are NOT
-# present in this repo as standalone SKILL.md files, so `depends_on` is
-# intentionally omitted.
+triggers:
+- ui animation
+- micro interaction
+- motion design
+- apple design
+- interface polish
 category: content
 ---
 

@@ -17,17 +17,22 @@ tags:
 - sherlock
 license: MIT
 subdomain: research-analysis
+triggers:
+- research analyst role
+- competitive intelligence
+- market sizing
+- tam sam som
+- source verification
+- structured synthesis
+- due diligence
+- market research
+- hypothesis testing
+- evidence triangulation
 ---
 
 ## Overview
 
-The `role-research-analyst` skill coordinates thorough investigative research, competitive intelligence monitoring, addressable market sizing (TAM/SAM/SOM), structured hypothesis testing, and rigorous primary source fact verification. Rather than aggregating superficial AI web summaries or unvetted blog commentary, this role enforces strict provenance tracking, hypothesis-driven deduction (Sherlock methodology), MECE (Mutually Exclusive, Collectively Exhaustive) problem decomposition, and multi-source cross-referencing.
-
-```
-[Phase 1: Hypothesis Formulation & Scoping] ──► [Phase 2: Systematic Primary Data Ingestion]
-                                                                        │
-[Phase 5: Actionable Intelligence Delivery] ◄── [Phase 4: Synthesis & Sizing] ◄───────┘
-```
+The `role-research-analyst` skill treats every claim as unproven until two independent primary sources corroborate it; deductions are structured, sized bottom-up, and every unverified point is flagged `[INFERENCE]`.
 
 The research analyst transforms ambiguous questions into structured, falsifiable hypotheses backed by verifiable citations, quantitative data points, and strategic differentiation insights.
 

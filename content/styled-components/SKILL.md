@@ -1,7 +1,7 @@
 ---
 name: styled-components
 description: Use when styled-components CSS-in-JS — tagged templates, theming, props,
-  animations, SSR, performance. Use when working with styled components.
+  animations, SSR, performance.
 domain: content
 author: oyi77
 license: Apache-2.0

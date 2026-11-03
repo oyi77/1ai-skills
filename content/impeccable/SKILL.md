@@ -40,10 +40,13 @@ triggers:
 - "optimize ui"
 - "live variant"
 - "onboard flow"
-subdomain: design
+- "redesign ui"
+- "revamp ui"
+- "restyle component"
+- "polish interface"
 license: Apache-2.0
+subdomain: design
 ---
-
 # Impeccable
 
 A comprehensive design operating system and language for AI coding agents based on [pbakaus/impeccable](https://github.com/pbakaus/impeccable). Provides a structured 24-verb design vocabulary, dual-truth artifact separation (`PRODUCT.md` for business truth, `DESIGN.md` for visual truth), 4 surface archetypes (Persuade, Operate, Read, Experience), and a deterministic Craft Floor that eliminates generic AI slop, cards-inside-cards, unearned gradients, and un-tinted grays.
@@ -295,3 +298,9 @@ def verify_craft_floor(css_content: str) -> list[str]:
 | Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
 | :--- | :--- | :--- |
 | `emil-design-skills` | Refining interface motion, UI craft, animation standards, and prototyping decisions | [SKILL.md](../emil-design-skills/SKILL.md) |
+| `better-interface` | Cross-discipline interface review across accessibility, layout, writing, typography, color, and UI polish | [SKILL.md](../better-interface/SKILL.md) |
+| `interface-review` | Change-scoped review of a branch, PR, or uncommitted diff | [SKILL.md](../interface-review/SKILL.md) |
+| `variant` | Exploring design alternatives for one component | [SKILL.md](../variant/SKILL.md) |
+| `break` | Stress-testing one component under worst-case scenarios | [SKILL.md](../break/SKILL.md) |
+| `state-machine` | Rendering every state of one component on a throwaway page | [SKILL.md](../state-machine/SKILL.md) |
+| `build-design` | Building UI from a Figma file or design image | [SKILL.md](../build-design/SKILL.md) |
