@@ -598,7 +598,7 @@ def gen_docs(data):
       <div class="docs-content">
 
         <h2 id="getting-started">Getting Started</h2>
-        <p>1ai-skills is a library of 1329 SKILL.md files that force AI agents to follow real workflows. Every skill includes anti-rationalization tables, code examples, and verification checklists.</p>
+<p>1ai-skills library 1427 SKILL.md files force AI agents follow real workflows. Every skill includes anti-rationalization tables, code examples, verification checklists.</p>
 
         <h3>Quick Install (Claude Code)</h3>
         <pre><code>/plugin marketplace add oyi77/1ai-skills
