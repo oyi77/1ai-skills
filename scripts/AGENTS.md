@@ -11,7 +11,7 @@ Repo maintenance utilities. **Not skill content.**
 |---|---|
 | `audit-skills.sh` | **Source-of-truth counter.** Walks the tree, counts SKILL.md per category, emits `SKILLS.json`. Run after adding/removing skills. |
 | `validate-skills.py` | **Hard validator.** Parses every SKILL.md frontmatter, checks required fields (`name`, `description`), name-vs-dir consistency. Supports `--fix` for auto-repair. CI runs this on every PR. |
-| `install-hooks.js` | Installs `../hooks/` into the consuming repo's `.git/hooks/` |
+| `test_skill_router_regression.py` | Router targeting regression & external-delegation checks |
 | `hooks-cli.js` | Interactive CLI for managing hooks |
 | `hooks-tui.js` | TUI variant of hooks-cli |
 | `add-missing-sections.py` | Legacy: adds standard sections to skill docs |
