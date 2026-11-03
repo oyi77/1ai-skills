@@ -1,28 +1,81 @@
 {
-  "total_skills": 1188,
+  "total_skills": 1424,
   "category_count": 19,
   "categories": {
-    "agents": 4,
-    "automation": 13,
-    "content": 45,
-    "core": 38,
-    "cybersecurity": 800,
-    "data": 3,
-    "development": 93,
-    "devops": 25,
-    "financial": 11,
-    "integrations": 19,
-    "marketing": 32,
-    "mcp": 6,
-    "meta": 5,
-    "mindset": 29,
-    "operations": 16,
-    "productivity": 8,
-    "research": 23,
-    "sales": 6,
-    "trading": 12
+    "agents": 16,
+    "automation": 21,
+    "content": 105,
+    "core": 53,
+    "cybersecurity": 801,
+    "data": 8,
+    "development": 105,
+    "devops": 32,
+    "financial": 19,
+    "integrations": 29,
+    "marketing": 43,
+    "mcp": 15,
+    "meta": 14,
+    "mindset": 55,
+    "operations": 20,
+    "productivity": 10,
+    "research": 38,
+    "sales": 13,
+    "trading": 27
   },
   "skills": [
+    {
+      "name": "agent-alignment-audit",
+      "category": "agents",
+      "description": "Use when conducting independent operational alignment and assurance audits of AI agents before deployment. Inspects agent behavior across 10 critical failure modes including tool boundaries, privilege escalation resistance, destructive action gates, prompt injection, cross-user data leakage, and silent failure masking.",
+      "domain": "agents",
+      "tags": [
+        "agent-audit",
+        "operational-alignment",
+        "assurance",
+        "safety-testing",
+        "red-teaming",
+        "eval"
+      ],
+      "version": "1.0.0",
+      "author": "iFixAi / oyi77",
+      "subdomain": "orchestration",
+      "triggers": [
+        "agent alignment audit",
+        "audit ai agent",
+        "agent safety audit",
+        "verify agent boundaries",
+        "test agent compliance",
+        "agent inspection"
+      ],
+      "argument-hint": "[agent_endpoint or agent_config]",
+      "type": "agents"
+    },
+    {
+      "name": "agent-debug-loop",
+      "category": "agents",
+      "description": "Use when an agent run fails repeatedly, consumes tokens without progress, loops on the same tools, or drifts away from the intended task. Structured self-debugging workflow using capture, diagnosis, contained recovery, and introspection reports.",
+      "domain": "agents",
+      "tags": [
+        "debugging",
+        "agent-harness",
+        "context-management",
+        "loop-detection",
+        "self-improvement"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "orchestration",
+      "triggers": [
+        "agent loop",
+        "agent stuck",
+        "agent failing",
+        "debug agent",
+        "tool call limit",
+        "context overflow"
+      ],
+      "argument-hint": "[failure description]",
+      "type": "agents"
+    },
     {
       "name": "autonomous",
       "category": "agents",
@@ -45,6 +98,31 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "autonomous-agents",
+      "triggers": [
+        "autonomous agents",
+        "autonomous agent pipeline",
+        "spec to shipped code",
+        "unattended agent fleet",
+        "multi-agent orchestration"
+      ],
+      "argument-hint": "[feature or task spec]",
+      "type": "agents"
+    },
+    {
+      "name": "code-agent",
+      "category": "agents",
+      "description": "Use when implementing features from specs — reads requirements, writes code with tests, iterates until verification passes.",
+      "domain": "agents",
+      "tags": [
+        "agent",
+        "ai-agent",
+        "automation",
+        "code",
+        "autonomous"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "ai-agents",
       "type": "agents"
     },
     {
@@ -85,6 +163,50 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "coding-agents",
+      "triggers": [
+        "coding agents",
+        "linter agent",
+        "performance profiling agent",
+        "refactor agent",
+        "security audit agent",
+        "test coverage agent",
+        "quality gate pipeline"
+      ],
+      "argument-hint": "[module or codebase path]",
+      "type": "agents"
+    },
+    {
+      "name": "deploy-agent",
+      "category": "agents",
+      "description": "Use when ship code through controlled pipeline with verification gates and rollback plans.",
+      "domain": "agents",
+      "tags": [
+        "agent",
+        "ai-agent",
+        "automation",
+        "deploy",
+        "autonomous"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "ai-agents",
+      "type": "agents"
+    },
+    {
+      "name": "linter-agent",
+      "category": "agents",
+      "description": "Use when detecting and fixing code style violations, enforcing project conventions, ensuring consistent formatting.",
+      "domain": "agents",
+      "tags": [
+        "agent",
+        "ai-agent",
+        "automation",
+        "linter",
+        "coding"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "ai-agents",
       "type": "agents"
     },
     {
@@ -104,6 +226,143 @@
       "author": "oyi77",
       "subdomain": "ai-agents",
       "type": "agents"
+    },
+    {
+      "name": "perf-agent",
+      "category": "agents",
+      "description": "Use when measure before optimizing, target actual bottlenecks proven by profiling, verify with benchmarks.",
+      "domain": "agents",
+      "tags": [
+        "agent",
+        "ai-agent",
+        "automation",
+        "perf",
+        "coding"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "ai-agents",
+      "type": "agents"
+    },
+    {
+      "name": "planning-agent",
+      "category": "agents",
+      "description": "Use when decompose complex tasks into executable steps with dependencies, risk assessment, and verification criteria.",
+      "domain": "agents",
+      "tags": [
+        "agent",
+        "ai-agent",
+        "automation",
+        "planning",
+        "autonomous"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "ai-agents",
+      "type": "agents"
+    },
+    {
+      "name": "refactor-agent",
+      "category": "agents",
+      "description": "Use when restructure code to improve readability, maintainability, extensibility without changing external behavior.",
+      "domain": "agents",
+      "tags": [
+        "agent",
+        "ai-agent",
+        "automation",
+        "refactor",
+        "coding"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "ai-agents",
+      "type": "agents"
+    },
+    {
+      "name": "research-agent",
+      "category": "agents",
+      "description": "Use when investigating topics deeply with cross-referenced sources and producing evidence-backed findings.",
+      "domain": "agents",
+      "tags": [
+        "agent",
+        "ai-agent",
+        "automation",
+        "research",
+        "autonomous"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "ai-agents",
+      "type": "agents"
+    },
+    {
+      "name": "review-agent",
+      "category": "agents",
+      "description": "Use when reading code changes with adversarial intent to find bugs, security holes, logic errors, and performance traps.",
+      "domain": "agents",
+      "tags": [
+        "agent",
+        "ai-agent",
+        "automation",
+        "review",
+        "autonomous"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "ai-agents",
+      "type": "agents"
+    },
+    {
+      "name": "security-agent",
+      "category": "agents",
+      "description": "Use when bug bounty hunter and security auditor. Finds vulnerabilities before they find production.",
+      "domain": "agents",
+      "tags": [
+        "agent",
+        "ai-agent",
+        "automation",
+        "security",
+        "coding"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "ai-agents",
+      "type": "agents"
+    },
+    {
+      "name": "test-agent",
+      "category": "agents",
+      "description": "Use when writing comprehensive test suites covering happy paths, error paths, edge cases, and integration points.",
+      "domain": "agents",
+      "tags": [
+        "agent",
+        "ai-agent",
+        "automation",
+        "test",
+        "coding"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "ai-agents",
+      "type": "agents"
+    },
+    {
+      "name": "agent-reach-channels",
+      "category": "automation",
+      "description": "Use when multi-platform e-commerce and messaging channel extraction (Shopee, TikTok Shop, WeChat)",
+      "domain": "automation",
+      "tags": [
+        "ecommerce",
+        "scraping",
+        "agent-reach",
+        "shopee",
+        "tiktok",
+        "wechat"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "workflow-automation",
+      "type": "automation"
     },
     {
       "name": "bots",
@@ -220,6 +479,41 @@
       "type": "automation"
     },
     {
+      "name": "lakefs-versioning",
+      "category": "automation",
+      "description": "Use when lakeFS data versioning — Git-like branching for data lakes, atomic commits, time travel, CI/CD. Use when working with lakefs versioning.",
+      "domain": "automation",
+      "tags": [
+        "automation",
+        "lakefs",
+        "productivity",
+        "versioning",
+        "workflow"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "workflow-automation",
+      "type": "automation"
+    },
+    {
+      "name": "make-scenarios",
+      "category": "automation",
+      "description": "Use when make.com scenario automation — modules, routes, filters, error handlers, data stores, webhooks. Use when working with make scenarios.",
+      "domain": "automation",
+      "tags": [
+        "automation",
+        "make",
+        "productivity",
+        "scenarios",
+        "webhook",
+        "workflow"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "workflow-automation",
+      "type": "automation"
+    },
+    {
       "name": "moltbook-interact",
       "category": "automation",
       "description": "Use when automating Moltbook engagement — content posting, community management, sentiment-aware replies, and account growth at scale.",
@@ -230,6 +524,24 @@
         "moltbook",
         "productivity",
         "workflow"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "workflow-automation",
+      "type": "automation"
+    },
+    {
+      "name": "n8n-workflows",
+      "category": "automation",
+      "description": "Use when n8n workflow automation — nodes, triggers, expressions, credentials, webhooks, error handling. Use when working with n8n workflows.",
+      "domain": "automation",
+      "tags": [
+        "automation",
+        "n8n",
+        "productivity",
+        "webhook",
+        "workflow",
+        "workflows"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -254,6 +566,23 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "device-automation",
+      "type": "automation"
+    },
+    {
+      "name": "pipedream-workflows",
+      "category": "automation",
+      "description": "Use when pipedream serverless workflows — triggers, code steps, pre-built actions, data stores, HTTP. Use when working with pipedream workflows.",
+      "domain": "automation",
+      "tags": [
+        "automation",
+        "pipedream",
+        "productivity",
+        "workflow",
+        "workflows"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "workflow-automation",
       "type": "automation"
     },
     {
@@ -353,6 +682,380 @@
       "type": "automation"
     },
     {
+      "name": "workflow-builder",
+      "category": "automation",
+      "description": "Use when building and automating business workflows with Notion task tracking, Slack notifications, Kanban boards, and cross-functional process orchestration.",
+      "domain": "automation",
+      "tags": [
+        "automation",
+        "builder",
+        "notion",
+        "productivity",
+        "slack",
+        "workflow"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "workflow-automation",
+      "type": "automation"
+    },
+    {
+      "name": "workflows",
+      "category": "automation",
+      "description": "Use when workflow automation hub — cron scheduling, IFTTT triggers, n8n visual builder, webhook routing, and self-hosted Zapier alternatives for zero-vendor-lock-in automation.",
+      "domain": "automation",
+      "tags": [
+        "automation",
+        "workflows",
+        "cron",
+        "ifttt",
+        "n8n",
+        "webhook",
+        "zapier",
+        "productivity",
+        "pipelines"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "workflow-automation",
+      "type": "automation"
+    },
+    {
+      "name": "zapier-patterns",
+      "category": "automation",
+      "description": "Use when zapier automation patterns — triggers, actions, filters, formatters, paths, code steps. Use when working with zapier patterns.",
+      "domain": "automation",
+      "tags": [
+        "api",
+        "automation",
+        "patterns",
+        "productivity",
+        "workflow",
+        "zapier"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "workflow-automation",
+      "type": "automation"
+    },
+    {
+      "name": "accessibility-audit",
+      "category": "content",
+      "description": "Use when WCAG compliance audit — semantic HTML, ARIA, keyboard navigation, color contrast, and screen reader testing.",
+      "domain": "content",
+      "tags": [
+        "accessibility",
+        "audit",
+        "compliance",
+        "content-creation",
+        "digital-content",
+        "machine-learning",
+        "media",
+        "testing"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "triggers": [
+        "wcag",
+        "a11y audit",
+        "accessibility audit",
+        "color contrast",
+        "keyboard navigation",
+        "screen reader"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "ai-newsletter",
+      "category": "content",
+      "description": "Use when building and monetizing AI-powered email newsletters. Curate content, automate writing, and grow paid subscriptions. Generate $1K-20K/month.",
+      "domain": "content",
+      "tags": [
+        "content-creation",
+        "digital-content",
+        "email",
+        "media",
+        "newsletter"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "ai-podcast",
+      "category": "content",
+      "description": "Use when creating and automating AI-powered podcasts. Generate episodes from topics, URLs, or documents with multiple AI hosts. Build audience and monetize through sponsorships.",
+      "domain": "content",
+      "tags": [
+        "content-creation",
+        "digital-content",
+        "media",
+        "podcast"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "ant-design",
+      "category": "content",
+      "description": "Use when ant Design React component library — enterprise UI, forms, tables, charts, theming, ProComponents.",
+      "domain": "content",
+      "tags": [
+        "ant",
+        "content-creation",
+        "design",
+        "digital-content",
+        "media"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "anti-slop-frontend",
+      "category": "content",
+      "description": "Use when anti-slop frontend framework for AI agents. Enforces better layout, typography, motion, and spacing to counter generic AI-generated boilerplate UIs. Use when building frontend, countering generic AI UIs, need distinctive visual design, image-to-code pipeline.",
+      "domain": "content",
+      "tags": [
+        "frontend",
+        "design",
+        "ui",
+        "anti-slop",
+        "taste",
+        "typography",
+        "motion",
+        "image-to-code"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "triggers": [
+        "anti-slop-frontend",
+        "anti slop",
+        "counter ai slop",
+        "taste framework",
+        "redesign ui",
+        "revamp ui",
+        "generic ai ui",
+        "boilerplate ui"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "auto-clipper",
+      "category": "content",
+      "description": "Use when automatically clip long videos into short, engaging highlights for TikTok, Reels, and YouTube Shorts using FFmpeg and AI scene detection.",
+      "domain": "content",
+      "tags": [
+        "auto",
+        "clipper",
+        "video"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "b-roll-finder",
+      "category": "content",
+      "description": "Use when find relevant B-roll and stock footage by analyzing script content with semantic search. Match video meaning to text instead of random selection. Use when sourcing stock footage, finding B-roll clips, or matching visuals to narration.",
+      "domain": "content",
+      "tags": [
+        "video",
+        "semantic-search",
+        "b-roll",
+        "stock-footage",
+        "ai"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "banner-design",
+      "category": "content",
+      "description": "Banner design for social media, ads, web, print. 22 art direction styles, exact platform sizes, safe zones, export workflow. Use when creating banners, covers, headers for Facebook, Twitter, LinkedIn, YouTube, Instagram, Google Ads, website hero.",
+      "domain": "content",
+      "tags": [
+        "banner",
+        "design",
+        "social-media",
+        "ads",
+        "cover",
+        "header",
+        "export",
+        "html-css",
+        "screenshot"
+      ],
+      "version": "1.0.0",
+      "author": "claudekit",
+      "subdomain": "banner",
+      "type": "content"
+    },
+    {
+      "name": "better-accessibility",
+      "category": "content",
+      "description": "Use when reviewing or fixing keyboard focus, ARIA, accessible names, forms, screen-reader announcements, motion, or zoom against WCAG 2.2 requirements.",
+      "domain": "content",
+      "tags": [
+        "accessibility",
+        "a11y",
+        "wcag",
+        "aria",
+        "keyboard",
+        "focus"
+      ],
+      "version": "1.0.0",
+      "author": "jakubkrehel",
+      "subdomain": "design",
+      "triggers": [
+        "better-accessibility",
+        "accessibility review",
+        "wcag audit"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "better-colors",
+      "category": "content",
+      "description": "Use when building or auditing color systems, generating palettes, naming semantic tokens, converting color formats, or measuring contrast ratios.",
+      "domain": "content",
+      "tags": [
+        "colors",
+        "palette",
+        "tokens",
+        "contrast",
+        "oklch",
+        "design-tokens"
+      ],
+      "version": "1.0.0",
+      "author": "jakubkrehel",
+      "subdomain": "design",
+      "triggers": [
+        "better-colors",
+        "color system",
+        "palette"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "better-interface",
+      "category": "content",
+      "description": "Use when conducting a cross-discipline interface review across accessibility, layout, writing, typography, color, and UI polish to produce a ranked findings report.",
+      "domain": "content",
+      "tags": [
+        "interface-review",
+        "design-review",
+        "ui-audit",
+        "cross-discipline"
+      ],
+      "version": "1.0.0",
+      "author": "jakubkrehel",
+      "subdomain": "design",
+      "triggers": [
+        "better-interface",
+        "interface review"
+      ],
+      "argument-hint": "<screen-or-flow>",
+      "type": "content"
+    },
+    {
+      "name": "better-layout",
+      "category": "content",
+      "description": "Use when setting grouping, alignment, reading order, responsive structure, or ensuring layouts hold up when resized, translated, or mirrored.",
+      "domain": "content",
+      "tags": [
+        "layout",
+        "grid",
+        "flexbox",
+        "spacing",
+        "responsive",
+        "alignment"
+      ],
+      "version": "1.0.0",
+      "author": "jakubkrehel",
+      "subdomain": "design",
+      "triggers": [
+        "better-layout",
+        "layout review"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "better-typography",
+      "category": "content",
+      "description": "Use when setting or reviewing type scale, spacing, font features, wrapping, truncation, punctuation, or text rendering for interfaces.",
+      "domain": "content",
+      "tags": [
+        "typography",
+        "type-scale",
+        "fonts",
+        "text",
+        "readability"
+      ],
+      "version": "1.0.0",
+      "author": "jakubkrehel",
+      "subdomain": "design",
+      "triggers": [
+        "better-typography",
+        "typography"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "better-ui",
+      "category": "content",
+      "description": "Use when polishing surfaces, icons, motion, border radius, optical alignment, shadows, icon states, or animations with exact values.",
+      "domain": "content",
+      "tags": [
+        "ui",
+        "polish",
+        "motion",
+        "icons",
+        "surfaces",
+        "animations"
+      ],
+      "version": "1.0.0",
+      "author": "jakubkrehel",
+      "subdomain": "design",
+      "triggers": [
+        "better-ui",
+        "ui polish",
+        "visual polish",
+        "interface refinement"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "better-writing",
+      "category": "content",
+      "description": "Use when writing or reviewing interface copy including labels, errors, empty states, confirmations, or ensuring copy matches product voice and guides users.",
+      "domain": "content",
+      "tags": [
+        "writing",
+        "ux-writing",
+        "copy",
+        "microcopy",
+        "content"
+      ],
+      "version": "1.0.0",
+      "author": "jakubkrehel",
+      "subdomain": "design",
+      "triggers": [
+        "better-writing",
+        "ux writing",
+        "microcopy"
+      ],
+      "type": "content"
+    },
+    {
       "name": "brand",
       "category": "content",
       "description": "Use when brand voice, visual identity, messaging frameworks, asset management, brand consistency. Activate for branded content, tone of voice, marketing assets, brand compliance, style guides.",
@@ -373,6 +1076,48 @@
       "type": "content"
     },
     {
+      "name": "break",
+      "category": "content",
+      "description": "Use when stress-testing a component under every scenario it can reach on a temporary page to find edge cases and failures.",
+      "domain": "content",
+      "tags": [
+        "testing",
+        "components",
+        "stress-test",
+        "edge-cases"
+      ],
+      "version": "1.0.0",
+      "author": "jakubkrehel",
+      "subdomain": "design",
+      "triggers": [
+        "break"
+      ],
+      "argument-hint": "<component>",
+      "type": "content"
+    },
+    {
+      "name": "build-design",
+      "category": "content",
+      "description": "Use when building UI from a Figma file or design image to match the design using the project's existing tokens and components.",
+      "domain": "content",
+      "tags": [
+        "figma",
+        "design-to-code",
+        "implementation",
+        "ui-build"
+      ],
+      "version": "1.0.0",
+      "author": "jakubkrehel",
+      "subdomain": "design",
+      "triggers": [
+        "build-design",
+        "figma to code",
+        "build from design",
+        "implement design"
+      ],
+      "type": "content"
+    },
+    {
       "name": "canvas-design",
       "category": "content",
       "description": "Use when design visual art and graphics using HTML5 Canvas, p5.js, or SVG. Create generative art, data visualizations, diagrams, and interactive graphics. Use when designing visual art and graphics using html5 canvas, p5.js, or.",
@@ -384,6 +1129,56 @@
         "visualization",
         "generative-art",
         "svg"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "chakra-ui",
+      "category": "content",
+      "description": "Use when chakra UI React component library — theming, responsive styles, color mode, component composition.",
+      "domain": "content",
+      "tags": [
+        "chakra",
+        "content-creation",
+        "digital-content",
+        "media"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "clay-art-video-generator",
+      "category": "content",
+      "description": "Use when clay art video generator skill.",
+      "domain": "content",
+      "tags": [
+        "clay",
+        "art",
+        "video",
+        "generator"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "comment-reply-manager",
+      "category": "content",
+      "description": "Use when monitor TikTok/Instagram comments, classify sentiment, auto-reply with FAQ answers, and DM high-intent commenters with LYNK affiliate links to convert engagement into sales. Use when monitoring tiktok/instagram comments, classify sentiment, auto-reply with faq answers, and.",
+      "domain": "content",
+      "tags": [
+        "comment",
+        "content-creation",
+        "digital-content",
+        "manager",
+        "media",
+        "reply"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -492,6 +1287,23 @@
       "type": "content"
     },
     {
+      "name": "daisyui-components",
+      "category": "content",
+      "description": "Use when daisyUI component library for Tailwind — themed components, colors, responsive, dark mode.",
+      "domain": "content",
+      "tags": [
+        "components",
+        "content-creation",
+        "daisyui",
+        "digital-content",
+        "media"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
       "name": "design",
       "category": "content",
       "description": "Use when creating brand identity, design tokens, UI styling, logo generation (55 styles, Gemini or Atlas Cloud AI), corporate identity programs (50 deliverables, CIP mockups), HTML presentations (Chart.js), banner design (22 styles, social/ads/web/print), icon design (15 styles, SVG), or social photos (HTML→screenshot, multi-platform).",
@@ -511,6 +1323,39 @@
       "version": "2.1.0",
       "author": "claudekit",
       "subdomain": "design",
+      "triggers": [
+        "design",
+        "brand identity",
+        "design tokens",
+        "logo design"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "design-md",
+      "category": "content",
+      "description": "Use when creating, auditing, or applying a DESIGN.md specification file for a project to guide AI coding agents in generating visually consistent UI matching specific brand aesthetics, design tokens, typography, and component patterns.",
+      "domain": "content",
+      "tags": [
+        "design-system",
+        "design-md",
+        "design-tokens",
+        "ui-guidance",
+        "agent-instructions",
+        "frontend"
+      ],
+      "version": "1.0.0",
+      "author": "VoltAgent / oyi77",
+      "subdomain": "design",
+      "triggers": [
+        "design-md",
+        "create design md",
+        "design system spec",
+        "brand design md",
+        "ui design guidance",
+        "agent design system"
+      ],
+      "argument-hint": "[project_root or brand_name]",
       "type": "content"
     },
     {
@@ -531,6 +1376,38 @@
       "version": "1.0.0",
       "author": "claudekit",
       "subdomain": "design-system",
+      "triggers": [
+        "design-system",
+        "token architecture",
+        "component specs",
+        "design system",
+        "component library",
+        "restyle component"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "design-tokens",
+      "category": "content",
+      "description": "Use when design token systems — color, typography, spacing, and theme architecture for consistent design. Use when designing token systems — color, typography, spacing, and theme architecture.",
+      "domain": "content",
+      "tags": [
+        "content-creation",
+        "design",
+        "digital-content",
+        "media",
+        "tokens"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "triggers": [
+        "design-tokens",
+        "token system",
+        "css variables",
+        "design tokens",
+        "color token"
+      ],
       "type": "content"
     },
     {
@@ -573,9 +1450,74 @@
       "type": "content"
     },
     {
+      "name": "emil-design-skills",
+      "category": "content",
+      "description": "Use when collection of 8 design engineering skills by Emil Kowalski (Vercel, Linear) — animation standards, UI craft, Apple design principles, library selection, and prototyping. Based on years of production experience. Use when the user asks about UI polish, animation decisions, or wants to audit/improve interface motion.",
+      "domain": "content",
+      "tags": [
+        "design",
+        "animation",
+        "ui",
+        "motion",
+        "css",
+        "frontend",
+        "prototyping",
+        "apple-design",
+        "craft"
+      ],
+      "version": "1.0.0",
+      "author": "mahipal",
+      "subdomain": "ui-design",
+      "triggers": [
+        "ui animation",
+        "micro interaction",
+        "motion design",
+        "apple design",
+        "interface polish"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "explain-interface",
+      "category": "content",
+      "description": "Use when explaining how a website, visual effect, or animation was built from a live URL or screenshot.",
+      "domain": "content",
+      "tags": [
+        "reverse-engineering",
+        "analysis",
+        "explain"
+      ],
+      "version": "1.0.0",
+      "author": "jakubkrehel",
+      "subdomain": "design",
+      "triggers": [
+        "explain-interface"
+      ],
+      "argument-hint": "<url-or-screenshot>",
+      "type": "content"
+    },
+    {
+      "name": "faceless-youtube",
+      "category": "content",
+      "description": "Use when creating and automating faceless YouTube channels using AI-generated scripts, TTS voiceovers, stock footage, and automated publishing workflows with zero on-camera presence.",
+      "domain": "content",
+      "tags": [
+        "content",
+        "video",
+        "faceless",
+        "youtube",
+        "automation",
+        "money"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
       "name": "frontend-design",
       "category": "content",
-      "description": "Use when design system patterns — component architecture, Tailwind mastery, visual hierarchy, and responsive layouts. Use when designing system patterns — component architecture, tailwind mastery, visual hierarchy,.",
+      "description": "Use when designing frontend systems — component architecture, Tailwind mastery, visual hierarchy, and responsive layouts. Covers design-system patterns, component composition, and responsive implementation.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -587,6 +1529,39 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "content-creation",
+      "triggers": [
+        "frontend-design",
+        "ui design",
+        "component design",
+        "redesign page",
+        "revamp design",
+        "design task",
+        "ui design work"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "frontend-ui-design",
+      "category": "content",
+      "description": "Use when design and build production-grade UI components using React, Vue, or vanilla HTML/CSS. Create responsive layouts, design systems, and accessible interfaces. Use when designing and build production-grade ui components using react, vue, or.",
+      "domain": "content",
+      "tags": [
+        "design",
+        "frontend",
+        "ui",
+        "react",
+        "css",
+        "components",
+        "responsive"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "triggers": [
+        "frontend-ui-design",
+        "ui components",
+        "production ui"
+      ],
       "type": "content"
     },
     {
@@ -610,7 +1585,7 @@
     {
       "name": "geminigen-ai",
       "category": "content",
-      "description": "Use when unified multimedia API for image generation (nano-banana-pro, imagen-4), video generation (Grok, Veo, Sora), and text-to-speech. Replaces grok-video-generation, seedance, and gemini-image-generator. Use when working with geminigen ai.",
+      "description": "Use when unified multimedia API for image generation (nano-banana-pro, imagen-4), video generation (Grok, Veo, Sora), and text-to-speech. Replaces grok-video-generation, seedance, and gemini-image-generator.",
       "domain": "content",
       "tags": [
         "api",
@@ -642,12 +1617,24 @@
       "version": "2.0.0",
       "author": "Nutlope",
       "subdomain": "design",
+      "triggers": [
+        "hallmark",
+        "anti-ai-slop",
+        "anti slop",
+        "design a website",
+        "redesign page",
+        "sloplint",
+        "material theme",
+        "revamp page",
+        "restyle website",
+        "visual overhaul"
+      ],
       "type": "content"
     },
     {
       "name": "humanizer",
       "category": "content",
-      "description": "Use when transform AI-generated content into natural, human-sounding writing with proper tone and style. Use when working with humanizer.",
+      "description": "Use when transform AI-generated content into natural, human-sounding writing with proper tone and style.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -677,6 +1664,83 @@
       "type": "content"
     },
     {
+      "name": "hyperframes-changelog-video",
+      "category": "content",
+      "description": "Turn a weekly changelog .md into a finished branded changelog video using HyperFrames. Use when the user provides a changelog/digest markdown and wants the weekly video, or says 'changelog video'. Self-contained — fonts, background, lexicon, and scripts ship in the skill. Produces square 1080, ~45-60s videos with animated brand mock-UIs.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "changelog",
+        "video",
+        "branded-content",
+        "digest",
+        "weekly",
+        "mock-ui"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content-creation"
+    },
+    {
+      "name": "hyperframes-cut-the-curve",
+      "category": "content",
+      "description": "Use when authoring any transition, text-beat handoff, or kinetic text entry in HyperFrames videos — the transition technique catalog: five velocity-matched SEAMS (zoom-through, inverse zoom-through, cut-the-curve, waterfall cut, rack-focus blur-cut) plus in-scene techniques (waterfall entry, nudge curve). Covers partial-travel velocity matching, Z scale-sign rule, size-scaled blur, the 10/65/25 slide ratio, and the 2-3 transition budget.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "transitions",
+        "animation",
+        "cut-the-curve",
+        "zoom-through",
+        "waterfall",
+        "rack-focus",
+        "velocity-matching",
+        "easing"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content-creation"
+    },
+    {
+      "name": "hyperframes-embedded-captions",
+      "category": "content",
+      "description": "Add captions/subtitles to talking-head or launch videos using HyperFrames. Use when the user wants embedded captions, verbatim caption rails, or cinematic text behind the subject. Covers the drop/rail/embed caption model, the overlay law (captions are NOT a reserved band), matte occlusion for embedded climaxes, and word-timestamp alignment from TTS output.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "captions",
+        "subtitles",
+        "talking-head",
+        "overlay",
+        "accessibility"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content-creation"
+    },
+    {
+      "name": "hyperframes-faceless-explainer",
+      "category": "content",
+      "description": "Turn arbitrary text — an article, notes, a topic, a brief — into a faceless explainer video using HyperFrames. Use when the user wants a topic explainer, concept breakdown, how-to, or listicle with no product/website to capture. Every visual is invented per scene (typography, abstract graphics, diagrams, data-viz). Not a video built from a website (use hyperframes-product-launch-video).",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "explainer",
+        "faceless",
+        "education",
+        "concept",
+        "how-to",
+        "data-viz"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content-creation"
+    },
+    {
       "name": "hyperframes-general-video",
       "category": "content",
       "description": "The fallback HyperFrames workflow for anything that doesn't fit other skills — longer multi-scene pieces, brand/sizzle reels, title cards, static loops, freeform compositions. Input- and length-agnostic. Also the home of companion mode (co-create with the full toolbox). Use when no other HyperFrames skill matches, or when the user wants a freeform video.",
@@ -689,6 +1753,157 @@
         "title-card",
         "fallback",
         "companion-mode"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content-creation"
+    },
+    {
+      "name": "hyperframes-motion-graphics",
+      "category": "content",
+      "description": "Create short, unnarrated, design-led motion graphics (~under 10s) using HyperFrames. Use when the user wants kinetic type, stat/chart hits, logo stings, lower-thirds, animated tweets/headlines, or transparent overlay motion graphics. MP4 or transparent overlay output. Teaches seek-safe keyframe authoring and the 2-3 transition budget rule.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "motion-graphics",
+        "animation",
+        "kinetic-type",
+        "lower-third",
+        "logo-sting",
+        "transparent-overlay"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content-creation"
+    },
+    {
+      "name": "hyperframes-music-to-video",
+      "category": "content",
+      "description": "Turn a music track into a beat-synced HyperFrames video — lyric, slideshow, or kinetic promo. Use when the user provides an audio file, a video to pull audio from, or a mood brief for generated music. Music drives pacing. Teaches beat-map extraction, section-based scene planning, and audio-reactive visuals.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "music",
+        "beat-sync",
+        "lyric-video",
+        "slideshow",
+        "kinetic-promo",
+        "audio-reactive"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content-creation"
+    },
+    {
+      "name": "hyperframes-oversized-cursor",
+      "category": "content",
+      "description": "House-style oversized macOS cursor technique for HyperFrames videos. Use when a scene involves cursors, pointer-led action, kicking off a UI scene, igniting a morph/transition/typing with a click, or when a scene reads as static/dead/stale and needs motion to carry the eye. Covers cursor size/look, off-screen entry law, tip-targeting, click-ignition, and cross-scene handoff.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "cursor",
+        "motion",
+        "click-ignition",
+        "eye-carrier",
+        "ui-animation"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content-creation"
+    },
+    {
+      "name": "hyperframes-pr-to-video",
+      "category": "content",
+      "description": "Turn a GitHub pull request into a changelog, feature-reveal, fix, or refactor explainer video using HyperFrames. Use when the user provides a PR URL, owner/repo#N ref, or says 'this PR'. Reads diff via gh CLI, visualizes code changes as animated diffs with narration. Teaches diff parsing, change visualization, and technical storytelling.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "pr-to-video",
+        "changelog",
+        "github",
+        "code-diff",
+        "feature-reveal",
+        "developer-content"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content-creation"
+    },
+    {
+      "name": "hyperframes-product-launch-video",
+      "category": "content",
+      "description": "Create product launch videos from a URL, brief, or script using HyperFrames (HTML→MP4). Use when the user wants a product launch video, site tour, social clip featuring a product's own visuals, or marketing/promoting a product. Up to ~3 min (sweet spot 30-90s). Teaches the HyperFrames production loop: plan → write HTML → wire seekable animations → add media → lint → preview → render.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "video",
+        "product-launch",
+        "html-to-video",
+        "animation",
+        "motion-graphics",
+        "marketing",
+        "agent-native"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content-creation"
+    },
+    {
+      "name": "hyperframes-seam-craft",
+      "category": "content",
+      "description": "Render-correctness doctrine for scene-to-scene seams in HyperFrames videos. Use when assembling the master timeline, when a white flash appears at a cut, when reasoning about transition opacity dips, or when verifying render-side mechanics of overlapping scene wrappers. Covers the opaque stage-ground white-flash guard, injector overlap mechanics, template placeholders, and the ping-pong track reassignment.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "seams",
+        "transitions",
+        "render-correctness",
+        "white-flash",
+        "stage-ground",
+        "injector"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content-creation"
+    },
+    {
+      "name": "hyperframes-slideshow",
+      "category": "content",
+      "description": "Build a presentation, pitch deck, or interactive deck using HyperFrames. Use when the user wants slides with fragment reveals, branching navigation, hotspot links, or presenter mode. Output is a navigable deck, not a rendered MP4. Teaches slide-as-scene composition, fragment timing, and deck navigation patterns.",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "slideshow",
+        "presentation",
+        "pitch-deck",
+        "slides",
+        "interactive",
+        "branching"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content-creation"
+    },
+    {
+      "name": "hyperframes-talking-head-recut",
+      "category": "content",
+      "description": "Package an existing talking-head / interview / podcast video with timed, designed graphic overlays using HyperFrames. Use when the user wants kinetic titles, lower-thirds, data callouts, pull-quotes, side panels, or picture-in-picture on top of existing footage. The clip plays untouched underneath. Not plain subtitles (use hyperframes-embedded-captions).",
+      "domain": "content-creation",
+      "tags": [
+        "hyperframes",
+        "talking-head",
+        "graphic-overlays",
+        "lower-thirds",
+        "data-callouts",
+        "video-packaging"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -722,7 +1937,7 @@
     {
       "name": "image-gen",
       "category": "content",
-      "description": "Use when aI image generation — Stable Diffusion, Midjourney, DALL-E, ComfyUI. Prompt engineering for images, inpainting, outpainting, ControlNet. Use when working with image gen.",
+      "description": "Use when aI image generation — Stable Diffusion, Midjourney, DALL-E, ComfyUI. Prompt engineering for images, inpainting, outpainting, ControlNet.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -756,12 +1971,60 @@
       "version": "4.7.1",
       "author": "oyi77",
       "subdomain": "design",
+      "triggers": [
+        "impeccable",
+        "design system",
+        "critique design",
+        "audit design",
+        "polish ui",
+        "shape feature",
+        "init design",
+        "document design",
+        "craft floor",
+        "bolder ui",
+        "quieter ui",
+        "distill ui",
+        "harden ui",
+        "animate ui",
+        "colorize ui",
+        "typeset ui",
+        "delight ui",
+        "overdrive ui",
+        "clarify copy",
+        "adapt ui",
+        "optimize ui",
+        "live variant",
+        "onboard flow",
+        "redesign ui",
+        "revamp ui",
+        "restyle component",
+        "polish interface"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "interface-review",
+      "category": "content",
+      "description": "Use when reviewing a branch, pull request, or uncommitted changes for interface problems introduced or regressed across accessibility, layout, writing, typography, color, and UI.",
+      "domain": "content",
+      "tags": [
+        "code-review",
+        "pr-review",
+        "interface-audit"
+      ],
+      "version": "1.0.0",
+      "author": "jakubkrehel",
+      "subdomain": "design",
+      "triggers": [
+        "interface-review"
+      ],
+      "argument-hint": "<branch-or-pr>",
       "type": "content"
     },
     {
       "name": "larry-playbook",
       "category": "content",
-      "description": "Use when autonomous AI agent that learns and improves viral content over time using Oliver Henry's proven formula. Use when working with larry playbook.",
+      "description": "Use when autonomous AI agent that learns and improves viral content over time using Oliver Henry's proven formula.",
       "domain": "content",
       "tags": [
         "ai-agent",
@@ -820,6 +2083,44 @@
       "type": "marketing"
     },
     {
+      "name": "material-ui",
+      "category": "content",
+      "description": "Use when material UI (MUI) React components — theming, styled engine, data grid, date pickers, icons.",
+      "domain": "content",
+      "tags": [
+        "content-creation",
+        "digital-content",
+        "material",
+        "media"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "minimalist-design",
+      "category": "content",
+      "description": "Use when dieter Rams' approach to timeless product design - less but better.",
+      "domain": "content",
+      "tags": [
+        "content-creation",
+        "design",
+        "digital-content",
+        "media",
+        "minimalist"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "triggers": [
+        "minimalist design",
+        "clean ui",
+        "reduce visual noise"
+      ],
+      "type": "content"
+    },
+    {
       "name": "monetization-strategist",
       "category": "content",
       "description": "Use when turn content into revenue — newsletter businesses, YouTube automation, affiliate sites, digital product creation, funnel design, audience building. Use when building content-based revenue streams.",
@@ -858,12 +2159,17 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "animation",
+      "triggers": [
+        "motion-dev",
+        "animations",
+        "react spring"
+      ],
       "type": "content"
     },
     {
       "name": "multi-platform-distribution",
       "category": "content",
-      "description": "Use when one piece of content becomes 10 — blog to Twitter thread, LinkedIn article, YouTube script, newsletter, TikTok script, podcast outline, Reddit post. Use when working with multi platform distribution.",
+      "description": "Use when one piece of content becomes 10 — blog to Twitter thread, LinkedIn article, YouTube script, newsletter, TikTok script, podcast outline, Reddit post.",
       "domain": "content",
       "tags": [
         "content-creation",
@@ -908,9 +2214,26 @@
       "type": "content"
     },
     {
+      "name": "pandacss-styling",
+      "category": "content",
+      "description": "Use when panda CSS zero-runtime styling — token system, patterns, recipes, conditions, JSX styles.",
+      "domain": "content",
+      "tags": [
+        "content-creation",
+        "digital-content",
+        "media",
+        "pandacss",
+        "styling"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
       "name": "paperpod",
       "category": "content",
-      "description": "Use when isolated agent runtime for code execution, live preview URLs, browser automation, 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), LLM inference, and persistent memory — all via CLI or HTTP, no SDK or API keys required. Use when working with paperpod.",
+      "description": "Use when isolated agent runtime for code execution, live preview URLs, browser automation, 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), LLM inference, and persistent memory — all via CLI or HTTP, no SDK or API keys required.",
       "domain": "content",
       "tags": [
         "ai-agent",
@@ -919,6 +2242,40 @@
         "digital-content",
         "media",
         "paperpod"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "postcss-plugins",
+      "category": "content",
+      "description": "Use when postCSS plugin ecosystem — Autoprefixer, cssnano, nesting, custom plugins, preset configuration.",
+      "domain": "content",
+      "tags": [
+        "content-creation",
+        "digital-content",
+        "media",
+        "plugins",
+        "postcss"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "radix-primitives",
+      "category": "content",
+      "description": "Use when radix UI headless primitives — accessible, unstyled React components for dialogs, dropdowns, tooltips.",
+      "domain": "content",
+      "tags": [
+        "content-creation",
+        "digital-content",
+        "media",
+        "primitives",
+        "radix"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -947,6 +2304,64 @@
       "type": "content"
     },
     {
+      "name": "responsive-design",
+      "category": "content",
+      "description": "Use when mobile-first responsive design — breakpoints, fluid typography, container queries, and touch optimization.",
+      "domain": "content",
+      "tags": [
+        "content-creation",
+        "design",
+        "digital-content",
+        "media",
+        "responsive"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "triggers": [
+        "responsive-design",
+        "mobile-first",
+        "breakpoints",
+        "responsive layout",
+        "mobile layout",
+        "fluid typography"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "role-ui-ux-designer",
+      "category": "content",
+      "description": "Use when orchestrating UI/UX design systems, anti-AI-slop frontend styling, tactile micro-interactions, responsive design tokens, accessibility standards, and high-fidelity interface engineering.",
+      "domain": "content",
+      "tags": [
+        "ui",
+        "ux",
+        "design-systems",
+        "anti-slop",
+        "frontend",
+        "accessibility",
+        "typography",
+        "design-tokens",
+        "micro-interactions"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "ui-ux-design",
+      "triggers": [
+        "ui ux designer role",
+        "design system",
+        "anti ai slop",
+        "design tokens",
+        "micro interactions",
+        "wcag contrast fix",
+        "responsive layout",
+        "typography scale",
+        "component library",
+        "accessible components"
+      ],
+      "type": "content"
+    },
+    {
       "name": "sales-director",
       "category": "content",
       "description": "The Chief Revenue Officer (CRO) — manages ALL sales activities across 1ai-affiliate and 1ai-career. Delegates to lead generation, pipeline management, closing, and customer success. Has memory via 1ai-hub brain, follows 1ai-rules, and coordinates with Marketing Director for leads and Content Director for sales enablement. Use when the user says 'sales strategy', 'generate leads', 'close deals', 'pipeline', or needs any sales work.",
@@ -971,6 +2386,22 @@
       "type": "sales"
     },
     {
+      "name": "shadcn-ui",
+      "category": "content",
+      "description": "Use when shadcn/ui component library — copy-paste React components, Tailwind CSS, Radix primitives, theming.",
+      "domain": "content",
+      "tags": [
+        "content-creation",
+        "digital-content",
+        "media",
+        "shadcn"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
       "name": "slides",
       "category": "content",
       "description": "Use when create strategic HTML presentations with Chart.js, design tokens, responsive layouts, copywriting formulas, and contextual slide strategies.",
@@ -987,6 +2418,143 @@
       "version": "1.0.0",
       "author": "claudekit",
       "subdomain": "slides",
+      "type": "content"
+    },
+    {
+      "name": "state-machine",
+      "category": "content",
+      "description": "Use when rendering every state of a component on a throwaway page with mock data and a switcher to work on each state.",
+      "domain": "content",
+      "tags": [
+        "components",
+        "states",
+        "testing",
+        "prototyping"
+      ],
+      "version": "1.0.0",
+      "author": "jakubkrehel",
+      "subdomain": "design",
+      "triggers": [
+        "state-machine"
+      ],
+      "argument-hint": "<component>",
+      "type": "content"
+    },
+    {
+      "name": "storybook-ui",
+      "category": "content",
+      "description": "Use when storybook for UI component development — stories, addons, controls, a11y testing, visual regression.",
+      "domain": "content",
+      "tags": [
+        "content-creation",
+        "digital-content",
+        "media",
+        "storybook",
+        "testing"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "styled-components",
+      "category": "content",
+      "description": "Use when styled-components CSS-in-JS — tagged templates, theming, props, animations, SSR, performance.",
+      "domain": "content",
+      "tags": [
+        "components",
+        "content-creation",
+        "digital-content",
+        "media",
+        "styled"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "tailwind-advanced",
+      "category": "content",
+      "description": "Use when advanced Tailwind CSS — custom plugins, JIT, container queries, animations, dark mode, design systems.",
+      "domain": "content",
+      "tags": [
+        "advanced",
+        "content-creation",
+        "digital-content",
+        "media",
+        "tailwind"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "teardown",
+      "category": "content",
+      "description": "Use when creating a technical illustration of an object and configuring it, coloring it, and downloading as SVG, PNG, or PDF.",
+      "domain": "content",
+      "tags": [
+        "illustration",
+        "technical-drawing",
+        "svg",
+        "export"
+      ],
+      "version": "1.0.0",
+      "author": "jakubkrehel",
+      "subdomain": "design",
+      "triggers": [
+        "teardown"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "theme-factory",
+      "category": "content",
+      "description": "Use when generating and applying professional color themes, typography systems, and design tokens for applications. Create consistent visual identities across platforms.",
+      "domain": "content",
+      "tags": [
+        "design",
+        "themes",
+        "colors",
+        "typography",
+        "design-tokens",
+        "branding"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "triggers": [
+        "color theme",
+        "typography system",
+        "palette generation",
+        "brand identity",
+        "theme tokens"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "ui-critique",
+      "category": "content",
+      "description": "Use when structured UI review — visual hierarchy, consistency, accessibility, and actionable improvement feedback.",
+      "domain": "content",
+      "tags": [
+        "content-creation",
+        "critique",
+        "digital-content",
+        "media"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "triggers": [
+        "ui critique",
+        "design review",
+        "ux feedback",
+        "interface critique"
+      ],
       "type": "content"
     },
     {
@@ -1009,6 +2577,13 @@
       "version": "1.0.0",
       "author": "claudekit",
       "subdomain": "ui",
+      "triggers": [
+        "shadcn ui",
+        "tailwind styling",
+        "dark mode",
+        "ui components",
+        "styling system"
+      ],
       "type": "content"
     },
     {
@@ -1031,6 +2606,15 @@
       "version": "2.0.0",
       "author": "nextlevelbuilder",
       "subdomain": "design-intelligence",
+      "triggers": [
+        "ui-ux-pro-max",
+        "ui ux design",
+        "web ui",
+        "ui redesign",
+        "ux review",
+        "revamp dashboard",
+        "improve layout"
+      ],
       "type": "content"
     },
     {
@@ -1048,6 +2632,75 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "unslop",
+      "category": "content",
+      "description": "Use when turning vibecoded, generic, AI-looking UI into a crafted interface with character. Audits visual slop (purple gradients, glows, emoji labels, shouty copy) and applies a structured 9-pass redline redesign across spacing, color, icons, copy, typography, layout, details, visuals, and motion.",
+      "domain": "content",
+      "tags": [
+        "ui-design",
+        "anti-slop",
+        "design-refactor",
+        "visual-hierarchy",
+        "frontend",
+        "polish"
+      ],
+      "version": "1.0.0",
+      "author": "Damir Sokolovsky / oyi77",
+      "subdomain": "design",
+      "triggers": [
+        "unslop",
+        "remove ai slop",
+        "fix vibecoded ui",
+        "unslopping",
+        "redline ui review",
+        "clean up ai interface",
+        "redesign",
+        "revamp",
+        "restyle",
+        "de-slop ui",
+        "generic ai design"
+      ],
+      "argument-hint": "[file_path or component or url]",
+      "type": "content"
+    },
+    {
+      "name": "vanilla-extract",
+      "category": "content",
+      "description": "Use when vanilla Extract zero-runtime CSS-in-JS — type-safe styles, Sprinkles, Recipes, themes.",
+      "domain": "content",
+      "tags": [
+        "content-creation",
+        "digital-content",
+        "extract",
+        "media",
+        "vanilla"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "content-creation",
+      "type": "content"
+    },
+    {
+      "name": "variant",
+      "category": "content",
+      "description": "Use when building multiple variants of a component and iterating to pick the best one.",
+      "domain": "content",
+      "tags": [
+        "components",
+        "variants",
+        "iteration",
+        "prototyping"
+      ],
+      "version": "1.0.0",
+      "author": "jakubkrehel",
+      "subdomain": "design",
+      "triggers": [
+        "variant"
+      ],
+      "argument-hint": "<component>",
       "type": "content"
     },
     {
@@ -1114,6 +2767,48 @@
       "type": "content"
     },
     {
+      "name": "video-production-orchestrator",
+      "category": "content",
+      "description": "The single entry point for ALL video generation and editing needs. Analyzes user intent and routes to the right workflow — HyperFrames (product-launch, motion-graphics, faceless-explainer, changelog, captions), Remotion (React), FFmpeg (programmatic), auto-clipper (highlights), content-factory (YouTube), or slides. Use when the user says 'make a video', 'create video', 'edit video', or any video production request; this skill decides WHICH tool fits the ask.",
+      "domain": "content-creation",
+      "tags": [
+        "video",
+        "orchestrator",
+        "router",
+        "hyperframes",
+        "remotion",
+        "ffmpeg",
+        "content-factory",
+        "auto-clipper",
+        "slides",
+        "production"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content-creation"
+    },
+    {
+      "name": "video-strategy-orchestrator",
+      "category": "content",
+      "description": "Decides WHEN to use Remotion, HyperFrames, AI video generation, or a hybrid of all three. Use when building video production pipelines, choosing a video tool for a task, or when the user asks 'which video tool should I use?'. Evaluates input type, complexity, determinism needs, and output format to pick the right engine — or combine them. Read BEFORE starting any video production task in the 1ai ecosystem.",
+      "domain": "content-creation",
+      "tags": [
+        "video",
+        "strategy",
+        "orchestrator",
+        "remotion",
+        "hyperframes",
+        "ai-video",
+        "hybrid",
+        "pipeline"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "type": "content-creation"
+    },
+    {
       "name": "vilona-gm",
       "category": "content",
       "description": "Vilona — General Manager AI of the 1ai business kingdom. The single entry point that receives any business request and routes it to the right director (Content, Marketing, Sales), coordinates cross-director campaigns, and escalates to the human owner when authority is exceeded. Use when the user says 'Vilona', when a request spans multiple departments, or when starting any business-kingdom task.",
@@ -1176,7 +2871,7 @@
     {
       "name": "voice-ai",
       "category": "content",
-      "description": "Use when voice AI — text-to-speech (ElevenLabs, OpenAI TTS), speech-to-text (Whisper), voice cloning, real-time voice agents. Use when working with voice ai.",
+      "description": "Use when voice AI — text-to-speech (ElevenLabs, OpenAI TTS), speech-to-text (Whisper), voice cloning, real-time voice agents.",
       "domain": "content",
       "tags": [
         "ai-agent",
@@ -1322,6 +3017,24 @@
       "type": "core"
     },
     {
+      "name": "agent-self-improvement",
+      "category": "core",
+      "description": "Use when monitor performance of other skills, identify bottlenecks, suggest improvements, and auto-optimize the skill portfolio. Use when monitoring performance of other skills, identify bottlenecks, suggest improvements, and.",
+      "domain": "core",
+      "tags": [
+        "agent",
+        "improvement",
+        "infrastructure",
+        "memory",
+        "self",
+        "self-improvement"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "core-platform",
+      "type": "core"
+    },
+    {
       "name": "ai-engineering-curriculum",
       "category": "core",
       "description": "Use when structured AI engineering curriculum — 382 skills + 99 prompts across 20 phases covering ML, deep learning, LLMs, agents, and production systems. Use when learning AI, building AI skills,.",
@@ -1334,6 +3047,77 @@
         "llm",
         "agents",
         "education"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "core-platform",
+      "type": "core"
+    },
+    {
+      "name": "auto-consolidator",
+      "category": "core",
+      "description": "Use when consolidating overlapping or redundant skills across the 1ai-skills library by demoting narrow skills into sub-reference tables inside canonical parent skills without deleting physical SKILL.md files. Prevents router prefix collisions, context bloat, and redundant dispatch.",
+      "domain": "core",
+      "tags": [
+        "consolidation",
+        "deduplication",
+        "registry-management",
+        "skill-maintenance",
+        "context-optimization"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "meta-skills",
+      "triggers": [
+        "auto consolidate",
+        "consolidate skills",
+        "demote skills",
+        "merge skills",
+        "reduce skill count",
+        "dedup skills"
+      ],
+      "argument-hint": "[category | all]",
+      "type": "core"
+    },
+    {
+      "name": "auto-evolver",
+      "category": "core",
+      "description": "Use when evolving the skill library from repeated usage patterns — mining successful fixes, recurring failures, and refactor patterns from agent sessions, then promoting them into new or upgraded skills so the library becomes more efficient the more it is used.",
+      "domain": "core",
+      "tags": [
+        "auto-evolve",
+        "continuous-learning",
+        "skill-evolution",
+        "pattern-extraction",
+        "self-improvement"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "meta-skills",
+      "triggers": [
+        "auto evolve",
+        "evolve skills",
+        "learn from usage",
+        "promote pattern",
+        "skill evolution",
+        "mine patterns"
+      ],
+      "argument-hint": "[session-log | skill-name]",
+      "type": "core"
+    },
+    {
+      "name": "auto-git-commiter",
+      "category": "core",
+      "description": "Use when automatically commit and push OpenClaw changes to GitHub. Enable continuous improvement with automatic versioning, changelogs, and deployment-ready commits. Use when working with auto git commiter.",
+      "domain": "core",
+      "tags": [
+        "auto",
+        "commiter",
+        "git",
+        "github",
+        "infrastructure",
+        "memory",
+        "self-improvement"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -1374,6 +3158,15 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "core-platform",
+      "triggers": [
+        "autonomy engine",
+        "24/7 agent operation",
+        "autonomous operating system",
+        "unattended agent loop",
+        "agent escalation policy",
+        "decision ladder"
+      ],
+      "argument-hint": "[loop or capability]",
       "type": "core"
     },
     {
@@ -1429,6 +3222,25 @@
         "self-improvement"
       ],
       "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "core-platform",
+      "type": "core"
+    },
+    {
+      "name": "company-kb",
+      "category": "core",
+      "description": "Use when company-kb — Company Knowledge Base Skill. Use when relevant to this domain.",
+      "domain": "core",
+      "tags": [
+        "company",
+        "infrastructure",
+        "memory",
+        "self-improvement",
+        "collaboration",
+        "privacy",
+        "brain-integration"
+      ],
+      "version": "2.0.0",
       "author": "oyi77",
       "subdomain": "core-platform",
       "type": "core"
@@ -1632,6 +3444,78 @@
       "type": "core"
     },
     {
+      "name": "kb",
+      "category": "core",
+      "description": "Use when querying and maintaining the knowledge base for project context, decisions, and architecture documentation on session start.",
+      "domain": "core",
+      "tags": [
+        "infrastructure",
+        "memory",
+        "self-improvement",
+        "para",
+        "persistence"
+      ],
+      "version": "2.0.0",
+      "author": "oyi77",
+      "subdomain": "core-platform",
+      "type": "core"
+    },
+    {
+      "name": "kb-memory",
+      "category": "core",
+      "description": "Use when knowledge base and memory system for AI agents. Covers company KB, persistent memory, session recall, and brain architecture for context preservation.",
+      "domain": "core",
+      "tags": [
+        "knowledge-base",
+        "memory",
+        "context",
+        "persistence",
+        "recall",
+        "brain"
+      ],
+      "version": "2.0.0",
+      "author": "oyi77",
+      "subdomain": "ai-infrastructure",
+      "type": "core"
+    },
+    {
+      "name": "langchain-patterns",
+      "category": "core",
+      "description": "Use when langChain/LangGraph patterns — chains, agents, tools, memory, retrieval, graph workflows. Use when working with langchain patterns.",
+      "domain": "core",
+      "tags": [
+        "ai-agent",
+        "infrastructure",
+        "langchain",
+        "memory",
+        "patterns",
+        "self-improvement",
+        "workflow"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "core-platform",
+      "type": "core"
+    },
+    {
+      "name": "llamaindex-patterns",
+      "category": "core",
+      "description": "Use when llamaIndex data framework — ingestion, indexing, query engines, chat engines, agents. Use when working with llamaindex patterns.",
+      "domain": "core",
+      "tags": [
+        "ai-agent",
+        "infrastructure",
+        "llamaindex",
+        "memory",
+        "patterns",
+        "self-improvement"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "core-platform",
+      "type": "core"
+    },
+    {
       "name": "llm-deployment",
       "category": "core",
       "description": "Use when lLM deployment and serving — vLLM, Ollama, TGI, llama.cpp. Model quantization, GPU optimization, API serving. Use when working with llm deployment.",
@@ -1647,6 +3531,32 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "core-platform",
+      "type": "core"
+    },
+    {
+      "name": "memory-gateway",
+      "category": "core",
+      "description": "Use when saving durable context that another agent or later session will need, handing work between harnesses (Claude, Codex, OMP, OpenCode, Cursor), resuming a task by searching prior decisions and lessons, or diagnosing malformed shared memories. Portable Markdown contract, not a vendor-specific vault binary.",
+      "domain": "core",
+      "tags": [
+        "memory",
+        "cross-harness",
+        "context-persistence",
+        "handoff",
+        "knowledge-sharing"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "memory",
+      "triggers": [
+        "shared memory",
+        "cross-agent memory",
+        "memory gateway",
+        "handoff context",
+        "resume task",
+        "persist memory"
+      ],
+      "argument-hint": "[save | recall | handoff]",
       "type": "core"
     },
     {
@@ -1796,6 +3706,16 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "ai-engineering",
+      "triggers": [
+        "ai ml engineer role",
+        "rag pipeline",
+        "model routing",
+        "lora finetune",
+        "llm eval harness",
+        "prompt architecture",
+        "vector index",
+        "agent self improvement"
+      ],
       "type": "core"
     },
     {
@@ -1812,6 +3732,40 @@
         "self-improvement"
       ],
       "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "core-platform",
+      "type": "core"
+    },
+    {
+      "name": "ruvector",
+      "category": "core",
+      "description": "Use when generating and managing vector embeddings for semantic search and RAG retrieval across knowledge bases.",
+      "domain": "core",
+      "tags": [
+        "infrastructure",
+        "memory",
+        "ruvector",
+        "self-improvement"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "core-platform",
+      "type": "core"
+    },
+    {
+      "name": "self-improving",
+      "category": "core",
+      "description": "Use when self-reflection + Self-criticism + Auto-learning from corrections + Self-organizing memory. Agent evaluates its own work, catches mistakes, and improves permanently. Use when working with self improving.",
+      "domain": "core",
+      "tags": [
+        "ai-agent",
+        "improving",
+        "infrastructure",
+        "memory",
+        "self",
+        "self-improvement"
+      ],
+      "version": "1.2.1",
       "author": "oyi77",
       "subdomain": "core-platform",
       "type": "core"
@@ -1869,6 +3823,34 @@
       "type": "core"
     },
     {
+      "name": "skill-router",
+      "category": "core",
+      "description": "Use when discovering, categorizing, and loading relevant skills across the 1,400+ 1ai-skills library without context bloat, attention dilution, or prompt budget exhaustion. Master L1 dispatch router for all 19 skill categories.",
+      "domain": "core",
+      "tags": [
+        "routing",
+        "skill-discovery",
+        "meta-skill",
+        "architecture",
+        "agent-harness",
+        "context-optimization"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "core-platform",
+      "triggers": [
+        "skill router",
+        "route skill",
+        "find skill",
+        "load skill",
+        "discover skills",
+        "which skill to use",
+        "category router"
+      ],
+      "argument-hint": "[task query or category]",
+      "type": "core"
+    },
+    {
       "name": "teamwork",
       "category": "core",
       "description": "Use when dynamically creates and manages AI agent teams for complex tasks. Invoke when user requests multi-agent collaboration, complex project execution, or when tasks require specialized roles and coordinated workflow. Use when working with teamwork.",
@@ -1904,6 +3886,23 @@
       "type": "core"
     },
     {
+      "name": "vector-db-ops",
+      "category": "core",
+      "description": "Use when vector database operations — Pinecone, Weaviate, Qdrant, ChromaDB. Indexing, querying, filtering, and managing vector embeddings for RAG and similarity search. Use when working with vector db ops.",
+      "domain": "core",
+      "tags": [
+        "infrastructure",
+        "memory",
+        "ops",
+        "self-improvement",
+        "vector"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "core-platform",
+      "type": "core"
+    },
+    {
       "name": "vilona",
       "category": "core",
       "description": "Use when foundational core infrastructure skill providing system foundation capabilities for the agent ecosystem.",
@@ -1929,6 +3928,23 @@
         "infrastructure",
         "memory",
         "self-improvement"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "core-platform",
+      "type": "core"
+    },
+    {
+      "name": "zvec",
+      "category": "core",
+      "description": "Use when zero-copy vector operations for efficient similarity search and embedding storage in agent memory systems. Use when working with zvec.",
+      "domain": "core",
+      "tags": [
+        "ai-agent",
+        "infrastructure",
+        "memory",
+        "self-improvement",
+        "zvec"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -3429,6 +5445,33 @@
       "type": "security"
     },
     {
+      "name": "api-key-leak-validation",
+      "category": "cybersecurity",
+      "description": "Use when validating leaked or exposed API keys discovered during authorized penetration tests, bug bounty recon, code audits, or secret scanning triage without modifying state or exfiltrating data.",
+      "domain": "cybersecurity",
+      "tags": [
+        "bug-bounty",
+        "api-security",
+        "credential-validation",
+        "secrets-management",
+        "penetration-testing",
+        "devsecops"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "vulnerability-management",
+      "triggers": [
+        "api key validation",
+        "validate leaked api key",
+        "keyhacks",
+        "test exposed credentials",
+        "check secret validity",
+        "verify leaked token"
+      ],
+      "argument-hint": "[provider] [token/credentials]",
+      "type": "security"
+    },
+    {
       "name": "auditing-aws-s3-bucket-permissions",
       "category": "cybersecurity",
       "description": "Use when systematically audit AWS S3 bucket permissions to identify publicly accessible buckets, overly permissive ACLs, misconfigured bucket policies, and missing encryption settings using AWS CLI, S3audit, and Prowler to enforce least-privilege data access controls. . Use when working with auditing aws s3 bucket permissions.",
@@ -4421,6 +6464,17 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "security-auditing",
+      "triggers": [
+        "security audit",
+        "cloudflare security audit",
+        "codebase security audit",
+        "vulnerability review",
+        "audit code",
+        "defensive security audit",
+        "trust boundary audit",
+        "findings.json"
+      ],
+      "argument-hint": "<repo-path> | --full | --quick | triage <finding-id>",
       "type": "security"
     },
     {
@@ -15730,6 +17784,18 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "reverse-engineering",
+      "triggers": [
+        "reverse engineer",
+        "analyze binary",
+        "decompile",
+        "disassemble",
+        "reverse engineering",
+        "unpack firmware",
+        "analyze apk",
+        "analyze malware",
+        "firmware extraction",
+        "binary analysis"
+      ],
       "type": "security"
     },
     {
@@ -15769,6 +17835,16 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "penetration-testing",
+      "triggers": [
+        "pentester role",
+        "pentest engagement",
+        "red team exercise",
+        "bug bounty hunt",
+        "api fuzzing",
+        "exploit chain",
+        "kerberoasting",
+        "privilege escalation audit"
+      ],
       "type": "security"
     },
     {
@@ -15789,6 +17865,16 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "security-engineering",
+      "triggers": [
+        "security engineer role",
+        "threat model",
+        "security headers audit",
+        "idor bola audit",
+        "cis benchmark",
+        "cloud hardening",
+        "access control audit",
+        "api vulnerability"
+      ],
       "type": "security"
     },
     {
@@ -16853,6 +18939,24 @@
       "type": "security"
     },
     {
+      "name": "airflow-pipelines",
+      "category": "data",
+      "description": "Use when apache Airflow workflow orchestration — DAGs, operators, sensors, XComs, pools, scheduling. Use when working with airflow pipelines.",
+      "domain": "data",
+      "tags": [
+        "airflow",
+        "analytics",
+        "data-analysis",
+        "pipelines",
+        "visualization",
+        "workflow"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "data-engineering",
+      "type": "data"
+    },
+    {
       "name": "analysis",
       "category": "data",
       "description": "Use when full-stack data analysis pipeline — clean, detect anomalies, generate reports, and create visualizations with production pandas. Turn raw data into paid deliverables.",
@@ -16865,6 +18969,23 @@
         "visualization",
         "pandas",
         "money-making"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "data-engineering",
+      "type": "data"
+    },
+    {
+      "name": "dagster-pipelines",
+      "category": "data",
+      "description": "Use when dagster data orchestration — software-defined assets, ops, jobs, schedules, sensors, IO managers. Use when working with dagster pipelines.",
+      "domain": "data",
+      "tags": [
+        "analytics",
+        "dagster",
+        "data-analysis",
+        "pipelines",
+        "visualization"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -16889,9 +19010,27 @@
       "type": "data"
     },
     {
+      "name": "prefect-flows",
+      "category": "data",
+      "description": "Use when prefect workflow orchestration — flows, tasks, deployments, work pools, schedules, retries. Use when working with prefect flows.",
+      "domain": "data",
+      "tags": [
+        "analytics",
+        "data-analysis",
+        "flows",
+        "prefect",
+        "visualization",
+        "workflow"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "data-engineering",
+      "type": "data"
+    },
+    {
       "name": "role-data-engineer",
       "category": "data",
-      "description": "Use when orchestrating data engineering pipelines, batch/streaming ETL, dbt data modeling, Airflow DAG orchestration, database query optimization, and warehouse warehousing.",
+      "description": "Use when orchestrating data engineering pipelines, batch/streaming ETL, dbt data modeling, Airflow DAG orchestration, database query optimization, and data warehousing.",
       "domain": "data",
       "tags": [
         "data",
@@ -16903,6 +19042,52 @@
         "kafka",
         "bigquery",
         "postgres"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "data-engineering",
+      "triggers": [
+        "data engineer role",
+        "etl pipeline",
+        "dbt model",
+        "airflow dag",
+        "streaming pipeline",
+        "warehouse modeling",
+        "query optimization",
+        "data quality check"
+      ],
+      "type": "data"
+    },
+    {
+      "name": "spark-processing",
+      "category": "data",
+      "description": "Use when apache Spark distributed processing — DataFrames, SQL, streaming, MLlib, cluster management. Use when working with spark processing.",
+      "domain": "data",
+      "tags": [
+        "analytics",
+        "data-analysis",
+        "machine-learning",
+        "processing",
+        "spark",
+        "visualization"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "data-engineering",
+      "type": "data"
+    },
+    {
+      "name": "temporal-workflows",
+      "category": "data",
+      "description": "Use when temporal durable workflows — workflow/activity definitions, retries, signals, queries, versioning. Use when working with temporal workflows.",
+      "domain": "data",
+      "tags": [
+        "analytics",
+        "data-analysis",
+        "temporal",
+        "visualization",
+        "workflow",
+        "workflows"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -17166,15 +19351,65 @@
       "type": "dev"
     },
     {
+      "name": "automated-test-generator",
+      "category": "development",
+      "description": "Use when generate test suites, analyze coverage, and scaffold E2E tests automatically. Use when creating tests for existing code, improving test coverage, scaffolding integration tests, or setting.",
+      "domain": "development",
+      "tags": [
+        "test-generation",
+        "coverage-analysis",
+        "e2e-testing",
+        "test-automation",
+        "quality-assurance",
+        "test-scaffolding"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "software-development",
+      "type": "dev"
+    },
+    {
       "name": "brainstorming",
       "category": "development",
-      "description": "Use when effective brainstorming skill for features and projects. Clarify intent, explore options, and guide design decisions to align with user goals. Use when working with brainstorming.",
+      "description": "Use when turning a vague idea into a shaped spec before code. Clarify intent with targeted questions, generate three or more options with trade-offs, run pre-mortem, and emit a written decision record. Use before building features, solving problems, or choosing architectures.",
       "domain": "development",
       "tags": [
         "brainstorming",
-        "coding",
-        "software-engineering",
-        "testing"
+        "design",
+        "planning",
+        "requirements",
+        "ideation",
+        "product-thinking"
+      ],
+      "version": "1.1.0",
+      "author": "oyi77",
+      "subdomain": "software-development",
+      "triggers": [
+        "brainstorming",
+        "brainstorm",
+        "ideate",
+        "explore options",
+        "shape feature",
+        "design decision",
+        "clarify intent",
+        "scope feature",
+        "pre-mortem"
+      ],
+      "argument-hint": "[idea or feature]",
+      "type": "dev"
+    },
+    {
+      "name": "browser-testing-devtools",
+      "category": "development",
+      "description": "Use when testing web applications using browser DevTools, Playwright, or Puppeteer. Automate E2E testing, visual regression, performance auditing, and accessibility checking.",
+      "domain": "development",
+      "tags": [
+        "testing",
+        "browser",
+        "devtools",
+        "playwright",
+        "e2e",
+        "accessibility"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -17199,6 +19434,32 @@
       "type": "dev"
     },
     {
+      "name": "change-impact-analysis",
+      "category": "development",
+      "description": "Use when performing evidence-backed impact analysis before changing code, data, interfaces, or governance documents, then comparing the planned impact with the actual diff after implementation. Covers call paths, data and schema, API contracts, tests, documentation, ADRs, deployment, migration, and rollback. Use for cross-module or high-risk changes, database migrations, authentication, public interfaces, blast-radius questions, pre-change checks, and post-implementation alignment.",
+      "domain": "development",
+      "tags": [
+        "impact-analysis",
+        "risk-assessment",
+        "planning",
+        "change-management",
+        "blast-radius"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "devsecops",
+      "triggers": [
+        "change impact",
+        "impact analysis",
+        "blast radius",
+        "affected callers",
+        "migration risk",
+        "pre change check"
+      ],
+      "argument-hint": "file_path OR component_name",
+      "type": "dev"
+    },
+    {
       "name": "cherry-picked-agent-skills",
       "category": "development",
       "description": "Use when 6 unique agent skills cherry-picked from Addy Osmani's agent-skills — interview extraction, idea refinement, adversarial review, source-driven development, context engineering, and deprecation workflows. Use when requirements gathering, idea refinement, adversarial review, documentation-driven dev, context optimization, code deprecation.",
@@ -17210,6 +19471,26 @@
         "context-engineering",
         "deprecation",
         "adversarial-review"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "software-development",
+      "type": "dev"
+    },
+    {
+      "name": "cicd-deployment",
+      "category": "development",
+      "description": "Use when build production CI/CD pipelines with GitHub Actions, Docker, zero-downtime blue/green deploys, rollback, and Telegram alerts. Use when building production ci/cd pipelines with github actions, docker, zero-downtime blue/green.",
+      "domain": "development",
+      "tags": [
+        "cicd",
+        "coding",
+        "deployment",
+        "docker",
+        "github",
+        "pipeline",
+        "software-engineering",
+        "testing"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -17338,6 +19619,24 @@
       "type": "dev"
     },
     {
+      "name": "cypress-e2e",
+      "category": "development",
+      "description": "Use when cypress E2E testing — component testing, API testing, fixtures, custom commands, CI integration. Use when working with cypress e2e.",
+      "domain": "development",
+      "tags": [
+        "api",
+        "coding",
+        "cypress",
+        "e2e",
+        "software-engineering",
+        "testing"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "software-development",
+      "type": "dev"
+    },
+    {
       "name": "daily-dev-agentic",
       "category": "development",
       "description": "Use when skill: daily-dev-agentic. See SKILL.md body for details. Use when this domain is relevant.",
@@ -17407,6 +19706,33 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "software-development",
+      "type": "dev"
+    },
+    {
+      "name": "docs-governance",
+      "category": "development",
+      "description": "Use when governing repository documentation lifecycle — classifying docs by artifact role (README, ADR, CHANGELOG, SPEC, RUNBOOK), routing new docs to canonical locations, auditing staleness and orphan pages, enforcing doc-code parity on releases, or resolving duplicate/conflicting documentation across a monorepo.",
+      "domain": "development",
+      "tags": [
+        "documentation",
+        "governance",
+        "adr",
+        "changelog",
+        "monorepo",
+        "staleness"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "documentation",
+      "triggers": [
+        "docs governance",
+        "documentation audit",
+        "adr process",
+        "changelog policy",
+        "orphan docs",
+        "doc code parity"
+      ],
+      "argument-hint": "[audit | classify | route]",
       "type": "dev"
     },
     {
@@ -17530,6 +19856,23 @@
       "type": "dev"
     },
     {
+      "name": "finishing-a-development-branch",
+      "category": "development",
+      "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work - guides completion of development work by presenting structured options for merge, PR, or cleanup",
+      "domain": "development",
+      "tags": [
+        "branch",
+        "coding",
+        "finishing",
+        "software-engineering",
+        "testing"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "software-development",
+      "type": "dev"
+    },
+    {
       "name": "firebase-patterns",
       "category": "development",
       "description": "Use when firebase patterns and integration — Firestore queries, auth flows, cloud functions, security rules, SDK setup, and real-time data. Use when working with firebase patterns, integrating firebase.",
@@ -17580,6 +19923,24 @@
         "developer-tools",
         "cloud",
         "side-project"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "software-development",
+      "type": "dev"
+    },
+    {
+      "name": "git-master",
+      "category": "development",
+      "description": "Use when handles advanced Git workflows. Use when rebasing, squashing, bisecting, or managing complex branch histories.",
+      "domain": "development",
+      "tags": [
+        "coding",
+        "git",
+        "master",
+        "software-engineering",
+        "testing",
+        "workflow"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -18090,6 +20451,18 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "qa-automation",
+      "triggers": [
+        "qa automation role",
+        "e2e test suite",
+        "playwright suite",
+        "flaky test triage",
+        "coverage gap audit",
+        "api contract test",
+        "test pyramid",
+        "browser automation",
+        "cypress test",
+        "release certification"
+      ],
       "type": "dev"
     },
     {
@@ -18108,6 +20481,19 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "software-engineering",
+      "triggers": [
+        "software engineer role",
+        "end-to-end engineering workflow",
+        "bug triage",
+        "red green refactor",
+        "safe refactoring",
+        "api contract audit",
+        "race condition audit",
+        "type narrowing audit",
+        "code review",
+        "god file split"
+      ],
+      "argument-hint": "[task or bug description]",
       "type": "dev"
     },
     {
@@ -18126,6 +20512,18 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "system-architecture",
+      "triggers": [
+        "system architect role",
+        "domain boundaries",
+        "circular dependency",
+        "god file split",
+        "layer boundary audit",
+        "monolith decomposition",
+        "ast import guard",
+        "modular decomposition",
+        "architecture decision",
+        "domain modeling"
+      ],
       "type": "dev"
     },
     {
@@ -18342,6 +20740,43 @@
       "type": "dev"
     },
     {
+      "name": "tdd-bug-reproduction",
+      "category": "development",
+      "description": "Isolating bugs, writing failing minimal reproduction test cases, and verifying fixes with Test-Driven Development discipline. Use when diagnosing regressions, resolving customer-reported defects, fixing flakiness, or verifying edge case boundaries.",
+      "domain": "development",
+      "tags": [
+        "tdd",
+        "testing",
+        "debugging",
+        "bug-fix",
+        "regression-test",
+        "vitest",
+        "pytest"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "software-development",
+      "type": "dev"
+    },
+    {
+      "name": "test-coverage-analyzer",
+      "category": "development",
+      "description": "Use when identify untested code paths — coverage reports, gap analysis, and test prioritization. Use when working with test coverage analyzer.",
+      "domain": "development",
+      "tags": [
+        "analyzer",
+        "coding",
+        "coverage",
+        "software-engineering",
+        "test",
+        "testing"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "software-development",
+      "type": "dev"
+    },
+    {
       "name": "test-driven-development",
       "category": "development",
       "description": "Use when implementing any feature or bugfix, before writing implementation code",
@@ -18394,6 +20829,24 @@
       "type": "dev"
     },
     {
+      "name": "using-git-worktrees",
+      "category": "development",
+      "description": "Use when starting feature work that needs isolation from current workspace or before executing implementation plans - creates isolated git worktrees with smart directory selection and safety verification",
+      "domain": "development",
+      "tags": [
+        "coding",
+        "git",
+        "software-engineering",
+        "testing",
+        "using",
+        "worktrees"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "software-development",
+      "type": "dev"
+    },
+    {
       "name": "verification-before-completion",
       "category": "development",
       "description": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always",
@@ -18405,6 +20858,23 @@
         "software-engineering",
         "testing",
         "verification"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "software-development",
+      "type": "dev"
+    },
+    {
+      "name": "visual-regression",
+      "category": "development",
+      "description": "Use when visual regression testing — screenshot comparison, baseline management, and UI change detection. Use when working with visual regression.",
+      "domain": "development",
+      "tags": [
+        "coding",
+        "regression",
+        "software-engineering",
+        "testing",
+        "visual"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -18620,6 +21090,26 @@
       "type": "devops"
     },
     {
+      "name": "buildkite-pipelines",
+      "category": "devops",
+      "description": "Use when buildkite CI pipelines — pipeline YAML, steps, agents, artifacts, test splitting, dynamic pipelines. Use when working with buildkite pipelines.",
+      "domain": "devops",
+      "tags": [
+        "ai-agent",
+        "buildkite",
+        "ci-cd",
+        "devops",
+        "infrastructure",
+        "machine-learning",
+        "pipeline",
+        "pipelines"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "devops",
+      "type": "devops"
+    },
+    {
       "name": "ci-cd-pipeline",
       "category": "devops",
       "description": "Use when cI/CD pipeline design with GitHub Actions, GitLab CI — build, test, deploy automation. Use when setting up CI/CD pipelines or automating deployments.",
@@ -18648,6 +21138,24 @@
         "infrastructure",
         "kubernetes",
         "networking"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "devops",
+      "type": "devops"
+    },
+    {
+      "name": "circleci-config",
+      "category": "devops",
+      "description": "Use when circleCI configuration — workflows, jobs, orbs, caching, contexts, dynamic config. Use when working with circleci config.",
+      "domain": "devops",
+      "tags": [
+        "ci-cd",
+        "circleci",
+        "config",
+        "devops",
+        "infrastructure",
+        "workflow"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -18711,6 +21219,24 @@
       "type": "devops"
     },
     {
+      "name": "drone-ci",
+      "category": "devops",
+      "description": "Use when drone CI — container-native CI/CD, YAML pipelines, plugins, secrets, multi-machine builds. Use when working with drone ci.",
+      "domain": "devops",
+      "tags": [
+        "ci-cd",
+        "devops",
+        "drone",
+        "infrastructure",
+        "machine-learning",
+        "pipeline"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "devops",
+      "type": "devops"
+    },
+    {
       "name": "edge-computing",
       "category": "devops",
       "description": "Use when edge computing — Cloudflare Workers, Vercel Edge, Deno Deploy. Edge rendering, caching, edge databases. Use when working with edge computing.",
@@ -18738,6 +21264,23 @@
         "envoy",
         "infrastructure",
         "proxy"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "devops",
+      "type": "devops"
+    },
+    {
+      "name": "fluxcd-gitops",
+      "category": "devops",
+      "description": "Use when flux CD GitOps — source controllers, kustomize/helm controllers, image automation, notifications. Use when working with fluxcd gitops.",
+      "domain": "devops",
+      "tags": [
+        "ci-cd",
+        "devops",
+        "fluxcd",
+        "gitops",
+        "infrastructure"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -18810,6 +21353,44 @@
         "istio",
         "kubernetes",
         "mesh"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "devops",
+      "type": "devops"
+    },
+    {
+      "name": "jenkins-pipelines",
+      "category": "devops",
+      "description": "Use when jenkins pipeline as code — Declarative/Scripted pipelines, shared libraries, agents, stages, credentials. Use when working with jenkins pipelines.",
+      "domain": "devops",
+      "tags": [
+        "ai-agent",
+        "ci-cd",
+        "devops",
+        "infrastructure",
+        "jenkins",
+        "pipeline",
+        "pipelines"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "devops",
+      "type": "devops"
+    },
+    {
+      "name": "jenkins-shared-libs",
+      "category": "devops",
+      "description": "Use when jenkins shared libraries — reusable pipeline code, Groovy vars, resources, global pipeline libraries. Use when working with jenkins shared libs.",
+      "domain": "devops",
+      "tags": [
+        "ci-cd",
+        "devops",
+        "infrastructure",
+        "jenkins",
+        "libs",
+        "pipeline",
+        "shared"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -18924,6 +21505,16 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "devops-sre",
+      "triggers": [
+        "devops role",
+        "sre role",
+        "zero downtime deploy",
+        "terraform module",
+        "ci cd pipeline",
+        "slo error budget",
+        "observability metrics",
+        "kubernetes deployment"
+      ],
       "type": "devops"
     },
     {
@@ -18937,6 +21528,25 @@
         "devops",
         "infrastructure",
         "serverless"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "devops",
+      "type": "devops"
+    },
+    {
+      "name": "tekton-pipelines",
+      "category": "devops",
+      "description": "Use when tekton CI/CD pipelines — Tasks, Pipelines, Triggers, Workspaces for Kubernetes-native CI. Use when working with tekton pipelines.",
+      "domain": "devops",
+      "tags": [
+        "ci-cd",
+        "devops",
+        "infrastructure",
+        "kubernetes",
+        "pipeline",
+        "pipelines",
+        "tekton"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -19040,6 +21650,23 @@
       "type": "finance"
     },
     {
+      "name": "earnings-viewer",
+      "category": "financial",
+      "description": "Use when analyzes earnings calls + SEC filings, updates financial models, and drafts earnings notes. Use when user says \"analyze earnings\", \"earnings call\", \"update model after earnings\".",
+      "domain": "financial",
+      "tags": [
+        "analysis",
+        "earnings",
+        "finance",
+        "investment",
+        "viewer"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "financial-analysis",
+      "type": "finance"
+    },
+    {
       "name": "finance-tracker",
       "category": "financial",
       "description": "Use when track real-time revenue across 5 income streams, monitor cashflow and runway, detect revenue gaps, and send threshold alerts via Telegram. Use when tracking real-time revenue across 5 income streams, monitor cashflow and.",
@@ -19053,6 +21680,52 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "financial-analysis",
+      "type": "finance"
+    },
+    {
+      "name": "gl-reconciler",
+      "category": "financial",
+      "description": "Use when finds breaks, traces root cause, routes for sign-off. Use when user says \"reconcile GL\", \"find breaks\", \"trace accounting error\".",
+      "domain": "financial",
+      "tags": [
+        "analysis",
+        "finance",
+        "investment",
+        "reconciler"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "financial-analysis",
+      "type": "finance"
+    },
+    {
+      "name": "investment-bottleneck",
+      "category": "financial",
+      "description": "Use when finding bottleneck companies — the critical constraint in supply chains that have pricing power, low competition, and high returns. Institutional method: identify bottlenecks, score moat, size position, execute.",
+      "domain": "financial",
+      "tags": [
+        "investment",
+        "bottleneck",
+        "finance"
+      ],
+      "version": "2.0.0",
+      "author": "oyi77",
+      "subdomain": "finance",
+      "type": "finance"
+    },
+    {
+      "name": "investment-earnings",
+      "category": "financial",
+      "description": "Use when trading earnings reports for profit — pre-earnings positioning, post-earnings momentum, and management quality scoring. Systematic framework for the highest-alpha event in equity markets.",
+      "domain": "financial",
+      "tags": [
+        "investment",
+        "earnings",
+        "finance"
+      ],
+      "version": "2.0.0",
+      "author": "oyi77",
+      "subdomain": "finance",
       "type": "finance"
     },
     {
@@ -19082,6 +21755,23 @@
         "investment",
         "kyc",
         "screener"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "financial-analysis",
+      "type": "finance"
+    },
+    {
+      "name": "meeting-prep",
+      "category": "financial",
+      "description": "Use when prepares briefing pack before client/investor meetings. Use when user says \"prep for meeting\", \"briefing pack\", \"client meeting\".",
+      "domain": "financial",
+      "tags": [
+        "analysis",
+        "finance",
+        "investment",
+        "meeting",
+        "prep"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -19171,6 +21861,68 @@
         "gl-reconciliation",
         "cashflow",
         "auditing"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "financial-analysis",
+      "triggers": [
+        "financial analyst role",
+        "dcf model",
+        "three statement model",
+        "gl reconciliation",
+        "variance analysis",
+        "unit economics",
+        "cashflow model",
+        "audit report"
+      ],
+      "type": "finance"
+    },
+    {
+      "name": "statement-auditor",
+      "category": "financial",
+      "description": "Use when audits LP statements before distribution. Use when user says \"audit statement\", \"review LP package\", \"distribution check\".",
+      "domain": "financial",
+      "tags": [
+        "analysis",
+        "auditor",
+        "finance",
+        "investment",
+        "statement"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "financial-analysis",
+      "type": "finance"
+    },
+    {
+      "name": "tax-loss-harvesting",
+      "category": "financial",
+      "description": "Use when identify TLH opportunities, manage wash sales. Use when user says \"tax loss harvest\", \"TLH\", \"wash sale check\".",
+      "domain": "financial",
+      "tags": [
+        "analysis",
+        "finance",
+        "harvesting",
+        "investment",
+        "loss",
+        "tax"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "financial-analysis",
+      "type": "finance"
+    },
+    {
+      "name": "valuation-reviewer",
+      "category": "financial",
+      "description": "Use when ingests GP packages, runs valuation template, stages LP reporting. Use when user says \"review valuation\", \"LP reporting\", \"GP package\".",
+      "domain": "financial",
+      "tags": [
+        "analysis",
+        "finance",
+        "investment",
+        "reviewer",
+        "valuation"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -19381,6 +22133,60 @@
       "type": "integrations"
     },
     {
+      "name": "kalodata-dashboard",
+      "category": "integrations",
+      "description": "Use when generating CLI-based visual reports from Kalodata product research data, including ASCII trend charts, product cards, interactive dashboards, and markdown exports.",
+      "domain": "integrations",
+      "tags": [
+        "api",
+        "dashboard",
+        "integrations",
+        "kalodata",
+        "third-party"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "integrations",
+      "type": "integrations"
+    },
+    {
+      "name": "kalodata-integrations",
+      "category": "integrations",
+      "description": "Use when multi-platform integrations for Kalodata research. Connect Shopify for product listings, Notion for research reports, and Slack for alerts + daily digests. CLI-friendly with config-based API key management. Use when working with kalodata integrations.",
+      "domain": "integrations",
+      "tags": [
+        "api",
+        "integrations",
+        "kalodata",
+        "notion",
+        "slack",
+        "third-party"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "integrations",
+      "type": "integrations"
+    },
+    {
+      "name": "kalodata-monitor",
+      "category": "integrations",
+      "description": "Use when scheduled research runs with auto-alerts for NEW viral products. Runs on configurable schedule (hourly/daily/weekly), detects new products by comparing with previous runs, alerts on revenue threshold crossings, and sends notifications via Slack webhook. Use when working with kalodata monitor.",
+      "domain": "integrations",
+      "tags": [
+        "api",
+        "integrations",
+        "kalodata",
+        "monitor",
+        "slack",
+        "third-party",
+        "webhook"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "integrations",
+      "type": "integrations"
+    },
+    {
       "name": "kalodata-product-research",
       "category": "integrations",
       "description": "Use when query and analyze TikTok Shop products by category with intelligent filtering, sorting, and AI-powered research goal detection. Use when researching trending products, finding emerging winners, analyzing competition, or building product intelligence reports.",
@@ -19411,6 +22217,42 @@
         "third-party",
         "video",
         "workflow"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "integrations",
+      "type": "integrations"
+    },
+    {
+      "name": "kalodata-storyboard-extract",
+      "category": "integrations",
+      "description": "Use when extracting AI-generated storyboards from viral TikTok Shop videos, including scene breakdowns, visual descriptions, camera work analysis, and auto-generating content ideas for replication.",
+      "domain": "integrations",
+      "tags": [
+        "api",
+        "extract",
+        "integrations",
+        "kalodata",
+        "storyboard",
+        "third-party",
+        "video"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "integrations",
+      "type": "integrations"
+    },
+    {
+      "name": "kalodata-video-analysis",
+      "category": "integrations",
+      "description": "Use when get videos associated with products, extract video metadata, get downloadable video URLs, and identify top-performing videos for competitive analysis. Use when analyzing video marketing strategies, finding best-performing creative assets, or building video intelligence reports.",
+      "domain": "integrations",
+      "tags": [
+        "api",
+        "integrations",
+        "kalodata",
+        "third-party",
+        "video"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -19491,6 +22333,97 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "ai-coding-tools",
+      "type": "integrations"
+    },
+    {
+      "name": "oh-my-opencode-agents",
+      "category": "integrations",
+      "description": "Use when deep dive into each oh-my-opencode agent - Sisyphus, Hephaestus, Oracle, Librarian, Explore - their characteristics, use cases, and when to use each. Use when working with oh my opencode agents.",
+      "domain": "integrations",
+      "tags": [
+        "agents",
+        "ai-agent",
+        "api",
+        "integrations",
+        "opencode",
+        "third-party"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "integrations",
+      "type": "integrations"
+    },
+    {
+      "name": "oh-my-opencode-configuration",
+      "category": "integrations",
+      "description": "Use when comprehensive configuration guide for oh-my-opencode including agent settings, MCP servers, hooks, categories, and advanced options. Use when working with oh my opencode configuration.",
+      "domain": "integrations",
+      "tags": [
+        "ai-agent",
+        "api",
+        "configuration",
+        "integrations",
+        "opencode",
+        "third-party"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "integrations",
+      "type": "integrations"
+    },
+    {
+      "name": "oh-my-opencode-features",
+      "category": "integrations",
+      "description": "Use when complete reference of all oh-my-opencode features including agents, tools, MCPs, hooks, workflow automation, and productivity enhancements. Use when working with oh my opencode features.",
+      "domain": "integrations",
+      "tags": [
+        "ai-agent",
+        "api",
+        "features",
+        "integrations",
+        "opencode",
+        "third-party",
+        "workflow"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "integrations",
+      "type": "integrations"
+    },
+    {
+      "name": "oh-my-opencode-installation",
+      "category": "integrations",
+      "description": "Use when smart installation and configuration for OpenCode with oh-my-opencode harness - detects existing installation and only installs if needed. Use when working with oh my opencode installation.",
+      "domain": "integrations",
+      "tags": [
+        "api",
+        "installation",
+        "integrations",
+        "opencode",
+        "third-party"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "integrations",
+      "type": "integrations"
+    },
+    {
+      "name": "oh-my-opencode-usage",
+      "category": "integrations",
+      "description": "Use when daily usage patterns for oh-my-opencode including workflow commands, session management, agent invocation, and productivity tips. Use when working with oh my opencode usage.",
+      "domain": "integrations",
+      "tags": [
+        "ai-agent",
+        "api",
+        "integrations",
+        "opencode",
+        "third-party",
+        "usage",
+        "workflow"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "integrations",
       "type": "integrations"
     },
     {
@@ -19627,6 +22560,23 @@
       "type": "marketing"
     },
     {
+      "name": "affiliate-manager",
+      "category": "marketing",
+      "description": "Use when automated discovery of affiliate programs, partnership opportunities, and cross-promotion deals with outreach, commission tracking, and placement optimization",
+      "domain": "marketing",
+      "tags": [
+        "affiliate",
+        "growth",
+        "manager",
+        "marketing",
+        "seo"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "marketing",
+      "type": "marketing"
+    },
+    {
       "name": "affiliate-marketing",
       "category": "marketing",
       "description": "Use when AI-powered affiliate marketing automation. Research products, generate content, optimize conversions, and build passive income through automated affiliate campaigns.",
@@ -19636,6 +22586,26 @@
         "growth",
         "marketing",
         "seo"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "marketing",
+      "type": "marketing"
+    },
+    {
+      "name": "ai-content-agency-v2",
+      "category": "marketing",
+      "description": "Use when 9-workflow, 6-phase AI content agency blueprint — generates ads, videos, images, and landing pages from product info using LLM ideation through multi-provider rendering.",
+      "domain": "marketing",
+      "tags": [
+        "agency",
+        "content",
+        "growth",
+        "marketing",
+        "seo",
+        "video",
+        "workflow",
+        "money"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -19659,6 +22629,34 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "marketing",
+      "type": "marketing"
+    },
+    {
+      "name": "ai-seo",
+      "category": "marketing",
+      "description": "Use when optimize for AI search engines — Perplexity, ChatGPT Search, Google AI Overviews, answer engine optimization. Use when adapting SEO strategy for AI-powered search, optimizing for featured snippets, or building AI-friendly content.",
+      "domain": "marketing",
+      "tags": [
+        "growth",
+        "marketing",
+        "seo",
+        "money"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "marketing",
+      "triggers": [
+        "ai seo",
+        "geo",
+        "aeo",
+        "answer engine optimization",
+        "generative engine optimization",
+        "ai overviews",
+        "llms txt",
+        "ai crawler",
+        "agentic readiness",
+        "ai search optimization"
+      ],
       "type": "marketing"
     },
     {
@@ -19698,6 +22696,24 @@
       "type": "marketing"
     },
     {
+      "name": "buzzer-engagement-army",
+      "category": "marketing",
+      "description": "Use when multi-account engagement booster across TikTok, Instagram, and Facebook — automates likes, comments, and warmup schedules to beat algorithm suppression on new posts.",
+      "domain": "marketing",
+      "tags": [
+        "army",
+        "buzzer",
+        "engagement",
+        "growth",
+        "marketing",
+        "seo"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "marketing",
+      "type": "marketing"
+    },
+    {
       "name": "canva",
       "category": "marketing",
       "description": "Use when creating, exporting, and managing Canva designs via the Connect API. Generate social posts, carousels, and graphics programmatically.",
@@ -19725,6 +22741,24 @@
         "growth",
         "marketing",
         "prevention",
+        "seo"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "marketing",
+      "type": "marketing"
+    },
+    {
+      "name": "cold-email",
+      "category": "marketing",
+      "description": "Use when outbound email with personalization, deliverability optimization, follow-up sequences, and compliance. Use when building cold email campaigns, improving email deliverability, or designing outreach sequences.",
+      "domain": "marketing",
+      "tags": [
+        "cold",
+        "compliance",
+        "email",
+        "growth",
+        "marketing",
         "seo"
       ],
       "version": "1.0.0",
@@ -19823,6 +22857,25 @@
       "type": "marketing"
     },
     {
+      "name": "email-sequences",
+      "category": "marketing",
+      "description": "Automated email sequence design — welcome series, nurture funnels, re-engagement, transactional flows. Use when building email automation systems.",
+      "domain": "marketing",
+      "tags": [
+        "email",
+        "growth",
+        "marketing",
+        "sequences",
+        "money",
+        "automation",
+        "conversions"
+      ],
+      "version": "2.0.0",
+      "author": "oyi77",
+      "subdomain": "",
+      "type": "marketing"
+    },
+    {
       "name": "growth-engine",
       "category": "marketing",
       "description": "Use when autonomous marketing experiment framework — design A/B tests, score hypotheses with ICE, validate results with statistical significance, and run automated optimization loops.",
@@ -19901,6 +22954,23 @@
         "growth",
         "lynk",
         "marketing",
+        "seo"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "marketing",
+      "type": "marketing"
+    },
+    {
+      "name": "market-research",
+      "category": "marketing",
+      "description": "Use when conduct market research, competitive analysis, and industry insights with Exa and Firecrawl. Use when conducting market research, competitive analysis, and industry insights with exa.",
+      "domain": "marketing",
+      "tags": [
+        "growth",
+        "market",
+        "marketing",
+        "research",
         "seo"
       ],
       "version": "1.0.0",
@@ -20017,12 +23087,67 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "growth-marketing",
+      "triggers": [
+        "growth marketer role",
+        "paid ad campaign",
+        "programmatic seo",
+        "cold email funnel",
+        "cac ltv audit",
+        "ab test significance",
+        "growth experiment",
+        "funnel conversion"
+      ],
+      "type": "marketing"
+    },
+    {
+      "name": "schema-markup",
+      "category": "marketing",
+      "description": "Use when structured data markup for rich results and AI search visibility — JSON-LD, FAQ, HowTo, Product schemas. Use when implementing structured data for SEO. Use when working with schema markup.",
+      "domain": "marketing",
+      "tags": [
+        "growth",
+        "marketing",
+        "markup",
+        "schema",
+        "seo"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "marketing",
+      "type": "marketing"
+    },
+    {
+      "name": "seo-auditor",
+      "category": "marketing",
+      "description": "Use when auditing and optimizing websites for search engines. Conducting technical SEO audits, tracking keyword rankings, analyzing competitor SEO, monitoring backlink profiles, optimizing existing content, improving local SEO visibility, and generating client-ready SEO reports.",
+      "domain": "marketing",
+      "tags": [
+        "auditor",
+        "growth",
+        "marketing",
+        "monitoring",
+        "seo",
+        "money"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "marketing",
+      "triggers": [
+        "seo auditor",
+        "technical seo audit",
+        "keyword ranking tracking",
+        "competitor seo analysis",
+        "backlink monitoring",
+        "local seo visibility",
+        "client seo report"
+      ],
+      "argument-hint": "[domain_or_url]",
       "type": "marketing"
     },
     {
       "name": "seo-optimizer",
       "category": "marketing",
-      "description": "Use when optimize content for search engines. Perform keyword research, analyze on-page SEO, track rankings, audit technical SEO, and improve organic visibility for sustainable traffic growth. Use when optimizeing content for search engines. perform keyword research, analyze on-page.",
+      "description": "Use when optimizing content for search engines. Perform keyword research, analyze on-page SEO, track rankings, audit technical SEO, and improve organic visibility for sustainable traffic growth.",
       "domain": "marketing",
       "tags": [
         "growth",
@@ -20034,6 +23159,16 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "marketing",
+      "triggers": [
+        "seo optimizer",
+        "keyword research",
+        "on-page seo",
+        "core web vitals",
+        "rank tracking",
+        "seo audit script",
+        "site speed optimization"
+      ],
+      "argument-hint": "[domain_or_url]",
       "type": "marketing"
     },
     {
@@ -20054,6 +23189,24 @@
       "type": "marketing"
     },
     {
+      "name": "social-growth",
+      "category": "marketing",
+      "description": "Use when mark Zuckerberg's approach to building massive social platforms through network effects and rapid iteration. Use when working with social growth.",
+      "domain": "marketing",
+      "tags": [
+        "api",
+        "growth",
+        "marketing",
+        "seo",
+        "social",
+        "social-media"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "marketing",
+      "type": "marketing"
+    },
+    {
       "name": "social-media-engagement",
       "category": "marketing",
       "description": "Use when automating social media engagement activities including liking, commenting, following, unfollowing, DMing, and replying. Build audience and increase reach across X, Instagram, TikTok, and LinkedIn.",
@@ -20066,6 +23219,26 @@
         "seo",
         "social",
         "social-media"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "marketing",
+      "type": "marketing"
+    },
+    {
+      "name": "social-media-upload",
+      "category": "marketing",
+      "description": "Use when distribute content across multiple social media platforms (X, Instagram, TikTok, LinkedIn, Facebook, YouTube). Upload images, videos, and text with platform-specific optimization. Use when working with social media upload.",
+      "domain": "marketing",
+      "tags": [
+        "growth",
+        "marketing",
+        "media",
+        "seo",
+        "social",
+        "social-media",
+        "upload",
+        "video"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -20142,6 +23315,26 @@
       "type": "marketing"
     },
     {
+      "name": "agent-reach",
+      "category": "mcp",
+      "description": "Use when universal internet scraper for AI agents. Read and search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu, LinkedIn, V2EX, RSS, web pages. Zero API fees. Use when agents need real-time social media data, content research, or trend monitoring.",
+      "domain": "mcp",
+      "tags": [
+        "agent",
+        "ai-agent",
+        "api",
+        "github",
+        "mcp-server",
+        "model-context-protocol",
+        "monitoring",
+        "reach"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mcp",
+      "type": "mcp"
+    },
+    {
       "name": "clients",
       "category": "mcp",
       "description": "Use when model Context Protocol client hub — connect AI agents to any MCP server for tool discovery, invocation, and ecosystem management. Use when working with MCP clients, discovering MCP servers, or building MCP-based toolchains.",
@@ -20157,6 +23350,95 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "mcp-clients",
+      "type": "mcp"
+    },
+    {
+      "name": "codebase-memory-mcp",
+      "category": "mcp",
+      "description": "Use when index codebases into a persistent knowledge graph for structural code queries, call-chain tracing, and semantic search. Use when navigating unfamiliar repos, understanding architecture, or exploring large codebases.",
+      "domain": "mcp",
+      "tags": [
+        "codebase",
+        "mcp",
+        "mcp-server",
+        "memory",
+        "model-context-protocol",
+        "tool-integration"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mcp",
+      "type": "mcp"
+    },
+    {
+      "name": "github-mcp",
+      "category": "mcp",
+      "description": "Use when mCP server for GitHub automation. Manage repos, issues, PRs, and workflows through the Model Context Protocol. Use when working with github mcp.",
+      "domain": "mcp",
+      "tags": [
+        "github",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "tool-integration"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mcp",
+      "type": "mcp"
+    },
+    {
+      "name": "linear-mcp",
+      "category": "mcp",
+      "description": "Use when linear Mcp. Use when working with linear mcp in mcp domain.",
+      "domain": "mcp",
+      "tags": [
+        "linear",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "tool-integration",
+        "issue-tracking",
+        "project-management",
+        "graphql"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mcp",
+      "type": "mcp"
+    },
+    {
+      "name": "mcp-client",
+      "category": "mcp",
+      "description": "Use when generic MCP client implementation for connecting to any Model Context Protocol server with standardized tool access. Use when working with mcp client.",
+      "domain": "mcp",
+      "tags": [
+        "client",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "tool-integration"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mcp",
+      "type": "mcp"
+    },
+    {
+      "name": "mcp-discover",
+      "category": "mcp",
+      "description": "Use when discover and connect to MCP servers automatically. Browse available tools and register new server endpoints. Use when working with mcp discover.",
+      "domain": "mcp",
+      "tags": [
+        "discover",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "tool-integration"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mcp",
       "type": "mcp"
     },
     {
@@ -20191,6 +23473,23 @@
         "mcp-server",
         "memory",
         "model-context-protocol",
+        "tool-integration"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mcp",
+      "type": "mcp"
+    },
+    {
+      "name": "notion-mcp",
+      "category": "mcp",
+      "description": "Use when MCP server for Notion databases. Query pages, manage databases, and automate Notion workflows via standardized protocol.",
+      "domain": "mcp",
+      "tags": [
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "notion",
         "tool-integration"
       ],
       "version": "1.0.0",
@@ -20234,6 +23533,42 @@
       "type": "mcp"
     },
     {
+      "name": "slack-mcp",
+      "category": "mcp",
+      "description": "Use when MCP server for Slack integration. Send messages, manage channels, and automate Slack workflows via standardized protocol.",
+      "domain": "mcp",
+      "tags": [
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "slack",
+        "tool-integration",
+        "chat-ops",
+        "bot"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mcp",
+      "type": "mcp"
+    },
+    {
+      "name": "stripe-mcp",
+      "category": "mcp",
+      "description": "Use when mCP server for Stripe payments. Process payments, manage subscriptions, and handle billing via standardized protocol. Use when working with stripe mcp.",
+      "domain": "mcp",
+      "tags": [
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "stripe",
+        "tool-integration"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mcp",
+      "type": "mcp"
+    },
+    {
       "name": "supabase-mcp",
       "category": "mcp",
       "description": "Use when mCP server for Supabase databases. Query tables, manage auth, and handle storage through standardized protocol. Use when working with supabase mcp.",
@@ -20249,6 +23584,40 @@
       "author": "oyi77",
       "subdomain": "mcp",
       "type": "mcp"
+    },
+    {
+      "name": "auto-evolve",
+      "category": "meta",
+      "description": "Use when continuously monitors system performance identifies improvement opportunities and orchestrates find-skills and create-skills to autonomously evolve capabilities. The brain of the self-evolving system. Use when working with auto evolve.",
+      "domain": "meta",
+      "tags": [
+        "auto",
+        "evolve",
+        "meta-learning",
+        "self-improvement",
+        "skill-evolution"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "meta-skills",
+      "type": "meta"
+    },
+    {
+      "name": "auto-learner",
+      "category": "meta",
+      "description": "Use when autonomous learning from execution data. Skills improve themselves by identifying patterns in successful vs failed executions without human intervention. Use when working with auto learner.",
+      "domain": "meta",
+      "tags": [
+        "auto",
+        "learner",
+        "meta-learning",
+        "self-improvement",
+        "skill-evolution"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "meta-skills",
+      "type": "meta"
     },
     {
       "name": "create-skills",
@@ -20281,6 +23650,33 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "meta-skills",
+      "type": "meta"
+    },
+    {
+      "name": "eval-harness",
+      "category": "meta",
+      "description": "Use when setting up eval-driven development (EDD) for AI-assisted workflows, defining pass/fail criteria for agent task completion, measuring reliability with pass@k metrics, creating regression suites for prompt or agent changes, or benchmarking performance across model versions.",
+      "domain": "meta",
+      "tags": [
+        "evaluation",
+        "edd",
+        "benchmarking",
+        "regression-testing",
+        "pass-at-k",
+        "prompt-engineering"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "self-improvement",
+      "triggers": [
+        "eval harness",
+        "evaluate agent",
+        "benchmark skill",
+        "pass at k",
+        "edd",
+        "eval driven development"
+      ],
+      "argument-hint": "[eval name or feature]",
       "type": "meta"
     },
     {
@@ -20318,6 +23714,110 @@
       "type": "meta"
     },
     {
+      "name": "improvement-generator",
+      "category": "meta",
+      "description": "Use when generating specific, actionable improvements for skills based on performance data and feedback. Create improvement plans, not just identify problems.",
+      "domain": "meta",
+      "tags": [
+        "generator",
+        "improvement",
+        "meta-learning",
+        "self-improvement",
+        "skill-evolution"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "meta-skills",
+      "type": "meta"
+    },
+    {
+      "name": "meta-find-skills",
+      "category": "meta",
+      "description": "Use when automatically discover evaluate and activate community skills when local skills dont cover user needs Includes credibility scoring and safety checks for complete self-sufficiency",
+      "domain": "meta",
+      "tags": [
+        "find",
+        "meta",
+        "meta-learning",
+        "self-improvement",
+        "skill-evolution",
+        "skills"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "meta-skills",
+      "type": "meta"
+    },
+    {
+      "name": "meta-skill-datastore",
+      "category": "meta",
+      "description": "Use when centralized database for meta-skill operations. Stores performance metrics, feedback, patterns, and skill evolution history. Use when working with meta skill datastore.",
+      "domain": "meta",
+      "tags": [
+        "datastore",
+        "meta",
+        "meta-learning",
+        "self-improvement",
+        "skill",
+        "skill-evolution"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "meta-skills",
+      "type": "meta"
+    },
+    {
+      "name": "pattern-recognition",
+      "category": "meta",
+      "description": "Use when identify patterns in skill execution, errors, and successes. Recognize when situations match previous patterns and apply learned solutions. Use when working with pattern recognition.",
+      "domain": "meta",
+      "tags": [
+        "meta-learning",
+        "pattern",
+        "recognition",
+        "self-improvement",
+        "skill-evolution"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "meta-skills",
+      "type": "meta"
+    },
+    {
+      "name": "performance-monitor",
+      "category": "meta",
+      "description": "Use when track and analyze skill execution performance. Measure latency, success rates, accuracy, and resource usage for continuous improvement. Use when tracking and analyze skill execution performance. measure latency, success rates,.",
+      "domain": "meta",
+      "tags": [
+        "meta-learning",
+        "monitor",
+        "performance",
+        "self-improvement",
+        "skill-evolution"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "meta-skills",
+      "type": "meta"
+    },
+    {
+      "name": "self-assessment",
+      "category": "meta",
+      "description": "Use when skills evaluate their own performance, capabilities, and limitations. Honest self-reflection drives improvement. Use when working with self assessment.",
+      "domain": "meta",
+      "tags": [
+        "assessment",
+        "meta-learning",
+        "self",
+        "self-improvement",
+        "skill-evolution"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "meta-skills",
+      "type": "meta"
+    },
+    {
       "name": "skill-evolution-engine",
       "category": "meta",
       "description": "Use when self-improving skill system that auto-extracts patterns from sessions into reusable skills with confidence scoring, skill versioning, import/export, and continuous improvement loops. Use. Use when working with skill evolution engine.",
@@ -20334,6 +23834,39 @@
       "author": "oyi77",
       "subdomain": "meta-skills",
       "type": "meta"
+    },
+    {
+      "name": "active-listening",
+      "category": "mindset",
+      "description": "Use when master active listening through the HEAR model, reflective listening, and questioning techniques. Use when coaching, resolving conflicts, or building trust.",
+      "domain": "mindset",
+      "tags": [
+        "active",
+        "listening",
+        "mindset",
+        "personal-development",
+        "soft-skills"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "audit",
+      "category": "mindset",
+      "description": "Use when auditing repo for over-engineering. Ranked list of what to delete, simplify, or replace with stdlib or native features.",
+      "domain": "mindset",
+      "tags": [
+        "audit",
+        "mindset",
+        "ponytail",
+        "simplification"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
     },
     {
       "name": "business-model-canvas",
@@ -20371,9 +23904,43 @@
       "type": "mindset"
     },
     {
+      "name": "competitive-strategy",
+      "category": "mindset",
+      "description": "Use when analyze competitors using Porter's Five Forces, positioning maps, and competitive response frameworks. Use when assessing market position or strategic threats.",
+      "domain": "mindset",
+      "tags": [
+        "competitive",
+        "mindset",
+        "personal-development",
+        "soft-skills",
+        "strategy"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "conflict-resolution",
+      "category": "mindset",
+      "description": "Use when resolve interpersonal and team conflicts using mediation techniques, non-violent communication, and de-escalation. Use when tensions arise between individuals or groups.",
+      "domain": "mindset",
+      "tags": [
+        "conflict",
+        "mindset",
+        "personal-development",
+        "resolution",
+        "soft-skills"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
       "name": "crisis-management",
       "category": "mindset",
-      "description": "Use when respond to crises using incident command structure, stakeholder communication, and recovery planning. Use during security breaches, PR disasters, or operational failures. Use when working with crisis management.",
+      "description": "Use when respond to crises using incident command structure, stakeholder communication, and recovery planning. Use during security breaches, PR disasters, or operational failures.",
       "domain": "mindset",
       "tags": [
         "crisis",
@@ -20414,6 +23981,40 @@
       "type": "mindset"
     },
     {
+      "name": "cross-cultural-communication",
+      "category": "mindset",
+      "description": "Use when navigate cross-cultural communication using Hofstede's dimensions, high/low-context awareness, and async norms.",
+      "domain": "mindset",
+      "tags": [
+        "communication",
+        "cross",
+        "cultural",
+        "mindset",
+        "personal-development",
+        "soft-skills"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "debt",
+      "category": "mindset",
+      "description": "Use when harvest ponytail shortcut comments into one debt ledger so deferrals get tracked instead of forgotten.",
+      "domain": "mindset",
+      "tags": [
+        "debt",
+        "mindset",
+        "ponytail",
+        "tracking"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
       "name": "decision-frameworks",
       "category": "mindset",
       "description": "Use when apply structured decision frameworks like RICE, ICE, weighted scoring, and pre-mortem analysis. Use when prioritizing features, evaluating options, or making high-stakes decisions.",
@@ -20421,6 +24022,23 @@
       "tags": [
         "decision",
         "frameworks",
+        "mindset",
+        "personal-development",
+        "soft-skills"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "decision-making",
+      "category": "mindset",
+      "description": "Use when make sound decisions under uncertainty using frameworks like RICE, weighted matrix, decision trees, and pre-mortems.",
+      "domain": "mindset",
+      "tags": [
+        "decision",
+        "making",
         "mindset",
         "personal-development",
         "soft-skills"
@@ -20446,6 +24064,12 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "mindset",
+      "triggers": [
+        "design thinking",
+        "ideation",
+        "prototype design",
+        "problem framing"
+      ],
       "type": "mindset"
     },
     {
@@ -20456,6 +24080,23 @@
       "tags": [
         "conversations",
         "difficult",
+        "mindset",
+        "personal-development",
+        "soft-skills"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "email-mastery",
+      "category": "mindset",
+      "description": "Use when write effective professional emails using AIDA framework, subject line formulas, and follow-up cadences. Use when crafting cold outreach, negotiation emails, or follow-ups. Use when writeing effective professional emails using aida framework, subject line formulas,.",
+      "domain": "mindset",
+      "tags": [
+        "email",
+        "mastery",
         "mindset",
         "personal-development",
         "soft-skills"
@@ -20517,6 +24158,58 @@
       "type": "mindset"
     },
     {
+      "name": "financial-literacy",
+      "category": "mindset",
+      "description": "Use when manage personal and business finances including budgeting, cash flow, financial statements, and basic FP&A. Use when manageing personal and business finances including budgeting, cash flow, financial.",
+      "domain": "mindset",
+      "tags": [
+        "financial",
+        "literacy",
+        "mindset",
+        "personal-development",
+        "soft-skills"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "first-principles-thinking",
+      "category": "mindset",
+      "description": "Use when decompose problems to fundamental truths using Musk's method. Use when challenging assumptions, solving novel problems, or questioning conventional approaches.",
+      "domain": "mindset",
+      "tags": [
+        "first",
+        "mindset",
+        "personal-development",
+        "principles",
+        "soft-skills",
+        "thinking"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "fundraising",
+      "category": "mindset",
+      "description": "Use when pitch investors using 10-slide deck structure, understand term sheets, and manage investor relations. Use when raising capital.",
+      "domain": "mindset",
+      "tags": [
+        "api",
+        "fundraising",
+        "mindset",
+        "personal-development",
+        "soft-skills"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
       "name": "habit-formation",
       "category": "mindset",
       "description": "Use when build and maintain habits using cue-routine-reward loops, habit stacking, and environment design. Use when creating new routines or breaking old patterns.",
@@ -20534,6 +24227,22 @@
       "type": "mindset"
     },
     {
+      "name": "help",
+      "category": "mindset",
+      "description": "Use when quick reference for ponytail modes, skills, and commands. One-shot display.",
+      "domain": "mindset",
+      "tags": [
+        "help",
+        "mindset",
+        "ponytail",
+        "reference"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
       "name": "hiring-playbook",
       "category": "mindset",
       "description": "Use when design jobs, source candidates, run structured interviews, and onboard effectively. Use when hiring for any role.",
@@ -20544,6 +24253,25 @@
         "personal-development",
         "playbook",
         "soft-skills"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "influence-without-authority",
+      "category": "mindset",
+      "description": "Use when gain buy-in from peers, stakeholders, and executives when you lack direct authority. Covers reciprocity, social proof, and coalition building.",
+      "domain": "mindset",
+      "tags": [
+        "authority",
+        "influence",
+        "mindset",
+        "personal-development",
+        "social-media",
+        "soft-skills",
+        "without"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -20570,7 +24298,7 @@
     {
       "name": "mental-models",
       "category": "mindset",
-      "description": "Use when apply 20+ mental models for better decision-making including Circle of Competence, Inversion, Second-Order Thinking, and Margin of Safety. Use when working with mental models.",
+      "description": "Use when apply 20+ mental models for better decision-making including Circle of Competence, Inversion, Second-Order Thinking, and Margin of Safety.",
       "domain": "mindset",
       "tags": [
         "mental",
@@ -20587,7 +24315,7 @@
     {
       "name": "mindfulness",
       "category": "mindset",
-      "description": "Use when practice presence, reduce stress, and improve focus through meditation and awareness techniques. Use daily for mental clarity and emotional regulation. Use when working with mindfulness.",
+      "description": "Use when practice presence, reduce stress, and improve focus through meditation and awareness techniques. Use daily for mental clarity and emotional regulation.",
       "domain": "mindset",
       "tags": [
         "mindfulness",
@@ -20669,9 +24397,43 @@
       "type": "mindset"
     },
     {
+      "name": "personal-productivity",
+      "category": "mindset",
+      "description": "Use when manage time, energy, and focus using GTD, Eisenhower Matrix, time blocking, and deep work. Use when optimizing personal effectiveness.",
+      "domain": "mindset",
+      "tags": [
+        "mindset",
+        "personal",
+        "personal-development",
+        "productivity",
+        "soft-skills"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "persuasion-influence",
+      "category": "mindset",
+      "description": "Use when apply Cialdini's 6 principles of influence ethically in business contexts. Use when pitching, selling, or driving adoption without formal authority.",
+      "domain": "mindset",
+      "tags": [
+        "influence",
+        "mindset",
+        "personal-development",
+        "persuasion",
+        "soft-skills"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
       "name": "ponytail",
       "category": "mindset",
-      "description": "Use when lazy senior dev mode. Four disciplined mindsets — audit, debt, help, review — that cut complexity, track deferrals, surface reference, and catch over-engineering. Forces YAGNI, stdlib first, no unrequested abstractions. Use when working with ponytail.",
+      "description": "Use when lazy senior dev mode. Four disciplined mindsets — audit, debt, help, review — that cut complexity, track deferrals, surface reference, and catch over-engineering. Forces YAGNI, stdlib first, no unrequested abstractions.",
       "domain": "mindset",
       "tags": [
         "mindset",
@@ -20691,9 +24453,95 @@
       "type": "mindset"
     },
     {
+      "name": "presentation-design",
+      "category": "mindset",
+      "description": "Use when design persuasive presentations using the 10/20/30 rule, slide anatomy principles, and storytelling arcs. Use when creating decks or keynotes. Use when designing persuasive presentations using the 10/20/30 rule, slide anatomy principles,.",
+      "domain": "mindset",
+      "tags": [
+        "design",
+        "mindset",
+        "personal-development",
+        "presentation",
+        "soft-skills"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "pricing-frameworks",
+      "category": "mindset",
+      "description": "Use when set prices using value-based, cost-plus, competitive, and subscription models. Includes tiering, anchoring, discounts, and pricing experiments.",
+      "domain": "mindset",
+      "tags": [
+        "frameworks",
+        "mindset",
+        "personal-development",
+        "pricing",
+        "soft-skills"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "probabilistic-thinking",
+      "category": "mindset",
+      "description": "Use when apply Bayesian updating, base rates, and expected value to decision-making. Use when reasoning under uncertainty or evaluating risks.",
+      "domain": "mindset",
+      "tags": [
+        "mindset",
+        "personal-development",
+        "probabilistic",
+        "soft-skills",
+        "thinking"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "product-market-fit",
+      "category": "mindset",
+      "description": "Use when find and measure product-market fit using surveys, NPS, retention cohorts, and the Mom Test. Use when validating a product's viability.",
+      "domain": "mindset",
+      "tags": [
+        "fit",
+        "market",
+        "mindset",
+        "personal-development",
+        "product",
+        "soft-skills"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "public-speaking",
+      "category": "mindset",
+      "description": "Use when deliver engaging talks and presentations using narrative structure, audience analysis, and stage presence techniques.",
+      "domain": "mindset",
+      "tags": [
+        "mindset",
+        "personal-development",
+        "public",
+        "soft-skills",
+        "speaking"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
       "name": "remote-work",
       "category": "mindset",
-      "description": "Use when work effectively remotely including async communication, documentation, video meetings, and self-management in distributed teams. Use when working with remote work.",
+      "description": "Use when work effectively remotely including async communication, documentation, video meetings, and self-management in distributed teams.",
       "domain": "mindset",
       "tags": [
         "mindset",
@@ -20718,6 +24566,22 @@
         "personal-development",
         "resilience",
         "soft-skills"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "review",
+      "category": "mindset",
+      "description": "Use when reviewing a diff for over-engineering. Finds what to delete — reinvented stdlib, needless deps, speculative abstractions.",
+      "domain": "mindset",
+      "tags": [
+        "review",
+        "mindset",
+        "ponytail",
+        "simplification"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -20759,9 +24623,26 @@
       "type": "mindset"
     },
     {
+      "name": "servant-leadership",
+      "category": "mindset",
+      "description": "Use when lead by serving using Greenleaf's 10 characteristics. Use when empowering teams, removing obstacles, or building trust-based leadership.",
+      "domain": "mindset",
+      "tags": [
+        "leadership",
+        "mindset",
+        "personal-development",
+        "servant",
+        "soft-skills"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
       "name": "stakeholder-management",
       "category": "mindset",
-      "description": "Use when map, engage, and align stakeholders using the power-interest grid, RACI matrix, and communication plans. Use when navigating complex projects or organizational politics. Use when working with stakeholder management.",
+      "description": "Use when map, engage, and align stakeholders using the power-interest grid, RACI matrix, and communication plans. Use when navigating complex projects or organizational politics.",
       "domain": "mindset",
       "tags": [
         "mindset",
@@ -20778,7 +24659,7 @@
     {
       "name": "storytelling-frameworks",
       "category": "mindset",
-      "description": "Use when structure narratives for pitches, content, and communication using Hero's Journey, Before-After-Bridge, and Pixar pitch templates. Use when working with storytelling frameworks.",
+      "description": "Use when structure narratives for pitches, content, and communication using Hero's Journey, Before-After-Bridge, and Pixar pitch templates.",
       "domain": "mindset",
       "tags": [
         "frameworks",
@@ -20820,6 +24701,83 @@
         "personal-development",
         "soft-skills",
         "stress"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "systems-thinking",
+      "category": "mindset",
+      "description": "Use when understand feedback loops, leverage points, and system archetypes to solve complex problems. Use when addressing recurring issues or unintended consequences.",
+      "domain": "mindset",
+      "tags": [
+        "mindset",
+        "personal-development",
+        "soft-skills",
+        "systems",
+        "thinking"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "team-management",
+      "category": "mindset",
+      "description": "Use when manage teams through 1:1s, feedback (SBI model), delegation (70% rule), and performance reviews. Use when leading individual contributors or managers.",
+      "domain": "mindset",
+      "tags": [
+        "management",
+        "mindset",
+        "personal-development",
+        "soft-skills",
+        "team"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "triggers": [
+        "one on one agenda",
+        "1:1 agenda",
+        "sbi feedback",
+        "delegation 70 rule",
+        "performance review calibration",
+        "team management"
+      ],
+      "argument-hint": "[team or report]",
+      "type": "mindset"
+    },
+    {
+      "name": "time-management",
+      "category": "mindset",
+      "description": "Use when prioritize tasks, manage schedules, and avoid burnout using Eisenhower Matrix, time blocking, and Pomodoro technique.",
+      "domain": "mindset",
+      "tags": [
+        "management",
+        "mindset",
+        "personal-development",
+        "soft-skills",
+        "time"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mindset",
+      "type": "mindset"
+    },
+    {
+      "name": "trade-off-analysis",
+      "category": "mindset",
+      "description": "Use when evaluate opportunity costs and prioritize using Eisenhower Matrix, MoSCoW, and cost of delay. Use when prioritizing with constrained resources.",
+      "domain": "mindset",
+      "tags": [
+        "mindset",
+        "off",
+        "personal-development",
+        "soft-skills",
+        "trade"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -20870,6 +24828,22 @@
         "business",
         "business-ops",
         "intelligence",
+        "management",
+        "operations"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "business-operations",
+      "type": "operations"
+    },
+    {
+      "name": "clickup",
+      "category": "operations",
+      "description": "Use when skill: clickup. See SKILL.md body for details. Use when this domain is relevant.",
+      "domain": "operations",
+      "tags": [
+        "business-ops",
+        "clickup",
         "management",
         "operations"
       ],
@@ -20982,6 +24956,22 @@
       "type": "operations"
     },
     {
+      "name": "jira",
+      "category": "operations",
+      "description": "Use when skill: jira. See SKILL.md body for details. Use when this domain is relevant.",
+      "domain": "operations",
+      "tags": [
+        "business-ops",
+        "jira",
+        "management",
+        "operations"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "business-operations",
+      "type": "operations"
+    },
+    {
       "name": "legal-assistant",
       "category": "operations",
       "description": "Use when legal assistant — contract review checklists, IP protection, business compliance, GDPR/privacy for digital products, DMCA, software licensing, employment law, and dispute resolution. Built for 1-person companies scaling to team.",
@@ -21013,6 +25003,24 @@
         "management",
         "monitoring",
         "operations"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "business-operations",
+      "type": "operations"
+    },
+    {
+      "name": "multi-channel-reminder",
+      "category": "operations",
+      "description": "Use when skill: multi-channel-reminder. See SKILL.md body for details. Use when this domain is relevant.",
+      "domain": "operations",
+      "tags": [
+        "business-ops",
+        "channel",
+        "management",
+        "multi",
+        "operations",
+        "reminder"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -21093,6 +25101,24 @@
       "type": "operations"
     },
     {
+      "name": "project-management",
+      "category": "operations",
+      "description": "Use when coordinate sprints, track deadlines, manage tasks, and maintain project documentation with Notion and Slack. Use when working with project management.",
+      "domain": "operations",
+      "tags": [
+        "business-ops",
+        "management",
+        "notion",
+        "operations",
+        "project",
+        "slack"
+      ],
+      "version": "1.1.0",
+      "author": "oyi77",
+      "subdomain": "business-operations",
+      "type": "operations"
+    },
+    {
       "name": "revenue-team",
       "category": "operations",
       "description": "Use when manage sales pipelines, forecast revenue, track deals, and optimize sales velocity with HubSpot and Notion integration. Use when manageing sales pipelines, forecast revenue, track deals, and optimize sales.",
@@ -21130,7 +25156,36 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "product-management",
+      "triggers": [
+        "product manager role",
+        "write a prd",
+        "feature prioritization",
+        "roadmap planning",
+        "acceptance criteria",
+        "product market fit",
+        "pricing strategy",
+        "ice scoring",
+        "rice scoring",
+        "sprint planning"
+      ],
       "type": "operations"
+    },
+    {
+      "name": "calendar-management",
+      "category": "productivity",
+      "description": "Use when advanced calendar management, scheduling, and meeting automation with Google Calendar MCP. Use when working with calendar management.",
+      "domain": "productivity",
+      "tags": [
+        "calendar",
+        "management",
+        "productivity",
+        "time-management",
+        "tools"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "productivity",
+      "type": "productivity"
     },
     {
       "name": "career-ops",
@@ -21217,6 +25272,23 @@
         "tools",
         "video",
         "workflow"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "productivity",
+      "type": "productivity"
+    },
+    {
+      "name": "google-workspace",
+      "category": "productivity",
+      "description": "Use when integrate with Google Workspace (Docs, Sheets, Drive, Calendar) using MCP servers. Use when integrateing with google workspace (docs, sheets, drive, calendar) using mcp.",
+      "domain": "productivity",
+      "tags": [
+        "google",
+        "productivity",
+        "time-management",
+        "tools",
+        "workspace"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -21333,6 +25405,24 @@
       "type": "research"
     },
     {
+      "name": "continuous-learning",
+      "category": "research",
+      "description": "Use when transform session insights into actionable skills with confidence-weighted scoring — captures patterns, analyzes outcomes, and integrates learnings to improve agent performance. Use when working with continuous learning.",
+      "domain": "research",
+      "tags": [
+        "ai-agent",
+        "analysis",
+        "continuous",
+        "investigation",
+        "learning",
+        "research"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
       "name": "data-pipeline-engine",
       "category": "research",
       "description": "Use when eTL pipelines that pull data from multiple sources (APIs, databases, web scraping), transform it, and produce actionable dashboards and reports. Use when working with data pipeline engine.",
@@ -21407,6 +25497,94 @@
       "type": "research"
     },
     {
+      "name": "gate-exchange-newcoin",
+      "category": "research",
+      "description": "Use when you need new-listing due diligence and event radar — listings calendar, fundamentals, contract-safety/rug checks, sentiment/tape, and a gated first-buy draft. Strategy-only; uses public data (CoinGecko, Etherscan, web search), no exchange CLI/MCP.",
+      "domain": "research",
+      "tags": [
+        "research",
+        "due-diligence",
+        "new-listings",
+        "token-safety"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-coinanalysis",
+      "category": "research",
+      "description": "Use when deep single-coin crypto research — price, supply, market structure, and on-chain signals for one asset via public APIs (CoinGecko, Etherscan). Use when working with coin analysis.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "research",
+        "crypto",
+        "market-analysis",
+        "on-chain"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-coincompare",
+      "category": "research",
+      "description": "Use when compare multiple crypto assets side-by-side — market structure, momentum, and supply metrics via public APIs (CoinGecko). Use when working with coin comparison.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "research",
+        "crypto",
+        "market-analysis",
+        "comparison"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-defianalysis",
+      "category": "research",
+      "description": "Use when analyze a DeFi protocol — TVL, chains, yield pools, and audit/risk posture via public APIs (DeFiLlama). Use when working with DeFi protocol analysis.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "research",
+        "defi",
+        "tvl",
+        "risk"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-marketoverview",
+      "category": "research",
+      "description": "Use when produce a crypto market-wide snapshot — total cap, BTC dominance, top movers, and trending assets via public APIs (CoinGecko). Use when working with market overview.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "research",
+        "crypto",
+        "market-overview",
+        "macro"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
       "name": "gate-info-research",
       "category": "research",
       "description": "Use when deep crypto market + on-chain research on Gate.io — single or multi-coin analysis, market overview, trend, macro, and research-plus-news playbooks via gate-cli. Use when working with gate crypto research.",
@@ -21418,6 +25596,132 @@
         "crypto",
         "market-analysis",
         "on-chain"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-risk",
+      "category": "research",
+      "description": "Use when crypto risk assessment on Gate.io — single-coin risk scoring, comparative risk check, and risk-plus-news overlay via gate-cli. Use when working with gate crypto risk analysis.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "risk",
+        "crypto",
+        "risk-assessment",
+        "due-diligence"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-riskcheck",
+      "category": "research",
+      "description": "Use when risk-score a token — contract verification, honeypot heuristics, buy/sell tax, and open-source status via public explorers (Etherscan and equivalents). Use when working with token risk check.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "research",
+        "crypto",
+        "risk",
+        "token"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-tokenonchain",
+      "category": "research",
+      "description": "Use when investigate a token's on-chain footprint — supply, holders, transfers, and contract verification via public explorers (Etherscan and equivalents). Use when working with token on-chain analysis.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "research",
+        "crypto",
+        "on-chain",
+        "token"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-trendanalysis",
+      "category": "research",
+      "description": "Use when analyze crypto price trends and momentum — multi-window performance, trending assets, and directional read via public APIs (CoinGecko). Use when working with trend analysis.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "research",
+        "crypto",
+        "trend",
+        "momentum"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-info-web3",
+      "category": "research",
+      "description": "Use when Web3 / on-chain + DeFi analysis on Gate.io — token contract checks, DeFi protocol risk, and on-chain signal playbooks via gate-cli. Use when working with gate web3 / defi analysis.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "info",
+        "web3",
+        "defi",
+        "on-chain",
+        "crypto"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-news-briefing",
+      "category": "research",
+      "description": "Use when produce a crypto news + sentiment briefing — latest events, trending stories, and social sentiment via web search and public sources. Use when working with crypto news briefing.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "news",
+        "research",
+        "crypto",
+        "sentiment",
+        "briefing"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "gate-news-intel",
+      "category": "research",
+      "description": "Use when crypto news / events / UGC intelligence on Gate.io — latest news, event calendars, and market-wide intel via gate-cli; optional info overlay for market context. Use when working with gate news intelligence.",
+      "domain": "research",
+      "tags": [
+        "gate",
+        "news",
+        "intel",
+        "crypto",
+        "events",
+        "sentiment"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -21568,6 +25872,18 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "research-analysis",
+      "triggers": [
+        "research analyst role",
+        "competitive intelligence",
+        "market sizing",
+        "tam sam som",
+        "source verification",
+        "structured synthesis",
+        "due diligence",
+        "market research",
+        "hypothesis testing",
+        "evidence triangulation"
+      ],
       "type": "research"
     },
     {
@@ -21606,6 +25922,52 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "scientific-research",
+      "triggers": [
+        "scientific research",
+        "bioinformatics",
+        "cheminformatics",
+        "drug discovery",
+        "molecular docking",
+        "rdkit",
+        "biopython",
+        "scientific database",
+        "lab protocol"
+      ],
+      "argument-hint": "<topic> | --docking | --genomics | --literature",
+      "type": "research"
+    },
+    {
+      "name": "sherlock-research",
+      "category": "research",
+      "description": "Use when investigate problems systematically using Sherlock Holmes' method: observe, deduce, hypothesize, and verify. . Use when working with sherlock research.",
+      "domain": "research",
+      "tags": [
+        "analysis",
+        "investigation",
+        "research",
+        "sherlock"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
+      "type": "research"
+    },
+    {
+      "name": "social-intelligence",
+      "category": "research",
+      "description": "Use when cross-platform social media intelligence gathering using Agent Reach. Research trends, sentiment, competitive intel, and user insights from Twitter, Reddit, YouTube, XiaoHongShu across 35+ platforms. Use when researching social proof, market sentiment, viral content patterns, or competitive positioning.",
+      "domain": "research",
+      "tags": [
+        "social-media",
+        "research",
+        "sentiment-analysis",
+        "competitive-intelligence",
+        "trend-monitoring",
+        "agent-reach"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "research",
       "type": "research"
     },
     {
@@ -21727,6 +26089,26 @@
       "type": "sales"
     },
     {
+      "name": "ai-lead-generation",
+      "category": "sales",
+      "description": "Automated AI-powered lead generation and prospecting. Find ideal customers, enrich data, personalize outreach, and book meetings without manual effort. Use when generating B2B leads at scale.",
+      "domain": "sales",
+      "tags": [
+        "business-development",
+        "generation",
+        "lead",
+        "revenue",
+        "sales",
+        "money",
+        "outreach",
+        "b2b"
+      ],
+      "version": "2.0.0",
+      "author": "oyi77",
+      "subdomain": "",
+      "type": "sales"
+    },
+    {
       "name": "ai-marketplace",
       "category": "sales",
       "description": "Use when selling AI-powered services on Fiverr, Upwork, and Toptal. Offer automation, content, and development services. Build recurring clients and generate $2K-10K/month.",
@@ -21734,6 +26116,42 @@
       "tags": [
         "business-development",
         "marketplace",
+        "revenue",
+        "sales"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "sales",
+      "type": "sales"
+    },
+    {
+      "name": "b2b-sales-automation",
+      "category": "sales",
+      "description": "Use when | > Full B2B sales pipeline automation — from cold prospect to onboarded client. Covers ICP definition, lead sourcing, outreach sequences, proposal generation, CRM tracking, and deal alerts via Telegram. Targets SMEs needing AI automation, digital products, and content services.",
+      "domain": "sales",
+      "tags": [
+        "sales",
+        "b2b",
+        "crm",
+        "outreach",
+        "proposal",
+        "pipeline",
+        "indonesian"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "sales",
+      "type": "sales"
+    },
+    {
+      "name": "business-development",
+      "category": "sales",
+      "description": "Use when generating leads, researching prospects, and managing outreach sequences with HubSpot and Exa integration. Use for B2B pipeline building.",
+      "domain": "sales",
+      "tags": [
+        "business",
+        "business-development",
+        "pipeline",
         "revenue",
         "sales"
       ],
@@ -21762,6 +26180,44 @@
       "type": "sales"
     },
     {
+      "name": "high-ticket-closing",
+      "category": "sales",
+      "description": "Use when jordan Belfort's Straight Line System - closing high-value deals through persuasion and psychology. Use when working with high ticket closing.",
+      "domain": "sales",
+      "tags": [
+        "business-development",
+        "closing",
+        "high",
+        "revenue",
+        "sales",
+        "ticket"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "sales",
+      "type": "sales"
+    },
+    {
+      "name": "influencer-scouting",
+      "category": "sales",
+      "description": "Use when | > Full influencer scouting, outreach, and performance tracking system. Covers platform search across TikTok, Instagram, and YouTube for creators, scoring/qualification, DM outreach, negotiation, deal tracking, and ROI measurement. Integrates with Kalodata for TikTok analytics.",
+      "domain": "sales",
+      "tags": [
+        "influencer",
+        "marketing",
+        "tiktok",
+        "instagram",
+        "youtube",
+        "kol",
+        "affiliate",
+        "indonesia"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "sales",
+      "type": "sales"
+    },
+    {
       "name": "sales-pipeline",
       "category": "sales",
       "description": "Use when aI-powered sales pipeline inside 1ai-social. Track leads, qualify with BANT, generate proposals, schedule follow-ups, and get daily sales analytics. Use when managing B2B sales pipelines.",
@@ -21783,6 +26239,23 @@
       "type": "sales"
     },
     {
+      "name": "sales-strategy",
+      "category": "sales",
+      "description": "Use when build sales playbooks, define pipeline stages, and optimize conversion rates. Use when designing or improving the sales process.",
+      "domain": "sales",
+      "tags": [
+        "business-development",
+        "pipeline",
+        "revenue",
+        "sales",
+        "strategy"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "sales",
+      "type": "sales"
+    },
+    {
       "name": "shopee-review-downloader",
       "category": "sales",
       "description": "Use when download and analyze Shopee product reviews in bulk for competitive research, sentiment analysis, and market intelligence. Use when working with shopee review downloader.",
@@ -21799,6 +26272,42 @@
       "author": "oyi77",
       "subdomain": "sales",
       "type": "sales"
+    },
+    {
+      "name": "talent-crm",
+      "category": "sales",
+      "description": "Use when managing talent pipeline with candidate tracking, outreach automation, and interview scheduling. Use for recruiting CRM.",
+      "domain": "sales",
+      "tags": [
+        "business-development",
+        "crm",
+        "pipeline",
+        "revenue",
+        "sales",
+        "talent"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "sales",
+      "type": "sales"
+    },
+    {
+      "name": "alphaear-strategy",
+      "category": "trading",
+      "description": "Use when score trading setups using AlphaEar multi-factor analysis (momentum, volume, sentiment). Use when evaluating entry/exit signals.",
+      "domain": "trading",
+      "tags": [
+        "algorithms",
+        "alphaear",
+        "markets",
+        "money",
+        "strategy",
+        "trading"
+      ],
+      "version": "2.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
     },
     {
       "name": "black-edge",
@@ -21819,6 +26328,41 @@
       "type": "trading"
     },
     {
+      "name": "crypto-trading-bot",
+      "category": "trading",
+      "description": "Use when 加密貨幣交易機器人開發 - 幫你整自動交易Bot，支持Pine Script、Python、CCXT API對接。適用於：(1)整TradingView信號Bot (2)CEX/DEX API自動化 (3)套利機器人 (4)止盈止損策略. Use when working with crypto trading bot.",
+      "domain": "trading",
+      "tags": [
+        "algorithms",
+        "api",
+        "bot",
+        "crypto",
+        "markets",
+        "trading"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "crypto-wallet",
+      "category": "trading",
+      "description": "Use when skill: crypto-wallet. See SKILL.md body for details. Use when this domain is relevant.",
+      "domain": "trading",
+      "tags": [
+        "algorithms",
+        "crypto",
+        "markets",
+        "trading",
+        "wallet"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
       "name": "defi-protocols",
       "category": "trading",
       "description": "Use when skill: defi-protocols. See SKILL.md body for details. Use when this domain is relevant.",
@@ -21829,6 +26373,103 @@
         "markets",
         "protocols",
         "trading"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "gate-dex-wallet",
+      "category": "trading",
+      "description": "Use when managing Gate DEX wallets or signing EVM/GateChain transactions. Triggers on address/balance checks on-chain, EVM/EIP-3009 gasless x402 resource payments, DApp connection requests, and wallet-cli operations.",
+      "domain": "trading",
+      "tags": [
+        "gate",
+        "dex",
+        "wallet",
+        "payment",
+        "on-chain"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "gate-exchange-assetswap",
+      "category": "trading",
+      "description": "Use when designing portfolio rebalancing strategies — conservative / conviction / market-cap-Top-N baskets, preview-before-create, and order-state checks. Strategy-only; uses public data (CoinGecko market-cap), no exchange CLI/MCP.",
+      "domain": "trading",
+      "tags": [
+        "trading",
+        "rebalancing",
+        "portfolio",
+        "allocation"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "gate-exchange-autoinvest",
+      "category": "trading",
+      "description": "Use when designing dollar-cost-averaging (auto-invest) plans — investment currency, target allocation, cadence, and fund-flow discipline. Strategy-only; uses public data, no exchange CLI/MCP.",
+      "domain": "trading",
+      "tags": [
+        "trading",
+        "dca",
+        "auto-invest",
+        "portfolio"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "gate-exchange-bot",
+      "category": "trading",
+      "description": "Use when designing grid and martingale trading-bot strategies — parameter discipline, range/leverage/direction selection, and confirmation gates. Strategy-only; uses public market data, no exchange CLI/MCP.",
+      "domain": "trading",
+      "tags": [
+        "trading",
+        "grid",
+        "martingale",
+        "automation"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "gate-exchange-dual",
+      "category": "trading",
+      "description": "Use when designing dual investment (sell-high / buy-low) yield strategies — strike selection, settlement logic, and forced-position risk. Strategy-only; uses public market data, no exchange CLI/MCP.",
+      "domain": "trading",
+      "tags": [
+        "trading",
+        "yield",
+        "options-like",
+        "structured-products"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "gate-exchange-marketanalysis",
+      "category": "trading",
+      "description": "Use when you need read-only crypto market structure and sentiment analysis for any spot/perp market — trend, support/resistance, volume profile, funding, and social/news sentiment. Produces a structured market brief with no execution glue.",
+      "domain": "trading",
+      "tags": [
+        "trading",
+        "market-analysis",
+        "sentiment",
+        "technical-analysis"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -21868,6 +26509,23 @@
         "money"
       ],
       "version": "2.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "nft-marketplace",
+      "category": "trading",
+      "description": "Use when skill: nft-marketplace. See SKILL.md body for details. Use when this domain is relevant.",
+      "domain": "trading",
+      "tags": [
+        "algorithms",
+        "marketplace",
+        "markets",
+        "nft",
+        "trading"
+      ],
+      "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "trading",
       "type": "trading"
@@ -21964,6 +26622,54 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "quantitative-trading",
+      "triggers": [
+        "quant trader role",
+        "strategy backtest",
+        "walk forward test",
+        "drawdown limit",
+        "position sizing",
+        "slippage model",
+        "algorithmic trading",
+        "portfolio rebalance",
+        "alpha research",
+        "risk bounds"
+      ],
+      "type": "trading"
+    },
+    {
+      "name": "smart-contract-dev",
+      "category": "trading",
+      "description": "Use when skill: smart-contract-dev. See SKILL.md body for details. Use when this domain is relevant.",
+      "domain": "trading",
+      "tags": [
+        "algorithms",
+        "contract",
+        "dev",
+        "markets",
+        "smart",
+        "trading"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "trading-executor",
+      "category": "trading",
+      "description": "Use when execute trades via API with position sizing, order management, and slippage monitoring. Use when placing orders on exchanges.",
+      "domain": "trading",
+      "tags": [
+        "algorithms",
+        "api",
+        "executor",
+        "markets",
+        "monitoring",
+        "trading"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
       "type": "trading"
     },
     {
@@ -21981,6 +26687,57 @@
       "version": "1.0.0",
       "author": "oyi77",
       "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "trading-researcher",
+      "category": "trading",
+      "description": "Use when researching market conditions, on-chain data, and sentiment to identify trading opportunities. Use for market analysis.",
+      "domain": "trading",
+      "tags": [
+        "algorithms",
+        "markets",
+        "researcher",
+        "trading"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "trading-risk-manager",
+      "category": "trading",
+      "description": "Use when monitor portfolio risk, enforce position limits, and trigger stop-losses. Use when managing exposure across strategies.",
+      "domain": "trading",
+      "tags": [
+        "algorithms",
+        "manager",
+        "markets",
+        "risk",
+        "trading"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "trading",
+      "type": "trading"
+    },
+    {
+      "name": "trading-strategist",
+      "category": "trading",
+      "description": "Use when design and backtest trading strategies using technical indicators, fundamental analysis, and statistical models. Use when designing and backtesting trading strategies.",
+      "domain": "trading",
+      "tags": [
+        "algorithms",
+        "markets",
+        "strategist",
+        "trading",
+        "money",
+        "backtesting"
+      ],
+      "version": "2.0.0",
+      "author": "oyi77",
+      "subdomain": "",
       "type": "trading"
     },
     {
@@ -22019,5 +26776,12 @@
       "subdomain": "trading",
       "type": "trading"
     }
+  ],
+  "tooling_dirs": [
+    "docs",
+    "hooks",
+    "manifests",
+    "references",
+    "scripts"
   ]
 }

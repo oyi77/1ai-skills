@@ -1106,8 +1106,8 @@ tags:                       # 3-5 relevant tags
 python3 scripts/test-skills.py
 
 # Output:
-# Total:    1398
-# Passed:   1398 (100.0%)
+# Total:    1424
+# Passed:   1424 (100.0%)
 # Failed:   0
 # Warnings: 310
 # Time:     16.84s

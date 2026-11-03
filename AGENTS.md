@@ -16,7 +16,7 @@ Every task follows this sequence. No exceptions.
 Full details: `~/.1ai/core/PROCESS.md` (auto-injected by hooks)
 
 ## This repo
-Production-ready AI agent skill library — 1188 skills across 19 categories with anti-rationalization tables, code examples, and verification checklists.
+Production-ready AI agent skill library — 1424 skills across 19 categories with anti-rationalization tables, code examples, and verification checklists.
 Stack: Node.js / Python / YAML skills
 Domain: Agent skill library — NOT a product repo. Do not add features here unless adding new skills.
 
@@ -76,25 +76,46 @@ cat ~/projects/1ai-skills/integrations/stripe-integration/SKILL.md
 
 | Category | Count | What it covers |
 |----------|------:|----------------|
-| cybersecurity | 800 | Threat hunting, forensics, pen testing, SOC, incident response |
-| development | 93 | TDD, debugging, code review, PRD, engineering workflows |
-| content | 45 | Video, audio, design, writing, docs |
-| mindset | 29 | Negotiation, leadership, critical thinking |
-| marketing | 32 | SEO, viral content, email, ads, growth |
-| core | 38 | AI infrastructure, memory, self-improvement, model routing |
-| integrations | 19 | GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase |
-| devops | 25 | Docker, Kubernetes, CI/CD, cloud ops, GitOps |
-| automation | 13 | Bots, workflows, scrapers, process automation |
-| research | 23 | Deep research, market analysis, competitive intelligence |
-| trading | 12 | Crypto, DeFi, Polymarket, trading strategies |
-| operations | 16 | Business ops, governance, HR, legal, project management |
-| agents | 4 | AI agent orchestration, coding, research, autonomous execution |
-| mcp | 6 | Model Context Protocol servers and tool integrations |
-| meta | 5 | Self-evolving meta-skills, performance monitoring |
-| financial | 11 | Finance analysis, valuation, tax, portfolio management |
-| sales | 6 | Lead gen, CRM, outreach, sales automation |
-| data | 3 | Data pipelines, analysis, visualization, ETL |
-| productivity | 8 | Calendars, email, meetings, workspace management |
+| cybersecurity | 801 | Threat hunting, forensics, pen testing, SOC, incident response |
+| development | 105 | TDD, debugging, code review, PRD, engineering workflows |
+| content | 105 | Video, audio, design, writing, docs |
+| mindset | 55 | Negotiation, leadership, critical thinking |
+| marketing | 43 | SEO, viral content, email, ads, growth |
+| core | 53 | AI infrastructure, memory, self-improvement, model routing |
+| integrations | 29 | GitHub, Discord, Notion, Slack, Stripe, Firebase, Supabase |
+| devops | 32 | Docker, Kubernetes, CI/CD, cloud ops, GitOps |
+| automation | 21 | Bots, workflows, scrapers, process automation |
+| research | 38 | Deep research, market analysis, competitive intelligence |
+| trading | 27 | Crypto, DeFi, Polymarket, trading strategies |
+| operations | 20 | Business ops, governance, HR, legal, project management |
+| agents | 16 | AI agent orchestration, coding, research, autonomous execution |
+| mcp | 15 | Model Context Protocol servers and tool integrations |
+| meta | 14 | Self-evolving meta-skills, performance monitoring |
+| financial | 19 | Finance analysis, valuation, tax, portfolio management |
+| sales | 13 | Lead gen, CRM, outreach, sales automation |
+| data | 8 | Data pipelines, analysis, visualization, ETL |
+| productivity | 10 | Calendars, email, meetings, workspace management |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
