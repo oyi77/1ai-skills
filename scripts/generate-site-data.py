@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Generate docs/site-data.json from skill files."""
-import json, os, re
+import json, os, re, sys
 from datetime import datetime, timezone
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -53,7 +53,7 @@ try:
         old = json.load(fh)
     if {k: v for k, v in old.items() if k != 'generated'} == {k: v for k, v in data.items() if k != 'generated'}:
         print(f'OK: {data["total"]} skills, {data["categoryCount"]} categories (unchanged)')
-        exit(0)
+        sys.exit(0)
 except (OSError, ValueError):
     pass
 
