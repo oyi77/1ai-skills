@@ -64,6 +64,7 @@ jobs:
       - name: Verify index docs are fresh
         run: |
           python3 scripts/generate-structure.py
+          python3 scripts/generate-site-data.py
           if ! git diff --quiet -- '*_index.md' docs/ QUICK_START.md; then
             echo "::error::Index docs are stale. Run 'python3 scripts/generate-structure.py' and commit."
             git diff --stat -- '*_index.md' docs/ QUICK_START.md
