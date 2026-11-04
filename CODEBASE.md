@@ -22,7 +22,7 @@ The world's largest open-source AI agent skill ecosystem — 1427 production-rea
 | `automation/` | Workflow automation & bots (n8n, Telegram, WhatsApp, job-hunter) |
 | `content/` | Content creation & media (Remotion video, AI podcast, faceless YouTube, image gen) |
 | `core/` | Infrastructure & memory systems (self-improving, hive-mind, session-brain, model-router) |
-`cybersecurity/` | 801 security skills across various domains (threat hunting, forensics, pen testing, cloud security) |
+| `cybersecurity/` | 801 security skills across various domains (threat hunting, forensics, pen testing, cloud security) |
 | `data/` | Data analysis, pipelines (Airflow, Dagster, DBT, Spark) |
 | `development/` | Coding, debugging, TDD, code review, subagent orchestration |
 | `devops/` | Docker, K8s, CI/CD, Terraform, GitOps, service mesh |
