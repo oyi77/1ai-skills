@@ -331,12 +331,29 @@ def check_duplicates(skills_meta: list[dict], result: LintResult):
         by_category[cat].append((name, path))
 
     for cat, cat_skills in by_category.items():
-        for i, (name1, path1) in enumerate(cat_skills):
-            for name2, path2 in cat_skills[i + 1:]:
-                sim = similarity(name1, name2, threshold=SIMILARITY_THRESHOLD)
-                if sim >= SIMILARITY_THRESHOLD and name1 != name2:
-                    result.add("warnings", name1, "near-duplicate",
-                                f"Near-duplicate of {name2} (similarity={sim:.2f})")
+        # Optimization: Pre-compute lengths and lowercase variants outside the O(N^2) loop
+        processed = [(name, name.lower(), len(name), path) for name, path in cat_skills]
+
+        for i, (name1, lower1, len1, path1) in enumerate(processed):
+            # Create SequenceMatcher ONCE per outer loop, using internal caching on seq2
+            matcher = SequenceMatcher(None, b=lower1)
+
+            for name2, lower2, len2, path2 in processed[i + 1:]:
+                if name1 == name2:
+                    continue
+
+                # Fast length-based math check before sequence matching
+                if SIMILARITY_THRESHOLD > 0.0 and (len1 + len2) > 0:
+                    if 2.0 * min(len1, len2) < SIMILARITY_THRESHOLD * (len1 + len2):
+                        continue
+
+                # Update inner loop sequence safely and quickly bound-check
+                matcher.set_seq1(lower2)
+                if matcher.real_quick_ratio() >= SIMILARITY_THRESHOLD and matcher.quick_ratio() >= SIMILARITY_THRESHOLD:
+                    sim = matcher.ratio()
+                    if sim >= SIMILARITY_THRESHOLD:
+                        result.add("warnings", name1, "near-duplicate",
+                                    f"Near-duplicate of {name2} (similarity={sim:.2f})")
 
 
 def check_cross_references(skills_meta: list[dict], result: LintResult):
