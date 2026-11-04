@@ -27,7 +27,7 @@ for root, dirs, files in os.walk(REPO):
         path = os.path.join(root, f)
         rel = os.path.relpath(path, REPO)
         parts = rel.split(os.sep)
-        cat = next((c for c in CAT_DIRS if c in parts), 'other')
+        cat = parts[0] if parts and parts[0] in CAT_DIRS else 'other'
         with open(path) as fh: content = fh.read()
         fm = get_fm(content)
         name = fm.get('name', os.path.basename(os.path.dirname(path)))

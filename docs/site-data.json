@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04T09:44:28.391433+00:00",
+  "generated": "2026-11-04T09:49:35.622451+00:00",
   "total": 1427,
   "categories": [
     {
@@ -28,7 +28,7 @@
     },
     {
       "name": "research",
-      "count": 40
+      "count": 38
     },
     {
       "name": "devops",
@@ -55,16 +55,16 @@
       "count": 19
     },
     {
+      "name": "agents",
+      "count": 16
+    },
+    {
       "name": "sales",
       "count": 15
     },
     {
       "name": "mcp",
       "count": 15
-    },
-    {
-      "name": "agents",
-      "count": 14
     },
     {
       "name": "meta",
@@ -1231,7 +1231,7 @@
     },
     {
       "name": "code-research",
-      "category": "research"
+      "category": "agents"
     },
     {
       "name": "code-reviewer",
@@ -3791,7 +3791,7 @@
     },
     {
       "name": "market-research-agent",
-      "category": "research"
+      "category": "agents"
     },
     {
       "name": "marketing-director",
