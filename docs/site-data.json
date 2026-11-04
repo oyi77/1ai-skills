@@ -1,18 +1,18 @@
 {
-  "generated": "2026-08-16T04:03:34.378593+00:00",
-  "total": 1315,
+  "generated": "2026-11-04T09:44:28.391433+00:00",
+  "total": 1427,
   "categories": [
     {
       "name": "cybersecurity",
-      "count": 794
-    },
-    {
-      "name": "development",
-      "count": 91
+      "count": 801
     },
     {
       "name": "content",
-      "count": 56
+      "count": 106
+    },
+    {
+      "name": "development",
+      "count": 105
     },
     {
       "name": "mindset",
@@ -20,55 +20,55 @@
     },
     {
       "name": "core",
-      "count": 47
+      "count": 53
     },
     {
       "name": "marketing",
-      "count": 42
-    },
-    {
-      "name": "devops",
-      "count": 31
-    },
-    {
-      "name": "integrations",
-      "count": 28
+      "count": 43
     },
     {
       "name": "research",
-      "count": 25
+      "count": 40
     },
     {
-      "name": "automation",
-      "count": 20
+      "name": "devops",
+      "count": 32
+    },
+    {
+      "name": "integrations",
+      "count": 29
     },
     {
       "name": "trading",
-      "count": 19
+      "count": 27
+    },
+    {
+      "name": "automation",
+      "count": 21
     },
     {
       "name": "operations",
-      "count": 19
+      "count": 20
     },
     {
       "name": "financial",
-      "count": 18
+      "count": 19
+    },
+    {
+      "name": "sales",
+      "count": 15
     },
     {
       "name": "mcp",
       "count": 15
     },
     {
-      "name": "sales",
-      "count": 13
+      "name": "agents",
+      "count": 14
     },
     {
       "name": "meta",
-      "count": 13
-    },
-    {
-      "name": "agents",
-      "count": 12
+      "count": 14
     },
     {
       "name": "productivity",
@@ -76,11 +76,16 @@
     },
     {
       "name": "data",
-      "count": 7
+      "count": 8
     }
   ],
   "categoryCount": 19,
   "featured": [
+    {
+      "name": "21st-dev",
+      "description": "Use when UI component registry for AI coding agents \u2014 search, generate, and publish React/Next.js/Tailwind components via MCP. 12,000+ community components, log",
+      "category": "integrations"
+    },
     {
       "name": "AgentShield",
       "description": "Use when agentic security patterns for AI agent systems including attack",
@@ -165,14 +170,13 @@
       "name": "Matthew Prince",
       "description": "Use when manage Cloudflare DNS, CDN, and security rules via API. Use",
       "category": "core"
-    },
-    {
-      "name": "Mikolov et al.",
-      "description": "Use when zero-copy vector operations for efficient similarity search",
-      "category": "core"
     }
   ],
   "allSkills": [
+    {
+      "name": "21st-dev",
+      "category": "integrations"
+    },
     {
       "name": "AgentShield",
       "category": "core"
@@ -290,6 +294,10 @@
       "category": "core"
     },
     {
+      "name": "adhd-style-eval-run",
+      "category": "development"
+    },
+    {
       "name": "ads-manager",
       "category": "marketing"
     },
@@ -300,6 +308,14 @@
     {
       "name": "affiliate-marketing",
       "category": "marketing"
+    },
+    {
+      "name": "agent-alignment-audit",
+      "category": "agents"
+    },
+    {
+      "name": "agent-debug-loop",
+      "category": "agents"
     },
     {
       "name": "agent-docs",
@@ -722,6 +738,10 @@
       "category": "content"
     },
     {
+      "name": "api-contract-drift-audit",
+      "category": "development"
+    },
+    {
       "name": "api-design",
       "category": "development"
     },
@@ -732,6 +752,10 @@
     {
       "name": "api-gateway",
       "category": "development"
+    },
+    {
+      "name": "api-key-leak-validation",
+      "category": "cybersecurity"
     },
     {
       "name": "api-testing",
@@ -748,6 +772,10 @@
     {
       "name": "argocd-gitops",
       "category": "devops"
+    },
+    {
+      "name": "ast-architectural-guard",
+      "category": "development"
     },
     {
       "name": "audit",
@@ -794,8 +822,16 @@
       "category": "content"
     },
     {
+      "name": "auto-consolidator",
+      "category": "core"
+    },
+    {
       "name": "auto-evolve",
       "category": "meta"
+    },
+    {
+      "name": "auto-evolver",
+      "category": "core"
     },
     {
       "name": "auto-git-commiter",
@@ -838,6 +874,10 @@
       "category": "sales"
     },
     {
+      "name": "banner-design",
+      "category": "content"
+    },
+    {
       "name": "bbot-recon",
       "category": "cybersecurity"
     },
@@ -848,6 +888,34 @@
     {
       "name": "best-hacker",
       "category": "research"
+    },
+    {
+      "name": "better-accessibility",
+      "category": "content"
+    },
+    {
+      "name": "better-colors",
+      "category": "content"
+    },
+    {
+      "name": "better-interface",
+      "category": "content"
+    },
+    {
+      "name": "better-layout",
+      "category": "content"
+    },
+    {
+      "name": "better-typography",
+      "category": "content"
+    },
+    {
+      "name": "better-ui",
+      "category": "content"
+    },
+    {
+      "name": "better-writing",
+      "category": "content"
     },
     {
       "name": "bigquery-integration",
@@ -878,6 +946,14 @@
       "category": "development"
     },
     {
+      "name": "brand",
+      "category": "content"
+    },
+    {
+      "name": "break",
+      "category": "content"
+    },
+    {
       "name": "browser-extension-reverse",
       "category": "cybersecurity"
     },
@@ -892,6 +968,10 @@
     {
       "name": "bug-hunting",
       "category": "cybersecurity"
+    },
+    {
+      "name": "build-design",
+      "category": "content"
     },
     {
       "name": "build-in-public",
@@ -1082,6 +1162,10 @@
       "category": "content"
     },
     {
+      "name": "change-impact-analysis",
+      "category": "development"
+    },
+    {
       "name": "change-management",
       "category": "mindset"
     },
@@ -1132,6 +1216,10 @@
     {
       "name": "cloud-mcp",
       "category": "integrations"
+    },
+    {
+      "name": "cloudflare-security-audit",
+      "category": "cybersecurity"
     },
     {
       "name": "cockroachdb-patterns",
@@ -1186,6 +1274,10 @@
       "category": "integrations"
     },
     {
+      "name": "company-handbook",
+      "category": "content"
+    },
+    {
       "name": "company-kb",
       "category": "core"
     },
@@ -1200,6 +1292,10 @@
     {
       "name": "competitor-alternatives",
       "category": "marketing"
+    },
+    {
+      "name": "concurrency-race-audit",
+      "category": "development"
     },
     {
       "name": "conducting-api-security-testing",
@@ -1374,6 +1470,10 @@
       "category": "marketing"
     },
     {
+      "name": "content-director",
+      "category": "content"
+    },
+    {
       "name": "content-factory",
       "category": "content"
     },
@@ -1412,6 +1512,10 @@
     {
       "name": "contract-manager",
       "category": "operations"
+    },
+    {
+      "name": "coordination-bus",
+      "category": "core"
     },
     {
       "name": "correlating-security-events-in-qradar",
@@ -1466,6 +1570,10 @@
       "category": "sales"
     },
     {
+      "name": "cybersecurity-router",
+      "category": "cybersecurity"
+    },
+    {
       "name": "cypress-e2e",
       "category": "development"
     },
@@ -1492,6 +1600,10 @@
     {
       "name": "dbt-transform",
       "category": "data"
+    },
+    {
+      "name": "dead-code-graveyard",
+      "category": "development"
     },
     {
       "name": "debt",
@@ -1568,6 +1680,18 @@
     {
       "name": "deploying-tailscale-for-zero-trust-vpn",
       "category": "cybersecurity"
+    },
+    {
+      "name": "design",
+      "category": "content"
+    },
+    {
+      "name": "design-md",
+      "category": "content"
+    },
+    {
+      "name": "design-system",
+      "category": "content"
     },
     {
       "name": "design-thinking",
@@ -1950,6 +2074,10 @@
       "category": "devops"
     },
     {
+      "name": "docs-governance",
+      "category": "development"
+    },
+    {
       "name": "document-creator",
       "category": "content"
     },
@@ -2022,6 +2150,10 @@
       "category": "development"
     },
     {
+      "name": "eval-harness",
+      "category": "meta"
+    },
+    {
       "name": "evaluating-threat-intelligence-platforms",
       "category": "cybersecurity"
     },
@@ -2056,6 +2188,10 @@
     {
       "name": "executive-presence",
       "category": "mindset"
+    },
+    {
+      "name": "explain-interface",
+      "category": "content"
     },
     {
       "name": "exploiting-active-directory-certificate-services-esc1",
@@ -2298,6 +2434,86 @@
       "category": "cybersecurity"
     },
     {
+      "name": "gate-dex-wallet",
+      "category": "trading"
+    },
+    {
+      "name": "gate-exchange-assetswap",
+      "category": "trading"
+    },
+    {
+      "name": "gate-exchange-autoinvest",
+      "category": "trading"
+    },
+    {
+      "name": "gate-exchange-bot",
+      "category": "trading"
+    },
+    {
+      "name": "gate-exchange-dual",
+      "category": "trading"
+    },
+    {
+      "name": "gate-exchange-marketanalysis",
+      "category": "trading"
+    },
+    {
+      "name": "gate-exchange-newcoin",
+      "category": "research"
+    },
+    {
+      "name": "gate-exchange-trading",
+      "category": "trading"
+    },
+    {
+      "name": "gate-info-coinanalysis",
+      "category": "research"
+    },
+    {
+      "name": "gate-info-coincompare",
+      "category": "research"
+    },
+    {
+      "name": "gate-info-defianalysis",
+      "category": "research"
+    },
+    {
+      "name": "gate-info-marketoverview",
+      "category": "research"
+    },
+    {
+      "name": "gate-info-research",
+      "category": "research"
+    },
+    {
+      "name": "gate-info-risk",
+      "category": "research"
+    },
+    {
+      "name": "gate-info-riskcheck",
+      "category": "research"
+    },
+    {
+      "name": "gate-info-tokenonchain",
+      "category": "research"
+    },
+    {
+      "name": "gate-info-trendanalysis",
+      "category": "research"
+    },
+    {
+      "name": "gate-info-web3",
+      "category": "research"
+    },
+    {
+      "name": "gate-news-briefing",
+      "category": "research"
+    },
+    {
+      "name": "gate-news-intel",
+      "category": "research"
+    },
+    {
       "name": "gcp-ops",
       "category": "devops"
     },
@@ -2342,6 +2558,10 @@
       "category": "cybersecurity"
     },
     {
+      "name": "godfile-ratchet-split",
+      "category": "development"
+    },
+    {
       "name": "google-canvas",
       "category": "productivity"
     },
@@ -2384,6 +2604,10 @@
     {
       "name": "hackingtool",
       "category": "cybersecurity"
+    },
+    {
+      "name": "hallmark",
+      "category": "content"
     },
     {
       "name": "hardening-docker-containers-for-production",
@@ -2574,7 +2798,67 @@
       "category": "cybersecurity"
     },
     {
+      "name": "hyperframes-changelog-video",
+      "category": "content"
+    },
+    {
+      "name": "hyperframes-cut-the-curve",
+      "category": "content"
+    },
+    {
+      "name": "hyperframes-embedded-captions",
+      "category": "content"
+    },
+    {
+      "name": "hyperframes-faceless-explainer",
+      "category": "content"
+    },
+    {
+      "name": "hyperframes-general-video",
+      "category": "content"
+    },
+    {
+      "name": "hyperframes-motion-graphics",
+      "category": "content"
+    },
+    {
+      "name": "hyperframes-music-to-video",
+      "category": "content"
+    },
+    {
+      "name": "hyperframes-oversized-cursor",
+      "category": "content"
+    },
+    {
+      "name": "hyperframes-pr-to-video",
+      "category": "content"
+    },
+    {
+      "name": "hyperframes-product-launch-video",
+      "category": "content"
+    },
+    {
+      "name": "hyperframes-seam-craft",
+      "category": "content"
+    },
+    {
+      "name": "hyperframes-slideshow",
+      "category": "content"
+    },
+    {
+      "name": "hyperframes-talking-head-recut",
+      "category": "content"
+    },
+    {
+      "name": "image-director",
+      "category": "content"
+    },
+    {
       "name": "image-gen",
+      "category": "content"
+    },
+    {
+      "name": "impeccable",
       "category": "content"
     },
     {
@@ -3274,6 +3558,10 @@
       "category": "cybersecurity"
     },
     {
+      "name": "interface-review",
+      "category": "content"
+    },
+    {
       "name": "investigating-insider-threat-indicators",
       "category": "cybersecurity"
     },
@@ -3466,6 +3754,10 @@
       "category": "development"
     },
     {
+      "name": "living-story-web",
+      "category": "content"
+    },
+    {
       "name": "llamaindex-patterns",
       "category": "core"
     },
@@ -3502,6 +3794,10 @@
       "category": "research"
     },
     {
+      "name": "marketing-director",
+      "category": "content"
+    },
+    {
       "name": "marketing-ops",
       "category": "marketing"
     },
@@ -3536,6 +3832,10 @@
     {
       "name": "meeting-prep",
       "category": "financial"
+    },
+    {
+      "name": "memory-gateway",
+      "category": "core"
     },
     {
       "name": "memory-knowledge-graph",
@@ -3604,6 +3904,10 @@
     {
       "name": "month-end-closer",
       "category": "financial"
+    },
+    {
+      "name": "motion-dev",
+      "category": "content"
     },
     {
       "name": "multi-channel-reminder",
@@ -4458,6 +4762,10 @@
       "category": "mindset"
     },
     {
+      "name": "phone-harness",
+      "category": "automation"
+    },
+    {
       "name": "pipedream-workflows",
       "category": "automation"
     },
@@ -4686,6 +4994,10 @@
       "category": "operations"
     },
     {
+      "name": "reverse-engineer-anything-with-rea",
+      "category": "cybersecurity"
+    },
+    {
       "name": "reverse-engineering-android-malware-with-jadx",
       "category": "cybersecurity"
     },
@@ -4706,6 +5018,10 @@
       "category": "cybersecurity"
     },
     {
+      "name": "reverse-engineering-router",
+      "category": "cybersecurity"
+    },
+    {
       "name": "reverse-engineering-rust-malware",
       "category": "cybersecurity"
     },
@@ -4722,6 +5038,74 @@
       "category": "research"
     },
     {
+      "name": "role-ai-ml-engineer",
+      "category": "core"
+    },
+    {
+      "name": "role-content-creator",
+      "category": "content"
+    },
+    {
+      "name": "role-customer-support",
+      "category": "sales"
+    },
+    {
+      "name": "role-data-engineer",
+      "category": "data"
+    },
+    {
+      "name": "role-devops-sre-engineer",
+      "category": "devops"
+    },
+    {
+      "name": "role-financial-analyst",
+      "category": "financial"
+    },
+    {
+      "name": "role-growth-marketer",
+      "category": "marketing"
+    },
+    {
+      "name": "role-penetration-tester",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "role-product-manager",
+      "category": "operations"
+    },
+    {
+      "name": "role-qa-automation-engineer",
+      "category": "development"
+    },
+    {
+      "name": "role-quantitative-trader",
+      "category": "trading"
+    },
+    {
+      "name": "role-research-analyst",
+      "category": "research"
+    },
+    {
+      "name": "role-sales-engineer",
+      "category": "sales"
+    },
+    {
+      "name": "role-security-engineer",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "role-software-engineer",
+      "category": "development"
+    },
+    {
+      "name": "role-system-architect",
+      "category": "development"
+    },
+    {
+      "name": "role-ui-ux-designer",
+      "category": "content"
+    },
+    {
       "name": "root-cause-analysis",
       "category": "mindset"
     },
@@ -4736,6 +5120,10 @@
     {
       "name": "saas-orchestrator",
       "category": "cybersecurity"
+    },
+    {
+      "name": "sales-director",
+      "category": "content"
     },
     {
       "name": "sales-pipeline",
@@ -4776,6 +5164,10 @@
     {
       "name": "schema-markup",
       "category": "marketing"
+    },
+    {
+      "name": "scientific-agent-skills",
+      "category": "research"
     },
     {
       "name": "scrapers",
@@ -4898,12 +5290,20 @@
       "category": "core"
     },
     {
+      "name": "skill-router",
+      "category": "core"
+    },
+    {
       "name": "slack",
       "category": "integrations"
     },
     {
       "name": "slack-mcp",
       "category": "mcp"
+    },
+    {
+      "name": "slides",
+      "category": "content"
     },
     {
       "name": "smart-contract-dev",
@@ -4948,6 +5348,10 @@
     {
       "name": "stakeholder-management",
       "category": "mindset"
+    },
+    {
+      "name": "state-machine",
+      "category": "content"
     },
     {
       "name": "statement-auditor",
@@ -5058,12 +5462,20 @@
       "category": "financial"
     },
     {
+      "name": "tdd-bug-reproduction",
+      "category": "development"
+    },
+    {
       "name": "team-management",
       "category": "mindset"
     },
     {
       "name": "teamwork",
       "category": "core"
+    },
+    {
+      "name": "teardown",
+      "category": "content"
     },
     {
       "name": "tekton-pipelines",
@@ -5254,11 +5666,19 @@
       "category": "marketing"
     },
     {
+      "name": "type-narrowing-audit",
+      "category": "development"
+    },
+    {
       "name": "typeorm-patterns",
       "category": "development"
     },
     {
       "name": "ui-critique",
+      "category": "content"
+    },
+    {
+      "name": "ui-styling",
       "category": "content"
     },
     {
@@ -5272,6 +5692,10 @@
     {
       "name": "unit-economics",
       "category": "mindset"
+    },
+    {
+      "name": "unslop",
+      "category": "content"
     },
     {
       "name": "using-git-worktrees",
@@ -5298,6 +5722,10 @@
       "category": "content"
     },
     {
+      "name": "variant",
+      "category": "content"
+    },
+    {
       "name": "vault-pki",
       "category": "devops"
     },
@@ -5314,11 +5742,23 @@
       "category": "development"
     },
     {
+      "name": "video-director",
+      "category": "content"
+    },
+    {
       "name": "video-editor",
       "category": "content"
     },
     {
       "name": "video-gen",
+      "category": "content"
+    },
+    {
+      "name": "video-production-orchestrator",
+      "category": "content"
+    },
+    {
+      "name": "video-strategy-orchestrator",
       "category": "content"
     },
     {
@@ -5328,6 +5768,10 @@
     {
       "name": "vilona-activate",
       "category": "core"
+    },
+    {
+      "name": "vilona-gm",
+      "category": "content"
     },
     {
       "name": "viral-content-creator",
@@ -5432,6 +5876,10 @@
     {
       "name": "zapier-patterns",
       "category": "automation"
+    },
+    {
+      "name": "zero-downtime-migration-audit",
+      "category": "development"
     }
   ]
 }
