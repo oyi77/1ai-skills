@@ -46,6 +46,17 @@ data = {
     'featured': skills[:18],
     'allSkills': [{'name': s['name'], 'category': s['category']} for s in skills],
 }
-with open(os.path.join(REPO, 'docs', 'site-data.json'), 'w') as fh:
+
+output_path = os.path.join(REPO, 'docs', 'site-data.json')
+try:
+    with open(output_path, 'r') as fh:
+        old = json.load(fh)
+    if {k: v for k, v in old.items() if k != 'generated'} == {k: v for k, v in data.items() if k != 'generated'}:
+        print(f'OK: {data["total"]} skills, {data["categoryCount"]} categories (unchanged)')
+        exit(0)
+except (OSError, ValueError):
+    pass
+
+with open(output_path, 'w') as fh:
     json.dump(data, fh, indent=2)
-print(f'OK: {data["total"]} skills, {data["categoryCount"]} categories')
+print(f'OK: {data["total"]} skills, {data["categoryCount"]} categories (updated)')
