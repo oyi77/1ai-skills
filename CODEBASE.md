@@ -1,8 +1,8 @@
 # CODEBASE.md — 1ai-skills
-> Auto-generated codebase memory for AI agents. Last updated: 2026-06-19.
+> Auto-generated codebase memory for AI agents. Last updated: 2026-11-05.
 
 ## Purpose
-The world's largest open-source AI agent skill ecosystem — 1286 production-ready skills across 18 categories with self-evolving meta-skills that auto-find, auto-create, and auto-evolve capabilities.
+The world's largest open-source AI agent skill ecosystem — 1427 production-ready skills across 19 categories with self-evolving meta-skills that auto-find, auto-create, and auto-evolve capabilities.
 
 ## Tech Stack
 - **Languages**: JavaScript, Python, Bash, Markdown
@@ -22,7 +22,7 @@ The world's largest open-source AI agent skill ecosystem — 1286 production-rea
 | `automation/` | Workflow automation & bots (n8n, Telegram, WhatsApp, job-hunter) |
 | `content/` | Content creation & media (Remotion video, AI podcast, faceless YouTube, image gen) |
 | `core/` | Infrastructure & memory systems (self-improving, hive-mind, session-brain, model-router) |
-| `cybersecurity/` | 785 security skills across 26 domains (threat hunting, forensics, pen testing, cloud security) |
+`cybersecurity/` | 801 security skills across various domains (threat hunting, forensics, pen testing, cloud security) |
 | `data/` | Data analysis, pipelines (Airflow, Dagster, DBT, Spark) |
 | `development/` | Coding, debugging, TDD, code review, subagent orchestration |
 | `devops/` | Docker, K8s, CI/CD, Terraform, GitOps, service mesh |
@@ -63,7 +63,7 @@ Each skill is a directory containing a `SKILL.md` file with structured sections:
 npx skills add oyi77/1ai-skills    # Install all skills
 node scripts/install-hooks.js --yes  # Install hooks into detected agents
 node scripts/hooks-cli.js status     # Check hook installation status
-python3 scripts/test_quality.py      # Run skill quality tests
+python3 scripts/test-skills.py      # Run skill quality tests
 python3 scripts/validate-skills.py   # Validate all SKILL.md files
 ```
 
