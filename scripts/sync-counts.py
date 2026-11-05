@@ -118,24 +118,25 @@ text = re.sub(
 cat_table_start = text.find('| Category | Count | What it covers |')
 if cat_table_start >= 0:
     table_end = text.find('\n\n', cat_table_start + 5)
-    if table_end > 0:
-        lines = text[cat_table_start:table_end].split('\n')
-        # Build new table
-        new_table = '| Category | Count | What it covers |\n|----------|------:|----------------|\n'
-        order = ['cybersecurity','development','content','mindset','marketing','core',
-                 'integrations','devops','automation','research','trading',
-                 'operations','agents','mcp','meta','financial','sales','data','productivity']
-        cat_descs = {}
-        for line in lines:
-            if line.startswith('| ') and '|' in line and 'Category' not in line and '---' not in line:
-                parts = [p.strip() for p in line.split('|')]
-                if len(parts) >= 4:
-                    cat_descs[parts[1].lower()] = parts[3]
-        for name in order:
-            count = cats.get(name, 0)
-            desc = cat_descs.get(name, '')
-            new_table += f'| {name} | {count} | {desc} |\n'
-        text = text[:cat_table_start] + new_table + text[table_end:]
+    if table_end == -1:
+        table_end = len(text)
+    lines = text[cat_table_start:table_end].split('\n')
+    # Build new table
+    new_table = '| Category | Count | What it covers |\n|----------|------:|----------------|\n'
+    order = ['cybersecurity','development','content','mindset','marketing','core',
+             'integrations','devops','automation','research','trading',
+             'operations','agents','mcp','meta','financial','sales','data','productivity']
+    cat_descs = {}
+    for line in lines:
+        if line.startswith('| ') and '|' in line and 'Category' not in line and '---' not in line:
+            parts = [p.strip() for p in line.split('|')]
+            if len(parts) >= 4:
+                cat_descs[parts[1].lower()] = parts[3]
+    for name in order:
+        count = cats.get(name, 0)
+        desc = cat_descs.get(name, '')
+        new_table += f'| {name} | {count} | {desc} |\n'
+    text = text[:cat_table_start] + new_table.rstrip('\n') + text[table_end:]
 
 with open(AGENTS, 'w') as f:
     f.write(text)
