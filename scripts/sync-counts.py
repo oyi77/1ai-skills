@@ -276,16 +276,17 @@ with open(CODEBASE, 'w') as f:
 print(f"  CODEBASE.md — updated to {total}")
 
 # ── <category>/AGENTS.md — count sentence ──
-# Only cybersecurity/ carries a count sentence today; the pattern is
-# anchored to the first `^<digits> (security )?skills` line so it stays
-# idempotent and never touches prose elsewhere in the file.
+# Update only the leading count sentence immediately after Purpose.
 for cat, count in cats.items():
     agents = ROOT / cat / 'AGENTS.md'
     if not agents.is_file():
         continue
     text = agents.read_text()
-    pattern = r'^\d+ (security )?skills'
-    new_text, n = re.subn(pattern, f'{count} \\1skills', text, count=1, flags=re.MULTILINE)
+    def _sub(m):
+        qual = 'security ' if m.group(1) else ''
+        return f'{count} {qual}skills'
+
+    new_text = re.sub(r'(?<=## Purpose\n)^\d+ (security )?skills', _sub, text, count=1, flags=re.MULTILINE)
     if new_text != text:
         agents.write_text(new_text)
         print(f"  {cat}/AGENTS.md — updated to {count}")

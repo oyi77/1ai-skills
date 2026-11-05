@@ -1,9 +1,10 @@
 <!-- Parent: ../AGENTS.md -->
+<!-- Counts synced by: python3 scripts/sync-counts.py -->
 
 # cybersecurity/
 
 ## Purpose
-801 security skills across 26 subdomains. Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `description`, `domain: cybersecurity`, `subdomain`, `tags`, optional `author`/`persona`).
+801 security skills across many subdomains. Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `description`, `domain: cybersecurity`, `subdomain`, `tags`, optional `author`/`persona`).
 
 **For agents**: grep this file for a subdomain that matches the task, then load only those specific skill dirs. Do NOT walk the whole `cybersecurity/` tree — it will blow context.
 
