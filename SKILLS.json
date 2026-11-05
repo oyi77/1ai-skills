@@ -1,10 +1,10 @@
 {
-  "total_skills": 1429,
+  "total_skills": 1431,
   "category_count": 19,
   "categories": {
     "agents": 16,
     "automation": 21,
-    "content": 106,
+    "content": 108,
     "core": 53,
     "cybersecurity": 801,
     "data": 8,
@@ -2535,6 +2535,27 @@
       "type": "content"
     },
     {
+      "name": "omnivoice",
+      "category": "content",
+      "description": "Use when synthesizing multilingual speech, cloning a voice from short reference audio, or designing a voice from attribute descriptions with the offline OmniVoice toolkit.",
+      "domain": "content",
+      "tags": [
+        "tts",
+        "voice-cloning",
+        "speech-synthesis",
+        "multilingual",
+        "offline",
+        "diffusion"
+      ],
+      "version": "",
+      "author": "oyi77",
+      "subdomain": "",
+      "roles": [
+        "content-creator"
+      ],
+      "type": "content"
+    },
+    {
       "name": "pandacss-styling",
       "category": "content",
       "description": "Use when panda CSS zero-runtime styling — token system, patterns, recipes, conditions, JSX styles.",
@@ -3121,6 +3142,27 @@
         "variant"
       ],
       "argument-hint": "<component>",
+      "type": "content"
+    },
+    {
+      "name": "vicestudio",
+      "category": "content",
+      "description": "Local-first AI voice studio for voice cloning, design, dubbing, dictation, and audiobook narration in 646 languages.",
+      "domain": "content",
+      "tags": [
+        "voice-cloning",
+        "dubbing",
+        "transcription",
+        "audiobook",
+        "tts",
+        "local-first"
+      ],
+      "version": "",
+      "author": "oyi77",
+      "subdomain": "",
+      "roles": [
+        "content-creator"
+      ],
       "type": "content"
     },
     {
@@ -8770,16 +8812,15 @@
     {
       "name": "detecting-ai-model-prompt-injection-attacks",
       "category": "cybersecurity",
-      "description": "Use when detects prompt injection attacks targeting LLM-based applications using a multi-layered defense combining regex pattern matching for known attack signatures, heuristic scoring for structural anomalies, and transformer-based classification with DeBERTa models. The detector analyzes user inputs before they reach the LLM, flagging direct injections (system prompt overrides, role-play escapes, instruction hijacking) and indirect injections (encoded payloads, multi-language obfuscation, d...",
+      "description": "Use when detecting prompt injection attacks targeting LLM-based applications using two layers — regex signature matching over normalized input plus weighted heuristic scoring. Stdlib only, no transformer. Detector runs on user inputs before they reach the model, flagging direct overrides, role-play escapes, instruction hijacking, encoding/obfuscation, policy-layer impersonation, anti-detector framing, and indirect injection carriers.",
       "domain": "cybersecurity",
       "tags": [
         "prompt-injection",
         "LLM-security",
         "OWASP-LLM-Top10",
-        "NLP-classification",
         "input-validation"
       ],
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "oyi77",
       "subdomain": "ai-security",
       "roles": [
@@ -26492,6 +26533,35 @@
       "type": "marketing"
     },
     {
+      "name": "ecommerce-seo",
+      "category": "marketing",
+      "description": "Use when optimizing e-commerce stores for search engines. Focus on faceted navigation, product schema, variant canonicalization, and crawl budget management for large catalogs.",
+      "domain": "marketing",
+      "tags": [
+        "growth",
+        "ecommerce",
+        "marketing",
+        "seo",
+        "money"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "marketing",
+      "roles": [
+        "growth-marketer"
+      ],
+      "triggers": [
+        "ecommerce seo",
+        "faceted navigation seo",
+        "product schema optimization",
+        "ecommerce crawl budget",
+        "product variant canonicalization",
+        "out of stock seo strategy"
+      ],
+      "argument-hint": "[store_url]",
+      "type": "marketing"
+    },
+    {
       "name": "email-marketing",
       "category": "marketing",
       "description": "Use when creating and sending email campaigns, newsletters, and drip sequences. Build email lists, design templates, automate follow-ups, and track email performance for customer nurturing.",
@@ -26570,6 +26640,36 @@
       "roles": [
         "growth-marketer"
       ],
+      "type": "marketing"
+    },
+    {
+      "name": "international-seo",
+      "category": "marketing",
+      "description": "Use when implementing and auditing international SEO strategies for multi-regional or multi-lingual websites. Use for hreflang reciprocity audits, regional URL structure planning, and preventing duplicate content across locales.",
+      "domain": "marketing",
+      "tags": [
+        "growth",
+        "marketing",
+        "seo",
+        "money",
+        "internationalization",
+        "i18n"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "marketing",
+      "roles": [
+        "growth-marketer"
+      ],
+      "triggers": [
+        "international seo",
+        "hreflang audit",
+        "multi-lingual seo",
+        "regional url strategy",
+        "x-default",
+        "locale seo"
+      ],
+      "argument-hint": "[url_list]",
       "type": "marketing"
     },
     {
@@ -31145,20 +31245,6 @@
         "quantitative-trader"
       ],
       "type": "trading"
-    },
-    {
-      "name": "international-seo",
-      "description": "Use when implementing and auditing international SEO strategies for multi-regional or multi-lingual websites.",
-      "domain": "marketing",
-      "category": "marketing",
-      "path": "marketing/international-seo/SKILL.md"
-    },
-    {
-      "name": "ecommerce-seo",
-      "description": "Use when optimizing e-commerce stores for search engines.",
-      "domain": "marketing",
-      "category": "marketing",
-      "path": "marketing/ecommerce-seo/SKILL.md"
     }
   ],
   "tooling_dirs": [
