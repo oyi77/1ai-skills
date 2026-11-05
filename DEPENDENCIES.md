@@ -256,6 +256,6 @@ python3 -m pip list | grep package-name
 ## See Also
 
 - [MCP Servers](mcp/) — Full list of MCP skills
-- [Cybersecurity Skills](cybersecurity/AGENTS.md) — 785 security skills by subdomain
+- [Cybersecurity Skills](cybersecurity/AGENTS.md) — 801 security skills by subdomain
 - [Contributing](CONTRIBUTING.md) — Add new skills
 - [Quick Start](QUICK_START.md) — Get started with 1ai-skills

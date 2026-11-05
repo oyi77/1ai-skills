@@ -13,15 +13,6 @@ Repo maintenance utilities. **Not skill content.**
 | `validate-skills.py` | **Hard validator.** Parses every SKILL.md frontmatter, checks required fields (`name`, `description`), name-vs-dir consistency. Supports `--fix` for auto-repair. CI runs this on every PR. |
 | `test_skill_router_regression.py` | Router targeting regression & external-delegation checks |
 | `hooks-cli.js` | Interactive CLI for managing hooks |
-| `hooks-tui.js` | TUI variant of hooks-cli |
-| `add-missing-sections.py` | Legacy: adds standard sections to skill docs |
-| `create_discord_server.py` | Discord submission helper |
-| `setup-discord.sh` | Discord setup wrapper |
-| `submit_to_huggingface.py` | HF Spaces submission |
-| `submit_to_langchain.py` | LangChain Hub submission |
-| `hf_submit.py` | HF submission helper |
-| `test_gallery_stats.py` | Standalone test for skill gallery stats |
-| `trading/` | Support modules extracted from skills (guardrails, pipeline, vector db integration) |
 
 ## Workflow
 

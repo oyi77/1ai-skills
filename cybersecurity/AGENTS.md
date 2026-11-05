@@ -1,10 +1,9 @@
 <!-- Parent: ../AGENTS.md -->
-<!-- Regenerate via: bash scripts/audit-skills.sh -->
 
 # cybersecurity/
 
 ## Purpose
-788 security skills across 26 subdomains. Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `description`, `domain: cybersecurity`, `subdomain`, `tags`, optional `author`/`persona`).
+801 security skills across 26 subdomains. Each skill is a self-contained `SKILL.md` with YAML frontmatter (`name`, `description`, `domain: cybersecurity`, `subdomain`, `tags`, optional `author`/`persona`).
 
 **For agents**: grep this file for a subdomain that matches the task, then load only those specific skill dirs. Do NOT walk the whole `cybersecurity/` tree — it will blow context.
 
@@ -64,12 +63,12 @@ cybersecurity/<skill-name>/
 4. Only then read the full SKILL.md body.
 
 ### DO NOT
-- Walk all 788 skill dirs.
+- Walk all 801 skill dirs.
 - Load `cybersecurity/` recursively into context.
 - Assume a skill exists without grepping first — many adjacent topics have dedicated skills.
 
 ## Validation
-All 788 skills verified:
+All 801 skills verified:
 - ✅ Start with `---` YAML frontmatter
 - ✅ Have `name`, `description`, `domain: cybersecurity`, `subdomain` fields
 - ✅ Consistent naming (`<verb>-<noun>-<context>` slug)
