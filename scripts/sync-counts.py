@@ -286,7 +286,7 @@ for cat, count in cats.items():
     text = agents.read_text()
     pattern = r'^\d+ (security )?skills'
     new_text, n = re.subn(pattern, f'{count} \\1skills', text, count=1, flags=re.MULTILINE)
-    if n:
+    if new_text != text:
         agents.write_text(new_text)
         print(f"  {cat}/AGENTS.md — updated to {count}")
 
