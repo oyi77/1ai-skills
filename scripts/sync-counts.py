@@ -13,10 +13,6 @@ PKGJSON = ROOT / 'package.json'
 GENERATE = ROOT / 'scripts/generate-site.py'
 CODEBASE = ROOT / 'CODEBASE.md'
 QUICK_START = ROOT / 'QUICK_START.md'
-AGENTS = ROOT / 'AGENTS.md'
-LLMS = ROOT / 'llms.txt'
-PKGJSON = ROOT / 'package.json'
-GENERATE = ROOT / 'scripts/generate-site.py'
 
 with open(SKILLS_JSON) as f:
     data = json.load(f)
