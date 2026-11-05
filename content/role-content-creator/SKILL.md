@@ -1,6 +1,6 @@
 ---
 name: role-content-creator
-description: "Use when creating, editing, and managing content assets: text, images, video, audio, scripts, and multi-format assets. Covers content production workflows, version control, brand consistency, optimization, and distribution across channels."
+description: "Use when creating and managing multi-format content assets. Covers production workflows, brand consistency, and distribution across digital channels."
 domain: content
 author: oyi77
 version: 1.0.0
@@ -8,13 +8,9 @@ category: content
 tags:
 - content
 - writing
-- video
-- audio
-- editing
 - production
-- distribution
 - brand
-- optimization
+- distribution
 license: Apache-2.0
 subdomain: content-creation
 triggers:
@@ -24,11 +20,11 @@ triggers:
 - content pipeline orchestration
 ---
 
+# Role Content Creator
+
 ## Overview
 
-Content without a structured production workflow, a canonical asset library, and an automated approval gate does not scale. The engineering behind that gate is a content production stack with content types, versions, assets, approvals, and distribution channels.
-
-The content creator enforces strict asset governance, content templatization, version control, and distribution pipelines across all digital channels.
+Content without structured production workflow, canonical asset library, and automated approval gate does not scale. The content creator enforces strict asset governance, content templatization, version control, and distribution pipelines across all digital channels.
 
 ## When to Use
 
@@ -48,53 +44,52 @@ The content creator enforces strict asset governance, content templatization, ve
 
 | Content Objective / Workflow | Delegated Child Skill | Primary Content Artifact |
 |---|---|---|
-| Text & writing | `content/variant/writing` | Articles, documentation, blog posts |
-| Video production | `content/video-gen` | Videos, reels, clips |
+| Text & writing | `content/writing` | Articles, documentation, blog posts |
+| Video production | `content/video/gen` | Videos, reels, clips |
 | Image creation | `content/image-gen` (DALL-E) | Generated images |
 | Audio production | `content/voice-ai` | Voiceovers, speech-to-text |
 | Distribution | `integrations/slack` (notification) | Delivery via Slack, Discord |
 | Content templates | `content/brand` | Brand guidelines, style guides |
-| Version control | `content/content-version` | Asset versions, changelog |
 
 ## Workflow
 
 ### Phase 1: Content Planning & Asset Definition
 
-1. Identify content pillar, target audience, format, channel.
-2. Set up content templates: headline, intro, body, CTA, author credit.
-3. Define asset specifications: file type, size, compression, metadata.
+1. **Identify** content pillar, target audience, format, channel.
+2. **Set up** content templates: headline, intro, body, CTA, author credit.
+3. **Define** asset specifications: file type, size, compression, metadata.
 
 ### Phase 2: Asset Production & Versioning
 
-1. Script and shoot text/video/audio assets via editors (writing, video, audio).
-2. Upload assets to CDN or internal repository.
-3. Apply version control: Git tags, asset IDs, and version numbering.
+1. **Script** and shoot text/video/audio assets via editors (writing, video, audio).
+2. **Upload** assets to CDN or internal repository.
+3. **Apply** version control: Git tags, asset IDs, and version numbering.
 
 ### Phase 3: Approval & Review
 
-1. Content approval: editor review, brand sign-off, compliance.
-2. Set up asset QA: length, quality, readability, formatting.
-3. Publish approved assets to distribution channels.
+1. **Approve** content: editor review, brand sign-off, compliance.
+2. **QA** assets: length, quality, readability, formatting.
+3. **Publish** approved assets to distribution channels.
 
 ### Phase 4: Distribution & Scheduling
 
-1. Push assets to web, email, social, mobile channels (via CDN, CDN, email).
-2. Schedule posts, optimize times, track performance.
-3. Monitor analytics: impressions, clicks, conversions.
+1. **Push** assets to web, email, social, mobile channels (via CDN, social, and email).
+2. **Schedule** posts, optimize times, track performance.
+3. **Monitor** analytics: impressions, clicks, conversions.
 
-### Phase  thiên hậu: Analytics & Optimization
+### Phase 5: Analytics & Optimization
 
-1. Track content performance: engagement, bounce rates, conversion.
-2. Use data to iterate content formats, headlines, images.
-3. Archive underperforming content; set up renewal cycles.
+1. **Track** content performance: engagement, bounce rates, conversion.
+2. **Iterate** content formats, headlines, images using data.
+3. **Archive** underperforming content; set up renewal cycles.
 
 ## Anti-Rationalization
 
 | Content Excuse | Flawed Rationalization | Required Content Discipline |
 |---|---|---|
-| "Audience just reads the top line" | "We'll reuse high-performing headers" | Structured copy hierarchy: headline, subhead, body |
+| "Audience just reads top line" | "We'll reuse high-performing headers" | Structured copy hierarchy: headline, subhead, body |
 | "Brand is just vibe" | "We'll decide later" | Brand guidelines enforced per channel |
-| "Video is easy" | "We'll record on the fly" | Script first, shoot second, edit third |
+| "Video is easy" | "We'll record on fly" | Script first, shoot second, edit third |
 
 ## Implementation Examples
 
@@ -113,26 +108,36 @@ content_templates:
       - fact_check_required: true
 ```
 
-### Video Production Bash
+### Content Template Validator (bash)
 
 ```bash
 #!/usr/bin/env bash
-# Video production pipeline
-# Takes: script, cast, editing time, output format
+# Content template validator
+# Validates a content YAML file for required fields
 
-SCRIPT=$(cat /tmp/script.txt)
-CAST=$(cat /tmp/cast.txt)
-OUTFORMAT=$(cat /tmp/format.txt)
+TEMPLATE_FILE=${1:-/tmp/content_template.yaml}
+if [ ! -f "$TEMPLATE_FILE" ]; then
+  echo "Error: Template file $TEMPLATE_FILE not found"
+  exit 1
+fi
 
-# Write script to video storyboard
+REQUIRED_FIELDS="title body cta"
+MISSING=0
 
-echo "$SCRIPT" > /tmp/video_storyboard.txt
+for field in $REQUIRED_FIELDS; do
+  if ! grep -qE "^[[:space:]]+- $field$" "$TEMPLATE_FILE"; then
+    echo "FAIL: Missing required field '$field'"
+    MISSING=$((MISSING + 1))
+  fi
+done
 
-# Generate video via some video tool (placeholder)
-echo "video generated" > /tmp/video_output.mp4
-
-# Post-process: compression, metadata
-echo "metadata added" > /tmp/video_meta.yaml
+if [ $MISSING -eq 0 ]; then
+  echo "SUCCESS: Template is compliant"
+  exit 0
+else
+  echo "FAIL: Template missing $MISSING required field(s)"
+  exit 1
+fi
 ```
 
 ## Verification Checklist
@@ -142,4 +147,3 @@ echo "metadata added" > /tmp/video_meta.yaml
 - [ ] Assets reviewed: quality, length, readability
 - [ ] Distribution channels active; schedule live
 - [ ] Analytics live; engagement tracked
-- [ ] Asset versions managed; version history maintained
