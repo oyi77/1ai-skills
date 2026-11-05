@@ -54,7 +54,7 @@ cat ~/.1ai/core/GATE.md
 ls ~/projects/1ai-skills/development/    # TDD, debugging, code review, PRD
 ls ~/projects/1ai-skills/devops/         # Docker, K8s, CI/CD
 ls ~/projects/1ai-skills/integrations/   # Stripe, Firebase, Supabase, GitHub
-ls ~/projects/1ai-skills/cybersecurity/  # 786 security skills
+ls ~/projects/1ai-skills/cybersecurity/  # 801 security skills
 ls ~/projects/1ai-skills/trading/        # Crypto, DeFi, Polymarket
 
 # Search via brain MCP (if 1ai-hub is running)
