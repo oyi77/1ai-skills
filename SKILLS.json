@@ -1,5 +1,5 @@
 {
-  "total_skills": 1427,
+  "total_skills": 1429,
   "category_count": 19,
   "categories": {
     "agents": 16,
@@ -12,7 +12,7 @@
     "devops": 32,
     "financial": 19,
     "integrations": 29,
-    "marketing": 43,
+    "marketing": 45,
     "mcp": 15,
     "meta": 14,
     "mindset": 55,
@@ -31145,6 +31145,20 @@
         "quantitative-trader"
       ],
       "type": "trading"
+    },
+    {
+      "name": "international-seo",
+      "description": "Use when implementing and auditing international SEO strategies for multi-regional or multi-lingual websites.",
+      "domain": "marketing",
+      "category": "marketing",
+      "path": "marketing/international-seo/SKILL.md"
+    },
+    {
+      "name": "ecommerce-seo",
+      "description": "Use when optimizing e-commerce stores for search engines.",
+      "domain": "marketing",
+      "category": "marketing",
+      "path": "marketing/ecommerce-seo/SKILL.md"
     }
   ],
   "tooling_dirs": [

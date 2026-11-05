@@ -6,7 +6,7 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 
 ## Overview
 
-**1427 skills** across **19 categories**.
+**1429 skills** across **19 categories**.
 
 ---
 
@@ -22,7 +22,7 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 - [devops](../devops/_index.md) — 32 skills
 - [financial](../financial/_index.md) — 19 skills
 - [integrations](../integrations/_index.md) — 29 skills
-- [marketing](../marketing/_index.md) — 43 skills
+- [marketing](../marketing/_index.md) — 45 skills
 - [mcp](../mcp/_index.md) — 15 skills
 - [meta](../meta/_index.md) — 14 skills
 - [mindset](../mindset/_index.md) — 55 skills
@@ -3749,7 +3749,7 @@ Browse in [`integrations/_index.md`](../integrations/_index.md).
 
 ### Marketing (marketing/)
 
-_Total: 43 skills_
+_Total: 45 skills_
 
 Browse in [`marketing/_index.md`](../marketing/_index.md).
 
@@ -3807,6 +3807,8 @@ Browse in [`marketing/_index.md`](../marketing/_index.md).
 - [content-scheduler](../marketing/content-scheduler/) — Use when schedule and manage content publishing across platforms with Notion calendar. Use when scheduleing and manage content publishing across platforms with notion calendar.
   `content` `growth` `marketing` `notion` `scheduler`
 
+- [ecommerce-seo](../marketing/ecommerce-seo/) — Use when optimizing e-commerce stores for search engines.
+
 - [email-marketing](../marketing/email-marketing/) — Use when creating and sending email campaigns, newsletters, and drip sequences. Build email lists, design templates, automate follow-ups, and track email performance for customer nurturing.
   `email` `growth` `marketing` `seo`
 
@@ -3818,6 +3820,8 @@ Browse in [`marketing/_index.md`](../marketing/_index.md).
 
 - [influencer-outreach](../marketing/influencer-outreach/) — Use when influencer and creator partnership management — discovery, outreach, negotiation, campaign tracking. Use when running influencer marketing campaigns.
   `growth` `influencer` `marketing` `outreach` `seo`
+
+- [international-seo](../marketing/international-seo/) — Use when implementing and auditing international SEO strategies for multi-regional or multi-lingual websites.
 
 - [launch-strategy](../marketing/launch-strategy/) — Use when go-to-market planning — launch sequencing, channel strategy, audience building, PR outreach. Use when planning product launches, building launch checklists, or coordinating multi-channel campaigns.
   `growth` `launch` `marketing` `seo` `strategy`
@@ -4513,4 +4517,4 @@ Browse in [`trading/_index.md`](../trading/_index.md).
   `algorithms` `asia` `breakout` `markets` `money`
 
 ---
-_Generated from 1427 skills across 19 categories._
+_Generated from 1429 skills across 19 categories._
