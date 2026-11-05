@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-04T09:49:35.622451+00:00",
-  "total": 1427,
+  "generated": "2026-11-05T06:22:19.405987+00:00",
+  "total": 1429,
   "categories": [
     {
       "name": "cybersecurity",
@@ -24,7 +24,7 @@
     },
     {
       "name": "marketing",
-      "count": 43
+      "count": 45
     },
     {
       "name": "research",
@@ -2102,6 +2102,10 @@
       "category": "financial"
     },
     {
+      "name": "ecommerce-seo",
+      "category": "marketing"
+    },
+    {
       "name": "edge-computing",
       "category": "devops"
     },
@@ -3560,6 +3564,10 @@
     {
       "name": "interface-review",
       "category": "content"
+    },
+    {
+      "name": "international-seo",
+      "category": "marketing"
     },
     {
       "name": "investigating-insider-threat-indicators",
