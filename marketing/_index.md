@@ -58,7 +58,8 @@ _Total: 45_
 - [content-scheduler](./content-scheduler/) — Use when schedule and manage content publishing across platforms with Notion calendar. Use when s...
   `content` `growth` `marketing` `notion` `scheduler`
 
-- [ecommerce-seo](./ecommerce-seo/) — Use when optimizing e-commerce stores for search engines.
+- [ecommerce-seo](./ecommerce-seo/) — Use when optimizing e-commerce stores for search engines. Focus on faceted navigation, product sc...
+  `growth` `ecommerce` `marketing` `seo` `money`
 
 - [email-marketing](./email-marketing/) — Use when creating and sending email campaigns, newsletters, and drip sequences. Build email lists...
   `email` `growth` `marketing` `seo`
@@ -73,6 +74,7 @@ _Total: 45_
   `growth` `influencer` `marketing` `outreach` `seo`
 
 - [international-seo](./international-seo/) — Use when implementing and auditing international SEO strategies for multi-regional or multi-lingu...
+  `growth` `marketing` `seo` `money` `internationalization`
 
 - [launch-strategy](./launch-strategy/) — Use when go-to-market planning — launch sequencing, channel strategy, audience building, PR outre...
   `growth` `launch` `marketing` `seo` `strategy`

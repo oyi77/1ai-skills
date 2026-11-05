@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-05T06:22:19.405987+00:00",
-  "total": 1429,
+  "generated": "2026-11-05T10:59:21.459772+00:00",
+  "total": 1431,
   "categories": [
     {
       "name": "cybersecurity",
@@ -8,7 +8,7 @@
     },
     {
       "name": "content",
-      "count": 106
+      "count": 108
     },
     {
       "name": "development",
@@ -4018,6 +4018,10 @@
       "category": "core"
     },
     {
+      "name": "omnivoice",
+      "category": "content"
+    },
+    {
       "name": "onchain-transaction-forensics",
       "category": "cybersecurity"
     },
@@ -5748,6 +5752,10 @@
     {
       "name": "verification-before-completion",
       "category": "development"
+    },
+    {
+      "name": "vicestudio",
+      "category": "content"
     },
     {
       "name": "video-director",

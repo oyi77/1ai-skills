@@ -6,7 +6,7 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 
 ## Overview
 
-**1429 skills** across **19 categories**.
+**1431 skills** across **19 categories**.
 
 ---
 
@@ -14,7 +14,7 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 
 - [agents](../agents/_index.md) — 16 skills
 - [automation](../automation/_index.md) — 21 skills
-- [content](../content/_index.md) — 106 skills
+- [content](../content/_index.md) — 108 skills
 - [core](../core/_index.md) — 53 skills
 - [cybersecurity](../cybersecurity/_index.md) — 801 skills
 - [data](../data/_index.md) — 8 skills
@@ -161,7 +161,7 @@ Browse in [`automation/_index.md`](../automation/_index.md).
 
 ### Content (content/)
 
-_Total: 106 skills_
+_Total: 108 skills_
 
 Browse in [`content/_index.md`](../content/_index.md).
 
@@ -375,6 +375,9 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [novel-writing](../content/novel-writing/) — Use when complete novel and fiction writing skill covering story structure, character creation, world-building, dialogue, pacing, and chapter craft. Adopts Chinese novelist patterns (show-don't-tell, conflict, cliffhanger) plus Western frameworks. Includes kids books (picture book, middle grade) and Buku Bahasa Indonesia for Indonesian fiction. Use when writing novels, short stories, or children's fiction.
   `content` `writing` `fiction` `novel` `character`
 
+- [omnivoice](../content/voice/omnivoice/) — Use when synthesizing multilingual speech, cloning a voice from short reference audio, or designing a voice from attribute descriptions with the offline OmniVoice toolkit.
+  `tts` `voice-cloning` `speech-synthesis` `multilingual` `offline`
+
 - [pandacss-styling](../content/pandacss-styling/) — Use when panda CSS zero-runtime styling — token system, patterns, recipes, conditions, JSX styles.
   `content-creation` `digital-content` `media` `pandacss` `styling`
 
@@ -446,6 +449,9 @@ Browse in [`content/_index.md`](../content/_index.md).
 
 - [variant](../content/variant/) — Use when building multiple variants of a component and iterating to pick the best one.
   `components` `variants` `iteration` `prototyping`
+
+- [vicestudio](../content/audio/vicestudio/) — Local-first AI voice studio for voice cloning, design, dubbing, dictation, and audiobook narration in 646 languages.
+  `voice-cloning` `dubbing` `transcription` `audiobook` `tts`
 
 - [video-director](../content/video-director/) — The Video Production Manager — manages ALL video production under 1ai-content. Delegates to HyperFrames, Remotion, AI video, and FFmpeg based on the task. Has memory via 1ai-hub brain, follows 1ai-rules, and reports to Content Director. Use when the user says 'make a video', 'create video', 'edit video', 'video strategy', or needs any video production work.
   `video` `director` `orchestrator` `production` `hyperframes`
@@ -1257,8 +1263,8 @@ Browse in [`cybersecurity/_index.md`](../cybersecurity/_index.md).
 - [deploying-tailscale-for-zero-trust-vpn](../cybersecurity/deploying-tailscale-for-zero-trust-vpn/) — Use when deploy and configure Tailscale as a WireGuard-based zero trust mesh VPN with identity-aware access controls, ACLs, and exit nodes for secure peer-to-peer connectivity. Use when deploying and configure tailscale as a wireguard-based zero trust mesh.
   `zero-trust` `tailscale` `wireguard` `mesh-vpn` `ztna`
 
-- [detecting-ai-model-prompt-injection-attacks](../cybersecurity/detecting-ai-model-prompt-injection-attacks/) — Use when detects prompt injection attacks targeting LLM-based applications using a multi-layered defense combining regex pattern matching for known attack signatures, heuristic scoring for structural anomalies, and transformer-based classification with DeBERTa models. The detector analyzes user inputs before they reach the LLM, flagging direct injections (system prompt overrides, role-play escapes, instruction hijacking) and indirect injections (encoded payloads, multi-language obfuscation, d...
-  `prompt-injection` `LLM-security` `OWASP-LLM-Top10` `NLP-classification` `input-validation`
+- [detecting-ai-model-prompt-injection-attacks](../cybersecurity/detecting-ai-model-prompt-injection-attacks/) — Use when detecting prompt injection attacks targeting LLM-based applications using two layers — regex signature matching over normalized input plus weighted heuristic scoring. Stdlib only, no transformer. Detector runs on user inputs before they reach the model, flagging direct overrides, role-play escapes, instruction hijacking, encoding/obfuscation, policy-layer impersonation, anti-detector framing, and indirect injection carriers.
+  `prompt-injection` `LLM-security` `OWASP-LLM-Top10` `input-validation`
 
 - [detecting-anomalies-in-industrial-control-systems](../cybersecurity/detecting-anomalies-in-industrial-control-systems/) — Use when this skill covers deploying anomaly detection systems for industrial control environments using machine learning models trained on OT network baselines, physics-based process models, and behavioral analysis of industrial protocol communications. It addresses building normal behavior profiles for SCADA polling patterns, detecting deviations in Modbus/DNP3/OPC UA traffic, identifying rogue devices, and correlating network anomalies with physical process data from historians.
   `ot-security` `ics` `scada` `industrial-control` `iec62443`
@@ -3807,7 +3813,8 @@ Browse in [`marketing/_index.md`](../marketing/_index.md).
 - [content-scheduler](../marketing/content-scheduler/) — Use when schedule and manage content publishing across platforms with Notion calendar. Use when scheduleing and manage content publishing across platforms with notion calendar.
   `content` `growth` `marketing` `notion` `scheduler`
 
-- [ecommerce-seo](../marketing/ecommerce-seo/) — Use when optimizing e-commerce stores for search engines.
+- [ecommerce-seo](../marketing/ecommerce-seo/) — Use when optimizing e-commerce stores for search engines. Focus on faceted navigation, product schema, variant canonicalization, and crawl budget management for large catalogs.
+  `growth` `ecommerce` `marketing` `seo` `money`
 
 - [email-marketing](../marketing/email-marketing/) — Use when creating and sending email campaigns, newsletters, and drip sequences. Build email lists, design templates, automate follow-ups, and track email performance for customer nurturing.
   `email` `growth` `marketing` `seo`
@@ -3821,7 +3828,8 @@ Browse in [`marketing/_index.md`](../marketing/_index.md).
 - [influencer-outreach](../marketing/influencer-outreach/) — Use when influencer and creator partnership management — discovery, outreach, negotiation, campaign tracking. Use when running influencer marketing campaigns.
   `growth` `influencer` `marketing` `outreach` `seo`
 
-- [international-seo](../marketing/international-seo/) — Use when implementing and auditing international SEO strategies for multi-regional or multi-lingual websites.
+- [international-seo](../marketing/international-seo/) — Use when implementing and auditing international SEO strategies for multi-regional or multi-lingual websites. Use for hreflang reciprocity audits, regional URL structure planning, and preventing duplicate content across locales.
+  `growth` `marketing` `seo` `money` `internationalization`
 
 - [launch-strategy](../marketing/launch-strategy/) — Use when go-to-market planning — launch sequencing, channel strategy, audience building, PR outreach. Use when planning product launches, building launch checklists, or coordinating multi-channel campaigns.
   `growth` `launch` `marketing` `seo` `strategy`
@@ -4517,4 +4525,4 @@ Browse in [`trading/_index.md`](../trading/_index.md).
   `algorithms` `asia` `breakout` `markets` `money`
 
 ---
-_Generated from 1429 skills across 19 categories._
+_Generated from 1431 skills across 19 categories._

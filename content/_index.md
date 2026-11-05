@@ -2,7 +2,7 @@
 
 ## Skills in Content
 
-_Total: 106_
+_Total: 108_
 
 - [accessibility-audit](./accessibility-audit/) — Use when WCAG compliance audit — semantic HTML, ARIA, keyboard navigation, color contrast, and sc...
   `accessibility` `audit` `compliance` `content-creation` `digital-content`
@@ -214,6 +214,9 @@ _Total: 106_
 - [novel-writing](./novel-writing/) — Use when complete novel and fiction writing skill covering story structure, character creation, w...
   `content` `writing` `fiction` `novel` `character`
 
+- [omnivoice](./voice/omnivoice/) — Use when synthesizing multilingual speech, cloning a voice from short reference audio, or designi...
+  `tts` `voice-cloning` `speech-synthesis` `multilingual` `offline`
+
 - [pandacss-styling](./pandacss-styling/) — Use when panda CSS zero-runtime styling — token system, patterns, recipes, conditions, JSX styles.
   `content-creation` `digital-content` `media` `pandacss` `styling`
 
@@ -285,6 +288,9 @@ _Total: 106_
 
 - [variant](./variant/) — Use when building multiple variants of a component and iterating to pick the best one.
   `components` `variants` `iteration` `prototyping`
+
+- [vicestudio](./audio/vicestudio/) — Local-first AI voice studio for voice cloning, design, dubbing, dictation, and audiobook narratio...
+  `voice-cloning` `dubbing` `transcription` `audiobook` `tts`
 
 - [video-director](./video-director/) — The Video Production Manager — manages ALL video production under 1ai-content. Delegates to Hyper...
   `video` `director` `orchestrator` `production` `hyperframes`
