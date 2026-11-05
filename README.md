@@ -89,8 +89,6 @@ git clone https://github.com/oyi77/1ai-skills.git
 | Data | 8 | Data pipelines, analysis, visualization, ETL |
 | Productivity | 10 | Calendars, email, meetings, workspace management |
 
-Full skill index: [docs/STRUCTURE.md](docs/STRUCTURE.md) (1427 skills across 19 categories)
-
 ---
 
 ## What Makes This Different

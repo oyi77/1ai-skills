@@ -141,6 +141,14 @@ cat ~/projects/1ai-skills/integrations/stripe-integration/SKILL.md
 
 
 
+
+
+
+
+
+
+
+
 ## Hard rules
 1. Read code before writing code.
 2. No completion claim without literal receipt.
