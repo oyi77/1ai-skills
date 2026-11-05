@@ -282,13 +282,14 @@ for cat, count in cats.items():
     if not agents.is_file():
         continue
     text = agents.read_text()
-    def _sub(m):
-        qual = 'security ' if m.group(1) else ''
-        return f'{count} {qual}skills'
 
-    new_text = re.sub(r'(?<=## Purpose\n)^\d+ (security )?skills', _sub, text, count=1, flags=re.MULTILINE)
+    def _sub(m):
+        prefix = m.group(1)
+        qual = 'security ' if (m.group(2) and m.group(2) == 'security ') else ''
+        return f'{prefix}{count} {qual}skills'
+
+    new_text, n = re.subn(r'(## Purpose\n(?:\r?\n)*)^\d+ (security )?skills', _sub, text, count=1, flags=re.MULTILINE)
     if new_text != text:
         agents.write_text(new_text)
         print(f"  {cat}/AGENTS.md — updated to {count}")
-
 print(f"\n✓ All docs synced to {total} skills across {len(cats)} categories")
