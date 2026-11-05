@@ -11,6 +11,12 @@ AGENTS = ROOT / 'AGENTS.md'
 LLMS = ROOT / 'llms.txt'
 PKGJSON = ROOT / 'package.json'
 GENERATE = ROOT / 'scripts/generate-site.py'
+CODEBASE = ROOT / 'CODEBASE.md'
+QUICK_START = ROOT / 'QUICK_START.md'
+AGENTS = ROOT / 'AGENTS.md'
+LLMS = ROOT / 'llms.txt'
+PKGJSON = ROOT / 'package.json'
+GENERATE = ROOT / 'scripts/generate-site.py'
 
 with open(SKILLS_JSON) as f:
     data = json.load(f)
@@ -245,5 +251,31 @@ content = re.sub(
 with open(GENERATE, 'w') as f:
     f.write(content)
 print(f"  generate-site.py — updated {total} refs")
+
+# ── QUICK_START.md ──
+with open(QUICK_START) as f:
+    text = f.read()
+
+top5 = sorted(cats.items(), key=lambda kv: -kv[1])[:5]
+top5_str = ', '.join([f'{name} ({count})' for name, count in top5])
+
+text = re.sub(r'This copies all \d+ skills into your project', f'This copies all {total} skills into your project', text)
+text = re.sub(r'\d+ categories total\. Largest: [^.]*\.', f'{len(cats)} categories total. Largest: {top5_str}.', text)
+text = re.sub(r'Do NOT walk all \d+ skill directories', f'Do NOT walk all {total} skill directories', text)
+
+with open(QUICK_START, 'w') as f:
+    f.write(text)
+print(f"  QUICK_START.md — updated to {total}")
+
+# ── CODEBASE.md ──
+with open(CODEBASE) as f:
+    text = f.read()
+
+text = re.sub(r'\d+ production-ready skills across \d+ categories', f'{total} production-ready skills across {len(cats)} categories', text)
+text = re.sub(r'(\| `cybersecurity/` \| )\d+ security skills', r'\g<1>' + str(cats.get("cybersecurity", 0)) + ' security skills', text)
+
+with open(CODEBASE, 'w') as f:
+    f.write(text)
+print(f"  CODEBASE.md — updated to {total}")
 
 print(f"\n✓ All docs synced to {total} skills across {len(cats)} categories")

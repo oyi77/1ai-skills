@@ -65,9 +65,10 @@ jobs:
         run: |
           python3 scripts/generate-structure.py
           python3 scripts/generate-site-data.py
-          if ! git diff --quiet -- '*_index.md' docs/ QUICK_START.md; then
-            echo "::error::Index docs are stale. Run 'python3 scripts/generate-structure.py' and commit."
-            git diff --stat -- '*_index.md' docs/ QUICK_START.md
+          python3 scripts/sync-counts.py
+          if ! git diff --quiet -- '*_index.md' docs/ QUICK_START.md README.md AGENTS.md llms.txt package.json CODEBASE.md; then
+            echo "::error::Index docs are stale. Run 'python3 scripts/generate-structure.py && python3 scripts/generate-site-data.py && python3 scripts/sync-counts.py' and commit."
+            git diff --stat -- '*_index.md' docs/ QUICK_START.md README.md AGENTS.md llms.txt package.json CODEBASE.md
             exit 1
           fi
 

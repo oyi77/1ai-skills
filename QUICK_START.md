@@ -43,7 +43,7 @@ bash scripts/audit-skills.sh
 ls -d */
 ```
 
-Expected output: 18 category directories (agents/, automation/, content/, ...) and hook status showing active.
+Expected output: 19 category directories (agents/, automation/, content/, ...) and hook status showing active.
 
 ---
 
@@ -61,7 +61,7 @@ ls cybersecurity/
 ls trading/
 ```
 
-18 categories total. Largest: cybersecurity (783), development (83), content (62), core (48), marketing (47). See `README.md` for the full table.
+19 categories total. Largest: cybersecurity (801), content (106), development (105), mindset (55), core (53). See `README.md` for the full table.
 
 ### Search with grep
 
@@ -96,7 +96,7 @@ Skills are self-contained markdown files loaded on demand. Agents discover skill
 2. **Category AGENTS.md** -- sub-index per category (e.g., `cybersecurity/AGENTS.md`)
 3. **Individual SKILL.md** -- the actual skill content
 
-Do NOT walk all 1284 skill directories. Use the catalog or grep to find what you need.
+Do NOT walk all 1427 skill directories. Use the catalog or grep to find what you need.
 
 ### Skill Anatomy (Quick Reference)
 
