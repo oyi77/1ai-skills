@@ -13,9 +13,6 @@ tags:
 - automation
 - playwright
 - cypress
-- coverage
-- quality-engineering
-- e2e
 license: MIT
 subdomain: qa-automation
 triggers:
@@ -98,7 +95,7 @@ The `role-qa-automation-engineer` skill ships nothing on vibes: every release cl
 2. Compile pass/fail telemetry, execution durations, and coverage metrics.
 3. Issue formal QA certification receipt before staging or production rollout.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Testing Excuse | Flawed Rationalization | Required QA Discipline |
 |---|---|---|
@@ -165,3 +162,5 @@ npm run test:coverage -- --coverageReporters="text-summary"
 - [ ] Test coverage measured with zero uncovered critical error branches.
 - [ ] Flaky test detection executed with 100% deterministic passes across consecutive runs.
 - [ ] Formal QA execution report compiled with pass counts and timing receipts.
+
+`npm install -g cli-tool`

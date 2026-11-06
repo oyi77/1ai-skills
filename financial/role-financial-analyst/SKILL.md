@@ -12,9 +12,6 @@ tags:
 - valuation
 - dcf
 - accounting
-- gl-reconciliation
-- cashflow
-- auditing
 license: MIT
 subdomain: financial-analysis
 triggers:
@@ -101,7 +98,7 @@ The analyst maintains verifiable audit trails through every reconciliation and r
 2. Model operational cost structures and unit economics through `operations/finance-ops`.
 3. Compile executive financial summaries and board-ready memos with verified audit trails.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Financial Excuse | Flawed Rationalization | Required Financial Discipline |
 |---|---|---|
@@ -184,3 +181,5 @@ print('SUCCESS: Balance sheet equation holds (Assets == Liabilities + Equity).')
 - [ ] Valuation discount rates (WACC) and terminal growth rates are grounded in macro benchmarks.
 - [ ] Financial runway and burn rates are tracked with automated gap alerting.
 - [ ] Full audit trail documented for all adjusting entries and financial statement changes.
+
+`npm install -g cli-tool`

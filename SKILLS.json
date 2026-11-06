@@ -31267,6 +31267,167 @@
         "quantitative-trader"
       ],
       "type": "trading"
+    },
+    {
+      "name": "role-ceo",
+      "category": "core",
+      "description": "Use when orchestrating the entire 1ai business kingdom. Coordinates C-suite executives (CTO, CMO, CCO, CFO, COO), sets strategic vision, allocates resources, and ensures cross-departmental alignment for large-scale AI agent initiatives.",
+      "domain": "core",
+      "tags": [
+        "corporate",
+        "leadership",
+        "strategy",
+        "coordination"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "corporate-leadership",
+      "roles": [
+        "ceo"
+      ],
+      "triggers": [
+        "ceo role",
+        "corporate strategy",
+        "executive coordination",
+        "resource allocation",
+        "cross-team alignment"
+      ],
+      "type": "core"
+    },
+    {
+      "name": "role-cto",
+      "category": "core",
+      "description": "Use when orchestrating technology strategy, engineering leadership, and R&D. Manages Engineering, Security, and Data & AI teams to deliver robust, scalable, and secure AI infrastructure and products.",
+      "domain": "core",
+      "tags": [
+        "technology",
+        "engineering",
+        "security",
+        "ai-ml",
+        "infrastructure"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "technology-leadership",
+      "roles": [
+        "cto"
+      ],
+      "triggers": [
+        "cto role",
+        "tech strategy",
+        "engineering leadership",
+        "r&d roadmap",
+        "infrastructure overhaul"
+      ],
+      "type": "core"
+    },
+    {
+      "name": "role-cmo",
+      "category": "marketing",
+      "description": "Use when orchestrating marketing operations, customer acquisition, and growth. Coordinates Growth Marketers and Sales Engineers to drive revenue, expand market reach, and optimize conversion funnels.",
+      "domain": "marketing",
+      "tags": [
+        "marketing",
+        "growth",
+        "sales",
+        "acquisition",
+        "conversion"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "marketing-leadership",
+      "roles": [
+        "cmo"
+      ],
+      "triggers": [
+        "cmo role",
+        "marketing strategy",
+        "growth plan",
+        "customer acquisition",
+        "sales pipeline oversight"
+      ],
+      "type": "marketing"
+    },
+    {
+      "name": "role-cco",
+      "category": "content",
+      "description": "Use when orchestrating all content production, creative direction, and brand voice. Manages UI/UX Designers and Content Creators to ensure high-quality, brand-consistent, multi-format content across all digital channels.",
+      "domain": "content",
+      "tags": [
+        "content",
+        "creative",
+        "branding",
+        "design",
+        "media"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "creative-leadership",
+      "roles": [
+        "cco"
+      ],
+      "triggers": [
+        "cco role",
+        "content strategy",
+        "creative direction",
+        "brand voice",
+        "multi-format content"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "role-cfo",
+      "category": "financial",
+      "description": "Use when orchestrating financial analysis, budgeting, investment strategy, and revenue optimization. Manages Financial Analysts and Quantitative Traders to ensure fiscal health and maximize ROI.",
+      "domain": "financial",
+      "tags": [
+        "finance",
+        "budget",
+        "investment",
+        "trading",
+        "roi"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "financial-leadership",
+      "roles": [
+        "cfo"
+      ],
+      "triggers": [
+        "cfo role",
+        "financial strategy",
+        "budget allocation",
+        "investment analysis",
+        "revenue optimization"
+      ],
+      "type": "financial"
+    },
+    {
+      "name": "role-coo",
+      "category": "operations",
+      "description": "Use when orchestrating business operations, process optimization, cross-team coordination, and HR/legal functions. Ensures the company runs smoothly, efficiently, and in compliance with all regulations.",
+      "domain": "operations",
+      "tags": [
+        "operations",
+        "hr",
+        "legal",
+        "compliance",
+        "process"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "operational-leadership",
+      "roles": [
+        "coo"
+      ],
+      "triggers": [
+        "coo role",
+        "operations strategy",
+        "process optimization",
+        "cross-team coordination",
+        "hr & legal oversight"
+      ],
+      "type": "operations"
     }
   ],
   "tooling_dirs": [

@@ -13,9 +13,6 @@ tags:
 - infrastructure
 - docker
 - terraform
-- ci-cd
-- kubernetes
-- observability
 license: MIT
 subdomain: devops-sre
 triggers:
@@ -103,7 +100,7 @@ The DevOps and SRE engineer ensures infrastructure reproducibility, eliminates m
 2. Define Service Level Objectives (SLOs) and Error Budgets for latency, availability, and throughput.
 3. Configure automated fleet configuration and security patching with `devops/ansible-automation`.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | DevOps Excuse | Flawed Rationalization | Required SRE Discipline |
 |---|---|---|
@@ -185,3 +182,5 @@ if __name__ == "__main__":
 - [ ] Zero-downtime database migrations validated with non-blocking DDL statements.
 - [ ] Health and readiness probes configured for automated container traffic routing.
 - [ ] Observability metrics, structured logging, and SLO alert triggers established.
+
+`npm install -g cli-tool`

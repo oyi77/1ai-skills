@@ -13,11 +13,6 @@ tags:
 - growth-marketing
 - seo
 - paid-ads
-- outbound
-- cold-email
-- analytics
-- a-b-testing
-- conversion
 license: MIT
 subdomain: growth-marketing
 triggers:
@@ -103,7 +98,7 @@ The growth marketer bridges quantitative data science, persuasive copywriting, a
 2. Double down budget on winning acquisition loops; kill underperforming channels ruthlessly.
 3. Codify verified growth wins into recurring, automated operational playbooks via `marketing/marketing-strategy`.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Marketing Excuse | Flawed Rationalization | Required Growth Marketing Discipline |
 |---|---|---|
@@ -175,3 +170,5 @@ print('SUCCESS: Verified zero untracked conversion drop-offs.')
 - [ ] Paid campaigns bounded by minimum ROAS targets (> 2.5x) and strict negative keyword exclusions.
 - [ ] Technical and on-page SEO audits verify zero crawl errors, canonical tags, and fast page speeds.
 - [ ] Attribution modeled across multiple touches to prevent single-channel distortion.
+
+`npm install -g cli-tool`

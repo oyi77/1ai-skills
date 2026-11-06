@@ -2,7 +2,7 @@
 
 ## Skills in Core
 
-_Total: 53_
+_Total: 55_
 
 - [adhd](./adhd/) — Use when parallel divergent ideation for agents — spawns N isolated reasoning branches under diff...
   `reasoning` `brainstorming` `decision-making` `cognitive-frames` `divergent-thinking`
@@ -123,6 +123,12 @@ _Total: 53_
 
 - [role-ai-ml-engineer](./role-ai-ml-engineer/) — Use when orchestrating AI/ML systems, RAG pipeline architecture, multi-provider model routing, pr...
   `ai` `ml` `machine-learning` `rag` `prompt-engineering`
+
+- [role-ceo](../corporate/ceo/) — Use when orchestrating the entire 1ai business kingdom. Coordinates C-suite executives (CTO, CMO,...
+  `corporate` `leadership` `strategy` `coordination`
+
+- [role-cto](../corporate/cto/) — Use when orchestrating technology strategy, engineering leadership, and R&D. Manages Engineering,...
+  `technology` `engineering` `security` `ai-ml` `infrastructure`
 
 - [runtime-self-improvement](./runtime-self-improvement/) — Use when automatically improve OpenClaw and 1ai-skills at runtime. Analyze performance, detect ga...
   `improvement` `infrastructure` `memory` `runtime` `self`

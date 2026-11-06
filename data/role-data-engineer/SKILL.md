@@ -13,10 +13,6 @@ tags:
 - etl
 - dbt
 - airflow
-- spark
-- kafka
-- bigquery
-- postgres
 license: MIT
 subdomain: data-engineering
 triggers:
@@ -102,7 +98,7 @@ The data engineer enforces data quality contracts, idempotent backfills, schema 
 2. In Google BigQuery, partition tables by date/timestamp and cluster by high-cardinality query keys using `integrations/bigquery-integration`.
 3. Assert that data freshness, row counts, and transformation SLAs are monitored continuously.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Data Engineering Excuse | Flawed Rationalization | Required Data Platform Discipline |
 |---|---|---|
@@ -176,3 +172,5 @@ echo "SUCCESS: dbt model and data contract tests verified cleanly."
 | temporal-workflows | [SKILL.md](../temporal-workflows/SKILL.md) | Implementing durable Temporal workflows, retries, signals, and queries. |
 | spark-processing | [SKILL.md](../spark-processing/SKILL.md) | Processing distributed data with Spark SQL, streaming, and MLlib. |
 | lakefs-versioning | [SKILL.md](../../automation/lakefs-versioning/SKILL.md) | Versioning data lakes with lakeFS branches, commits, and time travel. |
+
+`npm install -g cli-tool`

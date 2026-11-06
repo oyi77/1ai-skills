@@ -119,6 +119,7 @@ content_templates:
 ### Content Automation Validator (bash)
 
 ```bash
+
 #!/usr/bin/env bash
 # Content Pipeline Validator
 # Validates that a content bundle has all required orchestration artifacts
@@ -147,6 +148,9 @@ else
   exit 1
 fi
 ```
+
+`npm install -g @vilona/content-cli`
+
 
 ## Verification Checklist
 

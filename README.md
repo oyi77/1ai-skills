@@ -91,6 +91,21 @@ git clone https://github.com/oyi77/1ai-skills.git
 
 ---
 
+
+## Corporate Hierarchy (The 1ai Org)
+
+For AI agents to efficiently navigate 1432+ skills without loading everything into context, 1ai-skills follows a **corporate organizational structure**:
+
+1. **Level 0 (The CEO)**: Root orchestrator. Takes high-level strategic goals, delegates to C-suite.
+2. **Level 1 (C-Suite)**:
+   - CTO (Tech & R&D)
+   - CMO (Marketing & Acquisition)
+   - CCO (Content & Creative)
+   - CFO (Finance & Investment)
+   - COO (Operations & Process)
+3. **Level 2 (Role Anchors)**: Department heads (17 job roles) representing employee responsibilities.
+4. **Level 3 (Atomic Skills)**: The 1432 specialized playbooks used by the roles above.
+
 ## What Makes This Different
 
 | | Other repos | 1ai-skills |

@@ -13,10 +13,6 @@ tags:
 - design-systems
 - anti-slop
 - frontend
-- accessibility
-- typography
-- design-tokens
-- micro-interactions
 license: MIT
 subdomain: ui-ux-design
 triggers:
@@ -109,7 +105,7 @@ The UI/UX designer operates through purposeful typography scales, cohesive color
 3. Measure WCAG 2.1 AA contrast ratios (>= 4.5:1 for normal text, >= 3:1 for large text and interactive boundaries).
 4. Verify visible 2-3px focus rings on all keyboard interactive elements.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Design Excuse | Flawed Rationalization | Required UI/UX Design Discipline |
 |---|---|---|
@@ -227,3 +223,5 @@ if __name__ == "__main__":
 - [ ] Visible focus rings present on all interactive elements during keyboard navigation.
 - [ ] Zero emoji in UI copy, badges, or buttons; crisp SVG icons used exclusively.
 - [ ] Mobile responsive layout displays cleanly across 375px-1440px with zero horizontal scroll.
+
+`npm install -g cli-tool`

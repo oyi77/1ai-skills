@@ -12,9 +12,6 @@ tags:
 - quantitative-trading
 - risk-management
 - crypto
-- portfolio-management
-- execution
-- market-making
 license: MIT
 subdomain: quantitative-trading
 triggers:
@@ -99,7 +96,7 @@ The quantitative trader strictly enforces risk-first invariants (e.g. maximum po
 2. Rebalance exposure dynamically to maintain target risk weights.
 3. Coordinate multi-bot fleets and strategy concurrency through `trading/trading-orchestrator`.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Quant Trading Excuse | Flawed Rationalization | Required Quantitative Discipline |
 |---|---|---|
@@ -190,3 +187,5 @@ fi
 - [ ] Fail-closed emergency kill-switch operational for drawdowns exceeding limits.
 - [ ] Algorithmic execution verified with non-blocking rate limits and fill telemetry.
 - [ ] Portfolio weights and covariance monitored with automated rebalancing rules.
+
+`npm install -g cli-tool`

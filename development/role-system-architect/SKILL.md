@@ -12,7 +12,6 @@ tags:
 - ast-guard
 - modularity
 - refactoring
-- domain-modeling
 license: MIT
 subdomain: system-architecture
 triggers:
@@ -91,7 +90,7 @@ The `role-system-architect` skill codifies exactly one boundary per layer: which
 2. Verify that 100% of existing call-sites remain intact without deprecation friction.
 3. Deliver comprehensive architectural specification with machine-verifiable gates.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Architecture Excuse | Flawed Rationalization | Required Architectural Discipline |
 |---|---|---|
@@ -188,3 +187,5 @@ fi
 - [ ] Automated AST lint rules integrated into CI to prevent boundary regression.
 - [ ] Architectural decisions documented with explicit trade-offs and rollback criteria.
 - [ ] Backward compatibility verified for all existing import paths and public interfaces.
+
+`npm install -g cli-tool`

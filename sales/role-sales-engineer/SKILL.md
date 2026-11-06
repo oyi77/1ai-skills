@@ -11,10 +11,6 @@ tags:
 - leads
 - crm
 - outreach
-- closing
-- b2b
-- automation
-- forecasting
 license: Apache-2.0
 subdomain: sales-engineering
 triggers:
@@ -92,7 +88,7 @@ The sales engineer enforces strict pipeline hygiene, measurable stage conversion
 2. Capture win/loss reasons; feed back to scoring and playbooks with `sales/sales-strategy`.
 3. Monthly pipeline review: conversion trends, forecast accuracy, rep coaching priorities.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Sales Excuse | Flawed Rationalization | Required Sales Engineering Discipline |
 |---|---|---|
@@ -157,3 +153,5 @@ THRESHOLDS = {"MQL": 50, "SQL": 75, "Opportunity": 90}
 - [ ] Deal desk approvals configured; discount guards active
 - [ ] Win/loss capture mandatory; insights fed back monthly
 - [ ] Rep coaching priorities derived from pipeline data
+
+`npm install -g cli-tool`
