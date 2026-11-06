@@ -2,7 +2,9 @@
 name: vicestudio
 description: Local-first AI voice studio for voice cloning, design, dubbing, dictation, and audiobook narration in 646 languages.
 domain: content
-category: content
+subdomain: voice-ai
+version: 0.1.0
+description: Local-first AI voice studio for voice cloning, design, dubbing, dictation, and audiobook narration in 646 languages. Use when you need local-first speech synthesis, voice cloning, or audiobook narration.
 tags: [voice-cloning, dubbing, audiobook, local-first]
 license: AGPL-3.0
 author: oyi77
