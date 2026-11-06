@@ -6,7 +6,7 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 
 ## Overview
 
-**1431 skills** across **19 categories**.
+**1432 skills** across **19 categories**.
 
 ---
 
@@ -18,7 +18,7 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 - [core](../core/_index.md) — 53 skills
 - [cybersecurity](../cybersecurity/_index.md) — 801 skills
 - [data](../data/_index.md) — 8 skills
-- [development](../development/_index.md) — 105 skills
+- [development](../development/_index.md) — 106 skills
 - [devops](../devops/_index.md) — 32 skills
 - [financial](../financial/_index.md) — 19 skills
 - [integrations](../integrations/_index.md) — 29 skills
@@ -396,8 +396,8 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [responsive-design](../content/responsive-design/) — Use when mobile-first responsive design — breakpoints, fluid typography, container queries, and touch optimization.
   `content-creation` `design` `digital-content` `media` `responsive`
 
-- [role-content-creator](../content/role-content-creator/) — Use when creating, editing, and managing content assets: text, images, video, audio, scripts, and multi-format assets. Covers content production workflows, version control, brand consistency, optimization, and distribution across channels.
-  `content` `writing` `video` `audio` `editing`
+- [role-content-creator](../content/role-content-creator/) — Use when creating and managing multi-format content assets. Covers production workflows, brand consistency, and distribution across digital channels.
+  `content` `writing` `production` `brand` `distribution`
 
 - [role-ui-ux-designer](../content/role-ui-ux-designer/) — Use when orchestrating UI/UX design systems, anti-AI-slop frontend styling, tactile micro-interactions, responsive design tokens, accessibility standards, and high-fidelity interface engineering.
   `ui` `ux` `design-systems` `anti-slop` `frontend`
@@ -3176,7 +3176,7 @@ Browse in [`data/_index.md`](../data/_index.md).
 
 ### Development (development/)
 
-_Total: 105 skills_
+_Total: 106 skills_
 
 Browse in [`development/_index.md`](../development/_index.md).
 
@@ -3383,6 +3383,9 @@ Browse in [`development/_index.md`](../development/_index.md).
 
 - [prisma-orm](../development/prisma-orm/) — Use when prisma ORM — schema modeling, migrations, client queries, middleware, performance optimization. Use when working with prisma orm.
   `coding` `orm` `prisma` `software-engineering` `testing`
+
+- [python-indentation-error-debugging](../development/python-indentation-error-debugging/) — Use when Python fails to boot with IndentationError or unexpected indent traceback
+  `python` `debugging` `indentation` `indentationerror`
 
 - [qa-review-fix-loop](../development/qa-review-fix-loop/) — Use when comprehensive QA→Review→Fix loop protocol for any codebase. Layer-based testing with evidence requirements. Use when performing full QA cycles, codebase audits, pre-release testing, or.
   `qa` `testing` `quality-assurance` `review-loop` `defect-tracking`
@@ -4525,4 +4528,4 @@ Browse in [`trading/_index.md`](../trading/_index.md).
   `algorithms` `asia` `breakout` `markets` `money`
 
 ---
-_Generated from 1431 skills across 19 categories._
+_Generated from 1432 skills across 19 categories._

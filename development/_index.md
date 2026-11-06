@@ -2,7 +2,7 @@
 
 ## Skills in Development
 
-_Total: 105_
+_Total: 106_
 
 - [adhd-style-eval-run](./adhd-style-eval-run/) — Use when running or resuming the i-have-adhd paired blind response-style eval (baseline vs candid...
   `eval` `evaluation` `response-style` `rules` `baseline`
@@ -207,6 +207,9 @@ _Total: 105_
 
 - [prisma-orm](./prisma-orm/) — Use when prisma ORM — schema modeling, migrations, client queries, middleware, performance optimi...
   `coding` `orm` `prisma` `software-engineering` `testing`
+
+- [python-indentation-error-debugging](./python-indentation-error-debugging/) — Use when Python fails to boot with IndentationError or unexpected indent traceback
+  `python` `debugging` `indentation` `indentationerror`
 
 - [qa-review-fix-loop](./qa-review-fix-loop/) — Use when comprehensive QA→Review→Fix loop protocol for any codebase. Layer-based testing with evi...
   `qa` `testing` `quality-assurance` `review-loop` `defect-tracking`
