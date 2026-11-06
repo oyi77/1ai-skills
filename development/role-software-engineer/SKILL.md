@@ -13,7 +13,6 @@ tags:
 - tdd
 - code-review
 - debugging
-- architecture
 license: MIT
 subdomain: software-engineering
 triggers:
@@ -100,7 +99,7 @@ The `role-software-engineer` skill proves the fault before it touches the fix: e
 2. Confirm zero dead code or debug comments remain in source files.
 3. Emit execution receipt with command exit codes, test counts, and verified status.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Shortcut / Excuse | Flawed Rationalization | Required Engineering Behavior |
 |---|---|---|

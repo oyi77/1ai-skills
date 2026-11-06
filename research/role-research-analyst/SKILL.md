@@ -13,8 +13,6 @@ tags:
 - market-research
 - deep-investigation
 - structured-thinking
-- mckinsey
-- sherlock
 license: MIT
 subdomain: research-analysis
 triggers:
@@ -95,7 +93,7 @@ The research analyst transforms ambiguous questions into structured, falsifiable
 2. Provide a clear audit trail with verbatim source links and snapshot timestamps.
 3. Publish actionable intelligence alerts to stakeholders and relevant execution teams.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Research Excuse | Flawed Rationalization | Required Research Engineering Discipline |
 |---|---|---|
@@ -176,3 +174,5 @@ print('SUCCESS: Verified 0 pricing drift anomalies over the last 7 days.')
 - [ ] Competitor claims evaluated via live product testing, not PR announcements alone.
 - [ ] Unverified assertions explicitly flagged as `[INFERENCE]` or `[UNCONFIRMED]`.
 - [ ] Executive summary delivers unambiguous strategic recommendations and risk vectors.
+
+`npm install -g cli-tool`

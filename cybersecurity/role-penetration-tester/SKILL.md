@@ -13,9 +13,6 @@ tags:
 - red-team
 - offensive-security
 - bug-bounty
-- fuzzing
-- exploit-chaining
-- reporting
 license: MIT
 subdomain: penetration-testing
 triggers:
@@ -100,7 +97,7 @@ The penetration tester operates strictly within authorized rules of engagement, 
 2. Dispatch to `cybersecurity/report-generator` to draft the executive summary, calculate CVSS 3.1 scores, and document precise remediation guidance.
 3. Deliver the final assessment package adhering to enterprise bug bounty and pentest standards.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Pentest Excuse | Flawed Rationalization | Required Offensive Discipline |
 |---|---|---|
@@ -184,3 +181,5 @@ fi
 - [ ] Isolated vulnerabilities chained to demonstrate tangible business risk.
 - [ ] Proof of concept adheres to safe, non-destructive validation principles.
 - [ ] Comprehensive penetration test report compiled with CVSS metrics and remediation diffs.
+
+`npm install -g cli-tool`

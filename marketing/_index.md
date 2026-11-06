@@ -2,7 +2,7 @@
 
 ## Skills in Marketing
 
-_Total: 45_
+_Total: 46_
 
 - [ad-creative](./ad-creative/) — Use when ad creative production — visual briefs, copy variations, and A/B testing frameworks for ...
   `creative` `growth` `marketing` `seo` `testing`
@@ -102,6 +102,9 @@ _Total: 45_
 
 - [referral-program](./referral-program/) — Use when referral program design and automation — incentive structures, tracking, viral loops, re...
   `growth` `marketing` `program` `referral` `seo`
+
+- [role-cmo](../corporate/cmo/) — Use when orchestrating marketing operations, customer acquisition, and growth. Coordinates Growth...
+  `marketing` `growth` `sales` `acquisition` `conversion`
 
 - [role-growth-marketer](./role-growth-marketer/) — Use when orchestrating data-driven growth marketing, programmatic SEO, paid ad acquisition, outbo...
   `growth` `marketing` `growth-marketing` `seo` `paid-ads`

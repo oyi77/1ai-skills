@@ -13,10 +13,6 @@ tags:
 - machine-learning
 - rag
 - prompt-engineering
-- llm
-- fine-tuning
-- model-routing
-- agents
 license: MIT
 subdomain: ai-engineering
 triggers:
@@ -102,7 +98,7 @@ The AI/ML engineer enforces strict evaluation gates, token efficiency budgets, h
 2. Dispatch to `core/agent-self-improvement` to analyze recurring failure patterns and adjust prompts or retrieval thresholds automatically.
 3. Compile machine-verifiable evaluation receipts (e.g. RAGAS scores: faithfulness, answer relevance, context recall).
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | AI/ML Excuse | Flawed Rationalization | Required AI/ML Engineering Discipline |
 |---|---|---|
@@ -183,3 +179,5 @@ print('SUCCESS: RAG retrieval precision meets >= 0.85 threshold.')
 - [ ] Inference serving endpoints benchmarked for throughput and token latency.
 - [ ] Automated evaluation suite runs against golden reference sets with measured accuracy.
 - [ ] Agent self-improvement loop active to detect recurring failure patterns.
+
+`npm install -g cli-tool`

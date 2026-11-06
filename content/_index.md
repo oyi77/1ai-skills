@@ -2,7 +2,7 @@
 
 ## Skills in Content
 
-_Total: 108_
+_Total: 109_
 
 - [accessibility-audit](./accessibility-audit/) — Use when WCAG compliance audit — semantic HTML, ARIA, keyboard navigation, color contrast, and sc...
   `accessibility` `audit` `compliance` `content-creation` `digital-content`
@@ -234,6 +234,9 @@ _Total: 108_
 
 - [responsive-design](./responsive-design/) — Use when mobile-first responsive design — breakpoints, fluid typography, container queries, and t...
   `content-creation` `design` `digital-content` `media` `responsive`
+
+- [role-cco](../corporate/cco/) — Use when orchestrating all content production, creative direction, and brand voice. Manages UI/UX...
+  `content` `creative` `branding` `design` `media`
 
 - [role-content-creator](./role-content-creator/) — Use when creating and managing multi-format content assets. Covers production workflows, brand co...
   `content` `writing` `production` `brand` `distribution`

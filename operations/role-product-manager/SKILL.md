@@ -13,10 +13,6 @@ tags:
 - prd
 - roadmap
 - spec-driven-development
-- pmf
-- pricing
-- strategy
-- prioritization
 license: MIT
 subdomain: product-management
 triggers:
@@ -97,7 +93,7 @@ The product manager bridges business strategy, customer pain points, and technic
 2. Conduct bug bashes and design acceptance reviews before final release.
 3. Track post-launch telemetry against target OKRs; feed learnings back into the next iteration cycle.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | PM Excuse | Flawed Rationalization | Required Product Management Discipline |
 |---|---|---|
@@ -174,3 +170,5 @@ print('SUCCESS: Zero undefined engineering dependencies detected.')
 - [ ] Feature backlog prioritized using quantitative frameworks (RICE/ICE), not subjective opinion.
 - [ ] Core value metric and pricing packaging defined for monetizable initiatives.
 - [ ] Measurable launch success metrics (OKRs / KPIs) established with automated telemetry.
+
+`npm install -g cli-tool`

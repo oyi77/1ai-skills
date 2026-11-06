@@ -13,9 +13,6 @@ tags:
 - cybersecurity
 - threat-modeling
 - access-control
-- owasp
-- cis-benchmarks
-- hardening
 license: MIT
 subdomain: security-engineering
 triggers:
@@ -102,7 +99,7 @@ The security engineer operates on the principle of defense-in-depth, enforcing l
 2. Verify zero public S3/Blob storage buckets, enforce KMS encryption at rest, and rotate stale access keys.
 3. Generate signed security compliance audit receipt with zero high/critical unmitigated findings.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Security Excuse | Flawed Rationalization | Required AppSec Discipline |
 |---|---|---|
@@ -187,3 +184,5 @@ fi
 - [ ] HTTP responses enforce strict CSP, HSTS, X-Frame-Options, and secure cookie attributes.
 - [ ] Cloud storage and compute resources comply with CIS Benchmark hardening baselines.
 - [ ] Formal security audit report emitted with zero unmitigated high/critical vulnerabilities.
+
+`npm install -g cli-tool`

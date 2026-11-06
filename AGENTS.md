@@ -99,6 +99,14 @@ cat ~/projects/1ai-skills/integrations/stripe-integration/SKILL.md
 
 
 
+
+## Corporate Hierarchy
+
+1ai-skills uses a top-down organizational structure:
+CEO $\rightarrow$ C-Suite (CTO, CMO, CCO, CFO, COO) $\rightarrow$ Role Anchors (17 roles) $\rightarrow$ Atomic Skills.
+
+Use the CEO role for top-level strategic decomposition.
+
 ## Hard rules
 1. Read code before writing code.
 2. No completion claim without literal receipt.

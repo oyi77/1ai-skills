@@ -11,10 +11,6 @@ tags:
 - tickets
 - complaints
 - refunds
-- onboarding
-- sla
-- chat
-- escalation
 license: Apache-2.0
 subdomain: customer-success
 triggers:
@@ -93,7 +89,7 @@ The customer support specialist enforces strict SLA adherence, self-service defl
 2. First-response time vs resolution time; identify slow queues.
 3. Escalation rate: >5% = process or training needed.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Support Excuse | Flawed Rationalization | Required Support Discipline |
 |---|---|---|
@@ -169,3 +165,7 @@ exit 2
 - [ ] Escalations routed correctly; 0 stuck tickets
 - [ ] CSAT tracked; > 85% target
 - [ ] Escalation rate < 5%; first-contact resolution > 40%
+
+`npm install -g cli-tool`
+
+import exampleLibrary from "@example/lib";
