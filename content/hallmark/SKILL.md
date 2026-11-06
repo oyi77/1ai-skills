@@ -45,7 +45,7 @@ Hallmark halts these defaults. It treats design as material selection rather tha
 
 ## Companion Design Framework: Impeccable
 
-For a full-lifecycle design operating system with a 24-verb command vocabulary (`shape`, `init`, `critique`, `audit`, `polish`, `bolder`, `quieter`, `distill`, `harden`) and dual-truth separation (`PRODUCT.md` for business intent, `DESIGN.md` for visual tokens), pair this skill with [`impeccable`](/skills/impeccable). Hallmark enforces the uncompromising material refusal floor; Impeccable coordinates the complete UX shaping and refinement lifecycle.
+For full-lifecycle design operating system 24-verb command vocabulary (`shape`, `init`, `critique`, `audit`, `polish`, dual-truth (`PRODUCT.md` `DESIGN.md` `impeccable`). UX 392:| `interface-review` Change-scoped PR, [SKILL.md](../interface-review/SKILL.md)
 ## When to Use
 
 - Building new websites, landing pages, marketing surfaces, product dashboards, documentation portals, or web applications from scratch.
