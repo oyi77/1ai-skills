@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-05T10:59:21.459772+00:00",
-  "total": 1431,
+  "generated": "2026-11-06T15:39:49.921769+00:00",
+  "total": 1432,
   "categories": [
     {
       "name": "cybersecurity",
@@ -12,7 +12,7 @@
     },
     {
       "name": "development",
-      "count": 105
+      "count": 106
     },
     {
       "name": "mindset",
@@ -4908,6 +4908,10 @@
     {
       "name": "public-speaking",
       "category": "mindset"
+    },
+    {
+      "name": "python-indentation-error-debugging",
+      "category": "development"
     },
     {
       "name": "qa-review-fix-loop",
