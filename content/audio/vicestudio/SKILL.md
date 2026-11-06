@@ -3,7 +3,7 @@ name: vicestudio
 description: Local-first AI voice studio for voice cloning, design, dubbing, dictation, and audiobook narration in 646 languages.
 domain: content
 category: content
-tags: [voice-cloning, dubbing, transcription, audiobook, tts, local-first]
+tags: [voice-cloning, dubbing, audiobook, local-first]
 license: AGPL-3.0
 author: oyi77
 ---
@@ -11,6 +11,12 @@ author: oyi77
 
 ## Overview
 VoiceStudio is an open-source, fully-local alternative to cloud-based voice synthesis platforms (e.g., ElevenLabs). It provides a professional suite for voice cloning, design, and dubbing, supporting 646 languages. Unlike basic TTS, VoiceStudio is a generative studio that allows users to clone a reference voice, design new voice identities from traits, and automate high-volume narration for audiobooks or video dubbing. It includes advanced audio processing capabilities such as Vocal Isolation and Speaker Diarization.
+
+**Core Tools:**
+- Model Manager
+- Voice Design Workspace
+- Dubbing Engine
+- MCP Server
 
 ## When to Use
 Use VoiceStudio when you need high-fidelity, private, and local-first speech synthesis or voice-to-voice translation.
@@ -33,15 +39,12 @@ Use VoiceStudio when you need high-fidelity, private, and local-first speech syn
 ## When NOT to Use
 - **Real-time Low-Latency Streaming:** While fast, the full generative pipeline is designed for studio production rather than ultra-low-latency conversational AI.
 - **Cloud-only Workflows:** VoiceStudio is strictly local-first; it does not provide a hosted API for external apps (except for its own local API).
-- **Non-Voice Audio:** It is a generative voice studio, not a general audio repair, spectral-repair, stem-mixer, or LUFS mastering suite. While it can isolate vocals and diarize speakers, it is not a denoiser or noise-removal tool.
-- **Non-supported Hardware:** Requires modern OS (macOS 13.3+, Windows 10/11, Linux) and ideally a GPU for reasonable synthesis speeds.
 
 ## Workflow
-1. **Install & Setup:** Install via Homebrew, Snap, or direct binary. Run the setup wizard to configure hardware acceleration (CUDA/MPS/Vulkan).
-2. **Model Selection:** Use the Model Manager to download the desired engine (e.g., OmniVoice) and specific language packs.
-3. **Voice Acquisition:** Either clone a voice from a reference WAV or use the Voice Design workspace to define traits.
-4. **Content Generation:** Input text or upload video for dubbing. Configure timing, emotion, and target language.
-5. **Export & Verify:** Generate the audio/video, preview via the built-in player, and export as WAV/MP3.
+1. **Model Selection:** Use the Model Manager to download the desired engine (e.g., OmniVoice) and specific language packs.
+2. **Voice Acquisition:** Either clone a voice from a reference WAV or use the Voice Design workspace to define traits.
+3. **Content Generation:** Input text or upload video for dubbing. Configure timing, emotion, and target language.
+4. **Export & Verify:** Generate the audio/video, preview via the built-in player, and export as WAV/MP3.
 
 ## Anti-Rationalization Table
 
