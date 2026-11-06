@@ -6,7 +6,7 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 
 ## Overview
 
-**1438 skills** across **19 categories**.
+**1438 skills** across **20 categories**.
 
 ---
 
@@ -14,19 +14,19 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 
 - [agents](../agents/_index.md) — 16 skills
 - [automation](../automation/_index.md) — 21 skills
-- [content](../content/_index.md) — 109 skills
-- [core](../core/_index.md) — 55 skills
+- [content](../content/_index.md) — 108 skills
+- [core](../core/_index.md) — 53 skills
 - [cybersecurity](../cybersecurity/_index.md) — 801 skills
 - [data](../data/_index.md) — 8 skills
 - [development](../development/_index.md) — 106 skills
 - [devops](../devops/_index.md) — 32 skills
-- [financial](../financial/_index.md) — 20 skills
+- [financial](../financial/_index.md) — 19 skills
 - [integrations](../integrations/_index.md) — 29 skills
-- [marketing](../marketing/_index.md) — 46 skills
+- [marketing](../marketing/_index.md) — 45 skills
 - [mcp](../mcp/_index.md) — 15 skills
 - [meta](../meta/_index.md) — 14 skills
 - [mindset](../mindset/_index.md) — 55 skills
-- [operations](../operations/_index.md) — 21 skills
+- [operations](../operations/_index.md) — 20 skills
 - [productivity](../productivity/_index.md) — 10 skills
 - [research](../research/_index.md) — 38 skills
 - [sales](../sales/_index.md) — 15 skills
@@ -161,7 +161,7 @@ Browse in [`automation/_index.md`](../automation/_index.md).
 
 ### Content (content/)
 
-_Total: 109 skills_
+_Total: 108 skills_
 
 Browse in [`content/_index.md`](../content/_index.md).
 
@@ -396,9 +396,6 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [responsive-design](../content/responsive-design/) — Use when mobile-first responsive design — breakpoints, fluid typography, container queries, and touch optimization.
   `content-creation` `design` `digital-content` `media` `responsive`
 
-- [role-cco](../corporate/cco/) — Use when orchestrating all content production, creative direction, and brand voice. Manages UI/UX Designers and Content Creators to ensure high-quality, brand-consistent, multi-format content across all digital channels.
-  `content` `creative` `branding` `design` `media`
-
 - [role-content-creator](../content/role-content-creator/) — Use when creating and managing multi-format content assets. Covers production workflows, brand consistency, and distribution across digital channels.
   `content` `writing` `production` `brand` `distribution`
 
@@ -494,7 +491,7 @@ Browse in [`content/_index.md`](../content/_index.md).
 
 ### Core (core/)
 
-_Total: 55 skills_
+_Total: 53 skills_
 
 Browse in [`core/_index.md`](../core/_index.md).
 
@@ -617,12 +614,6 @@ Browse in [`core/_index.md`](../core/_index.md).
 
 - [role-ai-ml-engineer](../core/role-ai-ml-engineer/) — Use when orchestrating AI/ML systems, RAG pipeline architecture, multi-provider model routing, prompt engineering, agent self-improvement, model fine-tuning, and LLM serving deployments.
   `ai` `ml` `machine-learning` `rag` `prompt-engineering`
-
-- [role-ceo](../corporate/ceo/) — Use when orchestrating the entire 1ai business kingdom. Coordinates C-suite executives (CTO, CMO, CCO, CFO, COO), sets strategic vision, allocates resources, and ensures cross-departmental alignment for large-scale AI agent initiatives.
-  `corporate` `leadership` `strategy` `coordination`
-
-- [role-cto](../corporate/cto/) — Use when orchestrating technology strategy, engineering leadership, and R&D. Manages Engineering, Security, and Data & AI teams to deliver robust, scalable, and secure AI infrastructure and products.
-  `technology` `engineering` `security` `ai-ml` `infrastructure`
 
 - [runtime-self-improvement](../core/runtime-self-improvement/) — Use when automatically improve OpenClaw and 1ai-skills at runtime. Analyze performance, detect gaps, enhance skills, and self-optimize during operation. Use when working with runtime self improvement.
   `improvement` `infrastructure` `memory` `runtime` `self`
@@ -3611,7 +3602,7 @@ Browse in [`devops/_index.md`](../devops/_index.md).
 
 ### Financial (financial/)
 
-_Total: 20 skills_
+_Total: 19 skills_
 
 Browse in [`financial/_index.md`](../financial/_index.md).
 
@@ -3656,9 +3647,6 @@ Browse in [`financial/_index.md`](../financial/_index.md).
 
 - [portfolio-monitor](../financial/portfolio-monitor/) — Use when track portfolio company KPIs, variances, returns analysis. Use when user says "monitor portfolio", "track KPIs", "portfolio returns".
   `analysis` `finance` `investment` `monitor` `portfolio`
-
-- [role-cfo](../corporate/cfo/) — Use when orchestrating financial analysis, budgeting, investment strategy, and revenue optimization. Manages Financial Analysts and Quantitative Traders to ensure fiscal health and maximize ROI.
-  `finance` `budget` `investment` `trading` `roi`
 
 - [role-financial-analyst](../financial/role-financial-analyst/) — Use when orchestrating financial analysis, cashflow modeling, DCF valuations, general ledger reconciliation, financial statement audits, and CFO operations.
   `finance` `financial-analysis` `valuation` `dcf` `accounting`
@@ -3770,7 +3758,7 @@ Browse in [`integrations/_index.md`](../integrations/_index.md).
 
 ### Marketing (marketing/)
 
-_Total: 46 skills_
+_Total: 45 skills_
 
 Browse in [`marketing/_index.md`](../marketing/_index.md).
 
@@ -3872,9 +3860,6 @@ Browse in [`marketing/_index.md`](../marketing/_index.md).
 
 - [referral-program](../marketing/referral-program/) — Use when referral program design and automation — incentive structures, tracking, viral loops, reward fulfillment. Use when building referral or affiliate programs. Use when working with referral program.
   `growth` `marketing` `program` `referral` `seo`
-
-- [role-cmo](../corporate/cmo/) — Use when orchestrating marketing operations, customer acquisition, and growth. Coordinates Growth Marketers and Sales Engineers to drive revenue, expand market reach, and optimize conversion funnels.
-  `marketing` `growth` `sales` `acquisition` `conversion`
 
 - [role-growth-marketer](../marketing/role-growth-marketer/) — Use when orchestrating data-driven growth marketing, programmatic SEO, paid ad acquisition, outbound cold email funnels, full-funnel content analytics, and hypothesis-driven A/B experimentation.
   `growth` `marketing` `growth-marketing` `seo` `paid-ads`
@@ -4184,7 +4169,7 @@ Browse in [`mindset/_index.md`](../mindset/_index.md).
 
 ### Operations (operations/)
 
-_Total: 21 skills_
+_Total: 20 skills_
 
 Browse in [`operations/_index.md`](../operations/_index.md).
 
@@ -4244,9 +4229,6 @@ Browse in [`operations/_index.md`](../operations/_index.md).
 
 - [revenue-team](../operations/revenue-team/) — Use when manage sales pipelines, forecast revenue, track deals, and optimize sales velocity with HubSpot and Notion integration. Use when manageing sales pipelines, forecast revenue, track deals, and optimize sales.
   `business-ops` `management` `notion` `operations` `pipeline`
-
-- [role-coo](../corporate/coo/) — Use when orchestrating business operations, process optimization, cross-team coordination, and HR/legal functions. Ensures the company runs smoothly, efficiently, and in compliance with all regulations.
-  `operations` `hr` `legal` `compliance` `process`
 
 - [role-product-manager](../operations/role-product-manager/) — Use when orchestrating product management, structured PRD authoring, spec-driven development, product-market fit discovery, feature prioritization, pricing models, and strategic roadmap planning.
   `product` `product-management` `prd` `roadmap` `spec-driven-development`
@@ -4546,4 +4528,4 @@ Browse in [`trading/_index.md`](../trading/_index.md).
   `algorithms` `asia` `breakout` `markets` `money`
 
 ---
-_Generated from 1438 skills across 19 categories._
+_Generated from 1438 skills across 20 categories._

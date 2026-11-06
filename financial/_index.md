@@ -2,7 +2,7 @@
 
 ## Skills in Financial
 
-_Total: 20_
+_Total: 19_
 
 - [ai-readiness](./ai-readiness/) — Use when assess portfolio company AI readiness, AI adoption maturity. Use when user says "AI read...
   `analysis` `finance` `investment` `readiness`
@@ -45,9 +45,6 @@ _Total: 20_
 
 - [portfolio-monitor](./portfolio-monitor/) — Use when track portfolio company KPIs, variances, returns analysis. Use when user says "monitor p...
   `analysis` `finance` `investment` `monitor` `portfolio`
-
-- [role-cfo](../corporate/cfo/) — Use when orchestrating financial analysis, budgeting, investment strategy, and revenue optimizati...
-  `finance` `budget` `investment` `trading` `roi`
 
 - [role-financial-analyst](./role-financial-analyst/) — Use when orchestrating financial analysis, cashflow modeling, DCF valuations, general ledger reco...
   `finance` `financial-analysis` `valuation` `dcf` `accounting`

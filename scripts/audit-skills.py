@@ -33,7 +33,7 @@ except ImportError:
 ROOT = Path(__file__).resolve().parent.parent
 
 SKILL_DIRS = [
-    "agents", "automation", "content", "core", "cybersecurity", "data",
+    "agents", "corporate", "automation", "content", "core", "cybersecurity", "data",
     "development", "devops", "finance", "financial", "integrations",
     "marketing", "mcp", "meta", "mindset", "operations", "productivity",
     "research", "sales", "trading",
