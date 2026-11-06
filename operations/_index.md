@@ -2,7 +2,7 @@
 
 ## Skills in Operations
 
-_Total: 21_
+_Total: 20_
 
 - [auth-patterns](./auth-patterns/) — Use when authentication patterns — OAuth 2.0, JWT, session management, MFA, RBAC, API key managem...
   `api` `auth` `business-ops` `management` `operations`
@@ -60,9 +60,6 @@ _Total: 21_
 
 - [revenue-team](./revenue-team/) — Use when manage sales pipelines, forecast revenue, track deals, and optimize sales velocity with ...
   `business-ops` `management` `notion` `operations` `pipeline`
-
-- [role-coo](../corporate/coo/) — Use when orchestrating business operations, process optimization, cross-team coordination, and HR...
-  `operations` `hr` `legal` `compliance` `process`
 
 - [role-product-manager](./role-product-manager/) — Use when orchestrating product management, structured PRD authoring, spec-driven development, pro...
   `product` `product-management` `prd` `roadmap` `spec-driven-development`

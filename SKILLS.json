@@ -1,8 +1,9 @@
 {
-  "total_skills": 1432,
-  "category_count": 19,
+  "total_skills": 1438,
+  "category_count": 20,
   "categories": {
     "agents": 16,
+    "corporate": 6,
     "automation": 21,
     "content": 108,
     "core": 53,
@@ -31270,7 +31271,7 @@
     },
     {
       "name": "role-ceo",
-      "category": "core",
+      "category": "corporate",
       "description": "Use when orchestrating the entire 1ai business kingdom. Coordinates C-suite executives (CTO, CMO, CCO, CFO, COO), sets strategic vision, allocates resources, and ensures cross-departmental alignment for large-scale AI agent initiatives.",
       "domain": "core",
       "tags": [
@@ -31296,7 +31297,7 @@
     },
     {
       "name": "role-cto",
-      "category": "core",
+      "category": "corporate",
       "description": "Use when orchestrating technology strategy, engineering leadership, and R&D. Manages Engineering, Security, and Data & AI teams to deliver robust, scalable, and secure AI infrastructure and products.",
       "domain": "core",
       "tags": [
@@ -31323,7 +31324,7 @@
     },
     {
       "name": "role-cmo",
-      "category": "marketing",
+      "category": "corporate",
       "description": "Use when orchestrating marketing operations, customer acquisition, and growth. Coordinates Growth Marketers and Sales Engineers to drive revenue, expand market reach, and optimize conversion funnels.",
       "domain": "marketing",
       "tags": [
@@ -31350,7 +31351,7 @@
     },
     {
       "name": "role-cco",
-      "category": "content",
+      "category": "corporate",
       "description": "Use when orchestrating all content production, creative direction, and brand voice. Manages UI/UX Designers and Content Creators to ensure high-quality, brand-consistent, multi-format content across all digital channels.",
       "domain": "content",
       "tags": [
@@ -31377,7 +31378,7 @@
     },
     {
       "name": "role-cfo",
-      "category": "financial",
+      "category": "corporate",
       "description": "Use when orchestrating financial analysis, budgeting, investment strategy, and revenue optimization. Manages Financial Analysts and Quantitative Traders to ensure fiscal health and maximize ROI.",
       "domain": "financial",
       "tags": [
@@ -31404,7 +31405,7 @@
     },
     {
       "name": "role-coo",
-      "category": "operations",
+      "category": "corporate",
       "description": "Use when orchestrating business operations, process optimization, cross-team coordination, and HR/legal functions. Ensures the company runs smoothly, efficiently, and in compliance with all regulations.",
       "domain": "operations",
       "tags": [
