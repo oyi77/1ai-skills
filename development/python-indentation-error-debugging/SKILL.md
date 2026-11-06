@@ -117,6 +117,8 @@ After completing this skill, confirm:
 - [ ] The boot command's readiness probe returns green.
 - [ ] Diff is minimal: only the stray indentation column (and duplicate line) changed.
 - [ ] No formatter or unrelated whitespace churn introduced.
+- [ ] `git diff --check` reports no whitespace-only errors.
+
 
 ## Code Example
 
