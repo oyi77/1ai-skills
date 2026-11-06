@@ -1,5 +1,5 @@
 {
-  "total_skills": 1431,
+  "total_skills": 1432,
   "category_count": 19,
   "categories": {
     "agents": 16,
@@ -8,7 +8,7 @@
     "core": 53,
     "cybersecurity": 801,
     "data": 8,
-    "development": 105,
+    "development": 106,
     "devops": 32,
     "financial": 19,
     "integrations": 29,
@@ -2691,18 +2691,14 @@
     {
       "name": "role-content-creator",
       "category": "content",
-      "description": "Use when creating, editing, and managing content assets: text, images, video, audio, scripts, and multi-format assets. Covers content production workflows, version control, brand consistency, optimization, and distribution across channels.",
+      "description": "Use when creating and managing multi-format content assets. Covers production workflows, brand consistency, and distribution across digital channels.",
       "domain": "content",
       "tags": [
         "content",
         "writing",
-        "video",
-        "audio",
-        "editing",
         "production",
-        "distribution",
         "brand",
-        "optimization"
+        "distribution"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -23609,6 +23605,32 @@
       "subdomain": "software-development",
       "roles": [
         "qa-automation-engineer"
+      ],
+      "type": "dev"
+    },
+    {
+      "name": "python-indentation-error-debugging",
+      "category": "development",
+      "description": "Use when Python fails to boot with IndentationError or unexpected indent traceback",
+      "domain": "development",
+      "tags": [
+        "python",
+        "debugging",
+        "indentation",
+        "indentationerror"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "debugging",
+      "roles": [
+        "software-engineer"
+      ],
+      "triggers": [
+        "python indentation error",
+        "IndentationError unexpected indent",
+        "fix python indent",
+        "deindent broken block",
+        "python boot crash"
       ],
       "type": "dev"
     },
