@@ -6,6 +6,8 @@ category: content
 tags: [tts, voice-cloning, speech-synthesis, multilingual, offline, diffusion]
 license: Apache-2.0
 author: oyi77
+version: 1.0.0
+subdomain: content
 ---
 
 # OmniVoice Skill

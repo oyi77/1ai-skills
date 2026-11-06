@@ -37,7 +37,7 @@ The framework covers layout systems, typography hierarchies, motion design, spac
 
 ## Delegation: Full Design Builds → Hallmark & Impeccable
 
-This skill is the constraint/taste layer. When the task requires an actual page build, redesign, or rendered audit — not just visual constraint review — delegate to [`hallmark`](/skills/hallmark) or [`impeccable`](/skills/impeccable):
+This skill constraint/taste layer. When task requires actual page build, redesign, rendered audit — not just visual constraint review — delegate `hallmark` or `impeccable`:
 
 | Task shape | Load |
 |---|---|
