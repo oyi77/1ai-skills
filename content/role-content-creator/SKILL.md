@@ -1,9 +1,9 @@
 ---
 name: role-content-creator
-description: "Use when creating and managing multi-format content assets. Covers production workflows, brand consistency, and distribution across digital channels."
+description: "Use when orchestrating automated content monetization and distribution pipelines. Coordinates research, production, and multi-platform distribution for high-variance algorithmic growth."
 domain: content
 author: oyi77
-version: 1.0.0
+version: 1.1.0
 category: content
 tags:
 - content
@@ -13,6 +13,12 @@ tags:
 - distribution
 license: Apache-2.0
 subdomain: content-creation
+tools:
+  - kalodata-product-research
+  - omnivoice
+  - remotion
+  - auto-clipper
+  - multi-platform-distribution
 triggers:
 - content creator role
 - content production workflows
@@ -28,6 +34,7 @@ Content without structured production workflow, canonical asset library, and aut
 
 ## When to Use
 
+- When orchestrating automated content monetization and distribution pipelines.
 - When designing content pipelines for multi-format publishing (text, images, video, audio, scripts).
 - When setting up content versions, asset management, and asset publishing workflows.
 - When building content templates, brand guidelines, and accessibility standards.
@@ -44,52 +51,53 @@ Content without structured production workflow, canonical asset library, and aut
 
 | Content Objective / Workflow | Delegated Child Skill | Primary Content Artifact |
 |---|---|---|
-| Text & writing | `content/writing` | Articles, documentation, blog posts |
-| Video production | `content/video/gen` | Videos, reels, clips |
-| Image creation | `content/image-gen` (DALL-E) | Generated images |
-| Audio production | `content/voice-ai` | Voiceovers, speech-to-text |
-| Distribution | `integrations/slack` (notification) | Delivery via Slack, Discord |
-| Content templates | `content/brand` | Brand guidelines, style guides |
+| Viral Product Research | `kalodata-product-research` | Trending Product/Hook Data |
+| Script & Copywriting | `writing` | Multi-format Scripts |
+| AI Voice Production | `omnivoice` | High-fidelity Voiceovers |
+| Programmatic Video | `remotion` | High-conversion Motion Video |
+| Short-form Clipping | `auto-clipper` | TikTok/Reels/Shorts Highlights |
+| Omni-channel Distribution | `multi-platform-distribution` | Cross-platform Content Set |
+| Brand Governance | `brand` | Style Guides & Asset IDs |
 
 ## Workflow
 
-### Phase 1: Content Planning & Asset Definition
+### Phase 1: Hook Mining & Research
 
-1. **Identify** content pillar, target audience, format, channel.
-2. **Set up** content templates: headline, intro, body, CTA, author credit.
-3. **Define** asset specifications: file type, size, compression, metadata.
+1. **Analyze** trending products and high-engagement hooks via `kalodata-product-research`.
+2. **Extract** winning psychological patterns and target audience triggers.
+3. **Define** content angle: controversy, utility, or entertainment.
 
-### Phase 2: Asset Production & Versioning
+### Phase 2: Voice Production & Scripting
 
-1. **Script** and shoot text/video/audio assets via editors (writing, video, audio).
-2. **Upload** assets to CDN or internal repository.
-3. **Apply** version control: Git tags, asset IDs, and version numbering.
+1. **Draft** multi-format scripts via `writing` ensuring hook-first structure.
+2. **Synthesize** high-fidelity voiceovers using `omnivoice` based on target persona.
+3. **Verify** audio pacing and emotional inflection alignment.
 
-### Phase 3: Approval & Review
+### Phase 3: Visual Assembly & Rendering
 
-1. **Approve** content: editor review, brand sign-off, compliance.
-2. **QA** assets: length, quality, readability, formatting.
-3. **Publish** approved assets to distribution channels.
+1. **Compose** programmatic video frames using `remotion` for deterministic visual impact.
+2. **Generate** supporting imagery via `image-gen` for B-roll and overlays.
+3. **Render** final high-resolution assets with baked-in captions.
 
-### Phase 4: Distribution & Scheduling
+### Phase 4: A/B Variant Generation
 
-1. **Push** assets to web, email, social, mobile channels (via CDN, social, and email).
-2. **Schedule** posts, optimize times, track performance.
-3. **Monitor** analytics: impressions, clicks, conversions.
+1. **Slice** long-form content into high-impact highlights via `auto-clipper`.
+2. **Iterate** hook variations (first 3 seconds) to maximize retention.
+3. **Optimize** aspect ratios for specific channel constraints (9:16, 1:1, 16:9).
 
-### Phase 5: Analytics & Optimization
+### Phase 5: Autopilot Distribution
 
-1. **Track** content performance: engagement, bounce rates, conversion.
-2. **Iterate** content formats, headlines, images using data.
-3. **Archive** underperforming content; set up renewal cycles.
+1. **Map** final assets to distribution matrix via `multi-platform-distribution`.
+2. **Schedule** deployments across social, web, and email channels.
+3. **Track** conversion data to feed back into Phase 1 for the next cycle.
 
-## Anti-Rationalization
+## Anti-Rationalization Table
 
 | Content Excuse | Flawed Rationalization | Required Content Discipline |
 |---|---|---|
-| "Audience just reads top line" | "We'll reuse high-performing headers" | Structured copy hierarchy: headline, subhead, body |
-| "Brand is just vibe" | "We'll decide later" | Brand guidelines enforced per channel |
-| "Video is easy" | "We'll record on fly" | Script first, shoot second, edit third |
+| "One great video is enough" | "Quality over quantity wins" | Algorithm variance means 50 variants make a hit inevitable |
+| "Manual posting is safer" | "I can control the timing" | Autopilot distribution ensures 24/7 global coverage and scale |
+| "Generic scripts work" | "The product speaks for itself" | Data-driven hook mining via research is the only way to guarantee attention |
 
 ## Implementation Examples
 
@@ -108,42 +116,43 @@ content_templates:
       - fact_check_required: true
 ```
 
-### Content Template Validator (bash)
+### Content Automation Validator (bash)
 
 ```bash
 #!/usr/bin/env bash
-# Content template validator
-# Validates a content YAML file for required fields
+# Content Pipeline Validator
+# Validates that a content bundle has all required orchestration artifacts
 
-TEMPLATE_FILE=${1:-/tmp/content_template.yaml}
-if [ ! -f "$TEMPLATE_FILE" ]; then
-  echo "Error: Template file $TEMPLATE_FILE not found"
+BUNDLE_DIR=${1:-./content_bundle}
+if [ ! -d "$BUNDLE_DIR" ]; then
+  echo "Error: Bundle directory $BUNDLE_DIR not found"
   exit 1
 fi
 
-REQUIRED_FIELDS="title body cta"
+REQUIRED_FILES=("script.txt" "audio.wav" "video.mp4" "distribution.json")
 MISSING=0
 
-for field in $REQUIRED_FIELDS; do
-  if ! grep -qE "^[[:space:]]+- $field$" "$TEMPLATE_FILE"; then
-    echo "FAIL: Missing required field '$field'"
+for file in "${REQUIRED_FILES[@]}"; do
+  if [ ! -f "$BUNDLE_DIR/$file" ]; then
+    echo "FAIL: Missing required artifact '$file'"
     MISSING=$((MISSING + 1))
   fi
 done
 
 if [ $MISSING -eq 0 ]; then
-  echo "SUCCESS: Template is compliant"
+  echo "SUCCESS: Content bundle is production-ready"
   exit 0
 else
-  echo "FAIL: Template missing $MISSING required field(s)"
+  echo "FAIL: Bundle missing $MISSING required artifact(s)"
   exit 1
 fi
 ```
 
 ## Verification Checklist
 
-- [ ] Content templates defined; structure, compliance, author credit
-- [ ] Assets produced: video, image, audio, text
-- [ ] Assets reviewed: quality, length, readability
-- [ ] Distribution channels active; schedule live
-- [ ] Analytics live; engagement tracked
+- [ ] Hook data extracted from `kalodata-product-research`
+- [ ] Voiceovers synthesized via `omnivoice`
+- [ ] Programmatic videos rendered via `remotion`
+- [ ] Variants clipped via `auto-clipper`
+- [ ] Distribution matrix mapped via `multi-platform-distribution`
+- [ ] Brand guidelines enforced via `brand`
