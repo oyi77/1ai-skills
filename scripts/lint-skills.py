@@ -139,18 +139,6 @@ def skill_rel_path(path: Path) -> str:
     return str(rel)
 
 
-def similarity(a: str, b: str, threshold: float = 0.0) -> float:
-    """Sequence-based similarity ratio with length-based pre-check."""
-    len_a, len_b = len(a), len(b)
-    if threshold > 0.0 and (len_a + len_b) > 0:
-        if 2.0 * min(len_a, len_b) < threshold * (len_a + len_b):
-            return 0.0
-        matcher = SequenceMatcher(None, a.lower(), b.lower())
-        if matcher.quick_ratio() < threshold:
-            return 0.0
-        return matcher.ratio()
-    return SequenceMatcher(None, a.lower(), b.lower()).ratio()
-
 
 def levenshtein_ratio(s1: str, s2: str) -> float:
     """Fast Levenshtein similarity (0-1)."""
@@ -324,16 +312,25 @@ def check_duplicates(skills_meta: list[dict], result: LintResult):
         seen[name] = path
 
     # Near-duplicates (only check within same category for relevance)
-    by_category: dict[str, list[tuple[str, str]]] = defaultdict(list)
+    by_category: dict[str, list[tuple[str, str, str, int]]] = defaultdict(list)
     for name, path in names:
         parts = Path(path).parts
         cat = parts[0] if parts else "unknown"
-        by_category[cat].append((name, path))
+        by_category[cat].append((name, path, name.lower(), len(name)))
 
     for cat, cat_skills in by_category.items():
-        for i, (name1, path1) in enumerate(cat_skills):
-            for name2, path2 in cat_skills[i + 1:]:
-                sim = similarity(name1, name2, threshold=SIMILARITY_THRESHOLD)
+        matcher = SequenceMatcher()
+        for i, (name1, path1, lower1, len1) in enumerate(cat_skills):
+            matcher.set_seq2(lower1)
+            for name2, path2, lower2, len2 in cat_skills[i + 1:]:
+                if 2.0 * min(len1, len2) < SIMILARITY_THRESHOLD * (len1 + len2):
+                    continue
+                matcher.set_seq1(lower2)
+                if matcher.real_quick_ratio() < SIMILARITY_THRESHOLD:
+                    continue
+                if matcher.quick_ratio() < SIMILARITY_THRESHOLD:
+                    continue
+                sim = matcher.ratio()
                 if sim >= SIMILARITY_THRESHOLD and name1 != name2:
                     result.add("warnings", name1, "near-duplicate",
                                 f"Near-duplicate of {name2} (similarity={sim:.2f})")
