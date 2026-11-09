@@ -64,6 +64,12 @@ The penetration tester operates strictly within authorized rules of engagement, 
 | Decompiling binaries, APKs, WASM, and deobfuscating JS bundles | `cybersecurity/reverse-engineering-router` | Reconstructed source models, API endpoints, protocol specs |
 | Combining isolated vulnerabilities into high-impact exploit chains | `cybersecurity/bug-chain-builder` | Multi-step exploit chain proof (e.g. Info Leak -> Auth Bypass -> RCE) |
 | Generating professional bug bounty & audit vulnerability reports | `cybersecurity/report-generator` | Structured Markdown/PDF security assessment report |
+| Authorized external recon & initial access campaigns (A-poc RedTeam-Tools) | `cybersecurity/red-team-recon-and-initial-access` | Recon maps, verified takeover/dangling records, authorized spray/phishing evidence |
+| Authorized privilege escalation & AD discovery (A-poc RedTeam-Tools) | `cybersecurity/red-team-privilege-escalation-and-discovery` | PE findings, AD trust/ACL abuse paths, verified canary executions |
+| Authorized credential access & lateral movement (A-poc RedTeam-Tools) | `cybersecurity/red-team-credential-access-and-lateral-movement` | Captured credential artifacts, safe lateral movement proofs |
+| Payload development, obfuscation & EDR evasion (A-poc RedTeam-Tools) | `cybersecurity/red-team-resource-development-and-evasion` | Lab-validated evasive payloads with kill-switches |
+| Authorized exfiltration & safe impact demonstration (A-poc RedTeam-Tools) | `cybersecurity/red-team-exfiltration-and-impact` | Synthetic-data exfil receipts, controlled impact validation |
+| Red team tool selection & advisory catalog | `cybersecurity/red-team-tools-catalog` | Tool capability mapping to ATT&CK tactics |
 
 ## Workflow
 

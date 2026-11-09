@@ -63,8 +63,13 @@ The security engineer operates on the principle of defense-in-depth, enforcing l
 | Aggressive API vulnerability fuzzing, rate limit evasion, and injection defense | `cybersecurity/api-destroyer` | API threat report, rate limiting rules, and parameter sanitization |
 | Insecure direct object references, cross-tenant data leaks, BOLA/BFLA | `cybersecurity/testing-for-broken-access-control` | Object-level auth matrix and tenant isolation unit tests |
 | Automated vulnerability assessment, CVE triage, and patch prioritization | `cybersecurity/vulnerability-scanner` | Vulnerability assessment ledger with verified EPSS/CVSS ranking |
-| Missing CSP, clickjacking, MIME sniffing, and insecure cookie attributes | `development/security-headers` | Hardened reverse proxy / web framework security header config |
-| Cloud misconfigurations, over-permissive IAM, and public storage exposure | `cybersecurity/auditing-cloud-with-cis-benchmarks` | CIS compliance report and automated terraform remediation |
+| Defensive Boundary Hardening | `cybersecurity/developing-security-headers` | Hardened reverse proxy / web framework security header config |
+| Comprehensive blue team defensive tooling catalog | `cybersecurity/blue-team-tools-catalog` | Selected tool capabilities mapped to defensive requirements |
+| Blue team threat hunting operations | `cybersecurity/blue-team-threat-hunting-tools` | Hunt infrastructure tracking, validated detections |
+| Digital forensics and incident response | `cybersecurity/blue-team-digital-forensics-and-incident-response` | Forensic reports, disk image evidence, timeline reconstruction |
+| Vulnerability scanning report lifecycle and documentation | `cybersecurity/vulnerability-scanner-report` | Vulnerability assessment report with remediation plan |
+| Continuous vulnerability monitoring and triage workflow | `cybersecurity/vulnerability-monitoring-workflow` | Live vulnerability dashboard with SLAs |
+| Comprehensive threat modeling for application risk | `cybersecurity/threat-modeling` | Threat model diagram, STRIDE mapping, control gaps |
 
 ## Workflow
 

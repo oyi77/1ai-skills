@@ -266,6 +266,21 @@ Collect before testing:
 - `performing-malware-incident-response` — Malware IR
 - `performing-ransomware-response` — Ransomware IR
 
+### Blue Team Threat Hunting & Defense
+- `blue-team-tools-catalog` — 70+ defensive security tools from A-poc/BlueTeam-Tools
+- `blue-team-threat-hunting-tools` — Hunt.io, threathunt.app, Validin, maltrail, SysmonSearch, procfilter, Phishing Catcher
+- `blue-team-digital-forensics-and-incident-response` — SANS SIFT, Autopsy, Sleuth Kit, TestDisk, Extundelete, Recuva
+
+### Red Team Recon & Initial Access
+- `red-team-tools-catalog` — 150+ offensive tools from A-poc/RedTeam-Tools
+- `red-team-recon-and-initial-access` — reconFTW, subzy, certSniff, CloudBrute, CredMaster, King Phisher
+- `red-team-resource-development-and-evasion` — Freeze, ScareCrow, Invoke-Obfuscation, Alcatraz, SharpBlock
+
+### Red Team Credential Access & Lateral Movement
+- `red-team-credential-access-and-lateral-movement` — Mimikatz, nanodump, dploot, crackmapexec, Coercer, ADFSpoof
+- `red-team-exfiltration-and-impact` — Dnscat2, Cloakify, PyExfil, Havoc, Covenant, Merlin
+- `red-team-privilege-escalation-and-discovery` — WinPEAS, LinPEAS, BeRoot, Certify, BloodHound, Snaffler
+
 ### Threat Intelligence & Hunting
 - `analyzing-threat-actor-ttps-with-mitre-attack` — MITRE ATT&CK mapping
 - `analyzing-threat-actor-ttps-with-mitre-navigator` — ATT&CK Navigator
