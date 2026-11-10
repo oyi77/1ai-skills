@@ -1,6 +1,6 @@
 ---
 name: 21st-dev
-description: Use when UI component registry for AI coding agents — search, generate, and publish React/Next.js/Tailwind components via MCP. 12,000+ community components, logo search, design system tokens, theme generation. Use when building UI with agent, need production components, want to publish/share components.
+description: Use when building UI with an AI agent and need production-ready React/Next.js/Tailwind components — search 12,000+ community components, generate new UI, search brand logos, and publish components via MCP (formerly Magic MCP).
 domain: integrations
 author: oyi77
 license: MIT
@@ -15,20 +15,21 @@ tags:
 - tailwind
 - agent
 - generate
-- publish
-version: 1.0.0
-category: integrations
+triggers:
+  - "21st-dev"
+  - "21st dev"
+  - "component registry"
+  - "ui component registry"
+  - "search components"
+  - "magic mcp"
+  - "21st magic"
+  - "component catalog"
 ---
 ## Overview
 
-This skill is the roadmap for becoming a 21st-century developer: the modern toolkit, workflow, and career operating system for shipping software with AI assistance. Use it when leveling up your development practice or onboarding into a modern stack. It covers the skills and habits that compound.
+21st.dev is a community component registry for AI coding agents. It exposes an MCP server so Claude Code, Cursor, Codex, and any MCP client can search 12,000+ React/Next.js/Tailwind components, generate new UI with variants, search brand logos, and publish components back to the registry.
 
-
-# 21st.dev — UI Component Registry for AI Agents
-
-21st.dev is a UI component registry designed for AI coding agents. It provides MCP tools to search 12,000+ community components, generate new UI with variants, search logos, and publish/share components.
-
-Source: [21st.dev](https://21st.dev) | MCP: [docs.21st.dev/mcp](https://docs.21st.dev/mcp)
+Source: [21st.dev](https://21st.dev) | MCP: [21st.dev/mcp](https://21st.dev/mcp)
 
 ## When to Use
 

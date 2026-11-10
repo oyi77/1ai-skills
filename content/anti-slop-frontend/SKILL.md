@@ -43,6 +43,9 @@ This skill constraint/taste layer. When task requires actual page build, redesig
 |---|---|
 | Review generated UI against slop patterns, pick a visual variant | this skill |
 | Build/redesign a page end-to-end, theme dealing, sloplint render check | `hallmark` |
+| Research what a comparable product looks like before building (styles→screens→flows→synthesize) | `design-taste` (Kage MCP) or Refero MCP if paid |
+| Extract design tokens / typography / colour from an existing project | `impeccable document` |
+| Audit an existing project against taste rules | `impeccable audit` or `emil-design-skills` |
 | End-to-end design OS, 24 commands (craft/critique/polish/harden), PRODUCT.md & DESIGN.md | `impeccable` |
 | Audit an existing rendered page for AI tells | `hallmark` via `/hallmark audit <path>` or `impeccable` via `/impeccable audit` |
 | Cross-discipline interface review (accessibility, layout, writing, type, color, UI) | `better-interface` |
@@ -57,6 +60,17 @@ This skill constraint/taste layer. When task requires actual page build, redesig
 | Independent operational audit of an AI agent's boundaries before shipping its UI-facing tools | `agent-alignment-audit` |
 
 Never run conflicting constraint engines on one build: Hallmark's Floor and Impeccable's Craft Floor set the non-waivable bottom; this framework's variants are advisory above them.
+
+## Research Phase (before any build)
+
+Anti-slop starts with evidence, not invention. Borrowing the refero-design research-first methodology (MIT, `referodesign/refero_skill`):
+
+1. **Styles first** — pick the visual language (typography feel, colour temperature, layout rhythm) before touching screens or components.
+2. **Screens and flows when needed** — query concrete UI patterns (`design-taste` / Kage MCP) only after the style direction is fixed; use flows for multi-step journey logic.
+3. **Synthesis, not averaging** — commit to one primary direction; borrow at most one narrow detail per secondary reference; preserve source token roles (CTA colour stays CTA-only).
+4. **Reference lock** — write the chosen direction to a brief before implementation. The lock is what later agents re-read across sessions.
+
+Without this phase, agents default to the same generic layout and the taste rules below have nothing to constrain. Research is mandatory for any surface with a hero, pricing section, or onboarding flow; skip it only for single-component fixes.
 
 ## Implementation Skills
 

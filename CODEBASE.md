@@ -2,7 +2,7 @@
 > Auto-generated codebase memory for AI agents. Last updated: 2026-11-05.
 
 ## Purpose
-The world's largest open-source AI agent skill ecosystem — 1432 production-ready skills across 19 categories with self-evolving meta-skills that auto-find, auto-create, and auto-evolve capabilities.
+The world's largest open-source AI agent skill ecosystem — 1442 production-ready skills across 19 categories with self-evolving meta-skills that auto-find, auto-create, and auto-evolve capabilities.
 
 ## Tech Stack
 - **Languages**: JavaScript, Python, Bash, Markdown
@@ -22,7 +22,7 @@ The world's largest open-source AI agent skill ecosystem — 1432 production-rea
 | `automation/` | Workflow automation & bots (n8n, Telegram, WhatsApp, job-hunter) |
 | `content/` | Content creation & media (Remotion video, AI podcast, faceless YouTube, image gen) |
 | `core/` | Infrastructure & memory systems (self-improving, hive-mind, session-brain, model-router) |
-| `cybersecurity/` | 801 security skills across various domains (threat hunting, forensics, pen testing, cloud security) |
+| `cybersecurity/` | 810 security skills across various domains (threat hunting, forensics, pen testing, cloud security) |
 | `data/` | Data analysis, pipelines (Airflow, Dagster, DBT, Spark) |
 | `development/` | Coding, debugging, TDD, code review, subagent orchestration |
 | `devops/` | Docker, K8s, CI/CD, Terraform, GitOps, service mesh |

@@ -1,13 +1,12 @@
 {
-  "total_skills": 1438,
-  "category_count": 20,
+  "total_skills": 1442,
+  "category_count": 19,
   "categories": {
     "agents": 16,
-    "corporate": 6,
     "automation": 21,
-    "content": 108,
+    "content": 109,
     "core": 53,
-    "cybersecurity": 801,
+    "cybersecurity": 810,
     "data": 8,
     "development": 106,
     "devops": 32,
@@ -1592,6 +1591,41 @@
       "type": "content"
     },
     {
+      "name": "design-taste",
+      "category": "content",
+      "description": "Use when building a UI and need to ground taste in real products — query Kage MCP for screenshots and layout prompts of comparable apps, then synthesize a design brief before writing code. Use when \"design a site like X\", \"UI in the spirit of Y\", or \"what should this look like\" — a taste-first research layer for agents, not a template gallery.",
+      "domain": "content",
+      "tags": [
+        "design",
+        "ui",
+        "taste",
+        "inspiration",
+        "research",
+        "mcp",
+        "screenshots",
+        "prompts"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "design",
+      "roles": [
+        "ui-ux-designer"
+      ],
+      "triggers": [
+        "design a site like",
+        "ui in the spirit of",
+        "design taste",
+        "ui inspiration",
+        "like linear for",
+        "what should this look like",
+        "find design references",
+        "competitor ui",
+        "design brief from references"
+      ],
+      "argument-hint": "[product_or_style] for [audience]",
+      "type": "content"
+    },
+    {
       "name": "design-tokens",
       "category": "content",
       "description": "Use when design token systems — color, typography, spacing, and theme architecture for consistent design. Use when designing token systems — color, typography, spacing, and theme architecture.",
@@ -2548,9 +2582,9 @@
         "offline",
         "diffusion"
       ],
-      "version": "",
+      "version": "1.0.0",
       "author": "oyi77",
-      "subdomain": "",
+      "subdomain": "content",
       "roles": [
         "content-creator"
       ],
@@ -2692,7 +2726,7 @@
     {
       "name": "role-content-creator",
       "category": "content",
-      "description": "Use when creating and managing multi-format content assets. Covers production workflows, brand consistency, and distribution across digital channels.",
+      "description": "Use when orchestrating automated content monetization and distribution pipelines. Coordinates research, production, and multi-platform distribution for high-variance algorithmic growth.",
       "domain": "content",
       "tags": [
         "content",
@@ -2701,7 +2735,7 @@
         "brand",
         "distribution"
       ],
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": "oyi77",
       "subdomain": "content-creation",
       "roles": [
@@ -2725,11 +2759,7 @@
         "ux",
         "design-systems",
         "anti-slop",
-        "frontend",
-        "accessibility",
-        "typography",
-        "design-tokens",
-        "micro-interactions"
+        "frontend"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -2980,7 +3010,7 @@
     {
       "name": "ui-styling",
       "category": "content",
-      "description": "Create beautiful, accessible user interfaces with shadcn/ui components (built on Radix UI + Tailwind), Tailwind CSS utility-first styling, and canvas-based visual designs. Use when building user interfaces, implementing design systems, creating responsive layouts, adding accessible components (dialogs, dropdowns, forms, tables), customizing themes and colors, implementing dark mode, generating visual designs and posters, or establishing consistent styling patterns across applications.",
+      "description": "Use when building user interfaces with shadcn/ui (Radix + Tailwind), styling with Tailwind utility classes, implementing dark mode, or creating canvas-based visual designs. Covers component installation (`npx shadcn@latest add <name>`), theme tokens, accessible dialogs/dropdowns/forms, responsive layouts, and consistent styling patterns across React applications.",
       "domain": "content",
       "tags": [
         "ui",
@@ -3144,21 +3174,19 @@
     {
       "name": "vicestudio",
       "category": "content",
-      "description": "Local-first AI voice studio for voice cloning, design, dubbing, dictation, and audiobook narration in 646 languages.",
+      "description": "Local-first AI voice studio for voice cloning, design, dubbing, dictation, and audiobook narration in 646 languages. Use when you need local-first speech synthesis, voice cloning, or audiobook narration.",
       "domain": "content",
       "tags": [
         "voice-cloning",
         "dubbing",
-        "transcription",
         "audiobook",
-        "tts",
         "local-first"
       ],
-      "version": "",
+      "version": "0.1.0",
       "author": "oyi77",
-      "subdomain": "",
+      "subdomain": "voice-ai",
       "roles": [
-        "content-creator"
+        "software-engineer"
       ],
       "type": "content"
     },
@@ -3309,13 +3337,10 @@
     {
       "name": "viral-content-creator",
       "category": "content",
-      "description": "Use when generating 50+ video variations from a single product image across TikTok, Instagram, Facebook, Twitter, and YouTube with hook-based A/B testing, viral score prediction, and autopilot scheduling.",
+      "description": "Use when generating 50+ video variations from one product image with hook-based A/B testing, viral score prediction, autopilot scheduling.",
       "domain": "content",
       "tags": [
         "content",
-        "content-creation",
-        "creator",
-        "digital-content",
         "media",
         "testing",
         "video",
@@ -4309,11 +4334,7 @@
         "ml",
         "machine-learning",
         "rag",
-        "prompt-engineering",
-        "llm",
-        "fine-tuning",
-        "model-routing",
-        "agents"
+        "prompt-engineering"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -6605,6 +6626,91 @@
       "subdomain": "general-cybersecurity",
       "roles": [
         "penetration-tester"
+      ],
+      "type": "security"
+    },
+    {
+      "name": "blue-team-digital-forensics-and-incident-response",
+      "category": "cybersecurity",
+      "description": "Use when conducting forensic endpoint investigation, disk artifact analysis, partition recovery, and incident response operations using SANS SIFT, Autopsy, The Sleuth Kit, TestDisk, Extundelete, and Recuva to reconstruct adversary activity and restore compromised systems.",
+      "domain": "cybersecurity",
+      "tags": [
+        "digital-forensics",
+        "incident-response",
+        "data-recovery",
+        "autopsy",
+        "sift",
+        "testdisk"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "incident-response",
+      "roles": [
+        "security-engineer"
+      ],
+      "triggers": [
+        "digital forensics",
+        "incident response",
+        "data recovery",
+        "autopsy",
+        "sleuth kit",
+        "testdisk"
+      ],
+      "type": "security"
+    },
+    {
+      "name": "blue-team-threat-hunting-tools",
+      "category": "cybersecurity",
+      "description": "Use when orchestrating blue team threat hunting operations across networks and endpoints using hunt.io, threathunt.app, Validin, maltrail, SysmonSearch, procfilter, and Phishing Catcher to detect and disrupt active adversary infrastructure and campaigns.",
+      "domain": "cybersecurity",
+      "tags": [
+        "threat-hunting",
+        "blue-team",
+        "soc",
+        "detection"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "threat-hunting",
+      "roles": [
+        "security-engineer"
+      ],
+      "triggers": [
+        "threat hunting",
+        "hunt.io",
+        "threathunt.app",
+        "validin",
+        "maltrail",
+        "sysmonsearch",
+        "phishing catcher",
+        "canary tokens"
+      ],
+      "type": "security"
+    },
+    {
+      "name": "blue-team-tools-catalog",
+      "category": "cybersecurity",
+      "description": "Use when querying, evaluating, or orchestrating 70+ defensive security tools from the A-poc/BlueTeam-Tools index across threat hunting, network discovery, vulnerability management, security monitoring, and forensics.",
+      "domain": "cybersecurity",
+      "tags": [
+        "blue-team",
+        "defense",
+        "threat-hunting",
+        "incident-response",
+        "soc"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "threat-hunting",
+      "roles": [
+        "security-engineer"
+      ],
+      "triggers": [
+        "blue team tools",
+        "defensive security tools",
+        "threat hunting toolkit",
+        "blue team tips",
+        "security monitoring tools"
       ],
       "type": "security"
     },
@@ -20477,6 +20583,180 @@
       "type": "security"
     },
     {
+      "name": "red-team-credential-access-and-lateral-movement",
+      "category": "cybersecurity",
+      "description": "Use when orchestrating credential dumping, LSASS extraction, DPAPI looting, and lateral movement operations using Mimikatz, nanodump, dploot, crackmapexec, and Coercer during authorized red team engagements.",
+      "domain": "cybersecurity",
+      "tags": [
+        "red-team",
+        "credential-access",
+        "lateral-movement",
+        "mimikatz",
+        "hashcat",
+        "ntlm"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "penetration-testing",
+      "roles": [
+        "security-engineer"
+      ],
+      "triggers": [
+        "credential access",
+        "lateral movement",
+        "mimikatz",
+        "password spraying",
+        "hash cracking",
+        "ntlm"
+      ],
+      "type": "security"
+    },
+    {
+      "name": "red-team-exfiltration-and-impact",
+      "category": "cybersecurity",
+      "description": "Use when orchestrating covert data exfiltration, C2 infrastructure deployment, and non-destructive impact demonstration using Dnscat2, Cloakify, PyExfil, Havoc, Covenant, and SlowLoris during authorized red team engagements.",
+      "domain": "cybersecurity",
+      "tags": [
+        "red-team",
+        "exfiltration",
+        "c2",
+        "impact",
+        "data-collection",
+        "dnscat2"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "penetration-testing",
+      "roles": [
+        "security-engineer"
+      ],
+      "triggers": [
+        "exfiltration",
+        "data exfiltration",
+        "c2 framework",
+        "havoc",
+        "covenant",
+        "metasploit",
+        "dnscat2"
+      ],
+      "type": "security"
+    },
+    {
+      "name": "red-team-privilege-escalation-and-discovery",
+      "category": "cybersecurity",
+      "description": "Use when orchestrating privilege escalation and AD discovery during authorized red team engagements, covering Windows/Linux PE tools (LinPEAS, WinPEAS, BeRoot), AD enumeration (Certify, BloodHound, Snaffler, Get-GPPPassword), and defensive access-control bypass (AppLocker, PowerLessShell).",
+      "domain": "cybersecurity",
+      "tags": [
+        "red-team",
+        "privilege-escalation",
+        "active-directory",
+        "windows-pe",
+        "ad-enum"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "penetration-testing",
+      "roles": [
+        "security-engineer"
+      ],
+      "triggers": [
+        "privilege escalation",
+        "ad discovery",
+        "winpeas",
+        "linpeas",
+        "bloodhound",
+        "certify",
+        "gpppassword",
+        "applocker bypass"
+      ],
+      "type": "security"
+    },
+    {
+      "name": "red-team-recon-and-initial-access",
+      "category": "cybersecurity",
+      "description": "Use when orchestrating automated target reconnaissance, subdomain enumeration, cloud bucket discovery, and initial access campaigns using reconFTW, subzy, certSniff, CloudBrute, CredMaster, and King Phisher during authorized red team engagements.",
+      "domain": "cybersecurity",
+      "tags": [
+        "red-team",
+        "reconnaissance",
+        "initial-access",
+        "osint",
+        "phishing"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "penetration-testing",
+      "roles": [
+        "penetration-tester"
+      ],
+      "triggers": [
+        "red team recon",
+        "automated reconnaissance",
+        "subdomain takeover",
+        "certsniff",
+        "cloudbrute",
+        "password spraying",
+        "qr phishing"
+      ],
+      "type": "security"
+    },
+    {
+      "name": "red-team-resource-development-and-evasion",
+      "category": "cybersecurity",
+      "description": "Use when engineering evasion payloads, obfuscating scripts, bypassing EDR hooks, and crafting weaponized delivery documents using Freeze, ScareCrow, Invoke-Obfuscation, Alcatraz, and SharpBlock during authorized red team engagements.",
+      "domain": "cybersecurity",
+      "tags": [
+        "red-team",
+        "payload",
+        "evasion",
+        "resource-development",
+        "obfuscation"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "penetration-testing",
+      "roles": [
+        "penetration-tester"
+      ],
+      "triggers": [
+        "resource development",
+        "defense evasion",
+        "payload creation",
+        "PowerShell obfuscation",
+        "obfuscator",
+        "msfvenom",
+        "SharpBlock"
+      ],
+      "type": "security"
+    },
+    {
+      "name": "red-team-tools-catalog",
+      "category": "cybersecurity",
+      "description": "Use when querying, evaluating, or orchestrating 150+ offensive security tools from the A-poc/RedTeam-Tools index across reconnaissance, resource development, initial access, execution, persistence, and evasion.",
+      "domain": "cybersecurity",
+      "tags": [
+        "red-team",
+        "offensive-security",
+        "pentesting",
+        "cyber",
+        "attack"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "penetration-testing",
+      "roles": [
+        "penetration-tester"
+      ],
+      "triggers": [
+        "red team tools",
+        "offensive tools",
+        "red team tips",
+        "adversary toolkits",
+        "red teaming resources"
+      ],
+      "type": "security"
+    },
+    {
       "name": "remediating-s3-bucket-misconfiguration",
       "category": "cybersecurity",
       "description": "Use when this skill provides step-by-step procedures for identifying and remediating Amazon S3 bucket misconfigurations that expose sensitive data to unauthorized access. It covers enabling S3 Block Public Access at account and bucket levels, auditing bucket policies and ACLs, enforcing encryption, configuring access logging, and deploying automated remediation using AWS Config and Lambda.",
@@ -20706,10 +20986,7 @@
         "pentest",
         "red-team",
         "offensive-security",
-        "bug-bounty",
-        "fuzzing",
-        "exploit-chaining",
-        "reporting"
+        "bug-bounty"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -20739,10 +21016,7 @@
         "appsec",
         "cybersecurity",
         "threat-modeling",
-        "access-control",
-        "owasp",
-        "cis-benchmarks",
-        "hardening"
+        "access-control"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -22108,11 +22382,7 @@
         "data-engineering",
         "etl",
         "dbt",
-        "airflow",
-        "spark",
-        "kafka",
-        "bigquery",
-        "postgres"
+        "airflow"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -23771,10 +24041,7 @@
         "testing",
         "automation",
         "playwright",
-        "cypress",
-        "coverage",
-        "quality-engineering",
-        "e2e"
+        "cypress"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -23806,8 +24073,7 @@
         "software-engineering",
         "tdd",
         "code-review",
-        "debugging",
-        "architecture"
+        "debugging"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -23840,8 +24106,7 @@
         "system-design",
         "ast-guard",
         "modularity",
-        "refactoring",
-        "domain-modeling"
+        "refactoring"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -24996,10 +25261,7 @@
         "sre",
         "infrastructure",
         "docker",
-        "terraform",
-        "ci-cd",
-        "kubernetes",
-        "observability"
+        "terraform"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -25416,10 +25678,7 @@
         "financial-analysis",
         "valuation",
         "dcf",
-        "accounting",
-        "gl-reconciliation",
-        "cashflow",
-        "auditing"
+        "accounting"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -25527,7 +25786,7 @@
     {
       "name": "21st-dev",
       "category": "integrations",
-      "description": "Use when UI component registry for AI coding agents — search, generate, and publish React/Next.js/Tailwind components via MCP. 12,000+ community components, logo search, design system tokens, theme generation. Use when building UI with agent, need production components, want to publish/share components.",
+      "description": "Use when building UI with an AI agent and need production-ready React/Next.js/Tailwind components — search 12,000+ community components, generate new UI, search brand logos, and publish components via MCP (formerly Magic MCP).",
       "domain": "integrations",
       "tags": [
         "ui",
@@ -25538,14 +25797,23 @@
         "nextjs",
         "tailwind",
         "agent",
-        "generate",
-        "publish"
+        "generate"
       ],
-      "version": "1.0.0",
+      "version": "",
       "author": "oyi77",
       "subdomain": "ui-registry",
       "roles": [
-        "ai-ml-engineer"
+        "software-engineer"
+      ],
+      "triggers": [
+        "21st-dev",
+        "21st dev",
+        "component registry",
+        "ui component registry",
+        "search components",
+        "magic mcp",
+        "21st magic",
+        "component catalog"
       ],
       "type": "integrations"
     },
@@ -26890,12 +27158,7 @@
         "marketing",
         "growth-marketing",
         "seo",
-        "paid-ads",
-        "outbound",
-        "cold-email",
-        "analytics",
-        "a-b-testing",
-        "conversion"
+        "paid-ads"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -29305,11 +29568,7 @@
         "product-management",
         "prd",
         "roadmap",
-        "spec-driven-development",
-        "pmf",
-        "pricing",
-        "strategy",
-        "prioritization"
+        "spec-driven-development"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -30140,9 +30399,7 @@
         "competitive-intelligence",
         "market-research",
         "deep-investigation",
-        "structured-thinking",
-        "mckinsey",
-        "sherlock"
+        "structured-thinking"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -30559,11 +30816,7 @@
         "support",
         "tickets",
         "complaints",
-        "refunds",
-        "onboarding",
-        "sla",
-        "chat",
-        "escalation"
+        "refunds"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -30593,11 +30846,7 @@
         "pipeline",
         "leads",
         "crm",
-        "outreach",
-        "closing",
-        "b2b",
-        "automation",
-        "forecasting"
+        "outreach"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -31080,10 +31329,7 @@
         "quant",
         "quantitative-trading",
         "risk-management",
-        "crypto",
-        "portfolio-management",
-        "execution",
-        "market-making"
+        "crypto"
       ],
       "version": "1.0.0",
       "author": "oyi77",
@@ -31268,167 +31514,6 @@
         "quantitative-trader"
       ],
       "type": "trading"
-    },
-    {
-      "name": "role-ceo",
-      "category": "corporate",
-      "description": "Use when orchestrating the entire 1ai business kingdom. Coordinates C-suite executives (CTO, CMO, CCO, CFO, COO), sets strategic vision, allocates resources, and ensures cross-departmental alignment for large-scale AI agent initiatives.",
-      "domain": "core",
-      "tags": [
-        "corporate",
-        "leadership",
-        "strategy",
-        "coordination"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "corporate-leadership",
-      "roles": [
-        "ceo"
-      ],
-      "triggers": [
-        "ceo role",
-        "corporate strategy",
-        "executive coordination",
-        "resource allocation",
-        "cross-team alignment"
-      ],
-      "type": "core"
-    },
-    {
-      "name": "role-cto",
-      "category": "corporate",
-      "description": "Use when orchestrating technology strategy, engineering leadership, and R&D. Manages Engineering, Security, and Data & AI teams to deliver robust, scalable, and secure AI infrastructure and products.",
-      "domain": "core",
-      "tags": [
-        "technology",
-        "engineering",
-        "security",
-        "ai-ml",
-        "infrastructure"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "technology-leadership",
-      "roles": [
-        "cto"
-      ],
-      "triggers": [
-        "cto role",
-        "tech strategy",
-        "engineering leadership",
-        "r&d roadmap",
-        "infrastructure overhaul"
-      ],
-      "type": "core"
-    },
-    {
-      "name": "role-cmo",
-      "category": "corporate",
-      "description": "Use when orchestrating marketing operations, customer acquisition, and growth. Coordinates Growth Marketers and Sales Engineers to drive revenue, expand market reach, and optimize conversion funnels.",
-      "domain": "marketing",
-      "tags": [
-        "marketing",
-        "growth",
-        "sales",
-        "acquisition",
-        "conversion"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "marketing-leadership",
-      "roles": [
-        "cmo"
-      ],
-      "triggers": [
-        "cmo role",
-        "marketing strategy",
-        "growth plan",
-        "customer acquisition",
-        "sales pipeline oversight"
-      ],
-      "type": "marketing"
-    },
-    {
-      "name": "role-cco",
-      "category": "corporate",
-      "description": "Use when orchestrating all content production, creative direction, and brand voice. Manages UI/UX Designers and Content Creators to ensure high-quality, brand-consistent, multi-format content across all digital channels.",
-      "domain": "content",
-      "tags": [
-        "content",
-        "creative",
-        "branding",
-        "design",
-        "media"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "creative-leadership",
-      "roles": [
-        "cco"
-      ],
-      "triggers": [
-        "cco role",
-        "content strategy",
-        "creative direction",
-        "brand voice",
-        "multi-format content"
-      ],
-      "type": "content"
-    },
-    {
-      "name": "role-cfo",
-      "category": "corporate",
-      "description": "Use when orchestrating financial analysis, budgeting, investment strategy, and revenue optimization. Manages Financial Analysts and Quantitative Traders to ensure fiscal health and maximize ROI.",
-      "domain": "financial",
-      "tags": [
-        "finance",
-        "budget",
-        "investment",
-        "trading",
-        "roi"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "financial-leadership",
-      "roles": [
-        "cfo"
-      ],
-      "triggers": [
-        "cfo role",
-        "financial strategy",
-        "budget allocation",
-        "investment analysis",
-        "revenue optimization"
-      ],
-      "type": "financial"
-    },
-    {
-      "name": "role-coo",
-      "category": "corporate",
-      "description": "Use when orchestrating business operations, process optimization, cross-team coordination, and HR/legal functions. Ensures the company runs smoothly, efficiently, and in compliance with all regulations.",
-      "domain": "operations",
-      "tags": [
-        "operations",
-        "hr",
-        "legal",
-        "compliance",
-        "process"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "operational-leadership",
-      "roles": [
-        "coo"
-      ],
-      "triggers": [
-        "coo role",
-        "operations strategy",
-        "process optimization",
-        "cross-team coordination",
-        "hr & legal oversight"
-      ],
-      "type": "operations"
     }
   ],
   "tooling_dirs": [

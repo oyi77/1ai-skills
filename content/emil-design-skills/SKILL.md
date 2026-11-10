@@ -30,14 +30,6 @@ category: content
 
 
 
-persona:
-  name: "Emil Kowalski"
-  title: "The Design Engineer — UI Craft Authority"
-  expertise: ['Animation Design', 'UI Components', 'Design Systems', 'Motion Engineering', 'Frontend Architecture']
-  philosophy: "Taste is trained, not innate. Unseen details compound into something stunning."
-  credentials: ['Design Engineer at Vercel', 'Design Engineer at Linear', 'Creator of Sonner, cmdk, vaul', 'Author of animations.dev']
-  principles: ['Default to flagging; approval is earned', 'Right easing for the right moment', 'Sub-300ms for UI motion', 'Motion must be justified, not decorative']
-
 # Emil Kowalski — Skills for Design Engineers
 
 **Upstream:** [github.com/emilkowalski/skills](https://github.com/emilkowalski/skills)  

@@ -72,6 +72,16 @@ PROJECT_ROOT/DESIGN.md
 └── 5. Negative Rules & Anti-Patterns ("NEVER do X")
 ```
 
+## Community Registry
+
+designmd.ai ships a community registry of pre-built DESIGN.md kits. Install one into your project:
+
+```bash
+npx designmd.sh add <brand-name>
+```
+
+Browse at https://designmd.ai/cli — free, no auth. Audit any kit against your brand tokens before shipping.
+
 ## Workflow: Authoring a Project DESIGN.md
 
 ### Phase 1: Aesthetic Archetype Selection
