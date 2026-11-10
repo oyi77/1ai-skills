@@ -24,6 +24,8 @@ triggers:
   - "magic mcp"
   - "21st magic"
   - "component catalog"
+version: 1.1.0
+category: integrations
 ---
 ## Overview
 

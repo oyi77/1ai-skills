@@ -25799,11 +25799,11 @@
         "agent",
         "generate"
       ],
-      "version": "",
+      "version": "1.1.0",
       "author": "oyi77",
       "subdomain": "ui-registry",
       "roles": [
-        "software-engineer"
+        "ai-ml-engineer"
       ],
       "triggers": [
         "21st-dev",
