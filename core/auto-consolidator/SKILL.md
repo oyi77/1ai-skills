@@ -91,18 +91,29 @@ For each overlap group, determine the canonical parent skill:
 ### 3. Demote Sub-Skills
 
 For each non-canonical member:
-1. Keep the physical SKILL.md on disk (Zero Deletion Invariant).
-2. Remove the skill's top-level entry from SKILLS.json.
-3. Add a sub-reference row in the canonical parent's `## Sub-Skills & Specialized Playbooks` table:
+2. **Relocate the skill directory to `_demoted/`** at repo root, outside every `SKILL_DIRS` entry — this is what makes the demotion durable:
+
+```bash
+mkdir -p _demoted
+git mv content/<skill> _demoted/<skill>
+```
+
+3. Add a sub-reference row in the canonical parent's `## Sub-Skills & Specialized Playbooks` table pointing at the relocated path:
 
 ```markdown
-## Sub-Skills & Specialized Playbooks
-
 | Sub-Skill | Path | Purpose |
 |---|---|---|
-| `seo-technical` | `marketing/seo-technical/SKILL.md` | Technical SEO audit across 9 categories |
-| `seo-geo` | `marketing/seo-geo/SKILL.md` | AI Overviews and GEO optimization |
+| `seo-technical` | `_demoted/seo-technical/SKILL.md` | Technical SEO audit across 9 categories |
+| `seo-geo` | `_demoted/seo-geo/SKILL.md` | AI Overviews and GEO optimization |
 ```
+
+4. Repoint every inbound `[SKILL.md](../<skill>/SKILL.md)` link in other skills to `../../_demoted/<skill>/SKILL.md` (or `../_demoted/<skill>/SKILL.md` from a category root).
+
+5. Repoint `scripts/generate-site.py` hardcoded example lists if they name the demoted skill.
+
+> **Why not "remove the SKILLS.json entry"?** `lint-skills.py --write` rebuilds `SKILLS.json` from a glob of every `SKILL_DIRS` entry. A skill inside a category dir gets re-registered on every ladder run — the strip only survives until the next mandatory gate. Relocation outside `SKILL_DIRS` is the only idempotent demotion. `generate-site-data.py` walks REPO root, so it carries an inline `if '_demoted' in dirs: dirs.remove('_demoted')` filter (added in 73128660); do not duplicate that filter via a config-level SKIP_DIRS.
+
+6. Remove the orphaned runtime copy: `rm -rf ~/.agents/skills/<skill>` (sync-skills.sh only scans CATEGORIES, so relocated skills are never auto-removed).
 
 ### 4. Re-Index and Verify
 
