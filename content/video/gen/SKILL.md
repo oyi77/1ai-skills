@@ -50,6 +50,13 @@ Companion skills: [video-editor](../editor/SKILL.md) · [remotion](../remotion/S
 - For building YouTube channels at scale (use [faceless-youtube](../faceless-youtube/SKILL.md))
 - When you need frame-precise control (use [remotion](../remotion/SKILL.md))
 
+
+## When NOT to Use
+
+- Programmatic/data-driven video (use [remotion](../remotion/SKILL.md))
+- Post-production editing of existing footage (use [video-editor](../editor/SKILL.md))
+- Building YouTube channels at scale (use [faceless-youtube](../faceless-youtube/SKILL.md))
+- Frame-precise control (use [remotion](../remotion/SKILL.md))
 ---
 
 ## Overview

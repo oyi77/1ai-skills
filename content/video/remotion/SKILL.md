@@ -43,12 +43,14 @@ Companion skills: [video-editor](../editor/SKILL.md) · [video-gen](../gen/SKILL
 - Cinematic trailers with scene transitions
 - Faceless YouTube channels at scale
 
-**When NOT to use:**
+---
+
+
+## When NOT to Use
+
 - When a screen recording suffices
 - When real camera footage is the primary element
 - For live streaming (Remotion renders to file, not real-time)
-
----
 
 ## Overview
 

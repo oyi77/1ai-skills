@@ -42,10 +42,12 @@ Companion skills: [remotion](../remotion/SKILL.md) · [video-gen](../gen/SKILL.m
 - Batch processing multiple videos
 - Thumbnail extraction and creation
 
-**When NOT to use:**
-- When creating video from scratch with React (use [remotion](../remotion/SKILL.md))
-- When generating video from AI models (use [video-gen](../gen/SKILL.md))
-- When the task requires real-time editing (use a NLE like DaVinci Resolve)
+
+## When NOT to Use
+
+- Creating video from scratch with React (use [remotion](../remotion/SKILL.md))
+- Generating video from AI models (use [video-gen](../gen/SKILL.md))
+- Task requires real-time editing (use a NLE like DaVinci Resolve)
 
 ---
 

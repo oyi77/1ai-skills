@@ -67,14 +67,6 @@ Stop picking the textbook answer. This skill forces the agent to walk into the a
 - When the user says "quick", "standard", "canonical", "textbook", or "just"
 
 
-## When NOT to Use
-
-- **Syntax lookups or debugging** — if the root cause is known, use a codebase-search or dedicated debugging skill instead.
-- **Single canonical answer** — questions with one textbook solution (e.g., "how do I import a module?") don't benefit from divergent ideation.
-- **Low-stakes or aesthetic decisions** — trivial UI choices where no tradeoff matters don't justify the computational cost.
-- **Explicitly "quick" or "standard" requests** — when the user demands speed or convention over exploration, parallel ideation adds noise.
----
-
 
 
 ## Verification
