@@ -156,6 +156,13 @@ On completion: "MRR: $[N], Churn: [N]%, LTV: $[N], CAC: $[N], Quick Ratio: [N], 
 ## When to Use
 Use this skill when working with revenue engine.
 
+## When NOT to Use
+
+- **Simple one-time queries** — ad-hoc questions that don't require pipeline persistence (e.g., "what's today's MRR?")
+- **Non-SaaS or non-recurring revenue** — businesses without predictable monthly or periodic revenue streams
+- **Low-volume or manual processes** — where the overhead of setup and maintenance outweighs automation value
+- **External or third-party revenue** — revenue that doesn't flow through your own Stripe/analytics pipelines
+
 
 ## Workflow
 See the parent skill for authoritative workflow documentation.

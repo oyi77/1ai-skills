@@ -515,3 +515,10 @@ Use this skill when working with kb. Specifically:
 - **Weekly** — review stale content, archive untouched projects
 - **When spawning subagents** — share relevant KB entities via `local://` URIs
   so subagents start with context instead of cold
+
+## When NOT to Use
+
+- **Simple scratchpad notes** — transient thoughts that don't need cross-session recall
+- **Real-time data analysis** — live dashboards or on-demand queries without persistence requirements
+- **Static documentation writing** — writing articles or guides that don't evolve with project state
+- **Single-file project logs** — unstructured notes that don't benefit from PARA structure and retrieval
