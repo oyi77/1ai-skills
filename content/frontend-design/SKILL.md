@@ -11,7 +11,7 @@ tags:
 - digital-content
 - frontend
 - media
-version: 1.0.0
+version: 1.1.0
 triggers:
 - "frontend-design"
 - "ui design"
@@ -24,7 +24,7 @@ category: content
 ---
 ## Overview
 
-Frontend design skill for building beautiful, consistent UIs. Covers design systems, Tailwind CSS, component patterns, spacing, typography, color theory, and responsive design.
+Frontend design skill for building beautiful, consistent UIs. Covers design systems, Tailwind CSS, component patterns, spacing, typography, color theory, and responsive design. This skill bridges visual design and engineering: component architecture and design tokens through CSS implementation, accessibility auditing, and design system distribution.
 
 ## Capabilities
 
@@ -35,67 +35,32 @@ Frontend design skill for building beautiful, consistent UIs. Covers design syst
 - Implement dark mode and theme switching
 
 ## When to Use
+
 **Trigger phrases:**
 - "frontend design"
-- "Design system patterns — component architecture, Tailwind mastery, visual hierar"
+- "Design system patterns — component architecture, Tailwind mastery, visual hierarchy"
+- "build a UI", "create a component", "design a page"
+- "Tailwind classes", "shadcn setup", "Radix primitives"
 
-
-- Starting a new frontend project and need design system
+**Use when:**
+- Starting a new frontend project and need a design system
 - Existing UI looks inconsistent or unprofessional
 - Need to implement responsive design across devices
-- Building component library for team reuse
+- Building a component library for team reuse
+- Auditing WCAG compliance in interactive elements
+- Implementing dark/light theme switching
 
 ## When NOT to Use
 
-- Task is about content strategy, not creation (use strategy skills)
-- Task is about content distribution (use distribution skills)
-- You need to analyze content performance (use analytics skills)
-- Task is about content moderation (use moderation tools)
-- You don't have content guidelines
-- Task requires domain expertise (consult experts)
+- Backend API design or database modeling (use `api-design` / `database-migration`)
+- Mobile-native app development outside WebView wrappers (use platform SDKs)
+- Pure CSS animation timing (use `motion-dev`)
+- Static HTML pages without runtime interactivity (use Astro/Eleventy guides)
 
+## Design Token System
 
-## Pseudo Code
+Single source of truth for visual decisions. Map every visual property to a semantic token so themes swap atomically.
 
-The frontend-design workflow follows a standard pipeline pattern.
-
-Core flow:
-```
-# frontend-design primary flow
-input = prepare(raw_data)
-result = process(input, config={architecture, component, design, frontend, hierarchy})
-validate(result)
-deliver(result)
-```
-
-Error handling:
-```
-on error:
-  log(error_details)
-  retry_with_backoff(max=3)
-  if still_failing: alert_and_escalate()
-```
-
-
-### Core Workflow
-```
-# frontend-design primary flow
-input = prepare(raw_data)
-result = process(input, config={architecture, component, design, frontend, hierarchy})
-validate(result)
-deliver(result)
-```
-
-### Error Handling
-```
-on error:
-  log(error_details)
-  retry_with_backoff(max=3)
-  if still_failing: alert_and_escalate()
-```
-
-
-### Design Token System
 ```javascript
 // tailwind.config.js
 module.exports = {
@@ -112,7 +77,10 @@ module.exports = {
 }
 ```
 
-### Component Pattern
+## Component Pattern
+
+Compose from primitives. Prefer composition over inheritance; each component owns one responsibility.
+
 ```jsx
 // Button with variants
 const Button = ({ variant = 'primary', size = 'md', children, ...props }) => {
@@ -132,42 +100,72 @@ const Button = ({ variant = 'primary', size = 'md', children, ...props }) => {
 - **3 font sizes max**: Display, body, caption — don't exceed 3 sizes
 - **Color scale**: 50-900 scale for each color (50 = lightest, 900 = darkest)
 - **Mobile-first**: Write mobile styles by default, add breakpoints for larger screens
+- **Token-driven styling**: Never hardcode hex or px; map every visual property to a semantic token
 
-## How to Use
+## Setup & Configuration
 
-1. Define content goal (traffic, engagement, conversion, brand awareness)
-2. Research target audience pain points and search intent
-3. Generate content using appropriate AI tools
-4. Edit and humanize output for authenticity
-5. Optimize for target platform (SEO, hashtags, format)
-6. Schedule and distribute across channels
-7. Measure performance and iterate
+```bash
+# Create React + TypeScript project with Vite
+npm create vite@latest my-app -- --template react-ts
+cd my-app
 
-## Red Flags
+# Install Tailwind CSS v4 with Vite plugin
+npm install tailwindcss @tailwindcss/vite
 
-- **AI-generated content sounds robotic**: Always run through humanizer before publishing
-- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
-- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
-- **No content calendar**: Sporadic posting kills audience retention
-- **Ignoring analytics**: Content without measurement is just publishing, not marketing
+# Install Storybook for component workbench
+npx storybook@latest init
 
-## Verification
+# Chromatic for visual regression in CI
+npm install -D chromatic
+```
 
-- [ ] Skill output matches expected behavior
+For Vue projects:
+```bash
+npm create vue@latest my-vue-app
+cd my-vue-app
+npm install unocss
+```
 
 ## Process
 
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+1. **Prepare** — Gather brand assets, wireframes, and content strategy. Set up toolchain (Vite, Tailwind, Storybook). Document component hierarchy with a tree diagram before writing code.
+2. **Design tokens** — Establish color palette, typography scale, spacing units, and shadows as CSS custom properties or Tailwind config. Verify contrast ratios meet WCAG AA.
+3. **Component build** — Layer components via atomic design (atoms → molecules → organisms). Implement responsive variants and dark mode.
+4. **Quality check** — Run Lighthouse, AXE DevTools, keyboard navigation audit, and cross-browser visual diff.
+5. **Deliver and document** — Export component library with usage documentation, Storybook preview, and live demo URL.
+
+## Common Issues & Troubleshooting
+
+| Problem | Root Cause | Solution |
+|---|---|---|
+| CSS specificity conflicts | Nested selectors and !important overrides | Use BEM naming, CSS Modules, or Tailwind utility classes |
+| Layout breaks on mobile | Fixed px widths or missing viewport meta | Use relative units (rem, %, vw) and mobile-first media queries |
+| Components re-render unexpectedly | Missing React keys or unstable callback references | Add stable keys to lists, memoize callbacks with useCallback |
+| Color contrast fails WCAG AA | Insufficient luminance difference against background | Use WCAG contrast calculators; maintain minimum 4.5:1 ratio for normal text |
+| Screen reader skips interactive element | Missing or incorrect ARIA role or attribute | Use semantic HTML where possible; add aria-label for visual-only labels |
+| Hover styles don't work on touch devices | :hover-dependent interactions without touch fallback | Use @media (hover: hover) to separate pointer and touch interactions |
+
+## Verification
+
+- [ ] All components render correctly at breakpoints: 320px, 768px, 1024px, 1440px
+- [ ] Color contrast passes WCAG 2.1 AA minimum (4.5:1 for normal text, 3:1 for large)
+- [ ] Keyboard navigation covers Tab order, visible focus indicators, Enter/Space activation, Escape close
+- [ ] Screen reader announces dynamic content changes via ARIA live regions
+- [ ] CSS architecture has no !important overrides or specificity battles
+- [ ] Design tokens defined in a single source of truth (CSS custom properties or Tailwind config)
+- [ ] Components maintain consistent spacing using the established scale (4px/8px base)
+- [ ] Lighthouse performance score >= 90 for the rendered page
 
 ## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|
-| "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
-| "I will optimize later" | SEO and distribution need optimization from the start. |
-| "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
+| "Just use a UI library like MUI or Chakra" | Libraries need deep customization for brand identity; CSS architecture and component composition skills remain essential |
+| "Mobile-first is optional for our audience" | 60%+ of global traffic is mobile — responsive design is table stakes, not optional |
+| "Accessibility is a nice-to-have add-on" | WCAG compliance is legally required in many jurisdictions and directly affects SEO rankings |
+| "CSS is easy, I will just write what works" | Poor CSS architecture leads to specificity wars, !important overrides, and unmaintainable stylesheets |
+| "We don't need a design system for a small project" | Even small projects benefit from consistent spacing, typography, and color tokens — prevents tech debt from day one |
+| "State management libraries solve everything" | Poor component architecture causes prop-drilling and re-render issues that no state library can fix |
 
 ## Video / Motion Graphics
 
