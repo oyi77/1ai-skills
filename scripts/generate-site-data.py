@@ -19,6 +19,7 @@ def get_fm(content):
             fm[k.strip()] = v.strip().strip('"').strip("'")
     return fm
 
+
 cats, skills = {}, []
 for root, dirs, files in os.walk(REPO):
     if '_demoted' in dirs:
