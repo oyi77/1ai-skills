@@ -34,6 +34,10 @@ triggers:
 
 Comprehensive reference index cataloging 70+ tools and practical techniques from the curated A-poc/BlueTeam-Tools repository. Provides operational guidance across threat hunting, vulnerability scanning, security monitoring, forensics, and incident response.
 
+```bash
+exiftool -PDF-update:all= suspicious.pdf > recovered_metadata.txt
+grep -Ei '(xmr\.|pool\.com|pool\.org)' /var/log/squid/access.log | sort | uniq -c | sort -rn | head
+```
 ## When to Use
 
 **Trigger phrases:**

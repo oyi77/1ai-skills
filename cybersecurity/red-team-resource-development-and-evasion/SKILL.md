@@ -92,6 +92,14 @@ PowerShell obfuscation framework:
 - **Alcatraz:** Binary obfuscator that modifies x64 PE control flow, inserts junk instructions, and encrypts functions.
 - **Mangle:** Manipulates compiled executable attributes, string tables, and imports to evade heuristic and static AV signatures.
 
+```bash
+# Obfuscate a PowerShell script (lab only, authorized engagements)
+git clone https://github.com/danielbohannon/Invoke-Obfuscation.git
+pwsh -c "Import-Module ./Invoke-Obfuscation/Invoke-Obfuscation.psd1; Invoke-Obfuscation -ScriptPath payload.ps1 -Command 'TOKEN,ALL,STRING' -OutPath payload.obf.ps1"
+# Compile a SharpBlock C# loader against the local .NET SDK
+dotnet build SharpBlock.csproj -c Release -o bin/
+```
+
 ## Anti-Rationalization Table
 
 | Excuse | Flawed Rationalization | Required Discipline |

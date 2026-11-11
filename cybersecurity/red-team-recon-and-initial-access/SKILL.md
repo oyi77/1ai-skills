@@ -39,6 +39,13 @@ triggers:
 
 Cybersecurity playbook covering external attack surface mapping, automated multi-tool reconnaissance, and initial access execution. Emphasizes passive data collection, low-noise active probing, and authorized phishing / credential validation standards.
 
+```bash
+# Passive + active recon pipeline on an authorized target
+reconftw -d target.com -w workspace -c /etc/reconftw/config.yaml
+subdomain-list.txt | subzy --targets - --vulnerable-only -o takeovers.csv
+cloudbrute -p "target" -l wordlist.txt -s aws,gcp,azure
+```
+
 ## When to Use
 
 **Trigger phrases:**

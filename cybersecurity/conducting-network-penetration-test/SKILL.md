@@ -40,6 +40,13 @@ Internal and external network penetration test following PTES methodology. You e
 
 This is **the** baseline security service every compliance framework mandates. No org that answers to a board or auditor skips it.
 
+## When NOT to Use
+
+- Without a signed Rules of Engagement defining scope, exclusions, and change windows
+- Against production systems outside an approved maintenance window
+- For DoS/DDoS stress testing unless explicitly scoped and authorized separately
+- As a substitute for a web application penetration test — network and app tests are distinct deliverables
+
 ## When to Use
 
 **Trigger phrases:**

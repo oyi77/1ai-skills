@@ -36,6 +36,13 @@ triggers:
 
 Cybersecurity playbook for blue team threat hunting operations. Follows structured adversary infrastructure mapping, proactive network/endpoint hunting, and real-time malicious activity suppression standards.
 
+```bash
+huntio query "SELECT * FROM ips WHERE asn = 200593 AND tags = 'c2'" --format json > c2_infra.json
+git clone https://github.com/stamparm/maltrail.git && cd maltrail
+sudo python3 sensor.py &
+python3 server.py
+```
+
 ## When to Use
 
 **Trigger phrases:**

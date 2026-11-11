@@ -23,6 +23,11 @@ Methodology from Gate.io's asset-swap / rebalancing playbook — re-expressed as
 - You want a rules-based basket (Top-N by market cap) instead of manual picks.
 - Pre-buy or post-sell rebalancing of an existing holding.
 
+
+## When NOT to Use
+- You need to execute live trades against an exchange — this skill designs the strategy only; it does not call any exchange API.
+- You require private data (private balances, order history, account state) beyond public CoinGecko market-cap data.
+
 ## Workflow
 
 ### Phase 1: Select strategy type

