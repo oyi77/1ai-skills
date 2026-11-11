@@ -27,7 +27,7 @@ argument-hint: "[category | all]"
 
 ## Overview
 
-Auto-Consolidator maintains the skill library's density by detecting overlapping, redundant, or prefix-colliding skills and demoting them into sub-reference tables inside canonical parent skills. It implements the **Zero Deletion Invariant**: physical SKILL.md files are never removed (preserving broken-link safety and external references), but their top-level registration in `SKILLS.json` is removed, and they are linked from the canonical parent's `## Sub-Skills & Specialized Playbooks` table.
+Auto-Consolidator maintains the skill library's density by detecting overlapping, redundant, or prefix-colliding skills and demoting them into sub-reference tables inside canonical parent skills. It implements the **Zero Deletion Invariant**: physical SKILL.md files are never removed (preserving broken-link safety and external references), but the skill is relocated to `_demoted/` at repo root — outside every `SKILL_DIRS` entry, so `lint-skills.py --write` never re-registers it — and linked from the canonical parent's `## Sub-Skills & Specialized Playbooks` table.
 
 This prevents router prefix collisions (e.g., 14 `gate-*` skills competing for the same query token), reduces context bloat, and keeps the active registry count manageable while preserving all 1,419+ physical playbooks.
 
@@ -91,6 +91,7 @@ For each overlap group, determine the canonical parent skill:
 ### 3. Demote Sub-Skills
 
 For each non-canonical member:
+1. Keep the physical SKILL.md on disk (Zero Deletion Invariant).
 2. **Relocate the skill directory to `_demoted/`** at repo root, outside every `SKILL_DIRS` entry — this is what makes the demotion durable:
 
 ```bash
