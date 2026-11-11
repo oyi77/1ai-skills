@@ -6,7 +6,7 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 
 ## Overview
 
-**1438 skills** across **20 categories**.
+**1440 skills** across **19 categories**.
 
 ---
 
@@ -14,9 +14,9 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 
 - [agents](../agents/_index.md) — 16 skills
 - [automation](../automation/_index.md) — 21 skills
-- [content](../content/_index.md) — 108 skills
+- [content](../content/_index.md) — 107 skills
 - [core](../core/_index.md) — 53 skills
-- [cybersecurity](../cybersecurity/_index.md) — 801 skills
+- [cybersecurity](../cybersecurity/_index.md) — 810 skills
 - [data](../data/_index.md) — 8 skills
 - [development](../development/_index.md) — 106 skills
 - [devops](../devops/_index.md) — 32 skills
@@ -161,7 +161,7 @@ Browse in [`automation/_index.md`](../automation/_index.md).
 
 ### Content (content/)
 
-_Total: 108 skills_
+_Total: 107 skills_
 
 Browse in [`content/_index.md`](../content/_index.md).
 
@@ -258,8 +258,8 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [design-system](../content/design-system/) — Use when working with design tokens, systematic design, or brand-compliant presentations — token architecture, component specifications, and slide generation. Three-layer tokens (primitive→semantic→component), CSS variables, spacing/typography scales, component specs, strategic slide creation.
   `design-system` `tokens` `css-variables` `component-specs` `slides`
 
-- [design-tokens](../content/design-tokens/) — Use when design token systems — color, typography, spacing, and theme architecture for consistent design. Use when designing token systems — color, typography, spacing, and theme architecture.
-  `content-creation` `design` `digital-content` `media` `tokens`
+- [design-taste](../content/design-taste/) — Use when building a UI and need to ground taste in real products — query Kage MCP for screenshots and layout prompts of comparable apps, then synthesize a design brief before writing code. Use when "design a site like X", "UI in the spirit of Y", or "what should this look like" — a taste-first research layer for agents, not a template gallery.
+  `design` `ui` `taste` `inspiration` `research`
 
 - [digital-real-estate](../content/digital-real-estate/) — Use when build and manage a portfolio of niche content sites generating affiliate and AdSense revenue with AI handling research, writing, SEO, and updates. Use when building and manage a portfolio of niche content sites generating.
   `content-creation` `digital` `digital-content` `estate` `media`
@@ -278,9 +278,6 @@ Browse in [`content/_index.md`](../content/_index.md).
 
 - [frontend-design](../content/frontend-design/) — Use when designing frontend systems — component architecture, Tailwind mastery, visual hierarchy, and responsive layouts. Covers design-system patterns, component composition, and responsive implementation.
   `content-creation` `design` `digital-content` `frontend` `media`
-
-- [frontend-ui-design](../content/frontend-ui-design/) — Use when design and build production-grade UI components using React, Vue, or vanilla HTML/CSS. Create responsive layouts, design systems, and accessible interfaces. Use when designing and build production-grade ui components using react, vue, or.
-  `design` `frontend` `ui` `react` `css`
 
 - [gemini-image-generator](../content/gemini-image-generator/) — Use when generating professional posed product images for e-commerce using Gemini AI with optimized prompts
   `content-creation` `digital-content` `gemini` `generator` `image`
@@ -396,7 +393,7 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [responsive-design](../content/responsive-design/) — Use when mobile-first responsive design — breakpoints, fluid typography, container queries, and touch optimization.
   `content-creation` `design` `digital-content` `media` `responsive`
 
-- [role-content-creator](../content/role-content-creator/) — Use when creating and managing multi-format content assets. Covers production workflows, brand consistency, and distribution across digital channels.
+- [role-content-creator](../content/role-content-creator/) — Use when orchestrating automated content monetization and distribution pipelines. Coordinates research, production, and multi-platform distribution for high-variance algorithmic growth.
   `content` `writing` `production` `brand` `distribution`
 
 - [role-ui-ux-designer](../content/role-ui-ux-designer/) — Use when orchestrating UI/UX design systems, anti-AI-slop frontend styling, tactile micro-interactions, responsive design tokens, accessibility standards, and high-fidelity interface engineering.
@@ -432,7 +429,7 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [ui-critique](../content/ui-critique/) — Use when structured UI review — visual hierarchy, consistency, accessibility, and actionable improvement feedback.
   `content-creation` `critique` `digital-content` `media`
 
-- [ui-styling](../content/ui-styling/) — Create beautiful, accessible user interfaces with shadcn/ui components (built on Radix UI + Tailwind), Tailwind CSS utility-first styling, and canvas-based visual designs. Use when building user interfaces, implementing design systems, creating responsive layouts, adding accessible components (dialogs, dropdowns, forms, tables), customizing themes and colors, implementing dark mode, generating visual designs and posters, or establishing consistent styling patterns across applications.
+- [ui-styling](../content/ui-styling/) — Use when building user interfaces with shadcn/ui (Radix + Tailwind), styling with Tailwind utility classes, implementing dark mode, or creating canvas-based visual designs. Covers component installation (`npx shadcn@latest add <name>`), theme tokens, accessible dialogs/dropdowns/forms, responsive layouts, and consistent styling patterns across React applications.
   `ui` `styling` `shadcn` `tailwind` `radix`
 
 - [ui-ux-pro-max](../content/ui-ux-pro-max/) — UI/UX design intelligence for web, mobile, and desktop. Use when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 79 searchable styles (50 active), 192 product palettes and reasoning profiles, 74 font pairings, 119 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 22 stacks.
@@ -450,8 +447,8 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [variant](../content/variant/) — Use when building multiple variants of a component and iterating to pick the best one.
   `components` `variants` `iteration` `prototyping`
 
-- [vicestudio](../content/audio/vicestudio/) — Local-first AI voice studio for voice cloning, design, dubbing, dictation, and audiobook narration in 646 languages.
-  `voice-cloning` `dubbing` `transcription` `audiobook` `tts`
+- [vicestudio](../content/audio/vicestudio/) — Local-first AI voice studio for voice cloning, design, dubbing, dictation, and audiobook narration in 646 languages. Use when you need local-first speech synthesis, voice cloning, or audiobook narration.
+  `voice-cloning` `dubbing` `audiobook` `local-first`
 
 - [video-director](../content/video-director/) — The Video Production Manager — manages ALL video production under 1ai-content. Delegates to HyperFrames, Remotion, AI video, and FFmpeg based on the task. Has memory via 1ai-hub brain, follows 1ai-rules, and reports to Content Director. Use when the user says 'make a video', 'create video', 'edit video', 'video strategy', or needs any video production work.
   `video` `director` `orchestrator` `production` `hyperframes`
@@ -471,8 +468,8 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [vilona-gm](../content/vilona-gm/) — Vilona — General Manager AI of the 1ai business kingdom. The single entry point that receives any business request and routes it to the right director (Content, Marketing, Sales), coordinates cross-director campaigns, and escalates to the human owner when authority is exceeded. Use when the user says 'Vilona', when a request spans multiple departments, or when starting any business-kingdom task.
   `vilona` `gm` `general-manager` `orchestrator` `business-kingdom`
 
-- [viral-content-creator](../content/viral-content-creator/) — Use when generating 50+ video variations from a single product image across TikTok, Instagram, Facebook, Twitter, and YouTube with hook-based A/B testing, viral score prediction, and autopilot scheduling.
-  `content` `content-creation` `creator` `digital-content` `media`
+- [viral-content-creator](../content/viral-content-creator/) — Use when generating 50+ video variations from one product image with hook-based A/B testing, viral score prediction, autopilot scheduling.
+  `content` `media` `testing` `video` `viral`
 
 - [viral-research-engine](../content/viral-research-engine/) — Use when researching trending topics, generating viral hooks, finding content gaps, analyzing competitors, and getting hashtag recommendations for Indonesian short-form video creators on TikTok, Reels, and Shorts.
   `content-creation` `digital-content` `engine` `media` `research`
@@ -656,7 +653,7 @@ Browse in [`core/_index.md`](../core/_index.md).
 
 ### Cybersecurity (cybersecurity/)
 
-_Total: 801 skills_
+_Total: 810 skills_
 
 Browse in [`cybersecurity/_index.md`](../cybersecurity/_index.md).
 
@@ -944,6 +941,15 @@ Browse in [`cybersecurity/_index.md`](../cybersecurity/_index.md).
 
 - [binary-breaker](../cybersecurity/binary-breaker/) — Use when binary exploitation and reverse engineering for finding zero-days in compiled software. Use when analyzing binaries, finding memory corruption bugs, reverse engineering firmware, or hunting bugs in C/C++ applications.
   `binary` `breaker` `cybersecurity` `security` `exploit`
+
+- [blue-team-digital-forensics-and-incident-response](../cybersecurity/blue-team-digital-forensics-and-incident-response/) — Use when conducting forensic endpoint investigation, disk artifact analysis, partition recovery, and incident response operations using SANS SIFT, Autopsy, The Sleuth Kit, TestDisk, Extundelete, and Recuva to reconstruct adversary activity and restore compromised systems.
+  `digital-forensics` `incident-response` `data-recovery` `autopsy` `sift`
+
+- [blue-team-threat-hunting-tools](../cybersecurity/blue-team-threat-hunting-tools/) — Use when orchestrating blue team threat hunting operations across networks and endpoints using hunt.io, threathunt.app, Validin, maltrail, SysmonSearch, procfilter, and Phishing Catcher to detect and disrupt active adversary infrastructure and campaigns.
+  `threat-hunting` `blue-team` `soc` `detection`
+
+- [blue-team-tools-catalog](../cybersecurity/blue-team-tools-catalog/) — Use when querying, evaluating, or orchestrating 70+ defensive security tools from the A-poc/BlueTeam-Tools index across threat hunting, network discovery, vulnerability management, security monitoring, and forensics.
+  `blue-team` `defense` `threat-hunting` `incident-response` `soc`
 
 - [bounty-target-finder](../cybersecurity/bounty-target-finder/) — Use when find and prioritize high-paying bug bounty programs. Use when discovering new targets, comparing bounty payouts, filtering programs by scope, or building a target pipeline for continuous hunting.
   `bounty` `cybersecurity` `finder` `money` `pipeline`
@@ -2934,6 +2940,24 @@ Browse in [`cybersecurity/_index.md`](../cybersecurity/_index.md).
 - [recovering-from-ransomware-attack](../cybersecurity/recovering-from-ransomware-attack/) — Use when executing structured recovery from a ransomware incident following NIST and CISA frameworks, including environment isolation, forensic evidence preservation, clean infrastructure rebuild, prioritized system restoration from verified backups, credential reset, and validation against re-infection. Covers Active Directory recovery, database restoration, and application stack rebuild in dependency order.
   `ransomware` `recovery` `incident-response` `backup` `defense`
 
+- [red-team-credential-access-and-lateral-movement](../cybersecurity/red-team-credential-access-and-lateral-movement/) — Use when orchestrating credential dumping, LSASS extraction, DPAPI looting, and lateral movement operations using Mimikatz, nanodump, dploot, crackmapexec, and Coercer during authorized red team engagements.
+  `red-team` `credential-access` `lateral-movement` `mimikatz` `hashcat`
+
+- [red-team-exfiltration-and-impact](../cybersecurity/red-team-exfiltration-and-impact/) — Use when orchestrating covert data exfiltration, C2 infrastructure deployment, and non-destructive impact demonstration using Dnscat2, Cloakify, PyExfil, Havoc, Covenant, and SlowLoris during authorized red team engagements.
+  `red-team` `exfiltration` `c2` `impact` `data-collection`
+
+- [red-team-privilege-escalation-and-discovery](../cybersecurity/red-team-privilege-escalation-and-discovery/) — Use when orchestrating privilege escalation and AD discovery during authorized red team engagements, covering Windows/Linux PE tools (LinPEAS, WinPEAS, BeRoot), AD enumeration (Certify, BloodHound, Snaffler, Get-GPPPassword), and defensive access-control bypass (AppLocker, PowerLessShell).
+  `red-team` `privilege-escalation` `active-directory` `windows-pe` `ad-enum`
+
+- [red-team-recon-and-initial-access](../cybersecurity/red-team-recon-and-initial-access/) — Use when orchestrating automated target reconnaissance, subdomain enumeration, cloud bucket discovery, and initial access campaigns using reconFTW, subzy, certSniff, CloudBrute, CredMaster, and King Phisher during authorized red team engagements.
+  `red-team` `reconnaissance` `initial-access` `osint` `phishing`
+
+- [red-team-resource-development-and-evasion](../cybersecurity/red-team-resource-development-and-evasion/) — Use when engineering evasion payloads, obfuscating scripts, bypassing EDR hooks, and crafting weaponized delivery documents using Freeze, ScareCrow, Invoke-Obfuscation, Alcatraz, and SharpBlock during authorized red team engagements.
+  `red-team` `payload` `evasion` `resource-development` `obfuscation`
+
+- [red-team-tools-catalog](../cybersecurity/red-team-tools-catalog/) — Use when querying, evaluating, or orchestrating 150+ offensive security tools from the A-poc/RedTeam-Tools index across reconnaissance, resource development, initial access, execution, persistence, and evasion.
+  `red-team` `offensive-security` `pentesting` `cyber` `attack`
+
 - [remediating-s3-bucket-misconfiguration](../cybersecurity/remediating-s3-bucket-misconfiguration/) — Use when this skill provides step-by-step procedures for identifying and remediating Amazon S3 bucket misconfigurations that expose sensitive data to unauthorized access. It covers enabling S3 Block Public Access at account and bucket levels, auditing bucket policies and ACLs, enforcing encryption, configuring access logging, and deploying automated remediation using AWS Config and Lambda.
   `s3-security` `bucket-misconfiguration` `data-exposure` `public-access-block` `aws-config`
 
@@ -3669,7 +3693,7 @@ _Total: 29 skills_
 
 Browse in [`integrations/_index.md`](../integrations/_index.md).
 
-- [21st-dev](../integrations/21st-dev/) — Use when UI component registry for AI coding agents — search, generate, and publish React/Next.js/Tailwind components via MCP. 12,000+ community components, logo search, design system tokens, theme generation. Use when building UI with agent, need production components, want to publish/share components.
+- [21st-dev](../integrations/21st-dev/) — Use when building UI with an AI agent and need production-ready React/Next.js/Tailwind components — search 12,000+ community components, generate new UI, search brand logos, and publish components via MCP (formerly Magic MCP).
   `ui` `components` `registry` `mcp` `react`
 
 - [bigquery-integration](../integrations/bigquery-integration/) — Use when integrate Google BigQuery for large-scale data analytics. Write SQL queries, manage datasets, export results, and build data pipelines. Use when integrateing google bigquery for large-scale data analytics. write sql queries,.
@@ -4528,4 +4552,4 @@ Browse in [`trading/_index.md`](../trading/_index.md).
   `algorithms` `asia` `breakout` `markets` `money`
 
 ---
-_Generated from 1438 skills across 20 categories._
+_Generated from 1440 skills across 19 categories._

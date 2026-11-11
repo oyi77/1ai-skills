@@ -66,8 +66,9 @@ def run_checks() -> None:
 
     _dt = route("design tokens", top=5)
     _dt_names = [r["name"] for r in _dt]
-    assert any(n in _dt_names[:3] for n in ("design-tokens", "theme-factory")), (
-        f"neither design-tokens nor theme-factory in top-3 for 'design tokens': {_dt_names}"
+    # design-tokens was consolidated into design-system as canonical parent.
+    assert any(n in _dt_names[:3] for n in ("design-system", "theme-factory")), (
+        f"neither design-system nor theme-factory in top-3 for 'design tokens': {_dt_names}"
     )
 
     _rml = route("responsive mobile layout", top=5)

@@ -35,7 +35,7 @@ category: content
 ## When NOT to Use
 
 - For photo editing (use image editors)
-- For UI component design (use `frontend-ui-design`)
+- For UI component design (use `frontend-design`)
 - For video content (use video generation skills)
 
 ## Overview

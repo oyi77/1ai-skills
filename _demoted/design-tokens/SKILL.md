@@ -175,4 +175,4 @@ Token systems are the substrate; these skills are the consumers that judge them:
 - `impeccable` — extracts and documents a project's existing tokens into `DESIGN.md` before any design work.
 ## Video / Motion Graphics
 
-Design tokens ensure brand consistency across [Remotion](../video/remotion/SKILL.md) video compositions. Define brand colors, spacing, and typography tokens once, use across all video scenes. Tokens map directly to CSS custom properties in Remotion components.
+Design tokens ensure brand consistency across [Remotion](../../content/video/remotion/SKILL.md) video compositions. Define brand colors, spacing, and typography tokens once, use across all video scenes. Tokens map directly to CSS custom properties in Remotion components.

@@ -24,8 +24,7 @@ category: content
 
 # Remotion — Professional Programmatic Video
 
-Canonical source: [remotion-dev/skills](https://github.com/remotion-dev/skills) (401K+ installs on skills.sh).
-Companion skills: [video-editor](../editor/SKILL.md) · [video-gen](../gen/SKILL.md) · [faceless-youtube](../faceless-youtube/SKILL.md) · [auto-clipper](../auto-clipper/SKILL.md) · [b-roll-finder](../b-roll-finder/SKILL.md) · Frontend: [tailwind-advanced](../../tailwind-advanced/SKILL.md) · [frontend-design](../../frontend-design/SKILL.md) · [shadcn-ui](../../shadcn-ui/SKILL.md) · [design-tokens](../../design-tokens/SKILL.md)
+Companion skills: [video-editor](../editor/SKILL.md) · [video-gen](../gen/SKILL.md) · [faceless-youtube](../faceless-youtube/SKILL.md) · [auto-clipper](../auto-clipper/SKILL.md) · [b-roll-finder](../b-roll-finder/SKILL.md) · Frontend: [tailwind-advanced](../../tailwind-advanced/SKILL.md) · [frontend-design](../../frontend-design/SKILL.md) · [shadcn-ui](../../shadcn-ui/SKILL.md) · [design-tokens](../../_demoted/design-tokens/SKILL.md)
 
 ## When to Use
 
@@ -316,7 +315,7 @@ Remotion components are React — you can (and should) use frontend skills for s
 | [tailwind-advanced](../../tailwind-advanced/SKILL.md) | Install via `@remotion-dev/tailwind` package. Use for rapid styling of cards, badges, layouts. |
 | [frontend-design](../../frontend-design/SKILL.md) | Typography hierarchy, spacing rhythm, visual hierarchy — all apply to video frames. |
 | [shadcn-ui](../../shadcn-ui/SKILL.md) | Use shadcn components (Card, Badge, Button) as visual building blocks in product demos and dashboard mockups. |
-| [design-tokens](../../design-tokens/SKILL.md) | Define brand colors, spacing, typography tokens once, use across all compositions. |
+| [design-tokens](../../_demoted/design-tokens/SKILL.md) | Define brand colors, spacing, typography tokens once, use across all compositions. |
 | [styled-components](../../styled-components/SKILL.md) | Works in Remotion. Good for dynamic styles driven by frame number. |
 
 ### What does NOT transfer

@@ -2,7 +2,7 @@
 > Auto-generated codebase memory for AI agents. Last updated: 2026-11-05.
 
 ## Purpose
-The world's largest open-source AI agent skill ecosystem — 1442 production-ready skills across 19 categories with self-evolving meta-skills that auto-find, auto-create, and auto-evolve capabilities.
+The world's largest open-source AI agent skill ecosystem — 1440 production-ready skills across 19 categories with self-evolving meta-skills that auto-find, auto-create, and auto-evolve capabilities.
 
 ## Tech Stack
 - **Languages**: JavaScript, Python, Bash, Markdown

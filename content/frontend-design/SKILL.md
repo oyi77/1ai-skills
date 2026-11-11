@@ -178,3 +178,4 @@ Typography hierarchy, spacing rhythm, and visual hierarchy apply directly to [Re
 | Sub-Skill | Trigger / Kasus Penggunaan | Berkas Referensi |
 | :--- | :--- | :--- |
 | `storybook-ui` | Developing, testing, and documenting isolated UI components with stories, controls, accessibility, and visual regression | [SKILL.md](../storybook-ui/SKILL.md) |
+| `frontend-ui-design` | Production-grade UI component architecture, responsive grids, WCAG accessibility, cross-browser compat, CSS specificity battles | [SKILL.md](../../_demoted/frontend-ui-design/SKILL.md) |

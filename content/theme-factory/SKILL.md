@@ -40,7 +40,7 @@ category: content
 
 ## When NOT to Use
 
-- For implementing existing designs (use `frontend-ui-design`)
+- For implementing existing designs (use `frontend-design`)
 - For logo design (use image generation skills)
 - For content creation (use content skills)
 

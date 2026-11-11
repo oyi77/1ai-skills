@@ -1,10 +1,10 @@
 {
-  "total_skills": 1442,
+  "total_skills": 1440,
   "category_count": 19,
   "categories": {
     "agents": 16,
     "automation": 21,
-    "content": 109,
+    "content": 107,
     "core": 53,
     "cybersecurity": 810,
     "data": 8,
@@ -1626,33 +1626,6 @@
       "type": "content"
     },
     {
-      "name": "design-tokens",
-      "category": "content",
-      "description": "Use when design token systems — color, typography, spacing, and theme architecture for consistent design. Use when designing token systems — color, typography, spacing, and theme architecture.",
-      "domain": "content",
-      "tags": [
-        "content-creation",
-        "design",
-        "digital-content",
-        "media",
-        "tokens"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "content-creation",
-      "roles": [
-        "ui-ux-designer"
-      ],
-      "triggers": [
-        "design-tokens",
-        "token system",
-        "css variables",
-        "design tokens",
-        "color token"
-      ],
-      "type": "content"
-    },
-    {
       "name": "digital-real-estate",
       "category": "content",
       "description": "Use when build and manage a portfolio of niche content sites generating affiliate and AdSense revenue with AI handling research, writing, SEO, and updates. Use when building and manage a portfolio of niche content sites generating.",
@@ -1797,33 +1770,6 @@
         "revamp design",
         "design task",
         "ui design work"
-      ],
-      "type": "content"
-    },
-    {
-      "name": "frontend-ui-design",
-      "category": "content",
-      "description": "Use when design and build production-grade UI components using React, Vue, or vanilla HTML/CSS. Create responsive layouts, design systems, and accessible interfaces. Use when designing and build production-grade ui components using react, vue, or.",
-      "domain": "content",
-      "tags": [
-        "design",
-        "frontend",
-        "ui",
-        "react",
-        "css",
-        "components",
-        "responsive"
-      ],
-      "version": "1.0.0",
-      "author": "oyi77",
-      "subdomain": "content-creation",
-      "roles": [
-        "ui-ux-designer"
-      ],
-      "triggers": [
-        "frontend-ui-design",
-        "ui components",
-        "production ui"
       ],
       "type": "content"
     },

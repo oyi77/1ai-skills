@@ -2,7 +2,7 @@
 
 ## Skills in Cybersecurity
 
-_Total: 801_
+_Total: 810_
 
 - [acquiring-disk-image-with-dd-and-dcfldd](./acquiring-disk-image-with-dd-and-dcfldd/) — Use when create forensically sound bit-for-bit disk images using dd and dcfldd while preserving e...
   `forensics` `disk-imaging` `evidence-acquisition` `dd` `dcfldd`
@@ -279,6 +279,15 @@ _Total: 801_
 
 - [binary-breaker](./binary-breaker/) — Use when binary exploitation and reverse engineering for finding zero-days in compiled software. ...
   `binary` `breaker` `cybersecurity` `security` `exploit`
+
+- [blue-team-digital-forensics-and-incident-response](./blue-team-digital-forensics-and-incident-response/) — Use when conducting forensic endpoint investigation, disk artifact analysis, partition recovery, ...
+  `digital-forensics` `incident-response` `data-recovery` `autopsy` `sift`
+
+- [blue-team-threat-hunting-tools](./blue-team-threat-hunting-tools/) — Use when orchestrating blue team threat hunting operations across networks and endpoints using hu...
+  `threat-hunting` `blue-team` `soc` `detection`
+
+- [blue-team-tools-catalog](./blue-team-tools-catalog/) — Use when querying, evaluating, or orchestrating 70+ defensive security tools from the A-poc/BlueT...
+  `blue-team` `defense` `threat-hunting` `incident-response` `soc`
 
 - [bounty-target-finder](./bounty-target-finder/) — Use when find and prioritize high-paying bug bounty programs. Use when discovering new targets, c...
   `bounty` `cybersecurity` `finder` `money` `pipeline`
@@ -2199,6 +2208,24 @@ _Total: 801_
 
 - [recovering-from-ransomware-attack](./recovering-from-ransomware-attack/) — Use when executing structured recovery from a ransomware incident following NIST and CISA framewo...
   `ransomware` `recovery` `incident-response` `backup` `defense`
+
+- [red-team-credential-access-and-lateral-movement](./red-team-credential-access-and-lateral-movement/) — Use when orchestrating credential dumping, LSASS extraction, DPAPI looting, and lateral movement ...
+  `red-team` `credential-access` `lateral-movement` `mimikatz` `hashcat`
+
+- [red-team-exfiltration-and-impact](./red-team-exfiltration-and-impact/) — Use when orchestrating covert data exfiltration, C2 infrastructure deployment, and non-destructiv...
+  `red-team` `exfiltration` `c2` `impact` `data-collection`
+
+- [red-team-privilege-escalation-and-discovery](./red-team-privilege-escalation-and-discovery/) — Use when orchestrating privilege escalation and AD discovery during authorized red team engagemen...
+  `red-team` `privilege-escalation` `active-directory` `windows-pe` `ad-enum`
+
+- [red-team-recon-and-initial-access](./red-team-recon-and-initial-access/) — Use when orchestrating automated target reconnaissance, subdomain enumeration, cloud bucket disco...
+  `red-team` `reconnaissance` `initial-access` `osint` `phishing`
+
+- [red-team-resource-development-and-evasion](./red-team-resource-development-and-evasion/) — Use when engineering evasion payloads, obfuscating scripts, bypassing EDR hooks, and crafting wea...
+  `red-team` `payload` `evasion` `resource-development` `obfuscation`
+
+- [red-team-tools-catalog](./red-team-tools-catalog/) — Use when querying, evaluating, or orchestrating 150+ offensive security tools from the A-poc/RedT...
+  `red-team` `offensive-security` `pentesting` `cyber` `attack`
 
 - [remediating-s3-bucket-misconfiguration](./remediating-s3-bucket-misconfiguration/) — Use when this skill provides step-by-step procedures for identifying and remediating Amazon S3 bu...
   `s3-security` `bucket-misconfiguration` `data-exposure` `public-access-block` `aws-config`
