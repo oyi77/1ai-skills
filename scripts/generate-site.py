@@ -984,7 +984,7 @@ doc.save('report.docx')</code></pre>
         <p>Complex tasks benefit from multiple skills working together.</p>
         <h3>Example: Product Launch Pipeline</h3>
         <pre><code># 1. spec-driven-development  -  Define what to build
-# 2. frontend-ui-design  -  Build the UI
+# 2. frontend-design  -  Build the UI
 # 3. browser-testing-devtools  -  Test the UI
 # 4. docx-creator  -  Generate user documentation
 # 5. marketing-ops  -  Plan the launch campaign
