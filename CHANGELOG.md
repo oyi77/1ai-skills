@@ -44,8 +44,16 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 - Updated active registry in `SKILLS.json` from 1398 to **1188** skills across 19 categories.
 - Synchronized counts across `README.md`, `AGENTS.md`, `package.json`, `llms.txt`, and `scripts/generate-site.py` (dynamic catalog counts and canonical captured test receipt).
 - Refreshed `README.md` and `AGENTS.md` counts from the active registry, including per-category numbers.
+- Wave 12: demoted `content/frontend-ui-design` and `content/design-tokens` to `_demoted/` (outside all `SKILL_DIRS` globs so `lint-skills.py --write` never re-admits them). Physical files retained; `content/frontend-design` and `content/design-system` now carry the `## Sub-Skills & Specialized Playbooks` routing rows; inbound `SKILL.md` links repointed in `canvas-design`, `theme-factory`, `design-system`, and `video/remotion`.
+- Wave 12 registry impact: content -2; active skills **1442 -> 1440** across 19 categories.
+- `content/design-taste`: new research-first UI taste skill backed by kage.design MCP (keyless Streamable HTTP at `https://kage.design/mcp`; `design_brief` / `search_designs` / `get_design` / `get_component` / `list_taxonomy`). Synthesizes one primary reference into a locked brief before build; delegates build to `hallmark` / `impeccable` / `anti-slop-frontend`.
+- `content/anti-slop-frontend`: added a mandatory Research Phase (styles -> screens -> synthesize -> reference lock) adapted from the MIT-licensed refero-design methodology, plus delegation-table rows routing research and token-extraction tasks.
+- `integrations/21st-dev`: added `triggers:` frontmatter (8 phrases), removed wrong "21st-century developer" Overview boilerplate and duplicated H1/Source lines, single "Use when..." description, restored `version: 1.1.0` + `category:` fields.
 ### Fixed
 - Fixed source-relative `SKILL.md` links in the video playbooks by replacing stale `video-editor` / `video-gen` directory aliases with the canonical `editor` / `gen` paths.
+- `content/design-md`: restored the displaced 5-section spec tree under `## Standard DESIGN.md Specification Structure` and added a `## Community Registry` pointer (`npx designmd.sh add <brand-name>`; free, no auth), mid-edit corruption repaired.
+- `content/emil-design-skills`: removed stray `persona:` YAML block that sat in the body outside frontmatter (invalid YAML location). `content/ui-styling`: description rewritten to a single `Use when...` clause under 400 chars with searchable tokens preserved.
+- `scripts/test_skill_router_regression.py`: the "design tokens" top-3 pin now expects the canonical parents (`design-system` / `theme-factory`) since raw `design-tokens` was demoted.
 - Updated `scripts/sync-skills.sh` to rebase relative `SKILL.md` links from categorized source paths to canonical frontmatter names in the flattened runtime, including unchanged copies. Frontmatter, fenced examples, and non-`SKILL.md` links remain untouched; all 317 source and runtime relative-link occurrences now resolve, repeated sync is idempotent, and all 20 external runtime entries are preserved.
 - Repaired 19 SKILL.md files with unbalanced (odd-count) code fences that swallowed
   structural headings. Inserted missing opening fences for 7 meta-skill boilerplate blocks
