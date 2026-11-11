@@ -1,14 +1,14 @@
 {
-  "generated": "2026-11-06T15:39:49.921769+00:00",
-  "total": 1432,
+  "generated": "2026-11-11T08:20:34.017472+00:00",
+  "total": 1446,
   "categories": [
     {
       "name": "cybersecurity",
-      "count": 801
+      "count": 810
     },
     {
       "name": "content",
-      "count": 108
+      "count": 107
     },
     {
       "name": "development",
@@ -77,13 +77,17 @@
     {
       "name": "data",
       "count": 8
+    },
+    {
+      "name": "other",
+      "count": 6
     }
   ],
-  "categoryCount": 19,
+  "categoryCount": 20,
   "featured": [
     {
       "name": "21st-dev",
-      "description": "Use when UI component registry for AI coding agents \u2014 search, generate, and publish React/Next.js/Tailwind components via MCP. 12,000+ community components, log",
+      "description": "Use when building UI with an AI agent and need production-ready React/Next.js/Tailwind components \u2014 search 12,000+ community components, generate new UI, search",
       "category": "integrations"
     },
     {
@@ -930,6 +934,18 @@
       "category": "trading"
     },
     {
+      "name": "blue-team-digital-forensics-and-incident-response",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "blue-team-threat-hunting-tools",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "blue-team-tools-catalog",
+      "category": "cybersecurity"
+    },
+    {
       "name": "book-to-skill",
       "category": "core"
     },
@@ -1694,12 +1710,12 @@
       "category": "content"
     },
     {
-      "name": "design-thinking",
-      "category": "mindset"
+      "name": "design-taste",
+      "category": "content"
     },
     {
-      "name": "design-tokens",
-      "category": "content"
+      "name": "design-thinking",
+      "category": "mindset"
     },
     {
       "name": "detecting-ai-model-prompt-injection-attacks",
@@ -2423,10 +2439,6 @@
     },
     {
       "name": "frontend-design",
-      "category": "content"
-    },
-    {
-      "name": "frontend-ui-design",
       "category": "content"
     },
     {
@@ -4954,6 +4966,30 @@
       "category": "cybersecurity"
     },
     {
+      "name": "red-team-credential-access-and-lateral-movement",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "red-team-exfiltration-and-impact",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "red-team-privilege-escalation-and-discovery",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "red-team-recon-and-initial-access",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "red-team-resource-development-and-evasion",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "red-team-tools-catalog",
+      "category": "cybersecurity"
+    },
+    {
       "name": "refactor-agent",
       "category": "agents"
     },
@@ -5058,8 +5094,32 @@
       "category": "core"
     },
     {
+      "name": "role-cco",
+      "category": "other"
+    },
+    {
+      "name": "role-ceo",
+      "category": "other"
+    },
+    {
+      "name": "role-cfo",
+      "category": "other"
+    },
+    {
+      "name": "role-cmo",
+      "category": "other"
+    },
+    {
       "name": "role-content-creator",
       "category": "content"
+    },
+    {
+      "name": "role-coo",
+      "category": "other"
+    },
+    {
+      "name": "role-cto",
+      "category": "other"
     },
     {
       "name": "role-customer-support",

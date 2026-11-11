@@ -21,6 +21,8 @@ def get_fm(content):
 
 cats, skills = {}, []
 for root, dirs, files in os.walk(REPO):
+    if '_demoted' in dirs:
+        dirs.remove('_demoted')
     if '.git' in root: continue
     for f in files:
         if f != 'SKILL.md': continue
