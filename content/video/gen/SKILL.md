@@ -44,11 +44,6 @@ Companion skills: [video-editor](../editor/SKILL.md) · [remotion](../remotion/S
 - Generate B-roll footage for longer productions
 - Multi-modal generation (image + video + audio references)
 
-**When NOT to use:**
-- For programmatic/data-driven video (use [remotion](../remotion/SKILL.md))
-- For post-production editing of existing footage (use [video-editor](../editor/SKILL.md))
-- For building YouTube channels at scale (use [faceless-youtube](../faceless-youtube/SKILL.md))
-- When you need frame-precise control (use [remotion](../remotion/SKILL.md))
 
 
 ## When NOT to Use
@@ -57,7 +52,6 @@ Companion skills: [video-editor](../editor/SKILL.md) · [remotion](../remotion/S
 - Post-production editing of existing footage (use [video-editor](../editor/SKILL.md))
 - Building YouTube channels at scale (use [faceless-youtube](../faceless-youtube/SKILL.md))
 - Frame-precise control (use [remotion](../remotion/SKILL.md))
----
 
 ## Overview
 

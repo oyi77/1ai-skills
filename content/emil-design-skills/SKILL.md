@@ -67,12 +67,23 @@ This is **domain expertise as code**. AI doesn't replace taste — it amplifies 
 - Looking for where motion adds value (and where it doesn't)
 - You want your agent to build interfaces that stand out from AI slop
 
-**Don't use for:**
+## When NOT to Use
+
+General code review (non-motion changes)
+Brand/graphic design (logos, illustrations)
+Backend or infrastructure decisions
 - General code review (non-motion changes)
 - Brand/graphic design (logos, illustrations)
 - Backend or infrastructure decisions
 
+## When NOT to Use
+
+- General code review (non-motion changes)
+- Brand/graphic design (logos, illustrations)
+- Backend or infrastructure decisions
 ---
+
+
 
 
 

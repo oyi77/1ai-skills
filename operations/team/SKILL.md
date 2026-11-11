@@ -132,6 +132,12 @@ The operational cadence follows a standard pattern across daily, weekly, and mon
 4. **Resolve** — Apply fix, verify service restoration, close the incident.
 5. **Review** — Post-incident review (PIR) within 48 hours. Capture what happened, response timeline, what went well, what to improve.
 
+
+```bash
+# Operational triage commands used in daily cadence
+grep -E "SEV[1-3]" incidents.log | sort -u
+```
+
 ## Verification
 
 Use this checklist to confirm an operational process or SOP is ready for production:

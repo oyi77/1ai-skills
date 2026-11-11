@@ -54,7 +54,7 @@ Ponytail is a disciplined engineering mindset with four modes: **Audit** (finds 
 
 **Review** — review a diff for over-engineering. One line per finding: location, what to cut, what replaces it. The diff's best outcome is getting shorter.
 
-### When NOT to Use
+## When NOT to Use
 
 - Production incidents requiring immediate fix — apply the fix, then audit.
 - Decisions requiring product or business judgment — ponytail is a code-quality tool.

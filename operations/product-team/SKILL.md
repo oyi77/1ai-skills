@@ -44,13 +44,12 @@ category: operations
 - Cross-team dependencies need tracking and resolution
 - Stakeholders request visibility into what is being built and when
 
-**When NOT to use:**
+## When NOT to Use
+
 - For processes that change daily (too much overhead)
 - When the team is too small to benefit from structured product management
 - For one-time events that will not repeat
 - Task is purely technical implementation without product decisions
-- You need project management only (use project management workflows)
-- The scope is a quick experiment with no planned iteration
 
 ## Overview
 

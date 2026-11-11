@@ -80,6 +80,12 @@ echo "Net: +$((added - removed)) lines — aim to cut $((added / 2))"
 
 Use when review a diff for over-engineering. Finds what to delete — reinvented stdlib, needless deps, speculative abstractions.
 
+## When NOT to Use
+
+- No diff exists yet — review mode analyzes staged changes or an existing before/after, not ideas
+- Explaining or debugging code — review mode only flags over-engineering patterns
+- Decisions requiring product or business judgment — review is a code-quality tool
+
 ## Workflow
 
 Execute these steps sequentially:

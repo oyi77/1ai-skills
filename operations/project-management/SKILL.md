@@ -166,6 +166,13 @@ The project management process applies at three levels:
 
 Before closing a sprint or project, run through this checklist:
 
+```bash
+# Check sprint board health via Notion API
+curl -s -H "Authorization: Bearer $NOTION_TOKEN" \
+  "https://api.notion.com/v1/databases/$DB_ID/query" | jq '.results | length'
+```
+
+
 - [ ] All committed items are in Done with a definition of done met
 - [ ] The board reflects the current reality (no stale In Progress items)
 - [ ] Decision log is up to date with this sprint's key decisions

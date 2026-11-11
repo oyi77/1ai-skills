@@ -81,6 +81,13 @@ echo "Total: $(wc -l < /tmp/ponytail-comments.txt) entries"
 
 Use when harvest ponytail shortcut comments into one debt ledger so deferrals get tracked instead of forgotten.
 
+## When NOT to Use
+
+- One-off tasks with no deliberate deferral to track
+- Immediate fixes where the shortcut can be removed now instead of logged
+- General TODO lists without a `ponytail:` ceiling and upgrade path
+
+
 ## Workflow
 
 Execute these steps sequentially:

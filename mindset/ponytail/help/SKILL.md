@@ -74,6 +74,13 @@ Options:
 
 Use when quick reference for ponytail modes, skills, and commands. One-shot display.
 
+## When NOT to Use
+
+- Active debugging where a fix is already in progress — help is read-only reference
+- Tasks requiring file writes or mode changes — help never persists anything
+- Deep documentation needs — read the full parent skill instead
+
+
 ## Workflow
 
 Execute these steps sequentially:

@@ -754,6 +754,14 @@ PASS 3: LINE EDIT (street level)
 
 Use this skill when writing novels, short stories, or any fiction. Covers the full pipeline: outlining → character creation → world-building → drafting (with interrupt-resume and parallel writing) → auto-validation → revision. Best suited for novel-length fiction (40K–150K words), web serials, picture books (300–800 words), middle grade novels (25K–50K words), and Indonesian-language fiction for the pasar penerbitan Indonesia. For kids books, follow the Kids Book Writing section for age-appropriate craft. For Indonesian fiction, follow the Buku Bahasa Indonesia section for market-specific conventions.
 
+## When NOT to Use
+
+- Non-fiction or technical writing — this skill covers fiction only
+- Short social posts (under ~500 words) — use content/writing instead
+- Business documentation, PRDs, or marketing copy — those are not fiction
+- When the user wants a single sentence or paragraph — use direct writing
+
+
 ## Process
 
 
