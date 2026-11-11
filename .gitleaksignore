@@ -2,3 +2,7 @@
 # - operations/jira/SKILL.md: switched -u user:token → Bearer header
 # - trading/smart-contract-dev/SKILL.md: extracted error name via concatenation
 # Both patterns no longer match gitleaks rules.
+
+# False positives: test fixture tokens in documentation examples
+# - agents/agent-alignment-audit/SKILL.md:104 — curl-auth-header
+agents/agent-alignment-audit/SKILL.md:curl-auth-header:104
