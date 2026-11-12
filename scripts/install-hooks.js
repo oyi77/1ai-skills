@@ -167,19 +167,18 @@ function install() {
   ensureDir(CLAUDE_HOOKS_DIR);
   ensureDir(METRICS_DIR);
 
-  // 2. Copy auto-evolve hook scripts
-  const evolveHooks = manifest.hooks && manifest.hooks['auto-evolve'];
-  if (!evolveHooks) {
-    console.error('[1ai-skills] No auto-evolve hooks in manifest');
-    process.exit(1);
-  }
-
+  // 2. Copy hook scripts (auto-evolve + role-router groups)
+  const hookGroups = ['auto-evolve', 'role-router'];
   let copied = 0;
-  for (const def of Object.values(evolveHooks)) {
-    const src = path.join(PKG_ROOT, def.script);
-    const dest = path.join(CLAUDE_HOOKS_DIR, path.basename(def.script));
-    if (copyIfChanged(src, dest)) {
-      copied++;
+  for (const groupName of hookGroups) {
+    const group = manifest.hooks && manifest.hooks[groupName];
+    if (!group) continue;
+    for (const def of Object.values(group)) {
+      const src = path.join(PKG_ROOT, def.script);
+      const dest = path.join(CLAUDE_HOOKS_DIR, path.basename(def.script));
+      if (copyIfChanged(src, dest)) {
+        copied++;
+      }
     }
   }
   console.log(`[1ai-skills] Copied ${copied} hook script(s) to ${CLAUDE_HOOKS_DIR}`);
@@ -189,7 +188,16 @@ function install() {
   const hooks = settings.hooks || (settings.hooks = {});
   let added = 0;
 
-  for (const def of Object.values(evolveHooks)) {
+  const allHookDefs = [];
+  for (const groupName of hookGroups) {
+    const group = manifest.hooks && manifest.hooks[groupName];
+    if (!group) continue;
+    for (const def of Object.values(group)) {
+      allHookDefs.push(def);
+    }
+  }
+
+  for (const def of allHookDefs) {
     const scriptPath = path.join(CLAUDE_HOOKS_DIR, path.basename(def.script));
     const hookType = def.type;
 

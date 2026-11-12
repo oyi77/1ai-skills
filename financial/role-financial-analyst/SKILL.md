@@ -74,7 +74,7 @@ The analyst maintains verifiable audit trails through every reconciliation and r
 | Financial Scope / Analytical Objective | Delegated Child Skill | Primary Financial Artifact |
 |---|---|---|
 | Comprehensive financial data extraction, ticker analysis, market ratios | `financial/all-in-one-finance` | Multi-asset financial overview and key financial ratios |
-| Real-time multi-stream revenue tracking, cashflow burn, runway alerts | `financial/finance-tracker` | Cashflow telemetry, runway runway projection, gap alerts |
+| Real-time multi-stream revenue tracking, cashflow burn, runway alerts | `financial/finance-tracker` | Cashflow telemetry, runway projection, gap alerts |
 | Strategic CFO operational modeling, cost optimization, capital planning | `operations/finance-ops` | Operational budget models and cost-reduction plans |
 | Building dynamic 3-statement models, DCF, LBO, and scenario forecasts | `financial/model-builder` | Formula-linked financial models with sensitivity tables |
 | Auditing private equity / venture GP packages, NAV, and LP statements | `financial/valuation-reviewer` | Valuation review memorandum with empirical comps |
@@ -92,7 +92,7 @@ The analyst maintains verifiable audit trails through every reconciliation and r
 ### Phase 2: General Ledger Reconciliation & Break Resolution
 
 1. Dispatch to `financial/gl-reconciler` to match transactions between bank statements and sub-ledgers.
-2. Assert double-entry equality: sum of debits must identically equal sum of credits ($$\sum \text{Debits} - \sum \text{Credits} = 0$$).
+2. Assert double-entry equality: sum of debits must identically equal sum of credits (SUM(Debits) - SUM(Credits) = 0).
 3. If breaks are detected, trace transaction IDs, timing lags, and currency exchange variances to produce an adjusting journal entry.
 
 ### Phase 3: Three-Statement Financial Modeling
@@ -190,11 +190,9 @@ print('SUCCESS: Balance sheet equation holds (Assets == Liabilities + Equity).')
 
 ## Verification Checklist
 
-- [ ] Double-entry accounting invariants hold ($$\sum \text{Debits} == \sum \text{Credits}$$).
+- [ ] Double-entry accounting invariants hold (SUM(Debits) == SUM(Credits)).
 - [ ] General ledger reconciliations contain zero unexplained breaks or plug figures.
 - [ ] Three financial statements (Income, Balance Sheet, Cash Flow) are dynamically and mathematically linked.
 - [ ] Valuation discount rates (WACC) and terminal growth rates are grounded in macro benchmarks.
 - [ ] Financial runway and burn rates are tracked with automated gap alerting.
 - [ ] Full audit trail documented for all adjusting entries and financial statement changes.
-
-`npm install -g cli-tool`

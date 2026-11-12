@@ -21,7 +21,7 @@ done
 
 # Category directories that contain skills
 CATEGORIES=(
-  agents content core development integrations marketing meta mindset
+  agents content corporate core development integrations marketing meta mindset
   operations productivity research sales trading data devops
   cybersecurity automation financial mcp
 )

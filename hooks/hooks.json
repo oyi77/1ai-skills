@@ -13,6 +13,9 @@
       "command": "bash hooks/post-task.sh",
       "description": "Log skill performance after task completion"
     },
+    "role-router": {
+      "auto-suggest": { "type": "UserPromptSubmit", "script": "hooks/skill-router-prompt.js", "timeout": 5 }
+    },
     "auto-evolve": {
       "tracker": { "type": "PostToolUse", "matcher": "Skill", "script": "hooks/auto-evolve/skill-tracker.js" },
       "banner": { "type": "PostToolUse", "matcher": "Skill", "script": "hooks/auto-evolve/skill-banner.js", "timeout": 3 },
