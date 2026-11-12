@@ -1,6 +1,6 @@
 ---
 name: godfile-ratchet-split
-description: Carving monolithic god-files and oversized modules into decoupled domain units behind backward-compatible barrel facades with ratchet size caps. Use when refactoring complex legacy files, breaking 800-line limits, or eliminating circular dependency webs.
+description: Use when carving monolithic god-files into decoupled domain modules. Carving monolithic god-files and oversized modules into decoupled domain units behind backward-compatible barrel facades with ratchet size caps. Use when refactoring complex legacy files, breaking 800-line limits, or eliminating circular dependency webs.
 domain: development
 subdomain: software-development
 author: oyi77
@@ -8,12 +8,12 @@ license: Apache-2.0
 version: 1.0.0
 category: development
 tags:
-  - refactoring
-  - god-file
-  - architecture
-  - clean-code
-  - modularization
-  - ratchet-test
+- refactoring
+- god-file
+- architecture
+- clean-code
+- modularization
+- ratchet-test
 ---
 
 ## Overview

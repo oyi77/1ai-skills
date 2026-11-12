@@ -1,6 +1,6 @@
 ---
 name: banner-design
-description: Banner design for social media, ads, web, print. 22 art direction styles, exact platform sizes, safe zones, export workflow. Use when creating banners, covers, headers for Facebook, Twitter, LinkedIn, YouTube, Instagram, Google Ads, website hero.
+description: Use when designing banners for social media, ads, web, or print. Banner design for social media, ads, web, print. 22 art direction styles, exact platform sizes, safe zones, export workflow. Use when creating banners, covers, headers for Facebook, Twitter, LinkedIn, YouTube, Instagram, Google Ads, website hero.
 domain: content
 author: claudekit
 license: MIT

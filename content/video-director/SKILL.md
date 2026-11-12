@@ -1,22 +1,24 @@
 ---
 name: video-director
-description: "The Video Production Manager — manages ALL video production under 1ai-content. Delegates to HyperFrames, Remotion, AI video, and FFmpeg based on the task. Has memory via 1ai-hub brain, follows 1ai-rules, and reports to Content Director. Use when the user says 'make a video', 'create video', 'edit video', 'video strategy', or needs any video production work."
-domain: "content-creation"
+description: Use when managing end-to-end video production under a single director role. The Video Production Manager — manages ALL video production under 1ai-content. Delegates to HyperFrames, Remotion, AI video, and FFmpeg based on the task. Has memory via 1ai-hub brain, follows 1ai-rules, and reports to Content Director. Use when the user says 'make a video', 'create video', 'edit video', 'video
+  strategy', or needs any video production work.
+domain: content-creation
+category: content
 tags:
-  - video
-  - director
-  - orchestrator
-  - production
-  - hyperframes
-  - remotion
-  - ai-video
-  - ffmpeg
-  - 1ai-content
-  - vilona
-version: "1.0.0"
-author: "oyi77"
-subdomain: "video-production"
-type: "content"
+- video
+- director
+- orchestrator
+- production
+- hyperframes
+- remotion
+- ai-video
+- ffmpeg
+- 1ai-content
+- vilona
+version: 1.0.0
+author: oyi77
+subdomain: video-production
+type: content
 license: Apache-2.0
 ---
 ## Overview

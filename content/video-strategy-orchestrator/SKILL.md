@@ -1,20 +1,21 @@
 ---
 name: video-strategy-orchestrator
-description: "Decides WHEN to use Remotion, HyperFrames, AI video generation, or a hybrid of all three. Use when building video production pipelines, choosing a video tool for a task, or when the user asks 'which video tool should I use?'. Evaluates input type, complexity, determinism needs, and output format to pick the right engine — or combine them. Read BEFORE starting any video production task in the 1ai ecosystem."
-domain: "content-creation"
+description: Use when deciding which video pipeline (Remotion, HyperFrames, AI generation) fits a brief. Evaluates input type, complexity, and output format to pick or combine engines.
+domain: content-creation
+category: content
 tags:
-  - video
-  - strategy
-  - orchestrator
-  - remotion
-  - hyperframes
-  - ai-video
-  - hybrid
-  - pipeline
-version: "1.0.0"
-author: "oyi77"
-subdomain: "video-production"
-type: "content"
+- video
+- strategy
+- orchestrator
+- remotion
+- hyperframes
+- ai-video
+- hybrid
+- pipeline
+version: 1.0.0
+author: oyi77
+subdomain: video-production
+type: content
 license: Apache-2.0
 ---
 ## Overview

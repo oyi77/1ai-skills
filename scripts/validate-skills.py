@@ -70,6 +70,12 @@ DOMAIN_ALIASES = {
     ("content", "content-creation"),
     ("content", "marketing"),
     ("content", "sales"),
+    # C-suite anchors live in corporate/ but own a functional domain.
+    ("corporate", "core"),
+    ("corporate", "content"),
+    ("corporate", "financial"),
+    ("corporate", "marketing"),
+    ("corporate", "operations"),
 }
 
 

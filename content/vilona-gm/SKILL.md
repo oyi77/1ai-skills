@@ -1,21 +1,23 @@
 ---
 name: vilona-gm
-description: "Vilona — General Manager AI of the 1ai business kingdom. The single entry point that receives any business request and routes it to the right director (Content, Marketing, Sales), coordinates cross-director campaigns, and escalates to the human owner when authority is exceeded. Use when the user says 'Vilona', when a request spans multiple departments, or when starting any business-kingdom task."
-domain: "content-creation"
+description: Use when acting as the General Manager AI coordinating the 1ai business kingdom. Vilona — General Manager AI of the 1ai business kingdom. The single entry point that receives any business request and routes it to the right director (Content, Marketing, Sales), coordinates cross-director campaigns, and escalates to the human owner when authority is exceeded. Use when the user says 'Vilona',
+  when a request spans multiple departments, or when starting any business-kingdom task.
+domain: content-creation
+category: content
 tags:
-  - vilona
-  - gm
-  - general-manager
-  - orchestrator
-  - business-kingdom
-  - coordinator
-  - directors
-  - 1ai-hub
-  - 1ai-rules
-version: "1.0.0"
-author: "oyi77"
-subdomain: "company-direction"
-type: "content"
+- vilona
+- gm
+- general-manager
+- orchestrator
+- business-kingdom
+- coordinator
+- directors
+- 1ai-hub
+- 1ai-rules
+version: 1.0.0
+author: oyi77
+subdomain: company-direction
+type: content
 license: Apache-2.0
 ---
 ## Overview

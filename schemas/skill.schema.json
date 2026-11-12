@@ -8,7 +8,7 @@
     "category": {
       "type": "string",
       "enum": [
-        "agents", "automation", "content", "content-creation", "core", "cybersecurity",
+        "agents", "automation", "content", "content-creation", "corporate", "core", "cybersecurity",
         "data", "development", "devops", "financial",
         "integrations", "marketing", "mcp", "meta", "mindset",
         "operations", "productivity", "research", "sales", "trading"

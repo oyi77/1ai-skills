@@ -170,3 +170,14 @@ print('SUCCESS: Biological replicate counts meet minimum statistical power (n >=
 - [ ] Statistical significance adjustments (FDR / Bonferroni) applied to high-throughput data.
 - [ ] Experimental laboratory protocols specify positive controls, negative controls, and replication limits (n >= 3).
 - [ ] Visualizations include explicit physical units, error bars, and accessible color scales.
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|---|---|
+| "The LLM output is authoritative" | Model output is a draft, not evidence. Verify every factual claim against a primary source. |
+| "We'll add citations later" | Uncited research is unverifiable. Attach sources as you produce each claim. |
+| "One source is enough" | Single-source claims fail triangulation. Cross-check across independent references. |
+| "Skipping the hypothesis step saves time" | Without a pre-registered hypothesis you cannot tell signal from noise. |
+| "The paper is recent, so it's right" | Recency is not validity. Check methodology, sample size, and replication status. |
+

@@ -1,22 +1,23 @@
 ---
 name: company-handbook
-description: "The cross-director coordination protocol for the 1ai business kingdom. Defines how Content, Video, Image, Marketing, and Sales directors work together. Has memory via 1ai-hub brain, follows 1ai-rules, and coordinates with Vilona (GM). Use when coordinating multiple directors, resolving conflicts between teams, or when the user asks 'how do the teams work together?'. Defines shared brand standards, handoff protocols, and escalation paths."
-domain: "content-creation"
+description: Use when coordinating cross-director work across the 1ai business kingdom. Defines shared brand standards, handoff protocols, and escalation paths.
+domain: content-creation
+category: content
 tags:
-  - company
-  - handbook
-  - coordination
-  - directors
-  - brand
-  - protocol
-  - handoff
-  - escalation
-  - 1ai-hub
-  - vilona
-version: "1.0.0"
-author: "oyi77"
-subdomain: "company-direction"
-type: "content"
+- company
+- handbook
+- coordination
+- directors
+- brand
+- protocol
+- handoff
+- escalation
+- 1ai-hub
+- vilona
+version: 1.0.0
+author: oyi77
+subdomain: company-direction
+type: content
 license: Apache-2.0
 ---
 ## Overview

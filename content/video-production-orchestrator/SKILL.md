@@ -1,22 +1,23 @@
 ---
 name: video-production-orchestrator
-description: "The single entry point for ALL video generation and editing needs. Analyzes user intent and routes to the right workflow — HyperFrames (product-launch, motion-graphics, faceless-explainer, changelog, captions), Remotion (React), FFmpeg (programmatic), auto-clipper (highlights), content-factory (YouTube), or slides. Use when the user says 'make a video', 'create video', 'edit video', or any video production request; this skill decides WHICH tool fits the ask."
-domain: "content-creation"
+description: Use when coordinating all video generation and editing under one entry point. Routes make-a-video requests to HyperFrames, Remotion, FFmpeg, or auto-clipper.
+domain: content-creation
+category: content
 tags:
-  - video
-  - orchestrator
-  - router
-  - hyperframes
-  - remotion
-  - ffmpeg
-  - content-factory
-  - auto-clipper
-  - slides
-  - production
-version: "1.0.0"
-author: "oyi77"
-subdomain: "video-production"
-type: "content"
+- video
+- orchestrator
+- router
+- hyperframes
+- remotion
+- ffmpeg
+- content-factory
+- auto-clipper
+- slides
+- production
+version: 1.0.0
+author: oyi77
+subdomain: video-production
+type: content
 license: Apache-2.0
 ---
 ## Overview

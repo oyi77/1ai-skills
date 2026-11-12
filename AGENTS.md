@@ -16,7 +16,7 @@ Every task follows this sequence. No exceptions.
 Full details: `~/.1ai/core/PROCESS.md` (auto-injected by hooks)
 
 ## This repo
-Production-ready AI agent skill library — 1440 skills across 19 categories with anti-rationalization tables, code examples, and verification checklists.
+Production-ready AI agent skill library — 1446 skills across 20 categories with anti-rationalization tables, code examples, and verification checklists.
 Stack: Node.js / Python / YAML skills
 Domain: Agent skill library — NOT a product repo. Do not add features here unless adding new skills.
 
@@ -105,7 +105,17 @@ cat ~/projects/1ai-skills/integrations/stripe-integration/SKILL.md
 1ai-skills uses a top-down organizational structure:
 CEO $\rightarrow$ C-Suite (CTO, CMO, CCO, CFO, COO) $\rightarrow$ Role Anchors (17 roles) $\rightarrow$ Atomic Skills.
 
-Use the CEO role for top-level strategic decomposition.
+- **Level 0 (The CEO)**: Root orchestrator. Takes high-level strategic goals, delegates to C-suite.
+- **Level 1 (C-Suite)**:
+  - CTO (Tech & R&D)
+  - CMO (Marketing & Acquisition)
+  - CCO (Content & Creative)
+  - CFO (Finance & Investment)
+  - COO (Operations & Process)
+
+Each C-suite anchor carries a world-class persona (see `docs/PERSONAS.md`). Use the CEO role for top-level strategic decomposition; delegate everything else through its functional anchor.
+
+## Hard rules
 
 ## Hard rules
 1. Read code before writing code.
@@ -118,4 +128,7 @@ Use the CEO role for top-level strategic decomposition.
 - Test: `python3 scripts/test-skills.py`
 - Lint: `python3 scripts/lint-skills.py`
 - Audit: `bash scripts/audit-skills.sh`
+- Eval: `python3 scripts/run-evals.py --all`
+- Persona roster: `docs/PERSONAS.md`
+- Eval coverage: `docs/eval_coverage.md`
 - Sync to brain: `bash ~/.1ai/scripts/sync-to-brain.sh`

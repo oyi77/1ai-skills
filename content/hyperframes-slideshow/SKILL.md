@@ -1,19 +1,20 @@
 ---
 name: hyperframes-slideshow
-description: "Build a presentation, pitch deck, or interactive deck using HyperFrames. Use when the user wants slides with fragment reveals, branching navigation, hotspot links, or presenter mode. Output is a navigable deck, not a rendered MP4. Teaches slide-as-scene composition, fragment timing, and deck navigation patterns."
-domain: "content-creation"
+description: Use when building a presentation, pitch deck, or interactive deck as video. Build a presentation, pitch deck, or interactive deck using HyperFrames. Use when the user wants slides with fragment reveals, branching navigation, hotspot links, or presenter mode. Output is a navigable deck, not a rendered MP4. Teaches slide-as-scene composition, fragment timing, and deck navigation patterns.
+domain: content-creation
+category: content
 tags:
-  - hyperframes
-  - slideshow
-  - presentation
-  - pitch-deck
-  - slides
-  - interactive
-  - branching
-version: "1.0.0"
-author: "oyi77"
-subdomain: "video-production"
-type: "content"
+- hyperframes
+- slideshow
+- presentation
+- pitch-deck
+- slides
+- interactive
+- branching
+version: 1.0.0
+author: oyi77
+subdomain: video-production
+type: content
 license: Apache-2.0
 ---
 ## Overview

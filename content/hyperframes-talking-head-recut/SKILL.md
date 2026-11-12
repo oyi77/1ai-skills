@@ -1,18 +1,20 @@
 ---
 name: hyperframes-talking-head-recut
-description: "Package an existing talking-head / interview / podcast video with timed, designed graphic overlays using HyperFrames. Use when the user wants kinetic titles, lower-thirds, data callouts, pull-quotes, side panels, or picture-in-picture on top of existing footage. The clip plays untouched underneath. Not plain subtitles (use hyperframes-embedded-captions)."
-domain: "content-creation"
+description: Use when packaging an existing talking-head, interview, or podcast video. Package an existing talking-head / interview / podcast video with timed, designed graphic overlays using HyperFrames. Use when the user wants kinetic titles, lower-thirds, data callouts, pull-quotes, side panels, or picture-in-picture on top of existing footage. The clip plays untouched underneath. Not plain subtitles
+  (use hyperframes-embedded-captions).
+domain: content-creation
+category: content
 tags:
-  - hyperframes
-  - talking-head
-  - graphic-overlays
-  - lower-thirds
-  - data-callouts
-  - video-packaging
-version: "1.0.0"
-author: "oyi77"
-subdomain: "video-production"
-type: "content"
+- hyperframes
+- talking-head
+- graphic-overlays
+- lower-thirds
+- data-callouts
+- video-packaging
+version: 1.0.0
+author: oyi77
+subdomain: video-production
+type: content
 license: Apache-2.0
 ---
 ## Overview

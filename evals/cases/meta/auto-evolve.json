@@ -1,0 +1,13 @@
+{
+  "skill": "auto-evolve",
+  "category": "meta",
+  "name": "Auto-Evolve — Self-Improving System Orchestrator",
+  "description": "Verify auto-evolve skill covers the monitor → recognize → assess → find → create loop with feedback capture and improvement generation",
+  "checks": [
+    {"type": "contains", "pattern": "evolve", "name": "has-evolve-reference"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "frontmatter_field_exists", "field": "version", "name": "has-version"},
+    {"type": "trigger_phrase", "name": "has-use-when"}
+  ]
+}

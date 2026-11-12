@@ -1,19 +1,21 @@
 ---
 name: hyperframes-pr-to-video
-description: "Turn a GitHub pull request into a changelog, feature-reveal, fix, or refactor explainer video using HyperFrames. Use when the user provides a PR URL, owner/repo#N ref, or says 'this PR'. Reads diff via gh CLI, visualizes code changes as animated diffs with narration. Teaches diff parsing, change visualization, and technical storytelling."
-domain: "content-creation"
+description: Use when turning a GitHub pull request into a changelog or feature-reveal video. Turn a GitHub pull request into a changelog, feature-reveal, fix, or refactor explainer video using HyperFrames. Use when the user provides a PR URL, owner/repo#N ref, or says 'this PR'. Reads diff via gh CLI, visualizes code changes as animated diffs with narration. Teaches diff parsing, change visualization,
+  and technical storytelling.
+domain: content-creation
+category: content
 tags:
-  - hyperframes
-  - pr-to-video
-  - changelog
-  - github
-  - code-diff
-  - feature-reveal
-  - developer-content
-version: "1.0.0"
-author: "oyi77"
-subdomain: "video-production"
-type: "content"
+- hyperframes
+- pr-to-video
+- changelog
+- github
+- code-diff
+- feature-reveal
+- developer-content
+version: 1.0.0
+author: oyi77
+subdomain: video-production
+type: content
 license: Apache-2.0
 ---
 ## Overview

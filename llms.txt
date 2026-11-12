@@ -1,10 +1,10 @@
 # 1ai-skills
 
-> 1440 production-ready AI agent skills with anti-rationalization tables, code examples, and verification checklists. The largest open-source skill library for Claude Code, Cursor, Gemini CLI, and more.
+> 1446 production-ready AI agent skills with anti-rationalization tables, code examples, and verification checklists. The largest open-source skill library for Claude Code, Cursor, Gemini CLI, and more.
 
 ## What
 
-1ai-skills is a library of 1440 SKILL.md files across 19 categories that force AI coding agents to follow real workflows instead of cutting corners. Every skill includes anti-rationalization tables, concrete code examples, step-by-step workflows, and verification checklists.
+1ai-skills is a library of 1446 SKILL.md files across 20 categories that force AI coding agents to follow real workflows instead of cutting corners. Every skill includes anti-rationalization tables, concrete code examples, step-by-step workflows, and verification checklists.
 
 ## Categories
 
@@ -36,7 +36,7 @@ Gemini CLI: `gemini skills install https://github.com/oyi77/1ai-skills.git --pat
 
 ## Quality
 
-- 1440/1440 skills pass 8-dimension test suite
+- 1446/1446 skills pass 8-dimension test suite
 - 0 warnings, 0 failures
 - Every skill has anti-rationalization table
 - Every skill has code examples

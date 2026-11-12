@@ -1,0 +1,13 @@
+{
+  "skill": "workflow-builder",
+  "category": "automation",
+  "name": "Workflow Builder — Automation Design",
+  "description": "Verify workflow-builder skill covers trigger design, step orchestration, and failure handling",
+  "checks": [
+    {"type": "contains", "pattern": "workflow", "name": "has-workflow-reference"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "frontmatter_field_exists", "field": "version", "name": "has-version"},
+    {"type": "trigger_phrase", "name": "has-use-when"}
+  ]
+}

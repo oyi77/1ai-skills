@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-11T08:20:34.017472+00:00",
+  "generated": "2026-11-12T12:34:03.117090+00:00",
   "total": 1446,
   "categories": [
     {
@@ -96,9 +96,24 @@
       "category": "core"
     },
     {
+      "name": "Ana Andjelic",
+      "description": "Use when orchestrating all content production, creative direction, and brand voice. Manages UI/UX Designers and Content Creators to ensure high-quality, brand-c",
+      "category": "other"
+    },
+    {
+      "name": "Andrej Karpathy",
+      "description": "Use when orchestrating AI/ML systems, RAG pipeline architecture, multi-provider",
+      "category": "core"
+    },
+    {
       "name": "Anthropic MCP Team",
       "description": "Use when creating MCP (Model Context Protocol) servers for any API or",
       "category": "mcp"
+    },
+    {
+      "name": "Aswath Damodaran",
+      "description": "Use when orchestrating financial analysis, cashflow modeling, DCF valuations,",
+      "category": "financial"
     },
     {
       "name": "Autonomous Learner",
@@ -116,6 +131,11 @@
       "category": "development"
     },
     {
+      "name": "Charity Majors",
+      "description": "Use when orchestrating infrastructure as code, CI/CD pipelines, container",
+      "category": "devops"
+    },
+    {
       "name": "Continuous Improvement Lead",
       "description": "Use when generating specific, actionable improvements for skills based",
       "category": "meta"
@@ -124,6 +144,11 @@
       "name": "Database Architect",
       "description": "Use when raw data storage layer for 1ai-skills. Provides structured data",
       "category": "meta"
+    },
+    {
+      "name": "David Ogilvy",
+      "description": "Use when orchestrating automated content monetization and distribution pipelines. Coordinates research, production, and multi-platform distribution for high-var",
+      "category": "content"
     },
     {
       "name": "Deborah Gordon",
@@ -136,43 +161,18 @@
       "category": "development"
     },
     {
+      "name": "Don Norman",
+      "description": "Use when orchestrating UI/UX design systems, anti-AI-slop frontend styling,",
+      "category": "content"
+    },
+    {
+      "name": "Ed Thorp",
+      "description": "Use when orchestrating quantitative trading systems, market research,",
+      "category": "trading"
+    },
+    {
       "name": "Edo Liberty",
       "description": "Use when generating and managing vector embeddings for semantic search",
-      "category": "core"
-    },
-    {
-      "name": "Honest Self-Evaluator",
-      "description": "Use when skills evaluate their own performance, capabilities, and limitations.",
-      "category": "meta"
-    },
-    {
-      "name": "Kent Beck",
-      "description": "Use when skill: daily-dev-agentic. See SKILL.md body for details. Use",
-      "category": "development"
-    },
-    {
-      "name": "Kevin Kelly",
-      "description": "Use when skill: zhive. See SKILL.md body for details. Use when this",
-      "category": "research"
-    },
-    {
-      "name": "Knowledge Base Steward",
-      "description": "Use when knowledge base hub \u2014 PARA-structured company memory combining",
-      "category": "core"
-    },
-    {
-      "name": "Lamarck",
-      "description": "Use when self-improving skill system that auto-extracts patterns from",
-      "category": "meta"
-    },
-    {
-      "name": "MCP Hub Operator",
-      "description": "Use when model Context Protocol client hub \u2014 connect AI agents to any",
-      "category": "mcp"
-    },
-    {
-      "name": "Matthew Prince",
-      "description": "Use when manage Cloudflare DNS, CDN, and security rules via API. Use",
       "category": "core"
     }
   ],
@@ -186,8 +186,20 @@
       "category": "core"
     },
     {
+      "name": "Ana Andjelic",
+      "category": "other"
+    },
+    {
+      "name": "Andrej Karpathy",
+      "category": "core"
+    },
+    {
       "name": "Anthropic MCP Team",
       "category": "mcp"
+    },
+    {
+      "name": "Aswath Damodaran",
+      "category": "financial"
     },
     {
       "name": "Autonomous Learner",
@@ -202,12 +214,20 @@
       "category": "development"
     },
     {
+      "name": "Charity Majors",
+      "category": "devops"
+    },
+    {
       "name": "Continuous Improvement Lead",
       "category": "meta"
     },
     {
       "name": "Database Architect",
       "category": "meta"
+    },
+    {
+      "name": "David Ogilvy",
+      "category": "content"
     },
     {
       "name": "Deborah Gordon",
@@ -218,12 +238,36 @@
       "category": "development"
     },
     {
+      "name": "Don Norman",
+      "category": "content"
+    },
+    {
+      "name": "Ed Thorp",
+      "category": "trading"
+    },
+    {
       "name": "Edo Liberty",
       "category": "core"
     },
     {
       "name": "Honest Self-Evaluator",
       "category": "meta"
+    },
+    {
+      "name": "Jayson E. Street",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "Jill Konrath",
+      "category": "sales"
+    },
+    {
+      "name": "Katie Moussouris",
+      "category": "cybersecurity"
+    },
+    {
+      "name": "Kent Beck",
+      "category": "development"
     },
     {
       "name": "Kent Beck",
@@ -242,12 +286,32 @@
       "category": "meta"
     },
     {
+      "name": "Larry Page",
+      "category": "other"
+    },
+    {
+      "name": "Lisa Crispin",
+      "category": "development"
+    },
+    {
       "name": "MCP Hub Operator",
       "category": "mcp"
     },
     {
+      "name": "Martin Fowler",
+      "category": "development"
+    },
+    {
+      "name": "Marty Cagan",
+      "category": "operations"
+    },
+    {
       "name": "Matthew Prince",
       "category": "core"
+    },
+    {
+      "name": "Maxime Beauchemin",
+      "category": "data"
     },
     {
       "name": "Mikolov et al.",
@@ -258,12 +322,40 @@
       "category": "core"
     },
     {
+      "name": "Nate Silver",
+      "category": "research"
+    },
+    {
       "name": "Pattern Recognition Expert",
       "category": "meta"
     },
     {
       "name": "Performance Engineer",
       "category": "meta"
+    },
+    {
+      "name": "Ruth Porat",
+      "category": "other"
+    },
+    {
+      "name": "Satya Nadella",
+      "category": "other"
+    },
+    {
+      "name": "Sean Ellis",
+      "category": "marketing"
+    },
+    {
+      "name": "Seth Godin",
+      "category": "other"
+    },
+    {
+      "name": "Shep Hyken",
+      "category": "sales"
+    },
+    {
+      "name": "Sheryl Sandberg",
+      "category": "other"
     },
     {
       "name": "User Research Lead",
@@ -5088,98 +5180,6 @@
     {
       "name": "rockefeller-wealth",
       "category": "research"
-    },
-    {
-      "name": "role-ai-ml-engineer",
-      "category": "core"
-    },
-    {
-      "name": "role-cco",
-      "category": "other"
-    },
-    {
-      "name": "role-ceo",
-      "category": "other"
-    },
-    {
-      "name": "role-cfo",
-      "category": "other"
-    },
-    {
-      "name": "role-cmo",
-      "category": "other"
-    },
-    {
-      "name": "role-content-creator",
-      "category": "content"
-    },
-    {
-      "name": "role-coo",
-      "category": "other"
-    },
-    {
-      "name": "role-cto",
-      "category": "other"
-    },
-    {
-      "name": "role-customer-support",
-      "category": "sales"
-    },
-    {
-      "name": "role-data-engineer",
-      "category": "data"
-    },
-    {
-      "name": "role-devops-sre-engineer",
-      "category": "devops"
-    },
-    {
-      "name": "role-financial-analyst",
-      "category": "financial"
-    },
-    {
-      "name": "role-growth-marketer",
-      "category": "marketing"
-    },
-    {
-      "name": "role-penetration-tester",
-      "category": "cybersecurity"
-    },
-    {
-      "name": "role-product-manager",
-      "category": "operations"
-    },
-    {
-      "name": "role-qa-automation-engineer",
-      "category": "development"
-    },
-    {
-      "name": "role-quantitative-trader",
-      "category": "trading"
-    },
-    {
-      "name": "role-research-analyst",
-      "category": "research"
-    },
-    {
-      "name": "role-sales-engineer",
-      "category": "sales"
-    },
-    {
-      "name": "role-security-engineer",
-      "category": "cybersecurity"
-    },
-    {
-      "name": "role-software-engineer",
-      "category": "development"
-    },
-    {
-      "name": "role-system-architect",
-      "category": "development"
-    },
-    {
-      "name": "role-ui-ux-designer",
-      "category": "content"
     },
     {
       "name": "root-cause-analysis",

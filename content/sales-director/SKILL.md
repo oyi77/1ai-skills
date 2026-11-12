@@ -1,24 +1,25 @@
 ---
 name: sales-director
-description: "The Chief Revenue Officer (CRO) — manages ALL sales activities across 1ai-affiliate and 1ai-career. Delegates to lead generation, pipeline management, closing, and customer success. Has memory via 1ai-hub brain, follows 1ai-rules, and coordinates with Marketing Director for leads and Content Director for sales enablement. Use when the user says 'sales strategy', 'generate leads', 'close deals', 'pipeline', or needs any sales work."
-domain: "sales"
+description: Use when managing all sales activities across the 1ai business kingdom. Delegates lead generation, pipeline management, closing, and customer success.
+domain: sales
+category: content
 tags:
-  - sales
-  - director
-  - orchestrator
-  - revenue
-  - leads
-  - pipeline
-  - closing
-  - crm
-  - conversion
-  - 1ai-affiliate
-  - 1ai-career
-  - vilona
-version: "1.0.0"
-author: "oyi77"
-subdomain: "sales-direction"
-type: "sales"
+- sales
+- director
+- orchestrator
+- revenue
+- leads
+- pipeline
+- closing
+- crm
+- conversion
+- 1ai-affiliate
+- 1ai-career
+- vilona
+version: 1.0.0
+author: oyi77
+subdomain: sales-direction
+type: sales
 license: Apache-2.0
 ---
 ## Overview

@@ -1,25 +1,26 @@
 ---
 name: marketing-director
-description: "The Chief Marketing Officer (CMO) — manages ALL marketing activities across 1ai-social and 1ai-ads. Delegates to paid ads, content marketing, email marketing, social media, SEO, and analytics. Has memory via 1ai-hub brain, follows 1ai-rules, and coordinates with Content Director for content production and Sales Director for lead generation. Use when the user says 'marketing strategy', 'advertise', 'promote', 'grow audience', 'marketing campaign', or needs any marketing work."
-domain: "marketing"
+description: Use when managing all marketing activities across the 1ai business kingdom. Delegates paid ads, content, email, social, SEO, and analytics.
+domain: marketing
+category: content
 tags:
-  - marketing
-  - director
-  - orchestrator
-  - growth
-  - advertising
-  - promotion
-  - seo
-  - social-media
-  - email
-  - analytics
-  - 1ai-social
-  - 1ai-ads
-  - vilona
-version: "1.0.0"
-author: "oyi77"
-subdomain: "marketing-direction"
-type: "marketing"
+- marketing
+- director
+- orchestrator
+- growth
+- advertising
+- promotion
+- seo
+- social-media
+- email
+- analytics
+- 1ai-social
+- 1ai-ads
+- vilona
+version: 1.0.0
+author: oyi77
+subdomain: marketing-direction
+type: marketing
 license: Apache-2.0
 ---
 ## Overview

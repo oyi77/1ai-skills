@@ -1,19 +1,21 @@
 ---
 name: hyperframes-changelog-video
-description: "Turn a weekly changelog .md into a finished branded changelog video using HyperFrames. Use when the user provides a changelog/digest markdown and wants the weekly video, or says 'changelog video'. Self-contained — fonts, background, lexicon, and scripts ship in the skill. Produces square 1080, ~45-60s videos with animated brand mock-UIs."
-domain: "content-creation"
+description: Use when turning a weekly changelog markdown into a branded video. Turn a weekly changelog .md into a finished branded changelog video using HyperFrames. Use when the user provides a changelog/digest markdown and wants the weekly video, or says 'changelog video'. Self-contained — fonts, background, lexicon, and scripts ship in the skill. Produces square 1080, ~45-60s videos with animated
+  brand mock-UIs.
+domain: content-creation
+category: content
 tags:
-  - hyperframes
-  - changelog
-  - video
-  - branded-content
-  - digest
-  - weekly
-  - mock-ui
-version: "1.0.0"
-author: "oyi77"
-subdomain: "video-production"
-type: "content"
+- hyperframes
+- changelog
+- video
+- branded-content
+- digest
+- weekly
+- mock-ui
+version: 1.0.0
+author: oyi77
+subdomain: video-production
+type: content
 license: Apache-2.0
 ---
 ## Overview

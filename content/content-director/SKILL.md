@@ -1,22 +1,23 @@
 ---
 name: content-director
-description: "The Chief Content Officer (CCO) — top-level creative director that orchestrates ALL content production across 1ai-content. Manages Video Director, Image Director, Copywriting, and Content Operations. Has memory via 1ai-hub brain, follows 1ai-rules, and coordinates with Marketing Director for distribution and Sales Director for enablement. Use when the user says 'create content', 'content strategy', 'content plan', or needs content across multiple formats."
-domain: "content-creation"
+description: Use when orchestrating content production across the 1ai business kingdom. Manages video, image, copywriting, and content operations.
+domain: content-creation
+category: content
 tags:
-  - content
-  - director
-  - orchestrator
-  - creative
-  - strategy
-  - video
-  - image
-  - copywriting
-  - 1ai-content
-  - vilona
-version: "1.0.0"
-author: "oyi77"
-subdomain: "content-direction"
-type: "content"
+- content
+- director
+- orchestrator
+- creative
+- strategy
+- video
+- image
+- copywriting
+- 1ai-content
+- vilona
+version: 1.0.0
+author: oyi77
+subdomain: content-direction
+type: content
 license: Apache-2.0
 ---
 ## Overview

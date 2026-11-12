@@ -1,18 +1,20 @@
 ---
 name: hyperframes-oversized-cursor
-description: "House-style oversized macOS cursor technique for HyperFrames videos. Use when a scene involves cursors, pointer-led action, kicking off a UI scene, igniting a morph/transition/typing with a click, or when a scene reads as static/dead/stale and needs motion to carry the eye. Covers cursor size/look, off-screen entry law, tip-targeting, click-ignition, and cross-scene handoff."
-domain: "content-creation"
+description: Use when applying the oversized macOS cursor technique in HyperFrames videos. House-style oversized macOS cursor technique for HyperFrames videos. Use when a scene involves cursors, pointer-led action, kicking off a UI scene, igniting a morph/transition/typing with a click, or when a scene reads as static/dead/stale and needs motion to carry the eye. Covers cursor size/look, off-screen
+  entry law, tip-targeting, click-ignition, and cross-scene handoff.
+domain: content-creation
+category: content
 tags:
-  - hyperframes
-  - cursor
-  - motion
-  - click-ignition
-  - eye-carrier
-  - ui-animation
-version: "1.0.0"
-author: "oyi77"
-subdomain: "video-production"
-type: "content"
+- hyperframes
+- cursor
+- motion
+- click-ignition
+- eye-carrier
+- ui-animation
+version: 1.0.0
+author: oyi77
+subdomain: video-production
+type: content
 license: Apache-2.0
 ---
 ## Overview

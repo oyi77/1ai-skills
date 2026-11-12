@@ -12,7 +12,7 @@ Get from zero to productive with 1ai-Skills in under 10 minutes.
 npx skills add oyi77/1ai-skills
 ```
 
-This copies all 1440 skills into your project's skill directory.
+This copies all 1446 skills into your project's skill directory.
 
 ### Install Hooks (auto-evolve system)
 
@@ -61,7 +61,7 @@ ls cybersecurity/
 ls trading/
 ```
 
-19 categories total. Largest: cybersecurity (810), content (107), development (106), mindset (55), core (53). See `README.md` for the full table.
+20 categories total. Largest: cybersecurity (810), content (107), development (106), mindset (55), core (53). See `README.md` for the full table.
 
 ### Search with grep
 
@@ -96,7 +96,7 @@ Skills are self-contained markdown files loaded on demand. Agents discover skill
 2. **Category AGENTS.md** -- sub-index per category (e.g., `cybersecurity/AGENTS.md`)
 3. **Individual SKILL.md** -- the actual skill content
 
-Do NOT walk all 1440 skill directories. Use the catalog or grep to find what you need.
+Do NOT walk all 1446 skill directories. Use the catalog or grep to find what you need.
 
 ### Skill Anatomy (Quick Reference)
 
@@ -123,6 +123,15 @@ Required sections inside the SKILL.md body:
 | **Verification** | Checklist with evidence requirements |
 
 Recommended sections: **Common Rationalizations** (excuse/reality table), **Red Flags** (signs of violations).
+
+### Personas (Role Anchors)
+
+Every role anchor carries a named expert persona in frontmatter — when an agent activates the role, it behaves *as that expert* (their philosophy and principles shape judgment). Full roster: [docs/PERSONAS.md](docs/PERSONAS.md).
+
+```bash
+# Browse the persona roster
+grep -A3 "^persona:" corporate/*/SKILL.md development/role-*/SKILL.md
+```
 
 ### Auto-Evolve System
 

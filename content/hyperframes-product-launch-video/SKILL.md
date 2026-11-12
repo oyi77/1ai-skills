@@ -1,20 +1,22 @@
 ---
 name: hyperframes-product-launch-video
-description: "Create product launch videos from a URL, brief, or script using HyperFrames (HTML→MP4). Use when the user wants a product launch video, site tour, social clip featuring a product's own visuals, or marketing/promoting a product. Up to ~3 min (sweet spot 30-90s). Teaches the HyperFrames production loop: plan → write HTML → wire seekable animations → add media → lint → preview → render."
-domain: "content-creation"
+description: 'Use when creating product launch videos from a URL, brief, or script. Create product launch videos from a URL, brief, or script using HyperFrames (HTML→MP4). Use when the user wants a product launch video, site tour, social clip featuring a product''s own visuals, or marketing/promoting a product. Up to ~3 min (sweet spot 30-90s). Teaches the HyperFrames production loop: plan → write HTML
+  → wire seekable animations → add media → lint → preview → render.'
+domain: content-creation
+category: content
 tags:
-  - hyperframes
-  - video
-  - product-launch
-  - html-to-video
-  - animation
-  - motion-graphics
-  - marketing
-  - agent-native
-version: "1.0.0"
-author: "oyi77"
-subdomain: "video-production"
-type: "content"
+- hyperframes
+- video
+- product-launch
+- html-to-video
+- animation
+- motion-graphics
+- marketing
+- agent-native
+version: 1.0.0
+author: oyi77
+subdomain: video-production
+type: content
 license: Apache-2.0
 ---
 ## Overview

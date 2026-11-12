@@ -59,6 +59,17 @@ WEIGHTS = {
 
 MAX_SCORE = sum(WEIGHTS.values())  # 100
 
+# ── Domain aliases (category dir -> frontmatter domain) ────────────────────────
+# Finer-grained domains are legitimate: content/ owns a documented
+# `content-creation` sub-domain, and the *-director skills physically live
+# in content/ but functionally belong to marketing/sales. Keep this list in
+# sync with DOMAIN_ALIASES in scripts/validate-skills.py.
+DOMAIN_ALIASES = {
+    ("content", "content-creation"),
+    ("content", "marketing"),
+    ("content", "sales"),
+}
+
 # ── Required/recommended sections ────────────────────────────────────────
 REQUIRED_SECTIONS = {"When to Use", "Anti-Rationalization Table"}
 RECOMMENDED_SECTIONS = {"Overview", "Process", "Verification Checklist"}
@@ -282,8 +293,17 @@ def audit_skill(path: Path, skill_names: set[str], all_skills: list[dict]) -> di
         score += WEIGHTS["category_matches_dir"]
 
     # ── Domain matches directory ──
+    # Finer-grained domains are legitimate: content/ owns a documented
+    # `content-creation` sub-domain, and the *-director skills physically live
+    # in content/ but functionally belong to marketing/sales. Keep this list in
+    # sync with DOMAIN_ALIASES in scripts/validate-skills.py.
     domain = meta.get("domain", "")
-    if domain and domain != expected_domain:
+    domain_ok = (
+        not domain
+        or domain == expected_domain
+        or (expected_domain, domain) in DOMAIN_ALIASES
+    )
+    if not domain_ok:
         issues.append({
             "severity": "LOW",
             "rule": "domain_mismatch",

@@ -1,24 +1,25 @@
 ---
 name: image-director
-description: "The Creative Design Manager — manages ALL visual design production under 1ai-content. Delegates to logo design, icon design, banner design, UI/UX, and brand design system. Has memory via 1ai-hub brain, follows 1ai-rules, and provides visual assets to Content Director, Marketing Director, and Sales Director. Use when the user says 'design an image', 'create a logo', 'design a banner', 'UI design', 'brand design', or needs any visual design work."
-domain: "content-creation"
+description: Use when managing visual design production across image skills. Delegates to logo, icon, banner, UI/UX, and brand design systems.
+domain: content-creation
+category: content
 tags:
-  - image
-  - director
-  - orchestrator
-  - design
-  - logo
-  - icon
-  - banner
-  - ui
-  - ux
-  - brand
-  - 1ai-content
-  - vilona
-version: "1.0.0"
-author: "oyi77"
-subdomain: "design-production"
-type: "content"
+- image
+- director
+- orchestrator
+- design
+- logo
+- icon
+- banner
+- ui
+- ux
+- brand
+- 1ai-content
+- vilona
+version: 1.0.0
+author: oyi77
+subdomain: design-production
+type: content
 license: Apache-2.0
 ---
 ## Overview

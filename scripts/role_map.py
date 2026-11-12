@@ -43,6 +43,14 @@ SKILLS_JSON = ROOT / "SKILLS.json"
 # Single source of truth: anchor skill names → their own role.
 # Anchors must always own their role, even when generic rules would match a sibling role.
 ROLE_ANCHORS = {
+    # C-suite executive anchors (corporate/) map to their functional role
+    "role-ceo": "product-manager",
+    "role-cto": "system-architect",
+    "role-cfo": "financial-analyst",
+    "role-cmo": "growth-marketer",
+    "role-coo": "product-manager",
+    "role-cco": "content-creator",
+    # Functional role anchors
     "role-software-engineer": "software-engineer",
     "role-system-architect": "system-architect",
     "role-qa-automation-engineer": "qa-automation-engineer",

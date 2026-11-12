@@ -1,6 +1,6 @@
 ---
 name: concurrency-race-audit
-description: Auditing concurrent async code, thread safety, shared state mutation, event loop blocking, and connection pool leaks. Use when debugging intermittent race conditions, async deadlocks, database connection exhaustion, or unhandled promise leaks.
+description: Use when auditing concurrent async code for thread safety and shared-state races. Auditing concurrent async code, thread safety, shared state mutation, event loop blocking, and connection pool leaks. Use when debugging intermittent race conditions, async deadlocks, database connection exhaustion, or unhandled promise leaks.
 domain: development
 subdomain: software-development
 author: oyi77
@@ -8,12 +8,12 @@ license: Apache-2.0
 version: 1.0.0
 category: development
 tags:
-  - concurrency
-  - race-conditions
-  - async
-  - event-loop
-  - performance
-  - thread-safety
+- concurrency
+- race-conditions
+- async
+- event-loop
+- performance
+- thread-safety
 ---
 
 ## Overview

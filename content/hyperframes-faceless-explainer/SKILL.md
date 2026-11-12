@@ -1,19 +1,21 @@
 ---
 name: hyperframes-faceless-explainer
-description: "Turn arbitrary text — an article, notes, a topic, a brief — into a faceless explainer video using HyperFrames. Use when the user wants a topic explainer, concept breakdown, how-to, or listicle with no product/website to capture. Every visual is invented per scene (typography, abstract graphics, diagrams, data-viz). Not a video built from a website (use hyperframes-product-launch-video)."
-domain: "content-creation"
+description: Use when turning text (article, notes, topic) into a faceless explainer video. Turn arbitrary text — an article, notes, a topic, a brief — into a faceless explainer video using HyperFrames. Use when the user wants a topic explainer, concept breakdown, how-to, or listicle with no product/website to capture. Every visual is invented per scene (typography, abstract graphics, diagrams, data-viz).
+  Not a video built from a website (use hyperframes-product-launch-video).
+domain: content-creation
+category: content
 tags:
-  - hyperframes
-  - explainer
-  - faceless
-  - education
-  - concept
-  - how-to
-  - data-viz
-version: "1.0.0"
-author: "oyi77"
-subdomain: "video-production"
-type: "content"
+- hyperframes
+- explainer
+- faceless
+- education
+- concept
+- how-to
+- data-viz
+version: 1.0.0
+author: oyi77
+subdomain: video-production
+type: content
 license: Apache-2.0
 ---
 ## Overview

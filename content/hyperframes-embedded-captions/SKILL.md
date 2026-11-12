@@ -1,18 +1,20 @@
 ---
 name: hyperframes-embedded-captions
-description: "Add captions/subtitles to talking-head or launch videos using HyperFrames. Use when the user wants embedded captions, verbatim caption rails, or cinematic text behind the subject. Covers the drop/rail/embed caption model, the overlay law (captions are NOT a reserved band), matte occlusion for embedded climaxes, and word-timestamp alignment from TTS output."
-domain: "content-creation"
+description: Use when adding captions or subtitles to talking-head or launch videos. Add captions/subtitles to talking-head or launch videos using HyperFrames. Use when the user wants embedded captions, verbatim caption rails, or cinematic text behind the subject. Covers the drop/rail/embed caption model, the overlay law (captions are NOT a reserved band), matte occlusion for embedded climaxes, and
+  word-timestamp alignment from TTS output.
+domain: content-creation
+category: content
 tags:
-  - hyperframes
-  - captions
-  - subtitles
-  - talking-head
-  - overlay
-  - accessibility
-version: "1.0.0"
-author: "oyi77"
-subdomain: "video-production"
-type: "content"
+- hyperframes
+- captions
+- subtitles
+- talking-head
+- overlay
+- accessibility
+version: 1.0.0
+author: oyi77
+subdomain: video-production
+type: content
 license: Apache-2.0
 ---
 ## Overview

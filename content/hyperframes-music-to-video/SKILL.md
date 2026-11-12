@@ -1,19 +1,20 @@
 ---
 name: hyperframes-music-to-video
-description: "Turn a music track into a beat-synced HyperFrames video — lyric, slideshow, or kinetic promo. Use when the user provides an audio file, a video to pull audio from, or a mood brief for generated music. Music drives pacing. Teaches beat-map extraction, section-based scene planning, and audio-reactive visuals."
-domain: "content-creation"
+description: Use when turning a music track into a beat-synced video with lyrics or slides. Turn a music track into a beat-synced HyperFrames video — lyric, slideshow, or kinetic promo. Use when the user provides an audio file, a video to pull audio from, or a mood brief for generated music. Music drives pacing. Teaches beat-map extraction, section-based scene planning, and audio-reactive visuals.
+domain: content-creation
+category: content
 tags:
-  - hyperframes
-  - music
-  - beat-sync
-  - lyric-video
-  - slideshow
-  - kinetic-promo
-  - audio-reactive
-version: "1.0.0"
-author: "oyi77"
-subdomain: "video-production"
-type: "content"
+- hyperframes
+- music
+- beat-sync
+- lyric-video
+- slideshow
+- kinetic-promo
+- audio-reactive
+version: 1.0.0
+author: oyi77
+subdomain: video-production
+type: content
 license: Apache-2.0
 ---
 ## Overview

@@ -1,6 +1,6 @@
 ---
 name: type-narrowing-audit
-description: Auditing and replacing unsafe any types, untyped catch blocks, unvalidated external payloads, and blind type assertions with strict type narrowing. Use when upgrading TypeScript or Python strictness, eliminating runtime type crashes, or securing data boundaries.
+description: Use when auditing and replacing unsafe `any` types and untyped catch blocks. Auditing and replacing unsafe any types, untyped catch blocks, unvalidated external payloads, and blind type assertions with strict type narrowing. Use when upgrading TypeScript or Python strictness, eliminating runtime type crashes, or securing data boundaries.
 domain: development
 subdomain: software-development
 author: oyi77
@@ -8,12 +8,12 @@ license: Apache-2.0
 version: 1.0.0
 category: development
 tags:
-  - typescript
-  - python
-  - type-safety
-  - runtime-validation
-  - type-narrowing
-  - defensive-programming
+- typescript
+- python
+- type-safety
+- runtime-validation
+- type-narrowing
+- defensive-programming
 ---
 
 ## Overview

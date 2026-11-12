@@ -390,3 +390,14 @@ if __name__ == "__main__":
 | `anti-slop-frontend` | Applying distinctive layout, typography, motion, and spacing constraints against generic AI interfaces | [SKILL.md](../anti-slop-frontend/SKILL.md) |
 | `better-interface` | Cross-discipline review across accessibility, layout, writing, typography, color, and UI polish | [SKILL.md](../better-interface/SKILL.md) |
 | `interface-review` | Change-scoped review of a branch, PR, or uncommitted work | [SKILL.md](../interface-review/SKILL.md) |
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|---|---|
+| "We'll add the verification evidence later" | Claims without evidence are opinions. Every hallmark must ship with reproducible proof (output, screenshot, test). |
+| "The code looks right" | Visual review misses regressions. Run the checklist and paste the terminal output. |
+| "It passed once, we're done" | Hallmarks must hold on the current head. Re-run on the latest commit before publishing. |
+| "Skipping the checklist saves time" | The checklist is the deliverable, not overhead. Skipping it ships unverifiable claims. |
+| "Edge cases are out of scope" | Hallmarks without edge cases are demos. Cover the boundaries or mark the limits explicitly. |
+

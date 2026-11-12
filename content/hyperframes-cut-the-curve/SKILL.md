@@ -2,6 +2,7 @@
 name: hyperframes-cut-the-curve
 description: 'Use when authoring any transition, text-beat handoff, or kinetic text entry in HyperFrames videos — the transition technique catalog: five velocity-matched SEAMS (zoom-through, inverse zoom-through, cut-the-curve, waterfall cut, rack-focus blur-cut) plus in-scene techniques (waterfall entry, nudge curve). Covers partial-travel velocity matching, Z scale-sign rule, size-scaled blur, the 10/65/25 slide ratio, and the 2-3 transition budget.'
 domain: "content-creation"
+category: content
 tags:
   - hyperframes
   - transitions

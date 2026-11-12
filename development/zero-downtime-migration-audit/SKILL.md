@@ -1,6 +1,6 @@
 ---
 name: zero-downtime-migration-audit
-description: Auditing database migrations for backward and forward compatibility, table locks, safe index creation, and zero-downtime expand-contract patterns. Use when modifying production database schemas, renaming columns, adding NOT NULL constraints, or dropping tables.
+description: Use when auditing DB migrations for backward/forward compatibility. Auditing database migrations for backward and forward compatibility, table locks, safe index creation, and zero-downtime expand-contract patterns. Use when modifying production database schemas, renaming columns, adding NOT NULL constraints, or dropping tables.
 domain: development
 subdomain: software-development
 author: oyi77
@@ -8,12 +8,12 @@ license: Apache-2.0
 version: 1.0.0
 category: development
 tags:
-  - database
-  - migration
-  - zero-downtime
-  - postgres
-  - schema-design
-  - expand-contract
+- database
+- migration
+- zero-downtime
+- postgres
+- schema-design
+- expand-contract
 ---
 
 ## Overview

@@ -1,6 +1,6 @@
 ---
 name: tdd-bug-reproduction
-description: Isolating bugs, writing failing minimal reproduction test cases, and verifying fixes with Test-Driven Development discipline. Use when diagnosing regressions, resolving customer-reported defects, fixing flakiness, or verifying edge case boundaries.
+description: Use when isolating a bug and writing a failing minimal reproduction test first. Isolating bugs, writing failing minimal reproduction test cases, and verifying fixes with Test-Driven Development discipline. Use when diagnosing regressions, resolving customer-reported defects, fixing flakiness, or verifying edge case boundaries.
 domain: development
 subdomain: software-development
 author: oyi77
@@ -8,13 +8,13 @@ license: Apache-2.0
 version: 1.0.0
 category: development
 tags:
-  - tdd
-  - testing
-  - debugging
-  - bug-fix
-  - regression-test
-  - vitest
-  - pytest
+- tdd
+- testing
+- debugging
+- bug-fix
+- regression-test
+- vitest
+- pytest
 ---
 
 ## Overview

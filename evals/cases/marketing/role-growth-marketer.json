@@ -1,0 +1,42 @@
+{
+  "skill": "role-growth-marketer",
+  "category": "marketing",
+  "name": "Growth Marketer \u2014 Role Anchor Quality",
+  "description": "Verify role-growth-marketer carries expert persona, When to Use, anti-rationalization, verification checklist, and trigger phrase",
+  "checks": [
+    {
+      "type": "contains",
+      "pattern": "Growth Marketer",
+      "name": "has-role-reference"
+    },
+    {
+      "type": "section_exists",
+      "pattern": "When to Use",
+      "name": "has-when-to-use"
+    },
+    {
+      "type": "section_exists",
+      "pattern": "Anti-Rationalization",
+      "name": "has-anti-rat"
+    },
+    {
+      "type": "section_exists",
+      "pattern": "Verification Checklist",
+      "name": "has-verification"
+    },
+    {
+      "type": "frontmatter_field_exists",
+      "field": "persona",
+      "name": "has-persona"
+    },
+    {
+      "type": "frontmatter_field_exists",
+      "field": "version",
+      "name": "has-version"
+    },
+    {
+      "type": "trigger_phrase",
+      "name": "has-use-when"
+    }
+  ]
+}

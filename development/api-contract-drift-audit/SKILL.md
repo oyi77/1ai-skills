@@ -1,6 +1,6 @@
 ---
 name: api-contract-drift-audit
-description: Auditing client-server API contracts, schema parity, OpenAPI specifications, and tRPC/REST endpoints to prevent silent breaking changes. Use when frontend and backend contracts diverge, updating API versions, preparing deployments, or validating integration envelopes.
+description: Use when auditing client-server API contracts and schema parity. Auditing client-server API contracts, schema parity, OpenAPI specifications, and tRPC/REST endpoints to prevent silent breaking changes. Use when frontend and backend contracts diverge, updating API versions, preparing deployments, or validating integration envelopes.
 domain: development
 subdomain: software-development
 author: oyi77
@@ -8,12 +8,12 @@ license: Apache-2.0
 version: 1.0.0
 category: development
 tags:
-  - api
-  - openapi
-  - contract-testing
-  - breaking-changes
-  - rest
-  - schema-validation
+- api
+- openapi
+- contract-testing
+- breaking-changes
+- rest
+- schema-validation
 ---
 
 ## Overview

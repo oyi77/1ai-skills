@@ -1,19 +1,21 @@
 ---
 name: hyperframes-motion-graphics
-description: "Create short, unnarrated, design-led motion graphics (~under 10s) using HyperFrames. Use when the user wants kinetic type, stat/chart hits, logo stings, lower-thirds, animated tweets/headlines, or transparent overlay motion graphics. MP4 or transparent overlay output. Teaches seek-safe keyframe authoring and the 2-3 transition budget rule."
-domain: "content-creation"
+description: Use when creating short, unnarrated design-led motion graphics under 10s. Create short, unnarrated, design-led motion graphics (~under 10s) using HyperFrames. Use when the user wants kinetic type, stat/chart hits, logo stings, lower-thirds, animated tweets/headlines, or transparent overlay motion graphics. MP4 or transparent overlay output. Teaches seek-safe keyframe authoring and the 2-3
+  transition budget rule.
+domain: content-creation
+category: content
 tags:
-  - hyperframes
-  - motion-graphics
-  - animation
-  - kinetic-type
-  - lower-third
-  - logo-sting
-  - transparent-overlay
-version: "1.0.0"
-author: "oyi77"
-subdomain: "video-production"
-type: "content"
+- hyperframes
+- motion-graphics
+- animation
+- kinetic-type
+- lower-third
+- logo-sting
+- transparent-overlay
+version: 1.0.0
+author: oyi77
+subdomain: video-production
+type: content
 license: Apache-2.0
 ---
 ## Overview

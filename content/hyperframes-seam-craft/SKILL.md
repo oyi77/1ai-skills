@@ -1,19 +1,21 @@
 ---
 name: hyperframes-seam-craft
-description: "Render-correctness doctrine for scene-to-scene seams in HyperFrames videos. Use when assembling the master timeline, when a white flash appears at a cut, when reasoning about transition opacity dips, or when verifying render-side mechanics of overlapping scene wrappers. Covers the opaque stage-ground white-flash guard, injector overlap mechanics, template placeholders, and the ping-pong track reassignment."
-domain: "content-creation"
+description: Use when assembling scene-to-scene seams in HyperFrames video timelines. Render-correctness doctrine for scene-to-scene seams in HyperFrames videos. Use when assembling the master timeline, when a white flash appears at a cut, when reasoning about transition opacity dips, or when verifying render-side mechanics of overlapping scene wrappers. Covers the opaque stage-ground white-flash guard,
+  injector overlap mechanics, template placeholders, and the ping-pong track reassignment.
+domain: content-creation
+category: content
 tags:
-  - hyperframes
-  - seams
-  - transitions
-  - render-correctness
-  - white-flash
-  - stage-ground
-  - injector
-version: "1.0.0"
-author: "oyi77"
-subdomain: "video-production"
-type: "content"
+- hyperframes
+- seams
+- transitions
+- render-correctness
+- white-flash
+- stage-ground
+- injector
+version: 1.0.0
+author: oyi77
+subdomain: video-production
+type: content
 license: Apache-2.0
 ---
 ## Overview

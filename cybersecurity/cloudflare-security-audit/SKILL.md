@@ -183,3 +183,14 @@ print('SUCCESS: Adversarial verification pipeline armed.')
 - [ ] Severity assigned exclusively to `confirmed` findings with demonstrated real-world impact.
 - [ ] All code execution confined to read-only source analysis and safe, sandboxed local fixtures.
 - [ ] Audit report provides smallest effective source-level diffs rather than generic advice.
+
+## Anti-Rationalization Table
+
+| Rationalization | Reality |
+|---|---|
+| "We'll document the findings later" | Undocumented findings are unfixable findings. Record every misconfiguration with a reproduction path. |
+| "The WAF is enabled, so we're covered" | WAF rules drift and miss application logic. Verify each rule against the current traffic and config. |
+| "Cloudflare handles security for us" | Shared responsibility: Cloudflare protects the edge, you own origin, IAM, and app logic. |
+| "No CVEs means no findings" | Most Cloudflare issues are misconfigurations, not CVEs. Audit settings, not just patch level. |
+| "Skipping the origin check saves time" | Origin bypass is a classic Cloudflare failure mode. Always verify origin reachability and auth. |
+

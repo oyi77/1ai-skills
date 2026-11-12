@@ -1,0 +1,13 @@
+{
+  "skill": "github-mcp",
+  "category": "mcp",
+  "name": "GitHub MCP — Server Integration",
+  "description": "Verify github-mcp skill documents tool surface, auth setup, and safe usage patterns",
+  "checks": [
+    {"type": "contains", "pattern": "GitHub", "name": "has-github-reference"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "frontmatter_field_exists", "field": "version", "name": "has-version"},
+    {"type": "trigger_phrase", "name": "has-use-when"}
+  ]
+}

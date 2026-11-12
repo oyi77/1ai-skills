@@ -1,0 +1,13 @@
+{
+  "skill": "n8n-workflows",
+  "category": "automation",
+  "name": "n8n Workflows — Node-based Automation",
+  "description": "Verify n8n-workflows skill prescribes node configuration, error handling, and credential hygiene for n8n automations",
+  "checks": [
+    {"type": "contains", "pattern": "n8n", "name": "has-n8n-reference"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "frontmatter_field_exists", "field": "version", "name": "has-version"},
+    {"type": "trigger_phrase", "name": "has-use-when"}
+  ]
+}

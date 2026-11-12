@@ -1,6 +1,6 @@
 ---
 name: ast-architectural-guard
-description: Enforcing architectural layer boundaries, import hierarchies, and circular dependency prevention using AST analysis and dependency graph linting. Use when modularizing monoliths, enforcing hexagonal or clean architecture rules, preventing cross-domain leaking, or checking boundary violations.
+description: Use when enforcing architectural layer boundaries, import rules, and cycle checks. Enforcing architectural layer boundaries, import hierarchies, and circular dependency prevention using AST analysis and dependency graph linting. Use when modularizing monoliths, enforcing hexagonal or clean architecture rules, preventing cross-domain leaking, or checking boundary violations.
 domain: development
 subdomain: software-development
 author: oyi77
@@ -8,12 +8,12 @@ license: Apache-2.0
 version: 1.0.0
 category: development
 tags:
-  - architecture
-  - ast
-  - static-analysis
-  - clean-architecture
-  - circular-dependencies
-  - dependency-graph
+- architecture
+- ast
+- static-analysis
+- clean-architecture
+- circular-dependencies
+- dependency-graph
 ---
 
 ## Overview

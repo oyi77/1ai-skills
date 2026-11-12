@@ -9,7 +9,7 @@ Both lint-skills.py and test-skills.py import from here.
 # Each directory under project root that contains SKILL.md files.
 # Must be kept in sync with actual on-disk category directories.
 SKILL_DIRS = [
-    "agents", "automation", "content", "core", "cybersecurity", "data",
+    "agents", "automation", "content", "corporate", "core", "cybersecurity", "data",
     "development", "devops", "financial", "integrations",
     "marketing", "mcp", "meta", "mindset", "operations", "productivity",
     "research", "sales", "trading",

@@ -1,6 +1,6 @@
 ---
 name: dead-code-graveyard
-description: Auditing, isolating, and safely pruning dead code, unreachable branches, unmounted endpoints, and orphaned assets across large codebases. Use when codebase bloat accumulates, preparing for major refactors, removing deprecated feature flags, or running dead code sweeps.
+description: Use when auditing and safely pruning dead code, unreachable branches, and unused exports. Auditing, isolating, and safely pruning dead code, unreachable branches, unmounted endpoints, and orphaned assets across large codebases. Use when codebase bloat accumulates, preparing for major refactors, removing deprecated feature flags, or running dead code sweeps.
 domain: development
 subdomain: software-development
 author: oyi77
@@ -8,12 +8,12 @@ license: Apache-2.0
 version: 1.0.0
 category: development
 tags:
-  - dead-code
-  - refactoring
-  - code-hygiene
-  - static-analysis
-  - cleanup
-  - code-bloat
+- dead-code
+- refactoring
+- code-hygiene
+- static-analysis
+- cleanup
+- code-bloat
 ---
 
 ## Overview

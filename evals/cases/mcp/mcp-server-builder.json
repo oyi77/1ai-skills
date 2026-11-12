@@ -1,0 +1,13 @@
+{
+  "skill": "mcp-server-builder",
+  "category": "mcp",
+  "name": "MCP Server Builder — Protocol Implementation",
+  "description": "Verify mcp-server-builder skill covers tool registration, transport, and error contract for MCP servers",
+  "checks": [
+    {"type": "contains", "pattern": "MCP", "name": "has-mcp-reference"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "frontmatter_field_exists", "field": "version", "name": "has-version"},
+    {"type": "trigger_phrase", "name": "has-use-when"}
+  ]
+}

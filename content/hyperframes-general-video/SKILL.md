@@ -1,19 +1,21 @@
 ---
 name: hyperframes-general-video
-description: "The fallback HyperFrames workflow for anything that doesn't fit other skills — longer multi-scene pieces, brand/sizzle reels, title cards, static loops, freeform compositions. Input- and length-agnostic. Also the home of companion mode (co-create with the full toolbox). Use when no other HyperFrames skill matches, or when the user wants a freeform video."
-domain: "content-creation"
+description: Use when any HyperFrames video brief that does not fit a specific template. The fallback HyperFrames workflow for anything that doesn't fit other skills — longer multi-scene pieces, brand/sizzle reels, title cards, static loops, freeform compositions. Input- and length-agnostic. Also the home of companion mode (co-create with the full toolbox). Use when no other HyperFrames skill matches,
+  or when the user wants a freeform video.
+domain: content-creation
+category: content
 tags:
-  - hyperframes
-  - general-video
-  - freeform
-  - sizzle-reel
-  - title-card
-  - fallback
-  - companion-mode
-version: "1.0.0"
-author: "oyi77"
-subdomain: "video-production"
-type: "content"
+- hyperframes
+- general-video
+- freeform
+- sizzle-reel
+- title-card
+- fallback
+- companion-mode
+version: 1.0.0
+author: oyi77
+subdomain: video-production
+type: content
 license: Apache-2.0
 ---
 ## Overview

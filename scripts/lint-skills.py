@@ -404,6 +404,9 @@ def build_search_index(skills_meta: list[dict]) -> dict:
             "subdomain": meta.get("subdomain", ""),
         }
 
+        if meta.get("persona"):
+            entry["persona"] = meta["persona"]
+
         # Persist role assignment from role_map.assign_role (defensive import)
         try:
             if "assign_role" not in globals():

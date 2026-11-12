@@ -239,11 +239,18 @@ def load_skill_text(skill_name: str, category: str) -> str | None:
         skill_file = skill_dir / "SKILL.md"
         if skill_file.exists():
             return skill_file.read_text(encoding="utf-8")
-    # Recursive search in all category subdirs
+    # Recursive search in all category subdirs — match by dir name OR
+    # frontmatter `name` (corporate/ceo dir holds skill name "role-ceo", etc.)
     for cat in cats:
         for md in (ROOT / cat).rglob("SKILL.md"):
-            if md.parent.name == skill_name:
-                return md.read_text(encoding="utf-8")
+            try:
+                text = md.read_text(encoding="utf-8")
+                fm = parse_frontmatter(text)[0]
+                if md.parent.name == skill_name or fm.get("name") == skill_name:
+                    return text
+            except Exception:
+                if md.parent.name == skill_name:
+                    return md.read_text(encoding="utf-8")
     return None
 
 

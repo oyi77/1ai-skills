@@ -1,0 +1,13 @@
+{
+  "skill": "first-principles-thinking",
+  "category": "mindset",
+  "name": "First Principles Thinking — Assumption Decomposition",
+  "description": "Verify first-principles-thinking skill prescribes decomposition to fundamental truths and assumption challenge workflow",
+  "checks": [
+    {"type": "contains", "pattern": "first principles", "name": "has-first-principles-reference"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "frontmatter_field_exists", "field": "version", "name": "has-version"},
+    {"type": "trigger_phrase", "name": "has-use-when"}
+  ]
+}

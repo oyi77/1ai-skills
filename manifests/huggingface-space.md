@@ -10,31 +10,41 @@
 
 ## Description
 
-1ai-Skills is the world's largest AI skill ecosystem, featuring **135 world-class skills** across 10 categories. Each skill is imbued with the expertise of history's greatest minds - from Warren Buffett's value investing to Elon Musk's first-principles thinking.
+1ai-Skills is the world's largest AI skill ecosystem, featuring **1446 production-ready skills** across 20 categories with anti-rationalization tables, code examples, and verification checklists. Every skill is optimized for AI agents to behave like real human experts in their domain.
 
 ### Key Features
 
-- 🎯 **135 Expert Personas** - Each skill has a world-class persona with credentials
-- 📚 **10 Categories** - Automation, Content, Core, Development, Marketing, Operations, Productivity, Research, Sales, Trading
-- 🧠 **Philosophy-Driven** - Core principles from each expert
-- 🔧 **Actionable Frameworks** - Step-by-step methodologies
-- 📖 **Real Examples** - Case studies and applications
-- 🔗 **Connected Ecosystem** - Related skill recommendations
+- 🎯 **23 Expert Personas** — Every role anchor carries a world-class expert persona (Kent Beck, Ed Thorp, Nate Silver, etc.)
+- 📚 **20 Categories** — Corporate, Cybersecurity, Development, Content, Core, Trading, and more
+- 🧠 **Anti-Rationalization Tables** — Prevents AI agents from cutting corners
+- 🔧 **Actionable Frameworks** — Step-by-step workflows with code examples
+- 📖 **Verification Checklists** — Evidence requirements, not "seems right"
+- 🔗 **Role-Based Dispatch** — CEO → C-Suite → 17 Role Anchors → 1440 atomic skills
 
 ### Categories
 
-| Category | Skills | Sample Experts |
-|----------|--------|----------------|
-| Automation | 9 | Jobs, Musk, Ford |
-| Content | 14 | Vaynerchuk, King, Ogilvy |
-| Core | 24 | Torvalds, Knuth, Turing |
-| Development | 17 | Beck, Fowler, Martin |
-| Marketing | 20 | Godin, Halbert, Kennedy |
-| Operations | 9 | Welch, Grove, Bezos |
-| Productivity | 6 | Allen, Tracy, Covey |
-| Research | 25 | Feynman, Munger, Lynch |
-| Sales | 6 | Belfort, Carnegie, Gitomer |
-| Trading | 5 | Jones, Livermore, Simons |
+| Category | Skills | Focus |
+|----------|--------|-------|
+| Cybersecurity | 810 | Threat hunting, forensics, pen testing, SOC, incident response |
+| Content | 107 | Video, audio, design, writing, docs |
+| Development | 106 | TDD, debugging, code review, PRD, engineering workflows |
+| Mindset | 55 | Negotiation, leadership, critical thinking |
+| Core | 53 | AI infrastructure, memory, self-improvement, model routing |
+| Marketing | 45 | SEO, viral content, email, ads, growth |
+| Research | 38 | Deep research, market analysis, competitive intelligence |
+| DevOps | 32 | Docker, Kubernetes, CI/CD, cloud ops, GitOps |
+| Integrations | 29 | GitHub, Discord, Notion, Slack, Stripe, Firebase |
+| Trading | 27 | Crypto, DeFi, Polymarket, trading strategies |
+| Automation | 21 | Bots, workflows, scrapers, process automation |
+| Operations | 20 | Business ops, governance, HR, legal, project management |
+| Financial | 19 | Finance analysis, valuation, tax, portfolio management |
+| Agents | 16 | AI agent orchestration, coding, research, autonomous execution |
+| MCP | 15 | Model Context Protocol servers and tool integrations |
+| Meta | 14 | Self-evolving meta-skills, performance monitoring |
+| Sales | 15 | Lead gen, CRM, outreach, sales automation |
+| Productivity | 10 | Calendars, email, meetings, workspace management |
+| Data | 8 | Data pipelines, analysis, visualization, ETL |
+| Corporate | 6 | CEO, CTO, CFO, CMO, COO, CCO role anchors |
 
 ---
 
