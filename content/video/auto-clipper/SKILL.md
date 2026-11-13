@@ -1,32 +1,26 @@
 ---
 name: auto-clipper
-description: Use when automatically clip long videos into short, engaging highlights
-  for TikTok, Reels, and YouTube Shorts using FFmpeg and AI scene detection.
+description: Use when automatically clip long videos into short, engaging highlights for TikTok, Reels, and YouTube Shorts. Auto-detects scene changes, audio energy peaks, and transitions to create viral clips with professional quality.
 domain: content
+category: content
+tags:
+- auto
+- clipper
+- video
+- shorts
+- reels
+- highlights
+- viral
+- video-editing
+- ffmpeg
+version: 1.0.0
 author: oyi77
 license: Apache-2.0
-subdomain: content-creation
-tags:
-- auto
-- clipper
-- video
-version: 1.0.0
-category: content
+subdomain: video-production
+type: content
 ---
 
-description: Convert long videos into viral Shorts, TikToks, and Reels automatically. AI-powered scene detection, highlight extraction, and smart clipping. Use when repurposing long-form content into short-form, clipping highlights, or creating shorts from existing videos.
-domain: content
-tags:
-- auto
-- clipper
-- content-creation
-- digital-content
-- media
-- video
-dependencies: "- faster-whisper\n  - textblob\n  - vadersentiment\n  - moviepy\n  - opencv-python\n  - ffmpeg-python\n  -\
-  \ customtkinter\n"
----
-# Auto Clipper
+# Auto Clipper — Auto-Generated Video Highlights
 
 ## When to Use
 
@@ -36,63 +30,44 @@ dependencies: "- faster-whisper\n  - textblob\n  - vadersentiment\n  - moviepy\n
 - "create Reels from" · "viral clips from" · "short-form from long-form"
 
 **Use cases:**
-- Convert a podcast/webinar into multiple short clips
+- Convert podcast/webinar into multiple short clips
 - Extract highlights from long YouTube videos
 - Create TikTok/Reels from existing content
-- Auto-detect engaging moments via sentiment analysis
+- Auto-detect engaging moments via scene + audio analysis
 - Batch process multiple long videos into shorts
 
 **When NOT to use:**
-- For tasks outside this skill's scope
-
-
-**Production-ready** AI-powered video clipper untuk content creator Indonesia.
-
-
-## When NOT to Use
-
 - When the content requires deep domain expertise you do not have
 - For legal, medical, or financial advice content
 - When real-time data is required (use live data feeds)
 
-
 ## Overview
 
-Auto Clipper enables content production with professional quality and consistency.
+Auto Clipper uses ffmpeg and Python to automatically detect engaging moments in long videos and generate professional short clips. Works with any video format ffmpeg supports.
 
 ## Workflow
 
-```python
-# Example: Content generation pipeline
-def generate_content(topic: str, format: str = "article"):
-    outline = create_outline(topic)
-    draft = write_draft(outline, format)
-    edited = edit_for_quality(draft)
-    optimized = optimize_for_seo(edited)
-    return publish(optimized)
-```
-
 1. **Define brief** — Set objectives, audience, and style guidelines
-2. **Research and gather** — Collect source material and reference content
-3. **Create draft** — Generate initial content following the brief
-4. **Refine and edit** — Polish for quality, accuracy, and engagement
-5. **Publish and distribute** — Deploy to target platforms
-6. **Track performance** — Monitor engagement and iterate
+2. **Analyze video** — Detect scene changes and audio energy peaks
+3. **Find engaging moments** — Combine visual and audio signals to identify highlights
+4. **Extract clips** — Cut segments around identified moments
+5. **Optimize & publish** — Apply quality filters and export for target platforms
 
 ## Quality Checklist
 
-- [ ] Content matches the defined brief and audience
-- [ ] All facts verified against authoritative sources
-- [ ] Formatting consistent with style guidelines
-- [ ] SEO/distribution optimization applied
-- [ ] Call-to-action clear and compelling
+- [ ] Clip duration: 5-15 seconds (optimal for social platforms)
+- [ ] Scene change at start/end of clip
+- [ ] Audio peak at key moment
+- [ ] No black frames or technical glitches
+- [ ] Consistent visual style across clips
+- [ ] Clear call-to-action or value proposition
 
 ## Tools
 
-- Content management system for publishing
-- Analytics platform for performance tracking
-- Design tools for visual assets
-- Collaboration tools for review cycles
+- ffmpeg (core engine)
+- Python (for analysis logic)
+- JSON (for configuration)
+- ffmpeg-python (optional wrapper)
 
 ## Anti-Rationalization Table
 
@@ -102,16 +77,72 @@ def generate_content(topic: str, format: str = "article"):
 | "I will optimize later" | SEO and distribution need optimization from the start. |
 | "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
 
+## Implementation Example
 
-## Process
+```bash
+# Basic usage with default settings
+python3 auto_clipper.py --input long_video.mp4 --output clips/
 
-1. **Prepare** — Gather requirements, verify prerequisites, set up environment
-1. **Execute** — Run auto clipper workflow with configured parameters
-1. **Verify** — Validate output meets requirements, document results
+# Custom parameters
+python3 auto_clipper.py \
+  --input long_video.mp4 \
+  --output clips/ \
+  --min-duration 5 \
+  --max-duration 15 \
+  --scene-threshold 0.3 \
+  --audio-threshold 0.7 \
+  --fade-in 0.5 \
+  --fade-out 0.5
+```
 
-## Verification
+## Technical Approach
 
-- [ ] Content meets quality standards and brief requirements
-- [ ] Output is properly formatted for target platform
-- [ ] All facts and references verified
-- [ ] SEO/distribution optimization applied where applicable
+1. **Scene Detection**: 
+   ```bash
+   ffmpeg -i input.mp4 -vf "select='gt(scene,0.3)',showinfo" -f null - 2>&1 | grep "pts_time"
+   ```
+   - `scene` filter detects visual cuts
+   - `showinfo` provides timing metadata
+
+2. **Audio Analysis**:
+   ```bash
+   ffmpeg -i input.mp4 -af "astats=reset=0:measure_perframe=1" -f null - 2>&1 | grep "stdburst"
+   ```
+   - Measures audio energy per frame
+   - Identifies loud/quiet segments
+
+3. **Clip Extraction**:
+   ```bash
+   ffmpeg -i input.mp4 -ss 00:00:05 -t 00:00:10 -c copy output.mp4
+   ```
+   - `-ss` = start time
+   - `-t` = duration
+   - `-c copy` = no re-encoding (fast)
+
+## Configuration Parameters
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `--min-duration` | 5 | Minimum clip length (seconds) |
+| `--max-duration` | 15 | Maximum clip length (seconds) |
+| `--scene-threshold` | 0.3 | Scene change sensitivity (0.0-1.0) |
+| `--audio-threshold` | 0.7 | Audio energy threshold (0.0-1.0) |
+| `--fade-in` | 0.5 | Fade-in duration (seconds) |
+| `--fade-out` | 0.5 | Fade-out duration (seconds) |
+| `--quality` | 20 | CRF value for encoding (lower = better) |
+
+## Verification Checklist
+
+- [ ] All clips are 5-15 seconds
+- [ ] Each clip starts/ends at scene change
+- [ ] Audio peaks at key moments
+- [ ] No black frames or encoding artifacts
+- [ ] Consistent aspect ratio and quality
+- [ ] Output files verified with ffprobe
+- [ ] Contact sheet generated for QA
+
+## Dependencies
+
+- ffmpeg ≥ 4.0 (must be in PATH)
+- Python 3.7+
+- numpy, scipy (optional for advanced analysis)
