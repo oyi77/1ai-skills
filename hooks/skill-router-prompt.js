@@ -70,7 +70,34 @@ function loadAnchorMap() {
   }
 }
 
-// ── Detect role intent via router ────────────────────────────────────────
+// ── Coding keyword fallback ──────────────────────────────────────────────
+const CODING_KEYWORDS = [
+  'fix ', 'debug', 'implement', 'write code', 'build feature', 'add test',
+  'refactor', 'code review', 'review code', 'debug ', 'implement ',
+  'build feature', 'add test', 'refactor ', 'code review', 'review code',
+  'python ', '.py', 'function ', 'class ', 'async ', 'import ',
+  'def ', 'export ', 'const ', 'let ', 'var ', 'function(',
+  'def(', 'class(', 'import(', 'from ', 'require(', 'npm ', 'pip ',
+  'bug ', 'error ', 'exception ', 'traceback', 'stack trace',
+  'lint ', 'format ', 'format:', 'prettier', 'eslint', 'pylint',
+  'mypy ', 'typescript', 'javascript', 'node ', 'deno ', 'bun ',
+  'docker ', 'dockerfile', 'kubernetes', 'k8s', 'ci/cd', 'ci cd',
+  'github action', 'gitlab ci', 'pipeline', 'deploy ', 'deploy:',
+  'test ', 'pytest', 'jest', 'vitest', 'playwright', 'cypress',
+  'mock ', 'stub ', 'fixture', 'fixture(', '@pytest', '@test',
+  'expect(', 'assert(', 'assert.', 'describe(', 'it(', 'test(',
+  'benchmark', 'profile ', 'profile(', 'optimize ', 'optimize(',
+  'compile ', 'build ', 'make ', 'cargo ', 'go build', 'go test',
+  'go run', 'go get', 'go mod', 'package.json', 'requirements.txt',
+  'pyproject.toml', 'cargo.toml', 'go.mod', 'setup.py', 'setup.cfg',
+  'makefile', 'cmake', 'gradle', 'maven', 'sbt', 'gradle',
+];
+
+function isCodingPrompt(prompt) {
+  const normalized = prompt.toLowerCase();
+  return CODING_KEYWORDS.some(kw => normalized.includes(kw));
+}
+// ─────────────────────────────────────────────────────────────────────────
 function detectRole(prompt) {
   if (!prompt || prompt.length < 4) return null;
   try {
@@ -100,34 +127,43 @@ function main() {
   }
 
   const hit = detectRole(prompt);
-  if (!hit) {
-    process.stdout.write('{}');
+  const anchors = loadAnchorMap(); // available everywhere below
+
+  if (hit && hit.name.startsWith('role-') && hit.score >= 30.0) {
+    // Router hit a role anchor above threshold — use it.
+    const anchor = anchors[hit.name];
+    const personaName = anchor && anchor.persona ? anchor.persona.name : null;
+    const personaTitle = anchor && anchor.persona ? anchor.persona.title : null;
+    const roleLabel = hit.name.replace(/^role-/, '').replace(/-/g, ' ');
+    let msg = `1ai-skills role detected: "${roleLabel}" (score ${hit.score}).`;
+    if (personaName) {
+      msg += ` Persona: ${personaName}`;
+      if (personaTitle) msg += ` — ${personaTitle}`;
+    }
+    msg += ` Load skill: ~/.agents/skills/${hit.name}/SKILL.md to follow its workflow.`;
+    process.stdout.write(JSON.stringify({ systemMessage: msg }));
     return;
   }
 
-  // Only suggest when the top hit is a role anchor (role-* prefix)
-  // AND score >= 30.0 (mirrors skill_router.py:207 EXPAND_MIN threshold).
-  // This prevents noise: implementation tasks route to functional skills,
-  // strategic tasks route to corporate anchors. Weak matches stay silent.
-  if (!hit.name.startsWith('role-') || hit.score < 30.0) {
-    process.stdout.write('{}');
-    return;
+  // No router role hit above threshold. Fall back: coding keyword → software-engineer.
+  // This covers BOTH cases: (a) router returned null, (b) router returned a functional
+  // skill (e.g. python-indentation-error-debugging) instead of the role anchor.
+  const topIsNotRole = !hit || !hit.name.startsWith('role-') || hit.score < 30.0;
+  if (topIsNotRole && isCodingPrompt(prompt)) {
+    const anchor = anchors['role-software-engineer'];
+    if (anchor) {
+      const personaName = anchor.persona ? anchor.persona.name : null;
+      const personaTitle = anchor.persona ? anchor.persona.title : null;
+      const msg = `1ai-skills role detected: "software-engineer" (keyword match).` +
+        ` Persona: ${personaName}` +
+        (personaTitle ? ` — ${personaTitle}` : '') +
+        ` Load skill: ~/.agents/skills/role-software-engineer/SKILL.md to follow its workflow.`;
+      process.stdout.write(JSON.stringify({ systemMessage: msg }));
+      return;
+    }
   }
 
-  const anchors = loadAnchorMap();
-  const anchor = anchors[hit.name];
-  const personaName = anchor && anchor.persona ? anchor.persona.name : null;
-  const personaTitle = anchor && anchor.persona ? anchor.persona.title : null;
-  const roleLabel = hit.name.replace(/^role-/, '').replace(/-/g, ' ');
-
-  let msg = `1ai-skills role detected: "${roleLabel}" (score ${hit.score}).`;
-  if (personaName) {
-    msg += ` Persona: ${personaName}`;
-    if (personaTitle) msg += ` — ${personaTitle}`;
-  }
-  msg += ` Load skill: ~/.agents/skills/${hit.name}/SKILL.md to follow its workflow.`;
-
-  process.stdout.write(JSON.stringify({ systemMessage: msg }));
+  process.stdout.write('{}');
 }
 
 try {
