@@ -104,6 +104,7 @@ const CORPORATE_INTENT = [
       'ceo made a', 'ceo said', 'ceo tweeted',
       'misleading story', 'false story', 'press published', 'misreported',
       'false reporting', 'false story about', 'misleading article',
+      'media misreport', 'misreport is circulating', 'misreport about us',
       'leak to the press', 'leaked to the press', 'executive leak',
       'internal leak', 'leaked information', 'leaked to', 'press leak'
     ]
@@ -144,7 +145,9 @@ const CORPORATE_INTENT = [
     keywords: [
       'board member', 'board update', 'board report', 'board meeting',
       'board presentation', 'board is asking', 'board asked',
+      'board wants', 'board presentation', 'board approval',
       'co-founder', 'cofounder', 'founder disagreement', 'founder conflict',
+      'leadership disagreement', 'leadership disagree', 'leadership conflict',
       'strategic direction of the company', 'company direction',
       'executive conflict', 'leadership disagreement'
     ]
@@ -168,10 +171,11 @@ const CORPORATE_INTENT = [
       'burning out', 'burnout', 'low morale', 'morale is', 'employee morale',
       'team morale', 'worked to the bone', 'overworked',
       'office space', 'office capacity', 'workspace', 'desk shortage',
-      'running out of space', 'need more space',
+      'desk space', 'need more space', 'running out of space',
       'just quit', 'just resigned', 'vp of', 'vice president', 'head of',
       'harassment', 'harassment complaint', 'discrimination',
-      'hostile work', 'workplace complaint', 'toxic workplace'
+      'hostile work', 'workplace complaint', 'toxic workplace',
+      'workplace issue', 'workplace dispute'
     ]
   },
   {
@@ -243,7 +247,7 @@ const CODING_KEYWORDS = [
   'expect(', 'assert(', 'assert.', 'describe(', 'it(', 'test(',
   'unit test', 'unit tests', 'integration test', 'e2e test', 'write test',
   'code coverage', 'test coverage', 'tdd', 'red green refactor', 'write tests',
-  'benchmark', 'profile ', 'compile ', 'build ', 'make ', 'cargo ',
+  'benchmark', 'profile ', 'compile ', 'build ', 'cargo ',
   'go build', 'go test', 'go run', 'go get', 'go mod', 'package.json',
   'requirements.txt', 'pyproject.toml', 'cargo.toml', 'go.mod',
   'setup.py', 'setup.cfg', 'makefile', 'cmake', 'gradle', 'maven', 'sbt'
