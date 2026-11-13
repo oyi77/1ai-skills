@@ -85,7 +85,9 @@ const CORPORATE_INTENT = [
       'data exfiltration', 'security incident', 'unauthorized access',
       'intrusion', 'sev1', 'sev2', 'sev3', 'sev4', 'p0', 'p1', 'p2',
       'critical incident', 'declare incident', 'data loss', 'data corruption',
-      'service degraded', 'incident commander', 'war room'
+      'service degraded', 'incident commander', 'war room',
+      'user data leak', 'data is leaking', 'data to leak', 'causing user data',
+      'leaking user data', 'leaking customer data'
     ]
   },
   {
@@ -99,7 +101,11 @@ const CORPORATE_INTENT = [
       'brand reputation', 'brand crisis', 'pr crisis', 'privacy scandal',
       'data leak', 'data spill', 'exposed data', 'exposed on social',
       'media is covering', 'media coverage', 'statement to press',
-      'ceo made a', 'ceo said', 'ceo tweeted'
+      'ceo made a', 'ceo said', 'ceo tweeted',
+      'misleading story', 'false story', 'press published', 'misreported',
+      'false reporting', 'false story about', 'misleading article',
+      'leak to the press', 'leaked to the press', 'executive leak',
+      'internal leak', 'leaked information', 'leaked to', 'press leak'
     ]
   },
   {
@@ -116,7 +122,31 @@ const CORPORATE_INTENT = [
       'data retention', 'regulatory obligation', 'compliance audit',
       'compliance review', 'regulatory audit', 'regulatory review',
       'outside counsel', 'legal opinion', 'legal advice', 'legal consultation',
-      'terms of service', 'contract terms', 'contract review'
+      'terms of service', 'contract terms', 'contract review',
+      'sec investigation', 'sec is investigating', 'sec investigating',
+      'being investigated', 'investigated by', 'regulatory investigation',
+      'subpoena', 'doj ', 'ftc ', 'antitrust'
+    ]
+  },
+  {
+    role: 'role-cfo',
+    keywords: [
+      'cash runway', 'out of cash', 'running out of cash', 'runway',
+      'burn rate', 'cash flow', 'cash position', 'low on cash',
+      'budget approval', 'approve the budget', 'budget decision',
+      'board wants to approve', 'budget cut', 'cut the budget',
+      'cutting the budget', 'financial model', 'unit economics',
+      'capital allocation', 'spend approval'
+    ]
+  },
+  {
+    role: 'role-ceo',
+    keywords: [
+      'board member', 'board update', 'board report', 'board meeting',
+      'board presentation', 'board is asking', 'board asked',
+      'co-founder', 'cofounder', 'founder disagreement', 'founder conflict',
+      'strategic direction of the company', 'company direction',
+      'executive conflict', 'leadership disagreement'
     ]
   },
   {
@@ -132,7 +162,16 @@ const CORPORATE_INTENT = [
       'team restructure', 'layoffs', 'layoff', 'let go', 'firing',
       'terminate', 'termination', 'hr ', 'people ops', 'onboarding',
       'offboarding', 'exit interview', 'talent', 'recruit', 'headcount',
-      'capacity plan', 'employee', 'employees', 'staff'
+      'capacity plan', 'employee', 'employees', 'staff',
+      'counteroffer', 'counter offer', 'got an offer', 'another offer',
+      'personal offer', 'poaching', 'poach', 'poached', 'being poached',
+      'burning out', 'burnout', 'low morale', 'morale is', 'employee morale',
+      'team morale', 'worked to the bone', 'overworked',
+      'office space', 'office capacity', 'workspace', 'desk shortage',
+      'running out of space', 'need more space',
+      'just quit', 'just resigned', 'vp of', 'vice president', 'head of',
+      'harassment', 'harassment complaint', 'discrimination',
+      'hostile work', 'workplace complaint', 'toxic workplace'
     ]
   },
   {
@@ -145,7 +184,8 @@ const CORPORATE_INTENT = [
       'due diligence', 'm&a', 'acquisition', 'acquire', 'buyout',
       'investment in', 'partnership', 'co-marketing', 'joint venture',
       'integration partner', 'announce the partnership', 'announce partnership',
-      'partner wants', 'partner contract'
+      'partner wants', 'partner contract', 'renegotiate', 'renegotiation',
+      're-negotiate', 'contract renegotiation'
     ]
   },
   {
@@ -162,7 +202,9 @@ const CORPORATE_INTENT = [
       'build something like', 'make this application like',
       'make an app like', 'should we add', 'could we add',
       'let\'s add', 'let us add', 'i want to build', 'i want to create',
-      'owner idea', 'idea from owner'
+      'owner idea', 'idea from owner',
+      'competitor launched', 'competitor just launched', 'competitor released',
+      'the feature we were building', 'they built it first'
     ]
   },
   {
