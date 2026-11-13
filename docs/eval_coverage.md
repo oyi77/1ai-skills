@@ -5,9 +5,9 @@
 ## Statistics
 
 - **Skills tested:** 295 (out of 1446)
-- **Pass rate:** 295/295 = 100%
-- **Cases:** 41 across all 20 categories
-- **Coverage:** 20.4% of role-mapped corpus clusters tested via 23 anchor evals; sampled individual skills test category-specific behavior.
+- **Pass rate:** 343/343 = 100%
+- **Cases:** 48 across all 20 categories
+- **Coverage:** 23.5% of role-mapped corpus clusters tested via 31 anchor evals (6 C-suite + 8 corporate exception handlers + 17 functional); sampled individual skills test category-specific behavior.
 
 ## Category-Level Evals
 
@@ -17,7 +17,7 @@
 | automation | 2 | n8n-workflows, workflow-builder |
 | content | 3 | novel-writing, ad-creative, content-director |
 | core | 2 | prompt-engineering, code-reviewer |
-| corporate | 7 | CEO, C-suite (CTO/CMO/CCO/CFO/COO) |
+| corporate | 14 | CEO, C-suite (CTO/CMO/CCO/CFO/COO) + 8 exception handlers (owner-idea-intake, multi-department-brainstorm, owner-decision-log, incident-commander, crisis-communications, legal-counsel, people-operations, vendor-and-partnerships) |
 | cybersecurity | 3 | request.bin, ssh-audit, dnsenum |
 | data | 1 | airbyte-connector |
 | development | 5 | test-driven-development, code-reviewer, api-contract, concurrency, system-architect |

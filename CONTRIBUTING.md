@@ -192,6 +192,61 @@ The `meta/` category contains 12 self-evolving skills:
 
 When creating skills that interact with the self-evolving system, see `meta/meta-orchestrator/SKILL.md`.
 
+## Corporate Role Skills
+
+The `corporate/` category contains role anchors for executive decision-making. These skills represent C-suite executives and corporate exception handlers.
+
+### C-Suite Anchors (6)
+
+| Role | Skill | Persona |
+|------|-------|---------|
+| CEO | `corporate/ceo` | Satya Nadella |
+| CTO | `corporate/cto` | Larry Page |
+| CFO | `corporate/cfo` | Ruth Porat |
+| CMO | `corporate/cmo` | Seth Godin |
+| COO | `corporate/coo` | Sheryl Sandberg |
+| CCO | `corporate/cco` | Ana Andjelic |
+
+### Corporate Exception Handlers (8)
+
+| Role | Skill | Persona |
+|------|-------|---------|
+| Owner Idea Intake | `corporate/owner-idea-intake` | Vilona |
+| Multi-Department Brainstorm | `corporate/multi-department-brainstorm` | Ruth Porat |
+| Owner Decision Log | `corporate/owner-decision-log` | Aswath Damodaran |
+| Incident Commander | `corporate/incident-commander` | Charity Majors |
+| Crisis Communications | `corporate/crisis-communications` | Ana Andjelic |
+| People Operations | `corporate/people-operations` | Sheryl Sandberg |
+| Legal Counsel | `corporate/legal-counsel` | Christine Lagarde |
+| Vendor & Partnerships | `corporate/vendor-and-partnerships` | Aswath Damodaran |
+
+### Creating a Corporate Role Skill
+
+1. **Create the directory** — `corporate/<role-name>/SKILL.md`
+2. **Add persona frontmatter** — See `docs/PERSONAS.md` for the expert name, title, philosophy, expertise, and principles
+3. **Write the skill** — Follow the anatomy in "Skill Anatomy" above
+4. **Add eval case** — `evals/cases/corporate/<role-name>.json` with the standard 7 checks
+5. **Register in role_map.py** — Add to `ROLE_ANCHORS` dict in `scripts/role_map.py`
+6. **Update docs** — Add to `docs/PERSONAS.md` and `docs/eval_coverage.md`
+7. **Add hooks if needed** — e.g., `hooks/owner-idea-intake.js` for intake routing
+8. **Run validation**:
+   ```bash
+   python3 scripts/validate-skills.py
+   python3 scripts/lint-skills.py
+   python3 scripts/test-skills.py
+   python3 scripts/run-evals.py --category corporate
+   python3 scripts/role_map.py
+   ```
+9. **Push** — Commit with the standard attribution line
+
+### Corporate Role Routing
+
+Corporate roles map to functional roles in `scripts/role_map.py`:
+- C-suite anchors map to their functional role (CEO → product-manager, CTO → system-architect, etc.)
+- Exception handlers route based on domain (incident-commander → devops-sre-engineer, crisis-communications → content-creator, others → product-manager)
+
+See `docs/CORPORATE_CASES.md` for the full dispatch matrix.
+
 ## License
 
 By contributing, you agree your contribution will be licensed under the MIT License.
