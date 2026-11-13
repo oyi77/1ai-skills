@@ -504,6 +504,75 @@ const frequencies = visualizeAudio({
 
 ---
 
+## Procedural Audio — Code-Synthesized Music & SFX (No External Files)
+
+When no licensed audio is available (or determinism/offline render is required), synthesize the full soundtrack in Python: **music (kick, clap, hi-hat, bass, arp, pad, chord progression)** + **SFX (impact, thud, whoosh, riser, sparkle, bell, tick, pop, plink)** from pure oscillators, noise, and exponential envelopes. Output: one `mix.wav`, mixed and loudness-normalized.
+
+### `cues.json` — single source of truth for timing
+
+Never write raw seconds in two places. One script generates all timing; **both the Remotion composition AND the audio script read it**, so visuals and sound cannot drift:
+
+```python
+# make_cues.py  →  python3 make_cues.py
+import json
+
+B = [3.5, 7.0, 10.5, 14.0, 17.5]          # scene boundaries (multiples of beat)
+ev = dict(title=0.0, slam=1.0, stamp=6.1, beam=9.3, final=19.6)  # visual events
+sfx = [dict(t=0.0, type='impact', gain=.9)]
+sfx += [dict(t=b-.32, type='whoosh', d=.5, gain=.9) for b in B]  # whoosh at every transition
+music = dict(bpm=120, bars=['Am','F','C','G'], breaks=[[10.5, 14.0]],
+             build=[13.0, 14.0], final=19.5, arp_from=3.5, hat_from=2.0)
+json.dump(dict(dur=21, fps=30, bounds=B, ev=ev, sfx=sfx, music=music),
+          open('src/cues.json', 'w'), indent=1)
+```
+
+Rule: scene boundaries must fall **on multiples of the beat** (120 BPM → beat = 0.5 s, so 3.5 s = 7 beats). Recompute if duration or BPM changes.
+
+### Synthesis core (`make_audio.py` — runs before render, outputs `raw_mix.wav`)
+
+Key building blocks (NumPy + SciPy, `SR = 44100`):
+
+- **Kick:** sine with pitch sweep `48+130·exp(-30t)` Hz + click transient, exp decay.
+- **Clap:** band-passed noise (900–3500 Hz) + 3 offset exp bursts.
+- **Hat:** high-passed noise (7 kHz), short/long variants.
+- **Bass/pluck:** harmonic sums with per-harmonic decay; **pad:** detuned chord sines ±0.3% with fade-in/out.
+- **Whoosh/riser:** noise swept through a moving band-pass (`f0→f1` exponential); riser adds rising tone + accelerating envelope.
+- **Impact/thud:** low sine sweep + low-passed noise burst.
+- **Bell/sparkle:** inharmonic partial stack `(1, 2.76, 5.4, 8.93)` with staggered decay.
+- **Sidechain ducking:** lower music 60% for ~0.4 s after every kick so drums cut through.
+
+Chord/bass/arp/pad are placed per bar from `cues.music.bars`; drums per beat; SFX per `cues.sfx` entries. Mix = `tanh` soft-clip of (music·duck + drums + sfx), fade-out, normalize to 0.9.
+
+### Loudness normalization + verification (mandatory)
+
+```bash
+python3 make_audio.py
+ffmpeg -y -loglevel error -i raw_mix.wav -af loudnorm=I=-14:TP=-1.5:LRA=11 -ar 44100 public/mix.wav
+ffmpeg -nostats -i public/mix.wav -af ebur128=peak=true -f null - 2>&1 | grep -E "I:|Peak:" | tail -2
+```
+
+Target: `I:` between −15 and −13 LUFS, `Peak:` ≤ −1.2 dBFS. Repeat loudnorm or adjust `volume=XdB` if outside.
+
+### Motion-audio sync helpers
+
+Every visual event in `cues.ev` gets an SFX at the same timestamp; every scene transition gets a whoosh. Frame helpers:
+
+```ts
+// Damped shake for impacts (call with frame since hit)
+const shake = (f: number, amp = 14) =>
+  f >= 0 && f < 14 ? Math.sin(f * 2.4) * ((14 - f) / 14) * amp : 0;
+
+// Squash & stretch on landing
+const squash = (f: number) => {
+  const k = Math.max(0, 1 - f / 10) * Math.cos(f * 0.9);
+  return { sx: 1 + 0.25 * k, sy: 1 - 0.25 * k };
+};
+```
+
+Count-up numbers get a `tick` SFX per step + `thud`/`bell` on completion; falling objects get `thud` on landing; climax gets `riser` before, then `impact` + `sparkle`. No scene may be silent.
+
+---
+
 ## Voiceover (ElevenLabs TTS)
 
 Generate speech per scene, then use `calculateMetadata` to size the composition:
@@ -774,6 +843,70 @@ const BeatPulse: React.FC<{ bpm: number }> = ({ bpm }) => {
 };
 ```
 
+### Pattern 7: Kinetic Words — Mask Reveal per Word
+
+Text rises word-by-word from behind an overflow-hidden mask with overshoot. Never plain fade for headline text:
+
+```tsx
+const KineticWords: React.FC<{
+  text: string; frame: number; delay?: number; size: number; color: string; stagger?: number;
+}> = ({ text, frame, delay = 0, size, color, stagger = 3 }) => (
+  <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center",
+    gap: size * 0.25, fontWeight: 900, fontSize: size, lineHeight: 1.05, color }}>
+    {text.split(" ").map((w, i) => {
+      const p = spring({ frame: Math.max(0, frame - delay - i * stagger), fps: 30,
+        config: { damping: 10, stiffness: 190 } });
+      return (
+        <span key={i} style={{ display: "inline-block", overflow: "hidden", paddingBottom: size * 0.12 }}>
+          <span style={{ display: "inline-block",
+            transform: `translateY(${(1 - p) * 115}%) rotate(${(1 - p) * 6}deg)` }}>{w}</span>
+        </span>
+      );
+    })}
+  </div>
+);
+```
+
+### Pattern 8: Layered Wipe Transitions (beat-aligned)
+
+Two stacked color panels sweep across the frame at each scene boundary from `cues.json` — layered colors, out-easing in, in-easing out, each transition with its own SFX:
+
+```tsx
+const Wipes: React.FC<{ bounds: number[]; palette: string[][] }> = ({ bounds, palette }) => {
+  const frame = useCurrentFrame();
+  const { height: H } = useVideoConfig();
+  return (
+    <>
+      {bounds.map((b, i) => [3, 0].map((lag, z) => {
+        const f = frame - lag;
+        if (f < b - 9 || f > b + 9) return null;
+        const y = f < b
+          ? interpolate(f, [b - 9, b], [H, 0], { easing: Easing.out(Easing.cubic), extrapolateRight: "clamp" })
+          : interpolate(f, [b, b + 9], [0, -H], { easing: Easing.in(Easing.cubic), extrapolateLeft: "clamp" });
+        return <div key={`${i}-${z}`} style={{ position: "absolute", left: 0, top: 0, width: "100%",
+          height: H, background: palette[i % palette.length][z], transform: `translateY(${y}px)`, zIndex: 5 + z }} />;
+      }))}
+    </>
+  );
+};
+```
+
+### Motion-craft checklist (studio-grade, not slideshow)
+
+- **No linear motion:** every primary movement uses spring or eased curve; fast in, decelerate out.
+- **Anticipation → overshoot → settle:** spring with low damping (8–11); elements land past target, then settle.
+- **Stagger:** grouped elements enter 2–4 frames apart, never simultaneously.
+- **Overlap/follow-through:** labels trail their object by a few frames; shadows lag objects.
+- **Camera drift:** 3 depth layers minimum, slow push-in 1.00→1.06, pan, rotation ≤ 1.5° — throughout the scene.
+- **Ambient life:** particles, breathing (±2% scale), slow rotation — no dead frames; nothing static > 0.5 s.
+- **Meaningful transitions:** layered wipes, iris, object-grows-to-fill, match cut. No pure cross-fade. Every transition has an SFX.
+- **Screen shake** (6–12 frames, decaying) on impacts.
+- **Count-up numbers, path drawing (`strokeDashoffset`), filling meters** for data.
+- **Readability:** key text on screen ≥ 0.35 s + 0.15 s/word; ≥ 40 px portrait; high contrast (dark pill behind text on light background); portrait safe zone x 60–1020, y 180–1650 (1080×1920).
+- **Hook:** frame 0 already shows the hook word; first climax ≤ 2.5 s.
+- **No AI slop:** no gaudy gradient-mesh, excessive glow, glassmorphism, generic stock photos, emoji as illustration. Never redraw third-party logos/mascots — use the original file or omit.
+- **Determinism:** no `Math.random()` or CSS `animation` — use `random('seed')` from remotion and `useCurrentFrame()` only.
+
 ---
 
 ## Color Palettes
@@ -927,4 +1060,8 @@ For AI-generated clips to embed in Remotion compositions, use these skills.sh mo
 - [ ] Colors from a defined palette
 - [ ] Test render at draft quality before final render
 - [ ] Final render verified by watching the actual MP4
+- [ ] Audio: music + SFX present on every scene (no silent scenes); loudness I between −15 and −13 LUFS, Peak ≤ −1.2 dBFS
+- [ ] Audio: `cues.json` is single source of timing — no raw seconds in compositions
+- [ ] Audio: every transition has an SFX (whoosh/thud/impact); climax has riser→impact+sparkle
+- [ ] Audio: still contact sheet + frame sampling from final MP4 verified before delivery
 
