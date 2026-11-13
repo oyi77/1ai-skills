@@ -49,10 +49,10 @@ The CMO is the strategic engine for growth. Responsible for bringing the product
 ## When NOT to Use
 
 - When executing specific SEO campaigns (use `marketing/role-growth-marketer`).
-- When writing copy or scripts (use `content/role-cco`).
-- When building the product (use `core/role-cto`).
-- When managing legal or HR operations (use `operations/role-coo`).
-- When analyzing financial models (use `financial/role-cfo`).
+- When writing copy or scripts (use `corporate/cco`).
+- When building the product (use `corporate/cto`).
+- When managing legal or HR operations (use `corporate/coo`).
+- When analyzing financial models (use `corporate/cfo`).
 
 ## Deterministic Dispatch Matrix
 

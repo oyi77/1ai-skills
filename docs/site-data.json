@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-12T12:34:03.117090+00:00",
-  "total": 1446,
+  "generated": "2026-11-13T01:26:24.701067+00:00",
+  "total": 1454,
   "categories": [
     {
       "name": "cybersecurity",
@@ -71,16 +71,16 @@
       "count": 14
     },
     {
+      "name": "other",
+      "count": 14
+    },
+    {
       "name": "productivity",
       "count": 10
     },
     {
       "name": "data",
       "count": 8
-    },
-    {
-      "name": "other",
-      "count": 6
     }
   ],
   "categoryCount": 20,
@@ -94,6 +94,11 @@
       "name": "AgentShield",
       "description": "Use when agentic security patterns for AI agent systems including attack",
       "category": "core"
+    },
+    {
+      "name": "Ana Andjelic",
+      "description": "Use when a public-facing incident, PR crisis, viral complaint, or reputational event threatens brand trust. Draft holding statements, coordinate internal facts ",
+      "category": "other"
     },
     {
       "name": "Ana Andjelic",
@@ -116,6 +121,16 @@
       "category": "financial"
     },
     {
+      "name": "Aswath Damodaran",
+      "description": "Use when logging an owner idea decision with full trace \u2014 intake, strategic fit scores, department debate verdict, chosen option, what was NOT done, and dissent",
+      "category": "other"
+    },
+    {
+      "name": "Aswath Damodaran",
+      "description": "Use when evaluating a vendor, SaaS purchase, data processor, strategic partnership, or M&A target. Scores business fit, security, legal, financial exposure, and",
+      "category": "other"
+    },
+    {
       "name": "Autonomous Learner",
       "description": "Use when autonomous learning from execution data. Skills improve themselves",
       "category": "meta"
@@ -136,6 +151,16 @@
       "category": "devops"
     },
     {
+      "name": "Charity Majors",
+      "description": "Use when production is down, data is lost, a security breach is suspected, or a revenue-critical flow is blocked. Declare severity, establish a single incident ",
+      "category": "other"
+    },
+    {
+      "name": "Christine Lagarde",
+      "description": "Use when a contract, privacy obligation, regulatory requirement, IP question, or legal dispute needs review. Classifies obligations, checks compliance, flags ri",
+      "category": "other"
+    },
+    {
       "name": "Continuous Improvement Lead",
       "description": "Use when generating specific, actionable improvements for skills based",
       "category": "meta"
@@ -149,31 +174,6 @@
       "name": "David Ogilvy",
       "description": "Use when orchestrating automated content monetization and distribution pipelines. Coordinates research, production, and multi-platform distribution for high-var",
       "category": "content"
-    },
-    {
-      "name": "Deborah Gordon",
-      "description": "Use when coordinate multi-agent consensus using TiDB-backed shared memory.",
-      "category": "core"
-    },
-    {
-      "name": "Demis Hassabis",
-      "description": "Use when skill: agent-arena-skill. See SKILL.md body for details. Use",
-      "category": "development"
-    },
-    {
-      "name": "Don Norman",
-      "description": "Use when orchestrating UI/UX design systems, anti-AI-slop frontend styling,",
-      "category": "content"
-    },
-    {
-      "name": "Ed Thorp",
-      "description": "Use when orchestrating quantitative trading systems, market research,",
-      "category": "trading"
-    },
-    {
-      "name": "Edo Liberty",
-      "description": "Use when generating and managing vector embeddings for semantic search",
-      "category": "core"
     }
   ],
   "allSkills": [
@@ -184,6 +184,10 @@
     {
       "name": "AgentShield",
       "category": "core"
+    },
+    {
+      "name": "Ana Andjelic",
+      "category": "other"
     },
     {
       "name": "Ana Andjelic",
@@ -202,6 +206,14 @@
       "category": "financial"
     },
     {
+      "name": "Aswath Damodaran",
+      "category": "other"
+    },
+    {
+      "name": "Aswath Damodaran",
+      "category": "other"
+    },
+    {
       "name": "Autonomous Learner",
       "category": "meta"
     },
@@ -216,6 +228,14 @@
     {
       "name": "Charity Majors",
       "category": "devops"
+    },
+    {
+      "name": "Charity Majors",
+      "category": "other"
+    },
+    {
+      "name": "Christine Lagarde",
+      "category": "other"
     },
     {
       "name": "Continuous Improvement Lead",
@@ -338,6 +358,10 @@
       "category": "other"
     },
     {
+      "name": "Ruth Porat",
+      "category": "other"
+    },
+    {
       "name": "Satya Nadella",
       "category": "other"
     },
@@ -358,8 +382,16 @@
       "category": "other"
     },
     {
+      "name": "Sheryl Sandberg",
+      "category": "other"
+    },
+    {
       "name": "User Research Lead",
       "category": "meta"
+    },
+    {
+      "name": "Vilona",
+      "category": "other"
     },
     {
       "name": "accessibility-audit",

@@ -4,7 +4,7 @@ scripts/role_map.py — Map every 1ai skill to one of 17 roles.
 
 Ordering: most-specific-first over (category, subdomain, tags, name).
 Returns a list of (skill_name, role) tuples and a dict role->count.
-All 19 categories are covered by CATEGORY_FALLBACK so zero skills are roleless.
+All 20 categories are covered by CATEGORY_FALLBACK so zero skills are roleless.
 
 Roles (17 total):
   software-engineer     — development + agents
@@ -50,7 +50,15 @@ ROLE_ANCHORS = {
     "role-cmo": "growth-marketer",
     "role-coo": "product-manager",
     "role-cco": "content-creator",
-    # Functional role anchors
+    # Corporate intake/decision skills are product-management workflows.
+    "role-owner-idea-intake": "product-manager",
+    "role-multi-department-brainstorm": "product-manager",
+    "role-owner-decision-log": "product-manager",
+    "role-incident-commander": "devops-sre-engineer",
+    "role-crisis-communications": "content-creator",
+    "role-legal-counsel": "product-manager",
+    "role-people-operations": "product-manager",
+    "role-vendor-and-partnerships": "product-manager",
     "role-software-engineer": "software-engineer",
     "role-system-architect": "system-architect",
     "role-qa-automation-engineer": "qa-automation-engineer",
@@ -116,13 +124,14 @@ def make_tag_contains(*substrings):
 
 
 # ---------------------------------------------------------------------------
-# Category → role fallback (covers all 19 categories)
+# Category → role fallback (covers all 20 categories)
 # ---------------------------------------------------------------------------
 CATEGORY_FALLBACK = {
     "agents": "software-engineer",
     "automation": "devops-sre-engineer",
     "content": "content-creator",       # broad fallback; ui-ux-designer is more specific
     "core": "ai-ml-engineer",
+    "corporate": "product-manager",
     "cybersecurity": "security-engineer",  # default; pentest overrides below
     "data": "data-engineer",
     "development": "software-engineer",

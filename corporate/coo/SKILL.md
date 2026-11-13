@@ -50,9 +50,9 @@ The COO is the operational backbone of the 1ai kingdom. Responsible for ensuring
 
 - When defining product features (use `operations/role-product-manager`).
 - When handling customer support tickets (use `sales/role-customer-support`).
-- When building infrastructure (use `core/role-cto`).
-- When managing marketing campaigns (use `marketing/role-cmo`).
-- When producing content (use `content/role-cco`).
+- When building infrastructure (use `corporate/cto`).
+- When managing marketing campaigns (use `corporate/cmo`).
+- When producing content (use `corporate/cco`).
 
 ## Deterministic Dispatch Matrix
 
@@ -60,7 +60,7 @@ The COO is the operational backbone of the 1ai kingdom. Responsible for ensuring
 |---|---|---|
 | Product Strategy & Roadmap | `operations/role-product-manager` | PRD, roadmap, user research report |
 | Customer Support & Ticket Management | `sales/role-customer-support` | CRM dashboard, SLA report, CSAT score |
-| Business Process Optimization | `operations/role-operations-manager` | Process map, efficiency metrics, SOPs |
+| Business Process Optimization | `operations/role-product-manager` | Process map, efficiency metrics, SOPs |
 
 ## Workflow
 

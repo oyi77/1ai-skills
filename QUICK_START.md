@@ -12,7 +12,7 @@ Get from zero to productive with 1ai-Skills in under 10 minutes.
 npx skills add oyi77/1ai-skills
 ```
 
-This copies all 1446 skills into your project's skill directory.
+This copies all 1454 skills into your project's skill directory.
 
 ### Install Hooks (auto-evolve system)
 
@@ -96,7 +96,7 @@ Skills are self-contained markdown files loaded on demand. Agents discover skill
 2. **Category AGENTS.md** -- sub-index per category (e.g., `cybersecurity/AGENTS.md`)
 3. **Individual SKILL.md** -- the actual skill content
 
-Do NOT walk all 1446 skill directories. Use the catalog or grep to find what you need.
+Do NOT walk all 1454 skill directories. Use the catalog or grep to find what you need.
 
 ### Skill Anatomy (Quick Reference)
 

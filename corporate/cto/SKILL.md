@@ -50,9 +50,9 @@ The CTO is the technical brain of the 1ai kingdom. Responsible for the overall t
 
 - When implementing a specific feature (use `development/role-software-engineer`).
 - When running a pentest (use `cybersecurity/role-penetration-tester`).
-- When managing content creation (use `content/role-cco`).
-- When managing financial reports (use `financial/role-cfo`).
-- When handling day-to-day business ops (use `operations/role-coo`).
+- When managing content creation (use `corporate/cco`).
+- When managing financial reports (use `corporate/cfo`).
+- When handling day-to-day business ops (use `corporate/coo`).
 
 ## Deterministic Dispatch Matrix
 

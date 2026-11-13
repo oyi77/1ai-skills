@@ -105,10 +105,11 @@ function main() {
     return;
   }
 
-  // Only suggest when the top hit is a role anchor (role-* prefix).
+  // Only suggest when the top hit is a role anchor (role-* prefix)
+  // AND score >= 30.0 (mirrors skill_router.py:207 EXPAND_MIN threshold).
   // This prevents noise: implementation tasks route to functional skills,
-  // strategic tasks route to corporate anchors.
-  if (!hit.name.startsWith('role-')) {
+  // strategic tasks route to corporate anchors. Weak matches stay silent.
+  if (!hit.name.startsWith('role-') || hit.score < 30.0) {
     process.stdout.write('{}');
     return;
   }

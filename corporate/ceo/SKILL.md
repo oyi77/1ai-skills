@@ -47,21 +47,36 @@ The CEO is the ultimate orchestrator of the 1ai business kingdom. It does not ex
 
 ## When NOT to Use
 
-- When performing technical implementation (use `core/role-cto`)
-- When executing marketing campaigns (use `marketing/role-cmo`)
-- When producing content (use `content/role-cco`)
-- When managing finances (use `financial/role-cfo`)
-- When running daily operations (use `operations/role-coo`)
+- When performing technical implementation (use `corporate/cto`)
+- When executing marketing campaigns (use `corporate/cmo`)
+- When producing content (use `corporate/cco`)
+- When managing finances (use `corporate/cfo`)
+- When running daily operations (use `corporate/coo`)
 
 ## Deterministic Dispatch Matrix
 
 | Strategic Objective | Delegated Executive Director | Primary Outcome |
 |---|---|---|
-| Technology Strategy & R&D Roadmap | `core/role-cto` | Approved architecture document, R&D backlog |
-| Growth & Customer Acquisition Strategy | `marketing/role-cmo` | Approved growth plan, acquisition funnel metrics |
-| Content & Creative Vision | `content/role-cco` | Approved content strategy, brand guidelines |
-| Financial Strategy & Investment Analysis | `financial/role-cfo` | Approved financial model, investment thesis |
-| Operations & Cross-Team Execution | `operations/role-coo` | Approved operational playbook, OKR tracking |
+| Technology Strategy & R&D Roadmap | `corporate/cto` | Approved architecture document, R&D backlog |
+| Growth & Customer Acquisition Strategy | `corporate/cmo` | Approved growth plan, acquisition funnel metrics |
+| Content & Creative Vision | `corporate/cco` | Approved content strategy, brand guidelines |
+| Financial Strategy & Investment Analysis | `corporate/cfo` | Approved financial model, investment thesis |
+| Operations & Cross-Team Execution | `corporate/coo` | Approved operational playbook, OKR tracking |
+
+## Crisis & Exception Dispatch
+
+| Exception | Declared By | Escalates To | Output |
+|---|---|---|---|
+| Production down / incident response | Any agent or user | `corporate/incident-commander` → `devops/role-devops-sre-engineer` + `cybersecurity/role-security-engineer` | Incident Commander, war room, SEV declaration |
+| Security breach / data exfiltration | CISO or CTO | `corporate/incident-commander` → `cybersecurity/role-penetration-tester` | Breach assessment, containment plan |
+| Owner idea intake / R&D evaluation | Human owner | `corporate/owner-idea-intake` → `corporate/ceo` → `corporate/multi-department-brainstorm` | Build / research / archive verdict |
+| M&A / strategic partnership | CEO | `corporate/vendor-and-partnerships` → `corporate/cfo` | Target diligence, valuation, deal memo |
+| PR crisis / reputation | CMO or CCO | `corporate/crisis-communications` → `corporate/cco` + `corporate/cmo` | Crisis comms playbook |
+| Vendor / partnership contract | CFO or COO | `corporate/vendor-and-partnerships` → `corporate/legal-counsel` | Vendor review, risk check |
+| Legal dispute / compliance audit | COO | `corporate/legal-counsel` | Compliance review, outside counsel routing |
+| Employee hiring / offboarding | COO or CEO | `corporate/people-operations` | Hire packet, offboarding checklist |
+| Customer escalation (board-level) | CMO or CCO | `corporate/crisis-communications` → `sales/role-customer-support` | Escalation plan, executive response |
+| Product launch orchestration | CMO | `marketing/role-growth-marketer` | Launch plan, funnel metrics |
 
 ## Workflow
 

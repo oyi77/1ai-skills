@@ -51,7 +51,7 @@ The CCO is the guardian of the 1ai brand and the master conductor of all content
 - When designing UI components (use `content/role-ui-ux-designer`).
 - When writing specific scripts or articles (use `content/role-content-creator`).
 - When managing sales pipelines (use `sales/role-sales-engineer`).
-- When building infrastructure (use `core/role-cto`).
+- When building infrastructure (use `corporate/cto`).
 - When handling customer support tickets (use `sales/role-customer-support`).
 
 ## Deterministic Dispatch Matrix

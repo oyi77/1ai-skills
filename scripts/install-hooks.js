@@ -168,7 +168,7 @@ function install() {
   ensureDir(METRICS_DIR);
 
   // 2. Copy hook scripts (auto-evolve + role-router groups)
-  const hookGroups = ['auto-evolve', 'role-router'];
+  const hookGroups = ['auto-evolve', 'role-router', 'owner-intake'];
   let copied = 0;
   for (const groupName of hookGroups) {
     const group = manifest.hooks && manifest.hooks[groupName];

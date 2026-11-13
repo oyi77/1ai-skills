@@ -48,10 +48,10 @@ The CFO is the financial steward of the 1ai kingdom. Responsible for ensuring th
 
 ## When NOT to Use
 
-- When building the product (use `core/role-cto`).
-- When executing marketing campaigns (use `marketing/role-cmo`).
-- When producing content assets (use `content/role-cco`).
-- When handling HR or legal operations (use `operations/role-coo`).
+- When building the product (use `corporate/cto`).
+- When executing marketing campaigns (use `corporate/cmo`).
+- When producing content assets (use `corporate/cco`).
+- When handling HR or legal operations (use `corporate/coo`).
 - When performing technical audits (use `cybersecurity/role-security-engineer`).
 
 ## Deterministic Dispatch Matrix

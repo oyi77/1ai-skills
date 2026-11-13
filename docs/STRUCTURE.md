@@ -6,7 +6,7 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 
 ## Overview
 
-**1440 skills** across **19 categories**.
+**1454 skills** across **20 categories**.
 
 ---
 
@@ -15,6 +15,7 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 - [agents](../agents/_index.md) — 16 skills
 - [automation](../automation/_index.md) — 21 skills
 - [content](../content/_index.md) — 107 skills
+- [corporate](../corporate/_index.md) — 14 skills
 - [core](../core/_index.md) — 53 skills
 - [cybersecurity](../cybersecurity/_index.md) — 810 skills
 - [data](../data/_index.md) — 8 skills
@@ -186,7 +187,7 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [b-roll-finder](../content/video/b-roll-finder/) — Use when find relevant B-roll and stock footage by analyzing script content with semantic search. Match video meaning to text instead of random selection. Use when sourcing stock footage, finding B-roll clips, or matching visuals to narration.
   `video` `semantic-search` `b-roll` `stock-footage` `ai`
 
-- [banner-design](../content/banner-design/) — Banner design for social media, ads, web, print. 22 art direction styles, exact platform sizes, safe zones, export workflow. Use when creating banners, covers, headers for Facebook, Twitter, LinkedIn, YouTube, Instagram, Google Ads, website hero.
+- [banner-design](../content/banner-design/) — Use when designing banners for social media, ads, web, or print. Banner design for social media, ads, web, print. 22 art direction styles, exact platform sizes, safe zones, export workflow. Use when creating banners, covers, headers for Facebook, Twitter, LinkedIn, YouTube, Instagram, Google Ads, website hero.
   `banner` `design` `social-media` `ads` `cover`
 
 - [better-accessibility](../content/better-accessibility/) — Use when reviewing or fixing keyboard focus, ARIA, accessible names, forms, screen-reader announcements, motion, or zoom against WCAG 2.2 requirements.
@@ -231,10 +232,10 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [comment-reply-manager](../content/comment-reply-manager/) — Use when monitor TikTok/Instagram comments, classify sentiment, auto-reply with FAQ answers, and DM high-intent commenters with LYNK affiliate links to convert engagement into sales. Use when monitoring tiktok/instagram comments, classify sentiment, auto-reply with faq answers, and.
   `comment` `content-creation` `digital-content` `manager` `media`
 
-- [company-handbook](../content/company-handbook/) — The cross-director coordination protocol for the 1ai business kingdom. Defines how Content, Video, Image, Marketing, and Sales directors work together. Has memory via 1ai-hub brain, follows 1ai-rules, and coordinates with Vilona (GM). Use when coordinating multiple directors, resolving conflicts between teams, or when the user asks 'how do the teams work together?'. Defines shared brand standards, handoff protocols, and escalation paths.
+- [company-handbook](../content/company-handbook/) — Use when coordinating cross-director work across the 1ai business kingdom. Defines shared brand standards, handoff protocols, and escalation paths.
   `company` `handbook` `coordination` `directors` `brand`
 
-- [content-director](../content/content-director/) — The Chief Content Officer (CCO) — top-level creative director that orchestrates ALL content production across 1ai-content. Manages Video Director, Image Director, Copywriting, and Content Operations. Has memory via 1ai-hub brain, follows 1ai-rules, and coordinates with Marketing Director for distribution and Sales Director for enablement. Use when the user says 'create content', 'content strategy', 'content plan', or needs content across multiple formats.
+- [content-director](../content/content-director/) — Use when orchestrating content production across the 1ai business kingdom. Manages video, image, copywriting, and content operations.
   `content` `director` `orchestrator` `creative` `strategy`
 
 - [content-factory](../content/factory/) — Use when all-in-one YouTube content generator: create full videos from prompts, generate vertical Shorts from text, or clip long videos into Shorts using free tools (ffmpeg, edge-tts, Pexels).
@@ -294,46 +295,46 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [humanizer-zh](../content/humanizer-zh/) — Use when removing AI writing痕迹 from Chinese text to make it sound more natural and human-written.
   `content-creation` `digital-content` `humanizer` `media`
 
-- [hyperframes-changelog-video](../content/hyperframes-changelog-video/) — Turn a weekly changelog .md into a finished branded changelog video using HyperFrames. Use when the user provides a changelog/digest markdown and wants the weekly video, or says 'changelog video'. Self-contained — fonts, background, lexicon, and scripts ship in the skill. Produces square 1080, ~45-60s videos with animated brand mock-UIs.
+- [hyperframes-changelog-video](../content/hyperframes-changelog-video/) — Use when turning a weekly changelog markdown into a branded video. Turn a weekly changelog .md into a finished branded changelog video using HyperFrames. Use when the user provides a changelog/digest markdown and wants the weekly video, or says 'changelog video'. Self-contained — fonts, background, lexicon, and scripts ship in the skill. Produces square 1080, ~45-60s videos with animated brand mock-UIs.
   `hyperframes` `changelog` `video` `branded-content` `digest`
 
 - [hyperframes-cut-the-curve](../content/hyperframes-cut-the-curve/) — Use when authoring any transition, text-beat handoff, or kinetic text entry in HyperFrames videos — the transition technique catalog: five velocity-matched SEAMS (zoom-through, inverse zoom-through, cut-the-curve, waterfall cut, rack-focus blur-cut) plus in-scene techniques (waterfall entry, nudge curve). Covers partial-travel velocity matching, Z scale-sign rule, size-scaled blur, the 10/65/25 slide ratio, and the 2-3 transition budget.
   `hyperframes` `transitions` `animation` `cut-the-curve` `zoom-through`
 
-- [hyperframes-embedded-captions](../content/hyperframes-embedded-captions/) — Add captions/subtitles to talking-head or launch videos using HyperFrames. Use when the user wants embedded captions, verbatim caption rails, or cinematic text behind the subject. Covers the drop/rail/embed caption model, the overlay law (captions are NOT a reserved band), matte occlusion for embedded climaxes, and word-timestamp alignment from TTS output.
+- [hyperframes-embedded-captions](../content/hyperframes-embedded-captions/) — Use when adding captions or subtitles to talking-head or launch videos. Add captions/subtitles to talking-head or launch videos using HyperFrames. Use when the user wants embedded captions, verbatim caption rails, or cinematic text behind the subject. Covers the drop/rail/embed caption model, the overlay law (captions are NOT a reserved band), matte occlusion for embedded climaxes, and word-timestamp alignment from TTS output.
   `hyperframes` `captions` `subtitles` `talking-head` `overlay`
 
-- [hyperframes-faceless-explainer](../content/hyperframes-faceless-explainer/) — Turn arbitrary text — an article, notes, a topic, a brief — into a faceless explainer video using HyperFrames. Use when the user wants a topic explainer, concept breakdown, how-to, or listicle with no product/website to capture. Every visual is invented per scene (typography, abstract graphics, diagrams, data-viz). Not a video built from a website (use hyperframes-product-launch-video).
+- [hyperframes-faceless-explainer](../content/hyperframes-faceless-explainer/) — Use when turning text (article, notes, topic) into a faceless explainer video. Turn arbitrary text — an article, notes, a topic, a brief — into a faceless explainer video using HyperFrames. Use when the user wants a topic explainer, concept breakdown, how-to, or listicle with no product/website to capture. Every visual is invented per scene (typography, abstract graphics, diagrams, data-viz). Not a video built from a website (use hyperframes-product-launch-video).
   `hyperframes` `explainer` `faceless` `education` `concept`
 
-- [hyperframes-general-video](../content/hyperframes-general-video/) — The fallback HyperFrames workflow for anything that doesn't fit other skills — longer multi-scene pieces, brand/sizzle reels, title cards, static loops, freeform compositions. Input- and length-agnostic. Also the home of companion mode (co-create with the full toolbox). Use when no other HyperFrames skill matches, or when the user wants a freeform video.
+- [hyperframes-general-video](../content/hyperframes-general-video/) — Use when any HyperFrames video brief that does not fit a specific template. The fallback HyperFrames workflow for anything that doesn't fit other skills — longer multi-scene pieces, brand/sizzle reels, title cards, static loops, freeform compositions. Input- and length-agnostic. Also the home of companion mode (co-create with the full toolbox). Use when no other HyperFrames skill matches, or when the user wants a freeform video.
   `hyperframes` `general-video` `freeform` `sizzle-reel` `title-card`
 
-- [hyperframes-motion-graphics](../content/hyperframes-motion-graphics/) — Create short, unnarrated, design-led motion graphics (~under 10s) using HyperFrames. Use when the user wants kinetic type, stat/chart hits, logo stings, lower-thirds, animated tweets/headlines, or transparent overlay motion graphics. MP4 or transparent overlay output. Teaches seek-safe keyframe authoring and the 2-3 transition budget rule.
+- [hyperframes-motion-graphics](../content/hyperframes-motion-graphics/) — Use when creating short, unnarrated design-led motion graphics under 10s. Create short, unnarrated, design-led motion graphics (~under 10s) using HyperFrames. Use when the user wants kinetic type, stat/chart hits, logo stings, lower-thirds, animated tweets/headlines, or transparent overlay motion graphics. MP4 or transparent overlay output. Teaches seek-safe keyframe authoring and the 2-3 transition budget rule.
   `hyperframes` `motion-graphics` `animation` `kinetic-type` `lower-third`
 
-- [hyperframes-music-to-video](../content/hyperframes-music-to-video/) — Turn a music track into a beat-synced HyperFrames video — lyric, slideshow, or kinetic promo. Use when the user provides an audio file, a video to pull audio from, or a mood brief for generated music. Music drives pacing. Teaches beat-map extraction, section-based scene planning, and audio-reactive visuals.
+- [hyperframes-music-to-video](../content/hyperframes-music-to-video/) — Use when turning a music track into a beat-synced video with lyrics or slides. Turn a music track into a beat-synced HyperFrames video — lyric, slideshow, or kinetic promo. Use when the user provides an audio file, a video to pull audio from, or a mood brief for generated music. Music drives pacing. Teaches beat-map extraction, section-based scene planning, and audio-reactive visuals.
   `hyperframes` `music` `beat-sync` `lyric-video` `slideshow`
 
-- [hyperframes-oversized-cursor](../content/hyperframes-oversized-cursor/) — House-style oversized macOS cursor technique for HyperFrames videos. Use when a scene involves cursors, pointer-led action, kicking off a UI scene, igniting a morph/transition/typing with a click, or when a scene reads as static/dead/stale and needs motion to carry the eye. Covers cursor size/look, off-screen entry law, tip-targeting, click-ignition, and cross-scene handoff.
+- [hyperframes-oversized-cursor](../content/hyperframes-oversized-cursor/) — Use when applying the oversized macOS cursor technique in HyperFrames videos. House-style oversized macOS cursor technique for HyperFrames videos. Use when a scene involves cursors, pointer-led action, kicking off a UI scene, igniting a morph/transition/typing with a click, or when a scene reads as static/dead/stale and needs motion to carry the eye. Covers cursor size/look, off-screen entry law, tip-targeting, click-ignition, and cross-scene handoff.
   `hyperframes` `cursor` `motion` `click-ignition` `eye-carrier`
 
-- [hyperframes-pr-to-video](../content/hyperframes-pr-to-video/) — Turn a GitHub pull request into a changelog, feature-reveal, fix, or refactor explainer video using HyperFrames. Use when the user provides a PR URL, owner/repo#N ref, or says 'this PR'. Reads diff via gh CLI, visualizes code changes as animated diffs with narration. Teaches diff parsing, change visualization, and technical storytelling.
+- [hyperframes-pr-to-video](../content/hyperframes-pr-to-video/) — Use when turning a GitHub pull request into a changelog or feature-reveal video. Turn a GitHub pull request into a changelog, feature-reveal, fix, or refactor explainer video using HyperFrames. Use when the user provides a PR URL, owner/repo#N ref, or says 'this PR'. Reads diff via gh CLI, visualizes code changes as animated diffs with narration. Teaches diff parsing, change visualization, and technical storytelling.
   `hyperframes` `pr-to-video` `changelog` `github` `code-diff`
 
-- [hyperframes-product-launch-video](../content/hyperframes-product-launch-video/) — Create product launch videos from a URL, brief, or script using HyperFrames (HTML→MP4). Use when the user wants a product launch video, site tour, social clip featuring a product's own visuals, or marketing/promoting a product. Up to ~3 min (sweet spot 30-90s). Teaches the HyperFrames production loop: plan → write HTML → wire seekable animations → add media → lint → preview → render.
+- [hyperframes-product-launch-video](../content/hyperframes-product-launch-video/) — Use when creating product launch videos from a URL, brief, or script. Create product launch videos from a URL, brief, or script using HyperFrames (HTML→MP4). Use when the user wants a product launch video, site tour, social clip featuring a product's own visuals, or marketing/promoting a product. Up to ~3 min (sweet spot 30-90s). Teaches the HyperFrames production loop: plan → write HTML → wire seekable animations → add media → lint → preview → render.
   `hyperframes` `video` `product-launch` `html-to-video` `animation`
 
-- [hyperframes-seam-craft](../content/hyperframes-seam-craft/) — Render-correctness doctrine for scene-to-scene seams in HyperFrames videos. Use when assembling the master timeline, when a white flash appears at a cut, when reasoning about transition opacity dips, or when verifying render-side mechanics of overlapping scene wrappers. Covers the opaque stage-ground white-flash guard, injector overlap mechanics, template placeholders, and the ping-pong track reassignment.
+- [hyperframes-seam-craft](../content/hyperframes-seam-craft/) — Use when assembling scene-to-scene seams in HyperFrames video timelines. Render-correctness doctrine for scene-to-scene seams in HyperFrames videos. Use when assembling the master timeline, when a white flash appears at a cut, when reasoning about transition opacity dips, or when verifying render-side mechanics of overlapping scene wrappers. Covers the opaque stage-ground white-flash guard, injector overlap mechanics, template placeholders, and the ping-pong track reassignment.
   `hyperframes` `seams` `transitions` `render-correctness` `white-flash`
 
-- [hyperframes-slideshow](../content/hyperframes-slideshow/) — Build a presentation, pitch deck, or interactive deck using HyperFrames. Use when the user wants slides with fragment reveals, branching navigation, hotspot links, or presenter mode. Output is a navigable deck, not a rendered MP4. Teaches slide-as-scene composition, fragment timing, and deck navigation patterns.
+- [hyperframes-slideshow](../content/hyperframes-slideshow/) — Use when building a presentation, pitch deck, or interactive deck as video. Build a presentation, pitch deck, or interactive deck using HyperFrames. Use when the user wants slides with fragment reveals, branching navigation, hotspot links, or presenter mode. Output is a navigable deck, not a rendered MP4. Teaches slide-as-scene composition, fragment timing, and deck navigation patterns.
   `hyperframes` `slideshow` `presentation` `pitch-deck` `slides`
 
-- [hyperframes-talking-head-recut](../content/hyperframes-talking-head-recut/) — Package an existing talking-head / interview / podcast video with timed, designed graphic overlays using HyperFrames. Use when the user wants kinetic titles, lower-thirds, data callouts, pull-quotes, side panels, or picture-in-picture on top of existing footage. The clip plays untouched underneath. Not plain subtitles (use hyperframes-embedded-captions).
+- [hyperframes-talking-head-recut](../content/hyperframes-talking-head-recut/) — Use when packaging an existing talking-head, interview, or podcast video. Package an existing talking-head / interview / podcast video with timed, designed graphic overlays using HyperFrames. Use when the user wants kinetic titles, lower-thirds, data callouts, pull-quotes, side panels, or picture-in-picture on top of existing footage. The clip plays untouched underneath. Not plain subtitles (use hyperframes-embedded-captions).
   `hyperframes` `talking-head` `graphic-overlays` `lower-thirds` `data-callouts`
 
-- [image-director](../content/image-director/) — The Creative Design Manager — manages ALL visual design production under 1ai-content. Delegates to logo design, icon design, banner design, UI/UX, and brand design system. Has memory via 1ai-hub brain, follows 1ai-rules, and provides visual assets to Content Director, Marketing Director, and Sales Director. Use when the user says 'design an image', 'create a logo', 'design a banner', 'UI design', 'brand design', or needs any visual design work.
+- [image-director](../content/image-director/) — Use when managing visual design production across image skills. Delegates to logo, icon, banner, UI/UX, and brand design systems.
   `image` `director` `orchestrator` `design` `logo`
 
 - [image-gen](../content/image-gen/) — Use when aI image generation — Stable Diffusion, Midjourney, DALL-E, ComfyUI. Prompt engineering for images, inpainting, outpainting, ControlNet.
@@ -351,7 +352,7 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [living-story-web](../content/living-story-web/) — Use when building immersive websites with living manhwa, interactive comics, articulated character or object animation, and scroll-directed storytelling — for requests like "make this feel like a live comic" or "make the character follow scrolling." Adapt to the current project and preserve its core functionality. Do not use for routine UI edits or standalone illustrations.
   `web-design` `interactive-storytelling` `animation` `manhwa` `scroll-animation`
 
-- [marketing-director](../content/marketing-director/) — The Chief Marketing Officer (CMO) — manages ALL marketing activities across 1ai-social and 1ai-ads. Delegates to paid ads, content marketing, email marketing, social media, SEO, and analytics. Has memory via 1ai-hub brain, follows 1ai-rules, and coordinates with Content Director for content production and Sales Director for lead generation. Use when the user says 'marketing strategy', 'advertise', 'promote', 'grow audience', 'marketing campaign', or needs any marketing work.
+- [marketing-director](../content/marketing-director/) — Use when managing all marketing activities across the 1ai business kingdom. Delegates paid ads, content, email, social, SEO, and analytics.
   `marketing` `director` `orchestrator` `growth` `advertising`
 
 - [material-ui](../content/material-ui/) — Use when material UI (MUI) React components — theming, styled engine, data grid, date pickers, icons.
@@ -399,7 +400,7 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [role-ui-ux-designer](../content/role-ui-ux-designer/) — Use when orchestrating UI/UX design systems, anti-AI-slop frontend styling, tactile micro-interactions, responsive design tokens, accessibility standards, and high-fidelity interface engineering.
   `ui` `ux` `design-systems` `anti-slop` `frontend`
 
-- [sales-director](../content/sales-director/) — The Chief Revenue Officer (CRO) — manages ALL sales activities across 1ai-affiliate and 1ai-career. Delegates to lead generation, pipeline management, closing, and customer success. Has memory via 1ai-hub brain, follows 1ai-rules, and coordinates with Marketing Director for leads and Content Director for sales enablement. Use when the user says 'sales strategy', 'generate leads', 'close deals', 'pipeline', or needs any sales work.
+- [sales-director](../content/sales-director/) — Use when managing all sales activities across the 1ai business kingdom. Delegates lead generation, pipeline management, closing, and customer success.
   `sales` `director` `orchestrator` `revenue` `leads`
 
 - [shadcn-ui](../content/shadcn-ui/) — Use when shadcn/ui component library — copy-paste React components, Tailwind CSS, Radix primitives, theming.
@@ -432,7 +433,7 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [ui-styling](../content/ui-styling/) — Use when building user interfaces with shadcn/ui (Radix + Tailwind), styling with Tailwind utility classes, implementing dark mode, or creating canvas-based visual designs. Covers component installation (`npx shadcn@latest add <name>`), theme tokens, accessible dialogs/dropdowns/forms, responsive layouts, and consistent styling patterns across React applications.
   `ui` `styling` `shadcn` `tailwind` `radix`
 
-- [ui-ux-pro-max](../content/ui-ux-pro-max/) — UI/UX design intelligence for web, mobile, and desktop. Use when designing, building, reviewing, or fixing interfaces, including pages, components, design systems, accessibility, interaction, responsive layout, typography, color, charts, and stack-specific UI implementation. Searchable local data: 79 searchable styles (50 active), 192 product palettes and reasoning profiles, 74 font pairings, 119 UX guidelines, 105 icons, 17 GSAP presets, 25 chart types, and 22 stacks.
+- [ui-ux-pro-max](../content/ui-ux-pro-max/) — Use when designing UI/UX for web, mobile, or desktop. Covers pages, components, design systems, accessibility, responsive layout, typography, color, and charts.
   `ui` `ux` `design` `design-system` `color-palette`
 
 - [ultra-realistic-media](../content/ultra-realistic-media/) — Use when uLTRA REALISTIC MEDIA GENERATION - TRAINING SKILL. Use when relevant to this domain.
@@ -447,10 +448,10 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [variant](../content/variant/) — Use when building multiple variants of a component and iterating to pick the best one.
   `components` `variants` `iteration` `prototyping`
 
-- [vicestudio](../content/audio/vicestudio/) — Local-first AI voice studio for voice cloning, design, dubbing, dictation, and audiobook narration in 646 languages. Use when you need local-first speech synthesis, voice cloning, or audiobook narration.
+- [vicestudio](../content/audio/vicestudio/) — Use when running a local-first AI voice studio for cloning, design, dubbing, or dictation. Local-first AI voice studio for voice cloning, design, dubbing, dictation, and audiobook narration in 646 languages. Use when you need local-first speech synthesis, voice cloning, or audiobook narration.
   `voice-cloning` `dubbing` `audiobook` `local-first`
 
-- [video-director](../content/video-director/) — The Video Production Manager — manages ALL video production under 1ai-content. Delegates to HyperFrames, Remotion, AI video, and FFmpeg based on the task. Has memory via 1ai-hub brain, follows 1ai-rules, and reports to Content Director. Use when the user says 'make a video', 'create video', 'edit video', 'video strategy', or needs any video production work.
+- [video-director](../content/video-director/) — Use when managing end-to-end video production under a single director role. The Video Production Manager — manages ALL video production under 1ai-content. Delegates to HyperFrames, Remotion, AI video, and FFmpeg based on the task. Has memory via 1ai-hub brain, follows 1ai-rules, and reports to Content Director. Use when the user says 'make a video', 'create video', 'edit video', 'video strategy', or needs any video production work.
   `video` `director` `orchestrator` `production` `hyperframes`
 
 - [video-editor](../content/video/editor/) — Use when professional video post-production using FFmpeg — color grading, audio design, kinetic typography, transitions, motion effects, captions, brand overlays, and platform-optimized export for promotional and marketing videos. Use when editing videos, adding captions, color grading, or creating promo content.
@@ -459,13 +460,13 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [video-gen](../content/video/gen/) — Use when generate videos with AI models — Runway, Kling, Sora, Pika, Seedance 2.0, Grok Imagine, Veo. Text-to-video, image-to-video, video extension, multi-modal references. Use when generating video from text prompts, animating images, or creating AI video content.
   `content-creation` `video-generation` `ai-video` `text-to-video` `image-to-video`
 
-- [video-production-orchestrator](../content/video-production-orchestrator/) — The single entry point for ALL video generation and editing needs. Analyzes user intent and routes to the right workflow — HyperFrames (product-launch, motion-graphics, faceless-explainer, changelog, captions), Remotion (React), FFmpeg (programmatic), auto-clipper (highlights), content-factory (YouTube), or slides. Use when the user says 'make a video', 'create video', 'edit video', or any video production request; this skill decides WHICH tool fits the ask.
+- [video-production-orchestrator](../content/video-production-orchestrator/) — Use when coordinating all video generation and editing under one entry point. Routes make-a-video requests to HyperFrames, Remotion, FFmpeg, or auto-clipper.
   `video` `orchestrator` `router` `hyperframes` `remotion`
 
-- [video-strategy-orchestrator](../content/video-strategy-orchestrator/) — Decides WHEN to use Remotion, HyperFrames, AI video generation, or a hybrid of all three. Use when building video production pipelines, choosing a video tool for a task, or when the user asks 'which video tool should I use?'. Evaluates input type, complexity, determinism needs, and output format to pick the right engine — or combine them. Read BEFORE starting any video production task in the 1ai ecosystem.
+- [video-strategy-orchestrator](../content/video-strategy-orchestrator/) — Use when deciding which video pipeline (Remotion, HyperFrames, AI generation) fits a brief. Evaluates input type, complexity, and output format to pick or combine engines.
   `video` `strategy` `orchestrator` `remotion` `hyperframes`
 
-- [vilona-gm](../content/vilona-gm/) — Vilona — General Manager AI of the 1ai business kingdom. The single entry point that receives any business request and routes it to the right director (Content, Marketing, Sales), coordinates cross-director campaigns, and escalates to the human owner when authority is exceeded. Use when the user says 'Vilona', when a request spans multiple departments, or when starting any business-kingdom task.
+- [vilona-gm](../content/vilona-gm/) — Use when acting as the General Manager AI coordinating the 1ai business kingdom. Vilona — General Manager AI of the 1ai business kingdom. The single entry point that receives any business request and routes it to the right director (Content, Marketing, Sales), coordinates cross-director campaigns, and escalates to the human owner when authority is exceeded. Use when the user says 'Vilona', when a request spans multiple departments, or when starting any business-kingdom task.
   `vilona` `gm` `general-manager` `orchestrator` `business-kingdom`
 
 - [viral-content-creator](../content/viral-content-creator/) — Use when generating 50+ video variations from one product image with hook-based A/B testing, viral score prediction, autopilot scheduling.
@@ -485,6 +486,54 @@ Browse in [`content/_index.md`](../content/_index.md).
 
 - [writing-skills](../content/writing-skills/) — Use when creating new skills, editing existing skills, or verifying skills work before deployment
   `content-creation` `digital-content` `media` `skills` `writing`
+
+### Corporate (corporate/)
+
+_Total: 14 skills_
+
+Browse in [`corporate/_index.md`](../corporate/_index.md).
+
+- [role-cco](../corporate/cco/) — Use when orchestrating all content production, creative direction, and brand voice. Manages UI/UX Designers and Content Creators to ensure high-quality, brand-consistent, multi-format content across all digital channels.
+  `content` `creative` `branding` `design` `media`
+
+- [role-ceo](../corporate/ceo/) — Use when orchestrating the entire 1ai business kingdom. Coordinates C-suite executives (CTO, CMO, CCO, CFO, COO), sets strategic vision, allocates resources, and ensures cross-departmental alignment for large-scale AI agent initiatives.
+  `corporate` `leadership` `strategy` `coordination`
+
+- [role-cfo](../corporate/cfo/) — Use when orchestrating financial analysis, budgeting, investment strategy, and revenue optimization. Manages Financial Analysts and Quantitative Traders to ensure fiscal health and maximize ROI.
+  `finance` `budget` `investment` `trading` `roi`
+
+- [role-cmo](../corporate/cmo/) — Use when orchestrating marketing operations, customer acquisition, and growth. Coordinates Growth Marketers and Sales Engineers to drive revenue, expand market reach, and optimize conversion funnels.
+  `marketing` `growth` `sales` `acquisition` `conversion`
+
+- [role-coo](../corporate/coo/) — Use when orchestrating business operations, process optimization, cross-team coordination, and HR/legal functions. Ensures the company runs smoothly, efficiently, and in compliance with all regulations.
+  `operations` `hr` `legal` `compliance` `process`
+
+- [role-crisis-communications](../corporate/crisis-communications/) — Use when a public-facing incident, PR crisis, viral complaint, or reputational event threatens brand trust. Draft holding statements, coordinate internal facts before external messaging, route approvals to CEO/CCO, and manage channel-specific responses.
+  `corporate` `communications` `pr` `brand` `crisis`
+
+- [role-cto](../corporate/cto/) — Use when orchestrating technology strategy, engineering leadership, and R&D. Manages Engineering, Security, and Data & AI teams to deliver robust, scalable, and secure AI infrastructure and products.
+  `technology` `engineering` `security` `ai-ml` `infrastructure`
+
+- [role-incident-commander](../corporate/incident-commander/) — Use when production is down, data is lost, a security breach is suspected, or a revenue-critical flow is blocked. Declare severity, establish a single incident commander, coordinate containment and communications, and produce a verified postmortem.
+  `corporate` `incident` `sre` `security` `response`
+
+- [role-legal-counsel](../corporate/legal-counsel/) — Use when a contract, privacy obligation, regulatory requirement, IP question, or legal dispute needs review. Classifies obligations, checks compliance, flags risk, and routes to outside counsel with a clear brief.
+  `corporate` `legal` `compliance` `privacy` `ip`
+
+- [role-multi-department-brainstorm](../corporate/multi-department-brainstorm/) — Use when an owner idea or strategic proposal needs cross-department review before a build decision. Runs the 1ai-rules MULTI_AGENT debate protocol (Advocate, Skeptic, Synthesizer) across Marketing, Sales, Tech, Finance, and People in parallel, then produces a unified recommendation with dissent recorded.
+  `corporate` `brainstorming` `multi-agent` `debate` `decision`
+
+- [role-owner-decision-log](../corporate/owner-decision-log/) — Use when logging an owner idea decision with full trace — intake, strategic fit scores, department debate verdict, chosen option, what was NOT done, and dissent. Writes to logs/decisions/YYYY-MM-DD.md per the 1ai-rules DECISION.md Type 1 / Type 2 taxonomy.
+  `corporate` `decision-log` `owner` `audit` `compliance`
+
+- [role-owner-idea-intake](../corporate/owner-idea-intake/) — Use when the human owner raises a new product idea, competitor reference, feature request, or market opportunity. Triage strategic fit (company benefit, ecosystem benefit, cost), decide build-now / research / archive, and route approved ideas to CEO for multi-department review.
+  `corporate` `owner` `idea` `intake` `triage`
+
+- [role-people-operations](../corporate/people-operations/) — Use when hiring, onboarding, offboarding, performance management, compensation changes, or team structure changes are needed. Runs the HR lifecycle with owner approval at every stage, documented in DECISION.md.
+  `corporate` `hr` `hiring` `onboarding` `offboarding`
+
+- [role-vendor-and-partnerships](../corporate/vendor-and-partnerships/) — Use when evaluating a vendor, SaaS purchase, data processor, strategic partnership, or M&A target. Scores business fit, security, legal, financial exposure, and exit risk before recommending approve, pilot, renegotiate, or reject.
+  `corporate` `vendor` `procurement` `partnership` `m-and-a`
 
 ### Core (core/)
 
@@ -3225,7 +3274,7 @@ Browse in [`development/_index.md`](../development/_index.md).
 - [android-jetpack](../development/android-jetpack/) — Use when android Jetpack Compose — declarative UI, state management, Material Design, and Play Store deployment. Use when working with android jetpack.
   `android` `coding` `jetpack` `software-engineering` `testing`
 
-- [api-contract-drift-audit](../development/api-contract-drift-audit/) — Auditing client-server API contracts, schema parity, OpenAPI specifications, and tRPC/REST endpoints to prevent silent breaking changes. Use when frontend and backend contracts diverge, updating API versions, preparing deployments, or validating integration envelopes.
+- [api-contract-drift-audit](../development/api-contract-drift-audit/) — Use when auditing client-server API contracts and schema parity. Auditing client-server API contracts, schema parity, OpenAPI specifications, and tRPC/REST endpoints to prevent silent breaking changes. Use when frontend and backend contracts diverge, updating API versions, preparing deployments, or validating integration envelopes.
   `api` `openapi` `contract-testing` `breaking-changes` `rest`
 
 - [api-design](../development/api-design/) — Use when rEST API design — resource modeling, versioning, pagination, error handling, OpenAPI/Swagger documentation. Use when working with api design.
@@ -3243,7 +3292,7 @@ Browse in [`development/_index.md`](../development/_index.md).
 - [appwrite-patterns](../development/appwrite-patterns/) — Use when appwrite backend-as-a-service — auth, database, storage, functions, realtime for web/mobile/desktop. Use when working with appwrite patterns.
   `appwrite` `coding` `patterns` `software-engineering` `testing`
 
-- [ast-architectural-guard](../development/ast-architectural-guard/) — Enforcing architectural layer boundaries, import hierarchies, and circular dependency prevention using AST analysis and dependency graph linting. Use when modularizing monoliths, enforcing hexagonal or clean architecture rules, preventing cross-domain leaking, or checking boundary violations.
+- [ast-architectural-guard](../development/ast-architectural-guard/) — Use when enforcing architectural layer boundaries, import rules, and cycle checks. Enforcing architectural layer boundaries, import hierarchies, and circular dependency prevention using AST analysis and dependency graph linting. Use when modularizing monoliths, enforcing hexagonal or clean architecture rules, preventing cross-domain leaking, or checking boundary violations.
   `architecture` `ast` `static-analysis` `clean-architecture` `circular-dependencies`
 
 - [automated-test-generator](../development/automated-test-generator/) — Use when generate test suites, analyze coverage, and scaffold E2E tests automatically. Use when creating tests for existing code, improving test coverage, scaffolding integration tests, or setting.
@@ -3276,7 +3325,7 @@ Browse in [`development/_index.md`](../development/_index.md).
 - [code-simplification](../development/code-simplification/) — Use when simplifies code for clarity. Use when code is overly complex, has unnecessary abstractions, or when refactoring for readability.
   `code` `coding` `simplification` `software-engineering` `testing`
 
-- [concurrency-race-audit](../development/concurrency-race-audit/) — Auditing concurrent async code, thread safety, shared state mutation, event loop blocking, and connection pool leaks. Use when debugging intermittent race conditions, async deadlocks, database connection exhaustion, or unhandled promise leaks.
+- [concurrency-race-audit](../development/concurrency-race-audit/) — Use when auditing concurrent async code for thread safety and shared-state races. Auditing concurrent async code, thread safety, shared state mutation, event loop blocking, and connection pool leaks. Use when debugging intermittent race conditions, async deadlocks, database connection exhaustion, or unhandled promise leaks.
   `concurrency` `race-conditions` `async` `event-loop` `performance`
 
 - [content-validation-workflow](../development/content-validation-workflow/) — Use when validate AI-generated content quality through sample generation, human review gates, and controlled batch production workflows. Use when working with content validation workflow.
@@ -3297,7 +3346,7 @@ Browse in [`development/_index.md`](../development/_index.md).
 - [database-migration](../development/database-migration/) — Use when safe database migrations — schema changes, data migrations, rollback strategies, and zero-downtime deploys. Use when working with database migration.
   `coding` `database` `migration` `software-engineering` `testing`
 
-- [dead-code-graveyard](../development/dead-code-graveyard/) — Auditing, isolating, and safely pruning dead code, unreachable branches, unmounted endpoints, and orphaned assets across large codebases. Use when codebase bloat accumulates, preparing for major refactors, removing deprecated feature flags, or running dead code sweeps.
+- [dead-code-graveyard](../development/dead-code-graveyard/) — Use when auditing and safely pruning dead code, unreachable branches, and unused exports. Auditing, isolating, and safely pruning dead code, unreachable branches, unmounted endpoints, and orphaned assets across large codebases. Use when codebase bloat accumulates, preparing for major refactors, removing deprecated feature flags, or running dead code sweeps.
   `dead-code` `refactoring` `code-hygiene` `static-analysis` `cleanup`
 
 - [dependency-scanner](../development/dependency-scanner/) — Use when automated dependency auditing for npm, pip, cargo, go. Detect vulnerabilities, outdated packages, license conflicts, and supply chain risks. Generate SBOMs and compliance reports.
@@ -3345,7 +3394,7 @@ Browse in [`development/_index.md`](../development/_index.md).
 - [git-workflow-mastery](../development/git-workflow-mastery/) — Use when master Git workflows including branching strategies, interactive rebase, cherry-pick, bisect, worktrees, and advanced merge conflict resolution. Use when working with git workflow mastery.
   `git` `version-control` `branching` `rebase` `worktrees`
 
-- [godfile-ratchet-split](../development/godfile-ratchet-split/) — Carving monolithic god-files and oversized modules into decoupled domain units behind backward-compatible barrel facades with ratchet size caps. Use when refactoring complex legacy files, breaking 800-line limits, or eliminating circular dependency webs.
+- [godfile-ratchet-split](../development/godfile-ratchet-split/) — Use when carving monolithic god-files into decoupled domain modules. Carving monolithic god-files and oversized modules into decoupled domain units behind backward-compatible barrel facades with ratchet size caps. Use when refactoring complex legacy files, breaking 800-line limits, or eliminating circular dependency webs.
   `refactoring` `god-file` `architecture` `clean-code` `modularization`
 
 - [graphql-api](../development/graphql-api/) — Use when graphQL API development — schema design, resolvers, subscriptions, federation. Apollo, Relay, performance optimization. Use when working with graphql api.
@@ -3474,7 +3523,7 @@ Browse in [`development/_index.md`](../development/_index.md).
 - [tauri-apps](../development/tauri-apps/) — Use when tauri desktop app development — Rust backend, web frontend, native APIs, small binary size, cross-platform. Use when working with tauri apps.
   `api` `apps` `coding` `software-engineering` `tauri`
 
-- [tdd-bug-reproduction](../development/tdd-bug-reproduction/) — Isolating bugs, writing failing minimal reproduction test cases, and verifying fixes with Test-Driven Development discipline. Use when diagnosing regressions, resolving customer-reported defects, fixing flakiness, or verifying edge case boundaries.
+- [tdd-bug-reproduction](../development/tdd-bug-reproduction/) — Use when isolating a bug and writing a failing minimal reproduction test first. Isolating bugs, writing failing minimal reproduction test cases, and verifying fixes with Test-Driven Development discipline. Use when diagnosing regressions, resolving customer-reported defects, fixing flakiness, or verifying edge case boundaries.
   `tdd` `testing` `debugging` `bug-fix` `regression-test`
 
 - [test-coverage-analyzer](../development/test-coverage-analyzer/) — Use when identify untested code paths — coverage reports, gap analysis, and test prioritization. Use when working with test coverage analyzer.
@@ -3483,7 +3532,7 @@ Browse in [`development/_index.md`](../development/_index.md).
 - [test-driven-development](../development/test-driven-development/) — Use when implementing any feature or bugfix, before writing implementation code
   `coding` `driven` `software-engineering` `test` `testing`
 
-- [type-narrowing-audit](../development/type-narrowing-audit/) — Auditing and replacing unsafe any types, untyped catch blocks, unvalidated external payloads, and blind type assertions with strict type narrowing. Use when upgrading TypeScript or Python strictness, eliminating runtime type crashes, or securing data boundaries.
+- [type-narrowing-audit](../development/type-narrowing-audit/) — Use when auditing and replacing unsafe `any` types and untyped catch blocks. Auditing and replacing unsafe any types, untyped catch blocks, unvalidated external payloads, and blind type assertions with strict type narrowing. Use when upgrading TypeScript or Python strictness, eliminating runtime type crashes, or securing data boundaries.
   `typescript` `python` `type-safety` `runtime-validation` `type-narrowing`
 
 - [typeorm-patterns](../development/typeorm-patterns/) — Use when typeORM patterns — entities, repositories, migrations, relations, query builder, active record vs data mapper. Use when working with typeorm patterns.
@@ -3519,7 +3568,7 @@ Browse in [`development/_index.md`](../development/_index.md).
 - [writing-plans](../development/writing-plans/) — Use when you have a spec or requirements for a multi-step task, before touching code
   `coding` `plans` `software-engineering` `testing` `writing`
 
-- [zero-downtime-migration-audit](../development/zero-downtime-migration-audit/) — Auditing database migrations for backward and forward compatibility, table locks, safe index creation, and zero-downtime expand-contract patterns. Use when modifying production database schemas, renaming columns, adding NOT NULL constraints, or dropping tables.
+- [zero-downtime-migration-audit](../development/zero-downtime-migration-audit/) — Use when auditing DB migrations for backward/forward compatibility. Auditing database migrations for backward and forward compatibility, table locks, safe index creation, and zero-downtime expand-contract patterns. Use when modifying production database schemas, renaming columns, adding NOT NULL constraints, or dropping tables.
   `database` `migration` `zero-downtime` `postgres` `schema-design`
 
 ### Devops (devops/)
@@ -4552,4 +4601,4 @@ Browse in [`trading/_index.md`](../trading/_index.md).
   `algorithms` `asia` `breakout` `markets` `money`
 
 ---
-_Generated from 1440 skills across 19 categories._
+_Generated from 1454 skills across 20 categories._
