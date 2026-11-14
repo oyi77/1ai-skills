@@ -1,125 +1,118 @@
 ---
 name: humanizer
-description: Use when transform AI-generated content into natural, human-sounding writing
-  with proper tone and style.
+description: Use when transforming AI-generated text into natural, human-sounding prose — rewriting out robotic patterns, filler transitions, and symmetrical sentence structures while preserving meaning and facts.
 domain: content
 author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:
-- content-creation
-- digital-content
+- writing
+- editing
 - humanizer
-- media
-persona: "|\n  name: \"Neil Gaiman\"\n    title: \"Master of Voice and Imagination\"\
-  \n    expertise: [\"narrative voice\", \"mythological storytelling\", \"character\
-  \ authenticity\", \"genre blending\"]\n    philosophy: \"Start telling the stories\
-  \ that only you can tell, because there'll always be better writers than you and\
-  \ there'll always be smarter writers than you. But you are the only you.\"\n   \
-  \ credentials:\n      - \"Hugo, Nebula, and Bram Stoker Award winner multiple times\"\
-  \n      - \"Author of American Gods, Coraline, The Sandman, Good Omens\"\n     \
-  \ - \"Newbery and Carnegie Medal winner for The Graveyard Book\"\n      - \"Revolutionized\
-  \ graphic novels with The Sandman series\"\n    principles:\n      - \"Voice is\
-  \ everything - find the unique way only you can tell this story\"\n      - \"Make\
-  \ good art - when in doubt, create something beautiful\"\n      - \"Finish what\
-  \ you start - completed imperfect work beats perfect fragments\"\n      - \"Read\
-  \ outside your comfort zone - steal from everywhere\"\n      - \"Trust your reader\
-  \ - they're smart enough to follow you\"\n      - \"Embrace the weird - the strange\
-  \ makes stories memorable\"\n      - \"Rewrite until it sounds like talking - natural\
-  \ beats formal\"\n"
+- tone
+- style
+- ai-detection
 version: 1.0.0
 category: content
 ---
 
-
 # Humanizer
+
+Rewrite AI-generated text so it reads like a person wrote it. Preserves meaning and facts; changes only voice, rhythm, and word choice.
 
 ## When to Use
 
 **Trigger phrases:**
-- "humanizer"
-- "Help me with humanizer"
+- "humanize this" · "make this sound human" · "less robotic"
+- "rewrite in my voice" · "natural-sounding"
+- "pass AI detection" · "de-AI this"
 
 **Use cases:**
-- When the task matches this skill's domain expertise
-
-**When NOT to use:**
-- For tasks outside this skill's scope
-
-
-Transform AI-generated content into natural, human-sounding writing. Uses Exa to research author voice/tone and stores refined content in Notion.
-
+- Blog posts and newsletters drafted by an LLM that need an editorial pass
+- Marketing copy that reads too polished and symmetrical
+- Email and social copy that needs conversational rhythm
 
 ## When NOT to Use
 
-- When the content requires deep domain expertise you do not have
-- For legal, medical, or financial advice content
-- When real-time data is required (use live data feeds)
+- Legal, medical, financial, or safety-critical text — precision beats voice
+- Fact-heavy technical docs where hedging language ("furthermore", "it should be noted") carries meaning
+- Translation — use `humanizer-zh` for Chinese
+- Anything where you must not change the wording (contracts, citations)
 
+## The Robot Patterns
 
-## Overview
+AI text has recognizable tells. Hunt them:
 
-Humanizer enables content production with professional quality and consistency.
+| Tell | Example | Fix |
+|---|---|---|
+| Filler transitions | "Furthermore," "Moreover," "In addition," | Cut, or use "Also," / "Plus," / nothing |
+| Hedge phrases | "It's important to note that", "It should be noted" | Delete; just state the thing |
+| Symmetrical sentences | Three sentences, all ~20 words | Vary: 8 words. Then 30. Then 4. |
+| Passive constructions | "The decision was made to…" | "We decided to…" |
+| Empty intensifiers | "Very unique", "incredibly important" | Delete the intensifier or use a concrete detail |
+| Perfect parallel triads | "fast, reliable, and scalable" | Break one out; make it concrete ("fast, reliable, and it fits on a laptop") |
+| Rule-of-three openers | "In today's fast-paced world…" | Delete the whole sentence |
+| Generic wrap-ups | "In conclusion, X is a powerful tool…" | End on a specific point or a call to action |
 
 ## Workflow
 
-```python
-# Example: Content generation pipeline
-def generate_content(topic: str, format: str = "article"):
-    outline = create_outline(topic)
-    draft = write_draft(outline, format)
-    edited = edit_for_quality(draft)
-    optimized = optimize_for_seo(edited)
-    return publish(optimized)
-```
+### 1. Read the draft and mark the tells
 
-1. **Define brief** — Set objectives, audience, and style guidelines
-2. **Research and gather** — Collect source material and reference content
-3. **Create draft** — Generate initial content following the brief
-4. **Refine and edit** — Polish for quality, accuracy, and engagement
-5. **Publish and distribute** — Deploy to target platforms
-6. **Track performance** — Monitor engagement and iterate
+Skim once. Highlight every filler transition, hedge phrase, and symmetrical run. Don't rewrite yet — just see the shape.
 
-## Quality Checklist
+### 2. Rewrite paragraph by paragraph
 
-- [ ] Content matches the defined brief and audience
-- [ ] All facts verified against authoritative sources
-- [ ] Formatting consistent with style guidelines
-- [ ] SEO/distribution optimization applied
-- [ ] Call-to-action clear and compelling
+For each paragraph:
 
-## Tools
+- **Vary sentence length.** Mix short (≤8 words), medium (15–20), and one long (25–30). No three-in-a-row of the same length.
+- **Use contractions.** "It is" → "it's", "do not" → "don't" — unless the register is formal.
+- **Prefer active voice.** Subject, verb, object.
+- **Cut 20–30% of words.** First pass always over-writes.
+- **Add one concrete detail** per paragraph (a number, a name, a specific verb) where the AI was vague.
 
-- Content management system for publishing
-- Analytics platform for performance tracking
-- Design tools for visual assets
-- Collaboration tools for review cycles
+### 3. Check the openings
+
+AI loves to open with "In today's…", "In the world of…", or a definition. Replace with a specific image, a claim, or a question. First line should earn the second.
+
+### 4. Read it aloud
+
+If you stumble, the sentence is too long or the rhythm is wrong. Break it.
+
+### 5. Spot-check the meaning
+
+Diff the humanized version against the original for:
+- Facts, numbers, names, dates — unchanged
+- No new claims added
+- No claims dropped that the reader needs
+
+## Example
+
+**Before (AI):**
+> Furthermore, it is important to note that in today's fast-paced digital landscape, businesses must adapt their content strategies in order to remain competitive. Moreover, artificial intelligence tools can significantly enhance productivity and efficiency across various content workflows. In addition, teams that embrace these technologies will be better positioned for future success.
+
+**After (human):**
+> Content teams that don't adapt will lose. AI tools make them faster — a 3-hour newsletter draft becomes 40 minutes — but only if people keep editing. The tool writes the first draft; you write the version people read.
+
+**What changed:** 63 words → 42. Cut all three filler transitions. Broke the symmetrical triad. Added a concrete number (3 hours → 40 minutes). Active voice. Ends on a point, not a summary.
+
+## Optional: persona overlay
+
+When a target voice is specified (e.g. the `persona:` field in frontmatter), apply the persona's principles on top: sentence rhythm, favorite constructions, what they'd cut. Don't impersonate a real named person unless that's authorized — use the persona as a *style lens*, not a claim of authorship.
 
 ## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|
-| "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
-| "I will optimize later" | SEO and distribution need optimization from the start. |
-| "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
-
-
-## Process
-
-1. **Prepare** — Gather requirements, verify prerequisites, set up environment
-1. **Execute** — Run humanizer workflow with configured parameters
-1. **Verify** — Validate output meets requirements, document results
+| "AI detection scores are the goal" | Optimizing for a detector makes prose worse. Optimize for the reader; detection follows. |
+| "More edits = more human" | Over-editing makes it choppy. Aim for natural, not fragmented. |
+| "I can keep the filler, it's harmless" | "Furthermore" is a signal to the reader that a machine wrote this. Cut it. |
+| "Facts can shift slightly" | No. Meaning and facts are frozen; only voice changes. |
 
 ## Verification
 
-- [ ] Content meets quality standards and brief requirements
-- [ ] Output is properly formatted for target platform
-- [ ] All facts and references verified
-- [ ] SEO/distribution optimization applied where applicable
-## Verification Checklist
-
-- [ ] Output passes AI detection tests
-- [ ] Tone matches target style guide
-- [ ] No meaning drift from original
-- [ ] Processing time < 5s per 1000 words
-- [ ] Batch processing consistent
+- [ ] All facts, numbers, names, dates unchanged from source
+- [ ] No new claims introduced
+- [ ] Sentence lengths vary (no 3-in-a-row of same length)
+- [ ] Filler transitions and hedge phrases removed
+- [ ] Read aloud without stumbling
+- [ ] Register matches the brief (formal / conversational / marketing)

@@ -1,113 +1,137 @@
 ---
 name: paperpod
-description: Use when isolated agent runtime for code execution, live preview URLs, browser
-  automation, 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), LLM inference,
-  and persistent memory — all via CLI or HTTP, no SDK or API keys required.
+description: Use when running code, checking live previews, automating browsers, using 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), and calling LLMs inside isolated Paperpod sandboxes via CLI or HTTP without SDK or API keys.
 domain: content
 author: oyi77
 license: Apache-2.0
 subdomain: content-creation
 tags:
-- ai-agent
-- api
-- content-creation
-- digital-content
-- media
-- paperpod
-metadata: "|\n  author: PaperPod\n    version: \"2.0.3\"\n    homepage: https://paperpod.dev\n"
-category: content
+- sandbox
+- cli
+- preview
+- browser-automation
+- ffmpeg
+- sqlite
+- tools
 version: 1.0.0
+category: content
 ---
 
+# Paperpod — Isolated Agent Sandboxes
 
-# Paperpod
+> ⚠️ **Scope honesty.** This skill could not corroborate a public "Paperpod" product or its API surface during authoring. The **HTTP endpoints, CLI subcommands, and image names below are illustrative placeholders**, not verified contracts. Before relying on any of it, confirm the real Paperpod docs/CLI for your environment. What survives regardless: the *pattern* — run untrusted/heavy work in an ephemeral isolated sandbox, expose a port via a tunnel URL, fetch artifacts, then destroy to stop billing.
+
+Run code, preview apps live, automate browsers, and use 50+ built-in tools (ffmpeg, sqlite, pandoc, imagemagick) inside an isolated Paperpod sandbox via CLI or HTTP. No SDK or API keys required.
 
 ## When to Use
 
 **Trigger phrases:**
-- "paperpod"
-- "Help me with paperpod"
+- "spin up a sandbox" · "run in paperpod" · "live preview URL"
+- "browser automation sandbox" · "run ffmpeg / imagemagick in cloud sandbox"
+- "isolated code execution"
 
 **Use cases:**
-- When the task matches this skill's domain expertise
-
-**When NOT to use:**
-- For tasks outside this skill's scope
-
-
-Isolated, agent-native sandboxes for code execution, live preview URLs, browser automation, 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), LLM inference, and persistent memory — all via CLI or HTTP, no SDK or API keys required. Billed per second of compute usage and topup via stripe or x402.
-
+- Executing untrusted code safely
+- Getting a public live preview URL for a local web app
+- Running heavy CLI tools (ffmpeg, pandoc) without local dependencies
+- Browser automation (Puppeteer/Playwright) in a clean container
 
 ## When NOT to Use
 
-- When the content requires deep domain expertise you do not have
-- For legal, medical, or financial advice content
-- When real-time data is required (use live data feeds)
+- Local development where you already have all tools installed and running
+- Long-running production servers (Paperpod sandboxes have compute limits)
+- High-throughput database operations requiring persistent disk backing
 
+## Core Capabilities
 
-## Overview
+- **50+ CLI tools pre-installed:** `ffmpeg`, `ffprobe`, `sqlite3`, `pandoc`, `imagemagick`, `curl`, `git`, `node`, `python3`, `jq`, `ripgrep`, etc.
+- **Live Preview URLs:** Instant public HTTPS tunnels to any port running inside the sandbox.
+- **Browser Automation:** Headless Chromium pre-configured with Playwright / Puppeteer.
+- **Persistent Memory:** Scratchpad folders and key-value state stored across sandbox sessions.
 
-Paperpod enables content production with professional quality and consistency.
+## Setup & CLI Usage
+
+```bash
+# Install paperpod CLI (or use via the paperpod skill / MCP if connected)
+npm install -g paperpod-cli
+
+# 1. Spin up an interactive sandbox
+paperpod run --image node:20
+
+# 2. Run a script with live preview on port 3000
+paperpod up --port 3000 -- npx vite
+
+# 3. Execute a one-off command in a fresh sandbox
+paperpod exec -- ffmpeg -i input.mp4 -vf scale=1080:1920 out.mp4
+```
 
 ## Workflow
 
+### 1. Spin up sandbox with required tools
+
 ```python
-# Example: Content generation pipeline
-def generate_content(topic: str, format: str = "article"):
-    outline = create_outline(topic)
-    draft = write_draft(outline, format)
-    edited = edit_for_quality(draft)
-    optimized = optimize_for_seo(edited)
-    return publish(optimized)
+# Create sandbox via HTTP API
+import requests, os
+
+API = "https://api.paperpod.dev/v1"
+HEADERS = {"Authorization": f"Bearer {os.environ.get('PAPERPOD_API_KEY', 'local')}"}
+
+def create_sandbox(image: str = "ubuntu:22.04") -> dict:
+    r = requests.post(f"{API}/sandboxes", headers=HEADERS, json={"image": image})
+    r.raise_for_status()
+    return r.json() # {"id": "sb_123", "preview_url": "..."}
 ```
 
-1. **Define brief** — Set objectives, audience, and style guidelines
-2. **Research and gather** — Collect source material and reference content
-3. **Create draft** — Generate initial content following the brief
-4. **Refine and edit** — Polish for quality, accuracy, and engagement
-5. **Publish and distribute** — Deploy to target platforms
-6. **Track performance** — Monitor engagement and iterate
+### 2. Execute commands and stream output
 
-## Quality Checklist
+```python
+def exec_cmd(sandbox_id: str, cmd: str) -> dict:
+    r = requests.post(
+        f"{API}/sandboxes/{sandbox_id}/exec",
+        headers=HEADERS,
+        json={"command": cmd},
+        timeout=300,
+    )
+    r.raise_for_status()
+    return r.json() # {"stdout": "...", "stderr": "...", "exit_code": 0}
+```
 
-- [ ] Content matches the defined brief and audience
-- [ ] All facts verified against authoritative sources
-- [ ] Formatting consistent with style guidelines
-- [ ] SEO/distribution optimization applied
-- [ ] Call-to-action clear and compelling
+### 3. Fetch files or preview URLs
 
-## Tools
+```python
+# Download rendered video or image from sandbox
+def get_file(sandbox_id: str, remote_path: str, local_path: str):
+    r = requests.get(
+        f"{API}/sandboxes/{sandbox_id}/files",
+        headers=HEADERS,
+        params={"path": remote_path},
+        stream=True,
+    )
+    r.raise_for_status()
+    with open(local_path, "wb") as f:
+        for chunk in r.iter_content(8192):
+            f.write(chunk)
+```
 
-- Content management system for publishing
-- Analytics platform for performance tracking
-- Design tools for visual assets
-- Collaboration tools for review cycles
+### 4. Cleanup
+
+```python
+def destroy_sandbox(sandbox_id: str):
+    requests.delete(f"{API}/sandboxes/{sandbox_id}", headers=HEADERS)
+```
 
 ## Anti-Rationalization Table
 
 | Rationalization | Reality |
 |---|---|
-| "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
-| "I will optimize later" | SEO and distribution need optimization from the start. |
-| "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
-
-
-## Process
-
-1. **Prepare** — Gather requirements, verify prerequisites, set up environment
-1. **Execute** — Run paperpod workflow with configured parameters
-1. **Verify** — Validate output meets requirements, document results
+| "I'll run untrusted code locally" | Never run unvetted scripts on your host machine. Use the sandbox. |
+| "I don't need to destroy sandboxes" | Sandboxes bill per second of compute. Always clean up in a `try...finally` block. |
+| "Previews work without ports" | You must map the port explicitly (`--port 3000`) for the tunnel URL to route traffic. |
 
 ## Verification
 
-- [ ] Content meets quality standards and brief requirements
-- [ ] Output is properly formatted for target platform
-- [ ] All facts and references verified
-- [ ] SEO/distribution optimization applied where applicable
-## Verification Checklist
-
-- [ ] Runtime starts in < 30s
-- [ ] All 50+ tools available
-- [ ] Browser automation functional
-- [ ] LLM inference working
-- [ ] Persistent memory survives restarts
+- [ ] Sandbox initializes and responds to `/health` or `exec` in <10s
+- [ ] Required CLI tools (`ffmpeg`, `node`, etc.) present in path
+- [ ] Live preview URL returns 200 OK for running web app
+- [ ] Files correctly transferred in/out of sandbox
+- [ ] Sandbox destroyed immediately after task completion to stop billing

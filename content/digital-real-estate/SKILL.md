@@ -1,8 +1,6 @@
 ---
 name: digital-real-estate
-description: Use when build and manage a portfolio of niche content sites generating
-  affiliate and AdSense revenue with AI handling research, writing, SEO, and updates.
-  Use when building and manage a portfolio of niche content sites generating.
+description: Use when building and managing a portfolio of niche content sites that generate affiliate and AdSense revenue with AI handling research, writing, SEO, and updates.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -343,16 +341,6 @@ done
 - A site earning $3K/month = $90K-$120K sale price
 - Clean up content, document processes, transfer hosting before listing
 
-## How to Use
-
-1. Define content goal (traffic, engagement, conversion, brand awareness)
-2. Research target audience pain points and search intent
-3. Generate content using appropriate AI tools
-4. Edit and humanize output for authenticity
-5. Optimize for target platform (SEO, hashtags, format)
-6. Schedule and distribute across channels
-7. Measure performance and iterate
-
 ## Red Flags
 
 - **AI-generated content sounds robotic**: Always run through humanizer before publishing
@@ -363,18 +351,10 @@ done
 
 ## Verification
 
-- [ ] Skill output matches expected behavior
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
-
-## Anti-Rationalization Table
-
-| Rationalization | Reality |
-|---|---|
-| "Good enough content works" | Quality content drives engagement. Mediocre content gets ignored. |
-| "I will optimize later" | SEO and distribution need optimization from the start. |
-| "Templates are good enough" | Templates are a starting point. Custom content outperforms generic. |
+- [ ] Niche scored >50 opportunity (volume × RPM / competition)
+- [ ] Site provisioned with WP-CLI and core plugins (SEO, cache, image, schema)
+- [ ] Pillar + supporting article cluster generated with internal links
+- [ ] Technical SEO audit clean (Core Web Vitals, no broken links, sitemap submitted)
+- [ ] Portfolio tracked in `portfolio.json` with traffic + revenue per site
+- [ ] Weekly maintenance routine run (rankings, outdated content, broken links)
+- [ ] Revenue stacked across affiliate + display ads, RPM ≥ $30
