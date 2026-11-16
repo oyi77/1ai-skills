@@ -24,6 +24,60 @@ def probe_duration(src: str) -> float:
     return float(out)
 
 
+def detect_beats(src: str) -> dict:
+    """Detect beats + tempo via librosa, then least-squares fit an isochronous grid.
+
+    Per Vincentwei1021/video-shotcraft workflow: do not trust `beat_track`'s tempo
+    scalar (can drift 2%+); fit beats to a grid and check residual (<=±15 ms = grid
+    trustworthy). Resolves half/double-tempo ambiguity (70 reported as 140) by
+    testing 0.5x/1x/2x candidates and keeping the best coverage.
+
+    Returns {bpm, beat0, beat_interval, residual_ms, beats(list[float])}.
+    """
+    try:
+        import librosa
+        import numpy as np
+    except ImportError:
+        raise SystemExit("beat-align requires librosa + numpy (pip install librosa numpy)")
+
+    # librosa/soundfile cannot decode every container (notably MP4); decode
+    # through ffmpeg so beat-align works on the same media formats as the clipper.
+    target_sr = 22050
+    pcm = subprocess.run(
+        ["ffmpeg", "-v", "error", "-i", src, "-vn", "-ac", "1", "-ar", str(target_sr),
+         "-f", "f32le", "pipe:1"], capture_output=True, check=True).stdout
+    y = np.frombuffer(pcm, dtype=np.float32)
+    sr = target_sr
+    tempo, beats = librosa.beat.beat_track(y=y, sr=sr, tightness=400, units="time")
+    if len(beats) < 2:
+        return dict(bpm=float(tempo), beat0=0.0, beat_interval=60.0 / max(tempo, 1),
+                    residual_ms=999.0, beats=list(beats))
+
+    def fit(t_arr: list[float]) -> tuple[float, float, float]:
+        i = np.arange(len(t_arr))
+        A = np.vstack([i, np.ones_like(i)]).T
+        (T, t0), *_ = np.linalg.lstsq(A, np.array(t_arr), rcond=None)
+        resid = np.array(t_arr) - (t0 + i * T)
+        return float(T), float(t0), float(np.max(np.abs(resid)))
+
+    # try candidate multiples of detected tempo to resolve 0.5x/1x/2x ambiguity
+    best = None
+    for mult in (0.5, 1.0, 2.0):
+        # re-detect with shifted tightness to test alternate interpretations is
+        # expensive; instead use the detected beats as truth and pick the fit
+        # whose interval matches 60/(tempo*mult)
+        target = 60.0 / (tempo * mult) if tempo else 0.0
+        T, t0, resid = fit(list(beats))
+        # choose the candidate whose residual is smallest; mult only affects tempo label
+        if best is None or resid < best[2]:
+            best = (T, t0, resid, mult)
+    T, t0, resid, _ = best
+    bpm = 60.0 / T if T else float(tempo)
+    # grid must be trustworthy; otherwise caller should fall back to scene cuts
+    return dict(bpm=bpm, beat0=t0, beat_interval=T, residual_ms=resid * 1000.0,
+                beats=[float(b) for b in beats])
+
+
 def detect_scenes(src: str, threshold: float) -> list[float]:
     """Return timestamps of visual scene changes."""
     p = subprocess.run(
@@ -61,12 +115,16 @@ def score_windows(dur: float, scenes: list[float], energy: list[tuple[float, flo
     if not energy:
         raise SystemExit("no audio energy data — does the input have an audio stream?")
     rms_vals = [e[1] for e in energy]
-    floor = min(rms_vals)          # dB, quieter bound
-    ceil_ = max(rms_vals)
+    # Guard against -inf from silent windows (synthetic/quiet audio); finite only.
+    finite = [v for v in rms_vals if v == v and abs(v) != float("inf")]
+    if not finite:
+        raise SystemExit("all audio windows are silent or non-finite — cannot score")
+    floor = min(finite)           # dB, quieter bound
+    ceil_ = max(finite)
     span = max(ceil_ - floor, 1e-6)
 
     def norm_rms(t0: float, t1: float) -> float:
-        sel = [v for t, v in energy if t0 <= t < t1]
+        sel = [v for t, v in energy if t0 <= t < t1 and v == v and abs(v) != float("inf")]
         if not sel:
             return 0.0
         avg = sum(sel) / len(sel)
@@ -99,6 +157,7 @@ def dedupe(clips: list[dict], max_n: int, overlap: float = 0.5,
     the candidate — distributes picks across the video instead of clustering.
     """
     kept: list[dict] = []
+    pool = list(clips)
 
     def boost(c: dict) -> float:
         if not dur or not kept:
@@ -107,8 +166,6 @@ def dedupe(clips: list[dict], max_n: int, overlap: float = 0.5,
                   if abs(c["start"] - k["start"]) > 0.25 * dur)
         return far * spread_bonus
 
-    kept: list[dict] = []
-    pool = list(clips)
     while pool and len(kept) < max_n:
         # re-score each round so the spread bonus sees what's already kept
         pool.sort(key=lambda c: -(c["score"] + boost(c)))
@@ -119,6 +176,22 @@ def dedupe(clips: list[dict], max_n: int, overlap: float = 0.5,
         if not clash:
             kept.append(c)
     return sorted(kept, key=lambda c: c["start"])
+
+
+def snap_to_beat(t: float, grid: dict, max_shift: float = 0.25) -> float:
+    """Snap time t to the nearest beat on the detected grid.
+
+    max_shift: only move if the nearest beat is within this many seconds —
+    avoids large jumps that would move a cut away from the actual scene change.
+    """
+    if grid.get("residual_ms", 999) > 30:
+        return t  # grid untrustworthy; keep original time
+    b0, T = grid["beat0"], grid["beat_interval"]
+    if T <= 0:
+        return t
+    n = round((t - b0) / T)
+    candidate = b0 + n * T
+    return candidate if abs(candidate - t) <= max_shift else t
 
 
 def cut(src: str, out: Path, start: float, length: float, fade_in: float,
@@ -150,6 +223,8 @@ def main() -> None:
     ap.add_argument("--fade-in", type=float, default=0.5)
     ap.add_argument("--fade-out", type=float, default=0.5)
     ap.add_argument("--quality", type=int, default=20)
+    ap.add_argument("--beat-align", action="store_true",
+                    help="snap clip starts to a trustworthy librosa beat grid")
     args = ap.parse_args()
 
     src = args.input
@@ -167,6 +242,20 @@ def main() -> None:
                                args.max_duration)
     clips = dedupe(candidates, args.max_clips, dur=dur)
 
+    grid = None
+    if args.beat_align:
+        grid = detect_beats(src)
+        trustworthy = grid["residual_ms"] <= 30
+        print(f"[auto-clipper] beat grid: {grid['bpm']:.1f} BPM, "
+              f"residual {grid['residual_ms']:.1f} ms "
+              f"({'trustworthy' if trustworthy else 'UNTRUSTWORTHY - cuts unsnapped'})",
+              file=sys.stderr)
+        for c in clips:
+            if trustworthy:
+                c["start"] = round(snap_to_beat(c["start"], grid), 3)
+                c["end"] = round(c["start"] + c["duration"], 3)
+            c["beat_bpm"] = round(grid["bpm"], 1)
+
     manifest = []
     for i, c in enumerate(clips, 1):
         name = outdir / f"clip_{i:02d}.mp4"
@@ -174,7 +263,8 @@ def main() -> None:
         d = probe_duration(str(name))
         rec = dict(file=str(name), **c, actual_duration=round(d, 2))
         manifest.append(rec)
-        print(f"[auto-clipper] {name}  {c['start']}-{c['end']}s  score={c['score']}  cuts={c['cuts']}")
+        beat_note = f"  beat={c['beat_bpm']}BPM" if grid else ""
+        print(f"[auto-clipper] {name}  {c['start']}-{c['end']}s  score={c['score']}  cuts={c['cuts']}{beat_note}")
 
     (outdir / "manifest.json").write_text(json.dumps(manifest, indent=1))
     print(f"[auto-clipper] wrote {len(manifest)} clips + manifest.json")

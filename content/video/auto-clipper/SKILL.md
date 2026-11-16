@@ -119,6 +119,12 @@ python3 auto_clipper.py \
    - `-t` = duration
    - `-c copy` = no re-encoding (fast)
 
+4. **Beat-Snapped Cutting** (optional, requires librosa):
+   - `librosa.beat.beat_track(tightness=400, units="time")` detects beats
+   - Least-squares fit to an isochronous grid; residual ≤±15 ms = grid trustworthy
+   - `--beat-align` snaps clip starts to nearest beat within 0.25 s
+   - Falls back to scene-cut times if grid residual >30 ms or librosa unavailable
+
 ## Configuration Parameters
 
 | Parameter | Default | Description |
@@ -130,12 +136,14 @@ python3 auto_clipper.py \
 | `--fade-in` | 0.5 | Fade-in duration (seconds) |
 | `--fade-out` | 0.5 | Fade-out duration (seconds) |
 | `--quality` | 20 | CRF value for encoding (lower = better) |
+| `--beat-align` | off | Snap clip starts to a trustworthy librosa beat grid |
 
 ## Verification Checklist
 
 - [ ] All clips are 5-15 seconds
 - [ ] Each clip starts/ends at scene change
 - [ ] Audio peaks at key moments
+- [ ] With `--beat-align`: grid residual ≤30 ms; cuts snapped within 0.25 s
 - [ ] No black frames or encoding artifacts
 - [ ] Consistent aspect ratio and quality
 - [ ] Output files verified with ffprobe
@@ -146,3 +154,4 @@ python3 auto_clipper.py \
 - ffmpeg ≥ 4.0 (must be in PATH)
 - Python 3.7+
 - numpy, scipy (optional for advanced analysis)
+- librosa + numpy (required only with `--beat-align`)
