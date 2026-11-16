@@ -1,5 +1,5 @@
 {
-  "total_skills": 1455,
+  "total_skills": 1456,
   "category_count": 20,
   "categories": {
     "agents": 16,
@@ -14,7 +14,7 @@
     "financial": 19,
     "integrations": 29,
     "marketing": 45,
-    "mcp": 15,
+    "mcp": 16,
     "meta": 14,
     "mindset": 55,
     "operations": 20,
@@ -28610,6 +28610,30 @@
         "mcp-server",
         "memory",
         "model-context-protocol",
+        "tool-integration"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "mcp",
+      "roles": [
+        "ai-ml-engineer"
+      ],
+      "type": "mcp"
+    },
+    {
+      "name": "ffmpeg-mcp",
+      "category": "mcp",
+      "description": "Use when exposing FFmpeg/FFprobe operations as MCP tools so a coding agent can inspect, cut, join, transcode, extract audio, thumbnail, and normalize media without ad hoc shell commands. Local only — no API keys, no cloud.",
+      "domain": "mcp",
+      "tags": [
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "ffmpeg",
+        "ffprobe",
+        "video",
+        "audio",
+        "media-processing",
         "tool-integration"
       ],
       "version": "1.0.0",
