@@ -68,6 +68,54 @@ FFmpeg is the industry-standard tool for video post-production. This skill cover
 9. **Export** — Master file + platform-specific optimized versions
 10. **Thumbnail** — Extract best frame, add text overlay
 
+## Editable Timeline (Motion Workbench Model)
+
+Model the timeline as **four separate tracks keyed to the same cue frames**, so swapping, retiming, or reordering one track never silently desyncs the others. This is the Motion Workbench pattern adapted from [Vincentwei1021/video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft): edit metadata, not pixels; then re-render deterministically.
+
+| Track | Contents | Edit operation |
+|---|---|---|
+| **shot** | Ordered clips with `{src, start, duration, filters}` | Swap src, retime, reorder |
+| **transition** | `{type, at_frame, duration}` — one entry per boundary | Change type, duration |
+| **caption** | `{text, from, to, style}` — timed to shot frames | Edit copy, retime, restyle |
+| **sfx** | `{file, at_frame, volume}` | Change file, retarget frame |
+
+### Manifest as single source of truth
+
+Keep a `timeline.json` describing all four tracks. The renderer reads it; never hardcode frame numbers in the filter graph.
+
+```json
+{
+  "fps": 30, "width": 1080, "height": 1920,
+  "shots": [
+    {"id": "s1", "src": "clips/clip_01.mp4", "start": 0.0,  "duration": 4.5},
+    {"id": "s2", "src": "clips/clip_02.mp4", "start": 4.5,  "duration": 4.0}
+  ],
+  "transitions": [
+    {"type": "wipe", "at_frame": 135, "duration_frames": 10}
+  ],
+  "captions": [
+    {"text": "Stop scrolling", "from": 0.2, "to": 2.5, "style": "headline"}
+  ],
+  "sfx": [
+    {"file": "whoosh.wav", "at_frame": 130, "volume": 0.8}
+  ]
+}
+```
+
+### Retime / swap / reorder
+
+- **Retime** a shot: change its `duration` in the manifest; downstream `at_frame` values for the transition/caption/sfx tracks must shift by the same delta — write a small script (`retime.py`) rather than hand-editing them.
+- **Swap** a shot source: keep `duration` identical to avoid touching downstream frames.
+- **Reorder**: rewrite the shots array; recompute all `at_frame` values from the shot starts.
+- **Frame-identical preview/render**: preview and final MP4 must produce the same frames for the same manifest. If you use a preview player (browser, Vite + Remotion Player, or a still-contact-sheet pipeline), bind it to the same `timeline.json` and verify a still matches Remotion/ffmpeg output before trusting it.
+
+### QA after every timeline edit
+
+1. Probe every output (`ffprobe`) — duration, dimensions, audio stream present.
+2. Sample frames from the final MP4 (not stills) at each shot boundary; build a contact sheet.
+3. Check audio loudness (`ebur128`) and listen for desync at transitions.
+4. Confirm captions are readable at their shot's actual frames, not just in isolation.
+
 ---
 
 ## Promo Video Structure
