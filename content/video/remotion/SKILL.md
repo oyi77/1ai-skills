@@ -891,6 +891,56 @@ const Wipes: React.FC<{ bounds: number[]; palette: string[][] }> = ({ bounds, pa
 };
 ```
 
+### Shot-recipe catalog — reusable cinematic vocabulary
+
+Patterns 1–8 above are primitives. For a polished promo, compose whole **shots** from a catalog rather than reinventing motion per scene. This pattern is modeled on [Vincentwei1021/video-shotcraft](https://github.com/Vincentwei1021/video-shotcraft) (Apache-2.0; 124 recipe cards + Remotion demos). Use the catalog as *vocabulary*, not a script: write your own recipe files for your project, one markdown card + one runnable Remotion demo per shot.
+
+#### Recipe contract
+
+Each card is one file (`references/shots/<category>/<shot-name>.md`) with a matching component (`demos/<category>/<shot-name>/`). Card fields:
+
+```markdown
+# <shot name>
+- Category: opening|typography|transition|camera|rhythm|effects|data|interaction|ui-entrance|outro
+- Use when: <specific narrative beat — e.g. reveal a product hero after a hook>
+- Duration: <frames at 30 fps, on a beat multiple>
+- Inputs: <props: text, image, color…>
+- Motion: <spring/easing params, stagger, path, layer order>
+- Beat sync: <which frames land on beats from cues.json>
+- SFX: <cue type from cues.json>
+- Fallback: <reduced/static state>
+- Demo: relative path to Remotion component
+```
+
+#### Selection workflow
+
+1. Write the beat sheet first (hook → problem → mechanism → payoff → CTA), with duration per beat on beat boundaries.
+2. For each beat, pick **one** shot card from a category below; adapt props, never copy someone else's brand marks/copy.
+3. Check adjacent shots differ in category — two "typography" shots in a row reads as a slideshow.
+4. Record chosen shot name in the beat sheet; this becomes the bridge between storyboard and `cues.json`.
+5. Implement each shot as a `<Sequence>`; share timing from `cues.json` so audio and visuals cannot drift.
+
+#### Catalog index (10 families, representative recipes)
+
+| Category | Example recipes | Beat role |
+|---|---|---|
+| `opening` | `brand-ink-open`, `crane-rise-reveal`, `stroke-segment-build`, `spotlight-hero-card`, `text-as-mask`, `letterspace-materialize` | Frame-0 hook; establish the hero object in ≤2.5 s |
+| `typography` | `lead-word-zoom-assemble`, `typewriter-moves`, `word-relay-filmstrip`, `marker-underline-title`, `type-rhythm-sync`, `outline-word-fill` | Make one line land; never plain fade |
+| `transition` | `wipe-transitions`, `circle-match-iris`, `card-flip-reveal`, `page-turn-transitions`, `white-flash-logo-simplify-cut`, `mosaic-reframe` | Meaningful cut between beats; always has SFX |
+| `camera` | `crash-zoom-punch`, `depth-layer-moves`, `space-camera-moves`, `steep-tilt-glide`, `cursor-flyover`, `overhead-camera-moves` | Spatial push/pull to signal scale or focus |
+| `rhythm` | `beat-cut-moves`, `speed-ramp-freeze`, `trailer-grammar-moves`, `quad-split-parallel-scenes`, `sakuga-timing-shift` | Change pace; land cuts on beats |
+| `effects` | `liquid-metal-border`, `beam-glow-states`, `progressive-blur`, `gooey-blob-system`, `dither-background` | Texture/accent — use sparingly, never as decoration alone |
+| `data` | `count-up`, `path-draw`, `meter-fill`, `number-roll` | Make numbers legible, with tick SFX and labels |
+| `interaction` | `reveal-hover-effect`, `pointer-trail-emitter`, `shader-cursor-ripples` | Web/demo footage only; additive to pointer, must work on touch/keyboard |
+| `ui-entrance` | `staggered-card-entry`, `panel-grid`, `list-cascade` | Show UI/product surfaces with hierarchy |
+| `outro` | `logo-stamp`, `cta-pill`, `url-card`, `final-chord-hold` | End on one action + source, with resolving chord |
+
+(These names are representative, not an exhaustive copy of the upstream catalog; add your own cards as a project grows.)
+
+#### Track model (Motion Workbench pattern)
+
+For editable promos, keep shot, transition, caption, and SFX as **separate tracks** keyed to the same `cues.json` frames. Remotion is the renderer of record: preview and final MP4 must be frame-identical. Edit flow = select shot → retime its `<Sequence>` or swap its component → re-render stills at boundaries → full render → QA from MP4. If you use a separate preview editor, bind it to the same `cues.json` and verify a still matches Remotion's before trusting it.
+
 ### Motion-craft checklist (studio-grade, not slideshow)
 
 - **No linear motion:** every primary movement uses spring or eased curve; fast in, decelerate out.
