@@ -148,6 +148,46 @@ Any new hard failure blocks the merge until fixed or the eval is proven wrong.
 | **Benchmark eval** | Compare models/harnesses/skills | Weekly or on model version bump |
 | **Blind A/B eval** | Candidate vs baseline without knowing which is which | Skill style/rule changes |
 
+## Skill Quality Gates (3-Tier)
+
+When the thing being evaluated is a **skill** (not a prompt or task), run gates in this order. Pattern adapted from [NVIDIA/SkillEvaluator](https://github.com/NVIDIA/SkillEvaluator); in 1ai-skills the tiers map to tools that already exist in `scripts/`.
+
+### Tier 1 — Validation (safety, well-formedness, harness compatibility)
+
+A skill must parse, follow the standard, and not carry unsafe declarations before anything else matters:
+
+```bash
+python3 scripts/validate-skill-schema.py     # frontmatter schema conformance
+python3 scripts/lint-skills.py               # required sections, description quality
+python3 scripts/test-skills.py               # structure + cross-references
+```
+
+Gate: **0 errors** required. `--write` (lint) syncs SKILLS.json. Anything failing Tier 1 does not proceed to Tier 2 — measuring a malformed skill wastes eval budget.
+
+### Tier 2 — Deduplication (semantic overlap detection)
+
+Before creating a skill, detect near-duplicates among the existing set; before merging, detect overlap a candidate introduces:
+
+1. Search by intent, not name: `grep -ril "<domain phrase>" */SKILL.md` plus tag intersection against `SKILLS.json`.
+2. Compare **triggers** (`When to Use` phrases) — overlap in trigger phrases is stronger evidence of duplication than shared tags.
+3. Verdict: **duplicate** (same workflow + same triggers → extend existing instead), **adjacent** (complementary triggers → cross-link via Related Skills), or **distinct**.
+
+Gate: a new skill must name the skills it overlaps with and state why it isn't a duplicate of each.
+
+### Tier 3 — Live Evaluation (agent impact in a sandbox)
+
+Does the skill measurably change agent outcomes? This is an eval-harness run where the treatment is "skill loaded" vs "skill not loaded":
+
+1. Pick N representative tasks with code-based graders (see Grader Type above).
+2. Run baseline (agent without skill) and candidate (agent with skill), blind to which is which where possible.
+3. Score with `pass@k` (k≥5); compare tiers.
+
+Gate: ship only if candidate ≥ baseline on pass@1 without regressing cons@k. Record the numbers in the skill's PR — a skill that changes nothing measurable is documentation, not capability.
+
+### CI flow
+
+Wire Tier 1 into pre-commit/CI (fast, deterministic); run Tier 2 on skill-additions only; run Tier 3 on demand or weekly (`doctor`-style single entry point recommended: one command that runs Tiers 1–2 locally and reports what's skipped).
+
 ## Verification
 
 - [ ] Success criteria defined BEFORE implementation
@@ -157,3 +197,7 @@ Any new hard failure blocks the merge until fixed or the eval is proven wrong.
 - [ ] Baseline recorded before candidate runs
 - [ ] Regression suite updated with any newly discovered failure mode
 - [ ] Eval fixtures committed to repo (`evals/cases/`)
+- [ ] Skill quality gates run in order (Tier 1 → 2 → 3) when evaluating a skill
+- [ ] Tier 1 gate passed with 0 errors before spending eval budget on Tiers 2–3
+- [ ] Tier 2 overlap verdict recorded for any new or merged skill
+- [ ] Tier 3 candidate-vs-baseline numbers recorded; no cons@k regression

@@ -76,40 +76,57 @@ Perform professional code reviews targeting local changes or remote PRs to impro
 
 ## Review Process
 
-- Configure based, best, changes, code, community settings before first use
+Workflow tersusun dari [alibaba/open-code-review](https://github.com/alibaba/open-code-review) — pola teruji di produksi Alibaba: keputusan deterministik dikerjakan oleh pipeline, LLM hanya untuk penilaian kualitas. Prinsip kunci: **review diff, bukan repo — temuan harus line-level, disertai bukti, se-irit mungkin token.**
 
+### 1. Gather Context (deterministik, tanpa LLM)
 
-### 1. Gather Context
-```
-1. Identify the scope of changes
-2. Understand the codebase structure
-3. Check related tests
-4. Look at dependency changes
-```
+```bash
+# PR review — baca diff SEBELUM memberi opini
+gh pr view <number> --json body,files,title
+gh pr diff <number> > /tmp/review.diff
 
-### 2. Analyze Changes
-```
-1. Check for correctness
-2. Look for edge cases
-3. Verify error handling
-4. Check security issues
-5. Assess performance impact
+# Local changes
+git diff HEAD > /tmp/review.diff
+git diff --stat HEAD          # daftar file + jumlah baris berubah
 ```
 
-### 3. Provide Feedback
-```
-1. Categorize issues (blocking, suggested, optional)
-2. Provide specific examples
-3. Suggest alternatives
-4. Acknowledge good patterns
-```
+1. Kunci scope: hanya file yang berubah (`git diff --name-only`) — jangan telusuri seluruh repo.
+2. Baca diff dulu, baru buka file penuh (untuk konteks fungsi yang tersentuh).
+3. Cek perubahan dependency (`package-lock.json`, `requirements.txt`, `go.sum`) dan file terkait test.
+4. Abaikan noise deterministik: generated code, lockfiles, formatting-only hunks (`-w` diff).
+
+### 2. Rule Matching (deterministik)
+
+Sebelum panggil LLM, cocokkan diff terhadap ruleset lokal — murah dan pasti:
+
+- Auth/payment/api boundary → **wajib** pass keamanan (validation, injection, secrets).
+- File >500 baris diubah → tandai maintainability.
+- Test file ikut berubah / tidak berubah saat code berubah → catat coverage gap.
+- Pattern dikenal rusak (bare except, `SELECT *`, inline secrets) → blocking.
+
+Aturan yang cocok di sini tidak perlu diragukan lagi di langkah 3 — LLM hanya memeriksa sisanya.
+
+### 3. Analyze Changes (LLM agent = kamu)
+
+Untuk tiap hunk, tanyakan berurutan:
+
+1. **Correctness** — apakah kode melakukan yang dimaksud? edge case, null/undefined, runtime error?
+2. **Security** — input validation, injection, XSS, authz, secrets (wajib untuk boundary change).
+3. **Performance** — query N+1, kompleksitas algoritmik, memori, caching.
+4. **Maintainability** — penamaan, struktur, kompleksitas fungsi, testability.
+
+Temuan wajib **line-level dan berbukti**: tunjuk `file:baris`, kutip kode bermasalah, jelaskan skenario gagal konkret (input apa → output salah apa). Kalau tidak bisa menunjukkan skenario gagal, itu bukan temuan — buang.
+
+### 4. Provide Feedback (secukupnya token)
+
+- Kelompokkan: **🔴 blocking / 🟡 suggested / 🟢 optional** (lihat Output Format).
+- Satu temuan = satu baris lokasi + alasan + usulan perbaikan konkret.
+- Akui pola yang bagus — review hanya menyoroti buruk, tidak jujur.
+- Batasi ke isu penting; jangan menumpuk nitpick (lihat Don'ts).
 
 ---
 
 ## Review Checklist
-
-- Configure based, best, changes, code, community settings before first use
-
 
 ### Correctness
 - Does the code do what it's supposed to?
@@ -148,15 +165,9 @@ Perform professional code reviews targeting local changes or remote PRs to impro
 
 ## Output Format
 
-- Configure based, best, changes, code, community settings before first use
-
-
 ### Summary
-```
+```markdown
 ## Code Review Summary
-
-- Configure based, best, changes, code, community settings before first use
-
 
 ### Overall
 - **Verdict**: [Approve / Request Changes / Approve with Comments]
@@ -168,11 +179,8 @@ Perform professional code reviews targeting local changes or remote PRs to impro
 ```
 
 ### Detailed Feedback
-```
+```markdown
 ## Issues
-
-- Configure based, best, changes, code, community settings before first use
-
 
 ### 🔴 Blocking (Must Fix)
 1. [File:Line] - Issue description
@@ -191,9 +199,6 @@ Perform professional code reviews targeting local changes or remote PRs to impro
 ---
 
 ## Integration
-
-- Configure based, best, changes, code, community settings before first use
-
 
 ### With GitHub
 ```
@@ -234,27 +239,21 @@ Perform professional code reviews targeting local changes or remote PRs to impro
 
 ## Best Practices
 
-Recommended practices for code-reviewer.
-
-- Always test with a small dataset before full-scale runs
-- Monitor resource usage (memory, API quotas) during execution
-- Keep configuration in version control
-- Document custom parameters and their effects
-- Set up alerts for failure conditions
-
-
 ### Do's
 ✅ Be specific and actionable  
 ✅ Provide code examples  
 ✅ Acknowledge good patterns  
 ✅ Consider the author's intent  
 ✅ Focus on important issues  
+✅ Review the diff, not the whole repo — token budget matters  
+✅ Demand line-level, failure-scenario-backed findings  
 
 ### Don'ts
 ❌ Don't be nitpicky  
 ❌ Don't rewrite code without explaining  
 ❌ Don't ignore context  
 ❌ Don't forget security  
+❌ Don't invent a failure scenario to justify a comment — drop it instead  
 
 ---
 
