@@ -339,6 +339,79 @@ def check_duplicates(skills_meta: list[dict], result: LintResult):
                                 f"Near-duplicate of {name2} (similarity={sim:.2f})")
 
 
+def check_overlap(skills_meta: list[dict], result: LintResult):
+    """Tier-2 semantic overlap detection (adapted from NVIDIA/SkillEvaluator tier2).
+
+    Detects near-duplicate skills by comparing *intent*, not just name:
+    - Jaccard over description token sets (content overlap)
+    - Jaccard over trigger phrases / When to Use lines (activation overlap)
+    - Tag overlap ratio
+
+    Emits a `semantic-overlap` warning when any signal crosses its threshold.
+    Bounded O(n) via per-category buckets — full cross-product over 1456 skills
+    would be O(n²) ≈ 1M pairs.
+    """
+    DESC_TOKEN_RE = re.compile(r"[a-z0-9]{4,}")
+
+    def tokens(s: str) -> set[str]:
+        return set(DESC_TOKEN_RE.findall(s.lower()))
+
+    def triggers_of(m: dict) -> set[str]:
+        body = m.get("_body", "")
+        t = set()
+        for line in body.splitlines():
+            line = line.strip().lstrip("-*")
+            if line and 8 <= len(line) <= 120 and any(
+                kw in line.lower() for kw in ("use when", "trigger", "use case")
+            ):
+                t.update(tokens(line))
+        return t
+
+    DESC_THRESHOLD = 0.55    # description token Jaccard
+    TRIGGER_THRESHOLD = 0.40  # trigger phrase Jaccard
+    TAG_THRESHOLD = 0.70      # tag overlap ratio
+    CATEGORY_ONLY = True      # only compare within same category (relevance)
+
+    entries = []
+    for m in skills_meta:
+        name = m.get("name") or m.get("_path", "?")
+        cat = str(m.get("_path", "")).split("/", 1)[0] or "unknown"
+        desc_tokens = tokens(m.get("description", ""))
+        trg = triggers_of(m)
+        tags = set(m.get("tags") or [])
+        entries.append(dict(name=name, path=m.get("_path", ""),
+                            cat=cat, desc=desc_tokens, trg=trg, tags=tags))
+
+    by_cat: dict[str, list[dict]] = defaultdict(list)
+    for e in entries:
+        by_cat[e["cat"]].append(e)
+
+    def jac(a: set, b: set) -> float:
+        if not a or not b:
+            return 0.0
+        return len(a & b) / len(a | b)
+
+    def tag_ratio(a: set, b: set) -> float:
+        if not a or not b:
+            return 0.0
+        return len(a & b) / min(len(a), len(b))
+
+    for cat, group in by_cat.items():
+        if len(group) > 400:  # bound per-category cost (cybersecurity is huge)
+            group = group[:400]
+        for i, e1 in enumerate(group):
+            for e2 in group[i + 1:]:
+                if e1["name"] == e2["name"]:
+                    continue
+                d = jac(e1["desc"], e2["desc"])
+                t = jac(e1["trg"], e2["trg"])
+                g = tag_ratio(e1["tags"], e2["tags"])
+                if d >= DESC_THRESHOLD or t >= TRIGGER_THRESHOLD or g >= TAG_THRESHOLD:
+                    result.add("warnings", e1["name"], "semantic-overlap",
+                               f"Overlaps {e2['name']} (desc={d:.2f} trig={t:.2f} "
+                               f"tags={g:.2f}); duplicate vs adjacent vs distinct must be judged")
+
+
 def check_cross_references(skills_meta: list[dict], result: LintResult):
     """Check that skill:// links in body text point to real skills."""
     all_names = {m.get("name") for m in skills_meta if m.get("name")}
@@ -475,6 +548,8 @@ def main() -> int:
                     help="Print fixable issues only")
     ap.add_argument("--category", type=str, default=None,
                     help="Lint only one category (e.g., 'content')")
+    ap.add_argument("--overlap", action="store_true",
+                    help="Also run Tier-2 semantic overlap detection (Tier-2 dedup)")
     args = ap.parse_args()
 
     skills = find_skills()
@@ -505,6 +580,8 @@ def main() -> int:
     check_duplicates(skills_meta, result)
     check_cross_references(skills_meta, result)
     check_stub_descriptions(skills_meta, result)
+    if args.overlap:
+        check_overlap(skills_meta, result)
 
     # Stats
     result.stats["total_skills"] = len(skills_meta)
