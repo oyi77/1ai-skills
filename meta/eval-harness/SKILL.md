@@ -168,11 +168,19 @@ Gate: **0 errors** required. `--write` (lint) syncs SKILLS.json. Anything failin
 
 Before creating a skill, detect near-duplicates among the existing set; before merging, detect overlap a candidate introduces:
 
-1. Search by intent, not name: `grep -ril "<domain phrase>" */SKILL.md` plus tag intersection against `SKILLS.json`.
-2. Compare **triggers** (`When to Use` phrases) — overlap in trigger phrases is stronger evidence of duplication than shared tags.
-3. Verdict: **duplicate** (same workflow + same triggers → extend existing instead), **adjacent** (complementary triggers → cross-link via Related Skills), or **distinct**.
+```bash
+python3 scripts/lint-skills.py --overlap
+# Narrow review to one domain when triaging a large result set:
+python3 scripts/lint-skills.py --overlap --category content
+```
 
-Gate: a new skill must name the skills it overlaps with and state why it isn't a duplicate of each.
+The linter compares description tokens, activation language, and tags. Its findings are **candidates**, not automatic deletion decisions. Classify every flagged pair:
+
+1. **Duplicate** — same workflow + same triggers: extend the existing skill; do not add another.
+2. **Adjacent** — complementary triggers or different outputs: keep both and cross-link them.
+3. **Distinct** — shared vocabulary only: keep both and record why the overlap is superficial.
+
+Gate: a new skill must name the skills it overlaps with and state why it is not a duplicate of each.
 
 ### Tier 3 — Live Evaluation (agent impact in a sandbox)
 
@@ -184,9 +192,47 @@ Does the skill measurably change agent outcomes? This is an eval-harness run whe
 
 Gate: ship only if candidate ≥ baseline on pass@1 without regressing cons@k. Record the numbers in the skill's PR — a skill that changes nothing measurable is documentation, not capability.
 
+### Async review/eval feedback (Plannotator pattern)
+
+A human review or slow Tier-3 run should **not hold the agent session open**. Submit the candidate, persist an eval ID, finish the current turn, and resume when the verdict arrives as a message/event. Tier-1 validation remains synchronous and blocking; it is fast and deterministic.
+
+```text
+1. Validate (Tier 1) synchronously. If it fails, stop and fix.
+2. Create eval record: {eval_id, candidate_sha, baseline_sha, cases, status="queued"}.
+3. Dispatch candidate-vs-baseline runs; return eval_id immediately. Do not poll in a tight loop.
+4. On completion, persist {pass@1, cons@k, failures, artifacts, verdict}.
+5. Notify the originating agent/session with the structured result.
+6. Resume: compare results against the recorded gate; ship, revise, or reject.
+```
+
+Example result payload (portable across hooks, CLI, and MCP transports):
+
+```json
+{
+  "eval_id": "eval-2026-001",
+  "candidate_sha": "abc1234",
+  "baseline_sha": "def5678",
+  "status": "complete",
+  "pass_at_1": 0.92,
+  "cons_at_5": 0.80,
+  "new_failures": ["case-07: expected citation missing"],
+  "verdict": "revise",
+  "artifacts": ["evals/results/eval-2026-001.json"]
+}
+```
+
+**Resume contract:** the resumed agent reloads the eval record and candidate diff; it must not rely on conversational memory. A notification is a wake signal, not approval. If a reviewer denies/rejects, attach their structured feedback and the changed-lines diff; revise only those lines, then re-run the affected cases + regression suite.
+
+**Failure / timeout behavior:**
+- No verdict before deadline → mark `timed_out`, notify agent; never silently assume pass.
+- Human denies → mark `rejected`, preserve comments, no merge/ship.
+- Worker crashes → mark `failed` with logs; retry once only if failure is transient.
+- Duplicate notification → dedupe by `eval_id` + terminal status; do not apply twice.
+- Do not launch background evals unless the harness can persist state and deliver a completion event. If unavailable, run synchronously and say so.
+
 ### CI flow
 
-Wire Tier 1 into pre-commit/CI (fast, deterministic); run Tier 2 on skill-additions only; run Tier 3 on demand or weekly (`doctor`-style single entry point recommended: one command that runs Tiers 1–2 locally and reports what's skipped).
+Wire Tier 1 into pre-commit/CI (fast, deterministic); run Tier 2 (`python3 scripts/lint-skills.py --overlap`) on skill additions only; run Tier 3 on demand or weekly. Provide one `doctor`-style entry point that runs Tiers 1–2 locally and reports Tier 3 as skipped/queued — never imply the live eval ran when it did not.
 
 ## Verification
 
