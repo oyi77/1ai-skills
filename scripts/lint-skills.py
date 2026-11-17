@@ -357,20 +357,36 @@ def check_overlap(skills_meta: list[dict], result: LintResult):
         return set(DESC_TOKEN_RE.findall(s.lower()))
 
     def triggers_of(m: dict) -> set[str]:
-        body = m.get("_body", "")
+        """Extract distinguishing activation language from a skill body.
+
+        Prefer explicit frontmatter triggers; only fall back to quoted phrases
+        under 'When to Use' when frontmatter lacks them. Quoted (backtick/quote)
+        tokens are the actual distinguishing triggers — bare descriptive text is
+        too generic and would false-positive on every skill with a template section.
+        """
         t = set()
-        for line in body.splitlines():
-            line = line.strip().lstrip("-*")
-            if line and 8 <= len(line) <= 120 and any(
-                kw in line.lower() for kw in ("use when", "trigger", "use case")
-            ):
-                t.update(tokens(line))
+        fm_triggers = m.get("triggers") or []
+        for trg in fm_triggers:
+            t.update(tokens(str(trg)))
+        if t:
+            return t
+        in_when = False
+        for line in m.get("_body", "").splitlines():
+            s = line.strip()
+            if s.startswith("## "):
+                in_when = s.lower().startswith("## when to use")
+                continue
+            if not in_when:
+                continue
+            # Quoted phrases only — these are the real activation hooks.
+            for quoted in re.findall(r'"([^"]{4,60})"', s):
+                t.update(tokens(quoted))
         return t
 
     DESC_THRESHOLD = 0.55    # description token Jaccard
     TRIGGER_THRESHOLD = 0.40  # trigger phrase Jaccard
     TAG_THRESHOLD = 0.70      # tag overlap ratio
-    CATEGORY_ONLY = True      # only compare within same category (relevance)
+    MIN_SIGNALS = 2           # require >=2 independent signals — tags alone too weak
 
     entries = []
     for m in skills_meta:
@@ -406,7 +422,9 @@ def check_overlap(skills_meta: list[dict], result: LintResult):
                 d = jac(e1["desc"], e2["desc"])
                 t = jac(e1["trg"], e2["trg"])
                 g = tag_ratio(e1["tags"], e2["tags"])
-                if d >= DESC_THRESHOLD or t >= TRIGGER_THRESHOLD or g >= TAG_THRESHOLD:
+                signals = int(d >= DESC_THRESHOLD) + int(t >= TRIGGER_THRESHOLD) + \
+                          int(g >= TAG_THRESHOLD)
+                if signals >= MIN_SIGNALS:
                     result.add("warnings", e1["name"], "semantic-overlap",
                                f"Overlaps {e2['name']} (desc={d:.2f} trig={t:.2f} "
                                f"tags={g:.2f}); duplicate vs adjacent vs distinct must be judged")
