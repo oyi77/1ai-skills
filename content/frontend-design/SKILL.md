@@ -145,6 +145,21 @@ npm install unocss
 | Screen reader skips interactive element | Missing or incorrect ARIA role or attribute | Use semantic HTML where possible; add aria-label for visual-only labels |
 | Hover styles don't work on touch devices | :hover-dependent interactions without touch fallback | Use @media (hover: hover) to separate pointer and touch interactions |
 
+## Production Web Quality Gate
+
+Before calling a page finished, verify the states and delivery surface—not just the happy-path screenshot:
+
+- **Loading:** skeleton/placeholder preserves layout; no content jumps
+- **Empty:** explains what happened and gives the next action
+- **Error:** actionable message, retry path, and no leaked implementation details
+- **Disabled:** explains why an action is unavailable; remains readable and keyboard-reachable
+- **Metadata:** document title, description, canonical/OG image, favicon, and meaningful link previews
+- **Responsive:** content order and interaction remain usable at 320/768/1024/1440; no horizontal overflow
+- **Motion:** `prefers-reduced-motion` branch; no hover-only information; no scroll hijacking
+- **Performance:** reserve image dimensions, lazy-load below-fold media, avoid unnecessary client JS, inspect LCP/CLS/INP on a production build
+- **Deployment:** test the preview URL, direct-load nested routes, refresh after client navigation, and check console/network errors
+- **Assets:** source/license recorded for external images, icons, fonts, and logos; use originals only when authorized
+
 ## Verification
 
 - [ ] All components render correctly at breakpoints: 320px, 768px, 1024px, 1440px

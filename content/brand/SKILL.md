@@ -136,6 +136,8 @@ Brand centralizes a company's voice, visual identity, and messaging so every pie
 3. Typography follows the style guide (font family, weights, casing rules)
 4. Voice sample sounds on-brand: read the copy aloud and confirm it matches the defined tone
 5. Token sync is current — `design-system` tokens reflect the latest approved palette (`node scripts/sync-brand-to-tokens.cjs`)
+6. Icon/illustration assets have source + license recorded, semantic size/stroke rules, and dark/light contrast checks
+7. Animated assets include a static fallback and reduced-motion behavior; no external logo/icon is presented as original
 
 ## Anti-Rationalization Table
 

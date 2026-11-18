@@ -122,10 +122,38 @@ Requirements: Node 18+ for the `.cjs` token scripts (`apt install nodejs`), Pyth
 |----------|---------|
 | `design-tokens-starter.json` | Starter JSON with three-layer structure |
 
+## Icon & Asset Contract
+
+Icons and illustrations are part of the design system, not late decoration. Every asset needs a traceable source and a predictable rendering contract:
+
+| Field | Rule |
+|---|---|
+| Source | Record package/library or original asset path; do not silently redraw a third-party icon/logo |
+| License | Store license/attribution beside the asset when the source requires it; verify commercial-use terms |
+| Grid | Pick one grid (16/20/24) and align stroke width, cap, join, and optical baseline across the set |
+| Size | Define semantic sizes (`sm`, `md`, `lg`) and never mix arbitrary pixel sizes in components |
+| Color | Use `currentColor` or semantic tokens; icon meaning must not depend on color alone |
+| Accessibility | Decorative icons `aria-hidden`; action icons get an accessible name via label/title |
+| Motion | Animate only state/change feedback; respect `prefers-reduced-motion`; provide a static fallback |
+| Delivery | Prefer tree-shakeable imports; do not ship an entire icon library for three glyphs |
+
+Animated icon sets (including Kubai-style product-feature icons) still follow this contract: source, license, static fallback, reduced-motion behavior, and a single tokenized stroke/fill system are mandatory.
+
+### Icon review checklist
+
+- [ ] Icon set has one visual language (grid, stroke, corners, optical weight)
+- [ ] Every external asset has provenance and license recorded
+- [ ] Interactive icons have accessible names and visible focus states
+- [ ] Decorative icons are hidden from assistive technology
+- [ ] Motion has a purpose, static fallback, and reduced-motion branch
+- [ ] Bundle contains only used icons/assets
+
 ## Integration
 
 **With brand:** Extract primitives from brand colors/typography
 **With ui-styling:** Component tokens → Tailwind config
+**With frontend-design:** Apply the icon/asset contract during component implementation
+**With awwwards-quality-sites:** Preserve provenance, accessibility, and fallbacks in high-motion pages
 
 **Skill Dependencies:** brand, ui-styling
 **Primary Agents:** ui-ux-designer, frontend-developer
