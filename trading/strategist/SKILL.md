@@ -119,7 +119,35 @@ for (const scenario of scenarios) {
 }
 ```
 
-### 3. Parameter Optimization
+### 3. Walk-Forward Validation (before tuning)
+
+Do not choose parameters on the same data used to report performance. Split chronologically (never shuffle): train → validation → untouched test. Use rolling/anchored windows; at each step choose parameters on the past window, then evaluate only on the next unseen window.
+
+```text
+Example, 5 years daily bars:
+Fold 1: train 2019–2021 → validate 2022 → test 2023 Q1
+Fold 2: train 2019–2022 → validate 2023 Q1 → test 2023 Q2
+...
+Report the distribution of out-of-sample Sharpe / max drawdown across folds,
+not the single best fold. Keep a final holdout untouched until strategy is frozen.
+```
+
+Gate: reject if in-sample Sharpe is >2× median out-of-sample Sharpe, or if the sign of mean return flips across most test folds. This is a warning threshold, not a universal law; document exceptions.
+
+### 4. Regime Detection & Conditional Strategy
+
+Classify the market regime **using only information available at that time**; do not label a historical bar using future returns. Start with a simple, interpretable classifier (trend + realized volatility), then test whether the strategy's edge survives each regime.
+
+| Regime | Example observable rule | Strategy implication |
+|---|---|---|
+| Trend | ADX(14) > 25 and price above/below 200-day MA | Trend-following may be enabled |
+| Range | ADX(14) < 20, realized vol below rolling median | Mean-reversion may be enabled |
+| High volatility | 20-day realized vol > 80th percentile of trailing 2y | Reduce risk budget or pause |
+| Unknown / transition | Rules disagree or data missing | Default to reduced size / no new risk |
+
+These are candidate heuristics, not plug-and-play profitable signals. Validate regime classification and conditional performance out-of-sample. Avoid adding regimes just to rescue a losing strategy (multiple-testing/overfit risk).
+
+### 5. Parameter Optimization
 
 Systematically optimize strategy parameters:
 
