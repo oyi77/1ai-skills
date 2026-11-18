@@ -574,7 +574,7 @@ def main() -> int:
     if args.category:
         skills = [s for s in skills if s.relative_to(ROOT).parts[0] == args.category]
 
-    print(f"Linting {len(skills)} skills...")
+    print(f"Linting {len(skills)} skills...", file=sys.stderr)
 
     # Extract metadata for all skills
     skills_meta: list[dict] = []

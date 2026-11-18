@@ -262,6 +262,11 @@ curl -s https://api.x.ai/v1/chat/completions \
 - [ ] Context window budget verified for long research queries
 - [ ] Timeout configured appropriately for 30s+ research responses
 
+## Related Skills
+
+- [super-browser](../super-browser/SKILL.md) — Use for general Playwright/Puppeteer browser automation, DOM extraction, screenshots, PDFs, and network interception.
+- Use this skill when the research itself should run through Grok's web/search capabilities; use `super-browser` when you need to drive a browser directly.
+
 ## Monetization
 
 - **Research-as-a-Service** — Offer automated Grok-powered deep research reports for startups, VCs, and executives at $200–$500/report. Grok's real-time web access makes it ideal for competitive landscaping, market sizing, and due diligence.

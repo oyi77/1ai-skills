@@ -266,6 +266,10 @@ puppeteer.use(StealthPlugin());
 6. **Error recovery** — Implement retry loops, fallback selectors, and graceful degradation for flaky elements and timeouts.
 7. **Delivery** — Format extracted data (JSON, CSV, screenshots) and document any anomalies encountered during runs.
 
+## Related Skills
+
+- [grok-browser](../grok-browser/SKILL.md) — Use for Grok-powered research and real-time web queries. Super Browser does the browser automation (stealth, selectors, data extraction); Grok Browser does Grok-specific research queries. Keep both — they serve different functions.
+
 ## Verification
 
 - [ ] Playwright/Puppeteer scripts execute without errors on target URLs
