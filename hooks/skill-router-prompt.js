@@ -73,7 +73,7 @@ const CORPORATE_INTENT = [
     keywords: [
       'production down', 'production outage', 'server down', 'service down',
       'server is down', 'server went down', 'service is down',
-      'system is down', 'system went down', 'is down',
+      'system is down', 'system went down',
       'can\'t login', 'cannot login', '500 error', '500 errors',
       '5xx', 'database down', 'database error', 'database is returning',
       'api error', 'api errors', 'api is returning', 'api returning',
@@ -309,20 +309,28 @@ function main() {
 
   let name = null;
   let scoreLabel = '';
+  let confidence = 'low';
+  let routeSource = 'none';
 
   if (decision && anchors[decision.role]) {
     // Deterministic intent layer wins: corporate events must not be
     // misrouted by fuzzy skill-name scoring (data breach ≠ data-engineer).
     name = decision.role;
+    routeSource = 'deterministic-intent';
     scoreLabel = `intent:${decision.hits[0]}`;
+    confidence = decision.hits.length >= 2 ? 'high' : 'medium';
   } else {
     const hit = detectRole(prompt);
     if (hit && hit.name.startsWith('role-') && hit.score >= 30.0 && anchors[hit.name]) {
       name = hit.name;
+      routeSource = 'fuzzy-router';
       scoreLabel = `score ${hit.score}`;
+      confidence = hit.score >= 60 ? 'high' : 'medium';
     } else if (hit && hit.name.startsWith('role-') && hit.score >= 30.0) {
       name = hit.name;
+      routeSource = 'fuzzy-router-unregistered-anchor';
       scoreLabel = `score ${hit.score}`;
+      confidence = 'low';
     }
   }
 
@@ -336,7 +344,7 @@ function main() {
   const personaTitle = anchor && anchor.persona ? anchor.persona.title : null;
   const roleLabel = name.replace(/^role-/, '').replace(/-/g, ' ');
 
-  let msg = `1ai-skills role detected: "${roleLabel}" (${scoreLabel}).`;
+  let msg = `1ai-skills role detected: "${roleLabel}" (${scoreLabel}; confidence:${confidence}; source:${routeSource}; prompt_chars:${prompt.length}).`;
   if (personaName) {
     msg += ` Persona: ${personaName}`;
     if (personaTitle) msg += ` — ${personaTitle}`;
