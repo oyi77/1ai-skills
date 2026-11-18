@@ -176,9 +176,66 @@ await notion.createPage("Risk Report", dailyRiskReport);
 - **Risk calculations return zero or NaN**: Data quality issue or calculation error; verify inputs and implementation
 - **Multiple position types from same strategy**: Strategy concentration risk; implement strategy-level exposure limits
 
-## Verification
+## Risk Techniques
 
-Verification covers position sizing accuracy, trade validation consistency, exposure tracking, drawdown controls, and notification delivery.
+Advanced measures beyond fixed percentage sizing. Use these when the account grows beyond single-strategy exposure or when regulators/stakeholders ask "how much can we lose?"
+
+### Value-at-Risk (VaR)
+
+Portfolio loss threshold that is not expected to be exceeded with a given confidence over a horizon.
+
+```typescript
+// Historical VaR (95%, 1-day) — no distribution assumption
+function historicalVaR(returns: number[], confidence = 0.95): number {
+  const sorted = [...returns].sort((a, b) => a - b);
+  const idx = Math.floor((1 - confidence) * sorted.length);
+  return -sorted[idx];   // positive = loss at that quantile
+}
+
+// Parametric VaR (95%, 1-day) — assumes normality, use only for liquid, symmetric returns
+function parametricVaR(returns: number[], confidence = 0.95, z = 1.645): number {
+  const mean = returns.reduce((a, b) => a + b, 0) / returns.length;
+  const variance = returns.reduce((a, b) => a + (b - mean) ** 2, 0) / returns.length;
+  const sigma = Math.sqrt(variance);
+  return -(mean - z * sigma);
+}
+```
+
+Caveat: VaR tells you the threshold, **not** the loss beyond it. Always pair with CVaR.
+
+### Conditional VaR (CVaR / Expected Shortfall)
+
+Average loss in the tail beyond the VaR cutoff — the expected loss when the VaR is breached:
+
+```typescript
+function cvar(returns: number[], confidence = 0.95): number {
+  const sorted = [...returns].sort((a, b) => a - b);
+  const cutoff = sorted[Math.floor((1 - confidence) * sorted.length)];
+  const tail = sorted.filter(r => r <= cutoff);
+  return -(tail.reduce((a, b) => a + b, 0) / tail.length);
+}
+```
+
+### Tail-Risk Rules
+
+- Size positions to **CVaR, not VaR** — VaR hides the crash.
+- Cap loss per tail event, not per average day: if your 95% VaR is 2%, plan cash for a 95% CVaR that may be 4–6%.
+- **Fat tails**: crypto and micro-caps regularly breach parametric VaR; use historical VaR with a full cycle of data (including 2020, 2022, 2024 drawdowns) or stressed VaR.
+- **Liquidity risk** compounds tail risk: a large position that cannot be sold at fair value turns a paper drawdown into a real one. Check daily volume before sizing >5% of book.
+
+### Position Sizing by Risk Budget
+
+```typescript
+// Allocate risk budget, not capital: each strategy gets a slice of total allowed risk
+function sizeByRiskBudget(account: number, strategyRisk: number, strategyVaR95: number): number {
+  const budget = account * strategyRisk;            // e.g. 2% of equity
+  return budget / strategyVaR95;                    // capital sized so VaR hits the budget
+}
+```
+
+Budget is set first; position follows. Reverse the order and the account sizes itself.
+
+## Verification
 
 
 ### Position Sizing Verification

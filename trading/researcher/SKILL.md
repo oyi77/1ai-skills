@@ -158,6 +158,44 @@ const signals = await analyzeWithNews(data, research);
 - **Exa search returning irrelevant results**: Query too generic or time-sensitive content not indexed; refine search terms and add date filters
 - **No trading signals generated during volatile periods**: Strategy may require adjustment for high-volatility regimes; review parameter sensitivity
 
+## Research Integrity & Backtesting
+
+Historical research is only useful if the test cannot see the future. Before passing a signal to `strategist` or `executor`:
+
+### Data integrity gate
+
+- Check timestamps are sorted, unique, and timezone-normalized.
+- Detect missing bars and market-closure gaps; do not forward-fill prices across a trading session without labeling it.
+- Adjust corporate actions consistently; do not mix adjusted close with raw OHLC.
+- Separate training, validation, and untouched test periods chronologically. Never shuffle time series.
+- Record source, retrieval time, symbol, timezone, interval, and adjustment mode beside every dataset.
+
+```typescript
+function validateBars(bars: {time: string; open: number; high: number; low: number; close: number}[]) {
+  for (let i = 0; i < bars.length; i++) {
+    const b = bars[i];
+    if (!(b.high >= Math.max(b.open, b.close) && b.low <= Math.min(b.open, b.close)))
+      throw new Error(`invalid OHLC at ${b.time}`);
+    if (i && new Date(b.time) <= new Date(bars[i - 1].time))
+      throw new Error(`timestamps not strictly increasing at ${b.time}`);
+  }
+  return {bars: bars.length, start: bars[0]?.time, end: bars.at(-1)?.time};
+}
+```
+
+### Backtest integrity
+
+- Include commissions, spread, slippage, latency, partial fills, and borrow/funding costs.
+- Signals at bar close execute no earlier than the next executable tick — no same-bar look-ahead.
+- Use walk-forward evaluation: fit on an expanding/rolling train window, select parameters on validation, evaluate once on the next test window.
+- Report **pass@1 is not relevant here**; report return, volatility, max drawdown, Sharpe/Sortino, turnover, win rate, profit factor, and sample count with confidence intervals.
+- Run parameter sensitivity and a placebo/baseline strategy. A strategy that only works at one exact parameter value is overfit.
+- Survivorship bias: include delisted/failed symbols where the universe claims to be historical.
+
+### Regime and robustness checks
+
+Evaluate separately across trend/range, high/low volatility, bull/bear, and liquidity regimes. A strategy that works only in one regime must carry an explicit regime gate or a reduced risk budget — never be promoted as universal.
+
 ## Verification
 
 Verification covers data quality, indicator accuracy, scan consistency, and integration with data sources.
