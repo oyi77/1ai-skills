@@ -430,6 +430,34 @@ def check_overlap(skills_meta: list[dict], result: LintResult):
                                f"tags={g:.2f}); duplicate vs adjacent vs distinct must be judged")
 
 
+def check_prompt_hygiene(skills_meta: list[dict], result: LintResult):
+    """Opt-in prompt linting for common optimization and safety cruft.
+
+    This is intentionally opt-in: many domain skills discuss prompts as data,
+    so prompt-shaped text in every skill is not automatically a defect.
+    """
+    cot = re.compile(r"\b(show|reveal|provide|output|print)\s+(your|the)\s+(private\s+)?(chain[- ]of[- ]thought|hidden reasoning)", re.I)
+    dynamic_prefix = re.compile(r"(datetime\.now|uuid\.uuid4|random\.|current timestamp|request id)", re.I)
+    generic_format = re.compile(r"return valid json|output valid json", re.I)
+    for meta in skills_meta:
+        body = meta.get("_body", "")
+        name = meta.get("name", meta.get("_path", ""))
+        tags = " ".join(str(x) for x in (meta.get("tags") or []))
+        if not any(x in f"{name} {tags} {body}".lower() for x in ("prompt", "instruction", "llm", "agent")):
+            continue
+        prompt_lines = [line for line in body.splitlines()
+                        if re.search(r"prompt|system message|cache|instruction|messages=|system=", line, re.I)]
+        prompt_context = "\n".join(prompt_lines)
+        checks = [
+            (cot, "prompt-private-cot", "Requests private/hidden chain-of-thought; request concise rationale or evidence instead", body),
+            (dynamic_prefix, "prompt-cache-invalidator", "Dynamic timestamp/UUID/random content appears near prompt/cache text; isolate volatile data", prompt_context),
+            (generic_format, "prompt-weak-json-contract", "'Return valid JSON' is weaker than a schema/typed output contract", prompt_context),
+        ]
+        for pat, code, message, haystack in checks:
+            if pat.search(haystack):
+                result.add("warnings", name, code, message)
+
+
 def check_cross_references(skills_meta: list[dict], result: LintResult):
     """Check that skill:// links in body text point to real skills."""
     all_names = {m.get("name") for m in skills_meta if m.get("name")}
@@ -568,6 +596,8 @@ def main() -> int:
                     help="Lint only one category (e.g., 'content')")
     ap.add_argument("--overlap", action="store_true",
                     help="Also run Tier-2 semantic overlap detection (Tier-2 dedup)")
+    ap.add_argument("--prompt-hygiene", action="store_true",
+                    help="Check prompt-bearing skills for cache, CoT, and weak-output-contract patterns")
     args = ap.parse_args()
 
     skills = find_skills()
@@ -600,6 +630,8 @@ def main() -> int:
     check_stub_descriptions(skills_meta, result)
     if args.overlap:
         check_overlap(skills_meta, result)
+    if args.prompt_hygiene:
+        check_prompt_hygiene(skills_meta, result)
 
     # Stats
     result.stats["total_skills"] = len(skills_meta)

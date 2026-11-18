@@ -139,6 +139,32 @@ Flaky failures: [list — passed on rerun]
 
 Any new hard failure blocks the merge until fixed or the eval is proven wrong.
 
+### Prompt Hill-Climb (one change, one measurement)
+
+Use this when optimizing a system prompt, tool description, or agent instruction. It is a controlled experiment, not an open-ended rewrite.
+
+1. **Freeze baseline:** save prompt text/hash, model/config, tool definitions, eval-set version, and current scores.
+2. **Name the failure:** choose one observed failure category (missing field, hallucination, wrong tool, scope drift, injection, verbosity/cost). Add a fixture if the failure is not represented.
+3. **Propose one edit:** identify the smallest prompt section that could cause the failure. Do not change model, tool set, prompt, and grader together.
+4. **Run blind baseline + candidate** over the same fixture set. For stochastic tasks use k≥5 runs per case, interleaved/randomized order when practical.
+5. **Compare:** task pass rate, critical regression count, rubric score, input/output tokens, latency, cost per completed task, and cache-read tokens where available.
+6. **Keep or revert:** keep only if the target improves and protected criteria do not regress. If tied, prefer the shorter/clearer prompt. Record the result and rationale.
+7. **Promote:** add any discovered failure as a regression fixture before changing the production prompt.
+
+```markdown
+[PROMPT EXPERIMENT: missing-citations-v2]
+Baseline: prompts/research-v1.txt @ sha256:...
+Candidate: prompts/research-v2.txt @ sha256:...
+Changed variable: output contract now requires evidence[] and unknowns[]
+Eval set: evals/research-v3 (12 cases, k=5)
+Baseline: pass@1 0.78 | cons@5 0.58 | 920 input tok | 1.8s | $0.004/task
+Candidate: pass@1 0.93 | cons@5 0.83 | 960 input tok | 1.9s | $0.004/task
+Regressions: none on protected cases
+Decision: keep; add missing-citation case to permanent regression set
+```
+
+Grader guidance: code/schema checks first; LLM judge only for genuinely subjective output. Pin judge model + rubric, and calibrate against human labels before trusting score deltas. Never tune on the test set: use train/validation for iteration, holdout test once for final confirmation.
+
 ## Eval Types
 
 | Type | Purpose | Frequency |
