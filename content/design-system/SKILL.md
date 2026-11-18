@@ -143,6 +143,7 @@ Animated icon sets (including Kubai-style product-feature icons) still follow th
 
 - [ ] Icon set has one visual language (grid, stroke, corners, optical weight)
 - [ ] Every external asset has provenance and license recorded
+- [ ] Rendered icons are inspected at target size, including the smallest size (16–20px); reject muddy or collapsed details
 - [ ] Interactive icons have accessible names and visible focus states
 - [ ] Decorative icons are hidden from assistive technology
 - [ ] Motion has a purpose, static fallback, and reduced-motion branch
