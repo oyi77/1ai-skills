@@ -668,6 +668,8 @@ def main() -> int:
         check_overlap(skills_meta, result)
     if args.prompt_hygiene:
         check_prompt_hygiene(skills_meta, result)
+    if args.generic_filler:
+        check_generic_filler(skills_meta, result)
 
     # Stats
     result.stats["total_skills"] = len(skills_meta)
