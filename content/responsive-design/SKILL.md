@@ -95,6 +95,34 @@ on error:
 ```
 
 
+## Modern CSS Platform Rules
+
+Prefer native CSS primitives before JavaScript observers or viewport glue:
+
+- **Container queries** for component behavior (`@container`), not viewport breakpoints for every component.
+- **Subgrid** when nested content must align to a parent grid; do not duplicate column math.
+- **Anchor positioning** (`anchor-name`, `position-anchor`, `position-area`) for tooltips/popovers tied to an element; use JS only for behavior CSS cannot express.
+- **`field-sizing: content`** for auto-growing textareas/inputs when supported; keep a sensible max size and fallback.
+- **`:user-invalid` / `:user-valid`** for post-interaction form feedback; avoid showing errors before the user submits/touches a field.
+- Test support and provide a readable fallback; native APIs are progressive enhancement, not permission to break older browsers.
+
+```css
+/* Component adapts to its container, not the viewport */
+.card-grid { container-type: inline-size; }
+@container (min-width: 42rem) { .card-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* Native validation after user interaction */
+input:user-invalid { border-color: var(--color-danger); }
+```
+
+## Responsive Verification
+
+- [ ] Component behavior uses container queries where parent width—not viewport—drives layout
+- [ ] Tooltip/popover positioning has a CSS anchor or a tested collision fallback
+- [ ] Forms use native validation states and preserve labels/error text for assistive tech
+- [ ] Auto-growing fields have a max size and keyboard-safe fallback
+- [ ] Tested at 320px, 768px, 1024px, 1440px and with long/translated content
+
 ### Mobile-First CSS
 ```css
 /* Mobile first (default) */

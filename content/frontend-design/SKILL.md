@@ -157,6 +157,8 @@ Before calling a page finished, verify the states and delivery surface—not jus
 - **Responsive:** content order and interaction remain usable at 320/768/1024/1440; no horizontal overflow
 - **Motion:** `prefers-reduced-motion` branch; no hover-only information; no scroll hijacking
 - **Performance:** reserve image dimensions, lazy-load below-fold media, avoid unnecessary client JS, inspect LCP/CLS/INP on a production build
+- **Native platform first:** prefer CSS/container queries, native `<dialog>`/Popover, `:user-invalid`, `AbortSignal.timeout()`, `structuredClone()`, and `scrollend` over custom JS when they fit; provide progressive fallbacks
+- **Long tasks:** use `scheduler.yield()` (with a fallback) when chunking CPU work; use speculation rules only for likely navigations and verify bandwidth impact
 - **Deployment:** test the preview URL, direct-load nested routes, refresh after client navigation, and check console/network errors
 - **Assets:** source/license recorded for external images, icons, fonts, and logos; use originals only when authorized
 
