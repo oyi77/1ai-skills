@@ -159,6 +159,17 @@ A placeholder shows a realistic example in the format the field accepts, `name@e
 | `toLocaleDateString()` with no locale, or a date built from `getMonth()` | `Intl.DateTimeFormat` with the user's locale |
 | `Save Changes` beside `Discard changes` | One case per element type |
 
+## Quality Gate for Content and Code Examples
+
+- Use sentence-case headings unless project has documented different policy.
+- Prefer active voice and direct reader address; cut vague claims such as `easy`, `simple`, `quick`, `seamless`, or `powerful` unless measured or defined.
+- Put a short TL;DR first for long guidance; lead with the action and user outcome.
+- Keep examples runnable: include imports, types, assumptions, and expected output. TypeScript examples use explicit types rather than `any`; examples should demonstrate one idea and remain easy to scan.
+- Use locale-aware formatting (`Intl.NumberFormat` / `Intl.DateTimeFormat`) for user-visible numbers, dates, currencies, and times.
+- Do not invent testimonials, metrics, compatibility claims, or API behavior. Mark assumptions and unknowns.
+- Check translation expansion, pluralization, date/number formats, and right-to-left layout when the surface is localized.
+- Give each paragraph/message one job; remove duplicate caveats and repeated conclusions.
+
 ## Reporting
 
 **Severity.** `HIGH` misleads the user or hides how to recover from an error. An error that names no way to recover is always `HIGH`, as is a destructive action with neither confirmation nor undo. `MEDIUM` breaks voice, terminology or capitalization consistency. `LOW` is isolated wording polish.
