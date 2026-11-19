@@ -21,7 +21,7 @@ category: content
 
 ## Overview
 
-Storybook is a frontend workshop for building, testing, and documenting UI components in isolation. Supports React, Vue, Svelte, Angular, and more. Essential for component-driven development.
+Storybook is a workshop for developing, testing, and documenting UI components in isolation. This skill focuses on React with CSF3, interaction tests, accessibility checks, visual regression, and component-level performance guardrails. It also notes where framework-specific checks differ; verify current Storybook APIs against the installed version.
 
 ## Capabilities
 
@@ -166,27 +166,29 @@ export default {
 - **MDX docs**: Combine Markdown and JSX for rich documentation
 - **Chromatic**: `npx chromatic` for visual regression in CI
 
-## How to Use
+## React Performance Guardrails
 
-1. Define content goal (traffic, engagement, conversion, brand awareness)
-2. Research target audience pain points and search intent
-3. Generate content using appropriate AI tools
-4. Edit and humanize output for authenticity
-5. Optimize for target platform (SEO, hashtags, format)
-6. Schedule and distribute across channels
-7. Measure performance and iterate
+Apply these when stories or components expose production behavior:
 
-## Red Flags
-
-- **AI-generated content sounds robotic**: Always run through humanizer before publishing
-- **Engagement dropping week-over-week**: Content fatigue or algorithm change — vary formats
-- **Duplicate content across platforms**: Adapt content per platform, don't just cross-post
-- **No content calendar**: Sporadic posting kills audience retention
-- **Ignoring analytics**: Content without measurement is just publishing, not marketing
+- **No waterfalls:** do not fetch unrelated data serially in a story or component; parallelize independent requests and show loading/error states.
+- **Bundle discipline:** import individual icons/components; avoid importing an entire library for one symbol. Keep browser-only code out of server-rendered modules.
+- **Server/client boundary:** keep static content and data work server-side where the framework supports it; mark client components only when they need state, effects, or browser APIs.
+- **Rerender control:** keep stable object/function references where it matters, use stable list keys, and measure before adding memoization.
+- **Long lists:** virtualize lists with hundreds of rows; test keyboard navigation and screen-reader semantics after virtualization.
+- **Hydration:** stories must render the same initial markup on server and client; isolate time, random IDs, browser APIs, and layout reads behind client-safe boundaries.
+- **Loading/error/empty states:** every async story includes all states, not only the successful screenshot.
 
 ## Verification
 
-- [ ] Skill output matches expected behavior
+- [ ] CSF3 stories render with controls and autodocs
+- [ ] Interaction stories exercise keyboard and pointer paths
+- [ ] Accessibility addon reports no blocking violations
+- [ ] Loading, empty, error, disabled, and success states are represented
+- [ ] No hydration mismatch or browser-only code runs during server render
+- [ ] Long lists are virtualized or an explicit reason is recorded
+- [ ] Bundle imports are scoped; no unnecessary full-library import
+- [ ] Visual regression runs at representative viewport/theme combinations
+- [ ] Component performance measured before memoization or complexity is added
 
 ## Process
 
