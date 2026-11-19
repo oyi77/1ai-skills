@@ -247,14 +247,31 @@ export default defineConfig({
 | `Build failed: chunk size` | Large bundle | Use `manualChunks` or dynamic imports |
 | `env not defined` | Missing `VITE_` prefix | All env vars must start with `VITE_` |
 
-## Common Patterns
+## Production Configuration Checklist
 
-Proven patterns for vite-config usage.
+- **Environment:** every `VITE_*` variable is public in the client bundle. Never put secrets, private API keys, or server credentials behind a `VITE_` prefix; keep them server-side.
+- **Source maps:** publish them only where access is controlled; do not expose source maps containing secrets or private source.
+- **Bundle:** inspect the production bundle; use dynamic imports for routes/heavy features and avoid manual chunks until measured.
+- **Dependencies:** audit plugin compatibility with the installed Vite major; pin/lock versions in CI.
+- **SSR:** keep browser-only globals (`window`, `document`, `localStorage`) behind client boundaries; test direct requests and hydration for mismatch.
+- **Assets:** reserve image dimensions, use hashed assets, and verify base paths when deployed under a subpath.
+- **Dev server:** bind to localhost by default; only expose the network host intentionally, with auth or trusted-network controls.
+- **Proxy:** dev proxy is not a production API security boundary. Configure CORS, auth, timeouts, and rate limits at the real server.
+- **Build proof:** run `vite build`, serve the generated `dist/` with a static server, direct-load nested routes, and inspect console/network errors.
 
-- **Batch processing**: Process multiple items in parallel for throughput
-- **Retry with backoff**: Handle transient failures gracefully
-- **Rate limiting**: Respect API limits with configurable delays
-- **Logging**: Structured logging for debugging and audit trails
+### Environment safety
+
+```bash
+# Safe: public client configuration only
+VITE_PUBLIC_API_ORIGIN=https://api.example.com
+
+# Unsafe: this value is bundled into client JavaScript
+VITE_SECRET_KEY=do-not-do-this
+
+# Keep private values in the server/runtime environment instead
+API_SECRET_KEY=server-only
+```
+
 
 
 ### Multi-Page App
@@ -327,7 +344,14 @@ export default defineConfig({
 
 ## Verification
 
-- [ ] Skill output matches expected behavior
+- [ ] `vite build` passes in a clean install
+- [ ] No private secret uses a `VITE_` prefix or appears in built assets
+- [ ] Production bundle inspected; heavy features are split only where measured
+- [ ] SSR/direct-load routes render without hydration mismatch
+- [ ] `dist/` served by a static server; nested route refresh works
+- [ ] Base path, asset URLs, image dimensions, and source-map policy verified
+- [ ] Dev proxy is not mistaken for production auth/CORS/rate limiting
+- [ ] Dev server exposure is intentional and bounded to a trusted network
 
 ## Process
 
