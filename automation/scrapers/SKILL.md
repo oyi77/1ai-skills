@@ -588,6 +588,17 @@ def check_alerts():
 
 ---
 
+## Scraping Safety & Reliability
+
+- **Check authorization first.** Prefer public APIs, RSS, sitemaps, or documented export endpoints. Respect site terms, robots directives, authentication boundaries, and platform policies; do not bypass CAPTCHAs, paywalls, or access controls.
+- **Rate-limit politely.** Per-host concurrency 1 by default; configure explicit request rate, `Retry-After` handling, exponential backoff + jitter, and stop on repeated 403/429.
+- **Conditional requests.** Use `ETag` / `If-Modified-Since` when supported; avoid refetching unchanged pages.
+- **Idempotent ingestion.** Deduplicate by canonical URL + content hash; upsert records, do not append duplicate rows on retry.
+- **Checkpoint and resume.** Persist cursor/page/last-seen timestamp so crashes resume safely; do not mark a batch complete until outputs are durably stored.
+- **Detect parser drift.** Validate required selectors/fields and plausible ranges; when the page structure changes, alert and stop rather than silently storing empty/wrong data.
+- **Minimize personal data.** Collect only fields needed for the stated use; set retention and deletion policy. Do not build profiles on sensitive traits.
+- **Evidence.** Store fetch timestamp, source URL, response status, parser version, and content hash with each record.
+
 ## Verification
 
 - [ ] Price tracker successfully extracts prices from target e-commerce sites

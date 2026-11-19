@@ -37,7 +37,18 @@ Choose the automation style that matches your infrastructure and vendor toleranc
 4. **Test with a real event** — fire an actual trigger and confirm the action fires end to end, not just in dry-run.
 5. **Monitor** — confirm failures are observable (logs, notifications) and the workflow survives restarts.
 
-## Money-Making Overview
+## Operational Guarantees
+
+Any workflow that runs unattended must be safe to replay:
+
+- **Idempotency keys.** Derive a stable key from trigger identity (event ID, dedup hash). Re-running the same trigger must not duplicate side effects (emails, payments, posts).
+- **Retry with backoff + jitter.** Retries only for transient failures; cap attempts and record terminal failures instead of looping forever.
+- **Dead-letter handling.** After max retries, route the failed item to a dead-letter store with the original payload and error for human review.
+- **Compensation/rollback.** For multi-step workflows, define what undoes each step if a later step fails (Saga pattern). Never leave half-applied state.
+- **Timeout budgets.** Every external call has a timeout; the whole workflow has a deadline. A hung step must not block the scheduler indefinitely.
+- **Durable state.** Persist run state (started/completed/failed + inputs) so restarts resume rather than restart from zero.
+- **Observability.** Emit structured logs with run ID, step, duration, outcome; alert on failure rate and silent no-ops.
+- **Secrets via env/secret store, never in workflow definitions or logs.**
 
 | Tool | Service You Sell | Monthly Revenue Potential | Setup Complexity |
 |---|---|---|---|
