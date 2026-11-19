@@ -66,27 +66,13 @@ Cybersecurity skill for hunting for persistence mechanisms in windows. Follows i
 
 ## Workflow
 
-```python
-# Example: IOC detection
-import re
-
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
-
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
-```
-
-1. **Define Detection Scope** — Identify the specific  techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
-2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for .
-3. **Build Detection Queries** — Write persistence mechanisms in windows queries targeting  indicators. Use platform-specific query language for optimal performance.
-4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
-5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
-6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
+1. **Define scope and authorization** — identify hosts, accounts, and registry/run locations in scope; obtain written authorization and change-management approval before touching any host; document evidence-handling rules.
+2. **Establish a baseline** — collect clean persistence state from known-good systems (Run keys, RunOnce, scheduled tasks, WMI subscriptions, services, browser helper objects, browser extensions, shell extensions, boot execute, and common startup folders).
+3. **Collect persistence evidence per host** — query registry keys (HKLM/HKCU \Software\Microsoft\Windows\CurrentVersion\Run/RunOnce/RunOnceEx, AppInit_DLLs, LSA, Image File Execution Options), Scheduled Tasks, WMI event consumers (Win32_ProcessorCommandLineEvent, __FilterToConsumerBinding), services (sc query state), startup folders (%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup and %ProgramData%\Microsoft\Windows\Start Menu\Programs\Startup), and scheduled tasks (schtasks /query /fo CSV /v).
+4. **Baseline comparison** — diff current persistence state against the known-good baseline; flag new entries, changed hashes, suspicious parent processes, suspicious service accounts, and binaries in temp/user temp paths.
+5. **Enrich and correlate** — resolve file hashes against threat-intel feeds, check file creation/modification timestamps against first-seen execution timestamps, correlate parent processes and scheduled-task owners with authorized admins/service accounts.
+6. **Triage and document** — assign each hit one of: known-good/expected, false positive, suspicious-unconfirmed, confirmed-malicious; record artifact, hash, timestamp, source, and remediation action.
+7. **Remediate and document** — remove unauthorized persistence only with owner approval; document each removal (what, where, how, who approved); preserve evidence of removed artifacts for forensic review.
 
 ## Tools
 

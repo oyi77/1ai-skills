@@ -81,27 +81,13 @@ Cybersecurity skill for performing ai driven osint correlation. Follows industry
 
 ## Workflow
 
-```python
-# Example: IOC detection
-import re
-
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
-
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
-```
-
-1. **Plan Operations** — Define objectives, scope, and success criteria for ai driven osint correlation operations.
-2. **Prepare Environment** — Set up tools, access, and data sources required for ai driven osint correlation.
-3. **Execute Core Workflow** — Perform the ai driven osint correlation operations following established procedures.
-4. **Validate Results** — Verify that results meet quality standards and objectives.
-5. **Report Findings** — Document results, observations, and recommendations.
-6. **Follow Up** — Track remediation actions and verify fixes where applicable.
+1. **Lawful scope first.** Collect only what is needed for an authorized purpose; check platform terms, privacy/data-protection law, and client policy. Do not target private individuals, dox, harass, impersonate, or access non-public/closed platforms with fake accounts.
+2. **Define an entity and question.** Record the target entity (domain, alias, username, or organization), the decision the output supports, allowed sources, and stop conditions. Vague "collect everything" is out of scope.
+3. **Collect data with provenance.** For each source record the tool, query, timestamp, URL/record ID, and raw evidence. Keep raw outputs separate from derived analysis.
+4. **Normalize into graph records.** Entities (person, alias, email, domain, IP, handle, organization) and edges (observed-on, registered-to, mentioned-with, same-handle-on) with source references attached.
+5. **Correlate with confidence.** Use deterministic rules for strong links (same verified email/domain registration, overlapping unique handles) and LLM reasoning only for weak candidate links. Each link needs: confidence, supporting sources, and why alternatives were rejected.
+6. **Verify before reporting.** Check high-impact links with a second independent source; flag contradictions and stale records. LLM output is a hypothesis generator, not proof of identity.
+7. **Report with evidence discipline.** Separate facts (with source + timestamp) from inferences (with confidence). Never publish personal data beyond scope; apply minimization and redaction. Maintain audit trail for reviewer reproduction.
 
 ## Tools
 

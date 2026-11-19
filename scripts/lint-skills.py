@@ -458,6 +458,40 @@ def check_prompt_hygiene(skills_meta: list[dict], result: LintResult):
                 result.add("warnings", name, code, message)
 
 
+def check_generic_filler(skills_meta: list[dict], result: LintResult):
+    """Detect generated-boilerplate prose that adds no domain knowledge.
+
+    Targets the specific filler patterns that polluted ~560 skills: identical
+    IOC-regex example, 'Assess Requirements/Design Architecture/Configure
+    Components' pipeline, and generic 'Follows industry best practices' overview.
+    These are warnings: some bounded legacy skills legitimately need rewrite
+    before CI can be made blocking.
+    """
+    patterns = [
+        ("generic-ioc-example",
+         re.compile(r"# Example: IOC detection\s*\n\s*import re\s*\n\s*\nIOC_PATTERNS"),
+         "Copy-pasted IOC regex example unrelated to the skill domain"),
+        ("generic-pipeline-prose",
+         re.compile(r"Assess Requirements.*?Design Architecture.*?Configure Components", re.S),
+         "Generic 6-step pipeline prose instead of domain-specific workflow"),
+        ("generic-overview",
+         re.compile(r"Cybersecurity skill for [a-z0-9 ]+\. Follows industry best practices and security standards\."),
+         "Placeholder overview text"),
+        ("generic-verbatim",
+         re.compile(r"^1\. \*\*(Prepare|Design|Implement|Verify)\*\* — (Gather requirements|Define interface|Write code following|Run tests)", re.M),
+         "Verbatim template steps"),
+    ]
+    for meta in skills_meta:
+        body = meta.get("_body", "")
+        if not body:
+            continue
+        name = meta.get("name", meta.get("_path", ""))
+        for code, pat, message in patterns:
+            if pat.search(body):
+                result.add("warnings", name, code, message)
+                break
+
+
 def check_cross_references(skills_meta: list[dict], result: LintResult):
     """Check that skill:// links in body text point to real skills."""
     all_names = {m.get("name") for m in skills_meta if m.get("name")}
@@ -598,6 +632,8 @@ def main() -> int:
                     help="Also run Tier-2 semantic overlap detection (Tier-2 dedup)")
     ap.add_argument("--prompt-hygiene", action="store_true",
                     help="Check prompt-bearing skills for cache, CoT, and weak-output-contract patterns")
+    ap.add_argument("--generic-filler", action="store_true",
+                    help="Flag generated-boilerplate workflows (IOC regex example, Assess/Design/Configure pipeline, placeholder overview)")
     args = ap.parse_args()
 
     skills = find_skills()

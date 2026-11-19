@@ -79,27 +79,13 @@ Cybersecurity skill for implementing security monitoring with datadog. Follows i
 
 ## Workflow
 
-```python
-# Example: IOC detection
-import re
-
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
-
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
-```
-
-1. **Assess Requirements** — Evaluate current environment and define security monitoring implementation requirements.
-2. **Design Architecture** — Plan the security monitoring architecture, including components, integrations, and data flows.
-3. **Configure Components** — Set up datadog for security monitoring according to vendor best practices and security guidelines.
-4. **Test Integration** — Validate that all components work together. Run functional and security tests.
-5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
-6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
+1. **Define monitoring objective** — pick one security outcome (failed auth burst, privileged API key use, anomalous egress, config drift) and name the owner/response path.
+2. **Inventory sources and normalize** — confirm Datadog Agent/integration/API receives the required logs/events; normalize fields (user, service, env, host, request ID, timestamp) and verify retention/window covers the objective.
+3. **Build the signal** — use log queries, metrics, or Cloud SIEM rules with explicit filters, aggregation window, threshold, and ATT&CK mapping where applicable. Avoid alerting on raw volume without context.
+4. **Test positive and negative cases** — generate known-positive test events in an authorized environment and benign baseline events; measure detection latency and false-positive volume.
+5. **Configure alerting** — set severity, notification channel, escalation owner, mute/recovery rules, and a runbook link. Keep alert messages free of secrets and sensitive payloads.
+6. **Deploy staged** — monitor-only first, then alert, then automation only after approval. Version monitor/rule config and retain rollback.
+7. **Operate lifecycle** — assign review cadence, tune with evidence, track MTTD/MTTR and alert quality, and retire monitors that no longer serve the objective.
 
 ## Tools
 

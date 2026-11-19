@@ -82,26 +82,13 @@ Use this skill when:
 
 ## Workflow
 
-```python
-# Example: IOC detection
-import re
-
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
-
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
-```
-
-1. **Define Objectives** — Clarify the goals and scope for mitre attack techniques.
-2. **Gather Resources** — Collect tools, data, and access needed for mitre attack techniques.
-3. **Execute Process** — Carry out mitre attack techniques operations methodically.
-4. **Verify Quality** — Check results against acceptance criteria.
-5. **Document Outcomes** — Record findings, decisions, and next steps.
+1. **Scope the matrix and inventory** — choose the relevant ATT&CK matrix/domain (Enterprise, Cloud, Mobile, ICS) and version; inventory detection rules, alerts, controls, and log sources in scope.
+2. **Map behavior to technique IDs** — for each rule/alert/control, identify the observable behavior and map it to ATT&CK technique/sub-technique IDs with written rationale. Do not tag a rule just because its name mentions a technique.
+3. **Record coverage honestly** — mark each technique as covered only when the required telemetry and analytic exist and have been tested. Otherwise label `partial`, `visibility gap`, or `unmapped`.
+4. **Build Navigator layers** — export technique coverage and confidence to ATT&CK Navigator JSON; keep separate layers for detection coverage, prevention controls, and relevant adversary groups.
+5. **Score gaps against relevance** — prioritize gaps by whether the technique is relevant to scoped assets/threat actors, not by raw count or arbitrary numeric scores.
+6. **Validate mappings** — peer-review ambiguous mappings; test representative rules against known behavior; document false positives/negatives and version assumptions.
+7. **Version and refresh** — store mappings/layers in version control with ATT&CK version, review date, owners, and rollback path; refresh after rule changes or ATT&CK releases.
 
 ## Tools
 

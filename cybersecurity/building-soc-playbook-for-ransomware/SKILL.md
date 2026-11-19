@@ -80,27 +80,14 @@ Use this skill when:
 
 ## Workflow
 
-```python
-# Example: IOC detection
-import re
-
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
-
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
-```
-
-1. **Assess Requirements** — Evaluate current environment and define soc playbook implementation requirements.
-2. **Design Architecture** — Plan the soc playbook architecture, including components, integrations, and data flows.
-3. **Configure Components** — Set up ransomware for soc playbook according to vendor best practices and security guidelines.
-4. **Test Integration** — Validate that all components work together. Run functional and security tests.
-5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
-6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
+1. **Pre-authorize the playbook** — before an incident, define severity triggers, incident commander, legal/executive/communications contacts, external IR retainer, ransom-payment policy (owner is legal/executive, not SOC), backup restore ownership, and evidence-preservation rules.
+2. **Detect and triage** — recognize indicators (mass file rename/extension change, shadow-copy deletion, backup deletion, EDR ransomware behavior, C2 beaconing). Assign severity and open an incident record with time, scope, and host list.
+3. **Contain** — isolate affected hosts/segments via EDR/network controls, disable compromised accounts, block known IOCs, and protect backups. Do not power off hosts destructively; preserve memory/disk evidence per forensic guidance.
+4. **Assess scope and persistence** — enumerate affected systems, accounts, and data; check for lateral movement and persistence; verify backup integrity and whether backups were also compromised.
+5. **Eradicate** — remove ransomware artifacts and persistence, patch the initial-access vector, rotate all potentially exposed credentials, and validate clean state with scanning.
+6. **Recover** — restore from verified clean backups in a controlled order, monitor closely after restore, and validate business-critical services before broad reconnection.
+7. **Communicate** — follow the pre-approved escalation and disclosure obligations; keep legal/executive in the loop; do not negotiate or contact the attacker without explicit executive/legal authorization.
+8. **Post-incident** — document timeline, root cause, blast radius, recovery evidence, lessons learned, and control improvements with owners and due dates.
 
 ## Tools
 
