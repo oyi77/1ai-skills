@@ -248,15 +248,16 @@ const client = new proto.UserService('localhost:50051',
 );
 ```
 
-## Common Patterns
+## Production Rules
 
-Proven patterns for grpc usage.
-
-- **Batch processing**: Process multiple items in parallel for throughput
-- **Retry with backoff**: Handle transient failures gracefully
-- **Rate limiting**: Respect API limits with configurable delays
-- **Logging**: Structured logging for debugging and audit trails
-
+- **Deadlines always.** Every client call sets a deadline; the server treats expired deadlines as cancellation and stops work.
+- **Correct status codes.** Use `INVALID_ARGUMENT` for validation, `UNAUTHENTICATED`/`PERMISSION_DENIED` for auth, `NOT_FOUND`, `ALREADY_EXISTS`, `RESOURCE_EXHAUSTED` (rate limit), `UNAVAILABLE` (transient). Never blanket `INTERNAL`.
+- **Retry only idempotent RPCs.** Unary reads are safe to retry with backoff+jitter; streaming and non-idempotent writes need an idempotency key or no retry.
+- **Protobuf compatibility is additive.** New fields get new numbers, never reuse a retired tag number; use `reserved` for removed fields. No required-field changes in proto3 semantics.
+- **TLS + auth on every hop.** Insecure credentials are dev-only; production uses TLS and per-RPC metadata auth via interceptors.
+- **Backpressure on streams.** Respect flow control; do not buffer unbounded messages server-side. Handle `CANCELLED` from disconnected clients and release resources.
+- **Health + graceful shutdown.** Implement standard gRPC Health Checking Protocol; drain on `SIGTERM` with `tryShutdown` then force after a bounded grace period.
+- **Reflection off in prod unless needed.** Server reflection aids debugging but widens attack surface; gate it behind policy.
 
 ### Health Check
 ```protobuf
@@ -311,7 +312,14 @@ client.GetUser({ id: '123' }, { deadline }, callback);
 
 ## Verification
 
-- [ ] Skill output matches expected behavior
+- [ ] All client calls set deadlines; expired deadline cancels server work
+- [ ] Status codes semantically correct for validation/auth/not-found/rate-limit
+- [ ] Retry tested only on idempotent RPCs; streaming not blindly retried
+- [ ] Proto change test: old client against new server (and vice versa) passes
+- [ ] TLS + metadata auth enforced in production config
+- [ ] Stream disconnect/cancel releases resources; no unbounded buffering
+- [ ] Health check protocol responds; graceful shutdown drains in-flight RPCs
+- [ ] Reflection disabled or policy-gated in production
 
 ## Process
 

@@ -293,15 +293,24 @@ jobs:
 | `Test flaky` | Race condition | Use `cy.intercept` + `cy.wait` for API calls |
 | `Video recording failed` | Missing ffmpeg | Install ffmpeg or disable video |
 
-## Common Patterns
+## Stable-Selector Rules
 
-Proven patterns for cypress-e2e usage.
+- Prefer `data-testid` over CSS classes/text; tests must survive styling and copy changes.
+- Query by role/name first for semantics; use testids only when accessibility queries are ambiguous.
+- Do not assert on transient UI (toasts, animations) without explicit waits; intercept APIs instead.
+- Avoid `cy.wait(ms)`; use `cy.intercept` + `cy.wait('@alias')` or condition-based assertions.
+- Use `cy.session` for auth reuse; never put passwords in test code or support artifacts.
+- Seed data through API or `cy.task` (Node), not by driving the UI for setup.
+- Mark flaky tests; quarantine until diagnosed. Retries hide flake and must not be the fix.
+- Keep visual regression baselines reviewed; a baselined regression is still a regression.
 
-- **Batch processing**: Process multiple items in parallel for throughput
-- **Retry with backoff**: Handle transient failures gracefully
-- **Rate limiting**: Respect API limits with configurable delays
-- **Logging**: Structured logging for debugging and audit trails
+## CI Rules
 
+- Run against a production-like build, not the dev server.
+- Start the server with `start-server-and-test` or an equivalent wait-on gate.
+- Parallelize by spec, not by test; keep each worker's data isolated.
+- Store videos/screenshots as artifacts only on failure.
+- Run component and E2E suites separately; component tests do not replace end-to-end flows.
 
 ### Testing Forms
 ```typescript
@@ -358,7 +367,14 @@ module.exports = defineConfig({
 
 ## Verification
 
-- [ ] Skill output matches expected behavior
+- [ ] Tests run headless from a clean install in CI
+- [ ] No `cy.wait(ms)` or fixed sleeps for API responses
+- [ ] Selectors are testid/role-based and not coupled to copy or CSS
+- [ ] Auth session reused via `cy.session`; no credentials in repo
+- [ ] Data seeded via API/task, not UI walkthrough
+- [ ] Failure artifacts (screenshot/video) captured and inspected
+- [ ] Flaky tests quarantined with a diagnosis issue, not hidden by retries
+- [ ] Visual baselines reviewed for each intentional UI change
 
 ## Process
 

@@ -235,15 +235,16 @@ breaker.fallback((req, res) => {
 app.use('/api/users', authenticate, (req, res) => breaker.fire(req, res));
 ```
 
-## Common Patterns
+## Production Rules
 
-Proven patterns for api-gateway usage.
-
-- **Batch processing**: Process multiple items in parallel for throughput
-- **Retry with backoff**: Handle transient failures gracefully
-- **Rate limiting**: Respect API limits with configurable delays
-- **Logging**: Structured logging for debugging and audit trails
-
+- **Timeout budget.** Set explicit upstream timeouts; gateway timeout must exceed upstream timeout + retry budget, or retries will outlive the client request.
+- **Retry only idempotent calls.** Retry GET/HEAD and idempotent-keyed writes; never blindly retry POST/charges. Use jittered exponential backoff with a max attempt count.
+- **Circuit breaker per upstream.** Open on sustained failure, half-open probe, close on recovery; return a clean 503 fallback, not a hung socket.
+- **Rate limiting keyed by identity.** Limit per API key/user, not just IP; shared NAT makes IP-only limits unfair. Return `429` with `Retry-After`.
+- **Auth at the edge, authorize at the service.** Gateway validates tokens; services still enforce object-level permissions.
+- **Request IDs end-to-end.** Generate/propagate `X-Request-ID`; log method, route, status, latency, and upstream — never tokens or bodies by default.
+- **Health/readiness.** Expose `/healthz` (process) and `/readyz` (dependencies); load balancers use readiness, not health.
+- **Fail closed on auth errors, fail open on cache misses.** A cache outage should slow, not lock out, authenticated traffic.
 
 ### API Key Authentication
 ```javascript
@@ -290,26 +291,16 @@ const cache = (ttl) => async (req, res, next) => {
 app.use('/api/products', cache(300), (req, res) => proxy.web(req, res, { target: services.products }));
 ```
 
-## How to Use
-
-1. Understand the requirement and existing codebase patterns
-2. Design the solution with error handling and testability in mind
-3. Implement incrementally with tests for each change
-4. Verify against expected outcomes (manual and automated)
-5. Document usage, edge cases, and integration points
-6. Review with team before merging to shared branches
-
-## Red Flags
-
-- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
-- **No error handling in production code**: Unhandled errors crash services and lose user data
-- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
-- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
-- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
-
 ## Verification
 
-- [ ] Skill output matches expected behavior
+- [ ] Timeout hierarchy tested: gateway > upstream, retries counted in budget
+- [ ] Retry policy proven idempotent; non-idempotent POST not retried blindly
+- [ ] Circuit breaker opens/closes under injected upstream failure
+- [ ] Rate limiting tested per key with `429` + `Retry-After`
+- [ ] Auth invalid tokens rejected; service still authorizes object ownership
+- [ ] Request ID propagated end-to-end; logs contain no secrets/PII
+- [ ] `/healthz` and `/readyz` respond correctly with dependencies up/down
+- [ ] Load test at expected p99 traffic; saturation causes shedding, not a hang
 
 ## Process
 

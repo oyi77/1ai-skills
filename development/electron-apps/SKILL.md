@@ -285,15 +285,16 @@ npx electron-builder --linux
 | `Auto-update failed` | No publish config or signing | Check `build.publish` config |
 | `Code signing failed` | Missing certificates | Set `CSC_LINK` and `CSC_KEY_PASSWORD` env vars |
 
-## Common Patterns
+## Security & Process-Isolation Rules
 
-Proven patterns for electron-apps usage.
-
-- **Batch processing**: Process multiple items in parallel for throughput
-- **Retry with backoff**: Handle transient failures gracefully
-- **Rate limiting**: Respect API limits with configurable delays
-- **Logging**: Structured logging for debugging and audit trails
-
+- **Context isolation on, nodeIntegration off.** Renderer must never get Node APIs directly; all privileged work goes through a preload bridge.
+- **Preload exposes a narrow API surface.** Whitelist channels in `contextBridge`; do not forward arbitrary `ipcRenderer.send` or raw paths/URLs from renderer.
+- **Validate IPC at both ends.** Main process checks argument types, path traversal (`path.normalize` + containment to an allowed root), and URL schemes before acting.
+- **Sandbox webContents** and set a strict CSP for remote content; load only trusted origins in `<webview>`/BrowserView.
+- **Never use `shell.openExternal` on unvalidated input.** Allow-list protocols (`https:`, `mailto:`); reject `javascript:`/custom-scheme injection.
+- **Auto-update integrity.** Sign artifacts (notarize macOS, code-sign Windows), verify update signatures/checksums, and pin the update feed over TLS.
+- **Secrets stay out of the bundle.** App.asar is readable; never ship API keys or tokens client-side — proxy them through a server.
+- **Crash/reporting privacy.** Strip PII from crash dumps and telemetry; make reporting opt-in where law requires it.
 
 ### Store (Persistent Settings)
 ```typescript
@@ -364,7 +365,14 @@ crashReporter.start({
 
 ## Verification
 
-- [ ] Skill output matches expected behavior
+- [ ] `contextIsolation: true`, `nodeIntegration: false`, `sandbox: true` confirmed in every BrowserWindow
+- [ ] Preload exposes only whitelisted IPC channels; renderer cannot reach raw fs/net/shell
+- [ ] IPC args validated in main (types, path containment, URL scheme allow-list)
+- [ ] `shell.openExternal` rejects non-allowlisted protocols
+- [ ] CSP set; no remote code loaded into renderer
+- [ ] Signed/notarized builds for macOS and Windows; updater verifies signature over TLS
+- [ ] No secrets inside asar; privileged calls proxied server-side
+- [ ] App launches, deep-links, and auto-update tested on packaged artifact, not only dev mode
 
 ## Process
 

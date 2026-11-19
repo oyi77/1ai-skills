@@ -222,15 +222,15 @@ const server = new ApolloServer({
 });
 ```
 
-## Common Patterns
+## Production Rules
 
-Proven patterns for graphql-api usage.
-
-- **Batch processing**: Process multiple items in parallel for throughput
-- **Retry with backoff**: Handle transient failures gracefully
-- **Rate limiting**: Respect API limits with configurable delays
-- **Logging**: Structured logging for debugging and audit trails
-
+- **Schema first.** Write SDL before resolvers; treat removals/renames as breaking changes.
+- **N+1 prevention.** Batch nested loads with DataLoader keyed per request; never issue one DB query per parent row.
+- **Authorization at the field.** Use directives/middleware plus resolver ownership checks; never trust client IDs.
+- **Bounded queries.** Require pagination arguments with max page size; cap query depth/complexity; reject introspection in production if not needed.
+- **Errors.** Return GraphQL errors with stable codes; never leak SQL, stack traces, or internal IDs.
+- **Persisted queries.** Prefer allowlisted persisted queries in production; reject arbitrary documents from untrusted clients.
+- **Subscriptions.** Authenticate on connect, authorize channel membership, enforce backpressure, and clean up on disconnect.
 
 ### Authorization Directive
 ```graphql
@@ -280,37 +280,13 @@ type Query {
 }
 ```
 
-## How to Use
-
-1. Understand the requirement and existing codebase patterns
-2. Design the solution with error handling and testability in mind
-3. Implement incrementally with tests for each change
-4. Verify against expected outcomes (manual and automated)
-5. Document usage, edge cases, and integration points
-6. Review with team before merging to shared branches
-
-## Red Flags
-
-- **Skipping tests to ship faster**: Untested code breaks in production when you least expect it
-- **No error handling in production code**: Unhandled errors crash services and lose user data
-- **Hardcoded configuration values**: Hardcoded values prevent environment switching and leak secrets
-- **Ignoring security implications**: Missing input validation, auth bypasses, and injection vulnerabilities
-- **Over-engineering simple solutions**: Premature abstraction adds complexity without proportional benefit
-
 ## Verification
 
-- [ ] Skill output matches expected behavior
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
-
-## Anti-Rationalization Table
-
-| Rationalization | Reality |
-|---|---|
-| "Tests slow me down" | Bugs slow you down 10x more. Tests are speed, not overhead. |
-| "I will refactor later" | Technical debt compounds. Refactor as you go. |
-| "It works on my machine" | If it is not in CI, it does not work. Ship proof, not claims. |
+- [ ] Schema compiles; breaking changes are additive-only
+- [ ] Every query/mutation/subscription has operation-level tests
+- [ ] DataLoader or equivalent batching eliminates N+1 on nested fields
+- [ ] Field authorization and ownership checks tested for each role
+- [ ] Query depth/complexity/pagination limits enforced
+- [ ] Error responses carry stable codes; no internal detail leaks
+- [ ] Persisted-query allowlist or equivalent document control in production
+- [ ] Subscription connect auth and channel authorization tested
