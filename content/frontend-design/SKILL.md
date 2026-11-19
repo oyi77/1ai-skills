@@ -158,9 +158,15 @@ Before calling a page finished, verify the states and delivery surface—not jus
 - **Motion:** `prefers-reduced-motion` branch; no hover-only information; no scroll hijacking
 - **Performance:** reserve image dimensions, lazy-load below-fold media, avoid unnecessary client JS, inspect LCP/CLS/INP on a production build
 - **Native platform first:** prefer CSS/container queries, native `<dialog>`/Popover, `:user-invalid`, `AbortSignal.timeout()`, `structuredClone()`, and `scrollend` over custom JS when they fit; provide progressive fallbacks
+- **View Transitions:** use `document.startViewTransition()` for supported SPA navigation; respect reduced motion and avoid blocking route changes on decorative transitions. For cross-document transitions, feature-detect and keep normal navigation functional.
+- **Top layer:** prefer native `<dialog>` or the Popover API for overlays; they escape stacking-context traps and handle focus/escape better than hand-rolled `z-index` portals. Confirm modal vs non-modal semantics.
 - **Long tasks:** use `scheduler.yield()` (with a fallback) when chunking CPU work; use speculation rules only for likely navigations and verify bandwidth impact
+- **Built-in AI APIs:** treat browser AI APIs as optional enhancement only; feature-detect, provide remote/server or non-AI fallback, disclose processing/privacy behavior, and never make core tasks unavailable when API/model is absent
+- **Compatibility:** check current support in target browsers (e.g. MDN browser-compat data) before adopting a new API; use `@supports` / feature detection rather than assuming Baseline availability.
 - **Deployment:** test the preview URL, direct-load nested routes, refresh after client navigation, and check console/network errors
 - **Assets:** source/license recorded for external images, icons, fonts, and logos; use originals only when authorized
+- **Untrusted HTML:** avoid `innerHTML`; use framework text binding or a maintained sanitizer. Trusted Types can enforce safe sinks where supported; do not rely on the newer Sanitizer API without target-browser support and a fallback.
+- **Authentication:** prefer WebAuthn/passkeys where suitable, but keep recovery, fallback, and account-device-change flows usable. Implementation details belong to the security skill.
 
 ## Verification
 
