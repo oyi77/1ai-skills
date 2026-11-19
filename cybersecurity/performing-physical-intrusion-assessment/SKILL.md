@@ -38,6 +38,12 @@ category: cybersecurity
 Physical intrusion assessment evaluates an organization's physical security controls by attempting to gain unauthorized access to facilities, server rooms, and restricted areas. This includes tailgating employees, cloning RFID access badges, bypassing locks, deploying rogue network devices, and testing security guard procedures. Physical security testing is a critical component of full-scope red team engagements, as it often provides the most direct path to network access. MITRE ATT&CK maps physical access techniques under T1200 (Hardware Additions) and T1091 (Replication Through Removable Media).
 
 
+## Rules of Engagement (Required)
+
+Before any field activity, obtain a signed Rules of Engagement (ROE) from the asset owner. ROE must specify named sites/doors/systems, date and time window, authorized techniques, explicit exclusions, emergency contacts, evidence handling, stop conditions, and written permission for any credential/device test. Carry authorization and stop immediately if scope or ownership is uncertain.
+
+**Safety limits:** default to observation, interviews, and control walkthroughs. Do not clone/use live employee credentials, bypass a live lock, impersonate emergency/delivery staff, plant a network implant, or inject keystrokes unless that exact test is explicitly approved in the ROE and performed in a controlled client-approved simulation. Never access, copy, or alter data outside scope. No test justifies putting people at risk or blocking egress/emergency systems.
+
 ## When to Use
 **Trigger phrases:**
 - "performing physical intrusion assessment"

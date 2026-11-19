@@ -68,26 +68,13 @@ Use this skill when:
 
 ## Workflow
 
-```python
-# Example: IOC detection
-import re
-
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
-
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
-```
-
-1. **Define Objectives** — Clarify the goals and scope for linux endpoint.
-2. **Gather Resources** — Collect tools, data, and access needed for linux endpoint.
-3. **Execute Process** — Carry out linux endpoint operations methodically.
-4. **Verify Quality** — Check results against acceptance criteria.
-5. **Document Outcomes** — Record findings, decisions, and next steps.
+1. **Freeze scope and rollback** — record hostname/image, OS/version, owner, maintenance window, baseline config, backup/snapshot, and rollback command. Never harden production blindly.
+2. **Select the correct benchmark** — CIS profile/version must match distro and release; record exceptions. Do not claim compliance using another release's benchmark.
+3. **Assess before remediate** — run OpenSCAP/CIS-CAT report-only; export rule ID, current/expected value, severity, and evidence.
+4. **Prioritize** — remediate critical/high findings that fit the threat model first; review availability impact for SSH, firewall, kernel, auth, and logging changes.
+5. **Apply controlled changes** — use idempotent Ansible/shell with backups; one change group at a time. Never paste a blanket chmod/sysctl script into an unknown host.
+6. **Re-assess and test** — rerun the same benchmark; verify SSH access, services, logging, updates, and required application flows.
+7. **Document exceptions** — each exception has owner, rationale, compensating control, expiry/review date, evidence, final report, and rollback instructions.
 
 ## Tools
 

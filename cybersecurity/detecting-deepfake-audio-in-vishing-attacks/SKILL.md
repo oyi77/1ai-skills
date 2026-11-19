@@ -79,27 +79,14 @@ Cybersecurity skill for detecting deepfake audio in vishing attacks. Follows ind
 
 ## Workflow
 
-```python
-# Example: IOC detection
-import re
-
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
-
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
-```
-
-1. **Define Detection Scope** — Identify the specific deepfake audio in vishing attacks techniques or indicators to hunt. Map to MITRE ATT&CK tactics/techniques where applicable.
-2. **Collect Baseline Data** — Gather historical logs and establish normal behavior patterns for deepfake audio in vishing attacks.
-3. **Build Detection Queries** — Write detection rules, Sigma rules, or SIEM queries targeting deepfake audio in vishing attacks indicators.
-4. **Execute Hunts** — Run queries against the collected data, starting with broad filters and narrowing down.
-5. **Triage Results** — Investigate alerts, filter false positives, and validate findings against known-good behavior.
-6. **Document Findings** — Record confirmed detections, IOCs, and affected systems. Update detection rules based on findings.
+1. **Preserve evidence and consent** — keep the original recording unchanged, record chain of custody, hash the source file, and confirm legal/organizational authority to analyze the audio and any speaker reference samples.
+2. **Define the question** — identify claimed speaker, call context, time, and suspicious segment; formulate a testable hypothesis rather than presuming synthesis.
+3. **Build a matched baseline** — collect known-genuine samples of the claimed speaker with matching device/codec/room conditions where possible; document baseline provenance.
+4. **Normalize and extract features** — convert to a common format/sample rate without overwriting the original; extract MFCC, spectral centroid/contrast, zero-crossing rate, F0 trajectory, jitter/shimmer, and segment timing.
+5. **Score with validated models** — use models tested on held-out data from comparable codecs/noise conditions; report calibrated scores and known limitations, not unexplained certainty.
+6. **Cross-check independently** — corroborate with a second detector and spectrogram/listening review; investigate environment mismatch before attributing synthesis.
+7. **Document uncertainty** — report detector/model versions, baseline identity, feature set, confidence, limitations, and inconclusive cases. Automated audio analysis is a triage signal, not standalone forensic proof.
+8. **Escalate appropriately** — for suspected fraud, verify the request through an independent trusted channel; do not rely on voice identity alone to authorize payments or account changes.
 
 ## Tools
 

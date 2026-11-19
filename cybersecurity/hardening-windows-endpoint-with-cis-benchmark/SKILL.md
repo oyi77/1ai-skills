@@ -69,26 +69,13 @@ Use this skill when:
 
 ## Workflow
 
-```python
-# Example: IOC detection
-import re
-
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
-
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
-```
-
-1. **Define Objectives** — Clarify the goals and scope for windows endpoint.
-2. **Gather Resources** — Collect tools, data, and access needed for windows endpoint.
-3. **Execute Process** — Carry out windows endpoint operations methodically.
-4. **Verify Quality** — Check results against acceptance criteria.
-5. **Document Outcomes** — Record findings, decisions, and next steps.
+1. **Freeze scope and rollback** — record host name/image, OS/version, owner, maintenance window, baseline config, backup/snapshot, rollback command, and SCCM/GPO restore plan.
+2. **Select the correct benchmark** — CIS profile/version must match Windows edition/release and domain policy; record exceptions; do not claim compliance from another release.
+3. **Assess before remediate** — run CIS-CAT Lite/Pro or Windows Security Compliance Toolkit assessment; record rule ID, current value, expected value, severity, and evidence.
+4. **Prioritize** — remediate critical/high findings that fit the threat model first; review availability impact for account policies, firewall, kernel-mode drivers, authentication, auditing, and logging changes.
+5. **Apply controlled changes** — Group Policy Object via GPMC with a test OU first, then organizational unit rollout; document each change and revert procedure; never paste an unverified registry/GPO script into production.
+6. **Re-assess and test** — rerun CIS-CAT; test logon, RDP, service health, logging, patch application, authentication, and required application flows.
+7. **Document exceptions** — each exception has owner, rationale, compensating control, expiry/review date, evidence, final report, and rollback instructions.
 
 ## Tools
 

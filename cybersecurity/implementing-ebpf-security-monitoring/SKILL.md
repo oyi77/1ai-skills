@@ -79,48 +79,31 @@ Cybersecurity skill for implementing ebpf security monitoring. Follows industry 
 
 ## Workflow
 
-```python
-# Example: IOC detection
-import re
-
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
-
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
-```
-
-1. **Assess Requirements** — Evaluate current environment and define ebpf security monitoring implementation requirements.
-2. **Design Architecture** — Plan the ebpf security monitoring architecture, including components, integrations, and data flows.
-3. **Configure Components** — Set up and configure each ebpf security monitoring component according to best practices.
-4. **Test Integration** — Validate that all components work together. Run functional and security tests.
-5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
-6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
+1. **Define detection objective** — choose one observable behavior (executable from `/tmp`, reverse shell from a web process, or sensitive file read) and map it to ATT&CK and required hooks.
+2. **Verify telemetry coverage** — confirm kernel/BTF support and that the collector sees required kprobe/tracepoint events before writing rules.
+3. **Write kernel-level detection** — use kprobe/tracepoint hooks plus `matchArgs`/`matchBinaries` filtering to avoid shipping every event to userspace.
+4. **Test in isolation** — run the behavior in an authorized lab; confirm expected events without destabilizing the host.
+5. **Deploy with canary** — roll out to a small host set; monitor CPU, memory, and verifier/load impact.
+6. **Alert and respond** — send PID, PPID, command line, process tree, container ID, and host context to the SIEM; define false-positive handling.
+7. **Update or retire** — re-test after kernel/runtime changes and retire detections that no longer add value.
 
 ## Tools
 
-- **Configuration Management** — Infrastructure as code and automation
-- **Monitoring Stack** — Observability and alerting
-- **Documentation Platform** — Runbooks and architecture docs
-
-
-## Process
-
-1. **Reconnaissance** — Gather target information, identify attack surface, enumerate services
-1. **Analysis/Exploitation** — Execute the technique, analyze results, document findings
-1. **Reporting** — Document IOCs, write findings, provide remediation recommendations
+- **Tetragon / Cilium** — Kubernetes-aware eBPF runtime security
+- **BPF Compiler Collection (BCC)** — eBPF program development
+- **bpftrace** — rapid kernel tracing and prototyping
+- **bpftool** — inspect BPF programs, maps, and BTF
+- **kubectl / tetra CLI** — policy deployment and event streaming
 
 ## Verification
 
-- [ ] All ebpf security monitoring procedures executed completely and documented
-- [ ] Findings validated against multiple data sources
-- [ ] False positives identified and filtered
-- [ ] Results documented with evidence and timestamps
-- [ ] Recommendations provided with risk-based prioritization
+- [ ] Kernel/BTF prerequisites verified on every target host
+- [ ] TracingPolicy filters events in-kernel; userspace volume bounded
+- [ ] Detection tested against a known behavior in an authorized lab
+- [ ] Canary rollout shows acceptable CPU/memory/verifier impact
+- [ ] Events include process/container context and reach the SIEM
+- [ ] False positives documented with narrow, reviewed exclusions
+- [ ] Kernel upgrade and retirement plan recorded
 
 ## Anti-Rationalization Table
 
