@@ -82,29 +82,15 @@ Cybersecurity skill for performing purple team atomic testing. Follows industry 
 - Administrative/root access on test endpoints
 - Isolated test environment (lab, sandbox, or dedicated test range)
 
-## Workflow
+## Workflow (authorized lab only)
 
-```python
-# Example: IOC detection
-import re
-
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
-
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
-```
-
-1. **Plan Operations** — Define objectives, scope, and success criteria for purple team atomic testing operations.
-2. **Prepare Environment** — Set up tools, access, and data sources required for purple team atomic testing.
-3. **Execute Core Workflow** — Perform the purple team atomic testing operations following established procedures.
-4. **Validate Results** — Verify that results meet quality standards and objectives.
-5. **Report Findings** — Document results, observations, and recommendations.
-6. **Follow Up** — Track remediation actions and verify fixes where applicable.
+1. **Authorize and scope** — Written owner approval, named hosts/accounts, test window, allowed ATT&CK techniques, operator, stop contact, and rollback plan. Do not run against third-party or production assets without explicit authorization and change approval.
+2. **Select atomics** — Choose the least-impact Atomic Red Team test that exercises the detection hypothesis. Read its prerequisites, input args, cleanup steps, and impact before execution.
+3. **Baseline** — Confirm endpoint/EDR/SIEM agent healthy; record clock, host ID, sensor status, and relevant existing alerts. Save test ID and expected telemetry.
+4. **Execute one test at a time** — Use the documented Invoke-AtomicRedTeam command with explicit test GUID and input args; no broad “run all” in shared environments.
+5. **Observe detection** — Verify expected telemetry, alert, severity, latency, and ATT&CK mapping in the SIEM/EDR. A test running successfully does not prove detection worked.
+6. **Cleanup/rollback** — Run the atomic's cleanup command; verify processes/files/config changes are gone and host returns to baseline. Stop immediately on unexpected impact.
+7. **Report and tune** — Record test ID, host, time, expected vs observed signals, alert evidence, missed detections, false positives, and remediation owner. Re-test after the rule change.
 
 ## Tools
 

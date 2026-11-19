@@ -82,27 +82,14 @@ Cybersecurity skill for implementing llm guardrails for security. Follows indust
 
 ## Workflow
 
-```python
-# Example: IOC detection
-import re
-
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
-
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
-```
-
-1. **Assess Requirements** — Evaluate current environment and define llm guardrails implementation requirements.
-2. **Design Architecture** — Plan the llm guardrails architecture, including components, integrations, and data flows.
-3. **Configure Components** — Set up security for llm guardrails according to vendor best practices and security guidelines.
-4. **Test Integration** — Validate that all components work together. Run functional and security tests.
-5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
-6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
+1. **Threat-model the LLM surface** — map inputs (user text, retrieved docs, tool output), trust boundaries, tools/permissions, data sinks, and regulated content. Prompt text alone is not an access-control boundary.
+2. **Input rails** — validate schema/length/encoding; separate instructions from untrusted retrieved content; detect prompt-injection markers without assuming detection is complete.
+3. **Output rails** — enforce structured output schemas where possible; validate before using model output in code/tools; redact secrets/PII; reject unsafe instructions embedded in output.
+4. **Tool and permission guardrails** — least-privilege tool scopes, allowlists for hosts/paths/actions, explicit approval for destructive or external actions, timeout/retry budgets, and no secrets in model-visible context.
+5. **Retrieval safety** — treat fetched pages/files as data, not instructions; provenance/citation checks; block cross-tenant retrieval and sensitive-document leakage.
+6. **Red-team and regression tests** — test direct/indirect injection, jailbreak attempts, tool misuse, data exfiltration, schema bypass, and benign false-positive cases. Record pass/fail and fix the harness, not only the prompt.
+7. **Monitor and fail safe** — log rail decisions with correlation IDs (not sensitive payloads), alert on repeated blocks/tool errors, and define safe fallback behavior when a rail/model is unavailable.
+8. **Rollback** — version rails/prompts/tool policies; retain previous config and rollback path.
 
 ## Tools
 

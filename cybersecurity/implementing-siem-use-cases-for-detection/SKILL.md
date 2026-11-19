@@ -84,27 +84,33 @@ Use this skill when:
 
 ## Workflow
 
-```python
-# Example: IOC detection
-import re
+1. **Choose one behavior** — define threat hypothesis, ATT&CK technique, assets/log sources, detection window, and response owner. Avoid vague goals such as “detect attacks”.
+2. **Check telemetry first** — verify required fields are present, normalized to CIM/ECS, timestamps/timezones sane, and retention covers the detection window. Missing telemetry is a coverage gap, not a rule failure.
+3. **Write the analytic** — start with the smallest query that expresses the behavior; document required fields, threshold/window, exclusions, severity, and expected alert volume.
+4. **Test on labeled data** — run against known-positive emulation data and benign baseline; measure true positives, false positives per day, and latency. Use Atomic Red Team/Caldera only in authorized lab or approved test windows.
+5. **Tune with evidence** — exclusions must be narrow, reviewed, and expiring; do not suppress an entire user/host/subnet to quiet noise.
+6. **Deploy staged** — shadow/monitor-only first, then alert, then response automation only after approval. Include rollback to previous rule version.
+7. **Own lifecycle** — assign rule owner, review cadence, data dependencies, and retirement criteria; re-test after schema, source, or ATT&CK mapping changes.
 
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
+### Detection use-case template
 
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```yaml
+name: suspicious-powershell-download
+hypothesis: A user process launches PowerShell with encoded/download behavior inconsistent with baseline.
+attack_technique: T1059.001
+log_sources: [windows_process_creation]
+required_fields: [host, user, process_name, command_line, parent_process, timestamp]
+window: 5m
+severity: high
+response_owner: soc-tier-2
+mode: alert-only
+false_positive_notes: Approved admin automation; narrow allowlist with owner + expiry.
+rollback: Disable rule ID and restore prior version from version control.
 ```
 
-1. **Assess Requirements** — Evaluate current environment and define siem use cases implementation requirements.
-2. **Design Architecture** — Plan the siem use cases architecture, including components, integrations, and data flows.
-3. **Configure Components** — Set up detection for siem use cases according to vendor best practices and security guidelines.
-4. **Test Integration** — Validate that all components work together. Run functional and security tests.
-5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
-6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
+### Rollout guard
+
+Do not enable automated containment from a new analytic until the rule has passed positive/negative testing, false-positive review, and change approval. Keep the first production stage alert-only.
 
 ## Tools
 

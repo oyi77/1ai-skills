@@ -72,44 +72,27 @@ Transform a single piece of content into platform-specific formats, schedule dis
 - Task requires domain expertise (consult experts)
 
 
-## Pseudo Code
+## Workflow
 
-The multi-platform-distribution workflow follows a standard pipeline pattern.
+1. **Parse source into semantic blocks** — intro/hook, key points, evidence, conclusion/CTA. Preserve facts and figures verbatim; never invent numbers per platform.
+2. **Adapt per platform constraints** — length, tone, format, media, and native features (threads, carousel, short video, newsletter). One message per platform; do not cross-post identical text.
+3. **Verify platform API availability** — X, LinkedIn, YouTube, TikTok, Reddit, and newsletter APIs change access tiers and scopes frequently. Confirm the current API, auth, rate limits, and posting permissions before automating; otherwise produce drafts for manual posting.
+4. **Schedule with idempotency** — store source-content ID + platform + scheduled time; retries must not double-post. Keep a dead-letter for failed publishes.
+5. **Track attribution** — UTM/source tags per platform; store post ID, publish time, and metrics for later comparison.
+6. **Review before publishing** — check claims, links, disclosure requirements, platform policy, and brand voice. Automated publishing needs an explicit approval gate.
 
-Core flow:
-```
-# multi-platform-distribution primary flow
-input = prepare(raw_data)
-result = process(input, config={article, becomes, blog, content, distribution})
-validate(result)
-deliver(result)
-```
+## Platform Constraints
 
-Error handling:
-```
-on error:
-  log(error_details)
-  retry_with_backoff(max=3)
-  if still_failing: alert_and_escalate()
-```
+| Platform | Typical limit | Format notes |
+|---|---|---|
+| X/Twitter | 280 chars per post | Thread hook in first post; avoid link-only posts |
+| LinkedIn | ~3000 chars post | Professional tone, line breaks, one clear takeaway |
+| YouTube | Title ≤100 chars | Script with timestamps, description, chapters, thumbnail brief |
+| TikTok/Reels | Short vertical video | Hook in first 2 seconds; captions burned in |
+| Newsletter | No hard limit | Subject line + preview text; one primary CTA |
+| Reddit | Subreddit rules vary | No undisclosed self-promotion; match community norms |
 
-
-### Core Workflow
-```
-# multi-platform-distribution primary flow
-input = prepare(raw_data)
-result = process(input, config={article, becomes, blog, content, distribution})
-validate(result)
-deliver(result)
-```
-
-### Error Handling
-```
-on error:
-  log(error_details)
-  retry_with_backoff(max=3)
-  if still_failing: alert_and_escalate()
-```
+Limits and API terms change; verify against current platform documentation before publishing.
 
 
 ### Content Parsing

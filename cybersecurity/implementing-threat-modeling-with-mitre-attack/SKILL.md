@@ -84,27 +84,21 @@ Use this skill when:
 
 ## Workflow
 
-```python
-# Example: IOC detection
-import re
+1. **Scope the model** — pick one system/environment (Enterprise, Cloud, ICS, or Mobile matrix), its critical assets, trust boundaries, and data flows. A model without a named scope is unfalsifiable.
+2. **Select adversary set** — choose threat actor groups or campaign patterns relevant to sector/geography from current intel; record source + date so staleness is visible.
+3. **Map TTPs to the environment** — for each tactic (Initial Access → Exfiltration), list techniques that are actually reachable given this stack and identity/network topology. Do not paste the full matrix as “coverage”.
+4. **Inventory existing detection** — map every implemented rule/alert to technique IDs in ATT&CK Navigator layers (one layer per environment). Techniques with no telemetry are gaps, not “covered by intuition”.
+5. **Score residual risk** — rank uncovered techniques by likelihood × impact on scoped assets; use qualitative tiers with written rationale, not invented numeric scores.
+6. **Prioritize investment** — link top uncovered techniques to concrete controls/log sources needed; feed procurement backlog with evidence, not fear.
+7. **Version and review cadence** — store layers + assumptions in version control; re-run after major architecture change, new intel on an active actor, or quarterly at minimum.
 
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
+### Output artifacts
 
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
-```
+- ATT&CK Navigator layer JSON per environment (detection coverage)
+- Gap register: technique ID, missing telemetry, owning team, remediation ticket
+- Assumption log: scope, actor set, data vintage, reviewer
 
-1. **Assess Requirements** — Evaluate current environment and define threat modeling implementation requirements.
-2. **Design Architecture** — Plan the threat modeling architecture, including components, integrations, and data flows.
-3. **Configure Components** — Set up mitre attack for threat modeling according to vendor best practices and security guidelines.
-4. **Test Integration** — Validate that all components work together. Run functional and security tests.
-5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
-6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
+Rollback: keep prior layer files; revert to previous commit if a re-map introduces regressions.
 
 ## Tools
 

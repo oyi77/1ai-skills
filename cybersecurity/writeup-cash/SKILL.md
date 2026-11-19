@@ -70,6 +70,17 @@ $497 tool → use published work as portfolio to land $5K retainer clients.
 - When the finding is already publicly documented by someone else (commoditized)
 - When the vulnerability disclosure agreement prohibits publication (always verify NDAs/VDP terms first)
 
+## Responsible Disclosure & Publication Safety
+
+A validated finding is **not automatically publishable**. Before drafting or monetizing:
+
+1. Confirm the program's VDP/bug-bounty terms and any signed NDA; follow their disclosure timeline and embargo.
+2. Obtain written authorization for any reproduction steps you plan to publish. Remove live exploit targets, real credentials, tokens, personal data, customer identifiers, and unpublished infrastructure details.
+3. Coordinate disclosure with the affected organization and platform; do not publish before the program's safe-harbor/embargo conditions are met.
+4. Use a sanitized lab reproduction with toy domains/data. Never include a working exploit against a live target, weaponized payload, or instructions enabling unauthorized access.
+5. Get legal/editorial review where required; keep a private evidence archive separate from the public writeup.
+6. Do not promise revenue. Platform eligibility, acceptance, and payout vary; verify current publisher terms and describe estimates as unverified.
+
 ## Prerequisites
 
 - Access to relevant log sources and security tools

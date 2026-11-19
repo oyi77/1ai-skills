@@ -84,27 +84,22 @@ Use this skill when:
 
 ## Workflow
 
-```python
-# Example: IOC detection
-import re
+1. **Form a falsifiable hypothesis** — State expected evidence and what would disprove it (for example: Office-launched PowerShell with encoded commands is rare in this tenant).
+2. **Check telemetry coverage** — Confirm ECS fields and time range exist (`process.name`, `process.parent.name`, `process.command_line`, `@timestamp`). Missing telemetry is a visibility gap, not a clean result.
+3. **Run a bounded KQL hunt** — Narrow index and time range first; save the query for repeatability:
 
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
-
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```text
+process.name : ("powershell.exe" or "pwsh.exe") and
+process.parent.name : ("winword.exe" or "excel.exe" or "outlook.exe") and
+process.command_line : ("*-enc*" or "*DownloadString*" or "*FromBase64String*")
 ```
 
-1. **Plan Operations** — Define objectives, scope, and success criteria for threat hunting operations.
-2. **Prepare Environment** — Set up tools, access, and data sources required for threat hunting.
-3. **Execute Core Workflow** — Use elastic siem to perform threat hunting operations following established procedures.
-4. **Validate Results** — Verify that results meet quality standards and objectives.
-5. **Report Findings** — Document results, observations, and recommendations.
-6. **Follow Up** — Track remediation actions and verify fixes where applicable.
+4. **Compare to baseline** — Group by host/user/parent and check known admin automation or deployment windows.
+5. **Triage with evidence** — Preserve event IDs, timestamps, host/user, query version, and analyst rationale. A keyword hit alone is not proof.
+6. **Contain only with authorization** — Hunting is read-only by default. Isolation, deletion, or blocking needs incident-response authority and change approval.
+7. **Operationalize** — Promote validated patterns into tested detection rules with owner, severity, false-positive notes, and review date.
+
+Stop when the time window is exhausted, telemetry is absent, or the hypothesis is falsified; record which condition applies.
 
 ## Tools
 

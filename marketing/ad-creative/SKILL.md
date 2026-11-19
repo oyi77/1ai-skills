@@ -57,44 +57,23 @@ Creative is the #1 driver of ad performance. In 2026, 70% of ad auction outcomes
 - Task requires legal review (consult legal)
 
 
-## Pseudo Code
+## Production Workflow
 
-The ad-creative workflow follows a standard pipeline pattern.
+1. **Brief** — audience, offer, objective, platform, budget, prohibited claims, and landing page.
+2. **Hypotheses** — choose one variable per test: hook, visual, offer, CTA, or format. Do not change all five at once.
+3. **Produce variants** — keep brand identity and factual claims fixed; label each variant with a deterministic ID.
+4. **Compliance review** — substantiate every claim, disclose sponsorship/affiliate relationships, and verify platform/ad policy before launch.
+5. **Launch with a holdout** — define primary metric, minimum sample, attribution window, and stop conditions before viewing results.
+6. **Analyze** — compare like-for-like audiences and placements; do not call a winner before the sample/time threshold.
+7. **Archive learnings** — record variant, spend, impressions, conversions, confidence, and the next hypothesis.
 
-Core flow:
-```
-# ad-creative primary flow
-input = prepare(raw_data)
-result = process(input, config={advertising, briefs, copy, creative, frameworks})
-validate(result)
-deliver(result)
-```
+## Testing Rules
 
-Error handling:
-```
-on error:
-  log(error_details)
-  retry_with_backoff(max=3)
-  if still_failing: alert_and_escalate()
-```
-
-
-### Core Workflow
-```
-# ad-creative primary flow
-input = prepare(raw_data)
-result = process(input, config={advertising, briefs, copy, creative, frameworks})
-validate(result)
-deliver(result)
-```
-
-### Error Handling
-```
-on error:
-  log(error_details)
-  retry_with_backoff(max=3)
-  if still_failing: alert_and_escalate()
-```
+- Optimize for conversion/qualified action, not click-through alone.
+- Do not change creative and targeting simultaneously; attribution becomes ambiguous.
+- Stop harmful or misleading variants immediately, regardless of performance.
+- Never invent testimonials, guarantees, scarcity, pricing, or performance numbers.
+- Preserve original assets and license/provenance in the creative manifest.
 
 
 ### Ad Copy Frameworks

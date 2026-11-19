@@ -67,44 +67,23 @@ End-to-end affiliate and partnership management system for a one-person company.
 - Task requires legal review (consult legal)
 
 
-## Pseudo Code
+## Operating Rules
 
-The affiliate-manager workflow follows a standard pipeline pattern.
+- **Program terms first.** Record cookie window, commission model (rev-share/CPA/hybrid), payout threshold/method, allowed traffic sources, brand-bidding rules, and disclosure requirements before promoting.
+- **Disclosure.** Every affiliate placement needs clear disclosure per FTC/local rules and platform policy; never disguise affiliate links as organic recommendations.
+- **No cookie stuffing, forced clicks, or incentivized fraud.** Follow each program's terms; violations void commissions and can ban accounts.
+- **Link integrity.** Use stable redirects with UTM/source tagging; monitor 404s and expired programs; keep an original-destination log.
+- **Commission reconciliation.** Match reported conversions to clicks and orders per program; flag mismatches (missing conversions, reversed/refunded sales, delayed payouts) instead of assuming revenue.
+- **Outreach consent.** Personalized, non-spam outreach with opt-out; honor rate limits and program application processes.
+- **Tax/reporting.** Track payouts by program and period for reporting; do not present gross clicks as earned revenue.
 
-Core flow:
-```
-# affiliate-manager primary flow
-input = prepare(raw_data)
-result = process(input, config={affiliate, automated, commission, cross, deals})
-validate(result)
-deliver(result)
-```
+## Verification Additions
 
-Error handling:
-```
-on error:
-  log(error_details)
-  retry_with_backoff(max=3)
-  if still_failing: alert_and_escalate()
-```
-
-
-### Core Workflow
-```
-# affiliate-manager primary flow
-input = prepare(raw_data)
-result = process(input, config={affiliate, automated, commission, cross, deals})
-validate(result)
-deliver(result)
-```
-
-### Error Handling
-```
-on error:
-  log(error_details)
-  retry_with_backoff(max=3)
-  if still_failing: alert_and_escalate()
-```
+- [ ] Program terms and disclosure requirements recorded per program
+- [ ] Affiliate links tagged, disclosed, and resolving correctly
+- [ ] Commission reconciliation flags anomalies instead of hiding them
+- [ ] Outreach is consent-based with opt-out and rate limiting
+- [ ] Revenue reports separate pending, confirmed, reversed, and paid
 
 
 ### 1. Program Discovery
