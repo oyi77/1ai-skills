@@ -79,27 +79,13 @@ Use this skill when:
 
 ## Workflow
 
-```python
-# Example: IOC detection
-import re
-
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
-
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
-```
-
-1. **Assess Requirements** — Evaluate current environment and define soc metrics and kpi tracking implementation requirements.
-2. **Design Architecture** — Plan the soc metrics and kpi tracking architecture, including components, integrations, and data flows.
-3. **Configure Components** — Set up and configure each soc metrics and kpi tracking component according to best practices.
-4. **Test Integration** — Validate that all components work together. Run functional and security tests.
-5. **Deploy to Production** — Roll out the implementation with monitoring and rollback capabilities.
-6. **Validate and Document** — Verify the implementation meets requirements. Document configuration and runbooks.
+1. **Pick outcomes, not vanity metrics** — choose a small set tied to decisions: detection quality, response speed, analyst workload, and coverage. Explicitly reject individual analyst ranking; use metrics for process improvement only.
+2. **Define formulas and clocks** — document each KPI with exact data source, event start/end, timezone, exclusions, and whether the median or mean is used. Keep MTTD/MTTR definitions stable before trending.
+3. **Establish baseline** — collect 30–90 days of clean data; record staffing, shifts, and major incidents so anomalies can be explained.
+4. **Compute core measures** — mean/median time to detect and respond; alert-to-incident ratio; true-positive/false-positive rate; auto-close rate; reopen rate; incidents by severity; SLA attainment; detection coverage by ATT&CK technique; analyst queue depth and after-hours load.
+5. **Build dashboards with drill-down** — every aggregate links back to the alerts/tickets behind it; add data-freshness timestamps and exclusions notes. Segment by severity/service/shift without exposing individual performance scores.
+6. **Review and improve** — monthly operations review: identify trend shifts, ask why, assign owners for process changes; re-measure after change. Never use a metric as a quota or weapon.
+7. **Version definitions** — store KPI definitions in version control with change dates; mark breaks in continuity on trend charts.
 
 ## Tools
 
@@ -108,19 +94,28 @@ def extract_iocs(text: str) -> dict:
 - **Documentation Platform** — Runbooks and architecture docs
 
 
-## Process
+## KPI Definitions
 
-1. **Design** — Define interface, identify patterns, plan implementation
-1. **Implement** — Write code following existing conventions, add tests
-1. **Verify** — Run tests, check integration, validate behavior
+| Metric | Definition | Guardrail |
+|---|---|---|
+| MTTD | median(detected_at − first_observed_at) for confirmed incidents | report only when both timestamps are reliable; segment by severity |
+| MTTR | median(contained_at − declared_at) for confirmed incidents | do not mix containment with full recovery; track separately |
+| Alert precision | true-positive alerts ÷ reviewed alerts | label sample window and review coverage |
+| Alert-to-incident ratio | confirmed incidents ÷ total alerts | interpret with precision and coverage, not alone |
+| ATT&CK coverage | tested techniques with active detections ÷ in-scope techniques | a technique counts covered only with telemetry + tested detection |
+| SLA attainment | in-SLA incidents ÷ incidents with applicable SLA | disclose exclusions and severity mix |
+
+Never set a “zero incidents” target: it rewards under-reporting. Pair speed metrics with quality measures and sample reviewed cases to catch gaming.
 
 ## Verification
 
-- [ ] All soc metrics and kpi tracking procedures executed completely and documented
-- [ ] Findings validated against multiple data sources
-- [ ] False positives identified and filtered
-- [ ] Results documented with evidence and timestamps
-- [ ] Recommendations provided with risk-based prioritization
+- [ ] Each KPI has formula, clock source, timezone, exclusions, owner, and review cadence
+- [ ] Baseline includes at least 30 days and notes staffing/incident anomalies
+- [ ] Dashboard shows data freshness and links aggregates to source incidents/alerts
+- [ ] Metrics are segmented by severity/service, not used to rank individual analysts
+- [ ] ATT&CK coverage counts only tested detections with verified telemetry
+- [ ] Definitions are versioned; historical trend breaks are annotated
+- [ ] Improvement actions have owners and re-measurement dates
 
 ## Anti-Rationalization Table
 
