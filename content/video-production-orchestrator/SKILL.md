@@ -191,6 +191,32 @@ Read the target skill and follow its workflow.
 - Long video → short engaging highlights
 - TikTok/Reels/YouTube Shorts optimized
 
+### 11. Artistic / Filmic Code-Rendered Film (external plugin)
+
+**Signals:** "make a film", "artistic video", "film style", "painting/sketch/manga/3D miniature style", "no stock footage, no video model", "code-rendered film"
+
+**Route to:** External Claude Code plugin `lemo-opuscar` (marketplace: `lemomo-ai/lemo-opuscar`). Do NOT vendor its docs into this repo — guides are CC BY-NC 4.0 (non-commercial); only its code is MIT. Treat it as an installed dependency, not a bundled skill.
+
+**Install (user-side):**
+```bash
+claude plugin marketplace add lemomo-ai/lemo-opuscar
+claude plugin install lemo-opuscar@lemolab
+```
+Then invoke `/lemo-opuscar:lemo-opuscar` and name a style in one sentence.
+
+**Capabilities:**
+- 99 curated film-style presets + custom styles (`~/lemo-my-styles/`)
+- Canvas/WebGL frames drawn by the agent, sample-library scores, TTS narration, mixed entirely in code — no video generation model, no stock footage
+- Default 1920×1080 @ 24 fps; ~30–60 min and high token cost per film
+- Three styles (Manga Panels, Text Flash Cuts, Comic History Cartoon) require an external image generator you supply
+
+**When to prefer this lane vs ours:**
+- Use `content/video/remotion` or HyperFrames for product ads, motion graphics, explainers, captions, changelogs — deterministic, template-driven, low-cost.
+- Use opuscar only when the brief explicitly asks for an *artistic film style* with curated visual treatment and is willing to pay the render/token cost.
+- Needs Node 20+, ffmpeg 7+, Python 3.11+ (or uv). Verify these before routing here.
+
+**License note:** Code MIT (`core/`, `tools/`, `styleboard/`, plugin scripts). Docs/guides/STYLE.md/DEMO.md/image-gen prompts CC BY-NC 4.0. Commercial use of the doc-derived style guidance requires separate permission from LemoLab; do not copy STYLE.md content into Apache-2.0 skills here.
+
 ## Decision Tree
 
 ```
@@ -206,6 +232,7 @@ Is the request explicitly about video?
     ├── Presentation/Slides → content/slides
     ├── Programmatic/Convert → FFmpeg / auto-clipper
     ├── YouTube/Channel → content/content-factory
+    ├── Artistic code-rendered film → external plugin `lemo-opuscar`
     └── Unclear → Ask 1-2 clarifying questions
 ```
 

@@ -107,6 +107,7 @@ Use the decision matrix:
 - **Deterministic + template** → Remotion
 - **Agent-generated + precise timing** → HyperFrames
 - **Creative + varied** → AI Video
+- **Artistic film style, code-rendered, no video model** → external plugin `lemo-opuscar` (see `video-production-orchestrator` route 11; docs CC BY-NC 4.0 — do not vendor)
 - **Programmatic** → FFmpeg
 
 ### 4 · Brief the team
