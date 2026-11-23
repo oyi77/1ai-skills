@@ -88,38 +88,29 @@ This section covers key concepts for configuring tls 1 3 for secure communicatio
 
 ## Workflow
 
-```python
-# Example: IOC detection
-import re
+1. **Inventory clients and endpoints** — identify server names, client compatibility, certificate names/SANs, termination points, and whether mTLS is required. TLS changes need a rollback config and maintenance window.
+2. **Generate/store keys safely** — create keys with a secure RNG, restrictive permissions, and secret manager/KMS storage; private keys never enter Git/logs/images. Validate certificate chain and SANs.
+3. **Configure versions and suites** — enable TLS 1.3; disable TLS 1.0/1.1 and weak suites. Keep TLS 1.2 only when required by known clients and document the exception.
+4. **Set groups and client auth** — prefer supported forward-secret groups (x25519/secp256r1); configure mTLS trust roots and revocation policy if required.
+5. **Treat 0-RTT as replayable** — enable early data only for idempotent operations with replay protection; never use it for payments, mutations, login, or state-changing requests.
+6. **Validate before rollout** — test certificate chain, hostname, protocol versions, suites, ALPN/HTTP2, OCSP behavior, and client matrix with `openssl s_client`/`testssl.sh` in a lab.
+7. **Deploy canary + monitor** — roll out to a small endpoint subset; monitor handshake failures, protocol errors, expiry, and client-version failures; retain rollback.
+8. **Set HSTS deliberately** — add only after HTTPS is proven across all subdomains; use `includeSubDomains`/`preload` only when operationally committed.
 
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
-
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+```bash
+# Verify protocol and certificate; never print private keys
+openssl s_client -connect example.com:443 -servername example.com -tls1_3 </dev/null
+openssl s_client -connect example.com:443 -servername example.com -tls1_2 </dev/null
+# Full config audit (lab/authorized target)
+testssl.sh --protocols --ciphers --headers https://example.com
 ```
-
-1. Verify OpenSSL version supports TLS 1.3 (1.1.1+)
-2. Generate or obtain TLS certificate and private key
-3. Configure server to use TLS 1.3 cipher suites
-4. Disable TLS 1.0 and 1.1 (optionally keep 1.2 for compatibility)
-5. Set preferred key exchange groups
-6. Enable OCSP stapling for certificate validation
-7. Test configuration with openssl s_client and testssl.sh
-8. Configure HSTS header for HTTP Strict Transport Security
 
 ## Security Considerations
 
-- 0-RTT data is vulnerable to replay attacks; limit to idempotent requests
-- Always include TLS 1.2 fallback if legacy client support is required
-- Use ECDSA certificates for better performance (vs RSA)
-- Enable OCSP stapling to improve client certificate validation
-- Set HSTS header with long max-age and includeSubDomains
-- Monitor for certificate transparency logs
+- 0-RTT data is replayable; restrict it to idempotent requests.
+- Use asymmetric certificates for distributed verification; protect private keys with KMS/secret manager.
+- Monitor certificate transparency, expiry, chain errors, and unexpected issuer changes.
+- Keep TLS 1.2 fallback only for documented clients; do not silently broaden compatibility.
 
 ## Validation Criteria
 
@@ -130,6 +121,10 @@ def extract_iocs(text: str) -> dict:
 - [ ] OCSP stapling is functional
 - [ ] Certificate chain is valid and complete
 - [ ] testssl.sh reports no vulnerabilities
+- [ ] 0-RTT enabled only for idempotent paths with replay protection
+- [ ] Private keys are KMS/secret-manager held, never in source, git, logs, or images
+- [ ] Rollback config tested; canary endpoints monitored before full rollout
+
 ## When NOT to Use
 
 - You need to implement from scratch (use implementing-* skills)
@@ -148,16 +143,12 @@ def extract_iocs(text: str) -> dict:
 - Failing to properly scope and contain the assessment before starting
 ## Verification
 
-- All steps executed successfully against a test environment before production use
-- Output documented with screenshots or logs demonstrating expected behavior
-- Results validated against known-good baselines or reference implementations
-- Documentation complete enough for another analyst to reproduce findings
-
-## Process
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
+- [ ] Validation Criteria checks above all pass on the lab endpoint
+- [ ] Evidence captured: `openssl s_client` output for TLS 1.3 and TLS 1.2, `testssl.sh` report, expiry dates
+- [ ] Client compatibility matrix tested; every unsupported client has a documented decision
+- [ ] Canary rollout metrics show no handshake-failure increase before full deployment
+- [ ] Rollback config applied and reverted successfully at least once
+- [ ] No private key material appears in git history, logs, images, or ticket attachments
 
 ## Anti-Rationalization Table
 

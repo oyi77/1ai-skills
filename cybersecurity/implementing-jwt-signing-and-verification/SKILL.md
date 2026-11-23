@@ -122,26 +122,33 @@ This section covers key concepts for implementing jwt signing and verification.
 - False positives filtered out through manual verification
 - Fix recommendations include code-level remediation guidance
 
-## Process
+## Workflow
+
+1. **Choose the algorithm per trust boundary** — HS256 only when issuer and verifier share one secret store; RS256/ES256/EdDSA when multiple services verify. Never let the token's `alg` header select the algorithm.
+2. **Generate and store keys** — `openssl genpkey -algorithm ed25519 -out jwt.key` (or RSA 2048+/P-256). Load from env/KMS/secret manager, never from source. Record key ID (`kid`) in the token header.
+3. **Issue the token** — set `iss`, `aud`, `sub`, `exp` (≤15 min for access tokens), `nbf`, `iat`, `jti`. Keep claims minimal; no PII, no secrets, no roles that change faster than the token lifetime.
+4. **Verify with a pinned algorithm and key** — decode with an explicit allowlist, resolve the key from your own JWKS or secret store by `kid`, and reject any `alg: none` or header-supplied key material (`jwk`, `jku`, `x5u`).
+5. **Validate every claim you depend on** — signature first, then `exp`/`nbf` with small leeway, then `aud`/`iss` exact match, then `jti` against the replay/revocation store when you keep one.
+6. **Handle refresh safely** — rotate refresh tokens on use, bind them to a device/client identifier, and keep refresh lifetimes short enough to be revocable.
+7. **Rotate keys** — publish new key in JWKS alongside the old one, sign with the new `kid`, keep verifying the old until all outstanding tokens expire, then remove it.
+8. **Test the attack cases** — tamper the payload, flip `alg` to `HS256` using the public key as secret, set `alg: none`, replay an expired token, and swap `aud`. Each must be rejected with a logged reason and no stack trace in the response.
 
 ```python
-# Example: IOC detection
-import re
+import jwt  # PyJWT
+from jwt import InvalidTokenError
 
-IOC_PATTERNS = {
-    "ip": r"\b(?:\d{1,3}\.){3}\d{1,3}\b",
-    "domain": r"\b[a-z0-9-]+\.[a-z]{2,}\b",
-    "hash_md5": r"\b[a-f0-9]{32}\b",
-    "hash_sha256": r"\b[a-f0-9]{64}\b",
-}
+ALLOWED = {"EdDSA", "RS256"}
 
-def extract_iocs(text: str) -> dict:
-    return {k: re.findall(v, text) for k, v in IOC_PATTERNS.items()}
+def verify(token: str, key, *, audience: str, issuer: str):
+    # algorithms= is an allowlist; key is resolved from your store by kid, never from the header
+    return jwt.decode(token, key, algorithms=sorted(ALLOWED),
+                      audience=audience, issuer=issuer,
+                      options={"require": ["exp", "iat", "aud", "iss"]})
+try:
+    claims = verify(token, key, audience="api://orders", issuer="https://auth.example.com")
+except InvalidTokenError as e:
+    raise AuthError("token rejected") from e  # log e, never return it to the client
 ```
-
-1. Analyze the task requirements
-2. Apply domain expertise
-3. Verify output quality
 
 ## Anti-Rationalization Table
 
