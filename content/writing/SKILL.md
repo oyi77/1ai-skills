@@ -288,7 +288,8 @@ def generate_product_description(
     }
 
     # Short (social media / listing title)
-    base["short"] = f"{product_name} — {' • '.join(benefits[:3])}. Perfect for {audience}."
+    benefit_line = " • ".join(benefits[:3])
+    base["short"] = f"{product_name} — {benefit_line}. Perfect for {audience}."
 
     # Medium (product page summary)
     bullets = "\n".join(f"  ✓ {b}" for b in benefits)
@@ -300,7 +301,7 @@ What you get:
 {bullets}
 
 ### Key Features
-{"\n".join(f"  • {f}" for f in features)}
+{chr(10).join(f"  • {f}" for f in features)}
 
 Ready to {benefits[0].lower()}? Get {product_name} today.
 """
@@ -315,11 +316,11 @@ Ready to {benefits[0].lower()}? Get {product_name} today.
 
 ## Why Choose {product_name}?
 
-{"\n".join(f"1. **{b}** — Our platform delivers {b.lower()} consistently." for b in benefits)}
+{chr(10).join(f"1. **{b}** — Our platform delivers {b.lower()} consistently." for b in benefits)}
 
 ## Features
 
-{"\n".join(f"### {f}\nLearn how {product_name}'s {f.lower()} capability streamlines your workflow." for f in features)}
+{chr(10).join("### " + f + chr(10) + "Learn how " + product_name + "'s " + f.lower() + " capability streamlines your workflow." for f in features)}
 
 ## Get Started
 
