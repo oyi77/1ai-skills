@@ -53,4 +53,4 @@ _Total: 16_
   `agent` `ai-agent` `automation` `test` `coding`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/agents*
+*Category: agents*

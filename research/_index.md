@@ -119,4 +119,4 @@ _Total: 38_
   `analysis` `investigation` `research` `zhive`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/research*
+*Category: research*

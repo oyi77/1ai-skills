@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-13T01:26:24.701067+00:00",
-  "total": 1454,
+  "generated": "2026-11-24T04:43:09.141279+00:00",
+  "total": 1456,
   "categories": [
     {
       "name": "cybersecurity",
@@ -8,7 +8,7 @@
     },
     {
       "name": "content",
-      "count": 107
+      "count": 108
     },
     {
       "name": "development",
@@ -59,11 +59,11 @@
       "count": 16
     },
     {
-      "name": "sales",
-      "count": 15
+      "name": "mcp",
+      "count": 16
     },
     {
-      "name": "mcp",
+      "name": "sales",
       "count": 15
     },
     {
@@ -988,6 +988,10 @@
     {
       "name": "aws-ops",
       "category": "devops"
+    },
+    {
+      "name": "awwwards-quality-sites",
+      "category": "content"
     },
     {
       "name": "azure-ops",
@@ -2496,6 +2500,10 @@
     {
       "name": "feynman-science",
       "category": "research"
+    },
+    {
+      "name": "ffmpeg-mcp",
+      "category": "mcp"
     },
     {
       "name": "finance-ops",

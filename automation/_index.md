@@ -68,4 +68,4 @@ _Total: 21_
   `api` `automation` `patterns` `productivity` `workflow`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/automation*
+*Category: automation*

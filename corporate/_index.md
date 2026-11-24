@@ -47,4 +47,4 @@ _Total: 14_
   `corporate` `vendor` `procurement` `partnership` `m-and-a`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/corporate*
+*Category: corporate*

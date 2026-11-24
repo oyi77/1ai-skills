@@ -50,4 +50,4 @@ _Total: 15_
   `business-development` `crm` `pipeline` `revenue` `sales`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/sales*
+*Category: sales*

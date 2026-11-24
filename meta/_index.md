@@ -47,4 +47,4 @@ _Total: 14_
   `self-improvement` `skill-evolution` `confidence-scoring` `continuous-learning` `stocktake`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/meta*
+*Category: meta*

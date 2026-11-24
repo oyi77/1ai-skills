@@ -323,4 +323,4 @@ _Total: 106_
   `database` `migration` `zero-downtime` `postgres` `schema-design`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/development*
+*Category: development*

@@ -92,4 +92,4 @@ _Total: 29_
   `api` `integrations` `patterns` `testing` `third-party`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/integrations*
+*Category: integrations*

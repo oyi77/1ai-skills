@@ -65,4 +65,4 @@ _Total: 20_
   `product` `product-management` `prd` `roadmap` `spec-driven-development`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/operations*
+*Category: operations*
