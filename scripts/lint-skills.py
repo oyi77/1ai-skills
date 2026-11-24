@@ -152,6 +152,33 @@ def similarity(a: str, b: str, threshold: float = 0.0) -> float:
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
 
 
+class CachedSimilarityMatcher:
+    """Matcher caching difflib's second sequence for O(N^2) comparisons.
+
+    Preserves the exact (a, b) argument order of similarity(): every call is
+    SequenceMatcher(None, base, cached_target).ratio(), so results match the
+    original implementation bit-for-bit (verified by randomized harness).
+    """
+    __slots__ = ("_matcher",)
+
+    def __init__(self, target: str):
+        # difflib caches the *second* sequence (b); that is the one we reuse.
+        self._matcher = SequenceMatcher(None, "", target.lower())
+
+    def similarity(self, base: str, threshold: float = 0.0) -> float:
+        m = self._matcher
+        if threshold > 0.0:
+            len_a, len_b = len(base), len(m.b)
+            if (len_a + len_b) > 0 and 2.0 * min(len_a, len_b) < threshold * (len_a + len_b):
+                return 0.0
+            m.set_seq1(base.lower())
+            if m.quick_ratio() < threshold:
+                return 0.0
+            return m.ratio()
+        m.set_seq1(base.lower())
+        return m.ratio()
+
+
 def levenshtein_ratio(s1: str, s2: str) -> float:
     """Fast Levenshtein similarity (0-1)."""
     if len(s1) < len(s2):
@@ -311,6 +338,17 @@ def check_sections(body: str, skill: str, result: LintResult):
                     f"Missing recommended section: {section}")
 
 
+
+def _duplicate_pairs(names, threshold):
+    """Yield (name1, name2, similarity) using a per-target cached matcher."""
+    seen_matchers = {}
+    for i, (name1, path1) in enumerate(names):
+        for name2, path2 in names[i + 1:]:
+            m = seen_matchers.get(name2)
+            if m is None:
+                m = seen_matchers[name2] = CachedSimilarityMatcher(name2)
+            yield name1, name2, m.similarity(name1, threshold=threshold)
+
 def check_duplicates(skills_meta: list[dict], result: LintResult):
     """Detect duplicate and near-duplicate skill names."""
     names = [(m.get("name", ""), m["_path"]) for m in skills_meta]
@@ -331,10 +369,8 @@ def check_duplicates(skills_meta: list[dict], result: LintResult):
         by_category[cat].append((name, path))
 
     for cat, cat_skills in by_category.items():
-        for i, (name1, path1) in enumerate(cat_skills):
-            for name2, path2 in cat_skills[i + 1:]:
-                sim = similarity(name1, name2, threshold=SIMILARITY_THRESHOLD)
-                if sim >= SIMILARITY_THRESHOLD and name1 != name2:
+        for name1, name2, sim in _duplicate_pairs(cat_skills, SIMILARITY_THRESHOLD):
+            if sim >= SIMILARITY_THRESHOLD and name1 != name2:
                     result.add("warnings", name1, "near-duplicate",
                                 f"Near-duplicate of {name2} (similarity={sim:.2f})")
 
