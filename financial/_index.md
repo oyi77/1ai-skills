@@ -62,4 +62,4 @@ _Total: 19_
   `analysis` `crypto` `finance` `investment` `testing`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/financial*
+*Category: financial*

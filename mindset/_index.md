@@ -170,4 +170,4 @@ _Total: 55_
   `economics` `mindset` `personal-development` `soft-skills` `unit`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/mindset*
+*Category: mindset*

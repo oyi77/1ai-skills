@@ -6,7 +6,7 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 
 ## Overview
 
-**1454 skills** across **20 categories**.
+**1456 skills** across **20 categories**.
 
 ---
 
@@ -14,7 +14,7 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 
 - [agents](../agents/_index.md) — 16 skills
 - [automation](../automation/_index.md) — 21 skills
-- [content](../content/_index.md) — 107 skills
+- [content](../content/_index.md) — 108 skills
 - [corporate](../corporate/_index.md) — 14 skills
 - [core](../core/_index.md) — 53 skills
 - [cybersecurity](../cybersecurity/_index.md) — 810 skills
@@ -24,7 +24,7 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 - [financial](../financial/_index.md) — 19 skills
 - [integrations](../integrations/_index.md) — 29 skills
 - [marketing](../marketing/_index.md) — 45 skills
-- [mcp](../mcp/_index.md) — 15 skills
+- [mcp](../mcp/_index.md) — 16 skills
 - [meta](../meta/_index.md) — 14 skills
 - [mindset](../mindset/_index.md) — 55 skills
 - [operations](../operations/_index.md) — 20 skills
@@ -162,7 +162,7 @@ Browse in [`automation/_index.md`](../automation/_index.md).
 
 ### Content (content/)
 
-_Total: 107 skills_
+_Total: 108 skills_
 
 Browse in [`content/_index.md`](../content/_index.md).
 
@@ -181,8 +181,11 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [anti-slop-frontend](../content/anti-slop-frontend/) — Use when anti-slop frontend framework for AI agents. Enforces better layout, typography, motion, and spacing to counter generic AI-generated boilerplate UIs. Use when building frontend, countering generic AI UIs, need distinctive visual design, image-to-code pipeline.
   `frontend` `design` `ui` `anti-slop` `taste`
 
-- [auto-clipper](../content/video/auto-clipper/) — Use when automatically clip long videos into short, engaging highlights for TikTok, Reels, and YouTube Shorts using FFmpeg and AI scene detection.
-  `auto` `clipper` `video`
+- [auto-clipper](../content/video/auto-clipper/) — Use when automatically clip long videos into short, engaging highlights for TikTok, Reels, and YouTube Shorts. Auto-detects scene changes, audio energy peaks, and transitions to create viral clips with professional quality.
+  `auto` `clipper` `video` `shorts` `reels`
+
+- [awwwards-quality-sites](../content/awwwards-quality-sites/) — Use when designing or building a distinctive, award-caliber website with strong art direction, polished interaction, and production-ready responsive behavior. Covers creative direction, visual hierarchy, motion, accessibility, performance, and quality assurance.
+  `web-design` `frontend` `art-direction` `interaction-design` `accessibility`
 
 - [b-roll-finder](../content/video/b-roll-finder/) — Use when find relevant B-roll and stock footage by analyzing script content with semantic search. Match video meaning to text instead of random selection. Use when sourcing stock footage, finding B-roll clips, or matching visuals to narration.
   `video` `semantic-search` `b-roll` `stock-footage` `ai`
@@ -226,11 +229,11 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [chakra-ui](../content/chakra-ui/) — Use when chakra UI React component library — theming, responsive styles, color mode, component composition.
   `chakra` `content-creation` `digital-content` `media`
 
-- [clay-art-video-generator](../content/video/clay-art-video-generator/) — Use when clay art video generator skill.
-  `clay` `art` `video` `generator`
+- [clay-art-video-generator](../content/video/clay-art-video-generator/) — Use when creating claymation / plasticine stop-motion style short-form video (TikTok, Reels, Shorts) — frame-by-frame workflow using Blender or Stop Motion Studio, covering sculpt, rig, shoot, and export for 9:16 vertical.
+  `clay` `claymation` `stop-motion` `video` `tiktok`
 
-- [comment-reply-manager](../content/comment-reply-manager/) — Use when monitor TikTok/Instagram comments, classify sentiment, auto-reply with FAQ answers, and DM high-intent commenters with LYNK affiliate links to convert engagement into sales. Use when monitoring tiktok/instagram comments, classify sentiment, auto-reply with faq answers, and.
-  `comment` `content-creation` `digital-content` `manager` `media`
+- [comment-reply-manager](../content/comment-reply-manager/) — Use when monitoring TikTok/Instagram comments — classify intent, auto-reply to FAQs, and DM high-intent commenters with LYNK affiliate links. Converts comment engagement into tracked affiliate sales.
+  `comment` `reply` `affiliate` `lynk` `tiktok`
 
 - [company-handbook](../content/company-handbook/) — Use when coordinating cross-director work across the 1ai business kingdom. Defines shared brand standards, handoff protocols, and escalation paths.
   `company` `handbook` `coordination` `directors` `brand`
@@ -238,8 +241,8 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [content-director](../content/content-director/) — Use when orchestrating content production across the 1ai business kingdom. Manages video, image, copywriting, and content operations.
   `content` `director` `orchestrator` `creative` `strategy`
 
-- [content-factory](../content/factory/) — Use when all-in-one YouTube content generator: create full videos from prompts, generate vertical Shorts from text, or clip long videos into Shorts using free tools (ffmpeg, edge-tts, Pexels).
-  `content` `content-creation` `digital-content` `factory` `media`
+- [content-factory](../content/factory/) — Use when building all-in-one YouTube content — full videos from prompts, vertical Shorts from text, or clipping long videos into Shorts. Uses free tools (ffmpeg, edge-tts, Pexels).
+  `youtube` `shorts` `video` `content-creation` `edge-tts`
 
 - [content-kingdom](../content/kingdom/) — Use when content Kingdom Orchestrator — the BRAIN that coordinates all 12 content phases. Sequences research → plan → script → create → review → schedule → post → engage → analyze → optimize → repurpose → scale.
   `content` `automation` `tiktok` `instagram` `postbridge`
@@ -262,7 +265,7 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [design-taste](../content/design-taste/) — Use when building a UI and need to ground taste in real products — query Kage MCP for screenshots and layout prompts of comparable apps, then synthesize a design brief before writing code. Use when "design a site like X", "UI in the spirit of Y", or "what should this look like" — a taste-first research layer for agents, not a template gallery.
   `design` `ui` `taste` `inspiration` `research`
 
-- [digital-real-estate](../content/digital-real-estate/) — Use when build and manage a portfolio of niche content sites generating affiliate and AdSense revenue with AI handling research, writing, SEO, and updates. Use when building and manage a portfolio of niche content sites generating.
+- [digital-real-estate](../content/digital-real-estate/) — Use when building and managing a portfolio of niche content sites that generate affiliate and AdSense revenue with AI handling research, writing, SEO, and updates.
   `content-creation` `digital` `digital-content` `estate` `media`
 
 - [document-creator](../content/document-creator/) — Use when creating, editing, and generating Office documents programmatically — Word, PowerPoint, Excel, and PDF. One interface for all document formats with shared methodology.
@@ -283,14 +286,14 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [gemini-image-generator](../content/gemini-image-generator/) — Use when generating professional posed product images for e-commerce using Gemini AI with optimized prompts
   `content-creation` `digital-content` `gemini` `generator` `image`
 
-- [geminigen-ai](../content/geminigen-ai/) — Use when unified multimedia API for image generation (nano-banana-pro, imagen-4), video generation (Grok, Veo, Sora), and text-to-speech. Replaces grok-video-generation, seedance, and gemini-image-generator.
-  `api` `content-creation` `digital-content` `geminigen` `media`
+- [geminigen-ai](../content/geminigen-ai/) — Use when choosing which media-generation provider/model to route a request to — image, video, or TTS — and applying failover + cost discipline. Conceptual router; concrete API calls live in the linked sibling skills.
+  `api` `image-generation` `video-generation` `tts` `provider`
 
 - [hallmark](../content/hallmark/) — Use when designing, building, redesigning, or auditing websites and web pages that refuse to look AI-generated. Enforces anti-AI-slop design rules, non-waivable floor constraints, tokenized design systems, 48 curated themes/materials, and automated sloplint verification.
   `design` `anti-slop` `ui` `frontend` `css`
 
-- [humanizer](../content/humanizer/) — Use when transform AI-generated content into natural, human-sounding writing with proper tone and style.
-  `content-creation` `digital-content` `humanizer` `media`
+- [humanizer](../content/humanizer/) — Use when transforming AI-generated text into natural, human-sounding prose — rewriting out robotic patterns, filler transitions, and symmetrical sentence structures while preserving meaning and facts.
+  `writing` `editing` `humanizer` `tone` `style`
 
 - [humanizer-zh](../content/humanizer-zh/) — Use when removing AI writing痕迹 from Chinese text to make it sound more natural and human-written.
   `content-creation` `digital-content` `humanizer` `media`
@@ -346,8 +349,8 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [interface-review](../content/interface-review/) — Use when reviewing a branch, pull request, or uncommitted changes for interface problems introduced or regressed across accessibility, layout, writing, typography, color, and UI.
   `code-review` `pr-review` `interface-audit`
 
-- [larry-playbook](../content/larry-playbook/) — Use when autonomous AI agent that learns and improves viral content over time using Oliver Henry's proven formula.
-  `ai-agent` `content-creation` `digital-content` `larry` `media`
+- [larry-playbook](../content/larry-playbook/) — Use when running an autonomous AI agent that researches, generates, and iterates viral short-form TikTok content using the locked-architecture formula — hourly trend research, hook templates, A/B testing, and data-driven doubling-down.
+  `ai-agent` `tiktok` `viral` `slideshow` `hooks`
 
 - [living-story-web](../content/living-story-web/) — Use when building immersive websites with living manhwa, interactive comics, articulated character or object animation, and scroll-directed storytelling — for requests like "make this feel like a live comic" or "make the character follow scrolling." Adapt to the current project and preserve its core functionality. Do not use for routine UI edits or standalone illustrations.
   `web-design` `interactive-storytelling` `animation` `manhwa` `scroll-animation`
@@ -358,8 +361,8 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [material-ui](../content/material-ui/) — Use when material UI (MUI) React components — theming, styled engine, data grid, date pickers, icons.
   `content-creation` `digital-content` `material` `media`
 
-- [minimalist-design](../content/minimalist-design/) — Use when dieter Rams' approach to timeless product design - less but better.
-  `content-creation` `design` `digital-content` `media` `minimalist`
+- [minimalist-design](../content/minimalist-design/) — Use when applying Dieter Rams' "less but better" approach to product and UI design — stripping a design down to its essentials using the 10 Principles of Good Design, with a concrete audit checklist.
+  `design` `minimalism` `dieter-rams` `product-design` `ui`
 
 - [monetization-strategist](../content/monetization-strategist/) — Use when turn content into revenue — newsletter businesses, YouTube automation, affiliate sites, digital product creation, funnel design, audience building. Use when building content-based revenue streams.
   `content-creation` `digital-content` `media` `monetization` `strategist`
@@ -379,8 +382,8 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [pandacss-styling](../content/pandacss-styling/) — Use when panda CSS zero-runtime styling — token system, patterns, recipes, conditions, JSX styles.
   `content-creation` `digital-content` `media` `pandacss` `styling`
 
-- [paperpod](../content/paperpod/) — Use when isolated agent runtime for code execution, live preview URLs, browser automation, 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), LLM inference, and persistent memory — all via CLI or HTTP, no SDK or API keys required.
-  `ai-agent` `api` `content-creation` `digital-content` `media`
+- [paperpod](../content/paperpod/) — Use when running code, checking live previews, automating browsers, using 50+ tools (ffmpeg, sqlite, pandoc, imagemagick), and calling LLMs inside isolated Paperpod sandboxes via CLI or HTTP without SDK or API keys.
+  `sandbox` `cli` `preview` `browser-automation` `ffmpeg`
 
 - [postcss-plugins](../content/postcss-plugins/) — Use when postCSS plugin ecosystem — Autoprefixer, cssnano, nesting, custom plugins, preset configuration.
   `content-creation` `digital-content` `media` `plugins` `postcss`
@@ -472,13 +475,13 @@ Browse in [`content/_index.md`](../content/_index.md).
 - [viral-content-creator](../content/viral-content-creator/) — Use when generating 50+ video variations from one product image with hook-based A/B testing, viral score prediction, autopilot scheduling.
   `content` `media` `testing` `video` `viral`
 
-- [viral-research-engine](../content/viral-research-engine/) — Use when researching trending topics, generating viral hooks, finding content gaps, analyzing competitors, and getting hashtag recommendations for Indonesian short-form video creators on TikTok, Reels, and Shorts.
-  `content-creation` `digital-content` `engine` `media` `research`
+- [viral-research-engine](../content/viral-research-engine/) — Use when researching trending topics, generating high-retention hooks, finding content gaps, and analyzing competitors for short-form video creators on TikTok, Reels, and Shorts. Focuses on Indonesian market patterns.
+  `viral` `research` `trends` `hooks` `competitors`
 
 - [voice-ai](../content/voice-ai/) — Use when voice AI — text-to-speech (ElevenLabs, OpenAI TTS), speech-to-text (Whisper), voice cloning, real-time voice agents.
   `ai-agent` `content-creation` `digital-content` `media` `text-to-speech`
 
-- [voice-chatterbox-tts](../content/voice-chatterbox-tts/) — Use when free local TTS with voice cloning using Chatterbox. Zero API costs, word-level timing, whisper integration. Clone any voice with 10-60s reference audio. Use when generating narration, voiceovers, or custom AI voices.
+- [voice-chatterbox-tts](../content/voice-chatterbox-tts/) — Use for free local text-to-speech with voice cloning via Chatterbox. Zero API cost, word-level timing export, Whisper alignment. Clone a voice from 10–60 s reference audio for narration, voiceovers, and custom AI voices.
   `tts` `voice-cloning` `local` `free` `whisper`
 
 - [writing](../content/writing/) — Use when full-stack content production factory — ad copy, emails, long-form articles, product descriptions. Turn words into revenue with data-driven writing pipelines.
@@ -3972,7 +3975,7 @@ Browse in [`marketing/_index.md`](../marketing/_index.md).
 
 ### Mcp (mcp/)
 
-_Total: 15 skills_
+_Total: 16 skills_
 
 Browse in [`mcp/_index.md`](../mcp/_index.md).
 
@@ -3984,6 +3987,9 @@ Browse in [`mcp/_index.md`](../mcp/_index.md).
 
 - [codebase-memory-mcp](../mcp/servers/codebase-memory-mcp/) — Use when index codebases into a persistent knowledge graph for structural code queries, call-chain tracing, and semantic search. Use when navigating unfamiliar repos, understanding architecture, or exploring large codebases.
   `codebase` `mcp` `mcp-server` `memory` `model-context-protocol`
+
+- [ffmpeg-mcp](../mcp/servers/ffmpeg-mcp/) — Use when exposing FFmpeg/FFprobe operations as MCP tools so a coding agent can inspect, cut, join, transcode, extract audio, thumbnail, and normalize media without ad hoc shell commands. Local only — no API keys, no cloud.
+  `mcp` `mcp-server` `model-context-protocol` `ffmpeg` `ffprobe`
 
 - [github-mcp](../mcp/servers/github-mcp/) — Use when mCP server for GitHub automation. Manage repos, issues, PRs, and workflows through the Model Context Protocol. Use when working with github mcp.
   `github` `mcp` `mcp-server` `model-context-protocol` `tool-integration`
@@ -4601,4 +4607,4 @@ Browse in [`trading/_index.md`](../trading/_index.md).
   `algorithms` `asia` `breakout` `markets` `money`
 
 ---
-_Generated from 1454 skills across 20 categories._
+_Generated from 1456 skills across 20 categories._

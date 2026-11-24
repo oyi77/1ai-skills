@@ -164,4 +164,4 @@ _Total: 53_
   `ai-agent` `infrastructure` `memory` `self-improvement` `zvec`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/core*
+*Category: core*

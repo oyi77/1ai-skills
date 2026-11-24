@@ -101,4 +101,4 @@ _Total: 32_
   `ci-cd` `devops` `infrastructure` `secrets` `vault`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/devops*
+*Category: devops*

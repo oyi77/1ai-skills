@@ -2,7 +2,7 @@
 
 ## Skills in Mcp
 
-_Total: 15_
+_Total: 16_
 
 - [agent-reach](./servers/agent-reach/) — Use when universal internet scraper for AI agents. Read and search Twitter, Reddit, YouTube, GitH...
   `agent` `ai-agent` `api` `github` `mcp-server`
@@ -12,6 +12,9 @@ _Total: 15_
 
 - [codebase-memory-mcp](./servers/codebase-memory-mcp/) — Use when index codebases into a persistent knowledge graph for structural code queries, call-chai...
   `codebase` `mcp` `mcp-server` `memory` `model-context-protocol`
+
+- [ffmpeg-mcp](./servers/ffmpeg-mcp/) — Use when exposing FFmpeg/FFprobe operations as MCP tools so a coding agent can inspect, cut, join...
+  `mcp` `mcp-server` `model-context-protocol` `ffmpeg` `ffprobe`
 
 - [github-mcp](./servers/github-mcp/) — Use when mCP server for GitHub automation. Manage repos, issues, PRs, and workflows through the M...
   `github` `mcp` `mcp-server` `model-context-protocol` `tool-integration`
@@ -50,4 +53,4 @@ _Total: 15_
   `mcp` `mcp-server` `model-context-protocol` `supabase` `tool-integration`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/mcp*
+*Category: mcp*

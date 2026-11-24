@@ -2435,4 +2435,4 @@ _Total: 810_
   `cash` `cybersecurity` `money` `security` `threat-defense`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/cybersecurity*
+*Category: cybersecurity*

@@ -35,4 +35,4 @@ _Total: 10_
   `api` `notion` `productivity` `time-management` `tools`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/productivity*
+*Category: productivity*

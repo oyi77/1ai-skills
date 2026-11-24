@@ -199,7 +199,7 @@ def _write_index(dir_path, title, skill_entries, name_path, root_rel=None):
         lines.append('')
 
     lines.append('---')
-    lines.append(f'*Category: {dir_path}*')
+    lines.append(f'*Category: {dir_path.relative_to(ROOT).as_posix()}*')
     lines.append('')
 
     content = '\n'.join(lines)

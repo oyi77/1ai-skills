@@ -29,4 +29,4 @@ _Total: 8_
   `analytics` `data-analysis` `temporal` `visualization` `workflow`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/data*
+*Category: data*

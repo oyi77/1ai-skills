@@ -22,7 +22,7 @@ WRITE=0
 
 # Top-level dirs that hold skills (skip tooling dirs).
 SKILL_DIRS=(
-  agents corporate automation content core cybersecurity data development
+  agents automation content core corporate cybersecurity data development
   devops financial integrations marketing mcp meta mindset operations
   productivity research sales trading
 )

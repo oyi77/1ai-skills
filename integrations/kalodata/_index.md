@@ -26,4 +26,4 @@ _Total: 7_
   `api` `integrations` `kalodata` `third-party` `video`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/integrations/kalodata*
+*Category: integrations/kalodata*

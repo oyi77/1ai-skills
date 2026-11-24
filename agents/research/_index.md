@@ -11,4 +11,4 @@ _Total: 2_
   `agent` `ai-agent` `automation` `market` `orchestration`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/agents/research*
+*Category: agents/research*

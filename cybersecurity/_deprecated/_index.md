@@ -56,4 +56,4 @@ _Total: 17_
   `forensics` `memory-forensics` `volatility` `ram-analysis` `malware-detection`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/cybersecurity/_deprecated*
+*Category: cybersecurity/_deprecated*

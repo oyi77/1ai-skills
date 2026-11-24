@@ -86,4 +86,4 @@ _Total: 27_
   `algorithms` `asia` `breakout` `markets` `money`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/trading*
+*Category: trading*

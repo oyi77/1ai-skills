@@ -140,4 +140,4 @@ _Total: 45_
   `growth` `marketing` `seo` `viral`
 
 ---
-*Category: /home/openclaw/projects/1ai-skills/marketing*
+*Category: marketing*
