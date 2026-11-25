@@ -2,21 +2,17 @@
 
 Repo-owned, reversible profile for reducing always-injected skill metadata. It does **not** edit `~/.omp/agent/config.yml`; activate by adding the snippet below to your config.
 
-## Measured budget
+## Measured budget (real tokenizer receipt via `omp toks`)
 
-Rough token estimates use characters / 4; not tokenizer-exact.
-
-| Surface | Count | Characters | Rough tokens |
-|---|---:|---:|---:|
-| All discovered skill metadata (name + description) | 1,493 | 182,846 | ~45,711 |
-| Role anchors + router infrastructure (comparison baseline only) | 37 | 6,415 | ~1,603 |
-| Router hook hint when it fires | 1 | ~300 | ~75 |
+| Surface | Count | Characters | o200k_base (GPT-4o/5) | deepseek-v3/v4 | claude-v3 |
+|---|---:|---:|---:|---:|---:|
+| All discovered skill metadata (name + description) | 1,493 | 185,831 | **38,334** | **39,428** | **44,809** |
+| Role anchors + router infrastructure (comparison baseline) | 37 | 6,488 | 1,306 | 1,330 | 1,461 |
+| Router hook hint when it fires | 1 | ~300 | ~65 | ~65 | ~75 |
 
 OMP includes discovered skill metadata in the system prompt when a tool declares `readsSkillUris: true`.
 
-## Opt-in profile
-
-`skills.manualSkills: ["*"]` hides **all** discovered skill metadata, including role anchors. It does not unload or delete skills: `skill://<name>` and `/skill:<name>` remain available. Projected system-prompt metadata approaches zero; the hook adds roughly 75 tokens when it emits a routing hint. Projected savings: ~45,711 rough tokens, pending confirmation with OMP's own token counter.
+`skills.manualSkills: ["*"]` hides **all** discovered skill metadata, including role anchors. Skills stay loaded; `skill://<name>` and `/skill:<name>` remain available. With the wildcard applied, system-prompt metadata drops to near zero; the hook adds ~65–75 real tokens when it fires. Measured saving: **38,334 tokens (o200k), 44,809 tokens (claude-v3), depending on model family.**
 
 The repo hook emits direct specialist hints for explicit brag and launch-video phrases, high-confidence specialist matches, and pentest/security intent. See `scripts/test_skill_router_hook.py`.
 
