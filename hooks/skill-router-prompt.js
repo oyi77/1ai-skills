@@ -202,7 +202,7 @@ const CORPORATE_INTENT = [
       'expanding to', 'explore ', 'ai agents for', 'pivot to', 'pivot into',
       'strategic pivot', 'new product line', 'new market', 'new opportunity',
       'strategic direction', 'ready to launch', 'go-to-market',
-      'launch strategy', 'launch v', 'launch version', 'product roadmap',
+      'launch strategy', 'launch version', 'product roadmap',
       'build something like', 'make this application like',
       'make an app like', 'should we add', 'could we add',
       'let\'s add', 'let us add', 'i want to build', 'i want to create',
@@ -253,6 +253,28 @@ const CODING_KEYWORDS = [
   'setup.py', 'setup.cfg', 'makefile', 'cmake', 'gradle', 'maven', 'sbt'
 ];
 
+const SECURITY_KEYWORDS = [
+  'pentest', 'penetration test', 'penetration testing', 'red team',
+  'exploit', 'vulnerability scan', 'security assessment', 'ethical hack'
+];
+
+const SPECIALIST_INTENTS = [
+  { name: 'brag', keywords: ["let's brag", 'brag about this', 'show off what i built'] },
+  { name: 'hyperframes-product-launch-video', keywords: ['launch video', 'product launch video'] },
+];
+
+function directSpecialist(prompt) {
+  for (const intent of SPECIALIST_INTENTS) {
+    if (hasKeyword(prompt, intent.keywords)) return intent.name;
+  }
+  return null;
+}
+
+function hasKeyword(prompt, keywords) {
+  const q = normalized(prompt);
+  return keywords.some(kw => q.includes(` ${kw.toLowerCase().trim()} `));
+}
+
 function normalized(prompt) {
   return ' ' + prompt.toLowerCase().replace(/[^a-z0-9&'\-]+/g, ' ') + ' ';
 }
@@ -268,6 +290,9 @@ function deterministicRole(prompt) {
     if (hits.length) {
       return { role: intent.role, hits };
     }
+  }
+  if (hasKeyword(prompt, SECURITY_KEYWORDS)) {
+    return { role: 'role-penetration-tester', hits: ['security keyword'] };
   }
   if (matchKeywords(prompt, CODING_KEYWORDS).length) {
     return { role: 'role-software-engineer', hits: ['coding keyword'] };
@@ -305,6 +330,7 @@ function main() {
   }
 
   const anchors = loadAnchorMap();
+  const specialist = directSpecialist(prompt);
   const decision = deterministicRole(prompt);
 
   let name = null;
@@ -312,7 +338,12 @@ function main() {
   let confidence = 'low';
   let routeSource = 'none';
 
-  if (decision && anchors[decision.role]) {
+  if (specialist) {
+    name = specialist;
+    routeSource = 'direct-specialist';
+    scoreLabel = 'explicit phrase';
+    confidence = 'high';
+  } else if (decision && anchors[decision.role]) {
     // Deterministic intent layer wins: corporate events must not be
     // misrouted by fuzzy skill-name scoring (data breach ≠ data-engineer).
     name = decision.role;

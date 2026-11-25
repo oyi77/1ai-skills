@@ -39,6 +39,8 @@ CASES = [
     ("brainstorm across teams about the launch", "role-multi-department-brainstorm"),
     ("let's brag about this project", "brag"),
     ("design a landing page redesign", "frontend-design"),
+    ("make a launch video", "hyperframes-product-launch-video"),
+    ("pentest the API", "role-penetration-tester"),
 ]
 
 NO_ROUTE = [

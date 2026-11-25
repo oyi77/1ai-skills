@@ -1,33 +1,26 @@
 # Opt-in token-lean skill profile (OMP)
 
-Repo-owned, reversible profile for cutting the always-injected skill metadata list.
-It does **not** touch `~/.omp/agent/config.yml`. You activate it by copying one
-snippet into your own config.
+Repo-owned, reversible profile for reducing always-injected skill metadata. It does **not** edit `~/.omp/agent/config.yml`; activate by adding the snippet below to your config.
 
-## Measured budget (rough estimate: chars / 4, not a tokenizer receipt)
+## Measured budget
+
+Rough token estimates use characters / 4; not tokenizer-exact.
 
 | Surface | Count | Characters | Rough tokens |
 |---|---:|---:|---:|
-| All discovered skills metadata (name + description) | 1,493 | 182,846 | ~45,711 |
-| Role anchors + router infrastructure only | 37 | 6,415 | ~1,603 |
-| Router hook injection per matching prompt | 1 | ~300 | ~75 |
+| All discovered skill metadata (name + description) | 1,493 | 182,846 | ~45,711 |
+| Role anchors + router infrastructure (comparison baseline only) | 37 | 6,415 | ~1,603 |
+| Router hook hint when it fires | 1 | ~300 | ~75 |
 
-The system prompt injects the discovered skill list when a tool declares
-`readsSkillUris: true`. Hiding catalog metadata is the only lever that
-changes this repo-independent cost.
+OMP includes discovered skill metadata in the system prompt when a tool declares `readsSkillUris: true`.
 
-## What the snippet does
+## Opt-in profile
 
-`skills.manualSkills: ["*"]` removes every skill from the **model-visible
-catalog** but keeps each skill loaded and reachable through `skill://<name>`
-and `/skill:<name>`. Skills are not deleted and the runtime mirror is intact.
+`skills.manualSkills: ["*"]` hides **all** discovered skill metadata, including role anchors. It does not unload or delete skills: `skill://<name>` and `/skill:<name>` remain available. Projected system-prompt metadata approaches zero; the hook adds roughly 75 tokens when it emits a routing hint. Projected savings: ~45,711 rough tokens, pending confirmation with OMP's own token counter.
 
-The repo hook now emits a direct specialist load hint for high-confidence
-non-role matches (`brag`, `frontend-design`, ...), so hiding the catalog does
-not make named specialists undiscoverable. Regression coverage is in
-`scripts/test_skill_router_hook.py` (run: `python3 scripts/test_skill_router_hook.py`).
+The repo hook emits direct specialist hints for explicit brag and launch-video phrases, high-confidence specialist matches, and pentest/security intent. See `scripts/test_skill_router_hook.py`.
 
-## Activate (opt-in, user config)
+## Activate (opt-in)
 
 Add to `~/.omp/agent/config.yml`:
 
@@ -36,21 +29,14 @@ skills:
   manualSkills: ["*"]
 ```
 
-Restart the harness. Verify with `omp skill list --json` — skills should report
-`hide: true`, and `skill://brag` should still resolve.
+Restart OMP. Check `omp skill list --json` for `hide: true`, then verify `skill://brag` still resolves. Measure prompt tokens before and after with OMP's token counter; chars/4 is only a rough estimate.
 
 ## Rollback
 
-Remove the `skills:` block (or set `manualSkills: []`) and restart. Metadata
-reappears. No repo file needs changing.
+Remove the `skills:` block or set `manualSkills: []`, then restart. Metadata reappears; repository files and runtime mirror remain unchanged.
 
-## Tradeoff / limits
+## Tradeoffs
 
-- Specialist discovery now depends on the hook hint or an explicit `skill://<name>`.
-  Low-confidence queries produce `{}` (silent) by design, unchanged from default.
-- Known deterministic-intent misroutes (`pentest the API` → software-engineer,
-  `launch video` → owner-idea-intake) are separate routing defects, not token
-  optimization; they are out of scope for this profile.
-- Savings are **prospective**: ~44,000 rough tokens until the profile is
-  activated and confirmed with the harness's own token counter. chars/4 is an
-  estimate; an actual tokenizer may differ.
+- Every skill becomes manual-only in the model-visible catalog. Discovery relies on explicit `skill://<name>` calls or the router hook.
+- The role-only figure above is a comparison baseline, **not** the remaining metadata cost under `manualSkills: ["*"]`.
+- Projected savings are not realized until the user activates the profile and verifies actual prompt tokens.
