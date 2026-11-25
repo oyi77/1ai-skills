@@ -6,7 +6,7 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 
 ## Overview
 
-**1456 skills** across **20 categories**.
+**1457 skills** across **20 categories**.
 
 ---
 
@@ -14,7 +14,7 @@ Auto-generated from `SKILLS.json`. Last generated: `python3 scripts/generate-str
 
 - [agents](../agents/_index.md) — 16 skills
 - [automation](../automation/_index.md) — 21 skills
-- [content](../content/_index.md) — 108 skills
+- [content](../content/_index.md) — 109 skills
 - [corporate](../corporate/_index.md) — 14 skills
 - [core](../core/_index.md) — 53 skills
 - [cybersecurity](../cybersecurity/_index.md) — 810 skills
@@ -162,7 +162,7 @@ Browse in [`automation/_index.md`](../automation/_index.md).
 
 ### Content (content/)
 
-_Total: 108 skills_
+_Total: 109 skills_
 
 Browse in [`content/_index.md`](../content/_index.md).
 
@@ -213,6 +213,9 @@ Browse in [`content/_index.md`](../content/_index.md).
 
 - [better-writing](../content/better-writing/) — Use when writing or reviewing interface copy including labels, errors, empty states, confirmations, or ensuring copy matches product voice and guides users.
   `writing` `ux-writing` `copy` `microcopy` `content`
+
+- [brag](../content/brag/) — Use when turning a finished project, repo, or website into a short, shareable launch video with music, motion, and share copy. Use when the user says "let's brag", "make a launch video for this", "turn this project into a video", or wants to promote what they built. Distilled from latent-spaces/brag: reads the project or live site, plans a 15-25s hook-first storyboard, then renders via HyperFrames or a portable FFmpeg pipeline.
+  `launch-video` `brag` `hyperframes` `marketing` `video`
 
 - [brand](../content/brand/) — Use when brand voice, visual identity, messaging frameworks, asset management, brand consistency. Activate for branded content, tone of voice, marketing assets, brand compliance, style guides.
   `brand` `identity` `voice` `messaging` `assets`
@@ -649,8 +652,8 @@ Browse in [`core/_index.md`](../core/_index.md).
 - [omniroute-integration](../core/omniroute-integration/) — Use when integrate with OmniRoute AI Router for multi-provider LLM routing, MCP server access, and A2A agent-to-agent orchestration. Use when integrateing with omniroute ai router for multi-provider llm routing, mcp.
   `ai-agent` `infrastructure` `integration` `memory` `omniroute`
 
-- [prompt-engineering](../core/prompt-engineering/) — Use when advanced prompt engineering — chain-of-thought, few-shot, tree-of-thought, self-consistency, meta-prompting, system design, debugging, and optimization for production AI systems. Use when working with prompt engineering.
-  `engineering` `infrastructure` `memory` `prompt` `self-improvement`
+- [prompt-engineering](../core/prompt-engineering/) — Use when improving system prompts, agent instructions, tool descriptions, or reusable prompt templates. Defines a measurable baseline → diagnose → change one variable → evaluate → keep/revert loop for quality, reliability, cost, and latency.
+  `prompt-engineering` `prompt-optimization` `evaluation` `llm` `instructions`
 
 - [rag-builder](../core/rag-builder/) — Use when rAG pipeline design — document chunking, embedding strategies, retrieval optimization, and answer generation. Use when working with rag builder.
   `builder` `infrastructure` `memory` `pipeline` `rag`
@@ -3412,8 +3415,8 @@ Browse in [`development/_index.md`](../development/_index.md).
 - [ionic-capacitor](../development/ionic-capacitor/) — Use when ionic + Capacitor hybrid mobile apps — Angular/React/Vue, native plugins, PWA, App Store deployment. Use when working with ionic capacitor.
   `capacitor` `coding` `ionic` `software-engineering` `testing`
 
-- [ios-swiftui](../development/ios-swiftui/) — Use when swiftUI development — declarative UI, state management, navigation, and Apple ecosystem integration. Use when working with ios swiftui.
-  `coding` `ios` `software-engineering` `swiftui` `testing`
+- [ios-swiftui](../development/ios-swiftui/) — Use when shipping an iOS app to the App Store — Xcode project setup, signing and provisioning, Info.plist and entitlements, device capability permissions, TestFlight distribution, and App Store review compliance. UI pattern guidance lives in swiftui-patterns.
+  `ios` `xcode` `app-store` `testflight` `code-signing`
 
 - [job-queues](../development/job-queues/) — Use when background job processing — Bull/BullMQ, agenda, delayed jobs, retries, rate limiting, scheduled tasks. Use when working with job queues.
   `coding` `job` `queues` `software-engineering` `testing`
@@ -4607,4 +4610,4 @@ Browse in [`trading/_index.md`](../trading/_index.md).
   `algorithms` `asia` `breakout` `markets` `money`
 
 ---
-_Generated from 1456 skills across 20 categories._
+_Generated from 1457 skills across 20 categories._

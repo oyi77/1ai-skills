@@ -2,7 +2,7 @@
 
 ## Skills in Content
 
-_Total: 108_
+_Total: 109_
 
 - [accessibility-audit](./accessibility-audit/) — Use when WCAG compliance audit — semantic HTML, ARIA, keyboard navigation, color contrast, and sc...
   `accessibility` `audit` `compliance` `content-creation` `digital-content`
@@ -51,6 +51,9 @@ _Total: 108_
 
 - [better-writing](./better-writing/) — Use when writing or reviewing interface copy including labels, errors, empty states, confirmation...
   `writing` `ux-writing` `copy` `microcopy` `content`
+
+- [brag](./brag/) — Use when turning a finished project, repo, or website into a short, shareable launch video with m...
+  `launch-video` `brag` `hyperframes` `marketing` `video`
 
 - [brand](./brand/) — Use when brand voice, visual identity, messaging frameworks, asset management, brand consistency....
   `brand` `identity` `voice` `messaging` `assets`

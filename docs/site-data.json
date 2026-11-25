@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-24T04:43:09.141279+00:00",
-  "total": 1456,
+  "generated": "2026-11-25T10:12:42.277093+00:00",
+  "total": 1457,
   "categories": [
     {
       "name": "cybersecurity",
@@ -8,7 +8,7 @@
     },
     {
       "name": "content",
-      "count": 108
+      "count": 109
     },
     {
       "name": "development",
@@ -1084,6 +1084,10 @@
     {
       "name": "bounty-target-finder",
       "category": "cybersecurity"
+    },
+    {
+      "name": "brag",
+      "category": "content"
     },
     {
       "name": "brainstorming",

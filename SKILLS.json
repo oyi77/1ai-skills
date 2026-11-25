@@ -1,10 +1,10 @@
 {
-  "total_skills": 1456,
+  "total_skills": 1457,
   "category_count": 20,
   "categories": {
     "agents": 16,
     "automation": 21,
-    "content": 108,
+    "content": 109,
     "core": 53,
     "corporate": 14,
     "cybersecurity": 810,
@@ -1239,6 +1239,39 @@
         "ux writing",
         "microcopy"
       ],
+      "type": "content"
+    },
+    {
+      "name": "brag",
+      "category": "content",
+      "description": "Use when turning a finished project, repo, or website into a short, shareable launch video with music, motion, and share copy. Use when the user says \"let's brag\", \"make a launch video for this\", \"turn this project into a video\", or wants to promote what they built. Distilled from latent-spaces/brag: reads the project or live site, plans a 15-25s hook-first storyboard, then renders via HyperFrames or a portable FFmpeg pipeline.",
+      "domain": "content",
+      "tags": [
+        "launch-video",
+        "brag",
+        "hyperframes",
+        "marketing",
+        "video",
+        "share-copy",
+        "social",
+        "agent-native"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "roles": [
+        "content-creator"
+      ],
+      "triggers": [
+        "let's brag",
+        "brag about this",
+        "launch video",
+        "turn this project into a video",
+        "make a promo video for my app",
+        "shareable launch video",
+        "show off what I built"
+      ],
+      "argument-hint": "[project-dir-or-url] [--tone preset] [--format landscape|vertical|square] [--duration s]",
       "type": "content"
     },
     {
@@ -4382,16 +4415,17 @@
     {
       "name": "prompt-engineering",
       "category": "core",
-      "description": "Use when advanced prompt engineering — chain-of-thought, few-shot, tree-of-thought, self-consistency, meta-prompting, system design, debugging, and optimization for production AI systems. Use when working with prompt engineering.",
+      "description": "Use when improving system prompts, agent instructions, tool descriptions, or reusable prompt templates. Defines a measurable baseline → diagnose → change one variable → evaluate → keep/revert loop for quality, reliability, cost, and latency.",
       "domain": "core",
       "tags": [
-        "engineering",
-        "infrastructure",
-        "memory",
-        "prompt",
-        "self-improvement"
+        "prompt-engineering",
+        "prompt-optimization",
+        "evaluation",
+        "llm",
+        "instructions",
+        "reliability"
       ],
-      "version": "1.0.0",
+      "version": "2.0.0",
       "author": "oyi77",
       "subdomain": "core-platform",
       "roles": [
@@ -24552,14 +24586,16 @@
     {
       "name": "ios-swiftui",
       "category": "development",
-      "description": "Use when swiftUI development — declarative UI, state management, navigation, and Apple ecosystem integration. Use when working with ios swiftui.",
+      "description": "Use when shipping an iOS app to the App Store — Xcode project setup, signing and provisioning, Info.plist and entitlements, device capability permissions, TestFlight distribution, and App Store review compliance. UI pattern guidance lives in swiftui-patterns.",
       "domain": "development",
       "tags": [
-        "coding",
         "ios",
-        "software-engineering",
-        "swiftui",
-        "testing"
+        "xcode",
+        "app-store",
+        "testflight",
+        "code-signing",
+        "provisioning",
+        "swift"
       ],
       "version": "1.0.0",
       "author": "oyi77",
