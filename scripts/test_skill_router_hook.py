@@ -37,6 +37,8 @@ CASES = [
     ("should we build something like Notion", "role-owner-idea-intake"),
     ("write up the verdict in the audit trail", "role-owner-decision-log"),
     ("brainstorm across teams about the launch", "role-multi-department-brainstorm"),
+    ("let's brag about this project", "brag"),
+    ("design a landing page redesign", "frontend-design"),
 ]
 
 NO_ROUTE = [

@@ -331,6 +331,16 @@ function main() {
       routeSource = 'fuzzy-router-unregistered-anchor';
       scoreLabel = `score ${hit.score}`;
       confidence = 'low';
+    } else if (hit && !hit.name.startsWith('role-') && hit.score >= 50.0) {
+      // Direct specialist resolution. Required when OMP `skills.manualSkills`
+      // hides the catalog from the system prompt: without this hint the agent
+      // can no longer discover named specialists (brag, frontend-design, ...).
+      // The 50.0 threshold keeps weak/coincidental matches silent so the
+      // NO_ROUTE contract is preserved (see test_skill_router_hook.py).
+      name = hit.name;
+      routeSource = 'fuzzy-router-specialist';
+      scoreLabel = `score ${hit.score}`;
+      confidence = hit.score >= 75 ? 'high' : 'medium';
     }
   }
 
