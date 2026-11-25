@@ -94,6 +94,7 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
   questions that cannot be answered from available source (shipped binaries, Go/Rust, Android,
   Electron/JavaScript, firmware, browser targets). Preserves artifact SHA-256, scope, tool
   versions, and separates observation from inference.
+- `content/brag`: launch-video skill distilled from [latent-spaces/brag](https://github.com/latent-spaces/brag) (MIT). Turns a finished project, repo, or live URL into a 15–25s shareable launch video: 9-question inspection, hook-first storyboard with tone presets (7), creative laws, planning rubric, and delivery contract (`brag.mp4` + `brag.jpg` poster baked as frame 0 + `share-copy.txt`). No upstream assets bundled — renders via the repo's `hyperframes-*` skills or a portable headless-browser + FFmpeg pipeline.
 
 ### Changed
 - `cybersecurity/cybersecurity-router`: split the Reverse Engineering skills out of `Binary Exploitation (Pwn)`

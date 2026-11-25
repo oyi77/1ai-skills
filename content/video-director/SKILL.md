@@ -149,6 +149,7 @@ vilona_brain_remember(
 | "Product ad template" | Remotion (ProductAd) | `1ai-content` |
 | "Creative video" | AI Video | `1ai-content` |
 | "Convert/compress" | FFmpeg | `1ai-content` |
+| "Let's brag about this project" | `brag` (15–25s shareable launch video) | `1ai-content` |
 
 ## Cross-Director Coordination
 
