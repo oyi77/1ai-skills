@@ -19,13 +19,6 @@ version: 1.0.0
 category: productivity
 ---
 
-persona:
-  name: "Domain Expert"
-  title: "Master of Google Flow"
-  expertise: ['Specialized Knowledge', 'Best Practices', 'Industry Standards']
-  philosophy: "Excellence through expertise."
-  credentials: ['Industry leader', 'Practiced expert', 'Thought leader']
-  principles: ['Quality first', 'Continuous improvement', 'Evidence-based decisions', 'Customer focus']
 
 
 
@@ -58,10 +51,6 @@ Google Flow is an AI video generation tool that creates videos from text prompts
 - "When configuring video generation settings"
 
 
-- When generating AI videos from text prompts
-- When automating Google Flow project management
-- When configuring video generation settings
-- When building video scenes programmatically
 
 ## When NOT to Use
 

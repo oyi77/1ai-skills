@@ -1,8 +1,8 @@
 # Opt-in token-lean skill profile (OMP)
 
-Repo-owned, reversible profile for reducing always-injected skill metadata. It does **not** edit `~/.omp/agent/config.yml`; activate by adding the snippet below to your config.
+Repo-owned, reversible profile reducing always-injected skill metadata. The profile file does **not** edit `~/.omp/agent/config.yml`; local activation is separate and requires adding the snippet below.
 
-## Measured budget (real tokenizer receipt via `omp toks`)
+## Offline tokenizer budget (metadata upper-bound estimate)
 
 | Surface | Count | Characters | o200k_base (GPT-4o/5) | deepseek-v3/v4 | claude-v3 |
 |---|---:|---:|---:|---:|---:|
@@ -12,9 +12,9 @@ Repo-owned, reversible profile for reducing always-injected skill metadata. It d
 
 OMP includes discovered skill metadata in the system prompt when a tool declares `readsSkillUris: true`.
 
-`skills.manualSkills: ["*"]` hides **all** discovered skill metadata, including role anchors. Skills stay loaded; `skill://<name>` and `/skill:<name>` remain available. With the wildcard applied, system-prompt metadata drops to near zero; the hook adds ~65–75 real tokens when it fires. Measured saving: **38,334 tokens (o200k), 44,809 tokens (claude-v3), depending on model family.**
+`skills.manualSkills: ["*"]` hides **all** discovered skill metadata, including role anchors. Skills stay loaded; `skill://<name>` and `/skill:<name>` remain available. If the catalog was injected, offline tokenizer receipts indicate up to **38,334 o200k_base tokens**, **39,428 DeepSeek V3/V4 tokens**, or **44,809 Claude V3 tokens** of metadata would be removed; these are not fresh-session prompt-token measurements.
 
-The repo hook emits direct specialist hints for explicit brag and launch-video phrases, high-confidence specialist matches, and pentest/security intent. See `scripts/test_skill_router_hook.py`.
+The repo hook emits direct specialist hints for brag, launch-video, anti-slop/frontend design, Hallmark, Impeccable, AI SEO, Cloudflare security audit, and API-key leak validation. See `scripts/test_skill_router_hook.py`.
 
 ## Activate (opt-in)
 
@@ -35,4 +35,4 @@ Remove the `skills:` block or set `manualSkills: []`, then restart. Metadata rea
 
 - Every skill becomes manual-only in the model-visible catalog. Discovery relies on explicit `skill://<name>` calls or the router hook.
 - The role-only figure above is a comparison baseline, **not** the remaining metadata cost under `manualSkills: ["*"]`.
-- Projected savings are not realized until the user activates the profile and verifies actual prompt tokens.
+- Offline tokenizer totals estimate metadata removed if a catalog was injected; fresh-session before/after prompt-token savings remain unmeasured.

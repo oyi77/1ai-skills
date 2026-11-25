@@ -44,7 +44,8 @@ CASES = [
     ("anti slop frontend design", "anti-slop-frontend"),
     ("run a cloudflare security audit", "cloudflare-security-audit"),
     ("validate leaked api key", "api-key-leak-validation"),
-    ("ai seo and geo optimization", "ai-seo"),
+    ("answer engine optimization", "ai-seo"),
+    ("ai seo strategy", "ai-seo"),
 ]
 
 NO_ROUTE = [
@@ -54,6 +55,8 @@ NO_ROUTE = [
     "translate hello into Indonesian",
     "what is two plus two",
     "explain photosynthesis",
+    "geo coordinates for auction parcels",
+    "AEON store opening hours",
 ]
 
 
