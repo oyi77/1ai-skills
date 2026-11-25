@@ -41,6 +41,10 @@ CASES = [
     ("design a landing page redesign", "frontend-design"),
     ("make a launch video", "hyperframes-product-launch-video"),
     ("pentest the API", "role-penetration-tester"),
+    ("anti slop frontend design", "anti-slop-frontend"),
+    ("run a cloudflare security audit", "cloudflare-security-audit"),
+    ("validate leaked api key", "api-key-leak-validation"),
+    ("ai seo and geo optimization", "ai-seo"),
 ]
 
 NO_ROUTE = [
