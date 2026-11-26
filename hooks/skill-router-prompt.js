@@ -260,14 +260,14 @@ const SECURITY_KEYWORDS = [
 
 const SPECIALIST_INTENTS = [
   { name: 'brag', keywords: ["let's brag", 'brag about this', 'show off what i built'] },
-  { name: 'hyperframes-product-launch-video', keywords: ['launch video', 'product launch video'] },
+  { name: 'hyperframes-product-launch-video', keywords: ['product launch video', 'launch video for my product'] },
   { name: 'anti-slop-frontend', keywords: ['anti slop', 'anti-ai-slop', 'clean frontend'] },
   { name: 'frontend-design', keywords: ['frontend design', 'ui design', 'redesign page'] },
   { name: 'hallmark', keywords: ['design a website', 'website design style'] },
   { name: 'impeccable', keywords: ['critique design', 'impeccable design'] },
   { name: 'ai-seo', keywords: ['ai seo', 'answer engine optimization', 'generative engine optimization'] },
-  { name: 'cloudflare-security-audit', keywords: ['security audit', 'cloudflare security audit'] },
-  { name: 'api-key-leak-validation', keywords: ['validate api key', 'leaked api key'] },
+  { name: 'cloudflare-security-audit', keywords: ['cloudflare security audit', 'audit cloudflare security'] },
+  { name: 'api-key-leak-validation', keywords: ['leaked api key', 'exposed api key', 'validate leaked api key', 'test exposed credentials'] },
 ];
 
 function directSpecialist(prompt) {
