@@ -1,0 +1,20 @@
+{
+  "skill": "r3f-scene-stack",
+  "category": "content",
+  "name": "R3F Scene Stack — physics/post/particles boundary quality",
+  "description": "Verify library boundaries, Suspense setup, collider strategy, effect budget and dev-only tuning are present",
+  "checks": [
+    {"type": "trigger_phrase", "name": "has-use-when"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "has_workflow_section", "name": "has-workflow"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "section_exists", "pattern": "Verification", "name": "has-verification"},
+    {"type": "contains", "pattern": "Suspense", "name": "has-suspense-setup"},
+    {"type": "contains", "pattern": "colliders", "name": "has-collider-strategy"},
+    {"type": "contains", "pattern": "EffectComposer", "name": "has-postprocessing-boundary"},
+    {"type": "contains", "pattern": "quarks\\.r3f", "name": "has-particles"},
+    {"type": "contains", "pattern": "Tweakpane", "name": "has-tuning"},
+    {"type": "has_code_example", "language": "tsx", "name": "has-tsx-example"},
+    {"type": "skill_depth", "min_lines": 100, "name": "has-depth"}
+  ]
+}

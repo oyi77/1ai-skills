@@ -1,0 +1,19 @@
+{
+  "skill": "font-forensics",
+  "category": "content",
+  "name": "Font Forensics — evidence tier and licensing quality",
+  "description": "Verify evidence tiers, glyph comparison, license verification and fallback audit are present and actionable",
+  "checks": [
+    {"type": "trigger_phrase", "name": "has-use-when"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "has_workflow_section", "name": "has-workflow"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "section_exists", "pattern": "Verification", "name": "has-verification"},
+    {"type": "contains", "pattern": "Assign an evidence tier", "name": "has-evidence-tiers"},
+    {"type": "contains", "pattern": "glyph", "name": "has-glyph-comparison"},
+    {"type": "contains", "pattern": "OFL", "name": "has-license-check"},
+    {"type": "contains", "pattern": "fallback", "name": "has-fallback-stack"},
+    {"type": "has_code_example", "language": "python", "name": "has-audit-script"},
+    {"type": "skill_depth", "min_lines": 100, "name": "has-depth"}
+  ]
+}

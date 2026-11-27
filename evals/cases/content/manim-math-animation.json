@@ -1,0 +1,19 @@
+{
+  "skill": "manim-math-animation",
+  "category": "content",
+  "name": "Manim Math Animation — scene structure and verification quality",
+  "description": "Verify Scene/Mobject authoring, .animate syntax, LaTeX prerequisite, CLI preview and output verification",
+  "checks": [
+    {"type": "trigger_phrase", "name": "has-use-when"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "has_workflow_section", "name": "has-workflow"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "section_exists", "pattern": "Verification", "name": "has-verification"},
+    {"type": "contains", "pattern": "Mobject", "name": "has-mobject-workflow"},
+    {"type": "contains", "pattern": "\\.animate\\.shift", "name": "has-animate-syntax"},
+    {"type": "contains", "pattern": "LaTeX", "name": "has-latex-prerequisite"},
+    {"type": "contains", "pattern": "-p -ql", "name": "has-preview-command"},
+    {"type": "has_code_example", "language": "python", "name": "has-python-example"},
+    {"type": "skill_depth", "min_lines": 100, "name": "has-depth"}
+  ]
+}

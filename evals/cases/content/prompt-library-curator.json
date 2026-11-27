@@ -1,0 +1,19 @@
+{
+  "skill": "prompt-library-curator",
+  "category": "content",
+  "name": "Prompt Library Curator — provenance and rights quality",
+  "description": "Verify rights intake, provenance schema, deduplication and a local validator are present",
+  "checks": [
+    {"type": "trigger_phrase", "name": "has-use-when"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "has_workflow_section", "name": "has-workflow"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "section_exists", "pattern": "Verification", "name": "has-verification"},
+    {"type": "contains", "pattern": "source_url", "name": "has-provenance-field"},
+    {"type": "contains", "pattern": "quarantine", "name": "has-intake-gate"},
+    {"type": "contains", "pattern": "rights", "name": "has-rights-metadata"},
+    {"type": "contains", "pattern": "Deduplicate", "name": "has-dedup"},
+    {"type": "has_code_example", "language": "python", "name": "has-validator"},
+    {"type": "skill_depth", "min_lines": 100, "name": "has-depth"}
+  ]
+}

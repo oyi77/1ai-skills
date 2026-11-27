@@ -1,0 +1,19 @@
+{
+  "skill": "audio-reactive-animation",
+  "category": "content",
+  "name": "Audio-Reactive Animation — timing pipeline quality",
+  "description": "Verify beat detection, word timing, frame derivation and FFmpeg verification are present with a testable workflow",
+  "checks": [
+    {"type": "trigger_phrase", "name": "has-use-when"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "has_workflow_section", "name": "has-workflow"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "section_exists", "pattern": "Verification", "name": "has-verification"},
+    {"type": "contains", "pattern": "librosa", "name": "has-audio-analysis"},
+    {"type": "contains", "pattern": "timeline\\.json", "name": "has-timeline-artifact"},
+    {"type": "contains", "pattern": "round\\(t \\* fps\\)", "name": "has-frame-mapping"},
+    {"type": "contains", "pattern": "ffprobe", "name": "has-output-probe"},
+    {"type": "has_code_example", "language": "python", "name": "has-python-example"},
+    {"type": "skill_depth", "min_lines": 100, "name": "has-depth"}
+  ]
+}
