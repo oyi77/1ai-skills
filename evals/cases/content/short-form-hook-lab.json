@@ -1,0 +1,19 @@
+{
+  "skill": "short-form-hook-lab",
+  "category": "content",
+  "name": "Short-Form Hook Lab — triage quality and stated limits",
+  "description": "Verify text-only heuristics, dealbreaker logic, abstain path and honest non-prediction framing are present",
+  "checks": [
+    {"type": "trigger_phrase", "name": "has-use-when"},
+    {"type": "section_exists", "pattern": "When to Use", "name": "has-when-to-use"},
+    {"type": "has_workflow_section", "name": "has-workflow"},
+    {"type": "anti_rat_table", "name": "has-anti-rat-table"},
+    {"type": "section_exists", "pattern": "Verification", "name": "has-verification"},
+    {"type": "contains", "pattern": "hook_lab.py", "name": "has-script"},
+    {"type": "contains", "pattern": "not a view predictor", "name": "has-non-prediction-framing"},
+    {"type": "contains", "pattern": "ABSTAIN", "name": "has-abstain-path"},
+    {"type": "contains", "pattern": "spoken", "name": "has-spoken-numbers"},
+    {"type": "contains", "pattern": "dealbreaker", "name": "has-dealbreaker-logic"},
+    {"type": "skill_depth", "min_lines": 90, "name": "has-depth"}
+  ]
+}

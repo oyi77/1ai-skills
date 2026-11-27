@@ -85,6 +85,16 @@ Diff the humanized version against the original for:
 - No new claims added
 - No claims dropped that the reader needs
 
+### 6. Mechanical pass (cheap, do first)
+
+Before rewriting by hand, scrub characters a keyboard does not produce: zero-width spaces/joiners, word joiners, soft hyphens, BOM, Unicode tag characters, NBSP/narrow spaces, curly quotes, em/en dashes, ellipsis glyphs. They survive copy-paste and read as machine fingerprint. Replace em dash with comma or period (clean up orphaned punctuation), curly quotes with straight, ellipsis glyph with `...`. Preserve URLs and intentional formatting; do not strip characters the author deliberately used.
+
+### 7. Evidence panel (optional, honest)
+
+If you want a repeatable check, score five signals locally: sentence-length variation (burstiness), concrete markers per 100 words (numbers, names — count spoken numbers like "zero dollars" and "twenty grand"), stock-vocabulary density, typographic fingerprint per 1k chars, and voice tells (contractions, person, staged reveals). Weight weakest signal meaningfully alongside the mean; require no single weak signal before calling a draft clean.
+
+**Say this honestly:** these are local heuristics modelled on signals public AI detectors key on. They are not GPTZero/Originality/Turnitin, do not call those APIs, and cannot promise their verdicts. Never tell a user text is "undetectable". Structural tells ("It's not just X, it's Y", rule-of-three triads, video preambles, reflex follow bait) need human rewriting; flag them, do not regex-mangle them.
+
 ## Example
 
 **Before (AI):**
@@ -107,6 +117,7 @@ When a target voice is specified (e.g. the `persona:` field in frontmatter), app
 | "More edits = more human" | Over-editing makes it choppy. Aim for natural, not fragmented. |
 | "I can keep the filler, it's harmless" | "Furthermore" is a signal to the reader that a machine wrote this. Cut it. |
 | "Facts can shift slightly" | No. Meaning and facts are frozen; only voice changes. |
+| "Scanner says 95, so it's undetectable" | Local heuristics are not detector APIs; promise nothing about any service's verdict. |
 
 ## Verification
 
@@ -114,5 +125,6 @@ When a target voice is specified (e.g. the `persona:` field in frontmatter), app
 - [ ] No new claims introduced
 - [ ] Sentence lengths vary (no 3-in-a-row of same length)
 - [ ] Filler transitions and hedge phrases removed
+- [ ] Invisible/typographic characters scrubbed (zero-width, NBSP, curly quotes, em dashes, ellipsis glyphs)
 - [ ] Read aloud without stumbling
 - [ ] Register matches the brief (formal / conversational / marketing)

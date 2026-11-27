@@ -1,6 +1,6 @@
 ---
 name: viral-research-engine
-description: Use when researching trending topics, generating high-retention hooks, finding content gaps, and analyzing competitors for short-form video creators on TikTok, Reels, and Shorts. Focuses on Indonesian market patterns.
+description: Use when researching trending topics, generating high-retention hooks, ranking competitor short-form clips by account-relative outlier performance, finding content gaps, and analyzing competitors for TikTok, Reels, and Shorts creators. Focuses on Indonesian market patterns.
 domain: content
 author: oyi77
 license: Apache-2.0
@@ -62,13 +62,24 @@ def fetch_trending_niche(keyword: str, region: str = "ID") -> list[dict]:
     return []
 ```
 
-### 2. Content Gap Analysis (What are people missing?)
+### 2. Rank by account-relative outlier, not raw views
+
+Raw views mostly measure follower count: 400,000 views on a 2M-account is a quiet day; on a 4,000-follower account it is a signal. For every captured post, record `account`, `account median views` (typical recent posts), `views`, `hook`, `sends/shares`, and `follows`. Compute:
+
+- **Outlier multiple** = views / account median. Rank by this, not by views.
+- **Sends per reach** = shares / reach where available; the strongest signal a viewer put their name on it.
+- **Hold at 3s** = viewers at 3s / viewers who started, when retention data exists. This grades the hook directly.
+- **Follows per reach** = new follows / reach. High reach with low follows is a profile problem, not a hook problem.
+
+The top third versus bottom third by outlier multiple is your comparison set; with fewer than ~20 posts say the sample is too small to claim a pattern. Publish the formula names only when the hook text actually matches one; otherwise report "unclassified" rather than forcing a label. Text-only hook scores can reject a bad opener but cannot choose between two decent ones — the retention graph decides.
+
+### 3. Content Gap Analysis (What are people missing?)
 
 Look at the top 20 videos:
 - **Common complaints:** Read the comments. What are viewers asking that the creator didn't answer? That's your next video's hook.
 - **Format gaps:** If everyone is doing talking heads, do a clay animation or kinetic typography breakdown. If everyone is 60 s, do a 15 s punchy version.
 
-### 3. Hook Generation (The 2.5 s rule)
+### 4. Hook Generation (The 2.5 s rule)
 
 The first 3 seconds determine 80% of video performance. Use proven Indonesian viral hook formulas:
 
@@ -80,7 +91,7 @@ The first 3 seconds determine 80% of video performance. Use proven Indonesian vi
 | **The Mistake** | "3 kesalahan fatal yang bikin video FYP kamu sepi terus…" | Pain point / corrective desire |
 | **The Test** | "Aku tes AI paling mahal vs paling murah, hasilnya bikin kaget…" | Open loop / expected payoff |
 
-### 4. Output a Content Brief
+### 5. Output a Content Brief
 
 Structure the final research into a actionable brief for production:
 

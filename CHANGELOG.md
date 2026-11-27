@@ -4,6 +4,28 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 ## [Unreleased]
 
 ### Added
+- `content/short-form-hook-lab` — offline text-only hook triage with runnable `hook_lab.py`
+  (five checks, dealbreaker logic, abstain path, JSON output) and explicit "not a view predictor"
+  framing. Inspired by researched public hook-scoring work; implementation and thresholds rewritten.
+  Eval case added (11 checks).
+- Registry `SKILLS.json` rebuilt: 1462 -> 1463 skills; content 114 -> 115. Doc counts synced.
+
+### Changed
+- `content/humanizer` — added mechanical-pass section (invisible characters, typography) and
+  honest five-signal evidence panel with explicit "not a detector API / not undetectable" boundary.
+- `content/viral-research-engine` — added account-relative ranking step (outlier multiple over
+  account median, sends per reach, hold at 3s, follows per reach, small-sample caveat).
+
+### Verified
+- `python3 scripts/validate-skills.py`: OK — all 1463 skills valid
+- `python3 scripts/lint-skills.py`: 0 errors, 0 warnings, 14 info (same pre-existing baseline)
+- `python3 scripts/test-skills.py`: ALL 1463 SKILLS PASS
+- `python3 scripts/run-evals.py --all`: 410/410 passed, 0 failed across 54 cases
+- `python3 scripts/check-broken-links.py`: 0 broken internal references
+- `hook_lab.py` executed on strong/weak/greeting/spoken-number hooks: verdicts and abstain path
+  behave as documented; Python block AST-valid.
+
+### Added (deferred-tier batch)
 - Two more `content` skills from the deferred tier of the resource-gap audit:
   - `content/r3f-scene-stack` — React Three Fiber composition with Rapier physics,
     postprocessing, three.quarks particles, and Tweakpane tuning; version-check and

@@ -1,10 +1,10 @@
 {
-  "total_skills": 1462,
+  "total_skills": 1463,
   "category_count": 20,
   "categories": {
     "agents": 16,
     "automation": 21,
-    "content": 114,
+    "content": 115,
     "core": 53,
     "corporate": 14,
     "cybersecurity": 810,
@@ -3025,6 +3025,33 @@
       "type": "content"
     },
     {
+      "name": "short-form-hook-lab",
+      "category": "content",
+      "description": "Use when checking or ranking short-form opening lines (Reels, Shorts, TikToks) before shooting — five text-only heuristics with explicit limits for length and speakability, concrete markers, stakes, front-loading, and audience address. Use for hook drafts, hooks.txt batches, and pre-shoot triage. This is not a view predictor.",
+      "domain": "content",
+      "tags": [
+        "hooks",
+        "short-form",
+        "reels",
+        "shorts",
+        "copywriting",
+        "triage"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "social-media",
+      "roles": [
+        "content-creator"
+      ],
+      "triggers": [
+        "score this hook",
+        "hook feedback",
+        "rank these hooks",
+        "first line of my reel"
+      ],
+      "type": "content"
+    },
+    {
       "name": "slides",
       "category": "content",
       "description": "Use when create strategic HTML presentations with Chart.js, design tokens, responsive layouts, copywriting formulas, and contextual slide strategies.",
@@ -3554,7 +3581,7 @@
     {
       "name": "viral-research-engine",
       "category": "content",
-      "description": "Use when researching trending topics, generating high-retention hooks, finding content gaps, and analyzing competitors for short-form video creators on TikTok, Reels, and Shorts. Focuses on Indonesian market patterns.",
+      "description": "Use when researching trending topics, generating high-retention hooks, ranking competitor short-form clips by account-relative outlier performance, finding content gaps, and analyzing competitors for TikTok, Reels, and Shorts creators. Focuses on Indonesian market patterns.",
       "domain": "content",
       "tags": [
         "viral",

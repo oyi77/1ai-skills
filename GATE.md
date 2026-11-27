@@ -20,6 +20,16 @@
 - **Rollback**: `git revert <commit>` restores pre-change state
 - **Classification**: CONTENT — non-destructive skill additions; no runtime/CI behavior change
 
+## GATE 7: INSTAGRAM-AGENT-SKILL RESEARCH → IMPROVEMENTS
+- **Said**: explore/research https://github.com/Jakeschincariol/instagram-agent-skill then use it to improve ours
+- **Wants**: verified research → disjoint improvements, not a 13-skill clone
+- **Verified claims**: repo MIT ★9,766 pushed 2026-09-13; 13 skills, 5 runnable Python tools. Ran hookscore.py, beats.py locally — output matches README. README states measured hook-scorer limits (AUC 0.83 kill-bad, 0.56 pick-winners) and abstaining classifier. Our gap scan: no IG-specific hooks/analytics/humanizer evidence panel; existing `humanizer`, `viral-research-engine`, `viral-content-creator` are adjacent — upgraded instead of duplicating
+- **Solution fits intent?**: Yes — new `content/short-form-hook-lab` with independent `hook_lab.py` (no code copied; concepts attributed in CHANGELOG); `humanizer` gains mechanical/honest-evidence sections; `viral-research-engine` gains account-relative ranking
+- **Bukti**: eval suite 410/410 across 54 cases; new eval case 11/11; validate 1463 OK; tests ALL 1463 PASS; lint 0E/0W/14 info; broken links 0; hook_lab.py run on strong/weak/greeting/spoken-number hooks (dealbreaker WEAK, ABSTAIN path verified); all changed SKILL.md YAML parsed with PyYAML (caught + fixed colon-in-description bug that validator's regex fallback missed)
+- **Files changed**: content/short-form-hook-lab/{SKILL.md,hook_lab.py}, evals/cases/content/short-form-hook-lab.json, content/humanizer/SKILL.md, content/viral-research-engine/SKILL.md, SKILLS.json rebuilt (1462->1463; content 114->115), doc counts synced, CHANGELOG [Unreleased]
+- **Rollback**: `git revert <commit>` restores pre-change state
+- **Classification**: CONTENT — offline tool + skill prose, no posting automation, no external API calls
+
 ## GATE 0: UNDERSTAND INTENT, VERIFY CLAIMS
 - **Said**: Phase 8 — Validator Strict Mode + broken-link checker
 - **Wants**: `--strict` flag on `validate-skill-schema.py` promoting warnings→errors; `scripts/check-broken-links.py` scanning internal `/skills/` refs against SKILLS.json
