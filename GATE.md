@@ -10,6 +10,16 @@
 - **Rollback**: `git revert <commit>` restores pre-change state (skills, registry, counts)
 - **Classification**: CONTENT — non-destructive skill additions, no runtime/CI behavior change
 
+## GATE 6b: DEFERRED-TIER SKILLS (r3f scene stack + Manim)
+- **Said**: continue — implement the deferred tier from the resource-gap audit
+- **Wants**: r3f physics/post/particles/tuning engineering skill + Manim math-animation skill
+- **Solution fits intent?**: Yes — disjoint from existing content skills; both verified against upstream docs/APIs before writing (rapier Suspense/timeStep/colliders, postprocessing EffectComposer chain, three.quarks batched renderer + quarks.r3f, tweakpane pane pattern, Manim Scene/Mobject/`.animate`/CLI per official docs)
+- **Verified claims**: `.animate.shift(...)` confirmed in official Manim Mobject reference; `manim init project --default` and `manim -p -ql file.py SceneName` confirmed in official quickstart; Manim NOT installed in this environment — skill states verification steps instead of claiming renders; no library claims from docs that weren't checked
+- **Bukti**: both skills pass `test-skills.py --skill`; 2 Python blocks AST-validated; 3 TSX blocks parsed with Babel (`typescript` + `jsx`) — all ok; lint 0 errors/0 warnings/14 pre-existing info; overlap 0 findings on new skills; validate 1462/1462; tests ALL 1462 PASS; broken links 0
+- **Files changed**: 2 new `content/*/SKILL.md`; `SKILLS.json` rebuilt via `lint-skills.py --write` (1460->1462; content 112->114); doc counts synced via `sync-counts.py`; CHANGELOG [Unreleased]
+- **Rollback**: `git revert <commit>` restores pre-change state
+- **Classification**: CONTENT — non-destructive skill additions; no runtime/CI behavior change
+
 ## GATE 0: UNDERSTAND INTENT, VERIFY CLAIMS
 - **Said**: Phase 8 — Validator Strict Mode + broken-link checker
 - **Wants**: `--strict` flag on `validate-skill-schema.py` promoting warnings→errors; `scripts/check-broken-links.py` scanning internal `/skills/` refs against SKILLS.json

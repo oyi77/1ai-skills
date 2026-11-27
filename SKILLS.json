@@ -1,10 +1,10 @@
 {
-  "total_skills": 1460,
+  "total_skills": 1462,
   "category_count": 20,
   "categories": {
     "agents": 16,
     "automation": 21,
-    "content": 112,
+    "content": 114,
     "core": 53,
     "corporate": 14,
     "cybersecurity": 810,
@@ -2473,6 +2473,33 @@
       "type": "content"
     },
     {
+      "name": "manim-math-animation",
+      "category": "content",
+      "description": "Use when producing programmatic math, science, or geometry animations with Manim — Scene structure, Mobject transforms, .animate syntax, LaTeX prerequisites, CLI render modes, and output verification. Use for explainers, proofs, and formula visualizations.",
+      "domain": "content",
+      "tags": [
+        "manim",
+        "math",
+        "animation",
+        "python",
+        "latex",
+        "explainer"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "animation",
+      "roles": [
+        "content-creator"
+      ],
+      "triggers": [
+        "manim animation",
+        "animate a mathematical proof",
+        "formula visualization",
+        "geometry explainer video"
+      ],
+      "type": "content"
+    },
+    {
       "name": "marketing-director",
       "category": "content",
       "description": "Use when managing all marketing activities across the 1ai business kingdom. Delegates paid ads, content, email, social, SEO, and analytics.",
@@ -2753,6 +2780,35 @@
         "build prompt library",
         "website prompt gallery",
         "reuse UI prompts"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "r3f-scene-stack",
+      "category": "content",
+      "description": "Use when building interactive React Three Fiber scenes that need rigid-body physics, cinematic postprocessing, GPU particles, or live parameter tuning — library boundaries, Suspense setup, collider choices, effect budgets, and runtime knobs. Use for 3D product demos and interactive scenes.",
+      "domain": "content",
+      "tags": [
+        "threejs",
+        "react-three-fiber",
+        "rapier",
+        "postprocessing",
+        "particles",
+        "tweakpane",
+        "webgl"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "3d-web",
+      "roles": [
+        "content-creator"
+      ],
+      "triggers": [
+        "r3f physics",
+        "react three scene with physics",
+        "3d product demo",
+        "bloom depth of field three",
+        "particle effects three.js"
       ],
       "type": "content"
     },

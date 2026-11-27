@@ -4,7 +4,24 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
 ## [Unreleased]
 
 ### Added
-- Three new `content` skills from a verified resource-gap audit (websites + open-source tooling list):
+- Two more `content` skills from the deferred tier of the resource-gap audit:
+  - `content/r3f-scene-stack` — React Three Fiber composition with Rapier physics,
+    postprocessing, three.quarks particles, and Tweakpane tuning; version-check and
+    performance-budget rules. TSX examples parsed with Babel (`typescript` + `jsx`).
+  - `content/manim-math-animation` — Scene/Mobject workflow, `.animate` syntax, LaTeX
+    prerequisite, `manim init project` and `-p -ql` preview via the official docs.
+    Python examples AST-validated; Manim itself is not installed here, so no render claimed.
+- Registry `SKILLS.json` rebuilt: 1460 -> 1462 skills; content 112 -> 114. Doc counts synced.
+
+### Verified
+- `python3 scripts/validate-skills.py`: OK — all 1462 skills valid
+- `python3 scripts/lint-skills.py`: 0 errors, 0 warnings, 14 pre-existing info
+- `python3 scripts/lint-skills.py --overlap --json`: 0 findings on new skills
+- `python3 scripts/test-skills.py`: ALL 1462 SKILLS PASS
+- `python3 scripts/check-broken-links.py`: 0 broken internal references
+
+### Added (earlier batch, same audit, committed d7e10051)
+- Three new `content` skills
   - `content/audio-reactive-animation` — librosa beat/onset detection, word-level ASR timing,
     frame-accurate mapping into Remotion/HyperFrames, FFmpeg verification. Self-checked with a
     synthesized 8s click track: tempo and beats detected, derived frames monotonic and in range.
