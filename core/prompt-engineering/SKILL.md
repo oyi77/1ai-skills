@@ -47,7 +47,9 @@ A production prompt should answer these questions, in this order:
 
 Use the smallest prompt that reliably enforces the contract. Separate durable instructions from per-request data. Put untrusted user documents in clearly delimited data blocks; never let quoted content override system/developer policy.
 
-## Workflow: Measure Before You Tune
+## Workflow
+
+Measure before you tune.
 
 ### 1. Build a baseline fixture set
 
