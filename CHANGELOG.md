@@ -2,6 +2,27 @@
 All notable changes to 1ai-skills are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
+
+### Added
+- Three new `content` skills from a verified resource-gap audit (websites + open-source tooling list):
+  - `content/audio-reactive-animation` — librosa beat/onset detection, word-level ASR timing,
+    frame-accurate mapping into Remotion/HyperFrames, FFmpeg verification. Self-checked with a
+    synthesized 8s click track: tempo and beats detected, derived frames monotonic and in range.
+  - `content/font-forensics` — evidence-tiered typeface identification from logos/screenshots,
+    license checks for intended uses, fallback-stack spec and a local CSS audit pattern.
+    Audit snippet self-checked against a `var()`-indirected CSS stack.
+  - `content/prompt-library-curator` — rights-aware intake, provenance metadata schema,
+    intent deduplication and a local validator. Self-checked against two sample records.
+- Registry `SKILLS.json` rebuilt via `scripts/lint-skills.py --write`: 1457 -> 1460 skills;
+  content 109 -> 112. Doc counts synced via `scripts/sync-counts.py`
+
+### Verified
+- `python3 scripts/validate-skills.py`: OK — all 1460 skills valid
+- `python3 scripts/lint-skills.py`: 0 errors, 0 warnings, 14 info (same pre-existing 14)
+- `python3 scripts/lint-skills.py --overlap --generic-filler`: 0 findings involving new skills
+  (50 pre-existing overlap warnings unchanged)
+- `python3 scripts/test-skills.py`: ALL 1460 SKILLS PASS
+- All three new skills: `test-skills.py --skill <name>` PASS; every Python block AST-parses
 ### Changed
 - Wave 1: consolidated 44 narrow sub-skills across 6 clusters into canonical parent playbooks with explicit `## Sub-Skills & Specialized Playbooks` routing tables:
   - HyperFrames (12 sub-skills) -> `content/hyperframes-general-video`

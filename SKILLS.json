@@ -1,10 +1,10 @@
 {
-  "total_skills": 1457,
+  "total_skills": 1460,
   "category_count": 20,
   "categories": {
     "agents": 16,
     "automation": 21,
-    "content": 109,
+    "content": 112,
     "core": 53,
     "corporate": 14,
     "cybersecurity": 810,
@@ -976,6 +976,36 @@
       "type": "content"
     },
     {
+      "name": "audio-reactive-animation",
+      "category": "content",
+      "description": "Use when syncing animation to audio — BPM/onset detection with librosa, word-level subtitles via WhisperX-class ASR, frame-accurate mapping into Remotion or HyperFrames, and final FFmpeg encode. Use for beat-synced cuts, music visualizers, karaoke captions, and podcast clips.",
+      "domain": "content",
+      "tags": [
+        "audio",
+        "animation",
+        "beat-sync",
+        "librosa",
+        "whisperx",
+        "subtitles",
+        "remotion",
+        "ffmpeg"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "video-production",
+      "roles": [
+        "content-creator"
+      ],
+      "triggers": [
+        "sync animation to music",
+        "beat-synced video",
+        "music visualizer",
+        "karaoke captions",
+        "audio reactive"
+      ],
+      "type": "content"
+    },
+    {
       "name": "auto-clipper",
       "category": "content",
       "description": "Use when automatically clip long videos into short, engaging highlights for TikTok, Reels, and YouTube Shorts. Auto-detects scene changes, audio energy peaks, and transitions to create viral clips with professional quality.",
@@ -1811,6 +1841,33 @@
       "subdomain": "content-creation",
       "roles": [
         "content-creator"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "font-forensics",
+      "category": "content",
+      "description": "Use when identifying a typeface from a logo or screenshot and choosing a license-safe replacement — evidence tiers, visual comparison, webfont licensing checks, and fallback stacks. Use for font matching, logo typography audits, and accessible typography specs.",
+      "domain": "content",
+      "tags": [
+        "typography",
+        "fonts",
+        "logo",
+        "licensing",
+        "accessibility",
+        "web-design"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "design",
+      "roles": [
+        "ui-ux-designer"
+      ],
+      "triggers": [
+        "what font is this",
+        "identify logo font",
+        "match this typeface",
+        "font licensing"
       ],
       "type": "content"
     },
@@ -2669,6 +2726,33 @@
       "subdomain": "content-creation",
       "roles": [
         "ui-ux-designer"
+      ],
+      "type": "content"
+    },
+    {
+      "name": "prompt-library-curator",
+      "category": "content",
+      "description": "Use when collecting website and UI prompts from curated galleries into a reusable, rights-checked local library — intake criteria, metadata schema, prompt normalization, deduplication, and safe use of paid sources. Use for design prompt packs and inspiration research.",
+      "domain": "content",
+      "tags": [
+        "prompts",
+        "curation",
+        "web-design",
+        "licensing",
+        "inspiration",
+        "research"
+      ],
+      "version": "1.0.0",
+      "author": "oyi77",
+      "subdomain": "design",
+      "roles": [
+        "ui-ux-designer"
+      ],
+      "triggers": [
+        "curate design prompts",
+        "build prompt library",
+        "website prompt gallery",
+        "reuse UI prompts"
       ],
       "type": "content"
     },

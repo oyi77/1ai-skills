@@ -1,5 +1,15 @@
 # GATE.md — Pre-Ship Checklist (v3.25.0)
 
+## GATE 6: THREE NEW CONTENT SKILLS (resource-gap audit)
+- **Said**: explore/analyze pasted resource list (jiro.build, fontinlogo.com, landdding.com, recent.design, header.design, scrolltide.co + 20 GitHub motion/video repos) for skillset improvements
+- **Wants**: verified gap analysis → brainstorm → plan → implementations with receipts
+- **Solution fits intent?**: Yes — audit ran read-only; 3 disjoint gaps implemented as skills; r3f physics/post + manim assessed and deferred (version/surface sensitivity); near-zero-star repos (anatomy/hairline/motiondivision clones) assessed cosmetic-only
+- **Verified claims**: all 20 repos confirmed via GitHub API (stars/license/push dates — e.g. autoclip 17.3k MIT, remotion 76k, GSAP no SPDX declared, openverse NOASSERTION); sites fetched live via Jina Reader; gap greps: font-forensics 0 prior hits, prompt-gallery curation only `design-taste` adjacent, audio-reactive only beat-sync/caption/voice fragments
+- **Bukti**: all three skills pass `test-skills.py --skill`; every Python block AST-validated; librosa beat/onset pattern executed on a synthesized 8s click track (tempo+beats detected, derived frames monotonic/in range); font audit pattern executed on a `var()`-indirected stack; prompt-library validator executed on 2 sample records; 0 overlap/generic-filler findings involving new skills
+- **Files changed**: 3 new `content/*/SKILL.md`; `SKILLS.json` rebuilt via `lint-skills.py --write` (1457->1460; content 109->112); doc counts synced via `sync-counts.py` (README, AGENTS, CODEBASE, QUICK_START, llms.txt, package.json, generate-site.py); CHANGELOG [Unreleased]
+- **Rollback**: `git revert <commit>` restores pre-change state (skills, registry, counts)
+- **Classification**: CONTENT — non-destructive skill additions, no runtime/CI behavior change
+
 ## GATE 0: UNDERSTAND INTENT, VERIFY CLAIMS
 - **Said**: Phase 8 — Validator Strict Mode + broken-link checker
 - **Wants**: `--strict` flag on `validate-skill-schema.py` promoting warnings→errors; `scripts/check-broken-links.py` scanning internal `/skills/` refs against SKILLS.json
