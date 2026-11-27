@@ -9,6 +9,7 @@ All notable changes to 1ai-skills are documented here. Format follows [Keep a Ch
   framing. Inspired by researched public hook-scoring work; implementation and thresholds rewritten.
   Eval case added (11 checks).
 - Registry `SKILLS.json` rebuilt: 1462 -> 1463 skills; content 114 -> 115. Doc counts synced.
+- `docs/eval_coverage.md` refreshed: 54 cases / 410 checks / 1463 corpus.
 
 ### Changed
 - `content/humanizer` — added mechanical-pass section (invisible characters, typography) and

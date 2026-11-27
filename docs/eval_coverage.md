@@ -4,9 +4,9 @@
 
 ## Statistics
 
-- **Cases:** 53 across all 20 categories
-- **Checks:** 399 total; 399 passed, 0 failed, 0 skipped (100%)
-- **Corpus:** 1462 active skills in 20 categories (`SKILLS.json`)
+- **Cases:** 54 across all 20 categories
+- **Checks:** 410 total; 410 passed, 0 failed, 0 skipped (100%)
+- **Corpus:** 1463 active skills in 20 categories (`SKILLS.json`)
 - **Coverage:** 17 `role-*` anchor cases + 14 corporate cases (6 C-suite + 8 exception handlers); the remaining 22 cases sample individual skills for category-specific behavior.
 
 Regenerate the numbers with `python3 scripts/run-evals.py --all --json` (`total_cases`, `total_checks`, `total_passed`).
@@ -42,7 +42,7 @@ Regenerate the numbers with `python3 scripts/run-evals.py --all --json` (`total_
 - **Functional role anchors:** All 17 role anchors have evaluation cases.
 - **Individual skills:** Targeted high-utility or high-risk skills (automations, MCPs, top research, integrations, quant, self-improvement, mindset, productivity).
 - **Category coverage:** All 20 categories have at least one passing case.
-- **Energy balance:** 399 checks across 53 cases < 1462 skills = focused, scalable; add cases when a skill becomes a role anchor or high-risk entry point.
+- **Energy balance:** 410 checks across 54 cases < 1463 skills = focused, scalable; add cases when a skill becomes a role anchor or high-risk entry point.
 
 ## Gen Script
 
@@ -50,5 +50,5 @@ Run via `python3 scripts/gen-role-evals.py` to generate a full role- anchor matr
 
 ## Proof-of-Concept Test
 
-All 399 checks passed at 100% at final state. Use as a safety net when adding new skills; commit eval for every category anchor.
+All 410 checks passed at 100% at final state. Use as a safety net when adding new skills; commit eval for every category anchor.
 
